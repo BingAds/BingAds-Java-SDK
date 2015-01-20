@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
+  <bindings schemaLocation="https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/CampaignManagementService.svc?xsd=xsd1">
+    <bindings node="//xs:simpleType[@name='AdDistribution']">
+      <javaType name="java.util.List&lt;AdDistribution&gt;" parseMethod="com.microsoft.bingads.campaignmanagement.AdDistributionConverter.convertToList" printMethod="com.microsoft.bingads.campaignmanagement.AdDistributionConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='AdExtensionsTypeFilter']">
+      <javaType name="java.util.List&lt;AdExtensionsTypeFilter&gt;" parseMethod="com.microsoft.bingads.campaignmanagement.AdExtensionsTypeFilterConverter.convertToList" printMethod="com.microsoft.bingads.campaignmanagement.AdExtensionsTypeFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='MediaEnabledEntityFilter']">
+      <javaType name="java.util.List&lt;MediaEnabledEntityFilter&gt;" parseMethod="com.microsoft.bingads.campaignmanagement.MediaEnabledEntityFilterConverter.convertToList" printMethod="com.microsoft.bingads.campaignmanagement.MediaEnabledEntityFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='CriterionType']">
+      <javaType name="java.util.List&lt;CriterionType&gt;" parseMethod="com.microsoft.bingads.campaignmanagement.CriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.campaignmanagement.CriterionTypeConverter.convertToString" />
+    </bindings>
+  </bindings>
+</bindings>

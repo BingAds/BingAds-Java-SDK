@@ -1,0 +1,26 @@
+package com.microsoft.bingads.reporting;
+
+public enum AdDistributionReportFilter {
+
+    SEARCH("Search"),
+    CONTENT("Content");
+        
+    private final String value;
+
+    AdDistributionReportFilter(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdDistributionReportFilter fromValue(String v) {
+        for (AdDistributionReportFilter c : AdDistributionReportFilter.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}

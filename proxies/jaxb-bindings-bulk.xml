@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
+  <bindings schemaLocation="https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/BulkService.svc?xsd=xsd0">
+    <bindings node="//xs:simpleType[@name='DataScope']">
+      <javaType name="java.util.List&lt;DataScope&gt;" parseMethod="com.microsoft.bingads.bulk.DataScopeConverter.convertToList" printMethod="com.microsoft.bingads.bulk.DataScopeConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='BulkDownloadEntity']">
+      <javaType name="java.util.List&lt;BulkDownloadEntity&gt;" parseMethod="com.microsoft.bingads.bulk.BulkDownloadEntityConverter.convertToList" printMethod="com.microsoft.bingads.bulk.BulkDownloadEntityConverter.convertToString" />
+    </bindings>
+  </bindings>
+</bindings>
