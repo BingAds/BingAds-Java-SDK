@@ -1,34 +1,25 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.ApiEnvironment;
+import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.ServiceFactoryImpl;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.xml.bind.JAXBException;
+import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
-import org.apache.cxf.endpoint.Client;
+import javax.xml.ws.Service;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
-import org.apache.cxf.message.Message;
-import org.apache.cxf.transport.http.Headers;
-import org.apache.cxf.version.Version;
 
+/**
+ * Provides an interface for calling the methods of the specified Bing Ads service. 
+ * @param <T>
+ */
 public class ServiceClient<T> {
 
     private final AuthorizationData authorizationData;
@@ -38,14 +29,27 @@ public class ServiceClient<T> {
     private final ServiceFactory serviceFactory;
     private ApiEnvironment environment;
 
+    /**
+     * Gets the Bing Ads API environment.
+     * @return
+     */
     public ApiEnvironment getEnvironment() {
         return environment;
     }
 
+    /**
+     * Get the data representing a user who intends to call the API.
+     * @return
+     */
     public AuthorizationData getAuthorizationData() {
         return authorizationData;
     }
 
+    /**
+     * Initializes a new instance of this class with the specified authorization data.
+     * @param authorizationData
+     * @param serviceInterface
+     */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
         this(authorizationData, ApiEnvironment.PRODUCTION, serviceInterface);
         
@@ -56,6 +60,12 @@ public class ServiceClient<T> {
         }
     }
 
+    /**
+     * Initializes a new instance of this class with the specified authorization data and Bing Ads API environment.
+     * @param authorizationData
+     * @param environment
+     * @param serviceInterface
+     */
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
@@ -66,6 +76,10 @@ public class ServiceClient<T> {
         service = serviceFactory.createService(serviceInterface);
     }
 
+    /**
+     * Creates an object implementing the service interface that needs to be called.
+     * @return
+     */
     public T getService() {
         try {
             authorizationData.validate();
@@ -88,6 +102,8 @@ public class ServiceClient<T> {
                         
             apacheHeaders.add(new Header(new QName(ns, "DeveloperToken"), this.authorizationData.getDeveloperToken(), new JAXBDataBinding(String.class)));
 
+            refreshOAuthTokensIfNeeded();
+
             this.authorizationData.getAuthentication().addAuthenticationHeadersApiRequest(apacheHeaders, ns);           
             
             ((BindingProvider) port).getRequestContext().put(org.apache.cxf.headers.Header.HEADER_LIST, apacheHeaders);
@@ -95,6 +111,14 @@ public class ServiceClient<T> {
             return port;
         } catch (JAXBException ex) {
             throw new InternalException(ex);
+        }
+    }
+
+    private void refreshOAuthTokensIfNeeded() {
+        if (authorizationData.getAuthentication() instanceof OAuthWithAuthorizationCode) {
+            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode)authorizationData.getAuthentication();
+
+            auth.refreshTokensIfNeeded(false);
         }
     }
 

@@ -1,22 +1,17 @@
 package com.microsoft.bingads.internal;
 
-import java.net.URL;
-
-import org.apache.http.HttpRequest;
-
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
-import com.microsoft.bingads.internal.oauth.HttpHeaders;
+import java.net.URL;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import org.apache.cxf.jaxb.JAXBDataBinding;
+import org.apache.http.HttpRequest;
 
 /**
  * Authenticates API request by setting its AuthenticationToken to OAuth access
@@ -52,8 +47,7 @@ public abstract class OAuthAuthorization extends Authentication {
     protected void setOAuthTokens(OAuthTokens oAuthTokens) {
         this.oAuthTokens = oAuthTokens;
     }
-
-    @Override
+    
     public String getAuthenticationToken() {
         return this.oAuthTokens.getAccessToken();
     }

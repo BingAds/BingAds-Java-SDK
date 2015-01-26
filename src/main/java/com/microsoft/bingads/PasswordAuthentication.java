@@ -1,31 +1,15 @@
 package com.microsoft.bingads;
 
-import org.apache.http.HttpRequest;
-
-import com.microsoft.bingads.internal.oauth.HttpHeaders;
+import com.microsoft.bingads.internal.HttpHeaders;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
+import org.apache.http.HttpRequest;
 
 /**
- * Represents a legacy Bing Ads user name and password set. You can use an
- * instance of this class as the Authentication property of a
- * {@link AuthorizationData} object to authenticate with Bing Ads services.
- *
- * Existing users with legacy Bing Ads credentials may continue to specify the
- * UserName and Password header elements. In future versions of the API, Bing
- * Ads will transition exclusively to Microsoft Account authentication. New
- * customers are required to sign up for Bing Ads with a Microsoft Account, and
- * to manage those accounts you must use OAuth. For example instead of using
- * this PasswordAuthentication class, you would authenticate with an instance of
- * either
- * {@link OAuthDesktopMobileAuthCodeGrant}, {@link OAuthDesktopMobileImplicitGrant},
- * or {@link OAuthWebAuthCodeGrant}.
- *
+ * Represents a legacy Bing Ads authentication method using user name and password.
  */
 public class PasswordAuthentication extends Authentication {
 
@@ -33,7 +17,7 @@ public class PasswordAuthentication extends Authentication {
     private String password;
 
     /**
-     * Initializes a new instance of the PasswordAuthentication class.
+     * Initializes a new instance of the PasswordAuthentication class using the specified user name and password.
      *
      * @param userName The Bing Ads user's sign-in user name. You may not set
      * this element to a Microsoft account.
@@ -46,17 +30,17 @@ public class PasswordAuthentication extends Authentication {
     }
 
     /**
-     * Adds the UserName and Password web client authentication header elements
-     * for the corresponding bulk file upload operation.
-     *
-     * @param request The request to which add the headers to
+     * Reserved for internal use.
      */
     @Override
     public void addAuthenticationHeadersToFileUploadRequest(HttpRequest request) {
         request.addHeader(HttpHeaders.USER_NAME, this.userName);
         request.addHeader(HttpHeaders.PASSWORD, this.password);
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     @Override
     public void addAuthenticationHeadersApiRequest(List<Header> headers, String namespace) {
         try {
@@ -67,20 +51,34 @@ public class PasswordAuthentication extends Authentication {
         }
     }
     
-    @Override
+    /**
+     * Gets the user name.
+     * @return
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Sets the user name.
+     * @param userName
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    @Override
+    
+    /**
+     * Gets the password.
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the password.
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }

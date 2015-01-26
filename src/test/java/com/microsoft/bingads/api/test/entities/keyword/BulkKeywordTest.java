@@ -1,14 +1,13 @@
 package com.microsoft.bingads.api.test.entities.keyword;
 
-import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
-
 import com.microsoft.bingads.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.api.test.entities.EqualityComparerWithDescription;
 import com.microsoft.bingads.bulk.entities.BulkKeyword;
 import com.microsoft.bingads.campaignmanagement.Keyword;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import java.util.Map;
 
 public abstract class BulkKeywordTest extends BulkEntityTest<BulkKeyword> {
 

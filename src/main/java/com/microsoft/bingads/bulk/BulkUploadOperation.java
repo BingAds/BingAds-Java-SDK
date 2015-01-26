@@ -1,12 +1,11 @@
 package com.microsoft.bingads.bulk;
 
 import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.internal.bulk.operations.UploadStatusProvider;
+import com.microsoft.bingads.internal.bulk.UploadStatusProvider;
+import java.util.List;
 
 /**
- * Represents a bulk upload operation requested by a user. You can use this
- * class to poll for the upload status, and then download the upload results
- * file when available.
+ * Represents a bulk upload operation requested by a user.
  *
  * Example: {@link BulkService#submitUpload} method returns an instance of this
  * class. If for any reason you do not want to wait for the file to finish
@@ -19,8 +18,7 @@ import com.microsoft.bingads.internal.bulk.operations.UploadStatusProvider;
 public class BulkUploadOperation extends BulkOperation<UploadStatus> {
 
     /**
-     * Initializes a new instance of this class with the specified requestId and
-     * {@link UserData}.
+     * Initializes a new instance of this class with the specified requestId and authorization data.
      *
      * @param requestId The identifier of an upload request that has previously
      * been submitted.
@@ -33,5 +31,10 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
 
     protected BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, String trackingId) {
         super(requestId, authorizationData, new UploadStatusProvider(requestId), trackingId);
+    }
+
+    @Override
+    RuntimeException getOperationCouldNotBeCompletedException(List<OperationError> errors, UploadStatus status) {
+        return new BulkUploadCouldNotBeCompletedException(errors, status);
     }
 }

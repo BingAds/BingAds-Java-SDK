@@ -1,5 +1,8 @@
 package com.microsoft.bingads.campaignmanagement;
 
+/**
+ * Enum class for AdExtensionsTypeFilter.
+ */
 public enum AdExtensionsTypeFilter {
 
     SITE_LINKS_AD_EXTENSION("SiteLinksAdExtension"),

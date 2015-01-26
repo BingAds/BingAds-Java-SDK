@@ -1,12 +1,11 @@
 package com.microsoft.bingads.api.test.entities.unknown;
 
-import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
-
 import com.microsoft.bingads.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.internal.bulk.file.UnknownBulkEntity;
+import com.microsoft.bingads.bulk.entities.UnknownBulkEntity;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import java.util.Map;
 
 public abstract class UnknownBulkEntityTest extends BulkEntityTest<UnknownBulkEntity> {
 

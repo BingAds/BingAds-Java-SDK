@@ -1,9 +1,5 @@
 package com.microsoft.bingads.api.test.entities.campaign;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAccountIdTest;
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBudgetTypeTest;
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDailyBudgetTest;
@@ -12,6 +8,9 @@ import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteT
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesNameTest;
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesStatusTest;
 import com.microsoft.bingads.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesTimeZoneTest;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({BulkCampaignWriteToRowValuesAccountIdTest.class,

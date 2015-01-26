@@ -1,20 +1,20 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter4
-    extends XmlAdapter<String, List<CriterionType>>
+    extends XmlAdapter<String, Collection<MediaEnabledEntityFilter>>
 {
 
 
-    public List<CriterionType> unmarshal(String value) {
-        return (com.microsoft.bingads.campaignmanagement.CriterionTypeConverter.convertToList(value));
+    public Collection<MediaEnabledEntityFilter> unmarshal(String value) {
+        return (com.microsoft.bingads.campaignmanagement.MediaEnabledEntityFilterConverter.convertToList(value));
     }
 
-    public String marshal(List<CriterionType> value) {
-        return (com.microsoft.bingads.campaignmanagement.CriterionTypeConverter.convertToString(value));
+    public String marshal(Collection<MediaEnabledEntityFilter> value) {
+        return (com.microsoft.bingads.campaignmanagement.MediaEnabledEntityFilterConverter.convertToString(value));
     }
 
 }

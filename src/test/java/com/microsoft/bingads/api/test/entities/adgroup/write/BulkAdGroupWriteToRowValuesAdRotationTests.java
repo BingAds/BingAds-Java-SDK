@@ -1,19 +1,17 @@
 package com.microsoft.bingads.api.test.entities.adgroup.write;
 
+import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
+import com.microsoft.bingads.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.campaignmanagement.AdRotation;
+import com.microsoft.bingads.campaignmanagement.AdRotationType;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
-import com.microsoft.bingads.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.campaignmanagement.AdRotation;
-import com.microsoft.bingads.campaignmanagement.AdRotationType;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupWriteToRowValuesAdRotationTests extends BulkAdGroupTest {

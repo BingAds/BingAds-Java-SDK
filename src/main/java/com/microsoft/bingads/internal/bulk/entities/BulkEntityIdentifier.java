@@ -1,12 +1,11 @@
 package com.microsoft.bingads.internal.bulk.entities;
 
-import java.io.IOException;
-
 import com.microsoft.bingads.bulk.entities.BulkError;
-import com.microsoft.bingads.internal.bulk.file.BulkObject;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
-import com.microsoft.bingads.internal.bulk.file.BulkStreamReader;
-import com.microsoft.bingads.internal.bulk.file.TryResult;
+import com.microsoft.bingads.internal.bulk.BulkObject;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.internal.bulk.TryResult;
+import java.io.IOException;
 
 public abstract class BulkEntityIdentifier extends BulkObject {
 

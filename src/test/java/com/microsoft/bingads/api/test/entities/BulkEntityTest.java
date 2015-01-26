@@ -1,24 +1,21 @@
 package com.microsoft.bingads.api.test.entities;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
+import com.microsoft.bingads.internal.bulk.BulkObject;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.HashMap;
 import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
-
-import com.microsoft.bingads.internal.bulk.file.BulkObject;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public abstract class BulkEntityTest<TEntity extends BulkObject> {

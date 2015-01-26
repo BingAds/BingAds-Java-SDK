@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.optimizer;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,7 +52,7 @@ public class GetBidOpportunitiesRequest {
     @XmlElement(name = "OpportunityType", namespace = "https://bingads.microsoft.com/Optimizer/v9", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<BidOpportunityType> opportunityType;
+    protected Collection<BidOpportunityType> opportunityType;
 
     /**
      * Gets the value of the accountId property.
@@ -134,7 +134,7 @@ public class GetBidOpportunitiesRequest {
      *     {@link String }
      *     
      */
-    public List<BidOpportunityType> getOpportunityType() {
+    public Collection<BidOpportunityType> getOpportunityType() {
         return opportunityType;
     }
 
@@ -146,7 +146,7 @@ public class GetBidOpportunitiesRequest {
      *     {@link String }
      *     
      */
-    public void setOpportunityType(List<BidOpportunityType> value) {
+    public void setOpportunityType(Collection<BidOpportunityType> value) {
         this.opportunityType = value;
     }
 

@@ -1,14 +1,17 @@
 package com.microsoft.bingads.campaignmanagement;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class MediaEnabledEntityFilterConverter {
 
-    public static List<MediaEnabledEntityFilter> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<MediaEnabledEntityFilter> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<MediaEnabledEntityFilter> result = new ArrayList<MediaEnabledEntityFilter>();
+        Collection<MediaEnabledEntityFilter> result = new ArrayList<MediaEnabledEntityFilter>();
 
         for (String value : values) {
             result.add(MediaEnabledEntityFilter.fromValue(value));
@@ -17,10 +20,10 @@ public class MediaEnabledEntityFilterConverter {
         return result;
     }
 
-    public static String convertToString(List<MediaEnabledEntityFilter> list) {
+    public static String convertToString(Collection<MediaEnabledEntityFilter> enums) {
         String result = "";
 
-        for (MediaEnabledEntityFilter entity : list) {
+        for (MediaEnabledEntityFilter entity : enums) {
             result += (entity.value() + " ");
         }
 

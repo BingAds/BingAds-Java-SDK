@@ -1,14 +1,17 @@
 package com.microsoft.bingads.optimizer;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class KeywordOpportunityTypeConverter {
 
-    public static List<KeywordOpportunityType> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<KeywordOpportunityType> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<KeywordOpportunityType> result = new ArrayList<KeywordOpportunityType>();
+        Collection<KeywordOpportunityType> result = new ArrayList<KeywordOpportunityType>();
 
         for (String value : values) {
             result.add(KeywordOpportunityType.fromValue(value));
@@ -17,10 +20,10 @@ public class KeywordOpportunityTypeConverter {
         return result;
     }
 
-    public static String convertToString(List<KeywordOpportunityType> list) {
+    public static String convertToString(Collection<KeywordOpportunityType> enums) {
         String result = "";
 
-        for (KeywordOpportunityType entity : list) {
+        for (KeywordOpportunityType entity : enums) {
             result += (entity.value() + " ");
         }
 

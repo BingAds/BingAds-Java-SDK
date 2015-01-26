@@ -1,5 +1,8 @@
 package com.microsoft.bingads.optimizer;
 
+/**
+ * Enum class for BidOpportunityType.
+ */
 public enum BidOpportunityType {
 
     INCREASE_TRAFFIC("IncreaseTraffic"),

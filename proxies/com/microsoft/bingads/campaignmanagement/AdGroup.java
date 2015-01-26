@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -66,9 +66,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdGroup {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistribution> adDistribution;
+    protected Collection<AdDistribution> adDistribution;
     @XmlElement(name = "AdRotation", nillable = true)
     protected AdRotation adRotation;
     @XmlElement(name = "BiddingModel", nillable = true)
@@ -112,7 +112,7 @@ public class AdGroup {
      *     {@link String }
      *     
      */
-    public List<AdDistribution> getAdDistribution() {
+    public Collection<AdDistribution> getAdDistribution() {
         return adDistribution;
     }
 
@@ -124,7 +124,7 @@ public class AdGroup {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistribution> value) {
+    public void setAdDistribution(Collection<AdDistribution> value) {
         this.adDistribution = value;
     }
 

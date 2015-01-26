@@ -1,18 +1,16 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.location.read;
 
+import com.microsoft.bingads.api.test.entities.ad_extension.location.BulkLocationAdExtensionTest;
+import com.microsoft.bingads.bulk.entities.BulkLocationAdExtension;
+import com.microsoft.bingads.campaignmanagement.BusinessGeoCodeStatus;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.ad_extension.location.BulkLocationAdExtensionTest;
-import com.microsoft.bingads.bulk.entities.BulkLocationAdExtension;
-import com.microsoft.bingads.campaignmanagement.BusinessGeoCodeStatus;
 
 @RunWith(Parameterized.class)
 public class BulkLocationAdExtensionReadFromRowValuesGeoCodeStatusTest extends BulkLocationAdExtensionTest {

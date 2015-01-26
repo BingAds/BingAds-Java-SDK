@@ -5,15 +5,19 @@
  */
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.ResponseFuture;
+import com.microsoft.bingads.internal.ResultFuture;
 import java.util.concurrent.Future;
 
+/**
+ * Reserved for internal use. 
+ * @param <T>
+ */
 public class ParentCallback<T> implements AsyncCallback<T> {        
     
-    private final ResponseFuture<?> parentResponseFuture;
+    private final ResultFuture<?> parentResultFuture;
     
-    public ParentCallback(ResponseFuture<?> parentResponseFuture) {
-        this.parentResponseFuture = parentResponseFuture;
+    public ParentCallback(ResultFuture<?> parentResultFuture) {
+        this.parentResultFuture = parentResultFuture;
     }
     
     public void onSuccess(T result) throws Exception {
@@ -26,7 +30,7 @@ public class ParentCallback<T> implements AsyncCallback<T> {
             onSuccess(result.get());
         }
         catch (Throwable e) {
-            parentResponseFuture.setException(e);
+            parentResultFuture.setException(e);
         }
     }    
 }

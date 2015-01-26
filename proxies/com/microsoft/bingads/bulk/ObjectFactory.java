@@ -3,7 +3,7 @@ package com.microsoft.bingads.bulk;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -582,13 +582,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link DataScope }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DataScope }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "DataScope")
     @XmlJavaTypeAdapter(Adapter2 .class)
-    public JAXBElement<List<DataScope>> createDataScope(List<DataScope> value) {
-        return new JAXBElement<List<DataScope>>(_DataScope_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<DataScope>> createDataScope(Collection<DataScope> value) {
+        return new JAXBElement<Collection<DataScope>>(_DataScope_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -655,13 +655,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link BulkDownloadEntity }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link BulkDownloadEntity }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "BulkDownloadEntity")
     @XmlJavaTypeAdapter(Adapter3 .class)
-    public JAXBElement<List<BulkDownloadEntity>> createBulkDownloadEntity(List<BulkDownloadEntity> value) {
-        return new JAXBElement<List<BulkDownloadEntity>>(_BulkDownloadEntity_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<BulkDownloadEntity>> createBulkDownloadEntity(Collection<BulkDownloadEntity> value) {
+        return new JAXBElement<Collection<BulkDownloadEntity>>(_BulkDownloadEntity_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

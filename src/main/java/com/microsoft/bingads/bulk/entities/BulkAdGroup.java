@@ -1,12 +1,6 @@
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.UncheckedParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import com.microsoft.bingads.campaignmanagement.AdDistribution;
 import com.microsoft.bingads.campaignmanagement.AdGroup;
 import com.microsoft.bingads.campaignmanagement.AdGroupStatus;
@@ -14,19 +8,28 @@ import com.microsoft.bingads.campaignmanagement.Network;
 import com.microsoft.bingads.campaignmanagement.PricingModel;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
+import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import com.microsoft.bingads.internal.bulk.mapping.BulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BulkAdGroup extends SingleRecordBulkEntity {
 
     private Long campaignId;
+
     private String campaignName;
+
     private AdGroup adGroup;
+
     private QualityScoreData qualityScoreData;
+
     private PerformanceData performanceData;
 
     private boolean isExpired;
@@ -359,7 +362,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         return isExpired;
     }
 
-    public void setIsExpired(boolean isExpired) {
+    private void setIsExpired(boolean isExpired) {
         this.isExpired = isExpired;
     }
 }

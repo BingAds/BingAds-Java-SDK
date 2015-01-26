@@ -1,15 +1,13 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.site_link.bulk_site_link.read;
 
+import com.microsoft.bingads.api.test.entities.ad_extension.site_link.bulk_site_link.BulkSiteLinkTest;
+import com.microsoft.bingads.bulk.entities.BulkSiteLink;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.ad_extension.site_link.bulk_site_link.BulkSiteLinkTest;
-import com.microsoft.bingads.bulk.entities.BulkSiteLink;
 
 public class BulkSiteLinkReadFromRowValuesDisplayTextTest extends BulkSiteLinkTest {
 

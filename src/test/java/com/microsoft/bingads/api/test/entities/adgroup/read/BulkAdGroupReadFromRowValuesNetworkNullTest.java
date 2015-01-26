@@ -1,17 +1,16 @@
 package com.microsoft.bingads.api.test.entities.adgroup.read;
 
+import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
+import com.microsoft.bingads.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.campaignmanagement.AdRotation;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
-import com.microsoft.bingads.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.campaignmanagement.AdRotation;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupReadFromRowValuesNetworkNullTest extends BulkAdGroupTest {

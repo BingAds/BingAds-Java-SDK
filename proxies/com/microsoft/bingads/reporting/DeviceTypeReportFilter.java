@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for DeviceTypeReportFilter.
+ */
 public enum DeviceTypeReportFilter {
 
     COMPUTER("Computer"),

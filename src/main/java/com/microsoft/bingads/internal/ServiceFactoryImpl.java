@@ -5,6 +5,7 @@
  */
 package com.microsoft.bingads.internal;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.adintelligence.IAdIntelligenceService;
 import com.microsoft.bingads.bulk.IBulkService;
 import com.microsoft.bingads.campaignmanagement.ICampaignManagementService;
@@ -12,12 +13,8 @@ import com.microsoft.bingads.customerbilling.ICustomerBillingService;
 import com.microsoft.bingads.customermanagement.ICustomerManagementService;
 import com.microsoft.bingads.optimizer.IOptimizerService;
 import com.microsoft.bingads.reporting.IReportingService;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +29,7 @@ import javax.xml.ws.Service;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.message.Message;
 
-public class ServiceFactoryImpl implements ServiceFactory {
+class ServiceFactoryImpl implements ServiceFactory {
     
     private static final String VERSION = "9.3.0";
 

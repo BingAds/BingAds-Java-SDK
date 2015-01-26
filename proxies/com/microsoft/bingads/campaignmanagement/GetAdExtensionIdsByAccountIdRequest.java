@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -44,9 +44,9 @@ public class GetAdExtensionIdsByAccountIdRequest {
     @XmlElement(name = "AccountId")
     protected Long accountId;
     @XmlElement(name = "AdExtensionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdExtensionsTypeFilter> adExtensionType;
+    protected Collection<AdExtensionsTypeFilter> adExtensionType;
     @XmlElement(name = "AssociationType", nillable = true)
     @XmlSchemaType(name = "string")
     protected AssociationType associationType;
@@ -83,7 +83,7 @@ public class GetAdExtensionIdsByAccountIdRequest {
      *     {@link String }
      *     
      */
-    public List<AdExtensionsTypeFilter> getAdExtensionType() {
+    public Collection<AdExtensionsTypeFilter> getAdExtensionType() {
         return adExtensionType;
     }
 
@@ -95,7 +95,7 @@ public class GetAdExtensionIdsByAccountIdRequest {
      *     {@link String }
      *     
      */
-    public void setAdExtensionType(List<AdExtensionsTypeFilter> value) {
+    public void setAdExtensionType(Collection<AdExtensionsTypeFilter> value) {
         this.adExtensionType = value;
     }
 

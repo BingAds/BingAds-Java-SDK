@@ -7,7 +7,6 @@ package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.CityTargetBid;
 import com.microsoft.bingads.campaignmanagement.CountryTargetBid;
-import com.microsoft.bingads.campaignmanagement.IntentOption;
 import com.microsoft.bingads.campaignmanagement.MetroAreaTargetBid;
 import com.microsoft.bingads.campaignmanagement.PostalCodeTargetBid;
 import com.microsoft.bingads.campaignmanagement.StateTargetBid;

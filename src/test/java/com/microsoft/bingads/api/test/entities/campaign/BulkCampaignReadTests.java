@@ -1,9 +1,5 @@
 package com.microsoft.bingads.api.test.entities.campaign;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAccountIdTest;
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesBudgetTypeTest;
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDailyBudgetTest;
@@ -22,6 +18,9 @@ import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFro
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesQualityScoreTest;
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesStatusTest;
 import com.microsoft.bingads.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesTimeZoneTest;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({

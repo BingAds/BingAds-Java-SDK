@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,11 +40,11 @@ public class SearchCampaignChangeHistoryReportFilter {
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<ChangeTypeReportFilter> howChanged;
+    protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<ChangeEntityReportFilter> itemChanged;
+    protected Collection<ChangeEntityReportFilter> itemChanged;
 
     /**
      * Gets the value of the howChanged property.
@@ -54,7 +54,7 @@ public class SearchCampaignChangeHistoryReportFilter {
      *     {@link String }
      *     
      */
-    public List<ChangeTypeReportFilter> getHowChanged() {
+    public Collection<ChangeTypeReportFilter> getHowChanged() {
         return howChanged;
     }
 
@@ -66,7 +66,7 @@ public class SearchCampaignChangeHistoryReportFilter {
      *     {@link String }
      *     
      */
-    public void setHowChanged(List<ChangeTypeReportFilter> value) {
+    public void setHowChanged(Collection<ChangeTypeReportFilter> value) {
         this.howChanged = value;
     }
 
@@ -78,7 +78,7 @@ public class SearchCampaignChangeHistoryReportFilter {
      *     {@link String }
      *     
      */
-    public List<ChangeEntityReportFilter> getItemChanged() {
+    public Collection<ChangeEntityReportFilter> getItemChanged() {
         return itemChanged;
     }
 
@@ -90,7 +90,7 @@ public class SearchCampaignChangeHistoryReportFilter {
      *     {@link String }
      *     
      */
-    public void setItemChanged(List<ChangeEntityReportFilter> value) {
+    public void setItemChanged(Collection<ChangeEntityReportFilter> value) {
         this.itemChanged = value;
     }
 

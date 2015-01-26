@@ -21,10 +21,10 @@ import com.microsoft.bingads.campaignmanagement.PostalCodeTarget;
 import com.microsoft.bingads.campaignmanagement.PostalCodeTargetBid;
 import com.microsoft.bingads.campaignmanagement.StateTarget;
 import com.microsoft.bingads.campaignmanagement.StateTargetBid;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 

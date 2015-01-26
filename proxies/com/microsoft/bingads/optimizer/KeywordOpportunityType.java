@@ -1,5 +1,8 @@
 package com.microsoft.bingads.optimizer;
 
+/**
+ * Enum class for KeywordOpportunityType.
+ */
 public enum KeywordOpportunityType {
 
     BROAD_MATCH("BroadMatch"),

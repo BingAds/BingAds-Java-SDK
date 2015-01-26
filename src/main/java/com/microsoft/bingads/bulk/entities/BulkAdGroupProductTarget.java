@@ -1,11 +1,5 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import com.microsoft.bingads.campaignmanagement.AdGroupCriterionEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.AdGroupCriterionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfProductCondition;
@@ -14,13 +8,17 @@ import com.microsoft.bingads.campaignmanagement.FixedBid;
 import com.microsoft.bingads.campaignmanagement.Product;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.entities.ProductConditionHelper;
+import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.ComplexBulkMapping;
+import com.microsoft.bingads.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import com.microsoft.bingads.internal.bulk.mapping.BulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.ComplexBulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BulkAdGroupProductTarget extends SingleRecordBulkEntity {
 

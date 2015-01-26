@@ -1,19 +1,5 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.product.write;
 
-import static org.easymock.EasyMock.and;
-import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.cmp;
-
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-
-import org.easymock.EasyMockRunner;
-import org.easymock.LogicalOperator;
-import org.easymock.Mock;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import com.microsoft.bingads.api.test.entities.ad_extension.product.BulkProductAdExtensionTest;
 import com.microsoft.bingads.bulk.entities.BulkProductAdExtension;
 import com.microsoft.bingads.bulk.entities.BulkProductConditionCollection;
@@ -21,8 +7,19 @@ import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfProductConditionCollection;
 import com.microsoft.bingads.campaignmanagement.ProductAdExtension;
 import com.microsoft.bingads.campaignmanagement.ProductConditionCollection;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkProductAdExtensionIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.entities.BulkProductAdExtensionIdentifier;
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+import static org.easymock.EasyMock.and;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.cmp;
+import org.easymock.EasyMockRunner;
+import org.easymock.LogicalOperator;
+import org.easymock.Mock;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @RunWith(EasyMockRunner.class)
 public class BulkProductAdExtensionWriteToStreamTest extends

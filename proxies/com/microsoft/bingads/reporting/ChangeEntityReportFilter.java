@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for ChangeEntityReportFilter.
+ */
 public enum ChangeEntityReportFilter {
 
     ACCOUNT("Account"),

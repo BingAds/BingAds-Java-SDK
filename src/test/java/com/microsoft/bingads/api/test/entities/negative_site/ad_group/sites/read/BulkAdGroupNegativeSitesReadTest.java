@@ -1,28 +1,25 @@
 package com.microsoft.bingads.api.test.entities.negative_site.ad_group.sites.read;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.easymock.EasyMockRunner;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import com.microsoft.bingads.api.test.TestFactory;
-import com.microsoft.bingads.api.test.entities.MultirecordEntityTestHelper;
 import com.microsoft.bingads.api.test.entities.negative_site.ad_group.sites.BulkAdGroupNegativeSitesTest;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.ResultFileType;
-import com.microsoft.bingads.bulk.entities.Status;
 import com.microsoft.bingads.bulk.entities.BulkAdGroupNegativeSite;
 import com.microsoft.bingads.bulk.entities.BulkAdGroupNegativeSites;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkAdGroupNegativeSitesIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObject;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectReader;
+import com.microsoft.bingads.bulk.entities.MultirecordEntityTestHelper;
+import com.microsoft.bingads.bulk.entities.Status;
+import com.microsoft.bingads.internal.bulk.BulkObject;
+import com.microsoft.bingads.internal.bulk.BulkObjectReader;
+import com.microsoft.bingads.internal.bulk.TestFactory;
+import com.microsoft.bingads.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
+import java.util.ArrayList;
+import java.util.List;
+import org.easymock.EasyMockRunner;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @RunWith(EasyMockRunner.class)
 public class BulkAdGroupNegativeSitesReadTest extends BulkAdGroupNegativeSitesTest {

@@ -1,5 +1,8 @@
 package com.microsoft.bingads.bulk;
 
+/**
+ * Enum class for DataScope.
+ */
 public enum DataScope {
 
     ENTITY_DATA("EntityData"),

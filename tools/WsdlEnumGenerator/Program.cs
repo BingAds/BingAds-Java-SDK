@@ -132,7 +132,7 @@ namespace WsdlEnumGenerator
                 new XElement(ns + "bindings",
                     new XAttribute("node", string.Format("//xs:simpleType[@name='{0}']", name)),
                     new XElement(ns + "javaType",
-                        new XAttribute("name", string.Format("java.util.List<{0}>", name)),
+                        new XAttribute("name", string.Format("java.util.Collection<{0}>", name)),
                         new XAttribute("parseMethod", string.Format("com.microsoft.bingads.{1}.{0}Converter.convertToList", name, packageName)),
                         new XAttribute("printMethod", string.Format("com.microsoft.bingads.{1}.{0}Converter.convertToString", name, packageName)))
                     );
@@ -193,6 +193,9 @@ namespace WsdlEnumGenerator
 
         private const string EnumTemplate = @"package com.microsoft.bingads.{2};
 
+/**
+ * Enum class for {0}.
+ */
 public enum {0} {{
 
 {1}
@@ -220,14 +223,17 @@ public enum {0} {{
         private const string ConverterTemplate = @"package com.microsoft.bingads.{1};
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class {0}Converter {{
 
-    public static List<{0}> convertToList(String entityString) {{
-        String[] values = entityString.split("" "");
+    public static Collection<{0}> convertToList(String enums) {{
+        String[] values = enums.split("" "");
 
-        List<{0}> result = new ArrayList<{0}>();
+        Collection<{0}> result = new ArrayList<{0}>();
 
         for (String value : values) {{
             result.add({0}.fromValue(value));
@@ -236,10 +242,10 @@ public class {0}Converter {{
         return result;
     }}
 
-    public static String convertToString(List<{0}> list) {{
+    public static String convertToString(Collection<{0}> enums) {{
         String result = """";
 
-        for ({0} entity : list) {{
+        for ({0} entity : enums) {{
             result += (entity.value() + "" "");
         }}
 

@@ -12,8 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkCallAdExtensionWriteFromRowValuesIsCallTrackingEnabledTest.class,
     BulkCallAdExtensionWriteFromRowValuesPhoneNumberTest.class,
     BulkCallAdExtensionWriteFromRowValuesRequireTollFreeTrackingNumberTest.class,
-    BulkCallAdExtensionWriteFromRowValuesStatusTest.class,
-    BulkCallAdExtensionWriteFromRowValuesVersionTest.class})
+    BulkCallAdExtensionWriteFromRowValuesStatusTest.class})
 public class BulkCallAdExtensionWriteTests {
 
 }

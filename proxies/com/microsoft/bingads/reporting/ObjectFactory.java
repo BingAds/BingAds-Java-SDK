@@ -3,7 +3,7 @@ package com.microsoft.bingads.reporting;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -1476,13 +1476,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link ChangeTypeReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ChangeTypeReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ChangeTypeReportFilter")
     @XmlJavaTypeAdapter(Adapter11 .class)
-    public JAXBElement<List<ChangeTypeReportFilter>> createChangeTypeReportFilter(List<ChangeTypeReportFilter> value) {
-        return new JAXBElement<List<ChangeTypeReportFilter>>(_ChangeTypeReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<ChangeTypeReportFilter>> createChangeTypeReportFilter(Collection<ChangeTypeReportFilter> value) {
+        return new JAXBElement<Collection<ChangeTypeReportFilter>>(_ChangeTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -1747,13 +1747,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdDistributionReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdDistributionReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdDistributionReportFilter")
     @XmlJavaTypeAdapter(Adapter15 .class)
-    public JAXBElement<List<AdDistributionReportFilter>> createAdDistributionReportFilter(List<AdDistributionReportFilter> value) {
-        return new JAXBElement<List<AdDistributionReportFilter>>(_AdDistributionReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<AdDistributionReportFilter>> createAdDistributionReportFilter(Collection<AdDistributionReportFilter> value) {
+        return new JAXBElement<Collection<AdDistributionReportFilter>>(_AdDistributionReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -1973,13 +1973,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link DeviceOSReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DeviceOSReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeviceOSReportFilter")
     @XmlJavaTypeAdapter(Adapter6 .class)
-    public JAXBElement<List<DeviceOSReportFilter>> createDeviceOSReportFilter(List<DeviceOSReportFilter> value) {
-        return new JAXBElement<List<DeviceOSReportFilter>>(_DeviceOSReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<DeviceOSReportFilter>> createDeviceOSReportFilter(Collection<DeviceOSReportFilter> value) {
+        return new JAXBElement<Collection<DeviceOSReportFilter>>(_DeviceOSReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2037,13 +2037,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdStatusReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdStatusReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdStatusReportFilter")
     @XmlJavaTypeAdapter(Adapter9 .class)
-    public JAXBElement<List<AdStatusReportFilter>> createAdStatusReportFilter(List<AdStatusReportFilter> value) {
-        return new JAXBElement<List<AdStatusReportFilter>>(_AdStatusReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<AdStatusReportFilter>> createAdStatusReportFilter(Collection<AdStatusReportFilter> value) {
+        return new JAXBElement<Collection<AdStatusReportFilter>>(_AdStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2263,13 +2263,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link RichAdSubTypeFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link RichAdSubTypeFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "RichAdSubTypeFilter")
     @XmlJavaTypeAdapter(Adapter10 .class)
-    public JAXBElement<List<RichAdSubTypeFilter>> createRichAdSubTypeFilter(List<RichAdSubTypeFilter> value) {
-        return new JAXBElement<List<RichAdSubTypeFilter>>(_RichAdSubTypeFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<RichAdSubTypeFilter>> createRichAdSubTypeFilter(Collection<RichAdSubTypeFilter> value) {
+        return new JAXBElement<Collection<RichAdSubTypeFilter>>(_RichAdSubTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2354,13 +2354,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link DeviceTypeReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DeviceTypeReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeviceTypeReportFilter")
     @XmlJavaTypeAdapter(Adapter12 .class)
-    public JAXBElement<List<DeviceTypeReportFilter>> createDeviceTypeReportFilter(List<DeviceTypeReportFilter> value) {
-        return new JAXBElement<List<DeviceTypeReportFilter>>(_DeviceTypeReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<DeviceTypeReportFilter>> createDeviceTypeReportFilter(Collection<DeviceTypeReportFilter> value) {
+        return new JAXBElement<Collection<DeviceTypeReportFilter>>(_DeviceTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2445,13 +2445,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link DeliveredMatchTypeReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DeliveredMatchTypeReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeliveredMatchTypeReportFilter")
     @XmlJavaTypeAdapter(Adapter13 .class)
-    public JAXBElement<List<DeliveredMatchTypeReportFilter>> createDeliveredMatchTypeReportFilter(List<DeliveredMatchTypeReportFilter> value) {
-        return new JAXBElement<List<DeliveredMatchTypeReportFilter>>(_DeliveredMatchTypeReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<DeliveredMatchTypeReportFilter>> createDeliveredMatchTypeReportFilter(Collection<DeliveredMatchTypeReportFilter> value) {
+        return new JAXBElement<Collection<DeliveredMatchTypeReportFilter>>(_DeliveredMatchTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2509,13 +2509,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdGroupStatusReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdGroupStatusReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdGroupStatusReportFilter")
     @XmlJavaTypeAdapter(Adapter14 .class)
-    public JAXBElement<List<AdGroupStatusReportFilter>> createAdGroupStatusReportFilter(List<AdGroupStatusReportFilter> value) {
-        return new JAXBElement<List<AdGroupStatusReportFilter>>(_AdGroupStatusReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<AdGroupStatusReportFilter>> createAdGroupStatusReportFilter(Collection<AdGroupStatusReportFilter> value) {
+        return new JAXBElement<Collection<AdGroupStatusReportFilter>>(_AdGroupStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2745,13 +2745,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link BidMatchTypeReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link BidMatchTypeReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "BidMatchTypeReportFilter")
     @XmlJavaTypeAdapter(Adapter2 .class)
-    public JAXBElement<List<BidMatchTypeReportFilter>> createBidMatchTypeReportFilter(List<BidMatchTypeReportFilter> value) {
-        return new JAXBElement<List<BidMatchTypeReportFilter>>(_BidMatchTypeReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<BidMatchTypeReportFilter>> createBidMatchTypeReportFilter(Collection<BidMatchTypeReportFilter> value) {
+        return new JAXBElement<Collection<BidMatchTypeReportFilter>>(_BidMatchTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2800,13 +2800,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link PricingModelReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link PricingModelReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "PricingModelReportFilter")
     @XmlJavaTypeAdapter(Adapter3 .class)
-    public JAXBElement<List<PricingModelReportFilter>> createPricingModelReportFilter(List<PricingModelReportFilter> value) {
-        return new JAXBElement<List<PricingModelReportFilter>>(_PricingModelReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<PricingModelReportFilter>> createPricingModelReportFilter(Collection<PricingModelReportFilter> value) {
+        return new JAXBElement<Collection<PricingModelReportFilter>>(_PricingModelReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2819,23 +2819,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link ChangeEntityReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ChangeEntityReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ChangeEntityReportFilter")
     @XmlJavaTypeAdapter(Adapter4 .class)
-    public JAXBElement<List<ChangeEntityReportFilter>> createChangeEntityReportFilter(List<ChangeEntityReportFilter> value) {
-        return new JAXBElement<List<ChangeEntityReportFilter>>(_ChangeEntityReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<ChangeEntityReportFilter>> createChangeEntityReportFilter(Collection<ChangeEntityReportFilter> value) {
+        return new JAXBElement<Collection<ChangeEntityReportFilter>>(_ChangeEntityReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdTypeReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdTypeReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdTypeReportFilter")
     @XmlJavaTypeAdapter(Adapter5 .class)
-    public JAXBElement<List<AdTypeReportFilter>> createAdTypeReportFilter(List<AdTypeReportFilter> value) {
-        return new JAXBElement<List<AdTypeReportFilter>>(_AdTypeReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<AdTypeReportFilter>> createAdTypeReportFilter(Collection<AdTypeReportFilter> value) {
+        return new JAXBElement<Collection<AdTypeReportFilter>>(_AdTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2884,13 +2884,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link ComponentTypeFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ComponentTypeFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ComponentTypeFilter")
     @XmlJavaTypeAdapter(Adapter7 .class)
-    public JAXBElement<List<ComponentTypeFilter>> createComponentTypeFilter(List<ComponentTypeFilter> value) {
-        return new JAXBElement<List<ComponentTypeFilter>>(_ComponentTypeFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<ComponentTypeFilter>> createComponentTypeFilter(Collection<ComponentTypeFilter> value) {
+        return new JAXBElement<Collection<ComponentTypeFilter>>(_ComponentTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -2912,13 +2912,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link CampaignStatusReportFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignStatusReportFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "CampaignStatusReportFilter")
     @XmlJavaTypeAdapter(Adapter8 .class)
-    public JAXBElement<List<CampaignStatusReportFilter>> createCampaignStatusReportFilter(List<CampaignStatusReportFilter> value) {
-        return new JAXBElement<List<CampaignStatusReportFilter>>(_CampaignStatusReportFilter_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<CampaignStatusReportFilter>> createCampaignStatusReportFilter(Collection<CampaignStatusReportFilter> value) {
+        return new JAXBElement<Collection<CampaignStatusReportFilter>>(_CampaignStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

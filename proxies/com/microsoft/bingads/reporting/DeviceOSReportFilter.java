@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for DeviceOSReportFilter.
+ */
 public enum DeviceOSReportFilter {
 
     OTHER("Other"),

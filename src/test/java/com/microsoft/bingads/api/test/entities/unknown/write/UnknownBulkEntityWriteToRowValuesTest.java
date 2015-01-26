@@ -1,19 +1,17 @@
 package com.microsoft.bingads.api.test.entities.unknown.write;
 
+import com.microsoft.bingads.api.test.entities.unknown.UnknownBulkEntityTest;
+import com.microsoft.bingads.bulk.entities.UnknownBulkEntity;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.unknown.UnknownBulkEntityTest;
-import com.microsoft.bingads.internal.bulk.file.UnknownBulkEntity;
 
 @RunWith(Parameterized.class)
 public class UnknownBulkEntityWriteToRowValuesTest extends UnknownBulkEntityTest {

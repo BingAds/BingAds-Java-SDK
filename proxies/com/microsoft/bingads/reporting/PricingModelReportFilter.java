@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for PricingModelReportFilter.
+ */
 public enum PricingModelReportFilter {
 
     CPC("Cpc"),

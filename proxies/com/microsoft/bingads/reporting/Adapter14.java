@@ -1,19 +1,19 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter14
-    extends XmlAdapter<String, List<AdGroupStatusReportFilter>>
+    extends XmlAdapter<String, Collection<AdGroupStatusReportFilter>>
 {
 
 
-    public List<AdGroupStatusReportFilter> unmarshal(String value) {
+    public Collection<AdGroupStatusReportFilter> unmarshal(String value) {
         return (com.microsoft.bingads.reporting.AdGroupStatusReportFilterConverter.convertToList(value));
     }
 
-    public String marshal(List<AdGroupStatusReportFilter> value) {
+    public String marshal(Collection<AdGroupStatusReportFilter> value) {
         return (com.microsoft.bingads.reporting.AdGroupStatusReportFilterConverter.convertToString(value));
     }
 

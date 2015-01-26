@@ -1,17 +1,16 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.internal.StringExtensions;
+import com.microsoft.bingads.internal.StringTable;
+import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
-import com.microsoft.bingads.internal.StringExtensions;
-import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import com.microsoft.bingads.internal.bulk.mapping.BulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
 
 /**
  * Represents the quality score data returned with bulk file entities when

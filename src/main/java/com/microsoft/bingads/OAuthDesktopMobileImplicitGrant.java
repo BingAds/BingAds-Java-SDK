@@ -1,8 +1,11 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.LiveComOAuthService;
 import com.microsoft.bingads.internal.OAuthImplicitGrant;
-import com.microsoft.bingads.internal.oauth.LiveComOAuthService;
 
+/**
+ * Represents an OAuth authorization object implementing the implicit grant flow for use in a desktop or mobile application.  
+ */
 public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
 
     /**

@@ -1,9 +1,5 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
-import javax.xml.bind.JAXBElement;
-
 import com.microsoft.bingads.bulk.entities.BulkAdGroupProductTarget;
 import com.microsoft.bingads.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.bulk.entities.Status;
@@ -19,12 +15,14 @@ import com.microsoft.bingads.campaignmanagement.Date;
 import com.microsoft.bingads.campaignmanagement.FixedBid;
 import com.microsoft.bingads.campaignmanagement.MatchType;
 import com.microsoft.bingads.campaignmanagement.Minute;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Collection;
 import java.util.List;
+import javax.xml.bind.JAXBElement;
 
 public class StringExtensions {
 
@@ -117,7 +115,7 @@ public class StringExtensions {
         return bingDate;
     }
 
-    public static String isOnOrOff(List<AdDistribution> values, AdDistribution lookingFor) {
+    public static String isOnOrOff(Collection<AdDistribution> values, AdDistribution lookingFor) {
         if (values == null) {
             return null;
         }

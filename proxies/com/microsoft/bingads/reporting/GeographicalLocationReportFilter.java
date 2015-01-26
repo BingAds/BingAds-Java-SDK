@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -42,7 +42,7 @@ public class GeographicalLocationReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "CountryCode", nillable = true)
     protected ArrayOfstring countryCode;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -56,7 +56,7 @@ public class GeographicalLocationReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -68,7 +68,7 @@ public class GeographicalLocationReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 

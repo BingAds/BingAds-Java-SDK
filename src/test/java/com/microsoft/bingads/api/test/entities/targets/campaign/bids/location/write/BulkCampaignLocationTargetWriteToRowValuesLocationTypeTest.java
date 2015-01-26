@@ -1,20 +1,16 @@
 package com.microsoft.bingads.api.test.entities.targets.campaign.bids.location.write;
 
-import com.microsoft.bingads.api.test.entities.targets.campaign.bids.location.write.*;
-import com.microsoft.bingads.api.test.entities.targets.campaign.bids.location.write.*;
-import com.microsoft.bingads.api.test.entities.targets.campaign.bids.location.write.*;
 import com.microsoft.bingads.api.test.entities.targets.campaign.bids.location.BulkCampaignLocationTargetBidTest;
+import com.microsoft.bingads.bulk.entities.BulkCampaignLocationTargetBid;
+import com.microsoft.bingads.bulk.entities.LocationTargetType;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.bulk.entities.BulkCampaignLocationTargetBid;
-import com.microsoft.bingads.bulk.entities.LocationTargetType;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignLocationTargetWriteToRowValuesLocationTypeTest extends BulkCampaignLocationTargetBidTest {

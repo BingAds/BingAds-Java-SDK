@@ -1,24 +1,15 @@
 package com.microsoft.bingads.bulk;
 
+import com.microsoft.bingads.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.internal.bulk.SimpleBulkStreamReader;
 import java.io.Closeable;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.BulkStreamReader;
-import com.microsoft.bingads.internal.bulk.file.EntityIterator;
-import com.microsoft.bingads.internal.bulk.file.ExtractChildEntitiesIterator;
-import com.microsoft.bingads.internal.bulk.file.SimpleBulkStreamReader;
-import java.io.File;
 
 /**
- * Provides method to read (enumerate through) entities in bulk file
- *
+ * Provides a method to read bulk entities from a bulk file and make them accessible as an Iterable.
  */
 public class BulkFileReader implements Closeable {
 
@@ -39,7 +30,7 @@ public class BulkFileReader implements Closeable {
     }
 
     /**
-     * For unit testing
+     * Reserved for internal use.
      *
      * @param reader
      * @param isForFullDownload
@@ -50,7 +41,7 @@ public class BulkFileReader implements Closeable {
     }
 
     /**
-     * Enumerates through entities in the file
+     * Returns entities stored in the file.
      *
      * @return an iterator over Entities
      */
@@ -63,29 +54,19 @@ public class BulkFileReader implements Closeable {
         this.bulkStreamReader.close();
     }
 
+    /**
+     * Reserved for internal use.
+     * @return
+     */
     public boolean isForFullDownload() {
         return this.fileType == ResultFileType.FULL_DOWNLOAD;
     }
 
+    /**
+     * Gets bulk file path.
+     * @return
+     */
     public String getBulkFilePath() {
         return bulkFilePath;
-    }
-
-    public static Iterator<BulkEntity> extractChildEntitiesIfNeeded(BulkEntity entity) {
-
-        MultiRecordBulkEntity multirecordEntity = null;
-        if (MultiRecordBulkEntity.class.isInstance(entity)) {
-            multirecordEntity = MultiRecordBulkEntity.class.cast(entity);
-        }
-
-        // If the entity is a multiline entity and it has all child objects (delete all row was present), just return it
-        if (multirecordEntity == null || multirecordEntity.allChildrenPresent()) {
-            List<BulkEntity> entities = new ArrayList<BulkEntity>();
-            entities.add(entity);
-            return entities.iterator();
-        } else {
-            // If not all child objects are present (there was no delete all row and we only have part of the multiline entity), return child object individually
-            return new ExtractChildEntitiesIterator(multirecordEntity.getChildEntities().iterator());
-        }
     }
 }

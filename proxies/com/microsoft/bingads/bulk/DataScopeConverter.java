@@ -1,14 +1,17 @@
 package com.microsoft.bingads.bulk;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class DataScopeConverter {
 
-    public static List<DataScope> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<DataScope> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<DataScope> result = new ArrayList<DataScope>();
+        Collection<DataScope> result = new ArrayList<DataScope>();
 
         for (String value : values) {
             result.add(DataScope.fromValue(value));
@@ -17,10 +20,10 @@ public class DataScopeConverter {
         return result;
     }
 
-    public static String convertToString(List<DataScope> list) {
+    public static String convertToString(Collection<DataScope> enums) {
         String result = "";
 
-        for (DataScope entity : list) {
+        for (DataScope entity : enums) {
             result += (entity.value() + " ");
         }
 

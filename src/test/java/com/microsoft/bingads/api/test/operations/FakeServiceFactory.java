@@ -5,8 +5,8 @@
  */
 package com.microsoft.bingads.api.test.operations;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.bulk.IBulkService;
-import com.microsoft.bingads.internal.ApiEnvironment;
 import com.microsoft.bingads.internal.ServiceFactory;
 import javax.xml.ws.Service;
 import static org.easymock.EasyMock.createMock;

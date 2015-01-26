@@ -1,10 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.util.List;
-
 import com.microsoft.bingads.ErrorMessages;
-import com.microsoft.bingads.internal.bulk.file.BulkObject;
+import com.microsoft.bingads.internal.bulk.BulkObject;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * An object which can be presented in the Bulk File format

@@ -1,16 +1,10 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.microsoft.bingads.bulk.BulkFileReader;
-import com.microsoft.bingads.bulk.BulkFileWriter;
-import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.campaignmanagement.CampaignNegativeSites;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkCampaignNegativeSitesIdentifier;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkNegativeSites;
+import com.microsoft.bingads.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>

@@ -1,4 +1,4 @@
-package com.microsoft.bingads.internal.functionalInterfaces;
+package com.microsoft.bingads.internal.functionalinterfaces;
 
 public interface Predicate<T> {
 

@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for AdStatusReportFilter.
+ */
 public enum AdStatusReportFilter {
 
     SUBMITTED("Submitted"),

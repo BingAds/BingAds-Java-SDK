@@ -1,19 +1,19 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter11
-    extends XmlAdapter<String, List<ChangeTypeReportFilter>>
+    extends XmlAdapter<String, Collection<ChangeTypeReportFilter>>
 {
 
 
-    public List<ChangeTypeReportFilter> unmarshal(String value) {
+    public Collection<ChangeTypeReportFilter> unmarshal(String value) {
         return (com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToList(value));
     }
 
-    public String marshal(List<ChangeTypeReportFilter> value) {
+    public String marshal(Collection<ChangeTypeReportFilter> value) {
         return (com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToString(value));
     }
 

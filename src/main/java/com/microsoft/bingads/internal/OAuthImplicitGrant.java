@@ -1,10 +1,8 @@
 package com.microsoft.bingads.internal;
 
+import com.microsoft.bingads.OAuthTokens;
 import java.net.URL;
 import java.util.Map;
-import com.microsoft.bingads.OAuthTokens;
-import com.microsoft.bingads.internal.oauth.LiveComOAuthService;
-import com.microsoft.bingads.internal.oauth.OAuthUrlParameters;
 
 /**
  * Implements the OAuth Implicit Code Grant Flow

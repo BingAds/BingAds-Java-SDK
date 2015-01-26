@@ -1,18 +1,16 @@
 package com.microsoft.bingads.api.test.entities.adgroup_product_target.write;
 
+import com.microsoft.bingads.api.test.entities.adgroup_product_target.BulkAdGroupProductTargetTest;
+import com.microsoft.bingads.bulk.entities.BulkAdGroupProductTarget;
+import com.microsoft.bingads.campaignmanagement.AdGroupCriterionStatus;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import java.util.Arrays;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.adgroup_product_target.BulkAdGroupProductTargetTest;
-import com.microsoft.bingads.bulk.entities.BulkAdGroupProductTarget;
-import com.microsoft.bingads.campaignmanagement.AdGroupCriterionStatus;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupProductTargetWriteToRowValuesStatusTest extends BulkAdGroupProductTargetTest {

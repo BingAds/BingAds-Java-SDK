@@ -1,27 +1,24 @@
 package com.microsoft.bingads.api.test.operations;
 
-import java.net.URL;
-import java.util.concurrent.Future;
-
-import javax.xml.ws.AsyncHandler;
-
-import org.easymock.EasyMockSupport;
-import org.junit.Test;
-
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
 import com.microsoft.bingads.PasswordAuthentication;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ApiEnvironment;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import java.net.URL;
+import java.util.concurrent.Future;
+import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
+import org.easymock.EasyMockSupport;
+import org.junit.Test;
 
 public class ApiServiceTest extends EasyMockSupport {
 

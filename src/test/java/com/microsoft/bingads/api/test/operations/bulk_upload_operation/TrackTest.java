@@ -2,21 +2,17 @@ package com.microsoft.bingads.api.test.operations.bulk_upload_operation;
 
 import com.microsoft.bingads.api.test.operations.FakeBulkService;
 import com.microsoft.bingads.api.test.operations.TestProgress;
-import static org.junit.Assert.fail;
-
-import java.util.concurrent.ExecutionException;
-
-import org.junit.Test;
 import com.microsoft.bingads.bulk.BulkOperationStatus;
 import com.microsoft.bingads.bulk.BulkUploadOperation;
 import com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusResponse;
 import com.microsoft.bingads.bulk.UploadStatus;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import org.junit.Test;
 
 public class TrackTest extends BulkUploadOperationTest {
 

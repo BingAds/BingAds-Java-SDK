@@ -1,32 +1,29 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.site_link.read;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
+import com.microsoft.bingads.api.test.entities.DeleteAllRowPosition;
+import com.microsoft.bingads.api.test.entities.ad_extension.site_link.BulkSiteLinkAdExtensionTest;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.ResultFileType;
+import com.microsoft.bingads.bulk.entities.BulkEntity;
+import com.microsoft.bingads.bulk.entities.BulkSiteLink;
+import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
+import com.microsoft.bingads.bulk.entities.MultirecordEntityTestHelper;
+import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
+import com.microsoft.bingads.internal.bulk.BulkObjectReader;
+import com.microsoft.bingads.internal.bulk.TestFactory;
+import com.microsoft.bingads.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.TestFactory;
-import com.microsoft.bingads.api.test.entities.DeleteAllRowPosition;
-import com.microsoft.bingads.api.test.entities.MultirecordEntityTestHelper;
-import com.microsoft.bingads.api.test.entities.ad_extension.site_link.BulkSiteLinkAdExtensionTest;
-import com.microsoft.bingads.bulk.BulkFileReader;
-import com.microsoft.bingads.bulk.ResultFileType;
-import com.microsoft.bingads.bulk.entities.BulkSiteLink;
-import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
-import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
-import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.SiteLinkAdExtensionIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectReader;
-import java.util.ArrayList;
 
 @RunWith(Parameterized.class)
 public class HasDeleteAllRowTest extends BulkSiteLinkAdExtensionTest {

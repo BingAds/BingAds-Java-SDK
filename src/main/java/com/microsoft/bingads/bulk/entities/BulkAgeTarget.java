@@ -8,7 +8,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.campaignmanagement.AgeTarget;
 import com.microsoft.bingads.campaignmanagement.AgeTargetBid;
 import com.microsoft.bingads.campaignmanagement.ArrayOfAgeTargetBid;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 

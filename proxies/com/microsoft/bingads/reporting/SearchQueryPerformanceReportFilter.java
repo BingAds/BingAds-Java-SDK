@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,19 +50,19 @@ public class SearchQueryPerformanceReportFilter {
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdStatusReportFilter> adStatus;
+    protected Collection<AdStatusReportFilter> adStatus;
     @XmlElement(name = "AdType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdTypeReportFilter> adType;
+    protected Collection<AdTypeReportFilter> adType;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<CampaignStatusReportFilter> campaignStatus;
+    protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeliveredMatchTypeReportFilter> deliveredMatchType;
+    protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "ExcludeZeroClicks")
     protected Boolean excludeZeroClicks;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -78,7 +78,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdStatusReportFilter> getAdStatus() {
+    public Collection<AdStatusReportFilter> getAdStatus() {
         return adStatus;
     }
 
@@ -90,7 +90,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdStatus(List<AdStatusReportFilter> value) {
+    public void setAdStatus(Collection<AdStatusReportFilter> value) {
         this.adStatus = value;
     }
 
@@ -102,7 +102,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdTypeReportFilter> getAdType() {
+    public Collection<AdTypeReportFilter> getAdType() {
         return adType;
     }
 
@@ -114,7 +114,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdType(List<AdTypeReportFilter> value) {
+    public void setAdType(Collection<AdTypeReportFilter> value) {
         this.adType = value;
     }
 
@@ -126,7 +126,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<CampaignStatusReportFilter> getCampaignStatus() {
+    public Collection<CampaignStatusReportFilter> getCampaignStatus() {
         return campaignStatus;
     }
 
@@ -138,7 +138,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setCampaignStatus(List<CampaignStatusReportFilter> value) {
+    public void setCampaignStatus(Collection<CampaignStatusReportFilter> value) {
         this.campaignStatus = value;
     }
 
@@ -150,7 +150,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
+    public Collection<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
         return deliveredMatchType;
     }
 
@@ -162,7 +162,7 @@ public class SearchQueryPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeliveredMatchType(List<DeliveredMatchTypeReportFilter> value) {
+    public void setDeliveredMatchType(Collection<DeliveredMatchTypeReportFilter> value) {
         this.deliveredMatchType = value;
     }
 

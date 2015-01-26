@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -48,19 +48,19 @@ public class SitePerformanceReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdTypeReportFilter> adType;
+    protected Collection<AdTypeReportFilter> adType;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeliveredMatchTypeReportFilter> deliveredMatchType;
+    protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeviceTypeReportFilter> deviceType;
+    protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;
     @XmlElement(name = "SiteIds", nillable = true)
@@ -74,7 +74,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -86,7 +86,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 
@@ -98,7 +98,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdTypeReportFilter> getAdType() {
+    public Collection<AdTypeReportFilter> getAdType() {
         return adType;
     }
 
@@ -110,7 +110,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdType(List<AdTypeReportFilter> value) {
+    public void setAdType(Collection<AdTypeReportFilter> value) {
         this.adType = value;
     }
 
@@ -122,7 +122,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
+    public Collection<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
         return deliveredMatchType;
     }
 
@@ -134,7 +134,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeliveredMatchType(List<DeliveredMatchTypeReportFilter> value) {
+    public void setDeliveredMatchType(Collection<DeliveredMatchTypeReportFilter> value) {
         this.deliveredMatchType = value;
     }
 
@@ -146,7 +146,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeviceTypeReportFilter> getDeviceType() {
+    public Collection<DeviceTypeReportFilter> getDeviceType() {
         return deviceType;
     }
 
@@ -158,7 +158,7 @@ public class SitePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeviceType(List<DeviceTypeReportFilter> value) {
+    public void setDeviceType(Collection<DeviceTypeReportFilter> value) {
         this.deviceType = value;
     }
 

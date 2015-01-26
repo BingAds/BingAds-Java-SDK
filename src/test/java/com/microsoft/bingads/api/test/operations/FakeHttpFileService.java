@@ -6,12 +6,11 @@
 package com.microsoft.bingads.api.test.operations;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.UnsuccessfulFileUpload;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.concurrent.Future;
 import org.apache.cxf.headers.Header;
 import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 
 public class FakeHttpFileService implements HttpFileService {
     private BiConsumer<String, File> onDownloadFile;

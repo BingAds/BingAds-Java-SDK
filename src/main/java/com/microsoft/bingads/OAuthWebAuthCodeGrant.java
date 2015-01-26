@@ -1,17 +1,17 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.OAuthService;
+import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import java.net.URL;
 
-import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import com.microsoft.bingads.internal.oauth.OAuthService;
-import java.util.List;
-
 /**
- * Implements the OAuth Authorization Code Grant Flow for web applications
- * {@link "http://msdn.microsoft.com/en-us/library/dn277356.aspx"}
- *
+ * Represents an OAuth authorization object implementing the authorization code grant flow for use in a web application. 
  */
 public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
+
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken) {
+        super(clientId, clientSecret, redirectionUrl, refreshToken);
+    }
 
     /**
      * Creates new instance of the class that can be used in the

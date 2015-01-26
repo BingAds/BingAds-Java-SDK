@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -46,15 +46,15 @@ public class BrandZonePerformanceReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeliveredMatchTypeReportFilter> deliveredMatchType;
+    protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeviceTypeReportFilter> deviceType;
+    protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Keywords", nillable = true)
     protected ArrayOfstring keywords;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -68,7 +68,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -80,7 +80,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 
@@ -92,7 +92,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
+    public Collection<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
         return deliveredMatchType;
     }
 
@@ -104,7 +104,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeliveredMatchType(List<DeliveredMatchTypeReportFilter> value) {
+    public void setDeliveredMatchType(Collection<DeliveredMatchTypeReportFilter> value) {
         this.deliveredMatchType = value;
     }
 
@@ -116,7 +116,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeviceTypeReportFilter> getDeviceType() {
+    public Collection<DeviceTypeReportFilter> getDeviceType() {
         return deviceType;
     }
 
@@ -128,7 +128,7 @@ public class BrandZonePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeviceType(List<DeviceTypeReportFilter> value) {
+    public void setDeviceType(Collection<DeviceTypeReportFilter> value) {
         this.deviceType = value;
     }
 

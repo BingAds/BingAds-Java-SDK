@@ -5,9 +5,9 @@
  */
 package com.microsoft.bingads.internal;
 
-import javax.xml.namespace.QName;
+import com.microsoft.bingads.ApiEnvironment;
 
-public class ServiceInfo {
+class ServiceInfo {
     
     private String productionUrl;
     

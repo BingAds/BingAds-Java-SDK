@@ -1,11 +1,5 @@
 package com.microsoft.bingads.api.test.entities.adgroup_product_target;
 
-import java.util.List;
-import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
-
 import com.microsoft.bingads.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.api.test.entities.EqualityComparerWithDescription;
 import com.microsoft.bingads.bulk.entities.BulkAdGroupProductTarget;
@@ -15,6 +9,11 @@ import com.microsoft.bingads.campaignmanagement.BiddableAdGroupCriterion;
 import com.microsoft.bingads.campaignmanagement.FixedBid;
 import com.microsoft.bingads.campaignmanagement.Product;
 import com.microsoft.bingads.campaignmanagement.ProductCondition;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import java.util.List;
+import java.util.Map;
 
 public abstract class BulkAdGroupProductTargetTest extends BulkEntityTest<BulkAdGroupProductTarget> {
 

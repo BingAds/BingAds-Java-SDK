@@ -1,10 +1,8 @@
 package com.microsoft.bingads.internal.bulk.entities;
 
 import com.microsoft.bingads.bulk.entities.BulkEntity;
-import java.util.List;
-
-import com.microsoft.bingads.bulk.entities.BulkError;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Bulk entity that has its data in multiple records within the bulk file. For

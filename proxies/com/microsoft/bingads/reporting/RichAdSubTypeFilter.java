@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for RichAdSubTypeFilter.
+ */
 public enum RichAdSubTypeFilter {
 
     RAIS2_IMAGES4_LINKS("Rais2Images4Links"),

@@ -1,29 +1,32 @@
 package com.microsoft.bingads.bulk;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.concurrent.Future;
-
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ResponseFuture;
-import com.microsoft.bingads.internal.bulk.operations.BulkOperationStatusProvider;
-import com.microsoft.bingads.internal.bulk.operations.BulkOperationTracker;
-import com.microsoft.bingads.internal.bulk.operations.PollingBulkOperationTracker;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.bulk.BulkOperationStatusProvider;
+import com.microsoft.bingads.internal.bulk.BulkOperationTracker;
+import com.microsoft.bingads.internal.bulk.Config;
+import com.microsoft.bingads.internal.bulk.PollingBulkOperationTracker;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.concurrent.Future;
 
 /**
+ * Reserved for internal use.
+ *
  * The abstract base class that can be derived to represent a bulk operation requested by a user. You can use either the {@link BulkDownloadOperation} or {@link BulkUploadOperation} derived class to poll for the operation status, and then download the results file when available.
  *
  * @param <TStatus> type of bulk operation status is being tracked
  */
-public abstract class BulkOperation<TStatus> {
+abstract class BulkOperation<TStatus> {
 
     /**
      * Represents a user who intends to access the corresponding customer and account.
@@ -46,7 +49,7 @@ public abstract class BulkOperation<TStatus> {
     BulkOperationStatusProvider<TStatus> statusProvider;
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
-    private Integer statusCheckIntervalInMs;
+    private int statusPollIntervalInMilliseconds;
 
     private ServiceClient<IBulkService> serviceClient;
 
@@ -65,6 +68,8 @@ public abstract class BulkOperation<TStatus> {
         this.requestId = requestId;
         this.authorizationData = authorizationData;
         this.trackingId = trackingId;
+
+        statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
 
         this.serviceClient = new ServiceClient<IBulkService>(authorizationData, IBulkService.class);
 
@@ -93,28 +98,24 @@ public abstract class BulkOperation<TStatus> {
     public Future<BulkOperationStatus<TStatus>> trackAsync(Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkOperationStatus<TStatus>> callback) {
         BulkOperationTracker<TStatus> tracker = generateTracker(progress);
 
-        final ResponseFuture<BulkOperationStatus<TStatus>> responseFuture = new ResponseFuture<BulkOperationStatus<TStatus>>(callback);
+        final ResultFuture<BulkOperationStatus<TStatus>> resultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(callback);
 
-        tracker.trackResultFileAsync(new ParentCallback<BulkOperationStatus<TStatus>>(responseFuture) {
+        tracker.trackResultFileAsync(new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
             @Override
             public void onSuccess(BulkOperationStatus<TStatus> status) {
                 finalStatus = status;
 
-                responseFuture.setResult(finalStatus);
+                resultFuture.setResult(finalStatus);
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private BulkOperationTracker<TStatus> generateTracker(Progress<BulkOperationProgressInfo> progress) {
         BulkOperationTracker<TStatus> tracker;
 
-        if (this.statusCheckIntervalInMs != null) {
-            tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, this.serviceClient, progress, this.statusCheckIntervalInMs);
-        } else {
-            tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, this.serviceClient, progress);
-        }
+        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, this.serviceClient, progress, this.statusPollIntervalInMilliseconds);
 
         return tracker;
     }
@@ -125,26 +126,26 @@ public abstract class BulkOperation<TStatus> {
      * @return the current status of the bulk operation
      */
     public Future<BulkOperationStatus<TStatus>> getStatusAsync(AsyncCallback<BulkOperationStatus<TStatus>> callback) {
-        final ResponseFuture<BulkOperationStatus<TStatus>> responseFuture = new ResponseFuture<BulkOperationStatus<TStatus>>(callback);
+        final ResultFuture<BulkOperationStatus<TStatus>> resultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(callback);
 
         if (finalStatus != null) {
-            responseFuture.setResult(this.finalStatus);
+            resultFuture.setResult(this.finalStatus);
 
-            return responseFuture;
+            return resultFuture;
         }
 
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<BulkOperationStatus<TStatus>>(responseFuture) {
+        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
             @Override
             public void onSuccess(BulkOperationStatus<TStatus> currentStatus) {
                 if (statusProvider.isFinalStatus(currentStatus)) {
                     finalStatus = currentStatus;
                 }
 
-                responseFuture.setResult(currentStatus);
+                resultFuture.setResult(currentStatus);
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     public AuthorizationData getUserData() {
@@ -191,12 +192,22 @@ public abstract class BulkOperation<TStatus> {
         this.zipExtractor = zipExtractor;
     }
 
-    public Integer getStatusCheckIntervalInMs() {
-        return statusCheckIntervalInMs;
+    /**
+     * Gets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     *
+     * @return
+     */
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
     }
 
-    public void setStatusCheckIntervalInMs(Integer statusCheckIntervalInMs) {
-        this.statusCheckIntervalInMs = statusCheckIntervalInMs;
+    /**
+     * Sets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     *
+     * @param statusPollIntervalInMilliseconds
+     */
+    public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
     public Future<File> downloadResultFileAsync(File localResultDirectoryName, String localResultFileName, boolean decompress, AsyncCallback<File> callback) throws IOException, URISyntaxException {
@@ -215,34 +226,42 @@ public abstract class BulkOperation<TStatus> {
         return downloadResultFileAsyncImpl(localResultDirectoryName, localResultFileName, decompress, overwrite, callback);
     }
 
+    abstract RuntimeException getOperationCouldNotBeCompletedException(List<OperationError> errors, TStatus status);
+
     private Future<File> downloadResultFileAsyncImpl(final File localResultDirectoryName, final String localResultFileName, final boolean decompress, final boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
-        final ResponseFuture<File> responseFuture = new ResponseFuture<File>(callback);
+        final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         if (finalStatus == null) {
-            getStatusAsync(new ParentCallback<BulkOperationStatus<TStatus>>(responseFuture) {
+            getStatusAsync(new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
                 @Override
                 public void onSuccess(BulkOperationStatus<TStatus> result) throws IOException, URISyntaxException {
                     if (finalStatus == null) {
-                        responseFuture.setException(new IllegalStateException("Operation wasn't completed!"));
+                        resultFuture.setException(new BulkOperationInProgressException());
 
                         return;
                     }
 
                     File resultFile = downloadFileWithFinalStatus(localResultDirectoryName, localResultFileName, decompress, overwrite);
 
-                    responseFuture.setResult(resultFile);
+                    resultFuture.setResult(resultFile);
                 }
             });
         } else {
             File resultFile = downloadFileWithFinalStatus(localResultDirectoryName, localResultFileName, decompress, overwrite);
 
-            responseFuture.setResult(resultFile);
+            resultFuture.setResult(resultFile);
         }
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private File downloadFileWithFinalStatus(File localResultDirectoryName, String localResultFileName, final boolean decompress, final boolean overwrite) throws IOException, URISyntaxException {
+        if (!statusProvider.isSuccessStatus(finalStatus.getStatus())) {
+            List<OperationError> errors = finalStatus.getErrors() != null ? finalStatus.getErrors().getOperationErrors() : null;
+
+            throw getOperationCouldNotBeCompletedException(errors, finalStatus.getStatus());
+        }
+
         String effectiveFileName;
 
         if (localResultFileName == null) {
@@ -253,8 +272,8 @@ public abstract class BulkOperation<TStatus> {
 
         final File fullPath = new File(localResultDirectoryName, effectiveFileName);
 
-        final File zipResultPath = new File(localResultDirectoryName, effectiveFileName + ".zip");        
-        
+        final File zipResultPath = new File(localResultDirectoryName, effectiveFileName + ".zip");
+
         downloadResultFileZip(finalStatus.getResultFileUrl(), zipResultPath, overwrite);
 
         if (!decompress) {

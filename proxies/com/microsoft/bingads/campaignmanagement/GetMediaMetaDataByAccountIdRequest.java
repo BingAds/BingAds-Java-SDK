@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -38,9 +38,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetMediaMetaDataByAccountIdRequest {
 
     @XmlElement(name = "MediaEnabledEntities", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<MediaEnabledEntityFilter> mediaEnabledEntities;
+    protected Collection<MediaEnabledEntityFilter> mediaEnabledEntities;
 
     /**
      * Gets the value of the mediaEnabledEntities property.
@@ -50,7 +50,7 @@ public class GetMediaMetaDataByAccountIdRequest {
      *     {@link String }
      *     
      */
-    public List<MediaEnabledEntityFilter> getMediaEnabledEntities() {
+    public Collection<MediaEnabledEntityFilter> getMediaEnabledEntities() {
         return mediaEnabledEntities;
     }
 
@@ -62,7 +62,7 @@ public class GetMediaMetaDataByAccountIdRequest {
      *     {@link String }
      *     
      */
-    public void setMediaEnabledEntities(List<MediaEnabledEntityFilter> value) {
+    public void setMediaEnabledEntities(Collection<MediaEnabledEntityFilter> value) {
         this.mediaEnabledEntities = value;
     }
 

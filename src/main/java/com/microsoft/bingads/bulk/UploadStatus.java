@@ -1,7 +1,8 @@
 package com.microsoft.bingads.bulk;
 
-import com.microsoft.bingads.bulk.ResponseMode;
-
+/**
+ * Defines the possible status values of the bulk upload.
+ */
 public enum UploadStatus {
 
     /**

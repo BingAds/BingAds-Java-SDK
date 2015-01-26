@@ -1,32 +1,18 @@
 package com.microsoft.bingads.bulk;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
-
-import javax.xml.ws.AsyncHandler;
-import javax.xml.ws.Response;
-
-import org.apache.http.HttpRequest;
-
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.ParentCallback;
+import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.ServiceUtils;
-import com.microsoft.bingads.internal.ResponseFuture;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
+import com.microsoft.bingads.internal.HttpHeaders;
+import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.StringExtensions;
-import com.microsoft.bingads.internal.oauth.HttpHeaders;
+import com.microsoft.bingads.internal.bulk.Config;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.utilities.BulkFileReaderFactory;
 import com.microsoft.bingads.internal.utilities.CSVBulkFileReaderFactory;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
@@ -34,10 +20,22 @@ import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.UnsuccessfulFileUpload;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
+import org.apache.http.HttpRequest;
 
 /**
- * Provides methods for downloading and uploading bulk files. Most of the methods in this class abstract away the low level details such as polling for completion status.
+ * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides methods for submitting upload or download operations.
  *
  * Example: {@link BulkServiceManager#downloadFile(DownloadParameters) will submit the download request to the bulk service,
  * poll until the status is completed (or returns an error), and downloads the file locally.
@@ -54,6 +52,8 @@ public class BulkServiceManager {
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
     private BulkFileReaderFactory bulkFileReaderFactory;
+
+    private int statusPollIntervalInMilliseconds;
 
     private final ServiceClient<IBulkService> serviceClient;
 
@@ -79,8 +79,14 @@ public class BulkServiceManager {
         serviceClient = new ServiceClient<IBulkService>(this.authorizationData, IBulkService.class);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
+
+        statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
     }
 
+    /**
+     * Gets the authorization data for the user performing the operation.
+     * @return
+     */
     public AuthorizationData getAuthorizationData() {
         return authorizationData;
     }
@@ -112,6 +118,13 @@ public class BulkServiceManager {
         return downloadEntitiesAsyncImpl(parameters, progress, callback);
     }
 
+    /**
+     * Uploads the specified Bulk entities.
+     * @param parameters
+     * @param progress
+     * @param callback
+     * @return
+     */
     public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
         validateEntityUploadParameters(parameters);
 
@@ -120,10 +133,33 @@ public class BulkServiceManager {
         return uploadEntitiesAsyncImpl(createFileUploadParameters(parameters), progress, callback);
     }
 
+     /**
+     * Uploads the specified Bulk entities.
+     * @param parameters     
+     * @param callback
+     * @return
+     */
+    public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, AsyncCallback<BulkEntityIterable> callback) {
+        return uploadEntitiesAsync(parameters, null, callback);
+    }
+
+    /**
+     * Uploads the specified Bulk file.
+     * @param parameters
+     * @param callback
+     * @return
+     */
     public Future<File> uploadFileAsync(final FileUploadParameters parameters, AsyncCallback<File> callback) {        
         return uploadFileAsync(parameters, null, callback);
     }
-    
+
+    /**
+     * Uploads the specified Bulk file.
+     * @param parameters
+     * @param progress
+     * @param callback
+     * @return
+     */
     public Future<File> uploadFileAsync(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
         validateSubmitUploadParameters(parameters.getSubmitUploadParameters());
 
@@ -140,6 +176,10 @@ public class BulkServiceManager {
         if (parameters.getEntities() == null) {
             throw new NullPointerException("parameters.getEntities() must not be null");
         }
+
+        if (!parameters.getEntities().iterator().hasNext()) {
+            throw new IllegalArgumentException("parameters.getEntities() must not be empty");
+        }
     }
     
     private void validateSubmitUploadParameters(SubmitUploadParameters parameters) {
@@ -153,33 +193,33 @@ public class BulkServiceManager {
     }
 
     private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
-        final ResponseFuture<BulkEntityIterable> responseFuture = new ResponseFuture<BulkEntityIterable>(callback);
+        final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
-        uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(responseFuture) {
+        uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws FileNotFoundException, UnsupportedEncodingException {
-                responseFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
+                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private Future<File> uploadFileAsyncImpl(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
-        final ResponseFuture<File> responseFuture = new ResponseFuture<File>(callback);
+        final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
         
         workingDirectory.mkdirs();
 
-        submitUpload(parameters, new ParentCallback<BulkUploadOperation>(responseFuture) {
+        submitUploadAsync(parameters, new ParentCallback<BulkUploadOperation>(resultFuture) {
             @Override
             public void onSuccess(final BulkUploadOperation operation) {
-                operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(responseFuture) {
+                operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                     @Override
-                    public void onSuccess(BulkOperationStatus<UploadStatus> status) throws StatusNotReceived, IOException, URISyntaxException {
-                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(responseFuture) {
+                    public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
+                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(resultFuture) {
                             @Override
                             public void onSuccess(File localFile) {
-                                responseFuture.setResult(localFile);
+                                resultFuture.setResult(localFile);
                             }
                         });
                     }
@@ -187,7 +227,7 @@ public class BulkServiceManager {
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private void validateSubmitDownloadParameters(SubmitDownloadParameters parameters) {
@@ -197,24 +237,24 @@ public class BulkServiceManager {
     }
 
     private Future<BulkEntityIterable> downloadEntitiesAsyncImpl(final DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
-        final ResponseFuture<BulkEntityIterable> responseFuture = new ResponseFuture<BulkEntityIterable>(callback);
+        final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
-        this.downloadFileAsyncImpl(parameters, progress, new ParentCallback<File>(responseFuture) {
+        this.downloadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File result) throws FileNotFoundException, UnsupportedEncodingException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
 
                 BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType());
 
-                responseFuture.setResult(reader.getEntities());
+                resultFuture.setResult(reader.getEntities());
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     /**
-     * Downloads the specified Bulk entities to the specified file path asynchronously.
+     * Downloads the specified Bulk entities to a local file.
      *
      * @param parameters Determines the download entities and file path.
      * @param a callback which is called with the file path when the file is downloaded and available
@@ -225,7 +265,7 @@ public class BulkServiceManager {
     }
 
     /**
-     * Downloads the specified Bulk entities to the specified file path asynchronously.
+     * Downloads the specified Bulk entities to a local file.
      *
      * @param parameters Determines the download entities and file path.
      * @param progress An object which is updated with the progress of a bulk operation
@@ -241,21 +281,21 @@ public class BulkServiceManager {
     }
 
     private Future<File> downloadFileAsyncImpl(final DownloadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
-        final ResponseFuture<File> responseFuture = new ResponseFuture<File>(callback);
+        final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
         
         workingDirectory.mkdirs();
         
         // TODO: handle cancellations
-        this.submitDownloadAsync(parameters.getSubmitDownloadParameters(), new ParentCallback<BulkDownloadOperation>(responseFuture) {
+        this.submitDownloadAsync(parameters.getSubmitDownloadParameters(), new ParentCallback<BulkDownloadOperation>(resultFuture) {
             @Override
             public void onSuccess(final BulkDownloadOperation operation) {
-                operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<DownloadStatus>>(responseFuture) {
+                operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<DownloadStatus>>(resultFuture) {
                     @Override
-                    public void onSuccess(BulkOperationStatus<DownloadStatus> status) throws StatusNotReceived, IOException, URISyntaxException {
-                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(responseFuture) {
+                    public void onSuccess(BulkOperationStatus<DownloadStatus> status) throws IOException, URISyntaxException {
+                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(resultFuture) {
                             @Override
                             public void onSuccess(File localFile) {
-                                responseFuture.setResult(localFile);
+                                resultFuture.setResult(localFile);
                             }
                         });
                     }
@@ -263,14 +303,14 @@ public class BulkServiceManager {
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
-    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation, AsyncCallback<File> callback) throws StatusNotReceived, IOException, URISyntaxException {
+    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation, AsyncCallback<File> callback) throws IOException, URISyntaxException {
         operation.setHttpFileService(this.httpFileService);
         operation.setZipExtractor(this.zipExtractor);
 
-        final ResponseFuture<File> responseFuture = new ResponseFuture<File>(callback);
+        final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         File effectiveResultFileDirectory = resultFileDirectory;
 
@@ -278,14 +318,14 @@ public class BulkServiceManager {
             effectiveResultFileDirectory = workingDirectory;
         }
 
-        operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(responseFuture) {
+        operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File file) {
-                responseFuture.setResult(file);
+                resultFuture.setResult(file);
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private void validateUserData() {
@@ -293,16 +333,15 @@ public class BulkServiceManager {
     }
 
     /**
-     * Submits the specified download request parameters to the Bing Ads bulk service. First call {@link submitDownloadAsync}, wait for the results file to be prepared using either {@link BulkOperation#getStatus() }
-     * or {@link BulkOperation#complete() }, and then get the download result file with the {@link BulkOperation#downloadResultFile(String, String, boolean)
-     * } method.
+     * Submits a download request to the Bing Ads bulk service with the specified parameters.
      *
      * The {@link DownloadParameters#getResultFileDirectory() } and {@link DownloadParameters#getResultFileName()
      * } properties are ignored by this method. When the file is ready for download, specify the result file path and name as parameters of the {@link BulkOperation#downloadResultFile(String, String, boolean) }
      * method.
      *
-     * @param parameters Describes the type of entities and data scope that you want to download.
-     * @throws DownloadNotSubmitted
+     * @param parameters Describes the type of entities and data scope that you want to download.     
+     * @param callback
+     * @return
      */
     public Future<BulkDownloadOperation> submitDownloadAsync(SubmitDownloadParameters parameters, AsyncCallback<BulkDownloadOperation> callback) {
         Authentication auth = authorizationData.getAuthentication();
@@ -311,7 +350,7 @@ public class BulkServiceManager {
             throw new IllegalArgumentException("Missing authentication");
         }
 
-        final ResponseFuture<BulkDownloadOperation> responseFuture = new ResponseFuture<BulkDownloadOperation>(callback);
+        final ResultFuture<BulkDownloadOperation> resultFuture = new ResultFuture<BulkDownloadOperation>(callback);
 
         if (parameters.getCampaignIds() == null) {
             DownloadCampaignsByAccountIdsRequest request = generateCampaignsByAccountIdRequest(parameters);
@@ -328,9 +367,15 @@ public class BulkServiceManager {
 
                         String trackingId = ServiceUtils.GetTrackingId(res);
 
-                        responseFuture.setResult(new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId));
-                    } catch (Throwable e) {
-                        responseFuture.setException(e);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId);
+
+                        operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
+
+                        resultFuture.setResult(operation);
+                    } catch (InterruptedException e) {
+                        resultFuture.setException(e);
+                    } catch (ExecutionException e) {
+                        resultFuture.setException(e);
                     }
                 }
             });
@@ -347,43 +392,40 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        responseFuture.setResult(new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res)));
-                    } catch (Throwable e) {
-                        responseFuture.setException(e);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res));
+
+                        operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
+
+                        resultFuture.setResult(operation);
+                    } catch (InterruptedException e) {
+                        resultFuture.setException(e);
+                    } catch (ExecutionException e) {
+                        resultFuture.setException(e);
                     }
                 }
             });
         }
 
-        return responseFuture;
+        return resultFuture;
     }
 
     /**
-     * Submits the specified upload request parameters to the Bing Ads bulk service. First call {@link BulkServiceManager#submitUpload }, wait for the results file to be prepared using either {@link BulkOperation#getStatus()
-     * }
-     * or {@link BulkOperation#complete() }, and then get the download result file with the {@link BulkOperation#downloadResultFile(String, String, boolean)
-     * } method.
+     * Submits an upload request to the Bing Ads bulk service with the specified parameters.
      *
      * The {@link UploadParameters#getResultFileDirectory() } and {@link UploadParameters#getResultFileName()
      * } properties are ignored by this method. When the file is ready for download, specify the result file path and name as parameters of the {@link BulkOperation#downloadResultFile(String, String, boolean) }
      * method.
      *
      * @param parameters Describes the upload response mode and file name.
+     * @param callback
      * @return
-     * @throws UploadNotSubmitted
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws UnsuccessfulFileUpload
-     * @throws URISyntaxException
-     * @throws ExecutionException
-     * @throws InterruptedException
      */
-    public Future<BulkUploadOperation> submitUpload(final FileUploadParameters parameters, AsyncCallback<BulkUploadOperation> callback) {
+    public Future<BulkUploadOperation> submitUploadAsync(final FileUploadParameters parameters, AsyncCallback<BulkUploadOperation> callback) {
         GetBulkUploadUrlRequest request = new GetBulkUploadUrlRequest();
         request.setResponseMode(parameters.getResponseMode());
         request.setAccountId(authorizationData.getAccountId());
 
-        final ResponseFuture<BulkUploadOperation> responseFuture = new ResponseFuture<BulkUploadOperation>(callback);
+        final ResultFuture<BulkUploadOperation> resultFuture = new ResultFuture<BulkUploadOperation>(callback);
 
         final IBulkService service = serviceClient.getService();
 
@@ -424,15 +466,25 @@ public class BulkServiceManager {
                     if (shouldCompress) {
                         compressedFilePath.delete();
                     }
-                    
-                    responseFuture.setResult(new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId));
-                } catch (Throwable e) {
-                    responseFuture.setException(e);
+
+                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId);
+
+                    operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
+
+                    resultFuture.setResult(operation);
+                } catch (InterruptedException e) {
+                    resultFuture.setException(e);
+                } catch (ExecutionException e) {
+                    resultFuture.setException(e);
+                } catch (URISyntaxException e) {
+                    resultFuture.setException(e);
+                } catch (UnsuccessfulFileUpload e) {
+                    resultFuture.setException(e);
                 }
             }
         });
 
-        return responseFuture;
+        return resultFuture;
     }
 
     private File compressUploadFile(File uploadFilePath) {
@@ -527,35 +579,83 @@ public class BulkServiceManager {
         return fileUploadParameters;
     }
 
+    /**
+     * Reserved for internal use.
+     * @return
+     */
     public HttpFileService getHttpFileService() {
         return httpFileService;
     }
 
+    /**
+     * Reserved for internal use.
+     * @param httpFileService
+     */
     public void setHttpFileService(HttpFileService httpFileService) {
         this.httpFileService = httpFileService;
     }
 
+    /**
+     * Reserved for internal use.
+     * @return
+     */
     public ZipExtractor getZipExtractor() {
         return zipExtractor;
     }
 
+    /**
+     * Reserved for internal use.
+     * @param zipExtractor
+     */
     public void setZipExtractor(ZipExtractor zipExtractor) {
         this.zipExtractor = zipExtractor;
     }
 
+    /**
+     * Reserved for internal use.
+     * @return
+     */
     public BulkFileReaderFactory getBulkFileReaderFactory() {
         return bulkFileReaderFactory;
     }
 
+    /**
+     * Reserved for internal use.
+     * @param bulkFileReaderFactory
+     */
     public void setBulkFileReaderFactory(BulkFileReaderFactory bulkFileReaderFactory) {
         this.bulkFileReaderFactory = bulkFileReaderFactory;
     }
 
+    /**
+     * Gets the directory for storing temporary files needed for some operations.
+     * @return
+     */
     public File getWorkingDirectory() {
         return workingDirectory;
     }
 
+    /**
+     * Sets the directory for storing temporary files needed for some operations.
+     * @param value
+     */
     public void setWorkingDirectory(File value) {
         this.workingDirectory = value;
+    }
+
+    /**
+     * Gets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     * @return
+     */
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
+    }
+
+    /**
+     * Sets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     * @param statusPollIntervalInMilliseconds
+     */
+    public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 }

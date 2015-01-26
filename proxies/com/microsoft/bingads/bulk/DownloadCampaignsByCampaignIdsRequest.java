@@ -2,7 +2,7 @@
 package com.microsoft.bingads.bulk;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -57,14 +57,14 @@ public class DownloadCampaignsByCampaignIdsRequest {
     @XmlElement(name = "DataScope", type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DataScope> dataScope;
+    protected Collection<DataScope> dataScope;
     @XmlElement(name = "DownloadFileType", nillable = true)
     @XmlSchemaType(name = "string")
     protected DownloadFileType downloadFileType;
     @XmlElement(name = "Entities", type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<BulkDownloadEntity> entities;
+    protected Collection<BulkDownloadEntity> entities;
     @XmlElement(name = "FormatVersion", nillable = true)
     protected String formatVersion;
     @XmlElement(name = "LastSyncTimeInUTC", type = String.class, nillable = true)
@@ -108,7 +108,7 @@ public class DownloadCampaignsByCampaignIdsRequest {
      *     {@link String }
      *     
      */
-    public List<DataScope> getDataScope() {
+    public Collection<DataScope> getDataScope() {
         return dataScope;
     }
 
@@ -120,7 +120,7 @@ public class DownloadCampaignsByCampaignIdsRequest {
      *     {@link String }
      *     
      */
-    public void setDataScope(List<DataScope> value) {
+    public void setDataScope(Collection<DataScope> value) {
         this.dataScope = value;
     }
 
@@ -156,7 +156,7 @@ public class DownloadCampaignsByCampaignIdsRequest {
      *     {@link String }
      *     
      */
-    public List<BulkDownloadEntity> getEntities() {
+    public Collection<BulkDownloadEntity> getEntities() {
         return entities;
     }
 
@@ -168,7 +168,7 @@ public class DownloadCampaignsByCampaignIdsRequest {
      *     {@link String }
      *     
      */
-    public void setEntities(List<BulkDownloadEntity> value) {
+    public void setEntities(Collection<BulkDownloadEntity> value) {
         this.entities = value;
     }
 

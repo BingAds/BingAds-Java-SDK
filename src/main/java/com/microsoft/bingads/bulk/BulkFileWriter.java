@@ -1,23 +1,23 @@
 package com.microsoft.bingads.bulk;
 
-import java.io.Closeable;
-import java.io.IOException;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
-import com.microsoft.bingads.internal.bulk.file.SimpleBulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.SimpleBulkObjectWriter;
+import java.io.Closeable;
 import java.io.File;
+import java.io.IOException;
 
 /**
- * Provides method to write entities to bulk file
+ * Provides methods to write bulk entities to a file.
  *
  */
 public class BulkFileWriter implements Closeable {
 
     private BulkObjectWriter bulkObjectWriter;
-    private boolean firstRowWritten = true;
+    private boolean metadataWritten = false;
 
     /**
-     * Creates a new instance
+     * Creates a new instance of this class with the specified file path.
      *
      * @param filePath Path of the bulk file to read     
      * @throws IOException
@@ -27,7 +27,7 @@ public class BulkFileWriter implements Closeable {
     }
 
     /**
-     * Creates a new instance
+     * Creates a new instance of this class with the specified file path and file format.
      *
      * @param filePath Path of the bulk file to read
      * @param fileFormat Delimiter to separate columns of data by
@@ -38,7 +38,7 @@ public class BulkFileWriter implements Closeable {
     }
 
     /**
-     * Writes an entity to file
+     * Writes the specified entity to the file.
      *
      * <ul>
      * <li>Single Line Entity: Writes single line to describe content</li>
@@ -50,9 +50,9 @@ public class BulkFileWriter implements Closeable {
      * @throws IOException
      */
     public void writeEntity(BulkEntity entity) throws IOException {
-        if (firstRowWritten) {
+        if (!metadataWritten) {
             this.bulkObjectWriter.writeFileMetadata();
-            firstRowWritten = false;
+            metadataWritten = true;
         }
 
         entity.writeToStream(this.bulkObjectWriter);

@@ -1,8 +1,6 @@
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.bulk.BulkFileReader;
-import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkAdGroupAdExtension;
 
 /**
  * Represents an ad group level image ad extension. This class exposes

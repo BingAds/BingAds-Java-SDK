@@ -1,14 +1,17 @@
 package com.microsoft.bingads.optimizer;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class BidOpportunityTypeConverter {
 
-    public static List<BidOpportunityType> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<BidOpportunityType> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<BidOpportunityType> result = new ArrayList<BidOpportunityType>();
+        Collection<BidOpportunityType> result = new ArrayList<BidOpportunityType>();
 
         for (String value : values) {
             result.add(BidOpportunityType.fromValue(value));
@@ -17,10 +20,10 @@ public class BidOpportunityTypeConverter {
         return result;
     }
 
-    public static String convertToString(List<BidOpportunityType> list) {
+    public static String convertToString(Collection<BidOpportunityType> enums) {
         String result = "";
 
-        for (BidOpportunityType entity : list) {
+        for (BidOpportunityType entity : enums) {
             result += (entity.value() + " ");
         }
 

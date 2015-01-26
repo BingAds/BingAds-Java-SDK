@@ -1,11 +1,10 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.file.BulkObject;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
+import com.microsoft.bingads.internal.bulk.BulkObject;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 
 public class BulkError extends BulkObject {
 

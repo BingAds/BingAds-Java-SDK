@@ -1,11 +1,10 @@
 package com.microsoft.bingads.api.test.entities.keyword;
 
+import com.microsoft.bingads.api.test.entities.keyword.read.BulkKeywordReadTests;
+import com.microsoft.bingads.api.test.entities.keyword.write.BulkKeywordWriteTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-
-import com.microsoft.bingads.api.test.entities.keyword.read.BulkKeywordReadTests;
-import com.microsoft.bingads.api.test.entities.keyword.write.BulkKeywordWriteTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({BulkKeywordReadTests.class, BulkKeywordWriteTests.class})

@@ -3,6 +3,9 @@ package com.microsoft.bingads;
 import com.microsoft.bingads.internal.OAuthAuthorization;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 
+/**
+ * Reserved for internal use. 
+ */
 public class ErrorMessages {
 
     public static final String UserDataAuthenticationIsNull = "User Data Authentication is null";

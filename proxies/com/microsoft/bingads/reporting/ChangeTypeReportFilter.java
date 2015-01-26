@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for ChangeTypeReportFilter.
+ */
 public enum ChangeTypeReportFilter {
 
     ADDED("Added"),

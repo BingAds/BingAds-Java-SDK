@@ -1,15 +1,12 @@
 package com.microsoft.bingads.api.test.entities.negative_site.campaign.sites;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.assertThat;
-
-import java.util.List;
-
-import org.easymock.EasyMockSupport;
-
 import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSite;
 import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSites;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkCampaignNegativeSitesIdentifier;
+import com.microsoft.bingads.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
+import java.util.List;
+import org.easymock.EasyMockSupport;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.junit.Assert.assertThat;
 
 public abstract class BulkCampaignNegativeSitesTest extends EasyMockSupport {
 

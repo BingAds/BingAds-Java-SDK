@@ -1,64 +1,54 @@
 package com.microsoft.bingads;
 
 /**
- * Contains information about OAuth access tokens received from live.com
- * authorization service
- *
+ * Contains information about OAuth access tokens received from he Microsoft Account authorization service. 
  */
 public class OAuthTokens {
 
-    /**
-     * Default constructor. Takes all fields and sets them.
-     *
-     * @param accessToken Current token for accessing resources
-     * @param accessTokenExpiresInSeconds Expiration period for the access token
-     * in seconds
-     * @param refreshToken Token to be provided to the service if a new access
-     * token is required
+    /**     
+     * @param accessToken
+     * @param accessTokenExpiresInSeconds
+     * @param refreshToken
      */
-    public OAuthTokens(String accessToken, int accessTokenExpiresInSeconds,
-            String refreshToken) {
+    public OAuthTokens(String accessToken, long accessTokenExpiresInSeconds, String refreshToken) {
         this.accessToken = accessToken;
+
         this.accessTokenExpiresInSeconds = accessTokenExpiresInSeconds;
+
         this.refreshToken = refreshToken;
+
+        this.creationTimeStampInMilliseconds = System.currentTimeMillis();
     }
 
-    /**
-     * Access token that will be passed when calling API methods.
-     */
-    private String accessToken;
+    private final String accessToken;
+
+    private final long accessTokenExpiresInSeconds;
+
+    private final String refreshToken;
+
+    private final long creationTimeStampInMilliseconds;
 
     /**
-     * Expiration time for current access token in seconds.
+     * Gets the OAuth access token that will be used for authorization in the Bing Ads services.
+     * @return
      */
-    private int accessTokenExpiresInSeconds;
-
-    /**
-     * Refresh token that will be passed to get an update access token
-     */
-    private String refreshToken;
-
     public String getAccessToken() {
         return accessToken;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    /**
+     * Gets the Expiration time for the corresponding access token in seconds.
+     * @return
+     */
+    public long getAccessTokenExpiresInSeconds() {
+        return accessTokenExpiresInSeconds - (System.currentTimeMillis() - creationTimeStampInMilliseconds) / 1000;
     }
 
-    public int getAccessTokenExpiresInSeconds() {
-        return accessTokenExpiresInSeconds;
-    }
-
-    public void setAccessTokenExpiresInSeconds(int accessTokenExpiresInSeconds) {
-        this.accessTokenExpiresInSeconds = accessTokenExpiresInSeconds;
-    }
-
+    /**
+     * Gets the OAuth refresh token that can be user to refresh an access token.
+     * @return
+     */
     public String getRefreshToken() {
         return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
     }
 }

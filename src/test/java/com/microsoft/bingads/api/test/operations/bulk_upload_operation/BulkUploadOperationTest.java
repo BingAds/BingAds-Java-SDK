@@ -27,7 +27,7 @@ public class BulkUploadOperationTest extends FakeApiTest {
         BulkUploadOperation operation = new BulkUploadOperation("request123", createUserData(), service);
 
         if (statusCheckIntervalInMs != null) {
-            operation.setStatusCheckIntervalInMs(statusCheckIntervalInMs);
+            operation.setStatusPollIntervalInMilliseconds(statusCheckIntervalInMs);
         }
 
         return operation;

@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -46,9 +46,9 @@ public class GetAdGroupCriterionsByAdGroupIdRequest {
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "CriterionTypeFilter", type = String.class)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<CriterionType> criterionTypeFilter;
+    protected Collection<CriterionType> criterionTypeFilter;
 
     /**
      * Gets the value of the accountId property.
@@ -106,7 +106,7 @@ public class GetAdGroupCriterionsByAdGroupIdRequest {
      *     {@link String }
      *     
      */
-    public List<CriterionType> getCriterionTypeFilter() {
+    public Collection<CriterionType> getCriterionTypeFilter() {
         return criterionTypeFilter;
     }
 
@@ -118,7 +118,7 @@ public class GetAdGroupCriterionsByAdGroupIdRequest {
      *     {@link String }
      *     
      */
-    public void setCriterionTypeFilter(List<CriterionType> value) {
+    public void setCriterionTypeFilter(Collection<CriterionType> value) {
         this.criterionTypeFilter = value;
     }
 

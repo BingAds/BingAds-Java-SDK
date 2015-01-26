@@ -5,7 +5,7 @@
  */
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class ServiceFactoryFactory {
     

@@ -1,5 +1,8 @@
 package com.microsoft.bingads.bulk;
 
+/**
+ * Enum class for BulkDownloadEntity.
+ */
 public enum BulkDownloadEntity {
 
     CAMPAIGNS("Campaigns"),

@@ -10,8 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkImageAdExtensionWriteFromRowValuesDestinationUrlTest.class,
     BulkImageAdExtensionWriteFromRowValuesIdTest.class,
     BulkImageAdExtensionWriteFromRowValuesMediaIdTest.class,
-    BulkImageAdExtensionWriteFromRowValuesStatusTest.class,
-    BulkImageAdExtensionWriteFromRowValuesVersionTest.class})
+    BulkImageAdExtensionWriteFromRowValuesStatusTest.class})
 public class BulkImageAdExtensionWriteTests {
 
 }

@@ -1,16 +1,13 @@
 package com.microsoft.bingads.internal.utilities;
 
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
-
 import org.apache.http.HttpRequest;
-import com.microsoft.bingads.AsyncCallback;
-import org.apache.http.HttpResponse;
 
 public interface HttpFileService {
 

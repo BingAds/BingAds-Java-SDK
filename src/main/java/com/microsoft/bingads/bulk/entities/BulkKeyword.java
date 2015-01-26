@@ -1,25 +1,23 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
 import com.microsoft.bingads.campaignmanagement.Keyword;
 import com.microsoft.bingads.campaignmanagement.KeywordEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.KeywordStatus;
 import com.microsoft.bingads.campaignmanagement.MatchType;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.entities.BulkKeywordBidSuggestion;
+import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.internal.bulk.TryResult;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.BulkStreamReader;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import com.microsoft.bingads.internal.bulk.file.TryResult;
-import com.microsoft.bingads.internal.bulk.mapping.BulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BulkKeyword extends SingleRecordBulkEntity {
 
@@ -151,13 +149,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkKeyword, KeywordEditorialStatus>(StringTable.EditorialStatus,
-                new Function<BulkKeyword, KeywordEditorialStatus>() {
-                    @Override
-                    public KeywordEditorialStatus apply(BulkKeyword c) {
-                        return c.getKeyword().getEditorialStatus();
-                    }
-                },
+        m.add(new SimpleBulkMapping<BulkKeyword, KeywordEditorialStatus>(StringTable.EditorialStatus,                
                 new BiConsumer<String, BulkKeyword>() {
                     @Override
                     public void accept(String v, BulkKeyword c) {

@@ -5,10 +5,10 @@
  */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.campaignmanagement.ArrayOfDeviceOSTargetBid;
 import com.microsoft.bingads.campaignmanagement.DeviceOSTarget;
 import com.microsoft.bingads.campaignmanagement.DeviceOSTargetBid;
-import com.microsoft.bingads.campaignmanagement.ArrayOfDeviceOSTargetBid;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 

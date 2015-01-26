@@ -1,15 +1,17 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.LiveComOAuthService;
+import com.microsoft.bingads.internal.OAuthService;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import com.microsoft.bingads.internal.oauth.LiveComOAuthService;
-import com.microsoft.bingads.internal.oauth.OAuthService;
 
 /**
- * Implements the OAuth Authorization Code Grant Flow for desktop and mobile
- * applications {@link "http://msdn.microsoft.com/en-us/library/dn277356.aspx"}
- *
+ * Represents an OAuth authorization object implementing the authorization code grant flow for use in a desktop or mobile application. 
  */
 public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode {
+
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken) {
+        super(clientId, null, LiveComOAuthService.DESKTOP_REDIRECT_URL, refreshToken);
+    }
 
     /**
      * Creates new instance of the class that can be used in the

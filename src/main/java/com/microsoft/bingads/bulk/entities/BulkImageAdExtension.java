@@ -1,23 +1,17 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
-import com.microsoft.bingads.bulk.BulkFileReader;
-import com.microsoft.bingads.bulk.BulkFileWriter;
-import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.campaignmanagement.ImageAdExtension;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkAdExtensionBase;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
-import com.microsoft.bingads.internal.bulk.mapping.BulkMapping;
-import com.microsoft.bingads.internal.bulk.mapping.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
+import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.internal.bulk.RowValues;
+import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents an image ad extension that can be read or written in a bulk file.
@@ -33,7 +27,7 @@ import com.microsoft.bingads.internal.bulk.mapping.SimpleBulkMapping;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public class BulkImageAdExtension extends BulkAdExtensionBase<ImageAdExtension> {
+public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
 
     /**
      * The image ad extension.

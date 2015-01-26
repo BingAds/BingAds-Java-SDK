@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for AdTypeReportFilter.
+ */
 public enum AdTypeReportFilter {
 
     TEXT("Text"),

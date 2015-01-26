@@ -6,9 +6,9 @@
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;

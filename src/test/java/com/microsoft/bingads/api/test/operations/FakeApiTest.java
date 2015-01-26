@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.microsoft.bingads.api.test.operations;
 
-import com.microsoft.bingads.bulk.IBulkService;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,8 +11,10 @@ import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.apache.cxf.headers.Header;
 import org.junit.Before;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -51,7 +48,10 @@ public class FakeApiTest {
                     customElement.appendChild(doc.createTextNode("track123"));
                     
                     trackingIdHeader = new Header(new QName(ns, "TrackingId"), customElement);
-                } catch (Exception ex) {
+                } catch (ParserConfigurationException ex) {
+                    Logger.getLogger(BulkServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+                    return null;
+                } catch (DOMException ex) {
                     Logger.getLogger(BulkServiceTest.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
                 }

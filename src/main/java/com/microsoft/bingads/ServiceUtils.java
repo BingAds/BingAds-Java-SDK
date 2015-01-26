@@ -12,6 +12,9 @@ import javax.xml.ws.Response;
 import org.apache.cxf.headers.Header;
 import org.w3c.dom.Element;
 
+/**
+ * Reserved for internal use. 
+ */
 public class ServiceUtils {
 
     public static String GetLastTrackingId(BindingProvider provider) {        

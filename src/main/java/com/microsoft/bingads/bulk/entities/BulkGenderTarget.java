@@ -5,10 +5,10 @@
  */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.campaignmanagement.ArrayOfGenderTargetBid;
 import com.microsoft.bingads.campaignmanagement.GenderTarget;
 import com.microsoft.bingads.campaignmanagement.GenderTargetBid;
-import com.microsoft.bingads.campaignmanagement.ArrayOfGenderTargetBid;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 

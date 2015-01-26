@@ -1,15 +1,13 @@
 package com.microsoft.bingads.api.test.entities.targets.campaign.bids.age;
 
-import com.microsoft.bingads.api.test.entities.targets.campaign.bids.age.*;
-import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
-
 import com.microsoft.bingads.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.bulk.entities.BulkCampaignAgeTargetBid;
 import com.microsoft.bingads.campaignmanagement.AgeRange;
 import com.microsoft.bingads.campaignmanagement.AgeTargetBid;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import java.util.Map;
 
 public abstract class BulkCampaignAgeTargetBidTest extends BulkEntityTest<BulkCampaignAgeTargetBid> {
 

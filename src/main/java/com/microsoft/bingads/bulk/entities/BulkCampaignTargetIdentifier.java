@@ -7,10 +7,9 @@ package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkCampaignNegativeSitesIdentifier;
 import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 
-class BulkCampaignTargetIdentifier extends BulkTargetIdentifier {
+public class BulkCampaignTargetIdentifier extends BulkTargetIdentifier {
 
     public BulkCampaignTargetIdentifier(Class targetBidType) {
         super(targetBidType);

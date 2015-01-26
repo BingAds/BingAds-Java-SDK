@@ -5,7 +5,6 @@
  */
 package com.microsoft.bingads.api.test.operations;
 
-import static com.microsoft.bingads.api.test.operations.FakeBulkService.getInboundHeadersSupplier;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -1,16 +1,13 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.product;
 
+import com.microsoft.bingads.bulk.entities.BulkProductAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkProductConditionCollection;
+import com.microsoft.bingads.internal.bulk.entities.BulkProductAdExtensionIdentifier;
+import java.util.List;
+import org.easymock.EasyMockSupport;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-
-import java.util.List;
-
-import org.easymock.EasyMockSupport;
-
-import com.microsoft.bingads.bulk.entities.BulkProductAdExtension;
-import com.microsoft.bingads.bulk.entities.BulkProductConditionCollection;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkProductAdExtensionIdentifier;
 
 public abstract class BulkProductAdExtensionTest extends EasyMockSupport {
 

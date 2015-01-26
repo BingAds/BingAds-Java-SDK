@@ -1,20 +1,19 @@
 package com.microsoft.bingads.api.test.entities.adgroup.read;
 
+import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
+import com.microsoft.bingads.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.campaignmanagement.AdDistribution;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.adgroup.BulkAdGroupTest;
-import com.microsoft.bingads.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.campaignmanagement.AdDistribution;
-import java.util.List;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupReadFromRowValuesAdDistributionTest extends BulkAdGroupTest {
@@ -44,9 +43,9 @@ public class BulkAdGroupReadFromRowValuesAdDistributionTest extends BulkAdGroupT
         Map<String, String> values = new HashMap<String, String>();
         values.put("Search Network", this.datum);
         values.put("Content Network", this.content);
-        this.<List<AdDistribution>>testReadProperty(values, this.expectedResult, new Function<BulkAdGroup, List<AdDistribution>>() {
+        this.<Collection<AdDistribution>>testReadProperty(values, this.expectedResult, new Function<BulkAdGroup, Collection<AdDistribution>>() {
             @Override
-            public List<AdDistribution> apply(BulkAdGroup c) {
+            public Collection<AdDistribution> apply(BulkAdGroup c) {
                 return c.getAdGroup().getAdDistribution();
             }
         });

@@ -1,14 +1,17 @@
 package com.microsoft.bingads.reporting;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class AdDistributionReportFilterConverter {
 
-    public static List<AdDistributionReportFilter> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<AdDistributionReportFilter> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<AdDistributionReportFilter> result = new ArrayList<AdDistributionReportFilter>();
+        Collection<AdDistributionReportFilter> result = new ArrayList<AdDistributionReportFilter>();
 
         for (String value : values) {
             result.add(AdDistributionReportFilter.fromValue(value));
@@ -17,10 +20,10 @@ public class AdDistributionReportFilterConverter {
         return result;
     }
 
-    public static String convertToString(List<AdDistributionReportFilter> list) {
+    public static String convertToString(Collection<AdDistributionReportFilter> enums) {
         String result = "";
 
-        for (AdDistributionReportFilter entity : list) {
+        for (AdDistributionReportFilter entity : enums) {
             result += (entity.value() + " ");
         }
 

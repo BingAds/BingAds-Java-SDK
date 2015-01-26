@@ -1,23 +1,11 @@
 package com.microsoft.bingads.api.test.operations;
 
-import static org.easymock.EasyMock.expect;
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import org.junit.Test;
-
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.PasswordAuthentication;
 import com.microsoft.bingads.bulk.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.bulk.BulkDownloadEntity;
 import com.microsoft.bingads.bulk.BulkDownloadOperation;
+import com.microsoft.bingads.bulk.BulkEntityIterable;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.bulk.CampaignScope;
@@ -28,33 +16,34 @@ import com.microsoft.bingads.bulk.DownloadCampaignsByCampaignIdsRequest;
 import com.microsoft.bingads.bulk.DownloadCampaignsByCampaignIdsResponse;
 import com.microsoft.bingads.bulk.DownloadFileType;
 import com.microsoft.bingads.bulk.DownloadParameters;
-import com.microsoft.bingads.bulk.BulkEntityIterable;
 import com.microsoft.bingads.bulk.GetDetailedBulkDownloadStatusRequest;
 import com.microsoft.bingads.bulk.GetDetailedBulkDownloadStatusResponse;
 import com.microsoft.bingads.bulk.PerformanceStatsDateRange;
 import com.microsoft.bingads.bulk.ResultFileType;
 import com.microsoft.bingads.bulk.SubmitDownloadParameters;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.functionalInterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalInterfaces.Supplier;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.internal.utilities.BulkFileReaderFactory;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.cxf.headers.Header;
-import org.apache.cxf.jaxb.JAXBDataBinding;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.junit.Test;
 
 public class BulkServiceTest extends FakeApiTest {
     
@@ -81,7 +70,7 @@ public class BulkServiceTest extends FakeApiTest {
         parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);                  
 
         parameters.setEntities(new ArrayList<BulkDownloadEntity>());
-        List<BulkDownloadEntity> entities = parameters.getEntities();
+        Collection<BulkDownloadEntity> entities = parameters.getEntities();
         entities.add(BulkDownloadEntity.CAMPAIGNS);
         entities.add(BulkDownloadEntity.KEYWORDS);
  
@@ -138,7 +127,7 @@ public class BulkServiceTest extends FakeApiTest {
         parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);   
 
         parameters.setEntities(new ArrayList<BulkDownloadEntity>());
-        List<BulkDownloadEntity> entities = parameters.getEntities();
+        Collection<BulkDownloadEntity> entities = parameters.getEntities();
         entities.add(BulkDownloadEntity.CAMPAIGNS);
         entities.add(BulkDownloadEntity.KEYWORDS);
 
@@ -218,7 +207,7 @@ public class BulkServiceTest extends FakeApiTest {
         parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);                  
 
         parameters.setEntities(new ArrayList<BulkDownloadEntity>());
-        List<BulkDownloadEntity> entities = parameters.getEntities();
+        Collection<BulkDownloadEntity> entities = parameters.getEntities();
         entities.add(BulkDownloadEntity.CAMPAIGNS);
         entities.add(BulkDownloadEntity.KEYWORDS);
  
@@ -311,7 +300,7 @@ public class BulkServiceTest extends FakeApiTest {
         parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);        
 
         parameters.setEntities(new ArrayList<BulkDownloadEntity>());
-        List<BulkDownloadEntity> entities = parameters.getEntities();
+        Collection<BulkDownloadEntity> entities = parameters.getEntities();
         entities.add(BulkDownloadEntity.CAMPAIGNS);
         entities.add(BulkDownloadEntity.KEYWORDS);
  

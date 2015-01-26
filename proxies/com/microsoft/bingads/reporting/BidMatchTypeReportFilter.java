@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for BidMatchTypeReportFilter.
+ */
 public enum BidMatchTypeReportFilter {
 
     EXACT("Exact"),

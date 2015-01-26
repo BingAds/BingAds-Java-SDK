@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for AdDistributionReportFilter.
+ */
 public enum AdDistributionReportFilter {
 
     SEARCH("Search"),

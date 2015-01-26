@@ -1,14 +1,17 @@
 package com.microsoft.bingads.campaignmanagement;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class CriterionTypeConverter {
 
-    public static List<CriterionType> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<CriterionType> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<CriterionType> result = new ArrayList<CriterionType>();
+        Collection<CriterionType> result = new ArrayList<CriterionType>();
 
         for (String value : values) {
             result.add(CriterionType.fromValue(value));
@@ -17,10 +20,10 @@ public class CriterionTypeConverter {
         return result;
     }
 
-    public static String convertToString(List<CriterionType> list) {
+    public static String convertToString(Collection<CriterionType> enums) {
         String result = "";
 
-        for (CriterionType entity : list) {
+        for (CriterionType entity : enums) {
             result += (entity.value() + " ");
         }
 

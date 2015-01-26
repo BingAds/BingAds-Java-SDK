@@ -3,7 +3,7 @@ package com.microsoft.bingads.optimizer;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -886,13 +886,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link KeywordOpportunityType }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link KeywordOpportunityType }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.Optimizer.Api.DataContracts.Entities", name = "KeywordOpportunityType")
     @XmlJavaTypeAdapter(Adapter2 .class)
-    public JAXBElement<List<KeywordOpportunityType>> createKeywordOpportunityType(List<KeywordOpportunityType> value) {
-        return new JAXBElement<List<KeywordOpportunityType>>(_KeywordOpportunityType_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<KeywordOpportunityType>> createKeywordOpportunityType(Collection<KeywordOpportunityType> value) {
+        return new JAXBElement<Collection<KeywordOpportunityType>>(_KeywordOpportunityType_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -914,13 +914,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link BidOpportunityType }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link BidOpportunityType }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.Optimizer.Api.DataContracts.Entities", name = "BidOpportunityType")
     @XmlJavaTypeAdapter(Adapter3 .class)
-    public JAXBElement<List<BidOpportunityType>> createBidOpportunityType(List<BidOpportunityType> value) {
-        return new JAXBElement<List<BidOpportunityType>>(_BidOpportunityType_QNAME, ((Class) List.class), null, value);
+    public JAXBElement<Collection<BidOpportunityType>> createBidOpportunityType(Collection<BidOpportunityType> value) {
+        return new JAXBElement<Collection<BidOpportunityType>>(_BidOpportunityType_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

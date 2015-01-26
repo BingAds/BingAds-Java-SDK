@@ -5,9 +5,9 @@
  */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.RowValues;
 
 class BulkTargetBid extends SingleRecordBulkEntity {
 

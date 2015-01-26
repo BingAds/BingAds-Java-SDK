@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -46,15 +46,15 @@ public class ShareOfVoiceReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "BidMatchType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<BidMatchTypeReportFilter> bidMatchType;
+    protected Collection<BidMatchTypeReportFilter> bidMatchType;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeliveredMatchTypeReportFilter> deliveredMatchType;
+    protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "Keywords", nillable = true)
     protected ArrayOfstring keywords;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -68,7 +68,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -80,7 +80,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 
@@ -92,7 +92,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public List<BidMatchTypeReportFilter> getBidMatchType() {
+    public Collection<BidMatchTypeReportFilter> getBidMatchType() {
         return bidMatchType;
     }
 
@@ -104,7 +104,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public void setBidMatchType(List<BidMatchTypeReportFilter> value) {
+    public void setBidMatchType(Collection<BidMatchTypeReportFilter> value) {
         this.bidMatchType = value;
     }
 
@@ -116,7 +116,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
+    public Collection<DeliveredMatchTypeReportFilter> getDeliveredMatchType() {
         return deliveredMatchType;
     }
 
@@ -128,7 +128,7 @@ public class ShareOfVoiceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeliveredMatchType(List<DeliveredMatchTypeReportFilter> value) {
+    public void setDeliveredMatchType(Collection<DeliveredMatchTypeReportFilter> value) {
         this.deliveredMatchType = value;
     }
 

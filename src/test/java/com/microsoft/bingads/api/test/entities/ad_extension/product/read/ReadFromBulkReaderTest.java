@@ -1,25 +1,23 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.product.read;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.*;
-
-import java.util.List;
-
-import org.junit.Test;
-
-import com.microsoft.bingads.api.test.TestFactory;
-import com.microsoft.bingads.api.test.entities.MultirecordEntityTestHelper;
 import com.microsoft.bingads.api.test.entities.ad_extension.product.BulkProductAdExtensionTest;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.ResultFileType;
+import com.microsoft.bingads.bulk.entities.BulkEntity;
 import com.microsoft.bingads.bulk.entities.BulkProductAdExtension;
 import com.microsoft.bingads.bulk.entities.BulkProductConditionCollection;
 import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
-import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkProductAdExtensionIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectReader;
+import com.microsoft.bingads.bulk.entities.MultirecordEntityTestHelper;
+import com.microsoft.bingads.internal.bulk.BulkObjectReader;
+import com.microsoft.bingads.internal.bulk.TestFactory;
+import com.microsoft.bingads.internal.bulk.entities.BulkProductAdExtensionIdentifier;
 import java.util.ArrayList;
+import java.util.List;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 public class ReadFromBulkReaderTest extends BulkProductAdExtensionTest {
 

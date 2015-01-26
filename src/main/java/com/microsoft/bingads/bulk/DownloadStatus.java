@@ -1,5 +1,8 @@
 package com.microsoft.bingads.bulk;
 
+/**
+ * Defines the possible status values of the bulk download.
+ */
 public enum DownloadStatus {
 
     COMPLETED("Completed"),

@@ -1,5 +1,8 @@
 package com.microsoft.bingads.campaignmanagement;
 
+/**
+ * Enum class for MediaEnabledEntityFilter.
+ */
 public enum MediaEnabledEntityFilter {
 
     IMAGE_AD_EXTENSION("ImageAdExtension");

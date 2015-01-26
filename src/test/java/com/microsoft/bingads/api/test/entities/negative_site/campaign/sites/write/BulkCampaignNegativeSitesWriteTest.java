@@ -1,27 +1,24 @@
 package com.microsoft.bingads.api.test.entities.negative_site.campaign.sites.write;
 
-import static org.easymock.EasyMock.and;
-import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.cmp;
-
+import com.microsoft.bingads.api.test.entities.negative_site.campaign.sites.BulkCampaignNegativeSitesTest;
+import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSite;
+import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSites;
+import com.microsoft.bingads.bulk.entities.Status;
+import com.microsoft.bingads.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.campaignmanagement.CampaignNegativeSites;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
-
+import static org.easymock.EasyMock.and;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.cmp;
 import org.easymock.EasyMockRunner;
 import org.easymock.LogicalOperator;
 import org.easymock.Mock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import com.microsoft.bingads.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.api.test.entities.negative_site.campaign.sites.BulkCampaignNegativeSitesTest;
-import com.microsoft.bingads.bulk.entities.Status;
-import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSite;
-import com.microsoft.bingads.bulk.entities.BulkCampaignNegativeSites;
-import com.microsoft.bingads.campaignmanagement.CampaignNegativeSites;
-import com.microsoft.bingads.internal.bulk.entities.negativesites.BulkCampaignNegativeSitesIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
 
 @RunWith(EasyMockRunner.class)
 public class BulkCampaignNegativeSitesWriteTest extends BulkCampaignNegativeSitesTest {

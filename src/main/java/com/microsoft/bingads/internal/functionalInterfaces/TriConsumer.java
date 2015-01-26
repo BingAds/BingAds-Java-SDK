@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.microsoft.bingads.internal.functionalInterfaces;
+package com.microsoft.bingads.internal.functionalinterfaces;
 
 public interface TriConsumer<T, U, V> {
     

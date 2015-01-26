@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,11 +40,11 @@ public class RichAdComponentPerformanceReportFilter {
     @XmlElement(name = "ComponentType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<ComponentTypeFilter> componentType;
+    protected Collection<ComponentTypeFilter> componentType;
     @XmlElement(name = "RichAdSubType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<RichAdSubTypeFilter> richAdSubType;
+    protected Collection<RichAdSubTypeFilter> richAdSubType;
 
     /**
      * Gets the value of the componentType property.
@@ -54,7 +54,7 @@ public class RichAdComponentPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<ComponentTypeFilter> getComponentType() {
+    public Collection<ComponentTypeFilter> getComponentType() {
         return componentType;
     }
 
@@ -66,7 +66,7 @@ public class RichAdComponentPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setComponentType(List<ComponentTypeFilter> value) {
+    public void setComponentType(Collection<ComponentTypeFilter> value) {
         this.componentType = value;
     }
 
@@ -78,7 +78,7 @@ public class RichAdComponentPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<RichAdSubTypeFilter> getRichAdSubType() {
+    public Collection<RichAdSubTypeFilter> getRichAdSubType() {
         return richAdSubType;
     }
 
@@ -90,7 +90,7 @@ public class RichAdComponentPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setRichAdSubType(List<RichAdSubTypeFilter> value) {
+    public void setRichAdSubType(Collection<RichAdSubTypeFilter> value) {
         this.richAdSubType = value;
     }
 

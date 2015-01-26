@@ -26,7 +26,7 @@ public class BulkDownloadOperationTest extends FakeApiTest {
         BulkDownloadOperation operation = new BulkDownloadOperation("request123", createUserData());
 
         if (statusCheckIntervalInMs != null) {
-            operation.setStatusCheckIntervalInMs(statusCheckIntervalInMs);
+            operation.setStatusPollIntervalInMilliseconds(statusCheckIntervalInMs);
         }
 
         return operation;

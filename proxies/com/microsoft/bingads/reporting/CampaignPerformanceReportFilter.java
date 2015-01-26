@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -44,19 +44,19 @@ public class CampaignPerformanceReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter6 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeviceOSReportFilter> deviceOS;
+    protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeviceTypeReportFilter> deviceType;
+    protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Status", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<CampaignStatusReportFilter> status;
+    protected Collection<CampaignStatusReportFilter> status;
 
     /**
      * Gets the value of the adDistribution property.
@@ -66,7 +66,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -78,7 +78,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 
@@ -90,7 +90,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeviceOSReportFilter> getDeviceOS() {
+    public Collection<DeviceOSReportFilter> getDeviceOS() {
         return deviceOS;
     }
 
@@ -102,7 +102,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeviceOS(List<DeviceOSReportFilter> value) {
+    public void setDeviceOS(Collection<DeviceOSReportFilter> value) {
         this.deviceOS = value;
     }
 
@@ -114,7 +114,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeviceTypeReportFilter> getDeviceType() {
+    public Collection<DeviceTypeReportFilter> getDeviceType() {
         return deviceType;
     }
 
@@ -126,7 +126,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeviceType(List<DeviceTypeReportFilter> value) {
+    public void setDeviceType(Collection<DeviceTypeReportFilter> value) {
         this.deviceType = value;
     }
 
@@ -138,7 +138,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<CampaignStatusReportFilter> getStatus() {
+    public Collection<CampaignStatusReportFilter> getStatus() {
         return status;
     }
 
@@ -150,7 +150,7 @@ public class CampaignPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setStatus(List<CampaignStatusReportFilter> value) {
+    public void setStatus(Collection<CampaignStatusReportFilter> value) {
         this.status = value;
     }
 

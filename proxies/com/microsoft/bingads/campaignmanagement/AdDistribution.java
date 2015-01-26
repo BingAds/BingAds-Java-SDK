@@ -1,5 +1,8 @@
 package com.microsoft.bingads.campaignmanagement;
 
+/**
+ * Enum class for AdDistribution.
+ */
 public enum AdDistribution {
 
     SEARCH("Search"),

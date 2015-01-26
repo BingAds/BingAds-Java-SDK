@@ -1,14 +1,17 @@
 package com.microsoft.bingads.bulk;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+/**
+ * Reserved for internal use.
+ */
 public class BulkDownloadEntityConverter {
 
-    public static List<BulkDownloadEntity> convertToList(String entityString) {
-        String[] values = entityString.split(" ");
+    public static Collection<BulkDownloadEntity> convertToList(String enums) {
+        String[] values = enums.split(" ");
 
-        List<BulkDownloadEntity> result = new ArrayList<BulkDownloadEntity>();
+        Collection<BulkDownloadEntity> result = new ArrayList<BulkDownloadEntity>();
 
         for (String value : values) {
             result.add(BulkDownloadEntity.fromValue(value));
@@ -17,10 +20,10 @@ public class BulkDownloadEntityConverter {
         return result;
     }
 
-    public static String convertToString(List<BulkDownloadEntity> list) {
+    public static String convertToString(Collection<BulkDownloadEntity> enums) {
         String result = "";
 
-        for (BulkDownloadEntity entity : list) {
+        for (BulkDownloadEntity entity : enums) {
             result += (entity.value() + " ");
         }
 

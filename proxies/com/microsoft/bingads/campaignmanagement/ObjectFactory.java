@@ -3,7 +3,7 @@ package com.microsoft.bingads.campaignmanagement;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -95,6 +95,7 @@ public class ObjectFactory {
     private final static QName _AdRotationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdRotationType");
     private final static QName _NegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "NegativeKeywordList");
     private final static QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "BatchError");
+    private final static QName _CampaignType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CampaignType");
     private final static QName _SharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "SharedEntityAssociation");
     private final static QName _MediaEnabledEntityFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "MediaEnabledEntityFilter");
     private final static QName _GeoPoint_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "GeoPoint");
@@ -3744,13 +3745,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdDistribution }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdDistribution }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdDistribution")
-    @XmlJavaTypeAdapter(Adapter5 .class)
-    public JAXBElement<List<AdDistribution>> createAdDistribution(List<AdDistribution> value) {
-        return new JAXBElement<List<AdDistribution>>(_AdDistribution_QNAME, ((Class) List.class), null, value);
+    @XmlJavaTypeAdapter(Adapter6 .class)
+    public JAXBElement<Collection<AdDistribution>> createAdDistribution(Collection<AdDistribution> value) {
+        return new JAXBElement<Collection<AdDistribution>>(_AdDistribution_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -3862,6 +3863,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignType }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CampaignType")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<CampaignType>> createCampaignType(Collection<CampaignType> value) {
+        return new JAXBElement<Collection<CampaignType>>(_CampaignType_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SharedEntityAssociation }{@code >}}
      * 
      */
@@ -3871,13 +3882,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link MediaEnabledEntityFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link MediaEnabledEntityFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "MediaEnabledEntityFilter")
-    @XmlJavaTypeAdapter(Adapter3 .class)
-    public JAXBElement<List<MediaEnabledEntityFilter>> createMediaEnabledEntityFilter(List<MediaEnabledEntityFilter> value) {
-        return new JAXBElement<List<MediaEnabledEntityFilter>>(_MediaEnabledEntityFilter_QNAME, ((Class) List.class), null, value);
+    @XmlJavaTypeAdapter(Adapter4 .class)
+    public JAXBElement<Collection<MediaEnabledEntityFilter>> createMediaEnabledEntityFilter(Collection<MediaEnabledEntityFilter> value) {
+        return new JAXBElement<Collection<MediaEnabledEntityFilter>>(_MediaEnabledEntityFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -3917,13 +3928,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link CriterionType }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CriterionType }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CriterionType")
-    @XmlJavaTypeAdapter(Adapter4 .class)
-    public JAXBElement<List<CriterionType>> createCriterionType(List<CriterionType> value) {
-        return new JAXBElement<List<CriterionType>>(_CriterionType_QNAME, ((Class) List.class), null, value);
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    public JAXBElement<Collection<CriterionType>> createCriterionType(Collection<CriterionType> value) {
+        return new JAXBElement<Collection<CriterionType>>(_CriterionType_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -5296,13 +5307,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link AdExtensionsTypeFilter }{@code >}{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdExtensionsTypeFilter }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdExtensionsTypeFilter")
-    @XmlJavaTypeAdapter(Adapter2 .class)
-    public JAXBElement<List<AdExtensionsTypeFilter>> createAdExtensionsTypeFilter(List<AdExtensionsTypeFilter> value) {
-        return new JAXBElement<List<AdExtensionsTypeFilter>>(_AdExtensionsTypeFilter_QNAME, ((Class) List.class), null, value);
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    public JAXBElement<Collection<AdExtensionsTypeFilter>> createAdExtensionsTypeFilter(Collection<AdExtensionsTypeFilter> value) {
+        return new JAXBElement<Collection<AdExtensionsTypeFilter>>(_AdExtensionsTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

@@ -8,18 +8,18 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.campaignmanagement.LocationTarget2;
 import com.microsoft.bingads.campaignmanagement.Target2;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.internal.bulk.TryResult;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
-import com.microsoft.bingads.internal.bulk.file.BulkStreamReader;
-import com.microsoft.bingads.internal.bulk.file.TryResult;
-import com.microsoft.bingads.internal.functionalInterfaces.Predicate;
+import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
+import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 import java.util.HashMap;
+import java.util.List;
 
 abstract class BulkTarget<
         TIdentifier extends BulkTargetIdentifier, TAgeBid extends BulkAgeTargetBid, TAge extends BulkAgeTarget<TAgeBid>, TDayTimeBid extends BulkDayTimeTargetBid, TDayTime extends BulkDayTimeTarget<TDayTimeBid>, TDeviceOsBid extends BulkDeviceOsTargetBid, TDeviceOs extends BulkDeviceOsTarget<TDeviceOsBid>, TGenderBid extends BulkGenderTargetBid, TGender extends BulkGenderTarget<TGenderBid>, TLocationBid extends BulkLocationTargetBid, TLocation extends BulkLocationTarget<TLocationBid>, TNegativeLocationBid extends BulkNegativeLocationTargetBid, TNegativeLocation extends BulkNegativeLocationTarget<TNegativeLocationBid>, TRadiusTargetBid extends BulkRadiusTargetBid, TRadius extends BulkRadiusTarget<TRadiusTargetBid>> extends MultiRecordBulkEntity {

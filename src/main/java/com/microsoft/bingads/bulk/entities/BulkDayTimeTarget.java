@@ -5,10 +5,10 @@
  */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.campaignmanagement.ArrayOfDayTimeTargetBid;
 import com.microsoft.bingads.campaignmanagement.DayTimeTarget;
 import com.microsoft.bingads.campaignmanagement.DayTimeTargetBid;
-import com.microsoft.bingads.campaignmanagement.ArrayOfDayTimeTargetBid;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 

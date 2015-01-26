@@ -1,6 +1,10 @@
 package com.microsoft.bingads.internal.utilities;
 
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,18 +12,12 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
-import com.microsoft.bingads.internal.functionalInterfaces.Consumer;
-
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.internal.ResponseFuture;
-import java.io.FileInputStream;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
@@ -82,6 +80,12 @@ public class HttpClientHttpFileService implements HttpFileService {
                 HttpResponse response = client.execute(post);
 
                 if (response.getStatusLine().getStatusCode() != 200) {
+                    //TODO: handle errors from file upload
+
+                    InputStream responseStream = response.getEntity().getContent();
+
+                    String details = IOUtils.toString(responseStream);
+
                     throw new UnsuccessfulFileUpload("Unsuccessful Status Code: " + response.getStatusLine().getStatusCode());
                 }
             } catch (ClientProtocolException e) {
@@ -108,7 +112,7 @@ public class HttpClientHttpFileService implements HttpFileService {
 
     @Override
     public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback) {
-        final ResponseFuture<File> responseFuture = new ResponseFuture<File>(callback);
+        final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         HttpClient client = null;
 
@@ -124,20 +128,24 @@ public class HttpClientHttpFileService implements HttpFileService {
                 tempFileOutput = new FileOutputStream(tempZipFile);
                 IOUtils.copy(content, tempFileOutput);
 
-                responseFuture.setResult(tempZipFile);
+                resultFuture.setResult(tempZipFile);
             } finally {
                 if (tempFileOutput != null) {
                     tempFileOutput.close();
                 }
             }
-        } catch (Throwable ex) {
-            responseFuture.setException(ex);
+        } catch (URISyntaxException ex) {
+            resultFuture.setException(ex);
+        } catch (IOException ex) {
+            resultFuture.setException(ex);
+        } catch (IllegalStateException ex) {
+            resultFuture.setException(ex);
         } finally {
             if (client != null) {
                 client.getConnectionManager().shutdown();
             }
         }
 
-        return responseFuture;
+        return resultFuture;
     }
 }

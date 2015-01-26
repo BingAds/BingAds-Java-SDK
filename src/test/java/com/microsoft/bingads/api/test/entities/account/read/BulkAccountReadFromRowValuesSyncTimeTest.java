@@ -1,23 +1,20 @@
 package com.microsoft.bingads.api.test.entities.account.read;
 
-import java.util.Date;
+import com.microsoft.bingads.api.test.entities.account.BulkAccountTest;
+import com.microsoft.bingads.bulk.entities.BulkAccount;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
-import com.microsoft.bingads.internal.functionalInterfaces.Function;
-
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.microsoft.bingads.api.test.entities.account.BulkAccountTest;
-import com.microsoft.bingads.bulk.entities.BulkAccount;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 @RunWith(Parameterized.class)
 public class BulkAccountReadFromRowValuesSyncTimeTest extends BulkAccountTest {

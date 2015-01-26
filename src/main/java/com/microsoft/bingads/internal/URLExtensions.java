@@ -6,7 +6,7 @@ import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class URLExtensions {
+class URLExtensions {
 
     public static Map<String, String> parseQuery(URL url) {
         return parseQueryStringArgs(url.getQuery());

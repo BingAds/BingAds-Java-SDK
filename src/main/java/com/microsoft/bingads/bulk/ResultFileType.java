@@ -2,7 +2,6 @@ package com.microsoft.bingads.bulk;
 
 /**
  * Defines the possible types of result files.
- *
  */
 public enum ResultFileType {
 

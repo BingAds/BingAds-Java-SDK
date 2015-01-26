@@ -1,5 +1,8 @@
 package com.microsoft.bingads.reporting;
 
+/**
+ * Enum class for ComponentTypeFilter.
+ */
 public enum ComponentTypeFilter {
 
     BASIC("Basic"),

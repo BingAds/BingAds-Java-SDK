@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,7 +40,7 @@ public class ProductOfferPerformanceReportFilter {
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<DeviceTypeReportFilter> deviceType;
+    protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;
 
@@ -52,7 +52,7 @@ public class ProductOfferPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<DeviceTypeReportFilter> getDeviceType() {
+    public Collection<DeviceTypeReportFilter> getDeviceType() {
         return deviceType;
     }
 
@@ -64,7 +64,7 @@ public class ProductOfferPerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setDeviceType(List<DeviceTypeReportFilter> value) {
+    public void setDeviceType(Collection<DeviceTypeReportFilter> value) {
         this.deviceType = value;
     }
 

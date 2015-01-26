@@ -3,7 +3,6 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkServiceManager;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.BulkAdGroupAdExtension;
 
 /**
  * Represents an ad group level sitelink ad extension. This class exposes

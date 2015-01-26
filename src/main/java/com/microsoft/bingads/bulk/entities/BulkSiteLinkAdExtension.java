@@ -1,27 +1,21 @@
 package com.microsoft.bingads.bulk.entities;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import com.microsoft.bingads.internal.functionalInterfaces.Predicate;
-
-import com.microsoft.bingads.bulk.BulkFileReader;
-import com.microsoft.bingads.bulk.BulkFileWriter;
-import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfSiteLink;
 import com.microsoft.bingads.campaignmanagement.SiteLink;
 import com.microsoft.bingads.campaignmanagement.SiteLinksAdExtension;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.bulk.entities.BulkEntity;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.internal.bulk.TryResult;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.SiteLinkAdExtensionIdentifier;
-import com.microsoft.bingads.internal.bulk.file.BulkObjectWriter;
-import com.microsoft.bingads.internal.bulk.file.BulkStreamReader;
-import com.microsoft.bingads.internal.bulk.file.TryResult;
+import com.microsoft.bingads.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
+import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Represents a sitelink ad extension that is derived from {@link BulkEntity}

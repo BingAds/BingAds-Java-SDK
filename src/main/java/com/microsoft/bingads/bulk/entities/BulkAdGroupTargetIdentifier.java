@@ -9,7 +9,7 @@ import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 
-class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
+public class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
 
     public BulkAdGroupTargetIdentifier(Class targetBidType) {
         super(targetBidType);

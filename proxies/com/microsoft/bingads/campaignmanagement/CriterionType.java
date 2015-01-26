@@ -1,5 +1,8 @@
 package com.microsoft.bingads.campaignmanagement;
 
+/**
+ * Enum class for CriterionType.
+ */
 public enum CriterionType {
 
     PRODUCT("Product");

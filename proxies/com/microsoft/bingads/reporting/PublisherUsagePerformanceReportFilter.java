@@ -1,7 +1,7 @@
 
 package com.microsoft.bingads.reporting;
 
-import java.util.List;
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -42,13 +42,13 @@ public class PublisherUsagePerformanceReportFilter {
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<AdDistributionReportFilter> adDistribution;
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;
     @XmlElement(name = "PricingModel", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
-    protected List<PricingModelReportFilter> pricingModel;
+    protected Collection<PricingModelReportFilter> pricingModel;
 
     /**
      * Gets the value of the adDistribution property.
@@ -58,7 +58,7 @@ public class PublisherUsagePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<AdDistributionReportFilter> getAdDistribution() {
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
         return adDistribution;
     }
 
@@ -70,7 +70,7 @@ public class PublisherUsagePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setAdDistribution(List<AdDistributionReportFilter> value) {
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
     }
 
@@ -106,7 +106,7 @@ public class PublisherUsagePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public List<PricingModelReportFilter> getPricingModel() {
+    public Collection<PricingModelReportFilter> getPricingModel() {
         return pricingModel;
     }
 
@@ -118,7 +118,7 @@ public class PublisherUsagePerformanceReportFilter {
      *     {@link String }
      *     
      */
-    public void setPricingModel(List<PricingModelReportFilter> value) {
+    public void setPricingModel(Collection<PricingModelReportFilter> value) {
         this.pricingModel = value;
     }
 

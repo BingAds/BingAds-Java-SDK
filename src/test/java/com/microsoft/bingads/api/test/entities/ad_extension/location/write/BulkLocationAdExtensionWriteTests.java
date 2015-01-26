@@ -18,8 +18,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkLocationAdExtensionWriteFromRowValuesPostalCodeTest.class,
     BulkLocationAdExtensionWriteFromRowValuesProvinceCodeTest.class,
     BulkLocationAdExtensionWriteFromRowValuesProvinceNameTest.class,
-    BulkLocationAdExtensionWriteFromRowValuesStatusTest.class,
-    BulkLocationAdExtensionWriteFromRowValuesVersionTest.class})
+    BulkLocationAdExtensionWriteFromRowValuesStatusTest.class})
 public class BulkLocationAdExtensionWriteTests {
 
 }

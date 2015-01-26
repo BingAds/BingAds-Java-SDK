@@ -1,15 +1,13 @@
 package com.microsoft.bingads.api.test.entities.ad_extension.site_link;
 
+import com.microsoft.bingads.bulk.entities.BulkSiteLink;
+import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
+import com.microsoft.bingads.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
+import java.util.List;
+import org.easymock.EasyMockSupport;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-
-import java.util.List;
-import org.easymock.EasyMockSupport;
-
-import com.microsoft.bingads.bulk.entities.BulkSiteLink;
-import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
-import com.microsoft.bingads.internal.bulk.entities.adextensions.SiteLinkAdExtensionIdentifier;
 
 public abstract class BulkSiteLinkAdExtensionTest extends EasyMockSupport {
 
