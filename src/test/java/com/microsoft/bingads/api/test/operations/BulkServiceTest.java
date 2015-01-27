@@ -81,7 +81,7 @@ public class BulkServiceTest extends FakeApiTest {
 
             @Override
             public void accept(DownloadCampaignsByAccountIdsRequest request) {
-                assertEquals(authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
+                assertEquals((Long)authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
                 assertEquals(parameters.getDataScope(), request.getDataScope());
                 assertEquals(parameters.getEntities(), request.getEntities());
                 assertEquals(parameters.getPerformanceStatsDateRange(), request.getPerformanceStatsDateRange());
@@ -217,7 +217,7 @@ public class BulkServiceTest extends FakeApiTest {
         FakeBulkService.setOnDownloadCampaignsByAccountIdsRequest(new Consumer<DownloadCampaignsByAccountIdsRequest>() {
             @Override
             public void accept(DownloadCampaignsByAccountIdsRequest request) {
-                assertEquals(authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
+                assertEquals((Long)authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
                 assertEquals(parameters.getDataScope(), request.getDataScope());
                 assertEquals(parameters.getEntities(), request.getEntities());
                 assertEquals(parameters.getPerformanceStatsDateRange(), request.getPerformanceStatsDateRange());
@@ -312,7 +312,7 @@ public class BulkServiceTest extends FakeApiTest {
         FakeBulkService.setOnDownloadCampaignsByAccountIdsRequest(new Consumer<DownloadCampaignsByAccountIdsRequest>() {
             @Override
             public void accept(DownloadCampaignsByAccountIdsRequest request) {
-                assertEquals(authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
+                assertEquals((Long)authorizationData.getAccountId(), request.getAccountIds().getLongs().get(0));
                 assertEquals(parameters.getDataScope(), request.getDataScope());
                 assertEquals(parameters.getEntities(), request.getEntities());
                 assertEquals(parameters.getPerformanceStatsDateRange(), request.getPerformanceStatsDateRange());

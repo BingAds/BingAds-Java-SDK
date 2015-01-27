@@ -1,16 +1,34 @@
 package com.microsoft.bingads.bulk;
 
+import java.util.List;
+
 /**
  * Contains tracking details about the results and status of the corresponding bulk operation. 
  * @param <TStatus>
  */
 public class BulkOperationStatus<TStatus> {
 
-    private TStatus status;
-    private int percentComplete;
-    private String resultFileUrl;
-    private String trackingId;
-    private ArrayOfOperationError errors;
+    private final TStatus status;
+
+    private final int percentComplete;
+
+    private final String resultFileUrl;
+
+    private final String trackingId;
+    
+    private final List<OperationError> errors;
+
+    public BulkOperationStatus(TStatus status, int percentComplete, String resultFileUrl, String trackingId, List<OperationError> errors) {
+        this.status = status;
+
+        this.percentComplete = percentComplete;
+
+        this.resultFileUrl = resultFileUrl;
+
+        this.trackingId = trackingId;
+
+        this.errors = errors;
+    }
 
     /**
      * Gets current status of the operation.
@@ -18,15 +36,7 @@ public class BulkOperationStatus<TStatus> {
      */
     public TStatus getStatus() {
         return status;
-    }
-
-    /**
-     * Sets current status of the operation.
-     * @param status
-     */
-    public void setStatus(TStatus status) {
-        this.status = status;
-    }
+    } 
 
     /**
      * Gets progress of the operation in percent.
@@ -35,15 +45,7 @@ public class BulkOperationStatus<TStatus> {
     public int getPercentComplete() {
         return percentComplete;
     }
-
-    /**
-     * Sets progress of the operation in percent.
-     * @param percentComplete
-     */
-    public void setPercentComplete(int percentComplete) {
-        this.percentComplete = percentComplete;
-    }
-
+   
     /**
      * Gets the result file URL for the operation.
      * @return
@@ -51,44 +53,20 @@ public class BulkOperationStatus<TStatus> {
     public String getResultFileUrl() {
         return resultFileUrl;
     }
-
-    /**
-     * Sets the result file URL for the operation.
-     * @param resultFileUrl
-     */
-    public void setResultFileUrl(String resultFileUrl) {
-        this.resultFileUrl = resultFileUrl;
-    }
-
+   
     /**
      * Gets the tracking Id for the operation.
      * @return
      */
     public String getTrackingId() {
         return this.trackingId;
-    }
-
-    /**
-     * Sets the tracking Id for the operation.
-     * @param trackingId
-     */
-    public void setTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-    }
+    }   
 
     /**
      * Gets the list of errors for the operation.
      * @return
      */
-    public ArrayOfOperationError getErrors() {
+    public List<OperationError> getErrors() {
         return errors;
-    }
-
-    /**
-     * Sets the list of errors for the operation.
-     * @param errors
-     */
-    public void setErrors(ArrayOfOperationError errors) {
-        this.errors = errors;
-    }
+    }   
 }

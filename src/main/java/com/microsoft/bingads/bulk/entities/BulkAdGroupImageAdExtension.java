@@ -8,7 +8,7 @@ import com.microsoft.bingads.bulk.BulkFileReader;
  * Extension record in a bulk file.
  *
  * For more information, see Ad Group Image Ad Extension at
- * http://go.microsoft.com/fwlink/?LinkID=511551. </para>
+ * http://go.microsoft.com/fwlink/?LinkID=511551.
  *
  * @see BulkServiceManager
  * @see BulkOperation

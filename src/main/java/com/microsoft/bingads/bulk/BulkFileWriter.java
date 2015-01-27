@@ -43,7 +43,7 @@ public class BulkFileWriter implements Closeable {
      * <ul>
      * <li>Single Line Entity: Writes single line to describe content</li>
      * <li>Multi Line Entity: Writes lines to describe the entity and all its
-     * children<li>
+     * children</li>
      * </ul>
      *
      * @param entity a bulk entity to be written to file

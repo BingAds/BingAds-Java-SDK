@@ -30,17 +30,18 @@ import java.util.List;
 public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
 
     /**
-     * The image ad extension.
+     * Gets the image ad extension.
+     * @return
      */
     public ImageAdExtension getImageAdExtension() {
-        return this.getAdExtension();
+        return getAdExtension();
     }
 
-    public void setImageAdExtension(ImageAdExtension value) {
-        this.setAdExtension(value);
+    public void setImageAdExtension(ImageAdExtension imageAdExtension) {
+        setAdExtension(imageAdExtension);
     }
 
-    private static List<BulkMapping<BulkImageAdExtension>> MAPPINGS;
+    private static final List<BulkMapping<BulkImageAdExtension>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkImageAdExtension>> m = new ArrayList<BulkMapping<BulkImageAdExtension>>();
@@ -102,8 +103,10 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         ImageAdExtension extension = new ImageAdExtension();
+
         extension.setType("ImageAdExtension");
-        this.setAdExtension(extension);
+        
+        setAdExtension(extension);
 
         super.processMappingsFromRowValues(values);
 

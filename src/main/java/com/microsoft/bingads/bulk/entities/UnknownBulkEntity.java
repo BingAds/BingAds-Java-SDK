@@ -17,7 +17,7 @@ public class UnknownBulkEntity extends SingleRecordBulkEntity {
         return values;
     }
 
-    public void setValues(Map<String, String> values) {
+    void setValues(Map<String, String> values) {
         this.values = values;
     }
 

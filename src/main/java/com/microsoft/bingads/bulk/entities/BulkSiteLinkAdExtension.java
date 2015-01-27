@@ -127,8 +127,7 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
 
             bulkSiteLink.setSiteLink(siteLink);
             bulkSiteLink.setAccountId(accountId);
-            bulkSiteLink.setAdExtensionId(siteLinksAdExtension.getId());
-            bulkSiteLink.setVersion(siteLinksAdExtension.getVersion());
+            bulkSiteLink.setAdExtensionId(siteLinksAdExtension.getId());            
             bulkSiteLink.setOrder(order++);
 
             bulkSiteLinks.add(bulkSiteLink);
@@ -194,15 +193,7 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
     static final Comparator<BulkSiteLink> ORDER_BY_ORDER = new Comparator<BulkSiteLink>() {
         @Override
         public int compare(BulkSiteLink o1, BulkSiteLink o2) {
-            if (o1 == null || o1.getOrder() == null) {
-                if (o2 == null || o2.getOrder() == null) {
-                    return 0;
-                }
-
-                return 1;
-            }
-
-            return o1.getOrder().compareTo(o2.getOrder());
+            return ((Integer)o1.getOrder()).compareTo(o2.getOrder());
         }
     };
 

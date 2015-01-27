@@ -35,12 +35,13 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
                 try {
                     GetDetailedBulkUploadStatusResponse statusResponse = result.get();
 
-                    BulkOperationStatus<UploadStatus> status = new BulkOperationStatus<UploadStatus>();
-
-                    status.setStatus(UploadStatus.fromValue(statusResponse.getRequestStatus()));
-                    status.setResultFileUrl(statusResponse.getResultFileUrl());
-                    status.setPercentComplete(statusResponse.getPercentComplete());
-                    status.setErrors(statusResponse.getErrors());
+                    BulkOperationStatus<UploadStatus> status = new BulkOperationStatus<UploadStatus>(
+                        UploadStatus.fromValue(statusResponse.getRequestStatus()),
+                        statusResponse.getPercentComplete(),
+                        statusResponse.getResultFileUrl(),
+                        null,
+                        statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
+                    );                   
 
                     resultFuture.setResult(status);
                 } catch (InterruptedException e) {

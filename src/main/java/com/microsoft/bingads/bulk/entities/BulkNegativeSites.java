@@ -20,7 +20,7 @@ import java.util.List;
  */
 abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentifier>, TIdentifier extends BulkNegativeSiteIdentifier> extends MultiRecordBulkEntity {
 
-    private List<TNegativeSite> bulkNegativeSites = new ArrayList<TNegativeSite>();
+    private final List<TNegativeSite> bulkNegativeSites = new ArrayList<TNegativeSite>();
 
     private TIdentifier firstRowIdentifier;
 
@@ -33,7 +33,7 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
      * in a subsequent upload operation. Corresponds to the 'Status' field in
      * the bulk file.
      */
-    private Status status;// { get; set; }
+    private Status status;
 
     private Class<TNegativeSite> negativeSiteClass;
 
@@ -47,9 +47,6 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
         this.status = status;
     }
 
-    /**
-     * Reserved for internal use.
-     */
     public List<TNegativeSite> getNegativeSites() {
         return Collections.unmodifiableList(this.bulkNegativeSites);
     }

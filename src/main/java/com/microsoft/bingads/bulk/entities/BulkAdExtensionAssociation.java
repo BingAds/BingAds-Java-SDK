@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This abstract class provides properties that are shared by all bulk ad extension association classes. For more information, see Bulk File Schema at http://go.microsoft.com/fwlink/?LinkID=511639.
+ * Reserved for internal use. This abstract class provides properties that are shared by all bulk ad extension association classes. For more information, see Bulk File Schema at http://go.microsoft.com/fwlink/?LinkID=511639.
  */
 public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity {
 
@@ -140,7 +140,7 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
         return editorialStatus;
     }
 
-    protected void setEditorialStatus(AdExtensionEditorialStatus editorialStatus) {
+    void setEditorialStatus(AdExtensionEditorialStatus editorialStatus) {
         this.editorialStatus = editorialStatus;
     }
 

@@ -10,21 +10,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class BulkEntityNegativeKeyword extends BulkNegativeKeyword {
+abstract class BulkEntityNegativeKeyword extends BulkNegativeKeyword {
 
     private String entityName;
 
-    private static List<BulkMapping<BulkEntityNegativeKeyword>> MAPPINGS;
+    private static final List<BulkMapping<BulkEntityNegativeKeyword>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkEntityNegativeKeyword>> m = new ArrayList<BulkMapping<BulkEntityNegativeKeyword>>();
 
-        m.add(new DynamicColumnNameMapping<BulkEntityNegativeKeyword, String>(new Function<BulkEntityNegativeKeyword, String>() {
-            @Override
-            public String apply(BulkEntityNegativeKeyword c) {
-                return c.getEntityColumnName();
-            }
-        },
+        m.add(new DynamicColumnNameMapping<BulkEntityNegativeKeyword, String>(
+                new Function<BulkEntityNegativeKeyword, String>() {
+                    @Override
+                    public String apply(BulkEntityNegativeKeyword c) {
+                        return c.getEntityColumnName();
+                    }
+                },
                 new Function<BulkEntityNegativeKeyword, String>() {
                     @Override
                     public String apply(BulkEntityNegativeKeyword c) {
@@ -56,13 +57,13 @@ public abstract class BulkEntityNegativeKeyword extends BulkNegativeKeyword {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
-    public String getEntityName() {
+    String getEntityName() {
         return entityName;
     }
 
-    public void setEntityName(String entityName) {
+    void setEntityName(String entityName) {
         this.entityName = entityName;
     }
 
-    public abstract String getEntityColumnName();
+    abstract String getEntityColumnName();
 }

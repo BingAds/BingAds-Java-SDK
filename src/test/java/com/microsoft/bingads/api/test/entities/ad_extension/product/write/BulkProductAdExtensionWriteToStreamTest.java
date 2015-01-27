@@ -30,7 +30,7 @@ public class BulkProductAdExtensionWriteToStreamTest extends
         @Override
         public int compare(BulkProductAdExtensionIdentifier o1,
                 BulkProductAdExtensionIdentifier o2) {
-            boolean areEqual = o1.getAccountId().equals(o2.getAccountId());
+            boolean areEqual = o1.getAccountId() == o2.getAccountId();
             areEqual &= o1.getAdExtensionId().equals(o2.getAdExtensionId());
             areEqual &= o1.getStatus().equals(o2.getStatus());
 

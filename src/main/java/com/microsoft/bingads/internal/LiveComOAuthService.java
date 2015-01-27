@@ -2,7 +2,7 @@ package com.microsoft.bingads.internal;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.bingads.ErrorMessages;
+import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.OAuthErrorDetails;
 import com.microsoft.bingads.OAuthTokenRequestException;
 import com.microsoft.bingads.OAuthTokens;
@@ -44,23 +44,17 @@ public class LiveComOAuthService implements OAuthService {
     }
 
     static {
-        URL temp;
-
         try {
-            temp = new URL("https://login.live.com/oauth20_desktop.srf");
+            DESKTOP_REDIRECT_URL = new URL("https://login.live.com/oauth20_desktop.srf");
         } catch (MalformedURLException e) {
-            temp = null;
+            throw new InternalException(e);
         }
 
-        DESKTOP_REDIRECT_URL = temp;
-
         try {
-            temp = new URL("https://login.live.com/oauth20_token.srf");
+            TOKEN_REQUEST_URL = new URL("https://login.live.com/oauth20_token.srf");
         } catch (MalformedURLException e) {
-            temp = null;
+            throw new InternalException(e);
         }
-
-        TOKEN_REQUEST_URL = temp;
     }
 
     private final WebServiceCaller webServiceCaller;
@@ -93,22 +87,19 @@ public class LiveComOAuthService implements OAuthService {
 
             InputStream stream = httpResponse.getEntity().getContent();            
             
-            if (httpResponse.getStatusLine().getStatusCode() == 200){                
-                
+            if (httpResponse.getStatusLine().getStatusCode() == 200){                                
                 OAuthTokensContract oauthResponse = mapper.readValue(stream, OAuthTokensContract.class);
+                
                 return new OAuthTokens(oauthResponse.getAccessToken(), oauthResponse.getAccessTokenExpiresInSeconds(), oauthResponse.getRefreshToken());
             } else {
                 OAuthErrorDetailsContract errorResponse = mapper.readValue(stream, OAuthErrorDetailsContract.class);
                 
-                OAuthErrorDetails errorDetails = new OAuthErrorDetails();
-                
-                errorDetails.setError(errorResponse.getError());
-                errorDetails.setDescription(errorResponse.getDescription());
+                OAuthErrorDetails errorDetails = new OAuthErrorDetails(errorResponse.getError(), errorResponse.getDescription());                                
                 
                 throw new OAuthTokenRequestException(ErrorMessages.OAuthError, errorDetails);
             }           
         } catch (IOException e) {
-            throw new IllegalArgumentException(e);
+            throw new InternalException(e);
         }
     }
 

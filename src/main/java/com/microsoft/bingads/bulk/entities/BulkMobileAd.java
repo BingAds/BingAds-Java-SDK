@@ -13,9 +13,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a mobile ad.
+ */
 public class BulkMobileAd extends BulkAd<MobileAd> {
 
-    private static List<BulkMapping<BulkMobileAd>> MAPPINGS;
+    private static final List<BulkMapping<BulkMobileAd>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkMobileAd>> m = new ArrayList<BulkMapping<BulkMobileAd>>();
@@ -115,7 +118,10 @@ public class BulkMobileAd extends BulkAd<MobileAd> {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getMobileAd(), "MobileAd");
+
         super.processMappingsToRowValues(values);
+
         MappingHelpers.<BulkMobileAd>convertToValues(this, values, MAPPINGS);
     }
 
@@ -126,6 +132,7 @@ public class BulkMobileAd extends BulkAd<MobileAd> {
         this.getAd().setType(AdType.MOBILE);
         
         super.processMappingsFromRowValues(values);
+        
         MappingHelpers.<BulkMobileAd>convertToEntity(values, MAPPINGS, this);
     }
 
@@ -133,7 +140,7 @@ public class BulkMobileAd extends BulkAd<MobileAd> {
         return this.ad;
     }
 
-    public void setMobileAd(MobileAd ad) {
-        this.setAd(ad);
+    public void setMobileAd(MobileAd mobileAd) {
+        this.setAd(mobileAd);
     }
 }

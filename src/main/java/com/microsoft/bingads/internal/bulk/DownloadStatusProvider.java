@@ -38,13 +38,14 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
                 try {
                     GetDetailedBulkDownloadStatusResponse statusResponse = result.get();
 
-                    BulkOperationStatus<DownloadStatus> status = new BulkOperationStatus<DownloadStatus>();
-
-                    status.setStatus(DownloadStatus.fromValue(statusResponse.getRequestStatus()));
-                    status.setResultFileUrl(statusResponse.getResultFileUrl());
-                    status.setPercentComplete(statusResponse.getPercentComplete());
-                    status.setErrors(statusResponse.getErrors());
-
+                    BulkOperationStatus<DownloadStatus> status = new BulkOperationStatus<DownloadStatus>(
+                            DownloadStatus.fromValue(statusResponse.getRequestStatus()),
+                            statusResponse.getPercentComplete(),
+                            statusResponse.getResultFileUrl(),
+                            null,
+                            statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
+                    );
+                    
                     resultFuture.setResult(status);
                 } catch (InterruptedException e) {                    
                     resultFuture.setException(e);

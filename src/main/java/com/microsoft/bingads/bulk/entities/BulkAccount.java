@@ -1,8 +1,7 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.UncheckedParseException;
+import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.campaignmanagement.Date;
-import com.microsoft.bingads.customermanagement.Account;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
@@ -21,11 +20,14 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * Represents an account that can be read from a bulk file.
+ */
 public class BulkAccount extends SingleRecordBulkEntity {
 
-    private Account account;
+    private long id;
 
-    private Long customerId;
+    private long customerId;
 
     private Calendar syncTime;
 
@@ -38,12 +40,7 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
-                        c.getAccount().setId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
+                        c.setId(Long.parseLong(v));
                     }
                 }
         ));
@@ -52,12 +49,7 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
-                        c.setCustomerId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
+                        c.setCustomerId(Long.parseLong(v));
                     }
                 }
         ));
@@ -89,19 +81,27 @@ public class BulkAccount extends SingleRecordBulkEntity {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
-    public Account getAccount() {
-        return account;
+    /**
+     * Gets the account id
+     * @return
+     */
+    public long getId() {
+        return id;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    private void setId(long id) {
+        this.id = id;
     }
 
-    public Long getCustomerId() {
+    /**
+     * Gets the customer id
+     * @return
+     */
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    private void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -114,8 +114,7 @@ public class BulkAccount extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsFromRowValues(RowValues values) {
-        this.setAccount(new Account());
+    public void processMappingsFromRowValues(RowValues values) {        
         MappingHelpers.<BulkAccount>convertToEntity(values, MAPPINGS, this);
     }
 

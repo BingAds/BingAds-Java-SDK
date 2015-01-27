@@ -30,7 +30,7 @@ public class BulkSiteLinkAdExtensionWriteToStreamTest extends
         @Override
         public int compare(SiteLinkAdExtensionIdentifier o1,
                 SiteLinkAdExtensionIdentifier o2) {
-            boolean areEqual = o1.getAccountId().equals(o2.getAccountId());
+            boolean areEqual = o1.getAccountId() == o2.getAccountId();
             areEqual &= o1.getAdExtensionId().equals(o2.getAdExtensionId());
             areEqual &= o1.getStatus().equals(o2.getStatus());
 

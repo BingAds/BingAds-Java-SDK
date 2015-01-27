@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
+/**
+ * Represents an age target that is associated with an ad group.
+ */
 public class BulkAdGroupAgeTarget extends BulkAgeTarget<BulkAdGroupAgeTargetBid> {
        
     public BulkAdGroupAgeTarget() {

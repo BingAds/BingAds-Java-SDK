@@ -32,7 +32,7 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
         super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData));
     }
 
-    protected BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
+    BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
         super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), trackingId);
     }
     

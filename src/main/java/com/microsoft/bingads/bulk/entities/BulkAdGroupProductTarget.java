@@ -20,15 +20,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents an ad group product target.
+ */
 public class BulkAdGroupProductTarget extends SingleRecordBulkEntity {
 
-    private BiddableAdGroupCriterion biddableAdGroupCriterion;// { get; set; }   
+    private BiddableAdGroupCriterion biddableAdGroupCriterion;
 
-    private String campaignName;// { get; private set; }
+    private String campaignName;
 
-    private String adGroupName;// { get; private set; }
+    private String adGroupName;
 
-    private static List<BulkMapping<BulkAdGroupProductTarget>> MAPPINGS;
+    private static final List<BulkMapping<BulkAdGroupProductTarget>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkAdGroupProductTarget>> m = new ArrayList<BulkMapping<BulkAdGroupProductTarget>>();

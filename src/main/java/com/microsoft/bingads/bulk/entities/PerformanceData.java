@@ -19,16 +19,24 @@ import java.util.List;
 public class PerformanceData {
 
     private Double spend;
+
     private Integer impressions;
+
     private Integer clicks;
+
     private Double clickThroughRate;
+
     private Double averageCostPerClick;
+
     private Double averageCostPerThousandImpressions;
+
     private Double averagePosition;
+
     private Integer conversions;
+
     private Double costPerConversion;
 
-    private static List<BulkMapping<PerformanceData>> MAPPINGS;
+    private static final List<BulkMapping<PerformanceData>> MAPPINGS;
 
     static {
         List<BulkMapping<PerformanceData>> m = new ArrayList<BulkMapping<PerformanceData>>();
@@ -46,7 +54,7 @@ public class PerformanceData {
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
-                        d.setImpressions(StringExtensions.nullOrInteger(v));
+                        d.setImpressions(StringExtensions.parseOptionalInteger(v));
                     }
                 }
         ));
@@ -55,7 +63,7 @@ public class PerformanceData {
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
-                        d.setClicks(StringExtensions.nullOrInteger(v));
+                        d.setClicks(StringExtensions.parseOptionalInteger(v));
                     }
                 }
         ));
@@ -100,7 +108,7 @@ public class PerformanceData {
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
-                        d.setConversions(StringExtensions.nullOrInteger(v));
+                        d.setConversions(StringExtensions.parseOptionalInteger(v));
                     }
                 }
         ));
@@ -177,40 +185,40 @@ public class PerformanceData {
                 || costPerConversion != null;
     }
 
-    public void setSpend(Double spend) {
+    private void setSpend(Double spend) {
         this.spend = spend;
     }
 
-    public void setImpressions(Integer impressions) {
+    private void setImpressions(Integer impressions) {
         this.impressions = impressions;
     }
 
-    public void setClicks(Integer clicks) {
+    private void setClicks(Integer clicks) {
         this.clicks = clicks;
     }
 
-    public void setClickThroughRate(Double clickThroughRate) {
+    private void setClickThroughRate(Double clickThroughRate) {
         this.clickThroughRate = clickThroughRate;
     }
 
-    public void setAverageCostPerClick(Double averageCostPerClick) {
+    private void setAverageCostPerClick(Double averageCostPerClick) {
         this.averageCostPerClick = averageCostPerClick;
     }
 
-    public void setAverageCostPerThousandImpressions(
+    private void setAverageCostPerThousandImpressions(
             Double averageCostPerThousandImpressions) {
         this.averageCostPerThousandImpressions = averageCostPerThousandImpressions;
     }
 
-    public void setAveragePosition(Double averagePosition) {
+    private void setAveragePosition(Double averagePosition) {
         this.averagePosition = averagePosition;
     }
 
-    public void setConversions(Integer conversions) {
+    private void setConversions(Integer conversions) {
         this.conversions = conversions;
     }
 
-    public void setCostPerConversion(Double costPerConversion) {
+    private void setCostPerConversion(Double costPerConversion) {
         this.costPerConversion = costPerConversion;
     }
 }

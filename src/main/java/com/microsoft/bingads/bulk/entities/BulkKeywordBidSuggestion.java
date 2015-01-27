@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a keyword bid suggestion. 
+ */
 public class BulkKeywordBidSuggestion extends BulkObject {
 
     private String keywordText;

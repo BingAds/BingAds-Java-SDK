@@ -1,7 +1,7 @@
 package com.microsoft.bingads.internal.bulk;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.ParentCallback;
+import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.bulk.BulkOperationProgressInfo;
 import com.microsoft.bingads.bulk.BulkOperationStatus;

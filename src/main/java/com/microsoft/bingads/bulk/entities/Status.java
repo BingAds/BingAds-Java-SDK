@@ -1,7 +1,7 @@
 package com.microsoft.bingads.bulk.entities;
 
 /**
- * Provides possible association status values for bulk entities.
+ * Provides possible status values for bulk entities.
  */
 public enum Status {
 

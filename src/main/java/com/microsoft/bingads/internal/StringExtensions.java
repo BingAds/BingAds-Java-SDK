@@ -86,14 +86,18 @@ public class StringExtensions {
      * Catches NumberFormatException and returns a null value instead
      *
      * @param value
-     * @return an Integer or a null if the value is not parseable as an integer
+     * @return an Integer or a null if the value is null or empty
      */
-    public static Integer nullOrInteger(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
+    public static Integer parseOptionalInteger(String value) {
+        if (isNullOrEmpty(value)) {
             return null;
         }
+
+        return Integer.parseInt(value);
+    }
+
+    public static int parseInt(String value) {
+        return Integer.parseInt(value);
     }
 
     public static Date parseDate(String headerValue) throws ParseException {

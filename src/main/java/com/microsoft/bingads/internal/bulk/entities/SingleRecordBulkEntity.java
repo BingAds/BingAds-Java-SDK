@@ -1,6 +1,6 @@
 package com.microsoft.bingads.internal.bulk.entities;
 
-import com.microsoft.bingads.UncheckedParseException;
+import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
 import com.microsoft.bingads.bulk.entities.BulkError;
 import com.microsoft.bingads.campaignmanagement.Date;

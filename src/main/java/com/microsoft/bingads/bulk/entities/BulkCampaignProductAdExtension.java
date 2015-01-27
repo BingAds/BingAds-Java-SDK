@@ -3,7 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.bulk.BulkServiceManager;
 
 /**
- * Represents a campaign level call ad extension. This class exposes properties
+ * Represents a campaign level product ad extension. This class exposes properties
  * that can be read and written as fields of the Campaign Product Ad Extension
  * record in a bulk file.
  *

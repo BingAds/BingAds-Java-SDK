@@ -38,7 +38,7 @@ public class BulkCampaignNegativeSites extends BulkNegativeSites<BulkCampaignNeg
      * Campaign Negative Site record. For more information, see Campaign
      * Negative Site at http://go.microsoft.com/fwlink/?LinkID=511524.
      */
-    private CampaignNegativeSites campaignNegativeSites;// { get; set; }
+    private CampaignNegativeSites campaignNegativeSites;
 
     public CampaignNegativeSites getCampaignNegativeSites() {
         return campaignNegativeSites;
@@ -52,7 +52,7 @@ public class BulkCampaignNegativeSites extends BulkNegativeSites<BulkCampaignNeg
      * The name of the campaign that the negative site is assigned. Corresponds
      * to the 'Campaign' field in the bulk file.
      */
-    private String campaignName;// { get; set; }
+    private String campaignName;
 
     public String getCampaignName() {
         return campaignName;
@@ -68,7 +68,7 @@ public class BulkCampaignNegativeSites extends BulkNegativeSites<BulkCampaignNeg
     public BulkCampaignNegativeSites() {
     }
 
-    public BulkCampaignNegativeSites(BulkCampaignNegativeSite site) {
+    BulkCampaignNegativeSites(BulkCampaignNegativeSite site) {
         super(site, BulkCampaignNegativeSite.class, BulkCampaignNegativeSitesIdentifier.class);
         setDataFromIdentifier(site.getIdentifier());
     }

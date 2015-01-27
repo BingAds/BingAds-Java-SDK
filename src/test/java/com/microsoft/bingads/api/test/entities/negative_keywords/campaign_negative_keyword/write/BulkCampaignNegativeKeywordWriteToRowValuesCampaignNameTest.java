@@ -30,7 +30,7 @@ public class BulkCampaignNegativeKeywordWriteToRowValuesCampaignNameTest extends
         this.<String>testWriteProperty("Campaign", this.datum, this.propertyValue, new BiConsumer<BulkCampaignNegativeKeyword, String>() {
             @Override
             public void accept(BulkCampaignNegativeKeyword c, String v) {
-                c.setEntityName(v);
+                c.setCampaignName(v);
             }
         });
     }

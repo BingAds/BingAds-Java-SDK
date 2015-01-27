@@ -29,11 +29,11 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
 
     private SiteLinkAdExtensionIdentifier identifier;
 
-    public SiteLinkAdExtensionIdentifier getIdentifier() {
+    SiteLinkAdExtensionIdentifier getIdentifier() {
         return identifier;
     }
 
-    private void setIdentifier(SiteLinkAdExtensionIdentifier identifier) {
+    void setIdentifier(SiteLinkAdExtensionIdentifier identifier) {
         this.identifier = identifier;
     }
 
@@ -82,15 +82,11 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
         return this.identifier.getVersion();
     }
 
-    public void setVersion(Integer version) {
-        this.identifier.setVersion(version);
-    }
-
     /**
      * The order of the sitelink displayed to a search user in the ad.
      * Corresponds to the 'Sitelink Extension Order' field in the bulk file.
      */
-    private Integer order;
+    private int order;
 
     /**
      * The SiteLink Data Object of the Campaign Management Service. A subset of
@@ -100,11 +96,11 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
      */
     private SiteLink siteLink;
 
-    public Integer getOrder() {
+    public int getOrder() {
         return order;
     }
 
-    public void setOrder(Integer order) {
+    public void setOrder(int order) {
         this.order = order;
     }
 
@@ -123,7 +119,7 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
         this.identifier = new SiteLinkAdExtensionIdentifier();
     }
 
-    private static List<BulkMapping<BulkSiteLink>> MAPPINGS;
+    private static final List<BulkMapping<BulkSiteLink>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkSiteLink>> m = new ArrayList<BulkMapping<BulkSiteLink>>();
@@ -138,7 +134,7 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkSiteLink>() {
                     @Override
                     public void accept(String v, BulkSiteLink c) {
-                        c.setOrder(StringExtensions.nullOrInteger(v));
+                        c.setOrder(StringExtensions.parseInt(v));
                     }
                 }
         ));

@@ -9,7 +9,7 @@ import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
  * entities of various types
  *
  */
-public class EntityInfo {
+class EntityInfo {
 
     private Creator<SingleRecordBulkEntity> creator;
     private String deleteAllColumnName;

@@ -12,13 +12,18 @@ import java.util.Map;
 public abstract class OAuthImplicitGrant extends OAuthAuthorization {
 
     private static final String EXPIRES_IN = "expires_in";
+
     private static final String ACCESS_TOKEN = "access_token";
+
     private static final String TOKEN = "token";
-    private String clientId;
-    private URL redirectionUri;
+
+    private final String clientId;
+    
+    private final URL redirectionUri;
 
     public OAuthImplicitGrant(String clientId, URL redirectionUri) {
         this.clientId = clientId;
+        
         this.redirectionUri = redirectionUri;
     }
 

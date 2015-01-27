@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.ArrayOfDeviceOSTargetBid;
@@ -14,7 +9,7 @@ import java.util.List;
 
 abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends BulkSubTarget<TBid> {
 
-    private DeviceOSTarget ageTarget;
+    private DeviceOSTarget deviceOSTarget;
 
     public BulkDeviceOsTarget(Class<TBid> classOfTBid) {
         super(classOfTBid);
@@ -68,11 +63,11 @@ abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends Bu
     }        
     
     public DeviceOSTarget getDeviceOsTarget() {
-        return ageTarget;
+        return deviceOSTarget;
     }
 
     public void setDeviceOsTarget(DeviceOSTarget ageTarget) {
-        this.ageTarget = ageTarget;
+        this.deviceOSTarget = ageTarget;
     }
     
     

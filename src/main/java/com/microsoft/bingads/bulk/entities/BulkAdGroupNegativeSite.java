@@ -76,7 +76,7 @@ public class BulkAdGroupNegativeSite extends BulkNegativeSite<BulkAdGroupNegativ
     }
 
     @Override
-    public MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite() {
+    MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite() {
         return new BulkAdGroupNegativeSites(this);
     }
 }

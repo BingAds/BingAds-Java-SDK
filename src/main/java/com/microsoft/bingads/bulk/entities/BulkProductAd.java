@@ -13,9 +13,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a product ad. 
+ */
 public class BulkProductAd extends BulkAd<ProductAd> {
 
-    private static List<BulkMapping<BulkProductAd>> MAPPINGS;
+    private static final List<BulkMapping<BulkProductAd>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkProductAd>> m = new ArrayList<BulkMapping<BulkProductAd>>();
@@ -40,22 +43,25 @@ public class BulkProductAd extends BulkAd<ProductAd> {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getProductAd(), "ProductAd");
+
         super.processMappingsToRowValues(values);
+
         MappingHelpers.<BulkProductAd>convertToValues(this, values, MAPPINGS);
     }
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        this.setAd(new ProductAd());
+        setAd(new ProductAd());
         
-        this.getAd().setType(AdType.PRODUCT);
+        getAd().setType(AdType.PRODUCT);
         
         super.processMappingsFromRowValues(values);
         MappingHelpers.<BulkProductAd>convertToEntity(values, MAPPINGS, this);
     }
 
     public ProductAd getProductAd() {
-        return this.ad;
+        return ad;
     }
 
     public void setProductAd(ProductAd ad) {

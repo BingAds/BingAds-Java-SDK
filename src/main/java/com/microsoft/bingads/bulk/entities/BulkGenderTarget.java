@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.ArrayOfGenderTargetBid;
@@ -14,7 +9,7 @@ import java.util.List;
 
 abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSubTarget<TBid> {
 
-    private GenderTarget ageTarget;
+    private GenderTarget genderTarget;
 
     public BulkGenderTarget(Class<TBid> classOfTBid) {
         super(classOfTBid);
@@ -68,11 +63,11 @@ abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSu
     }        
     
     public GenderTarget getGenderTarget() {
-        return ageTarget;
+        return genderTarget;
     }
 
     public void setGenderTarget(GenderTarget ageTarget) {
-        this.ageTarget = ageTarget;
+        this.genderTarget = ageTarget;
     }
     
     

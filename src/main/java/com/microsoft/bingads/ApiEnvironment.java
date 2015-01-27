@@ -1,13 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads;
 
+/**
+ * Represents Bing Ads API environment (Production or Sandbox).
+ */
 public enum ApiEnvironment {
     
+    /**
+     * Production
+     */
     PRODUCTION("Production"),
+
+    /**
+     * Sandbox
+     */
     SANDBOX("Sandbox");
         
     private final String value;

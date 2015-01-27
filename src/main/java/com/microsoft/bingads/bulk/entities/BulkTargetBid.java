@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.entities.BulkTargetIdentifier;
 import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
@@ -57,27 +53,27 @@ class BulkTargetBid extends SingleRecordBulkEntity {
         getIdentifier().setTargetId(targetId);
     }
     
-    public Long getEntityId() {
+    Long getEntityId() {
         return getIdentifier().getEntityId();
     }
     
-    public void setEntityId(Long entityId) {
+    void setEntityId(Long entityId) {
         getIdentifier().setEntityId(entityId);
     }
     
-    public String getEntityName() {
+    String getEntityName() {
         return getIdentifier().getEntityName();
     }
     
-    public void setEntityName(String entityName) {
+    void setEntityName(String entityName) {
         getIdentifier().setEntityName(entityName);
     }
     
-    public String getParentEntityName() {
+    String getParentEntityName() {
         return getIdentifier().getParentEntityName();
     }
     
-    public void setParentEntityName(String entityName) {
+    void setParentEntityName(String entityName) {
         getIdentifier().setParentEntityName(entityName);
     }
 

@@ -13,8 +13,8 @@ import org.apache.http.HttpRequest;
  */
 public class PasswordAuthentication extends Authentication {
 
-    private String userName;
-    private String password;
+    private final String userName;
+    private final String password;
 
     /**
      * Initializes a new instance of the PasswordAuthentication class using the specified user name and password.
@@ -27,44 +27,20 @@ public class PasswordAuthentication extends Authentication {
         super();
         this.userName = userName;
         this.password = password;
+    }   
+
+    @Override
+    public void addHeaders(HeadersImpl headersImplementation) {
+        headersImplementation.addHeader(HttpHeaders.USER_NAME, this.userName);
+        headersImplementation.addHeader(HttpHeaders.PASSWORD, this.password);
     }
 
-    /**
-     * Reserved for internal use.
-     */
-    @Override
-    public void addAuthenticationHeadersToFileUploadRequest(HttpRequest request) {
-        request.addHeader(HttpHeaders.USER_NAME, this.userName);
-        request.addHeader(HttpHeaders.PASSWORD, this.password);
-    }
-
-    /**
-     * Reserved for internal use.
-     */
-    @Override
-    public void addAuthenticationHeadersApiRequest(List<Header> headers, String namespace) {
-        try {
-            headers.add(new Header(new QName(namespace, HttpHeaders.USER_NAME), this.userName, new JAXBDataBinding(String.class)));        
-            headers.add(new Header(new QName(namespace, HttpHeaders.PASSWORD), this.password, new JAXBDataBinding(String.class)));
-        } catch (JAXBException ex) {
-            throw new InternalException(ex);
-        }
-    }
-    
     /**
      * Gets the user name.
      * @return
      */
     public String getUserName() {
         return userName;
-    }
-
-    /**
-     * Sets the user name.
-     * @param userName
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
     
     /**
@@ -73,13 +49,5 @@ public class PasswordAuthentication extends Authentication {
      */
     public String getPassword() {
         return password;
-    }
-
-    /**
-     * Sets the password.
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    }   
 }

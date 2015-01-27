@@ -1,9 +1,11 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.ErrorMessages;
+
 /**
  * Represents a user who intends to access the corresponding customer and
  * account. An instance of this class is required to authenticate with Bing Ads
- * if you are using either {@link ServiceClient<TServiceClient>} or
+ * if you are using either {@link ServiceClient} or
  * {@link BulkServiceManager}.
  *
  */
@@ -16,13 +18,13 @@ public class AuthorizationData {
      * as the CustomerAccountId header element in calls to the Bing Ads web
      * services.
      */
-    private Long accountId;
+    private long accountId;
 
     /**
      * The identifier of the customer that owns the account. Used as the
      * CustomerId header element in calls to the Bing Ads web services.
      */
-    private Long customerId;
+    private long customerId;
 
     /**
      * The Bing Ads developer access token. Used as the DeveloperToken header
@@ -51,7 +53,7 @@ public class AuthorizationData {
      * Gets the identifier of the account that owns the entities in the request. This value is used as the CustomerAccountId header in calls to the Bing Ads web services.
      * @return
      */
-    public Long getAccountId() {
+    public long getAccountId() {
         return accountId;
     }
 
@@ -59,7 +61,7 @@ public class AuthorizationData {
      * Sets the identifier of the account that owns the entities in the request. This value is used as the CustomerAccountId header in calls to the Bing Ads web services.
      * @param accountId
      */
-    public void setAccountId(Long accountId) {
+    public void setAccountId(long accountId) {
         this.accountId = accountId;
     }
 
@@ -67,7 +69,7 @@ public class AuthorizationData {
      * Gets the identifier of the customer that owns the account. This value is used as the CustomerId header element in calls to the Bing Ads web services.
      * @return
      */
-    public Long getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
@@ -75,7 +77,7 @@ public class AuthorizationData {
      * Sets the identifier of the customer that owns the account. This value is used as the CustomerId header element in calls to the Bing Ads web services.
      * @param customerId
      */
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 

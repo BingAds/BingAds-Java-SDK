@@ -33,7 +33,8 @@ import java.util.List;
 public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension> {
 
     /**
-     * The location ad extension.
+     * Gets the location ad extension.
+     * @return
      */
     public LocationAdExtension getLocationAdExtension() {
         return this.getAdExtension();
@@ -43,7 +44,7 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
         this.setAdExtension(extension);
     }
 
-    private static List<BulkMapping<BulkLocationAdExtension>> MAPPINGS;
+    private static final List<BulkMapping<BulkLocationAdExtension>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkLocationAdExtension>> m = new ArrayList<BulkMapping<BulkLocationAdExtension>>();
@@ -374,10 +375,12 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         LocationAdExtension extension = new LocationAdExtension();
+
         extension.setType("LocationAdExtension");
+        
         this.setLocationAdExtension(extension);
 
-        if (!StringExtensions.isNullOrEmpty(values.get(StringTable.Latitude)) && StringExtensions.isNullOrEmpty(values.get(StringTable.Longitude))) {
+        if (!StringExtensions.isNullOrEmpty(values.get(StringTable.Latitude)) || !StringExtensions.isNullOrEmpty(values.get(StringTable.Longitude))) {
             this.getLocationAdExtension().setGeoPoint(new GeoPoint());
         }
 

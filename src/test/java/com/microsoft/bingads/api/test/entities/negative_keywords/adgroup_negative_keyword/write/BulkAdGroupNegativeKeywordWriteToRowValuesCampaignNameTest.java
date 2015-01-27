@@ -30,7 +30,7 @@ public class BulkAdGroupNegativeKeywordWriteToRowValuesCampaignNameTest extends 
         this.<String>testWriteProperty("Ad Group", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupNegativeKeyword, String>() {
             @Override
             public void accept(BulkAdGroupNegativeKeyword c, String v) {
-                c.setEntityName(v);
+                c.setAdGroupName(v);
             }
         });
     }

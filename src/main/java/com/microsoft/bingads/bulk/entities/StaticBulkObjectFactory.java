@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * An implementation that uses a static list to define the {@link BulkObject} that it knows how to construct
+ * Reserved for internal use.
  *
  */
 public class StaticBulkObjectFactory implements BulkObjectFactory {

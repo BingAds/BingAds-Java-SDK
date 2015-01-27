@@ -1,7 +1,7 @@
 package com.microsoft.bingads;
 
 /**
- * Contains information about OAuth access tokens received from he Microsoft Account authorization service. 
+ * Contains information about OAuth access tokens received from the Microsoft Account authorization service.
  */
 public class OAuthTokens {
 
@@ -37,7 +37,7 @@ public class OAuthTokens {
     }
 
     /**
-     * Gets the Expiration time for the corresponding access token in seconds.
+     * Gets the remaining time before expiration for the corresponding access token in seconds.
      * @return
      */
     public long getAccessTokenExpiresInSeconds() {

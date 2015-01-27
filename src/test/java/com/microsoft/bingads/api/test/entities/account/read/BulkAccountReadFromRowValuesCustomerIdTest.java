@@ -31,8 +31,7 @@ public class BulkAccountReadFromRowValuesCustomerIdTest extends BulkAccountTest 
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
             {"123", 123L},
-            {"9223372036854775807", 9223372036854775807L},
-            {null, null}
+            {"9223372036854775807", 9223372036854775807L}            
         });
     }
 

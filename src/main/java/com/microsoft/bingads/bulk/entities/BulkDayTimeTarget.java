@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.ArrayOfDayTimeTargetBid;
@@ -14,7 +9,7 @@ import java.util.List;
 
 abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends BulkSubTarget<TBid> {
 
-    private DayTimeTarget ageTarget;
+    private DayTimeTarget dayTimeTarget;
 
     public BulkDayTimeTarget(Class<TBid> classOfTBid) {
         super(classOfTBid);
@@ -68,12 +63,10 @@ abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends Bulk
     }        
     
     public DayTimeTarget getDayTimeTarget() {
-        return ageTarget;
+        return dayTimeTarget;
     }
 
-    public void setDayTimeTarget(DayTimeTarget ageTarget) {
-        this.ageTarget = ageTarget;
-    }
-    
-    
+    public void setDayTimeTarget(DayTimeTarget dayTimeTarget) {
+        this.dayTimeTarget = dayTimeTarget;
+    }        
 }

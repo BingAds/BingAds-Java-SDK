@@ -1,13 +1,12 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.ErrorMessages;
+import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.internal.bulk.BulkObject;
 import java.util.Calendar;
 import java.util.List;
 
 /**
- * An object which can be presented in the Bulk File format
- *
+ * An object which can be presented in the Bulk File format 
  */
 public abstract class BulkEntity extends BulkObject {
 
@@ -21,9 +20,8 @@ public abstract class BulkEntity extends BulkObject {
         }
     }
 
-    protected void validateListNotNullOrEmpty(Object listObject,
-            List list, String propertyName) {
-        if (listObject == null || list.size() == 0) {
+    protected void validateListNotNullOrEmpty(Object listObject, List list, String propertyName) {
+        if (listObject == null || list.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessages.getListMustNotBeEmptyMessage(getClass().getName(), propertyName));
         }
     }

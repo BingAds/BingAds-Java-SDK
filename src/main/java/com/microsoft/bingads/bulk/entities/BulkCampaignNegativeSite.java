@@ -61,7 +61,7 @@ public class BulkCampaignNegativeSite extends BulkNegativeSite<BulkCampaignNegat
     }
 
     @Override
-    public MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite() {
+    MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite() {
         return new BulkCampaignNegativeSites(this);
     }
 }

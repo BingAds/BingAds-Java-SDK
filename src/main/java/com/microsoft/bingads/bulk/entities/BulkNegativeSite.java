@@ -23,7 +23,7 @@ import java.util.List;
  */
 abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> extends SingleRecordBulkEntity {
 
-    private TIdentifier identifier;// { get; set; }
+    private TIdentifier identifier;
 
     public TIdentifier getIdentifier() {
         return identifier;
@@ -44,15 +44,15 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
         return this.identifier.getStatus();
     }
 
-    public void setStatus(Status value) {
-        this.identifier.setStatus(value);
+    public void setStatus(Status status) {
+        this.identifier.setStatus(status);
     }
 
     /**
      * The URL of a website on which you do not want your ads displayed.
      * Corresponds to the 'Website' field in the bulk file.
      */
-    public String website;// { get; set; }
+    private String website;
 
     public String getWebsite() {
         return website;
@@ -66,7 +66,7 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
         this.identifier = identifier;
     }
 
-    private static List<BulkMapping<BulkNegativeSite>> MAPPINGS;
+    private static final List<BulkMapping<BulkNegativeSite>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkNegativeSite>> m = new ArrayList<BulkMapping<BulkNegativeSite>>();
@@ -111,5 +111,5 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
         return createNegativeSitesWithThisNegativeSite();
     }
 
-    protected abstract MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite();
+    abstract MultiRecordBulkEntity createNegativeSitesWithThisNegativeSite();
 }

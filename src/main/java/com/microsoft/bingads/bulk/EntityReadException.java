@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk;
 
 /**
- * This exception is thrown when attempting to read entities from a bulk file using BulkFileReader.ReadEntities.
+ * This exception is thrown when attempting to read entities from a bulk file using BulkFileReader.readEntities.
  */
 public class EntityReadException extends RuntimeException {
     

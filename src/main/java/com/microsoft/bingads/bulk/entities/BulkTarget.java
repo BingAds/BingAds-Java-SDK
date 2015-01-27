@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.entities.BulkTargetIdentifier;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.campaignmanagement.LocationTarget2;
 import com.microsoft.bingads.campaignmanagement.Target2;
@@ -392,100 +388,99 @@ abstract class BulkTarget<
         target.setIdentifier(identifier);
     }
 
-    public final Status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public final void setStatus(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    protected final Long getEntityId() {
+    protected Long getEntityId() {
         return entityId;
     }
 
-    protected final void setEntityId(Long entityId) {
+    protected void setEntityId(Long entityId) {
         this.entityId = entityId;
     }
 
-    protected final String getEntityName() {
+    protected String getEntityName() {
         return entityName;
     }
 
-    protected final void setEntityName(String entityName) {
+    protected void setEntityName(String entityName) {
         this.entityName = entityName;
     }
 
-    protected final String getParentEntityName() {
+    protected String getParentEntityName() {
         return parentEntityName;
     }
 
-    protected final void setParentEntityName(String parentEntityName) {
+    protected void setParentEntityName(String parentEntityName) {
         this.parentEntityName = parentEntityName;
     }
 
-    public final Target2 getTarget() {
+    public Target2 getTarget() {
         return target;
     }
 
-    public final void setTarget(Target2 target) {
+    public void setTarget(Target2 target) {
         this.target = target;
     }
 
-    public final TAge getAgeTarget() {
+    public TAge getAgeTarget() {
         return ageTarget;
     }
 
-    public final void setAgeTarget(TAge ageTarget) {
+    public void setAgeTarget(TAge ageTarget) {
         this.ageTarget = ageTarget;
     }
 
-    public final TDayTime getDayTimeTarget() {
+    public TDayTime getDayTimeTarget() {
         return dayTimeTarget;
     }
 
-    public final void setDayTime(TDayTime dayTimeTarget) {
+    public void setDayTime(TDayTime dayTimeTarget) {
         this.dayTimeTarget = dayTimeTarget;
     }
 
-    public final TDeviceOs getDeviceOsTarget() {
+    public TDeviceOs getDeviceOsTarget() {
         return deviceOsTarget;
     }
 
-    public final void setDeviceOs(TDeviceOs deviceOsTarget) {
+    public void setDeviceOs(TDeviceOs deviceOsTarget) {
         this.deviceOsTarget = deviceOsTarget;
     }
 
-    public final TGender getGenderTarget() {
+    public TGender getGenderTarget() {
         return genderTarget;
     }
 
-    public final void setGender(TGender genderTarget) {
+    public void setGender(TGender genderTarget) {
         this.genderTarget = genderTarget;
     }
     
-    public final TLocation getLocationTarget() {
+    public TLocation getLocationTarget() {
         return locationTarget;
     }
 
-    public final void setLocationTarget(TLocation locationTarget) {
+    public void setLocationTarget(TLocation locationTarget) {
         this.locationTarget = locationTarget;
     }
 
-    public final TNegativeLocation getNegativeLocationTarget() {
+    public TNegativeLocation getNegativeLocationTarget() {
         return negativeLocationTarget;
     }
 
-    public final void setNegativeLocationTarget(TNegativeLocation negativeLocationTarget) {
+    public void setNegativeLocationTarget(TNegativeLocation negativeLocationTarget) {
         this.negativeLocationTarget = negativeLocationTarget;
     }
 
-    public final TRadius getRadiusTarget() {
+    public TRadius getRadiusTarget() {
         return radiusTarget;
     }
 
-    public final void setRadiusTarget(TRadius radiusTarvet) {
+    public void setRadiusTarget(TRadius radiusTarvet) {
         this.radiusTarget = radiusTarvet;
     }
-
 }

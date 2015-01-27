@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a negative keyword list that is assigned to a campaign. Each negative keyword list can be read or written in a bulk file.  
+ */
 public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
 
     private SharedEntityAssociation sharedEntityAssociation;

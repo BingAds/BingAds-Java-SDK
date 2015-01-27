@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.ArrayOfCityTargetBid;
@@ -511,7 +506,7 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
 
     @Override
     void validatePropertiesNotNull() {
-        if (getCityTarget() == null) {
+        if (getCityTarget() == null && getMetroAreaTarget() == null && getStateTarget() == null && getCountryTarget() == null && getPostalCodeTarget() == null) {
             throw new IllegalStateException("At least one location sub target must be not null.");
         }
     }
@@ -520,6 +515,22 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
     void validateBidsNotNullOrEmpty() {
         if (getCityTarget() != null) {
             validateListNotNullOrEmpty(getCityTarget().getBids(), getCityTarget().getBids().getCityTargetBids(), "CityTarget.Bids");
+        }
+
+        if (getMetroAreaTarget() != null) {
+            validateListNotNullOrEmpty(getMetroAreaTarget().getBids(), getMetroAreaTarget().getBids().getMetroAreaTargetBids(), "MetroAreaTarget.Bids");
+        }
+
+        if (getCountryTarget() != null) {
+            validateListNotNullOrEmpty(getCountryTarget().getBids(), getCountryTarget().getBids().getCountryTargetBids(), "CountryTarget.Bids");
+        }
+
+        if (getStateTarget() != null) {
+            validateListNotNullOrEmpty(getStateTarget().getBids(), getStateTarget().getBids().getStateTargetBids(), "StateTarget.Bids");
+        }
+
+        if (getPostalCodeTarget() != null) {
+            validateListNotNullOrEmpty(getPostalCodeTarget().getBids(), getPostalCodeTarget().getBids().getPostalCodeTargetBids(), "PostalCodeTarget.Bids");
         }
     }
 

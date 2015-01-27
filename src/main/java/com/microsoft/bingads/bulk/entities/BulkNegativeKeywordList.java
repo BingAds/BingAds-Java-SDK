@@ -14,12 +14,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a negative keyword list. 
+ */
 public class BulkNegativeKeywordList extends SingleRecordBulkEntity {
 
-    public NegativeKeywordList negativeKeywordList;
-    public Status status;
+    private NegativeKeywordList negativeKeywordList;
 
-    private static List<BulkMapping<BulkNegativeKeywordList>> MAPPINGS;
+    private Status status;
+
+    private static final List<BulkMapping<BulkNegativeKeywordList>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkNegativeKeywordList>> m = new ArrayList<BulkMapping<BulkNegativeKeywordList>>();

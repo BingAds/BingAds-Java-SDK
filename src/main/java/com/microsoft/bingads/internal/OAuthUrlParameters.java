@@ -4,16 +4,17 @@ import java.net.URL;
 
 class OAuthUrlParameters {
 
-    private String clientId;// { get; set; }
+    private String clientId;
 
-    private String responseType;// { get; set; }
+    private String responseType;
 
-    private URL redirectionUri;// { get; set; }
+    private URL redirectionUri;
 
-    public OAuthUrlParameters(String clientId, String responseType,
-            URL redirectionUri) {
+    public OAuthUrlParameters(String clientId, String responseType, URL redirectionUri) {
         this.clientId = clientId;
+
         this.responseType = responseType;
+        
         this.redirectionUri = redirectionUri;
     }
 

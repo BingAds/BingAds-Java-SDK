@@ -2,10 +2,10 @@ package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.internal.StringTable;
 
+/**
+ * Represents a negative keyword that is assigned to a campaign. Each negative keyword can be read or written in a bulk file. 
+ */
 public class BulkCampaignNegativeKeyword extends BulkEntityNegativeKeyword {
-
-    private Long campaignId;
-    private String campaignName;
 
     public Long getCampaignId() {
         return this.getParentId();
@@ -19,8 +19,12 @@ public class BulkCampaignNegativeKeyword extends BulkEntityNegativeKeyword {
         return this.getEntityName();
     }
 
+    public void setCampaignName(String campaignName) {
+        setEntityName(campaignName);
+    }
+
     @Override
-    public String getEntityColumnName() {
+    String getEntityColumnName() {
         return StringTable.Campaign;
     }
 

@@ -3,10 +3,11 @@ package com.microsoft.bingads.bulk;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.ParentCallback;
+import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.ServiceUtils;
+import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
 import com.microsoft.bingads.internal.HttpHeaders;
 import com.microsoft.bingads.internal.ResultFuture;
@@ -453,11 +454,16 @@ public class BulkServiceManager {
 
                     Consumer<HttpRequest> addHeaders = new Consumer<HttpRequest>() {
                         @Override
-                        public void accept(HttpRequest request) {
+                        public void accept(final HttpRequest request) {
                             request.addHeader(HttpHeaders.DEVELOPER_TOKEN, authorizationData.getDeveloperToken());
-                            request.addHeader(HttpHeaders.CUSTOMER_ID, authorizationData.getCustomerId().toString());
-                            request.addHeader(HttpHeaders.ACCOUNT_ID, authorizationData.getAccountId().toString());
-                            authorizationData.getAuthentication().addAuthenticationHeadersToFileUploadRequest(request);
+                            request.addHeader(HttpHeaders.CUSTOMER_ID, Long.toString(authorizationData.getCustomerId()));
+                            request.addHeader(HttpHeaders.ACCOUNT_ID, Long.toString(authorizationData.getAccountId()));
+                            authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
+                                @Override
+                                public void addHeader(String name, String value) {
+                                    request.addHeader(name, value);
+                                }
+                            });
                         }
                     };
 

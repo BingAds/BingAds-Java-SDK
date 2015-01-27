@@ -15,7 +15,7 @@ import java.util.List;
 
 public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
 
-    private Long accountId;
+    private long accountId;
 
     private Long adExtensionId;
 
@@ -98,7 +98,7 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
                 new BiConsumer<String, BulkAdExtensionIdentifier>() {
                     @Override
                     public void accept(String v, BulkAdExtensionIdentifier c) {
-                        c.setVersion(StringExtensions.nullOrInteger(v));
+                        c.setVersion(StringExtensions.parseOptionalInteger(v));
                     }
                 }
         ));
@@ -106,11 +106,11 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
-    public Long getAccountId() {
+    public long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Long accountId) {
+    public void setAccountId(long accountId) {
         this.accountId = accountId;
     }
 
@@ -134,7 +134,7 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    protected void setVersion(Integer version) {
         this.version = version;
     }
 
@@ -146,11 +146,6 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
     @Override
     public void readFromRowValues(RowValues values) {
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        throw new UnsupportedOperationException();
     }
 
     @Override

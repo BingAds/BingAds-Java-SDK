@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.entities.BulkTargetIdentifier;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;

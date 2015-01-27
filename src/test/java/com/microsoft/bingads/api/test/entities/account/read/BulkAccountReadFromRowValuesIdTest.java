@@ -22,8 +22,6 @@ public class BulkAccountReadFromRowValuesIdTest extends BulkAccountTest {
         return Arrays.asList(new Object[][]{
             {"123", 123L},
             {"9223372036854775807", 9223372036854775807L},
-            {"", null},
-            {null, null}
         });
     }
 
@@ -32,7 +30,7 @@ public class BulkAccountReadFromRowValuesIdTest extends BulkAccountTest {
         this.<Long>testReadProperty("Id", this.datum, this.expectedResult, new Function<BulkAccount, Long>() {
             @Override
             public Long apply(BulkAccount c) {
-                return c.getAccount().getId();
+                return c.getId();
             }
         });
     }

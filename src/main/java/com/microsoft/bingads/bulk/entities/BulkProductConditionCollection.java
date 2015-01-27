@@ -47,24 +47,23 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
     /**
      * The collection of product conditions for a product ad extension.
      */
-    private ProductConditionCollection productConditionCollection; // { get; set; }
+    private ProductConditionCollection productConditionCollection;
 
     public ProductConditionCollection getProductConditionCollection() {
         return productConditionCollection;
     }
 
-    public void setProductConditionCollection(
-            ProductConditionCollection productConditionCollection) {
+    public void setProductConditionCollection(ProductConditionCollection productConditionCollection) {
         this.productConditionCollection = productConditionCollection;
     }
 
-    private BulkProductAdExtensionIdentifier identifier; // { get; private set; }
+    private BulkProductAdExtensionIdentifier identifier;
 
-    public BulkProductAdExtensionIdentifier getIdentifier() {
+    BulkProductAdExtensionIdentifier getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(BulkProductAdExtensionIdentifier identifier) {
+    void setIdentifier(BulkProductAdExtensionIdentifier identifier) {
         this.identifier = identifier;
     }
 
@@ -112,15 +111,11 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
         return this.identifier.getVersion();
     }
 
-    public void setVersion(Integer value) {
-        this.identifier.setVersion(value);
-    }
-
     /**
      * The name of the ad extension. Corresponds to the 'Name' field in the bulk
      * file.
      */
-    public String name;// { get; set; }
+    private String name;
 
     public String getName() {
         return name;
@@ -134,7 +129,7 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
      * The product ad extension's store identifier. Corresponds to the 'Store
      * Id' field in the bulk file.
      */
-    public Long storeId;// { get; set; }
+    private Long storeId;
 
     public Long getStoreId() {
         return storeId;
@@ -148,7 +143,7 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
      * The product ad extension's store name. Corresponds to the 'Store Name'
      * field in the bulk file.
      */
-    public String storeName;// { get; private set; }
+    private String storeName;
 
     public String getStoreName() {
         return storeName;
@@ -165,7 +160,7 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
         this.identifier = new BulkProductAdExtensionIdentifier();
     }
 
-    private static List<BulkMapping<BulkProductConditionCollection>> MAPPINGS;
+    private static final List<BulkMapping<BulkProductConditionCollection>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkProductConditionCollection>> m = new ArrayList<BulkMapping<BulkProductConditionCollection>>();

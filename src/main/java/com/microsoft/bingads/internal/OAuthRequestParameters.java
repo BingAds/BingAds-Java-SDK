@@ -4,20 +4,29 @@ import java.net.URL;
 
 class OAuthRequestParameters {
 
-    private String clientId;
-    private String clientSecret;
-    private URL redirectionUri;
-    private String grantType;
-    private String grantParamName;
-    private String grantValue;
+    private final String clientId;
 
-    public OAuthRequestParameters(String clientId, String clientSecret,
-            URL redirectionUri, String grantType, String grantParamName, String grantValue) {
+    private final String clientSecret;
+
+    private final URL redirectionUri;
+
+    private final String grantType;
+
+    private final String grantParamName;
+
+    private final String grantValue;
+
+    public OAuthRequestParameters(String clientId, String clientSecret, URL redirectionUri, String grantType, String grantParamName, String grantValue) {
         this.clientId = clientId;
+
         this.clientSecret = clientSecret;
+
         this.redirectionUri = redirectionUri;
+
         this.grantType = grantType;
+
         this.grantParamName = grantParamName;
+        
         this.grantValue = grantValue;
     }
 
@@ -82,47 +91,23 @@ class OAuthRequestParameters {
         return clientId;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
     public String getClientSecret() {
         return clientSecret;
-    }
-
-    public void setClientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
     }
 
     public URL getRedirectionUri() {
         return redirectionUri;
     }
 
-    public void setRedirectionUri(URL redirectionUri) {
-        this.redirectionUri = redirectionUri;
-    }
-
     public String getGrantType() {
         return grantType;
-    }
-
-    public void setGrantType(String grantType) {
-        this.grantType = grantType;
     }
 
     public String getGrantParamName() {
         return grantParamName;
     }
 
-    public void setGrantParamName(String grantParamName) {
-        this.grantParamName = grantParamName;
-    }
-
     public String getGrantValue() {
         return grantValue;
-    }
-
-    public void setGrantValue(String grantValue) {
-        this.grantValue = grantValue;
     }
 }

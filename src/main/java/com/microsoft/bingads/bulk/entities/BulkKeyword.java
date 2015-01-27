@@ -19,14 +19,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a keyword. 
+ */
 public class BulkKeyword extends SingleRecordBulkEntity {
 
     private Long adGroupId;
+
     private Keyword keyword;
+
     private String campaignName;
+
     private String adGroupName;
+
     private PerformanceData performanceData;
+
     private QualityScoreData qualityScoreData;
+
     private BidSuggestionData bidSuggestions;
 
     private static final List<BulkMapping<BulkKeyword>> MAPPINGS;
@@ -258,6 +267,8 @@ public class BulkKeyword extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getKeyword(), "Keyword");
+
         MappingHelpers.<BulkKeyword>convertToValues(this, values, MAPPINGS);
     }
 

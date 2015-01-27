@@ -1,5 +1,6 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.HttpHeaders;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
@@ -17,8 +18,9 @@ import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 
 /**
- * Provides an interface for calling the methods of the specified Bing Ads service. 
- * @param <T>
+ * Provides an interface for calling the methods of the specified Bing Ads service.
+ *
+ * @param <T> The Bing Ads service interface that should be called. For example, ICampaignManagementService.
  */
 public class ServiceClient<T> {
 
@@ -31,6 +33,7 @@ public class ServiceClient<T> {
 
     /**
      * Gets the Bing Ads API environment.
+     *
      * @return
      */
     public ApiEnvironment getEnvironment() {
@@ -38,7 +41,8 @@ public class ServiceClient<T> {
     }
 
     /**
-     * Get the data representing a user who intends to call the API.
+     * Gets the data representing a user who intends to call the API.
+     *
      * @return
      */
     public AuthorizationData getAuthorizationData() {
@@ -47,14 +51,15 @@ public class ServiceClient<T> {
 
     /**
      * Initializes a new instance of this class with the specified authorization data.
+     *
      * @param authorizationData
      * @param serviceInterface
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
         this(authorizationData, ApiEnvironment.PRODUCTION, serviceInterface);
-        
+
         ApiEnvironment environmentFromConfig = getEnvironmentFromConfig();
-        
+
         if (environmentFromConfig != null) {
             this.environment = environmentFromConfig;
         }
@@ -62,6 +67,7 @@ public class ServiceClient<T> {
 
     /**
      * Initializes a new instance of this class with the specified authorization data and Bing Ads API environment.
+     *
      * @param authorizationData
      * @param environment
      * @param serviceInterface
@@ -69,7 +75,7 @@ public class ServiceClient<T> {
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
-        this.environment = environment;                
+        this.environment = environment;
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();
 
@@ -78,6 +84,7 @@ public class ServiceClient<T> {
 
     /**
      * Creates an object implementing the service interface that needs to be called.
+     *
      * @return
      */
     public T getService() {
@@ -88,26 +95,35 @@ public class ServiceClient<T> {
 
             WebService webServiceAnnotation = serviceInterface.getAnnotation(WebService.class);
 
-            String ns = webServiceAnnotation.targetNamespace();
+            final String ns = webServiceAnnotation.targetNamespace();
 
-            List<Header> apacheHeaders = new ArrayList<Header>();
+            final List<Header> apacheHeaders = new ArrayList<Header>();
 
-            if (this.authorizationData.getAccountId() != null) {
-                apacheHeaders.add(new Header(new QName(ns, "CustomerAccountId"), this.authorizationData.getAccountId().toString(), new JAXBDataBinding(String.class)));
+            if (this.authorizationData.getAccountId() != 0) {
+                apacheHeaders.add(new Header(new QName(ns, "CustomerAccountId"), Long.toString(this.authorizationData.getAccountId()), new JAXBDataBinding(String.class)));
             }
-            
-            if (this.authorizationData.getCustomerId() != null) {
-                apacheHeaders.add(new Header(new QName(ns, "CustomerId"), this.authorizationData.getCustomerId().toString(), new JAXBDataBinding(String.class)));
+
+            if (this.authorizationData.getCustomerId() != 0) {
+                apacheHeaders.add(new Header(new QName(ns, "CustomerId"), Long.toString(this.authorizationData.getCustomerId()), new JAXBDataBinding(String.class)));
             }
-                        
+
             apacheHeaders.add(new Header(new QName(ns, "DeveloperToken"), this.authorizationData.getDeveloperToken(), new JAXBDataBinding(String.class)));
 
-            refreshOAuthTokensIfNeeded();
+            refreshOAuthTokensIfNeeded();            
 
-            this.authorizationData.getAuthentication().addAuthenticationHeadersApiRequest(apacheHeaders, ns);           
-            
+            this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
+                @Override
+                public void addHeader(String name, String value) {
+                    try {
+                        apacheHeaders.add(new Header(new QName(ns, name), value, new JAXBDataBinding(String.class)));
+                    } catch (JAXBException ex) {
+                        throw new InternalException(ex);
+                    }
+                }
+            });
+
             ((BindingProvider) port).getRequestContext().put(org.apache.cxf.headers.Header.HEADER_LIST, apacheHeaders);
-            
+
             return port;
         } catch (JAXBException ex) {
             throw new InternalException(ex);
@@ -116,7 +132,7 @@ public class ServiceClient<T> {
 
     private void refreshOAuthTokensIfNeeded() {
         if (authorizationData.getAuthentication() instanceof OAuthWithAuthorizationCode) {
-            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode)authorizationData.getAuthentication();
+            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode) authorizationData.getAuthentication();
 
             auth.refreshTokensIfNeeded(false);
         }
@@ -136,13 +152,13 @@ public class ServiceClient<T> {
             props.load(input);
 
             String envString = props.getProperty("environment");
-            
+
             if (envString == null) {
                 return null;
             }
-            
+
             return ApiEnvironment.fromValue(envString);
-        } catch (IOException ex) {            
+        } catch (IOException ex) {
             return null;
         } finally {
             try {

@@ -1,6 +1,6 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.UncheckedParseException;
+import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.campaignmanagement.AdDistribution;
 import com.microsoft.bingads.campaignmanagement.AdGroup;
 import com.microsoft.bingads.campaignmanagement.AdGroupStatus;
@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents an Ad Group. 
+ */
 public class BulkAdGroup extends SingleRecordBulkEntity {
 
     private Long campaignId;
@@ -323,6 +326,8 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getAdGroup(), "AdGroup");
+
         MappingHelpers.<BulkAdGroup>convertToValues(this, values, MAPPINGS);
     }
 

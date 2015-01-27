@@ -2,7 +2,7 @@ package com.microsoft.bingads.bulk;
 
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.ParentCallback;
+import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.bulk.BulkOperationStatusProvider;
@@ -55,15 +55,15 @@ abstract class BulkOperation<TStatus> {
 
     private BulkOperationStatus<TStatus> finalStatus;
 
-    protected BulkOperation(String requestId, AuthorizationData authorizationData) {
+    BulkOperation(String requestId, AuthorizationData authorizationData) {
         this(requestId, authorizationData, null, null);
     }
 
-    protected BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider) {
+    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider) {
         this(requestId, authorizationData, statusProvider, null);
     }
 
-    protected BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId) {
+    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId) {
         this.statusProvider = statusProvider;
         this.requestId = requestId;
         this.authorizationData = authorizationData;
@@ -79,7 +79,7 @@ abstract class BulkOperation<TStatus> {
     }
 
     /**
-     * Create a tracker which is polls for the progress of a remote operation and returns the final status when the remote operation is complete
+     * Runs asynchronously until the bulk service has finished processing the bulk operation.
      *
      * @param callback A handler that will be called with the BulkOperation when it has completed
      * @return a Future that will be completed when the result file is available
@@ -89,7 +89,7 @@ abstract class BulkOperation<TStatus> {
     }
 
     /**
-     * Create a tracker which is polls for the progress of a remote operation and returns the final status when the remote operation is complete
+     * Runs asynchronously until the bulk service has finished processing the bulk operation.
      *
      * @param progress An object to be updated with the progress of the operation
      * @param callback A handler that will be called with the BulkOperation when it has completed
@@ -121,7 +121,7 @@ abstract class BulkOperation<TStatus> {
     }
 
     /**
-     * Polls the status provider directly and gets the most up to date status
+     * Gets the status of the bulk operation.
      *
      * @return the current status of the bulk operation
      */
@@ -148,7 +148,7 @@ abstract class BulkOperation<TStatus> {
         return resultFuture;
     }
 
-    public AuthorizationData getUserData() {
+    public AuthorizationData getAuthorizationData() {
         return authorizationData;
     }
 
@@ -160,11 +160,11 @@ abstract class BulkOperation<TStatus> {
         return trackingId;
     }
 
-    public BulkOperationStatusProvider<TStatus> getStatusProvider() {
+    BulkOperationStatusProvider<TStatus> getStatusProvider() {
         return statusProvider;
     }
 
-    protected void setRequestId(String requestId) {
+    void setRequestId(String requestId) {
         this.requestId = requestId;
     }
 
@@ -176,19 +176,19 @@ abstract class BulkOperation<TStatus> {
         this.statusProvider = statusProvider;
     }
 
-    public HttpFileService getHttpFileService() {
+    HttpFileService getHttpFileService() {
         return httpFileService;
     }
 
-    public void setHttpFileService(HttpFileService httpFileService) {
+    void setHttpFileService(HttpFileService httpFileService) {
         this.httpFileService = httpFileService;
     }
 
-    public ZipExtractor getZipExtractor() {
+    ZipExtractor getZipExtractor() {
         return zipExtractor;
     }
 
-    public void setZipExtractor(ZipExtractor zipExtractor) {
+    void setZipExtractor(ZipExtractor zipExtractor) {
         this.zipExtractor = zipExtractor;
     }
 
@@ -210,12 +210,22 @@ abstract class BulkOperation<TStatus> {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
+    /**
+     * Downloads and optionally decompress the result file from the bulk operation
+     * @param localResultDirectoryName
+     * @param localResultFileName
+     * @param decompress
+     * @param callback
+     * @return
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public Future<File> downloadResultFileAsync(File localResultDirectoryName, String localResultFileName, boolean decompress, AsyncCallback<File> callback) throws IOException, URISyntaxException {
         return downloadResultFileAsync(localResultDirectoryName, localResultFileName, decompress, false, callback);
     }
 
     /**
-     * Downloads and optionally decompress the result file from the bulk operation
+     * Downloads and optionally decompress the result file from the bulk operation, allows to overwrite the local result file.
      *
      * @param localResultDirectoryName The directory to place the result file in
      * @param localResultFileName The name to use for final result file
@@ -257,7 +267,7 @@ abstract class BulkOperation<TStatus> {
 
     private File downloadFileWithFinalStatus(File localResultDirectoryName, String localResultFileName, final boolean decompress, final boolean overwrite) throws IOException, URISyntaxException {
         if (!statusProvider.isSuccessStatus(finalStatus.getStatus())) {
-            List<OperationError> errors = finalStatus.getErrors() != null ? finalStatus.getErrors().getOperationErrors() : null;
+            List<OperationError> errors = finalStatus.getErrors();
 
             throw getOperationCouldNotBeCompletedException(errors, finalStatus.getStatus());
         }

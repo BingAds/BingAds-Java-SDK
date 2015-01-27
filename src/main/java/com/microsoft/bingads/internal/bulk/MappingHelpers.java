@@ -1,6 +1,6 @@
 package com.microsoft.bingads.internal.bulk;
 
-import com.microsoft.bingads.UncheckedParseException;
+import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.bulk.EntityReadException;
 import com.microsoft.bingads.bulk.EntityWriteException;
 import java.util.List;

@@ -85,7 +85,10 @@ public class BulkTextAd extends BulkAd<TextAd> {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getTextAd(), "TextAd");
+
         super.processMappingsToRowValues(values);
+
         MappingHelpers.<BulkTextAd>convertToValues(this, values, MAPPINGS);
     }
 

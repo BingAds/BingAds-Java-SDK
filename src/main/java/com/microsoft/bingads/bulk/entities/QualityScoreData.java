@@ -7,7 +7,6 @@ import com.microsoft.bingads.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,71 +19,47 @@ import java.util.List;
 public class QualityScoreData {
 
     private Integer qualityScore;
-    private Integer keywordRelevance;
-    private Integer landingPageRelevance;
-    private Integer landingPageUserExperience;
 
-    private static List<BulkMapping<QualityScoreData>> MAPPINGS;
+    private Integer keywordRelevance;
+
+    private Integer landingPageRelevance;
+
+    private Integer landingPageUserExperience;
+    
+    private static final List<BulkMapping<QualityScoreData>> MAPPINGS;
 
     static {
         List<BulkMapping<QualityScoreData>> m = new ArrayList<BulkMapping<QualityScoreData>>();
 
         m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.QualityScore,
-                new Function<QualityScoreData, Integer>() {
-                    @Override
-                    public Integer apply(QualityScoreData d) {
-                        return d.getQualityScore();
-                    }
-                }, new BiConsumer<String, QualityScoreData>() {
-                    @Override
-                    public void accept(String v, QualityScoreData d) {
-                        d
-                        .setQualityScore(StringExtensions.nullOrInteger(v));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(
-                StringTable.KeywordRelevance, new Function<QualityScoreData, Integer>() {
-                    @Override
-                    public Integer apply(QualityScoreData d) {
-                        return d
-                        .getKeywordRelevance();
-                    }
-                }, new BiConsumer<String, QualityScoreData>() {
-                    @Override
-                    public void accept(String v, QualityScoreData d) {
-                        d
-                        .setKeywordRelevance(StringExtensions.nullOrInteger(v));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(
-                StringTable.LandingPageRelevance, new Function<QualityScoreData, Integer>() {
-                    @Override
-                    public Integer apply(QualityScoreData d) {
-                        return d
-                        .getLandingPageRelevance();
-                    }
-                }, new BiConsumer<String, QualityScoreData>() {
-                    @Override
-                    public void accept(String v, QualityScoreData d) {
-                        d
-                        .setLandingPageRelevance(StringExtensions.nullOrInteger(v));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(
-                StringTable.LandingPageUserExperience,
-                new Function<QualityScoreData, Integer>() {
-                    @Override
-                    public Integer apply(QualityScoreData d) {
-                        return d.getLandingPageUserExperience();
-                    }
-                },
                 new BiConsumer<String, QualityScoreData>() {
                     @Override
                     public void accept(String v, QualityScoreData d) {
-                        d.setLandingPageUserExperience(StringExtensions.nullOrInteger(v));
+                        d.setQualityScore(StringExtensions.parseOptionalInteger(v));
+                    }
+                }));
+
+        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.KeywordRelevance,
+                new BiConsumer<String, QualityScoreData>() {
+                    @Override
+                    public void accept(String v, QualityScoreData d) {
+                        d.setKeywordRelevance(StringExtensions.parseOptionalInteger(v));
+                    }
+                }));
+
+        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.LandingPageRelevance,
+                new BiConsumer<String, QualityScoreData>() {
+                    @Override
+                    public void accept(String v, QualityScoreData d) {
+                        d.setLandingPageRelevance(StringExtensions.parseOptionalInteger(v));
+                    }
+                }));
+
+        m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.LandingPageUserExperience,
+                new BiConsumer<String, QualityScoreData>() {
+                    @Override
+                    public void accept(String v, QualityScoreData d) {
+                        d.setLandingPageUserExperience(StringExtensions.parseOptionalInteger(v));
                     }
                 }));
 
@@ -95,7 +70,7 @@ public class QualityScoreData {
         return landingPageUserExperience;
     }
 
-    public void setLandingPageUserExperience(Integer landingPageUserExperience) {
+    private void setLandingPageUserExperience(Integer landingPageUserExperience) {
         this.landingPageUserExperience = landingPageUserExperience;
     }
 
@@ -103,7 +78,7 @@ public class QualityScoreData {
         return qualityScore;
     }
 
-    public void setQualityScore(Integer qualityScore) {
+    private void setQualityScore(Integer qualityScore) {
         this.qualityScore = qualityScore;
     }
 
@@ -111,7 +86,7 @@ public class QualityScoreData {
         return keywordRelevance;
     }
 
-    public void setKeywordRelevance(Integer keywordRelevance) {
+    private void setKeywordRelevance(Integer keywordRelevance) {
         this.keywordRelevance = keywordRelevance;
     }
 
@@ -119,7 +94,7 @@ public class QualityScoreData {
         return landingPageRelevance;
     }
 
-    public void setLandingPageRelevance(Integer landingPageRelevance) {
+    private void setLandingPageRelevance(Integer landingPageRelevance) {
         this.landingPageRelevance = landingPageRelevance;
     }
 
@@ -138,7 +113,6 @@ public class QualityScoreData {
     }
 
     public void readFromRowValues(RowValues values) {
-        MappingHelpers.<QualityScoreData>convertToEntity(values,
-                MAPPINGS, this);
+        MappingHelpers.<QualityScoreData>convertToEntity(values, MAPPINGS, this);
     }
 }

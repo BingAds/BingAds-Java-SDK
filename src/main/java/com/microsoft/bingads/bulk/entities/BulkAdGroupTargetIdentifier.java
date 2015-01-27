@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 
-public class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
+class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
 
     public BulkAdGroupTargetIdentifier(Class targetBidType) {
         super(targetBidType);
@@ -21,7 +16,7 @@ public class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
     }
 
     @Override
-    public String getEntityColumnName() {
+    String getEntityColumnName() {
         return StringTable.AdGroup;
     }
 

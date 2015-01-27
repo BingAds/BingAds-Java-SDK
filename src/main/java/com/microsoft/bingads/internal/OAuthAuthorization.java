@@ -1,17 +1,12 @@
 package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.Authentication;
-import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
 import java.net.URL;
-import java.util.List;
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import org.apache.cxf.jaxb.JAXBDataBinding;
-import org.apache.http.HttpRequest;
 
 /**
  * Authenticates API request by setting its AuthenticationToken to OAuth access
@@ -22,7 +17,7 @@ import org.apache.http.HttpRequest;
  * {{@link OAuthWebAuthCodeGrant}} See also: {{@link OAuthWebImplicitGrant}}
  *
  */
-public abstract class OAuthAuthorization extends Authentication {
+abstract class OAuthAuthorization extends Authentication {
 
     /**
      * Returns OAuth Authorization Endpoint that the user has to navigate to
@@ -36,7 +31,7 @@ public abstract class OAuthAuthorization extends Authentication {
      * OAuth tokens received from live.com authorization service.
      *
      * Populated by derived classes {@link OAuthDesktopMobileImplicitGrant} and
-     * {@link OAuthWithAuthorizationCode}}
+     * {@link OAuthWithAuthorizationCode}
      */
     protected OAuthTokens oAuthTokens;
 
@@ -51,18 +46,9 @@ public abstract class OAuthAuthorization extends Authentication {
     public String getAuthenticationToken() {
         return this.oAuthTokens.getAccessToken();
     }
-
+   
     @Override
-    public void addAuthenticationHeadersToFileUploadRequest(HttpRequest request) {
-        request.addHeader(HttpHeaders.AUTHENTICATION_TOKEN, this.getOAuthTokens().getAccessToken());
-    }
-    
-    @Override
-    public void addAuthenticationHeadersApiRequest(List<org.apache.cxf.headers.Header> headers, String namespace) {
-        try {        
-            headers.add(new org.apache.cxf.headers.Header(new QName(namespace, HttpHeaders.AUTHENTICATION_TOKEN), this.getOAuthTokens().getAccessToken(), new JAXBDataBinding(String.class)));
-        } catch (JAXBException ex) {
-            throw new InternalException(ex);
-        }
+    public void addHeaders(HeadersImpl headersImplementation) {
+        headersImplementation.addHeader(HttpHeaders.AUTHENTICATION_TOKEN, this.getOAuthTokens().getAccessToken());
     }
 }

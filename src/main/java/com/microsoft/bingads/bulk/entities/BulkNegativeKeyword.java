@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
+abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
 
-    public NegativeKeyword negativeKeyword;
+    private NegativeKeyword negativeKeyword;
 
-    public Status status;
+    private Status status;
 
-    protected Long parentId;
+    private Long parentId;
 
-    private static List<BulkMapping<BulkNegativeKeyword>> MAPPINGS;
+    private static final List<BulkMapping<BulkNegativeKeyword>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkNegativeKeyword>> m = new ArrayList<BulkMapping<BulkNegativeKeyword>>();
@@ -142,11 +142,11 @@ public abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
         this.status = status;
     }
 
-    public Long getParentId() {
+    Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 

@@ -40,7 +40,7 @@ public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegat
      * Negative Site record. For more information, see Ad Group Negative Site at
      * http://go.microsoft.com/fwlink/?LinkID=511539.
      */
-    public AdGroupNegativeSites adGroupNegativeSites;// { get; set; }
+    private AdGroupNegativeSites adGroupNegativeSites;// { get; set; }
 
     public AdGroupNegativeSites getAdGroupNegativeSites() {
         return adGroupNegativeSites;
@@ -54,7 +54,7 @@ public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegat
      * The name of the ad group that the negative site is assigned. Corresponds
      * to the 'Ad Group' field in the bulk file.
      */
-    public String adGroupName;// { get; set; }
+    private String adGroupName;
 
     public String getAdGroupName() {
         return adGroupName;
@@ -68,7 +68,7 @@ public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegat
      * The name of the campaign that the negative site is assigned. Corresponds
      * to the 'Campaign' field in the bulk file.
      */
-    public String campaignName;// { get; set; }
+    private String campaignName;
 
     public String getCampaignName() {
         return campaignName;
@@ -84,11 +84,15 @@ public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegat
     public BulkAdGroupNegativeSites() {
     }
 
-    public BulkAdGroupNegativeSites(BulkAdGroupNegativeSite site) {
+    BulkAdGroupNegativeSites(BulkAdGroupNegativeSite site) {
         super(site, BulkAdGroupNegativeSite.class, BulkAdGroupNegativeSitesIdentifier.class);
         setDataFromIdentifier(site.getIdentifier());
     }
 
+    /**
+     * Reserved for internal use.
+     * @param identifier
+     */
     public BulkAdGroupNegativeSites(BulkAdGroupNegativeSitesIdentifier identifier) {
         super(identifier, BulkAdGroupNegativeSite.class, BulkAdGroupNegativeSitesIdentifier.class);
         setDataFromIdentifier(identifier);

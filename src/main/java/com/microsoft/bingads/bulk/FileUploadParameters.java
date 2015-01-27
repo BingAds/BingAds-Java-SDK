@@ -19,7 +19,7 @@ public class FileUploadParameters {
      * Reserved for internal use.
      * @return
      */
-    public SubmitUploadParameters getSubmitUploadParameters() {
+    SubmitUploadParameters getSubmitUploadParameters() {
         return submitUploadParameters;
     }
 

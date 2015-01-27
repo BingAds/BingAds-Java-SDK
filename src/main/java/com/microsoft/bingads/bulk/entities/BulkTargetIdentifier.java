@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.internal.StringExtensions;
@@ -20,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Reserved for internal use.
+ */
 public abstract class BulkTargetIdentifier extends BulkEntityIdentifier {
 
     private Status status;
@@ -34,7 +32,7 @@ public abstract class BulkTargetIdentifier extends BulkEntityIdentifier {
 
     private Class targetBidType;
 
-    public abstract String getEntityColumnName();
+    abstract String getEntityColumnName();
 
     private static final List<BulkMapping<BulkTargetIdentifier>> MAPPINGS;
 
@@ -175,35 +173,35 @@ public abstract class BulkTargetIdentifier extends BulkEntityIdentifier {
         this.targetId = targetId;
     }
 
-    public Long getEntityId() {
+    Long getEntityId() {
         return entityId;
     }
 
-    public void setEntityId(Long entityId) {
+    void setEntityId(Long entityId) {
         this.entityId = entityId;
     }
 
-    public String getEntityName() {
+    String getEntityName() {
         return entityName;
     }
 
-    public void setEntityName(String entityName) {
+    void setEntityName(String entityName) {
         this.entityName = entityName;
     }
 
-    public String getParentEntityName() {
+    String getParentEntityName() {
         return parentEntityName;
     }
 
-    public void setParentEntityName(String parentEntityName) {
+    void setParentEntityName(String parentEntityName) {
         this.parentEntityName = parentEntityName;
     }
 
-    public Class getTargetBidType() {
+    Class getTargetBidType() {
         return targetBidType;
     }
 
-    public void setTargetBidType(Class targetBidType) {
+    void setTargetBidType(Class targetBidType) {
         this.targetBidType = targetBidType;
     }
 }

@@ -46,9 +46,9 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
      * The ad extension's parent account identifier. Corresponds to the 'Parent
      * Id' field in the bulk file.
      */
-    public Long accountId;// { get; set; }
+    private long accountId;
 
-    public Long getAccountId() {
+    public long getAccountId() {
         return accountId;
     }
 
@@ -59,7 +59,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
     /**
      * The product ad extension.
      */
-    public ProductAdExtension productAdExtension;// { get; set; }
+    private ProductAdExtension productAdExtension;
 
     public ProductAdExtension getProductAdExtension() {
         return productAdExtension;
@@ -77,7 +77,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
      * combined with the common properties of the {@link BulkProductAdExtension}
      * class, for example {@link AccountId} and {@link ProductAdExtension}.
      */
-    private List<BulkProductConditionCollection> productConditionCollections = new ArrayList<BulkProductConditionCollection>();
+    private final List<BulkProductConditionCollection> productConditionCollections = new ArrayList<BulkProductConditionCollection>();
 
     public List<BulkProductConditionCollection> getProductConditionCollections() {
         return productConditionCollections;
@@ -139,8 +139,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
         extensionIdentifier.setStatus(AdExtensionStatus.DELETED);
         extensionIdentifier.setAccountId(this.accountId);
         extensionIdentifier.setAdExtensionId(this.productAdExtension.getId());
-        extensionIdentifier.setName(this.productAdExtension.getName());
-        extensionIdentifier.setVersion(this.getProductAdExtension().getVersion());
+        extensionIdentifier.setName(this.productAdExtension.getName());        
 
         rowWriter.writeObjectRow(extensionIdentifier);
 
@@ -211,8 +210,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
 
             bulkCollection.setProductConditionCollection(apiCollection);
             bulkCollection.setAccountId(accountId);
-            bulkCollection.setAdExtensionId(productAdExtension.getId());
-            bulkCollection.setVersion(productAdExtension.getVersion());
+            bulkCollection.setAdExtensionId(productAdExtension.getId());            
             bulkCollection.setName(productAdExtension.getName());
             bulkCollection.setStoreId(productAdExtension.getStoreId());
         }

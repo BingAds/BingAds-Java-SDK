@@ -3,7 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 public class BulkSharedNegativeKeyword extends BulkNegativeKeyword {
 
     public long getNegativeKeywordListId() {
-        return this.parentId;
+        return this.getParentId();
     }
 
     public void setNegativeKeywordListId(long negativeKeywordListId) {

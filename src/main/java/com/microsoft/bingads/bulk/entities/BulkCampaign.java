@@ -235,6 +235,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsToRowValues(RowValues values) {
+        validatePropertyNotNull(getCampaign(), "Campaign");
+
         MappingHelpers.<BulkCampaign>convertToValues(this, values, MAPPINGS);
     }
 

@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.microsoft.bingads.bulk;
 
 import java.util.List;
 
+/**
+ * This exception is thrown when trying to download the result file for an operation that has completed with an error.
+ */
 public class BulkUploadCouldNotBeCompletedException extends RuntimeException {
     
     private final List<OperationError> errors;
