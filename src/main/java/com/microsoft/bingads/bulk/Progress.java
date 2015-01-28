@@ -1,7 +1,7 @@
 package com.microsoft.bingads.bulk;
 
 /**
- * Allows to track progress of some operation.
+ * Allows to track progress of a long running operation.
  * @param <T>
  */
 public interface Progress<T> {
