@@ -1,4 +1,4 @@
-package com.microsoft.bingads.api.test.entities.target.campaign.bids.daytime;
+package com.microsoft.bingads.api.test.entities.targets.campaign.bids.daytime;
 
 import com.microsoft.bingads.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.bulk.entities.BulkCampaignDayTimeTargetBid;
