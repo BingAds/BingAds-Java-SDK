@@ -1,6 +1,6 @@
 package com.microsoft.bingads.api.test.entities.targets.campaign.bids.daytime.read;
 
-import com.microsoft.bingads.api.test.entities.target.campaign.bids.daytime.BulkCampaignDayTimeTargetBidTest;
+import com.microsoft.bingads.api.test.entities.targets.campaign.bids.daytime.BulkCampaignDayTimeTargetBidTest;
 import com.microsoft.bingads.bulk.entities.BulkCampaignDayTimeTargetBid;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
