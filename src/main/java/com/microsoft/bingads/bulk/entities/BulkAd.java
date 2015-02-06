@@ -124,6 +124,12 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
         ));
 
         m.add(new SimpleBulkMapping<BulkAd, String>(StringTable.EditorialStatus,
+                new Function<BulkAd, String>() {
+                    @Override
+                    public String apply(BulkAd bulkAd) {
+                        return bulkAd.getAd().getEditorialStatus().value();
+                    }
+                },
                 new BiConsumer<String, BulkAd>() {
                     @Override
                     public void accept(String v, BulkAd c) {
