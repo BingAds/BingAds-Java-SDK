@@ -408,6 +408,12 @@ public class CreateKeywordsAdsBulk {
 		for (BulkError error : errors){
 			outputStatusMessage(String.format("Error: %s", error.getError()));
 			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
+			if(error.getEditorialReasonCode() != null){
+				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
+				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
+				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
+				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
+			}
 		}
 	}
 		
