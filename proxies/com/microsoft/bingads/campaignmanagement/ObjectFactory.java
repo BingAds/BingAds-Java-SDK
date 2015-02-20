@@ -56,11 +56,14 @@ public class ObjectFactory {
     private final static QName _BatchErrorCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "BatchErrorCollection");
     private final static QName _AdRotation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdRotation");
     private final static QName _ArrayOfAdExtensionAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdExtensionAssociation");
+    private final static QName _ProductPartitionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ProductPartitionType");
     private final static QName _ArrayOfMediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfMediaAssociation");
     private final static QName _TrackingId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "TrackingId");
+    private final static QName _ShoppingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ShoppingSetting");
     private final static QName _KeywordEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "KeywordEditorialStatus");
     private final static QName _ArrayOfTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfTarget");
     private final static QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
+    private final static QName _AdGroupCriterionAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdGroupCriterionAction");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
     private final static QName _IntentOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "IntentOption");
     private final static QName _AdStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdStatus");
@@ -131,6 +134,7 @@ public class ObjectFactory {
     private final static QName _KeywordStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "KeywordStatus");
     private final static QName _ArrayOfMediaType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfMediaType");
     private final static QName _ArrayOfCampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCampaignSize");
+    private final static QName _ArrayOfSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSetting");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CustomerAccountId");
     private final static QName _MediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "MediaRepresentation");
     private final static QName _Criterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Criterion");
@@ -138,6 +142,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfBMCStore_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfBMCStore");
     private final static QName _ArrayOfRadiusTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfRadiusTargetBid");
     private final static QName _AdExtensionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdExtensionEditorialStatus");
+    private final static QName _CampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CampaignCriterion");
     private final static QName _EditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "EditorialReason");
     private final static QName _ArrayOfAdExtensionIdToEntityIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdExtensionIdToEntityIdAssociation");
     private final static QName _AdExtensionEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdExtensionEditorialReason");
@@ -158,6 +163,7 @@ public class ObjectFactory {
     private final static QName _HourTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "HourTarget");
     private final static QName _Network_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Network");
     private final static QName _ArrayOfAdExtensionEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdExtensionEditorialReasonCollection");
+    private final static QName _ArrayOfAdGroupCriterionAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdGroupCriterionAction");
     private final static QName _CountryTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CountryTargetBid");
     private final static QName _LocationTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "LocationTarget");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
@@ -174,6 +180,7 @@ public class ObjectFactory {
     private final static QName _CustomerId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CustomerId");
     private final static QName _Target2_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Target2");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
+    private final static QName _ItemAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ItemAction");
     private final static QName _AdExtensionIdentity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdExtensionIdentity");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
     private final static QName _ArrayOfHourTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfHourTargetBid");
@@ -181,6 +188,7 @@ public class ObjectFactory {
     private final static QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdGroupCriterionEditorialStatus");
     private final static QName _ArrayOfCampaignNegativeKeywords_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCampaignNegativeKeywords");
     private final static QName _Target_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Target");
+    private final static QName _ProductScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ProductScope");
     private final static QName _Minute_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Minute");
     private final static QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "MediaAssociation");
     private final static QName _TextAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "TextAd");
@@ -199,8 +207,10 @@ public class ObjectFactory {
     private final static QName _EditorialApiFaultDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "EditorialApiFaultDetail");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
     private final static QName _GenderType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "GenderType");
+    private final static QName _ProductPartition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ProductPartition");
     private final static QName _AdEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdEditorialStatus");
     private final static QName _ArrayOfDayTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfDayTargetBid");
+    private final static QName _CampaignCriterionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CampaignCriterionType");
     private final static QName _ProductAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ProductAdExtension");
     private final static QName _Keyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Keyword");
     private final static QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ApplicationToken");
@@ -219,6 +229,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfArrayOfMediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfArrayOfMediaAssociation");
     private final static QName _ArrayOfArrayOfPlacementDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfArrayOfPlacementDetail");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
+    private final static QName _NegativeAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "NegativeAdGroupCriterion");
     private final static QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private final static QName _AdExtensionEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AdExtensionEditorialReasonCollection");
     private final static QName _EntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "EntityType");
@@ -231,6 +242,8 @@ public class ObjectFactory {
     private final static QName _ArrayOfIdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfIdCollection");
     private final static QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSharedEntity");
     private final static QName _RadiusTargetBid2_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "RadiusTargetBid2");
+    private final static QName _Setting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Setting");
+    private final static QName _ArrayOfCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCampaignCriterion");
     private final static QName _GenderTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "GenderTarget");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _AccountMigrationStatusesInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "AccountMigrationStatusesInfo");
@@ -241,6 +254,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfCityTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCityTargetBid");
     private final static QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSharedEntityAssociation");
     private final static QName _ArrayOfAdGroupNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdGroupNegativeSites");
+    private final static QName _NegativeCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "NegativeCampaignCriterion");
     private final static QName _ArrayOfAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfAdExtension");
     private final static QName _ArrayOfSiteLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSiteLink");
     private final static QName _ImpressionsPerDayRange_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ImpressionsPerDayRange");
@@ -528,6 +542,14 @@ public class ObjectFactory {
      */
     public ArrayOfEditorialReasonCollection createArrayOfEditorialReasonCollection() {
         return new ArrayOfEditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignCriterionsByIdsRequest }
+     * 
+     */
+    public GetCampaignCriterionsByIdsRequest createGetCampaignCriterionsByIdsRequest() {
+        return new GetCampaignCriterionsByIdsRequest();
     }
 
     /**
@@ -1259,6 +1281,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteCampaignCriterionsRequest }
+     * 
+     */
+    public DeleteCampaignCriterionsRequest createDeleteCampaignCriterionsRequest() {
+        return new DeleteCampaignCriterionsRequest();
+    }
+
+    /**
      * Create an instance of {@link Address }
      * 
      */
@@ -1328,6 +1358,22 @@ public class ObjectFactory {
      */
     public GetAdGroupCriterionsByAdGroupIdResponse createGetAdGroupCriterionsByAdGroupIdResponse() {
         return new GetAdGroupCriterionsByAdGroupIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ApplyProductPartitionActionsRequest }
+     * 
+     */
+    public ApplyProductPartitionActionsRequest createApplyProductPartitionActionsRequest() {
+        return new ApplyProductPartitionActionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdGroupCriterionAction }
+     * 
+     */
+    public ArrayOfAdGroupCriterionAction createArrayOfAdGroupCriterionAction() {
+        return new ArrayOfAdGroupCriterionAction();
     }
 
     /**
@@ -1555,6 +1601,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetCampaignCriterionsByCampaignIdResponse }
+     * 
+     */
+    public GetCampaignCriterionsByCampaignIdResponse createGetCampaignCriterionsByCampaignIdResponse() {
+        return new GetCampaignCriterionsByCampaignIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignCriterion }
+     * 
+     */
+    public ArrayOfCampaignCriterion createArrayOfCampaignCriterion() {
+        return new ArrayOfCampaignCriterion();
+    }
+
+    /**
      * Create an instance of {@link GetAdsByEditorialStatusRequest }
      * 
      */
@@ -1723,6 +1785,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NegativeAdGroupCriterion }
+     * 
+     */
+    public NegativeAdGroupCriterion createNegativeAdGroupCriterion() {
+        return new NegativeAdGroupCriterion();
+    }
+
+    /**
      * Create an instance of {@link UpdateCampaignsRequest }
      * 
      */
@@ -1784,6 +1854,14 @@ public class ObjectFactory {
      */
     public ArrayOfSiteLink createArrayOfSiteLink() {
         return new ArrayOfSiteLink();
+    }
+
+    /**
+     * Create an instance of {@link ApplyProductPartitionActionsResponse }
+     * 
+     */
+    public ApplyProductPartitionActionsResponse createApplyProductPartitionActionsResponse() {
+        return new ApplyProductPartitionActionsResponse();
     }
 
     /**
@@ -1931,11 +2009,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetCampaignCriterionsByIdsResponse }
+     * 
+     */
+    public GetCampaignCriterionsByIdsResponse createGetCampaignCriterionsByIdsResponse() {
+        return new GetCampaignCriterionsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddCampaignCriterionsRequest }
+     * 
+     */
+    public AddCampaignCriterionsRequest createAddCampaignCriterionsRequest() {
+        return new AddCampaignCriterionsRequest();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfCampaignNegativeSites }
      * 
      */
     public ArrayOfCampaignNegativeSites createArrayOfCampaignNegativeSites() {
         return new ArrayOfCampaignNegativeSites();
+    }
+
+    /**
+     * Create an instance of {@link UpdateCampaignCriterionsResponse }
+     * 
+     */
+    public UpdateCampaignCriterionsResponse createUpdateCampaignCriterionsResponse() {
+        return new UpdateCampaignCriterionsResponse();
     }
 
     /**
@@ -1979,6 +2081,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ShoppingSetting }
+     * 
+     */
+    public ShoppingSetting createShoppingSetting() {
+        return new ShoppingSetting();
+    }
+
+    /**
      * Create an instance of {@link UpdateTargetsInLibrary2Request }
      * 
      */
@@ -2000,6 +2110,14 @@ public class ObjectFactory {
      */
     public DeleteSitePlacementsResponse createDeleteSitePlacementsResponse() {
         return new DeleteSitePlacementsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupCriterionAction }
+     * 
+     */
+    public AdGroupCriterionAction createAdGroupCriterionAction() {
+        return new AdGroupCriterionAction();
     }
 
     /**
@@ -2363,6 +2481,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateCampaignCriterionsRequest }
+     * 
+     */
+    public UpdateCampaignCriterionsRequest createUpdateCampaignCriterionsRequest() {
+        return new UpdateCampaignCriterionsRequest();
+    }
+
+    /**
      * Create an instance of {@link Campaign }
      * 
      */
@@ -2411,11 +2537,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CampaignCriterion }
+     * 
+     */
+    public CampaignCriterion createCampaignCriterion() {
+        return new CampaignCriterion();
+    }
+
+    /**
      * Create an instance of {@link AdGroup }
      * 
      */
     public AdGroup createAdGroup() {
         return new AdGroup();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSetting }
+     * 
+     */
+    public ArrayOfSetting createArrayOfSetting() {
+        return new ArrayOfSetting();
     }
 
     /**
@@ -2584,6 +2726,14 @@ public class ObjectFactory {
      */
     public AdExtensionEditorialReason createAdExtensionEditorialReason() {
         return new AdExtensionEditorialReason();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignCriterionsByCampaignIdRequest }
+     * 
+     */
+    public GetCampaignCriterionsByCampaignIdRequest createGetCampaignCriterionsByCampaignIdRequest() {
+        return new GetCampaignCriterionsByCampaignIdRequest();
     }
 
     /**
@@ -2819,6 +2969,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddCampaignCriterionsResponse }
+     * 
+     */
+    public AddCampaignCriterionsResponse createAddCampaignCriterionsResponse() {
+        return new AddCampaignCriterionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ProductScope }
+     * 
+     */
+    public ProductScope createProductScope() {
+        return new ProductScope();
+    }
+
+    /**
      * Create an instance of {@link GetTargetsByCampaignIdsResponse }
      * 
      */
@@ -2832,6 +2998,14 @@ public class ObjectFactory {
      */
     public ArrayOfDayTargetBid createArrayOfDayTargetBid() {
         return new ArrayOfDayTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCampaignCriterionsResponse }
+     * 
+     */
+    public DeleteCampaignCriterionsResponse createDeleteCampaignCriterionsResponse() {
+        return new DeleteCampaignCriterionsResponse();
     }
 
     /**
@@ -2856,6 +3030,14 @@ public class ObjectFactory {
      */
     public Dimension createDimension() {
         return new Dimension();
+    }
+
+    /**
+     * Create an instance of {@link ProductPartition }
+     * 
+     */
+    public ProductPartition createProductPartition() {
+        return new ProductPartition();
     }
 
     /**
@@ -2963,6 +3145,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Setting }
+     * 
+     */
+    public Setting createSetting() {
+        return new Setting();
+    }
+
+    /**
      * Create an instance of {@link Media }
      * 
      */
@@ -3064,6 +3254,14 @@ public class ObjectFactory {
      */
     public GetKeywordsByEditorialStatusResponse createGetKeywordsByEditorialStatusResponse() {
         return new GetKeywordsByEditorialStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link NegativeCampaignCriterion }
+     * 
+     */
+    public NegativeCampaignCriterion createNegativeCampaignCriterion() {
+        return new NegativeCampaignCriterion();
     }
 
     /**
@@ -3511,6 +3709,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartitionType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ProductPartitionType")
+    public JAXBElement<ProductPartitionType> createProductPartitionType(ProductPartitionType value) {
+        return new JAXBElement<ProductPartitionType>(_ProductPartitionType_QNAME, ProductPartitionType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfMediaAssociation }{@code >}}
      * 
      */
@@ -3526,6 +3733,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "TrackingId")
     public JAXBElement<String> createTrackingId(String value) {
         return new JAXBElement<String>(_TrackingId_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ShoppingSetting")
+    public JAXBElement<ShoppingSetting> createShoppingSetting(ShoppingSetting value) {
+        return new JAXBElement<ShoppingSetting>(_ShoppingSetting_QNAME, ShoppingSetting.class, null, value);
     }
 
     /**
@@ -3553,6 +3769,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOfstringstring")
     public JAXBElement<KeyValuePairOfstringstring> createKeyValuePairOfstringstring(KeyValuePairOfstringstring value) {
         return new JAXBElement<KeyValuePairOfstringstring>(_KeyValuePairOfstringstring_QNAME, KeyValuePairOfstringstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterionAction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdGroupCriterionAction")
+    public JAXBElement<AdGroupCriterionAction> createAdGroupCriterionAction(AdGroupCriterionAction value) {
+        return new JAXBElement<AdGroupCriterionAction>(_AdGroupCriterionAction_QNAME, AdGroupCriterionAction.class, null, value);
     }
 
     /**
@@ -3749,7 +3974,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdDistribution")
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     public JAXBElement<Collection<AdDistribution>> createAdDistribution(Collection<AdDistribution> value) {
         return new JAXBElement<Collection<AdDistribution>>(_AdDistribution_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3867,7 +4092,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CampaignType")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     public JAXBElement<Collection<CampaignType>> createCampaignType(Collection<CampaignType> value) {
         return new JAXBElement<Collection<CampaignType>>(_CampaignType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3886,7 +4111,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "MediaEnabledEntityFilter")
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     public JAXBElement<Collection<MediaEnabledEntityFilter>> createMediaEnabledEntityFilter(Collection<MediaEnabledEntityFilter> value) {
         return new JAXBElement<Collection<MediaEnabledEntityFilter>>(_MediaEnabledEntityFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3932,7 +4157,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CriterionType")
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     public JAXBElement<Collection<CriterionType>> createCriterionType(Collection<CriterionType> value) {
         return new JAXBElement<Collection<CriterionType>>(_CriterionType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -4190,6 +4415,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfSetting")
+    public JAXBElement<ArrayOfSetting> createArrayOfSetting(ArrayOfSetting value) {
+        return new JAXBElement<ArrayOfSetting>(_ArrayOfSetting_QNAME, ArrayOfSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -4250,6 +4484,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdExtensionEditorialStatus")
     public JAXBElement<AdExtensionEditorialStatus> createAdExtensionEditorialStatus(AdExtensionEditorialStatus value) {
         return new JAXBElement<AdExtensionEditorialStatus>(_AdExtensionEditorialStatus_QNAME, AdExtensionEditorialStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignCriterion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CampaignCriterion")
+    public JAXBElement<CampaignCriterion> createCampaignCriterion(CampaignCriterion value) {
+        return new JAXBElement<CampaignCriterion>(_CampaignCriterion_QNAME, CampaignCriterion.class, null, value);
     }
 
     /**
@@ -4433,6 +4676,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdGroupCriterionAction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfAdGroupCriterionAction")
+    public JAXBElement<ArrayOfAdGroupCriterionAction> createArrayOfAdGroupCriterionAction(ArrayOfAdGroupCriterionAction value) {
+        return new JAXBElement<ArrayOfAdGroupCriterionAction>(_ArrayOfAdGroupCriterionAction_QNAME, ArrayOfAdGroupCriterionAction.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CountryTargetBid }{@code >}}
      * 
      */
@@ -4577,6 +4829,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ItemAction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ItemAction")
+    public JAXBElement<ItemAction> createItemAction(ItemAction value) {
+        return new JAXBElement<ItemAction>(_ItemAction_QNAME, ItemAction.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdExtensionIdentity }{@code >}}
      * 
      */
@@ -4637,6 +4898,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "Target")
     public JAXBElement<Target> createTarget(Target value) {
         return new JAXBElement<Target>(_Target_QNAME, Target.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductScope }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ProductScope")
+    public JAXBElement<ProductScope> createProductScope(ProductScope value) {
+        return new JAXBElement<ProductScope>(_ProductScope_QNAME, ProductScope.class, null, value);
     }
 
     /**
@@ -4802,6 +5072,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartition }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ProductPartition")
+    public JAXBElement<ProductPartition> createProductPartition(ProductPartition value) {
+        return new JAXBElement<ProductPartition>(_ProductPartition_QNAME, ProductPartition.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdEditorialStatus }{@code >}}
      * 
      */
@@ -4817,6 +5096,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfDayTargetBid")
     public JAXBElement<ArrayOfDayTargetBid> createArrayOfDayTargetBid(ArrayOfDayTargetBid value) {
         return new JAXBElement<ArrayOfDayTargetBid>(_ArrayOfDayTargetBid_QNAME, ArrayOfDayTargetBid.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignCriterionType }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "CampaignCriterionType")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<CampaignCriterionType>> createCampaignCriterionType(Collection<CampaignCriterionType> value) {
+        return new JAXBElement<Collection<CampaignCriterionType>>(_CampaignCriterionType_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -4983,6 +5272,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NegativeAdGroupCriterion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "NegativeAdGroupCriterion")
+    public JAXBElement<NegativeAdGroupCriterion> createNegativeAdGroupCriterion(NegativeAdGroupCriterion value) {
+        return new JAXBElement<NegativeAdGroupCriterion>(_NegativeAdGroupCriterion_QNAME, NegativeAdGroupCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOfstringstring }{@code >}}
      * 
      */
@@ -5091,6 +5389,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "Setting")
+    public JAXBElement<Setting> createSetting(Setting value) {
+        return new JAXBElement<Setting>(_Setting_QNAME, Setting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignCriterion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfCampaignCriterion")
+    public JAXBElement<ArrayOfCampaignCriterion> createArrayOfCampaignCriterion(ArrayOfCampaignCriterion value) {
+        return new JAXBElement<ArrayOfCampaignCriterion>(_ArrayOfCampaignCriterion_QNAME, ArrayOfCampaignCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GenderTarget }{@code >}}
      * 
      */
@@ -5178,6 +5494,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfAdGroupNegativeSites")
     public JAXBElement<ArrayOfAdGroupNegativeSites> createArrayOfAdGroupNegativeSites(ArrayOfAdGroupNegativeSites value) {
         return new JAXBElement<ArrayOfAdGroupNegativeSites>(_ArrayOfAdGroupNegativeSites_QNAME, ArrayOfAdGroupNegativeSites.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NegativeCampaignCriterion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "NegativeCampaignCriterion")
+    public JAXBElement<NegativeCampaignCriterion> createNegativeCampaignCriterion(NegativeCampaignCriterion value) {
+        return new JAXBElement<NegativeCampaignCriterion>(_NegativeCampaignCriterion_QNAME, NegativeCampaignCriterion.class, null, value);
     }
 
     /**
@@ -5311,7 +5636,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "AdExtensionsTypeFilter")
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     public JAXBElement<Collection<AdExtensionsTypeFilter>> createAdExtensionsTypeFilter(Collection<AdExtensionsTypeFilter> value) {
         return new JAXBElement<Collection<AdExtensionsTypeFilter>>(_AdExtensionsTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }

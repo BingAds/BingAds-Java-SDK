@@ -46,7 +46,7 @@ public class GetAdGroupCriterionsByAdGroupIdRequest {
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "CriterionTypeFilter", type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CriterionType> criterionTypeFilter;
 

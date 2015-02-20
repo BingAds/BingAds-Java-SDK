@@ -42,7 +42,7 @@ public class GetCampaignsByAccountIdRequest {
     @XmlElement(name = "AccountId")
     protected Long accountId;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignType> campaignType;
 

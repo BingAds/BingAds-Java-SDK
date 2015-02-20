@@ -63,6 +63,8 @@ import javax.xml.bind.annotation.XmlType;
     TacticChannelReportRequest.class,
     CampaignPerformanceReportRequest.class,
     AgeGenderDemographicReportRequest.class,
+    ProductDimensionPerformanceReportRequest.class,
+    ProductPartitionPerformanceReportRequest.class,
     SearchQueryPerformanceReportRequest.class,
     ProductTargetPerformanceReportRequest.class,
     BrandZonePerformanceReportRequest.class,

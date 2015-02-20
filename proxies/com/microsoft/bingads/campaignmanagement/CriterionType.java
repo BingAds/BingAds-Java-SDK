@@ -5,7 +5,8 @@ package com.microsoft.bingads.campaignmanagement;
  */
 public enum CriterionType {
 
-    PRODUCT("Product");
+    PRODUCT("Product"),
+    PRODUCT_PARTITION("ProductPartition");
         
     private final String value;
 

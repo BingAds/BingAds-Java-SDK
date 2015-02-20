@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    NegativeAdGroupCriterion.class,
     BiddableAdGroupCriterion.class
 })
 public class AdGroupCriterion {

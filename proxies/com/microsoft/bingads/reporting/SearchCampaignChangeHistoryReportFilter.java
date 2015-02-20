@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class SearchCampaignChangeHistoryReportFilter {
 
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)

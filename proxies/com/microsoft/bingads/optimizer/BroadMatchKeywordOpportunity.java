@@ -17,9 +17,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.Optimizer.Api.DataContracts.Entities}KeywordOpportunity">
  *       &lt;sequence>
- *         &lt;element name="AverageCPC" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="AverageCTR" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="ClickShare" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="ImpressionShare" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="ReferenceKeywordBid" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="ReferenceKeywordId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -35,9 +32,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BroadMatchKeywordOpportunity", propOrder = {
-    "averageCPC",
-    "averageCTR",
-    "clickShare",
     "impressionShare",
     "referenceKeywordBid",
     "referenceKeywordId",
@@ -48,12 +42,6 @@ public class BroadMatchKeywordOpportunity
     extends KeywordOpportunity
 {
 
-    @XmlElement(name = "AverageCPC")
-    protected Double averageCPC;
-    @XmlElement(name = "AverageCTR")
-    protected Double averageCTR;
-    @XmlElement(name = "ClickShare")
-    protected Double clickShare;
     @XmlElement(name = "ImpressionShare")
     protected Double impressionShare;
     @XmlElement(name = "ReferenceKeywordBid")
@@ -64,78 +52,6 @@ public class BroadMatchKeywordOpportunity
     protected Integer referenceKeywordMatchType;
     @XmlElement(name = "SearchQueryKPIs", nillable = true)
     protected ArrayOfBroadMatchSearchQueryKPI searchQueryKPIs;
-
-    /**
-     * Gets the value of the averageCPC property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getAverageCPC() {
-        return averageCPC;
-    }
-
-    /**
-     * Sets the value of the averageCPC property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setAverageCPC(Double value) {
-        this.averageCPC = value;
-    }
-
-    /**
-     * Gets the value of the averageCTR property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getAverageCTR() {
-        return averageCTR;
-    }
-
-    /**
-     * Sets the value of the averageCTR property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setAverageCTR(Double value) {
-        this.averageCTR = value;
-    }
-
-    /**
-     * Gets the value of the clickShare property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getClickShare() {
-        return clickShare;
-    }
-
-    /**
-     * Sets the value of the clickShare property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setClickShare(Double value) {
-        this.clickShare = value;
-    }
 
     /**
      * Gets the value of the impressionShare property.

@@ -1,11 +1,14 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -20,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AdGroupCriterionIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="CriterionType" type="{https://bingads.microsoft.com/CampaignManagement/v9}CriterionType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +36,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "accountId",
-    "adGroupCriterionIds"
+    "adGroupCriterionIds",
+    "adGroupId",
+    "criterionType"
 })
 @XmlRootElement(name = "GetAdGroupCriterionsByIdsRequest")
 public class GetAdGroupCriterionsByIdsRequest {
@@ -40,6 +47,12 @@ public class GetAdGroupCriterionsByIdsRequest {
     protected Long accountId;
     @XmlElement(name = "AdGroupCriterionIds", nillable = true)
     protected ArrayOflong adGroupCriterionIds;
+    @XmlElement(name = "AdGroupId", nillable = true)
+    protected Long adGroupId;
+    @XmlElement(name = "CriterionType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<CriterionType> criterionType;
 
     /**
      * Gets the value of the accountId property.
@@ -87,6 +100,54 @@ public class GetAdGroupCriterionsByIdsRequest {
      */
     public void setAdGroupCriterionIds(ArrayOflong value) {
         this.adGroupCriterionIds = value;
+    }
+
+    /**
+     * Gets the value of the adGroupId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAdGroupId() {
+        return adGroupId;
+    }
+
+    /**
+     * Sets the value of the adGroupId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAdGroupId(Long value) {
+        this.adGroupId = value;
+    }
+
+    /**
+     * Gets the value of the criterionType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CriterionType> getCriterionType() {
+        return criterionType;
+    }
+
+    /**
+     * Sets the value of the criterionType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCriterionType(Collection<CriterionType> value) {
+        this.criterionType = value;
     }
 
 }

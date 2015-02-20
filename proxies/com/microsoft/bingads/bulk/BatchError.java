@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Code" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Details" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ErrorCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Index" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "code",
     "details",
     "errorCode",
+    "forwardCompatibilityMap",
     "index",
     "message",
     "type"
@@ -52,6 +54,8 @@ public class BatchError {
     protected String details;
     @XmlElement(name = "ErrorCode", nillable = true)
     protected String errorCode;
+    @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
+    protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Index")
     protected Integer index;
     @XmlElement(name = "Message", nillable = true)
@@ -129,6 +133,30 @@ public class BatchError {
      */
     public void setErrorCode(String value) {
         this.errorCode = value;
+    }
+
+    /**
+     * Gets the value of the forwardCompatibilityMap property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfKeyValuePairOfstringstring }
+     *     
+     */
+    public ArrayOfKeyValuePairOfstringstring getForwardCompatibilityMap() {
+        return forwardCompatibilityMap;
+    }
+
+    /**
+     * Sets the value of the forwardCompatibilityMap property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfKeyValuePairOfstringstring }
+     *     
+     */
+    public void setForwardCompatibilityMap(ArrayOfKeyValuePairOfstringstring value) {
+        this.forwardCompatibilityMap = value;
     }
 
     /**

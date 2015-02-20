@@ -72,7 +72,7 @@ public class KeywordPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "KeywordRelevance", nillable = true)

@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -29,6 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v9}CampaignStatus" minOccurs="0"/>
  *         &lt;element name="TimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v9}CampaignType" minOccurs="0"/>
+ *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v9}ArrayOfSetting" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,7 +53,9 @@ import javax.xml.bind.annotation.XmlType;
     "monthlyBudget",
     "name",
     "status",
-    "timeZone"
+    "timeZone",
+    "campaignType",
+    "settings"
 })
 public class Campaign {
 
@@ -77,6 +83,12 @@ public class Campaign {
     protected CampaignStatus status;
     @XmlElement(name = "TimeZone", nillable = true)
     protected String timeZone;
+    @XmlElement(name = "CampaignType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<CampaignType> campaignType;
+    @XmlElement(name = "Settings", nillable = true)
+    protected ArrayOfSetting settings;
 
     /**
      * Gets the value of the budgetType property.
@@ -340,6 +352,54 @@ public class Campaign {
      */
     public void setTimeZone(String value) {
         this.timeZone = value;
+    }
+
+    /**
+     * Gets the value of the campaignType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CampaignType> getCampaignType() {
+        return campaignType;
+    }
+
+    /**
+     * Sets the value of the campaignType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampaignType(Collection<CampaignType> value) {
+        this.campaignType = value;
+    }
+
+    /**
+     * Gets the value of the settings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfSetting }
+     *     
+     */
+    public ArrayOfSetting getSettings() {
+        return settings;
+    }
+
+    /**
+     * Sets the value of the settings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfSetting }
+     *     
+     */
+    public void setSettings(ArrayOfSetting value) {
+        this.settings = value;
     }
 
 }
