@@ -8,6 +8,6 @@ The Bing Ads Java Software Development Kit (SDK) Version 9.3 enhances the experi
 <dependency>
   <groupId>com.microsoft.bingads</groupId>
   <artifactId>microsoft.bingads</artifactId>
-  <version>9.3.0-beta-1</version>
+  <version>9.3.1-beta</version>
 </dependency>
 ```
