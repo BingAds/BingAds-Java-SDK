@@ -129,7 +129,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
     }
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         this.validatePropertyNotNull(productAdExtension, "ProductAdExtension");
 
         this.validatePropertyNotNull(productAdExtension.getProductSelection(), "ProductAdExtension.ProductSelection");
@@ -141,10 +141,10 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
         extensionIdentifier.setAdExtensionId(this.productAdExtension.getId());
         extensionIdentifier.setName(this.productAdExtension.getName());        
 
-        rowWriter.writeObjectRow(extensionIdentifier);
+        rowWriter.writeObjectRow(extensionIdentifier, excludeReadonlyData);
 
         for (BulkProductConditionCollection bulkProductConditionCollection : this.convertRawToBulkProductConditionCollections()) {
-            bulkProductConditionCollection.writeToStream(rowWriter);
+            bulkProductConditionCollection.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
 

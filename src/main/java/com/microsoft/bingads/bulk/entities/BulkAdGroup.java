@@ -139,6 +139,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.AdGroup,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -153,6 +154,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.StartDate,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -210,6 +212,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.PricingModel,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -229,6 +232,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.AdRotation,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -325,10 +329,16 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getAdGroup(), "AdGroup");
 
         MappingHelpers.<BulkAdGroup>convertToValues(this, values, MAPPINGS);
+
+        if (!excludeReadonlyData) {
+            QualityScoreData.writeToRowValuesIfNotNull(qualityScoreData, values);
+
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     public Long getCampaignId() {

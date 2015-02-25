@@ -21,7 +21,7 @@ public class SimpleBulkMapping<TEntity, TProperty> extends SingleFieldBulkMappin
     }
 
     /**
-     * Constructor for mappings both directions
+     * Constructor for mappings
      *
      * @param csvHeader Name of the header
      * @param fieldToCsv Function to get the value from an entity
@@ -29,16 +29,6 @@ public class SimpleBulkMapping<TEntity, TProperty> extends SingleFieldBulkMappin
      */
     public SimpleBulkMapping(String csvHeader, Function<TEntity, TProperty> fieldToCsv, BiConsumer<String, TEntity> csvToField) {
         this(csvHeader, fieldToCsv, csvToField, false);
-    }
-
-    /**
-     * Constructor for read only mappings
-     *
-     * @param csvHeader Name of the header
-     * @param csvToField Function to set the value from CSV on an object
-     */
-    public SimpleBulkMapping(String csvHeader, BiConsumer<String, TEntity> csvToField) {
-        this(csvHeader, null, csvToField);
     }
 
     @Override

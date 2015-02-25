@@ -1,5 +1,6 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.campaignmanagement.AdExtensionEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.Keyword;
 import com.microsoft.bingads.campaignmanagement.KeywordEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.KeywordStatus;
@@ -7,6 +8,7 @@ import com.microsoft.bingads.campaignmanagement.MatchType;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
+import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.internal.bulk.BulkStreamReader;
 import com.microsoft.bingads.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.internal.bulk.RowValues;
@@ -15,12 +17,13 @@ import com.microsoft.bingads.internal.bulk.TryResult;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a keyword. 
+ * Represents a keyword.
  */
 public class BulkKeyword extends SingleRecordBulkEntity {
 
@@ -158,7 +161,13 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkKeyword, KeywordEditorialStatus>(StringTable.EditorialStatus,                
+        m.add(new SimpleBulkMapping<BulkKeyword, String>(StringTable.EditorialStatus,
+                new Function<BulkKeyword, String>() {
+                    @Override
+                    public String apply(BulkKeyword t) {
+                        return t.getKeyword().getEditorialStatus() != null ? t.getKeyword().getEditorialStatus().value() : null;
+                    }
+                },
                 new BiConsumer<String, BulkKeyword>() {
                     @Override
                     public void accept(String v, BulkKeyword c) {
@@ -266,10 +275,16 @@ public class BulkKeyword extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getKeyword(), "Keyword");
 
         MappingHelpers.<BulkKeyword>convertToValues(this, values, MAPPINGS);
+
+        if (!excludeReadonlyData) {
+            QualityScoreData.writeToRowValuesIfNotNull(qualityScoreData, values);
+
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     @Override
@@ -295,6 +310,17 @@ public class BulkKeyword extends SingleRecordBulkEntity {
         }
     }
 
+    @Override
+    public void writeAdditionalData(BulkObjectWriter writer) throws IOException {
+        if (getBidSuggestions() != null) {
+            BulkKeywordBidSuggestion.writeIfNotNull(getBidSuggestions().getBestPosition(), writer);
+
+            BulkKeywordBidSuggestion.writeIfNotNull(getBidSuggestions().getMainLine(), writer);
+
+            BulkKeywordBidSuggestion.writeIfNotNull(getBidSuggestions().getFirstPage(), writer);
+        }
+    }
+
     public Long getAdGroupId() {
         return adGroupId;
     }
@@ -317,7 +343,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
 
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
-    }   
+    }
 
     public String getCampaignName() {
         return campaignName;

@@ -84,10 +84,10 @@ public class BulkTextAd extends BulkAd<TextAd> {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getTextAd(), "TextAd");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.<BulkTextAd>convertToValues(this, values, MAPPINGS);
     }

@@ -98,10 +98,10 @@ abstract class BulkDeviceOsTargetBid extends BulkTargetBid {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getDeviceOsTargetBid(), "DeviceOsTargetBid");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }

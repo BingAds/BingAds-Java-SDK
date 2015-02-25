@@ -114,10 +114,10 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(this.getImageAdExtension(), "ImageAdExtension");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 }

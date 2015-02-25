@@ -27,6 +27,8 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
 
     private AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation;
 
+    private PerformanceData performanceData;
+
     /**
      * The editorial status of the ad extension and associated entity. For more information, see AdExtensionEditorialStatus at http://go.microsoft.com/fwlink/?LinkId=511866. Corresponds to the 'Editorial Status' field in the bulk file.
      */
@@ -97,7 +99,13 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkAdExtensionAssociation, AdExtensionEditorialStatus>(StringTable.EditorialStatus,
+        m.add(new SimpleBulkMapping<BulkAdExtensionAssociation, String>(StringTable.EditorialStatus,
+                new Function<BulkAdExtensionAssociation, String>() {
+                    @Override
+                    public String apply(BulkAdExtensionAssociation t) {
+                        return t.getEditorialStatus() != null ? t.getEditorialStatus().value() : null;
+                    }
+                },
                 new BiConsumer<String, BulkAdExtensionAssociation>() {
                     @Override
                     public void accept(String v, BulkAdExtensionAssociation c) {
@@ -115,10 +123,14 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getAdExtensionIdToEntityIdAssociation(), "AdExtensionIdToEntityIdAssociation");
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
+
+        if (!excludeReadonlyData) {
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     @Override
@@ -126,6 +138,8 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
         setAdExtensionIdToEntityIdAssociation(new AdExtensionIdToEntityIdAssociation());
 
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
+
+        performanceData = PerformanceData.readFromRowValuesOrNull(values);
     }
 
     public Status getStatus() {

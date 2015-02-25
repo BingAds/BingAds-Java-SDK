@@ -27,9 +27,9 @@ public class UnknownBulkEntity extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues rowValues) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         for (Entry<String, String> entry : this.values.entrySet()) {
-            rowValues.put(entry.getKey(), entry.getValue());
+            values.put(entry.getKey(), entry.getValue());
         }
     }
 }

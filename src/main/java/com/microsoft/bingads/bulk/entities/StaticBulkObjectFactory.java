@@ -433,6 +433,10 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }
 
+        for (Entry<String, Supplier<BulkObject>> entry : ADDITIONAL_OBJECT_MAP.entrySet()) {
+            c.put(entry.getValue().get().getClass(), entry.getKey());
+        }
+
         TYPE_REVERSE_MAP = Collections.unmodifiableMap(c);
 
         TARGET_IDENTIFIER_TYPE_REVERSE_MAP = Collections.unmodifiableMap(targetIdentifierTypeReverseMap);
@@ -467,6 +471,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
 
     @Override
     public String getBulkRowType(BulkObject bulkObject) {
+        if (bulkObject instanceof BulkError) {
+            BulkError error = (BulkError)bulkObject;
+
+            return getBulkRowType(error.getEntity()) + " Error";
+        }
+
         if (bulkObject instanceof BulkTargetIdentifier) {
             BulkTargetIdentifier identifier = (BulkTargetIdentifier) bulkObject;
 

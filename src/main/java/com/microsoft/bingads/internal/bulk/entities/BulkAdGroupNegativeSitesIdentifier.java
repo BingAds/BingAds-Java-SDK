@@ -80,8 +80,8 @@ public class BulkAdGroupNegativeSitesIdentifier extends BulkNegativeSiteIdentifi
     }
 
     @Override
-    public void writeToRowValues(RowValues values) {
-        super.writeToRowValues(values);
+    public void writeToRowValues(RowValues values, boolean excludeReadonlyData) {
+        super.writeToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

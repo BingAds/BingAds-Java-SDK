@@ -117,10 +117,10 @@ public class BulkMobileAd extends BulkAd<MobileAd> {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getMobileAd(), "MobileAd");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.<BulkMobileAd>convertToValues(this, values, MAPPINGS);
     }

@@ -103,7 +103,7 @@ public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         //TODO: throw if Association doesn't have NKW and Campaign as entity types
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);

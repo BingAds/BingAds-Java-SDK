@@ -7,13 +7,13 @@ import com.microsoft.bingads.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents the performance data returned with bulk file entities when
- * requested
+ * Represents the performance data returned with bulk file entities when requested
  *
  */
 public class PerformanceData {
@@ -42,6 +42,12 @@ public class PerformanceData {
         List<BulkMapping<PerformanceData>> m = new ArrayList<BulkMapping<PerformanceData>>();
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.Spend,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getSpend();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -51,6 +57,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Integer>(StringTable.Impressions,
+                new Function<PerformanceData, Integer>() {
+                    @Override
+                    public Integer apply(PerformanceData t) {
+                        return t.getImpressions();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -60,6 +72,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Integer>(StringTable.Clicks,
+                new Function<PerformanceData, Integer>() {
+                    @Override
+                    public Integer apply(PerformanceData t) {
+                        return t.getClicks();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -69,6 +87,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.CTR,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getClickThroughRate();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -78,6 +102,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.AvgCPC,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getAverageCostPerClick();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -87,6 +117,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.AvgCPM,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getAverageCostPerThousandImpressions();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -96,6 +132,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.AvgPosition,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getAveragePosition();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -105,6 +147,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Integer>(StringTable.Conversions,
+                new Function<PerformanceData, Integer>() {
+                    @Override
+                    public Integer apply(PerformanceData t) {
+                        return t.getConversions();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -114,6 +162,12 @@ public class PerformanceData {
         ));
 
         m.add(new SimpleBulkMapping<PerformanceData, Double>(StringTable.CPA,
+                new Function<PerformanceData, Double>() {
+                    @Override
+                    public Double apply(PerformanceData t) {
+                        return t.getCostPerConversion();
+                    }
+                },
                 new BiConsumer<String, PerformanceData>() {
                     @Override
                     public void accept(String v, PerformanceData d) {
@@ -125,12 +179,18 @@ public class PerformanceData {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
-    public static PerformanceData readFromRowValuesOrNull(RowValues values) {
+    static PerformanceData readFromRowValuesOrNull(RowValues values) {
         PerformanceData performanceData = new PerformanceData();
 
         performanceData.readFromRowValues(values);
 
         return performanceData.hasAnyValues() ? performanceData : null;
+    }
+
+    static void writeToRowValuesIfNotNull(PerformanceData performanceData, RowValues values) {
+        if (performanceData != null) {
+            performanceData.writeToRowValues(values);
+        }
     }
 
     public Double getSpend() {
@@ -169,8 +229,12 @@ public class PerformanceData {
         return costPerConversion;
     }
 
-    public void readFromRowValues(RowValues values) {
+    void readFromRowValues(RowValues values) {
         MappingHelpers.<PerformanceData>convertToEntity(values, MAPPINGS, this);
+    }
+
+    void writeToRowValues(RowValues values) {
+        MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
     private boolean hasAnyValues() {

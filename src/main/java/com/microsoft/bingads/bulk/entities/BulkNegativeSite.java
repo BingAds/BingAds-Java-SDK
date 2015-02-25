@@ -96,8 +96,8 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
-        this.identifier.writeToRowValues(values);
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
+        this.identifier.writeToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

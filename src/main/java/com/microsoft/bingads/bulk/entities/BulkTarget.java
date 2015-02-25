@@ -146,7 +146,7 @@ abstract class BulkTarget<
     }
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         if (getStatus() != Status.DELETED) {
             validatePropertyNotNull(getTarget(), "Target");
         }
@@ -184,7 +184,7 @@ abstract class BulkTarget<
         getRadiusTarget().isBeingWrittenAsPartOfParentTarget = true;
 
         for (BulkEntity childEntity : getSubTargets()) {
-            childEntity.writeToStream(rowWriter);
+            childEntity.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
 

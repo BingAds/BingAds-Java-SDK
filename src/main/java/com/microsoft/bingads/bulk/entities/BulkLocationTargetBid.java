@@ -75,8 +75,8 @@ abstract class BulkLocationTargetBid extends BulkLocationTargetBidWithStringLoca
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
-        super.processMappingsToRowValues(values);
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }

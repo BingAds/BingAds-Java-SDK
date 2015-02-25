@@ -49,7 +49,7 @@ public abstract class BulkObject {
      *
      * @param values
      */
-    public void writeToRowValues(RowValues values) {
+    public void writeToRowValues(RowValues values, boolean excludeReadonlyData) {
         throw new UnsupportedOperationException();
     }
 
@@ -66,7 +66,7 @@ public abstract class BulkObject {
      * @param rowWriter
      * @throws IOException
      */
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         throw new UnsupportedOperationException();
     }
 

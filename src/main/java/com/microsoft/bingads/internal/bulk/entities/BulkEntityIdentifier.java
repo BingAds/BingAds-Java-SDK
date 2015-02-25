@@ -17,7 +17,7 @@ public abstract class BulkEntityIdentifier extends BulkObject {
     public abstract MultiRecordBulkEntity createEntityWithThisIdentifier();
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         rowWriter.writeObjectRow(this);
     }
 

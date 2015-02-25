@@ -42,10 +42,10 @@ public class BulkProductAd extends BulkAd<ProductAd> {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getProductAd(), "ProductAd");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.<BulkProductAd>convertToValues(this, values, MAPPINGS);
     }

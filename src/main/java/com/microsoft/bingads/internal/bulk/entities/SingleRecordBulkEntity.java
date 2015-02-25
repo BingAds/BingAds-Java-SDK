@@ -3,7 +3,6 @@ package com.microsoft.bingads.internal.bulk.entities;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
 import com.microsoft.bingads.bulk.entities.BulkError;
-import com.microsoft.bingads.campaignmanagement.Date;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
@@ -39,7 +38,7 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
     /**
      * Mappings shared by all single line entities (ClientId)
      */
-    private static List<BulkMapping<SingleRecordBulkEntity>> MAPPINGS;
+    private static final List<BulkMapping<SingleRecordBulkEntity>> MAPPINGS;
 
     static {
         List<BulkMapping<SingleRecordBulkEntity>> m = new ArrayList<BulkMapping<SingleRecordBulkEntity>>();
@@ -59,7 +58,20 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<SingleRecordBulkEntity, Date>(StringTable.LastModifiedTime,
+        m.add(new SimpleBulkMapping<SingleRecordBulkEntity, String>(StringTable.LastModifiedTime,
+                new Function<SingleRecordBulkEntity, String>() {
+                    @Override
+                    public String apply(SingleRecordBulkEntity t) {
+                        if (t.getLastModifiedTime() == null) {
+                            return null;
+                        }
+
+                        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                        return format.format(t.getLastModifiedTime().getTime());
+                    }
+                },
                 new BiConsumer<String, SingleRecordBulkEntity>() {
                     @Override
                     public void accept(String v, SingleRecordBulkEntity c) {
@@ -70,7 +82,7 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
                                 try {
                                     SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                                     format.setTimeZone(TimeZone.getTimeZone("UTC"));
-                                    
+
                                     c.setTime(format.parse(t));
                                 } catch (ParseException ex) {
                                     throw new UncheckedParseException(ex);
@@ -109,29 +121,30 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
      * Writes common mappings and calls abstract method to read entity-specific mappings. This is done through abstract method to avoid having to do base.WriteToRowValues in each child.
      *
      * @param values CSV row values
+     * @param excludeReadonlyData indicates whether readonly data should be written (such as errors, performance data etc.)
      */
     @Override
-    public void writeToRowValues(RowValues values) {
+    public void writeToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.<SingleRecordBulkEntity>convertToValues(this, values, MAPPINGS);
 
-        this.processMappingsToRowValues(values);
+        this.processMappingsToRowValues(values, excludeReadonlyData);
     }
 
     /**
      * Process specific entity mappings to CSV values. Must be implemented by each entity
      *
      * @param values Row values
+     * @param excludeReadonlyData indicates whether readonly data should be written (such as errors, performance data etc.)
      */
-    public abstract void processMappingsToRowValues(RowValues values);
+    public abstract void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData);
 
     @Override
-    public final void readRelatedDataFromStream(BulkStreamReader reader) {
+    public void readRelatedDataFromStream(BulkStreamReader reader) {
         this.readAdditionalData(reader);
         this.readErrors(reader);
     }
 
     public void readAdditionalData(BulkStreamReader reader) {
-
     }
 
     /**
@@ -147,7 +160,11 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
         TryResult<BulkError> errorResult = reader.tryRead(BulkError.class);
 
         while (errorResult.isSuccessful()) {
-            errors.add(errorResult.getResult());
+            BulkError error = errorResult.getResult();
+
+            error.setEntity(this);
+
+            errors.add(error);
             errorResult = reader.tryRead(BulkError.class);
         }
 
@@ -163,11 +180,29 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
      * Writes entity data to bulk file
      *
      * @param rowWriter Writer object, allowing to write consecutive bulk rows
+     * @param excludeReadonlyData indicates whether readonly data should be written (such as errors, performance data etc.)
      * @throws IOException
      */
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
-        rowWriter.writeObjectRow(this);
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
+        rowWriter.writeObjectRow(this, excludeReadonlyData);
+
+        if (!excludeReadonlyData) {
+            writeErrors(rowWriter);
+
+            writeAdditionalData(rowWriter);
+        }
+    }
+
+    public void writeAdditionalData(BulkObjectWriter writer) throws IOException {
+    }
+
+    private void writeErrors(BulkObjectWriter writer) throws IOException {
+        if (hasErrors()) {
+            for (BulkError error : getErrors()) {
+                writer.writeObjectRow(error);
+            }
+        }
     }
 
     @Override

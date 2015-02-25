@@ -15,6 +15,7 @@ import java.util.List;
 import static org.easymock.EasyMock.and;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.cmp;
+import static org.easymock.EasyMock.eq;
 import org.easymock.EasyMockRunner;
 import org.easymock.LogicalOperator;
 import org.easymock.Mock;
@@ -85,12 +86,12 @@ public class BulkProductAdExtensionWriteToStreamTest extends
         ProductConditionCollection2.setAccountId(123L);
         ProductConditionCollection2.setProductConditionCollection(apiAdExtension.getProductSelection().getProductConditionCollections().get(1));
 
-        rowWriter.writeObjectRow(and(anyObject(BulkProductAdExtensionIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkProductConditionCollection.class), cmp(ProductConditionCollection1, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkProductConditionCollection.class), cmp(ProductConditionCollection2, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)));
+        rowWriter.writeObjectRow(and(anyObject(BulkProductAdExtensionIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkProductConditionCollection.class), cmp(ProductConditionCollection1, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkProductConditionCollection.class), cmp(ProductConditionCollection2, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
 
         replayAll();
-        adExtension.writeToStream(rowWriter);
+        adExtension.writeToStream(rowWriter, false);
     }
 
 }

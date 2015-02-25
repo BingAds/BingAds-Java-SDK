@@ -131,10 +131,10 @@ abstract class BulkDayTimeTargetBid extends BulkTargetBid {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getDayTimeTargetBid(), "DayTimeTargetBid");
         
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }        

@@ -125,7 +125,7 @@ public abstract class BulkNegativeSiteIdentifier extends BulkEntityIdentifier {
     }
 
     @Override
-    public void writeToRowValues(RowValues values) {
+    public void writeToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

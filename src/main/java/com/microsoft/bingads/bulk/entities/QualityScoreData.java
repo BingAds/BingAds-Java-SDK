@@ -7,13 +7,13 @@ import com.microsoft.bingads.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents the quality score data returned with bulk file entities when
- * requested
+ * Represents the quality score data returned with bulk file entities when requested
  *
  */
 public class QualityScoreData {
@@ -25,13 +25,19 @@ public class QualityScoreData {
     private Integer landingPageRelevance;
 
     private Integer landingPageUserExperience;
-    
+
     private static final List<BulkMapping<QualityScoreData>> MAPPINGS;
 
     static {
         List<BulkMapping<QualityScoreData>> m = new ArrayList<BulkMapping<QualityScoreData>>();
 
         m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.QualityScore,
+                new Function<QualityScoreData, Integer>() {
+                    @Override
+                    public Integer apply(QualityScoreData t) {
+                        return t.getQualityScore();
+                    }
+                },
                 new BiConsumer<String, QualityScoreData>() {
                     @Override
                     public void accept(String v, QualityScoreData d) {
@@ -40,6 +46,12 @@ public class QualityScoreData {
                 }));
 
         m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.KeywordRelevance,
+                new Function<QualityScoreData, Integer>() {
+                    @Override
+                    public Integer apply(QualityScoreData t) {
+                        return t.getKeywordRelevance();
+                    }
+                },
                 new BiConsumer<String, QualityScoreData>() {
                     @Override
                     public void accept(String v, QualityScoreData d) {
@@ -48,6 +60,12 @@ public class QualityScoreData {
                 }));
 
         m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.LandingPageRelevance,
+                new Function<QualityScoreData, Integer>() {
+                    @Override
+                    public Integer apply(QualityScoreData t) {
+                        return t.getLandingPageRelevance();
+                    }
+                },
                 new BiConsumer<String, QualityScoreData>() {
                     @Override
                     public void accept(String v, QualityScoreData d) {
@@ -56,6 +74,12 @@ public class QualityScoreData {
                 }));
 
         m.add(new SimpleBulkMapping<QualityScoreData, Integer>(StringTable.LandingPageUserExperience,
+                new Function<QualityScoreData, Integer>() {
+                    @Override
+                    public Integer apply(QualityScoreData t) {
+                        return t.getLandingPageUserExperience();
+                    }
+                },
                 new BiConsumer<String, QualityScoreData>() {
                     @Override
                     public void accept(String v, QualityScoreData d) {
@@ -98,12 +122,18 @@ public class QualityScoreData {
         this.landingPageRelevance = landingPageRelevance;
     }
 
-    public static QualityScoreData readFromRowValuesOrNull(RowValues values) {
+    static QualityScoreData readFromRowValuesOrNull(RowValues values) {
         QualityScoreData qualityScoreData = new QualityScoreData();
 
         qualityScoreData.readFromRowValues(values);
 
         return qualityScoreData.hasAnyValues() ? qualityScoreData : null;
+    }
+
+    static void writeToRowValuesIfNotNull(QualityScoreData qualityScoreData, RowValues values) {
+        if (qualityScoreData != null) {
+            qualityScoreData.writeToRowValues(values);
+        }
     }
 
     private boolean hasAnyValues() {
@@ -112,7 +142,11 @@ public class QualityScoreData {
                 || landingPageUserExperience != null;
     }
 
-    public void readFromRowValues(RowValues values) {
+    void readFromRowValues(RowValues values) {
         MappingHelpers.<QualityScoreData>convertToEntity(values, MAPPINGS, this);
+    }
+
+    void writeToRowValues(RowValues values) {
+        MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 }

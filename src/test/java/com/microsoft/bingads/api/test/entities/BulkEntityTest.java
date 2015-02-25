@@ -87,7 +87,7 @@ public abstract class BulkEntityTest<TEntity extends BulkObject> {
 
         RowValues rowValues = new RowValues();
 
-        entity.writeToRowValues(rowValues);
+        entity.writeToRowValues(rowValues, false);
 
         return rowValues;
     }

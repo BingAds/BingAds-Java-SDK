@@ -151,10 +151,10 @@ public class BulkCallAdExtension extends BulkAdExtension<CallAdExtension> {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         this.validatePropertyNotNull(this.getCallAdExtension(), "CallAdExtension");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }

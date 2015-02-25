@@ -253,12 +253,12 @@ public class BulkProductConditionCollection extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         this.validatePropertyNotNull(this.getProductConditionCollection(), "ProductConditionCollection");
 
         this.validatePropertyNotNull(this.getProductConditionCollection().getConditions(), "ProductConditionCollection.Conditions");
 
-        this.identifier.writeToRowValues(values);
+        this.identifier.writeToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }

@@ -27,6 +27,7 @@ public class CsvHeaders {
         StringTable.Website,
         StringTable.SyncTime,
         StringTable.ClientId,
+        StringTable.LastModifiedTime,
         // campaign
         StringTable.TimeZone,
         StringTable.Budget,

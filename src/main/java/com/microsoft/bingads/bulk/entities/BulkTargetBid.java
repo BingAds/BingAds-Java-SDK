@@ -19,8 +19,8 @@ class BulkTargetBid extends SingleRecordBulkEntity {
     }        
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
-        getIdentifier().writeToRowValues(values);
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
+        getIdentifier().writeToRowValues(values, excludeReadonlyData);
     }
 
     @Override

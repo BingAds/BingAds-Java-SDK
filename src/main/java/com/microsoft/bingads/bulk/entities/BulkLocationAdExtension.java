@@ -390,10 +390,10 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(this.getLocationAdExtension(), "LocationAdExtension");
 
-        super.processMappingsToRowValues(values);
+        super.processMappingsToRowValues(values, excludeReadonlyData);
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }

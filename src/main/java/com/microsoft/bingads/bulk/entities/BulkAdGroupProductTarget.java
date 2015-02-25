@@ -255,7 +255,7 @@ public class BulkAdGroupProductTarget extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

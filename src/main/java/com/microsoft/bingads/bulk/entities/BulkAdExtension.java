@@ -19,8 +19,7 @@ import java.util.List;
 class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
 
     /**
-     * The ad extension's parent account identifier. Corresponds to the 'Parent
-     * Id' field in the bulk file.
+     * The ad extension's parent account identifier. Corresponds to the 'Parent Id' field in the bulk file.
      */
     private Long accountId;
 
@@ -33,9 +32,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
     }
 
     /**
-     * The type of ad extension from the
-     * com.microsoft.bing_ads.api.client.CampaignManagement namespace, for
-     * example a {@link CallAdExtension} object.
+     * The type of ad extension from the com.microsoft.bing_ads.api.client.CampaignManagement namespace, for example a {@link CallAdExtension} object.
      */
     private T adExtension;
 
@@ -113,6 +110,12 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
         ));
 
         m.add(new SimpleBulkMapping<BulkAdExtension, Integer>(StringTable.Version,
+                new Function<BulkAdExtension, Integer>() {
+                    @Override
+                    public Integer apply(BulkAdExtension t) {
+                        return t.getAdExtension().getVersion();
+                    }
+                },
                 new BiConsumer<String, BulkAdExtension>() {
                     @Override
                     public void accept(String v, BulkAdExtension c) {
@@ -135,7 +138,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

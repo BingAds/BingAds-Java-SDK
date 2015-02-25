@@ -84,20 +84,20 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
     protected abstract void validatePropertiesNotNull();
 
     @Override
-    public void writeToStream(BulkObjectWriter streamWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         validatePropertiesNotNull();
 
         TIdentifier deleteRow = createIdentifier();
 
         deleteRow.setStatus(Status.DELETED);
-        streamWriter.writeObjectRow(deleteRow);
+        rowWriter.writeObjectRow(deleteRow, excludeReadonlyData);
 
         if (status == Status.DELETED) {
             return;
         }
 
         for (TNegativeSite site : convertApiToBulkNegativeSites()) {
-            site.writeToStream(streamWriter);
+            site.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
 

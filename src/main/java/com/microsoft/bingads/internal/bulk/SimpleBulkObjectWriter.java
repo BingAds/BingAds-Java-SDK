@@ -78,14 +78,10 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
         return new CSVStrategy(delimiter, '"', '#', false, true);
     }
 
-    /**
-     * @see
-     * com.microsoft.bingads.internal.bulk.file.BulkObjectWriter#writeObjectRow(com.microsoft.bingads.internal.bulk.file.BulkObject)
-     */
     @Override
-    public void writeObjectRow(BulkObject bulkObject) throws IOException {
+    public void writeObjectRow(BulkObject bulkObject, boolean excludeReadonlyData) throws IOException {
         RowValues values = new RowValues();
-        bulkObject.writeToRowValues(values);
+        bulkObject.writeToRowValues(values, excludeReadonlyData);
 
         String type = bulkObjectFactory.getBulkRowType(bulkObject);
         values.put(StringTable.Type, type);
@@ -94,9 +90,17 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
         this.csvWriter.flush();
     }
 
+    /**
+     * @see
+     * com.microsoft.bingads.internal.bulk.file.BulkObjectWriter#writeObjectRow(com.microsoft.bingads.internal.bulk.file.BulkObject)
+     */
+    @Override
+    public void writeObjectRow(BulkObject bulkObject) throws IOException {
+        writeObjectRow(bulkObject, false);
+    }
+
     @Override
     public void close() throws IOException {
         this.csvWriter.close();
     }
-
 }

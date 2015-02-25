@@ -92,7 +92,7 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
     }
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         validatePropertyNotNull(siteLinksAdExtension, StringTable.SITE_LINKS_AD_EXTENSION);
 
         validatePropertyNotNull(siteLinksAdExtension.getId(), StringTable.SITE_LINKS_AD_EXTENSION + ".getId()");
@@ -104,14 +104,14 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
         identifier.setAccountId(accountId);
         identifier.setAdExtensionId(this.siteLinksAdExtension.getId());
 
-        rowWriter.writeObjectRow(identifier);
+        rowWriter.writeObjectRow(identifier, excludeReadonlyData);
 
         if (AdExtensionStatus.DELETED.equals(siteLinksAdExtension.getStatus())) {
             return;
         }
 
         for (BulkSiteLink bulkSiteLink : convertV9ToBulkSiteLinks()) {
-            bulkSiteLink.writeToStream(rowWriter);
+            bulkSiteLink.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
 

@@ -75,13 +75,22 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
     }
 
     /**
-     * The version of the ad extension. Corresponds to the 'Version' field in
+     * Gets the version of the ad extension. Corresponds to the 'Version' field in
      * the bulk file.
+     * @return Ad Extension version
      */
     public Integer getVersion() {
         return this.identifier.getVersion();
     }
 
+    /**
+     * Sets the version of the ad extension. Corresponds to the 'Version' field in
+     * the bulk file.
+     * @param version Ad Extension version
+     */
+    public void setVersion(Integer version) {
+        this.identifier.setVersion(version);
+    }
     /**
      * The order of the sitelink displayed to a search user in the ad.
      * Corresponds to the 'Sitelink Extension Order' field in the bulk file.
@@ -227,9 +236,9 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         this.validatePropertyNotNull(this.siteLink, StringTable.SiteLink);
-        this.identifier.writeToRowValues(values);
+        this.identifier.writeToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

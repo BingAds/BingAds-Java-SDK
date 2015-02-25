@@ -134,12 +134,12 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
         return version;
     }
 
-    protected void setVersion(Integer version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
     @Override
-    public void writeToRowValues(RowValues values) {
+    public void writeToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 

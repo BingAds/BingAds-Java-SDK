@@ -18,7 +18,14 @@ public interface BulkObjectWriter extends Closeable {
      * @param bulkObject The object to be written to file
      * @throws IOException Occurs when the file can not be written
      */
-    public abstract void writeObjectRow(BulkObject bulkObject)
-            throws IOException;
+    public abstract void writeObjectRow(BulkObject bulkObject) throws IOException;
+
+    /**
+     * Writes a single object to file
+     *
+     * @param bulkObject The object to be written to file
+     * @throws IOException Occurs when the file can not be written
+     */
+    public abstract void writeObjectRow(BulkObject bulkObject, boolean excludeReadonlyData) throws IOException;
 
 }

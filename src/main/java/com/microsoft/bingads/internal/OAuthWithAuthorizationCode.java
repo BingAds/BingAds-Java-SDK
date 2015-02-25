@@ -94,6 +94,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 code
         ));
 
+        raiseNewTokensEventIfNeeded();
+
         return oAuthTokens;
     }
 
@@ -112,6 +114,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 REFRESH_TOKEN,
                 refreshToken
         ));
+
+        raiseNewTokensEventIfNeeded();
 
         return oAuthTokens;
     }
@@ -135,13 +139,15 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 || oAuthTokens.getAccessToken() == null
                 || oAuthTokens.getAccessTokenExpiresInSeconds() < TIME_RESERVE_BEFORE_TOKEN_REFRESH_IN_SECONDS) {
             requestAccessAndRefreshTokens(oAuthTokens.getRefreshToken());
-
-            if (newTokensListener != null) {
-                newTokensListener.onNewOAuthTokensReceived(oAuthTokens);
-            }
         }
 
         return oAuthTokens;
+    }
+
+    private void raiseNewTokensEventIfNeeded() {
+        if (newTokensListener != null) {
+            newTokensListener.onNewOAuthTokensReceived(oAuthTokens);
+        }
     }
 
     public NewOAuthTokensReceivedListener getNewTokensListener() {

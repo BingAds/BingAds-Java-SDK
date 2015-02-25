@@ -15,6 +15,7 @@ import java.util.List;
 import static org.easymock.EasyMock.and;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.cmp;
+import static org.easymock.EasyMock.eq;
 import org.easymock.EasyMockRunner;
 import org.easymock.LogicalOperator;
 import org.easymock.Mock;
@@ -85,12 +86,12 @@ public class BulkSiteLinkAdExtensionWriteToStreamTest extends
         siteLink2.setAccountId(123L);
         siteLink2.setSiteLink(apiAdExtension.getSiteLinks().getSiteLinks().get(1));
 
-        rowWriter.writeObjectRow(and(anyObject(SiteLinkAdExtensionIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkSiteLink.class), cmp(siteLink1, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkSiteLink.class), cmp(siteLink2, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)));
+        rowWriter.writeObjectRow(and(anyObject(SiteLinkAdExtensionIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkSiteLink.class), cmp(siteLink1, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkSiteLink.class), cmp(siteLink2, BULK_SITE_LINK_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
 
         replayAll();
-        adExtension.writeToStream(rowWriter);
+        adExtension.writeToStream(rowWriter, false);
     }
 
 }

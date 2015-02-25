@@ -14,6 +14,7 @@ import java.util.List;
 import static org.easymock.EasyMock.and;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.cmp;
+import static org.easymock.EasyMock.eq;
 import org.easymock.EasyMockRunner;
 import org.easymock.LogicalOperator;
 import org.easymock.Mock;
@@ -101,10 +102,10 @@ public class BulkCampaignNegativeSitesWriteTest extends BulkCampaignNegativeSite
         bulkCampaignNegativeSite2.setCampaignId(123L);
         bulkCampaignNegativeSite2.setWebsite(apiCampaignNegativeSites.getNegativeSites().getStrings().get(1));
 
-        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSitesIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite1, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)));
-        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite2, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)));
+        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSitesIdentifier.class), cmp(identifier, IDENTIFIER_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite1, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
+        rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite2, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
         replayAll();
-        CampaignNegativeSites.writeToStream(rowWriter);
+        CampaignNegativeSites.writeToStream(rowWriter, false);
     }
 }

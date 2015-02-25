@@ -65,7 +65,7 @@ abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulk
     }
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter) throws IOException {
+    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         // If the sub-target (for example BulkAgeTarget) is being written as part of BulkTarget, 
         // AgeTarget may be null, which means no Age bids should be written.
         // Otherwise, if BulkAgeTarget is written individually, AgeTarget must be set.
@@ -85,14 +85,14 @@ abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulk
         identifier.setEntityName(getEntityName());
         identifier.setParentEntityName(getParentEntityName());
         
-        identifier.writeToStream(rowWriter);
+        identifier.writeToStream(rowWriter, excludeReadonlyData);
         
         if (getStatus() == Status.DELETED) {
             return;
         }
         
         for (TBid bid : convertApiToBulkBids()) {
-            bid.writeToStream(rowWriter);
+            bid.writeToStream(rowWriter, excludeReadonlyData);
         }
     }        
     

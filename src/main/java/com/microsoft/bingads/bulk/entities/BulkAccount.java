@@ -37,6 +37,12 @@ public class BulkAccount extends SingleRecordBulkEntity {
         List<BulkMapping<BulkAccount>> m = new ArrayList<BulkMapping<BulkAccount>>();
 
         m.add(new SimpleBulkMapping<BulkAccount, Long>(StringTable.Id,
+                new Function<BulkAccount, Long>() {
+                    @Override
+                    public Long apply(BulkAccount t) {
+                        return t.getId();
+                    }
+                },
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
@@ -46,6 +52,12 @@ public class BulkAccount extends SingleRecordBulkEntity {
         ));
 
         m.add(new SimpleBulkMapping<BulkAccount, Long>(StringTable.ParentId,
+                new Function<BulkAccount, Long>() {
+                    @Override
+                    public Long apply(BulkAccount t) {
+                        return t.getCustomerId();
+                    }
+                },
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
@@ -54,7 +66,20 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkAccount, Date>(StringTable.SyncTime,
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.SyncTime,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount t) {
+                        if (t.getSyncTime() == null) {
+                            return null;
+                        }
+
+                        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                        return format.format(t.getSyncTime().getTime());
+                    }
+                },
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
@@ -65,7 +90,7 @@ public class BulkAccount extends SingleRecordBulkEntity {
                                 try {
                                     SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                                     format.setTimeZone(TimeZone.getTimeZone("UTC"));
-                                    
+
                                     c.setTime(format.parse(t));
                                 } catch (ParseException ex) {
                                     throw new UncheckedParseException(ex);
@@ -83,25 +108,35 @@ public class BulkAccount extends SingleRecordBulkEntity {
 
     /**
      * Gets the account id
+     *
      * @return
      */
     public long getId() {
         return id;
     }
 
-    private void setId(long id) {
+    /**
+     * Sets the account id
+     * @param id Account id
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
     /**
      * Gets the customer id
+     *
      * @return
      */
     public long getCustomerId() {
         return customerId;
     }
 
-    private void setCustomerId(long customerId) {
+    /**
+     * Sets the customer id
+     * @param customerId customer id
+     */
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -109,17 +144,17 @@ public class BulkAccount extends SingleRecordBulkEntity {
         return syncTime;
     }
 
-    private void setSyncTime(Calendar syncTime) {
+    public void setSyncTime(Calendar syncTime) {
         this.syncTime = syncTime;
     }
 
     @Override
-    public void processMappingsFromRowValues(RowValues values) {        
+    public void processMappingsFromRowValues(RowValues values) {
         MappingHelpers.<BulkAccount>convertToEntity(values, MAPPINGS, this);
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
-        throw new UnsupportedOperationException();
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
+        MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 }

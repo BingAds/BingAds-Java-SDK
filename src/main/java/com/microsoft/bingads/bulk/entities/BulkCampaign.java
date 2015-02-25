@@ -234,10 +234,16 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getCampaign(), "Campaign");
 
         MappingHelpers.<BulkCampaign>convertToValues(this, values, MAPPINGS);
+
+        if (!excludeReadonlyData) {
+            QualityScoreData.writeToRowValuesIfNotNull(qualityScoreData, values);
+
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     public static boolean isDailyBudget(BudgetLimitType budgetType) {

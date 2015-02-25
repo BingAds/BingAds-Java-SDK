@@ -60,8 +60,8 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
 
         try {
             fileReader = TestFactory.createBulkFileReader(
-                    createFakeCsvReader(iterator),
-                    createFakeBulkObjectFactory(values, expectedEntity)
+                createFakeCsvReader(iterator),
+                createFakeBulkObjectFactory(values, expectedEntity)
             );
 
             replay(values);

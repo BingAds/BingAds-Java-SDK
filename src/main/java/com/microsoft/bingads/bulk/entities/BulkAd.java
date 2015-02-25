@@ -124,6 +124,12 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
         ));
 
         m.add(new SimpleBulkMapping<BulkAd, String>(StringTable.EditorialStatus,
+                new Function<BulkAd, String>() {
+                    @Override
+                    public String apply(BulkAd t) {
+                        return t.getAd().getEditorialStatus() != null ? t.getAd().getEditorialStatus().value() : null;
+                    }
+                },
                 new BiConsumer<String, BulkAd>() {
                     @Override
                     public void accept(String v, BulkAd c) {
@@ -158,15 +164,19 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
     ;
     
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.<BulkAd>convertToValues(this, values, MAPPINGS);
 
-        performanceData = PerformanceData.readFromRowValuesOrNull(values);
+        if (!excludeReadonlyData) {
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         MappingHelpers.<BulkAd>convertToEntity(values, MAPPINGS, this);
+
+        performanceData = PerformanceData.readFromRowValuesOrNull(values);
     }
 
     public Long getAdGroupId() {

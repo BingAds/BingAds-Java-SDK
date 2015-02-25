@@ -91,7 +91,7 @@ public class BulkNegativeKeywordList extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void processMappingsToRowValues(RowValues values) {
+    public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getNegativeKeywordList(), "NegativeKeywordList");
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
