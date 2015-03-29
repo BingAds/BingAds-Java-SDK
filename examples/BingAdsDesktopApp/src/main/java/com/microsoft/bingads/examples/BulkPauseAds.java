@@ -16,7 +16,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkPauseAdGroups {
+public class BulkPauseAds {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -63,7 +63,7 @@ public class BulkPauseAdGroups {
 			// Complete a full download of all ad groups in the account. 
 			 
 			List<BulkDownloadEntity> downloadEntities = new ArrayList<BulkDownloadEntity>();
-			downloadEntities.add(BulkDownloadEntity.AD_GROUPS);
+			downloadEntities.add(BulkDownloadEntity.ADS);
 			
 			DownloadParameters downloadParameters = new DownloadParameters();
 			downloadParameters.setEntities(downloadEntities);
@@ -76,17 +76,17 @@ public class BulkPauseAdGroups {
 			
 			outputStatusMessage("Printing the results of DownloadEntitiesAsync . . .\n"); 
 			for (BulkEntity entity : entities) {
-				if (entity instanceof BulkAdGroup 
-						&& ((BulkAdGroup)entity).getAdGroup().getStatus() == AdGroupStatus.ACTIVE) {
-					outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
-					((BulkAdGroup)entity).getAdGroup().setStatus(AdGroupStatus.PAUSED);
+				if (entity instanceof BulkTextAd 
+						&& ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
+					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+					((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
 					uploadEntities.add(entity);
 				}
 			}
 			entities.close();
 			
 			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active ad groups to Paused. Ready for upload.\n"); 
+				outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
 				
 				EntityUploadParameters entityUploadParameters = new EntityUploadParameters();
 				entityUploadParameters.setEntities(uploadEntities);
@@ -99,17 +99,17 @@ public class BulkPauseAdGroups {
 				
 				// Wait here and assign the upload results to 'entities'
 				entities = BulkService.uploadEntitiesAsync(entityUploadParameters, null, null).get();
-	
+
 				outputStatusMessage("Printing the results of UploadEntitiesAsync . . .\n"); 
 				for (BulkEntity entity : entities) {
-					if (entity instanceof BulkAdGroup) {
-						outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
+					if (entity instanceof BulkTextAd) {
+						outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
 					}
 				}
 				entities.close();
 			}
 			else{
-				outputStatusMessage("All ad groups are already Paused. \n"); 
+				outputStatusMessage("All text ads are already Paused. \n"); 
 			}
 			
 			outputStatusMessage("Program execution completed\n"); 
@@ -164,13 +164,13 @@ public class BulkPauseAdGroups {
 		System.out.println(message);
 	}
 	
-	static void outputBulkAdGroups(Iterable<BulkAdGroup> bulkEntities){
-		for (BulkAdGroup entity : bulkEntities){
-			outputStatusMessage("BulkAdGroup: \n");
-			outputStatusMessage(String.format("AdGroup Name: %s\nAdGroup Id: %s\nAdGroup Status: %s\n", 
-					entity.getAdGroup().getName(),
-					entity.getAdGroup().getId(),
-					entity.getAdGroup().getStatus()));
+	static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
+		for (BulkTextAd entity : bulkEntities){
+			outputStatusMessage("BulkTextAd: \n");
+			outputStatusMessage(String.format("TextAd DisplayUrl: %s\nTextAd Id: %s\nTextAd Status: %s\n", 
+					entity.getAd().getDisplayUrl(),
+					entity.getAd().getId(),
+					entity.getAd().getStatus()));
 			
 			if(entity.hasErrors()){
 				outputErrors(entity.getErrors());
