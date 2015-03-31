@@ -1,0 +1,14 @@
+com.microsoft.bingads
+com.microsoft.bingads.bulk
+com.microsoft.bingads.bulk.entities
+com.microsoft.bingads.internal.bulk
+com.microsoft.bingads.internal.bulk.entities
+com.microsoft.bingads.internal
+com.microsoft.bingads.internal.functionalinterfaces
+com.microsoft.bingads.internal.utilities
+com.microsoft.bingads.adintelligence
+com.microsoft.bingads.campaignmanagement
+com.microsoft.bingads.customerbilling
+com.microsoft.bingads.customermanagement
+com.microsoft.bingads.optimizer
+com.microsoft.bingads.reporting

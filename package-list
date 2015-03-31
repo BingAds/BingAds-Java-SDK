@@ -8,6 +8,7 @@ com.microsoft.bingads.customermanagement
 com.microsoft.bingads.internal
 com.microsoft.bingads.internal.bulk
 com.microsoft.bingads.internal.bulk.entities
+com.microsoft.bingads.internal.functionalinterfaces
 com.microsoft.bingads.internal.utilities
 com.microsoft.bingads.optimizer
 com.microsoft.bingads.reporting
