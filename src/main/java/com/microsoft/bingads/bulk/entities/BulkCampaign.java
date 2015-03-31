@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.BudgetLimitType;
 import com.microsoft.bingads.campaignmanagement.Campaign;
 import com.microsoft.bingads.campaignmanagement.CampaignStatus;
@@ -18,8 +22,20 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a Campaign record of the Bulk File schema
+ * Represents a campaign that can be read or written in a bulk file.
  *
+ * This class exposes the {@link #setCampaign} and {@link #getCampaign} methods
+ * that can be used to read and write fields of the Campaign record in a bulk file.
+ *
+ * <p>
+ *    For more information, see Campaign at
+ *    <a href="http://go.microsoft.com/fwlink/?LinkID=511521">http://go.microsoft.com/fwlink/?LinkID=511521</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkCampaign extends SingleRecordBulkEntity {
 
@@ -200,26 +216,52 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
+    /**
+     * Gets the identifier of the account that contains the campaign.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getAccountId() {
         return accountId;
     }
-    
+
+    /**
+     * Sets the identifier of the account that contains the campaign.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
+    /**
+     * Gets a campaign within an account.
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * Sets a campaign within an account.
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
     }
 
+    /**
+     * Gets the quality score data for the campaign.
+     */
     public QualityScoreData getQualityScoreData() {
         return qualityScoreData;
     }
 
+    /**
+     * Sets the historical performance data for the campaign.
+     */
     public PerformanceData getPerformanceData() {
         return performanceData;
     }

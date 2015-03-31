@@ -6,8 +6,9 @@ package com.microsoft.bingads;
 public abstract class HeadersImpl {
     /**
      * Adds a header that should be used with Bing Ads calls.
-     * @param name Header name.
-     * @param value Header value.
+     *
+     * @param name header name
+     * @param value header value
      */
     public abstract void addHeader(String name, String value);
 }

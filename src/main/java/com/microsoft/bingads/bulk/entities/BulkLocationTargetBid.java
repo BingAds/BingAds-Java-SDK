@@ -14,12 +14,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk location target bid classes.
+ */
 abstract class BulkLocationTargetBid extends BulkLocationTargetBidWithStringLocation {
 
     private int bidAdjustment;
 
     private IntentOption intentOption;
 
+    /**
+     * Reserved for internal use.
+     */
     BulkLocationTargetBid(BulkTargetIdentifier identifier) {
         super(identifier);
     }
@@ -81,18 +87,38 @@ abstract class BulkLocationTargetBid extends BulkLocationTargetBidWithStringLoca
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Gets the percentage adjustment to the base bid.
+     *
+     * <p>
+     *     Corresponds to the 'Bid Adjustment' field in the bulk file.
+     * </p>
+     */
     public int getBidAdjustment() {
         return bidAdjustment;
     }
 
+    /**
+     * Sets the percentage adjustment to the base bid.
+     *
+     * <p>
+     *     Corresponds to the 'Bid Adjustment' field in the bulk file.
+     * </p>
+     */
     public void setBidAdjustment(int bidAdjustment) {
         this.bidAdjustment = bidAdjustment;
     }
-    
+
+    /**
+     * Gets the possible intent options for location targeting.
+     */
     public IntentOption getIntentOption() {
         return intentOption;
     }
 
+    /**
+     * Sets the possible intent options for location targeting.
+     */
     void setIntentOption(IntentOption intentOption) {
         this.intentOption = intentOption;
     }

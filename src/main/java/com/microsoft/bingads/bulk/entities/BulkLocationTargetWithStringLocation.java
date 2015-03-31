@@ -23,12 +23,20 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk location target classes.
+ *
+ * @param <TBid> see {@link BulkLocationTargetBid}
+ */
 abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTargetBidWithStringLocation> extends BulkTargetWithLocation<TBid> {
 
     public BulkLocationTargetWithStringLocation(Class<TBid> classOfTBid) {
         super(classOfTBid);
     }
 
+    /**
+     * Gets a list of postal codes to target with bid adjustments.
+     */
     public PostalCodeTarget getPostalCodeTarget() {
         return getLocationProperty(new Function<LocationTarget2, PostalCodeTarget>() {
             @Override
@@ -38,6 +46,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Sets a list of postal codes to target with bid adjustments.
+     */
     public void setPostalCodeTarget(final PostalCodeTarget postalCodeTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override
@@ -47,6 +58,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Gets a list of cities to target with bid adjustments.
+     */
     public CityTarget getCityTarget() {
         return getLocationProperty(new Function<LocationTarget2, CityTarget>() {
             @Override
@@ -56,6 +70,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Sets a list of cities to target with bid adjustments.
+     */
     public void setCityTarget(final CityTarget cityTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override
@@ -65,6 +82,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Gets a list of metro areas to target with bid adjustments.
+     */
     public MetroAreaTarget getMetroAreaTarget() {
         return getLocationProperty(new Function<LocationTarget2, MetroAreaTarget>() {
             @Override
@@ -74,6 +94,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Sets a list of metro areas to target with bid adjustments.
+     */
     public void setMetroAreaTarget(final MetroAreaTarget cityTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override
@@ -83,6 +106,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Gets a list of states to target with bid adjustments.
+     */
     public StateTarget getStateTarget() {
         return getLocationProperty(new Function<LocationTarget2, StateTarget>() {
             @Override
@@ -92,6 +118,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Sets a list of states to target with bid adjustments.
+     */
     public void setStateTarget(final StateTarget stateTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override
@@ -101,6 +130,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Gets a list of countries to target with bid adjustments.
+     */
     public CountryTarget getCountryTarget() {
         return getLocationProperty(new Function<LocationTarget2, CountryTarget>() {
             @Override
@@ -110,6 +142,9 @@ abstract class BulkLocationTargetWithStringLocation<TBid extends BulkLocationTar
         });
     }
 
+    /**
+     * Sets a list of countries to target with bid adjustments.
+     */
     public void setCountryTarget(final CountryTarget countryTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override

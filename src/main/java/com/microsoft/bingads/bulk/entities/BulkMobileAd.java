@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdType;
 import com.microsoft.bingads.campaignmanagement.MobileAd;
 import com.microsoft.bingads.internal.StringTable;
@@ -15,6 +19,19 @@ import java.util.List;
 
 /**
  * Represents a mobile ad.
+ *
+ * This class exposes the {@link #setMobileAd} and {@link #getMobileAd} methods
+ * that can be used to read and write fields of the Mobile Ad record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Mobile Ad at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511553">http://go.microsoft.com/fwlink/?LinkID=511553</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkMobileAd extends BulkAd<MobileAd> {
 
@@ -136,10 +153,17 @@ public class BulkMobileAd extends BulkAd<MobileAd> {
         MappingHelpers.<BulkMobileAd>convertToEntity(values, MAPPINGS, this);
     }
 
+    /**
+     * Gets the mobile ad.
+     */
     public MobileAd getMobileAd() {
         return this.ad;
     }
 
+
+    /**
+     * Sets the mobile ad.
+     */
     public void setMobileAd(MobileAd mobileAd) {
         this.setAd(mobileAd);
     }

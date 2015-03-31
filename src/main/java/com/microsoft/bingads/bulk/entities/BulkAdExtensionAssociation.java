@@ -16,22 +16,21 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Reserved for internal use. This abstract class provides properties that are shared by all bulk ad extension association classes. For more information, see Bulk File Schema at http://go.microsoft.com/fwlink/?LinkID=511639.
+ * Reserved for internal use. This abstract class provides properties that are shared by all bulk ad extension association classes.
+ *
+ * <p>
+ * For more information, see Bulk File Schema at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511639">http://go.microsoft.com/fwlink/?LinkID=511639</a>.
+ * </p>
  */
 public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity {
 
-    /**
-     * The status of the ad extension association. The value is Active if the EntityId and AdExtensionId are associated. The value is Deleted if the association is removed. Corresponds to the 'Status' field in the bulk file.
-     */
     private Status status;
 
     private AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation;
 
     private PerformanceData performanceData;
 
-    /**
-     * The editorial status of the ad extension and associated entity. For more information, see AdExtensionEditorialStatus at http://go.microsoft.com/fwlink/?LinkId=511866. Corresponds to the 'Editorial Status' field in the bulk file.
-     */
     private AdExtensionEditorialStatus editorialStatus;
 
     private static final List<BulkMapping<BulkAdExtensionAssociation>> MAPPINGS;
@@ -142,26 +141,70 @@ public abstract class BulkAdExtensionAssociation extends SingleRecordBulkEntity 
         performanceData = PerformanceData.readFromRowValuesOrNull(values);
     }
 
+    /**
+     * Gets the status of the ad extension association.
+     *
+     * <p>
+     *     The value is Active if the EntityId and AdExtensionId are associated.
+     *     The value is Deleted if the association is removed.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the ad extension association.
+     *
+     * <p>
+     *     The value is Active if the EntityId and AdExtensionId are associated.
+     *     The value is Deleted if the association is removed.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     * Gets the editorial status of the ad extension and associated entity.
+     *
+     * <p>
+     *     For more information, see AdExtensionEditorialStatus at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkId=511866">http://go.microsoft.com/fwlink/?LinkId=511866</a>.
+     *
+     *     Corresponds to the 'Editorial Status' field in the bulk file.
+     * </p>
+     */
     public AdExtensionEditorialStatus getEditorialStatus() {
         return editorialStatus;
     }
 
+    /**
+     * Sets the editorial status of the ad extension and associated entity.
+     *
+     * <p>
+     *     For more information, see AdExtensionEditorialStatus at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkId=511866">http://go.microsoft.com/fwlink/?LinkId=511866</a>.
+     *
+     *     Corresponds to the 'Editorial Status' field in the bulk file.
+     * </p>
+     */
     void setEditorialStatus(AdExtensionEditorialStatus editorialStatus) {
         this.editorialStatus = editorialStatus;
     }
 
+    /**
+     * Gets an association relationship between an ad extension and a supported entity, for example a campaign or ad group.
+     */
     public AdExtensionIdToEntityIdAssociation getAdExtensionIdToEntityIdAssociation() {
         return adExtensionIdToEntityIdAssociation;
     }
 
+    /**
+     * Sets an association relationship between an ad extension and a supported entity, for example a campaign or ad group.
+     */
     public void setAdExtensionIdToEntityIdAssociation(AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation) {
         this.adExtensionIdToEntityIdAssociation = adExtensionIdToEntityIdAssociation;
     }

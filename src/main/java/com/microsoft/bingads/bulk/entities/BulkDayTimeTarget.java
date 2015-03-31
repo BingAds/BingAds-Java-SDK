@@ -7,6 +7,11 @@ import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk day and time target classes.
+ *
+ * @param <TBid> see {@link BulkDayTimeTargetBid}
+ */
 abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends BulkSubTarget<TBid> {
 
     private DayTimeTarget dayTimeTarget;
@@ -15,6 +20,9 @@ abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends Bulk
         super(classOfTBid);
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void reconstructSubTargets() {
         setDayTimeTarget(new DayTimeTarget());
@@ -28,6 +36,9 @@ abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends Bulk
         }
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     List<TBid> convertApiToBulkBids() {
         List<TBid> bulkBids = new ArrayList<TBid>();
@@ -50,22 +61,34 @@ abstract class BulkDayTimeTarget<TBid extends BulkDayTimeTargetBid> extends Bulk
         return bulkBids;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validatePropertiesNotNull() {
         validatePropertyNotNull(getDayTimeTarget(), "DayTimeTarget");
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validateBidsNotNullOrEmpty() {
         if (getDayTimeTarget() != null) {
             validateListNotNullOrEmpty(getDayTimeTarget().getBids(), getDayTimeTarget().getBids().getDayTimeTargetBids(), "DayTimeTarget.Bids");
         }
-    }        
-    
+    }
+
+    /**
+     * Gets a list of days of the week and time ranges to target with bid adjustments.
+     */
     public DayTimeTarget getDayTimeTarget() {
         return dayTimeTarget;
     }
 
+    /**
+     * Sets a list of days of the week and time ranges to target with bid adjustments.
+     */
     public void setDayTimeTarget(DayTimeTarget dayTimeTarget) {
         this.dayTimeTarget = dayTimeTarget;
     }        

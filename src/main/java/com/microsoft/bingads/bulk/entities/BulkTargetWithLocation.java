@@ -8,6 +8,11 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk entities mapped to the API LocationTarget2 object.
+ *
+ * @param <TBid> see {@link BulkTargetBid}
+ */
 abstract class BulkTargetWithLocation<TBid extends BulkTargetBid> extends BulkSubTarget<TBid> {
 
     protected LocationTarget2 location;

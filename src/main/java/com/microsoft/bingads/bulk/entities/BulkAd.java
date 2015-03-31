@@ -3,6 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.campaignmanagement.Ad;
 import com.microsoft.bingads.campaignmanagement.AdEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.AdStatus;
+import com.microsoft.bingads.campaignmanagement.TextAd;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
@@ -16,6 +17,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk ad classes.
+ *
+ * @param <T> the type of ad from the {@link com.microsoft.bingads.campaignmanagement} namespace, for example
+ *           {@link TextAd} object.
+ *
+ * @see BulkMobileAd
+ * @see BulkProductAd
+ * @see BulkTextAd
+ */
 class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
 
     private Long adGroupId;
@@ -179,38 +190,89 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
         performanceData = PerformanceData.readFromRowValuesOrNull(values);
     }
 
+    /**
+     * Gets the identifier of the ad group that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getAdGroupId() {
         return adGroupId;
     }
 
+    /**
+     * Gets the name of the campaign that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Gets the name of the ad group that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public String getAdGroupName() {
         return adGroupName;
     }
 
+    /**
+     * Gets the ad from the {@link com.microsoft.bingads.campaignmanagement} namespace,
+     */
     public T getAd() {
         return ad;
     }
 
+    /**
+     * Gets the historical performance data for the ad.
+     */
     public PerformanceData getPerformanceData() {
         return performanceData;
     }
 
+    /**
+     * Sets the identifier of the ad group that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupId(Long adGroupId) {
         this.adGroupId = adGroupId;
     }
 
+    /**
+     * Sets the ad from the {@link com.microsoft.bingads.campaignmanagement} namespace,
+     */
     public void setAd(T ad) {
         this.ad = ad;
     }
 
+    /**
+     * Sets the name of the campaign that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
 
+    /**
+     * Sets the name of the ad group that contains the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
     }

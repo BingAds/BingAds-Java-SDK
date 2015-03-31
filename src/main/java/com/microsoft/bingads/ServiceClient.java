@@ -16,11 +16,32 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
+import com.microsoft.bingads.adintelligence.IAdIntelligenceService;
+import com.microsoft.bingads.bulk.IBulkService;
+import com.microsoft.bingads.campaignmanagement.ICampaignManagementService;
+import com.microsoft.bingads.customerbilling.ICustomerBillingService;
+import com.microsoft.bingads.customermanagement.ICustomerManagementService;
+import com.microsoft.bingads.optimizer.IOptimizerService;
+import com.microsoft.bingads.reporting.IReportingService;
 
 /**
  * Provides an interface for calling the methods of the specified Bing Ads service.
+ * <p>
+ *     Note: Valid value of {@link T} are:
+ *     <ul>
+ *         <li>{@link IAdIntelligenceService}</li>
+ *         <li>{@link IBulkService}</li>
+ *         <li>{@link ICampaignManagementService}</li>
+ *         <li>{@link ICustomerBillingService}</li>
+ *         <li>{@link ICustomerManagementService}</li>
+ *         <li>{@link IOptimizerService}</li>
+ *         <li>{@link IReportingService}</li>
+ *     </ul>
  *
- * @param <T> The Bing Ads service interface that should be called. For example, ICampaignManagementService.
+ * </p>
+ *
+ * @param <T> The Bing Ads service interface that should be called. For example, {@link ICampaignManagementService}.
+ *
  */
 public class ServiceClient<T> {
 
@@ -33,8 +54,6 @@ public class ServiceClient<T> {
 
     /**
      * Gets the Bing Ads API environment.
-     *
-     * @return
      */
     public ApiEnvironment getEnvironment() {
         return environment;
@@ -42,8 +61,6 @@ public class ServiceClient<T> {
 
     /**
      * Gets the data representing a user who intends to call the API.
-     *
-     * @return
      */
     public AuthorizationData getAuthorizationData() {
         return authorizationData;
@@ -52,8 +69,8 @@ public class ServiceClient<T> {
     /**
      * Initializes a new instance of this class with the specified authorization data.
      *
-     * @param authorizationData
-     * @param serviceInterface
+     * @param authorizationData Represents a user who intends to access the corresponding customer and account.
+     * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
         this(authorizationData, ApiEnvironment.PRODUCTION, serviceInterface);
@@ -68,9 +85,9 @@ public class ServiceClient<T> {
     /**
      * Initializes a new instance of this class with the specified authorization data and Bing Ads API environment.
      *
-     * @param authorizationData
-     * @param environment
-     * @param serviceInterface
+     * @param authorizationData Represents a user who intends to access the corresponding customer and account.
+     * @param environment Bing Ads API environment
+     * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
@@ -85,7 +102,7 @@ public class ServiceClient<T> {
     /**
      * Creates an object implementing the service interface that needs to be called.
      *
-     * @return
+     * @return the service object implementing the service interface
      */
     public T getService() {
         try {

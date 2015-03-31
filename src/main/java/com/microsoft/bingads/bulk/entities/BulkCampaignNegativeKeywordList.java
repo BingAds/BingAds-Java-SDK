@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.SharedEntityAssociation;
 import com.microsoft.bingads.internal.StringExtensions;
@@ -16,7 +20,20 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a negative keyword list that is assigned to a campaign. Each negative keyword list can be read or written in a bulk file.  
+ * Represents a negative keyword list that is assigned to a campaign.
+ * Each negative keyword list can be read or written in a bulk file.
+ * This class exposes the {@link #setSharedEntityAssociation} and {@link #getSharedEntityAssociation} methods
+ * that can be used to read and write fields of the Campaign Negative Keyword List Association record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Campaign Negative Keyword List Association at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511523">http://go.microsoft.com/fwlink/?LinkID=511523</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
 
@@ -109,18 +126,44 @@ public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Gets the campaign and negative keyword list identifiers.
+     */
     public SharedEntityAssociation getSharedEntityAssociation() {
         return sharedEntityAssociation;
     }
 
+    /**
+     * Sets the campaign and negative keyword list identifiers.
+     */
     public void setSharedEntityAssociation(SharedEntityAssociation association) {
         this.sharedEntityAssociation = association;
     }
 
+    /**
+     * Gets the status of the negative keyword list association.
+     *
+     * <p>
+     *     The value is Active if the negative keyword list is assoicated to the campaign.
+     *     The value is Deleted if the negative keyword list is disassociated from the campaign,
+     *     or should be disassociated in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the negative keyword list association.
+     *
+     * <p>
+     *     The value is Active if the negative keyword list is assoicated to the campaign.
+     *     The value is Deleted if the negative keyword list is disassociated from the campaign,
+     *     or should be disassociated in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }

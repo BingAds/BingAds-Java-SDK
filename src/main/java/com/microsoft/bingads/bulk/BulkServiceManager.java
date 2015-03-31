@@ -38,12 +38,14 @@ import org.apache.http.HttpRequest;
 /**
  * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides methods for submitting upload or download operations.
  *
- * Example: {@link BulkServiceManager#downloadFile(DownloadParameters) will submit the download request to the bulk service,
+ * <p>
+ * Example: {@link BulkServiceManager#downloadFileAsync} will submit the download request to the bulk service,
  * poll until the status is completed (or returns an error), and downloads the file locally.
- * If instead you want to manage the low level details you would first call {@link BulkServiceManager#submitDownload(DownloadParameters)},
- * wait for the results file to be prepared using either {@link BulkOperation#getStatus()}
- * or {@link BulkOperation#track(Progress)}, and then download the file with the
- * {@link BulkOperation#downloadResultFile(String, String, boolean)} method.
+ * If instead you want to manage the low level details you would first call {@link BulkServiceManager#submitDownloadAsync},
+ * wait for the results file to be prepared using either {@link BulkOperation#getStatusAsync}
+ * or {@link BulkOperation#trackAsync}, and then download the file with the
+ * {@link BulkOperation#downloadResultFileAsync} method.
+ * </p>
  *
  */
 public class BulkServiceManager {
@@ -86,7 +88,6 @@ public class BulkServiceManager {
 
     /**
      * Gets the authorization data for the user performing the operation.
-     * @return
      */
     public AuthorizationData getAuthorizationData() {
         return authorizationData;
@@ -96,7 +97,8 @@ public class BulkServiceManager {
      * Downloads the specified Bulk entities.
      *
      * @param parameters Determines the download entities and file path. If a file path is not specified in the download parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at run time.
-     * @param callback A callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     *
      * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> downloadEntitiesAsync(DownloadParameters parameters, AsyncCallback<BulkEntityIterable> callback) {
@@ -107,8 +109,9 @@ public class BulkServiceManager {
      * Downloads the specified Bulk entities.
      *
      * @param parameters Determines the download entities and file path. If a file path is not specified in the download parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at run time.
-     * @param progress An object which is updated with the progress of a bulk operation
-     * @param callback A callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     * @param progress an object which is updated with the progress of a bulk operation
+     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     *
      * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> downloadEntitiesAsync(DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
@@ -121,10 +124,12 @@ public class BulkServiceManager {
 
     /**
      * Uploads the specified Bulk entities.
-     * @param parameters
-     * @param progress
-     * @param callback
-     * @return
+     *
+     * @param parameters determines the upload entities parameters
+     * @param progress an object which is updated with the progress of bulk operation
+     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     *
+     * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
         validateEntityUploadParameters(parameters);
@@ -136,9 +141,11 @@ public class BulkServiceManager {
 
      /**
      * Uploads the specified Bulk entities.
-     * @param parameters     
-     * @param callback
-     * @return
+      *
+     * @param parameters determines the upload entities parameters
+     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+      *
+     * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, AsyncCallback<BulkEntityIterable> callback) {
         return uploadEntitiesAsync(parameters, null, callback);
@@ -146,9 +153,11 @@ public class BulkServiceManager {
 
     /**
      * Uploads the specified Bulk file.
-     * @param parameters
-     * @param callback
-     * @return
+     *
+     * @param parameters determines the file upload parameters
+     * @param callback a callback which is called with the file path when the file is downloaded and available
+     *
+     * @return a Future indicating whether the operation has been completed
      */
     public Future<File> uploadFileAsync(final FileUploadParameters parameters, AsyncCallback<File> callback) {        
         return uploadFileAsync(parameters, null, callback);
@@ -156,10 +165,12 @@ public class BulkServiceManager {
 
     /**
      * Uploads the specified Bulk file.
-     * @param parameters
-     * @param progress
-     * @param callback
-     * @return
+     *
+     * @param parameters determines the file upload parameters
+     * @param progress an object which is updated with the progress of bulk operation
+     * @param callback a callback which is called with the file path when the file is downloaded and available
+     *
+     * @return a Future indicating whether the operation has been completed
      */
     public Future<File> uploadFileAsync(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
         validateSubmitUploadParameters(parameters.getSubmitUploadParameters());
@@ -258,7 +269,8 @@ public class BulkServiceManager {
      * Downloads the specified Bulk entities to a local file.
      *
      * @param parameters Determines the download entities and file path.
-     * @param a callback which is called with the file path when the file is downloaded and available
+     * @param callback a callback which is called with the file path when the file is downloaded and available
+     *
      * @return a {@link Future} that will indicate completion of the operation
      */
     public Future<File> downloadFileAsync(DownloadParameters parameters, AsyncCallback<File> callback) {
@@ -270,7 +282,8 @@ public class BulkServiceManager {
      *
      * @param parameters Determines the download entities and file path.
      * @param progress An object which is updated with the progress of a bulk operation
-     * @param a callback which is called with the file path when the file is downloaded and available
+     * @param callback a callback which is called with the file path when the file is downloaded and available
+     *
      * @return a {@link Future} that will indicate completion of the operation
      */
     public Future<File> downloadFileAsync(DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
@@ -336,13 +349,17 @@ public class BulkServiceManager {
     /**
      * Submits a download request to the Bing Ads bulk service with the specified parameters.
      *
-     * The {@link DownloadParameters#getResultFileDirectory() } and {@link DownloadParameters#getResultFileName()
-     * } properties are ignored by this method. When the file is ready for download, specify the result file path and name as parameters of the {@link BulkOperation#downloadResultFile(String, String, boolean) }
-     * method.
+     * <p>
+     * The {@link DownloadParameters#getResultFileDirectory } and {@link DownloadParameters#getResultFileName
+     * } properties are ignored by this method.
+     * When the file is ready for download, specify the result file path and name as parameters of the
+     * {@link BulkOperation#downloadResultFileAsync} method.
+     * </p>
      *
      * @param parameters Describes the type of entities and data scope that you want to download.     
-     * @param callback
-     * @return
+     * @param callback a callback will be called when the {@link BulkDownloadOperation} has been created
+     *
+     * @return a {@link Future} that will indicate completion of the operation
      */
     public Future<BulkDownloadOperation> submitDownloadAsync(SubmitDownloadParameters parameters, AsyncCallback<BulkDownloadOperation> callback) {
         Authentication auth = authorizationData.getAuthentication();
@@ -413,13 +430,17 @@ public class BulkServiceManager {
     /**
      * Submits an upload request to the Bing Ads bulk service with the specified parameters.
      *
-     * The {@link UploadParameters#getResultFileDirectory() } and {@link UploadParameters#getResultFileName()
-     * } properties are ignored by this method. When the file is ready for download, specify the result file path and name as parameters of the {@link BulkOperation#downloadResultFile(String, String, boolean) }
-     * method.
+     * <p>
+     * The {@link FileUploadParameters#getResultFileDirectory} and {@link FileUploadParameters#getResultFileName
+     * } properties are ignored by this method.
+     * When the file is ready for download, specify the result file path and name as parameters of the
+     * {@link BulkOperation#downloadResultFileAsync} method.
+     * </p>
      *
      * @param parameters Describes the upload response mode and file name.
-     * @param callback
-     * @return
+     * @param callback a callback will be called when the {@link BulkDownloadOperation} has been created
+     *
+     * @return a {@link Future} that will indicate completion of the operation
      */
     public Future<BulkUploadOperation> submitUploadAsync(final FileUploadParameters parameters, AsyncCallback<BulkUploadOperation> callback) {
         GetBulkUploadUrlRequest request = new GetBulkUploadUrlRequest();
@@ -587,7 +608,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @return
      */
     public HttpFileService getHttpFileService() {
         return httpFileService;
@@ -595,7 +615,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @param httpFileService
      */
     public void setHttpFileService(HttpFileService httpFileService) {
         this.httpFileService = httpFileService;
@@ -603,7 +622,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @return
      */
     public ZipExtractor getZipExtractor() {
         return zipExtractor;
@@ -611,7 +629,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @param zipExtractor
      */
     public void setZipExtractor(ZipExtractor zipExtractor) {
         this.zipExtractor = zipExtractor;
@@ -619,7 +636,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @return
      */
     public BulkFileReaderFactory getBulkFileReaderFactory() {
         return bulkFileReaderFactory;
@@ -627,7 +643,6 @@ public class BulkServiceManager {
 
     /**
      * Reserved for internal use.
-     * @param bulkFileReaderFactory
      */
     public void setBulkFileReaderFactory(BulkFileReaderFactory bulkFileReaderFactory) {
         this.bulkFileReaderFactory = bulkFileReaderFactory;
@@ -635,7 +650,6 @@ public class BulkServiceManager {
 
     /**
      * Gets the directory for storing temporary files needed for some operations.
-     * @return
      */
     public File getWorkingDirectory() {
         return workingDirectory;
@@ -643,7 +657,6 @@ public class BulkServiceManager {
 
     /**
      * Sets the directory for storing temporary files needed for some operations.
-     * @param value
      */
     public void setWorkingDirectory(File value) {
         this.workingDirectory = value;
@@ -651,7 +664,6 @@ public class BulkServiceManager {
 
     /**
      * Gets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
-     * @return
      */
     public int getStatusPollIntervalInMilliseconds() {
         return statusPollIntervalInMilliseconds;
@@ -659,7 +671,6 @@ public class BulkServiceManager {
 
     /**
      * Sets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
-     * @param statusPollIntervalInMilliseconds
      */
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;

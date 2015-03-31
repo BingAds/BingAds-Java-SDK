@@ -10,7 +10,6 @@ import com.microsoft.bingads.bulk.Progress;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.utilities.ThreadPool;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
@@ -19,7 +18,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracker<TStatus> {
     
-    private static final int FIRST_TIME_STATUS_CHECK_INTERVAL_IN_MS = 0;
+    private static final int INITIAL_STATUS_CHECK_INTERVAL_IN_MS = 1000;
+    private static final int NUMBER_OF_INITIAL_STATUS_CHECKS = 5;
+    private int numberOfStatusChecks = 0;
     private ScheduledExecutorService executorService;
     private BulkOperationStatusProvider<TStatus> statusProvider;
     private Progress<BulkOperationProgressInfo> progress;
@@ -73,6 +74,8 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                     try {
                         result.get();
 
+                        numberOfStatusChecks++;
+
                         reportProgressIfNeeded();
 
                         completeTaskIfOperationIsComplete();
@@ -86,6 +89,16 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                         propagateExceptionToCallingThread(ex);
                     } finally {
                         statusUpdateInProgress.set(false);
+
+                        if (!stopTracking) {
+                            int interval = INITIAL_STATUS_CHECK_INTERVAL_IN_MS;
+
+                            if (numberOfStatusChecks >= NUMBER_OF_INITIAL_STATUS_CHECKS) {
+                                interval = statusCheckIntervalInMs;
+                            }
+
+                            executorService.schedule(pollExecutorTask, interval, TimeUnit.MILLISECONDS);
+                        }
                     }
                 }
             });
@@ -199,6 +212,6 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     private void startTracking() {
         executorService = Executors.newSingleThreadScheduledExecutor();
         
-        executorService.scheduleAtFixedRate(pollExecutorTask, FIRST_TIME_STATUS_CHECK_INTERVAL_IN_MS, this.statusCheckIntervalInMs, TimeUnit.MILLISECONDS);
+        executorService.schedule(pollExecutorTask, INITIAL_STATUS_CHECK_INTERVAL_IN_MS, TimeUnit.MILLISECONDS);
     }
 }

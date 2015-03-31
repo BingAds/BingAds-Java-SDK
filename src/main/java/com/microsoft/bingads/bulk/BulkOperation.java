@@ -26,7 +26,7 @@ import java.util.concurrent.Future;
  *
  * @param <TStatus> type of bulk operation status is being tracked
  */
-abstract class BulkOperation<TStatus> {
+public abstract class BulkOperation<TStatus> {
 
     /**
      * Represents a user who intends to access the corresponding customer and account.
@@ -82,6 +82,7 @@ abstract class BulkOperation<TStatus> {
      * Runs asynchronously until the bulk service has finished processing the bulk operation.
      *
      * @param callback A handler that will be called with the BulkOperation when it has completed
+     *
      * @return a Future that will be completed when the result file is available
      */
     public Future<BulkOperationStatus<TStatus>> trackAsync(AsyncCallback<BulkOperationStatus<TStatus>> callback) {
@@ -93,6 +94,7 @@ abstract class BulkOperation<TStatus> {
      *
      * @param progress An object to be updated with the progress of the operation
      * @param callback A handler that will be called with the BulkOperation when it has completed
+     *
      * @return a Future that will be completed when the result file is available
      */
     public Future<BulkOperationStatus<TStatus>> trackAsync(Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkOperationStatus<TStatus>> callback) {
@@ -194,8 +196,6 @@ abstract class BulkOperation<TStatus> {
 
     /**
      * Gets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
-     *
-     * @return
      */
     public int getStatusPollIntervalInMilliseconds() {
         return statusPollIntervalInMilliseconds;
@@ -203,8 +203,6 @@ abstract class BulkOperation<TStatus> {
 
     /**
      * Sets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
-     *
-     * @param statusPollIntervalInMilliseconds
      */
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
@@ -212,11 +210,13 @@ abstract class BulkOperation<TStatus> {
 
     /**
      * Downloads and optionally decompress the result file from the bulk operation
-     * @param localResultDirectoryName
-     * @param localResultFileName
-     * @param decompress
-     * @param callback
-     * @return
+     * @param localResultDirectoryName the directory to place the result file in
+     * @param localResultFileName the name to use for final result file
+     * @param decompress indicates whether the result file should be unzipped
+     * @param callback {@link AsyncCallback} object with {@link File}
+     *
+     * @return a {@link File} object pointing to the result file wrapped in Future
+     *
      * @throws IOException
      * @throws URISyntaxException
      */
@@ -227,10 +227,13 @@ abstract class BulkOperation<TStatus> {
     /**
      * Downloads and optionally decompress the result file from the bulk operation, allows to overwrite the local result file.
      *
-     * @param localResultDirectoryName The directory to place the result file in
-     * @param localResultFileName The name to use for final result file
+     * @param localResultDirectoryName the directory to place the result file in
+     * @param localResultFileName the name to use for final result file
      * @param decompress indicates whether the result file should be unzipped
-     * @return a File object pointing to the result file
+     * @param overwrite indicates whether can overwrite if target file exists
+     * @param callback {@link AsyncCallback} object with {@link File}
+     *
+     * @return a {@link File} object pointing to the result file wrapped in Future
      */
     public Future<File> downloadResultFileAsync(File localResultDirectoryName, String localResultFileName, boolean decompress, boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
         return downloadResultFileAsyncImpl(localResultDirectoryName, localResultFileName, decompress, overwrite, callback);

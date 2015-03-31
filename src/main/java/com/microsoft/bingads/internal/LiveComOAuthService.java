@@ -23,8 +23,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 /**
  * Provides method for getting OAuth tokens from the live.com authorization
- * server using {{@link OAuthRequestParameters}}.
- *
+ * server using {@link OAuthRequestParameters}.
  */
 public class LiveComOAuthService implements OAuthService {
 
@@ -72,7 +71,7 @@ public class LiveComOAuthService implements OAuthService {
 
     /**
      * Calls live.com authorization server with the
-     * {{@link OAuthRequestParameters"}} passed in, deserializes the response
+     * {@link OAuthRequestParameters} passed in, deserializes the response
      * and returns back OAuth tokens.
      *
      * @param oAuthParameters OAuth parameters for authorization server call
@@ -106,9 +105,11 @@ public class LiveComOAuthService implements OAuthService {
     /**
      * Creates a URL for authorizing a user
      *
-     * @param parameters
+     * @param parameters OAuth parameters for ensemble authorization endpoint
+     *
      * @return a {@link URL} which points to the authorization endpoint with all
      * required parameters
+     *
      * @throws MalformedURLException
      * @throws UnsupportedEncodingException
      */

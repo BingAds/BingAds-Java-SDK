@@ -15,10 +15,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk day and time target bid classes.
+ */
 abstract class BulkDayTimeTargetBid extends BulkTargetBid {
 
     private DayTimeTargetBid dayTimeTargetBid;
-    
+
+    /**
+     * Reserved for internal use.
+     */
     BulkDayTimeTargetBid(BulkTargetIdentifier identifier) {
         super(identifier);
     }
@@ -137,12 +143,18 @@ abstract class BulkDayTimeTargetBid extends BulkTargetBid {
         super.processMappingsToRowValues(values, excludeReadonlyData);
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }        
-    
+    }
+
+    /**
+     * Gets a specific day of the week and time range to target.
+     */
     public DayTimeTargetBid getDayTimeTargetBid() {
         return dayTimeTargetBid;
     }
 
+    /**
+     * Sets a specific day of the week and time range to target.
+     */
     public void setDayTimeTargetBid(DayTimeTargetBid dayTimeTargetBid) {
         this.dayTimeTargetBid = dayTimeTargetBid;
     }

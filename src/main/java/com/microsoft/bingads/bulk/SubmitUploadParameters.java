@@ -24,7 +24,6 @@ public class SubmitUploadParameters {
 
     /**
      * Gets whether the bulk service should return upload errors with the corresponding entity data.
-     * @return
      */
     public ResponseMode getResponseMode() {
         return responseMode;
@@ -32,7 +31,6 @@ public class SubmitUploadParameters {
 
     /**
      * Sets whether the bulk service should return upload errors with the corresponding entity data.
-     * @param responseMode
      */
     public void setResponseMode(ResponseMode responseMode) {
         this.responseMode = responseMode;
@@ -40,7 +38,6 @@ public class SubmitUploadParameters {
     
     /**
      * Gets the fully qualified local path of the upload file.
-     * @return
      */
     public File getUploadFilePath() {
         return uploadFilePath;
@@ -48,7 +45,6 @@ public class SubmitUploadParameters {
 
     /**
      * Sets the fully qualified local path of the upload file.
-     * @param uploadFilePath
      */
     public void setUploadFilePath(File uploadFilePath) {
         this.uploadFilePath = uploadFilePath;
@@ -56,7 +52,6 @@ public class SubmitUploadParameters {
 
     /**
      * Gets whether the upload file should be compressed before uploading. The default value is True.
-     * @return
      */
     public boolean getCompressUploadFile() {
         return compressUploadFile;
@@ -64,7 +59,6 @@ public class SubmitUploadParameters {
 
     /**
      * Sets whether the upload file should be compressed before uploading. The default value is True.
-     * @param compressUploadFile
      */
     public void setCompressUploadFile(boolean compressUploadFile) {
         this.compressUploadFile = compressUploadFile;

@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.NegativeKeywordList;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
@@ -15,7 +19,20 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a negative keyword list. 
+ * Represents a negative keyword list that can be read or written in a bulk file.
+ *
+ * This class exposes the {@link BulkNegativeKeywordList#setNegativeKeywordList} and {@link BulkNegativeKeywordList#getNegativeKeywordList}
+ * methods that can be used to read and write fields of the Negative Keyword List record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Negative Keyword List at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511519">http://go.microsoft.com/fwlink/?LinkID=511519</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkNegativeKeywordList extends SingleRecordBulkEntity {
 
@@ -97,18 +114,44 @@ public class BulkNegativeKeywordList extends SingleRecordBulkEntity {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Gets the negative keyword list.
+     */
     public NegativeKeywordList getNegativeKeywordList() {
         return negativeKeywordList;
     }
 
+    /**
+     * Sets the negative keyword list.
+     */
     public void setNegativeKeywordList(NegativeKeywordList negativeKeywordList) {
         this.negativeKeywordList = negativeKeywordList;
     }
 
+    /**
+     * Gets the status of the negative keyword list.
+     *
+     * <p>
+     *     The value is Active if the negative keyword list is available in the account's shared library.
+     *     The value is Deleted if the negative keyword list is deleted from the library,
+     *     or should be deleted in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the negative keyword list.
+     *
+     * <p>
+     *     The value is Active if the negative keyword list is available in the account's shared library.
+     *     The value is Deleted if the negative keyword list is deleted from the library,
+     *     or should be deleted in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }

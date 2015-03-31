@@ -7,6 +7,11 @@ import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk device OS target classes.
+ *
+ * @param <TBid> see {@link BulkDeviceOsTargetBid}
+ */
 abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends BulkSubTarget<TBid> {
 
     private DeviceOSTarget deviceOSTarget;
@@ -15,6 +20,9 @@ abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends Bu
         super(classOfTBid);
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void reconstructSubTargets() {
         setDeviceOsTarget(new DeviceOSTarget());
@@ -28,6 +36,9 @@ abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends Bu
         }
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     List<TBid> convertApiToBulkBids() {
         List<TBid> bulkBids = new ArrayList<TBid>();
@@ -50,22 +61,34 @@ abstract class BulkDeviceOsTarget<TBid extends BulkDeviceOsTargetBid> extends Bu
         return bulkBids;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validatePropertiesNotNull() {
         validatePropertyNotNull(getDeviceOsTarget(), "DeviceOsTarget");
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validateBidsNotNullOrEmpty() {
         if (getDeviceOsTarget() != null) {
             validateListNotNullOrEmpty(getDeviceOsTarget().getBids(), getDeviceOsTarget().getBids().getDeviceOSTargetBids(), "DeviceOsTarget.Bids");
         }
-    }        
-    
+    }
+
+    /**
+     * Gets a list of devices to target with bid adjustments.
+     */
     public DeviceOSTarget getDeviceOsTarget() {
         return deviceOSTarget;
     }
 
+    /**
+     * Sets a list of devices to target with bid adjustments.
+     */
     public void setDeviceOsTarget(DeviceOSTarget ageTarget) {
         this.deviceOSTarget = ageTarget;
     }

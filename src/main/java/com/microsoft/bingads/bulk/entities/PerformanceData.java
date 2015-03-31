@@ -13,8 +13,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents the performance data returned with bulk file entities when requested
+ * Represents a subset of the fields available in bulk records
+ * that support historical performance data, for example {@link BulkKeyword}.
  *
+ * <p>
+ *     For more information, see Bulk File Schema at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511639">http://go.microsoft.com/fwlink/?LinkID=511639</a>.
+ * </p>
  */
 public class PerformanceData {
 
@@ -193,38 +198,101 @@ public class PerformanceData {
         }
     }
 
+    /**
+     * Gets the spend.
+     *
+     * <p>
+     *     Corresponds to the 'Spend' field in the bulk file.
+     * </p>
+     */
     public Double getSpend() {
         return spend;
     }
 
+    /**
+     * Gets the impressions.
+     *
+     * <p>
+     *     Corresponds to the 'Impressions' field in the bulk file.
+     * </p>
+     */
     public Integer getImpressions() {
         return impressions;
     }
 
+    /**
+     * Gets the clicks.
+     *
+     * <p>
+     *     Corresponds to the 'Clicks' field in the bulk file.
+     * </p>
+     */
     public Integer getClicks() {
         return clicks;
     }
 
+    /**
+     * Gets the click through rate.
+     *
+     * <p>
+     *     Corresponds to the 'CTR' field in the bulk file.
+     * </p>
+     */
     public Double getClickThroughRate() {
         return clickThroughRate;
     }
 
+    /**
+     * Gets the average cost per click.
+     *
+     * <p>
+     *     Corresponds to the 'Avg CPC' field in the bulk file.
+     * </p>
+     */
     public Double getAverageCostPerClick() {
         return averageCostPerClick;
     }
 
+    /**
+     * Gets the average cost per thousand impressions.
+     *
+     * <p>
+     *     Corresponds to the 'Avg CPM' field in the bulk file.
+     * </p>
+     */
     public Double getAverageCostPerThousandImpressions() {
         return averageCostPerThousandImpressions;
     }
 
+    /**
+     * Gets the average position.
+     *
+     * <p>
+     *     Corresponds to the 'Avg position' field in the bulk file.
+     * </p>
+     */
     public Double getAveragePosition() {
         return averagePosition;
     }
 
+    /**
+     * Gets the conversions.
+     *
+     * <p>
+     *     Corresponds to the 'Conversions' field in the bulk file.
+     * </p>
+     */
     public Integer getConversions() {
         return conversions;
     }
 
+    /**
+     * Gets the cost per conversion.
+     *
+     * <p>
+     *     Corresponds to the 'CPA' field in the bulk file.
+     * </p>
+     */
     public Double getCostPerConversion() {
         return costPerConversion;
     }

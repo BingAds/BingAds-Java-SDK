@@ -13,8 +13,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents the quality score data returned with bulk file entities when requested
+ * Represents a subset of the fields available in bulk records
+ * that support quality score data, for example {@link BulkKeyword}.
  *
+ * <p>
+ *     For more information, see Bulk File Schema at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511639">http://go.microsoft.com/fwlink/?LinkID=511639</a>.
+ * </p>
  */
 public class QualityScoreData {
 
@@ -90,6 +95,13 @@ public class QualityScoreData {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
+    /**
+     * Gets the landing page user experience.
+     *
+     * <p>
+     *     Corresponds to the 'Landing Page User Experience' field in the bulk file.
+     * </p>
+     */
     public Integer getLandingPageUserExperience() {
         return landingPageUserExperience;
     }
@@ -98,6 +110,13 @@ public class QualityScoreData {
         this.landingPageUserExperience = landingPageUserExperience;
     }
 
+    /**
+     * Gets the quality score.
+     *
+     * <p>
+     *     Corresponds to the 'Quality Score' field in the bulk file.
+     * </p>
+     */
     public Integer getQualityScore() {
         return qualityScore;
     }
@@ -106,6 +125,13 @@ public class QualityScoreData {
         this.qualityScore = qualityScore;
     }
 
+    /**
+     * Gets the keyword relevance.
+     *
+     * <p>
+     *     Corresponds to the 'Keyword Relevance' field in the bulk file.
+     * </p>
+     */
     public Integer getKeywordRelevance() {
         return keywordRelevance;
     }
@@ -114,6 +140,13 @@ public class QualityScoreData {
         this.keywordRelevance = keywordRelevance;
     }
 
+    /**
+     * Gets the landing page relevance.
+     *
+     * <p>
+     *     Corresponds to the 'Landing Page Relevance' field in the bulk file.
+     * </p>
+     */
     public Integer getLandingPageRelevance() {
         return landingPageRelevance;
     }

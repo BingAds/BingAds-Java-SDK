@@ -17,8 +17,9 @@ public class BulkEntityIterable implements Iterable<BulkEntity>, Closeable {
 
     /**
      * Reserved for internal use.
-     * @param reader
-     * @param isForFullDownload
+     *
+     * @param reader the bulk stream reader instance
+     * @param isForFullDownload is the reader for full download
      */
     public BulkEntityIterable(BulkStreamReader reader, boolean isForFullDownload) {
         this.reader = reader;

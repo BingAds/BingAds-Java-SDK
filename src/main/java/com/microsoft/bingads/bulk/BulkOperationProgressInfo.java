@@ -9,7 +9,6 @@ public class BulkOperationProgressInfo {
 
     /**
      * Gets progress information for the bulk operation in percent.
-     * @return
      */
     public int getPercentComplete() {
         return percentComplete;

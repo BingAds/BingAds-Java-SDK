@@ -1,6 +1,7 @@
 package com.microsoft.bingads;
 
 import com.microsoft.bingads.internal.ErrorMessages;
+import com.microsoft.bingads.bulk.BulkServiceManager;
 
 /**
  * Represents a user who intends to access the corresponding customer and
@@ -35,7 +36,6 @@ public class AuthorizationData {
     /**
      *
      * Gets the object representing the authentication method that should be used in calls to the Bing Ads web services.
-     * @return
      */
     public Authentication getAuthentication() {
         return authentication;
@@ -43,7 +43,6 @@ public class AuthorizationData {
 
     /**
      * Sets the object representing the authentication method that should be used in calls to the Bing Ads web services.
-     * @param authentication
      */
     public void setAuthentication(Authentication authentication) {
         this.authentication = authentication;
@@ -51,7 +50,6 @@ public class AuthorizationData {
 
     /**
      * Gets the identifier of the account that owns the entities in the request. This value is used as the CustomerAccountId header in calls to the Bing Ads web services.
-     * @return
      */
     public long getAccountId() {
         return accountId;
@@ -59,7 +57,6 @@ public class AuthorizationData {
 
     /**
      * Sets the identifier of the account that owns the entities in the request. This value is used as the CustomerAccountId header in calls to the Bing Ads web services.
-     * @param accountId
      */
     public void setAccountId(long accountId) {
         this.accountId = accountId;
@@ -67,7 +64,6 @@ public class AuthorizationData {
 
     /**
      * Gets the identifier of the customer that owns the account. This value is used as the CustomerId header element in calls to the Bing Ads web services.
-     * @return
      */
     public long getCustomerId() {
         return customerId;
@@ -75,7 +71,6 @@ public class AuthorizationData {
 
     /**
      * Sets the identifier of the customer that owns the account. This value is used as the CustomerId header element in calls to the Bing Ads web services.
-     * @param customerId
      */
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
@@ -83,7 +78,6 @@ public class AuthorizationData {
 
     /**
      * Gets the Bing Ads developer access token. This value is used as the DeveloperToken header element in calls to the Bing Ads web services.
-     * @return
      */
     public String getDeveloperToken() {
         return developerToken;
@@ -91,7 +85,6 @@ public class AuthorizationData {
 
     /**
      * Sets the Bing Ads developer access token. This value is used as the DeveloperToken header element in calls to the Bing Ads web services.
-     * @param developerToken
      */
     public void setDeveloperToken(String developerToken) {
         this.developerToken = developerToken;

@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.campaignmanagement.ImageAdExtension;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
@@ -15,12 +19,12 @@ import java.util.List;
 
 /**
  * Represents an image ad extension that can be read or written in a bulk file.
- * This class exposes the {@link BulkImageAdExtension#ImageAdExtension} property
+ * This class exposes the properties
  * that can be read and written as fields of the Image Ad Extension record in a
  * bulk file.
  *
  * For more information, see Image Ad Extension at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511909}.
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511909">http://go.microsoft.com/fwlink/?LinkID=511909</a>
  *
  * @see BulkServiceManager
  * @see BulkOperation
@@ -31,12 +35,14 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
 
     /**
      * Gets the image ad extension.
-     * @return
      */
     public ImageAdExtension getImageAdExtension() {
         return getAdExtension();
     }
 
+    /**
+     * Sets the image ad extension.
+     */
     public void setImageAdExtension(ImageAdExtension imageAdExtension) {
         setAdExtension(imageAdExtension);
     }

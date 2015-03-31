@@ -34,16 +34,29 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
     }
 
     /**
-     * The status of the negative site association. The value is Active if the
-     * negative site is assigned to the parent entity identified by the
-     * EntityId. The value is Deleted if the negative site is removed from the
+     * Gets the status of the negative site association.
+     *
+     * <p>
+     * The value is Active if the negative site is assigned to the parent entity identified by the EntityId.
+     * The value is Deleted if the negative site is removed from the
      * parent entity, or should be removed in a subsequent upload operation.
      * Corresponds to the 'Status' field in the bulk file.
+     * </p>
      */
     public Status getStatus() {
         return this.identifier.getStatus();
     }
 
+    /**
+     * Sets the status of the negative site association.
+     *
+     * <p>
+     * The value is Active if the negative site is assigned to the parent entity identified by the EntityId.
+     * The value is Deleted if the negative site is removed from the
+     * parent entity, or should be removed in a subsequent upload operation.
+     * Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.identifier.setStatus(status);
     }
@@ -54,10 +67,24 @@ abstract class BulkNegativeSite<TIdentifier extends BulkNegativeSiteIdentifier> 
      */
     private String website;
 
+    /**
+     * Gets the URL of a website on which you do not want your ads displayed.
+     *
+     * <p>
+     *     Corresponds to the 'Website' field in the bulk file.
+     * </p>
+     */
     public String getWebsite() {
         return website;
     }
 
+    /**
+     * Sets the URL of a website on which you do not want your ads displayed.
+     *
+     * <p>
+     *     Corresponds to the 'Website' field in the bulk file.
+     * </p>
+     */
     public void setWebsite(String website) {
         this.website = website;
     }

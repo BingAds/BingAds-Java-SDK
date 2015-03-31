@@ -14,10 +14,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk age target bid classes.
+ */
 abstract class BulkAgeTargetBid extends BulkTargetBid {
 
-    private AgeTargetBid ageTargetBid;        
-    
+    private AgeTargetBid ageTargetBid;
+
+    /**
+     * Reserved for internal use.
+     */
     BulkAgeTargetBid(BulkTargetIdentifier identifier) {
         super(identifier);
     }
@@ -76,12 +82,18 @@ abstract class BulkAgeTargetBid extends BulkTargetBid {
         super.processMappingsToRowValues(values, excludeReadonlyData);
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }        
-    
+    }
+
+    /**
+     * Gets a list of age ranges to target with bid adjustments.
+     */
     public AgeTargetBid getAgeTargetBid() {
         return ageTargetBid;
     }
 
+    /**
+     * Sets a list of age ranges to target with bid adjustments.
+     */
     public void setAgeTargetBid(AgeTargetBid ageTargetBid) {
         this.ageTargetBid = ageTargetBid;
     }

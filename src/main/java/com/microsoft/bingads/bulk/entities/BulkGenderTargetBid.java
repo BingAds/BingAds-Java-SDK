@@ -14,10 +14,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk gender target bid classes.
+ */
 abstract class BulkGenderTargetBid extends BulkTargetBid {
 
-    private GenderTargetBid genderTargetBid;        
-    
+    private GenderTargetBid genderTargetBid;
+
+    /**
+     * Reserved for internal use.
+     */
     BulkGenderTargetBid(BulkTargetIdentifier identifier) {
         super(identifier);
     }
@@ -76,12 +82,18 @@ abstract class BulkGenderTargetBid extends BulkTargetBid {
         super.processMappingsToRowValues(values, excludeReadonlyData);
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }        
-    
+    }
+
+    /**
+     * Gets a specific gender target.
+     */
     public GenderTargetBid getGenderTargetBid() {
         return genderTargetBid;
     }
 
+    /**
+     * Sets a specific gender target.
+     */
     public void setGenderTargetBid(GenderTargetBid genderTargetBid) {
         this.genderTargetBid = genderTargetBid;
     }

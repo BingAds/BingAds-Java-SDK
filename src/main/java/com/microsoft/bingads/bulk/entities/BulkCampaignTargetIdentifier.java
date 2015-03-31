@@ -5,8 +5,14 @@ import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 
+/**
+ * Reserved for internal use.
+ */
 class BulkCampaignTargetIdentifier extends BulkTargetIdentifier {
 
+    /**
+     * Initializes a new instanced of the BulkCampaignTargetIdentifier class.
+     */
     public BulkCampaignTargetIdentifier(Class targetBidType) {
         super(targetBidType);
     }
@@ -16,6 +22,9 @@ class BulkCampaignTargetIdentifier extends BulkTargetIdentifier {
         return new BulkCampaignTarget(this);
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     String getEntityColumnName() {
         return StringTable.Campaign;

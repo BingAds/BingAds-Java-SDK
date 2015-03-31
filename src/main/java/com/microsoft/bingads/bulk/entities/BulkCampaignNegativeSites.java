@@ -3,6 +3,10 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.campaignmanagement.CampaignNegativeSites;
 import com.microsoft.bingads.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +19,8 @@ import java.util.List;
  * </p>
  * <p>
  * For more information, see Campaign Negative Site at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511524}. </p>
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511524">http://go.microsoft.com/fwlink/?LinkID=511524</a>
+ * </p>
  *
  * <p>
  * One {@link BulkCampaignNegativeSites} has one or more
@@ -32,32 +37,56 @@ import java.util.List;
  */
 public class BulkCampaignNegativeSites extends BulkNegativeSites<BulkCampaignNegativeSite, BulkCampaignNegativeSitesIdentifier> {
 
-    /**
-     * The CampaignNegativeSites Data Object of the Campaign Management Service.
-     * A subset of CampaignNegativeSites properties are available in the
-     * Campaign Negative Site record. For more information, see Campaign
-     * Negative Site at http://go.microsoft.com/fwlink/?LinkID=511524.
-     */
     private CampaignNegativeSites campaignNegativeSites;
 
+    /**
+     * Gets the CampaignNegativeSites Data Object of the Campaign Management Service.
+     * A subset of CampaignNegativeSites properties are available in the
+     * Campaign Negative Site record.
+     *
+     * <p>
+     * For more information, see Campaign Negative Site at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511524">http://go.microsoft.com/fwlink/?LinkID=511524</a>.
+     * </p>
+     */
     public CampaignNegativeSites getCampaignNegativeSites() {
         return campaignNegativeSites;
     }
 
+    /**
+     * Sets the CampaignNegativeSites Data Object of the Campaign Management Service.
+     * A subset of CampaignNegativeSites properties are available in the
+     * Campaign Negative Site record.
+     *
+     * <p>
+     * For more information, see Campaign Negative Site at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511524">http://go.microsoft.com/fwlink/?LinkID=511524</a>.
+     * </p>
+     */
     public void setCampaignNegativeSites(CampaignNegativeSites campaignNegativeSites) {
         this.campaignNegativeSites = campaignNegativeSites;
     }
 
-    /**
-     * The name of the campaign that the negative site is assigned. Corresponds
-     * to the 'Campaign' field in the bulk file.
-     */
     private String campaignName;
 
+    /**
+     * Gets the name of the campaign that the negative site is assigned.
+     *
+     * <p>
+     * Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Sets the name of the campaign that the negative site is assigned.
+     *
+     * <p>
+     * Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }

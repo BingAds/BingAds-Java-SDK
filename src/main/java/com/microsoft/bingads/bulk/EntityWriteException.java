@@ -7,8 +7,9 @@ public class EntityWriteException extends RuntimeException {
 
     /**
      * Initializes a new instance of the EntityWriteException class.
-     * @param message
-     * @param cause
+     *
+     * @param message the error message
+     * @param cause the cause
      */
     public EntityWriteException(String message, Throwable cause) {
         super(message, cause);

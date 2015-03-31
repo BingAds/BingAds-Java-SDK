@@ -3,8 +3,9 @@ package com.microsoft.bingads.bulk;
 import java.util.List;
 
 /**
- * Contains tracking details about the results and status of the corresponding bulk operation. 
- * @param <TStatus>
+ * Contains tracking details about the results and status of the corresponding bulk operation.
+ *
+ * @param <TStatus> the type of operation status
  */
 public class BulkOperationStatus<TStatus> {
 
@@ -32,7 +33,6 @@ public class BulkOperationStatus<TStatus> {
 
     /**
      * Gets current status of the operation.
-     * @return
      */
     public TStatus getStatus() {
         return status;
@@ -40,7 +40,6 @@ public class BulkOperationStatus<TStatus> {
 
     /**
      * Gets progress of the operation in percent.
-     * @return
      */
     public int getPercentComplete() {
         return percentComplete;
@@ -48,7 +47,6 @@ public class BulkOperationStatus<TStatus> {
    
     /**
      * Gets the result file URL for the operation.
-     * @return
      */
     public String getResultFileUrl() {
         return resultFileUrl;
@@ -56,7 +54,6 @@ public class BulkOperationStatus<TStatus> {
    
     /**
      * Gets the tracking Id for the operation.
-     * @return
      */
     public String getTrackingId() {
         return this.trackingId;
@@ -64,7 +61,6 @@ public class BulkOperationStatus<TStatus> {
 
     /**
      * Gets the list of errors for the operation.
-     * @return
      */
     public List<OperationError> getErrors() {
         return errors;

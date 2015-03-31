@@ -17,6 +17,26 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk target classes,
+ * for example {@link BulkAdGroupDayTimeTarget}.
+ *
+ * @param <TIdentifier> the common target identifier accross all sub types for a given target
+ * @param <TAgeBid> an age target bid
+ * @param <TAge> an age target
+ * @param <TDayTimeBid> a day and time target bid
+ * @param <TDayTime> a day and time target
+ * @param <TDeviceOsBid> a device OS target bid
+ * @param <TDeviceOs> a device OS target
+ * @param <TGenderBid> a gender target bid
+ * @param <TGender> a gender target
+ * @param <TLocationBid> a location target bid
+ * @param <TLocation> a location target
+ * @param <TNegativeLocationBid> a negative location bid
+ * @param <TNegativeLocation> a negative location
+ * @param <TRadiusTargetBid> a radius target bid
+ * @param <TRadius> a radius target
+ */
 abstract class BulkTarget<
         TIdentifier extends BulkTargetIdentifier, TAgeBid extends BulkAgeTargetBid, TAge extends BulkAgeTarget<TAgeBid>, TDayTimeBid extends BulkDayTimeTargetBid, TDayTime extends BulkDayTimeTarget<TDayTimeBid>, TDeviceOsBid extends BulkDeviceOsTargetBid, TDeviceOs extends BulkDeviceOsTarget<TDeviceOsBid>, TGenderBid extends BulkGenderTargetBid, TGender extends BulkGenderTarget<TGenderBid>, TLocationBid extends BulkLocationTargetBid, TLocation extends BulkLocationTarget<TLocationBid>, TNegativeLocationBid extends BulkNegativeLocationTargetBid, TNegativeLocation extends BulkNegativeLocationTarget<TNegativeLocationBid>, TRadiusTargetBid extends BulkRadiusTargetBid, TRadius extends BulkRadiusTarget<TRadiusTargetBid>> extends MultiRecordBulkEntity {
 
@@ -337,6 +357,10 @@ abstract class BulkTarget<
         }
     }
 
+    /**
+     * Gets the list of sub targets that the target contains can include
+     * LocationTarget, AgeTarget, GenderTarget, DayTimeTarget, DeviceOsTarget, NegativeLocationTarget, and RadiusTarget.
+     */
     public List<BulkEntity> getSubTargets() {
         return Collections.unmodifiableList(
                 Arrays.asList(
@@ -388,98 +412,185 @@ abstract class BulkTarget<
         target.setIdentifier(identifier);
     }
 
+    /**
+     * Gets the status of the target.
+     *
+     * <p>
+     *      The value is Active if the target is available in the customer's shared library.
+     *      The value is Deleted if the target is deleted from the customer's shared library,
+     *      or should be deleted in a subsequent upload operation.
+     *      Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the target.
+     *
+     * <p>
+     *      The value is Active if the target is available in the customer's shared library.
+     *      The value is Deleted if the target is deleted from the customer's shared library,
+     *      or should be deleted in a subsequent upload operation.
+     *      Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected Long getEntityId() {
         return entityId;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected void setEntityId(Long entityId) {
         this.entityId = entityId;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected String getEntityName() {
         return entityName;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected void setEntityName(String entityName) {
         this.entityName = entityName;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected String getParentEntityName() {
         return parentEntityName;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     protected void setParentEntityName(String parentEntityName) {
         this.parentEntityName = parentEntityName;
     }
 
+    /**
+     * Gets the associated target.
+     */
     public Target2 getTarget() {
         return target;
     }
 
+    /**
+     * Sets the associated target.
+     */
     public void setTarget(Target2 target) {
         this.target = target;
     }
 
+    /**
+     * Gets the {@link BulkAgeTarget} contains multiple {@link BulkAgeTargetBid}.
+     */
     public TAge getAgeTarget() {
         return ageTarget;
     }
 
+    /**
+     * Sets the {@link BulkAgeTarget} contains multiple {@link BulkAgeTargetBid}.
+     */
     public void setAgeTarget(TAge ageTarget) {
         this.ageTarget = ageTarget;
     }
 
+    /**
+     * Gets the {@link BulkDayTimeTarget} contains multiple {@link BulkDayTimeTargetBid}.
+     */
     public TDayTime getDayTimeTarget() {
         return dayTimeTarget;
     }
 
+    /**
+     * Sets the {@link BulkDayTimeTarget} contains multiple {@link BulkDayTimeTargetBid}.
+     */
     public void setDayTime(TDayTime dayTimeTarget) {
         this.dayTimeTarget = dayTimeTarget;
     }
 
+    /**
+     * Gets the {@link BulkDeviceOsTarget} contains multiple {@link BulkDeviceOsTargetBid}.
+     */
     public TDeviceOs getDeviceOsTarget() {
         return deviceOsTarget;
     }
 
+    /**
+     * Sets the {@link BulkDeviceOsTarget} contains multiple {@link BulkDeviceOsTargetBid}.
+     */
     public void setDeviceOs(TDeviceOs deviceOsTarget) {
         this.deviceOsTarget = deviceOsTarget;
     }
 
+    /**
+     * Gets the {@link BulkGenderTarget} contains multiple {@link BulkGenderTargetBid}.
+     */
     public TGender getGenderTarget() {
         return genderTarget;
     }
 
+    /**
+     * Sets the {@link BulkGenderTarget} contains multiple {@link BulkGenderTargetBid}.
+     */
     public void setGender(TGender genderTarget) {
         this.genderTarget = genderTarget;
     }
-    
+
+    /**
+     * Gets the {@link BulkLocationTarget} contains multiple {@link BulkLocationTargetBid}.
+     */
     public TLocation getLocationTarget() {
         return locationTarget;
     }
 
+    /**
+     * Sets the {@link BulkLocationTarget} contains multiple {@link BulkLocationTargetBid}.
+     */
     public void setLocationTarget(TLocation locationTarget) {
         this.locationTarget = locationTarget;
     }
 
+    /**
+     * Gets the {@link BulkNegativeLocationTarget} contains multiple {@link BulkNegativeLocationTargetBid}.
+     */
     public TNegativeLocation getNegativeLocationTarget() {
         return negativeLocationTarget;
     }
 
+    /**
+     * Sets the {@link BulkNegativeLocationTarget} contains multiple {@link BulkNegativeLocationTargetBid}.
+     */
     public void setNegativeLocationTarget(TNegativeLocation negativeLocationTarget) {
         this.negativeLocationTarget = negativeLocationTarget;
     }
 
+    /**
+     * Gets the {@link BulkRadiusTarget} contains multiple {@link BulkRadiusTargetBid}.
+     */
     public TRadius getRadiusTarget() {
         return radiusTarget;
     }
 
+    /**
+     * Sets the {@link BulkRadiusTarget} contains multiple {@link BulkRadiusTargetBid}.
+     */
+    // TODO fix the typo
     public void setRadiusTarget(TRadius radiusTarvet) {
         this.radiusTarget = radiusTarvet;
     }

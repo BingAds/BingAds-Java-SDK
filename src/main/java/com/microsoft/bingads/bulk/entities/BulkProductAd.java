@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdType;
 import com.microsoft.bingads.campaignmanagement.ProductAd;
 import com.microsoft.bingads.internal.StringTable;
@@ -14,7 +18,20 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a product ad. 
+ * Represents a product ad.
+ *
+ * This class exposes the {@link #setProductAd} and {@link #getProductAd} methods
+ * that can be used to read and write fields of the Product Ad record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Product Ad at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511555">http://go.microsoft.com/fwlink/?LinkID=511555</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkProductAd extends BulkAd<ProductAd> {
 
@@ -60,10 +77,16 @@ public class BulkProductAd extends BulkAd<ProductAd> {
         MappingHelpers.<BulkProductAd>convertToEntity(values, MAPPINGS, this);
     }
 
+    /**
+     * Gets the product ad.
+     */
     public ProductAd getProductAd() {
         return ad;
     }
 
+    /**
+     * Sets the product ad.
+     */
     public void setProductAd(ProductAd ad) {
         this.setAd(ad);
     }

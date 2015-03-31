@@ -36,8 +36,7 @@ public class DownloadParameters {
     /**
      * Gets the extension type of the downloaded file. For possible values, see
      * DownloadFileType Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511672"}.
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511672">http://go.microsoft.com/fwlink/?LinkId=511672</a>.
      */
     public DownloadFileType getFileType() {
         return this.submitDownloadParameters.getFileType();
@@ -46,8 +45,7 @@ public class DownloadParameters {
     /**
      * Sets the extension type of the downloaded file. For possible values, see
      * DownloadFileType Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511672"}.
-     * @param fileType
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511672">http://go.microsoft.com/fwlink/?LinkId=511672</a>.
      */
     public void setFileType(DownloadFileType fileType) {
         this.submitDownloadParameters.setFileType(fileType);
@@ -56,8 +54,7 @@ public class DownloadParameters {
     /**
      * Gets the scope or types of data to download. For possible values, see
      * DataScope Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511670"}.
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511670">http://go.microsoft.com/fwlink/?LinkId=511670</a>.
      */
     public Collection<DataScope> getDataScope() {
         return this.submitDownloadParameters.getDataScope();
@@ -66,8 +63,7 @@ public class DownloadParameters {
     /**
      * Sets the scope or types of data to download. For possible values, see
      * DataScope Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511670"}.     
-     * @param value
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511670">http://go.microsoft.com/fwlink/?LinkId=511670</a>.
      */
     public void setDataScope(Collection<DataScope> value) {
         this.submitDownloadParameters.setDataScope(value);
@@ -76,8 +72,7 @@ public class DownloadParameters {
     /**
      * Gets the type of entities to download. For possible values, see
      * BulkDownloadEntity Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511671"}.
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511671">http://go.microsoft.com/fwlink/?LinkId=511671</a>.
      */
     public Collection<BulkDownloadEntity> getEntities() {
         return this.submitDownloadParameters.getEntities();
@@ -86,8 +81,7 @@ public class DownloadParameters {
     /**
      * Sets the type of entities to download. For possible values, see
      * BulkDownloadEntity Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511671"}.
-     * @param entities
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511671">http://go.microsoft.com/fwlink/?LinkId=511671</a>.
      */
     public void setEntities(Collection<BulkDownloadEntity> entities) {
         submitDownloadParameters.setEntities(entities);
@@ -96,7 +90,6 @@ public class DownloadParameters {
     /**
      * Gets the Ids of the campaigns to download. You can specify a maximum of 1,000 campaigns.
      * The campaigns that you specify must belong to the same account.
-     * @return
      */
     public List<Long> getCampaignIds() {
         return this.submitDownloadParameters.getCampaignIds();
@@ -105,7 +98,6 @@ public class DownloadParameters {
     /**
      * Sets the Ids of the campaigns to download. You can specify a maximum of 1,000 campaigns.
      * The campaigns that you specify must belong to the same account.
-     * @param campaignIds
      */
     public void setCampaignIds(List<Long> campaignIds) {
         this.submitDownloadParameters.setCampaignIds(campaignIds);
@@ -123,7 +115,6 @@ public class DownloadParameters {
      * entities that have changed (been updated or deleted) since the specified
      * date and time will be downloaded. However, if the campaign data has not
      * been previously downloaded, the operation performs a full download.
-     * @return
      */
     public Calendar getLastSyncTimeInUTC() {
         return this.submitDownloadParameters.getLastSyncTimeInUTC();
@@ -141,7 +132,6 @@ public class DownloadParameters {
      * entities that have changed (been updated or deleted) since the specified
      * date and time will be downloaded. However, if the campaign data has not
      * been previously downloaded, the operation performs a full download.
-     * @param lastSyncTimeInUTC
      */
     public void setLastSyncTimeInUTC(Calendar lastSyncTimeInUTC) {
         this.submitDownloadParameters.setLastSyncTimeInUTC(lastSyncTimeInUTC);
@@ -150,8 +140,7 @@ public class DownloadParameters {
     /**
      * Gets the date range values for the requested performance data in a bulk
      * download. For possible values, see PerformanceStatsDateRange Data Object
-     * at {@link http://go.microsoft.com/fwlink/?LinkId=511673"}.
-     * @return
+     * at <a href="http://go.microsoft.com/fwlink/?LinkId=511673">http://go.microsoft.com/fwlink/?LinkId=511673</a>.
      */
     public PerformanceStatsDateRange getPerformanceStatsDateRange() {
         return this.submitDownloadParameters.getPerformanceStatsDateRange();
@@ -160,8 +149,7 @@ public class DownloadParameters {
     /**
      * Sets the date range values for the requested performance data in a bulk
      * download. For possible values, see PerformanceStatsDateRange Data Object
-     * at {@link http://go.microsoft.com/fwlink/?LinkId=511673"}.
-     * @param performanceStatsDateRange
+     * at <a href="http://go.microsoft.com/fwlink/?LinkId=511673">http://go.microsoft.com/fwlink/?LinkId=511673</a>.
      */
     public void setPerformanceStatsDateRange(
             PerformanceStatsDateRange performanceStatsDateRange) {
@@ -170,7 +158,6 @@ public class DownloadParameters {
 
     /**
      * Gets the location target version
-     * @return
      */
     public String getLocationTargetVersion() {
         return this.submitDownloadParameters.getLocationTargetVersion();
@@ -178,7 +165,6 @@ public class DownloadParameters {
 
     /**
      * Sets the location target version
-     * @param value
      */
     public void setLocationTargetVersion(String value) {
         this.submitDownloadParameters.setLocationTargetVersion(value);
@@ -186,7 +172,6 @@ public class DownloadParameters {
 
     /**
      * Gets the directory where the file will be downloaded.
-     * @return
      */
     public File getResultFileDirectory() {
         return resultFileDirectory;
@@ -194,7 +179,6 @@ public class DownloadParameters {
 
     /**
      * Sets the directory where the file will be downloaded.
-     * @param resultFileDirectory
      */
     public void setResultFileDirectory(File resultFileDirectory) {
         this.resultFileDirectory = resultFileDirectory;
@@ -202,7 +186,6 @@ public class DownloadParameters {
 
     /**
      * Gets the name of the local download result file.
-     * @return
      */
     public String getResultFileName() {
         return resultFileName;
@@ -210,7 +193,6 @@ public class DownloadParameters {
 
     /**
      * Sets the name of the local download result file.
-     * @param resultFileName
      */
     public void setResultFileName(String resultFileName) {
         this.resultFileName = resultFileName;
@@ -218,7 +200,6 @@ public class DownloadParameters {
 
     /**
      * Gets whether the local result file should be overwritten if it already exists.
-     * @return
      */
     public boolean getOverwriteResultFile() {
         return overwriteResultFile;
@@ -226,7 +207,6 @@ public class DownloadParameters {
 
     /**
      * Sets whether the local result file should be overwritten if it already exists.
-     * @param overwriteResultFile
      */
     public void setOverwriteResultFile(boolean overwriteResultFile) {
         this.overwriteResultFile = overwriteResultFile;

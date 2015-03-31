@@ -5,10 +5,12 @@ package com.microsoft.bingads;
  */
 public class OAuthTokens {
 
-    /**     
-     * @param accessToken
-     * @param accessTokenExpiresInSeconds
-     * @param refreshToken
+    /**
+     * Contains information about OAuth access tokens received from the Microsoft Account authorization service.
+     *
+     * @param accessToken OAuth access token that will be used for authorization in the Bing Ads services
+     * @param accessTokenExpiresInSeconds expiration time for the corresponding access token in seconds
+     * @param refreshToken OAuth refresh token that can be user to refresh an access token
      */
     public OAuthTokens(String accessToken, long accessTokenExpiresInSeconds, String refreshToken) {
         this.accessToken = accessToken;
@@ -30,7 +32,6 @@ public class OAuthTokens {
 
     /**
      * Gets the OAuth access token that will be used for authorization in the Bing Ads services.
-     * @return
      */
     public String getAccessToken() {
         return accessToken;
@@ -38,7 +39,6 @@ public class OAuthTokens {
 
     /**
      * Gets the remaining time before expiration for the corresponding access token in seconds.
-     * @return
      */
     public long getAccessTokenExpiresInSeconds() {
         return accessTokenExpiresInSeconds - (System.currentTimeMillis() - creationTimeStampInMilliseconds) / 1000;
@@ -46,7 +46,6 @@ public class OAuthTokens {
 
     /**
      * Gets the OAuth refresh token that can be user to refresh an access token.
-     * @return
      */
     public String getRefreshToken() {
         return refreshToken;

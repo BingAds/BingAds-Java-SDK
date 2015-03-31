@@ -26,8 +26,7 @@ public class SubmitDownloadParameters {
     /**
      * Gets the scope or types of data to download. For possible values, see
      * DataScope Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511670"}.
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511670">http://go.microsoft.com/fwlink/?LinkId=511670</a>
      */
     public Collection<DataScope> getDataScope() {
         return dataScope;
@@ -40,8 +39,7 @@ public class SubmitDownloadParameters {
     /**
      * Gets the type of entities to download. For possible values, see
      * BulkDownloadEntity Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511671"}.
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511671>http://go.microsoft.com/fwlink/?LinkId=511671</a>
      */
     public Collection<BulkDownloadEntity> getEntities() {
         return entities;
@@ -50,8 +48,7 @@ public class SubmitDownloadParameters {
     /**
      * Sets the type of entities to download. For possible values, see
      * BulkDownloadEntity Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511671"}.
-     * @param value
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511671">http://go.microsoft.com/fwlink/?LinkId=511671</a>
      */
     public void setEntities(Collection<BulkDownloadEntity> value) {
         entities = value;
@@ -60,7 +57,6 @@ public class SubmitDownloadParameters {
     /**
      * Gets the campaigns to download. You can specify a maximum of 1,000 campaigns.
      * The campaigns that you specify must belong to the same account.
-     * @return
      */
     public List<Long> getCampaignIds() {
         return this.campaignIds;
@@ -69,7 +65,6 @@ public class SubmitDownloadParameters {
     /**
      * Sets the campaigns to download. You can specify a maximum of 1,000 campaigns.
      * The campaigns that you specify must belong to the same account.
-     * @param campaignIds
      */
     public void setCampaignIds(List<Long> campaignIds) {
         this.campaignIds = campaignIds;
@@ -78,8 +73,7 @@ public class SubmitDownloadParameters {
     /**
      * Gets the extension type of the downloaded file. For possible values, see
      * DownloadFileType Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511672"}.     
-     * @return
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511672">http://go.microsoft.com/fwlink/?LinkId=511672</a>
      */
     public DownloadFileType getFileType() {
         return fileType;
@@ -88,8 +82,7 @@ public class SubmitDownloadParameters {
     /**
      * Sets the extension type of the downloaded file. For possible values, see
      * DownloadFileType Value Set at
-     * {@link "http://go.microsoft.com/fwlink/?LinkId=511672"}.
-     * @param fileType
+     * <a href="http://go.microsoft.com/fwlink/?LinkId=511672">http://go.microsoft.com/fwlink/?LinkId=511672</a>
      */
     public void setFileType(DownloadFileType fileType) {
         this.fileType = fileType;
@@ -107,7 +100,6 @@ public class SubmitDownloadParameters {
      * entities that have changed (been updated or deleted) since the specified
      * date and time will be downloaded. However, if the campaign data has not
      * been previously downloaded, the operation performs a full download.     
-     * @return
      */
     public Calendar getLastSyncTimeInUTC() {
         return lastSyncTimeInUTC;
@@ -125,7 +117,6 @@ public class SubmitDownloadParameters {
      * entities that have changed (been updated or deleted) since the specified
      * date and time will be downloaded. However, if the campaign data has not
      * been previously downloaded, the operation performs a full download.
-     * @param lastSyncTimeInUTC
      */
     public void setLastSyncTimeInUTC(Calendar lastSyncTimeInUTC) {
         this.lastSyncTimeInUTC = lastSyncTimeInUTC;
@@ -134,8 +125,7 @@ public class SubmitDownloadParameters {
     /**
      * Gets the date range values for the requested performance data in a bulk
      * download. For possible values, see PerformanceStatsDateRange Data Object
-     * at {@link http://go.microsoft.com/fwlink/?LinkId=511673"}.
-     * @return
+     * at <a href="http://go.microsoft.com/fwlink/?LinkId=511673">http://go.microsoft.com/fwlink/?LinkId=511673</a>
      */
     public PerformanceStatsDateRange getPerformanceStatsDateRange() {
         return performanceStatsDateRange;
@@ -144,8 +134,7 @@ public class SubmitDownloadParameters {
     /**
      * Sets the date range values for the requested performance data in a bulk
      * download. For possible values, see PerformanceStatsDateRange Data Object
-     * at {@link http://go.microsoft.com/fwlink/?LinkId=511673"}.
-     * @param performanceStatsDateRange
+     * at <a href="http://go.microsoft.com/fwlink/?LinkId=511673">http://go.microsoft.com/fwlink/?LinkId=511673</a>
      */
     public void setPerformanceStatsDateRange(
             PerformanceStatsDateRange performanceStatsDateRange) {
@@ -154,7 +143,6 @@ public class SubmitDownloadParameters {
 
     /**
      * Gets the location target version.
-     * @return
      */
     public String getLocationTargetVersion() {
         return locationTargetVersion;
@@ -162,7 +150,6 @@ public class SubmitDownloadParameters {
 
     /**
      * Sets the location target version.
-     * @param locationTargetVersion
      */
     public void setLocationTargetVersion(String locationTargetVersion) {
         this.locationTargetVersion = locationTargetVersion;

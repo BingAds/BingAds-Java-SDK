@@ -1,5 +1,8 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
@@ -16,7 +19,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a keyword bid suggestion.
+ * Represents a best position bid suggestion that can only be read from a bulk file by the
+ * {@link BulkFileReader} when reading the corresponding {@link BulkKeyword}.
+ * An instance of this class can represent a single keyword bid position, and thus one record in the bulk file.
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
  */
 public class BulkKeywordBidSuggestion extends BulkObject {
 
@@ -24,6 +33,9 @@ public class BulkKeywordBidSuggestion extends BulkObject {
     private Double bid;
     private PerformanceData performanceData;
 
+    /**
+     * Initializes a new instance of the BulkKeywordBidSuggestion class.
+     */
     public BulkKeywordBidSuggestion() {
         this.performanceData = new PerformanceData();
     }
@@ -91,14 +103,31 @@ public class BulkKeywordBidSuggestion extends BulkObject {
         }
     }
 
+    /**
+     * Gets the keyword corresponding to the suggested bid.
+     *
+     * <p>
+     *     Corresponds to the 'Keyword' field in the bulk file.
+     * </p>
+     */
     public String getKeywordText() {
         return keywordText;
     }
 
+    /**
+     * Gets the suggested bid for the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Bid' field in the bulk file.
+     * </p>
+     */
     public Double getBid() {
         return bid;
     }
 
+    /**
+     * Gets the historical performance data corresponding to the suggested bid.
+     */
     public PerformanceData getPerformanceData() {
         return performanceData;
     }

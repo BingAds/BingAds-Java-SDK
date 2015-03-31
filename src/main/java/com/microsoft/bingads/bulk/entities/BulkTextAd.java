@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdType;
 import com.microsoft.bingads.campaignmanagement.TextAd;
 import com.microsoft.bingads.internal.StringTable;
@@ -13,6 +17,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a text ad.
+ *
+ * This class exposes the {@link #setTextAd} and {@link #getTextAd} methods
+ * that can be used to read and write fields of the Text Ad record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Text Ad at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511554">http://go.microsoft.com/fwlink/?LinkID=511554</a>
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
+ */
 public class BulkTextAd extends BulkAd<TextAd> {
 
     private static final List<BulkMapping<BulkTextAd>> MAPPINGS;
@@ -102,10 +122,16 @@ public class BulkTextAd extends BulkAd<TextAd> {
         MappingHelpers.<BulkTextAd>convertToEntity(values, MAPPINGS, this);
     }
 
+    /**
+     * Gets the text ad.
+     */
     public TextAd getTextAd() {
         return this.ad;
     }
 
+    /**
+     * Sets the text ad.
+     */
     public void setTextAd(TextAd ad) {
         this.setAd(ad);
     }

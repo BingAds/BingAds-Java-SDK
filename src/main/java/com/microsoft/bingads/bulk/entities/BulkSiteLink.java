@@ -1,7 +1,12 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.SiteLink;
+import com.microsoft.bingads.campaignmanagement.SiteLinksAdExtension;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
@@ -18,12 +23,34 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a subset of the fields in a Sitelink Ad Extension record. The
- * Sitelink Ad Extension record includes the distinct properties of the
- * {@link BulkSiteLink} class, combined with the commmon properties of the
- * {@link BulkSiteLinkAdExtension} class, for example {@link BulkAccount} and
- * {@link SiteLinksAdExtension}"/>. For more information, see Sitelink Ad
- * Extension at {@link http://go.microsoft.com/fwlink/?LinkID=511517}.
+ * Represents a sitelink.
+ *
+ * This class exposes the {@link #setSiteLink} and {@link #getSiteLink} methods that can be used to
+ * read and write fields of the Sitelink Ad Extension record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Sitelink Ad Extension at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511517">http://go.microsoft.com/fwlink/?LinkID=511517</a>
+ * </p>
+ *
+ * <p>
+ *      The Sitelink Ad Extension record includes the distinct properties of the {@link BulkSiteLink} class,
+ *      combined with the commmon properties of the {@link BulkSiteLinkAdExtension} class,
+ *      for example {@link BulkSiteLinkAdExtension#getAccountId} and
+ *      {@link BulkSiteLinkAdExtension#getSiteLinksAdExtension}.
+ * </p>
+ *
+ * <p>
+ *     One {@link BulkSiteLinkAdExtension} has one or more {@link BulkSiteLink}.
+ *     Each {@link BulkSiteLink} instance corresponds to one Sitelink Ad Extension record in the bulk file.
+ *     If you upload a {@link BulkSiteLinkAdExtension},
+ *     then you are effectively replacing any existing site links for the sitelink ad extension.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkSiteLink extends SingleRecordBulkEntity {
 
@@ -38,85 +65,129 @@ public class BulkSiteLink extends SingleRecordBulkEntity {
     }
 
     /**
-     * The identifier of the ad extension. Corresponds to the 'Id' field in the
-     * bulk file.
+     * Gets the identifier of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Id' field in the bulk file.
+     * </p>
      */
     public Long getAdExtensionId() {
         return this.identifier.getAdExtensionId();
     }
 
+    /**
+     * Sets the identifier of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Id' field in the bulk file.
+     * </p>
+     */
     public void setAdExtensionId(Long adExtensionId) {
         this.identifier.setAdExtensionId(adExtensionId);
     }
 
     /**
-     * The ad extension's parent account identifier. Corresponds to the 'Parent
-     * Id' field in the bulk file.
+     * Gets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
      */
     public Long getAccountId() {
         return this.identifier.getAccountId();
     }
 
+    /**
+     * Sets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAccountId(Long accountId) {
         this.identifier.setAccountId(accountId);
     }
 
     /**
-     * The AdExtensionStatus Value Set of the Campaign Management Service. The
-     * status of the ad extension. Corresponds to the 'Status' field in the bulk
-     * file.
+     * Gets the status of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
      */
     public AdExtensionStatus getStatus() {
         return this.identifier.getStatus();
     }
 
+    /**
+     * Sets the status of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(AdExtensionStatus status) {
         this.identifier.setStatus(status);
     }
 
     /**
-     * Gets the version of the ad extension. Corresponds to the 'Version' field in
-     * the bulk file.
-     * @return Ad Extension version
+     * Gets the version of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Version' field in the bulk file.
+     * </p>
      */
     public Integer getVersion() {
         return this.identifier.getVersion();
     }
 
     /**
-     * Sets the version of the ad extension. Corresponds to the 'Version' field in
-     * the bulk file.
-     * @param version Ad Extension version
+     * Sets the version of the ad extension.
+     *
+     * <p>
+     *     Corresponds to the 'Version' field in the bulk file.
+     * </p>
      */
     public void setVersion(Integer version) {
         this.identifier.setVersion(version);
     }
-    /**
-     * The order of the sitelink displayed to a search user in the ad.
-     * Corresponds to the 'Sitelink Extension Order' field in the bulk file.
-     */
+
     private int order;
 
-    /**
-     * The SiteLink Data Object of the Campaign Management Service. A subset of
-     * SiteLink properties are available in the Sitelink Ad Extension record.
-     * For more information, see Sitelink Ad Extension at
-     * {@link http://go.microsoft.com/fwlink/?LinkID=511517}.
-     */
     private SiteLink siteLink;
 
+    /**
+     * Gets the order of the sitelink displayed to a search user in the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Sitelink Extension Order' field in the bulk file.
+     * </p>
+     */
     public int getOrder() {
         return order;
     }
 
+    /**
+     * Gets the order of the sitelink displayed to a search user in the ad.
+     *
+     * <p>
+     *     Corresponds to the 'Sitelink Extension Order' field in the bulk file.
+     * </p>
+     */
     public void setOrder(int order) {
         this.order = order;
     }
 
+    /**
+     * Gets the sitelink.
+     */
     public SiteLink getSiteLink() {
         return siteLink;
     }
 
+    /**
+     * Sets the sitelink.
+     */
     public void setSiteLink(SiteLink siteLink) {
         this.siteLink = siteLink;
     }

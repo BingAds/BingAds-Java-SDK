@@ -3,6 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdGroupNegativeSites;
 import com.microsoft.bingads.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
@@ -16,9 +17,12 @@ import java.util.List;
  * properties that can be read and written as fields of the Ad Group Negative
  * Site record in a bulk file.
  * </p>
+ *
  * <p>
  * For more information, see Ad Group Negative Site at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511539}. </p>
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511539">http://go.microsoft.com/fwlink/?LinkID=511539</a>
+ * </p>
+ *
  * <p>
  * One {@link BulkAdGroupNegativeSites} has one or more
  * {@link BulkAdGroupNegativeSite}. Each {@link BulkAdGroupNegativeSite}
@@ -34,46 +38,78 @@ import java.util.List;
  */
 public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegativeSite, BulkAdGroupNegativeSitesIdentifier> {
 
-    /**
-     * The AdGroupNegativeSites Data Object of the Campaign Management Service.
-     * A subset of AdGroupNegativeSites properties are available in the Ad Group
-     * Negative Site record. For more information, see Ad Group Negative Site at
-     * http://go.microsoft.com/fwlink/?LinkID=511539.
-     */
     private AdGroupNegativeSites adGroupNegativeSites;// { get; set; }
 
+    /**
+     * Gets the AdGroupNegativeSites Data Object of the Campaign Management Service.
+     *
+     * <p>
+     * A subset of AdGroupNegativeSites properties are available in the Ad Group
+     * Negative Site record. For more information, see Ad Group Negative Site at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511539">http://go.microsoft.com/fwlink/?LinkID=511539</a>.
+     * </p>
+     */
     public AdGroupNegativeSites getAdGroupNegativeSites() {
         return adGroupNegativeSites;
     }
 
+    /**
+     * Sets the AdGroupNegativeSites Data Object of the Campaign Management Service.
+     *
+     * <p>
+     * A subset of AdGroupNegativeSites properties are available in the Ad Group
+     * Negative Site record. For more information, see Ad Group Negative Site at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511539">http://go.microsoft.com/fwlink/?LinkID=511539</a>.
+     * </p>
+     */
     public void setAdGroupNegativeSites(AdGroupNegativeSites adGroupNegativeSites) {
         this.adGroupNegativeSites = adGroupNegativeSites;
     }
 
-    /**
-     * The name of the ad group that the negative site is assigned. Corresponds
-     * to the 'Ad Group' field in the bulk file.
-     */
     private String adGroupName;
 
+    /**
+     * Gets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public String getAdGroupName() {
         return adGroupName;
     }
 
+    /**
+     * Sets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
     }
 
-    /**
-     * The name of the campaign that the negative site is assigned. Corresponds
-     * to the 'Campaign' field in the bulk file.
-     */
     private String campaignName;
 
+    /**
+     * Gets the name of the campaign that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Sets the name of the campaign that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
@@ -91,7 +127,6 @@ public class BulkAdGroupNegativeSites extends BulkNegativeSites<BulkAdGroupNegat
 
     /**
      * Reserved for internal use.
-     * @param identifier
      */
     public BulkAdGroupNegativeSites(BulkAdGroupNegativeSitesIdentifier identifier) {
         super(identifier, BulkAdGroupNegativeSite.class, BulkAdGroupNegativeSitesIdentifier.class);

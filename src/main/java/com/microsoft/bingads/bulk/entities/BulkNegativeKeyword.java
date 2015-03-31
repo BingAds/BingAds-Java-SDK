@@ -15,6 +15,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class for all bulk negative keywords that
+ * are either assigned individually to a campaign or ad group entity,
+ * or shared in a negative keyword list.
+ *
+ * @see BulkAdGroupNegativeKeyword
+ * @see BulkCampaignNegativeKeyword
+ * @see BulkSharedNegativeKeyword
+ */
 abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
 
     private NegativeKeyword negativeKeyword;
@@ -126,26 +135,58 @@ abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
+    /**
+     * Gets a negative keyword with match type.
+     */
     public NegativeKeyword getNegativeKeyword() {
         return negativeKeyword;
     }
 
+    /**
+     * Sets a negative keyword with match type.
+     */
     public void setNegativeKeyword(NegativeKeyword negativeKeyword) {
         this.negativeKeyword = negativeKeyword;
     }
 
+    /**
+     * Gets the status of the negative keyword association.
+     *
+     * <p>
+     * The value is Active if the negative keyword is assigned to the parent entity.
+     * The value is Deleted if the negative keyword is removed from the parent entity,
+     * or should be removed in a subsequent upload operation.
+     * Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the negative keyword association.
+     *
+     * <p>
+     * The value is Active if the negative keyword is assigned to the parent entity.
+     * The value is Deleted if the negative keyword is removed from the parent entity,
+     * or should be removed in a subsequent upload operation.
+     * Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     Long getParentId() {
         return parentId;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     void setParentId(Long parentId) {
         this.parentId = parentId;
     }

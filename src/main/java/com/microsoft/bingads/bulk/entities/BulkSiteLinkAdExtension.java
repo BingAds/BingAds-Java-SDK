@@ -4,6 +4,10 @@ import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfSiteLink;
 import com.microsoft.bingads.campaignmanagement.SiteLink;
 import com.microsoft.bingads.campaignmanagement.SiteLinksAdExtension;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.internal.bulk.BulkStreamReader;
@@ -21,8 +25,26 @@ import java.util.List;
  * Represents a sitelink ad extension that is derived from {@link BulkEntity}
  * and can be read or written in a bulk file. Properties of this class and of
  * classes that it is derived from, correspond to fields of the Sitelink Ad
- * Extension record in a bulk file. For more information, see Sitelink Ad
- * Extension at {@link http://go.microsoft.com/fwlink/?LinkID=511517}.
+ * Extension record in a bulk file.
+ *
+ * <p>
+ * For more information, see Sitelink Ad Extension at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511517">http://go.microsoft.com/fwlink/?LinkID=511517</a>.
+ * </p>
+ *
+ * <p>
+ *     The Sitelink Ad Extension record includes the distinct properties of the {@link BulkSiteLink} class,
+ *     combined with the commmon properties of the {@link BulkSiteLinkAdExtension} class, for example
+ *     {@link #getAccountId} and {@link #getSiteLinksAdExtension}.
+ * </p>
+ *
+ * <p>
+ *     One {@link BulkSiteLinkAdExtension} has one or more {@link BulkSiteLink}.
+ *     Each {@link BulkSiteLink} instance corresponds to one Sitelink Ad Extension record in the bulk file.
+ *     If you upload a {@link BulkSiteLinkAdExtension},
+ *     then you are effectively replacing any existing site links for the sitelink ad extension.
+ * </p>
+ *
  * @see BulkServiceManager
  * @see BulkOperation
  * @see BulkFileReader
@@ -30,25 +52,21 @@ import java.util.List;
  */
 public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
 
-    /// <summary>
-    /// The ad extension's parent account identifier. 
-    /// Corresponds to the 'Parent Id' field in the bulk file. 
-    /// </summary>
     private Long accountId;
 
-    /// <summary>
-    /// The SiteLinksAdExtension Data Object of the Campaign Management Service. A subset of SiteLinksAdExtension properties are available 
-    /// in the Sitelink Ad Extension record. For more information, see Sitelink Ad Extension at http://go.microsoft.com/fwlink/?LinkID=511517.
-    /// </summary>
     private SiteLinksAdExtension siteLinksAdExtension;
 
     private final List<BulkSiteLink> bulkSiteLinkResults = new ArrayList<BulkSiteLink>();
 
-    /// <summary>
-    /// The list of <see cref="BulkSiteLink"/> are represented by multiple Sitelink Ad Extension records in the file.
-    /// Each item in the list corresponds to a separate Sitelink Ad Extension record that includes the distinct properties of the <see cref="BulkSiteLink"/> class, combined with 
-    /// the commmon properties of the <see cref="BulkSiteLinkAdExtension"/> class, for example <see cref="AccountId"/> and <see cref="SiteLinksAdExtension"/>.
-    /// </summary>
+    /**
+    * Get The list of {@link BulkSiteLink} are represented by multiple Sitelink Ad Extension records in the file.
+     * <p>
+    * Each item in the list corresponds to a separate Sitelink Ad Extension record that includes the distinct properties of
+     * the {@link BulkSiteLink} class, combined with
+    * the commmon properties of the {@link BulkSiteLinkAdExtension} class,
+     * for example {@link #getAccountId} and {@link #getSiteLinksAdExtension}.
+     * </p>
+    */
     public List<BulkSiteLink> getSiteLinks() {
         return Collections.unmodifiableList(this.bulkSiteLinkResults);
     }
@@ -62,9 +80,9 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
 
     private boolean hasDeleteAllRow;
 
-    /// <summary>
-    /// Initializes a new instance of the BulkSiteLinkAdExtension class. 
-    /// </summary>
+    /**
+     * Initializes a new instance of the BulkSiteLinkAdExtension class.
+     */
     public BulkSiteLinkAdExtension() {
 
     }
@@ -202,18 +220,50 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
         return hasDeleteAllRow;
     }
 
+    /**
+     * Gets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getAccountId() {
         return accountId;
     }
 
+    /**
+     * Sets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
+    /**
+     * Gets the SiteLinksAdExtension Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *     A subset of SiteLinksAdExtension properties are available
+     *     in the Sitelink Ad Extension record. For more information, see Sitelink Ad Extension at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511517">http://go.microsoft.com/fwlink/?LinkID=511517</a>.
+     * </p>
+     */
     public SiteLinksAdExtension getSiteLinksAdExtension() {
         return siteLinksAdExtension;
     }
 
+    /**
+     * Sets the SiteLinksAdExtension Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *     A subset of SiteLinksAdExtension properties are available
+     *     in the Sitelink Ad Extension record. For more information, see Sitelink Ad Extension at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511517">http://go.microsoft.com/fwlink/?LinkID=511517</a>.
+     * </p>
+     */
     public void setSiteLinksAdExtension(SiteLinksAdExtension siteLinksAdExtension) {
         this.siteLinksAdExtension = siteLinksAdExtension;
     }

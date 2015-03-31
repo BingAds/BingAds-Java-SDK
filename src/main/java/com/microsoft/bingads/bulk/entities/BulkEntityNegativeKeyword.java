@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class for all bulk negative keywords that are assigned individually to a campaign or ad group entity.
+ *
+ * @see BulkAdGroupNegativeKeyword
+ * @see BulkCampaignNegativeKeyword
+ */
 abstract class BulkEntityNegativeKeyword extends BulkNegativeKeyword {
 
     private String entityName;
@@ -57,13 +63,22 @@ abstract class BulkEntityNegativeKeyword extends BulkNegativeKeyword {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Reserved for internal use.
+     */
     String getEntityName() {
         return entityName;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     void setEntityName(String entityName) {
         this.entityName = entityName;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     abstract String getEntityColumnName();
 }

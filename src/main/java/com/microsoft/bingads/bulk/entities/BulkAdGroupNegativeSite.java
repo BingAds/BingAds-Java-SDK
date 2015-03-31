@@ -3,6 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
 import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 
@@ -13,9 +14,11 @@ import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
  * that can be read and written as fields of the Ad Group Negative Site record
  * in a bulk file.
  * </p>
+ *
  * <p>
  * For more information, see Ad Group Negative Site at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511539}. </p>
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511539">http://go.microsoft.com/fwlink/?LinkID=511539</a>
+ * </p>
  *
  * <p>
  * One {@link BulkAdGroupNegativeSites} exposes a read only list of
@@ -33,37 +36,67 @@ import com.microsoft.bingads.internal.bulk.entities.MultiRecordBulkEntity;
 public class BulkAdGroupNegativeSite extends BulkNegativeSite<BulkAdGroupNegativeSitesIdentifier> {
 
     /**
-     * The identifier of the ad group that the negative site is assigned.
-     * Corresponds to the 'Parent Id' field in the bulk file.
+     * Gets the identifier of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *      Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
      */
     public long getAdGroupId() {
         return this.getIdentifier().getAdGroupId();
     }
 
+    /**
+     * Sets the identifier of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *      Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupId(long value) {
         this.getIdentifier().setAdGroupId(value);
     }
 
     /**
-     * The name of the ad group that the negative site is assigned. Corresponds
-     * to the 'Ad Group' field in the bulk file.
+     * Gets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
      */
     public String getAdGroupName() {
         return this.getIdentifier().getAdGroupName();
     }
 
+    /**
+     * Sets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupName(String value) {
         this.getIdentifier().setAdGroupName(value);
     }
 
     /**
-     * The name of the ad group that the negative site is assigned. Corresponds
-     * to the 'Ad Group' field in the bulk file.
+     * Gets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
      */
     public String getCampaignName() {
         return this.getIdentifier().getCampaignName();
     }
 
+    /**
+     * Sets the name of the ad group that the negative site is assigned.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String value) {
         this.getIdentifier().setCampaignName(value);
     }

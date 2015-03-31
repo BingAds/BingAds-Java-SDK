@@ -37,7 +37,6 @@ public class PasswordAuthentication extends Authentication {
 
     /**
      * Gets the user name.
-     * @return
      */
     public String getUserName() {
         return userName;
@@ -45,7 +44,6 @@ public class PasswordAuthentication extends Authentication {
     
     /**
      * Gets the password.
-     * @return
      */
     public String getPassword() {
         return password;

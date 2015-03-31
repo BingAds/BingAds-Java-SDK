@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfProductConditionCollection;
 import com.microsoft.bingads.campaignmanagement.ProductAdExtension;
@@ -16,24 +20,30 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a product ad extension. This class exposes the
- * {@link BulkProductAdExtension#ProductAdExtension} property that can be read
+ * Represents a product ad extension. This class exposes
+ * properties that can be read
  * and written as fields of the Product Ad Extension record in a bulk file.
  *
+ * <p>
  * For more information, see Product Ad Extension at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511516}.
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511516">http://go.microsoft.com/fwlink/?LinkID=511516</a>
+ * </p>
  *
+ * <p>
  * The Product Ad Extension record includes the distinct properties of the
  * {@link BulkProductConditionCollection} class, combined with the common
  * properties of the {@link BulkProductAdExtension} class, for example AccountId
  * and ProductAdExtension.
+ * </p>
  *
+ * <p>
  * One {@link BulkProductAdExtension} has one or more
  * {@link BulkProductConditionCollection}. Each
  * {@link BulkProductConditionCollection} instance corresponds to one Product Ad
  * Extension record in the bulk file. If you upload a
  * {@link BulkProductAdExtension}, then you are effectively replacing any
  * existing product conditions for the product ad extension.
+ * </p>
  *
  * @see BulkServiceManager
  * @see BulkOperation
@@ -42,32 +52,47 @@ import java.util.List;
  */
 public class BulkProductAdExtension extends MultiRecordBulkEntity {
 
-    /**
-     * The ad extension's parent account identifier. Corresponds to the 'Parent
-     * Id' field in the bulk file.
-     */
     private long accountId;
 
+    /**
+     * Gets the ad extension's parent account identifier.
+     *
+     * <p>
+     * Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public long getAccountId() {
         return accountId;
     }
 
+    /**
+     * Sets the ad extension's parent account identifier.
+     *
+     * <p>
+     * Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
-    /**
-     * The product ad extension.
-     */
     private ProductAdExtension productAdExtension;
 
+    /**
+     * Gets the product ad extension.
+     */
     public ProductAdExtension getProductAdExtension() {
         return productAdExtension;
     }
 
+    /**
+     * Sets the product ad extension.
+     */
     public void setProductAdExtension(ProductAdExtension productAdExtension) {
         this.productAdExtension = productAdExtension;
     }
+
+    private final List<BulkProductConditionCollection> productConditionCollections = new ArrayList<BulkProductConditionCollection>();
 
     /**
      * The list of {@link BulkProductConditionCollection} are represented by
@@ -75,10 +100,8 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
      * corresponds to a separate Product Ad Extension record that includes the
      * distinct properties of the {@link BulkProductConditionCollection} class,
      * combined with the common properties of the {@link BulkProductAdExtension}
-     * class, for example {@link AccountId} and {@link ProductAdExtension}.
+     * class, for example {@link #getAccountId} and {@link #getProductAdExtension}.
      */
-    private final List<BulkProductConditionCollection> productConditionCollections = new ArrayList<BulkProductConditionCollection>();
-
     public List<BulkProductConditionCollection> getProductConditionCollections() {
         return productConditionCollections;
     }

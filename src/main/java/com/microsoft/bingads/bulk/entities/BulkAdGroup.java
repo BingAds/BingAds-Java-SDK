@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.campaignmanagement.AdDistribution;
 import com.microsoft.bingads.campaignmanagement.AdGroup;
@@ -21,7 +25,22 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents an Ad Group. 
+ * Represents an Ad Group.
+ *
+ * <p>
+ *     This class exposes the {@link #setAdGroup} and {@link #getAdGroup} that can be used to read and write
+ *     fields of the Ad Group record in a bulk file.
+ * </p>
+ *
+ * <p>
+ *     For more information, see Ad Group at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkAdGroup extends SingleRecordBulkEntity {
 
@@ -341,42 +360,100 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         }
     }
 
+    /**
+     * Gets the identifier of the campaign that contains the ad group.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getCampaignId() {
         return campaignId;
     }
 
+    /**
+     * Sets the identifier of the campaign that contains the ad group.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setCampaignId(Long campaignId) {
         this.campaignId = campaignId;
     }
 
+    /**
+     * Gets the name of the campaign that contains the ad group.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Sets the name of the campaign that contains the ad group.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
 
+    /**
+     * Gets the AdGroup Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *     A subset of AdGroup properties are available in the Ad Group record.
+     *     For more information, see Ad Group at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+     * </p>
+     */
     public AdGroup getAdGroup() {
         return adGroup;
     }
 
+    /**
+     * Sets the AdGroup Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *     A subset of AdGroup properties are available in the Ad Group record.
+     *     For more information, see Ad Group at
+     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+     * </p>
+     */
     public void setAdGroup(AdGroup adGroup) {
         this.adGroup = adGroup;
     }
 
+    /**
+     * Gets the quality score data for the ad group.
+     */
     public QualityScoreData getQualityScoreData() {
         return qualityScoreData;
     }
 
+    /**
+     * Gets the historical performance data for the ad group.
+     */
     public PerformanceData getPerformanceData() {
         return performanceData;
     }
 
+    /**
+     * Gets whether the AdGroup is expired.
+     */
     public boolean getIsExpired() {
         return isExpired;
     }
 
+    /**
+     * Sets whether the AdGroup is expired.
+     */
     private void setIsExpired(boolean isExpired) {
         this.isExpired = isExpired;
     }

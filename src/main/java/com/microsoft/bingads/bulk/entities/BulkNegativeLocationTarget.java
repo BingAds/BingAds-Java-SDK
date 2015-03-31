@@ -6,6 +6,11 @@ import com.microsoft.bingads.campaignmanagement.MetroAreaTargetBid;
 import com.microsoft.bingads.campaignmanagement.PostalCodeTargetBid;
 import com.microsoft.bingads.campaignmanagement.StateTargetBid;
 
+/**
+ * A base class for all bulk negative location target classes, for example {@link BulkAdGroupNegativeLocationTarget}.
+ *
+ * @param <TBid> see {@link BulkNegativeLocationTargetBid}
+ */
 abstract class BulkNegativeLocationTarget<TBid extends BulkNegativeLocationTargetBid> extends BulkLocationTargetWithStringLocation<TBid> {    
 
     public BulkNegativeLocationTarget(Class<TBid> classOfTBid) {

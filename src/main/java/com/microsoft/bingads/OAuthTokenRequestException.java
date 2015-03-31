@@ -9,8 +9,9 @@ public class OAuthTokenRequestException extends RuntimeException {
     
     /**
      * Initializes a new instance of the OAuthTokenRequestException with the specified error message and OAuth error details.
-     * @param message
-     * @param details
+     *
+     * @param message the error message returned by the client library
+     * @param details the details of an error returned from the Microsoft Account authorization server
      */
     public OAuthTokenRequestException(String message, OAuthErrorDetails details) {
         super(message);
@@ -20,7 +21,6 @@ public class OAuthTokenRequestException extends RuntimeException {
     
     /**
      * Gets details of an error returned from the Microsoft Account authorization server.
-     * @return
      */
     public OAuthErrorDetails getDetails() {
         return details;

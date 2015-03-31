@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk sub target classes.
+ *
+ * @param <TBid> see {@link BulkTargetBid}
+ */
 abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulkEntity {
 
     private Status status;
@@ -33,11 +38,17 @@ abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulk
     public BulkSubTarget(Class<TBid> classOfTBid) {
         this.classOfTBid = classOfTBid;
     }
-    
+
+    /**
+     * Gets the list of target bids corresponding the this sub target type.
+     */
     public List<TBid> getBids() {
         return Collections.unmodifiableList(bids);
     }
-    
+
+    /**
+     * Sets the list of target bids corresponding the this sub target type.
+     */
     void setBids(List<TBid> bids) {
         for (TBid bid : bids) {
             this.bids.add(bid);
@@ -136,42 +147,86 @@ abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulk
         return hasDeleteAllRow;
     }
 
+    /**
+     * Gets the status of the target.
+     *
+     * <p>
+     *     The value is Active if the target is available in the customer's shared library.
+     *     The value is Deleted if the target is deleted from the customer's shared library,
+     *     or should be deleted in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Sets the status of the target.
+     *
+     * <p>
+     *     The value is Active if the target is available in the customer's shared library.
+     *     The value is Deleted if the target is deleted from the customer's shared library,
+     *     or should be deleted in a subsequent upload operation.
+     *     Corresponds to the 'Status' field in the bulk file.
+     * </p>
+     */
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     * Gets the identifier of the target.
+     */
     public Long getTargetId() {
         return targetId;
     }
 
+    /**
+     * Sets the identifier of the target.
+     */
     public void setTargetId(Long targetId) {
         this.targetId = targetId;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     Long getEntityId() {
         return entityId;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     void setEntityId(Long entityId) {
         this.entityId = entityId;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     String getEntityName() {
         return entityName;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     void setEntityName(String entityName) {
         this.entityName = entityName;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     String getParentEntityName() {
         return parentEntityName;
     }
-    
+
+    /**
+     * Reserved for internal use.
+     */
     void setParentEntityName(String parentEntityName) {
         this.parentEntityName = parentEntityName;
     }

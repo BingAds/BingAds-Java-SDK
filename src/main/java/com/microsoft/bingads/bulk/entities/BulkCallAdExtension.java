@@ -3,6 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.CallAdExtension;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
@@ -17,11 +18,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a call ad extension. This class exposes the
- * {@link BulkCallAdExtension#callAdExtension} property that can be read and
- * written as fields of the Call Ad Extension record in a bulk file. For more
- * information, see Call Ad Extension at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511514}.
+ * Represents a call ad extension. This class exposes {@link #setCallAdExtension} and {@link #getCallAdExtension}
+ * that can be used to read and write fields of the Call Ad Extension record in a bulk file.
+ *
+ * For more information, see Call Ad Extension at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511514">http://go.microsoft.com/fwlink/?LinkID=511514</a>
  *
  * @see BulkServiceManager
  * @see BulkOperation
@@ -31,12 +32,15 @@ import java.util.List;
 public class BulkCallAdExtension extends BulkAdExtension<CallAdExtension> {
 
     /**
-     * The call ad extension.
+     * Gets the call ad extension.
      */
     public CallAdExtension getCallAdExtension() {
         return this.getAdExtension();
     }
 
+    /**
+     * Sets the call ad extension.
+     */
     public void setCallAdExtension(CallAdExtension value) {
         this.setAdExtension(value);
     }

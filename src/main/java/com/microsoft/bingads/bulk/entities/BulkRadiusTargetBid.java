@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk radius target bid classes,
+ * for example {@link BulkAdGroupRadiusTargetBid}.
+ */
 abstract class BulkRadiusTargetBid extends BulkTargetBid {    
 
     private RadiusTargetBid2 radiusTargetBid;
@@ -182,18 +186,30 @@ abstract class BulkRadiusTargetBid extends BulkTargetBid {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Gets a specific geographical radius to target.
+     */
     public RadiusTargetBid2 getRadiusTargetBid() {
         return radiusTargetBid;
     }
 
+    /**
+     * Sets a specific geographical radius to target.
+     */
     public void setRadiusTargetBid(RadiusTargetBid2 radiusTargetBid) {
         this.radiusTargetBid = radiusTargetBid;
     }
 
+    /**
+     * Gets the possible intent options for location targeting.
+     */
     public IntentOption getIntentOption() {
         return intentOption;
     }
 
+    /**
+     * Sets the possible intent options for location targeting.
+     */
     void setIntentOption(IntentOption intentOption) {
         this.intentOption = intentOption;
     }

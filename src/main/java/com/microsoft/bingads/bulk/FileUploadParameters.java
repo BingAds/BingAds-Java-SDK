@@ -17,7 +17,6 @@ public class FileUploadParameters {
 
     /**
      * Reserved for internal use.
-     * @return
      */
     SubmitUploadParameters getSubmitUploadParameters() {
         return submitUploadParameters;
@@ -25,7 +24,6 @@ public class FileUploadParameters {
 
     /**
      * Gets the directory where the file will be downloaded.
-     * @return
      */
     public File getResultFileDirectory() {
         return resultFileDirectory;
@@ -33,7 +31,6 @@ public class FileUploadParameters {
 
     /**
      * Sets the directory where the file will be downloaded.
-     * @param resultFileDirectory
      */
     public void setResultFileDirectory(File resultFileDirectory) {
         this.resultFileDirectory = resultFileDirectory;
@@ -41,7 +38,6 @@ public class FileUploadParameters {
 
     /**
      * Gets the name of the local result file.
-     * @return
      */
     public String getResultFileName() {
         return resultFileName;
@@ -49,7 +45,6 @@ public class FileUploadParameters {
 
     /**
      * Sets the name of the local result file.
-     * @param resultFileName
      */
     public void setResultFileName(String resultFileName) {
         this.resultFileName = resultFileName;
@@ -57,7 +52,6 @@ public class FileUploadParameters {
     
     /**
      * Gets whether the bulk service should return success and error results or only error results.
-     * @return
      */
     public ResponseMode getResponseMode() {
         return submitUploadParameters.getResponseMode();
@@ -65,7 +59,6 @@ public class FileUploadParameters {
     
     /**
      * Sets whether the bulk service should return success and error results or only error results.
-     * @param value
      */
     public void setResponseMode(ResponseMode value) {
         submitUploadParameters.setResponseMode(value);
@@ -73,7 +66,6 @@ public class FileUploadParameters {
     
     /**
      * Gets the fully qualified local path of the upload file.
-     * @return
      */
     public File getUploadFilePath() {
         return submitUploadParameters.getUploadFilePath();
@@ -81,7 +73,6 @@ public class FileUploadParameters {
     
     /**
      * Sets the fully qualified local path of the upload file.
-     * @param value
      */
     public void setUploadFilePath(File value) {
         submitUploadParameters.setUploadFilePath(value);
@@ -89,7 +80,6 @@ public class FileUploadParameters {
 
     /**
      * Get whether the upload file should be compressed before uploading. The default value is True.
-     * @return
      */
     public boolean getCompressUploadFile() {
         return submitUploadParameters.getCompressUploadFile();
@@ -97,7 +87,6 @@ public class FileUploadParameters {
 
     /**
      * Set whether the upload file should be compressed before uploading. The default value is True.
-     * @param compressUploadFile
      */
     public void setCompressUploadFile(boolean compressUploadFile) {
         submitUploadParameters.setCompressUploadFile(compressUploadFile);
@@ -105,7 +94,6 @@ public class FileUploadParameters {
 
     /**
      * Gets whether the local result file should be overwritten if it already exists.
-     * @return
      */
     public boolean getOverwriteResultFile() {
         return overwriteResultFile;
@@ -113,7 +101,6 @@ public class FileUploadParameters {
 
     /**
      * Gets whether the local result file should be overwritten if it already exists.
-     * @param overwriteResultFile
      */
     public void setOverwriteResultFile(boolean overwriteResultFile) {
         this.overwriteResultFile = overwriteResultFile;

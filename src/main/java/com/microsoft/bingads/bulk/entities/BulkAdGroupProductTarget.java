@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.AdGroupCriterionEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.AdGroupCriterionStatus;
 import com.microsoft.bingads.campaignmanagement.ArrayOfProductCondition;
@@ -22,6 +26,20 @@ import java.util.List;
 
 /**
  * Represents an ad group product target.
+ *
+ * This class exposes the {@link BulkAdGroupProductTarget#setBiddableAdGroupCriterion} and
+ * {@link BulkAdGroupProductTarget#getBiddableAdGroupCriterion} methods
+ * that can be used to read and write fields of the Ad Group Product Target record in a bulk file.
+ *
+ * <p>
+ *     For more information, see Ad Group Product Target at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511550">http://go.microsoft.com/fwlink/?LinkID=511550</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkAdGroupProductTarget extends SingleRecordBulkEntity {
 
@@ -277,27 +295,73 @@ public class BulkAdGroupProductTarget extends SingleRecordBulkEntity {
         ProductConditionHelper.addRowValuesFromConditions(product.getConditions(), values);
     }
 
+    /**
+     * Gets the BiddableAdGroupCriterion Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *    A subset of BiddableAdGroupCriterion properties are available in the Ad Group Product Target record.
+     *    For more information, see Ad Group Product Target at
+     *    <a href="http://go.microsoft.com/fwlink/?LinkID=511550">http://go.microsoft.com/fwlink/?LinkID=511550</a>.
+     * </p>
+     */
     public BiddableAdGroupCriterion getBiddableAdGroupCriterion() {
         return biddableAdGroupCriterion;
     }
 
+    /**
+     * Sets the BiddableAdGroupCriterion Data Object of the Campaign Management Service.
+     *
+     * <p>
+     *    A subset of BiddableAdGroupCriterion properties are available in the Ad Group Product Target record.
+     *    For more information, see Ad Group Product Target at
+     *    <a href="http://go.microsoft.com/fwlink/?LinkID=511550">http://go.microsoft.com/fwlink/?LinkID=511550</a>.
+     * </p>
+     */
     public void setBiddableAdGroupCriterion(
             BiddableAdGroupCriterion biddableAdGroupCriterion) {
         this.biddableAdGroupCriterion = biddableAdGroupCriterion;
     }
 
+    /**
+     * Gets the name of the campaign that contains the ad group product target.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Gets the name of the ad group that contains the ad group product target.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public String getAdGroupName() {
         return adGroupName;
     }
 
+    /**
+     * Sets the name of the campaign that contains the ad group product target.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
 
+    /**
+     * Sets the name of the ad group that contains the ad group product target.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
     }

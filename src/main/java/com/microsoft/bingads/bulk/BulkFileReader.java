@@ -20,9 +20,10 @@ public class BulkFileReader implements Closeable {
     /**
      * Creates new instance
      *
-     * @param file Path of the bulk file to read
-     * @param resultFileType The type of bulk file download which is being read
-     * @param fileFormat
+     * @param file path of the bulk file to read
+     * @param resultFileType the type of bulk file download which is being read
+     * @param fileFormat the bulk file format
+     *
      * @throws FileNotFoundException
      * @throws UnsupportedEncodingException
      */
@@ -33,8 +34,8 @@ public class BulkFileReader implements Closeable {
     /**
      * Reserved for internal use.
      *
-     * @param reader
-     * @param fileType
+     * @param reader the bulk stream reader instance
+     * @param fileType the type of bulk file download which is being read
      */
      public BulkFileReader(BulkStreamReader reader, ResultFileType fileType) {
         this.bulkStreamReader = reader;
@@ -57,7 +58,6 @@ public class BulkFileReader implements Closeable {
 
     /**
      * Reserved for internal use.
-     * @return
      */
     boolean isForFullDownload() {
         return this.fileType == ResultFileType.FULL_DOWNLOAD;
@@ -65,7 +65,6 @@ public class BulkFileReader implements Closeable {
 
     /**
      * Gets bulk file path.
-     * @return
      */
     public String getBulkFilePath() {
         return bulkFilePath;

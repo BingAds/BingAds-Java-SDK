@@ -16,10 +16,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk device OS target bid classes.
+ */
 abstract class BulkDeviceOsTargetBid extends BulkTargetBid {
 
     private DeviceOSTargetBid deviceOsTargetBid;
 
+    /**
+     * Reserved for internal use.
+     */
     BulkDeviceOsTargetBid(BulkTargetIdentifier identifier) {
         super(identifier);
     }
@@ -106,10 +112,16 @@ abstract class BulkDeviceOsTargetBid extends BulkTargetBid {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
+    /**
+     * Gets a specific device to target.
+     */
     public DeviceOSTargetBid getDeviceOsTargetBid() {
         return deviceOsTargetBid;
     }
 
+    /**
+     * Sets a specific device to target.
+     */
     public void setDeviceOsTargetBid(DeviceOSTargetBid deviceTargetBid) {
         this.deviceOsTargetBid = deviceTargetBid;
     }

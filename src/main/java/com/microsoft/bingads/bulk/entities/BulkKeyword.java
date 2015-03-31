@@ -1,6 +1,10 @@
 package com.microsoft.bingads.bulk.entities;
 
 import com.microsoft.bingads.campaignmanagement.AdExtensionEditorialStatus;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.campaignmanagement.Keyword;
 import com.microsoft.bingads.campaignmanagement.KeywordEditorialStatus;
 import com.microsoft.bingads.campaignmanagement.KeywordStatus;
@@ -23,7 +27,22 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a keyword.
+ * Represents a keyword that can be read or written in a bulk file.
+ *
+ * This class exposes the {@link #setKeyword} and {@link #getKeyword} methods
+ * that can be used to read and write fields of the Keyword record in a bulk file.
+ *
+ * <p>
+ *     Properties of this class and of classes that it is derived from,
+ *     correspond to fields of the Keyword record in a bulk file.
+ *     For more information, see Keyword at
+ *     <a href="http://go.microsoft.com/fwlink/?LinkID=511556">http://go.microsoft.com/fwlink/?LinkID=511556</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkKeyword extends SingleRecordBulkEntity {
 
@@ -321,46 +340,103 @@ public class BulkKeyword extends SingleRecordBulkEntity {
         }
     }
 
+    /**
+     * Gets the identifier of the ad group that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getAdGroupId() {
         return adGroupId;
     }
 
+    /**
+     * Sets the identifier of the ad group that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupId(Long adGroupId) {
         this.adGroupId = adGroupId;
     }
 
+    /**
+     * Gets a keyword within an ad group.
+     */
     public Keyword getKeyword() {
         return keyword;
     }
 
+    /**
+     * Sets a keyword within an ad group.
+     */
     public void setKeyword(Keyword keyword) {
         this.keyword = keyword;
     }
 
+    /**
+     * Sets the name of the campaign that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
 
+    /**
+     * Sets the name of the ad group that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
     }
 
+    /**
+     * Gets the name of the campaign that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign' field in the bulk file.
+     * </p>
+     */
     public String getCampaignName() {
         return campaignName;
     }
 
+    /**
+     * Gets the name of the ad group that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Ad Group' field in the bulk file.
+     * </p>
+     */
     public String getAdGroupName() {
         return adGroupName;
     }
 
+    /**
+     * Gets the historical performance data for the keyword.
+     */
     public PerformanceData getPerformanceData() {
         return performanceData;
     }
 
+    /**
+     * Gets the quality score data for the keyword.
+     */
     public QualityScoreData getQualityScoreData() {
         return qualityScoreData;
     }
 
+    /**
+     * Gets the bid suggestion data for the keyword.
+     */
     public BidSuggestionData getBidSuggestions() {
         return bidSuggestions;
     }

@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
+import com.microsoft.bingads.bulk.BulkOperation;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.campaignmanagement.Date;
 import com.microsoft.bingads.internal.StringExtensions;
@@ -21,7 +25,18 @@ import java.util.List;
 import java.util.TimeZone;
 
 /**
- * Represents an account that can be read from a bulk file.
+ * Represents an account that can be read or written in a bulk file.
+ *
+ * <p>
+ * Properties of this class and of classes that it is derived from, correspond to fields of the Account record in a bulk file.
+ * For more information, see Account at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511513">http://go.microsoft.com/fwlink/?LinkID=511513</a>.
+ * </p>
+ *
+ * @see BulkServiceManager
+ * @see BulkOperation
+ * @see BulkFileReader
+ * @see BulkFileWriter
  */
 public class BulkAccount extends SingleRecordBulkEntity {
 
@@ -107,43 +122,69 @@ public class BulkAccount extends SingleRecordBulkEntity {
     }
 
     /**
-     * Gets the account id
+     * Gets the identifier of the account.
      *
-     * @return
+     * <p>
+     *     Corresponds to the 'Id' field in the bulk file.
+     * </p>
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the account id
-     * @param id Account id
+     * Sets the identifier of the account.
+     *
+     * <p>
+     *     Corresponds to the 'Id' field in the bulk file.
+     * </p>
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     * Gets the customer id
+     * Gets the identifier of the customer that contains the account.
      *
-     * @return
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
      */
     public long getCustomerId() {
         return customerId;
     }
 
     /**
-     * Sets the customer id
-     * @param customerId customer id
+     * Sets the identifier of the customer that contains the account.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
      */
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
+    /**
+     * Gets the date and time that you last synced your account using the bulk service.
+     *
+     * <p>
+     *     You should keep track of this value in UTC time.
+     *     Corresponds to the 'Sync Time' field in the bulk file.
+     * </p>
+     */
     public Calendar getSyncTime() {
         return syncTime;
     }
 
+    /**
+     * Sets the date and time that you last synced your account using the bulk service.
+     *
+     * <p>
+     *     You should keep track of this value in UTC time.
+     *     Corresponds to the 'Sync Time' field in the bulk file.
+     * </p>
+     */
     public void setSyncTime(Calendar syncTime) {
         this.syncTime = syncTime;
     }

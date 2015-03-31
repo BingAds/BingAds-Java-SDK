@@ -9,12 +9,14 @@ import java.util.List;
  * class to poll for the download status, and then download the file when
  * available.
  *
- * Example: The {@link BulkServiceManager#submitDownload(DownloadParameters)}
+ * <p>
+ * Example: The {@link BulkServiceManager#submitDownloadAsync}
  * method returns an instance of this class. If for any reason you do not want
  * to wait for the file to be prepared for download, for example if your
  * application quits unexpectedly or you have other tasks to process, you can
  * use an instance of {@link BulkDownloadOperation} to download the file when it
  * is available
+ * </p>
  *
  */
 public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {

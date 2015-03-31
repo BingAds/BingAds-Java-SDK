@@ -7,6 +7,7 @@ public abstract class NewOAuthTokensReceivedListener {
 
     /**
      * This method will be called when new OAuthTokens are available.
+     *
      * @param newOAuthTokens New OAuth tokens.
      */
     public abstract void onNewOAuthTokensReceived(OAuthTokens newOAuthTokens);

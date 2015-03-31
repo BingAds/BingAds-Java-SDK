@@ -1,5 +1,9 @@
 package com.microsoft.bingads.bulk.entities;
 
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.bulk.BulkFileReader;
+import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.campaignmanagement.Address;
 import com.microsoft.bingads.campaignmanagement.BusinessGeoCodeStatus;
 import com.microsoft.bingads.campaignmanagement.GeoPoint;
@@ -18,12 +22,14 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents an location ad extension. This class exposes the
- * {@link BulkLocationAdExtension#LocationAdExtension} property that can be read
+ * Represents an location ad extension. This class exposes
+ * properties that can be read
  * and written as fields of the Location Ad Extension record in a bulk file.
  *
+ * <p>
  * For more information, see Location Ad Extension at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511515}. </para>
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511515">http://go.microsoft.com/fwlink/?LinkID=511515</a>
+ * </p>
  *
  * @see BulkServiceManager
  * @see BulkOperation
@@ -34,7 +40,6 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
 
     /**
      * Gets the location ad extension.
-     * @return
      */
     public LocationAdExtension getLocationAdExtension() {
         return this.getAdExtension();

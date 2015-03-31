@@ -19,7 +19,8 @@ public class BulkFileWriter implements Closeable {
     /**
      * Creates a new instance of this class with the specified file path.
      *
-     * @param filePath Path of the bulk file to read     
+     * @param filePath Path of the bulk file to read
+     *
      * @throws IOException
      */
     public BulkFileWriter(File filePath) throws IOException {
@@ -31,6 +32,7 @@ public class BulkFileWriter implements Closeable {
      *
      * @param filePath Path of the bulk file to read
      * @param fileFormat Delimiter to separate columns of data by
+     *
      * @throws IOException
      */
     public BulkFileWriter(File filePath, DownloadFileType fileFormat) throws IOException {
@@ -39,6 +41,7 @@ public class BulkFileWriter implements Closeable {
 
     /**
      * Reserved for internal use.
+     *
      * @param bulkObjectWriter Bulk object writer
      */
     public BulkFileWriter(BulkObjectWriter bulkObjectWriter) {
@@ -56,6 +59,7 @@ public class BulkFileWriter implements Closeable {
      *
      * @param entity a bulk entity to be written to file
      * @param excludeReadonlyData indicates whether readonly data (such as errors, performance data etc.) should be excluded when writing to file
+     *
      * @throws IOException
      */
     public void writeEntity(BulkEntity entity, boolean excludeReadonlyData) throws IOException {

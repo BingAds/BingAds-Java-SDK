@@ -11,8 +11,9 @@ public class OAuthErrorDetails {
 
     /**
      * Creates a new instance of this class with the specified error code and description.
-     * @param error Error code.
-     * @param description Error description.
+     *
+     * @param error error code
+     * @param description error description
      */
     public OAuthErrorDetails(String error, String description) {
         this.error = error;
@@ -22,7 +23,6 @@ public class OAuthErrorDetails {
     
     /**
      * Gets the error code of the OAuth error.
-     * @return
      */
     public String getError() {
         return error;
@@ -30,7 +30,6 @@ public class OAuthErrorDetails {
     
     /**
      * Gets the description of the OAuth error.
-     * @return
      */
     public String getDescription() {
         return description;

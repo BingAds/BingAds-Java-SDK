@@ -7,6 +7,11 @@ import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk gender target classes.
+ *
+ * @param <TBid> see {@link BulkGenderTargetBid}
+ */
 abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSubTarget<TBid> {
 
     private GenderTarget genderTarget;
@@ -15,6 +20,9 @@ abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSu
         super(classOfTBid);
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void reconstructSubTargets() {
         setGenderTarget(new GenderTarget());
@@ -28,6 +36,9 @@ abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSu
         }
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     List<TBid> convertApiToBulkBids() {
         List<TBid> bulkBids = new ArrayList<TBid>();
@@ -50,22 +61,34 @@ abstract class BulkGenderTarget<TBid extends BulkGenderTargetBid> extends BulkSu
         return bulkBids;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validatePropertiesNotNull() {
         validatePropertyNotNull(getGenderTarget(), "GenderTarget");
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void validateBidsNotNullOrEmpty() {
         if (getGenderTarget() != null) {
             validateListNotNullOrEmpty(getGenderTarget().getBids(), getGenderTarget().getBids().getGenderTargetBids(), "GenderTarget.Bids");
         }
-    }        
-    
+    }
+
+    /**
+     * Gets a list of genders to target with bid adjustments.
+     */
     public GenderTarget getGenderTarget() {
         return genderTarget;
     }
 
+    /**
+     * Sets a list of genders to target with bid adjustments.
+     */
     public void setGenderTarget(GenderTarget ageTarget) {
         this.genderTarget = ageTarget;
     }

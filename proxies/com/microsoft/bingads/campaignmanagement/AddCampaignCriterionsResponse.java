@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="CampaignCriterionIds" type="{http://schemas.datacontract.org/2004/07/System}ArrayOfNullableOflong" minOccurs="0"/>
- *         &lt;element name="PartialErrors" type="{https://bingads.microsoft.com/CampaignManagement/v9}ArrayOfBatchError" minOccurs="0"/>
+ *         &lt;element name="NestedPartialErrors" type="{https://bingads.microsoft.com/CampaignManagement/v9}ArrayOfBatchErrorCollection" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,15 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "campaignCriterionIds",
-    "partialErrors"
+    "nestedPartialErrors"
 })
 @XmlRootElement(name = "AddCampaignCriterionsResponse")
 public class AddCampaignCriterionsResponse {
 
     @XmlElement(name = "CampaignCriterionIds", nillable = true)
     protected ArrayOfNullableOflong campaignCriterionIds;
-    @XmlElement(name = "PartialErrors", nillable = true)
-    protected ArrayOfBatchError partialErrors;
+    @XmlElement(name = "NestedPartialErrors", nillable = true)
+    protected ArrayOfBatchErrorCollection nestedPartialErrors;
 
     /**
      * Gets the value of the campaignCriterionIds property.
@@ -66,27 +66,27 @@ public class AddCampaignCriterionsResponse {
     }
 
     /**
-     * Gets the value of the partialErrors property.
+     * Gets the value of the nestedPartialErrors property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfBatchError }
+     *     {@link ArrayOfBatchErrorCollection }
      *     
      */
-    public ArrayOfBatchError getPartialErrors() {
-        return partialErrors;
+    public ArrayOfBatchErrorCollection getNestedPartialErrors() {
+        return nestedPartialErrors;
     }
 
     /**
-     * Sets the value of the partialErrors property.
+     * Sets the value of the nestedPartialErrors property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfBatchError }
+     *     {@link ArrayOfBatchErrorCollection }
      *     
      */
-    public void setPartialErrors(ArrayOfBatchError value) {
-        this.partialErrors = value;
+    public void setNestedPartialErrors(ArrayOfBatchErrorCollection value) {
+        this.nestedPartialErrors = value;
     }
 
 }

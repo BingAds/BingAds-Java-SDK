@@ -7,6 +7,11 @@ import com.microsoft.bingads.campaignmanagement.PostalCodeTargetBid;
 import com.microsoft.bingads.campaignmanagement.StateTargetBid;
 import java.util.List;
 
+/**
+ * A base class for all bulk location target classes.
+ *
+ * @param <TBid> see {@link BulkLocationTargetBid}
+ */
 abstract class BulkLocationTarget<TBid extends BulkLocationTargetBid> extends BulkLocationTargetWithStringLocation<TBid> {
 
     public BulkLocationTarget(Class<TBid> classOfTBid) {
@@ -88,6 +93,9 @@ abstract class BulkLocationTarget<TBid extends BulkLocationTargetBid> extends Bu
         bulkBid.setBidAdjustment(countryTargetBid.getBidAdjustment());
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     List<TBid> convertApiToBulkBids() {
         List<TBid> bulkBids = super.convertApiToBulkBids();
@@ -99,6 +107,9 @@ abstract class BulkLocationTarget<TBid extends BulkLocationTargetBid> extends Bu
         return bulkBids;
     }
 
+    /**
+     * Reserved for internal use.
+     */
     @Override
     void reconstructSubTargets() {
         super.reconstructSubTargets();

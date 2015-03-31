@@ -27,7 +27,6 @@ public class EntityUploadParameters {
 
     /**
      * Gets whether the bulk service should return success and error results or only error results.
-     * @return
      */
     public ResponseMode getResponseMode() {
         return responseMode;
@@ -35,7 +34,6 @@ public class EntityUploadParameters {
 
     /**
      * Sets whether the bulk service should return success and error results or only error results.
-     * @param responseMode
      */
     public void setResponseMode(ResponseMode responseMode) {
         this.responseMode = responseMode;
@@ -43,7 +41,6 @@ public class EntityUploadParameters {
 
     /**
      * Gets the list of bulk entities that you want to upload.
-     * @return
      */
     public Iterable<BulkEntity> getEntities() {
         return this.entities;
@@ -51,7 +48,6 @@ public class EntityUploadParameters {
 
     /**
      * Sets the list of bulk entities that you want to upload.
-     * @param entities
      */
     public void setEntities(Iterable<BulkEntity> entities) {
         this.entities = entities;
@@ -59,7 +55,6 @@ public class EntityUploadParameters {
 
     /**
      * Gets the directory where the result file will be downloaded.
-     * @return
      */
     public File getResultFileDirectory() {
         return resultFileDirectory;
@@ -67,7 +62,6 @@ public class EntityUploadParameters {
 
     /**
      * Sets the directory where the result file will be downloaded.
-     * @param resultFileDirectory
      */
     public void setResultFileDirectory(File resultFileDirectory) {
         this.resultFileDirectory = resultFileDirectory;
@@ -75,7 +69,6 @@ public class EntityUploadParameters {
 
     /**
      * Gets the name of the local result file.
-     * @return
      */
     public String getResultFileName() {
         return resultFileName;
@@ -83,7 +76,6 @@ public class EntityUploadParameters {
 
     /**
      * Sets the name of the local result file.
-     * @param resultFileName
      */
     public void setResultFileName(String resultFileName) {
         this.resultFileName = resultFileName;
@@ -91,7 +83,6 @@ public class EntityUploadParameters {
 
     /**
      * Gets whether the local result file should be overwritten if it already exists.
-     * @return
      */
     public boolean getOverwriteResultFile() {
         return overwriteResultFile;
@@ -99,7 +90,6 @@ public class EntityUploadParameters {
 
     /**
      * Sets whether the local result file should be overwritten if it already exists.
-     * @param overwriteResultFile
      */
     public void setOverwriteResultFile(boolean overwriteResultFile) {
         this.overwriteResultFile = overwriteResultFile;

@@ -12,6 +12,11 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract base class provides properties that are shared by all bulk radius target classes.
+ *
+ * @param <TBid> see {@link BulkRadiusTargetBid}
+ */
 abstract class BulkRadiusTarget<TBid extends BulkRadiusTargetBid> extends BulkTargetWithLocation<TBid> {
 
     public BulkRadiusTarget(Class<TBid> classOfTBid) {
@@ -102,8 +107,11 @@ abstract class BulkRadiusTarget<TBid extends BulkRadiusTargetBid> extends BulkTa
         if (getRadiusTarget() != null) {
             validateListNotNullOrEmpty(getRadiusTarget().getBids(), getRadiusTarget().getBids().getRadiusTargetBid2s(), "RadiusTarget.Bids");
         }
-    }        
-    
+    }
+
+    /**
+     * Gets a list of geographical radius targets with bid adjustments.
+     */
     public RadiusTarget2 getRadiusTarget() {
         return getLocationProperty(new Function<LocationTarget2, RadiusTarget2>() {
             @Override
@@ -113,6 +121,9 @@ abstract class BulkRadiusTarget<TBid extends BulkRadiusTargetBid> extends BulkTa
         });
     }
 
+    /**
+     * Sets a list of geographical radius targets with bid adjustments.
+     */
     public void setRadiusTarget(final RadiusTarget2 radiusTarget) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override
@@ -122,6 +133,9 @@ abstract class BulkRadiusTarget<TBid extends BulkRadiusTargetBid> extends BulkTa
         });
     }
 
+    /**
+     * Gets the possible intent options for location targeting.
+     */
     public IntentOption getIntentOption() {
         return getLocationProperty(new Function<LocationTarget2, IntentOption>() {
             @Override
@@ -131,6 +145,9 @@ abstract class BulkRadiusTarget<TBid extends BulkRadiusTargetBid> extends BulkTa
         });
     }
 
+    /**
+     * Sets the possible intent options for location targeting.
+     */
     public void setIntentOption(final IntentOption intentOption) {
         setLocationProperty(new Consumer<LocationTarget2>() {
             @Override

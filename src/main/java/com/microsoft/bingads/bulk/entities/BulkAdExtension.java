@@ -16,17 +16,40 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This base class provides properties that are shared by all bulk ad extension classes.
+ *
+ * @param <T> the type of ad extension from the {@link com.microsoft.bingads.campaignmanagement} namespace,
+ *           for example a {@link CallAdExtension} object.
+ *
+ * @see BulkCallAdExtension
+ * @see BulkImageAdExtension
+ * @see BulkLocationAdExtension
+ * @see BulkProductAdExtension
+ * @see BulkSiteLinkAdExtension
+ */
 class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
 
-    /**
-     * The ad extension's parent account identifier. Corresponds to the 'Parent Id' field in the bulk file.
-     */
     private Long accountId;
 
+    /**
+     * Gets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public Long getAccountId() {
         return accountId;
     }
 
+    /**
+     * Sets the ad extension's parent account identifier.
+     *
+     * <p>
+     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * </p>
+     */
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }

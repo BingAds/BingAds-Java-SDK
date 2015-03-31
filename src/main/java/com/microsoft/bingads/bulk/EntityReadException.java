@@ -9,9 +9,10 @@ public class EntityReadException extends RuntimeException {
     
     /**
      * Initializes a new instance of the EntityReadException class.
-     * @param message
-     * @param columnValues
-     * @param cause
+     *
+     * @param message the error message
+     * @param columnValues the column values
+     * @param cause the cause
      */
     public EntityReadException(String message, String columnValues, Throwable cause) {
         super(message, cause);
@@ -21,7 +22,6 @@ public class EntityReadException extends RuntimeException {
     
     /**
      * Gets the comma separated column values of the record that  caused the exception.
-     * @return
      */
     public String getColumnValues() {
         return columnValues;

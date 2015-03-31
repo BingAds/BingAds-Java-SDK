@@ -16,7 +16,7 @@ class EntityInfo {
     private Creator<BulkEntityIdentifier> identifierCreator;
 
     /**
-     * Creates a basic instance which just has a creator
+     * Initializes a new instance of the EntityInfo class.
      *
      * @param creator A function which creates a instance of the encapsulated
      * object
@@ -26,6 +26,8 @@ class EntityInfo {
     }
 
     /**
+     * Initializes a new instance of the EntityInfo class.
+     *
      * @param creator A function which creates a instance of the encapsulated
      * object
      * @param deleteAllColumnName The name of the column which indicates whether
@@ -36,6 +38,7 @@ class EntityInfo {
     }
 
     /**
+     * Initializes a new instance of the EntityInfo class.
      *
      * @param creator A function which creates a instance of the encapsulated
      * object

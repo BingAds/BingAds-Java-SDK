@@ -9,13 +9,17 @@ import com.microsoft.bingads.OAuthWebAuthCodeGrant;
 import java.net.URL;
 
 /**
- * Authenticates API request by setting its AuthenticationToken to OAuth access
- * token.
+ * The abstract base class for all OAuth authentication classes.
  *
- * See also: {{@link OAuthDesktopMobileImplicitGrant}} See also:
- * {{@link OAuthDesktopMobileAuthCodeGrant}} See also:
- * {{@link OAuthWebAuthCodeGrant}} See also: {{@link OAuthWebImplicitGrant}}
+ * <p>
+ *     You can use this class to dynamically instantiate a derived OAuth authentication class at run time.
+ *     This class cannot be instantiated, and instead you should use either {@link OAuthDesktopMobileAuthCodeGrant},
+ *     {@link OAuthDesktopMobileImplicitGrant}, or {@link OAuthWebAuthCodeGrant}, which extend this class.
+ * </p>
  *
+ * @see OAuthDesktopMobileAuthCodeGrant
+ * @see OAuthDesktopMobileImplicitGrant
+ * @see OAuthWebAuthCodeGrant
  */
 abstract class OAuthAuthorization extends Authentication {
 
@@ -35,10 +39,16 @@ abstract class OAuthAuthorization extends Authentication {
      */
     protected OAuthTokens oAuthTokens;
 
+    /**
+     * Gets information about OAuth access tokens received from the Microsoft Account authorization service.
+     */
     public OAuthTokens getOAuthTokens() {
         return oAuthTokens;
     }
 
+    /**
+     * Sets information about OAuth access tokens received from the Microsoft Account authorization service.
+     */
     protected void setOAuthTokens(OAuthTokens oAuthTokens) {
         this.oAuthTokens = oAuthTokens;
     }
@@ -46,7 +56,12 @@ abstract class OAuthAuthorization extends Authentication {
     public String getAuthenticationToken() {
         return this.oAuthTokens.getAccessToken();
     }
-   
+
+    /**
+     * Adds the AuthenticationToken header element for the corresponding bulk file upload operation.
+     *
+     * @param headersImplementation the headers collection to which authentication requests should be added
+     */
     @Override
     public void addHeaders(HeadersImpl headersImplementation) {
         headersImplementation.addHeader(HttpHeaders.AUTHENTICATION_TOKEN, this.getOAuthTokens().getAccessToken());
