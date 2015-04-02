@@ -471,13 +471,15 @@ public class StringExtensions {
     }
 
     public static String toLocationTargetTypeBulkString(LocationTargetType locationTargetType) {
+        if (locationTargetType == null) return null;
+
         switch (locationTargetType) {
             case METRO_AREA:
                 return "Metro Area";
             case POSTAL_CODE:
                 return "Postal Code";
             default:
-                return locationTargetType != null ? locationTargetType.value() : null;
+                return locationTargetType.value();
         }
     }
 

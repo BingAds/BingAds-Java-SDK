@@ -165,7 +165,7 @@ public class CsvHeaders {
      */
     public static int GetColumnIndex(String columnName) {
         if (!columnIndexMap.containsKey(columnName)) {
-            throw new IllegalArgumentException(String.format("Column name {0} is not present in headers.", columnName));
+            throw new IllegalArgumentException(String.format("Column name %s is not present in headers.", columnName));
         }
 
         Integer index = columnIndexMap.get(columnName);

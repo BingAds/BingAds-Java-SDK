@@ -22,9 +22,7 @@ import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.UnsuccessfulFileUpload;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -209,7 +207,7 @@ public class BulkServiceManager {
 
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
-            public void onSuccess(File resultFile) throws FileNotFoundException, UnsupportedEncodingException {
+            public void onSuccess(File resultFile) throws IOException {
                 resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
             }
         });
@@ -253,7 +251,7 @@ public class BulkServiceManager {
 
         this.downloadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
-            public void onSuccess(File result) throws FileNotFoundException, UnsupportedEncodingException {
+            public void onSuccess(File result) throws IOException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
 
                 BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType());

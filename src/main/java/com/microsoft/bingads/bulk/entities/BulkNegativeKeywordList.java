@@ -75,7 +75,12 @@ public class BulkNegativeKeywordList extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkNegativeKeywordList>() {
                     @Override
                     public void accept(String v, BulkNegativeKeywordList c) {
-                        c.setStatus(Status.valueOf(v.toUpperCase()));
+                        c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
+                            @Override
+                            public Status apply(String value) {
+                                return Status.fromValue(value);
+                            }
+                        }));
                     }
                 }
         ));

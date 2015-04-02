@@ -5,6 +5,10 @@ import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkOperation;
+import com.microsoft.bingads.campaignmanagement.IntentOption;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.campaignmanagement.LocationTarget2;
 
 /**
  * Represents a location target that is associated with a campaign.
@@ -97,6 +101,30 @@ public class BulkCampaignLocationTarget extends BulkLocationTarget<BulkCampaignL
      */
     public void setCampaignName(String campaignName) {
         setEntityName(campaignName);
+    }
+
+    /**
+     * Gets intent options for location targeting.
+     */
+    public IntentOption getIntentOption() {
+        return getLocationProperty(new Function<LocationTarget2, IntentOption>() {
+            @Override
+            public IntentOption apply(LocationTarget2 t) {
+                return t.getIntentOption();
+            }
+        });
+    }
+
+    /**
+     * Sets intent options for location targeting.
+     */
+    public void setIntentOption(final IntentOption intentOption) {
+        setLocationProperty(new Consumer<LocationTarget2>() {
+            @Override
+            public void accept(LocationTarget2 locationTarget2) {
+                locationTarget2.setIntentOption(intentOption);
+            }
+        });
     }
 
     /**

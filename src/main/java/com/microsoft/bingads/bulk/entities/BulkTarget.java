@@ -362,6 +362,16 @@ abstract class BulkTarget<
      * LocationTarget, AgeTarget, GenderTarget, DayTimeTarget, DeviceOsTarget, NegativeLocationTarget, and RadiusTarget.
      */
     public List<BulkEntity> getSubTargets() {
+        ArrayList<BulkEntity> nonEmptySubTargets = new ArrayList<BulkEntity>();
+        for (BulkEntity subTarget: getAllSubTargets()) {
+            if (((MultiRecordBulkEntity) subTarget).allChildrenPresent()) {
+                nonEmptySubTargets.add(subTarget);
+            }
+        }
+        return Collections.unmodifiableList(nonEmptySubTargets);
+    }
+
+    private List<BulkEntity> getAllSubTargets() {
         return Collections.unmodifiableList(
                 Arrays.asList(
                         (BulkEntity) getAgeTarget(),
@@ -381,7 +391,7 @@ abstract class BulkTarget<
 
     @Override
     public boolean allChildrenPresent() {
-        for (BulkEntity child : getSubTargets()) {
+        for (BulkEntity child : getAllSubTargets()) {
             if (!((MultiRecordBulkEntity) child).allChildrenPresent()) {
                 return false;
             }

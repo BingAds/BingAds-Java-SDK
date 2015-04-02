@@ -24,11 +24,11 @@ public class BulkFileReader implements Closeable {
      * @param resultFileType the type of bulk file download which is being read
      * @param fileFormat the bulk file format
      *
-     * @throws FileNotFoundException
-     * @throws UnsupportedEncodingException
+     * @throws IOException
      */
-    public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException {
+    public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat) throws IOException {
         this(new SimpleBulkStreamReader(file, fileFormat), resultFileType);
+        bulkFilePath = file.getCanonicalPath();
     }
 
     /**

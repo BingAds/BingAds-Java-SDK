@@ -4,14 +4,13 @@ import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.DownloadFileType;
 import com.microsoft.bingads.bulk.ResultFileType;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 
 public class CSVBulkFileReaderFactory implements BulkFileReaderFactory {
 
     @Override
     public BulkFileReader createBulkFileReader(File localFile,
-            ResultFileType resultType, DownloadFileType downloadFileType) throws FileNotFoundException, UnsupportedEncodingException {
+            ResultFileType resultType, DownloadFileType downloadFileType) throws IOException {
         return new BulkFileReader(localFile, resultType, downloadFileType);
     }
 
