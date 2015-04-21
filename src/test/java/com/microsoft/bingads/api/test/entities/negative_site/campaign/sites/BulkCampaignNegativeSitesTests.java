@@ -7,7 +7,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({BulkCampaignNegativeSitesReadTest.class, BulkCampaignNegativeSitesWriteTest.class})
+@SuiteClasses({
+        BulkCampaignNegativeSitesReadTest.class,
+        BulkCampaignNegativeSitesWriteTest.class,
+        BulkCampaignNegativeSitesReadWriteTest.class
+})
 public class BulkCampaignNegativeSitesTests {
 
 }

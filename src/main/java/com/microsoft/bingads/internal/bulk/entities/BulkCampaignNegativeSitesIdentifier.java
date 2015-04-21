@@ -49,7 +49,13 @@ public class BulkCampaignNegativeSitesIdentifier extends BulkNegativeSiteIdentif
         
         BulkCampaignNegativeSitesIdentifier otherIdentifier = (BulkCampaignNegativeSitesIdentifier) other;
 
+        boolean isNameNotEmpty = getCampaignName() != null &&
+                getCampaignName().length() != 0;
+
         return compareNullable(getCampaignId(), otherIdentifier.getCampaignId()) ||
-               compareNullable(getCampaignName(), otherIdentifier.getCampaignName());
+                (
+                        isNameNotEmpty &&
+                                compareNullable(getCampaignName(), otherIdentifier.getCampaignName())
+                );
     }
 }

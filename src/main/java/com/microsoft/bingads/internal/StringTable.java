@@ -205,6 +205,14 @@ public class StringTable {
     public static final String BingMerchantCenterId = "Store Id";
     public static final String BingMerchantCenterName = "Store Name";
 
+    // App Ad Extension
+    public static final String AppAdExtension = "App Ad Extension";
+    public static final String AppPlatform = "App Platform";
+    public static final String AppStoreId = "App Id";
+    public static final String CampaignAppAdExtension = "Campaign App Ad Extension";
+    public static final String AdGroupAppAdExtension = "Ad Group App Ad Extension";
+    public static final String IsTrackingEnabled = "Tracking Enabled";
+
     // misc stuff
     public static final String EntityActiveStatus = "Active";
     public static final String EntityDeletedStatus = "Deleted";

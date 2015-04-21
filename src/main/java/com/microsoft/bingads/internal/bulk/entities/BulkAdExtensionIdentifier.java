@@ -15,7 +15,7 @@ import java.util.List;
 
 public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
 
-    private long accountId;
+    private Long accountId;
 
     private Long adExtensionId;
 
@@ -106,11 +106,11 @@ public abstract class BulkAdExtensionIdentifier extends BulkEntityIdentifier {
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
-    public long getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 

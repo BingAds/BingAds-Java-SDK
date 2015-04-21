@@ -100,10 +100,19 @@ public class BulkAdGroupNegativeSitesIdentifier extends BulkNegativeSiteIdentifi
         if (!(other instanceof BulkAdGroupNegativeSitesIdentifier)) {
             return false;
         }
-        
+
         BulkAdGroupNegativeSitesIdentifier otherIdentifier = (BulkAdGroupNegativeSitesIdentifier) other;
 
+        boolean isNameNotEmpty = getAdGroupName() != null &&
+                getAdGroupName().length() != 0 &&
+                getCampaignName() != null &&
+                getCampaignName().length() != 0;
+
         return compareNullable(getAdGroupId(), otherIdentifier.getAdGroupId()) ||
-               compareNullable(getAdGroupName(), otherIdentifier.getAdGroupName()) && compareNullable(getCampaignName(), otherIdentifier.getCampaignName());
+                (
+                        isNameNotEmpty &&
+                                compareNullable(getAdGroupName(), otherIdentifier.getAdGroupName()) &&
+                                compareNullable(getCampaignName(), otherIdentifier.getCampaignName())
+                );
     }
 }

@@ -315,12 +315,12 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
                 new BiConsumer<String, BulkLocationAdExtension>() {
                     @Override
                     public void accept(final String v, BulkLocationAdExtension c) {
-                        setGeoPointPart(c, new Consumer<GeoPoint>() {
+                        setGeoPointPart(c, new BiConsumer<GeoPoint, String>() {
                             @Override
-                            public void accept(GeoPoint x) {
-                                x.setLatitudeInMicroDegrees(StringExtensions.parseLatLngInMicroDegrees(v));
+                            public void accept(GeoPoint x, final String longitude) {
+                                x.setLatitudeInMicroDegrees(StringExtensions.parseLatLngInMicroDegrees(longitude));
                             }
-                        });
+                        }, v);
                     }
                 }
         ));
@@ -340,12 +340,12 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
                 new BiConsumer<String, BulkLocationAdExtension>() {
                     @Override
                     public void accept(final String v, BulkLocationAdExtension c) {
-                        setGeoPointPart(c, new Consumer<GeoPoint>() {
+                        setGeoPointPart(c, new BiConsumer<GeoPoint, String>() {
                             @Override
-                            public void accept(GeoPoint x) {
-                                x.setLongitudeInMicroDegrees(StringExtensions.parseLatLngInMicroDegrees(v));
+                            public void accept(GeoPoint x, final String longitude) {
+                                x.setLongitudeInMicroDegrees(StringExtensions.parseLatLngInMicroDegrees(longitude));
                             }
-                        });
+                        }, v);
                     }
                 }
         ));
@@ -369,12 +369,16 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
         return adExtension.getLocationAdExtension().getGeoPoint() != null ? getFunc.apply(adExtension.getLocationAdExtension().getGeoPoint()) : null;
     }
 
-    private static void setGeoPointPart(BulkLocationAdExtension adExtension, Consumer<GeoPoint> setFunc) {
+    private static void setGeoPointPart(BulkLocationAdExtension adExtension, BiConsumer<GeoPoint, String> setFunc, String value) {
+        if (StringExtensions.isNullOrEmpty(value)) {
+            return;
+        }
+
         if (adExtension.getLocationAdExtension().getGeoPoint() == null) {
             adExtension.getLocationAdExtension().setGeoPoint(new GeoPoint());
         }
 
-        setFunc.accept(adExtension.getLocationAdExtension().getGeoPoint());
+        setFunc.accept(adExtension.getLocationAdExtension().getGeoPoint(), value);
     }
 
     @Override

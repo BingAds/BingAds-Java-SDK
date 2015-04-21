@@ -34,10 +34,19 @@ class BulkAdGroupTargetIdentifier extends BulkTargetIdentifier {
         if (!(other instanceof BulkAdGroupTargetIdentifier)) {
             return false;
         }
-        
+
         BulkAdGroupTargetIdentifier otherIdentifier = (BulkAdGroupTargetIdentifier) other;
 
+        boolean isNameNotEmpty = getEntityName() != null &&
+                getEntityName().length() != 0 &&
+                getParentEntityName() != null &&
+                getParentEntityName().length() != 0;
+
         return compareNullable(getEntityId(), otherIdentifier.getEntityId()) ||
-               compareNullable(getEntityName(), otherIdentifier.getEntityName()) && compareNullable(getParentEntityName(), otherIdentifier.getParentEntityName());
+                (
+                        isNameNotEmpty &&
+                                compareNullable(getEntityName(), otherIdentifier.getEntityName()) &&
+                                compareNullable(getParentEntityName(), otherIdentifier.getParentEntityName())
+                );
     }
 }

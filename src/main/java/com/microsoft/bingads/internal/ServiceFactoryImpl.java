@@ -26,7 +26,7 @@ import org.apache.cxf.message.Message;
 
 class ServiceFactoryImpl implements ServiceFactory {
     
-    private static final String VERSION = "9.3.3";
+    private static final String VERSION = "9.3.4";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {

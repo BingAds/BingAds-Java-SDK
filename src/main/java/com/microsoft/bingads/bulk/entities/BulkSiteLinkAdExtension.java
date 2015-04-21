@@ -115,7 +115,13 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
 
         validatePropertyNotNull(siteLinksAdExtension.getId(), StringTable.SITE_LINKS_AD_EXTENSION + ".getId()");
 
-        validatePropertyNotNull(siteLinksAdExtension.getSiteLinks(), StringTable.SITE_LINKS_AD_EXTENSION_SITE_LINKS);
+        if (!AdExtensionStatus.DELETED.equals(siteLinksAdExtension.getStatus())) {
+            validateListNotNullOrEmpty(
+                    siteLinksAdExtension.getSiteLinks(),
+                    siteLinksAdExtension.getSiteLinks().getSiteLinks(),
+                    StringTable.SITE_LINKS_AD_EXTENSION_SITE_LINKS
+            );
+        }
 
         SiteLinkAdExtensionIdentifier identifier = new SiteLinkAdExtensionIdentifier();
         identifier.setStatus(AdExtensionStatus.DELETED);

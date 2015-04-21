@@ -148,6 +148,11 @@ public class CsvHeaders {
         //TODO-social: Headers and properties need to be in sync for Unknown type errors.
         //StringTable.SocialNetworkType,
 
+        // App Ad Extension
+        StringTable.AppPlatform,
+        StringTable.AppStoreId,
+        StringTable.IsTrackingEnabled,
+
         StringTable.Error,
         StringTable.ErrorNumber,};
 
