@@ -15,7 +15,10 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkAppAdExtensionReadFromRowValuesAppPlatformTest.class,
                 BulkAppAdExtensionReadFromRowValuesAppStoreIdTest.class,
                 BulkAppAdExtensionReadFromRowValuesDisplayTextTest.class,
-                BulkAppAdExtensionReadFromRowValuesDevicePreferenceTest.class
+                BulkAppAdExtensionReadFromRowValuesDevicePreferenceTest.class,
+                BulkAdGroupAppAdExtensionReadFromRowValuesAdGroupNameTest.class,
+                BulkAdGroupAppAdExtensionReadFromRowValuesCampaignNameTest.class,
+                BulkCampaignAppAdExtensionReadFromRowValuesCampaignNameTest.class
         }
 )
 public class BulkAppAdExtensionReadTests {
