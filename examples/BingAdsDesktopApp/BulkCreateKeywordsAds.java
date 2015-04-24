@@ -16,7 +16,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class CreateKeywordsAdsBulk {
+public class BulkCreateKeywordsAds {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 

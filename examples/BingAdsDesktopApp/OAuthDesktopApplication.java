@@ -123,19 +123,9 @@ public class OAuthDesktopApplication extends Application {
                         System.out.println(ex.getMessage());
                         ex.printStackTrace();
                     } catch (Exception ex) {
-                        // Ignore fault exceptions that we already caught.
-
-                        if ( ex.getCause() instanceof AdApiFaultDetail_Exception ||
-                             ex.getCause() instanceof ApiFault_Exception )
-                        {
-                            ;
-                        }
-                        else
-                        {
-                            System.out.println("Error encountered: ");
-                            System.out.println(ex.getMessage());
-                            ex.printStackTrace();
-                        }
+                        System.out.println("Error encountered: ");
+                        System.out.println(ex.getMessage());
+                        ex.printStackTrace();
                     }
                 }
             }

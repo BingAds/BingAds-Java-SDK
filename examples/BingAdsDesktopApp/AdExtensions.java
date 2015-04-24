@@ -21,14 +21,14 @@ public class AdExtensions {
    	 
         try
         {
-       	     authorizationData = new AuthorizationData();
+             authorizationData = new AuthorizationData();
              authorizationData.setDeveloperToken(DeveloperToken);
              authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
              authorizationData.setCustomerId(CustomerId);
              authorizationData.setAccountId(AccountId);
 	         
              CampaignService = new ServiceClient<ICampaignManagementService>(
-                     	authorizationData, 
+                     	authorizationData,
                      	ICampaignManagementService.class);
              
              // Specify one or more campaigns.
@@ -49,6 +49,13 @@ public class AdExtensions {
              // Specify the extensions.
 
              ArrayOfAdExtension adExtensions = new ArrayOfAdExtension();
+             
+             AppAdExtension appAdExtension = new AppAdExtension();
+             appAdExtension.setAppPlatform("Windows");
+             appAdExtension.setAppStoreId("AppStoreIdGoesHere");
+             appAdExtension.setDestinationUrl("DestinationUrlGoesHere");
+             appAdExtension.setDisplayText("Contoso");
+             adExtensions.getAdExtensions().add(appAdExtension);
 
              CallAdExtension callAdExtension = new CallAdExtension();
              callAdExtension.setCountryCode("US");
@@ -86,7 +93,7 @@ public class AdExtensions {
                  adExtensions
                  );
              
-             System.out.printf("Added ad extensions.\n");
+             outputStatusMessage("Added ad extensions.\n");
 
              // DeleteAdExtensionsAssociations, SetAdExtensionsAssociations, and GetAdExtensionsEditorialReasons 
              // operations each require a list of type AdExtensionIdToEntityIdAssociation.
@@ -114,7 +121,7 @@ public class AdExtensions {
                  AssociationType.CAMPAIGN
                  );
              
-             System.out.printf("Set ad extension associations.\n");
+             outputStatusMessage("Set ad extension associations.\n");
 
              // Get editorial rejection reasons for the respective ad extension and entity associations.
              ArrayOfAdExtensionEditorialReasonCollection adExtensionEditorialReasonCollection = getAdExtensionsEditorialReasons(
@@ -124,9 +131,10 @@ public class AdExtensions {
                  );
 
              ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
-             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.SITE_LINKS_AD_EXTENSION);
+             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.APP_AD_EXTENSION);
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.CALL_AD_EXTENSION);
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
+             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.SITE_LINKS_AD_EXTENSION);
                    
              // Get the specified ad extensions from the account’s ad extension library.
              adExtensions = getAdExtensionsByIds(
@@ -141,53 +149,70 @@ public class AdExtensions {
              {
                  if (extension == null || extension.getId() == null)
                  {
-                     System.out.println("Extension is null or invalid.");
+                     outputStatusMessage("Extension is null or invalid.");
                  }
                  else
                  {
-                     System.out.println("Ad extension ID: " + extension.getId());
-                     System.out.println("Ad extension Type: " + extension.getType());
+                	 outputStatusMessage(String.format("Ad extension ID: %s\n", extension.getId()));
+                	 outputStatusMessage(String.format("Ad extension Type: %s\n", extension.getType()));
 
-                     if (extension instanceof CallAdExtension)
+                     if (extension instanceof AppAdExtension)
                      {
-                         System.out.println("Phone number: " + ((CallAdExtension)extension).getPhoneNumber());
-                         System.out.println("Country: " + ((CallAdExtension)extension).getCountryCode());
-                         System.out.println("Is only clickable item: " + ((CallAdExtension)extension).getIsCallOnly());
-                         System.out.println();
+                    	 outputStatusMessage(String.format("AppPlatform: %s\n", ((AppAdExtension)extension).getAppPlatform()));
+                    	 outputStatusMessage(String.format("AppStoreId: %s\n", ((AppAdExtension)extension).getAppStoreId()));
+                    	 outputStatusMessage(String.format("DestinationUrl: %s\n", ((AppAdExtension)extension).getDestinationUrl()));
+                    	 outputStatusMessage(String.format("DevicePreference: %s\n", ((AppAdExtension)extension).getDevicePreference()));
+                    	 outputStatusMessage(String.format("DisplayText: %s\n", ((AppAdExtension)extension).getDisplayText()));
+                    	 outputStatusMessage(String.format("Id: %s\n", ((AppAdExtension)extension).getId()));
+                    	 outputStatusMessage(String.format("Status: %s\n", ((AppAdExtension)extension).getStatus()));
+                    	 outputStatusMessage(String.format("Version: %s\n", ((AppAdExtension)extension).getVersion()));
+                     }
+                     else if (extension instanceof CallAdExtension)
+                     {
+                         outputStatusMessage(String.format("Phone number: %s\n", ((CallAdExtension)extension).getPhoneNumber()));
+                         outputStatusMessage(String.format("Country: %s\n", ((CallAdExtension)extension).getCountryCode()));
+                         outputStatusMessage(String.format("Is only clickable item: %s\n", ((CallAdExtension)extension).getIsCallOnly()));
                      }
                      else if (extension instanceof LocationAdExtension)
                      {
-                         System.out.println("Company name: " + ((LocationAdExtension)extension).getCompanyName());
-                         System.out.println("Phone number: " + ((LocationAdExtension)extension).getPhoneNumber());
-                         System.out.println("Street: " + ((LocationAdExtension)extension).getAddress().getStreetAddress());
-                         System.out.println("City: " + ((LocationAdExtension)extension).getAddress().getCityName());
-                         System.out.println("State: " + ((LocationAdExtension)extension).getAddress().getProvinceName());
-                         System.out.println("Country: " + ((LocationAdExtension)extension).getAddress().getCountryCode());
-                         System.out.println("Zip code: " + ((LocationAdExtension)extension).getAddress().getPostalCode());
-                         System.out.println("Business coordinates determined?: " + ((LocationAdExtension)extension).getGeoCodeStatus());
-                         System.out.println("Map icon ID: " + ((LocationAdExtension)extension).getIconMediaId());
-                         System.out.println("Business image ID: " + ((LocationAdExtension)extension).getImageMediaId());
-                         System.out.println();
+						if(((LocationAdExtension)extension).getAddress() != null){
+							outputStatusMessage(String.format("Street: %s\n", ((LocationAdExtension)extension).getAddress().getStreetAddress()));
+							outputStatusMessage(String.format("City: %s\n", ((LocationAdExtension)extension).getAddress().getCityName()));
+							outputStatusMessage(String.format("State: %s\n", ((LocationAdExtension)extension).getAddress().getProvinceName()));
+							outputStatusMessage(String.format("Country: %s\n", ((LocationAdExtension)extension).getAddress().getCountryCode()));
+							outputStatusMessage(String.format("Zip code: %s\n", ((LocationAdExtension)extension).getAddress().getPostalCode()));
+						}
+						outputStatusMessage(String.format("Company name: %s\n", ((LocationAdExtension)extension).getCompanyName()));
+						outputStatusMessage(String.format("Phone number: %s\n", ((LocationAdExtension)extension).getPhoneNumber()));
+						outputStatusMessage(String.format("Business coordinates determined?: %s\n", ((LocationAdExtension)extension).getGeoCodeStatus()));
+						if(((LocationAdExtension)extension).getGeoPoint() != null){
+							outputStatusMessage("GeoPoint: ");
+							outputStatusMessage(String.format("LatitudeInMicroDegrees: %s\n", 
+									((LocationAdExtension)extension).getGeoPoint().getLatitudeInMicroDegrees()));
+							outputStatusMessage(String.format("LongitudeInMicroDegrees: %s\n", 
+							 		((LocationAdExtension)extension).getGeoPoint().getLongitudeInMicroDegrees()));
+						}
+						outputStatusMessage(String.format("Map icon ID: %s\n", ((LocationAdExtension)extension).getIconMediaId()));
+						outputStatusMessage(String.format("Business image ID: %s\n", ((LocationAdExtension)extension).getImageMediaId()));
                      }
                      else if (extension instanceof SiteLinksAdExtension)
                      {
                          for (SiteLink sLink : ((SiteLinksAdExtension)extension).getSiteLinks().getSiteLinks())
                          {
-                             System.out.println("  Display URL: " + sLink.getDisplayText());
-                             System.out.println("  Destination URL: " + sLink.getDestinationUrl());
-                             System.out.println();
+                             outputStatusMessage(String.format("  Display URL: %s\n", sLink.getDisplayText()));
+                             outputStatusMessage(String.format("  Destination URL: %s\n", sLink.getDestinationUrl()));
                          }
                      }
                      else
                      {
-                         System.out.println("  Unknown extension type");
+                    	 outputStatusMessage("  Unknown extension type");
                      }
                      
                      if (adExtensionEditorialReasonCollection != null 
                              && adExtensionEditorialReasonCollection.getAdExtensionEditorialReasonCollections().size() > 0
                              && adExtensionEditorialReasonCollection.getAdExtensionEditorialReasonCollections().get(index) != null)
                      {
-                    	 System.out.println();
+                    	 outputStatusMessage("\n");
                          
                          // Print any editorial rejection reasons for the corresponding extension. This sample 
                          // assumes the same list index for adExtensions and adExtensionEditorialReasonCollection
@@ -199,35 +224,35 @@ public class AdExtensions {
                              if (adExtensionEditorialReason != null &&
                                  adExtensionEditorialReason.getPublisherCountries() != null)
                              {
-                            	 System.out.println("Editorial Rejection Location: " + adExtensionEditorialReason.getLocation());
-                            	 System.out.println("Editorial Rejection PublisherCountries: ");
+                            	 outputStatusMessage("Editorial Rejection Location: " + adExtensionEditorialReason.getLocation());
+                            	 outputStatusMessage("Editorial Rejection PublisherCountries: ");
                                  for (java.lang.String publisherCountry : adExtensionEditorialReason.getPublisherCountries().getStrings())
                                  {
-                                	 System.out.println("  " + publisherCountry);
+                                	 outputStatusMessage("  " + publisherCountry);
                                  }
-                                 System.out.println("Editorial Rejection ReasonCode: " + adExtensionEditorialReason.getReasonCode());
-                                 System.out.println("Editorial Rejection Term: " + adExtensionEditorialReason.getTerm());
-                                 System.out.println();
+                                 outputStatusMessage("Editorial Rejection ReasonCode: " + adExtensionEditorialReason.getReasonCode());
+                                 outputStatusMessage("Editorial Rejection Term: " + adExtensionEditorialReason.getTerm());
+                                 outputStatusMessage("\n");
                              }
                          }
                      }
 
                  }
 
-                 System.out.println();
+                 outputStatusMessage("\n");
                  
                  index++;
              }
              
              // Remove the specified associations from the respective campaigns or ad groups. 
-             // The extesions are still available in the account's extensions library. 
+             // The extensions are still available in the account's extensions library. 
              deleteAdExtensionsAssociations(
                  AccountId,
                  adExtensionIdToEntityIdAssociations,
                  AssociationType.CAMPAIGN
                  );
              
-             System.out.printf("Deleted ad extension associations.\n");
+             outputStatusMessage("Deleted ad extension associations.\n");
 
              // Deletes the ad extensions from the account’s ad extension library.
              deleteAdExtensions(
@@ -235,80 +260,71 @@ public class AdExtensions {
                  adExtensionIds
                  );
              
-             System.out.printf("Deleted ad extensions.\n");
+             outputStatusMessage("Deleted ad extensions.\n");
              
              // Delete the campaign from the account.
 
              deleteCampaigns(AccountId, campaignIds);
-             System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
              
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
              {
-                 System.out.printf("AdApiError\n");
-                 System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+                 outputStatusMessage("AdApiError\n");
+                 outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
+                		 error.getCode(), error.getErrorCode(), error.getMessage()));
              }
              
          // Campaign Management service operations can throw ApiFaultDetail.
          } catch (ApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
              {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
 
              for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
              {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage("OperationError\n");
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
          
          // Some Campaign Management service operations such as SetAdExtensionsAssociations can throw EditorialApiFaultDetail.
          } catch (EditorialApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
              {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
              
              for (EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
              {
-                 System.out.printf("EditorialError at Index: %d\n\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-                 System.out.printf("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry());
+                 outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+                 outputStatusMessage(String.format("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", 
+                		 error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
              }
 
              for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
              {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage("OperationError\n");
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
          } catch (RemoteException ex) {
-             System.out.println("Service communication error encountered: ");
-             System.out.println(ex.getMessage());
+             outputStatusMessage("Service communication error encountered: ");
+             outputStatusMessage(ex.getMessage());
              ex.printStackTrace();
          } catch (Exception ex) {
-             // Ignore fault exceptions that we already caught.
-
-             if ( ex.getCause() instanceof AdApiFaultDetail_Exception ||
-            	  ex.getCause() instanceof EditorialApiFaultDetail_Exception ||
-                  ex.getCause() instanceof ApiFaultDetail_Exception )
-             {
-                 ;
-             }
-             else
-             {
-                 System.out.println("Error encountered: ");
-                 System.out.println(ex.getMessage());
-                 ex.printStackTrace();
-             }
+             outputStatusMessage("Error encountered: ");
+             outputStatusMessage(ex.getMessage());
+             ex.printStackTrace();
          }
      }
      
@@ -443,7 +459,11 @@ public class AdExtensions {
 
          for (long id : campaignIds.getLongs())
          {
-             System.out.printf("Campaign successfully added and assigned CampaignId %d\n\n", id);
+             outputStatusMessage(String.format("Campaign successfully added and assigned CampaignId %d\n\n", id));
          }
      }
+     
+     static void outputStatusMessage(java.lang.String message){
+ 		System.out.println(message);
+ 	 }
  }
