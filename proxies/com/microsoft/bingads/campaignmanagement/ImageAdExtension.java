@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="DestinationUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ImageMediaId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="ImageMediaIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
     "alternativeText",
     "description",
     "destinationUrl",
-    "imageMediaId"
+    "imageMediaId",
+    "imageMediaIds"
 })
 public class ImageAdExtension
     extends AdExtension
@@ -48,6 +50,8 @@ public class ImageAdExtension
     protected String destinationUrl;
     @XmlElement(name = "ImageMediaId")
     protected long imageMediaId;
+    @XmlElement(name = "ImageMediaIds", nillable = true)
+    protected ArrayOflong imageMediaIds;
 
     /**
      * Gets the value of the alternativeText property.
@@ -135,6 +139,30 @@ public class ImageAdExtension
      */
     public void setImageMediaId(long value) {
         this.imageMediaId = value;
+    }
+
+    /**
+     * Gets the value of the imageMediaIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getImageMediaIds() {
+        return imageMediaIds;
+    }
+
+    /**
+     * Sets the value of the imageMediaIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setImageMediaIds(ArrayOflong value) {
+        this.imageMediaIds = value;
     }
 
 }

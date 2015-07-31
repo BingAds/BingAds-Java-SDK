@@ -1,17 +1,13 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.internal.UncheckedParseException;
-import com.microsoft.bingads.campaignmanagement.AdDistribution;
-import com.microsoft.bingads.campaignmanagement.AdGroup;
-import com.microsoft.bingads.campaignmanagement.AdGroupStatus;
-import com.microsoft.bingads.campaignmanagement.Network;
-import com.microsoft.bingads.campaignmanagement.PricingModel;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.campaignmanagement.*;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
+import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.internal.bulk.BulkMapping;
 import com.microsoft.bingads.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.internal.bulk.RowValues;
@@ -19,6 +15,7 @@ import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,15 +23,15 @@ import java.util.List;
 
 /**
  * Represents an Ad Group.
- *
+ * <p/>
  * <p>
- *     This class exposes the {@link #setAdGroup} and {@link #getAdGroup} that can be used to read and write
- *     fields of the Ad Group record in a bulk file.
+ * This class exposes the {@link #setAdGroup} and {@link #getAdGroup} that can be used to read and write
+ * fields of the Ad Group record in a bulk file.
  * </p>
- *
+ * <p/>
  * <p>
- *     For more information, see Ad Group at
- *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+ * For more information, see Ad Group at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
  * </p>
  *
  * @see BulkServiceManager
@@ -110,7 +107,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     public void accept(String v, BulkAdGroup c) {
                         if (v.equals("Expired")) {
                             c.getAdGroup().setStatus(AdGroupStatus.DELETED);
-                            
+
                             c.setIsExpired(true);
                         } else {
                             c.getAdGroup().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupStatus>() {
@@ -332,6 +329,21 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkAdGroup, Integer>(StringTable.BidAdjustment,
+                new Function<BulkAdGroup, Integer>() {
+                    @Override
+                    public Integer apply(BulkAdGroup c) {
+                        return c.getAdGroup().getNativeBidAdjustment();
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setNativeBidAdjustment(StringExtensions.parseOptionalInteger(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -341,7 +353,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
         getAdGroup().setAdDistribution(new ArrayList<AdDistribution>(2));
 
-        MappingHelpers.<BulkAdGroup>convertToEntity(values, MAPPINGS, this);
+        MappingHelpers.convertToEntity(values, MAPPINGS, this);
 
         qualityScoreData = QualityScoreData.readFromRowValuesOrNull(values);
         performanceData = PerformanceData.readFromRowValuesOrNull(values);
@@ -351,7 +363,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getAdGroup(), "AdGroup");
 
-        MappingHelpers.<BulkAdGroup>convertToValues(this, values, MAPPINGS);
+        MappingHelpers.convertToValues(this, values, MAPPINGS);
 
         if (!excludeReadonlyData) {
             QualityScoreData.writeToRowValuesIfNotNull(qualityScoreData, values);
@@ -362,9 +374,9 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Gets the identifier of the campaign that contains the ad group.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * Corresponds to the 'Parent Id' field in the bulk file.
      * </p>
      */
     public Long getCampaignId() {
@@ -373,9 +385,9 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Sets the identifier of the campaign that contains the ad group.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * Corresponds to the 'Parent Id' field in the bulk file.
      * </p>
      */
     public void setCampaignId(Long campaignId) {
@@ -384,9 +396,9 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Gets the name of the campaign that contains the ad group.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Campaign' field in the bulk file.
+     * Corresponds to the 'Campaign' field in the bulk file.
      * </p>
      */
     public String getCampaignName() {
@@ -395,9 +407,9 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Sets the name of the campaign that contains the ad group.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Campaign' field in the bulk file.
+     * Corresponds to the 'Campaign' field in the bulk file.
      * </p>
      */
     public void setCampaignName(String campaignName) {
@@ -406,11 +418,11 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Gets the AdGroup Data Object of the Campaign Management Service.
-     *
+     * <p/>
      * <p>
-     *     A subset of AdGroup properties are available in the Ad Group record.
-     *     For more information, see Ad Group at
-     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+     * A subset of AdGroup properties are available in the Ad Group record.
+     * For more information, see Ad Group at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
      * </p>
      */
     public AdGroup getAdGroup() {
@@ -419,11 +431,11 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     /**
      * Sets the AdGroup Data Object of the Campaign Management Service.
-     *
+     * <p/>
      * <p>
-     *     A subset of AdGroup properties are available in the Ad Group record.
-     *     For more information, see Ad Group at
-     *     <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
+     * A subset of AdGroup properties are available in the Ad Group record.
+     * For more information, see Ad Group at
+     * <a href="http://go.microsoft.com/fwlink/?LinkID=511537">http://go.microsoft.com/fwlink/?LinkID=511537</a>.
      * </p>
      */
     public void setAdGroup(AdGroup adGroup) {

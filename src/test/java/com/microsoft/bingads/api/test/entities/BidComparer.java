@@ -14,7 +14,7 @@ public class BidComparer implements EqualityComparerWithDescription<Bid> {
     }
 
     @Override
-    public String getDescripition(Bid obj) {
+    public String getDescription(Bid obj) {
         return String.format("Amount: %d", obj.getAmount());
     }    
 }

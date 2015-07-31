@@ -22,7 +22,7 @@ public class ArrayOfProductConditionComparer implements EqualityComparerWithDesc
     }
 
     @Override
-    public String getDescripition(ArrayOfProductCondition obj) {
+    public String getDescription(ArrayOfProductCondition obj) {
         String result = "";
         
         for (ProductCondition pc : obj.getProductConditions()) {

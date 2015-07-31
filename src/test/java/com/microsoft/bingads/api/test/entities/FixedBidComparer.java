@@ -10,7 +10,7 @@ public class FixedBidComparer implements EqualityComparerWithDescription<FixedBi
     }
 
     @Override
-    public String getDescripition(FixedBid obj) {
+    public String getDescription(FixedBid obj) {
         return String.format("Amount: %s", obj.getBid().getAmount());
     }
     

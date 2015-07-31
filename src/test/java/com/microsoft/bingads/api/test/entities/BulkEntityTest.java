@@ -62,7 +62,7 @@ public abstract class BulkEntityTest<TEntity extends BulkObject> {
             }
                             
             if (!comparer.equals(expectedResult, actualValue)) {
-                fail(String.format("Expected: %s, actual: %s", comparer.getDescripition(expectedResult), comparer.getDescripition(actualValue)));
+                fail(String.format("Expected: %s, actual: %s", comparer.getDescription(expectedResult), comparer.getDescription(actualValue)));
             }
         }
     }

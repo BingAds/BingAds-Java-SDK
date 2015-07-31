@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AdGroups" type="{https://bingads.microsoft.com/CampaignManagement/v9}ArrayOfAdGroup" minOccurs="0"/>
+ *         &lt;element name="UpdateNativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "campaignId",
-    "adGroups"
+    "adGroups",
+    "updateNativeBidAdjustment"
 })
 @XmlRootElement(name = "UpdateAdGroupsRequest")
 public class UpdateAdGroupsRequest {
@@ -40,6 +42,8 @@ public class UpdateAdGroupsRequest {
     protected Long campaignId;
     @XmlElement(name = "AdGroups", nillable = true)
     protected ArrayOfAdGroup adGroups;
+    @XmlElement(name = "UpdateNativeBidAdjustment")
+    protected Boolean updateNativeBidAdjustment;
 
     /**
      * Gets the value of the campaignId property.
@@ -87,6 +91,30 @@ public class UpdateAdGroupsRequest {
      */
     public void setAdGroups(ArrayOfAdGroup value) {
         this.adGroups = value;
+    }
+
+    /**
+     * Gets the value of the updateNativeBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateNativeBidAdjustment() {
+        return updateNativeBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the updateNativeBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateNativeBidAdjustment(Boolean value) {
+        this.updateNativeBidAdjustment = value;
     }
 
 }

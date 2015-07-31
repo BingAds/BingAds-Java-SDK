@@ -281,6 +281,12 @@ public class StringTable {
     public static final String SITE_LINKS_AD_EXTENSION = "SiteLinksAdExtension";
     public static final String SITE_LINKS_AD_EXTENSION_SITE_LINKS = "SiteLinksAdExtension.SiteLinks";
 
+    // Bing Shopping Campaigns
+    public static final String IsExcluded = "Is Excluded";
+    public static final String ParentAdGroupCriterionId = "Parent Criterion Id";
+    public static final String CampaignType = "Campaign Type";
+    public static final String CampaignPriority = "Priority";
+
     static {
         Map<String, String> m = new HashMap<String, String>();
 

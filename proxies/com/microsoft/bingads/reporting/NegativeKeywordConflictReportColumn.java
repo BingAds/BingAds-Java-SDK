@@ -25,10 +25,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="KeywordId"/>
  *     &lt;enumeration value="NegativeKeyword"/>
  *     &lt;enumeration value="ConflictLevel"/>
+ *     &lt;enumeration value="BidMatchType"/>
  *     &lt;enumeration value="NegativeKeywordListId"/>
  *     &lt;enumeration value="NegativeKeywordList"/>
  *     &lt;enumeration value="NegativeKeywordId"/>
- *     &lt;enumeration value="BiddedMatchType"/>
  *     &lt;enumeration value="NegativeKeywordMatchType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -61,14 +61,14 @@ public enum NegativeKeywordConflictReportColumn {
     NEGATIVE_KEYWORD("NegativeKeyword"),
     @XmlEnumValue("ConflictLevel")
     CONFLICT_LEVEL("ConflictLevel"),
+    @XmlEnumValue("BidMatchType")
+    BID_MATCH_TYPE("BidMatchType"),
     @XmlEnumValue("NegativeKeywordListId")
     NEGATIVE_KEYWORD_LIST_ID("NegativeKeywordListId"),
     @XmlEnumValue("NegativeKeywordList")
     NEGATIVE_KEYWORD_LIST("NegativeKeywordList"),
     @XmlEnumValue("NegativeKeywordId")
     NEGATIVE_KEYWORD_ID("NegativeKeywordId"),
-    @XmlEnumValue("BiddedMatchType")
-    BIDDED_MATCH_TYPE("BiddedMatchType"),
     @XmlEnumValue("NegativeKeywordMatchType")
     NEGATIVE_KEYWORD_MATCH_TYPE("NegativeKeywordMatchType");
     private final String value;

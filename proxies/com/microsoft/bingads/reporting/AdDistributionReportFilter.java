@@ -6,7 +6,8 @@ package com.microsoft.bingads.reporting;
 public enum AdDistributionReportFilter {
 
     SEARCH("Search"),
-    CONTENT("Content");
+    CONTENT("Content"),
+    NATIVE("Native");
         
     private final String value;
 

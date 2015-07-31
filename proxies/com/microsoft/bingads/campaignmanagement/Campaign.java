@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="MonthlyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="NativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v9}CampaignStatus" minOccurs="0"/>
  *         &lt;element name="TimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v9}CampaignType" minOccurs="0"/>
@@ -52,6 +53,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "id",
     "monthlyBudget",
     "name",
+    "nativeBidAdjustment",
     "status",
     "timeZone",
     "campaignType",
@@ -78,6 +80,8 @@ public class Campaign {
     protected Double monthlyBudget;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "NativeBidAdjustment", nillable = true)
+    protected Integer nativeBidAdjustment;
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected CampaignStatus status;
@@ -304,6 +308,30 @@ public class Campaign {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the nativeBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getNativeBidAdjustment() {
+        return nativeBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the nativeBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setNativeBidAdjustment(Integer value) {
+        this.nativeBidAdjustment = value;
     }
 
     /**

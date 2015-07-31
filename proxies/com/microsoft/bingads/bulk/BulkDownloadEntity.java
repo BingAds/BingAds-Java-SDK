@@ -33,7 +33,9 @@ public enum BulkDownloadEntity {
     AD_GROUP_IMAGE_AD_EXTENSIONS("AdGroupImageAdExtensions"),
     APP_AD_EXTENSIONS("AppAdExtensions"),
     AD_GROUP_APP_AD_EXTENSIONS("AdGroupAppAdExtensions"),
-    CAMPAIGN_APP_AD_EXTENSIONS("CampaignAppAdExtensions");
+    CAMPAIGN_APP_AD_EXTENSIONS("CampaignAppAdExtensions"),
+    AD_GROUP_PRODUCT_PARTITIONS("AdGroupProductPartitions"),
+    CAMPAIGN_PRODUCT_SCOPES("CampaignProductScopes");
         
     private final String value;
 

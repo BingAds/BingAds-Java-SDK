@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
  *     &lt;enumeration value="DisplayPosition"/>
+ *     &lt;enumeration value="AssetId"/>
+ *     &lt;enumeration value="ComponentName"/>
  *     &lt;enumeration value="Network"/>
  *     &lt;enumeration value="PricingModel"/>
  *     &lt;enumeration value="DeviceOS"/>
@@ -100,6 +102,10 @@ public enum BrandZonePerformanceReportColumn {
     KEYWORD_STATUS("KeywordStatus"),
     @XmlEnumValue("DisplayPosition")
     DISPLAY_POSITION("DisplayPosition"),
+    @XmlEnumValue("AssetId")
+    ASSET_ID("AssetId"),
+    @XmlEnumValue("ComponentName")
+    COMPONENT_NAME("ComponentName"),
     @XmlEnumValue("Network")
     NETWORK("Network"),
     @XmlEnumValue("PricingModel")

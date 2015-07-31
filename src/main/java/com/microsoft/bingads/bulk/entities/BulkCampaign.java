@@ -1,35 +1,31 @@
 package com.microsoft.bingads.bulk.entities;
 
-import com.microsoft.bingads.bulk.BulkServiceManager;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.BulkFileWriter;
 import com.microsoft.bingads.bulk.BulkOperation;
-import com.microsoft.bingads.campaignmanagement.BudgetLimitType;
-import com.microsoft.bingads.campaignmanagement.Campaign;
-import com.microsoft.bingads.campaignmanagement.CampaignStatus;
+import com.microsoft.bingads.bulk.BulkServiceManager;
+import com.microsoft.bingads.campaignmanagement.*;
 import com.microsoft.bingads.internal.StringExtensions;
 import com.microsoft.bingads.internal.StringTable;
-import com.microsoft.bingads.internal.bulk.BulkMapping;
-import com.microsoft.bingads.internal.bulk.ComplexBulkMapping;
-import com.microsoft.bingads.internal.bulk.MappingHelpers;
-import com.microsoft.bingads.internal.bulk.RowValues;
-import com.microsoft.bingads.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.internal.bulk.*;
 import com.microsoft.bingads.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Represents a campaign that can be read or written in a bulk file.
- *
+ * <p/>
  * This class exposes the {@link #setCampaign} and {@link #getCampaign} methods
  * that can be used to read and write fields of the Campaign record in a bulk file.
- *
+ * <p/>
  * <p>
- *    For more information, see Campaign at
- *    <a href="http://go.microsoft.com/fwlink/?LinkID=511521">http://go.microsoft.com/fwlink/?LinkID=511521</a>.
+ * For more information, see Campaign at
+ * <a href="http://go.microsoft.com/fwlink/?LinkID=511521">http://go.microsoft.com/fwlink/?LinkID=511521</a>.
  * </p>
  *
  * @see BulkServiceManager
@@ -47,6 +43,32 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private static final List<BulkMapping<BulkCampaign>> MAPPINGS;
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
+
+    private static List<Setting> filterSettings(List<Setting> settings, CampaignType campaignType) {
+        ArrayList<Setting> filteredSettings = new ArrayList<Setting>();
+
+        for (Setting setting : settings) {
+            if (campaignType == CampaignType.SHOPPING) {
+                if (setting instanceof ShoppingSetting) {
+                    filteredSettings.add(setting);
+                }
+            }
+        }
+
+        return filteredSettings;
+    }
+
+    private ShoppingSetting getShoppingSetting() {
+        if (getCampaign().getSettings() == null) return null;
+
+        List<Setting> shoppingSettings = filterSettings(getCampaign().getSettings().getSettings(), CampaignType.SHOPPING);
+
+        if (shoppingSettings.size() != 1) {
+            throw new IllegalArgumentException("Can only have 1 ShoppingSetting in Campaign Settings.");
+        }
+
+        return (ShoppingSetting) shoppingSettings.get(0);
+    }
 
     static {
 
@@ -110,6 +132,54 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         };
 
         List<BulkMapping<BulkCampaign>> m = new ArrayList<BulkMapping<BulkCampaign>>();
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.CampaignType,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        if (c.getCampaign().getCampaignType().size() != 1) {
+                            throw new IllegalArgumentException("Only 1 CampaignType can be set in Campaign");
+                        }
+
+                        Collection<CampaignType> campaignTypes = c.getCampaign().getCampaignType();
+
+                        return (campaignTypes.toArray(new CampaignType[campaignTypes.size()])[0]).value();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        CampaignType campaignType = StringExtensions.parseOptional(v, new Function<String, CampaignType>() {
+                            @Override
+                            public CampaignType apply(String value) {
+                                return CampaignType.fromValue(value);
+                            }
+                        });
+
+                        if (campaignType != null) {
+                            List<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+
+                            campaignTypes.add(campaignType);
+
+                            c.getCampaign().setCampaignType(campaignTypes);
+
+                            if (campaignType == CampaignType.SHOPPING) {
+                                c.getCampaign().setSettings(new ArrayOfSetting());
+
+                                ShoppingSetting shoppingSetting = new ShoppingSetting();
+
+                                shoppingSetting.setType(ShoppingSetting.class.getSimpleName());
+
+                                c.getCampaign().getSettings().getSettings().add(shoppingSetting);
+                            }
+                        }
+                    }
+                }
+        ));
 
         m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.Id,
                 new Function<BulkCampaign, Long>() {
@@ -213,14 +283,162 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
         m.add(new ComplexBulkMapping<BulkCampaign>(BulkCampaign.budgetToCsv, BulkCampaign.csvToBudget));
 
+        m.add(new SimpleBulkMapping<BulkCampaign, Integer>(StringTable.BidAdjustment,
+                new Function<BulkCampaign, Integer>() {
+                    @Override
+                    public Integer apply(BulkCampaign c) {
+                        return c.getCampaign().getNativeBidAdjustment();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setNativeBidAdjustment(StringExtensions.parseOptionalInteger(v));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.BingMerchantCenterId,
+                new Function<BulkCampaign, Long>() {
+                    @Override
+                    public Long apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return null;
+                            }
+
+                            return shoppingSetting.getStoreId();
+                        }
+
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return;
+                            }
+
+                            shoppingSetting.setStoreId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                                @Override
+                                public Long apply(String s) {
+                                    return Long.parseLong(s);
+                                }
+                            }));
+                        }
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, Integer>(StringTable.CampaignPriority,
+                new Function<BulkCampaign, Integer>() {
+                    @Override
+                    public Integer apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return null;
+                            }
+
+                            return shoppingSetting.getPriority();
+                        }
+
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return;
+                            }
+
+                            shoppingSetting.setPriority(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+                                @Override
+                                public Integer apply(String s) {
+                                    return Integer.parseInt(s);
+                                }
+                            }));
+                        }
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.CountryCode,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return null;
+                            }
+
+                            return shoppingSetting.getSalesCountryCode();
+                        }
+
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return;
+                            }
+
+                            shoppingSetting.setSalesCountryCode(v);
+                        }
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
     /**
      * Gets the identifier of the account that contains the campaign.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * Corresponds to the 'Parent Id' field in the bulk file.
      * </p>
      */
     public Long getAccountId() {
@@ -229,9 +447,9 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
     /**
      * Sets the identifier of the account that contains the campaign.
-     *
+     * <p/>
      * <p>
-     *     Corresponds to the 'Parent Id' field in the bulk file.
+     * Corresponds to the 'Parent Id' field in the bulk file.
      * </p>
      */
     public void setAccountId(Long accountId) {
@@ -269,7 +487,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         this.setCampaign(new Campaign());
-        MappingHelpers.<BulkCampaign>convertToEntity(values, MAPPINGS, this);
+        MappingHelpers.convertToEntity(values, MAPPINGS, this);
 
         qualityScoreData = QualityScoreData.readFromRowValuesOrNull(values);
         performanceData = PerformanceData.readFromRowValuesOrNull(values);
@@ -279,7 +497,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getCampaign(), "Campaign");
 
-        MappingHelpers.<BulkCampaign>convertToValues(this, values, MAPPINGS);
+        MappingHelpers.convertToValues(this, values, MAPPINGS);
 
         if (!excludeReadonlyData) {
             QualityScoreData.writeToRowValuesIfNotNull(qualityScoreData, values);

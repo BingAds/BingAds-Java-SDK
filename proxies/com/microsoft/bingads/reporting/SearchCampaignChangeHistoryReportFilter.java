@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v9}AdDistributionReportFilter" minOccurs="0"/>
  *         &lt;element name="HowChanged" type="{https://bingads.microsoft.com/Reporting/v9}ChangeTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="ItemChanged" type="{https://bingads.microsoft.com/Reporting/v9}ChangeEntityReportFilter" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,11 +33,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SearchCampaignChangeHistoryReportFilter", propOrder = {
+    "adDistribution",
     "howChanged",
     "itemChanged"
 })
 public class SearchCampaignChangeHistoryReportFilter {
 
+    @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
@@ -45,6 +51,30 @@ public class SearchCampaignChangeHistoryReportFilter {
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<ChangeEntityReportFilter> itemChanged;
+
+    /**
+     * Gets the value of the adDistribution property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdDistributionReportFilter> getAdDistribution() {
+        return adDistribution;
+    }
+
+    /**
+     * Sets the value of the adDistribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
+        this.adDistribution = value;
+    }
 
     /**
      * Gets the value of the howChanged property.

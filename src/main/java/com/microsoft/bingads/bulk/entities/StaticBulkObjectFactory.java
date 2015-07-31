@@ -403,6 +403,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupProductTarget();
             }
         }));
+        m.put("Campaign Product Scope", new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignProductScope();
+            }
+        }));
+        m.put("Ad Group Product Partition", new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupProductPartition();
+            }
+        }));
 
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

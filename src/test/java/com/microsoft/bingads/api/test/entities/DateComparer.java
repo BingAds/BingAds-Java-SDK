@@ -12,7 +12,7 @@ public class DateComparer implements EqualityComparerWithDescription<Date>{
     }
 
     @Override
-    public String getDescripition(Date obj) {
+    public String getDescription(Date obj) {
         return String.format("Year: %s, Month: %s, Day: %s", obj.getYear(), obj.getMonth(), obj.getDay());
     }    
 }

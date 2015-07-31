@@ -30,6 +30,211 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    public Response<AddCampaignCriterionsResponse> addCampaignCriterionsAsync(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    public Future<?> addCampaignCriterionsAsync(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters,
+        @WebParam(name = "AddCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    @WebResult(name = "AddCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public AddCampaignCriterionsResponse addCampaignCriterions(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    public Response<UpdateCampaignCriterionsResponse> updateCampaignCriterionsAsync(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    public Future<?> updateCampaignCriterionsAsync(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters,
+        @WebParam(name = "UpdateCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    @WebResult(name = "UpdateCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public UpdateCampaignCriterionsResponse updateCampaignCriterions(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    public Response<DeleteCampaignCriterionsResponse> deleteCampaignCriterionsAsync(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    public Future<?> deleteCampaignCriterionsAsync(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters,
+        @WebParam(name = "DeleteCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    @WebResult(name = "DeleteCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public DeleteCampaignCriterionsResponse deleteCampaignCriterions(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    public Response<GetCampaignCriterionsByCampaignIdResponse> getCampaignCriterionsByCampaignIdAsync(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    public Future<?> getCampaignCriterionsByCampaignIdAsync(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters,
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignCriterionsByCampaignIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    @WebResult(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignCriterionsByCampaignIdResponse getCampaignCriterionsByCampaignId(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    public Response<GetCampaignCriterionsByIdsResponse> getCampaignCriterionsByIdsAsync(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    public Future<?> getCampaignCriterionsByIdsAsync(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters,
+        @WebParam(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignCriterionsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    @WebResult(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignsResponse>
      */
     @WebMethod(operationName = "AddCampaigns", action = "AddCampaigns")
@@ -3836,211 +4041,6 @@ public interface ICampaignManagementService {
     public GetCampaignSizesByAccountIdResponse getCampaignSizesByAccountId(
         @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
         GetCampaignSizesByAccountIdRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    public Response<AddCampaignCriterionsResponse> addCampaignCriterionsAsync(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    public Future<?> addCampaignCriterionsAsync(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters,
-        @WebParam(name = "AddCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<AddCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    @WebResult(name = "AddCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public AddCampaignCriterionsResponse addCampaignCriterions(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    public Response<UpdateCampaignCriterionsResponse> updateCampaignCriterionsAsync(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    public Future<?> updateCampaignCriterionsAsync(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters,
-        @WebParam(name = "UpdateCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<UpdateCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    @WebResult(name = "UpdateCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public UpdateCampaignCriterionsResponse updateCampaignCriterions(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    public Response<DeleteCampaignCriterionsResponse> deleteCampaignCriterionsAsync(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    public Future<?> deleteCampaignCriterionsAsync(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters,
-        @WebParam(name = "DeleteCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<DeleteCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    @WebResult(name = "DeleteCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public DeleteCampaignCriterionsResponse deleteCampaignCriterions(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    public Response<GetCampaignCriterionsByCampaignIdResponse> getCampaignCriterionsByCampaignIdAsync(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    public Future<?> getCampaignCriterionsByCampaignIdAsync(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters,
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignCriterionsByCampaignIdResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    @WebResult(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignCriterionsByCampaignIdResponse getCampaignCriterionsByCampaignId(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    public Response<GetCampaignCriterionsByIdsResponse> getCampaignCriterionsByIdsAsync(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    public Future<?> getCampaignCriterionsByIdsAsync(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters,
-        @WebParam(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignCriterionsByIdsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    @WebResult(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="NativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v9}Network" minOccurs="0"/>
  *         &lt;element name="PhraseMatchBid" type="{https://bingads.microsoft.com/CampaignManagement/v9}Bid" minOccurs="0"/>
  *         &lt;element name="PricingModel" type="{https://bingads.microsoft.com/CampaignManagement/v9}PricingModel" minOccurs="0"/>
@@ -57,6 +58,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "id",
     "language",
     "name",
+    "nativeBidAdjustment",
     "network",
     "phraseMatchBid",
     "pricingModel",
@@ -90,6 +92,8 @@ public class AdGroup {
     protected String language;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "NativeBidAdjustment", nillable = true)
+    protected Integer nativeBidAdjustment;
     @XmlElement(name = "Network", nillable = true)
     @XmlSchemaType(name = "string")
     protected Network network;
@@ -366,6 +370,30 @@ public class AdGroup {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the nativeBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getNativeBidAdjustment() {
+        return nativeBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the nativeBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setNativeBidAdjustment(Integer value) {
+        this.nativeBidAdjustment = value;
     }
 
     /**

@@ -18,6 +18,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Invoice"/>
  *     &lt;enumeration value="Check"/>
  *     &lt;enumeration value="ElectronicFundsTransfer"/>
+ *     &lt;enumeration value="PayPal"/>
+ *     &lt;enumeration value="ELV"/>
+ *     &lt;enumeration value="OfflinePaymentMethod"/>
+ *     &lt;enumeration value="VBA"/>
+ *     &lt;enumeration value="Boleto"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +39,15 @@ public enum PaymentMethodType {
     @XmlEnumValue("Check")
     CHECK("Check"),
     @XmlEnumValue("ElectronicFundsTransfer")
-    ELECTRONIC_FUNDS_TRANSFER("ElectronicFundsTransfer");
+    ELECTRONIC_FUNDS_TRANSFER("ElectronicFundsTransfer"),
+    @XmlEnumValue("PayPal")
+    PAY_PAL("PayPal"),
+    ELV("ELV"),
+    @XmlEnumValue("OfflinePaymentMethod")
+    OFFLINE_PAYMENT_METHOD("OfflinePaymentMethod"),
+    VBA("VBA"),
+    @XmlEnumValue("Boleto")
+    BOLETO("Boleto");
     private final String value;
 
     PaymentMethodType(String v) {

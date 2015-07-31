@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       &lt;sequence>
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v9}CampaignType" minOccurs="0"/>
+ *         &lt;element name="IncludeNativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "accountId",
-    "campaignType"
+    "campaignType",
+    "includeNativeBidAdjustment"
 })
 @XmlRootElement(name = "GetCampaignsByAccountIdRequest")
 public class GetCampaignsByAccountIdRequest {
@@ -45,6 +47,8 @@ public class GetCampaignsByAccountIdRequest {
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignType> campaignType;
+    @XmlElement(name = "IncludeNativeBidAdjustment")
+    protected Boolean includeNativeBidAdjustment;
 
     /**
      * Gets the value of the accountId property.
@@ -92,6 +96,30 @@ public class GetCampaignsByAccountIdRequest {
      */
     public void setCampaignType(Collection<CampaignType> value) {
         this.campaignType = value;
+    }
+
+    /**
+     * Gets the value of the includeNativeBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIncludeNativeBidAdjustment() {
+        return includeNativeBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the includeNativeBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeNativeBidAdjustment(Boolean value) {
+        this.includeNativeBidAdjustment = value;
     }
 
 }
