@@ -20,13 +20,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupName"/>
  *     &lt;enumeration value="AdGroupId"/>
  *     &lt;enumeration value="AdId"/>
- *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="CampaignName"/>
  *     &lt;enumeration value="CurrencyCode"/>
  *     &lt;enumeration value="DeviceType"/>
  *     &lt;enumeration value="Language"/>
  *     &lt;enumeration value="MerchantProductId"/>
- *     &lt;enumeration value="SellerName"/>
  *     &lt;enumeration value="Title"/>
  *     &lt;enumeration value="Condition"/>
  *     &lt;enumeration value="Brand"/>
@@ -50,7 +48,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Ctr"/>
  *     &lt;enumeration value="AverageCpc"/>
  *     &lt;enumeration value="Spend"/>
- *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -72,8 +69,6 @@ public enum ProductDimensionPerformanceReportColumn {
     AD_GROUP_ID("AdGroupId"),
     @XmlEnumValue("AdId")
     AD_ID("AdId"),
-    @XmlEnumValue("AdStatus")
-    AD_STATUS("AdStatus"),
     @XmlEnumValue("CampaignName")
     CAMPAIGN_NAME("CampaignName"),
     @XmlEnumValue("CurrencyCode")
@@ -84,8 +79,6 @@ public enum ProductDimensionPerformanceReportColumn {
     LANGUAGE("Language"),
     @XmlEnumValue("MerchantProductId")
     MERCHANT_PRODUCT_ID("MerchantProductId"),
-    @XmlEnumValue("SellerName")
-    SELLER_NAME("SellerName"),
     @XmlEnumValue("Title")
     TITLE("Title"),
     @XmlEnumValue("Condition")
@@ -131,9 +124,7 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("AverageCpc")
     AVERAGE_CPC("AverageCpc"),
     @XmlEnumValue("Spend")
-    SPEND("Spend"),
-    @XmlEnumValue("AverageCpm")
-    AVERAGE_CPM("AverageCpm");
+    SPEND("Spend");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

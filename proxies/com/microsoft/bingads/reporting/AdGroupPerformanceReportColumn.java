@@ -80,6 +80,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TotalVisits"/>
  *     &lt;enumeration value="AveragePagesPerVisit"/>
  *     &lt;enumeration value="AverageDurationPerVisit"/>
+ *     &lt;enumeration value="TrackingTemplate"/>
+ *     &lt;enumeration value="CustomParameters"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -220,7 +222,11 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("AveragePagesPerVisit")
     AVERAGE_PAGES_PER_VISIT("AveragePagesPerVisit"),
     @XmlEnumValue("AverageDurationPerVisit")
-    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit");
+    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit"),
+    @XmlEnumValue("TrackingTemplate")
+    TRACKING_TEMPLATE("TrackingTemplate"),
+    @XmlEnumValue("CustomParameters")
+    CUSTOM_PARAMETERS("CustomParameters");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

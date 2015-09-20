@@ -77,6 +77,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TotalVisits"/>
  *     &lt;enumeration value="AveragePagesPerVisit"/>
  *     &lt;enumeration value="AverageDurationPerVisit"/>
+ *     &lt;enumeration value="TrackingTemplate"/>
+ *     &lt;enumeration value="CustomParameters"/>
+ *     &lt;enumeration value="FinalURL"/>
+ *     &lt;enumeration value="FinalMobileURL"/>
+ *     &lt;enumeration value="FinalAppURL"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -211,7 +216,17 @@ public enum KeywordPerformanceReportColumn {
     @XmlEnumValue("AveragePagesPerVisit")
     AVERAGE_PAGES_PER_VISIT("AveragePagesPerVisit"),
     @XmlEnumValue("AverageDurationPerVisit")
-    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit");
+    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit"),
+    @XmlEnumValue("TrackingTemplate")
+    TRACKING_TEMPLATE("TrackingTemplate"),
+    @XmlEnumValue("CustomParameters")
+    CUSTOM_PARAMETERS("CustomParameters"),
+    @XmlEnumValue("FinalURL")
+    FINAL_URL("FinalURL"),
+    @XmlEnumValue("FinalMobileURL")
+    FINAL_MOBILE_URL("FinalMobileURL"),
+    @XmlEnumValue("FinalAppURL")
+    FINAL_APP_URL("FinalAppURL");
     private final String value;
 
     KeywordPerformanceReportColumn(String v) {
