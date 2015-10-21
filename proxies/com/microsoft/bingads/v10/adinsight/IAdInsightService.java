@@ -686,12 +686,12 @@ public interface IAdInsightService {
      * 
      * @param parameters
      * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.v10.adinsight.ProbeResponse>
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v10.adinsight.GetAuctionInsightDataResponse>
      */
-    @WebMethod(operationName = "Probe", action = "Probe")
-    public Response<ProbeResponse> probeAsync(
-        @WebParam(name = "ProbeRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        ProbeRequest parameters);
+    @WebMethod(operationName = "GetAuctionInsightData", action = "GetAuctionInsightData")
+    public Response<GetAuctionInsightDataResponse> getAuctionInsightDataAsync(
+        @WebParam(name = "GetAuctionInsightDataRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetAuctionInsightDataRequest parameters);
 
     /**
      * 
@@ -700,26 +700,26 @@ public interface IAdInsightService {
      * @return
      *     returns java.util.concurrent.Future<? extends java.lang.Object>
      */
-    @WebMethod(operationName = "Probe", action = "Probe")
-    public Future<?> probeAsync(
-        @WebParam(name = "ProbeRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        ProbeRequest parameters,
-        @WebParam(name = "ProbeResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<ProbeResponse> asyncHandler);
+    @WebMethod(operationName = "GetAuctionInsightData", action = "GetAuctionInsightData")
+    public Future<?> getAuctionInsightDataAsync(
+        @WebParam(name = "GetAuctionInsightDataRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetAuctionInsightDataRequest parameters,
+        @WebParam(name = "GetAuctionInsightDataResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAuctionInsightDataResponse> asyncHandler);
 
     /**
      * 
      * @param parameters
      * @return
-     *     returns com.microsoft.bingads.v10.adinsight.ProbeResponse
+     *     returns com.microsoft.bingads.v10.adinsight.GetAuctionInsightDataResponse
      * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
      */
-    @WebMethod(operationName = "Probe", action = "Probe")
-    @WebResult(name = "ProbeResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-    public ProbeResponse probe(
-        @WebParam(name = "ProbeRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        ProbeRequest parameters)
+    @WebMethod(operationName = "GetAuctionInsightData", action = "GetAuctionInsightData")
+    @WebResult(name = "GetAuctionInsightDataResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+    public GetAuctionInsightDataResponse getAuctionInsightData(
+        @WebParam(name = "GetAuctionInsightDataRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetAuctionInsightDataRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

@@ -19,7 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity}Opportunity">
  *       &lt;sequence>
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="AdGroupName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="CampaignName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Competition" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="EstimatedIncreaseInClicks" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="EstimatedIncreaseInCost" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
@@ -39,7 +41,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "KeywordOpportunity", propOrder = {
     "adGroupId",
+    "adGroupName",
     "campaignId",
+    "campaignName",
     "competition",
     "estimatedIncreaseInClicks",
     "estimatedIncreaseInCost",
@@ -58,8 +62,12 @@ public class KeywordOpportunity
 
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
+    @XmlElement(name = "AdGroupName", nillable = true)
+    protected String adGroupName;
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
+    @XmlElement(name = "CampaignName", nillable = true)
+    protected String campaignName;
     @XmlElement(name = "Competition")
     protected Double competition;
     @XmlElement(name = "EstimatedIncreaseInClicks")
@@ -102,6 +110,30 @@ public class KeywordOpportunity
     }
 
     /**
+     * Gets the value of the adGroupName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdGroupName() {
+        return adGroupName;
+    }
+
+    /**
+     * Sets the value of the adGroupName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdGroupName(String value) {
+        this.adGroupName = value;
+    }
+
+    /**
      * Gets the value of the campaignId property.
      * 
      * @return
@@ -123,6 +155,30 @@ public class KeywordOpportunity
      */
     public void setCampaignId(Long value) {
         this.campaignId = value;
+    }
+
+    /**
+     * Gets the value of the campaignName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCampaignName() {
+        return campaignName;
+    }
+
+    /**
+     * Sets the value of the campaignName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampaignName(String value) {
+        this.campaignName = value;
     }
 
     /**

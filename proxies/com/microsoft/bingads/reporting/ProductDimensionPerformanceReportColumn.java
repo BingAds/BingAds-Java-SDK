@@ -19,7 +19,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountNumber"/>
  *     &lt;enumeration value="AdGroupName"/>
  *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="Network"/>
  *     &lt;enumeration value="AdId"/>
+ *     &lt;enumeration value="CampaignId"/>
  *     &lt;enumeration value="CampaignName"/>
  *     &lt;enumeration value="CurrencyCode"/>
  *     &lt;enumeration value="DeviceType"/>
@@ -28,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Title"/>
  *     &lt;enumeration value="Condition"/>
  *     &lt;enumeration value="Brand"/>
+ *     &lt;enumeration value="Price"/>
  *     &lt;enumeration value="CustomLabel0"/>
  *     &lt;enumeration value="CustomLabel1"/>
  *     &lt;enumeration value="CustomLabel2"/>
@@ -48,6 +54,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Ctr"/>
  *     &lt;enumeration value="AverageCpc"/>
  *     &lt;enumeration value="Spend"/>
+ *     &lt;enumeration value="Conversions"/>
+ *     &lt;enumeration value="ConversionRate"/>
+ *     &lt;enumeration value="Revenue"/>
+ *     &lt;enumeration value="RevenuePerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -67,8 +77,18 @@ public enum ProductDimensionPerformanceReportColumn {
     AD_GROUP_NAME("AdGroupName"),
     @XmlEnumValue("AdGroupId")
     AD_GROUP_ID("AdGroupId"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("Network")
+    NETWORK("Network"),
     @XmlEnumValue("AdId")
     AD_ID("AdId"),
+    @XmlEnumValue("CampaignId")
+    CAMPAIGN_ID("CampaignId"),
     @XmlEnumValue("CampaignName")
     CAMPAIGN_NAME("CampaignName"),
     @XmlEnumValue("CurrencyCode")
@@ -85,6 +105,8 @@ public enum ProductDimensionPerformanceReportColumn {
     CONDITION("Condition"),
     @XmlEnumValue("Brand")
     BRAND("Brand"),
+    @XmlEnumValue("Price")
+    PRICE("Price"),
     @XmlEnumValue("CustomLabel0")
     CUSTOM_LABEL_0("CustomLabel0"),
     @XmlEnumValue("CustomLabel1")
@@ -124,7 +146,15 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("AverageCpc")
     AVERAGE_CPC("AverageCpc"),
     @XmlEnumValue("Spend")
-    SPEND("Spend");
+    SPEND("Spend"),
+    @XmlEnumValue("Conversions")
+    CONVERSIONS("Conversions"),
+    @XmlEnumValue("ConversionRate")
+    CONVERSION_RATE("ConversionRate"),
+    @XmlEnumValue("Revenue")
+    REVENUE("Revenue"),
+    @XmlEnumValue("RevenuePerConversion")
+    REVENUE_PER_CONVERSION("RevenuePerConversion");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

@@ -50,6 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerConversion"/>
  *     &lt;enumeration value="AdDistribution"/>
  *     &lt;enumeration value="ClickSharePercent"/>
+ *     &lt;enumeration value="DeviceType"/>
+ *     &lt;enumeration value="Network"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -130,7 +132,11 @@ public enum ShareOfVoiceReportColumn {
     @XmlEnumValue("AdDistribution")
     AD_DISTRIBUTION("AdDistribution"),
     @XmlEnumValue("ClickSharePercent")
-    CLICK_SHARE_PERCENT("ClickSharePercent");
+    CLICK_SHARE_PERCENT("ClickSharePercent"),
+    @XmlEnumValue("DeviceType")
+    DEVICE_TYPE("DeviceType"),
+    @XmlEnumValue("Network")
+    NETWORK("Network");
     private final String value;
 
     ShareOfVoiceReportColumn(String v) {

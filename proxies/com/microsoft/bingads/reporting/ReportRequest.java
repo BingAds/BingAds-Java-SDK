@@ -65,11 +65,12 @@ import javax.xml.bind.annotation.XmlType;
     AgeGenderDemographicReportRequest.class,
     ProductDimensionPerformanceReportRequest.class,
     ProductPartitionPerformanceReportRequest.class,
-    ProductTargetPerformanceReportRequest.class,
     SearchQueryPerformanceReportRequest.class,
+    ProductTargetPerformanceReportRequest.class,
     BrandZonePerformanceReportRequest.class,
     AdPerformanceReportRequest.class,
     BudgetSummaryReportRequest.class,
+    AudiencePerformanceReportRequest.class,
     AdGroupPerformanceReportRequest.class
 })
 public class ReportRequest {

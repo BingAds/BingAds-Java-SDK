@@ -566,6 +566,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetConfigValueRequest }
+     * 
+     */
+    public GetConfigValueRequest createGetConfigValueRequest() {
+        return new GetConfigValueRequest();
+    }
+
+    /**
      * Create an instance of {@link MediaType }
      * 
      */
@@ -2403,6 +2411,14 @@ public class ObjectFactory {
      */
     public DeleteSitePlacementsRequest createDeleteSitePlacementsRequest() {
         return new DeleteSitePlacementsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetConfigValueResponse }
+     * 
+     */
+    public GetConfigValueResponse createGetConfigValueResponse() {
+        return new GetConfigValueResponse();
     }
 
     /**

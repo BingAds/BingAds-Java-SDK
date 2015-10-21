@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="PublisherCountries" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="Currency" type="{http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity}Currency" minOccurs="0"/>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="AdgroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="EntityLevelBid" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
     "publisherCountries",
     "currency",
     "campaignId",
-    "adgroupId",
+    "adGroupId",
     "entityLevelBid"
 })
 @XmlRootElement(name = "GetEstimatedBidByKeywordsRequest", namespace = "Microsoft.Advertiser.AdInsight.Api.Service")
@@ -63,8 +63,8 @@ public class GetEstimatedBidByKeywordsRequest {
     protected Currency currency;
     @XmlElement(name = "CampaignId", namespace = "Microsoft.Advertiser.AdInsight.Api.Service", nillable = true)
     protected Long campaignId;
-    @XmlElement(name = "AdgroupId", namespace = "Microsoft.Advertiser.AdInsight.Api.Service", nillable = true)
-    protected Long adgroupId;
+    @XmlElement(name = "AdGroupId", namespace = "Microsoft.Advertiser.AdInsight.Api.Service", nillable = true)
+    protected Long adGroupId;
     @XmlElement(name = "EntityLevelBid", namespace = "Microsoft.Advertiser.AdInsight.Api.Service", nillable = true)
     protected String entityLevelBid;
 
@@ -213,27 +213,27 @@ public class GetEstimatedBidByKeywordsRequest {
     }
 
     /**
-     * Gets the value of the adgroupId property.
+     * Gets the value of the adGroupId property.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getAdgroupId() {
-        return adgroupId;
+    public Long getAdGroupId() {
+        return adGroupId;
     }
 
     /**
-     * Sets the value of the adgroupId property.
+     * Sets the value of the adGroupId property.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setAdgroupId(Long value) {
-        this.adgroupId = value;
+    public void setAdGroupId(Long value) {
+        this.adGroupId = value;
     }
 
     /**

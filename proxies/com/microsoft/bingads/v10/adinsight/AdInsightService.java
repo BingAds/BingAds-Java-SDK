@@ -68,6 +68,28 @@ public class AdInsightService
         return super.getPort(new QName("Microsoft.Advertiser.AdInsight.Api.Service", "BasicHttpBinding_IAdInsightService"), IAdInsightService.class, features);
     }
 
+    /**
+     * 
+     * @return
+     *     returns IAdInsightService
+     */
+    @WebEndpoint(name = "BasicHttpBinding_IAdInsightService1")
+    public IAdInsightService getBasicHttpBindingIAdInsightService1() {
+        return super.getPort(new QName("Microsoft.Advertiser.AdInsight.Api.Service", "BasicHttpBinding_IAdInsightService1"), IAdInsightService.class);
+    }
+
+    /**
+     * 
+     * @param features
+     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
+     * @return
+     *     returns IAdInsightService
+     */
+    @WebEndpoint(name = "BasicHttpBinding_IAdInsightService1")
+    public IAdInsightService getBasicHttpBindingIAdInsightService1(WebServiceFeature... features) {
+        return super.getPort(new QName("Microsoft.Advertiser.AdInsight.Api.Service", "BasicHttpBinding_IAdInsightService1"), IAdInsightService.class, features);
+    }
+
     private static URL __getWsdlLocation() {
         if (ADINSIGHTSERVICE_EXCEPTION!= null) {
             throw ADINSIGHTSERVICE_EXCEPTION;

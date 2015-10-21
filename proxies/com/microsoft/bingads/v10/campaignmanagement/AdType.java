@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="Text"/>
  *     &lt;enumeration value="Image"/>
- *     &lt;enumeration value="RichSearch"/>
  *     &lt;enumeration value="Product"/>
  *     &lt;enumeration value="AppInstall"/>
  *   &lt;/restriction>
@@ -32,8 +31,6 @@ public enum AdType {
     TEXT("Text"),
     @XmlEnumValue("Image")
     IMAGE("Image"),
-    @XmlEnumValue("RichSearch")
-    RICH_SEARCH("RichSearch"),
     @XmlEnumValue("Product")
     PRODUCT("Product"),
     @XmlEnumValue("AppInstall")
