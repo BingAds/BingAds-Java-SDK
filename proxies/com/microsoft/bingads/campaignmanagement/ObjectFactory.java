@@ -131,9 +131,9 @@ public class ObjectFactory {
     private final static QName _Password_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Password");
     private final static QName _ArrayOfSitePlacement_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSitePlacement");
     private final static QName _Bid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "Bid");
+    private final static QName _ArrayOfCampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCampaignSize");
     private final static QName _KeywordStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "KeywordStatus");
     private final static QName _ArrayOfMediaType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfMediaType");
-    private final static QName _ArrayOfCampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfCampaignSize");
     private final static QName _ArrayOfSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "ArrayOfSetting");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "CustomerAccountId");
     private final static QName _MediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v9", "MediaRepresentation");
@@ -518,6 +518,14 @@ public class ObjectFactory {
      */
     public GetNegativeKeywordsByCampaignIdsRequest createGetNegativeKeywordsByCampaignIdsRequest() {
         return new GetNegativeKeywordsByCampaignIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetConfigValueRequest }
+     * 
+     */
+    public GetConfigValueRequest createGetConfigValueRequest() {
+        return new GetConfigValueRequest();
     }
 
     /**
@@ -1465,19 +1473,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AppealEditorialRejectionsRequest }
-     * 
-     */
-    public AppealEditorialRejectionsRequest createAppealEditorialRejectionsRequest() {
-        return new AppealEditorialRejectionsRequest();
-    }
-
-    /**
      * Create an instance of {@link CampaignSize }
      * 
      */
     public CampaignSize createCampaignSize() {
         return new CampaignSize();
+    }
+
+    /**
+     * Create an instance of {@link AppealEditorialRejectionsRequest }
+     * 
+     */
+    public AppealEditorialRejectionsRequest createAppealEditorialRejectionsRequest() {
+        return new AppealEditorialRejectionsRequest();
     }
 
     /**
@@ -3089,6 +3097,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetConfigValueResponse }
+     * 
+     */
+    public GetConfigValueResponse createGetConfigValueResponse() {
+        return new GetConfigValueResponse();
+    }
+
+    /**
      * Create an instance of {@link EditorialReasonCollection }
      * 
      */
@@ -4388,6 +4404,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignSize }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfCampaignSize")
+    public JAXBElement<ArrayOfCampaignSize> createArrayOfCampaignSize(ArrayOfCampaignSize value) {
+        return new JAXBElement<ArrayOfCampaignSize>(_ArrayOfCampaignSize_QNAME, ArrayOfCampaignSize.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link KeywordStatus }{@code >}}
      * 
      */
@@ -4403,15 +4428,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfMediaType")
     public JAXBElement<ArrayOfMediaType> createArrayOfMediaType(ArrayOfMediaType value) {
         return new JAXBElement<ArrayOfMediaType>(_ArrayOfMediaType_QNAME, ArrayOfMediaType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignSize }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v9", name = "ArrayOfCampaignSize")
-    public JAXBElement<ArrayOfCampaignSize> createArrayOfCampaignSize(ArrayOfCampaignSize value) {
-        return new JAXBElement<ArrayOfCampaignSize>(_ArrayOfCampaignSize_QNAME, ArrayOfCampaignSize.class, null, value);
     }
 
     /**

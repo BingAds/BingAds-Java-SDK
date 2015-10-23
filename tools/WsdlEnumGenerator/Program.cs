@@ -15,9 +15,9 @@ namespace WsdlEnumGenerator
             try
             {
                 var packageName = args[0];
-
+                
                 var svcUrl = args[1];
-
+                
                 ProcessWsdl(svcUrl, packageName);
             }
             catch (Exception ex)
@@ -30,12 +30,21 @@ namespace WsdlEnumGenerator
 
         private static void ProcessWsdl(string svcUrl, string packageName)
         {
+            var packagePath = packageName.Replace(".", "\\");
+
             var xsdDoc = XDocument.Load(svcUrl + "?singleWsdl");
-
+            
             XNamespace ns = "http://www.w3.org/2001/XMLSchema";
-
+            
             var simpleTypes = xsdDoc.Descendants(ns + "simpleType");
 
+            var packageDirectory = Path.Combine(@"com\microsoft\bingads", packagePath);
+            if (!Directory.Exists(packageDirectory))
+            {
+                // Create the directory it does not exist.
+                Directory.CreateDirectory(packageDirectory);
+            }
+            
             foreach (var x in
                 from simpleType in simpleTypes                
                 let list = simpleType.Element(ns + "list")
@@ -52,13 +61,13 @@ namespace WsdlEnumGenerator
 
                 Console.WriteLine(enumDefinition);
 
-                File.WriteAllText(Path.Combine(@"com\microsoft\bingads", packageName, x.Name + ".java"), enumDefinition);
+                File.WriteAllText(Path.Combine(packageDirectory, x.Name + ".java"), enumDefinition);
 
                 var converterDefinition = GenerateConverterDefinition(x.Name, packageName);
 
                 Console.WriteLine(converterDefinition);
 
-                File.WriteAllText(Path.Combine(@"com\microsoft\bingads", packageName, x.Name + "Converter.java"), converterDefinition);
+                File.WriteAllText(Path.Combine(packageDirectory, x.Name + "Converter.java"), converterDefinition);
 
                 var elementNamespace = GetNamespaceForElement(x.Element);
 
@@ -82,7 +91,7 @@ namespace WsdlEnumGenerator
             return (string)parent.Attribute("targetNamespace");
         }
 
-
+        
         private static string GetXsdUrl(string svcUrl, string elementNamespace)
         {
             XNamespace xsd = "http://www.w3.org/2001/XMLSchema";
@@ -99,6 +108,7 @@ namespace WsdlEnumGenerator
 
         private static void AddCustomBinding(string xsdUrl, string name, string packageName)
         {
+
             var bindingsFileName = "jaxb-bindings-" + packageName + ".xml";
 
             if (!File.Exists(bindingsFileName))

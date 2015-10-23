@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v9}AdDistributionReportFilter" minOccurs="0"/>
  *         &lt;element name="BidMatchType" type="{https://bingads.microsoft.com/Reporting/v9}BidMatchTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="DeliveredMatchType" type="{https://bingads.microsoft.com/Reporting/v9}DeliveredMatchTypeReportFilter" minOccurs="0"/>
+ *         &lt;element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v9}DeviceTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="Keywords" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="LanguageCode" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *       &lt;/sequence>
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "adDistribution",
     "bidMatchType",
     "deliveredMatchType",
+    "deviceType",
     "keywords",
     "languageCode"
 })
@@ -55,6 +57,10 @@ public class ShareOfVoiceReportFilter {
     @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
+    @XmlElement(name = "DeviceType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Keywords", nillable = true)
     protected ArrayOfstring keywords;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -130,6 +136,30 @@ public class ShareOfVoiceReportFilter {
      */
     public void setDeliveredMatchType(Collection<DeliveredMatchTypeReportFilter> value) {
         this.deliveredMatchType = value;
+    }
+
+    /**
+     * Gets the value of the deviceType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<DeviceTypeReportFilter> getDeviceType() {
+        return deviceType;
+    }
+
+    /**
+     * Sets the value of the deviceType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDeviceType(Collection<DeviceTypeReportFilter> value) {
+        this.deviceType = value;
     }
 
     /**

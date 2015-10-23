@@ -56,8 +56,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetBudgetOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBudgetOpportunities", action = "GetBudgetOpportunities")
     @WebResult(name = "GetBudgetOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetBudgetLandscapeResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBudgetLandscape", action = "GetBudgetLandscape")
     @WebResult(name = "GetBudgetLandscapeResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -138,8 +138,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetBidOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidOpportunities", action = "GetBidOpportunities")
     @WebResult(name = "GetBidOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -179,8 +179,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetKeywordOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordOpportunities", action = "GetKeywordOpportunities")
     @WebResult(name = "GetKeywordOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -220,8 +220,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetBroadMatchOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBroadMatchOpportunities", action = "GetBroadMatchOpportunities")
     @WebResult(name = "GetBroadMatchOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -261,8 +261,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.GetBroadMatchSearchQueriesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBroadMatchSearchQueries", action = "GetBroadMatchSearchQueries")
     @WebResult(name = "GetBroadMatchSearchQueriesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -302,8 +302,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.ApplyOpportunityModifiersResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "ApplyOpportunityModifiers", action = "ApplyOpportunityModifiers")
     @WebResult(name = "ApplyOpportunityModifiersResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")
@@ -343,8 +343,8 @@ public interface IOptimizerService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.optimizer.ApplyOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "ApplyOpportunities", action = "ApplyOpportunities")
     @WebResult(name = "ApplyOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/Optimizer/v9", partName = "parameters")

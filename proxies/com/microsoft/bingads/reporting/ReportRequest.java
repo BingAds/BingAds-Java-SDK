@@ -70,6 +70,7 @@ import javax.xml.bind.annotation.XmlType;
     BrandZonePerformanceReportRequest.class,
     AdPerformanceReportRequest.class,
     BudgetSummaryReportRequest.class,
+    AudiencePerformanceReportRequest.class,
     AdGroupPerformanceReportRequest.class
 })
 public class ReportRequest {

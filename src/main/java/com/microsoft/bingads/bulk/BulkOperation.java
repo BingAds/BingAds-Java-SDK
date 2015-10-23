@@ -46,10 +46,12 @@ public abstract class BulkOperation<TStatus> {
     /**
      * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
      */
+    private int statusPollIntervalInMilliseconds;
+    
     BulkOperationStatusProvider<TStatus> statusProvider;
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
-    private int statusPollIntervalInMilliseconds;
+   
 
     private ServiceClient<IBulkService> serviceClient;
 

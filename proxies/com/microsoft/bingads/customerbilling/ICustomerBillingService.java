@@ -56,8 +56,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetBillingDocumentsInfoResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocumentsInfo", action = "GetBillingDocumentsInfo")
@@ -346,8 +346,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetKOHIOInvoicesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
      */
     @WebMethod(operationName = "GetKOHIOInvoices", action = "GetKOHIOInvoices")

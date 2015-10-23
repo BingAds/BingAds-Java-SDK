@@ -202,8 +202,8 @@ abstract class BulkTarget<
         getLocationTarget().isBeingWrittenAsPartOfParentTarget = true;
         getNegativeLocationTarget().isBeingWrittenAsPartOfParentTarget = true;
         getRadiusTarget().isBeingWrittenAsPartOfParentTarget = true;
-
-        for (BulkEntity childEntity : getSubTargets()) {
+        
+        for (BulkEntity childEntity : getAllSubTargets()) {      	
             childEntity.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
@@ -363,15 +363,17 @@ abstract class BulkTarget<
      */
     public List<BulkEntity> getSubTargets() {
         ArrayList<BulkEntity> nonEmptySubTargets = new ArrayList<BulkEntity>();
-        for (BulkEntity subTarget: getAllSubTargets()) {
-            if (((MultiRecordBulkEntity) subTarget).allChildrenPresent()) {
+        List<BulkEntity> entities = getAllSubTargets();
+        for (BulkEntity subTarget: entities ) {
+            if (!((MultiRecordBulkEntity) subTarget).allChildrenPresent()) {
                 nonEmptySubTargets.add(subTarget);
             }
         }
         return Collections.unmodifiableList(nonEmptySubTargets);
     }
 
-    private List<BulkEntity> getAllSubTargets() {
+    private List<BulkEntity> getAllSubTargets() {   	
+ 
         return Collections.unmodifiableList(
                 Arrays.asList(
                         (BulkEntity) getAgeTarget(),
@@ -382,6 +384,7 @@ abstract class BulkTarget<
                         (BulkEntity) getNegativeLocationTarget(),
                         (BulkEntity) getRadiusTarget()
                 ));
+    	
     }
 
     @Override

@@ -77,6 +77,24 @@ class ServiceFactoryImpl implements ServiceFactory {
                     setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v9/ReportingService.svc");
                 }
             });
+            put(com.microsoft.bingads.v10.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/CampaignManagementService.svc");
+                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/CampaignManagementService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v10.adinsight.IAdInsightService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/V10/AdInsightService.svc");
+                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V10/AdInsightService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v10.bulk.IBulkService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
+                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
+                }
+            });
         }
     };
 

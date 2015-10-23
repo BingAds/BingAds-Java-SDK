@@ -30,6 +30,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    public Response<GetCampaignSizesByAccountIdResponse> getCampaignSizesByAccountIdAsync(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    public Future<?> getCampaignSizesByAccountIdAsync(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters,
+        @WebParam(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignSizesByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    @WebResult(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignSizesByAccountIdResponse getCampaignSizesByAccountId(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse>
      */
     @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
@@ -597,6 +638,47 @@ public interface ICampaignManagementService {
     public SetNegativeSitesToCampaignsResponse setNegativeSitesToCampaigns(
         @WebParam(name = "SetNegativeSitesToCampaignsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
         SetNegativeSitesToCampaignsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetConfigValueResponse>
+     */
+    @WebMethod(operationName = "GetConfigValue", action = "GetConfigValue")
+    public Response<GetConfigValueResponse> getConfigValueAsync(
+        @WebParam(name = "GetConfigValueRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetConfigValueRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetConfigValue", action = "GetConfigValue")
+    public Future<?> getConfigValueAsync(
+        @WebParam(name = "GetConfigValueRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetConfigValueRequest parameters,
+        @WebParam(name = "GetConfigValueResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetConfigValueResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetConfigValueResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetConfigValue", action = "GetConfigValue")
+    @WebResult(name = "GetConfigValueResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetConfigValueResponse getConfigValue(
+        @WebParam(name = "GetConfigValueRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetConfigValueRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
@@ -4000,47 +4082,6 @@ public interface ICampaignManagementService {
     public DeleteSharedEntitiesResponse deleteSharedEntities(
         @WebParam(name = "DeleteSharedEntitiesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
         DeleteSharedEntitiesRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse>
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    public Response<GetCampaignSizesByAccountIdResponse> getCampaignSizesByAccountIdAsync(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    public Future<?> getCampaignSizesByAccountIdAsync(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters,
-        @WebParam(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignSizesByAccountIdResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    @WebResult(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignSizesByAccountIdResponse getCampaignSizesByAccountId(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
