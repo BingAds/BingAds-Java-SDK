@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v10;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,54 +11,28 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.bulk.entities.*;
-import com.microsoft.bingads.bulk.*;
-import com.microsoft.bingads.campaignmanagement.*;
-import com.microsoft.bingads.campaignmanagement.Date;
+import com.microsoft.bingads.v10.bulk.entities.*;
+import com.microsoft.bingads.v10.bulk.*;
+import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.v10.campaignmanagement.Date;
 
-public class BulkShoppingCampaigns {
+public class BulkShoppingCampaigns extends BulkExampleBaseV10 {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
     static ServiceClient<ICampaignManagementService> CampaignService;
     static BulkFileWriter Writer;  
     static BulkFileReader Reader;  
-    
-    /// <summary>
-    /// The directory for the bulk files.
-    /// </summary>
-    static java.lang.String FileDirectory = "c:\\bulk\\";
-
-    /// <summary>
-    /// The name of the bulk upload file.
-    /// </summary>
-    static java.lang.String UploadFileName = "upload.csv";
-
-    /// <summary>
-    /// The name of the bulk upload file.
-    /// </summary>
-    static java.lang.String ResultFileName = "result.csv";
-    
-    /// <summary>
-    /// The bulk file extension type.
-    /// </summary>
-    static DownloadFileType FileType = DownloadFileType.CSV; 
-    
+        
 	final static long campaignIdKey = -123; 
 	final static long adGroupIdKey = -1234; 
-    
-	private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
     
     private static ArrayList<BulkAdGroupProductPartition> _partitionActions = new ArrayList<BulkAdGroupProductPartition>();
     private static long _referenceId = -1;
         
     public static void main(String[] args) {
 		
-		BulkEntityIterable entities = null;
+		BulkEntityIterable bulkEntities = null;
 				
 		try {
 			authorizationData = new AuthorizationData();
@@ -81,7 +55,7 @@ public class BulkShoppingCampaigns {
 	         
 	        if (stores == null)
 	        {
-	        	System.out.printf("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId());
+	        	outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
 	        	return;
 	        }
 						            				
@@ -89,7 +63,7 @@ public class BulkShoppingCampaigns {
 	        BulkService = new BulkServiceManager(authorizationData);
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
 
-            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
+            List<BulkEntity> entities = new ArrayList<BulkEntity>();
             
             /* Add a new Bing Shopping campaign that will be associated with a ProductScope criterion.
              *  - Set the CampaignType element of the Campaign to Shopping.
@@ -193,22 +167,22 @@ public class BulkShoppingCampaigns {
 			}};
 			bulkProductAd.setAd(productAd);
             
-    		uploadEntities.add(bulkCampaign);
-    		uploadEntities.add(bulkCampaignProductScope);
-    		uploadEntities.add(bulkAdGroup);
-    		uploadEntities.add(bulkProductAd);
+    		entities.add(bulkCampaign);
+    		entities.add(bulkCampaignProductScope);
+    		entities.add(bulkAdGroup);
+    		entities.add(bulkProductAd);
             
-            Reader = uploadEntities(uploadEntities);
+            Reader = uploadEntities(entities);
 
             // Write the upload output
 
-            entities = Reader.getEntities();
+            bulkEntities = Reader.getEntities();
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
             List<BulkAdGroup> adGroupResults = new ArrayList<BulkAdGroup>();
             List<BulkProductAd> productAdResults = new ArrayList<BulkProductAd>();
             List<BulkCampaignProductScope> campaignProductScopeResults = new ArrayList<BulkCampaignProductScope>();
             
-            for (BulkEntity entity : entities) {
+            for (BulkEntity entity : bulkEntities) {
 				if (entity instanceof BulkCampaign) {
 					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
@@ -226,10 +200,9 @@ public class BulkShoppingCampaigns {
 					outputBulkCampaignProductScopes(Arrays.asList((BulkCampaignProductScope) entity) );
 				}
 			}
-			entities.close();
-
-            Reader.close();
             
+			bulkEntities.close();
+            Reader.close();
             
             java.lang.Long adGroupId = adGroupResults.get(0).getAdGroup().getId();
             
@@ -291,11 +264,11 @@ public class BulkShoppingCampaigns {
              * Check whether a root node exists already.
              */
             
-            productPartitions = getBulkAdGroupProductPartitionTree(adGroupId);
             BulkAdGroupProductPartition existingRoot = getNodeByClientId(bulkApplyProductPartitionActionsResults, "root");
             
             if (existingRoot != null)
             {
+               existingRoot.setClientId("deletedroot");
            	   existingRoot.getAdGroupCriterion().setStatus(AdGroupCriterionStatus.DELETED);
            	   _partitionActions.add(existingRoot);
             }
@@ -555,88 +528,88 @@ public class BulkShoppingCampaigns {
             bulkCampaign.getCampaign().setId(campaignId);
             bulkCampaign.getCampaign().setStatus(CampaignStatus.DELETED);        
             
-            uploadEntities = new ArrayList<BulkEntity>();
-            uploadEntities.add(bulkCampaign);
+            entities = new ArrayList<BulkEntity>();
+            entities.add(bulkCampaign);
 
-            Reader = uploadEntities(uploadEntities);
+            Reader = uploadEntities(entities);
             
             // Write the upload output
 
-            entities = Reader.getEntities();
+            bulkEntities = Reader.getEntities();
             
-            for (BulkEntity entity : entities) {
+            for (BulkEntity entity : bulkEntities) {
 				if (entity instanceof BulkCampaign) {
 					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
 				}
 			}
-			entities.close();
+			bulkEntities.close();
             Reader.close();
 
             outputStatusMessage("Deleted CampaignId " + campaignId + "\n");
 		
         // Bulk service operations can throw AdApiFaultDetail.
         } catch (com.microsoft.bingads.bulk.AdApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (com.microsoft.bingads.bulk.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
-                System.out.printf("AdApiError\n");
-                System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+                outputStatusMessage("AdApiError\n");
+                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
             
         // Bulk service operations can throw ApiFaultDetail.
         } catch (com.microsoft.bingads.bulk.ApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (com.microsoft.bingads.bulk.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
-                System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
             for (com.microsoft.bingads.bulk.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
-                System.out.printf("OperationError\n");
-                System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                outputStatusMessage("OperationError\n");
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
          // Campaign Management service operations can throw AdApiFaultDetail.
         } catch (com.microsoft.bingads.campaignmanagement.AdApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (com.microsoft.bingads.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
-                System.out.printf("AdApiError\n");
-                System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+            	outputStatusMessage("AdApiError\n");
+                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
             
         // Campaign Management service operations can throw ApiFaultDetail.
         } catch (com.microsoft.bingads.campaignmanagement.ApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (com.microsoft.bingads.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
-                System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
             for (com.microsoft.bingads.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
-                System.out.printf("OperationError\n");
-                System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                outputStatusMessage("OperationError\n");
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
         } catch (RemoteException ex) {
-            System.out.println("Service communication error encountered: ");
-            System.out.println(ex.getMessage());
+            outputStatusMessage("Service communication error encountered: ");
+            outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         } catch (Exception ex) {
-            System.out.println("Error encountered: ");
-            System.out.println(ex.getMessage());
+            outputStatusMessage("Error encountered: ");
+            outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
 		} finally {
-			if (entities != null){
+			if (bulkEntities != null){
 				try {
-					entities.close();
+					bulkEntities.close();
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -678,34 +651,28 @@ public class BulkShoppingCampaigns {
     static ArrayList<BulkAdGroupProductPartition> applyBulkProductPartitionActions(
         ArrayList<BulkAdGroupProductPartition> partitionActions) throws IOException, ExecutionException, InterruptedException
     {
-    	FileUploadParameters fileUploadParameters = new FileUploadParameters();
-        fileUploadParameters.setResultFileDirectory(new File(FileDirectory));
-        fileUploadParameters.setResultFileName(ResultFileName);
-        fileUploadParameters.setUploadFilePath(new File(FileDirectory + UploadFileName));
-        fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
-        fileUploadParameters.setOverwriteResultFile(true);
-        
-        Writer = new BulkFileWriter(new File(FileDirectory + UploadFileName));
-        for (BulkAdGroupProductPartition partitionAction : partitionActions)
+    	List<BulkEntity> entities = new ArrayList<BulkEntity>();
+    	
+    	for (BulkAdGroupProductPartition partitionAction : partitionActions)
         {
-            Writer.writeEntity(partitionAction);
+            entities.add(partitionAction);
         }
-        Writer.close();
 
-        File bulkFilePath =
-                BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
+    	Reader = uploadEntities(entities);
 
-        Reader = new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
-        BulkEntityIterable entities = Reader.getEntities();
+        // Write the upload output
+
+        BulkEntityIterable bulkEntities = Reader.getEntities();
+        
         ArrayList<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
-        for (BulkEntity entity : entities) {
+        for (BulkEntity entity : bulkEntities) {
 			if (entity instanceof BulkAdGroupProductPartition) {
 				bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition)entity);
 				outputBulkAdGroupProductPartitions(bulkAdGroupProductPartitionResults);
 			}
 		}
 
-        entities.close();
+        bulkEntities.close();
         Reader.close();
         
         return bulkAdGroupProductPartitionResults;
@@ -728,15 +695,15 @@ public class BulkShoppingCampaigns {
 		
 		File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
         Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
-        BulkEntityIterable entities = Reader.getEntities();
+        BulkEntityIterable bulkEntities = Reader.getEntities();
         List<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
-        for (BulkEntity entity : entities) {
+        for (BulkEntity entity : bulkEntities) {
 			if (entity instanceof BulkAdGroupProductPartition) {
 				bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition) entity);
 			}
 		}
 
-        entities.close();
+        bulkEntities.close();
         Reader.close();
 
         ArrayList<BulkAdGroupProductPartition> bulkAdGroupProductPartitions = new ArrayList<BulkAdGroupProductPartition>(); 
@@ -878,53 +845,53 @@ public class BulkShoppingCampaigns {
     	
 		ProductPartition criterion = (ProductPartition)adGroupCriterion.getCriterion();
 		 
-		System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s\n",
+		outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s\n",
 				"",
-				criterion.getPartitionType());
+				criterion.getPartitionType()));
 		
-		System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
+		outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
 				"",
 				"ParentCriterionId: ", 
-				criterion.getParentCriterionId());
+				criterion.getParentCriterionId()));
 		
-		System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
+		outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
 				"",
 				"Id: ", 
-				adGroupCriterion.getId());
+				adGroupCriterion.getId()));
 		 
 		if (criterion.getPartitionType() == ProductPartitionType.UNIT)
 		{
 			if (adGroupCriterion instanceof BiddableAdGroupCriterion)
 			{
-		    	System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%.2f\n",
+		    	outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%.2f\n",
 		    			"",
 		    			"Bid amount: ", 
-		    			((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().getAmount());
+		    			((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().getAmount()));
 				 
 			}
 			else
 			{
 				if (adGroupCriterion instanceof NegativeAdGroupCriterion)
 				{
-			    	System.out.printf("%" + treeLevel * 4 + "s%s\n",
+			    	outputStatusMessage(String.format("%" + treeLevel * 4 + "s%s\n",
 			    			"",
-			    			"Not bidding on this condition");
+			    			"Not bidding on this condition"));
 				}
 			}
 		}
 		 
 		String nullAttribute = (criterion.getParentCriterionId() != null) ? "(All Others)" : "(Tree Root)";
 		 
-		System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
+		outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
 				"",
 				"Attribute: ", 
 				(criterion.getCondition().getAttribute() == null) ? 
-						nullAttribute : criterion.getCondition().getAttribute());
+						nullAttribute : criterion.getCondition().getAttribute()));
 		 
-		System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
+		outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
 				"",
 				"Condition: ", 
-				criterion.getCondition().getOperand());
+				criterion.getCondition().getOperand()));
 		 
 		for (BulkAdGroupProductPartition childNode : childBranches.get(adGroupCriterion.getId()))
 		{
@@ -932,298 +899,4 @@ public class BulkShoppingCampaigns {
 		}
     }
     	
-	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
-		for (BulkCampaign entity : bulkEntities){
-			outputStatusMessage("\nBulkCampaign: \n");
-			outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
-			outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
-			if(entity.getLastModifiedTime() != null){
-				outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
-			}
-			
-			outputBulkPerformanceData(entity.getPerformanceData());
-			outputBulkQualityScoreData(entity.getQualityScoreData());
-			
-			// Output the Campaign Management Campaign Object
-			outputCampaign(entity.getCampaign());
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputCampaign(Campaign campaign){
-		if (campaign != null) {
-			outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
-            outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType()));
-            outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
-            outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
-            outputStatusMessage(String.format("Id: %s", campaign.getId()));
-            outputStatusMessage(String.format("MonthlyBudget: %s", campaign.getMonthlyBudget()));
-            outputStatusMessage(String.format("Name: %s", campaign.getName()));
-            outputStatusMessage(String.format("NativeBidAdjustment: %s", campaign.getNativeBidAdjustment()));
-            outputStatusMessage("Settings: ");
-            if (campaign.getSettings() != null)
-            {
-                for (Setting setting : campaign.getSettings().getSettings())
-                {
-                    if (setting instanceof ShoppingSetting)
-                    {
-                        outputStatusMessage("ShoppingSetting: ");
-                        outputStatusMessage(String.format("Priority: %s", ((ShoppingSetting)setting).getPriority()));
-                        outputStatusMessage(String.format("SalesCountryCode: %s", ((ShoppingSetting)setting).getSalesCountryCode()));
-                        outputStatusMessage(String.format("StoreId: %s", ((ShoppingSetting)setting).getStoreId()));
-                    }
-                }
-            }
-            outputStatusMessage(String.format("Status: %s", campaign.getStatus()));
-            outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
-		}
-	}
-	
-	static void outputBulkAdGroups(Iterable<BulkAdGroup> bulkEntities){
-		for (BulkAdGroup entity : bulkEntities){
-			outputStatusMessage("\nBulkAdGroup: \n");
-			outputStatusMessage(String.format("CampaignId: %s", entity.getCampaignId()));
-			outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
-			outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
-			outputStatusMessage(String.format("IsExpired: %s", entity.getIsExpired()));
-			if(entity.getLastModifiedTime() != null){
-				outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
-			}
-			
-			outputBulkPerformanceData(entity.getPerformanceData());
-			outputBulkQualityScoreData(entity.getQualityScoreData());
-			
-			// Output the Campaign Management AdGroup Object
-			outputAdGroup(entity.getAdGroup());
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputAdGroup(AdGroup adGroup){
-		if (adGroup != null) {
-			if (adGroup.getAdDistribution() != null)
-            {
-                outputStatusMessage("AdDistribution: ");
-                for (AdDistribution distribution : adGroup.getAdDistribution())
-                {
-                	outputStatusMessage(String.format("\t%s", distribution));
-                }
-            }
-            outputStatusMessage(String.format("AdRotation: %s", 
-            		adGroup.getAdRotation() != null ? adGroup.getAdRotation().getType() : null));
-            outputStatusMessage(String.format("BiddingModel: %s", adGroup.getBiddingModel()));
-            outputStatusMessage(String.format("BroadMatchBid: %s", 
-            		adGroup.getBroadMatchBid() != null ? adGroup.getBroadMatchBid().getAmount() : null));
-            outputStatusMessage(String.format("ContentMatchBid: %s", 
-            		adGroup.getContentMatchBid() != null ? adGroup.getContentMatchBid().getAmount() : null));
-            if (adGroup.getEndDate() != null)
-            {
-                outputStatusMessage(String.format("EndDate: %s/%s/%s",
-                adGroup.getEndDate().getMonth(),
-                adGroup.getEndDate().getDay(),
-                adGroup.getEndDate().getYear()));
-            }
-            outputStatusMessage(String.format("ExactMatchBid: %s", 
-            		adGroup.getExactMatchBid() != null ? adGroup.getExactMatchBid().getAmount() : null));
-            
-            outputStatusMessage(String.format("Id: %s", adGroup.getId()));
-            outputStatusMessage(String.format("Language: %s", adGroup.getLanguage()));
-            outputStatusMessage(String.format("Name: %s", adGroup.getName()));
-            outputStatusMessage(String.format("NativeBidAdjustment: %s", adGroup.getNativeBidAdjustment()));
-            outputStatusMessage(String.format("Network: %s", adGroup.getNetwork()));
-            outputStatusMessage(String.format("PhraseMatchBid: %s", 
-            		adGroup.getPhraseMatchBid() != null ? adGroup.getPhraseMatchBid().getAmount() : null));
-            outputStatusMessage(String.format("PricingModel: %s", adGroup.getPricingModel()));
-            if (adGroup.getStartDate() != null)
-            {
-                outputStatusMessage(String.format("StartDate: %s/%s/%s",
-                adGroup.getStartDate().getMonth(),
-                adGroup.getStartDate().getDay(),
-                adGroup.getStartDate().getYear()));
-            }
-            outputStatusMessage(String.format("Status: %s", adGroup.getStatus()));
-		}
-	}
-	
-	static void outputBulkProductAds(Iterable<BulkProductAd> bulkEntities){
-		for (BulkProductAd entity : bulkEntities){
-			outputStatusMessage("\nBulkProductAd: \n");
-			outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
-			outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
-			outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
-			outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
-			if(entity.getLastModifiedTime() != null){
-				outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
-			}
-			
-			outputBulkPerformanceData(entity.getPerformanceData());
-			
-			// Output the Campaign Management ProductAd Object
-			outputProductAd(entity.getProductAd());
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputProductAd(ProductAd productAd){
-		if (productAd != null) {
-			outputStatusMessage(String.format("DevicePreference: %s", productAd.getDevicePreference()));
-            outputStatusMessage(String.format("EditorialStatus: %s", productAd.getEditorialStatus()));
-            outputStatusMessage(String.format("Id: %s", productAd.getId()));
-            outputStatusMessage(String.format("PromotionalText: %s", productAd.getPromotionalText()));
-            outputStatusMessage(String.format("Status: %s", productAd.getStatus()));
-		}
-	}
-	
-	static void outputBulkCampaignProductScopes(Iterable<BulkCampaignProductScope> bulkEntities){
-		for (BulkCampaignProductScope entity : bulkEntities){
-			outputStatusMessage("\nBulkCampaignProductScope: \n");
-			outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
-			outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
-			if(entity.getLastModifiedTime() != null){
-				outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
-			}
-									
-			// Output the Campaign Management CampaignCriterion and ProductScope Objects
-			outputCampaignCriterionWithProductScope(entity.getCampaignCriterion());
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputCampaignCriterionWithProductScope(CampaignCriterion campaignCriterion){
-		if (campaignCriterion != null) {
-			outputStatusMessage(String.format("BidAdjustment: %s", campaignCriterion.getBidAdjustment()));
-            outputStatusMessage(String.format("CampaignId: %s", campaignCriterion.getCampaignId()));
-            outputStatusMessage(String.format("CampaignCriterion Id: %s", campaignCriterion.getId()));
-            outputStatusMessage(String.format("CampaignCriterion Type: %s", campaignCriterion.getType()));
-
-            // Output the Campaign Management ProductScope Object
-            outputProductScope((ProductScope)campaignCriterion.getCriterion());
-		}
-	}
-	
-	static void outputProductScope(ProductScope productScope){
-		if (productScope != null) {
-			outputStatusMessage("Product Conditions: ");
-			for (ProductCondition condition : productScope.getConditions().getProductConditions())
-            {
-				outputStatusMessage(String.format("\tOperand: %s", condition.getOperand()));
-				outputStatusMessage(String.format("\tAttribute: %s", condition.getAttribute()));
-            }
-		}
-	}
-	
-	static void outputBulkAdGroupProductPartitions(Iterable<BulkAdGroupProductPartition> bulkEntities){
-		for (BulkAdGroupProductPartition entity : bulkEntities){
-			outputStatusMessage("\nBulkAdGroupProductPartition: \n");
-			outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
-			outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
-			outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
-			if(entity.getLastModifiedTime() != null){
-				outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
-			}
-			
-			// Output the Campaign Management AdGroupCriterion and ProductPartition Objects
-			outputAdGroupCriterionWithProductPartition(entity.getAdGroupCriterion());
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputAdGroupCriterionWithProductPartition(AdGroupCriterion adGroupCriterion){
-		if (adGroupCriterion != null) {
-			outputStatusMessage(String.format("AdGroup Id: %s", adGroupCriterion.getAdGroupId()));
-            outputStatusMessage(String.format("AdGroupCriterion Id: %s", adGroupCriterion.getId()));
-            outputStatusMessage(String.format("AdGroupCriterion Type: %s", adGroupCriterion.getType()));
-            
-            if(adGroupCriterion instanceof BiddableAdGroupCriterion){
-            	outputStatusMessage(String.format("DestinationUrl: %s", ((BiddableAdGroupCriterion)adGroupCriterion).getDestinationUrl()));
-
-                // Output the Campaign Management FixedBid Object
-                outputFixedBid((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid());
-            }
-            
-            // Output the Campaign Management ProductPartition Object
-            outputProductPartition((ProductPartition)adGroupCriterion.getCriterion());
-		}
-	}
-	
-	static void outputProductPartition(ProductPartition productPartition){
-		if (productPartition != null) {
-			outputStatusMessage(String.format("AdGroup Id: %s", productPartition.getParentCriterionId()));
-            outputStatusMessage(String.format("AdGroupCriterion Id: %s", productPartition.getPartitionType()));
-            if (productPartition.getCondition() != null) {
-    			outputStatusMessage("Condition: ");
-    			outputStatusMessage(String.format("\tOperand: %s", productPartition.getCondition().getOperand()));
-				outputStatusMessage(String.format("\tAttribute: %s", productPartition.getCondition().getAttribute()));
-    		}
-		}
-	}
-	
-	static void outputFixedBid(FixedBid fixedBid){
-		if (fixedBid != null && fixedBid.getBid() != null) {
-			outputStatusMessage(String.format("Bid Amount: %s", fixedBid.getBid().getAmount()));
-		}
-	}
-	
-	
-	static void outputBulkPerformanceData(PerformanceData performanceData){
-		if (performanceData != null)
-        {
-            outputStatusMessage("PerformanceData: ");
-            outputStatusMessage(String.format("AverageCostPerClick: %s", performanceData.getAverageCostPerClick()));
-            outputStatusMessage(String.format("AverageCostPerThousandImpressions: %s", performanceData.getAverageCostPerThousandImpressions()));
-            outputStatusMessage(String.format("AveragePosition: %s", performanceData.getAveragePosition()));
-            outputStatusMessage(String.format("Clicks: %s", performanceData.getClicks()));
-            outputStatusMessage(String.format("ClickThroughRate: %s", performanceData.getClickThroughRate()));
-            outputStatusMessage(String.format("Conversions: %s", performanceData.getConversions()));
-            outputStatusMessage(String.format("CostPerConversion: %s", performanceData.getCostPerConversion()));
-            outputStatusMessage(String.format("Impressions: %s", performanceData.getImpressions()));
-            outputStatusMessage(String.format("Spend: %s", performanceData.getSpend()));
-        }
-	}
-	
-	static void outputBulkQualityScoreData(QualityScoreData qualityScoreData){
-		if (qualityScoreData != null)
-        {
-            outputStatusMessage("QualityScoreData: ");
-            outputStatusMessage(String.format("KeywordRelevance: %s", qualityScoreData.getKeywordRelevance()));
-            outputStatusMessage(String.format("LandingPageRelevance: %s", qualityScoreData.getLandingPageRelevance()));
-            outputStatusMessage(String.format("LandingPageUserExperience: %s", qualityScoreData.getLandingPageUserExperience()));
-            outputStatusMessage(String.format("QualityScore: %s", qualityScoreData.getQualityScore()));
-        }
-	}
-	
-	
-	
-	static void outputStatusMessage(java.lang.String message){
-		System.out.println(message);
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }

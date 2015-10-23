@@ -83,4 +83,9 @@ public class GeographicalLocations{
             }
         }  
     }    
+    
+    // Prints the string to System.out
+    static void outputStatusMessage(java.lang.String message){
+  		System.out.println(message);
+  	}
 }

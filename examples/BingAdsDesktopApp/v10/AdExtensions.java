@@ -1,27 +1,21 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v10;
 
 import java.rmi.*;
 import java.util.ArrayList;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.campaignmanagement.*;
+import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class AdExtensions {
+public class AdExtensions extends ExampleBaseV10 {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
 
     public static void main(java.lang.String[] args) {
    	 
         try
         {
-             authorizationData = new AuthorizationData();
+        	 authorizationData = new AuthorizationData();
              authorizationData.setDeveloperToken(DeveloperToken);
              authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
              authorizationData.setCustomerId(CustomerId);
@@ -35,16 +29,23 @@ public class AdExtensions {
 
              ArrayOfCampaign campaigns = new ArrayOfCampaign();
              Campaign campaign = new Campaign();
-             campaign.setName("Winter Clothing " + System.currentTimeMillis());
-             campaign.setDescription("Winter clothing line.");
+             campaign.setName("Summer Shoes " + System.currentTimeMillis());
+             campaign.setDescription("Summer shoes line.");
              campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
              campaign.setMonthlyBudget(1000.00);
              campaign.setTimeZone("PacificTimeUSCanadaTijuana");
              campaign.setDaylightSaving(true);
+             
+             // Used with FinalUrls shown in the sitelinks that we will add below.
+             campaign.setTrackingUrlTemplate(
+            		 "http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
+             
              campaigns.getCampaigns().add(campaign);
              
-             ArrayOflong campaignIds = addCampaigns(AccountId, campaigns);
-             printCampaignIdentifiers(campaignIds);
+             AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+             outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
              
              // Specify the extensions.
 
@@ -65,7 +66,7 @@ public class AdExtensions {
 
              LocationAdExtension locationAdExtension = new LocationAdExtension();
              locationAdExtension.setPhoneNumber("206-555-0100");
-             locationAdExtension.setCompanyName("Alpine Ski House");
+             locationAdExtension.setCompanyName("Contoso Shoes");
              locationAdExtension.setIconMediaId(null); 
              locationAdExtension.setImageMediaId(null);
              Address address = new Address();
@@ -80,10 +81,58 @@ public class AdExtensions {
              
              SiteLinksAdExtension siteLinksAdExtension = new SiteLinksAdExtension();
              ArrayOfSiteLink siteLinks = new ArrayOfSiteLink();
-             SiteLink siteLink = new SiteLink();
-             siteLink.setDestinationUrl("AplineSkiHouse.com/WinterGloveSale");
-             siteLink.setDisplayText("Winter Glove Sale");
-             siteLinks.getSiteLinks().add(siteLink);
+             
+             for(int i=0; i < 2; i++){
+            	 SiteLink siteLink = new SiteLink();
+                 siteLink.setDisplayText("Women's Shoe Sale " + (i+1));
+                 
+                 // Destination URLs are deprecated and will be sunset in March 2016. 
+                 // If you are currently using the Destination URL, you must upgrade to Final URLs. 
+                 // Here is an example of a DestinationUrl you might have used previously. 
+                 // siteLink.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
+
+                 // To migrate from DestinationUrl to FinalUrls for existing sitelinks, you can set DestinationUrl
+                 // to an empty string when updating the sitelink. If you are removing DestinationUrl,
+                 // then FinalUrls is required.
+                 // siteLink.setDestinationUrl("");
+
+                 // With FinalUrls you can separate the tracking template, custom parameters, and 
+                 // landing page URLs. 
+                 ArrayOfstring finalUrls = new ArrayOfstring();
+                 finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+                 siteLink.setFinalUrls(finalUrls);
+                 
+                 // Final Mobile URLs can also be used if you want to direct the user to a different page 
+                 // for mobile devices.
+                 ArrayOfstring finalMobileUrls = new ArrayOfstring();
+                 finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
+                 siteLink.setFinalMobileUrls(finalMobileUrls);
+                 
+                 // You could use a tracking template which would override the campaign level
+                 // tracking template. Tracking templates defined for lower level entities 
+                 // override those set for higher level entities.
+                 // In this example we are using the campaign level tracking template.
+                 siteLink.setTrackingUrlTemplate(null);
+
+                 // Set custom parameters that are specific to this sitelink, 
+                 // and can be used by the sitelink, ad group, campaign, or account level tracking template. 
+                 // In this example we are using the campaign level tracking template.
+                 CustomParameters urlCustomParameters = new CustomParameters();
+                 CustomParameter customParameter1 = new CustomParameter();
+                 customParameter1.setKey("promoCode");
+                 customParameter1.setValue("PROMO" + (i+1));
+                 ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
+                 customParameters.getCustomParameters().add(customParameter1);
+                 CustomParameter customParameter2 = new CustomParameter();
+                 customParameter2.setKey("season");
+                 customParameter2.setValue("summer");
+                 customParameters.getCustomParameters().add(customParameter2);
+                 urlCustomParameters.setParameters(customParameters);
+                 siteLink.setUrlCustomParameters(urlCustomParameters);
+                 
+                 siteLinks.getSiteLinks().add(siteLink);
+             }
+             
              siteLinksAdExtension.setSiteLinks(siteLinks);
              adExtensions.getAdExtensions().add(siteLinksAdExtension);
 
@@ -153,59 +202,29 @@ public class AdExtensions {
                  }
                  else
                  {
-                	 outputStatusMessage(String.format("Ad extension ID: %s\n", extension.getId()));
-                	 outputStatusMessage(String.format("Ad extension Type: %s\n", extension.getType()));
-
-                     if (extension instanceof AppAdExtension)
+                	 if (extension instanceof AppAdExtension)
                      {
-                    	 outputStatusMessage(String.format("AppPlatform: %s\n", ((AppAdExtension)extension).getAppPlatform()));
-                    	 outputStatusMessage(String.format("AppStoreId: %s\n", ((AppAdExtension)extension).getAppStoreId()));
-                    	 outputStatusMessage(String.format("DestinationUrl: %s\n", ((AppAdExtension)extension).getDestinationUrl()));
-                    	 outputStatusMessage(String.format("DevicePreference: %s\n", ((AppAdExtension)extension).getDevicePreference()));
-                    	 outputStatusMessage(String.format("DisplayText: %s\n", ((AppAdExtension)extension).getDisplayText()));
-                    	 outputStatusMessage(String.format("Id: %s\n", ((AppAdExtension)extension).getId()));
-                    	 outputStatusMessage(String.format("Status: %s\n", ((AppAdExtension)extension).getStatus()));
-                    	 outputStatusMessage(String.format("Version: %s\n", ((AppAdExtension)extension).getVersion()));
+                		 outputStatusMessage("AppAdExtension: ");
+                    	 outputAppAdExtension((AppAdExtension)extension);
                      }
                      else if (extension instanceof CallAdExtension)
                      {
-                         outputStatusMessage(String.format("Phone number: %s\n", ((CallAdExtension)extension).getPhoneNumber()));
-                         outputStatusMessage(String.format("Country: %s\n", ((CallAdExtension)extension).getCountryCode()));
-                         outputStatusMessage(String.format("Is only clickable item: %s\n", ((CallAdExtension)extension).getIsCallOnly()));
+                    	 outputStatusMessage("CallAdExtension: ");
+                    	 outputCallAdExtension((CallAdExtension)extension);
                      }
                      else if (extension instanceof LocationAdExtension)
                      {
-						if(((LocationAdExtension)extension).getAddress() != null){
-							outputStatusMessage(String.format("Street: %s\n", ((LocationAdExtension)extension).getAddress().getStreetAddress()));
-							outputStatusMessage(String.format("City: %s\n", ((LocationAdExtension)extension).getAddress().getCityName()));
-							outputStatusMessage(String.format("State: %s\n", ((LocationAdExtension)extension).getAddress().getProvinceName()));
-							outputStatusMessage(String.format("Country: %s\n", ((LocationAdExtension)extension).getAddress().getCountryCode()));
-							outputStatusMessage(String.format("Zip code: %s\n", ((LocationAdExtension)extension).getAddress().getPostalCode()));
-						}
-						outputStatusMessage(String.format("Company name: %s\n", ((LocationAdExtension)extension).getCompanyName()));
-						outputStatusMessage(String.format("Phone number: %s\n", ((LocationAdExtension)extension).getPhoneNumber()));
-						outputStatusMessage(String.format("Business coordinates determined?: %s\n", ((LocationAdExtension)extension).getGeoCodeStatus()));
-						if(((LocationAdExtension)extension).getGeoPoint() != null){
-							outputStatusMessage("GeoPoint: ");
-							outputStatusMessage(String.format("LatitudeInMicroDegrees: %s\n", 
-									((LocationAdExtension)extension).getGeoPoint().getLatitudeInMicroDegrees()));
-							outputStatusMessage(String.format("LongitudeInMicroDegrees: %s\n", 
-							 		((LocationAdExtension)extension).getGeoPoint().getLongitudeInMicroDegrees()));
-						}
-						outputStatusMessage(String.format("Map icon ID: %s\n", ((LocationAdExtension)extension).getIconMediaId()));
-						outputStatusMessage(String.format("Business image ID: %s\n", ((LocationAdExtension)extension).getImageMediaId()));
+                    	 outputStatusMessage("LocationAdExtension: ");
+                    	 outputLocationAdExtension((LocationAdExtension)extension);
                      }
                      else if (extension instanceof SiteLinksAdExtension)
                      {
-                         for (SiteLink sLink : ((SiteLinksAdExtension)extension).getSiteLinks().getSiteLinks())
-                         {
-                             outputStatusMessage(String.format("  Display URL: %s\n", sLink.getDisplayText()));
-                             outputStatusMessage(String.format("  Destination URL: %s\n", sLink.getDestinationUrl()));
-                         }
+                    	 outputStatusMessage("SiteLinksAdExtension: ");
+                    	 outputSiteLinksAdExtension((SiteLinksAdExtension)extension);
                      }
                      else
                      {
-                    	 outputStatusMessage("  Unknown extension type");
+                    	 outputStatusMessage("Unknown extension type");
                      }
                      
                      if (adExtensionEditorialReasonCollection != null 
@@ -236,10 +255,9 @@ public class AdExtensions {
                              }
                          }
                      }
-
                  }
 
-                 outputStatusMessage("\n");
+                 outputStatusMessage("");
                  
                  index++;
              }
@@ -264,7 +282,9 @@ public class AdExtensions {
              
              // Delete the campaign from the account.
 
-             deleteCampaigns(AccountId, campaignIds);
+             ArrayOflong deleteCampaignIds = new ArrayOflong();
+             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+             deleteCampaigns(AccountId, deleteCampaignIds);
              outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
              
          // Campaign Management service operations can throw AdApiFaultDetail.
@@ -330,7 +350,7 @@ public class AdExtensions {
      
      // Adds one or more campaigns to the specified account.
 
-     static ArrayOflong addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
+     static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
      {
          AddCampaignsRequest request = new AddCampaignsRequest();
          
@@ -339,7 +359,7 @@ public class AdExtensions {
          request.setAccountId(accountId);
          request.setCampaigns(campaigns);
 
-         return CampaignService.getService().addCampaigns(request).getCampaignIds();
+         return CampaignService.getService().addCampaigns(request);
      }
      
      // Deletes one or more campaigns from the specified account.
@@ -447,23 +467,4 @@ public class AdExtensions {
          
          return CampaignService.getService().getAdExtensionsEditorialReasons(request).getEditorialReasons();
      }     
-     
-     // Prints the campaign identifiers for each campaign added. 
-
-     static void printCampaignIdentifiers(ArrayOflong campaignIds)
-     {
-         if (campaignIds == null)
-         {
-             return;
-         }
-
-         for (long id : campaignIds.getLongs())
-         {
-             outputStatusMessage(String.format("Campaign successfully added and assigned CampaignId %d\n\n", id));
-         }
-     }
-     
-     static void outputStatusMessage(java.lang.String message){
- 		System.out.println(message);
- 	 }
  }

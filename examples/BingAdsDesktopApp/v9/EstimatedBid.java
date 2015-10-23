@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.text.*;
 import java.rmi.*;
@@ -6,16 +6,10 @@ import java.rmi.*;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.adintelligence.*;
 
-public class EstimatedBid {
+public class EstimatedBid extends ExampleBaseV9 {
 
     static AuthorizationData authorizationData;
     static ServiceClient<IAdIntelligenceService> AdIntelligenceService; 
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
 
     public static void main(java.lang.String[] args) {
    	 

@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
 import java.net.*;
@@ -11,17 +11,10 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.PasswordAuthentication;
 import com.microsoft.bingads.bulk.*;
 
-public class BulkDownloadUpload {
+public class BulkDownloadUpload extends BulkExampleBaseV9 {
 
     static AuthorizationData authorizationData;
     static ServiceClient<IBulkService> BulkService; 
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
-    
 
     // The full path to the bulk file.
 
@@ -29,7 +22,7 @@ public class BulkDownloadUpload {
 
     // The full path to the extracted bulk file.
 
-    private static java.lang.String ExtractedFilePath = "C:\\bulk\\extracted\\accounts.tsv";
+    private static java.lang.String ExtractedFilePath = "C:\\bulk\\extracted\\accounts.csv";
     
     // The full path to the upload result file.
 
@@ -37,7 +30,7 @@ public class BulkDownloadUpload {
 
     // Specifies the bulk file format. 
 
-    private static DownloadFileType FileFormat = DownloadFileType.TSV;
+    private static DownloadFileType FileFormat = DownloadFileType.CSV;
 
     
     /**
@@ -160,14 +153,11 @@ public class BulkDownloadUpload {
                 System.out.printf("Save the report ID (%s) and try again later.\n", downloadRequestId);
             }
             
-            
-            
             // You may unzip and update the downloaded bulk file or prepare a new file elsewhere.
             // Changes to the bulk file are not shown here.
 
             decompressFile(BulkFilePath, ExtractedFilePath);
             compressFile(ExtractedFilePath, BulkFilePath);
-
 
             // Use the bulk service to upload a bulk file.
 

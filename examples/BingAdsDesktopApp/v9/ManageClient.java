@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
 
@@ -11,18 +11,16 @@ import com.microsoft.bingads.customermanagement.*;
 /// Run this sample multiple times alternating between agency and client credentials 
 /// to update and observe the status change, for example from LinkPending to LinkAccepted to Active. 
 /// 
-public class ManageClient {
+public class ManageClient extends ExampleBaseV9 {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICustomerManagementService> CustomerService; 
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    static ServiceClient<ICustomerManagementService> CustomerService;   
+
+    // Agency Customer Id 
     private static long CustomerId = <CustomerIdGoesHere>;
     
-    private static long ClientAccountId = <ClientAccountIdGoesHere>;
-        
+    // Client Account Id 
+    private static long ClientAccountId = <ClientAccountIdGoesHere>;      
 
     public static void main(java.lang.String[] args) {
    	 

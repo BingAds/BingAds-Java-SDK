@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
 import java.util.ArrayList;
@@ -6,17 +6,11 @@ import java.util.ArrayList;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class Targets {
+public class Targets extends ExampleBaseV9 {
 
      static AuthorizationData authorizationData;
      static ServiceClient<ICampaignManagementService> CampaignService; 
      
-     private static java.lang.String UserName = "<UserNameGoesHere>";
-     private static java.lang.String Password = "<PasswordGoesHere>";
-     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-     private static long CustomerId = <CustomerIdGoesHere>;
-     private static long AccountId = <AccountIdGoesHere>;
-
      public static void main(java.lang.String[] args) {
     	 
          try
@@ -115,6 +109,16 @@ public class Targets {
              campaignRadiusTarget.setBids(radiusTargetBids);
              campaignLocationTarget.setRadiusTarget(campaignRadiusTarget);
              campaignTarget.setLocation(campaignLocationTarget);
+             
+             DeviceOSTarget campaignDeviceOSTarget = new DeviceOSTarget();
+             DeviceOSTargetBid campaignDeviceOSTargetBid = new DeviceOSTargetBid();
+             campaignDeviceOSTargetBid.setBidAdjustment(10);
+             campaignDeviceOSTargetBid.setDeviceName("Smartphones");
+             ArrayOfDeviceOSTargetBid campaignDeviceOSTargetBids = new ArrayOfDeviceOSTargetBid();
+             campaignDeviceOSTargetBids.getDeviceOSTargetBids().add(campaignDeviceOSTargetBid);
+             campaignDeviceOSTarget.setBids(campaignDeviceOSTargetBids);
+             campaignTarget.setDeviceOS(campaignDeviceOSTarget);
+
              
              Target adGroupTarget = new Target();
              adGroupTarget.setName("My Ad Group Target");

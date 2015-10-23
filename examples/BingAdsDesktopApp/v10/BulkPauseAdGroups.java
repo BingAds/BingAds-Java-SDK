@@ -1,5 +1,6 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v10;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,35 +8,28 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.bulk.entities.*;
-import com.microsoft.bingads.bulk.*;
-import com.microsoft.bingads.bulk.AdApiError;
-import com.microsoft.bingads.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.bulk.BatchError;
-import com.microsoft.bingads.bulk.OperationError;
-import com.microsoft.bingads.campaignmanagement.*;
+import com.microsoft.bingads.v10.bulk.entities.*;
+import com.microsoft.bingads.v10.bulk.*;
+import com.microsoft.bingads.v10.bulk.AdApiError;
+import com.microsoft.bingads.v10.bulk.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v10.bulk.ApiFaultDetail_Exception;
+import com.microsoft.bingads.v10.bulk.BatchError;
+import com.microsoft.bingads.v10.bulk.OperationError;
+import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class BulkPauseAds {
+public class BulkPauseAdGroups extends BulkExampleBaseV10 {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
     static BulkFileWriter Writer;  
     static BulkFileReader Reader;  
-    static DownloadFileType FileType = DownloadFileType.CSV; 
      
     final static long campaignIdKey = -123; 
     final static long adGroupIdKey = -1234; 
-	
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
         
     public static void main(String[] args) {
 		
-		BulkEntityIterable entities = null;
+		BulkEntityIterable bulkEntities = null;
 				
 		try {
 			authorizationData = new AuthorizationData();
@@ -63,53 +57,49 @@ public class BulkPauseAds {
 			// Complete a full download of all ad groups in the account. 
 			 
 			List<BulkDownloadEntity> downloadEntities = new ArrayList<BulkDownloadEntity>();
-			downloadEntities.add(BulkDownloadEntity.ADS);
+			downloadEntities.add(BulkDownloadEntity.AD_GROUPS);
 			
 			DownloadParameters downloadParameters = new DownloadParameters();
 			downloadParameters.setEntities(downloadEntities);
 			downloadParameters.setFileType(DownloadFileType.CSV);
 			
 			outputStatusMessage("Starting DownloadEntitiesAsync . . .\n"); 
-			entities = BulkService.downloadEntitiesAsync(downloadParameters, null, null).get();
+			bulkEntities = BulkService.downloadEntitiesAsync(downloadParameters, null, null).get();
 			
-			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
+			List<BulkEntity> entities = new ArrayList<BulkEntity>();
 			
 			outputStatusMessage("Printing the results of DownloadEntitiesAsync . . .\n"); 
-			for (BulkEntity entity : entities) {
-				if (entity instanceof BulkTextAd 
-						&& ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
-					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
-					((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
-					uploadEntities.add(entity);
+			for (BulkEntity entity : bulkEntities) {
+				if (entity instanceof BulkAdGroup 
+						&& ((BulkAdGroup)entity).getAdGroup().getStatus() == AdGroupStatus.ACTIVE) {
+					outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
+					((BulkAdGroup)entity).getAdGroup().setStatus(AdGroupStatus.PAUSED);
+					entities.add(entity);
 				}
 			}
-			entities.close();
+			bulkEntities.close();
 			
-			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
+			if (!entities.isEmpty()){
+				outputStatusMessage("Changed local status of all Active ad groups to Paused. Ready for upload.\n"); 
 				
-				EntityUploadParameters entityUploadParameters = new EntityUploadParameters();
-				entityUploadParameters.setEntities(uploadEntities);
-				entityUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
+                outputStatusMessage("Starting Upload . . .\n"); 
 				
-				// UploadEntitiesAsync will upload the entities you prepared and will download the results file 
-				// Alternative is to write to file and then upload the file. Use UploadFileAsync for large uploads.
-				
-				outputStatusMessage("Starting UploadEntitiesAsync . . .\n"); 
-				
-				// Wait here and assign the upload results to 'entities'
-				entities = BulkService.uploadEntitiesAsync(entityUploadParameters, null, null).get();
+		    	Reader = uploadEntities(entities);
 
-				outputStatusMessage("Printing the results of UploadEntitiesAsync . . .\n"); 
-				for (BulkEntity entity : entities) {
-					if (entity instanceof BulkTextAd) {
-						outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+		        // Write the upload output
+
+		        bulkEntities = Reader.getEntities();
+
+				outputStatusMessage("Printing the results of Upload . . .\n");
+				for (BulkEntity entity : bulkEntities) {
+					if (entity instanceof BulkAdGroup) {
+						outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
 					}
 				}
-				entities.close();
+				bulkEntities.close();
 			}
 			else{
-				outputStatusMessage("All text ads are already Paused. \n"); 
+				outputStatusMessage("All ad groups are already Paused. \n"); 
 			}
 			
 			outputStatusMessage("Program execution completed\n"); 
@@ -148,9 +138,9 @@ public class BulkPauseAds {
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		} finally {
-			if (entities != null){
+			if (bulkEntities != null){
 				try {
-					entities.close();
+					bulkEntities.close();
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -159,36 +149,29 @@ public class BulkPauseAds {
 	
 		System.exit(0);
 	}
+    
+    /// Writes the specified entities to a local file and uploads the file. We could have uploaded directly
+    /// without writing to file. This example writes to file as an exercise so that you can view the structure 
+    /// of the bulk records being uploaded as needed. 
+    
+    static BulkFileReader uploadEntities(List<BulkEntity> uploadEntities) throws IOException, ExecutionException, InterruptedException {
+    	Writer = new BulkFileWriter(new File(FileDirectory + UploadFileName));
 
-	static void outputStatusMessage(java.lang.String message){
-		System.out.println(message);
-	}
-	
-	static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
-		for (BulkTextAd entity : bulkEntities){
-			outputStatusMessage("BulkTextAd: \n");
-			outputStatusMessage(String.format("TextAd DisplayUrl: %s\nTextAd Id: %s\nTextAd Status: %s\n", 
-					entity.getAd().getDisplayUrl(),
-					entity.getAd().getId(),
-					entity.getAd().getStatus()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
+    	for(BulkEntity entity : uploadEntities){
+    		Writer.writeEntity(entity);
+    	}
+        
+        Writer.close();
+
+        FileUploadParameters fileUploadParameters = new FileUploadParameters();
+        fileUploadParameters.setResultFileDirectory(new File(FileDirectory));
+        fileUploadParameters.setResultFileName(ResultFileName);
+        fileUploadParameters.setUploadFilePath(new File(FileDirectory + UploadFileName));
+        fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
+        fileUploadParameters.setOverwriteResultFile(true);
+        
+        File bulkFilePath =
+            BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
+        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
+    }
 }

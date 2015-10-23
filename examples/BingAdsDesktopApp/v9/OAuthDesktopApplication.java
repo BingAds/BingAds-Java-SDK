@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.net.URL;
 import java.rmi.RemoteException;

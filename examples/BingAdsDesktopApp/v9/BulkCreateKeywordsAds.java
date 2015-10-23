@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkCreateKeywordsAds {
+public class BulkCreateKeywordsAds extends BulkExampleBaseV9 {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -26,12 +26,6 @@ public class BulkCreateKeywordsAds {
      
     final static long campaignIdKey = -123; 
     final static long adGroupIdKey = -1234; 
-	
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
         
     public static void main(String[] args) {
 		
@@ -333,74 +327,4 @@ public class BulkCreateKeywordsAds {
 		
 		return bulkKeywords;
 	}
-	
-	static void outputStatusMessage(java.lang.String message){
-		System.out.println(message);
-	}
-	
-	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
-		for (BulkCampaign entity : bulkEntities){
-			outputStatusMessage("BulkCampaign: \n");
-			outputStatusMessage(String.format("Campaign Name: %s\nCampaign Id: %s\n", 
-					entity.getCampaign().getName(),
-					entity.getCampaign().getId()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkAdGroups(Iterable<BulkAdGroup> bulkEntities){
-		for (BulkAdGroup entity : bulkEntities){
-			outputStatusMessage("BulkAdGroup: \n");
-			outputStatusMessage(String.format("AdGroup Name: %s\nAdGroup Id: %s\n", 
-					entity.getAdGroup().getName(),
-					entity.getAdGroup().getId()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
-		for (BulkTextAd entity : bulkEntities){
-			outputStatusMessage("BulkTextAd: \n");
-			outputStatusMessage(String.format("TextAd DisplayUrl: %s\nTextAd Id: %s\n", 
-					entity.getAd().getDisplayUrl(),
-					entity.getAd().getId()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkKeywords(Iterable<BulkKeyword> bulkEntities){
-		for (BulkKeyword entity : bulkEntities){
-			outputStatusMessage("BulkKeyword: \n");
-			outputStatusMessage(String.format("Keyword Text: %s\nKeyword Id: %s\n", 
-					entity.getKeyword().getText(),
-					entity.getKeyword().getId()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }

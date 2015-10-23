@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v10;
 
 import java.rmi.*;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.campaignmanagement.*;
+import com.microsoft.bingads.v10.campaignmanagement.*;
 
 // This example uses the Bing Ads Java SDK to create a
 // Bing Shopping campaign.
@@ -14,173 +14,199 @@ import com.microsoft.bingads.campaignmanagement.*;
 // To run this example, you must have a Bing Merchant
 // Center store.
 
-public class ShoppingCampaigns {
+public class ShoppingCampaigns extends ExampleBaseV10 {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
     
-    // Uses username and password credentials for authorization.
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
-    
     private static ArrayOfAdGroupCriterionAction _partitionActions = new ArrayOfAdGroupCriterionAction();
     private static long _referenceId = -1;
+    
+    final static long campaignIdKey = -123; 
+	final static long adGroupIdKey = -1234; 
     
     public static void main(java.lang.String[] args) {
    	 
         try
         {
-             authorizationData = new AuthorizationData();
-	     authorizationData.setDeveloperToken(DeveloperToken);
-	     authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-	     authorizationData.setCustomerId(CustomerId);
-	     authorizationData.setAccountId(AccountId);
+			authorizationData = new AuthorizationData();
+			authorizationData.setDeveloperToken(DeveloperToken);
+			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+			authorizationData.setCustomerId(CustomerId);
+			authorizationData.setAccountId(AccountId);
+			 
+			CampaignService = new ServiceClient<ICampaignManagementService>(
+			       	authorizationData, 
+			       	ICampaignManagementService.class);
+			 
+			// Get the user's list of Bing Merchant Center (BMC) stores.
+			
+			final ArrayOfBMCStore stores = getBMCStoresByCustomerId();
+			 
+			if (stores == null)
+			{
+				outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
+				return;
+			}
+			 
+			// Create a Bing Shopping campaign using the ID of the first store in the list.
 	         
-	     CampaignService = new ServiceClient<ICampaignManagementService>(
-	               	 authorizationData, 
-	                 ICampaignManagementService.class);
-	         
-	     // Get the user's list of Bing Merchant Center (BMC) stores.
-	
-	     ArrayOfBMCStore stores = getStoreIds();
-	         
-	     if (stores == null)
-	     {
-	         System.out.printf("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId());
-	         return;
-	     }
-	         
-	     // Create a Bing Shopping campaign using the ID of the first store in the list.
-	         
-	     ArrayOflong campaignIds = addCampaigns(AccountId, stores.getBMCStores().get(0).getId());
-	     printCampaignIdentifiers(campaignIds);
-	         
-	     ArrayOflong adGroupIds = addAdGroups(campaignIds.getLongs().get(0));
-	     printAdGroupIdentifiers(adGroupIds);
-	         
-	     AddAdsResponse response = addAds(adGroupIds.getLongs().get(0));
-	     printAdIdentifiers(response.getAdIds(), response.getPartialErrors());
-	
-	     // Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
-	     // your product catalog. 
-	  
-             AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
-             printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
-             
-             addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
-             ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
-
-             long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
-             long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
-             updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
-             
-             // Delete the campaign from the account.
-	
-	     deleteCampaigns(AccountId, campaignIds);
-	     System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+			Campaign campaign = new Campaign();
+			campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
+			campaign.setDescription("Bing Shopping Campaign Example.");
+			campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
+			campaign.setMonthlyBudget(1000.00);
+			campaign.setTimeZone("PacificTimeUSCanadaTijuana");
+			ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+			campaignTypes.add(CampaignType.SHOPPING);
+			ArrayOfSetting settings = new ArrayOfSetting();
+			ShoppingSetting shoppingSetting = new ShoppingSetting();
+			shoppingSetting.setPriority(0);
+			shoppingSetting.setSalesCountryCode("US");
+			shoppingSetting.setStoreId(stores.getBMCStores().get(0).getId());
+			settings.getSettings().add(shoppingSetting);
+			campaign.setSettings(settings);
+			campaign.setCampaignType(campaignTypes);
+			campaign.setDaylightSaving(true);
+				   		
+			ArrayOfCampaign campaigns = new ArrayOfCampaign();
+			campaigns.getCampaigns().add(campaign);
+			AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+			ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+			ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+			outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
+			 
+			ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
+			AdGroup adGroup = new AdGroup();
+			adGroup.setName("Product Categories");
+			ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
+			adDistribution.add(AdDistribution.SEARCH);
+			adGroup.setAdDistribution(adDistribution);
+			adGroup.setBiddingModel(BiddingModel.KEYWORD);
+			adGroup.setPricingModel(PricingModel.CPC);
+			adGroup.setStartDate(null);
+			adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+			adGroup.getEndDate().setDay(31);
+			adGroup.getEndDate().setMonth(12);
+			adGroup.getEndDate().setYear(2016);
+			Bid searchBid = new Bid();
+			searchBid.setAmount(0.09);
+			adGroup.setSearchBid(searchBid);
+			adGroup.setLanguage("English");
+			adGroups.getAdGroups().add(adGroup);
+			
+			AddAdGroupsResponse addAdGroupsResponse = addAdGroups(campaignIds.getLongs().get(0), adGroups);
+			ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
+			ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
+			outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
+			
+			ArrayOfAd ads = new ArrayOfAd();
+			ProductAd productAd = new ProductAd(){{
+				promotionalText = "Free shipping on $99 purchases.";
+			}};
+			ads.getAds().add(productAd);
+			
+			AddAdsResponse addAdsResponse = addAds(adGroupIds.getLongs().get(0), ads);
+			ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
+			ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
+			outputAdsWithPartialErrors(ads, adIds, adErrors);
+			
+			// Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
+			// your product catalog. 
+			  
+			        AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
+			        printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
+			         
+			        addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
+			        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
+			
+			        long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
+			        long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
+			        updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
+			         
+			        // Delete the campaign from the account.
+			
+			ArrayOflong deleteCampaignIds = new ArrayOflong();
+			deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+			deleteCampaigns(AccountId, deleteCampaignIds);
+			outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
              
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
              {
-                 System.out.printf("AdApiError\n");
-                 System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+                 outputStatusMessage("AdApiError\n");
+                 outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
              }
              
          // Campaign Management service operations can throw ApiFaultDetail.
          } catch (ApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
              {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
 
              for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
              {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage("OperationError\n");
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
          
          // Some Campaign Management service operations such as SetAdExtensionsAssociations can throw EditorialApiFaultDetail.
          } catch (EditorialApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+             outputStatusMessage("The operation failed with the following faults:\n");
 
              for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
              {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
              
              for (EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
              {
-                 System.out.printf("EditorialError at Index: %d\n\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-                 System.out.printf("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry());
+                 outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+                 outputStatusMessage(String.format("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
              }
 
              for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
              {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+                 outputStatusMessage("OperationError\n");
+                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
              }
          } catch (RemoteException ex) {
-             System.out.println("Service communication error encountered: ");
-             System.out.println(ex.getMessage());
+             outputStatusMessage("Service communication error encountered: ");
+             outputStatusMessage(ex.getMessage());
              ex.printStackTrace();
          } catch (Exception ex) {
-             System.out.println("Error encountered: ");
-             System.out.println(ex.getMessage());
+             outputStatusMessage("Error encountered: ");
+             outputStatusMessage(ex.getMessage());
              ex.printStackTrace();
          }
      }
     
-     // Adds a Bing Shopping campaign to the specified account. The
-     // CampaignType identifies the campaign as a Shopping campaign. 
-
-     static ArrayOflong addCampaigns(final long ACCOUNT_ID, final long BMC_STORE_ID) throws RemoteException, Exception
-     {
-         AddCampaignsRequest request = new AddCampaignsRequest(){{
-             accountId = ACCOUNT_ID;
-             campaigns = new ArrayOfCampaign(){{
-            	 campaigns = new ArrayList<Campaign>(){{
-            		 add(new Campaign() {{ 
-            			 name = "Bing Shopping Campaign " + System.currentTimeMillis();
-            			 description = "Bing Shopping Campaign Example.";
-            			 budgetType = BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED;
-            			 monthlyBudget = 1000.00;
-            			 timeZone = "PacificTimeUSCanadaTijuana";
-            			 daylightSaving = true;
-            			 campaignType = new ArrayList<CampaignType>(){{
-            				 add(CampaignType.SHOPPING);
-            			 }};
-            			 settings = new ArrayOfSetting(){{
-            				 settings = new ArrayList<Setting>(){{
-            					 add(new ShoppingSetting(){{
-            						 priority = 0;
-            						 salesCountryCode = "US";
-            						 storeId = BMC_STORE_ID;
-            					 }});
-            				 }};
-            			 }};
-            		 }});
-            	 }};
-             }};
-         }};
-         
-         return CampaignService.getService().addCampaigns(request).getCampaignIds();
-     }
+  //Adds one or more campaigns to the specified account.
+	
+  	static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
+  	{
+  	    AddCampaignsRequest request = new AddCampaignsRequest();
+  	    
+  	    // Set the request information.
+  	
+  	    request.setAccountId(accountId);
+  	    request.setCampaigns(campaigns);
+  	
+  	    return CampaignService.getService().addCampaigns(request);
+  	}
      
      // Returns an array of Bing Merchant Center stores that the customer owns.
      
-     static ArrayOfBMCStore getStoreIds() throws RemoteException, Exception
+     static ArrayOfBMCStore getBMCStoresByCustomerId() throws RemoteException, Exception
      {
     	 GetBMCStoresByCustomerIdRequest request = new GetBMCStoresByCustomerIdRequest();
     	 
@@ -241,17 +267,18 @@ public class ShoppingCampaigns {
         		 getFixedBid(0.35), 
         		 false);
 
-         System.out.println("Applying a biddable criterion as the root...\n");
+         outputStatusMessage("Applying a biddable criterion as the root...\n");
          
          ApplyProductPartitionActionsResponse applyPartitionActionsResponse = applyPartitionActions(_partitionActions);
          printCriterionIds(applyPartitionActionsResponse.getAdGroupCriterionIds(), applyPartitionActionsResponse.getPartialErrors());
 
-         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterions(
+         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterionsByIds(
         		 AccountId,
         		 adGroupId, 
+        		 null,
         		 CriterionType.PRODUCT_PARTITION);
          
-         System.out.println("Printing the ad group's product partition; contains only the tree root node\n");
+         outputStatusMessage("Printing the ad group's product partition; contains only the tree root node\n");
          printProductPartitions(adGroupCriterions);
          
          // Update the bid of the root node that we just added.
@@ -265,16 +292,17 @@ public class ShoppingCampaigns {
          
          addPartitionAction(updatedRoot, ItemAction.UPDATE);
          
-         System.out.println("Updating the bid for the tree root node...\n");
+         outputStatusMessage("Updating the bid for the tree root node...\n");
          
          applyPartitionActionsResponse = applyPartitionActions(_partitionActions);
          
-         adGroupCriterions = getAdGroupCriterions(
+         adGroupCriterions = getAdGroupCriterionsByIds(
         		 AccountId,
         		 adGroupId, 
+        		 null,
         		 CriterionType.PRODUCT_PARTITION);
          
-         System.out.println("Updated the bid for the tree root node\n");
+         outputStatusMessage("Updated the bid for the tree root node\n");
          printProductPartitions(adGroupCriterions);
      }
 
@@ -284,9 +312,10 @@ public class ShoppingCampaigns {
      {
          _partitionActions.getAdGroupCriterionActions().clear();
          
-         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterions(
+         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterionsByIds(
         		 AccountId,
         		 adGroupId, 
+        		 null,
         		 CriterionType.PRODUCT_PARTITION);
          
          AdGroupCriterion existingRoot = getRootNode(adGroupCriterions);
@@ -370,15 +399,16 @@ public class ShoppingCampaigns {
         		 getFixedBid(0.35), 
         		 false);
          
-         System.out.println("Applying product partitions to the ad group...\n");
+         outputStatusMessage("Applying product partitions to the ad group...\n");
          ApplyProductPartitionActionsResponse applyPartitionActionsResponse = applyPartitionActions(_partitionActions);
          
-         adGroupCriterions = getAdGroupCriterions(
+         adGroupCriterions = getAdGroupCriterionsByIds(
         		 AccountId,
         		 adGroupId, 
+        		 null,
         		 CriterionType.PRODUCT_PARTITION);
          
-         System.out.println("The product partition group tree now has 9 nodes\n");
+         outputStatusMessage("The product partition group tree now has 9 nodes\n");
          printProductPartitions(adGroupCriterions);
 
          return applyPartitionActionsResponse;
@@ -430,82 +460,86 @@ public class ShoppingCampaigns {
         		 getFixedBid(0.35), 
         		 false);
          
-         System.out.println("Updating the electronics partition...\n");
+         outputStatusMessage("Updating the electronics partition...\n");
          ApplyProductPartitionActionsResponse applyPartitionActionsResponse = applyPartitionActions(_partitionActions);
          
-         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterions(
+         ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterionsByIds(
         		 AccountId,
         		 adGroupId, 
+        		 null,
         		 CriterionType.PRODUCT_PARTITION);
          
-         System.out.println("The product partition group tree now has 12 nodes\n");
+         outputStatusMessage("The product partition group tree now has 12 nodes\n");
          printProductPartitions(adGroupCriterions);
      }
      
-     // Add an ad group to the specified campaign.
-     
-     static ArrayOflong addAdGroups(final long CAMPAIGN_ID) throws RemoteException, Exception
+  // Adds one or more ad groups to the specified campaign.
+
+     static AddAdGroupsResponse addAdGroups(long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
      {
-    	 AddAdGroupsRequest request = new AddAdGroupsRequest(){{
-        	 campaignId = CAMPAIGN_ID;
-        	 adGroups = new ArrayOfAdGroup(){{
-        		 adGroups = new ArrayList<AdGroup>(){{
-        			 add(new AdGroup(){{
-        				 adDistribution = new ArrayList<AdDistribution>(){{
-        					 add(AdDistribution.SEARCH);
-        				 }};
-        				 biddingModel = BiddingModel.KEYWORD;
-        				 pricingModel = PricingModel.CPC;
-        				 startDate = null;
-        				 endDate = new Date(){{
-        					 month = 12;
-        					 day = 31;
-        					 year = 2016;
-        				 }};
-        				 language = "English";
-        				 name = "Product Categories";
-        			 }});
-            	 }};
-        	 }};
-    	 }};
-    	 
-    	 return CampaignService.getService().addAdGroups(request).getAdGroupIds();
+         AddAdGroupsRequest request = new AddAdGroupsRequest();
+         
+         // Set the request information.
+
+         request.setCampaignId(campaignId);
+         request.setAdGroups(adGroups);
+
+         return CampaignService.getService().addAdGroups(request);
      }
      
-     // Add the product ad to the ad group. Shopping campaigns must contain
-     // only Product Ads. If you try to add ads of other types, the call
-     // will fail. 
-     
-     static AddAdsResponse addAds(final long AD_GROUP_ID) throws RemoteException, Exception
-     {
-    	 final ArrayOfAd ADS = new ArrayOfAd(){{
-    		 ads = new ArrayList<Ad>(){{
-    			 add(new ProductAd(){{
-    				 promotionalText = "Free shipping on $99 purchases.";
-    			 }});
-    		 }};
-    	 }};
+     // Adds one or more ads to the specified ad group.
 
-    	 AddAdsRequest request = new AddAdsRequest(){{
-    		 adGroupId = AD_GROUP_ID;
-        	 ads = ADS;
-    	 }};
-    	 
-    	 return CampaignService.getService().addAds(request);
+     static AddAdsResponse addAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
+     {
+         AddAdsRequest request = new AddAdsRequest();
+         
+         // Set the request information.
+
+         request.setAdGroupId(adGroupId);
+         request.setAds(ads);
+
+         return CampaignService.getService().addAds(request);
      }
 
      // Delete the Shopping campaign that we added to the account.
 
-     static void deleteCampaigns(final long ACCOUNT_ID, final ArrayOflong CAMPAIGN_IDS) throws RemoteException, Exception
+     static void deleteCampaigns(long accountId, ArrayOflong campaignIds) throws RemoteException, Exception
      {
-    	 DeleteCampaignsRequest request = new DeleteCampaignsRequest(){{
-    		 accountId = ACCOUNT_ID;
-             campaignIds = CAMPAIGN_IDS;
-    	 }};
-         
+    	 DeleteCampaignsRequest request = new DeleteCampaignsRequest();
+    	 request.setAccountId(accountId);
+    	 request.setCampaignIds(campaignIds);
+    	 
          CampaignService.getService().deleteCampaigns(request);
      }
 
+     // Get the ad group's criterion.
+     
+     static ArrayOfAdGroupCriterion getAdGroupCriterionsByIds(
+   		 long accountId, 
+		 long adGroupId, 
+		 ArrayOflong adGroupCriterionIds,
+    	 CriterionType criterionType) throws RemoteException, Exception
+     {
+    	 GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
+    	 request.setAccountId(accountId);
+    	 request.setAdGroupId(adGroupId);
+    	 request.setAdGroupCriterionIds(adGroupCriterionIds);
+
+         return CampaignService.getService().getAdGroupCriterionsByIds(request).getAdGroupCriterions();
+     }
+     
+     // Adds, updates, or deletes criterion for the ad group. 
+     // All actions must be for the same ad group.
+     
+     static ApplyProductPartitionActionsResponse applyPartitionActions(
+    		 ArrayOfAdGroupCriterionAction actions) throws RemoteException, Exception
+     {
+    	 ApplyProductPartitionActionsRequest request = new ApplyProductPartitionActionsRequest();
+    	 request.setCriterionActions(actions);
+    	 
+         return CampaignService.getService().applyProductPartitionActions(request);
+     }
+     
      // Get the root criterion node.
      
      static AdGroupCriterion getRootNode(ArrayOfAdGroupCriterion adGroupCriterions)
@@ -531,39 +565,8 @@ public class ShoppingCampaigns {
     	return new FixedBid(){{ setBid(new Bid(){{ setAmount(bidAmount); }}); }};
      }
 
-     // Get the ad group's criterion.
-     
-     static ArrayOfAdGroupCriterion getAdGroupCriterions(
-   		 final long ACCOUNT_ID, 
-		 final long ADGROUP_ID, 
-    	 final CriterionType criterionType) throws RemoteException, Exception
-     {
-    	 GetAdGroupCriterionsByAdGroupIdRequest request = new GetAdGroupCriterionsByAdGroupIdRequest(){{
-    		 accountId = ACCOUNT_ID;
-    		 adGroupId = ADGROUP_ID;
-    		 criterionTypeFilter = new ArrayList<CriterionType>(){{
-    			 add(criterionType);
-    		 }};
-    	 }};
-    	 
-          return CampaignService.getService().getAdGroupCriterionsByAdGroupId(request).getAdGroupCriterions();
-     }
-     
-     // Adds, updates, or deletes criterion for the ad group. 
-     // All actions must be for the same ad group.
-     
-     static ApplyProductPartitionActionsResponse applyPartitionActions(
-    		 final ArrayOfAdGroupCriterionAction ACTIONS) throws RemoteException, Exception
-     {
-    	 ApplyProductPartitionActionsRequest request = new ApplyProductPartitionActionsRequest(){{
-    		 criterionActions = ACTIONS;
-    	 }};
-
-         return CampaignService.getService().applyProductPartitionActions(request);
-     }
-     
      // Adds a criterion action to the list of actions.
-     
+    
      static void addPartitionAction(final AdGroupCriterion CRITERION, final ItemAction ITEM_ACTION)
      {
     	 AdGroupCriterionAction partitionAction = new AdGroupCriterionAction(){{
@@ -655,53 +658,53 @@ public class ShoppingCampaigns {
      {
     	 ProductPartition criterion = (ProductPartition)node.getCriterion();
     	 
-    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s\n",
+    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s\n",
     			 "",
-    			 criterion.getPartitionType());
+    			 criterion.getPartitionType()));
 
-    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
+    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
     			 "",
     			 "ParentCriterionId: ", 
-    			 criterion.getParentCriterionId());
+    			 criterion.getParentCriterionId()));
 
-    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
+    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%d\n",
     			 "",
     			 "Id: ", 
-    			 node.getId());
+    			 node.getId()));
     	 
     	 if (criterion.getPartitionType() == ProductPartitionType.UNIT)
     	 {
     		 if (node instanceof BiddableAdGroupCriterion)
     		 {
-    	    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%.2f\n",
+    	    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%.2f\n",
     	    			 "",
     	    			 "Bid amount: ", 
-    	    			 ((FixedBid)((BiddableAdGroupCriterion)node).getCriterionBid()).getBid().getAmount());
+    	    			 ((FixedBid)((BiddableAdGroupCriterion)node).getCriterionBid()).getBid().getAmount()));
     			 
     		 }
     		 else
     		 {
     			 if (node instanceof NegativeAdGroupCriterion)
     			 {
-    		    	 System.out.printf("%" + treeLevel * 4 + "s%s\n",
+    		    	 outputStatusMessage(String.format("%" + treeLevel * 4 + "s%s\n",
     		    			 "",
-    		    			 "Not bidding on this condition");
+    		    			 "Not bidding on this condition"));
     			 }
     		 }
     	 }
     	 
     	 String nullAttribute = (criterion.getParentCriterionId() != null) ? "(All Others)" : "(Tree Root)";
     	 
-    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
+    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
     			 "",
     			 "Attribute: ", 
     			 (criterion.getCondition().getAttribute() == null) ? 
-    					 nullAttribute : criterion.getCondition().getAttribute());
+    					 nullAttribute : criterion.getCondition().getAttribute()));
     	 
-    	 System.out.printf("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
+    	 outputStatusMessage(String.format("%" + ((treeLevel > 0) ? treeLevel * 4 : "") + "s%s%s\n",
     			 "",
     			 "Condition: ", 
-    			 criterion.getCondition().getOperand());
+    			 criterion.getCondition().getOperand()));
     	 
     	 for (AdGroupCriterion childNode : childBranches.get(node.getId()))
     	 {
@@ -720,7 +723,7 @@ public class ShoppingCampaigns {
 
          for (long id : campaignIds.getLongs())
          {
-             System.out.printf("Successfully added Campaign, %d\n\n", id);
+             outputStatusMessage(String.format("Successfully added Campaign, %d\n\n", id));
          }
      }
      
@@ -734,7 +737,7 @@ public class ShoppingCampaigns {
 
          for (long id : adGroupIds.getLongs())
          {
-             System.out.printf("Successfully added Ad Group, %d\n\n", id);
+             outputStatusMessage(String.format("Successfully added Ad Group, %d\n\n", id));
          }
      }
      
@@ -754,28 +757,28 @@ public class ShoppingCampaigns {
         	 {
         		 // A shopping campaign should contain only product ads.
         		 
-        		 System.out.printf("Successfully added a product ad with ID, %d\n\n", 
-        				 adIds.getLongs().get(i));
+        		 outputStatusMessage(String.format("Successfully added a product ad with ID, %d\n\n", 
+        				 adIds.getLongs().get(i)));
         	 }
         	 else
         	 {
-        		 System.out.printf("Failed to add product ad at index, %d\n\n", i);
+        		 outputStatusMessage(String.format("Failed to add product ad at index, %d\n\n", i));
         		 
         		 BatchError error = partialErrors.getBatchErrors().get(i);
         		 
-        		 System.out.printf("\tIndex: %d\n", error.getIndex());
-        		 System.out.printf("\tCode: %d\n", error.getCode());
-        		 System.out.printf("\tErrorCode: %s\n", error.getErrorCode());
-        		 System.out.printf("\tMessage: %s\n", error.getMessage());
+        		 outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
+        		 outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+        		 outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
+        		 outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
         		 
         		 // If the error is an editorial error, get more details.
         		 
         		 if (error.getType() == "EditorialError" && error.getErrorCode() == "CampaignServiceEditorialValidationError")
         		 {
-            		 System.out.printf("\tDisapprovedText: %s\n", ((EditorialError)error).getDisapprovedText());
-            		 System.out.printf("\tLocation: %s\n", ((EditorialError)error).getLocation());
-            		 System.out.printf("\tPublisherCountry: %s\n", ((EditorialError)error).getPublisherCountry());
-            		 System.out.printf("\tReasonCode: %s\n", ((EditorialError)error).getReasonCode());
+            		 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)error).getDisapprovedText()));
+            		 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)error).getLocation()));
+            		 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)error).getPublisherCountry()));
+            		 outputStatusMessage(String.format("\tReasonCode: %s\n", ((EditorialError)error).getReasonCode()));
         		 }
         	 }
          }
@@ -795,20 +798,20 @@ public class ShoppingCampaigns {
          {
         	 if (criterionIds.getLongs().get(i) != null)
         	 {
-        		 System.out.printf("Successfully added criterion with ID, %d\n\n", 
-        				 criterionIds.getLongs().get(i));
+        		 outputStatusMessage(String.format("Successfully added criterion with ID, %d\n\n", 
+        				 criterionIds.getLongs().get(i)));
         	 }
         	 else
         	 {
-        		 System.out.printf("Failed to add criterion at index, %d\n\n", 
-        				 i);
+        		 outputStatusMessage(String.format("Failed to add criterion at index, %d\n\n", 
+        				 i));
         		 
         		 BatchError error = partialErrors.getBatchErrors().get(i);
         		 
-        		 System.out.printf("\tIndex: %d\n", error.getIndex());
-        		 System.out.printf("\tCode: %d\n", error.getCode());
-        		 System.out.printf("\tErrorCode: %s\n", error.getErrorCode());
-        		 System.out.printf("\tMessage: %s\n", error.getMessage());
+        		 outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
+        		 outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+        		 outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
+        		 outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
         	 }
          }
      }
@@ -827,33 +830,32 @@ public class ShoppingCampaigns {
          {
         	 if (criterionIds.getLongs().get(i) != null)
         	 {
-        		 System.out.printf("Successfully added campaign criterion with ID, %d\n\n", 
-        				 criterionIds.getLongs().get(i));
+        		 outputStatusMessage(String.format("Successfully added campaign criterion with ID, %d\n\n", 
+        				 criterionIds.getLongs().get(i)));
         	 }
         	 else
         	 {
-        		 System.out.printf("Failed to add campaign criterion at index, %d\n\n", i);
+        		 outputStatusMessage(String.format("Failed to add campaign criterion at index, %d\n\n", i));
         		 
         		 BatchErrorCollection error = partialErrors.getBatchErrorCollections().get(i);
         		 
-        		 System.out.printf("\tIndex: %d\n", error.getIndex());
-        		 System.out.printf("\tCode: %d\n", error.getCode());
-        		 System.out.printf("\tErrorCode: %s\n", error.getErrorCode());
-        		 System.out.printf("\tMessage: %s\n", error.getMessage());
+        		 outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
+        		 outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+        		 outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
+        		 outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
         		 
         		 if (error.getBatchErrors() != null)
         		 {        		 
 	        		 for (BatchError batchError : error.getBatchErrors().getBatchErrors())
 	        		 {
-	            		 System.out.printf("\tIndex: %d\n", batchError.getIndex());
-	            		 System.out.printf("\tCode: %d\n", batchError.getCode());
-	            		 System.out.printf("\tErrorCode: %s\n", batchError.getErrorCode());
-	            		 System.out.printf("\tMessage: %s\n\n", batchError.getMessage());
+	            		 outputStatusMessage(String.format("\tIndex: %d\n", batchError.getIndex()));
+	            		 outputStatusMessage(String.format("\tCode: %d\n", batchError.getCode()));
+	            		 outputStatusMessage(String.format("\tErrorCode: %s\n", batchError.getErrorCode()));
+	            		 outputStatusMessage(String.format("\tMessage: %s\n\n", batchError.getMessage()));
 	        		 }
         		 }
         	 }
          }
      }
-
 }
 

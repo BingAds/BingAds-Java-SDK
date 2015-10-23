@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,22 +16,15 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkPauseAdGroups {
+public class BulkPauseAds extends BulkExampleBaseV9 {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
     static BulkFileWriter Writer;  
     static BulkFileReader Reader;  
-    static DownloadFileType FileType = DownloadFileType.CSV; 
      
     final static long campaignIdKey = -123; 
     final static long adGroupIdKey = -1234; 
-	
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
         
     public static void main(String[] args) {
 		
@@ -63,7 +56,7 @@ public class BulkPauseAdGroups {
 			// Complete a full download of all ad groups in the account. 
 			 
 			List<BulkDownloadEntity> downloadEntities = new ArrayList<BulkDownloadEntity>();
-			downloadEntities.add(BulkDownloadEntity.AD_GROUPS);
+			downloadEntities.add(BulkDownloadEntity.ADS);
 			
 			DownloadParameters downloadParameters = new DownloadParameters();
 			downloadParameters.setEntities(downloadEntities);
@@ -76,17 +69,17 @@ public class BulkPauseAdGroups {
 			
 			outputStatusMessage("Printing the results of DownloadEntitiesAsync . . .\n"); 
 			for (BulkEntity entity : entities) {
-				if (entity instanceof BulkAdGroup 
-						&& ((BulkAdGroup)entity).getAdGroup().getStatus() == AdGroupStatus.ACTIVE) {
-					outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
-					((BulkAdGroup)entity).getAdGroup().setStatus(AdGroupStatus.PAUSED);
+				if (entity instanceof BulkTextAd 
+						&& ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
+					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+					((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
 					uploadEntities.add(entity);
 				}
 			}
 			entities.close();
 			
 			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active ad groups to Paused. Ready for upload.\n"); 
+				outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
 				
 				EntityUploadParameters entityUploadParameters = new EntityUploadParameters();
 				entityUploadParameters.setEntities(uploadEntities);
@@ -99,17 +92,17 @@ public class BulkPauseAdGroups {
 				
 				// Wait here and assign the upload results to 'entities'
 				entities = BulkService.uploadEntitiesAsync(entityUploadParameters, null, null).get();
-	
+
 				outputStatusMessage("Printing the results of UploadEntitiesAsync . . .\n"); 
 				for (BulkEntity entity : entities) {
-					if (entity instanceof BulkAdGroup) {
-						outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
+					if (entity instanceof BulkTextAd) {
+						outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
 					}
 				}
 				entities.close();
 			}
 			else{
-				outputStatusMessage("All ad groups are already Paused. \n"); 
+				outputStatusMessage("All text ads are already Paused. \n"); 
 			}
 			
 			outputStatusMessage("Program execution completed\n"); 
@@ -159,36 +152,4 @@ public class BulkPauseAdGroups {
 	
 		System.exit(0);
 	}
-
-	static void outputStatusMessage(java.lang.String message){
-		System.out.println(message);
-	}
-	
-	static void outputBulkAdGroups(Iterable<BulkAdGroup> bulkEntities){
-		for (BulkAdGroup entity : bulkEntities){
-			outputStatusMessage("BulkAdGroup: \n");
-			outputStatusMessage(String.format("AdGroup Name: %s\nAdGroup Id: %s\nAdGroup Status: %s\n", 
-					entity.getAdGroup().getName(),
-					entity.getAdGroup().getId(),
-					entity.getAdGroup().getStatus()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }

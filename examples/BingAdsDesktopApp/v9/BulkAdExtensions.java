@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples;
+package com.microsoft.bingads.examples.v9;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,44 +17,18 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkAdExtensions {
+public class BulkAdExtensions extends BulkExampleBaseV9 {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
     static BulkFileWriter Writer;  
     static BulkFileReader Reader;  
-    
-    /// <summary>
-    /// The directory for the bulk files.
-    /// </summary>
-    static java.lang.String FileDirectory = "c:\\bulk\\";
-
-    /// <summary>
-    /// The name of the bulk upload file.
-    /// </summary>
-    static java.lang.String UploadFileName = "upload.csv";
-
-    /// <summary>
-    /// The name of the bulk upload file.
-    /// </summary>
-    static java.lang.String ResultFileName = "result.csv";
-    
-    /// <summary>
-    /// The bulk file extension type.
-    /// </summary>
-    static DownloadFileType FileType = DownloadFileType.CSV; 
      
     final static long appAdExtensionIdKey = -11; 
     final static long callAdExtensionIdKey = -12; 
     final static long locationAdExtensionIdKey = -13; 
     final static long siteLinksAdExtensionIdKey = -14; 
     final static long campaignIdKey = -123; 
-    
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
         
     public static void main(String[] args) {
 		
@@ -409,19 +383,6 @@ public class BulkAdExtensions {
 		return bulkCampaign;
 	}
 	
-	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
-		for (BulkCampaign entity : bulkEntities){
-			outputStatusMessage("\nBulkCampaign: \n");
-			outputStatusMessage(String.format("Campaign Name: %s\nCampaign Id: %s\n", 
-					entity.getCampaign().getName(),
-					entity.getCampaign().getId()));
-					
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
 	static BulkAppAdExtension getExampleBulkAppAdExtension(){
 		BulkAppAdExtension bulkAppAdExtension = new BulkAppAdExtension();
 		bulkAppAdExtension.setAccountId(authorizationData.getAccountId());
@@ -435,38 +396,6 @@ public class BulkAdExtensions {
 		return bulkAppAdExtension;
 	}
 	
-	static void outputBulkAppAdExtensions(Iterable<BulkAppAdExtension> bulkEntities){
-		for (BulkAppAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkAppAdExtension: \n");
-            outputStatusMessage(String.format("AccountId: %s\n", entity.getAccountId()));
-            outputStatusMessage(String.format("ClientId: %s\n",entity.getClientId()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            
-            // Output the Campaign Management AppAdExtension Object
-            outputAppAdExtension(entity.getAppAdExtension());
-
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
-	}
-	
-	static void outputAppAdExtension(AppAdExtension extension){
-		if (extension != null) {
-			outputStatusMessage(String.format("AppPlatform: %s\n", extension.getAppPlatform()));
-			outputStatusMessage(String.format("AppStoreId: %s\n", extension.getAppStoreId()));
-			outputStatusMessage(String.format("DestinationUrl: %s\n", extension.getDestinationUrl()));
-			outputStatusMessage(String.format("DevicePreference: %s\n", extension.getDevicePreference()));
-			outputStatusMessage(String.format("DisplayText: %s\n", extension.getDisplayText()));
-			outputStatusMessage(String.format("Id: %s\n", extension.getId()));
-			outputStatusMessage(String.format("Status: %s\n", extension.getStatus()));
-			outputStatusMessage(String.format("Version: %s\n", extension.getVersion()));
-		}
-	}
-	
 	static BulkCampaignAppAdExtension getExampleBulkCampaignAppAdExtension(){
 		BulkCampaignAppAdExtension bulkCampaignAppAdExtension = new BulkCampaignAppAdExtension();
 		AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
@@ -474,28 +403,6 @@ public class BulkAdExtensions {
 		adExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
 		bulkCampaignAppAdExtension.setAdExtensionIdToEntityIdAssociation(adExtensionIdToEntityIdAssociation);
 		return bulkCampaignAppAdExtension;
-	}
-	
-	static void outputBulkCampaignAppAdExtensions(Iterable<BulkCampaignAppAdExtension> bulkEntities){
-		for (BulkCampaignAppAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignAppAdExtension: \n");
-            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
-            	outputStatusMessage(String.format("AdExtensionId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
-                outputStatusMessage(String.format("EntityId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
-            }
-            outputStatusMessage(String.format("CampaignName: %s\n", entity.getCampaignName()));
-            outputStatusMessage(String.format("ClientId: %s\n", entity.getClientId()));
-            outputStatusMessage(String.format("EditorialStatus: %s\n", entity.getEditorialStatus()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            outputStatusMessage(String.format("Status: %s\n", entity.getStatus()));
-            
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
 	}
 	
 	static BulkCallAdExtension getExampleBulkCallAdExtension(){
@@ -510,33 +417,6 @@ public class BulkAdExtensions {
 		return bulkCallAdExtension;
 	}
 	
-	static void outputBulkCallAdExtensions(Iterable<BulkCallAdExtension> bulkEntities){
-		for (BulkCallAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCallAdExtension: \n");
-            outputStatusMessage(String.format("AccountId: %s\n", entity.getAccountId()));
-            outputStatusMessage(String.format("ClientId: %s\n",entity.getClientId()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            
-            // Output the Campaign Management CallAdExtension Object
-            outputCallAdExtension(entity.getCallAdExtension());
-
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
-	}
-	
-	static void outputCallAdExtension(CallAdExtension extension){
-		if (extension != null) {
-			outputStatusMessage(String.format("Phone number: %s\n", extension.getPhoneNumber()));
-            outputStatusMessage(String.format("Country: %s\n", extension.getCountryCode()));
-            outputStatusMessage(String.format("Is only clickable item: %s\n", extension.getIsCallOnly()));
-		}
-	}
-	
 	static BulkCampaignCallAdExtension getExampleBulkCampaignCallAdExtension(){
 		BulkCampaignCallAdExtension bulkCampaignCallAdExtension = new BulkCampaignCallAdExtension();
 		AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
@@ -544,28 +424,6 @@ public class BulkAdExtensions {
 		adExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
 		bulkCampaignCallAdExtension.setAdExtensionIdToEntityIdAssociation(adExtensionIdToEntityIdAssociation);
 		return bulkCampaignCallAdExtension;
-	}
-	
-	static void outputBulkCampaignCallAdExtensions(Iterable<BulkCampaignCallAdExtension> bulkEntities){
-		for (BulkCampaignCallAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignCallAdExtension: \n");
-            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
-            	outputStatusMessage(String.format("AdExtensionId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
-                outputStatusMessage(String.format("EntityId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
-            }
-            outputStatusMessage(String.format("CampaignName: %s\n", entity.getCampaignName()));
-            outputStatusMessage(String.format("ClientId: %s\n", entity.getClientId()));
-            outputStatusMessage(String.format("EditorialStatus: %s\n", entity.getEditorialStatus()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            outputStatusMessage(String.format("Status: %s\n", entity.getStatus()));
-            
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
 	}
 	
 	static BulkLocationAdExtension getExampleBulkLocationAdExtension(){
@@ -589,49 +447,6 @@ public class BulkAdExtensions {
 		return bulkLocationAdExtension;
 	}
 	
-	static void outputBulkLocationAdExtensions(Iterable<BulkLocationAdExtension> bulkEntities){
-		for (BulkLocationAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkLocationAdExtension: \n");
-            outputStatusMessage(String.format("AccountId: %s\n", entity.getAccountId()));
-            outputStatusMessage(String.format("ClientId: %s\n",entity.getClientId()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-
-            // Output the Campaign Management LocationAdExtension Object
-            outputLocationAdExtension(entity.getLocationAdExtension());
-
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
-	}
-	
-	static void outputLocationAdExtension(LocationAdExtension extension){
-		if (extension != null) {
-			if(extension.getAddress() != null){
-				outputStatusMessage(String.format("Street: %s\n", extension.getAddress().getStreetAddress()));
-	            outputStatusMessage(String.format("City: %s\n", extension.getAddress().getCityName()));
-	            outputStatusMessage(String.format("State: %s\n", extension.getAddress().getProvinceName()));
-	            outputStatusMessage(String.format("Country: %s\n", extension.getAddress().getCountryCode()));
-	            outputStatusMessage(String.format("Zip code: %s\n", extension.getAddress().getPostalCode()));
-			}
-			outputStatusMessage(String.format("Company name: %s\n", extension.getCompanyName()));
-            outputStatusMessage(String.format("Phone number: %s\n", extension.getPhoneNumber()));
-            outputStatusMessage(String.format("Business coordinates determined?: %s\n", extension.getGeoCodeStatus()));
-            if(extension.getGeoPoint() != null){
-            	outputStatusMessage("GeoPoint: ");
-            	outputStatusMessage(String.format("LatitudeInMicroDegrees: %s\n", 
-            			extension.getGeoPoint().getLatitudeInMicroDegrees()));
-            	outputStatusMessage(String.format("LongitudeInMicroDegrees: %s\n", 
-            			extension.getGeoPoint().getLongitudeInMicroDegrees()));
-            }
-            outputStatusMessage(String.format("Map icon ID: %s\n", extension.getIconMediaId()));
-            outputStatusMessage(String.format("Business image ID: %s\n", extension.getImageMediaId()));
-		}
-	}
-	
 	static BulkCampaignLocationAdExtension getExampleBulkCampaignLocationAdExtension(){
 		BulkCampaignLocationAdExtension bulkCampaignLocationAdExtension = new BulkCampaignLocationAdExtension();
 		AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
@@ -639,28 +454,6 @@ public class BulkAdExtensions {
 		adExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
 		bulkCampaignLocationAdExtension.setAdExtensionIdToEntityIdAssociation(adExtensionIdToEntityIdAssociation);
 		return bulkCampaignLocationAdExtension;
-	}
-	
-	static void outputBulkCampaignLocationAdExtensions(Iterable<BulkCampaignLocationAdExtension> bulkEntities){
-		for (BulkCampaignLocationAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignLocationAdExtension: \n");
-            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
-            	outputStatusMessage(String.format("AdExtensionId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
-                outputStatusMessage(String.format("EntityId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
-            }
-            outputStatusMessage(String.format("CampaignName: %s\n", entity.getCampaignName()));
-            outputStatusMessage(String.format("ClientId: %s\n", entity.getClientId()));
-            outputStatusMessage(String.format("EditorialStatus: %s\n", entity.getEditorialStatus()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            outputStatusMessage(String.format("Status: %s\n", entity.getStatus()));
-            
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
 	}
 	
 	static BulkSiteLinkAdExtension getExampleBulkSiteLinkAdExtension(){
@@ -682,71 +475,6 @@ public class BulkAdExtensions {
 		return bulkSiteLinkAdExtension;
 	}
 	
-	static void outputBulkSiteLinkAdExtensions(Iterable<BulkSiteLinkAdExtension> bulkEntities){
-		for (BulkSiteLinkAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkSiteLinkAdExtension: \n");
-            outputStatusMessage(String.format("AccountId: %s\n", entity.getAccountId()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-
-            // Output the Campaign Management SiteLinksAdExtension Object
-            outputSiteLinksAdExtension(entity.getSiteLinksAdExtension());
-
-            if (entity.getSiteLinks() != null && entity.getSiteLinks().size() > 0)
-            {
-                outputBulkSiteLinks(entity.getSiteLinks());
-            }
-        }
-	}
-	
-	static void outputBulkSiteLinks(Iterable<BulkSiteLink> bulkEntities)
-    {
-        for (BulkSiteLink entity : bulkEntities)
-        {
-            outputStatusMessage("\nBulkSiteLink: \n");
-            outputStatusMessage(String.format("AccountId: %s\n", entity.getAccountId()));
-            outputStatusMessage(String.format("AdExtensionId: %s\n", entity.getAdExtensionId()));
-            outputStatusMessage(String.format("ClientId: %s\n", entity.getClientId()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            outputStatusMessage(String.format("Order: %s\n", entity.getOrder()));
-            outputStatusMessage(String.format("Status: %s\n", entity.getStatus()));
-            outputStatusMessage(String.format("Version: %s\n", entity.getVersion()));
-
-            // Output the Campaign Management SiteLink Object
-            List<SiteLink> siteLinks = new ArrayList<SiteLink>();
-            siteLinks.add(entity.getSiteLink());
-            outputSiteLinks(siteLinks);
-
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
-    }
-	
-	static void outputSiteLinksAdExtension(SiteLinksAdExtension extension){
-		if (extension != null && extension.getSiteLinks() != null) {
-			for (SiteLink sLink : extension.getSiteLinks().getSiteLinks())
-            {
-                outputStatusMessage(String.format("  Display URL: %s\n", sLink.getDisplayText()));
-                outputStatusMessage(String.format("  Destination URL: %s\n", sLink.getDestinationUrl()));
-            }
-		}
-	}
-	
-	static void outputSiteLinks(Iterable<SiteLink> siteLinks){
-		if (siteLinks != null) {
-			for (SiteLink siteLink : siteLinks)
-            {
-                outputStatusMessage(String.format("  Display URL: %s\n", siteLink.getDisplayText()));
-                outputStatusMessage(String.format("  Destination URL: %s\n", siteLink.getDestinationUrl()));
-            }
-		}
-	}
-	
 	static BulkCampaignSiteLinkAdExtension getExampleBulkCampaignSiteLinkAdExtension(){
 		BulkCampaignSiteLinkAdExtension bulkCampaignSiteLinkAdExtension = new BulkCampaignSiteLinkAdExtension();
 		AdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
@@ -755,44 +483,4 @@ public class BulkAdExtensions {
 		bulkCampaignSiteLinkAdExtension.setAdExtensionIdToEntityIdAssociation(adExtensionIdToEntityIdAssociation);
 		return bulkCampaignSiteLinkAdExtension;
 	}
-	
-	static void outputBulkCampaignSiteLinkAdExtensions(Iterable<BulkCampaignSiteLinkAdExtension> bulkEntities){
-		for (BulkCampaignSiteLinkAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignSiteLinkAdExtension: \n");
-            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
-            	outputStatusMessage(String.format("AdExtensionId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
-                outputStatusMessage(String.format("EntityId: %s\n", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
-            }
-            outputStatusMessage(String.format("CampaignName: %s\n", entity.getCampaignName()));
-            outputStatusMessage(String.format("ClientId: %s\n", entity.getClientId()));
-            outputStatusMessage(String.format("EditorialStatus: %s\n", entity.getEditorialStatus()));
-            if(entity.getLastModifiedTime() != null){
-            	outputStatusMessage(String.format("LastModifiedTime: %s\n",entity.getLastModifiedTime().getTime()));
-            }
-            outputStatusMessage(String.format("Status: %s\n", entity.getStatus()));
-            
-            if (entity.hasErrors())
-            {
-                outputErrors(entity.getErrors());
-            }
-        }
-	}
-	
-	static void outputStatusMessage(java.lang.String message){
-		System.out.println(message);
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }
