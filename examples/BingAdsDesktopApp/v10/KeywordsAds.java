@@ -113,7 +113,6 @@ public class KeywordsAds extends ExampleBaseV10 {
             	 textAd.setText("Huge Savings on red shoes.");
                  textAd.setDisplayUrl("Contoso.com");
                  
-                 // Destination URLs are deprecated and will be sunset in March 2016. 
                  // If you are currently using the Destination URL, you must upgrade to Final URLs. 
                  // Here is an example of a DestinationUrl you might have used previously. 
                  // textAd.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");

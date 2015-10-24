@@ -155,7 +155,6 @@ public class BulkAdExtensions extends BulkExampleBaseV10 {
 	       	    SiteLink siteLink = new SiteLink();
 	            siteLink.setDisplayText("Women's Shoe Sale " + (i+1));
 	            
-	            // Destination URLs are deprecated and will be sunset in March 2016. 
 	            // If you are currently using the Destination URL, you must upgrade to Final URLs. 
 	            // Here is an example of a DestinationUrl you might have used previously. 
 	            // siteLink.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
