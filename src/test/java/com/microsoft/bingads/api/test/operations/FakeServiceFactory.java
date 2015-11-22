@@ -9,7 +9,7 @@ import static org.easymock.EasyMock.createMock;
 public class FakeServiceFactory implements ServiceFactory {
 
     @Override
-    public Service createService(Class serviceInterface) {        
+    public Service createService(Class serviceInterface, ApiEnvironment env) {
         return createMock(Service.class);        
     }
 

@@ -1,6 +1,7 @@
 package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.adintelligence.IAdIntelligenceService;
 import com.microsoft.bingads.bulk.IBulkService;
 import com.microsoft.bingads.campaignmanagement.ICampaignManagementService;
@@ -10,6 +11,8 @@ import com.microsoft.bingads.optimizer.IOptimizerService;
 import com.microsoft.bingads.reporting.IReportingService;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +24,7 @@ import javax.jws.WebService;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
-import org.apache.cxf.endpoint.Client;
-import org.apache.cxf.message.Message;
+import javax.xml.ws.handler.MessageContext;
 
 class ServiceFactoryImpl implements ServiceFactory {
     
@@ -99,10 +101,13 @@ class ServiceFactoryImpl implements ServiceFactory {
     };
 
     @Override
-    public Service createService(Class serviceInterface) {
+    public Service createService(Class serviceInterface, ApiEnvironment env) {
         QName qName = getServiceQname(serviceInterface);
-
-        return Service.create(qName);
+        try {
+            return Service.create(new URL(getServiceUrl(serviceInterface, env) + "?wsdl"),qName);
+        } catch (MalformedURLException e) {
+            throw new InternalException(e);
+        }
     }
 
     private String getServiceUrl(Class serviceInterface, ApiEnvironment env) {
@@ -172,9 +177,9 @@ class ServiceFactoryImpl implements ServiceFactory {
     
     private <T> void addUserAgent(T port) {
         Map<String, List> headers = new HashMap<String, List>();
-        
+
         headers.put("User-Agent", Arrays.asList("BingAdsSDKJava " + VERSION));
-        
-        ((Client) port).getRequestContext().put(Message.PROTOCOL_HEADERS, headers);
+
+        ((BindingProvider) port).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, headers);
     }
 }

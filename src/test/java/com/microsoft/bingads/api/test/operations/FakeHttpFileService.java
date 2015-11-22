@@ -11,7 +11,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.concurrent.Future;
-import org.apache.cxf.headers.Header;
+
+import com.sun.xml.internal.ws.message.StringHeader;
 import org.apache.http.HttpRequest;
 
 public class FakeHttpFileService implements HttpFileService {
@@ -47,7 +48,7 @@ public class FakeHttpFileService implements HttpFileService {
     public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback) {
         onDownloadFile.accept(url, tempZipFile);
         
-        Future<File> result = new CompleteResponse(tempZipFile, new ArrayList<Header>());
+        Future<File> result = new CompleteResponse(tempZipFile, new ArrayList<StringHeader>());
         
         callback.onCompleted(result);
         

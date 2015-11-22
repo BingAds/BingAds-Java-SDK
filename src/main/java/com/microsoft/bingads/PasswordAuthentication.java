@@ -4,8 +4,6 @@ import com.microsoft.bingads.internal.HttpHeaders;
 import java.util.List;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
-import org.apache.cxf.headers.Header;
-import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.apache.http.HttpRequest;
 
 /**

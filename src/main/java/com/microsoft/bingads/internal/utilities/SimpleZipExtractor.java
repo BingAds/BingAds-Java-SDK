@@ -12,7 +12,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
-import org.apache.cxf.helpers.IOUtils;
 
 public class SimpleZipExtractor implements ZipExtractor {
 
@@ -42,7 +41,7 @@ public class SimpleZipExtractor implements ZipExtractor {
             try {
                 tempFileOutput = new FileOutputStream(effectiveResultFile);
 
-                IOUtils.copy(zipFileInput, tempFileOutput);
+                FileUtils.copy(zipFileInput, tempFileOutput);
             } finally {
                 if (tempFileOutput != null) {
                     tempFileOutput.close();
@@ -69,7 +68,7 @@ public class SimpleZipExtractor implements ZipExtractor {
 
             zipStream.putNextEntry(new ZipEntry(sourceFilePath.getName()));
 
-            IOUtils.copy(inputStream, zipStream);
+            FileUtils.copy(inputStream, zipStream);
 
             zipStream.closeEntry();
         } catch (FileNotFoundException ex) {
