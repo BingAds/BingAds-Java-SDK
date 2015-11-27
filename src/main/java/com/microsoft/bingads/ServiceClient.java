@@ -1,6 +1,5 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.HttpHeaders;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
@@ -12,9 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import javax.jws.WebService;
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.HandlerResolver;
