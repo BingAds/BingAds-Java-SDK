@@ -19,9 +19,9 @@ import java.util.Set;
  */
 public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
-    private Map<String, String> headers;
+    private final Map<String, String> headers;
 
-    private String namespaceURI;
+    private final String namespaceURI;
 
     public HeaderHandler(String namespaceURI, Map<String, String> headers) {
         this.headers = headers;
@@ -43,13 +43,14 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
                 }
 
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
-                    header.addHeaderElement(new QName(namespaceURI, entry.getKey().toString()))
-                            .addTextNode(entry.getValue().toString());
+                    header.addHeaderElement(new QName(namespaceURI, entry.getKey())).addTextNode(entry.getValue());
                 }
             } else {
-                String headerValue = getSpecificHeaderValue(context.getMessage().getSOAPHeader(), ServiceUtils.TRACKING_KEY);
+                String headerValue = getSpecificHeaderValue(context.getMessage().getSOAPHeader(), ServiceUtils.TRACKING_HEADER_NAME);
                 if (headerValue != null) {
                     context.put(ServiceUtils.TRACKING_KEY, headerValue);
+
+                    context.setScope(ServiceUtils.TRACKING_KEY, MessageContext.Scope.APPLICATION);
                 }
             }
 
@@ -67,14 +68,17 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
     }
 
 
+    @Override
     public Set getHeaders() {
-        return Collections.emptySet();
+        return null;
     }
 
+    @Override
     public boolean handleFault(SOAPMessageContext context) {
         return true;
     }
 
+    @Override
     public void close(MessageContext context) {
     }
 }

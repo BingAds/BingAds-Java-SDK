@@ -15,7 +15,7 @@ import com.microsoft.bingads.v10.bulk.GetBulkDownloadStatusResponse;
 import com.microsoft.bingads.v10.bulk.GetBulkUploadStatusRequest;
 import com.microsoft.bingads.v10.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v10.bulk.IBulkService;
-import com.microsoft.bingads.api.test.operations.CompleteResponse;
+import com.microsoft.bingads.v10.api.test.operations.CompleteResponse;
 import com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusRequest;
 import com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusResponse;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
@@ -29,8 +29,6 @@ import javax.xml.ws.Binding;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.EndpointReference;
 import javax.xml.ws.Response;
-
-import com.sun.xml.internal.ws.message.StringHeader;
 
 public class FakeBulkService implements IBulkService, BindingProvider {
 

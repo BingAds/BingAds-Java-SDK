@@ -25,10 +25,11 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
-    
-    private static final String VERSION = "9.3.4";
+
+    private static final String VERSION = "10.4.2";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
@@ -103,11 +104,17 @@ class ServiceFactoryImpl implements ServiceFactory {
     @Override
     public Service createService(Class serviceInterface, ApiEnvironment env) {
         QName qName = getServiceQname(serviceInterface);
+
+        // CXF doesn't require WSDL url to be passed
+        if (Provider.provider().getClass().getName().contains("org.apache.cxf")) {
+           return Service.create(qName);
+        }
+
         try {
-            return Service.create(new URL(getServiceUrl(serviceInterface, env) + "?wsdl"),qName);
+            return Service.create(new URL(getServiceUrl(serviceInterface, env) + "?wsdl"), qName);
         } catch (MalformedURLException e) {
             throw new InternalException(e);
-        }
+        }        
     }
 
     private String getServiceUrl(Class serviceInterface, ApiEnvironment env) {
@@ -137,20 +144,20 @@ class ServiceFactoryImpl implements ServiceFactory {
 
     @Override
     public <T> T createProxyFromService(Service service, ApiEnvironment env, Class<T> serviceInterface) {
-        T port = service.getPort(serviceInterface);      
+        T port = service.getPort(serviceInterface);
 
         String serviceUrl = getServiceUrl(serviceInterface, env);
 
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, serviceUrl);
 
         addUserAgent(port);
-        
+
         return port;
     }
 
     private String getServiceUrlFromConfig(Class serviceInterface) {
         InputStream input = null;
-        try {            
+        try {
             input = this.getClass().getClassLoader().getResourceAsStream("bingads.properties");
 
             if (input == null) {
@@ -160,7 +167,7 @@ class ServiceFactoryImpl implements ServiceFactory {
             Properties props = new Properties();
 
             props.load(input);
-            
+
             return props.getProperty(serviceInterface.getCanonicalName() + ".url");
         } catch (IOException ex) {
             return null;
@@ -174,7 +181,7 @@ class ServiceFactoryImpl implements ServiceFactory {
             }
         }
     }
-    
+
     private <T> void addUserAgent(T port) {
         Map<String, List> headers = new HashMap<String, List>();
 

@@ -77,13 +77,7 @@ public class ServiceClient<T> {
      * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
-        this(authorizationData, ApiEnvironment.PRODUCTION, serviceInterface);
-
-        ApiEnvironment environmentFromConfig = getEnvironmentFromConfig();
-
-        if (environmentFromConfig != null) {
-            this.environment = environmentFromConfig;
-        }
+        this(authorizationData, null, serviceInterface);
     }
 
     /**
@@ -96,6 +90,15 @@ public class ServiceClient<T> {
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
+
+        if (environment == null) {
+            environment = getEnvironmentFromConfig();
+        }
+
+        if (environment == null) {
+            environment = ApiEnvironment.PRODUCTION;
+        }
+
         this.environment = environment;
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();

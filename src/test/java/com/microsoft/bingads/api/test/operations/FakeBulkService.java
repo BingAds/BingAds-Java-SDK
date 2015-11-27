@@ -20,7 +20,6 @@ import com.microsoft.bingads.bulk.IBulkService;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-import com.sun.xml.internal.ws.message.StringHeader;
 
 import java.util.HashMap;
 import java.util.List;
