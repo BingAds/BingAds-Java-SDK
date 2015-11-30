@@ -182,8 +182,8 @@ public class ReportRequests extends ExampleBaseV9 {
 		File resultFile = reportingDownloadOperation.downloadResultFileAsync(
 		    new File(FileDirectory),
 		    ResultFileName,
-		    true,   
-		    true,  // Set this value true if you want to overwrite the same file.
+		    true,  // Set this value to true if you want to decompress the ZIP file.
+		    true,  // Set this value true if you want to overwrite the named file.
 		    null).get();
 		
 		outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
@@ -206,8 +206,8 @@ public class ReportRequests extends ExampleBaseV9 {
 		File resultFile = reportingDownloadOperation.downloadResultFileAsync(
 		    new File(FileDirectory),
 		    ResultFileName,
-		    true,   
-		    true,    // Set this value true if you want to overwrite the same file.
+		    true,  // Set this value to true if you want to decompress the ZIP file.
+		    true,  // Set this value true if you want to overwrite the named file.
 		    null).get();
 		
 		outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
@@ -218,7 +218,7 @@ public class ReportRequests extends ExampleBaseV9 {
     private static ReportRequest getKeywordPerformanceReportRequest(){
     	KeywordPerformanceReportRequest report = new KeywordPerformanceReportRequest();
         
-        report.setFormat(ReportFormat.TSV);
+        report.setFormat(ReportFileFormat);
         report.setReportName("My Keyword Performance Report");
         report.setReturnOnlyCompleteData(false);
         report.setAggregation(ReportAggregation.DAILY);
