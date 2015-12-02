@@ -22,7 +22,7 @@ public class ReportRequests extends ExampleBaseV9 {
     static java.lang.String FileDirectory = "c:\\reports\\";
 
     // The name of the report file.
-    static java.lang.String ResultFileName = "result.csv";
+    static java.lang.String ResultFileName = "result";
     
     // The report file extension type.
     static ReportFormat ReportFileFormat = ReportFormat.CSV; 
@@ -53,13 +53,13 @@ public class ReportRequests extends ExampleBaseV9 {
             ReportingServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             // You can submit one of the example reports, or build your own.
-			ReportRequest reportRequest = getKeywordPerformanceReportRequest();
+	    ReportRequest reportRequest = getKeywordPerformanceReportRequest();
 			
-			ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
-			reportingDownloadParameters.setReportRequest(reportRequest);
-			reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
-			reportingDownloadParameters.setResultFileName(ResultFileName);
-			reportingDownloadParameters.setOverwriteResultFile(true);
+	    ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
+	    reportingDownloadParameters.setReportRequest(reportRequest);
+	    reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
+	    reportingDownloadParameters.setResultFileName(ResultFileName);
+	    reportingDownloadParameters.setOverwriteResultFile(true);
                         
             // Option A - Background Completion with ReportingServiceManager
             // You can submit a download or upload request and the ReportingServiceManager will automatically 
@@ -71,7 +71,8 @@ public class ReportRequests extends ExampleBaseV9 {
 
             // Option B - Submit and Download with ReportingServiceManager
             // Submit the download request and then use the ReportingOperation result to 
-            // track status yourself using GetStatusAsync.
+            // track status until the report is complete e.g. either using
+            // trackAsync or GetStatusAsync.
 
             outputStatusMessage("Awaiting Submit and Download . . .");
             submitAndDownload(reportRequest);
@@ -90,7 +91,7 @@ public class ReportRequests extends ExampleBaseV9 {
             // The report request identifier is valid for two days. 
             // If you do not download the report within two days, you must request the report again.
             outputStatusMessage("Awaiting Download Results . . .");
-            downloadResults(requestId, authorizationData);
+            downloadResults(requestId);
         
         } catch (ExecutionException ee) {
 			Throwable cause = ee.getCause();
@@ -162,27 +163,27 @@ public class ReportRequests extends ExampleBaseV9 {
 				reportRequest,
 				null).get();
 		
-		ReportingOperationStatus reportingOperationStatus;
-		int waitTime = 5000;
-		        
-		// This sample polls every 5 seconds up to 2 minutes.
-		        
-		for (int i = 0; i < 24; i++)
-		{
-		    Thread.sleep(waitTime);
+		ReportingOperationStatus reportingOperationStatus = reportingDownloadOperation.trackAsync(null).get();
 		
-		    reportingOperationStatus = reportingDownloadOperation.getStatusAsync(null).get();
+		// You can use trackAsync to poll until complete as shown above, 
+		// or use custom polling logic with getStatusAsync as shown below.
 		
-		    if (reportingOperationStatus.getStatus() == ReportRequestStatusType.SUCCESS)
-		    {
-		        break;
-		    }
-		}
+//		ReportingOperationStatus reportingOperationStatus;
+//		
+//		for (int i = 0; i < 24; i++)
+//		{
+//		    Thread.sleep(5000);
+//		    reportingOperationStatus = reportingDownloadOperation.getStatusAsync(null).get();
+//		    if (reportingOperationStatus.getStatus() == ReportRequestStatusType.SUCCESS)
+//		    {
+//		        break;
+//		    }
+//		}
 		
 		File resultFile = reportingDownloadOperation.downloadResultFileAsync(
 		    new File(FileDirectory),
 		    ResultFileName,
-		    true,  // Set this value to true if you want to decompress the ZIP file.
+		    true, // Set this value to true if you want to decompress the ZIP file.
 		    true,  // Set this value true if you want to overwrite the named file.
 		    null).get();
 		
@@ -194,19 +195,22 @@ public class ReportRequests extends ExampleBaseV9 {
     // you can use an existing download request identifier and use it 
     // to download the result file. Use TrackAsync to indicate that the application 
     // should wait to ensure that the download status is completed.
-    private static void downloadResults(java.lang.String requestId, AuthorizationData authorizationData) 
+    private static void downloadResults(java.lang.String requestId) 
     		throws ExecutionException, InterruptedException, URISyntaxException, IOException {
     	
 		ReportingDownloadOperation reportingDownloadOperation = new ReportingDownloadOperation(requestId, authorizationData);
 		
 		reportingDownloadOperation.setStatusPollIntervalInMilliseconds(5000);
 		
+		// You can use trackAsync to poll until complete as shown here, 
+	    // or use custom polling logic with getStatusAsync.
+		
 		ReportingOperationStatus reportingOperationStatus = reportingDownloadOperation.trackAsync(null).get();
 		
 		File resultFile = reportingDownloadOperation.downloadResultFileAsync(
 		    new File(FileDirectory),
 		    ResultFileName,
-		    true,  // Set this value to true if you want to decompress the ZIP file.
+		    true, // Set this value to true if you want to decompress the ZIP file
 		    true,  // Set this value true if you want to overwrite the named file.
 		    null).get();
 		
