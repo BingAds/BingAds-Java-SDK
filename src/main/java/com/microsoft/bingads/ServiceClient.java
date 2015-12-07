@@ -1,6 +1,5 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.HttpHeaders;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
@@ -12,9 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import javax.jws.WebService;
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.HandlerResolver;
@@ -77,13 +73,7 @@ public class ServiceClient<T> {
      * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
-        this(authorizationData, ApiEnvironment.PRODUCTION, serviceInterface);
-
-        ApiEnvironment environmentFromConfig = getEnvironmentFromConfig();
-
-        if (environmentFromConfig != null) {
-            this.environment = environmentFromConfig;
-        }
+        this(authorizationData, null, serviceInterface);
     }
 
     /**
@@ -96,6 +86,15 @@ public class ServiceClient<T> {
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
+
+        if (environment == null) {
+            environment = getEnvironmentFromConfig();
+        }
+
+        if (environment == null) {
+            environment = ApiEnvironment.PRODUCTION;
+        }
+
         this.environment = environment;
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();

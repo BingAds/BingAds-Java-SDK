@@ -12,7 +12,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.concurrent.Future;
 
-import com.sun.xml.internal.ws.message.StringHeader;
 import org.apache.http.HttpRequest;
 
 public class FakeHttpFileService implements HttpFileService {

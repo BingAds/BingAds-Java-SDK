@@ -13,7 +13,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.sun.xml.internal.ws.message.StringHeader;
 import org.junit.Before;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;

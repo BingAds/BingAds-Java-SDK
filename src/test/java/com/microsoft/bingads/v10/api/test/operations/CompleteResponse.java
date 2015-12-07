@@ -1,7 +1,6 @@
 package com.microsoft.bingads.v10.api.test.operations;
 
 import com.microsoft.bingads.internal.ServiceUtils;
-import com.sun.xml.internal.ws.message.StringHeader;
 
 import java.util.HashMap;
 import java.util.List;
