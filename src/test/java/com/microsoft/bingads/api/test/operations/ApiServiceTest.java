@@ -94,7 +94,7 @@ public class ApiServiceTest extends EasyMockSupport {
         
         final ServiceFactory serviceFactory = createMock(ServiceFactory.class);
         
-        expect(serviceFactory.createService(ITestService.class)).andReturn(service);
+        expect(serviceFactory.createService(ITestService.class, ApiEnvironment.PRODUCTION)).andReturn(service);
         
         expect(serviceFactory.createProxyFromService(service, ApiEnvironment.PRODUCTION, ITestService.class)).andReturn(proxy);
         

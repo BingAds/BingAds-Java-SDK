@@ -12,7 +12,8 @@ import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.apache.cxf.headers.Header;
+
+import com.sun.xml.internal.ws.message.StringHeader;
 import org.junit.Before;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -31,13 +32,13 @@ public class FakeApiTest {
         FakeBulkService.reset();
     }
     
-    protected Supplier<List<Header>> createTrackingIdHeaderSupplier() {
-        return new Supplier<List<Header>>() {
+    protected Supplier<List<StringHeader>> createTrackingIdHeaderSupplier() {
+        return new Supplier<List<StringHeader>>() {
             @Override
-            public List<Header> get() {
+            public List<StringHeader> get() {
                 String ns = "https://bingads.microsoft.com/CampaignManagement/v9";
-                
-                Header trackingIdHeader;
+
+                StringHeader trackingIdHeader;
                 try {
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     DocumentBuilder builder = dbf.newDocumentBuilder();
@@ -47,7 +48,7 @@ public class FakeApiTest {
                     Element customElement = doc.createElement("TrackingId");
                     customElement.appendChild(doc.createTextNode("track123"));
                     
-                    trackingIdHeader = new Header(new QName(ns, "TrackingId"), customElement);
+                    trackingIdHeader = new StringHeader(new QName(ns, "TrackingId"), customElement.getTextContent());
                 } catch (ParserConfigurationException ex) {
                     Logger.getLogger(BulkServiceTest.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
@@ -56,7 +57,7 @@ public class FakeApiTest {
                     return null;
                 }
                 
-                List<Header> headers = new ArrayList<Header>();
+                List<StringHeader> headers = new ArrayList<StringHeader>();
                 
                 headers.add(trackingIdHeader);
                 

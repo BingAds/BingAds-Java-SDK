@@ -1,5 +1,8 @@
 package com.microsoft.bingads.v10.api.test.operations;
 
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.sun.xml.internal.ws.message.StringHeader;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,14 +10,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import javax.xml.ws.Response;
-import org.apache.cxf.headers.Header;
 
 public class CompleteResponse<T> implements Response<T> {
 
     T result;
-    List<Header> headers;
+    List<StringHeader> headers;
     
-    public CompleteResponse(T result, List<Header> headers) {
+    public CompleteResponse(T result, List<StringHeader> headers) {
         this.result = result;
         this.headers = headers;
     }
@@ -22,7 +24,7 @@ public class CompleteResponse<T> implements Response<T> {
     @Override
     public Map getContext() {
         Map<String, Object> map = new HashMap<String, Object>() {{
-            put(Header.HEADER_LIST, headers);
+            put(ServiceUtils.TRACKING_KEY, headers.get(0).getStringContent());
         }};
         
         return map;

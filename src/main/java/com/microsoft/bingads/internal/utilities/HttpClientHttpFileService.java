@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
-import org.apache.cxf.helpers.IOUtils;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -44,7 +43,7 @@ public class HttpClientHttpFileService implements HttpFileService {
             try {                
                 tempFileOutput = new FileOutputStream(tempZipFile);
                 
-                IOUtils.copy(content, tempFileOutput);
+                FileUtils.copy(content, tempFileOutput);
             } finally {
                 if (tempFileOutput != null) {
                     tempFileOutput.close();
@@ -81,10 +80,6 @@ public class HttpClientHttpFileService implements HttpFileService {
 
                 if (response.getStatusLine().getStatusCode() != 200) {
                     //TODO: handle errors from file upload
-
-                    InputStream responseStream = response.getEntity().getContent();
-
-                    String details = IOUtils.toString(responseStream);
 
                     throw new UnsuccessfulFileUpload("Unsuccessful Status Code: " + response.getStatusLine().getStatusCode());
                 }
@@ -126,7 +121,7 @@ public class HttpClientHttpFileService implements HttpFileService {
 
             try {
                 tempFileOutput = new FileOutputStream(tempZipFile);
-                IOUtils.copy(content, tempFileOutput);
+                FileUtils.copy(content, tempFileOutput);
 
                 resultFuture.setResult(tempZipFile);
             } finally {

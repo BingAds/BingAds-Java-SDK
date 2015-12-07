@@ -6,16 +6,20 @@ import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
-import org.apache.cxf.headers.Header;
-import org.apache.cxf.jaxb.JAXBDataBinding;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.HandlerResolver;
+import javax.xml.ws.handler.PortInfo;
+
 import com.microsoft.bingads.adintelligence.IAdIntelligenceService;
 import com.microsoft.bingads.bulk.IBulkService;
 import com.microsoft.bingads.campaignmanagement.ICampaignManagementService;
@@ -96,7 +100,7 @@ public class ServiceClient<T> {
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();
 
-        service = serviceFactory.createService(serviceInterface);
+        service = serviceFactory.createService(serviceInterface, environment);
     }
 
     /**
@@ -105,46 +109,41 @@ public class ServiceClient<T> {
      * @return the service object implementing the service interface
      */
     public T getService() {
-        try {
-            authorizationData.validate();
+        authorizationData.validate();
 
-            T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
+        WebService webServiceAnnotation = serviceInterface.getAnnotation(WebService.class);
 
-            WebService webServiceAnnotation = serviceInterface.getAnnotation(WebService.class);
+        final String ns = webServiceAnnotation.targetNamespace();
 
-            final String ns = webServiceAnnotation.targetNamespace();
+        final Map<String, String> headers = new HashMap<String, String>();
 
-            final List<Header> apacheHeaders = new ArrayList<Header>();
+        headers.put("CustomerAccountId", Long.toString(authorizationData.getAccountId()));
 
-            if (this.authorizationData.getAccountId() != 0) {
-                apacheHeaders.add(new Header(new QName(ns, "CustomerAccountId"), Long.toString(this.authorizationData.getAccountId()), new JAXBDataBinding(String.class)));
+        headers.put("CustomerId", Long.toString(authorizationData.getCustomerId()));
+
+        headers.put("DeveloperToken", authorizationData.getDeveloperToken());
+
+        refreshOAuthTokensIfNeeded();
+
+        this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
+            @Override
+            public void addHeader(String name, String value) {
+                headers.put(name, value);
             }
+        });
 
-            if (this.authorizationData.getCustomerId() != 0) {
-                apacheHeaders.add(new Header(new QName(ns, "CustomerId"), Long.toString(this.authorizationData.getCustomerId()), new JAXBDataBinding(String.class)));
+        service.setHandlerResolver(new HandlerResolver() {
+            @Override
+            public List<Handler> getHandlerChain(PortInfo portInfo) {
+                List<Handler> handlerList = new ArrayList<Handler>();
+                handlerList.add(new HeaderHandler(ns, headers));
+                return handlerList;
             }
+        });
 
-            apacheHeaders.add(new Header(new QName(ns, "DeveloperToken"), this.authorizationData.getDeveloperToken(), new JAXBDataBinding(String.class)));
+        T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
 
-            refreshOAuthTokensIfNeeded();            
-
-            this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
-                @Override
-                public void addHeader(String name, String value) {
-                    try {
-                        apacheHeaders.add(new Header(new QName(ns, name), value, new JAXBDataBinding(String.class)));
-                    } catch (JAXBException ex) {
-                        throw new InternalException(ex);
-                    }
-                }
-            });
-
-            ((BindingProvider) port).getRequestContext().put(org.apache.cxf.headers.Header.HEADER_LIST, apacheHeaders);
-
-            return port;
-        } catch (JAXBException ex) {
-            throw new InternalException(ex);
-        }
+        return port;
     }
 
     private void refreshOAuthTokensIfNeeded() {

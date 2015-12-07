@@ -1,6 +1,7 @@
 package com.microsoft.bingads.v10.api.test.operations;
 
 
+import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.v10.bulk.DownloadCampaignsByAccountIdsRequest;
 import com.microsoft.bingads.v10.bulk.DownloadCampaignsByAccountIdsResponse;
 import com.microsoft.bingads.v10.bulk.DownloadCampaignsByCampaignIdsRequest;
@@ -28,7 +29,8 @@ import javax.xml.ws.Binding;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.EndpointReference;
 import javax.xml.ws.Response;
-import org.apache.cxf.headers.Header;
+
+import com.sun.xml.internal.ws.message.StringHeader;
 
 public class FakeBulkService implements IBulkService, BindingProvider {
 
@@ -43,7 +45,7 @@ public class FakeBulkService implements IBulkService, BindingProvider {
     private static Consumer<DownloadCampaignsByCampaignIdsRequest> onDownloadCampaignsByCampaignIds;
     private static Supplier<DownloadCampaignsByCampaignIdsResponse> getDownloadCampaignsByCampaignIdsResponse;    
     
-    private static Supplier<List<Header>> inboundHeadersSupplier;
+    private static Supplier<List<StringHeader>> inboundHeadersSupplier;
         
     public static void reset() {
         onGetBulkDownloadStatus = new Consumer<GetBulkDownloadStatusRequest>() {
@@ -95,9 +97,9 @@ public class FakeBulkService implements IBulkService, BindingProvider {
             }
         };
         
-        inboundHeadersSupplier = new Supplier<List<Header>>() {
+        inboundHeadersSupplier = new Supplier<List<StringHeader>>() {
             @Override
-            public List<Header> get() {
+            public List<StringHeader> get() {
                 throw new IllegalStateException("This operation hasn't been mocked. Please use corresponding setXXX method to set it up.");
             }
         };
@@ -135,11 +137,11 @@ public class FakeBulkService implements IBulkService, BindingProvider {
         onDownloadCampaignsByAccountIds = value;
     }
 
-    public static Supplier<List<Header>> getInboundHeadersSupplier() {
+    public static Supplier<List<StringHeader>> getInboundHeadersSupplier() {
         return inboundHeadersSupplier;
     }
 
-    public static void setInboundHeadersSupplier(Supplier<List<Header>> aInboundHeadersSupplier) {
+    public static void setInboundHeadersSupplier(Supplier<List<StringHeader>> aInboundHeadersSupplier) {
         inboundHeadersSupplier = aInboundHeadersSupplier;
     }
 
@@ -275,7 +277,7 @@ public class FakeBulkService implements IBulkService, BindingProvider {
     @Override
     public Map<String, Object> getRequestContext() {
         Map<String, Object> map = new HashMap<String, Object>() {{
-            put(Header.HEADER_LIST, getInboundHeadersSupplier().get());
+            put(ServiceUtils.TRACKING_KEY, getInboundHeadersSupplier().get());
         }};
         
         return map;
