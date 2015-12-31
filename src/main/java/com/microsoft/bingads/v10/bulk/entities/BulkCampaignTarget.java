@@ -22,7 +22,7 @@ import com.microsoft.bingads.v10.bulk.BulkOperation;
  * </p>
  *
  * <p>
- *     For upload you must set the {@link Target2} object,
+ *     For upload you must set the {@link Target} object,
  *     which will effectively replace any existing bids for the corresponding target.
  * </p>
  *

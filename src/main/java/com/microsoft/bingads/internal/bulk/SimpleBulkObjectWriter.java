@@ -32,7 +32,7 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
 
     /**
      * @see
-     * com.microsoft.bingads.internal.bulk.file.BulkObjectWriter#writeFileMetadata()
+     * com.microsoft.bingads.internal.bulk.BulkObjectWriter#writeFileMetadata()
      */
     @Override
     public void writeFileMetadata() throws IOException {
@@ -92,7 +92,7 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
 
     /**
      * @see
-     * com.microsoft.bingads.internal.bulk.file.BulkObjectWriter#writeObjectRow(com.microsoft.bingads.internal.bulk.file.BulkObject)
+     * com.microsoft.bingads.internal.bulk.BulkObjectWriter#writeObjectRow(com.microsoft.bingads.internal.bulk.BulkObject)
      */
     @Override
     public void writeObjectRow(BulkObject bulkObject) throws IOException {

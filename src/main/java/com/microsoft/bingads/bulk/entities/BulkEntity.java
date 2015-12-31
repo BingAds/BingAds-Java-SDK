@@ -20,7 +20,7 @@ import java.util.List;
  * @see BulkServiceManager
  * @see BulkOperation
  * @see BulkFileReader
- * @see BulkFileWriter*
+ * @see BulkFileWriter
  */
 public abstract class BulkEntity extends BulkObject {
 

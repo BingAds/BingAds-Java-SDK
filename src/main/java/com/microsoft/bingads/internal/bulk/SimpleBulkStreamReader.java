@@ -45,7 +45,7 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
      * Reads the object only if it has a certain type
      *
      * @param <T> Type of the object
-     * @param result The next object from the file if the object has the same
+     * @param klazz The next object from the file if the object has the same
      * type as requested, null otherwise
      * @return True if object has requested type, false otherwise
      */
@@ -64,7 +64,7 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
      *
      * @param <T> Type of the object
      * @param predicate Predicate that needs to be matched
-     * @param result The next object from the file if the object matches the
+     * @param klazz The next object from the file if the object matches the
      * predicate, null otherwise
      * @return True if object matches the predicate, false otherwise</returns>
      */

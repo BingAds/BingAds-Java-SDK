@@ -2,6 +2,7 @@ package com.microsoft.bingads.v10.bulk.entities;
 
 import com.microsoft.bingads.v10.bulk.BulkServiceManager;
 import com.microsoft.bingads.v10.bulk.BulkFileReader;
+import com.microsoft.bingads.v10.bulk.BulkFileWriter;
 import com.microsoft.bingads.v10.bulk.BulkOperation;
 import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.v10.internal.bulk.BulkObject;
@@ -19,7 +20,7 @@ import java.util.List;
  * @see BulkServiceManager
  * @see BulkOperation
  * @see BulkFileReader
- * @see BulkFileWriter*
+ * @see BulkFileWriter
  */
 public abstract class BulkEntity extends BulkObject {
 

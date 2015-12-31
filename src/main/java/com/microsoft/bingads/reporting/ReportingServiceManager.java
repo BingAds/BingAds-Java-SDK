@@ -87,7 +87,7 @@ public class ReportingServiceManager {
     /**
      * Downloads the reporting file to a local file.
      *
-     * @param Determines the download request and file path.
+     * @param parameters Determines the download request and file path.
      * @param callback a callback which is called with the file path when the file is downloaded and available
      *
      * @return a {@link Future} that will indicate completion of the operation
@@ -161,7 +161,7 @@ public class ReportingServiceManager {
      * {@link ReportingDownloadOperation#downloadResultFileAsync} method.
      * </p>
      *
-     * @param parameters Describes the type of entities and data scope that you want to download    
+     * @param reportRequest Describes the type of entities and data scope that you want to download    
      * @param callback a callback will be called when the {@link ReportingDownloadOperation} has been created
      *
      * @return a {@link Future} that will indicate completion of the operation

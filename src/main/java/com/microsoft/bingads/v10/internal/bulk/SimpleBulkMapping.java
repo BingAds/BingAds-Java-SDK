@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v10.internal.bulk;
 
+import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 

@@ -4,10 +4,10 @@ import com.microsoft.bingads.v10.internal.bulk.entities.MultiRecordBulkEntity;
 import java.io.IOException;
 
 /**
- * A representation of a block of data (set of csv lines) provided in the {{
+ * A representation of a block of data (set of csv lines) provided in the
  *
- * @see <a href="http://msdn.microsoft.com/en-us/library/dn539651.aspx">Bulk
- * File Schema}}.
+ * <a href="http://msdn.microsoft.com/en-us/library/dn539651.aspx">Bulk
+ * File Schema</a>.
  *
  */
 public abstract class BulkObject {

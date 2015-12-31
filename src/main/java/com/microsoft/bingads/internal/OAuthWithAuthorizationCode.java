@@ -1,5 +1,6 @@
 package com.microsoft.bingads.internal;
 
+import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.NewOAuthTokensReceivedListener;
 import com.microsoft.bingads.OAuthTokens;
 import java.net.URL;
@@ -76,7 +77,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     /**
      * Retrieves OAuth tokens from authorization server using the authorization code provided by user.
      *
-     * @param responseUri Authorization response redirect Uri containing the authorization code. See: {{@link "http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-4.1.2"}}
+     * @param responseUrl Authorization response redirect Uri containing the authorization code. See: {{@link "http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-4.1.2"}}
      * @return OAuth tokens
      */
     public OAuthTokens requestAccessAndRefreshTokens(URL responseUrl) {
@@ -124,7 +125,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      * Retrieves OAuth tokens from authorization server using the last known refresh token from the current session.
      *
      * <blockquote>
-     * When the current access token expires, it needs to be refreshed. It can be refreshed using the refresh token that was receive before (either provided directly by user or retrieved using the authorization code). The {@link ServiceClient<TClientType>} detects access token expiration and calls this method to refresh it.
+     * When the current access token expires, it needs to be refreshed. It can be refreshed using the refresh token that was receive before (either provided directly by user or retrieved using the authorization code). The {@link ServiceClient} detects access token expiration and calls this method to refresh it.
      * </blockquote>
      *
      * @param forceRefresh

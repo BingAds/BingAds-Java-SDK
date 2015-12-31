@@ -9,7 +9,7 @@ import com.microsoft.bingads.AuthorizationData;
  * Represents an OAuth authorization object implementing the implicit grant flow for use in a desktop or mobile application.
  *
  * <p>
- *     You can use an instance of this class as the {@link AuthorizationData#getAuthentication"/> method
+ *     You can use an instance of this class as the {@link AuthorizationData#getAuthentication"} method
  *     of an {@link AuthorizationData} object to authenticate with Bing Ads services.
  *     In this case the AuthenticationToken request header will be set to the corresponding {@link OAuthTokens#getAccessToken} value.
  * </p>

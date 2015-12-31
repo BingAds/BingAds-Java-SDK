@@ -1,5 +1,8 @@
 package com.microsoft.bingads.internal.bulk.entities;
 
+import com.microsoft.bingads.bulk.entities.BulkSiteLink;
+import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkError;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
 import java.util.Calendar;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.List;
  * can contain one or more {@link BulkSiteLink} child entities, which are
  * themselves derived from {@link SingleRecordBulkEntity}. For more information,
  * see Bulk File Schema at
- * {@link http://go.microsoft.com/fwlink/?LinkID=511639}.
+ *  <a href="http://go.microsoft.com/fwlink/?LinkID=511639">http://go.microsoft.com/fwlink/?LinkID=511639</a>.
  *
  */
 public abstract class MultiRecordBulkEntity extends BulkEntity {
