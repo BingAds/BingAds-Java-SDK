@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for ProductTargetPerformanceReportFilter complex type.
+ * <p>Java class for ProductPartitionUnitPerformanceReportFilter complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ProductTargetPerformanceReportFilter">
+ * &lt;complexType name="ProductPartitionUnitPerformanceReportFilter">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ProductTargetPerformanceReportFilter", propOrder = {
+@XmlType(name = "ProductPartitionUnitPerformanceReportFilter", propOrder = {
     "deviceType",
     "languageCode"
 })
-public class ProductTargetPerformanceReportFilter {
+public class ProductPartitionUnitPerformanceReportFilter {
 
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter12 .class)

@@ -14,6 +14,8 @@ public class BulkEntityIterable implements Iterable<BulkEntity>, Closeable {
 
     private final BulkStreamReader reader;
     private final boolean isForFullDownload;
+    
+    private final EntityIterator entityIterator;
 
     /**
      * Reserved for internal use.
@@ -24,11 +26,12 @@ public class BulkEntityIterable implements Iterable<BulkEntity>, Closeable {
     public BulkEntityIterable(BulkStreamReader reader, boolean isForFullDownload) {
         this.reader = reader;
         this.isForFullDownload = isForFullDownload;
+        entityIterator = new EntityIterator(reader, isForFullDownload);
     }
 
     @Override
     public Iterator<BulkEntity> iterator() {
-        return new EntityIterator(reader, isForFullDownload);
+        return entityIterator;
     }
     
     @Override

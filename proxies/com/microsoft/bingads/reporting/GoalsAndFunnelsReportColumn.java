@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ReturnOnAdSpend"/>
  *     &lt;enumeration value="ExtendedCost"/>
  *     &lt;enumeration value="GoalId"/>
+ *     &lt;enumeration value="DeviceType"/>
+ *     &lt;enumeration value="DeviceOS"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -94,7 +96,11 @@ public enum GoalsAndFunnelsReportColumn {
     @XmlEnumValue("ExtendedCost")
     EXTENDED_COST("ExtendedCost"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("DeviceType")
+    DEVICE_TYPE("DeviceType"),
+    @XmlEnumValue("DeviceOS")
+    DEVICE_OS("DeviceOS");
     private final String value;
 
     GoalsAndFunnelsReportColumn(String v) {

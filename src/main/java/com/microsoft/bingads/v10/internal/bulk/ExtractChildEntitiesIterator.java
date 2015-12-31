@@ -19,8 +19,8 @@ public class ExtractChildEntitiesIterator implements Iterator<BulkEntity> {
         if (this.currentChildIterator == null) {
             return false;
         }
-
-        return this.currentChildIterator.hasNext();
+        
+        return this.currentChildIterator.hasNext() ? true : this.hasNext();
     }
 
     @Override

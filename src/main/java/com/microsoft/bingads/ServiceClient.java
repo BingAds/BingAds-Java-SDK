@@ -1,5 +1,6 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.HeaderHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;

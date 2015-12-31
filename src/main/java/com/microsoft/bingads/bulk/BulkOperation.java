@@ -293,9 +293,13 @@ public abstract class BulkOperation<TStatus> {
 
         if (!decompress) {
             return zipResultPath;
-        } else {
-            return zipExtractor.extractFirstEntryToFile(zipResultPath, fullPath, localResultFileName == null, overwrite);
-        }
+        } 
+        
+        File extractedFile = zipExtractor.extractFirstEntryToFile(zipResultPath, fullPath, localResultFileName == null, overwrite);
+        
+        zipResultPath.delete();
+        
+        return extractedFile;
     }
 
     private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {

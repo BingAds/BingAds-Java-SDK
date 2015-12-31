@@ -73,7 +73,9 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
 
             Iterable<BulkEntity> entityIterable = fileReader.getEntities();
             List<BulkEntity> entities = new ArrayList<BulkEntity>();
-
+            
+            assertEquals(true, entityIterable.iterator().hasNext());
+            
             for (BulkEntity entity : entityIterable) {
                 entities.add(entity);
             }

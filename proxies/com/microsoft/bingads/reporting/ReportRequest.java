@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
     GoalsAndFunnelsReportRequest.class,
     GeoLocationPerformanceReportRequest.class,
     RichAdComponentPerformanceReportRequest.class,
+    ProductPartitionUnitPerformanceReportRequest.class,
     TrafficSourcesReportRequest.class,
     AdExtensionDetailReportRequest.class,
     AccountPerformanceReportRequest.class,

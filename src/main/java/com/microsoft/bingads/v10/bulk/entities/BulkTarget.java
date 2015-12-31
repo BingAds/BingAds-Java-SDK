@@ -173,7 +173,8 @@ abstract class BulkTarget<
         }
 
         if (getTarget() != null) {
-            if (getTarget().getAge() == null) {
+            if (getTarget().getAge() == null && getTarget().getLocation() == null && getTarget().getGender() == null && 
+            	getTarget().getDayTime() == null && getTarget().getDeviceOS() == null) {
                 throw new IllegalStateException("At least one sub target must not be null.");
             }
         }
@@ -204,7 +205,7 @@ abstract class BulkTarget<
         getNegativeLocationTarget().isBeingWrittenAsPartOfParentTarget = true;
         getRadiusTarget().isBeingWrittenAsPartOfParentTarget = true;
 
-        for (BulkEntity childEntity : getAllSubTargets()) {
+        for (BulkEntity childEntity : getSubTargets()) {
             childEntity.writeToStream(rowWriter, excludeReadonlyData);
         }
     }
@@ -362,17 +363,7 @@ abstract class BulkTarget<
      * Gets the list of sub targets that the target contains can include
      * LocationTarget, AgeTarget, GenderTarget, DayTimeTarget, DeviceOsTarget, NegativeLocationTarget, and RadiusTarget.
      */
-    public List<BulkEntity> getSubTargets() {
-        ArrayList<BulkEntity> nonEmptySubTargets = new ArrayList<BulkEntity>();
-        for (BulkEntity subTarget: getAllSubTargets()) {
-            if (!((MultiRecordBulkEntity) subTarget).allChildrenPresent()) {
-                nonEmptySubTargets.add(subTarget);
-            }
-        }
-        return Collections.unmodifiableList(nonEmptySubTargets);
-    }
-
-    private List<BulkEntity> getAllSubTargets() {
+    private List<BulkEntity> getSubTargets() {
         return Collections.unmodifiableList(
                 Arrays.asList(
                         (BulkEntity) getAgeTarget(),
@@ -382,7 +373,7 @@ abstract class BulkTarget<
                         (BulkEntity) getLocationTarget(),
                         (BulkEntity) getNegativeLocationTarget(),
                         (BulkEntity) getRadiusTarget()
-                ));
+                )); 	
     }
 
     @Override
@@ -392,12 +383,11 @@ abstract class BulkTarget<
 
     @Override
     public boolean allChildrenPresent() {
-        for (BulkEntity child : getAllSubTargets()) {
+        for (BulkEntity child : getSubTargets()) {
             if (!((MultiRecordBulkEntity) child).allChildrenPresent()) {
                 return false;
             }
         }
-
         return true;
     }
 

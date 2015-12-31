@@ -34,8 +34,8 @@ public class ObjectFactory {
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
     private final static QName _ArrayOfGeoLocationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfGeoLocationPerformanceReportColumn");
     private final static QName _AdExtensionDimensionReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdExtensionDimensionReportRequest");
-    private final static QName _RichAdComponentPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "RichAdComponentPerformanceReportColumn");
     private final static QName _ArrayOfSearchCampaignChangeHistoryReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfSearchCampaignChangeHistoryReportColumn");
+    private final static QName _RichAdComponentPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "RichAdComponentPerformanceReportColumn");
     private final static QName _DestinationUrlPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "DestinationUrlPerformanceReportRequest");
     private final static QName _AdGroupPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdGroupPerformanceReportFilter");
     private final static QName _ShareOfVoiceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ShareOfVoiceReportRequest");
@@ -44,6 +44,7 @@ public class ObjectFactory {
     private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _TacticChannelReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "TacticChannelReportRequest");
+    private final static QName _ArrayOfProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfProductPartitionUnitPerformanceReportColumn");
     private final static QName _DestinationUrlPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "DestinationUrlPerformanceReportColumn");
     private final static QName _CampaignPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "CampaignPerformanceReportRequest");
     private final static QName _SitePerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "SitePerformanceReportColumn");
@@ -105,6 +106,7 @@ public class ObjectFactory {
     private final static QName _NegativeKeywordConflictReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "NegativeKeywordConflictReportColumn");
     private final static QName _AccountThroughCampaignReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AccountThroughCampaignReportScope");
     private final static QName _NonHourlyReportAggregation_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "NonHourlyReportAggregation");
+    private final static QName _ProductPartitionUnitPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductPartitionUnitPerformanceReportRequest");
     private final static QName _TrackingId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "TrackingId");
     private final static QName _ArrayOfProductTargetPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfProductTargetPerformanceReportColumn");
     private final static QName _DeviceOSReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "DeviceOSReportFilter");
@@ -135,6 +137,7 @@ public class ObjectFactory {
     private final static QName _DeveloperToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "DeveloperToken");
     private final static QName _ArrayOfTrafficSourcesReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfTrafficSourcesReportColumn");
     private final static QName _AdPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdPerformanceReportFilter");
+    private final static QName _ProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductPartitionUnitPerformanceReportColumn");
     private final static QName _ProductDimensionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductDimensionPerformanceReportColumn");
     private final static QName _TrafficSourcesReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "TrafficSourcesReportFilter");
     private final static QName _GeoLocationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "GeoLocationPerformanceReportColumn");
@@ -200,6 +203,7 @@ public class ObjectFactory {
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _BidMatchTypeReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "BidMatchTypeReportFilter");
     private final static QName _ConversionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ConversionPerformanceReportColumn");
+    private final static QName _ProductPartitionUnitPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductPartitionUnitPerformanceReportFilter");
     private final static QName _ArrayOfSitePerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfSitePerformanceReportColumn");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _AdPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdPerformanceReportColumn");
@@ -347,19 +351,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfBudgetSummaryReportColumn }
-     * 
-     */
-    public ArrayOfBudgetSummaryReportColumn createArrayOfBudgetSummaryReportColumn() {
-        return new ArrayOfBudgetSummaryReportColumn();
-    }
-
-    /**
      * Create an instance of {@link SearchCampaignChangeHistoryReportRequest }
      * 
      */
     public SearchCampaignChangeHistoryReportRequest createSearchCampaignChangeHistoryReportRequest() {
         return new SearchCampaignChangeHistoryReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBudgetSummaryReportColumn }
+     * 
+     */
+    public ArrayOfBudgetSummaryReportColumn createArrayOfBudgetSummaryReportColumn() {
+        return new ArrayOfBudgetSummaryReportColumn();
     }
 
     /**
@@ -483,6 +487,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductPartitionUnitPerformanceReportFilter }
+     * 
+     */
+    public ProductPartitionUnitPerformanceReportFilter createProductPartitionUnitPerformanceReportFilter() {
+        return new ProductPartitionUnitPerformanceReportFilter();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfSitePerformanceReportColumn }
      * 
      */
@@ -496,6 +508,14 @@ public class ObjectFactory {
      */
     public AccountThroughCampaignReportScope createAccountThroughCampaignReportScope() {
         return new AccountThroughCampaignReportScope();
+    }
+
+    /**
+     * Create an instance of {@link ProductPartitionUnitPerformanceReportRequest }
+     * 
+     */
+    public ProductPartitionUnitPerformanceReportRequest createProductPartitionUnitPerformanceReportRequest() {
+        return new ProductPartitionUnitPerformanceReportRequest();
     }
 
     /**
@@ -883,6 +903,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfProductPartitionUnitPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfProductPartitionUnitPerformanceReportColumn createArrayOfProductPartitionUnitPerformanceReportColumn() {
+        return new ArrayOfProductPartitionUnitPerformanceReportColumn();
+    }
+
+    /**
      * Create an instance of {@link PollGenerateReportResponse }
      * 
      */
@@ -963,14 +991,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfTacticChannelReportColumn }
-     * 
-     */
-    public ArrayOfTacticChannelReportColumn createArrayOfTacticChannelReportColumn() {
-        return new ArrayOfTacticChannelReportColumn();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfShareOfVoiceReportColumn }
      * 
      */
@@ -984,6 +1004,14 @@ public class ObjectFactory {
      */
     public ArrayOfCallDetailReportColumn createArrayOfCallDetailReportColumn() {
         return new ArrayOfCallDetailReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTacticChannelReportColumn }
+     * 
+     */
+    public ArrayOfTacticChannelReportColumn createArrayOfTacticChannelReportColumn() {
+        return new ArrayOfTacticChannelReportColumn();
     }
 
     /**
@@ -1131,19 +1159,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdExtensionByAdReportFilter }
-     * 
-     */
-    public AdExtensionByAdReportFilter createAdExtensionByAdReportFilter() {
-        return new AdExtensionByAdReportFilter();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfAdGroupReportScope }
      * 
      */
     public ArrayOfAdGroupReportScope createArrayOfAdGroupReportScope() {
         return new ArrayOfAdGroupReportScope();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionByAdReportFilter }
+     * 
+     */
+    public AdExtensionByAdReportFilter createAdExtensionByAdReportFilter() {
+        return new AdExtensionByAdReportFilter();
     }
 
     /**
@@ -1291,30 +1319,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfstring }
-     * 
-     */
-    public ArrayOfstring createArrayOfstring() {
-        return new ArrayOfstring();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfint }
-     * 
-     */
-    public ArrayOfint createArrayOfint() {
-        return new ArrayOfint();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOflong }
-     * 
-     */
-    public ArrayOflong createArrayOflong() {
-        return new ArrayOflong();
-    }
-
-    /**
      * Create an instance of {@link Duration }
      * 
      */
@@ -1336,6 +1340,30 @@ public class ObjectFactory {
      */
     public Guid createGuid() {
         return new Guid();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfstring }
+     * 
+     */
+    public ArrayOfstring createArrayOfstring() {
+        return new ArrayOfstring();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOflong }
+     * 
+     */
+    public ArrayOflong createArrayOflong() {
+        return new ArrayOflong();
     }
 
     /**
@@ -1425,21 +1453,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RichAdComponentPerformanceReportColumn }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "RichAdComponentPerformanceReportColumn")
-    public JAXBElement<RichAdComponentPerformanceReportColumn> createRichAdComponentPerformanceReportColumn(RichAdComponentPerformanceReportColumn value) {
-        return new JAXBElement<RichAdComponentPerformanceReportColumn>(_RichAdComponentPerformanceReportColumn_QNAME, RichAdComponentPerformanceReportColumn.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSearchCampaignChangeHistoryReportColumn }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ArrayOfSearchCampaignChangeHistoryReportColumn")
     public JAXBElement<ArrayOfSearchCampaignChangeHistoryReportColumn> createArrayOfSearchCampaignChangeHistoryReportColumn(ArrayOfSearchCampaignChangeHistoryReportColumn value) {
         return new JAXBElement<ArrayOfSearchCampaignChangeHistoryReportColumn>(_ArrayOfSearchCampaignChangeHistoryReportColumn_QNAME, ArrayOfSearchCampaignChangeHistoryReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RichAdComponentPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "RichAdComponentPerformanceReportColumn")
+    public JAXBElement<RichAdComponentPerformanceReportColumn> createRichAdComponentPerformanceReportColumn(RichAdComponentPerformanceReportColumn value) {
+        return new JAXBElement<RichAdComponentPerformanceReportColumn>(_RichAdComponentPerformanceReportColumn_QNAME, RichAdComponentPerformanceReportColumn.class, null, value);
     }
 
     /**
@@ -1515,6 +1543,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfProductPartitionUnitPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ArrayOfProductPartitionUnitPerformanceReportColumn")
+    public JAXBElement<ArrayOfProductPartitionUnitPerformanceReportColumn> createArrayOfProductPartitionUnitPerformanceReportColumn(ArrayOfProductPartitionUnitPerformanceReportColumn value) {
+        return new JAXBElement<ArrayOfProductPartitionUnitPerformanceReportColumn>(_ArrayOfProductPartitionUnitPerformanceReportColumn_QNAME, ArrayOfProductPartitionUnitPerformanceReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DestinationUrlPerformanceReportColumn }{@code >}}
      * 
      */
@@ -1555,7 +1592,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ChangeTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     public JAXBElement<Collection<ChangeTypeReportFilter>> createChangeTypeReportFilter(Collection<ChangeTypeReportFilter> value) {
         return new JAXBElement<Collection<ChangeTypeReportFilter>>(_ChangeTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2066,6 +2103,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartitionUnitPerformanceReportRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductPartitionUnitPerformanceReportRequest")
+    public JAXBElement<ProductPartitionUnitPerformanceReportRequest> createProductPartitionUnitPerformanceReportRequest(ProductPartitionUnitPerformanceReportRequest value) {
+        return new JAXBElement<ProductPartitionUnitPerformanceReportRequest>(_ProductPartitionUnitPerformanceReportRequest_QNAME, ProductPartitionUnitPerformanceReportRequest.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -2338,6 +2384,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartitionUnitPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductPartitionUnitPerformanceReportColumn")
+    public JAXBElement<ProductPartitionUnitPerformanceReportColumn> createProductPartitionUnitPerformanceReportColumn(ProductPartitionUnitPerformanceReportColumn value) {
+        return new JAXBElement<ProductPartitionUnitPerformanceReportColumn>(_ProductPartitionUnitPerformanceReportColumn_QNAME, ProductPartitionUnitPerformanceReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ProductDimensionPerformanceReportColumn }{@code >}}
      * 
      */
@@ -2478,7 +2533,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeviceTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     public JAXBElement<Collection<DeviceTypeReportFilter>> createDeviceTypeReportFilter(Collection<DeviceTypeReportFilter> value) {
         return new JAXBElement<Collection<DeviceTypeReportFilter>>(_DeviceTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2926,6 +2981,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ConversionPerformanceReportColumn")
     public JAXBElement<ConversionPerformanceReportColumn> createConversionPerformanceReportColumn(ConversionPerformanceReportColumn value) {
         return new JAXBElement<ConversionPerformanceReportColumn>(_ConversionPerformanceReportColumn_QNAME, ConversionPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartitionUnitPerformanceReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductPartitionUnitPerformanceReportFilter")
+    public JAXBElement<ProductPartitionUnitPerformanceReportFilter> createProductPartitionUnitPerformanceReportFilter(ProductPartitionUnitPerformanceReportFilter value) {
+        return new JAXBElement<ProductPartitionUnitPerformanceReportFilter>(_ProductPartitionUnitPerformanceReportFilter_QNAME, ProductPartitionUnitPerformanceReportFilter.class, null, value);
     }
 
     /**
