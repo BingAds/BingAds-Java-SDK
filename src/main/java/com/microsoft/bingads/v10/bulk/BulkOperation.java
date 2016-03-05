@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v10.bulk;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.internal.ParentCallback;
@@ -57,14 +58,22 @@ public abstract class BulkOperation<TStatus> {
     private BulkOperationStatus<TStatus> finalStatus;
 
     BulkOperation(String requestId, AuthorizationData authorizationData) {
-        this(requestId, authorizationData, null, null);
+        this(requestId, authorizationData, null, null, null);
+    }
+
+    BulkOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        this(requestId, authorizationData, null, null, apiEnvironment);
     }
 
     BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider) {
-        this(requestId, authorizationData, statusProvider, null);
+        this(requestId, authorizationData, statusProvider, null, null);
     }
 
     BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId) {
+        this(requestId, authorizationData, statusProvider, trackingId, null);
+    }
+
+    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId, ApiEnvironment apiEnvironment) {
         this.statusProvider = statusProvider;
         this.requestId = requestId;
         this.authorizationData = authorizationData;
@@ -72,7 +81,7 @@ public abstract class BulkOperation<TStatus> {
 
         statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
 
-        this.serviceClient = new ServiceClient<IBulkService>(authorizationData, IBulkService.class);
+        this.serviceClient = new ServiceClient<IBulkService>(authorizationData, apiEnvironment, IBulkService.class);
 
         zipExtractor = new SimpleZipExtractor();
 
