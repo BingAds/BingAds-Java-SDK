@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v10.bulk;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
@@ -65,6 +66,7 @@ public class BulkServiceManager {
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
     private BulkFileReaderFactory bulkFileReaderFactory;
+    private ApiEnvironment apiEnvironment;
 
     private int statusPollIntervalInMilliseconds;
 
@@ -78,18 +80,23 @@ public class BulkServiceManager {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
     public BulkServiceManager(AuthorizationData authorizationData) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CSVBulkFileReaderFactory());
+        this(authorizationData, null);
+    }
+
+    public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CSVBulkFileReaderFactory(), apiEnvironment);
     }
 
     private BulkServiceManager(AuthorizationData authorizationData,
             HttpFileService httpFileService, ZipExtractor zipExtractor,
-            BulkFileReaderFactory bulkFileReaderFactory) {
+            BulkFileReaderFactory bulkFileReaderFactory, ApiEnvironment apiEnvironment) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
         this.bulkFileReaderFactory = bulkFileReaderFactory;
+        this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, IBulkService.class);
+        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
@@ -395,7 +402,7 @@ public class BulkServiceManager {
 
                         String trackingId = ServiceUtils.GetTrackingId(res);
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId, apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
@@ -420,7 +427,7 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res));
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res), apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
@@ -504,7 +511,7 @@ public class BulkServiceManager {
                         compressedFilePath.delete();
                     }
 
-                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId);
+                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 

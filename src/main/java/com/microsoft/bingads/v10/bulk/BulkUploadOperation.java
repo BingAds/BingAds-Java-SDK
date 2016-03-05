@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v10.bulk;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.v10.internal.bulk.UploadStatusProvider;
 
@@ -28,11 +29,19 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
     public BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service) {
-        this(requestId, authorizationData, service, null);
+        this(requestId, authorizationData, service, null, null);
+    }
+
+    public BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, ApiEnvironment apiEnvironment) {
+        this(requestId, authorizationData, service, null, apiEnvironment);
     }
 
     protected BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, String trackingId) {
-        super(requestId, authorizationData, new UploadStatusProvider(requestId), trackingId);
+        this(requestId, authorizationData, service, trackingId, null);
+    }
+
+    protected BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, String trackingId, ApiEnvironment apiEnvironment) {
+        super(requestId, authorizationData, new UploadStatusProvider(requestId), trackingId, apiEnvironment);
     }
 
     @Override
