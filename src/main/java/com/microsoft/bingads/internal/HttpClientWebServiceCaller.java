@@ -1,6 +1,7 @@
 package com.microsoft.bingads.internal;
 
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
@@ -10,15 +11,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
 
 class HttpClientWebServiceCaller implements WebServiceCaller {
 
-    @Override
+	@Override
     public HttpResponse post(URL requestUrl, List<NameValuePair> formValues) throws IOException {
         HttpClient client = null;
 
         try {
-            client = new DefaultHttpClient();
+            client = createHttpClientWithProxy();
 
             final HttpPost httpPost = new HttpPost(requestUrl.toURI());
             
@@ -34,7 +36,16 @@ class HttpClientWebServiceCaller implements WebServiceCaller {
                 client.getConnectionManager().shutdown();
             }
         }
-
     }
 
+    
+	 private DefaultHttpClient createHttpClientWithProxy() {
+    	DefaultHttpClient client = new DefaultHttpClient();
+
+        ProxySelector proxySelector = ProxySelector.getDefault();
+
+        client.setRoutePlanner(new ProxySelectorRoutePlanner(client.getConnectionManager().getSchemeRegistry(), proxySelector));
+        
+        return client;
+	 }
 }
