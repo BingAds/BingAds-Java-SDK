@@ -1,37 +1,31 @@
 package com.microsoft.bingads.internal.utilities;
 
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
-import org.apache.cxf.common.util.StringUtils;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
+import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 
 public class HttpClientHttpFileService implements HttpFileService {
 	
-	private static final int DEFAULT_TIMEOUT = 900 * 1000; // Set default read time out to 900 seconds or 15 minutes.
-
     @Override
     public void downloadFile(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
         if (!overwrite && tempZipFile.exists()) {
@@ -153,39 +147,12 @@ public class HttpClientHttpFileService implements HttpFileService {
     }
     
     private DefaultHttpClient createHttpClientWithProxy() {
-    	
-       	try {
-       		String webProxyEnabled = System.getProperty("web.proxy.enabled");
-   	    	String proxyHost = System.getProperty("http.proxyHost");
-   	    	String proxyPortStr = System.getProperty("http.proxyPort");
-   			
-   			if (StringUtils.isEmpty(webProxyEnabled) || StringUtils.isEmpty(proxyHost) || StringUtils.isEmpty(proxyHost))
-   			{
-   				return new DefaultHttpClient();
-   			}
-   			
-   			String proxyMode = System.getProperty("http.proxyScheme");
-   			if (StringUtils.isEmpty(proxyMode))
-   			{
-   				proxyMode = HttpHost.DEFAULT_SCHEME_NAME;
-   			}
-   			
-   			int proxyPort = Integer.parseInt(proxyPortStr);
-   			
-   			HttpHost proxy = new HttpHost(proxyHost, proxyPort, proxyMode);
-   			final HttpParams httpParams = new BasicHttpParams();
-   			HttpConnectionParams.setConnectionTimeout(httpParams, DEFAULT_TIMEOUT);
-   			HttpConnectionParams.setSoTimeout(httpParams, DEFAULT_TIMEOUT);
-   			DefaultHttpClient baseHttpClient = new DefaultHttpClient(httpParams);
+    	DefaultHttpClient client = new DefaultHttpClient();
 
-   			// Set proxy server.
-   			baseHttpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+        ProxySelector proxySelector = ProxySelector.getDefault();
 
-   			return baseHttpClient;
-   		}
-   		catch (Exception e) {
-   			String message = "Can't wrap client, exception: " + e.getMessage();
-   			throw new RuntimeException(message);
-   		}
-   	}
+        client.setRoutePlanner(new ProxySelectorRoutePlanner(client.getConnectionManager().getSchemeRegistry(), proxySelector));
+        
+        return client;
+    }
 }
