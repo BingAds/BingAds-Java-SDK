@@ -408,11 +408,18 @@ public class BulkDownloadUpload extends BulkExampleBaseV9 {
         }
         finally
         {
-            reader.close();
-            writer.flush();
-            writer.close();
-            out.flush();
-            out.close();
+            if (reader != null)
+                reader.close();
+                
+            if (writer != null) {
+                writer.flush();
+                writer.close();
+            }
+            
+            if (out != null) {
+                out.flush();
+                out.close();
+            }
         }
     }
 
