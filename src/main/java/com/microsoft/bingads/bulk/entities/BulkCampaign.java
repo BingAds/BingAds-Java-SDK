@@ -48,10 +48,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         ArrayList<Setting> filteredSettings = new ArrayList<Setting>();
 
         for (Setting setting : settings) {
-            if (campaignType == CampaignType.SHOPPING) {
-                if (setting instanceof ShoppingSetting) {
-                    filteredSettings.add(setting);
-                }
+            if (campaignType == CampaignType.SHOPPING && setting instanceof ShoppingSetting) {
+                filteredSettings.add(setting);
             }
         }
 

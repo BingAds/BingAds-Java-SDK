@@ -72,14 +72,12 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
     public <T extends BulkObject> TryResult<T> tryRead(Predicate<T> predicate, Class<T> klazz) {
         BulkObject peeked = peek();
         
-        if (klazz.isInstance(peeked)) {
-            if (predicate.test(klazz.cast(peeked))) {
-                nextObject = null;
+        if (klazz.isInstance(peeked) && predicate.test(klazz.cast(peeked))) {
+            nextObject = null;
 
-                peeked.readRelatedDataFromStream(this);
-                
-                return new TryResult(true, klazz.cast(peeked));
-            }
+            peeked.readRelatedDataFromStream(this);
+            
+            return new TryResult(true, klazz.cast(peeked));
         }
 
         return new TryResult(false, null);
