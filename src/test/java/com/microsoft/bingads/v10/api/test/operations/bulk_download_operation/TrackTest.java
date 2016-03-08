@@ -53,7 +53,7 @@ public class TrackTest extends BulkDownloadOperationTest {
 
         TestProgress progress = new TestProgress();
 
-        BulkOperationStatus<DownloadStatus> actualStatus = null;
+        BulkOperationStatus<DownloadStatus> actualStatus;
 
         actualStatus = operation.trackAsync(progress, null).get();
 

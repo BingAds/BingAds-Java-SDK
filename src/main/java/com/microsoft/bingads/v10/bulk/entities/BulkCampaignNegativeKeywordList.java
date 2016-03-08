@@ -47,7 +47,6 @@ public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
     static {
         List<BulkMapping<BulkCampaignNegativeKeywordList>> m = new ArrayList<BulkMapping<BulkCampaignNegativeKeywordList>>();
 
-        AdExtensionStatus a;
         m.add(new SimpleBulkMapping<BulkCampaignNegativeKeywordList, String>(StringTable.Status,
                 new Function<BulkCampaignNegativeKeywordList, String>() {
                     @Override

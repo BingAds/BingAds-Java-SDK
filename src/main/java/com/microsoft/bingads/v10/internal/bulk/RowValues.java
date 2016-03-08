@@ -22,8 +22,8 @@ public class RowValues {
         this.mappings = CsvHeaders.getMappings();
         this.columns = new String[this.mappings.keySet().size()];
 
-        for (String key : rowValues.keySet()) {
-            this.put(key, rowValues.get(key));
+        for (Entry<String, String> stringStringEntry : rowValues.entrySet()) {
+            this.put(stringStringEntry.getKey(), stringStringEntry.getValue());
         }
     }
 
