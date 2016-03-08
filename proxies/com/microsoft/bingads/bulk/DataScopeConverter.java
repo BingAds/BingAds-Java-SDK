@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class DataScopeConverter {
 
+    private DataScopeConverter() {
+    }
+
     public static Collection<DataScope> convertToList(String enums) {
         String[] values = enums.split(" ");
 

@@ -12,6 +12,9 @@ public class ErrorMessages {
     
     public static final String OAuthError = "Couldn't request OAuth AccessTokens. Please use the getDetails() method to get more information";
 
+    private ErrorMessages() {
+    }
+
     public static String getFullOAuthAccessTokenNotRequestedMessage(Class oAuthType) {
 
         String classAndMethod = "the corresponding OAuth class method"; // in the case we add a new OAuth class and forget to update this method

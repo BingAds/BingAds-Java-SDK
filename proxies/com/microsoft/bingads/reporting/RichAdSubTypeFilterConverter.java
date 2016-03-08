@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class RichAdSubTypeFilterConverter {
 
+    private RichAdSubTypeFilterConverter() {
+    }
+
     public static Collection<RichAdSubTypeFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

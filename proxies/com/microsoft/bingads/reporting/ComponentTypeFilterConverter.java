@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class ComponentTypeFilterConverter {
 
+    private ComponentTypeFilterConverter() {
+    }
+
     public static Collection<ComponentTypeFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

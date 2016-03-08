@@ -8,7 +8,10 @@ import java.util.List;
 
 class EntityExtractor {
 
-     /**
+    private EntityExtractor() {
+    }
+
+    /**
      * Reserved for internal use.
      * @param entity
      * @return

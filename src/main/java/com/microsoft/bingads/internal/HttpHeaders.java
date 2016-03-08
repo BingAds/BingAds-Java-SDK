@@ -7,6 +7,9 @@ public class HttpHeaders {
     public static final String PASSWORD = "Password";
     public static final String USER_NAME = "UserName";
 
+    private HttpHeaders() {
+    }
+
     public class ContentTypes {
 
         String FORM_ENCODED = "application/x-www-form-urlencoded";

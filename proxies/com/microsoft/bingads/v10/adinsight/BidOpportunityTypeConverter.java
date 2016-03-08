@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class BidOpportunityTypeConverter {
 
+    private BidOpportunityTypeConverter() {
+    }
+
     public static Collection<BidOpportunityType> convertToList(String enums) {
         String[] values = enums.split(" ");
 

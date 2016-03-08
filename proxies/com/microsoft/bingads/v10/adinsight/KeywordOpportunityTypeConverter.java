@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class KeywordOpportunityTypeConverter {
 
+    private KeywordOpportunityTypeConverter() {
+    }
+
     public static Collection<KeywordOpportunityType> convertToList(String enums) {
         String[] values = enums.split(" ");
 

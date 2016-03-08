@@ -12,6 +12,9 @@ public class ServiceUtils {
 
     public static String TRACKING_HEADER_NAME = "TrackingId";
 
+    private ServiceUtils() {
+    }
+
     public static String GetTrackingId(Response response) {        
         Map<String, Object> context = response.getContext();
     
