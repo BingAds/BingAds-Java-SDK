@@ -156,8 +156,8 @@ public class BulkShoppingCampaigns extends BulkExampleBaseV10 {
              * product ads from the product details that it finds in your Bing Merchant Center store's product catalog. 
              * The primary purpose of the ProductAd object is to provide promotional text that the delivery engine 
              * adds to the product ads that it generates. For example, if the promotional text is set to 
-             * “Free shipping on $99 purchases”, the delivery engine will set the product ad’s description to 
-             * “Free shipping on $99 purchases.”
+             * ï¿½Free shipping on $99 purchasesï¿½, the delivery engine will set the product adï¿½s description to 
+             * ï¿½Free shipping on $99 purchases.ï¿½
              */
             
             BulkProductAd bulkProductAd = new BulkProductAd();

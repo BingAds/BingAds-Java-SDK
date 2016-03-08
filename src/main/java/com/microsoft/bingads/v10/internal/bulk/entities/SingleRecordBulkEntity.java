@@ -173,7 +173,7 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
 
     @Override
     public boolean hasErrors() {
-        return this.errors != null && this.errors.size() > 0;
+        return this.errors != null && !this.errors.isEmpty();
     }
 
     /**

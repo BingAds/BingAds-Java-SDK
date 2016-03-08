@@ -56,7 +56,7 @@ abstract class BulkSubTarget<TBid extends BulkTargetBid> extends MultiRecordBulk
         
         reconstructSubTargets();
         
-        setStatus(bids.size() > 0 ? Status.ACTIVE : Status.DELETED);
+        setStatus(!bids.isEmpty() ? Status.ACTIVE : Status.DELETED);
     }
     
     void setIdentifier(BulkTargetIdentifier identifier) {

@@ -147,7 +147,7 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
 
         reconstructApiObjects();
 
-        this.status = bulkNegativeSites != null && bulkNegativeSites.size() > 0
+        this.status = bulkNegativeSites != null && !bulkNegativeSites.isEmpty()
                 ? Status.ACTIVE
                 : Status.DELETED;
     }

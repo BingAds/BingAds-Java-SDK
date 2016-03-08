@@ -255,7 +255,7 @@ abstract class BulkTarget<
             hasMoreRows = false;
         }
 
-        setStatus(bids.size() > 0 ? Status.ACTIVE : Status.DELETED);
+        setStatus(!bids.isEmpty() ? Status.ACTIVE : Status.DELETED);
 
         LocationTarget location = new LocationTarget();
 
