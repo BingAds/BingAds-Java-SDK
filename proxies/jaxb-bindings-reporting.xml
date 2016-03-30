@@ -4,20 +4,23 @@
     <bindings node="//xs:simpleType[@name='AdDistributionReportFilter']">
       <javaType name="java.util.Collection&lt;AdDistributionReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.AdDistributionReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.AdDistributionReportFilterConverter.convertToString" />
     </bindings>
-    <bindings node="//xs:simpleType[@name='ChangeTypeReportFilter']">
-      <javaType name="java.util.Collection&lt;ChangeTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToString" />
-    </bindings>
-    <bindings node="//xs:simpleType[@name='ChangeEntityReportFilter']">
-      <javaType name="java.util.Collection&lt;ChangeEntityReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.ChangeEntityReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.ChangeEntityReportFilterConverter.convertToString" />
-    </bindings>
-    <bindings node="//xs:simpleType[@name='AdTypeReportFilter']">
-      <javaType name="java.util.Collection&lt;AdTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.AdTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.AdTypeReportFilterConverter.convertToString" />
+    <bindings node="//xs:simpleType[@name='DeviceOSReportFilter']">
+      <javaType name="java.util.Collection&lt;DeviceOSReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeviceOSReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeviceOSReportFilterConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='DeviceTypeReportFilter']">
       <javaType name="java.util.Collection&lt;DeviceTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeviceTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeviceTypeReportFilterConverter.convertToString" />
     </bindings>
-    <bindings node="//xs:simpleType[@name='DeviceOSReportFilter']">
-      <javaType name="java.util.Collection&lt;DeviceOSReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeviceOSReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeviceOSReportFilterConverter.convertToString" />
+    <bindings node="//xs:simpleType[@name='CampaignStatusReportFilter']">
+      <javaType name="java.util.Collection&lt;CampaignStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.CampaignStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.CampaignStatusReportFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='PricingModelReportFilter']">
+      <javaType name="java.util.Collection&lt;PricingModelReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.PricingModelReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.PricingModelReportFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='AdTypeReportFilter']">
+      <javaType name="java.util.Collection&lt;AdTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.AdTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.AdTypeReportFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='DeliveredMatchTypeReportFilter']">
+      <javaType name="java.util.Collection&lt;DeliveredMatchTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='AdGroupStatusReportFilter']">
       <javaType name="java.util.Collection&lt;AdGroupStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.AdGroupStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.AdGroupStatusReportFilterConverter.convertToString" />
@@ -31,17 +34,14 @@
     <bindings node="//xs:simpleType[@name='BidMatchTypeReportFilter']">
       <javaType name="java.util.Collection&lt;BidMatchTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.BidMatchTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.BidMatchTypeReportFilterConverter.convertToString" />
     </bindings>
-    <bindings node="//xs:simpleType[@name='DeliveredMatchTypeReportFilter']">
-      <javaType name="java.util.Collection&lt;DeliveredMatchTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToString" />
-    </bindings>
-    <bindings node="//xs:simpleType[@name='PricingModelReportFilter']">
-      <javaType name="java.util.Collection&lt;PricingModelReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.PricingModelReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.PricingModelReportFilterConverter.convertToString" />
-    </bindings>
     <bindings node="//xs:simpleType[@name='AdStatusReportFilter']">
       <javaType name="java.util.Collection&lt;AdStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.AdStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.AdStatusReportFilterConverter.convertToString" />
     </bindings>
-    <bindings node="//xs:simpleType[@name='CampaignStatusReportFilter']">
-      <javaType name="java.util.Collection&lt;CampaignStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.CampaignStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.CampaignStatusReportFilterConverter.convertToString" />
+    <bindings node="//xs:simpleType[@name='ChangeTypeReportFilter']">
+      <javaType name="java.util.Collection&lt;ChangeTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.ChangeTypeReportFilterConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='ChangeEntityReportFilter']">
+      <javaType name="java.util.Collection&lt;ChangeEntityReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.ChangeEntityReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.ChangeEntityReportFilterConverter.convertToString" />
     </bindings>
   </bindings>
 </bindings>

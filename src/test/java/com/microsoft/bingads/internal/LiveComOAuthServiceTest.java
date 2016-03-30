@@ -17,6 +17,7 @@ import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.message.BasicStatusLine;
 import static org.easymock.EasyMock.expect;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
@@ -29,7 +30,7 @@ import org.junit.runner.RunWith;
 public class LiveComOAuthServiceTest extends EasyMockSupport {
 
     @Mock
-    WebServiceCaller webServiceCaller;
+    HttpClientWebServiceCaller webServiceCaller;
 
     @Test
     public void GetAccessTokenInfoFromWebService_GetsAndDeserializesResponseFromWebService() throws UnsupportedEncodingException {
@@ -53,6 +54,7 @@ public class LiveComOAuthServiceTest extends EasyMockSupport {
                     new URL("https://login.live.com/oauth20_token.srf"),
                     params
             )).andReturn(response);
+            webServiceCaller.shutDown();
         } catch (MalformedURLException e1) {
             fail("Test URL malformed");
         } catch (IOException e1) {

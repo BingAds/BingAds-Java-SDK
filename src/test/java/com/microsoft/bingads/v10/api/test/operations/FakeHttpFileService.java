@@ -4,7 +4,6 @@ import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.UnsuccessfulFileUpload;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -39,7 +38,7 @@ public class FakeHttpFileService implements HttpFileService {
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) throws UnsuccessfulFileUpload {
+    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

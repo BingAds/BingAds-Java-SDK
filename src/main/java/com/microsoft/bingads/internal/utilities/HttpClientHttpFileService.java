@@ -1,14 +1,20 @@
 package com.microsoft.bingads.internal.utilities;
 
 import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.CouldNotDownloadResultFileException;
+import com.microsoft.bingads.CouldNotUploadFileException;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
@@ -16,25 +22,26 @@ import java.util.concurrent.Future;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
 
 public class HttpClientHttpFileService implements HttpFileService {
-
+	
     @Override
     public void downloadFile(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
         if (!overwrite && tempZipFile.exists()) {
-            throw new IOException(String.format("File %s already exists", tempZipFile));
+            throw new IOException(String.format("Could not download result file due to file %s already exists", tempZipFile));
         }
 
-        HttpClient client = null;
+        DefaultHttpClient client = null;
 
         try {
-            client = new DefaultHttpClient();
+        	client = createHttpClientWithProxy();
+        	        	
             HttpGet httpget = new HttpGet(new URI(url));
             HttpResponse response = client.execute(httpget);
             InputStream content = response.getEntity().getContent();
@@ -50,6 +57,10 @@ public class HttpClientHttpFileService implements HttpFileService {
                     tempFileOutput.close();
                 }
             }
+        } catch (IOException ex) {
+        	throw new CouldNotDownloadResultFileException(ex);
+        } catch (IllegalStateException ex) {
+        	throw new CouldNotDownloadResultFileException(ex);
         } finally {
             if (client != null) {
                 client.getConnectionManager().shutdown();
@@ -58,16 +69,17 @@ public class HttpClientHttpFileService implements HttpFileService {
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) throws UnsuccessfulFileUpload {
+    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) {
         FileInputStream stream = null;
 
         try {
             stream = new FileInputStream(uploadFilePath);
 
-            HttpClient client = null;
+            DefaultHttpClient client = null;
 
             try {
-                client = new DefaultHttpClient();
+            	client = createHttpClientWithProxy();
+            	            	
                 HttpPost post = new HttpPost(uri);
                 addHeaders.accept(post);
 
@@ -78,29 +90,38 @@ public class HttpClientHttpFileService implements HttpFileService {
                 post.setEntity(e);
 
                 HttpResponse response = client.execute(post);
-
+                
                 if (response.getStatusLine().getStatusCode() != 200) {
-                    //TODO: handle errors from file upload
+                    InputStream in = response.getEntity().getContent();
+                    BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+                    StringBuilder exceptionMessage = new StringBuilder();
 
-                    throw new UnsuccessfulFileUpload("Unsuccessful Status Code: " + response.getStatusLine().getStatusCode());
+                    String inputStr;
+                    while ((inputStr = streamReader.readLine()) != null) {
+                    	exceptionMessage.append(inputStr); 
+                    }
+            	
+                    throw new CouldNotUploadFileException("Unsuccessful Status Code: " + response.getStatusLine().getStatusCode() + "; Exception Message: " + exceptionMessage);
                 }
             } catch (ClientProtocolException e) {
-                throw new UnsuccessfulFileUpload(e);
+                throw new CouldNotUploadFileException(e);
             } catch (IOException e) {
-                throw new UnsuccessfulFileUpload(e);
+                throw new CouldNotUploadFileException(e);
+            } catch (IllegalStateException e) {
+            	throw new CouldNotUploadFileException(e);
             } finally {
                 if (client != null) {
                     client.getConnectionManager().shutdown();
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new UnsuccessfulFileUpload(e);
+            throw new CouldNotUploadFileException(e);
         } finally {
             if (stream != null) {
                 try {
                     stream.close();
                 } catch (IOException e) {
-                    throw new UnsuccessfulFileUpload(e);
+                    throw new CouldNotUploadFileException(e);
                 }
             }
         }
@@ -110,10 +131,11 @@ public class HttpClientHttpFileService implements HttpFileService {
     public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback) {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
-        HttpClient client = null;
+        DefaultHttpClient client = null;
 
         try {
-            client = new DefaultHttpClient();
+        	client = createHttpClientWithProxy();
+        	
             HttpGet httpget = new HttpGet(new URI(url));
             HttpResponse response = client.execute(httpget);
             InputStream content = response.getEntity().getContent();
@@ -133,9 +155,9 @@ public class HttpClientHttpFileService implements HttpFileService {
         } catch (URISyntaxException ex) {
             resultFuture.setException(ex);
         } catch (IOException ex) {
-            resultFuture.setException(ex);
+            resultFuture.setException(new CouldNotDownloadResultFileException(ex));
         } catch (IllegalStateException ex) {
-            resultFuture.setException(ex);
+            resultFuture.setException(new CouldNotDownloadResultFileException(ex));
         } finally {
             if (client != null) {
                 client.getConnectionManager().shutdown();
@@ -143,5 +165,15 @@ public class HttpClientHttpFileService implements HttpFileService {
         }
 
         return resultFuture;
+    }
+    
+    private DefaultHttpClient createHttpClientWithProxy() {
+    	DefaultHttpClient client = new DefaultHttpClient();
+    	
+    	ProxySelector proxySelector = ProxySelector.getDefault();
+    	
+    	client.setRoutePlanner(new ProxySelectorRoutePlanner(client.getConnectionManager().getSchemeRegistry(), proxySelector));
+    	
+    	return client;
     }
 }

@@ -29,6 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="EstimatedClickPercent"/>
  *     &lt;enumeration value="EstimatedCtr"/>
  *     &lt;enumeration value="Language"/>
+ *     &lt;enumeration value="EstimatedImpressions"/>
+ *     &lt;enumeration value="EstimatedClicks"/>
+ *     &lt;enumeration value="EstimatedConversions"/>
+ *     &lt;enumeration value="EstimatedConversionRate"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -67,7 +71,15 @@ public enum AgeGenderDemographicReportColumn {
     @XmlEnumValue("EstimatedCtr")
     ESTIMATED_CTR("EstimatedCtr"),
     @XmlEnumValue("Language")
-    LANGUAGE("Language");
+    LANGUAGE("Language"),
+    @XmlEnumValue("EstimatedImpressions")
+    ESTIMATED_IMPRESSIONS("EstimatedImpressions"),
+    @XmlEnumValue("EstimatedClicks")
+    ESTIMATED_CLICKS("EstimatedClicks"),
+    @XmlEnumValue("EstimatedConversions")
+    ESTIMATED_CONVERSIONS("EstimatedConversions"),
+    @XmlEnumValue("EstimatedConversionRate")
+    ESTIMATED_CONVERSION_RATE("EstimatedConversionRate");
     private final String value;
 
     AgeGenderDemographicReportColumn(String v) {

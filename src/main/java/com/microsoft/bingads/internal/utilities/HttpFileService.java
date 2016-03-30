@@ -1,6 +1,7 @@
 package com.microsoft.bingads.internal.utilities;
 
 import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.CouldNotUploadFileException;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +14,7 @@ public interface HttpFileService {
 
     void downloadFile(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException;
 
-    void uploadFile(URI uri, File uploadFilePath,
-            Consumer<HttpRequest> addHeaders) throws UnsuccessfulFileUpload;
+    void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders);
 
     Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback);
 

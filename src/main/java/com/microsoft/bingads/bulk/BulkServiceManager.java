@@ -1,8 +1,10 @@
 package com.microsoft.bingads.bulk;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.CouldNotUploadFileException;
 import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.internal.ParentCallback;
@@ -19,7 +21,6 @@ import com.microsoft.bingads.internal.utilities.CSVBulkFileReaderFactory;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
-import com.microsoft.bingads.internal.utilities.UnsuccessfulFileUpload;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +54,7 @@ public class BulkServiceManager {
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
     private BulkFileReaderFactory bulkFileReaderFactory;
+    private ApiEnvironment apiEnvironment;
 
     private int statusPollIntervalInMilliseconds;
 
@@ -66,18 +68,23 @@ public class BulkServiceManager {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
     public BulkServiceManager(AuthorizationData authorizationData) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CSVBulkFileReaderFactory());
+        this(authorizationData, null);
+    }
+    
+    public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CSVBulkFileReaderFactory(), apiEnvironment);
     }
 
     private BulkServiceManager(AuthorizationData authorizationData,
             HttpFileService httpFileService, ZipExtractor zipExtractor,
-            BulkFileReaderFactory bulkFileReaderFactory) {
+            BulkFileReaderFactory bulkFileReaderFactory, ApiEnvironment apiEnvironment) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
         this.bulkFileReaderFactory = bulkFileReaderFactory;
+        this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, IBulkService.class);
+        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
@@ -383,15 +390,15 @@ public class BulkServiceManager {
 
                         String trackingId = ServiceUtils.GetTrackingId(res);
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId, apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
-                        resultFuture.setException(e);
+                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     } catch (ExecutionException e) {
-                        resultFuture.setException(e);
+                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
                 }
             });
@@ -408,15 +415,15 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res));
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res), apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
-                        resultFuture.setException(e);
+                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     } catch (ExecutionException e) {
-                        resultFuture.setException(e);
+                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
                 }
             });
@@ -492,18 +499,18 @@ public class BulkServiceManager {
                         compressedFilePath.delete();
                     }
 
-                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId);
+                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
-                    resultFuture.setException(e);
+                    resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
                 } catch (ExecutionException e) {
-                    resultFuture.setException(e);
+                    resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
                 } catch (URISyntaxException e) {
                     resultFuture.setException(e);
-                } catch (UnsuccessfulFileUpload e) {
+                } catch (CouldNotUploadFileException e) {
                     resultFuture.setException(e);
                 }
             }
@@ -520,6 +527,15 @@ public class BulkServiceManager {
         zipExtractor.compressFile(uploadFilePath, compressedFilePath);
 
         return compressedFilePath;
+    }
+    
+    /**
+     * Remove temporary files from workingDirectory
+     */
+    public void cleanupTempFiles() {
+    	for(File file : workingDirectory.listFiles()) {
+    		file.delete();
+    	}
     }
 
     private DownloadCampaignsByCampaignIdsRequest generateCampaignsByCampaignIdsRequest(SubmitDownloadParameters parameters) {

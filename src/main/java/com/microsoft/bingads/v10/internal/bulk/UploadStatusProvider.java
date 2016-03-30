@@ -8,6 +8,8 @@ import com.microsoft.bingads.v10.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v10.bulk.IBulkService;
 import com.microsoft.bingads.v10.bulk.UploadStatus;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.xml.ws.AsyncHandler;
@@ -35,12 +37,14 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
             	
                 try {
                     GetBulkUploadStatusResponse statusResponse = result.get();
+                    
+                    String trackingId = ServiceUtils.GetTrackingId(result);
 
                     BulkOperationStatus<UploadStatus> status = new BulkOperationStatus<UploadStatus>(
                         UploadStatus.fromValue(statusResponse.getRequestStatus()),
                         statusResponse.getPercentComplete(),
                         statusResponse.getResultFileUrl(),
-                        null,
+                        trackingId,
                         statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );                   
 

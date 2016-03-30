@@ -44,7 +44,7 @@ public class ConversionPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Keywords", nillable = true)

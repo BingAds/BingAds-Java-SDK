@@ -50,7 +50,7 @@ public class GoalsAndFunnelsReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "GoalIds", nillable = true)

@@ -365,14 +365,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProbeResponse }
-     * 
-     */
-    public ProbeResponse createProbeResponse() {
-        return new ProbeResponse();
-    }
-
-    /**
      * Create an instance of {@link GetAuctionInsightDataRequest }
      * 
      */
@@ -482,14 +474,6 @@ public class ObjectFactory {
      */
     public ArrayOfKeywordHistoricalPerformance createArrayOfKeywordHistoricalPerformance() {
         return new ArrayOfKeywordHistoricalPerformance();
-    }
-
-    /**
-     * Create an instance of {@link ProbeRequest }
-     * 
-     */
-    public ProbeRequest createProbeRequest() {
-        return new ProbeRequest();
     }
 
     /**

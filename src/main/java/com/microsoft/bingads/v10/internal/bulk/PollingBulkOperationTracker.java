@@ -1,13 +1,17 @@
 package com.microsoft.bingads.v10.internal.bulk;
 
 import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.internal.OperationStatusRetry;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.v10.bulk.CouldNotGetBulkOperationStatusException;
 import com.microsoft.bingads.v10.bulk.BulkOperationProgressInfo;
 import com.microsoft.bingads.v10.bulk.BulkOperationStatus;
 import com.microsoft.bingads.v10.bulk.IBulkService;
 import com.microsoft.bingads.v10.bulk.Progress;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 import com.microsoft.bingads.internal.utilities.ThreadPool;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -32,6 +36,9 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     private ResultFuture<BulkOperationStatus<TStatus>> trackResultFuture;
 
     private ServiceClient<IBulkService> serviceClient;
+    
+    private OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService> operationStatusRetry;
+    private int numberOfStatusRetry = 3;
 
     private final Runnable pollExecutorTask = new Runnable() {
         @Override
@@ -50,6 +57,7 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         this.statusProvider = statusProvider;
         this.serviceClient = serviceClient;
         this.progress = progress;
+        this.operationStatusRetry = new OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService>();
     }
 
     AtomicBoolean statusUpdateInProgress = new AtomicBoolean(false);
@@ -82,11 +90,11 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                     } catch (InterruptedException ex) {
                         stopTracking();
 
-                        propagateExceptionToCallingThread(ex);
+                        propagateExceptionToCallingThread(new CouldNotGetBulkOperationStatusException(ex));
                     } catch (ExecutionException ex) {
                         stopTracking();
                         
-                        propagateExceptionToCallingThread(ex);
+                        propagateExceptionToCallingThread(new CouldNotGetBulkOperationStatusException(ex));
                     } finally {
                         statusUpdateInProgress.set(false);
 
@@ -176,17 +184,36 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
 
     private void refreshStatus(AsyncCallback<BulkOperationStatus<TStatus>> callback) {
         final ResultFuture<BulkOperationStatus<TStatus>> resultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(callback);
+        
+		operationStatusRetry.executeWithRetry(
+			new TriConsumer<BulkOperationStatusProvider<TStatus>, ServiceClient<IBulkService>, AsyncCallback<BulkOperationStatus<TStatus>>>() {
+				@Override
+				public void accept(BulkOperationStatusProvider<TStatus> statusProvider,
+						ServiceClient<IBulkService> serviceClient,
+						AsyncCallback<BulkOperationStatus<TStatus>> callback) {
+					statusProvider.getCurrentStatus(serviceClient, callback);
+				}
+			}, 
+			statusProvider,
+			serviceClient,
+			new Consumer<BulkOperationStatus<TStatus>>() {
+				@Override
+				public void accept(BulkOperationStatus<TStatus> status) {
+					currentStatus = status;
 
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
-            @Override
-            public void onSuccess(BulkOperationStatus<TStatus> result) {
-                currentStatus = result;
-
-                resultFuture.setResult(currentStatus);
-            }
-        });
+					resultFuture.setResult(currentStatus);
+				}
+			}, 
+			new Consumer<Exception>() {
+				@Override
+				public void accept(Exception exception) {
+					resultFuture.setException(exception);
+				}
+			}, 
+			numberOfStatusRetry
+		);
     }
-
+    
     private boolean trackingWasStopped() {
         return this.stopTracking;
     }

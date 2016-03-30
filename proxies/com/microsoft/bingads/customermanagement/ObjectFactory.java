@@ -48,6 +48,7 @@ public class ObjectFactory {
     private final static QName _AccountType_QNAME = new QName("https://bingads.microsoft.com/Customer/v9/Entities", "AccountType");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
     private final static QName _CustomerLifeCycleStatus_QNAME = new QName("https://bingads.microsoft.com/Customer/v9/Entities", "CustomerLifeCycleStatus");
+    private final static QName _TaxIdStatus_QNAME = new QName("https://bingads.microsoft.com/Customer/v9/Entities", "TaxIdStatus");
     private final static QName _DateRange_QNAME = new QName("https://bingads.microsoft.com/Customer/v9/Entities", "DateRange");
     private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
@@ -1307,6 +1308,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v9/Entities", name = "CustomerLifeCycleStatus")
     public JAXBElement<CustomerLifeCycleStatus> createCustomerLifeCycleStatus(CustomerLifeCycleStatus value) {
         return new JAXBElement<CustomerLifeCycleStatus>(_CustomerLifeCycleStatus_QNAME, CustomerLifeCycleStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TaxIdStatus }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v9/Entities", name = "TaxIdStatus")
+    public JAXBElement<TaxIdStatus> createTaxIdStatus(TaxIdStatus value) {
+        return new JAXBElement<TaxIdStatus>(_TaxIdStatus_QNAME, TaxIdStatus.class, null, value);
     }
 
     /**

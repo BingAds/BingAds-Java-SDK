@@ -9,7 +9,9 @@ public enum AdExtensionsTypeFilter {
     LOCATION_AD_EXTENSION("LocationAdExtension"),
     CALL_AD_EXTENSION("CallAdExtension"),
     IMAGE_AD_EXTENSION("ImageAdExtension"),
-    APP_AD_EXTENSION("AppAdExtension");
+    APP_AD_EXTENSION("AppAdExtension"),
+    REVIEW_AD_EXTENSION("ReviewAdExtension"),
+    CALLOUT_AD_EXTENSION("CalloutAdExtension");
         
     private final String value;
 

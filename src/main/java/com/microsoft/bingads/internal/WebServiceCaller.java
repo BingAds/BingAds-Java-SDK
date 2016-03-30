@@ -9,4 +9,6 @@ import org.apache.http.NameValuePair;
 public interface WebServiceCaller {
 
     HttpResponse post(URL requestUrl, List<NameValuePair> formValues) throws IOException;
+    
+    void shutDown();
 }

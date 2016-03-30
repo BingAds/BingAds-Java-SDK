@@ -292,6 +292,20 @@ public class StringTable {
     public static final String TrackingTemplate = "Tracking Template";
     public static final String CustomParameter = "Custom Parameter";
 
+    // Review Ad Extension
+    public static final String ReviewAdExtension = "Review Ad Extension";
+    public static final String CampaignReviewAdExtension = "Campaign Review Ad Extension";
+    public static final String AdGroupReviewAdExtension = "Ad Group Review Ad Extension";
+    public static final String IsExact = "Is Exact";
+    public static final String Source = "Source";
+    public static final String Url = "Url";
+
+    // Callout Ad Extension
+    public static final String CalloutAdExtension = "Callout Ad Extension";
+    public static final String CampaignCalloutAdExtension = "Campaign Callout Ad Extension";
+    public static final String AdGroupCalloutAdExtension = "Ad Group Callout Ad Extension";
+    public static final String CalloutText = "Callout Text";
+
     static {
         Map<String, String> m = new HashMap<String, String>();
 

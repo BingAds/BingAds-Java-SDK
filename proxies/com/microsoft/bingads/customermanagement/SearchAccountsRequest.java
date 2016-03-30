@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Predicates" type="{https://bingads.microsoft.com/Customer/v9/Entities}ArrayOfPredicate" minOccurs="0"/>
  *         &lt;element name="Ordering" type="{https://bingads.microsoft.com/Customer/v9/Entities}ArrayOfOrderBy" minOccurs="0"/>
  *         &lt;element name="PageInfo" type="{https://bingads.microsoft.com/Customer/v9/Entities}Paging" minOccurs="0"/>
+ *         &lt;element name="IncludeTaxDetails" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "predicates",
     "ordering",
-    "pageInfo"
+    "pageInfo",
+    "includeTaxDetails"
 })
 @XmlRootElement(name = "SearchAccountsRequest")
 public class SearchAccountsRequest {
@@ -44,6 +46,8 @@ public class SearchAccountsRequest {
     protected ArrayOfOrderBy ordering;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
+    @XmlElement(name = "IncludeTaxDetails", nillable = true)
+    protected Boolean includeTaxDetails;
 
     /**
      * Gets the value of the predicates property.
@@ -115,6 +119,30 @@ public class SearchAccountsRequest {
      */
     public void setPageInfo(Paging value) {
         this.pageInfo = value;
+    }
+
+    /**
+     * Gets the value of the includeTaxDetails property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIncludeTaxDetails() {
+        return includeTaxDetails;
+    }
+
+    /**
+     * Sets the value of the includeTaxDetails property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeTaxDetails(Boolean value) {
+        this.includeTaxDetails = value;
     }
 
 }

@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="TaxType" type="{https://bingads.microsoft.com/Customer/v9/Entities}TaxType" minOccurs="0"/>
  *         &lt;element name="BackUpPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="BillingThresholdAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="TaxIdStatus" type="{https://bingads.microsoft.com/Customer/v9/Entities}TaxIdStatus" minOccurs="0"/>
+ *         &lt;element name="BusinessAddress" type="{https://bingads.microsoft.com/Customer/v9/Entities}Address" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -42,7 +44,9 @@ import javax.xml.bind.annotation.XmlType;
     "taxId",
     "taxType",
     "backUpPaymentInstrumentId",
-    "billingThresholdAmount"
+    "billingThresholdAmount",
+    "taxIdStatus",
+    "businessAddress"
 })
 public class AdvertiserAccount
     extends Account
@@ -63,6 +67,11 @@ public class AdvertiserAccount
     protected Long backUpPaymentInstrumentId;
     @XmlElement(name = "BillingThresholdAmount", nillable = true)
     protected BigDecimal billingThresholdAmount;
+    @XmlElement(name = "TaxIdStatus", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected TaxIdStatus taxIdStatus;
+    @XmlElement(name = "BusinessAddress", nillable = true)
+    protected Address businessAddress;
 
     /**
      * Gets the value of the agencyContactName property.
@@ -230,6 +239,54 @@ public class AdvertiserAccount
      */
     public void setBillingThresholdAmount(BigDecimal value) {
         this.billingThresholdAmount = value;
+    }
+
+    /**
+     * Gets the value of the taxIdStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TaxIdStatus }
+     *     
+     */
+    public TaxIdStatus getTaxIdStatus() {
+        return taxIdStatus;
+    }
+
+    /**
+     * Sets the value of the taxIdStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TaxIdStatus }
+     *     
+     */
+    public void setTaxIdStatus(TaxIdStatus value) {
+        this.taxIdStatus = value;
+    }
+
+    /**
+     * Gets the value of the businessAddress property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Address }
+     *     
+     */
+    public Address getBusinessAddress() {
+        return businessAddress;
+    }
+
+    /**
+     * Sets the value of the businessAddress property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Address }
+     *     
+     */
+    public void setBusinessAddress(Address value) {
+        this.businessAddress = value;
     }
 
 }

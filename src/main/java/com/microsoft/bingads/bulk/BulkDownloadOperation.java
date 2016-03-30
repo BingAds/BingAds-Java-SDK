@@ -1,5 +1,6 @@
 package com.microsoft.bingads.bulk;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.internal.bulk.DownloadStatusProvider;
 import java.util.List;
@@ -30,12 +31,20 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
      * @param authorizationData Represents a user who intends to access the
      * corresponding customer and account.     
      */
-    public BulkDownloadOperation(String requestId, AuthorizationData authorizationData) {
+	public BulkDownloadOperation(String requestId, AuthorizationData authorizationData) {
         super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData));
     }
 
+    public BulkDownloadOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), null, apiEnvironment);
+    }
+    
     BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
         super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), trackingId);
+    }
+    
+    BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId, ApiEnvironment apiEnvironment) {
+    	super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), trackingId, apiEnvironment);
     }
     
     @Override

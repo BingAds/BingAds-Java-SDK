@@ -52,6 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerAssist"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="OfferLanguage"/>
+ *     &lt;enumeration value="CountryOfSale"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -136,7 +138,11 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("RevenuePerConversion")
     REVENUE_PER_CONVERSION("RevenuePerConversion"),
     @XmlEnumValue("RevenuePerAssist")
-    REVENUE_PER_ASSIST("RevenuePerAssist");
+    REVENUE_PER_ASSIST("RevenuePerAssist"),
+    @XmlEnumValue("OfferLanguage")
+    OFFER_LANGUAGE("OfferLanguage"),
+    @XmlEnumValue("CountryOfSale")
+    COUNTRY_OF_SALE("CountryOfSale");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

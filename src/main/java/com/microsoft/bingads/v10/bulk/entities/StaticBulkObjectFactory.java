@@ -152,6 +152,42 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupAppAdExtension();
             }
         }));
+        m.put(StringTable.CalloutAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCalloutAdExtension();
+            }
+        }));
+        m.put(StringTable.CampaignCalloutAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignCalloutAdExtension();
+            }
+        }));
+        m.put(StringTable.AdGroupCalloutAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupCalloutAdExtension();
+            }
+        }));
+        m.put(StringTable.ReviewAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkReviewAdExtension();
+            }
+        }));
+        m.put(StringTable.CampaignReviewAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignReviewAdExtension();
+            }
+        }));
+        m.put(StringTable.AdGroupReviewAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupReviewAdExtension();
+            }
+        }));
         m.put(StringTable.CampaignNegativeSite, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

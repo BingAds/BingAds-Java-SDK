@@ -180,6 +180,14 @@ public class CsvHeaders {
             StringTable.FinalMobileUrl,
             StringTable.TrackingTemplate,
             StringTable.CustomParameter,
+
+            // Review Ad Extension
+            StringTable.IsExact,
+            StringTable.Source,
+            StringTable.Url,
+
+            // Callout Ad Extension
+            StringTable.CalloutText
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

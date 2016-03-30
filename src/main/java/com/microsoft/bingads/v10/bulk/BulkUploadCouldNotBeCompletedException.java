@@ -2,7 +2,6 @@ package com.microsoft.bingads.v10.bulk;
 
 import java.util.List;
 
-import com.microsoft.bingads.v10.bulk.OperationError;
 
 /**
  * This exception is thrown when trying to download the result file for an operation that has completed with an error.
@@ -33,5 +32,16 @@ public class BulkUploadCouldNotBeCompletedException extends RuntimeException {
 
     public UploadStatus getStatus() {
         return status;
+    }
+    
+    @Override
+    public String toString() {
+    	StringBuilder errorsInfo = new StringBuilder();
+    	
+    	for(OperationError error : errors) {
+    		errorsInfo.append(String.format("code=%d, details=%s, errorCode=%s, message=%s; ", error.getCode(), error.getDetails(), error.getErrorCode(), error.getMessage()));
+    	}
+    	
+        return String.format("%s Upload status is %s, errors are %s", super.toString(), status, errorsInfo);    
     }
 }

@@ -37,7 +37,7 @@ public class ResultFuture<T> implements Future<T> {
 
                 @Override
                 public boolean isDone() {
-                    return done;
+                    return true;
                 }
 
                 @Override
@@ -101,12 +101,16 @@ public class ResultFuture<T> implements Future<T> {
 
     @Override
     public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-        synchronized (this) {
-            if (!done) {
-                unit.timedWait(this, timeout);
-            }
-        }
-
+    	synchronized (this) {
+  	      	if (!done) {
+	      	    unit.timedWait(this, timeout);
+	        }
+    	}
+    		
+    	if (!done) {
+    		throw new TimeoutException("Operation timed out");
+    	}
+    	
         if (cancelled) {
             throw new InterruptedException("Operation Cancelled");
         }

@@ -29,6 +29,6 @@ public class EntityReadException extends RuntimeException {
     
     @Override
     public String toString() {
-        return String.format("Column values are %s", columnValues);    
+        return String.format("%s Column values are %s", super.toString(), columnValues);    	
     }
 }

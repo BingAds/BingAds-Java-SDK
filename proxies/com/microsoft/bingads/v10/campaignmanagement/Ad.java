@@ -54,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     TextAd.class,
+    AppInstallAd.class,
     ProductAd.class
 })
 public class Ad {

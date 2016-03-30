@@ -9,6 +9,8 @@ import com.microsoft.bingads.v10.bulk.GetBulkDownloadStatusRequest;
 import com.microsoft.bingads.v10.bulk.GetBulkDownloadStatusResponse;
 import com.microsoft.bingads.v10.bulk.IBulkService;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.xml.ws.AsyncHandler;
@@ -37,12 +39,14 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
             public void handleResponse(Response<GetBulkDownloadStatusResponse> result) {
                 try {
                     GetBulkDownloadStatusResponse statusResponse = result.get();
+                    
+                    String trackingId = ServiceUtils.GetTrackingId(result);
 
                     BulkOperationStatus<DownloadStatus> status = new BulkOperationStatus<DownloadStatus>(
                             DownloadStatus.fromValue(statusResponse.getRequestStatus()),
                             statusResponse.getPercentComplete(),
                             statusResponse.getResultFileUrl(),
-                            null,
+                            trackingId,
                             statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );
                     

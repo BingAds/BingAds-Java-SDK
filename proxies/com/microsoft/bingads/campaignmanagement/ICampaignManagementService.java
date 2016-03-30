@@ -30,252 +30,6 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse>
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    public Response<GetCampaignSizesByAccountIdResponse> getCampaignSizesByAccountIdAsync(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    public Future<?> getCampaignSizesByAccountIdAsync(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters,
-        @WebParam(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignSizesByAccountIdResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
-    @WebResult(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignSizesByAccountIdResponse getCampaignSizesByAccountId(
-        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignSizesByAccountIdRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    public Response<AddCampaignCriterionsResponse> addCampaignCriterionsAsync(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    public Future<?> addCampaignCriterionsAsync(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters,
-        @WebParam(name = "AddCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<AddCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
-    @WebResult(name = "AddCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public AddCampaignCriterionsResponse addCampaignCriterions(
-        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        AddCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    public Response<UpdateCampaignCriterionsResponse> updateCampaignCriterionsAsync(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    public Future<?> updateCampaignCriterionsAsync(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters,
-        @WebParam(name = "UpdateCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<UpdateCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
-    @WebResult(name = "UpdateCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public UpdateCampaignCriterionsResponse updateCampaignCriterions(
-        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        UpdateCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse>
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    public Response<DeleteCampaignCriterionsResponse> deleteCampaignCriterionsAsync(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    public Future<?> deleteCampaignCriterionsAsync(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters,
-        @WebParam(name = "DeleteCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<DeleteCampaignCriterionsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
-    @WebResult(name = "DeleteCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public DeleteCampaignCriterionsResponse deleteCampaignCriterions(
-        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        DeleteCampaignCriterionsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    public Response<GetCampaignCriterionsByCampaignIdResponse> getCampaignCriterionsByCampaignIdAsync(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    public Future<?> getCampaignCriterionsByCampaignIdAsync(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters,
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignCriterionsByCampaignIdResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
-    @WebResult(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignCriterionsByCampaignIdResponse getCampaignCriterionsByCampaignId(
-        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByCampaignIdRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    public Response<GetCampaignCriterionsByIdsResponse> getCampaignCriterionsByIdsAsync(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters);
-
-    /**
-     * 
-     * @param asyncHandler
-     * @param parameters
-     * @return
-     *     returns java.util.concurrent.Future<? extends java.lang.Object>
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    public Future<?> getCampaignCriterionsByIdsAsync(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters,
-        @WebParam(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCampaignCriterionsByIdsResponse> asyncHandler);
-
-    /**
-     * 
-     * @param parameters
-     * @return
-     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse
-     * @throws ApiFaultDetail_Exception
-     * @throws AdApiFaultDetail_Exception
-     */
-    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
-    @WebResult(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-    public GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
-        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
-        GetCampaignCriterionsByIdsRequest parameters)
-        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
-    ;
-
-    /**
-     * 
-     * @param parameters
-     * @return
      *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignsResponse>
      */
     @WebMethod(operationName = "AddCampaigns", action = "AddCampaigns")
@@ -302,8 +56,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddCampaignsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddCampaigns", action = "AddCampaigns")
     @WebResult(name = "AddCampaignsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -343,8 +97,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetCampaignsByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetCampaignsByAccountId", action = "GetCampaignsByAccountId")
     @WebResult(name = "GetCampaignsByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -384,8 +138,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetCampaignsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetCampaignsByIds", action = "GetCampaignsByIds")
     @WebResult(name = "GetCampaignsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -425,8 +179,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteCampaignsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteCampaigns", action = "DeleteCampaigns")
     @WebResult(name = "DeleteCampaignsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -466,8 +220,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateCampaignsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateCampaigns", action = "UpdateCampaigns")
     @WebResult(name = "UpdateCampaignsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -507,8 +261,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetNegativeKeywordsByCampaignIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetNegativeKeywordsByCampaignIds", action = "GetNegativeKeywordsByCampaignIds")
     @WebResult(name = "GetNegativeKeywordsByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -548,8 +302,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetNegativeKeywordsToCampaignsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetNegativeKeywordsToCampaigns", action = "SetNegativeKeywordsToCampaigns")
     @WebResult(name = "SetNegativeKeywordsToCampaignsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -589,8 +343,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetNegativeSitesByCampaignIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetNegativeSitesByCampaignIds", action = "GetNegativeSitesByCampaignIds")
     @WebResult(name = "GetNegativeSitesByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -630,8 +384,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetNegativeSitesToCampaignsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetNegativeSitesToCampaigns", action = "SetNegativeSitesToCampaigns")
     @WebResult(name = "SetNegativeSitesToCampaignsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -671,8 +425,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetConfigValueResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetConfigValue", action = "GetConfigValue")
     @WebResult(name = "GetConfigValueResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -712,8 +466,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddAdGroupsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAdGroups", action = "AddAdGroups")
     @WebResult(name = "AddAdGroupsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -753,8 +507,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteAdGroupsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAdGroups", action = "DeleteAdGroups")
     @WebResult(name = "DeleteAdGroupsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -794,8 +548,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdGroupsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdGroupsByIds", action = "GetAdGroupsByIds")
     @WebResult(name = "GetAdGroupsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -835,8 +589,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdGroupsByCampaignIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdGroupsByCampaignId", action = "GetAdGroupsByCampaignId")
     @WebResult(name = "GetAdGroupsByCampaignIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -876,8 +630,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SubmitAdGroupForApprovalResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SubmitAdGroupForApproval", action = "SubmitAdGroupForApproval")
     @WebResult(name = "SubmitAdGroupForApprovalResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -917,8 +671,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateAdGroupsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAdGroups", action = "UpdateAdGroups")
     @WebResult(name = "UpdateAdGroupsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -958,8 +712,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetNegativeKeywordsByAdGroupIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetNegativeKeywordsByAdGroupIds", action = "GetNegativeKeywordsByAdGroupIds")
     @WebResult(name = "GetNegativeKeywordsByAdGroupIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -999,8 +753,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetNegativeKeywordsToAdGroupsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetNegativeKeywordsToAdGroups", action = "SetNegativeKeywordsToAdGroups")
     @WebResult(name = "SetNegativeKeywordsToAdGroupsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1040,8 +794,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetNegativeSitesByAdGroupIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetNegativeSitesByAdGroupIds", action = "GetNegativeSitesByAdGroupIds")
     @WebResult(name = "GetNegativeSitesByAdGroupIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1081,8 +835,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetNegativeSitesToAdGroupsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetNegativeSitesToAdGroups", action = "SetNegativeSitesToAdGroups")
     @WebResult(name = "SetNegativeSitesToAdGroupsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1122,8 +876,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddTargetsToLibraryResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddTargetsToLibrary", action = "AddTargetsToLibrary")
     @WebResult(name = "AddTargetsToLibraryResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1163,8 +917,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateTargetsInLibraryResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateTargetsInLibrary", action = "UpdateTargetsInLibrary")
     @WebResult(name = "UpdateTargetsInLibraryResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1204,8 +958,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteTargetsFromLibraryResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteTargetsFromLibrary", action = "DeleteTargetsFromLibrary")
     @WebResult(name = "DeleteTargetsFromLibraryResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1245,8 +999,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsInfoFromLibraryResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsInfoFromLibrary", action = "GetTargetsInfoFromLibrary")
     @WebResult(name = "GetTargetsInfoFromLibraryResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1286,8 +1040,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByIds", action = "GetTargetsByIds")
     @WebResult(name = "GetTargetsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1327,8 +1081,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetTargetToAdGroupResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetTargetToAdGroup", action = "SetTargetToAdGroup")
     @WebResult(name = "SetTargetToAdGroupResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1368,8 +1122,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteTargetFromAdGroupResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteTargetFromAdGroup", action = "DeleteTargetFromAdGroup")
     @WebResult(name = "DeleteTargetFromAdGroupResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1409,8 +1163,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByAdGroupIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByAdGroupIds", action = "GetTargetsByAdGroupIds")
     @WebResult(name = "GetTargetsByAdGroupIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1450,8 +1204,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetTargetToCampaignResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetTargetToCampaign", action = "SetTargetToCampaign")
     @WebResult(name = "SetTargetToCampaignResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1491,8 +1245,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteTargetFromCampaignResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteTargetFromCampaign", action = "DeleteTargetFromCampaign")
     @WebResult(name = "DeleteTargetFromCampaignResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1532,8 +1286,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByCampaignIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByCampaignIds", action = "GetTargetsByCampaignIds")
     @WebResult(name = "GetTargetsByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1573,8 +1327,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddTargetsToLibrary2Response
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddTargetsToLibrary2", action = "AddTargetsToLibrary2")
     @WebResult(name = "AddTargetsToLibrary2Response", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1614,8 +1368,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateTargetsInLibrary2Response
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateTargetsInLibrary2", action = "UpdateTargetsInLibrary2")
     @WebResult(name = "UpdateTargetsInLibrary2Response", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1655,8 +1409,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByIds2Response
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByIds2", action = "GetTargetsByIds2")
     @WebResult(name = "GetTargetsByIds2Response", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1696,8 +1450,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByAdGroupIds2Response
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByAdGroupIds2", action = "GetTargetsByAdGroupIds2")
     @WebResult(name = "GetTargetsByAdGroupIds2Response", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1737,8 +1491,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetTargetsByCampaignIds2Response
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetTargetsByCampaignIds2", action = "GetTargetsByCampaignIds2")
     @WebResult(name = "GetTargetsByCampaignIds2Response", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1778,8 +1532,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddAdsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAds", action = "AddAds")
     @WebResult(name = "AddAdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1819,8 +1573,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteAdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAds", action = "DeleteAds")
     @WebResult(name = "DeleteAdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1860,8 +1614,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdsByEditorialStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdsByEditorialStatus", action = "GetAdsByEditorialStatus")
     @WebResult(name = "GetAdsByEditorialStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1901,8 +1655,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdsByIds", action = "GetAdsByIds")
     @WebResult(name = "GetAdsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1942,8 +1696,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdsByAdGroupIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdsByAdGroupId", action = "GetAdsByAdGroupId")
     @WebResult(name = "GetAdsByAdGroupIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -1983,8 +1737,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateAdsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAds", action = "UpdateAds")
     @WebResult(name = "UpdateAdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2024,8 +1778,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddKeywordsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddKeywords", action = "AddKeywords")
     @WebResult(name = "AddKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2065,8 +1819,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteKeywordsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteKeywords", action = "DeleteKeywords")
     @WebResult(name = "DeleteKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2106,8 +1860,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetKeywordsByEditorialStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordsByEditorialStatus", action = "GetKeywordsByEditorialStatus")
     @WebResult(name = "GetKeywordsByEditorialStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2147,8 +1901,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetKeywordsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordsByIds", action = "GetKeywordsByIds")
     @WebResult(name = "GetKeywordsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2188,8 +1942,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetKeywordsByAdGroupIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordsByAdGroupId", action = "GetKeywordsByAdGroupId")
     @WebResult(name = "GetKeywordsByAdGroupIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2229,8 +1983,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateKeywordsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateKeywords", action = "UpdateKeywords")
     @WebResult(name = "UpdateKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2270,8 +2024,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AppealEditorialRejectionsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AppealEditorialRejections", action = "AppealEditorialRejections")
     @WebResult(name = "AppealEditorialRejectionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2311,8 +2065,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddSitePlacementsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddSitePlacements", action = "AddSitePlacements")
     @WebResult(name = "AddSitePlacementsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2352,8 +2106,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteSitePlacementsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteSitePlacements", action = "DeleteSitePlacements")
     @WebResult(name = "DeleteSitePlacementsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2393,8 +2147,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetSitePlacementsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetSitePlacementsByIds", action = "GetSitePlacementsByIds")
     @WebResult(name = "GetSitePlacementsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2434,8 +2188,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetSitePlacementsByAdGroupIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetSitePlacementsByAdGroupId", action = "GetSitePlacementsByAdGroupId")
     @WebResult(name = "GetSitePlacementsByAdGroupIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2475,8 +2229,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateSitePlacementsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateSitePlacements", action = "UpdateSitePlacements")
     @WebResult(name = "UpdateSitePlacementsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2516,8 +2270,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetPlacementDetailsForUrlsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetPlacementDetailsForUrls", action = "GetPlacementDetailsForUrls")
     @WebResult(name = "GetPlacementDetailsForUrlsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2557,8 +2311,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetEditorialReasonsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEditorialReasonsByIds", action = "GetEditorialReasonsByIds")
     @WebResult(name = "GetEditorialReasonsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2598,8 +2352,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAccountMigrationStatusesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAccountMigrationStatuses", action = "GetAccountMigrationStatuses")
     @WebResult(name = "GetAccountMigrationStatusesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2639,8 +2393,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddAdExtensionsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAdExtensions", action = "AddAdExtensions")
     @WebResult(name = "AddAdExtensionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2680,8 +2434,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdExtensionsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdExtensionsByIds", action = "GetAdExtensionsByIds")
     @WebResult(name = "GetAdExtensionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2721,8 +2475,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateAdExtensionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAdExtensions", action = "UpdateAdExtensions")
     @WebResult(name = "UpdateAdExtensionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2762,8 +2516,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteAdExtensionsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAdExtensions", action = "DeleteAdExtensions")
     @WebResult(name = "DeleteAdExtensionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2803,8 +2557,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdExtensionsEditorialReasonsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdExtensionsEditorialReasons", action = "GetAdExtensionsEditorialReasons")
     @WebResult(name = "GetAdExtensionsEditorialReasonsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2844,8 +2598,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetAdExtensionsAssociationsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetAdExtensionsAssociations", action = "SetAdExtensionsAssociations")
     @WebResult(name = "SetAdExtensionsAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2885,8 +2639,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdExtensionsAssociationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdExtensionsAssociations", action = "GetAdExtensionsAssociations")
     @WebResult(name = "GetAdExtensionsAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2926,8 +2680,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteAdExtensionsAssociationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAdExtensionsAssociations", action = "DeleteAdExtensionsAssociations")
     @WebResult(name = "DeleteAdExtensionsAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -2967,8 +2721,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdExtensionIdsByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdExtensionIdsByAccountId", action = "GetAdExtensionIdsByAccountId")
     @WebResult(name = "GetAdExtensionIdsByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3008,8 +2762,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddMediaResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddMedia", action = "AddMedia")
     @WebResult(name = "AddMediaResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3049,8 +2803,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteMediaResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteMedia", action = "DeleteMedia")
     @WebResult(name = "DeleteMediaResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3090,8 +2844,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetMediaByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetMediaByIds", action = "GetMediaByIds")
     @WebResult(name = "GetMediaByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3131,8 +2885,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetMediaMetaDataByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetMediaMetaDataByAccountId", action = "GetMediaMetaDataByAccountId")
     @WebResult(name = "GetMediaMetaDataByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3172,8 +2926,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetMediaMetaDataByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetMediaMetaDataByIds", action = "GetMediaMetaDataByIds")
     @WebResult(name = "GetMediaMetaDataByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3213,8 +2967,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetMediaAssociationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetMediaAssociations", action = "GetMediaAssociations")
     @WebResult(name = "GetMediaAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3254,8 +3008,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdGroupCriterionsByIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdGroupCriterionsByIds", action = "GetAdGroupCriterionsByIds")
     @WebResult(name = "GetAdGroupCriterionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3295,8 +3049,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetAdGroupCriterionsByAdGroupIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAdGroupCriterionsByAdGroupId", action = "GetAdGroupCriterionsByAdGroupId")
     @WebResult(name = "GetAdGroupCriterionsByAdGroupIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3336,8 +3090,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddAdGroupCriterionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAdGroupCriterions", action = "AddAdGroupCriterions")
     @WebResult(name = "AddAdGroupCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3377,8 +3131,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateAdGroupCriterionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAdGroupCriterions", action = "UpdateAdGroupCriterions")
     @WebResult(name = "UpdateAdGroupCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3418,8 +3172,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteAdGroupCriterionsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAdGroupCriterions", action = "DeleteAdGroupCriterions")
     @WebResult(name = "DeleteAdGroupCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3459,8 +3213,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.ApplyProductPartitionActionsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "ApplyProductPartitionActions", action = "ApplyProductPartitionActions")
     @WebResult(name = "ApplyProductPartitionActionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3500,8 +3254,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetBMCStoresByCustomerIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBMCStoresByCustomerId", action = "GetBMCStoresByCustomerId")
     @WebResult(name = "GetBMCStoresByCustomerIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3541,8 +3295,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddNegativeKeywordsToEntitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddNegativeKeywordsToEntities", action = "AddNegativeKeywordsToEntities")
     @WebResult(name = "AddNegativeKeywordsToEntitiesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3582,8 +3336,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetNegativeKeywordsByEntityIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetNegativeKeywordsByEntityIds", action = "GetNegativeKeywordsByEntityIds")
     @WebResult(name = "GetNegativeKeywordsByEntityIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3623,8 +3377,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteNegativeKeywordsFromEntitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteNegativeKeywordsFromEntities", action = "DeleteNegativeKeywordsFromEntities")
     @WebResult(name = "DeleteNegativeKeywordsFromEntitiesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3664,8 +3418,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetSharedEntitiesByAccountIdResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetSharedEntitiesByAccountId", action = "GetSharedEntitiesByAccountId")
     @WebResult(name = "GetSharedEntitiesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3705,8 +3459,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddSharedEntityResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddSharedEntity", action = "AddSharedEntity")
     @WebResult(name = "AddSharedEntityResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3746,8 +3500,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetListItemsBySharedListResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetListItemsBySharedList", action = "GetListItemsBySharedList")
     @WebResult(name = "GetListItemsBySharedListResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3787,8 +3541,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.AddListItemsToSharedListResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddListItemsToSharedList", action = "AddListItemsToSharedList")
     @WebResult(name = "AddListItemsToSharedListResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3828,8 +3582,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.UpdateSharedEntitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateSharedEntities", action = "UpdateSharedEntities")
     @WebResult(name = "UpdateSharedEntitiesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3869,8 +3623,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteListItemsFromSharedListResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteListItemsFromSharedList", action = "DeleteListItemsFromSharedList")
     @WebResult(name = "DeleteListItemsFromSharedListResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3910,8 +3664,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.SetSharedEntityAssociationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetSharedEntityAssociations", action = "SetSharedEntityAssociations")
     @WebResult(name = "SetSharedEntityAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3951,8 +3705,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteSharedEntityAssociationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteSharedEntityAssociations", action = "DeleteSharedEntityAssociations")
     @WebResult(name = "DeleteSharedEntityAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -3992,8 +3746,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetSharedEntityAssociationsBySharedEntityIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetSharedEntityAssociationsBySharedEntityIds", action = "GetSharedEntityAssociationsBySharedEntityIds")
     @WebResult(name = "GetSharedEntityAssociationsBySharedEntityIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -4033,8 +3787,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.GetSharedEntityAssociationsByEntityIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetSharedEntityAssociationsByEntityIds", action = "GetSharedEntityAssociationsByEntityIds")
     @WebResult(name = "GetSharedEntityAssociationsByEntityIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -4074,14 +3828,260 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.campaignmanagement.DeleteSharedEntitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteSharedEntities", action = "DeleteSharedEntities")
     @WebResult(name = "DeleteSharedEntitiesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
     public DeleteSharedEntitiesResponse deleteSharedEntities(
         @WebParam(name = "DeleteSharedEntitiesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
         DeleteSharedEntitiesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    public Response<GetCampaignSizesByAccountIdResponse> getCampaignSizesByAccountIdAsync(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    public Future<?> getCampaignSizesByAccountIdAsync(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters,
+        @WebParam(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignSizesByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignSizesByAccountIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignSizesByAccountId", action = "GetCampaignSizesByAccountId")
+    @WebResult(name = "GetCampaignSizesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignSizesByAccountIdResponse getCampaignSizesByAccountId(
+        @WebParam(name = "GetCampaignSizesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignSizesByAccountIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    public Response<AddCampaignCriterionsResponse> addCampaignCriterionsAsync(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    public Future<?> addCampaignCriterionsAsync(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters,
+        @WebParam(name = "AddCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.AddCampaignCriterionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddCampaignCriterions", action = "AddCampaignCriterions")
+    @WebResult(name = "AddCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public AddCampaignCriterionsResponse addCampaignCriterions(
+        @WebParam(name = "AddCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        AddCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    public Response<UpdateCampaignCriterionsResponse> updateCampaignCriterionsAsync(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    public Future<?> updateCampaignCriterionsAsync(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters,
+        @WebParam(name = "UpdateCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.UpdateCampaignCriterionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateCampaignCriterions", action = "UpdateCampaignCriterions")
+    @WebResult(name = "UpdateCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public UpdateCampaignCriterionsResponse updateCampaignCriterions(
+        @WebParam(name = "UpdateCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        UpdateCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse>
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    public Response<DeleteCampaignCriterionsResponse> deleteCampaignCriterionsAsync(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    public Future<?> deleteCampaignCriterionsAsync(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters,
+        @WebParam(name = "DeleteCampaignCriterionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteCampaignCriterionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.DeleteCampaignCriterionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteCampaignCriterions", action = "DeleteCampaignCriterions")
+    @WebResult(name = "DeleteCampaignCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public DeleteCampaignCriterionsResponse deleteCampaignCriterions(
+        @WebParam(name = "DeleteCampaignCriterionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        DeleteCampaignCriterionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    public Response<GetCampaignCriterionsByCampaignIdResponse> getCampaignCriterionsByCampaignIdAsync(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    public Future<?> getCampaignCriterionsByCampaignIdAsync(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters,
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignCriterionsByCampaignIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByCampaignIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByCampaignId", action = "GetCampaignCriterionsByCampaignId")
+    @WebResult(name = "GetCampaignCriterionsByCampaignIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignCriterionsByCampaignIdResponse getCampaignCriterionsByCampaignId(
+        @WebParam(name = "GetCampaignCriterionsByCampaignIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByCampaignIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    public Response<GetCampaignCriterionsByIdsResponse> getCampaignCriterionsByIdsAsync(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    public Future<?> getCampaignCriterionsByIdsAsync(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters,
+        @WebParam(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCampaignCriterionsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.campaignmanagement.GetCampaignCriterionsByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCampaignCriterionsByIds", action = "GetCampaignCriterionsByIds")
+    @WebResult(name = "GetCampaignCriterionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+    public GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
+        @WebParam(name = "GetCampaignCriterionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
+        GetCampaignCriterionsByIdsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

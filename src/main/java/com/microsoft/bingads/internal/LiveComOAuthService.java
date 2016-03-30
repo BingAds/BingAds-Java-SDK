@@ -99,6 +99,8 @@ public class LiveComOAuthService implements OAuthService {
             }           
         } catch (IOException e) {
             throw new InternalException(e);
+        } finally {
+        	webServiceCaller.shutDown();
         }
     }
 

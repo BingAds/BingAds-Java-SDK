@@ -1,5 +1,6 @@
 package com.microsoft.bingads.reporting;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
@@ -38,6 +39,7 @@ public class ReportingServiceManager {
     private AuthorizationData authorizationData;
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
+    private ApiEnvironment apiEnvironment;
     
     /**
      * The time interval in milliseconds between two status polling attempts.
@@ -54,16 +56,21 @@ public class ReportingServiceManager {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account
      */
     public ReportingServiceManager(AuthorizationData authorizationData) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor());
+        this(authorizationData, null);
+    }
+    
+    public ReportingServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), apiEnvironment);
     }
 
     private ReportingServiceManager(AuthorizationData authorizationData,
-            HttpFileService httpFileService, ZipExtractor zipExtractor) {
+            HttpFileService httpFileService, ZipExtractor zipExtractor, ApiEnvironment apiEnvironment) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
+        this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IReportingService>(this.authorizationData, IReportingService.class);
+        serviceClient = new ServiceClient<IReportingService>(this.authorizationData, apiEnvironment, IReportingService.class);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
@@ -189,15 +196,15 @@ public class ReportingServiceManager {
                     
                     String trackingId = ServiceUtils.GetTrackingId(res);
 
-                    ReportingDownloadOperation operation = new ReportingDownloadOperation(response.getReportRequestId(), authorizationData, trackingId);
+                    ReportingDownloadOperation operation = new ReportingDownloadOperation(response.getReportRequestId(), authorizationData, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
-                    resultFuture.setException(e);
+                    resultFuture.setException(new CouldNotSubmitReportingDownloadException(e));
                 } catch (ExecutionException e) {
-                    resultFuture.setException(e);
+                    resultFuture.setException(new CouldNotSubmitReportingDownloadException(e));
                 }
             }
         });

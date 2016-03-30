@@ -56,8 +56,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.DownloadCampaignsByAccountIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DownloadCampaignsByAccountIds", action = "DownloadCampaignsByAccountIds")
     @WebResult(name = "DownloadCampaignsByAccountIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.DownloadCampaignsByCampaignIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DownloadCampaignsByCampaignIds", action = "DownloadCampaignsByCampaignIds")
     @WebResult(name = "DownloadCampaignsByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -138,8 +138,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetDownloadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDownloadStatus", action = "GetDownloadStatus")
     @WebResult(name = "GetDownloadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -179,8 +179,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetDetailedBulkDownloadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDetailedBulkDownloadStatus", action = "GetDetailedBulkDownloadStatus")
     @WebResult(name = "GetDetailedBulkDownloadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -220,8 +220,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetBulkUploadUrlResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkUploadUrl", action = "GetBulkUploadUrl")
     @WebResult(name = "GetBulkUploadUrlResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -261,8 +261,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetBulkUploadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkUploadStatus", action = "GetBulkUploadStatus")
     @WebResult(name = "GetBulkUploadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -302,8 +302,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDetailedBulkUploadStatus", action = "GetDetailedBulkUploadStatus")
     @WebResult(name = "GetDetailedBulkUploadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")

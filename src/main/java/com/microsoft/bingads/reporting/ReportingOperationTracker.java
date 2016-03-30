@@ -1,13 +1,12 @@
 package com.microsoft.bingads.reporting;
 
 import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.internal.OperationStatusRetry;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.bulk.BulkOperationProgressInfo;
-import com.microsoft.bingads.bulk.BulkOperationStatus;
-import com.microsoft.bingads.bulk.IBulkService;
-import com.microsoft.bingads.bulk.Progress;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 import com.microsoft.bingads.internal.utilities.ThreadPool;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -34,6 +33,9 @@ public class ReportingOperationTracker{
     private ResultFuture<ReportingOperationStatus> trackResultFuture;
 
     private ServiceClient<IReportingService> serviceClient;
+    
+    private OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService> operationStatusRetry;
+    private int numberOfStatusRetry = 3;
 
     private final Runnable pollExecutorTask = new Runnable() {
         @Override
@@ -50,6 +52,7 @@ public class ReportingOperationTracker{
         this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
         this.serviceClient = serviceClient;
+        this.operationStatusRetry = new OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService>();
     }
 
     AtomicBoolean statusUpdateInProgress = new AtomicBoolean(false);
@@ -81,11 +84,11 @@ public class ReportingOperationTracker{
                     } catch (InterruptedException ex) {
                         stopTracking();
 
-                        propagateExceptionToCallingThread(ex);
+                        propagateExceptionToCallingThread(new CouldNotGetReportingDownloadStatusException(ex));
                     } catch (ExecutionException ex) {
                         stopTracking();
                         
-                        propagateExceptionToCallingThread(ex);
+                        propagateExceptionToCallingThread(new CouldNotGetReportingDownloadStatusException(ex));
                     } finally {
                         statusUpdateInProgress.set(false);
 
@@ -138,15 +141,33 @@ public class ReportingOperationTracker{
 
     private void refreshStatus(AsyncCallback<ReportingOperationStatus> callback) {
         final ResultFuture<ReportingOperationStatus> resultFuture = new ResultFuture<ReportingOperationStatus>(callback);
+        
+        operationStatusRetry.executeWithRetry(
+        	new TriConsumer<ReportingStatusProvider, ServiceClient<IReportingService>, AsyncCallback<ReportingOperationStatus>>() {
+                @Override
+                public void accept(ReportingStatusProvider statusProvider, ServiceClient<IReportingService> serviceClient, 
+                		AsyncCallback<ReportingOperationStatus> callback) {
+                    statusProvider.getCurrentStatus(serviceClient, callback);
+                }
+            },
+        	statusProvider,
+        	serviceClient,
+    		new Consumer<ReportingOperationStatus>() {
+    			@Override
+    			public void accept(ReportingOperationStatus status) {
+    				currentStatus = status;
 
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<ReportingOperationStatus>(resultFuture) {
-            @Override
-            public void onSuccess(ReportingOperationStatus result) {
-                currentStatus = result;
-
-                resultFuture.setResult(currentStatus);
-            }
-        });
+    				resultFuture.setResult(currentStatus);
+    			}
+    		},
+    		new Consumer<Exception>() {
+    			@Override
+    			public void accept(Exception exception) {
+    				resultFuture.setException(exception);
+    			}
+    		},
+    		numberOfStatusRetry
+    	);
     }
 
     private boolean trackingWasStopped() {

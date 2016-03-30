@@ -45,7 +45,9 @@ import javax.xml.bind.annotation.XmlType;
     AppAdExtension.class,
     CallAdExtension.class,
     ImageAdExtension.class,
-    SiteLinksAdExtension.class
+    CalloutAdExtension.class,
+    SiteLinksAdExtension.class,
+    ReviewAdExtension.class
 })
 public class AdExtension {
 

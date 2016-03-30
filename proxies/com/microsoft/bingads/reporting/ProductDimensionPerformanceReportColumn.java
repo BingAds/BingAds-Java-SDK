@@ -58,6 +58,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ConversionRate"/>
  *     &lt;enumeration value="Revenue"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
+ *     &lt;enumeration value="SellerName"/>
+ *     &lt;enumeration value="OfferLanguage"/>
+ *     &lt;enumeration value="CountryOfSale"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -154,7 +157,13 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("Revenue")
     REVENUE("Revenue"),
     @XmlEnumValue("RevenuePerConversion")
-    REVENUE_PER_CONVERSION("RevenuePerConversion");
+    REVENUE_PER_CONVERSION("RevenuePerConversion"),
+    @XmlEnumValue("SellerName")
+    SELLER_NAME("SellerName"),
+    @XmlEnumValue("OfferLanguage")
+    OFFER_LANGUAGE("OfferLanguage"),
+    @XmlEnumValue("CountryOfSale")
+    COUNTRY_OF_SALE("CountryOfSale");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

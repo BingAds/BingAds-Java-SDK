@@ -1,5 +1,6 @@
 package com.microsoft.bingads.reporting;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.internal.ParentCallback;
@@ -71,7 +72,11 @@ public class ReportingDownloadOperation {
      * @param authorizationData
      */
     public ReportingDownloadOperation(String requestId, AuthorizationData authorizationData) {
-        this(requestId, authorizationData, null);
+        this(requestId, authorizationData, null, null);
+    }
+    
+    public ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
+        this(requestId, authorizationData, null, apiEnvironment);
     }
     
     /**@param requestId
@@ -79,7 +84,11 @@ public class ReportingDownloadOperation {
      * @param trackingId
      */
     ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
-        this(requestId, authorizationData, new ReportingStatusProvider(requestId, authorizationData), trackingId);
+        this(requestId, authorizationData, new ReportingStatusProvider(requestId, authorizationData), trackingId, null);
+    }
+    
+    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId, ApiEnvironment apiEnvironment) {
+        this(requestId, authorizationData, new ReportingStatusProvider(requestId, authorizationData), trackingId, apiEnvironment);
     }
 
     /**@param requestId
@@ -87,7 +96,7 @@ public class ReportingDownloadOperation {
      * @param statusProvider
      * @param trackingId
      */
-    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, ReportingStatusProvider statusProvider, String trackingId) {
+    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, ReportingStatusProvider statusProvider, String trackingId, ApiEnvironment apiEnvironment) {
         this.statusProvider = statusProvider;
         this.requestId = requestId;
         this.authorizationData = authorizationData;
@@ -95,7 +104,7 @@ public class ReportingDownloadOperation {
 
         statusPollIntervalInMilliseconds = ReportingConfig.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
 
-        this.serviceClient = new ServiceClient<IReportingService>(authorizationData, IReportingService.class);
+        this.serviceClient = new ServiceClient<IReportingService>(authorizationData, apiEnvironment, IReportingService.class);
 
         zipExtractor = new SimpleZipExtractor();
 

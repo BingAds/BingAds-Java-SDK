@@ -1,21 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.microsoft.bingads</groupId>
-    <version>10.4.2</version>
+    <version>10.4.3</version>
     <name>Bing Ads Java SDK</name>
     <description>The Bing Ads Java SDK is a library improving developer experience when working with the Bing Ads services by providing high-level access to features such as Bulk API, OAuth Authorization and SOAP API.</description>
-    <url>https://github.com/bing-ads-sdk/BingAds-Java-SDK</url>
+    <url>https://github.com/BingAds/BingAds-Java-SDK</url>
     
     <licenses>
         <license>
             <name>MIT</name>
-            <url>https://raw.githubusercontent.com/bing-ads-sdk/BingAds-Java-SDK/master/LICENSE</url>
+            <url>https://raw.githubusercontent.com/BingAds/BingAds-Java-SDK/master/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <scm>
-        <url>https://github.com/bing-ads-sdk/BingAds-Java-SDK</url>
+        <url>https://github.com/BingAds/BingAds-Java-SDK</url>
     </scm>
     
     <developers>
@@ -104,6 +104,9 @@
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+								<configuration>
+									<additionalparam>-Xdoclint:none</additionalparam>
+								</configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -163,7 +166,7 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>${cxf.version}</version>
-        </dependency>
+        </dependency>                
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>

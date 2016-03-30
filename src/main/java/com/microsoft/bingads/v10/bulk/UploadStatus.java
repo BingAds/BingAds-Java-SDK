@@ -37,11 +37,11 @@ public enum UploadStatus {
     /**
      * Reserved for future use.
      */
-    ABORTED("Unknown"),
+    ABORTED("Aborted"),
     /**
      * Reserved for future use.
      */
-    EXPIRED("Unknown");
+    EXPIRED("Expired");
 
     private final String value;
 
