@@ -8,11 +8,11 @@ To get started developing Bing Ads applications with Java, install the SDK and e
 
 # Maven Artifact
 The Bing Ads Java SDK includes and depends on the microsoft.bingads Maven artifact. You must include the following dependency to your Maven project. 
-```Xml
+
 <dependency>
   <groupId>com.microsoft.bingads</groupId>
   <artifactId>microsoft.bingads</artifactId>
   <version>10.4.3</version>
 </dependency>
-```
+
 If you are not using a Maven project, you must include the correct version of each dependency. You can review the complete list of Bing Ads Java SDK dependencies at the [Maven Repository](http://mvnrepository.com/artifact/com.microsoft.bingads/microsoft.bingads/).
