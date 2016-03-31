@@ -142,7 +142,7 @@ public class BudgetOpportunities extends ExampleBase {
     }
     
     // Outputs the list of BudgetOpportunity objects.
-    static void outputBudgetOpportunities(ArrayOfBudgetOpportunity budgetOpportunities, long CampaignId){
+    static void outputBudgetOpportunities(ArrayOfBudgetOpportunity budgetOpportunities, long campaignId){
     	if (budgetOpportunities != null && budgetOpportunities.getBudgetOpportunities().size() > 0)
         {
             for (BudgetOpportunity budgetOpportunity : budgetOpportunities.getBudgetOpportunities())
