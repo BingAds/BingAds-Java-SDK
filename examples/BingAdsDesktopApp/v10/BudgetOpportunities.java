@@ -7,11 +7,19 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 import com.microsoft.bingads.v10.adinsight.*;
 
-public class BudgetOpportunities extends ExampleBaseV10 {
+public class BudgetOpportunities extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<IAdInsightService> AdInsightService;
     static ServiceClient<ICampaignManagementService> CampaignService;
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
     public static void main(java.lang.String[] args) {
    	 

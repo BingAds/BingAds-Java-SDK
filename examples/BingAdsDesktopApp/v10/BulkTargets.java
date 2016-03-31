@@ -17,43 +17,30 @@ import com.microsoft.bingads.v10.bulk.BatchError;
 import com.microsoft.bingads.v10.bulk.OperationError;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class BulkTargets extends BulkExampleBaseV10 {
+public class BulkTargets extends BulkExampleBase {
 	
-    static AuthorizationData authorizationData;
-    static BulkServiceManager BulkService; 
-    static BulkFileWriter Writer;  
-    static BulkFileReader Reader;  
-    
-    final static long targetIdKey = -1; 
-	final static long campaignIdKey = -123; 
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
         
     public static void main(String[] args) {
 		
-		BulkEntityIterable bulkEntities = null;
+		BulkEntityIterable downloadEntities = null;
 				
 		try {
-			authorizationData = new AuthorizationData();
+			AuthorizationData authorizationData = new AuthorizationData();
 			authorizationData.setDeveloperToken(DeveloperToken);
 			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
 			authorizationData.setCustomerId(CustomerId);
 			authorizationData.setAccountId(AccountId);
 						            				
-			// Take advantage of the BulkServiceManager class to efficiently manage ads and keywords for all campaigns in an account. 
-			// The client library provides classes to accelerate productivity for downloading and uploading entities. 
-			// For example the UploadEntitiesAsync method of the BulkServiceManager class submits your upload request to the bulk service, 
-			// polls the service until the upload completed, downloads the result file to a temporary directory, and exposes BulkEntity-derived objects  
-			// that contain close representations of the corresponding Campaign Management data objects and value sets.
-			    
 			BulkService = new BulkServiceManager(authorizationData);
-			
-			// Poll for downloads at reasonable intervals. You know your data better than anyone. 
-			// If you download an account that is well less than one million keywords, consider polling 
-			// at 15 to 20 second intervals. If the account contains about one million keywords, consider polling 
-			// at one minute intervals after waiting five minutes. For accounts with about four million keywords, 
-			// consider polling at one minute intervals after waiting 10 minutes. 
-			
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
-
+			
             // Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object, 
             // and additional elements needed to read from and write to a bulk file. 
 
@@ -174,24 +161,23 @@ public class BulkTargets extends BulkExampleBaseV10 {
 			
 			bulkCampaignRadiusTarget.setRadiusTarget(radiusTarget);
 				
-			
             // Upload the entities created above. 
 			
-			List<BulkEntity> entities = new ArrayList<BulkEntity>();
+			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 			
-            entities.add(bulkCampaign);
-            entities.add(bulkCampaignDayTimeTarget);
-            entities.add(bulkCampaignLocationTarget);
-            entities.add(bulkCampaignRadiusTarget);
+            uploadEntities.add(bulkCampaign);
+            uploadEntities.add(bulkCampaignDayTimeTarget);
+            uploadEntities.add(bulkCampaignLocationTarget);
+            uploadEntities.add(bulkCampaignRadiusTarget);
 
-            Reader = uploadEntities(entities);
-            bulkEntities = Reader.getEntities();
+            Reader = writeEntitiesAndUploadFile(uploadEntities);
+            downloadEntities = Reader.getEntities();
             
-            // Write the upload output
+            // Upload and write the output
             
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
             
-            for (BulkEntity entity : bulkEntities) {
+            for (BulkEntity entity : downloadEntities) {
 				if (entity instanceof BulkCampaign) {
 					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
@@ -207,90 +193,46 @@ public class BulkTargets extends BulkExampleBaseV10 {
 				}
 			}
             
-			bulkEntities.close();
+			downloadEntities.close();
             Reader.close();
-            
-            java.lang.Long campaignId = campaignResults.get(0).getCampaign().getId();
-            
-            // Update the day and time target. 
-            // Do not create a BulkAdGroupDayTimeTarget for update, unless you want to replace all existing DayTime target bids
-            // with the specified day and time target set for the current bulk upload. 
-            // Instead you should upload one or more BulkCampaignDayTimeTargetBid.
 
-            BulkCampaignDayTimeTargetBid bulkCampaignDayTimeTargetBid = new BulkCampaignDayTimeTargetBid();
-    		bulkCampaignDayTimeTargetBid.setCampaignId(campaignId);
-    		bulkCampaignDayTimeTargetBid.setTargetId(targetIdKey);
-    		DayTimeTargetBid dayTimeTargetBid = new DayTimeTargetBid();
-    		dayTimeTargetBid.setBidAdjustment(15);
-    		dayTimeTargetBid.setDay(Day.FRIDAY);
-    		dayTimeTargetBid.setFromHour(11);
-    		dayTimeTargetBid.setFromMinute(Minute.ZERO);
-    		dayTimeTargetBid.setToHour(13);
-    		dayTimeTargetBid.setToMinute(Minute.FIFTEEN);
-    		bulkCampaignDayTimeTargetBid.setDayTimeTargetBid(dayTimeTargetBid);
+            //Delete the campaign and target associations that were previously added. 
+            //You should remove this region if you want to view the added entities in the 
+            //Bing Ads web application or another tool.
 
-    		// Upload the updated target
-			
-			entities = new ArrayList<BulkEntity>();
-			
-            entities.add(bulkCampaignDayTimeTargetBid);
+            //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted.
 
-            Reader = uploadEntities(entities);
-            bulkEntities = Reader.getEntities();
-            
-            outputStatusMessage(String.format("Upload Results Bulk File Pat: %s\n", Reader.getBulkFilePath()));
-            outputStatusMessage("Updated Entities\n");
-            
-            // Write the upload output
-    		            
-            List<BulkEntity> campaignDayTimeTargetBidResults = 
-            		new ArrayList<BulkEntity>();
-            
-            for (BulkEntity entity : bulkEntities) {
-				if (entity instanceof BulkCampaignDayTimeTargetBid) {
-					outputStatusMessage("BulkCampaignDayTimeTargetBid\n");
-					campaignDayTimeTargetBidResults.add((BulkCampaignDayTimeTargetBid) entity);
-				}
-				else{
-					outputStatusMessage(String.format("Class: %s\n", entity.getClass()));
-					campaignDayTimeTargetBidResults.add((BulkCampaignDayTimeTargetBid) entity);
-				}
-			}
-			
-            bulkEntities.close();
-            Reader.close();
-            
-            /* Delete the campaign and target associations that were previously added. 
-             * Note that the targets are not deleted. Deleting targets is not supported using the
-             * Bulk service. To delete targets you can use the DeleteTargetsFromLibrary operation
-             * via the Campaign Management service.
-             * You should remove this region if you want to view the added entities in the 
-             * Bing Ads web application or another tool.
-             */
+            //When you delete a BulkCampaign, the dependent entities such as BulkCampaignDayTimeTarget 
+            //are deleted without being specified explicitly.  
 
-            bulkCampaign = new BulkCampaign();
-            bulkCampaign.setCampaign(new Campaign());
-            bulkCampaign.getCampaign().setId(campaignId);
-            bulkCampaign.getCampaign().setStatus(CampaignStatus.DELETED);
+            //Deleting targets is not supported using the Bulk service.
+            //To delete targets you can use the DeleteTargetsFromLibrary operation via the Campaign Management service. 
             
-            entities = new ArrayList<BulkEntity>();
-			
-            entities.add(bulkCampaign);
-
-            Reader = uploadEntities(entities);
-            bulkEntities = Reader.getEntities();
-
-            // Write the upload output
+            uploadEntities = new ArrayList<BulkEntity>();
             
-            for (BulkEntity entity : bulkEntities) {
+            for (BulkCampaign campaignResult : campaignResults){
+            	campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
+            	uploadEntities.add(campaignResult);
+            }
+            
+            // Upload and write the output
+            
+            outputStatusMessage("\nDeleting campaign, ad group, keywords, and ads . . .\n");
+
+	        Reader = writeEntitiesAndUploadFile(uploadEntities);
+	        downloadEntities = Reader.getEntities();
+            
+            for (BulkEntity entity : downloadEntities) {
 				if (entity instanceof BulkCampaign) {
+					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
 				}
 			}
-			
-            bulkEntities.close();
+			downloadEntities.close();
             Reader.close();
-		
+            
+            outputStatusMessage("Program execution completed\n"); 
+            
 		} catch (ExecutionException ee) {
 			Throwable cause = ee.getCause();
 			if (cause instanceof AdApiFaultDetail_Exception) {
@@ -321,14 +263,24 @@ public class BulkTargets extends BulkExampleBaseV10 {
 			} else {
 				ee.printStackTrace();	
 			}
+		} catch (BulkDownloadCouldNotBeCompletedException ee) {
+			outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (BulkUploadCouldNotBeCompletedException ee) {
+			outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (OAuthTokenRequestException ee) {
+			outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (BulkOperationInProgressException ee) {
+			outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		} finally {
-			if (bulkEntities != null){
+			if (downloadEntities != null){
 				try {
-					bulkEntities.close();
+					downloadEntities.close();
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -337,230 +289,4 @@ public class BulkTargets extends BulkExampleBaseV10 {
 	
 		System.exit(0);
 	}
-	
-  /// Writes the specified entities to a local file and uploads the file. We could have uploaded directly
-    /// without writing to file. This example writes to file as an exercise so that you can view the structure 
-    /// of the bulk records being uploaded as needed. 
-    
-    static BulkFileReader uploadEntities(List<BulkEntity> uploadEntities) throws IOException, ExecutionException, InterruptedException {
-    	Writer = new BulkFileWriter(new File(FileDirectory + UploadFileName));
-
-    	for(BulkEntity entity : uploadEntities){
-    		Writer.writeEntity(entity);
-    	}
-        
-        Writer.close();
-
-        FileUploadParameters fileUploadParameters = new FileUploadParameters();
-        fileUploadParameters.setResultFileDirectory(new File(FileDirectory));
-        fileUploadParameters.setResultFileName(ResultFileName);
-        fileUploadParameters.setUploadFilePath(new File(FileDirectory + UploadFileName));
-        fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
-        fileUploadParameters.setOverwriteResultFile(true);
-        
-        File bulkFilePath =
-            BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
-        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
-    }
-	
-	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
-		for (BulkCampaign entity : bulkEntities){
-			outputStatusMessage("BulkCampaign: \n");
-			outputStatusMessage(String.format("Campaign Name: %s\nCampaign Id: %s\n", 
-					entity.getCampaign().getName(),
-					entity.getCampaign().getId()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkCampaignDayTimeTargets(Iterable<BulkCampaignDayTimeTarget> bulkEntities) {
-		for (BulkCampaignDayTimeTarget entity : bulkEntities){
-			// If the BulkCampaignDayTimeTarget object was created by the application, and not read from a bulk file, 
-	        // then there will be no BulkCampaignDayTimeTargetBid objects. For example if you want to print the 
-	        // BulkCampaignDayTimeTarget prior to upload.
-			if (entity.getBids().size() == 0 && entity.getDayTimeTarget() != null){
-				outputStatusMessage("BulkCampaignDayTimeTarget: \n");
-				outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-				outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-				outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-				
-				for (DayTimeTargetBid bid : entity.getDayTimeTarget().getBids().getDayTimeTargetBids()){
-					outputStatusMessage("Campaign Management DayTimeTargetBid Object: ");
-					outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-					outputStatusMessage(String.format("Day : {0}", bid.getDay()));
-					outputStatusMessage(String.format("From Hour : {0}", bid.getFromHour()));
-					outputStatusMessage(String.format("From Minute: {0}", bid.getFromMinute()));
-					outputStatusMessage(String.format("To Hour : {0}", bid.getToHour()));
-					outputStatusMessage(String.format("To Minute: {0}\n", bid.getToMinute()));
-				}
-			}
-			else {
-				outputBulkCampaignDayTimeTargetBids(entity.getBids());
-			}
-			
-		}
-	}
-	
-	static void outputBulkCampaignDayTimeTargetBids(Iterable<BulkCampaignDayTimeTargetBid> bulkEntities){
-		for (BulkCampaignDayTimeTargetBid entity : bulkEntities){
-			outputStatusMessage("BulkCampaignDayTimeTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: {0}", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: {0}", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: {0}\n", entity.getTargetId()));
-
-            outputStatusMessage(String.format("Bid Adjustment: {0}", entity.getDayTimeTargetBid().getBidAdjustment()));
-            outputStatusMessage(String.format("Day : {0}", entity.getDayTimeTargetBid().getDay()));
-            outputStatusMessage(String.format("From Hour : {0}", entity.getDayTimeTargetBid().getFromHour()));
-            outputStatusMessage(String.format("From Minute: {0}", entity.getDayTimeTargetBid().getFromMinute()));
-            outputStatusMessage(String.format("To Hour : {0}", entity.getDayTimeTargetBid().getToHour()));
-            outputStatusMessage(String.format("To Minute: {0}\n", entity.getDayTimeTargetBid().getToMinute()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkCampaignLocationTargets(Iterable<BulkCampaignLocationTarget> bulkEntities) {
-		for (BulkCampaignLocationTarget entity : bulkEntities){
-			// If the BulkCampaignLocationTarget object was created by the application, and not read from a bulk file, 
-            // then there will be no BulkCampaignLocationTargetBid objects. For example if you want to print the 
-            // BulkCampaignLocationTarget prior to upload.
-            if (entity.getBids().size() == 0){
-				outputStatusMessage("BulkCampaignLocationTarget: \n");
-				outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-				outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-				outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-				// TODO: Output the IntentOption after we add it to BulkCampaignLocationTarget
-				
-				if (entity.getCityTarget() != null){
-					for (CityTargetBid bid : entity.getCityTarget().getBids().getCityTargetBids()){
-						outputStatusMessage("Campaign Management CityTargetBid Object: ");
-						outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-						outputStatusMessage(String.format("City : {0}", bid.getCity()));
-						outputStatusMessage(String.format("Location Is Excluded: {0}", bid.isIsExcluded()));
-					}
-				}
-				if (entity.getCountryTarget() != null){
-					for (CountryTargetBid bid : entity.getCountryTarget().getBids().getCountryTargetBids()){
-						outputStatusMessage("Campaign Management CountryTargetBid Object: ");
-						outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-						outputStatusMessage(String.format("CountryAndRegion : {0}", bid.getCountryAndRegion()));
-						outputStatusMessage(String.format("Location Is Excluded: {0}", bid.isIsExcluded()));
-					}
-				}
-				if (entity.getMetroAreaTarget() != null){
-					for (MetroAreaTargetBid bid : entity.getMetroAreaTarget().getBids().getMetroAreaTargetBids()){
-						outputStatusMessage("Campaign Management MetroAreaTargetBid Object: ");
-						outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-						outputStatusMessage(String.format("MetroArea : {0}", bid.getMetroArea()));
-						outputStatusMessage(String.format("Location Is Excluded: {0}", bid.isIsExcluded()));
-					}
-				}
-				if (entity.getPostalCodeTarget() != null){
-					for (PostalCodeTargetBid bid : entity.getPostalCodeTarget().getBids().getPostalCodeTargetBids()){
-						outputStatusMessage("Campaign Management PostalTargetBid Object: ");
-						outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-						outputStatusMessage(String.format("PostalCode : {0}", bid.getPostalCode()));
-						outputStatusMessage(String.format("Location Is Excluded: {0}", bid.isIsExcluded()));
-					}
-				}
-				if (entity.getStateTarget() != null){
-					for (StateTargetBid bid : entity.getStateTarget().getBids().getStateTargetBids()){
-						outputStatusMessage("Campaign Management StateTargetBid Object: ");
-						outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-						outputStatusMessage(String.format("State", bid.getState()));
-						outputStatusMessage(String.format("Location Is Excluded: {0}", bid.isIsExcluded()));
-					}
-				}
-			}
-			else {
-				outputBulkCampaignLocationTargetBids(entity.getBids());
-			}
-			
-		}
-	}
-	
-	static void outputBulkCampaignLocationTargetBids(Iterable<BulkCampaignLocationTargetBid> bulkEntities){
-		for (BulkCampaignLocationTargetBid entity : bulkEntities){
-			outputStatusMessage("BulkCampaignDayTimeTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: {0}", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: {0}", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: {0}\n", entity.getTargetId()));
-            outputStatusMessage(String.format("IntentOption: {0}\n", entity.getIntentOption()));
-
-            outputStatusMessage(String.format("Bid Adjustment: {0}", entity.getBidAdjustment()));
-            outputStatusMessage(String.format("Location Type: {0}", entity.getLocationType()));
-            outputStatusMessage(String.format("Location: {0}\n", entity.getLocation()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputBulkCampaignRadiusTargets(Iterable<BulkCampaignRadiusTarget> bulkEntities) {
-		for (BulkCampaignRadiusTarget entity : bulkEntities){
-			// If the BulkCampaignRadiusTarget object was created by the application, and not read from a bulk file, 
-	        // then there will be no BulkCampaignRadiusTargetBid objects. For example if you want to print the 
-	        // BulkCampaignRadiusTarget prior to upload.
-			if (entity.getBids().size() == 0 && entity.getRadiusTarget() != null){
-				outputStatusMessage("BulkCampaignRadiusTarget: \n");
-				outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-				outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-				outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-				
-				for (RadiusTargetBid bid : entity.getRadiusTarget().getBids().getRadiusTargetBids()){
-					outputStatusMessage("Campaign Management RadiusTargetBid Object: ");
-					outputStatusMessage(String.format("Bid Adjustment: {0}", bid.getBidAdjustment()));
-					outputStatusMessage(String.format("Name : {0}", bid.getName()));
-					outputStatusMessage(String.format("Radius : {0}", bid.getRadius()));
-					java.lang.String radiusUnit = bid.getRadiusUnit() == 
-							DistanceUnit.KILOMETERS ? "Kilometers" : "Miles";
-					outputStatusMessage(String.format("Radius Unit: {0}", radiusUnit));
-				}
-			}
-			else {
-				outputBulkCampaignRadiusTargetBids(entity.getBids());
-			}
-		}
-	}
-	
-	static void outputBulkCampaignRadiusTargetBids(Iterable<BulkCampaignRadiusTargetBid> bulkEntities){
-		for (BulkCampaignRadiusTargetBid entity : bulkEntities){
-			outputStatusMessage("BulkCampaignRadiusTargetBid: \n");
-			outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-			outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-			outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-			outputStatusMessage("Campaign Management RadiusTargetBid Object: ");
-			outputStatusMessage(String.format("Bid Adjustment: {0}", entity.getRadiusTargetBid().getBidAdjustment()));
-			outputStatusMessage(String.format("Name : {0}", entity.getRadiusTargetBid().getName()));
-			outputStatusMessage(String.format("Radius : {0}", entity.getRadiusTargetBid().getRadius()));
-			java.lang.String radiusUnit = entity.getRadiusTargetBid().getRadiusUnit() == 
-					DistanceUnit.KILOMETERS ? "Kilometers" : "Miles";
-			outputStatusMessage(String.format("Radius Unit: {0}", radiusUnit));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }

@@ -17,7 +17,7 @@ import com.microsoft.bingads.v10.bulk.BatchError;
 import com.microsoft.bingads.v10.bulk.OperationError;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class BulkPauseAds extends BulkExampleBase {
+public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 	
     /*
 	private static java.lang.String UserName = "<UserNameGoesHere>";
@@ -40,59 +40,57 @@ public class BulkPauseAds extends BulkExampleBase {
 						            				
 			BulkService = new BulkServiceManager(authorizationData);
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
-						
-			// Complete a full download of all ads in the account. 
-			 
-			List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
-			entities.add(BulkDownloadEntity.ADS);
+
+            List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
+			entities.add(BulkDownloadEntity.AD_GROUP_PRODUCT_PARTITIONS);
 			
 			DownloadParameters downloadParameters = new DownloadParameters();
 			downloadParameters.setEntities(entities);
 			downloadParameters.setFileType(DownloadFileType.CSV);
+			downloadParameters.setResultFileDirectory(new File(FileDirectory));
+			downloadParameters.setResultFileName(DownloadFileName);
+			downloadParameters.setOverwriteResultFile(true);
+			downloadParameters.setLastSyncTimeInUTC(null);
 			
-			// Download all ads in the account.
+			// Download all product partitions across all ad groups in the account.
 			File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
-			outputStatusMessage("Downloaded all ads in the account.\n"); 
+			outputStatusMessage("Downloaded all product partitions across all ad groups in the account.\n"); 
 			Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
 	        downloadEntities = Reader.getEntities();
 			
 			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 			
+			// Within the downloaded records, find all product partition leaf nodes that have bids.
 			for (BulkEntity entity : downloadEntities) {
-				if (entity instanceof BulkTextAd 
-						&& ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
-					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
-					
-					// Update the ad status to paused.
-					((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
-					
-				    // In this example we do not want to modify DestinationUrl so we set it to null.
-					// We don't round-trip the existing value because if DestinationUrl 
-					// is already empty, the value is deserialized as "". If you attempt to round-trip the object
-					// with DestinationUrl set to "", and if FinalUrls are not set, then the service will throw an error.
-					((BulkTextAd)entity).getAd().setDestinationUrl(null);
-					
+				if (entity instanceof BulkAdGroupProductPartition &&
+						((BulkAdGroupProductPartition)entity).getAdGroupCriterion() instanceof BiddableAdGroupCriterion &&
+						((ProductPartition)(((BulkAdGroupProductPartition)entity).getAdGroupCriterion().getCriterion())).getPartitionType() == ProductPartitionType.UNIT) {
+					AdGroupCriterion adGroupCriterion = ((BulkAdGroupProductPartition)entity).getAdGroupCriterion();
+					// Increase all bids by some predetermined amount or percentage. 
+                    // Implement your own logic to update bids by varying amounts.
+					double updatedBid = ((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().getAmount() + 0.01;
+					((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().setAmount(updatedBid);;
 					uploadEntities.add(entity);
 				}
 			}
 			downloadEntities.close();
 			Reader.close(); 
-			
+		
 			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
-
+				outputStatusMessage("Changed local bid of all product partitions. Starting upload.\n"); 
+				
 				Reader = writeEntitiesAndUploadFile(uploadEntities);
 		        downloadEntities = Reader.getEntities();
-		        for (BulkEntity entity : downloadEntities) {
-					if (entity instanceof BulkTextAd) {
-						outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+				for (BulkEntity entity : downloadEntities) {
+					if (entity instanceof BulkAdGroupProductPartition) {
+						outputBulkAdGroupProductPartitions(Arrays.asList((BulkAdGroupProductPartition) entity) );
 					}
 				}
 				downloadEntities.close();
 				Reader.close();
 			}
 			else{
-				outputStatusMessage("All text ads are already Paused. \n"); 
+				outputStatusMessage("No product partitions in account. \n"); 
 			}
 			
 			outputStatusMessage("Program execution completed\n"); 
@@ -151,57 +149,4 @@ public class BulkPauseAds extends BulkExampleBase {
 	
 		System.exit(0);
 	}
-    
-    /// Writes the specified entities to a local file and uploads the file. We could have uploaded directly
-    /// without writing to file. This example writes to file as an exercise so that you can view the structure 
-    /// of the bulk records being uploaded as needed. 
-    
-    static BulkFileReader uploadEntities(List<BulkEntity> uploadEntities) throws IOException, ExecutionException, InterruptedException {
-    	Writer = new BulkFileWriter(new File(FileDirectory + UploadFileName));
-
-    	for(BulkEntity entity : uploadEntities){
-    		Writer.writeEntity(entity);
-    	}
-        
-        Writer.close();
-
-        FileUploadParameters fileUploadParameters = new FileUploadParameters();
-        fileUploadParameters.setResultFileDirectory(new File(FileDirectory));
-        fileUploadParameters.setResultFileName(ResultFileName);
-        fileUploadParameters.setUploadFilePath(new File(FileDirectory + UploadFileName));
-        fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
-        fileUploadParameters.setOverwriteResultFile(true);
-        
-        File bulkFilePath =
-            BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
-        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
-    }
-	
-	static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
-		for (BulkTextAd entity : bulkEntities){
-			outputStatusMessage("BulkTextAd: \n");
-			outputStatusMessage(String.format("TextAd DisplayUrl: %s\nTextAd Id: %s\nTextAd Status: %s\n", 
-					entity.getAd().getDisplayUrl(),
-					entity.getAd().getId(),
-					entity.getAd().getStatus()));
-			
-			if(entity.hasErrors()){
-				outputErrors(entity.getErrors());
-			}
-		}
-	}
-	
-	static void outputErrors(Iterable<BulkError> errors){
-		for (BulkError error : errors){
-			outputStatusMessage(String.format("Error: %s", error.getError()));
-			outputStatusMessage(String.format("Number: %s\n", error.getNumber()));
-			if(error.getEditorialReasonCode() != null){
-				outputStatusMessage(String.format("EditorialTerm: %s\n", error.getEditorialTerm()));
-				outputStatusMessage(String.format("EditorialReasonCode: %s\n", error.getEditorialReasonCode()));
-				outputStatusMessage(String.format("EditorialLocation: %s\n", error.getEditorialLocation()));
-				outputStatusMessage(String.format("PublisherCountries: %s\n", error.getPublisherCountries()));
-			}
-		}
-	}
-		
 }

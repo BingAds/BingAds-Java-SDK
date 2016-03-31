@@ -10,11 +10,19 @@ import com.microsoft.bingads.campaignmanagement.BatchError;
 import com.microsoft.bingads.campaignmanagement.OperationError;
 import com.microsoft.bingads.optimizer.*;
 
-public class OptimizeBudget extends ExampleBaseV9 {
+public class OptimizeBudget extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<IOptimizerService> OptimizerService; 
     
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
+
     public static void main(java.lang.String[] args) {
    	 
     	try

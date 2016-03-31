@@ -17,7 +17,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkAdExtensions extends BulkExampleBaseV9 {
+public class BulkAdExtensions extends BulkExampleBase {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -28,7 +28,15 @@ public class BulkAdExtensions extends BulkExampleBaseV9 {
     final static long callAdExtensionIdKey = -12; 
     final static long locationAdExtensionIdKey = -13; 
     final static long siteLinksAdExtensionIdKey = -14; 
-    final static long campaignIdKey = -123; 
+	final static long campaignIdKey = -123; 
+    
+	/*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
         
     public static void main(String[] args) {
 		
@@ -107,7 +115,7 @@ public class BulkAdExtensions extends BulkExampleBaseV9 {
             Reader = new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
             outputStatusMessage("Upload Results Bulk File Path" + Reader.getBulkFilePath() + "\n");
 
-            // Write the upload output
+            // Upload and write the output
 
             entities = Reader.getEntities();
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
@@ -270,7 +278,7 @@ public class BulkAdExtensions extends BulkExampleBaseV9 {
             Reader = new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
             outputStatusMessage("Upload Results Bulk File Path" + Reader.getBulkFilePath() + "\n");
 
-            // Write the upload output
+            // Upload and write the output
 
             entities = Reader.getEntities();
             

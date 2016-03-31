@@ -2,14 +2,23 @@ package com.microsoft.bingads.examples.v10;
 
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class Targets extends ExampleBaseV10 {
+public class Targets extends ExampleBase {
 
      static AuthorizationData authorizationData;
      static ServiceClient<ICampaignManagementService> CampaignService; 
+     
+     /*
+ 	private static java.lang.String UserName = "<UserNameGoesHere>";
+     private static java.lang.String Password = "<PasswordGoesHere>";
+     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+     private static long CustomerId = <CustomerIdGoesHere>;
+     private static long AccountId = <AccountIdGoesHere>;
+     */
 
      public static void main(java.lang.String[] args) {
     	 
@@ -48,10 +57,11 @@ public class Targets extends ExampleBaseV10 {
              adGroup.setBiddingModel(BiddingModel.KEYWORD);
              adGroup.setPricingModel(PricingModel.CPC);
              adGroup.setStartDate(null);
-             adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
-             adGroup.getEndDate().setDay(31);
-             adGroup.getEndDate().setMonth(12);
-             adGroup.getEndDate().setYear(2016);
+             Calendar calendar = Calendar.getInstance();
+ 			 adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+ 			 adGroup.getEndDate().setDay(31);
+ 			 adGroup.getEndDate().setMonth(12);
+ 			 adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
              Bid searchBid = new Bid();
              searchBid.setAmount(0.09);
              adGroup.setSearchBid(searchBid);
@@ -301,6 +311,8 @@ public class Targets extends ExampleBaseV10 {
              deleteAdGroupTargetIds.getLongs().add(adGroupTargetId);
              deleteTargetsFromLibrary(deleteAdGroupTargetIds);
              outputStatusMessage(String.format("Deleted TargetId %d\n\n", adGroupTargetId));
+             
+             outputStatusMessage("Program execution completed\n"); 
          
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {

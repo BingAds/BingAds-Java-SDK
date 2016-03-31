@@ -98,6 +98,8 @@ public class OAuthDesktopApplication extends Application {
                             printAccounts(accounts);
                         
                         }
+                        
+                        System.out.println("Program execution completed\n"); 
                    
                     // Customer Management service operations can throw AdApiFaultDetail.
                     } catch (AdApiFaultDetail_Exception ex) {

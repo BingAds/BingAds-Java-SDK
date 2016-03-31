@@ -11,16 +11,23 @@ import com.microsoft.bingads.customermanagement.*;
 /// Run this sample multiple times alternating between agency and client credentials 
 /// to update and observe the status change, for example from LinkPending to LinkAccepted to Active. 
 /// 
-public class ManageClient extends ExampleBaseV9 {
+public class ManageClient extends ExampleBase {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICustomerManagementService> CustomerService;   
-
-    // Agency Customer Id 
+    static ServiceClient<ICustomerManagementService> CustomerService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    */
+    
+    // Agency Customer Id
     private static long CustomerId = <CustomerIdGoesHere>;
     
-    // Client Account Id 
-    private static long ClientAccountId = <ClientAccountIdGoesHere>;      
+    // Client Account Id
+    private static long ClientAccountId = <ClientAccountIdGoesHere>;
+        
 
     public static void main(java.lang.String[] args) {
    	 
@@ -35,13 +42,13 @@ public class ManageClient extends ExampleBaseV9 {
                     authorizationData, 
                     ICustomerManagementService.class);
 	        
-            System.out.println("You must edit this example to provide the ClientAccountId for " +
+            outputStatusMessage("You must edit this example to provide the ClientAccountId for " +
                     "the client link.");
-            System.out.println("When adding a client link, the client link's ManagingCustomerId is set to the CustomerId of the current " +
+            outputStatusMessage("When adding a client link, the client link's ManagingCustomerId is set to the CustomerId of the current " +
                     	"authenticated user, who must be a Super Admin of the agency.");
-            System.out.println("Login as an agency Super Admin user to send a client link invitation, " +
+            outputStatusMessage("Login as an agency Super Admin user to send a client link invitation, " +
                     	"or unlink an existing client link.");
-            System.out.println("Login as a client Super Admin user to accept a client link invitation.\n");
+            outputStatusMessage("Login as a client Super Admin user to accept a client link invitation.\n");
  
             UpdateClientLinksResponse updateClientLinksResponse = null;
 
@@ -81,7 +88,7 @@ public class ManageClient extends ExampleBaseV9 {
             if (clientLinks.getClientLinks().size() > 0)
             {
                 clientLink = clientLinks.getClientLinks().get(0);
-                System.out.printf("Current ClientLink Status: %s.\n\n", clientLink.getStatus());
+                outputStatusMessage(String.format("Current ClientLink Status: %s.\n\n", clientLink.getStatus()));
                 printClientLinks(clientLinks);
                 
                 ArrayOfClientLink updateClientLinks = new ArrayOfClientLink();
@@ -94,17 +101,17 @@ public class ManageClient extends ExampleBaseV9 {
                     case ACTIVE:
                         clientLink.setStatus(ClientLinkStatus.UNLINK_REQUESTED);
                         updateClientLinksResponse = updateClientLinks(updateClientLinks);
-                        System.out.println("UpdateClientLinks : UnlinkRequested.\n");
+                        outputStatusMessage("UpdateClientLinks : UnlinkRequested.\n");
                         newLinkRequired = false;
                         break;
                     // Waiting on a system status transition or waiting for the StartDate.
                     case LINK_ACCEPTED:
-                        System.out.println("The status is transitioning towards LinkInProgress.\n");
+                        outputStatusMessage("The status is transitioning towards LinkInProgress.\n");
                         newLinkRequired = false;
                         break;
                     // Waiting on a system status transition.
                     case LINK_IN_PROGRESS:
-                        System.out.println("The status is transitioning towards Active.\n");
+                        outputStatusMessage("The status is transitioning towards Active.\n");
                         newLinkRequired = false;
                         break;
                     // When the status is LinkPending, either the agency or client may update the status.
@@ -116,26 +123,26 @@ public class ManageClient extends ExampleBaseV9 {
                         /*
                         clientLink.setStatus(ClientLinkStatus.LinkCanceled);
                         updateClientLinksResponse = UpdateClientLinks(updateClientLinks);
-                        System.out.println("UpdateClientLinks: LinkCanceled.\n");
+                        outputStatusMessage("UpdateClientLinks: LinkCanceled.\n");
                          */
                         clientLink.setStatus(ClientLinkStatus.LINK_ACCEPTED);
                         updateClientLinksResponse = updateClientLinks(updateClientLinks);
-                        System.out.println("UpdateClientLinks: LinkAccepted.\n");
+                        outputStatusMessage("UpdateClientLinks: LinkAccepted.\n");
                         newLinkRequired = false;
                         break;
                     // Waiting on a system status transition.
                     case UNLINK_IN_PROGRESS:
-                        System.out.println("The status is transitioning towards Inactive.\n");
+                        outputStatusMessage("The status is transitioning towards Inactive.\n");
                         newLinkRequired = false;
                         break;
                     // Waiting on a system status transition.
                     case UNLINK_PENDING:
-                        System.out.println("The status is transitioning towards Inactive.\n");
+                        outputStatusMessage("The status is transitioning towards Inactive.\n");
                         newLinkRequired = false;
                         break;
                     // The link lifecycle has ended.  
                     default:
-                        System.out.println("A new client link invitation is required.\n");
+                        outputStatusMessage("A new client link invitation is required.\n");
                         break;
                 }
 
@@ -168,7 +175,7 @@ public class ManageClient extends ExampleBaseV9 {
 
                 // Print errors if any occurred when adding the client link.
                 printPartialErrors(addClientLinksResponse.getOperationErrors(), addClientLinksResponse.getPartialErrors());
-                System.out.println("The user attempted to add a new ClientLink.\n");
+                outputStatusMessage("The user attempted to add a new ClientLink.\n");
             }
 
             // Get and print the current client link
@@ -179,33 +186,35 @@ public class ManageClient extends ExampleBaseV9 {
                     predicates);
 
             printClientLinks(clientLinks);
+            
+            outputStatusMessage("Program execution completed\n"); 
         
         // Customer Management service operations can throw AdApiFaultDetail.
         } catch (AdApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
-	            System.out.printf("AdApiError\n");
-	            System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+	            outputStatusMessage("AdApiError\n");
+	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
         
         // Customer Management service operations can throw ApiFault.
         } catch (ApiFault_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
-	            System.out.printf("OperationError\n");
-	            System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+	            outputStatusMessage("OperationError\n");
+	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
         } catch (RemoteException ex) {
-            System.out.println("Service communication error encountered: ");
-            System.out.println(ex.getMessage());
+            outputStatusMessage("Service communication error encountered: ");
+            outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         } catch (Exception ex) {
-             System.out.println("Error encountered: ");
-             System.out.println(ex.getMessage());
+             outputStatusMessage("Error encountered: ");
+             outputStatusMessage(ex.getMessage());
              ex.printStackTrace();
         }
     }
@@ -260,19 +269,19 @@ public class ManageClient extends ExampleBaseV9 {
 
         for (ClientLink clientLink : clientLinks.getClientLinks())
         {
-            System.out.printf("Status: %s\n", clientLink.getStatus());
-            System.out.printf("ClientAccountId: %s\n", clientLink.getClientAccountId());
-            System.out.printf("ClientAccountNumber: %s\n", clientLink.getClientAccountNumber());
-            System.out.printf("ManagingAgencyCustomerId: %s\n", clientLink.getManagingCustomerId());
-            System.out.printf("ManagingCustomerNumber: %s\n", clientLink.getManagingCustomerNumber());
-            System.out.print(clientLink.getIsBillToClient() ? "IsBillToClient: True\n" : "IsBillToClient: False\n");
-            System.out.printf("InviterEmail: %s\n", clientLink.getInviterEmail());
-            System.out.printf("InviterName: %s\n", clientLink.getInviterName());
-            System.out.printf("InviterPhone: %s\n", clientLink.getInviterPhone());
-            System.out.printf("LastModifiedByUserId: %s\n", clientLink.getLastModifiedByUserId());
-            System.out.printf("Name: %s\n", clientLink.getName());
-            System.out.printf("Note: %s\n", clientLink.getNote());
-            System.out.print("\n");
+            outputStatusMessage(String.format("Status: %s\n", clientLink.getStatus()));
+            outputStatusMessage(String.format("ClientAccountId: %s\n", clientLink.getClientAccountId()));
+            outputStatusMessage(String.format("ClientAccountNumber: %s\n", clientLink.getClientAccountNumber()));
+            outputStatusMessage(String.format("ManagingAgencyCustomerId: %s\n", clientLink.getManagingCustomerId()));
+            outputStatusMessage(String.format("ManagingCustomerNumber: %s\n", clientLink.getManagingCustomerNumber()));
+            outputStatusMessage(clientLink.getIsBillToClient() ? "IsBillToClient: True\n" : "IsBillToClient: False\n");
+            outputStatusMessage(String.format("InviterEmail: %s\n", clientLink.getInviterEmail()));
+            outputStatusMessage(String.format("InviterName: %s\n", clientLink.getInviterName()));
+            outputStatusMessage(String.format("InviterPhone: %s\n", clientLink.getInviterPhone()));
+            outputStatusMessage(String.format("LastModifiedByUserId: %s\n", clientLink.getLastModifiedByUserId()));
+            outputStatusMessage(String.format("Name: %s\n", clientLink.getName()));
+            outputStatusMessage(String.format("Note: %s\n", clientLink.getNote()));
+            outputStatusMessage("\n");
         }
     }
 
@@ -287,8 +296,8 @@ public class ManageClient extends ExampleBaseV9 {
 
         for (OperationError error : operationErrors.getOperationErrors())
         {
-            System.out.print("OperationError");
-            System.out.printf("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage());
+            outputStatusMessage("OperationError");
+            outputStatusMessage(String.format("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage()));
         }
 
         if (partialErrors == null)
@@ -304,8 +313,8 @@ public class ManageClient extends ExampleBaseV9 {
                 {
                     if (error != null)
                     {
-                        System.out.print("OperationError");
-                        System.out.printf("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage());
+                    	outputStatusMessage("OperationError");
+                        outputStatusMessage(String.format("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage()));
                     }
                 }
             }

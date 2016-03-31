@@ -1,6 +1,9 @@
 package com.microsoft.bingads.examples.v9;
 
+import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.net.*;
 import java.io.*;
 
@@ -13,10 +16,16 @@ import com.microsoft.bingads.reporting.BatchError;
 import com.microsoft.bingads.reporting.OperationError;
 import com.microsoft.bingads.reporting.*;
 
-public class ReportRequests extends ExampleBaseV9 {
+public class ReportRequests extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ReportingServiceManager ReportingServiceManager; 
+    
+    /*private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>; ;*/
         
     // The directory for the report file.
     static java.lang.String FileDirectory = "c:\\reports\\";
@@ -26,6 +35,9 @@ public class ReportRequests extends ExampleBaseV9 {
     
     // The report file extension type.
     static ReportFormat ReportFileFormat = ReportFormat.CSV; 
+    
+    // The maximum amount of time (in milliseconds) that you want to wait for the report download.
+    static int TimeoutInMilliseconds = 3600000;
 
     public static void main(String[] args) {
         
@@ -53,45 +65,47 @@ public class ReportRequests extends ExampleBaseV9 {
             ReportingServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             // You can submit one of the example reports, or build your own.
-	    ReportRequest reportRequest = getKeywordPerformanceReportRequest();
+			ReportRequest reportRequest = getKeywordPerformanceReportRequest();
 			
-	    ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
-	    reportingDownloadParameters.setReportRequest(reportRequest);
-	    reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
-	    reportingDownloadParameters.setResultFileName(ResultFileName);
-	    reportingDownloadParameters.setOverwriteResultFile(true);
+			ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
+			reportingDownloadParameters.setReportRequest(reportRequest);
+			reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
+			reportingDownloadParameters.setResultFileName(ResultFileName);
+			reportingDownloadParameters.setOverwriteResultFile(true);
                         
             // Option A - Background Completion with ReportingServiceManager
-            // You can submit a download or upload request and the ReportingServiceManager will automatically 
+            // You can submit a download request and the ReportingServiceManager will automatically 
             // return results. The ReportingServiceManager abstracts the details of checking for result file 
             // completion, and you don't have to write any code for results polling.
 
             outputStatusMessage("Awaiting Background Completion . . .");
-            backgroundCompletion(reportingDownloadParameters);
+            backgroundCompletionAsync(reportingDownloadParameters);
 
             // Option B - Submit and Download with ReportingServiceManager
-            // Submit the download request and then use the ReportingOperation result to 
+            // Submit the download request and then use the ReportingDownloadOperation result to 
             // track status until the report is complete e.g. either using
-            // trackAsync or GetStatusAsync.
+            // trackAsync or getStatusAsync.
 
             outputStatusMessage("Awaiting Submit and Download . . .");
-            submitAndDownload(reportRequest);
+            submitAndDownloadAsync(reportRequest);
 
             // Option C - Download Results with ReportingServiceManager
             // If for any reason you have to resume from a previous application state, 
             // you can use an existing download request identifier and use it 
-            // to download the result file. Use TrackAsync to indicate that the application 
-            // should wait to ensure that the download status is completed.
+            // to download the result file. 
 
-            // For example you might have previously retrieved a request ID using SubmitDownloadAsync.
-            ReportingDownloadOperation reportingDownloadOperation = ReportingServiceManager.submitDownloadAsync(reportRequest, null).get();
+            // For example you might have previously retrieved a request ID using submitDownloadAsync.
+            ReportingDownloadOperation reportingDownloadOperation = 
+            		ReportingServiceManager.submitDownloadAsync(reportRequest, null).get();
             java.lang.String requestId = reportingDownloadOperation.getRequestId();
 
             // Given the request ID above, you can resume the workflow and download the report.
             // The report request identifier is valid for two days. 
             // If you do not download the report within two days, you must request the report again.
             outputStatusMessage("Awaiting Download Results . . .");
-            downloadResults(requestId);
+            downloadResultsAsync(requestId);
+            
+            outputStatusMessage("Program execution completed\n"); 
         
         } catch (ExecutionException ee) {
 			Throwable cause = ee.getCause();
@@ -139,31 +153,36 @@ public class ReportRequests extends ExampleBaseV9 {
 			ex.printStackTrace();
 		} catch (URISyntaxException ex) {
 			ex.printStackTrace();
+		} catch (TimeoutException ex) {
+			ex.printStackTrace();
 		}
-        
     }
     
-    // You can submit a download or upload request and the ReportingServiceManager will automatically 
+    // You can submit a download request and the ReportingServiceManager will automatically 
     // return results. The ReportingServiceManager abstracts the details of checking for result file 
     // completion, and you don't have to write any code for results polling.
-    private static void backgroundCompletion(ReportingDownloadParameters reportingDownloadParameters) 
-    		throws ExecutionException, InterruptedException {
+    private static void backgroundCompletionAsync(ReportingDownloadParameters reportingDownloadParameters) 
+    		throws ExecutionException, InterruptedException, TimeoutException {
+    	// You may optionally cancel the downloadFileAsync operation after a specified time interval.
 		File resultFile = ReportingServiceManager.downloadFileAsync(
 				reportingDownloadParameters, 
-				null).get();
+				null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
 		
 		outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
     }
     
     // Submit the download request and then use the ReportingDownloadOperation result to 
-    // track status yourself using GetStatusAsync.
-    private static void submitAndDownload(ReportRequest reportRequest) 
-    		throws ExecutionException, InterruptedException, URISyntaxException, IOException {
+    // track status until the report is complete e.g. either using
+    // trackAsync or getStatusAsync.
+    private static void submitAndDownloadAsync(ReportRequest reportRequest) 
+    		throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException {
 		ReportingDownloadOperation reportingDownloadOperation = ReportingServiceManager.submitDownloadAsync(
 				reportRequest,
 				null).get();
 		
-		ReportingOperationStatus reportingOperationStatus = reportingDownloadOperation.trackAsync(null).get();
+		// You may optionally cancel the trackAsync operation after a specified time interval.
+		ReportingOperationStatus reportingOperationStatus = 
+				reportingDownloadOperation.trackAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
 		
 		// You can use trackAsync to poll until complete as shown above, 
 		// or use custom polling logic with getStatusAsync as shown below.
@@ -173,7 +192,7 @@ public class ReportRequests extends ExampleBaseV9 {
 //		for (int i = 0; i < 24; i++)
 //		{
 //		    Thread.sleep(5000);
-//		    reportingOperationStatus = reportingDownloadOperation.getStatusAsync(null).get();
+//		    reportingOperationStatus = reportingDownloadOperation.getStatusAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
 //		    if (reportingOperationStatus.getStatus() == ReportRequestStatusType.SUCCESS)
 //		    {
 //		        break;
@@ -193,10 +212,10 @@ public class ReportRequests extends ExampleBaseV9 {
     
     // If for any reason you have to resume from a previous application state, 
     // you can use an existing download request identifier and use it 
-    // to download the result file. Use TrackAsync to indicate that the application 
+    // to download the result file. Use trackAsync to indicate that the application 
     // should wait to ensure that the download status is completed.
-    private static void downloadResults(java.lang.String requestId) 
-    		throws ExecutionException, InterruptedException, URISyntaxException, IOException {
+    private static void downloadResultsAsync(java.lang.String requestId) 
+    		throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException {
     	
 		ReportingDownloadOperation reportingDownloadOperation = new ReportingDownloadOperation(requestId, authorizationData);
 		
@@ -205,7 +224,9 @@ public class ReportRequests extends ExampleBaseV9 {
 		// You can use trackAsync to poll until complete as shown here, 
 	    // or use custom polling logic with getStatusAsync.
 		
-		ReportingOperationStatus reportingOperationStatus = reportingDownloadOperation.trackAsync(null).get();
+		// You may optionally cancel the trackAsync operation after a specified time interval.
+		ReportingOperationStatus reportingOperationStatus = 
+				reportingDownloadOperation.trackAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
 		
 		File resultFile = reportingDownloadOperation.downloadResultFileAsync(
 		    new File(FileDirectory),
@@ -239,14 +260,15 @@ public class ReportRequests extends ExampleBaseV9 {
         report.getTime().setPredefinedTime(ReportTimePeriod.YESTERDAY);
         
         // You may either use a custom date range or predefined time.
+		//Calendar calendar = Calendar.getInstance();
         //report.getTime().setCustomDateRangeStart(new Date());
-        //report.getTime().getCustomDateRangeStart().setMonth(9);
+        //report.getTime().getCustomDateRangeStart().setMonth(1);
         //report.getTime().getCustomDateRangeStart().setDay(1);
-        //report.getTime().getCustomDateRangeStart().setYear(2017);
+        //report.getTime().getCustomDateRangeStart().setYear(calendar.get(Calendar.YEAR)-1);
         //report.getTime().setCustomDateRangeEnd(new Date());
-        //report.getTime().getCustomDateRangeEnd().setMonth(9);
-        //report.getTime().getCustomDateRangeEnd().setDay(30);
-        //report.getTime().getCustomDateRangeEnd().setYear(2017);
+        //report.getTime().getCustomDateRangeEnd().setMonth(12);
+        //report.getTime().getCustomDateRangeEnd().setDay(31);
+        //report.getTime().getCustomDateRangeEnd().setYear(calendar.get(Calendar.YEAR)-1);
         
         // If you specify a filter, results may differ from data you see in the Bing Ads web application
         //report.setFilter(new KeywordPerformanceReportFilter());

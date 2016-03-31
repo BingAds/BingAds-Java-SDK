@@ -2,6 +2,7 @@ package com.microsoft.bingads.examples.v10;
 
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,10 +15,18 @@ import com.microsoft.bingads.v10.campaignmanagement.*;
 // To run this example, you must have a Bing Merchant
 // Center store.
 
-public class ShoppingCampaigns extends ExampleBaseV10 {
+public class ShoppingCampaigns extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
     
     private static ArrayOfAdGroupCriterionAction _partitionActions = new ArrayOfAdGroupCriterionAction();
     private static long _referenceId = -1;
@@ -68,9 +77,9 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
 			campaign.setSettings(settings);
 			campaign.setCampaignType(campaignTypes);
 			campaign.setDaylightSaving(true);
-				   		
 			ArrayOfCampaign campaigns = new ArrayOfCampaign();
 			campaigns.getCampaigns().add(campaign);
+			
 			AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
 			ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
 			ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
@@ -85,13 +94,11 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
 			adGroup.setBiddingModel(BiddingModel.KEYWORD);
 			adGroup.setPricingModel(PricingModel.CPC);
 			adGroup.setStartDate(null);
+			Calendar calendar = Calendar.getInstance();
 			adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
 			adGroup.getEndDate().setDay(31);
 			adGroup.getEndDate().setMonth(12);
-			adGroup.getEndDate().setYear(2016);
-			Bid searchBid = new Bid();
-			searchBid.setAmount(0.09);
-			adGroup.setSearchBid(searchBid);
+			adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
 			adGroup.setLanguage("English");
 			adGroups.getAdGroups().add(adGroup);
 			
@@ -101,9 +108,8 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
 			outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
 			
 			ArrayOfAd ads = new ArrayOfAd();
-			ProductAd productAd = new ProductAd(){{
-				promotionalText = "Free shipping on $99 purchases.";
-			}};
+			ProductAd productAd = new ProductAd();
+			productAd.setPromotionalText("Free shipping on $99 purchases.");
 			ads.getAds().add(productAd);
 			
 			AddAdsResponse addAdsResponse = addAds(adGroupIds.getLongs().get(0), ads);
@@ -114,22 +120,24 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
 			// Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
 			// your product catalog. 
 			  
-			        AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
-			        printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
+			AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
+			printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
 			         
-			        addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
-			        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
+			addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
+			ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
 			
-			        long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
-			        long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
-			        updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
+			long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
+			long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
+			updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
 			         
-			        // Delete the campaign from the account.
+			// Delete the campaign from the account.
 			
 			ArrayOflong deleteCampaignIds = new ArrayOflong();
 			deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
 			deleteCampaigns(AccountId, deleteCampaignIds);
 			outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
+			
+			outputStatusMessage("Program execution completed\n"); 
              
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {
@@ -221,35 +229,31 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
      
      static AddCampaignCriterionsResponse addCampaignCriterion(final long CAMPAIGN_ID) throws RemoteException, Exception
      {
-    	 AddCampaignCriterionsRequest request = new AddCampaignCriterionsRequest(){{
-    		 criterionType = new ArrayList<CampaignCriterionType>(){{
-    			 add(CampaignCriterionType.PRODUCT_SCOPE);
-    		 }};
-    		 campaignCriterions = new ArrayOfCampaignCriterion(){{
-    			 campaignCriterions = new ArrayList<CampaignCriterion>(){{
-        			 add(new CampaignCriterion(){{
-        				 campaignId = CAMPAIGN_ID;
-        				 bidAdjustment = null;  // Reserved for future use
-        				 criterion = new ProductScope(){{
-                    		conditions = new ArrayOfProductCondition(){{
-                    			productConditions = new ArrayList<ProductCondition>(){{
-                    				add(new ProductCondition(){{
-                    					operand = "Condition";
-                    					attribute = "New";
-                    				}});
-                    				add(new ProductCondition(){{
-                    					operand = "Brand";
-                    					attribute = "Contoso";
-                    				}});
-                    			}};
-                    		}};
-                    	 }};
-                	 }});
-    				 
-    			 }};
-        	 }};
-    	 }};
-
+    	 ArrayList<CampaignCriterionType> criterionType = new ArrayList<CampaignCriterionType>();
+    	 criterionType.add(CampaignCriterionType.PRODUCT_SCOPE);
+    	     	 
+    	 CampaignCriterion campaignCriterion = new CampaignCriterion();
+    	 campaignCriterion.setCampaignId(CAMPAIGN_ID);
+    	 campaignCriterion.setBidAdjustment(null);  // Reserved for future use
+    	 ProductScope criterion = new ProductScope();
+    	 ArrayOfProductCondition conditions = new ArrayOfProductCondition();
+    	 ProductCondition condition1 = new ProductCondition();
+    	 condition1.setAttribute("Condition");
+    	 condition1.setOperand("New");
+    	 conditions.getProductConditions().add(condition1);
+    	 ProductCondition condition2 = new ProductCondition();
+    	 condition2.setAttribute("Brand");
+    	 condition2.setOperand("Contoso");
+    	 conditions.getProductConditions().add(condition2);
+    	 criterion.setConditions(conditions);
+    	 campaignCriterion.setCriterion(criterion);
+    	 ArrayOfCampaignCriterion campaignCriterions = new ArrayOfCampaignCriterion();
+    	 campaignCriterions.getCampaignCriterions().add(campaignCriterion);
+    	 
+    	 AddCampaignCriterionsRequest request = new AddCampaignCriterionsRequest();
+    	 request.setCriterionType(criterionType);
+    	 request.setCampaignCriterions(campaignCriterions);
+    	 
     	 return CampaignService.getService().addCampaignCriterions(request);
      }
 
@@ -259,10 +263,14 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
      {
          // Add a biddable criterion as the root.
     	 
+    	 ProductCondition rootCondition = new ProductCondition();
+    	 rootCondition.setAttribute(null);
+    	 rootCondition.setOperand("All");
+    	 
          AdGroupCriterion root = addPartition(
         		 adGroupId,
         		 null, 
-        		 new ProductCondition(){{ setOperand("All"); setAttribute(null); }}, 
+        		 rootCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
@@ -326,75 +334,111 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
         	 
          }
          
+         ProductCondition rootCondition = new ProductCondition();
+    	 rootCondition.setAttribute(null);
+    	 rootCondition.setOperand("All");
+    	 
          AdGroupCriterion root = addPartition(
         		 adGroupId,
         		 null, 
-        		 new ProductCondition(){{ setOperand("All"); setAttribute(null); }}, 
+        		 rootCondition,
         		 ProductPartitionType.SUBDIVISION, 
         		 null, 
         		 false);
          
          
+         ProductCondition animalsSubdivisionCondition = new ProductCondition();
+         animalsSubdivisionCondition.setAttribute("Animals & Pet Supplies");
+         animalsSubdivisionCondition.setOperand("CategoryL1");
+    	 
          AdGroupCriterion animalsSubdivision = addPartition(
         		 adGroupId,
         		 root, 
-        		 new ProductCondition(){{ setOperand("CategoryL1"); setAttribute("Animals & Pet Supplies"); }}, 
+        		 animalsSubdivisionCondition, 
         		 ProductPartitionType.SUBDIVISION, 
         		 null, 
         		 false);
+         
+         ProductCondition petSuppliesSubdivisionCondition = new ProductCondition();
+         petSuppliesSubdivisionCondition.setAttribute("Pet Supplies");
+         petSuppliesSubdivisionCondition.setOperand("CategoryL2");
          
          AdGroupCriterion petSuppliesSubdivision = addPartition(
         		 adGroupId,
         		 animalsSubdivision, 
-        		 new ProductCondition(){{ setOperand("CategoryL2"); setAttribute("Pet Supplies"); }}, 
+        		 petSuppliesSubdivisionCondition, 
         		 ProductPartitionType.SUBDIVISION, 
         		 null, 
         		 false);
          
+         ProductCondition brandACondition = new ProductCondition();
+         brandACondition.setAttribute("Brand A");
+         brandACondition.setOperand("Brand");
+         
          AdGroupCriterion brandA = addPartition(
         		 adGroupId,
         		 petSuppliesSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute("Brand A"); }}, 
+        		 brandACondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
+         
+         ProductCondition brandBCondition = new ProductCondition();
+         brandBCondition.setAttribute("Brand B");
+         brandBCondition.setOperand("Brand");
          
          AdGroupCriterion brandB = addPartition(
         		 adGroupId,
         		 petSuppliesSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute("Brand B"); }}, 
+        		 brandBCondition, 
         		 ProductPartitionType.UNIT, 
         		 null, 
         		 true);
          
+         ProductCondition otherBrandsCondition = new ProductCondition();
+         otherBrandsCondition.setAttribute(null);
+         otherBrandsCondition.setOperand("Brand");
+         
          AdGroupCriterion otherBrands = addPartition(
         		 adGroupId,
         		 petSuppliesSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute(null); }}, 
+        		 otherBrandsCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
+         
+         ProductCondition otherPetSuppliesCondition = new ProductCondition();
+         otherPetSuppliesCondition.setAttribute(null);
+         otherPetSuppliesCondition.setOperand("CategoryL2");
          
          AdGroupCriterion otherPetSupplies = addPartition(
         		 adGroupId,
         		 animalsSubdivision, 
-        		 new ProductCondition(){{ setOperand("CategoryL2"); setAttribute(null); }}, 
+        		 otherPetSuppliesCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
+         
+         ProductCondition electronicsCondition = new ProductCondition();
+         electronicsCondition.setAttribute("Electronics");
+         electronicsCondition.setOperand("CategoryL1");
          
          AdGroupCriterion electronics = addPartition(
         		 adGroupId,
         		 root, 
-        		 new ProductCondition(){{ setOperand("CategoryL1"); setAttribute("Electronics"); }}, 
+        		 electronicsCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
          
+         ProductCondition otherCategoryL1Condition = new ProductCondition();
+         otherCategoryL1Condition.setAttribute(null);
+         otherCategoryL1Condition.setOperand("CategoryL1");
+         
          AdGroupCriterion otherCategoryL1 = addPartition(
         		 adGroupId,
         		 root, 
-        		 new ProductCondition(){{ setOperand("CategoryL1"); setAttribute(null); }}, 
+        		 otherCategoryL1Condition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
@@ -428,34 +472,50 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
          BiddableAdGroupCriterion parent = new BiddableAdGroupCriterion();
          parent.setId(rootId);
          
+         ProductCondition electronicsSubdivisionCondition = new ProductCondition();
+         electronicsSubdivisionCondition.setAttribute("Electronics");
+         electronicsSubdivisionCondition.setOperand("CategoryL1");
+         
          AdGroupCriterion electronicsSubdivision = addPartition(
         		 adGroupId,
         		 parent, 
-        		 new ProductCondition(){{ setOperand("CategoryL1"); setAttribute("Electronics"); }}, 
+        		 electronicsSubdivisionCondition, 
         		 ProductPartitionType.SUBDIVISION, 
         		 null, 
         		 false);
          
+         ProductCondition brandCCondition = new ProductCondition();
+         brandCCondition.setAttribute("Brand C");
+         brandCCondition.setOperand("Brand");
+         
          AdGroupCriterion brandC = addPartition(
         		 adGroupId,
         		 electronicsSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute("Brand C"); }}, 
+        		 brandCCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
+         
+         ProductCondition brandDCondition = new ProductCondition();
+         brandDCondition.setAttribute("Brand D");
+         brandDCondition.setOperand("Brand");
          
          AdGroupCriterion brandD = addPartition(
         		 adGroupId,
         		 electronicsSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute("Brand D"); }}, 
+        		 brandDCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
          
+         ProductCondition otherElectronicBrandsCondition = new ProductCondition();
+         otherElectronicBrandsCondition.setAttribute(null);
+         otherElectronicBrandsCondition.setOperand("Brand");
+         
          AdGroupCriterion otherElectronicBrands = addPartition(
         		 adGroupId,
         		 electronicsSubdivision, 
-        		 new ProductCondition(){{ setOperand("Brand"); setAttribute(null); }}, 
+        		 otherElectronicBrandsCondition, 
         		 ProductPartitionType.UNIT, 
         		 getFixedBid(0.35), 
         		 false);
@@ -562,17 +622,21 @@ public class ShoppingCampaigns extends ExampleBaseV10 {
      
      static FixedBid getFixedBid(final double bidAmount)
      {
-    	return new FixedBid(){{ setBid(new Bid(){{ setAmount(bidAmount); }}); }};
+    	 FixedBid fixedBid = new FixedBid();
+    	 Bid bid = new Bid();
+    	 bid.setAmount(bidAmount);
+    	 fixedBid.setBid(bid);
+    	 
+    	 return fixedBid;
      }
 
      // Adds a criterion action to the list of actions.
     
      static void addPartitionAction(final AdGroupCriterion CRITERION, final ItemAction ITEM_ACTION)
      {
-    	 AdGroupCriterionAction partitionAction = new AdGroupCriterionAction(){{
-    		 action = ITEM_ACTION;
-    		 adGroupCriterion = CRITERION;
-    	 }};
+    	 AdGroupCriterionAction partitionAction = new AdGroupCriterionAction();
+    	 partitionAction.setAction(ITEM_ACTION);
+    	 partitionAction.setAdGroupCriterion(CRITERION);
 
     	 // _partitionActions is a global variable.
     	 

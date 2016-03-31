@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +16,14 @@ import com.microsoft.bingads.bulk.entities.*;
 import com.microsoft.bingads.bulk.*;
 import com.microsoft.bingads.campaignmanagement.*;
 import com.microsoft.bingads.campaignmanagement.Date;
+import com.microsoft.bingads.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.campaignmanagement.AdDistribution;
+import com.microsoft.bingads.campaignmanagement.AdGroup;
+import com.microsoft.bingads.campaignmanagement.Bid;
+import com.microsoft.bingads.campaignmanagement.BiddingModel;
+import com.microsoft.bingads.campaignmanagement.PricingModel;
 
-public class BulkShoppingCampaigns extends BulkExampleBaseV9 {
+public class BulkShoppingCampaigns extends BulkExampleBase {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -26,6 +33,14 @@ public class BulkShoppingCampaigns extends BulkExampleBaseV9 {
     
 	final static long campaignIdKey = -123; 
 	final static long adGroupIdKey = -1234; 
+    
+	/*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
     
     private static ArrayList<BulkAdGroupProductPartition> _partitionActions = new ArrayList<BulkAdGroupProductPartition>();
     private static long _referenceId = -1;
@@ -132,24 +147,22 @@ public class BulkShoppingCampaigns extends BulkExampleBaseV9 {
     		
     		BulkAdGroup bulkAdGroup = new BulkAdGroup();
     		bulkAdGroup.setCampaignId(campaignIdKey);
-    		AdGroup adGroup = new AdGroup(){{
-    			id = adGroupIdKey;
-				adDistribution = new ArrayList<AdDistribution>(){{
-					add(AdDistribution.SEARCH);
-				}};
-				biddingModel = BiddingModel.KEYWORD;
-				pricingModel = PricingModel.CPC;
-				startDate = null;
-				endDate = new Date(){{
-					month = 12;
-					day = 31;
-					year = 2016;
-				}};
-				language = "English";
-				name = "Product Categories";
-			}};
+    		AdGroup adGroup = new AdGroup();
+			adGroup.setName("Product Categories");
+			ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
+			adDistribution.add(AdDistribution.SEARCH);
+			adGroup.setAdDistribution(adDistribution);
+			adGroup.setBiddingModel(BiddingModel.KEYWORD);
+			adGroup.setPricingModel(PricingModel.CPC);
+			adGroup.setStartDate(null);
+			Calendar calendar = Calendar.getInstance();
+			adGroup.setEndDate(new com.microsoft.bingads.campaignmanagement.Date());
+			adGroup.getEndDate().setDay(31);
+			adGroup.getEndDate().setMonth(12);
+			adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
+			adGroup.setLanguage("English");
             bulkAdGroup.setAdGroup(adGroup);
-    		
+    		    		
             /*
              * Create a product ad. You must add at least one ProductAd to the corresponding ad group. 
              * A ProductAd is not used directly for delivered ad copy. Instead, the delivery engine generates 
@@ -174,7 +187,7 @@ public class BulkShoppingCampaigns extends BulkExampleBaseV9 {
             
             Reader = uploadEntities(uploadEntities);
 
-            // Write the upload output
+            // Upload and write the output
 
             entities = Reader.getEntities();
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
@@ -534,7 +547,7 @@ public class BulkShoppingCampaigns extends BulkExampleBaseV9 {
 
             Reader = uploadEntities(uploadEntities);
             
-            // Write the upload output
+            // Upload and write the output
 
             entities = Reader.getEntities();
             

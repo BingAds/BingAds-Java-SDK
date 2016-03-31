@@ -2,11 +2,17 @@ package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.campaignmanagement.*;
+import com.microsoft.bingads.campaignmanagement.AdDistribution;
+import com.microsoft.bingads.campaignmanagement.AdGroup;
+import com.microsoft.bingads.campaignmanagement.ArrayOfAdGroup;
+import com.microsoft.bingads.campaignmanagement.BiddingModel;
+import com.microsoft.bingads.campaignmanagement.PricingModel;
 
 // This example uses the Bing Ads Java SDK to create a
 // Bing Shopping campaign.
@@ -14,13 +20,21 @@ import com.microsoft.bingads.campaignmanagement.*;
 // To run this example, you must have a Bing Merchant
 // Center store.
 
-public class ShoppingCampaigns extends ExampleBaseV9 {
+public class ShoppingCampaigns extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
     
     // Uses username and password credentials for authorization.
-        
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
+    
     private static ArrayOfAdGroupCriterionAction _partitionActions = new ArrayOfAdGroupCriterionAction();
     private static long _referenceId = -1;
     
@@ -76,6 +90,8 @@ public class ShoppingCampaigns extends ExampleBaseV9 {
 	
 	         deleteCampaigns(AccountId, campaignIds);
 	         System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+	         
+	         outputStatusMessage("Program execution completed\n"); 
              
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {
@@ -440,30 +456,28 @@ public class ShoppingCampaigns extends ExampleBaseV9 {
      
      static ArrayOflong addAdGroups(final long CAMPAIGN_ID) throws RemoteException, Exception
      {
-    	 AddAdGroupsRequest request = new AddAdGroupsRequest(){{
-        	 campaignId = CAMPAIGN_ID;
-        	 adGroups = new ArrayOfAdGroup(){{
-        		 adGroups = new ArrayList<AdGroup>(){{
-        			 add(new AdGroup(){{
-        				 adDistribution = new ArrayList<AdDistribution>(){{
-        					 add(AdDistribution.SEARCH);
-        				 }};
-        				 biddingModel = BiddingModel.KEYWORD;
-        				 pricingModel = PricingModel.CPC;
-        				 startDate = null;
-        				 endDate = new Date(){{
-        					 month = 12;
-        					 day = 31;
-        					 year = 2016;
-        				 }};
-        				 language = "English";
-        				 name = "Product Categories";
-        			 }});
-            	 }};
-        	 }};
-    	 }};
-    	 
-    	 return CampaignService.getService().addAdGroups(request).getAdGroupIds();
+    	ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
+	    AdGroup adGroup = new AdGroup();
+		adGroup.setName("Product Categories");
+		ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
+		adDistribution.add(AdDistribution.SEARCH);
+		adGroup.setAdDistribution(adDistribution);
+		adGroup.setBiddingModel(BiddingModel.KEYWORD);
+		adGroup.setPricingModel(PricingModel.CPC);
+		adGroup.setStartDate(null);
+		Calendar calendar = Calendar.getInstance();
+		adGroup.setEndDate(new com.microsoft.bingads.campaignmanagement.Date());
+		adGroup.getEndDate().setDay(31);
+		adGroup.getEndDate().setMonth(12);
+		adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
+		adGroup.setLanguage("English");
+		adGroups.getAdGroups().add(adGroup);
+			
+    	AddAdGroupsRequest request = new AddAdGroupsRequest();
+    	request.setCampaignId(CAMPAIGN_ID);
+    	request.setAdGroups(adGroups);
+    	
+    	return CampaignService.getService().addAdGroups(request).getAdGroupIds();
      }
      
      // Add the product ad to the ad group. Shopping campaigns must contain

@@ -1,12 +1,12 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v9;
 
 import java.rmi.RemoteException;
 
-import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.campaignmanagement.*;
 
-public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
+public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 	
-	public ExampleBaseV10(){}
+	public ExampleBase(){}
 	
 	static void outputCampaign(Campaign campaign){
 		if (campaign != null) {
@@ -64,9 +64,9 @@ public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("Name: %s", adGroup.getName()));
             outputStatusMessage(String.format("NativeBidAdjustment: %s", adGroup.getNativeBidAdjustment()));
             outputStatusMessage(String.format("Network: %s", adGroup.getNetwork()));
+            outputStatusMessage(String.format("PhraseMatchBid: %s", 
+            		adGroup.getPhraseMatchBid() != null ? adGroup.getPhraseMatchBid().getAmount() : null));
             outputStatusMessage(String.format("PricingModel: %s", adGroup.getPricingModel()));
-            outputStatusMessage(String.format("SearchBid: %s", 
-            		adGroup.getSearchBid() != null ? adGroup.getSearchBid().getAmount() : null));
             if (adGroup.getStartDate() != null)
             {
                 outputStatusMessage(String.format("StartDate: %s/%s/%s",
@@ -328,7 +328,6 @@ public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
             if (ads.getAds().get(index) instanceof TextAd)
             {
                 attributeValues[index] = "Title:" + ((TextAd)ads.getAds().get(index)).getTitle();
-                outputStatusMessage(String.format("DestinationUrl: %s", ((TextAd)ads.getAds().get(index)).getDestinationUrl()));
             }
             else if (ads.getAds().get(index) instanceof ProductAd)
             {
@@ -348,37 +347,6 @@ public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
                     index, 
                     attributeValues[index], 
                     adIds.getLongs().get(index)));
-                
-                Ad ad = ads.getAds().get(index);
-                
-                outputStatusMessage("FinalMobileUrls: ");
-                if (ad.getFinalMobileUrls() != null)
-                {
-                    for (java.lang.String finalMobileUrl : ad.getFinalMobileUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalMobileUrl));
-                    }
-                }
-
-                outputStatusMessage("FinalUrls: ");
-                if (ad.getFinalUrls() != null)
-                {
-                    for (java.lang.String finalUrl : ad.getFinalUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalUrl));
-                    }
-                }
-                outputStatusMessage(String.format("TrackingUrlTemplate: %s", ad.getTrackingUrlTemplate()));
-                outputStatusMessage("UrlCustomParameters: ");
-                if (ad.getUrlCustomParameters() != null &&
-                		ad.getUrlCustomParameters().getParameters() != null)
-                {
-                    for (CustomParameter customParameter : ad.getUrlCustomParameters().getParameters().getCustomParameters())
-                    {
-                    	outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
-                    	outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
-                    }
-                }
             }
         }
 
@@ -411,62 +379,56 @@ public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputAppAdExtension(AppAdExtension extension){
 		if (extension != null) {
-			outputStatusMessage(String.format("Id: %s", extension.getId()));
-			outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-			outputStatusMessage(String.format("Version: %s", extension.getVersion()));
-			outputStatusMessage(String.format("AppPlatform: %s", extension.getAppPlatform()));
-			outputStatusMessage(String.format("AppStoreId: %s", extension.getAppStoreId()));
-			outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
-			outputStatusMessage(String.format("DevicePreference: %s", extension.getDevicePreference()));
-			outputStatusMessage(String.format("DisplayText: %s", extension.getDisplayText()));
+			outputStatusMessage(String.format("AppPlatform: %s\n", extension.getAppPlatform()));
+			outputStatusMessage(String.format("AppStoreId: %s\n", extension.getAppStoreId()));
+			outputStatusMessage(String.format("DestinationUrl: %s\n", extension.getDestinationUrl()));
+			outputStatusMessage(String.format("DevicePreference: %s\n", extension.getDevicePreference()));
+			outputStatusMessage(String.format("DisplayText: %s\n", extension.getDisplayText()));
+			outputStatusMessage(String.format("Id: %s\n", extension.getId()));
+			outputStatusMessage(String.format("Status: %s\n", extension.getStatus()));
+			outputStatusMessage(String.format("Version: %s\n", extension.getVersion()));
 		}
 	}
     
     static void outputCallAdExtension(CallAdExtension extension){
 		if (extension != null) {
-			outputStatusMessage(String.format("Id: %s", extension.getId()));
-			outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-			outputStatusMessage(String.format("Version: %s", extension.getVersion()));
-			outputStatusMessage(String.format("Phone number: %s", extension.getPhoneNumber()));
-            outputStatusMessage(String.format("Country: %s", extension.getCountryCode()));
-            outputStatusMessage(String.format("Is only clickable item: %s", extension.getIsCallOnly()));
+			outputStatusMessage(String.format("Phone number: %s\n", extension.getPhoneNumber()));
+            outputStatusMessage(String.format("Country: %s\n", extension.getCountryCode()));
+            outputStatusMessage(String.format("Is only clickable item: %s\n", extension.getIsCallOnly()));
 		}
 	}
 	
 	static void outputLocationAdExtension(LocationAdExtension extension){
 		if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-			outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-			outputStatusMessage(String.format("Version: %s", extension.getVersion()));
 			if(extension.getAddress() != null){
-				outputStatusMessage(String.format("Street: %s", extension.getAddress().getStreetAddress()));
-	            outputStatusMessage(String.format("City: %s", extension.getAddress().getCityName()));
-	            outputStatusMessage(String.format("State: %s", extension.getAddress().getProvinceName()));
-	            outputStatusMessage(String.format("Country: %s", extension.getAddress().getCountryCode()));
-	            outputStatusMessage(String.format("Zip code: %s", extension.getAddress().getPostalCode()));
+				outputStatusMessage(String.format("Street: %s\n", extension.getAddress().getStreetAddress()));
+	            outputStatusMessage(String.format("City: %s\n", extension.getAddress().getCityName()));
+	            outputStatusMessage(String.format("State: %s\n", extension.getAddress().getProvinceName()));
+	            outputStatusMessage(String.format("Country: %s\n", extension.getAddress().getCountryCode()));
+	            outputStatusMessage(String.format("Zip code: %s\n", extension.getAddress().getPostalCode()));
 			}
-			outputStatusMessage(String.format("Company name: %s", extension.getCompanyName()));
-            outputStatusMessage(String.format("Phone number: %s", extension.getPhoneNumber()));
-            outputStatusMessage(String.format("Business coordinates determined?: %s", extension.getGeoCodeStatus()));
+			outputStatusMessage(String.format("Company name: %s\n", extension.getCompanyName()));
+            outputStatusMessage(String.format("Phone number: %s\n", extension.getPhoneNumber()));
+            outputStatusMessage(String.format("Business coordinates determined?: %s\n", extension.getGeoCodeStatus()));
             if(extension.getGeoPoint() != null){
             	outputStatusMessage("GeoPoint: ");
-            	outputStatusMessage(String.format("\tLatitudeInMicroDegrees: %s", 
+            	outputStatusMessage(String.format("LatitudeInMicroDegrees: %s\n", 
             			extension.getGeoPoint().getLatitudeInMicroDegrees()));
-            	outputStatusMessage(String.format("\tLongitudeInMicroDegrees: %s", 
+            	outputStatusMessage(String.format("LongitudeInMicroDegrees: %s\n", 
             			extension.getGeoPoint().getLongitudeInMicroDegrees()));
             }
-            outputStatusMessage(String.format("Map icon ID: %s", extension.getIconMediaId()));
-            outputStatusMessage(String.format("Business image ID: %s", extension.getImageMediaId()));
+            outputStatusMessage(String.format("Map icon ID: %s\n", extension.getIconMediaId()));
+            outputStatusMessage(String.format("Business image ID: %s\n", extension.getImageMediaId()));
 		}
 	}
 	
 	static void outputSiteLinksAdExtension(SiteLinksAdExtension extension){
 		if (extension != null && extension.getSiteLinks() != null) {
-			outputStatusMessage(String.format("Id: %s", extension.getId()));
-			outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-			outputStatusMessage(String.format("Version: %s", extension.getVersion()));
-			
-			outputSiteLinks(extension.getSiteLinks().getSiteLinks());
+			for (SiteLink sLink : extension.getSiteLinks().getSiteLinks())
+            {
+                outputStatusMessage(String.format("  Display URL: %s\n", sLink.getDisplayText()));
+                outputStatusMessage(String.format("  Destination URL: %s\n", sLink.getDestinationUrl()));
+            }
 		}
 	}
 	
@@ -474,37 +436,8 @@ public class ExampleBaseV10 extends com.microsoft.bingads.examples.ExampleBase {
 		if (siteLinks != null) {
 			for (SiteLink siteLink : siteLinks)
             {
-				outputStatusMessage(String.format("DisplayText: %s", siteLink.getDisplayText()));
-                outputStatusMessage(String.format("DestinationUrl: %s", siteLink.getDestinationUrl()));
-                outputStatusMessage("FinalMobileUrls: ");
-                if (siteLink.getFinalMobileUrls() != null)
-                {
-                    for (java.lang.String finalMobileUrl : siteLink.getFinalMobileUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalMobileUrl));
-                    }
-                }
-
-                outputStatusMessage("FinalUrls: ");
-                if (siteLink.getFinalUrls() != null)
-                {
-                    for (java.lang.String finalUrl : siteLink.getFinalUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalUrl));
-                    }
-                }
-                outputStatusMessage(String.format("TrackingUrlTemplate: %s", siteLink.getTrackingUrlTemplate()));
-                outputStatusMessage("UrlCustomParameters: ");
-                if (siteLink.getUrlCustomParameters() != null &&
-                		siteLink.getUrlCustomParameters().getParameters() != null)
-                {
-                    for (CustomParameter customParameter : siteLink.getUrlCustomParameters().getParameters().getCustomParameters())
-                    {
-                    	outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
-                    	outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
-                    }
-                }
-                outputStatusMessage("");
+                outputStatusMessage(String.format("  Display URL: %s\n", siteLink.getDisplayText()));
+                outputStatusMessage(String.format("  Destination URL: %s\n", siteLink.getDestinationUrl()));
             }
 		}
 	}

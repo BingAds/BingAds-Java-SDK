@@ -1,59 +1,32 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v9;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import com.microsoft.bingads.v10.bulk.BulkEntityIterable;
-import com.microsoft.bingads.v10.bulk.BulkFileReader;
-import com.microsoft.bingads.v10.bulk.BulkFileWriter;
-import com.microsoft.bingads.v10.bulk.BulkServiceManager;
-import com.microsoft.bingads.v10.bulk.DownloadFileType;
-import com.microsoft.bingads.v10.bulk.EntityUploadParameters;
-import com.microsoft.bingads.v10.bulk.FileUploadParameters;
-import com.microsoft.bingads.v10.bulk.ResponseMode;
-import com.microsoft.bingads.v10.bulk.ResultFileType;
-import com.microsoft.bingads.v10.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupProductPartition;
-import com.microsoft.bingads.v10.bulk.entities.BulkAppAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCallAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaign;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignAppAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCallAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignProductScope;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignSiteLinkAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v10.bulk.entities.BulkError;
-import com.microsoft.bingads.v10.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v10.bulk.entities.BulkLocationAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkProductAd;
-import com.microsoft.bingads.v10.bulk.entities.BulkSiteLink;
-import com.microsoft.bingads.v10.bulk.entities.BulkSiteLinkAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkTextAd;
-import com.microsoft.bingads.v10.bulk.entities.PerformanceData;
-import com.microsoft.bingads.v10.bulk.entities.QualityScoreData;
-import com.microsoft.bingads.v10.campaignmanagement.SiteLink;
+import com.microsoft.bingads.bulk.DownloadFileType;
+import com.microsoft.bingads.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.bulk.entities.BulkAdGroupProductPartition;
+import com.microsoft.bingads.bulk.entities.BulkAppAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkCallAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkCampaign;
+import com.microsoft.bingads.bulk.entities.BulkCampaignAppAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkCampaignCallAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkCampaignLocationAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkCampaignProductScope;
+import com.microsoft.bingads.bulk.entities.BulkCampaignSiteLinkAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkError;
+import com.microsoft.bingads.bulk.entities.BulkKeyword;
+import com.microsoft.bingads.bulk.entities.BulkLocationAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkProductAd;
+import com.microsoft.bingads.bulk.entities.BulkSiteLink;
+import com.microsoft.bingads.bulk.entities.BulkSiteLinkAdExtension;
+import com.microsoft.bingads.bulk.entities.BulkTextAd;
+import com.microsoft.bingads.bulk.entities.PerformanceData;
+import com.microsoft.bingads.bulk.entities.QualityScoreData;
+import com.microsoft.bingads.campaignmanagement.SiteLink;
 
-public class BulkExampleBaseV10 extends ExampleBaseV10 {
+public class BulkExampleBase extends ExampleBase {
 
-	/// <summary>
-    /// Provides methods for downloading and uploading bulk files. 
-    /// </summary>
-    static BulkServiceManager BulkService;
-
-    /// <summary>
-    /// Provides methods to write a bulk entity to file. 
-    /// </summary>
-    static BulkFileWriter Writer;
-
-    /// <summary>
-    /// Provides methods to read bulk entities from a file. 
-    /// </summary>
-    static BulkFileReader Reader;
-    
 	/// <summary>
     /// The directory for the bulk files.
     /// </summary>
@@ -74,7 +47,7 @@ public class BulkExampleBaseV10 extends ExampleBaseV10 {
     /// </summary>
     static DownloadFileType FileType = DownloadFileType.CSV; 
      
-	public BulkExampleBaseV10() {}
+	public BulkExampleBase() {}
 	
 	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
 		for (BulkCampaign entity : bulkEntities){
@@ -121,7 +94,7 @@ public class BulkExampleBaseV10 extends ExampleBaseV10 {
 	}
 	
 
-	
+
 	static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
 		for (BulkTextAd entity : bulkEntities){
 			outputStatusMessage("BulkTextAd: \n");

@@ -2,14 +2,23 @@ package com.microsoft.bingads.examples.v10;
 
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class KeywordsAds extends ExampleBaseV10 {
+public class KeywordsAds extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
     public static void main(java.lang.String[] args) {
    	 
@@ -53,10 +62,11 @@ public class KeywordsAds extends ExampleBaseV10 {
              adGroup.setBiddingModel(BiddingModel.KEYWORD);
              adGroup.setPricingModel(PricingModel.CPC);
              adGroup.setStartDate(null);
-             adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
-             adGroup.getEndDate().setDay(31);
-             adGroup.getEndDate().setMonth(12);
-             adGroup.getEndDate().setYear(2015);
+             Calendar calendar = Calendar.getInstance();
+ 			 adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+ 			 adGroup.getEndDate().setDay(31);
+ 			 adGroup.getEndDate().setMonth(12);
+ 			 adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
              Bid searchBid = new Bid();
              searchBid.setAmount(0.09);
              adGroup.setSearchBid(searchBid);
@@ -184,59 +194,155 @@ public class KeywordsAds extends ExampleBaseV10 {
              ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
              ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
                 
-             // Print the new assigned campaign and ad group identifiers
+             // Output the new assigned entity identifiers, as well as any partial errors
 
              outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
              outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
-                
-             // Print the new assigned keyword and ad identifiers, as well as any partial errors
-
              outputKeywordsWithPartialErrors(keywords, keywordIds, keywordErrors);
              outputAdsWithPartialErrors(ads, adIds, adErrors);
+             
+             // Here is a simple example that updates the campaign budget
+             
+             Campaign updateCampaign = new Campaign();
+             updateCampaign.setId(campaignIds.getLongs().get(0));
+             updateCampaign.setMonthlyBudget(500.00);
+             campaigns = new ArrayOfCampaign();
+             campaigns.getCampaigns().add(updateCampaign);
+             
+             // As an exercise you can step through using the debugger and view the results.
+ 
+             ArrayOflong updateCampaignIds = new ArrayOflong();
+             updateCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+             
+             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+             campaignTypes.add(CampaignType.SHOPPING);
+ 			 campaignTypes.add(CampaignType.SEARCH_AND_CONTENT);
+ 			 
+             getCampaignsByIds(
+                 authorizationData.getAccountId(),
+                 updateCampaignIds,
+                 campaignTypes);
+                     
+             updateCampaigns(authorizationData.getAccountId(), campaigns);
 
+             getCampaignsByIds(
+                     authorizationData.getAccountId(),
+                     updateCampaignIds,
+                     campaignTypes);
+             
+             // Update the Text for the 3 successfully created ads, and update some UrlCustomParameters.
+             
+             ArrayOfAd updateAds = new ArrayOfAd();
+             
+             TextAd updateTextAd1 = new TextAd();
+             updateTextAd1.setId(adIds.getLongs().get(0));
+             updateTextAd1.setText("Huge Savings on All Red Shoes.");
+             // Set the UrlCustomParameters element to null or empty to retain any 
+             // existing custom parameters.
+             CustomParameters urlCustomParameters1 = null;
+             updateTextAd1.setUrlCustomParameters(urlCustomParameters1);
+             updateAds.getAds().add(updateTextAd1);
+             
+             TextAd updateTextAd2 = new TextAd();
+             updateTextAd2.setId(adIds.getLongs().get(1));
+             updateTextAd2.setText("Huge Savings on All Red Shoes.");
+             // To remove all custom parameters, set the Parameters element of the 
+             // CustomParameters object to null or empty.
+             CustomParameters urlCustomParameters2 = new CustomParameters();
+             ArrayOfCustomParameter customParameters2 = null;
+             urlCustomParameters2.setParameters(customParameters2);
+             updateTextAd2.setUrlCustomParameters(urlCustomParameters2);
+             updateAds.getAds().add(updateTextAd2);
+             
+             TextAd updateTextAd3 = new TextAd();
+             updateTextAd3.setId(adIds.getLongs().get(2));
+             updateTextAd3.setText("Huge Savings on All Red Shoes.");
+             // To remove a subset of custom parameters, specify the custom parameters that 
+             // you want to keep in the Parameters element of the CustomParameters object.
+             CustomParameters urlCustomParameters3 = new CustomParameters();
+             CustomParameter customParameter3 = new CustomParameter();
+             customParameter3.setKey("promoCode");
+             customParameter3.setValue("updatedpromo");
+             ArrayOfCustomParameter customParameters3 = new ArrayOfCustomParameter();
+             customParameters3.getCustomParameters().add(customParameter3);
+             urlCustomParameters3.setParameters(customParameters3);
+             updateTextAd3.setUrlCustomParameters(urlCustomParameters3);
+             updateAds.getAds().add(updateTextAd3);
+             
+             // As an exercise you can step through using the debugger and view the results.
+
+             ArrayOflong updateAdGroupIds = new ArrayOflong();
+             updateAdGroupIds.getLongs().add(adGroupIds.getLongs().get(0));
+             
+             GetAdsByAdGroupIdResponse getAdsByAdGroupIdResponse = getAdsByAdGroupId(adGroupIds.getLongs().get(0));
+             UpdateAdsResponse updateAdsResponse = updateAds(adGroupIds.getLongs().get(0), updateAds);
+             getAdsByAdGroupIdResponse = getAdsByAdGroupId(adGroupIds.getLongs().get(0));
+             
+             
+             // Here is a simple example that updates the keyword bid to use the ad group bid.
+             
+             Keyword updateKeyword = new Keyword();
+             updateKeyword.setId(keywordIds.getLongs().get(0));
+             updateKeyword.setBid(new Bid());
+             updateKeyword.getBid().setAmount(null);
+             ArrayOfKeyword updateKeywords = new ArrayOfKeyword();
+             updateKeywords.getKeywords().add(updateKeyword);
+             
+             // As an exercise you can step through using the debugger and view the results.
+ 
+             ArrayOflong updateKeywordIds = new ArrayOflong();
+             updateKeywordIds.getLongs().add(keywordIds.getLongs().get(0));
+             
+             GetKeywordsByAdGroupIdResponse getKeywordsByAdGroupIdResponse = getKeywordsByAdGroupId(adGroupIds.getLongs().get(0));
+             UpdateKeywordsResponse updateKeywordsResponse = updateKeywords(adGroupIds.getLongs().get(0), updateKeywords);
+             getKeywordsByAdGroupIdResponse = getKeywordsByAdGroupId(adGroupIds.getLongs().get(0));      
+             
+             
              // Delete the campaign, ad group, keyword, and ad that were previously added. 
              // You should remove this line if you want to view the added entities in the 
              // Bing Ads web application or another tool.
-
+             
              ArrayOflong deleteCampaignIds = new ArrayOflong();
              deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-             deleteCampaigns(AccountId, deleteCampaignIds);
+             deleteCampaigns(AccountId, updateCampaignIds);
              System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+             
+             outputStatusMessage("Program execution completed\n"); 
          
-         // Campaign Management service operations can throw AdApiFaultDetail.
-         } catch (AdApiFaultDetail_Exception fault) {
-             System.out.println("The operation failed with the following faults:\n");
+          // Campaign Management service operations can throw AdApiFaultDetail.
+        } catch (AdApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
 
-             for (AdApiError error : fault.getFaultInfo().getErrors().getAdApiErrors())
-             {
-                 System.out.printf("AdApiError\n");
-                 System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
-             }
-         
-         // Campaign Management service operations can throw ApiFaultDetail.
-         } catch (ApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            {
+                outputStatusMessage("AdApiError\n");
+                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+            }
+        
+        // Campaign Management service operations can throw ApiFaultDetail.
+        } catch (ApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
 
-             for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-             {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-             }
+            for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            {
+                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
 
-             for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-             {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-             }
-         } catch (RemoteException ex) {
-             System.out.println("Service communication error encountered: ");
-             System.out.println(ex.getMessage());
-             ex.printStackTrace();
-         } catch (Exception ex) {
-             System.out.println("Error encountered: ");
-             System.out.println(ex.getMessage());
-             ex.printStackTrace();
-         }
+            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            {
+                outputStatusMessage("OperationError\n");
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
+        } catch (RemoteException ex) {
+            outputStatusMessage("Service communication error encountered: ");
+            outputStatusMessage(ex.getMessage());
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            outputStatusMessage("Error encountered: ");
+            outputStatusMessage(ex.getMessage());
+            ex.printStackTrace();
+        }
      }
 
      // Adds one or more campaigns to the specified account.
@@ -245,8 +351,6 @@ public class KeywordsAds extends ExampleBaseV10 {
      {
          AddCampaignsRequest request = new AddCampaignsRequest();
          
-         // Set the request information.
-
          request.setAccountId(accountId);
          request.setCampaigns(campaigns);
 
@@ -259,22 +363,46 @@ public class KeywordsAds extends ExampleBaseV10 {
      {
     	 DeleteCampaignsRequest request = new DeleteCampaignsRequest();
          
-         // Set the request information.
-
          request.setAccountId(accountId);
          request.setCampaignIds(campaignIds);
 
          CampaignService.getService().deleteCampaigns(request);
      }
      
+     // Gets one or more campaigns for the specified campaign identifiers
+     
+     static ArrayOfCampaign getCampaignsByIds(
+    		 long accountId, 
+    		 ArrayOflong campaignIds,
+    		 ArrayList<CampaignType> campaignType) throws RemoteException, Exception
+     {
+    	 GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
+         
+         request.setAccountId(accountId);;
+         request.setCampaignIds(campaignIds);
+         request.setCampaignType(campaignType);
+
+         return CampaignService.getService().getCampaignsByIds(request).getCampaigns();
+     }
+     
+     // Updates one or more campaigns.
+
+     static void updateCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
+     {
+    	 UpdateCampaignsRequest request = new UpdateCampaignsRequest();
+         
+         request.setAccountId(accountId);
+         request.setCampaigns(campaigns);
+
+         CampaignService.getService().updateCampaigns(request);
+     }
+          
      // Adds one or more ad groups to the specified campaign.
 
      static AddAdGroupsResponse addAdGroups(long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
      {
          AddAdGroupsRequest request = new AddAdGroupsRequest();
          
-         // Set the request information.
-
          request.setCampaignId(campaignId);
          request.setAdGroups(adGroups);
 
@@ -287,8 +415,6 @@ public class KeywordsAds extends ExampleBaseV10 {
      {
          AddKeywordsRequest request = new AddKeywordsRequest();
          
-         // Set the request information.
-
          request.setAdGroupId(adGroupId);
          request.setKeywords(keywords);
 
@@ -301,11 +427,55 @@ public class KeywordsAds extends ExampleBaseV10 {
      {
          AddAdsRequest request = new AddAdsRequest();
          
-         // Set the request information.
-
          request.setAdGroupId(adGroupId);
          request.setAds(ads);
 
          return CampaignService.getService().addAds(request);
+     }
+     
+     // Gets the ads in the specified ad group.
+
+     static GetAdsByAdGroupIdResponse getAdsByAdGroupId(long adGroupId) throws RemoteException, Exception
+     {
+    	 GetAdsByAdGroupIdRequest request = new GetAdsByAdGroupIdRequest();
+         
+         request.setAdGroupId(adGroupId);
+
+         return CampaignService.getService().getAdsByAdGroupId(request);
+     }
+     
+     // Updates the ads in the specified ad group.
+
+     static UpdateAdsResponse updateAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
+     {
+    	 UpdateAdsRequest request = new UpdateAdsRequest();
+         
+         request.setAdGroupId(adGroupId);
+         request.setAds(ads);
+
+         return CampaignService.getService().updateAds(request);
+     }
+     
+     // Gets the keywords in the specified ad group.
+
+     static GetKeywordsByAdGroupIdResponse getKeywordsByAdGroupId(long adGroupId) throws RemoteException, Exception
+     {
+    	 GetKeywordsByAdGroupIdRequest request = new GetKeywordsByAdGroupIdRequest();
+         
+         request.setAdGroupId(adGroupId);
+
+         return CampaignService.getService().getKeywordsByAdGroupId(request);
+     }
+     
+     // Updates the keywords in the specified ad group.
+
+     static UpdateKeywordsResponse updateKeywords(long adGroupId, ArrayOfKeyword keywords) throws RemoteException, Exception
+     {
+    	 UpdateKeywordsRequest request = new UpdateKeywordsRequest();
+         
+         request.setAdGroupId(adGroupId);
+         request.setKeywords(keywords);
+
+         return CampaignService.getService().updateKeywords(request);
      }
  }

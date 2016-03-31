@@ -2,14 +2,23 @@ package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class CreateKeywordsAds extends ExampleBaseV9 {
+public class CreateKeywordsAds extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
     public static void main(java.lang.String[] args) {
    	 
@@ -45,10 +54,11 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
              adGroup.setBiddingModel(BiddingModel.KEYWORD);
              adGroup.setPricingModel(PricingModel.CPC);
              adGroup.setStartDate(null);
-             adGroup.setEndDate(new com.microsoft.bingads.campaignmanagement.Date());
-             adGroup.getEndDate().setDay(31);
-             adGroup.getEndDate().setMonth(12);
-             adGroup.getEndDate().setYear(2015);
+             Calendar calendar = Calendar.getInstance();
+     		 adGroup.setEndDate(new com.microsoft.bingads.campaignmanagement.Date());
+     		 adGroup.getEndDate().setDay(31);
+     		 adGroup.getEndDate().setMonth(12);
+     		 adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
              Bid exactMatchBid = new Bid();
              exactMatchBid.setAmount(0.09);
              adGroup.setExactMatchBid(exactMatchBid);
@@ -149,42 +159,42 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
              // Bing Ads web application or another tool.
 
              deleteCampaigns(AccountId, campaignIds);
-             System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
          
-         // Campaign Management service operations can throw AdApiFaultDetail.
-         } catch (AdApiFaultDetail_Exception fault) {
-             System.out.println("The operation failed with the following faults:\n");
+          // Campaign Management service operations can throw AdApiFaultDetail.
+        } catch (AdApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
 
-             for (AdApiError error : fault.getFaultInfo().getErrors().getAdApiErrors())
-             {
-                 System.out.printf("AdApiError\n");
-                 System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
-             }
-         
-         // Campaign Management service operations can throw ApiFaultDetail.
-         } catch (ApiFaultDetail_Exception ex) {
-             System.out.println("The operation failed with the following faults:\n");
+            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            {
+                outputStatusMessage("AdApiError\n");
+                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+            }
+        
+        // Campaign Management service operations can throw ApiFaultDetail.
+        } catch (ApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
 
-             for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-             {
-                 System.out.printf("BatchError at Index: %d\n", error.getIndex());
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-             }
+            for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            {
+                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
 
-             for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-             {
-                 System.out.printf("OperationError\n");
-                 System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
-             }
-         } catch (RemoteException ex) {
-             System.out.println("Service communication error encountered: ");
-             System.out.println(ex.getMessage());
-             ex.printStackTrace();
-         } catch (Exception ex) {
-             System.out.println("Error encountered: ");
-             System.out.println(ex.getMessage());
-             ex.printStackTrace();
-         }
+            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            {
+                outputStatusMessage("OperationError\n");
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
+        } catch (RemoteException ex) {
+            outputStatusMessage("Service communication error encountered: ");
+            outputStatusMessage(ex.getMessage());
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            outputStatusMessage("Error encountered: ");
+            outputStatusMessage(ex.getMessage());
+            ex.printStackTrace();
+        }
      }
 
      // Adds one or more campaigns to the specified account.
@@ -268,7 +278,7 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
 
          for (long id : campaignIds.getLongs())
          {
-             System.out.printf("Campaign successfully added and assigned CampaignId %d\n\n", id);
+             outputStatusMessage(String.format("Campaign successfully added and assigned CampaignId %d\n\n", id));
          }
      }
 
@@ -283,7 +293,7 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
 
          for (long id : adGroupIds.getLongs())
          {
-             System.out.printf("AdGroup successfully added and assigned AdGroupId %d\n\n", id);
+             outputStatusMessage(String.format("AdGroup successfully added and assigned AdGroupId %d\n\n", id));
          }
      }
 
@@ -305,10 +315,10 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
 
              if (keywordIds.getLongs().get(index) != null)
              {
-                 System.out.printf("Keyword[%d] (Text:%s) successfully added and assigned KeywordId %d\n", 
+                 outputStatusMessage(String.format("Keyword[%d] (Text:%s) successfully added and assigned KeywordId %d\n", 
                      index,  
                      keywords.getKeywords().get(index).getText(),
-                     keywordIds.getLongs().get(index));
+                     keywordIds.getLongs().get(index)));
              }
          }
 
@@ -320,25 +330,25 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
              // The index of the partial errors is equal to the index of the list
              // specified in the call to AddKeywords.
 
-             System.out.printf("\nKeyword[%d] (Text:%s) not added due to the following error:\n", 
-            		 error.getIndex(), keywords.getKeywords().get(error.getIndex()).getText());
+             outputStatusMessage(String.format("\nKeyword[%d] (Text:%s) not added due to the following error:\n", 
+            		 error.getIndex(), keywords.getKeywords().get(error.getIndex()).getText()));
 
-             System.out.printf("\tIndex: %d\n", error.getIndex());
-             System.out.printf("\tCode: %d\n", error.getCode());
-             System.out.printf("\tErrorCode: %s\n", error.getErrorCode());
-             System.out.printf("\tMessage: %s\n", error.getMessage());
+             outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
+             outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
+             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
              // In the case of an EditorialError, more details are available
              if (error.getType().equals("EditorialError") && error.getErrorCode().equals("CampaignServiceEditorialValidationError"))
              {
-                 System.out.printf("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText());
-                 System.out.printf("\tLocation: %s\n", ((EditorialError)(error)).getLocation());
-                 System.out.printf("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry());
-                 System.out.printf("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode());
+                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
+                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
+                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
+                 outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
              }
          }
 
-         System.out.println("");
+         outputStatusMessage("");
      }
 
      // Prints the ad identifiers, as well as any partial errors
@@ -379,10 +389,10 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
 
              if (adIds.getLongs().get(index) != null)
              {
-                 System.out.printf("Ad[%d] (%s) successfully added and assigned AdId %d\n", 
+                 outputStatusMessage(String.format("Ad[%d] (%s) successfully added and assigned AdId %d\n", 
                      index, 
                      attributeValues[index], 
-                     adIds.getLongs().get(index));
+                     adIds.getLongs().get(index)));
              }
          }
 
@@ -394,23 +404,23 @@ public class CreateKeywordsAds extends ExampleBaseV9 {
              // The index of the partial errors is equal to the index of the list
              // specified in the call to AddAds.
 
-             System.out.printf("\nAd[%d] (%s) not added due to the following error:\n", error.getIndex(), attributeValues[error.getIndex()]);
+             outputStatusMessage(String.format("\nAd[%d] (%s) not added due to the following error:\n", error.getIndex(), attributeValues[error.getIndex()]));
 
-             System.out.printf("\tIndex: %d\n", error.getIndex());
-             System.out.printf("\tCode: %d\n", error.getCode());
-             System.out.printf("\tErrorCode: %s\n", error.getErrorCode());
-             System.out.printf("\tMessage: %s\n", error.getMessage());
+             outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
+             outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
+             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
              // In the case of an EditorialError, more details are available
              if (error.getType().equals("EditorialError") && error.getErrorCode().equals("CampaignServiceEditorialValidationError"))
              {
-                 System.out.printf("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText());
-                 System.out.printf("\tLocation: %s\n", ((EditorialError)(error)).getLocation());
-                 System.out.printf("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry());
-                 System.out.printf("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode());
+                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
+                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
+                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
+                 outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
              }
          }
 
-         System.out.println("");
+         outputStatusMessage("");
      }
  }

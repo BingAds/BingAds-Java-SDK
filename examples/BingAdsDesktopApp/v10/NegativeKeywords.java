@@ -5,10 +5,18 @@ import java.rmi.*;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class NegativeKeywords extends ExampleBaseV10 {
+public class NegativeKeywords extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    	
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
 	public static void main(java.lang.String[] args) {
 	 
@@ -326,6 +334,8 @@ public class NegativeKeywords extends ExampleBaseV10 {
 			{
 				outputPartialErrors(partialErrors);
 			}
+			
+			outputStatusMessage("Program execution completed\n"); 
 			 
 		// Campaign Management service operations can throw AdApiFaultDetail.
 		} catch (AdApiFaultDetail_Exception ex) {

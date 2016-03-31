@@ -6,10 +6,18 @@ import java.util.ArrayList;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class AdExtensions extends ExampleBaseV10 {
+public class AdExtensions extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
     public static void main(java.lang.String[] args) {
    	 
@@ -56,13 +64,18 @@ public class AdExtensions extends ExampleBaseV10 {
              appAdExtension.setAppStoreId("AppStoreIdGoesHere");
              appAdExtension.setDestinationUrl("DestinationUrlGoesHere");
              appAdExtension.setDisplayText("Contoso");
-             adExtensions.getAdExtensions().add(appAdExtension);
+             // If you supply the AppAdExtension properties above, then you can add this line.
+             //adExtensions.getAdExtensions().add(appAdExtension);
 
              CallAdExtension callAdExtension = new CallAdExtension();
              callAdExtension.setCountryCode("US");
              callAdExtension.setPhoneNumber("2065550100");
              callAdExtension.setIsCallOnly(false);
              adExtensions.getAdExtensions().add(callAdExtension);
+             
+             CalloutAdExtension calloutAdExtension = new CalloutAdExtension();
+ 			 calloutAdExtension.setText("Callout text");
+ 			 adExtensions.getAdExtensions().add(calloutAdExtension);
 
              LocationAdExtension locationAdExtension = new LocationAdExtension();
              locationAdExtension.setPhoneNumber("206-555-0100");
@@ -78,6 +91,14 @@ public class AdExtensions extends ExampleBaseV10 {
              address.setPostalCode("98608");
              locationAdExtension.setAddress(address);
              adExtensions.getAdExtensions().add(locationAdExtension);
+             
+             ReviewAdExtension reviewAdExtension = new ReviewAdExtension();
+ 			 reviewAdExtension.setIsExact(true);
+ 			 reviewAdExtension.setSource("Review Source Name");
+ 			 reviewAdExtension.setText("Review Text");
+ 			 // The Url of the third-party review. This is not your business Url.
+ 			 reviewAdExtension.setUrl("http://review.contoso.com"); 
+ 			 adExtensions.getAdExtensions().add(reviewAdExtension);
              
              SiteLinksAdExtension siteLinksAdExtension = new SiteLinksAdExtension();
              ArrayOfSiteLink siteLinks = new ArrayOfSiteLink();
@@ -181,7 +202,9 @@ public class AdExtensions extends ExampleBaseV10 {
              ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.APP_AD_EXTENSION);
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.CALL_AD_EXTENSION);
+             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.CALLOUT_AD_EXTENSION);
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
+             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.REVIEW_AD_EXTENSION);
              adExtensionsTypeFilter.add(AdExtensionsTypeFilter.SITE_LINKS_AD_EXTENSION);
                    
              // Get the specified ad extensions from the account’s ad extension library.
@@ -203,22 +226,26 @@ public class AdExtensions extends ExampleBaseV10 {
                  {
                 	 if (extension instanceof AppAdExtension)
                      {
-                		 outputStatusMessage("AppAdExtension: ");
-                    	 outputAppAdExtension((AppAdExtension)extension);
+                		 outputAppAdExtension((AppAdExtension)extension);
                      }
                      else if (extension instanceof CallAdExtension)
                      {
-                    	 outputStatusMessage("CallAdExtension: ");
                     	 outputCallAdExtension((CallAdExtension)extension);
+                     }
+                     else if (extension instanceof CalloutAdExtension)
+                     {
+                    	 outputCalloutAdExtension((CalloutAdExtension)extension);
                      }
                      else if (extension instanceof LocationAdExtension)
                      {
-                    	 outputStatusMessage("LocationAdExtension: ");
                     	 outputLocationAdExtension((LocationAdExtension)extension);
+                     }
+                     else if (extension instanceof ReviewAdExtension)
+                     {
+                    	 outputReviewAdExtension((ReviewAdExtension)extension);
                      }
                      else if (extension instanceof SiteLinksAdExtension)
                      {
-                    	 outputStatusMessage("SiteLinksAdExtension: ");
                     	 outputSiteLinksAdExtension((SiteLinksAdExtension)extension);
                      }
                      else

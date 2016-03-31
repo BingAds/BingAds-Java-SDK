@@ -6,10 +6,18 @@ import java.rmi.*;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.adintelligence.*;
 
-public class EstimatedBid extends ExampleBaseV9 {
+public class EstimatedBid extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<IAdIntelligenceService> AdIntelligenceService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
 
     public static void main(java.lang.String[] args) {
    	 
@@ -137,6 +145,8 @@ public class EstimatedBid extends ExampleBaseV9 {
                     (adGroupEstimatedBid.getMaxTotalCostPerWeek() != null ? currencyFmt.format(adGroupEstimatedBid.getMaxTotalCostPerWeek()) : "null"));
                 System.out.println();
              }
+            
+            outputStatusMessage("Program execution completed\n"); 
 
         // Ad Intelligence service operations can throw AdApiFaultDetail.
         } catch (AdApiFaultDetail_Exception ex) {

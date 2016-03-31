@@ -3,6 +3,7 @@ package com.microsoft.bingads.examples.v9;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -16,7 +17,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkCreateKeywordsAds extends BulkExampleBaseV9 {
+public class BulkCreateKeywordsAds extends BulkExampleBase {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -26,6 +27,14 @@ public class BulkCreateKeywordsAds extends BulkExampleBaseV9 {
      
     final static long campaignIdKey = -123; 
     final static long adGroupIdKey = -1234; 
+	
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
         
     public static void main(String[] args) {
 		
@@ -231,10 +240,11 @@ public class BulkCreateKeywordsAds extends BulkExampleBaseV9 {
 		adGroup.setBiddingModel(BiddingModel.KEYWORD);
 		adGroup.setPricingModel(PricingModel.CPC);
 		adGroup.setStartDate(null);
+		Calendar calendar = Calendar.getInstance();
 		adGroup.setEndDate(new com.microsoft.bingads.campaignmanagement.Date());
 		adGroup.getEndDate().setDay(31);
 		adGroup.getEndDate().setMonth(12);
-		adGroup.getEndDate().setYear(2015);
+		adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
 		Bid exactMatchBid = new Bid();
 		exactMatchBid.setAmount(0.09);
 		adGroup.setExactMatchBid(exactMatchBid);

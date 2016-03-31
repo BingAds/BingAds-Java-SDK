@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
@@ -17,45 +18,32 @@ import com.microsoft.bingads.v10.bulk.BatchError;
 import com.microsoft.bingads.v10.bulk.OperationError;
 import com.microsoft.bingads.v10.campaignmanagement.*;
 
-public class BulkKeywordsAds extends BulkExampleBaseV10 {
+public class BulkKeywordsAds extends BulkExampleBase {
 	
-    static AuthorizationData authorizationData;
-    static BulkServiceManager BulkService; 
-    static BulkFileWriter Writer;  
-    static BulkFileReader Reader;  
-     
-    final static long campaignIdKey = -123; 
-    final static long adGroupIdKey = -1234; 
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
         
     public static void main(String[] args) {
 		
-		BulkEntityIterable bulkEntities = null;
+		BulkEntityIterable downloadEntities = null;
 				
 		try {
-			authorizationData = new AuthorizationData();
+			AuthorizationData authorizationData = new AuthorizationData();
 			authorizationData.setDeveloperToken(DeveloperToken);
 			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
 			authorizationData.setCustomerId(CustomerId);
 			authorizationData.setAccountId(AccountId);
 						            				
-			// Take advantage of the BulkServiceManager class to efficiently manage ads and keywords for all campaigns in an account. 
-			// The client library provides classes to accelerate productivity for downloading and uploading entities. 
-			// For example the UploadEntitiesAsync method of the BulkServiceManager class submits your upload request to the bulk service, 
-			// polls the service until the upload completed, downloads the result file to a temporary directory, and exposes BulkEntity-derived objects  
-			// that contain close representations of the corresponding Campaign Management data objects and value sets.
-			    
 			BulkService = new BulkServiceManager(authorizationData);
-			
-			// Poll for downloads at reasonable intervals. You know your data better than anyone. 
-			// If you download an account that is well less than one million keywords, consider polling 
-			// at 15 to 20 second intervals. If the account contains about one million keywords, consider polling 
-			// at one minute intervals after waiting five minutes. For accounts with about four million keywords, 
-			// consider polling at one minute intervals after waiting 10 minutes. 
-			
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
-						
-			// Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object,  
-			// and additional elements needed to read from and write to a bulk file.  
+
+            // Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object, 
+            // and additional elements needed to read from and write to a bulk file. 
 			
 			BulkCampaign bulkCampaign = new BulkCampaign();
 			// ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
@@ -96,10 +84,11 @@ public class BulkKeywordsAds extends BulkExampleBaseV10 {
 			adGroup.setBiddingModel(BiddingModel.KEYWORD);
 			adGroup.setPricingModel(PricingModel.CPC);
 			adGroup.setStartDate(null);
+			Calendar calendar = Calendar.getInstance();
 			adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
 			adGroup.getEndDate().setDay(31);
 			adGroup.getEndDate().setMonth(12);
-			adGroup.getEndDate().setYear(2015);
+			adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
 			Bid searchBid = new Bid();
 	        searchBid.setAmount(0.09);
 	        adGroup.setSearchBid(searchBid);
@@ -218,34 +207,34 @@ public class BulkKeywordsAds extends BulkExampleBaseV10 {
 			bulkKeywords[2].setKeyword(keywords[2]);
 			
 			     
-			// Write the entities created above, to temporary memory. 
+			// Upload the entities created above.
 			// Dependent entities such as BulkKeyword must be written after any dependencies,   
 			// for example the BulkCampaign and BulkAdGroup.  
-			
-			List<BulkEntity> entities = new ArrayList<BulkEntity>();
-			entities.add(bulkCampaign);
-			entities.add(bulkAdGroup);
+						
+			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
+			uploadEntities.add(bulkCampaign);
+			uploadEntities.add(bulkAdGroup);
 			
 			for (BulkKeyword bulkKeyword : bulkKeywords) {
-				entities.add(bulkKeyword);
+				uploadEntities.add(bulkKeyword);
 			}
 			
 			for (BulkTextAd bulkTextAd : bulkTextAds) {
-				entities.add(bulkTextAd);
+				uploadEntities.add(bulkTextAd);
 			}
 			
-			outputStatusMessage("Starting Upload . . .\n"); 
+            outputStatusMessage("\nAdding campaign, ad group, ads, and keywords...\n");
+            
+            // Upload and write the output
+
+	        Reader = writeEntitiesAndUploadFile(uploadEntities);
+	        downloadEntities = Reader.getEntities();
+	        
+            List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
 			
-	    	Reader = uploadEntities(entities);
-
-	        // Write the upload output
-
-	        bulkEntities = Reader.getEntities();
-
-			outputStatusMessage("Printing the results of Upload . . .\n");
-			
-			for (BulkEntity entity : bulkEntities) {
+			for (BulkEntity entity : downloadEntities) {
 				if (entity instanceof BulkCampaign) {
+					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
 				}
 				else if (entity instanceof BulkAdGroup) {
@@ -258,66 +247,75 @@ public class BulkKeywordsAds extends BulkExampleBaseV10 {
 					outputBulkKeywords(Arrays.asList((BulkKeyword) entity) );
 				}
 			}
-			bulkEntities.close();
+			downloadEntities.close();
+			Reader.close();
 			
-			// Complete a full download of all campaigns, ad groups, ads, and keywords in the account. 
-			// This download will include any entities successfully added above.
-			 
-			List<BulkDownloadEntity> downloadEntities = new ArrayList<BulkDownloadEntity>();
-			downloadEntities.add(BulkDownloadEntity.CAMPAIGNS);
-			downloadEntities.add(BulkDownloadEntity.AD_GROUPS);
-			downloadEntities.add(BulkDownloadEntity.ADS);
-			downloadEntities.add(BulkDownloadEntity.KEYWORDS);
-			
-			DownloadParameters downloadParameters = new DownloadParameters();
-			downloadParameters.setEntities(downloadEntities);
-			downloadParameters.setFileType(DownloadFileType.CSV);
-			
-			outputStatusMessage("Starting DownloadEntitiesAsync . . .\n"); 
-			bulkEntities = BulkService.downloadEntitiesAsync(downloadParameters, null, null).get();
-			
-			outputStatusMessage("Printing the results of DownloadEntitiesAsync . . .\n"); 
-			for (BulkEntity entity : bulkEntities) {
+			//Delete the campaign, ad group, ads, and keywords that were previously added. 
+            //You should remove this region if you want to view the added entities in the 
+            //Bing Ads web application or another tool.
+
+            //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted. 
+
+			//When you delete a BulkCampaign, the dependent entities such as BulkAdGroup, BulkKeyword, and BulkTextAd 
+            //are deleted without being specified explicitly.   
+            
+            uploadEntities = new ArrayList<BulkEntity>();
+            
+            for (BulkCampaign campaignResult : campaignResults){
+            	campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
+            	uploadEntities.add(campaignResult);
+            }
+            
+            // Upload and write the output
+
+	        Reader = writeEntitiesAndUploadFile(uploadEntities);
+	        downloadEntities = Reader.getEntities();
+            
+            for (BulkEntity entity : downloadEntities) {
 				if (entity instanceof BulkCampaign) {
+					campaignResults.add((BulkCampaign) entity);
 					outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
 				}
-				else if (entity instanceof BulkAdGroup) {
-					outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
-				}
-				else if (entity instanceof BulkTextAd) {
-					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
-				}
-				else if (entity instanceof BulkKeyword) {
-					outputBulkKeywords(Arrays.asList((BulkKeyword) entity) );
-				}
 			}
-			bulkEntities.close();
+			downloadEntities.close();
+            Reader.close();
+            
+            outputStatusMessage("Program execution completed\n"); 
 		
+		} catch (BulkDownloadCouldNotBeCompletedException ee) {
+			outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (BulkUploadCouldNotBeCompletedException ee) {
+			outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (OAuthTokenRequestException ee) {
+			outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
+		} catch (BulkOperationInProgressException ee) {
+			outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
 		} catch (ExecutionException ee) {
 			Throwable cause = ee.getCause();
 			if (cause instanceof AdApiFaultDetail_Exception) {
 				AdApiFaultDetail_Exception ex = (AdApiFaultDetail_Exception)cause;
-				System.out.println("The operation failed with the following faults:\n");
+				outputStatusMessage("The operation failed with the following faults:\n");
 				
 				for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
 				{
-					System.out.printf("AdApiError\n");
-					System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+					outputStatusMessage("AdApiError\n");
+					outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
+							error.getCode(), error.getErrorCode(), error.getMessage()));
 				}
 			} else if (cause instanceof ApiFaultDetail_Exception) {
 				ApiFaultDetail_Exception ex = (ApiFaultDetail_Exception)cause;
-				System.out.println("The operation failed with the following faults:\n");
+				outputStatusMessage("The operation failed with the following faults:\n");
 				
 				for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
 				{
-					System.out.printf("BatchError at Index: %d\n", error.getIndex());
-					System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+					outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+					outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
 				}
 				
 				for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
 				{
-					System.out.printf("OperationError\n");
-					System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+					outputStatusMessage("OperationError\n");
+					outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
 				}
 			} else {
 				ee.printStackTrace();	
@@ -327,9 +325,9 @@ public class BulkKeywordsAds extends BulkExampleBaseV10 {
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		} finally {
-			if (bulkEntities != null){
+			if (downloadEntities != null){
 				try {
-					bulkEntities.close();
+					downloadEntities.close();
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -338,29 +336,4 @@ public class BulkKeywordsAds extends BulkExampleBaseV10 {
 	
 		System.exit(0);
 	}
-    
-    /// Writes the specified entities to a local file and uploads the file. We could have uploaded directly
-    /// without writing to file. This example writes to file as an exercise so that you can view the structure 
-    /// of the bulk records being uploaded as needed. 
-    
-    static BulkFileReader uploadEntities(List<BulkEntity> uploadEntities) throws IOException, ExecutionException, InterruptedException {
-    	Writer = new BulkFileWriter(new File(FileDirectory + UploadFileName));
-
-    	for(BulkEntity entity : uploadEntities){
-    		Writer.writeEntity(entity);
-    	}
-        
-        Writer.close();
-
-        FileUploadParameters fileUploadParameters = new FileUploadParameters();
-        fileUploadParameters.setResultFileDirectory(new File(FileDirectory));
-        fileUploadParameters.setResultFileName(ResultFileName);
-        fileUploadParameters.setUploadFilePath(new File(FileDirectory + UploadFileName));
-        fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
-        fileUploadParameters.setOverwriteResultFile(true);
-        
-        File bulkFilePath =
-            BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
-        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
-    }
 }

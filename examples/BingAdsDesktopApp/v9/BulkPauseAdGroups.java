@@ -16,7 +16,7 @@ import com.microsoft.bingads.bulk.BatchError;
 import com.microsoft.bingads.bulk.OperationError;
 import com.microsoft.bingads.campaignmanagement.*;
 
-public class BulkPauseAdGroups extends BulkExampleBaseV9 {
+public class BulkPauseAdGroups extends BulkExampleBase {
 	
     static AuthorizationData authorizationData;
     static BulkServiceManager BulkService; 
@@ -25,6 +25,14 @@ public class BulkPauseAdGroups extends BulkExampleBaseV9 {
      
     final static long campaignIdKey = -123; 
     final static long adGroupIdKey = -1234; 
+	
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    private static long CustomerId = <CustomerIdGoesHere>;
+    private static long AccountId = <AccountIdGoesHere>;
+    */
         
     public static void main(String[] args) {
 		

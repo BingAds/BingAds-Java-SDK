@@ -1,14 +1,21 @@
 package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
+import java.util.Arrays;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.customermanagement.*;
 
-public class SearchUserAccounts extends ExampleBaseV9 {
+public class SearchUserAccounts extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICustomerManagementService> CustomerService; 
+    
+    /*
+	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String Password = "<PasswordGoesHere>";
+    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
+    */
     
     public static void main(java.lang.String[] args) {
    	 
@@ -28,35 +35,47 @@ public class SearchUserAccounts extends ExampleBaseV9 {
             
             ArrayOfAccount accounts = searchAccountsByUserId(user.getId());
             
-            System.out.println("The user can access the following Bing Ads accounts: \n");
-            printAccounts(accounts);
+            outputStatusMessage("The user can access the following Bing Ads accounts: \n");
+            for (Account account : accounts.getAccounts())
+            {
+            	outputAccount(account);
+            	
+            	// Optionally you can find out which pilot features the customer is able to use. 
+                // Each account could belong to a different customer, so use the customer ID in each account.
+                ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)account.getParentCustomerId());
+                outputStatusMessage("Customer Pilot flags:");
+                outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
+                outputStatusMessage("\n");
+            }
+            
+            outputStatusMessage("Program execution completed\n"); 
         
         // Customer Management service operations can throw AdApiFaultDetail.
         } catch (AdApiFaultDetail_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
-	            System.out.printf("AdApiError\n");
-	            System.out.printf("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage());
+	            outputStatusMessage("AdApiError\n");
+	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
         
         // Customer Management service operations can throw ApiFault.
         } catch (ApiFault_Exception ex) {
-            System.out.println("The operation failed with the following faults:\n");
+            outputStatusMessage("The operation failed with the following faults:\n");
 
             for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
-	            System.out.printf("OperationError\n");
-	            System.out.printf("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage());
+	            outputStatusMessage("OperationError\n");
+	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
         } catch (RemoteException ex) {
-            System.out.println("Service communication error encountered: ");
-            System.out.println(ex.getMessage());
+            outputStatusMessage("Service communication error encountered: ");
+            outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         } catch (Exception ex) {
-             System.out.println("Error encountered: ");
-             System.out.println(ex.getMessage());
+             outputStatusMessage("Error encountered: ");
+             outputStatusMessage(ex.getMessage());
              ex.printStackTrace();
         }
     }
@@ -94,15 +113,23 @@ public class SearchUserAccounts extends ExampleBaseV9 {
         
 		return CustomerService.getService().searchAccounts(searchAccountsRequest).getAccounts();
 	}
-
-    // Outputs the account and parent customer identifiers for the specified accounts.
-
-    static void printAccounts(ArrayOfAccount accounts) throws RemoteException, Exception {
+    
+    // Gets the list of pilot features that the customer is able to use.
+    
+    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws AdApiFaultDetail_Exception, ApiFault_Exception {       
+		
+        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
+        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
         
-    	for (Account account : accounts.getAccounts())
-        {
-        	System.out.printf("AccountId: %d\n", account.getId());
-        	System.out.printf("CustomerId: %d\n\n", account.getParentCustomerId());
-        }
+		return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
+	}
+
+    // Outputs a subset of the properties of an Account data object.
+
+    static void outputAccount(Account account) throws RemoteException, Exception {
+    	outputStatusMessage(String.format("Account Id: %s", account.getId()));
+    	outputStatusMessage(String.format("Account Number: %s", account.getNumber()));
+    	outputStatusMessage(String.format("Account Name: %s", account.getName()));
+    	outputStatusMessage(String.format("Account Parent Customer Id: %s\n", account.getParentCustomerId()));
     }
 }
