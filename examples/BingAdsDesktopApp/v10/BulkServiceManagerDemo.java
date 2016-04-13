@@ -54,6 +54,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
 			
 			// Optionally you can request performance data for the requested bulk records.
 			List<DataScope> dataScopes = new ArrayList<DataScope>();
+			dataScopes.add(DataScope.ENTITY_DATA);
 			dataScopes.add(DataScope.ENTITY_PERFORMANCE_DATA);
 			PerformanceStatsDateRange performanceStatsDateRange = new PerformanceStatsDateRange();
 			performanceStatsDateRange.setPredefinedTime(ReportTimePeriod.LAST_FOUR_WEEKS);
