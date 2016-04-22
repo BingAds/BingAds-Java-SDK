@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class Util {
 
+    private Util() {
+    }
+
     public static synchronized ArrayList<BulkEntity> WriteAndReadBack(ArrayList<BulkEntity> entities) {
         ArrayList<BulkEntity> results = new ArrayList<BulkEntity>();
         try {

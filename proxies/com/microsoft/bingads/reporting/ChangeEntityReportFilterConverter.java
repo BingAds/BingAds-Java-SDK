@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class ChangeEntityReportFilterConverter {
 
+    private ChangeEntityReportFilterConverter() {
+    }
+
     public static Collection<ChangeEntityReportFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

@@ -10,6 +10,9 @@ import java.io.OutputStream;
  */
 public class FileUtils {
 
+    private FileUtils() {
+    }
+
     public static void copy(InputStream in, OutputStream out) throws IOException {
 
         byte[] buf = new byte[8192];

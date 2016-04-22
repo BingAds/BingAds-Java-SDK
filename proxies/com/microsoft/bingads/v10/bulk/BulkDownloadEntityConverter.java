@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class BulkDownloadEntityConverter {
 
+    private BulkDownloadEntityConverter() {
+    }
+
     public static Collection<BulkDownloadEntity> convertToList(String enums) {
         String[] values = enums.split(" ");
 

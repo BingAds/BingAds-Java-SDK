@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class AdExtensionsTypeFilterConverter {
 
+    private AdExtensionsTypeFilterConverter() {
+    }
+
     public static Collection<AdExtensionsTypeFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

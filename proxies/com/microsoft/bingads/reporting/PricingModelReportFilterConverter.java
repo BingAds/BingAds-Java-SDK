@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class PricingModelReportFilterConverter {
 
+    private PricingModelReportFilterConverter() {
+    }
+
     public static Collection<PricingModelReportFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

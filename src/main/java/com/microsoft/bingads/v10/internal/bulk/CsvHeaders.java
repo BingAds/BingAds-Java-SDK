@@ -192,6 +192,9 @@ public class CsvHeaders {
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();
 
+    private CsvHeaders() {
+    }
+
     public static Map<String, Integer> getMappings() {
         return columnIndexMap;
     }

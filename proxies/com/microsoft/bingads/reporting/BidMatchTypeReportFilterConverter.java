@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class BidMatchTypeReportFilterConverter {
 
+    private BidMatchTypeReportFilterConverter() {
+    }
+
     public static Collection<BidMatchTypeReportFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

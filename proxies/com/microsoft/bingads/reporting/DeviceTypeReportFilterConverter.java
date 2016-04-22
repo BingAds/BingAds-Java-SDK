@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class DeviceTypeReportFilterConverter {
 
+    private DeviceTypeReportFilterConverter() {
+    }
+
     public static Collection<DeviceTypeReportFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

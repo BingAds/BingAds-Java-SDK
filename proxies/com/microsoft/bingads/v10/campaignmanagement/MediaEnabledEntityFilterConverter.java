@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class MediaEnabledEntityFilterConverter {
 
+    private MediaEnabledEntityFilterConverter() {
+    }
+
     public static Collection<MediaEnabledEntityFilter> convertToList(String enums) {
         String[] values = enums.split(" ");
 

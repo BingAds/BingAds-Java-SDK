@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class CriterionTypeConverter {
 
+    private CriterionTypeConverter() {
+    }
+
     public static Collection<CriterionType> convertToList(String enums) {
         String[] values = enums.split(" ");
 

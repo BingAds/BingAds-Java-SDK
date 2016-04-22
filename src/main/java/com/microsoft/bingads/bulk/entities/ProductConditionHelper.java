@@ -10,6 +10,9 @@ class ProductConditionHelper {
 
     public static final int MaxNumberOfConditions = 8;
 
+    private ProductConditionHelper() {
+    }
+
     public static void addRowValuesFromConditions(ArrayOfProductCondition arrayOfProductCondition, RowValues rowValues) {
         List<ProductCondition> conditions = arrayOfProductCondition.getProductConditions();
         for (int i = 1; i <= conditions.size(); i++) {

@@ -7,6 +7,9 @@ import java.util.List;
 
 public class MappingHelpers {
 
+    private MappingHelpers() {
+    }
+
     /**
      * Runs a series of mappings to populate an entity from CSV data
      *

@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class AdDistributionConverter {
 
+    private AdDistributionConverter() {
+    }
+
     public static Collection<AdDistribution> convertToList(String enums) {
         String[] values = enums.split(" ");
 

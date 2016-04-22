@@ -8,6 +8,9 @@ import java.util.Collection;
  */
 public class CampaignCriterionTypeConverter {
 
+    private CampaignCriterionTypeConverter() {
+    }
+
     public static Collection<CampaignCriterionType> convertToList(String enums) {
         String[] values = enums.split(" ");
 

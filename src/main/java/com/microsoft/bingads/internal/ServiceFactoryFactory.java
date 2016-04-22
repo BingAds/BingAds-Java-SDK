@@ -5,7 +5,10 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 public class ServiceFactoryFactory {
     
     private static Supplier<ServiceFactory> customServiceFactorySupplier;
-    
+
+    private ServiceFactoryFactory() {
+    }
+
     public static Supplier<ServiceFactory> getCustomServiceFactorySupplier() {
         return customServiceFactorySupplier;
     }
