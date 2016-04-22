@@ -71,7 +71,7 @@ public class BulkKeywordWriteToRowValuesUrlCustomParameters extends BulkKeywordT
 		CustomParameter paraTest2 = new CustomParameter();
 		paraTest2.setKey("key2");
 		paraTest2.setValue("value\\2");
-		ArrayOfCustomParameter array = new ArrayOfCustomParameter();
+		ArrayOfCustomParameter array;
 		array = new ArrayOfCustomParameter();
 		array.getCustomParameters().add(paraTest1);
 		array.getCustomParameters().add(paraTest2);
