@@ -49,6 +49,6 @@ public abstract class MultiRecordBulkEntity extends BulkEntity {
     
     @Override
     public Calendar getLastModifiedTime() {
-        return getChildEntities().size() > 0 ? getChildEntities().get(0).getLastModifiedTime() : null;
+        return !getChildEntities().isEmpty() ? getChildEntities().get(0).getLastModifiedTime() : null;
     }
 }

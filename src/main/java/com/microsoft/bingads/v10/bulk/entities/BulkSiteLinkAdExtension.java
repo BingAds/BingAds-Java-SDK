@@ -194,7 +194,7 @@ public class BulkSiteLinkAdExtension extends MultiRecordBulkEntity {
             }
         }
 
-        if (bulkSiteLinkResults.size() > 0) {        
+        if (!bulkSiteLinkResults.isEmpty()) {        
             siteLinksAdExtension.setSiteLinks(this.getSortedSiteLinks());
             siteLinksAdExtension.setStatus(AdExtensionStatus.ACTIVE);
         } else {

@@ -208,7 +208,7 @@ public class BulkProductAdExtension extends MultiRecordBulkEntity {
         
         this.productAdExtension.setProductSelection(apiCollections);
         
-        this.productAdExtension.setStatus(apiCollections.getProductConditionCollections().size() > 0 ? AdExtensionStatus.ACTIVE : AdExtensionStatus.DELETED);
+        this.productAdExtension.setStatus(!apiCollections.getProductConditionCollections().isEmpty() ? AdExtensionStatus.ACTIVE : AdExtensionStatus.DELETED);
     }
 
     private ArrayOfProductConditionCollection getApiCollections() {
