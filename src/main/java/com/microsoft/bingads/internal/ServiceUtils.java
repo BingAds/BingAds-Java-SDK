@@ -8,9 +8,9 @@ import javax.xml.ws.Response;
  */
 public class ServiceUtils {
 
-    public static String TRACKING_KEY = "com.microsoft.bingads.trackingId";
+    public static final String TRACKING_KEY = "com.microsoft.bingads.trackingId";
 
-    public static String TRACKING_HEADER_NAME = "TrackingId";
+    public static final String TRACKING_HEADER_NAME = "TrackingId";
 
     public static String GetTrackingId(Response response) {        
         Map<String, Object> context = response.getContext();

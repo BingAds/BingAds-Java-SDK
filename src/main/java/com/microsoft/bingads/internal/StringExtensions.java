@@ -171,7 +171,7 @@ public class StringExtensions {
         }
     }
 
-    public static SimpleDateFormat SYNC_TIME_FORMATTER = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    public static final SimpleDateFormat SYNC_TIME_FORMATTER = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     public static java.util.Date parseSyncTime(String v) throws ParseException {
         if (v == null || v.isEmpty()) {
