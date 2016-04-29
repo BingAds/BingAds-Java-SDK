@@ -542,7 +542,7 @@ public class BulkServiceManager {
     }
 
     /**
-     * Remove temporary files from workingDirectory
+     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another instance.
      */
     public void cleanupTempFiles() {
     	for(File file : workingDirectory.listFiles()) {

@@ -54,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerAssist"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="AdStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -142,7 +143,9 @@ public enum ProductTargetPerformanceReportColumn {
     @XmlEnumValue("RevenuePerConversion")
     REVENUE_PER_CONVERSION("RevenuePerConversion"),
     @XmlEnumValue("RevenuePerAssist")
-    REVENUE_PER_ASSIST("RevenuePerAssist");
+    REVENUE_PER_ASSIST("RevenuePerAssist"),
+    @XmlEnumValue("AdStatus")
+    AD_STATUS("AdStatus");
     private final String value;
 
     ProductTargetPerformanceReportColumn(String v) {

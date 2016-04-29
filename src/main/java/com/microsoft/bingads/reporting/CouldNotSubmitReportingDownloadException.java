@@ -1,7 +1,7 @@
 package com.microsoft.bingads.reporting;
 
 /**
- * This exception is thrown when calling API related with reporting download
+ * This exception is thrown by the ReportingServiceManager when the SubmitGenerateReport service operation that it called does not return a valid response.
  */
 public class CouldNotSubmitReportingDownloadException extends Exception {
     

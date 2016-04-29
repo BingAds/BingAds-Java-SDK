@@ -56,6 +56,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FinalURL"/>
  *     &lt;enumeration value="FinalMobileURL"/>
  *     &lt;enumeration value="FinalAppURL"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="AdStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -148,7 +152,15 @@ public enum DestinationUrlPerformanceReportColumn {
     @XmlEnumValue("FinalMobileURL")
     FINAL_MOBILE_URL("FinalMobileURL"),
     @XmlEnumValue("FinalAppURL")
-    FINAL_APP_URL("FinalAppURL");
+    FINAL_APP_URL("FinalAppURL"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("AdStatus")
+    AD_STATUS("AdStatus");
     private final String value;
 
     DestinationUrlPerformanceReportColumn(String v) {

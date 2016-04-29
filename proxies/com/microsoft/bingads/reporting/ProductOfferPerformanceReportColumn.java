@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AverageCpc"/>
  *     &lt;enumeration value="Spend"/>
  *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -79,7 +82,13 @@ public enum ProductOfferPerformanceReportColumn {
     @XmlEnumValue("Spend")
     SPEND("Spend"),
     @XmlEnumValue("AverageCpm")
-    AVERAGE_CPM("AverageCpm");
+    AVERAGE_CPM("AverageCpm"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus");
     private final String value;
 
     ProductOfferPerformanceReportColumn(String v) {

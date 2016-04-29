@@ -20,10 +20,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="AccountStatus" type="{https://bingads.microsoft.com/Reporting/v9}AccountStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v9}AdDistributionReportFilter" minOccurs="0"/>
+ *         &lt;element name="AdGroupStatus" type="{https://bingads.microsoft.com/Reporting/v9}AdGroupStatusReportFilter" minOccurs="0"/>
+ *         &lt;element name="CampaignStatus" type="{https://bingads.microsoft.com/Reporting/v9}CampaignStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="DeviceOS" type="{https://bingads.microsoft.com/Reporting/v9}DeviceOSReportFilter" minOccurs="0"/>
  *         &lt;element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v9}DeviceTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="GoalIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="KeywordStatus" type="{https://bingads.microsoft.com/Reporting/v9}KeywordStatusReportFilter" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,27 +38,71 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GoalsAndFunnelsReportFilter", propOrder = {
+    "accountStatus",
     "adDistribution",
+    "adGroupStatus",
+    "campaignStatus",
     "deviceOS",
     "deviceType",
-    "goalIds"
+    "goalIds",
+    "keywordStatus"
 })
 public class GoalsAndFunnelsReportFilter {
 
+    @XmlElement(name = "AccountStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
+    @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<AdGroupStatusReportFilter> adGroupStatus;
+    @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "GoalIds", nillable = true)
     protected ArrayOflong goalIds;
+    @XmlElement(name = "KeywordStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<KeywordStatusReportFilter> keywordStatus;
+
+    /**
+     * Gets the value of the accountStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AccountStatusReportFilter> getAccountStatus() {
+        return accountStatus;
+    }
+
+    /**
+     * Sets the value of the accountStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountStatus(Collection<AccountStatusReportFilter> value) {
+        this.accountStatus = value;
+    }
 
     /**
      * Gets the value of the adDistribution property.
@@ -78,6 +126,54 @@ public class GoalsAndFunnelsReportFilter {
      */
     public void setAdDistribution(Collection<AdDistributionReportFilter> value) {
         this.adDistribution = value;
+    }
+
+    /**
+     * Gets the value of the adGroupStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdGroupStatusReportFilter> getAdGroupStatus() {
+        return adGroupStatus;
+    }
+
+    /**
+     * Sets the value of the adGroupStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdGroupStatus(Collection<AdGroupStatusReportFilter> value) {
+        this.adGroupStatus = value;
+    }
+
+    /**
+     * Gets the value of the campaignStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CampaignStatusReportFilter> getCampaignStatus() {
+        return campaignStatus;
+    }
+
+    /**
+     * Sets the value of the campaignStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampaignStatus(Collection<CampaignStatusReportFilter> value) {
+        this.campaignStatus = value;
     }
 
     /**
@@ -150,6 +246,30 @@ public class GoalsAndFunnelsReportFilter {
      */
     public void setGoalIds(ArrayOflong value) {
         this.goalIds = value;
+    }
+
+    /**
+     * Gets the value of the keywordStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<KeywordStatusReportFilter> getKeywordStatus() {
+        return keywordStatus;
+    }
+
+    /**
+     * Sets the value of the keywordStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKeywordStatus(Collection<KeywordStatusReportFilter> value) {
+        this.keywordStatus = value;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.microsoft.bingads;
 
 /**
- * This exception is thrown when trying to upload file.
+ * This exception is thrown by the internal SDK HttpService after a failed attempt to upload a bulk file.
  */
 public class CouldNotUploadFileException extends RuntimeException {
     

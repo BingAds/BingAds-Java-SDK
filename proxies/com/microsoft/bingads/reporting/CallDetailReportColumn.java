@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountId"/>
  *     &lt;enumeration value="CampaignId"/>
  *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -67,7 +70,13 @@ public enum CallDetailReportColumn {
     @XmlEnumValue("CampaignId")
     CAMPAIGN_ID("CampaignId"),
     @XmlEnumValue("AdGroupId")
-    AD_GROUP_ID("AdGroupId");
+    AD_GROUP_ID("AdGroupId"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus");
     private final String value;
 
     CallDetailReportColumn(String v) {

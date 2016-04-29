@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FunnelConversionRate"/>
  *     &lt;enumeration value="Revenue"/>
  *     &lt;enumeration value="ReturnOnAdSpend"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -103,7 +107,15 @@ public enum TacticChannelReportColumn {
     @XmlEnumValue("Revenue")
     REVENUE("Revenue"),
     @XmlEnumValue("ReturnOnAdSpend")
-    RETURN_ON_AD_SPEND("ReturnOnAdSpend");
+    RETURN_ON_AD_SPEND("ReturnOnAdSpend"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("KeywordStatus")
+    KEYWORD_STATUS("KeywordStatus");
     private final String value;
 
     TacticChannelReportColumn(String v) {

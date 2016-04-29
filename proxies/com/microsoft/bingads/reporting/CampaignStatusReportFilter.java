@@ -10,7 +10,8 @@ public enum CampaignStatusReportFilter {
     DELETED("Deleted"),
     PAUSED("Paused"),
     BUDGET_PAUSED("BudgetPaused"),
-    ACTIVE("Active");
+    ACTIVE("Active"),
+    SUSPENDED("Suspended");
         
     private final String value;
 

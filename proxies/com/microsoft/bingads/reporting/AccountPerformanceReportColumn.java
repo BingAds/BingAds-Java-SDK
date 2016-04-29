@@ -67,6 +67,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TotalVisits"/>
  *     &lt;enumeration value="AveragePagesPerVisit"/>
  *     &lt;enumeration value="AverageDurationPerVisit"/>
+ *     &lt;enumeration value="AccountStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -181,7 +182,9 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("AveragePagesPerVisit")
     AVERAGE_PAGES_PER_VISIT("AveragePagesPerVisit"),
     @XmlEnumValue("AverageDurationPerVisit")
-    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit");
+    AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

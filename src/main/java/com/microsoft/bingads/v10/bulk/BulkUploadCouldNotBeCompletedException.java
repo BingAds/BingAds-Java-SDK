@@ -2,9 +2,8 @@ package com.microsoft.bingads.v10.bulk;
 
 import java.util.List;
 
-
 /**
- * This exception is thrown when trying to download the result file for an operation that has completed with an error.
+ * This exception is thrown if an attempt was made to poll for a completed bulk upload results file and the bulk service returns a failed status.
  */
 public class BulkUploadCouldNotBeCompletedException extends RuntimeException {
     

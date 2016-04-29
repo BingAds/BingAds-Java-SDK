@@ -32,6 +32,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ComponentNonBillableClicks"/>
  *     &lt;enumeration value="ComponentTotalClicks"/>
  *     &lt;enumeration value="ComponentCTR"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="AdStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -76,7 +80,15 @@ public enum RichAdComponentPerformanceReportColumn {
     @XmlEnumValue("ComponentTotalClicks")
     COMPONENT_TOTAL_CLICKS("ComponentTotalClicks"),
     @XmlEnumValue("ComponentCTR")
-    COMPONENT_CTR("ComponentCTR");
+    COMPONENT_CTR("ComponentCTR"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("AdStatus")
+    AD_STATUS("AdStatus");
     private final String value;
 
     RichAdComponentPerformanceReportColumn(String v) {

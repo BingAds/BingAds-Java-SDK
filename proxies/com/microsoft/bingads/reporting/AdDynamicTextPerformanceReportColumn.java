@@ -43,6 +43,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="PricingModel"/>
  *     &lt;enumeration value="DeviceType"/>
  *     &lt;enumeration value="Language"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="AdStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -109,7 +113,15 @@ public enum AdDynamicTextPerformanceReportColumn {
     @XmlEnumValue("DeviceType")
     DEVICE_TYPE("DeviceType"),
     @XmlEnumValue("Language")
-    LANGUAGE("Language");
+    LANGUAGE("Language"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("AdStatus")
+    AD_STATUS("AdStatus"),
+    @XmlEnumValue("KeywordStatus")
+    KEYWORD_STATUS("KeywordStatus");
     private final String value;
 
     AdDynamicTextPerformanceReportColumn(String v) {

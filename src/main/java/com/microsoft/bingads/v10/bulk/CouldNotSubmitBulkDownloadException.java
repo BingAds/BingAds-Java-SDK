@@ -1,7 +1,7 @@
 package com.microsoft.bingads.v10.bulk;
 
 /**
- * This exception is thrown when calling API related with bulk download
+ * This exception is thrown by the BulkServiceManager when the DownloadCampaignsByAccountIds service operation that it called does not return a valid response.
  */
 public class CouldNotSubmitBulkDownloadException extends RuntimeException {
     

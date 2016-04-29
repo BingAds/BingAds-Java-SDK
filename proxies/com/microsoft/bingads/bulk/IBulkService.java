@@ -56,8 +56,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.DownloadCampaignsByAccountIdsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DownloadCampaignsByAccountIds", action = "DownloadCampaignsByAccountIds")
     @WebResult(name = "DownloadCampaignsByAccountIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -179,8 +179,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetDetailedBulkDownloadStatusResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDetailedBulkDownloadStatus", action = "GetDetailedBulkDownloadStatus")
     @WebResult(name = "GetDetailedBulkDownloadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -220,8 +220,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetBulkUploadUrlResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkUploadUrl", action = "GetBulkUploadUrl")
     @WebResult(name = "GetBulkUploadUrlResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")
@@ -302,8 +302,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDetailedBulkUploadStatus", action = "GetDetailedBulkUploadStatus")
     @WebResult(name = "GetDetailedBulkUploadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v9", partName = "parameters")

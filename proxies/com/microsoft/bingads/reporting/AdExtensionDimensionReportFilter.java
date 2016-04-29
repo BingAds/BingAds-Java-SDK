@@ -38,11 +38,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdExtensionDimensionReportFilter {
 
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
 

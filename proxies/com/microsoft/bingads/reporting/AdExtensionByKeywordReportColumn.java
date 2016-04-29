@@ -50,6 +50,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerAssist"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -130,7 +134,15 @@ public enum AdExtensionByKeywordReportColumn {
     @XmlEnumValue("RevenuePerConversion")
     REVENUE_PER_CONVERSION("RevenuePerConversion"),
     @XmlEnumValue("RevenuePerAssist")
-    REVENUE_PER_ASSIST("RevenuePerAssist");
+    REVENUE_PER_ASSIST("RevenuePerAssist"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("KeywordStatus")
+    KEYWORD_STATUS("KeywordStatus");
     private final String value;
 
     AdExtensionByKeywordReportColumn(String v) {

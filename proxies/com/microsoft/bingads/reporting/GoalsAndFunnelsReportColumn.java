@@ -40,6 +40,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="GoalId"/>
  *     &lt;enumeration value="DeviceType"/>
  *     &lt;enumeration value="DeviceOS"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -100,7 +104,15 @@ public enum GoalsAndFunnelsReportColumn {
     @XmlEnumValue("DeviceType")
     DEVICE_TYPE("DeviceType"),
     @XmlEnumValue("DeviceOS")
-    DEVICE_OS("DeviceOS");
+    DEVICE_OS("DeviceOS"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("KeywordStatus")
+    KEYWORD_STATUS("KeywordStatus");
     private final String value;
 
     GoalsAndFunnelsReportColumn(String v) {

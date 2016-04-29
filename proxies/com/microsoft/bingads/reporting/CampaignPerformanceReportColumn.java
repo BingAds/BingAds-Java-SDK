@@ -80,6 +80,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AverageDurationPerVisit"/>
  *     &lt;enumeration value="TrackingTemplate"/>
  *     &lt;enumeration value="CustomParameters"/>
+ *     &lt;enumeration value="AccountStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -220,7 +221,9 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("TrackingTemplate")
     TRACKING_TEMPLATE("TrackingTemplate"),
     @XmlEnumValue("CustomParameters")
-    CUSTOM_PARAMETERS("CustomParameters");
+    CUSTOM_PARAMETERS("CustomParameters"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

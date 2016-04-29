@@ -4,7 +4,7 @@
 package com.microsoft.bingads.reporting;
 
 /**
- * Reporting Exception IF Download Could Not Be Completed.
+ * This exception is thrown if an attempt was made to poll for a completed reporting results file and the reporting service returns a failed status.
  *
  */
 public class ReportingOperationCouldNotBeCompletedException extends RuntimeException {

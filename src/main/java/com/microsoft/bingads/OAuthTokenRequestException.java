@@ -2,6 +2,8 @@ package com.microsoft.bingads;
 
 /**
  * This exception is thrown if an error was returned from the Microsoft Account authorization server.
+ * To resolve this exception you can first check the stack trace to see the error details, in case there is some action you can take to resolve the issue.
+ * For example you might have specified an invalid client ID.
  */
 public class OAuthTokenRequestException extends RuntimeException {
     

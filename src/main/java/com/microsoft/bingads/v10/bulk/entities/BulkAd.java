@@ -25,7 +25,6 @@ import java.util.List;
  * @param <T> the type of ad from the {@link com.microsoft.bingads.campaignmanagement} namespace, for example
  *           {@link TextAd} object.
  *
- * @see BulkMobileAd
  * @see BulkProductAd
  * @see BulkTextAd
  */

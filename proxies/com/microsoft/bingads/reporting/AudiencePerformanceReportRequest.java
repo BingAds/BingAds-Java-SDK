@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Aggregation" type="{https://bingads.microsoft.com/Reporting/v9}ReportAggregation"/>
  *         &lt;element name="Columns" type="{https://bingads.microsoft.com/Reporting/v9}ArrayOfAudiencePerformanceReportColumn"/>
+ *         &lt;element name="Filter" type="{https://bingads.microsoft.com/Reporting/v9}AudiencePerformanceReportFilter" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/Reporting/v9}AccountThroughAdGroupReportScope"/>
  *         &lt;element name="Time" type="{https://bingads.microsoft.com/Reporting/v9}ReportTime"/>
  *       &lt;/sequence>
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AudiencePerformanceReportRequest", propOrder = {
     "aggregation",
     "columns",
+    "filter",
     "scope",
     "time"
 })
@@ -46,6 +48,8 @@ public class AudiencePerformanceReportRequest
     protected ReportAggregation aggregation;
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfAudiencePerformanceReportColumn columns;
+    @XmlElement(name = "Filter", nillable = true)
+    protected AudiencePerformanceReportFilter filter;
     @XmlElement(name = "Scope", required = true, nillable = true)
     protected AccountThroughAdGroupReportScope scope;
     @XmlElement(name = "Time", required = true, nillable = true)
@@ -97,6 +101,30 @@ public class AudiencePerformanceReportRequest
      */
     public void setColumns(ArrayOfAudiencePerformanceReportColumn value) {
         this.columns = value;
+    }
+
+    /**
+     * Gets the value of the filter property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AudiencePerformanceReportFilter }
+     *     
+     */
+    public AudiencePerformanceReportFilter getFilter() {
+        return filter;
+    }
+
+    /**
+     * Sets the value of the filter property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AudiencePerformanceReportFilter }
+     *     
+     */
+    public void setFilter(AudiencePerformanceReportFilter value) {
+        this.filter = value;
     }
 
     /**

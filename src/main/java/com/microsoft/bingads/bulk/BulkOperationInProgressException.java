@@ -1,7 +1,7 @@
 package com.microsoft.bingads.bulk;
 
 /**
- * This exception is thrown when trying to download the result file for an operation that hasn't completed yet.
+ * This exception is thrown if an attempt was made to download a bulk results file that is not yet available.
  */
 public class BulkOperationInProgressException extends RuntimeException {
     

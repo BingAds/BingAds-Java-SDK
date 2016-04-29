@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Revenue"/>
  *     &lt;enumeration value="ReturnOnAdSpend"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -97,7 +100,13 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("ReturnOnAdSpend")
     RETURN_ON_AD_SPEND("ReturnOnAdSpend"),
     @XmlEnumValue("RevenuePerConversion")
-    REVENUE_PER_CONVERSION("RevenuePerConversion");
+    REVENUE_PER_CONVERSION("RevenuePerConversion"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("CampaignStatus")
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

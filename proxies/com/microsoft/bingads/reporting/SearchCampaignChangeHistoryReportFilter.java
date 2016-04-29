@@ -40,15 +40,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class SearchCampaignChangeHistoryReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<ChangeEntityReportFilter> itemChanged;
 

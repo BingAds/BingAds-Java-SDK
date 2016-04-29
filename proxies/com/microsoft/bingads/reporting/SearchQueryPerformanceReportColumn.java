@@ -55,6 +55,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerAssist"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
+ *     &lt;enumeration value="CampaignType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -145,7 +149,15 @@ public enum SearchQueryPerformanceReportColumn {
     @XmlEnumValue("RevenuePerConversion")
     REVENUE_PER_CONVERSION("RevenuePerConversion"),
     @XmlEnumValue("RevenuePerAssist")
-    REVENUE_PER_ASSIST("RevenuePerAssist");
+    REVENUE_PER_ASSIST("RevenuePerAssist"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("AdGroupStatus")
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("KeywordStatus")
+    KEYWORD_STATUS("KeywordStatus"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType");
     private final String value;
 
     SearchQueryPerformanceReportColumn(String v) {

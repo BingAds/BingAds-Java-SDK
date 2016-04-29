@@ -117,6 +117,7 @@ public class ObjectFactory {
     private final static QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "MediaAssociation");
     private final static QName _CampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CampaignSize");
     private final static QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CampaignStatus");
+    private final static QName _ArrayOfAdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdType");
     private final static QName _SiteLinksAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "SiteLinksAdExtension");
     private final static QName _AdExtensionAssociationCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtensionAssociationCollection");
     private final static QName _CityTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CityTargetBid");
@@ -745,6 +746,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAccountMigrationStatusesRequest }
+     * 
+     */
+    public GetAccountMigrationStatusesRequest createGetAccountMigrationStatusesRequest() {
+        return new GetAccountMigrationStatusesRequest();
+    }
+
+    /**
      * Create an instance of {@link TargetInfo }
      * 
      */
@@ -846,6 +855,22 @@ public class ObjectFactory {
      */
     public SetNegativeSitesToAdGroupsResponse createSetNegativeSitesToAdGroupsResponse() {
         return new SetNegativeSitesToAdGroupsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAccountMigrationStatusesResponse }
+     * 
+     */
+    public GetAccountMigrationStatusesResponse createGetAccountMigrationStatusesResponse() {
+        return new GetAccountMigrationStatusesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAccountMigrationStatusesInfo }
+     * 
+     */
+    public ArrayOfAccountMigrationStatusesInfo createArrayOfAccountMigrationStatusesInfo() {
+        return new ArrayOfAccountMigrationStatusesInfo();
     }
 
     /**
@@ -1166,6 +1191,14 @@ public class ObjectFactory {
      */
     public GetAdsByAdGroupIdRequest createGetAdsByAdGroupIdRequest() {
         return new GetAdsByAdGroupIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdType }
+     * 
+     */
+    public ArrayOfAdType createArrayOfAdType() {
+        return new ArrayOfAdType();
     }
 
     /**
@@ -1846,14 +1879,6 @@ public class ObjectFactory {
      */
     public UpdateAdGroupCriterionsRequest createUpdateAdGroupCriterionsRequest() {
         return new UpdateAdGroupCriterionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAccountMigrationStatusesInfo }
-     * 
-     */
-    public ArrayOfAccountMigrationStatusesInfo createArrayOfAccountMigrationStatusesInfo() {
-        return new ArrayOfAccountMigrationStatusesInfo();
     }
 
     /**
@@ -3937,6 +3962,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CampaignStatus")
     public JAXBElement<CampaignStatus> createCampaignStatus(CampaignStatus value) {
         return new JAXBElement<CampaignStatus>(_CampaignStatus_QNAME, CampaignStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfAdType")
+    public JAXBElement<ArrayOfAdType> createArrayOfAdType(ArrayOfAdType value) {
+        return new JAXBElement<ArrayOfAdType>(_ArrayOfAdType_QNAME, ArrayOfAdType.class, null, value);
     }
 
     /**

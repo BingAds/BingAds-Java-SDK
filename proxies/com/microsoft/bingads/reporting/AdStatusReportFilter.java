@@ -9,7 +9,8 @@ public enum AdStatusReportFilter {
     REJECTED("Rejected"),
     DELETED("Deleted"),
     PENDING("Pending"),
-    ACTIVE("Active");
+    ACTIVE("Active"),
+    PAUSED("Paused");
         
     private final String value;
 

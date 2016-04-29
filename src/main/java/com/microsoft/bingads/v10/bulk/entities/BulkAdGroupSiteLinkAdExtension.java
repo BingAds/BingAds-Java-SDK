@@ -7,11 +7,11 @@ import com.microsoft.bingads.v10.bulk.BulkOperation;
 
 /**
  * Represents an ad group level sitelink ad extension. This class exposes
- * properties that can be read and written as fields of the Ad Group Sitelink Ad
+ * properties that can be read and written as fields of the AdGroup Sitelink Ad
  * Extension record in a bulk file.
  *
  * <p>
- * For more information, see Ad Group Sitelink Ad Extension at
+ * For more information, see AdGroup Sitelink Ad Extension at
  * <a href="http://go.microsoft.com/fwlink/?LinkID=620262">http://go.microsoft.com/fwlink/?LinkID=620262</a>.
  * </p>
  *

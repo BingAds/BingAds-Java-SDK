@@ -1,7 +1,7 @@
 package com.microsoft.bingads.bulk;
 
 /**
- * This exception is thrown when calling API related with bulk upload 
+ * This exception is thrown by the BulkServiceManager when the GetBulkUploadUrl service operation that it called does not return a valid response.
  */
 public class CouldNotSubmitBulkUploadException extends RuntimeException {
     

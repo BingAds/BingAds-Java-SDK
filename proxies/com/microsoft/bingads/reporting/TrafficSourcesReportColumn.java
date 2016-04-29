@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FunnelConversionRate"/>
  *     &lt;enumeration value="Revenue"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
+ *     &lt;enumeration value="AccountStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -70,7 +71,9 @@ public enum TrafficSourcesReportColumn {
     @XmlEnumValue("Revenue")
     REVENUE("Revenue"),
     @XmlEnumValue("RevenuePerConversion")
-    REVENUE_PER_CONVERSION("RevenuePerConversion");
+    REVENUE_PER_CONVERSION("RevenuePerConversion"),
+    @XmlEnumValue("AccountStatus")
+    ACCOUNT_STATUS("AccountStatus");
     private final String value;
 
     TrafficSourcesReportColumn(String v) {

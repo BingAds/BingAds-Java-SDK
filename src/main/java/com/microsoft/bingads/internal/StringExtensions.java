@@ -53,6 +53,9 @@ public class StringExtensions {
 	 * @return a Long or a null if the value is not parseable as a long
 	 */
 	public static Long nullOrLong(String value) {
+		if (isNullOrEmpty(value)) {
+    		return null;
+    	}
         try {
             return Long.parseLong(value);
         } catch (NumberFormatException e) {
@@ -75,6 +78,9 @@ public class StringExtensions {
      * @return a Double or a null if the value is not parseable as a double
      */
     public static Double nullOrDouble(String value) {
+    	if (isNullOrEmpty(value)) {
+    		return null;
+    	}
         try {
             return Double.parseDouble(value);
         } catch (NumberFormatException e) {

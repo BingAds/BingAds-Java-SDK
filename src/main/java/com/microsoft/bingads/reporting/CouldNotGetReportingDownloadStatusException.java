@@ -1,7 +1,7 @@
 package com.microsoft.bingads.reporting;
 
 /**
- * This exception is thrown when failed to get download status after multiple retries
+ * This exception is thrown if the ReportingServiceManager failed to get the download operation status after multiple retries.
  */
 public class CouldNotGetReportingDownloadStatusException extends Exception {
     

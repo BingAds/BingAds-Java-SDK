@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="AdType" type="{https://bingads.microsoft.com/CampaignManagement/v10}AdType" minOccurs="0"/>
+ *         &lt;element name="AdTypes" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfAdType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,16 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "adGroupId",
-    "adType"
+    "adTypes"
 })
 @XmlRootElement(name = "GetAdsByAdGroupIdRequest")
 public class GetAdsByAdGroupIdRequest {
 
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
-    @XmlElement(name = "AdType", nillable = true)
-    @XmlSchemaType(name = "string")
-    protected AdType adType;
+    @XmlElement(name = "AdTypes", nillable = true)
+    protected ArrayOfAdType adTypes;
 
     /**
      * Gets the value of the adGroupId property.
@@ -68,27 +66,27 @@ public class GetAdsByAdGroupIdRequest {
     }
 
     /**
-     * Gets the value of the adType property.
+     * Gets the value of the adTypes property.
      * 
      * @return
      *     possible object is
-     *     {@link AdType }
+     *     {@link ArrayOfAdType }
      *     
      */
-    public AdType getAdType() {
-        return adType;
+    public ArrayOfAdType getAdTypes() {
+        return adTypes;
     }
 
     /**
-     * Sets the value of the adType property.
+     * Sets the value of the adTypes property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AdType }
+     *     {@link ArrayOfAdType }
      *     
      */
-    public void setAdType(AdType value) {
-        this.adType = value;
+    public void setAdTypes(ArrayOfAdType value) {
+        this.adTypes = value;
     }
 
 }

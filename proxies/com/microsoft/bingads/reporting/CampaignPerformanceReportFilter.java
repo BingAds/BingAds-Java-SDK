@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="AccountStatus" type="{https://bingads.microsoft.com/Reporting/v9}AccountStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v9}AdDistributionReportFilter" minOccurs="0"/>
  *         &lt;element name="DeviceOS" type="{https://bingads.microsoft.com/Reporting/v9}DeviceOSReportFilter" minOccurs="0"/>
  *         &lt;element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v9}DeviceTypeReportFilter" minOccurs="0"/>
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampaignPerformanceReportFilter", propOrder = {
+    "accountStatus",
     "adDistribution",
     "deviceOS",
     "deviceType",
@@ -41,22 +43,50 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class CampaignPerformanceReportFilter {
 
+    @XmlElement(name = "AccountStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Status", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignStatusReportFilter> status;
+
+    /**
+     * Gets the value of the accountStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AccountStatusReportFilter> getAccountStatus() {
+        return accountStatus;
+    }
+
+    /**
+     * Sets the value of the accountStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountStatus(Collection<AccountStatusReportFilter> value) {
+        this.accountStatus = value;
+    }
 
     /**
      * Gets the value of the adDistribution property.

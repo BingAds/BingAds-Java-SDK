@@ -61,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SellerName"/>
  *     &lt;enumeration value="OfferLanguage"/>
  *     &lt;enumeration value="CountryOfSale"/>
+ *     &lt;enumeration value="AdStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -163,7 +164,9 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("OfferLanguage")
     OFFER_LANGUAGE("OfferLanguage"),
     @XmlEnumValue("CountryOfSale")
-    COUNTRY_OF_SALE("CountryOfSale");
+    COUNTRY_OF_SALE("CountryOfSale"),
+    @XmlEnumValue("AdStatus")
+    AD_STATUS("AdStatus");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

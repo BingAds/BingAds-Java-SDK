@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Aggregation" type="{https://bingads.microsoft.com/Reporting/v9}ReportAggregation"/>
  *         &lt;element name="Columns" type="{https://bingads.microsoft.com/Reporting/v9}ArrayOfCallDetailReportColumn"/>
+ *         &lt;element name="Filter" type="{https://bingads.microsoft.com/Reporting/v9}CallDetailReportFilter" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/Reporting/v9}AccountThroughAdGroupReportScope"/>
  *         &lt;element name="Time" type="{https://bingads.microsoft.com/Reporting/v9}ReportTime"/>
  *       &lt;/sequence>
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CallDetailReportRequest", propOrder = {
     "aggregation",
     "columns",
+    "filter",
     "scope",
     "time"
 })
@@ -46,6 +48,8 @@ public class CallDetailReportRequest
     protected ReportAggregation aggregation;
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfCallDetailReportColumn columns;
+    @XmlElement(name = "Filter", nillable = true)
+    protected CallDetailReportFilter filter;
     @XmlElement(name = "Scope", required = true, nillable = true)
     protected AccountThroughAdGroupReportScope scope;
     @XmlElement(name = "Time", required = true, nillable = true)
@@ -97,6 +101,30 @@ public class CallDetailReportRequest
      */
     public void setColumns(ArrayOfCallDetailReportColumn value) {
         this.columns = value;
+    }
+
+    /**
+     * Gets the value of the filter property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CallDetailReportFilter }
+     *     
+     */
+    public CallDetailReportFilter getFilter() {
+        return filter;
+    }
+
+    /**
+     * Sets the value of the filter property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CallDetailReportFilter }
+     *     
+     */
+    public void setFilter(CallDetailReportFilter value) {
+        this.filter = value;
     }
 
     /**

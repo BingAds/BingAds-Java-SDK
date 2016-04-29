@@ -1,7 +1,7 @@
 package com.microsoft.bingads.v10.bulk;
 
 /**
- * This exception is thrown when failed to get operation status after multiple retries
+ * This exception is thrown if the BulkServiceManager failed to get the upload or download operation status after multiple retries.
  */
 public class CouldNotGetBulkOperationStatusException extends RuntimeException {
     
