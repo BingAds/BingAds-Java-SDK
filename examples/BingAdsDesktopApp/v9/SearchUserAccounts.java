@@ -1,6 +1,7 @@
 package com.microsoft.bingads.examples.v9;
 
 import java.rmi.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.microsoft.bingads.*;
@@ -28,12 +29,20 @@ public class SearchUserAccounts extends ExampleBase {
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
                     ICustomerManagementService.class);
- 
-            User user = getUser(null);
+            
+            GetUserResponse getUserResponse = getUser(null);
+            User user = getUserResponse.getUser();
 
             // Search for the accounts that the user can access.
             
             ArrayOfAccount accounts = searchAccountsByUserId(user.getId());
+            
+            // Optionally if you are enabled for Final Urls, you can update each account with a tracking template.
+            ArrayOfKeyValuePairOfstringstring accountFCM = new ArrayOfKeyValuePairOfstringstring();
+            KeyValuePairOfstringstring trackingUrlTemplate = new KeyValuePairOfstringstring();
+            trackingUrlTemplate.setKey("TrackingUrlTemplate");
+            trackingUrlTemplate.setValue("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
+            accountFCM.getKeyValuePairOfstringstrings().add(trackingUrlTemplate);
             
             outputStatusMessage("The user can access the following Bing Ads accounts: \n");
             for (Account account : accounts.getAccounts())
@@ -45,7 +54,16 @@ public class SearchUserAccounts extends ExampleBase {
                 ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)account.getParentCustomerId());
                 outputStatusMessage("Customer Pilot flags:");
                 outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
-                outputStatusMessage("\n");
+                
+                // Optionally if you are enabled for Final Urls, you can update each account with a tracking template.
+                // The pilot flag value for Final Urls is 194.
+                if (featurePilotFlags.getInts().contains(194))
+                {
+                    account.setForwardCompatibilityMap(accountFCM);
+                    updateAccount(account);
+                    outputStatusMessage(String.format("Updated the account with a TrackingUrlTemplate: %s\n", 
+                    		trackingUrlTemplate.getValue()));
+                }
             }
             
             outputStatusMessage("Program execution completed\n"); 
@@ -83,13 +101,13 @@ public class SearchUserAccounts extends ExampleBase {
     
     // Gets a User object by the specified Bing Ads user identifier.
 
-    static User getUser(java.lang.Long userId) throws RemoteException, Exception {
+    static GetUserResponse getUser(java.lang.Long userId) throws RemoteException, Exception {
         
     	GetUserRequest request = new GetUserRequest();
         
         request.setUserId(userId);
 
-        return CustomerService.getService().getUser(request).getUser();
+        return CustomerService.getService().getUser(request);
     }
 
     // Searches by UserId for accounts that the user can manage.
@@ -122,6 +140,16 @@ public class SearchUserAccounts extends ExampleBase {
         getCustomerPilotFeaturesRequest.setCustomerId(customerId);
         
 		return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
+	}
+    
+    // Updates the account.
+    
+    static UpdateAccountResponse updateAccount(Account account) throws AdApiFaultDetail_Exception, ApiFault_Exception {       
+		
+        final UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest();
+        updateAccountRequest.setAccount(account);
+        
+		return CustomerService.getService().updateAccount(updateAccountRequest);
 	}
 
     // Outputs a subset of the properties of an Account data object.

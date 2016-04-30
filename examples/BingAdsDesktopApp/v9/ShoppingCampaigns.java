@@ -28,7 +28,7 @@ public class ShoppingCampaigns extends ExampleBase {
     // Uses username and password credentials for authorization.
     
     /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
+	  private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     private static long CustomerId = <CustomerIdGoesHere>;
