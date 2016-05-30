@@ -40,15 +40,13 @@ public class OAuthDesktopApplication extends Application {
         oAuthDesktopMobileAuthCodeGrant.setNewTokensListener(new NewOAuthTokensReceivedListener() {
             @Override
             public void onNewOAuthTokensReceived(OAuthTokens newTokens) {
-                   java.lang.String newAccessToken = newTokens.getAccessToken();
-                   java.lang.String newRefreshToken = newTokens.getRefreshToken();
                    java.lang.String refreshTime = new java.text.SimpleDateFormat(
                 		   "MM/dd/yyyy HH:mm:ss").format(new java.util.Date());
                    
-                   System.out.printf("Token refresh time: %s\n", refreshTime);
-                   System.out.printf("New access token: %s\n", newAccessToken);
-                   System.out.printf("You should securely store this new refresh token: %s\n", newRefreshToken);
-                   
+                   System.out.printf("New access token retreival time: %s\n", refreshTime);
+                   System.out.printf("New access token: %s\n", newTokens.getAccessToken());
+                   System.out.printf("New access token expires in %s seconds\n", newTokens.getAccessTokenExpiresInSeconds());
+                   System.out.printf("You should securely store this new refresh token: %s\n", newTokens.getRefreshToken());      
             }
         });
         
@@ -90,9 +88,6 @@ public class OAuthDesktopApplication extends Application {
 							
                             OAuthTokens tokens = oAuthDesktopMobileAuthCodeGrant.requestAccessAndRefreshTokens(url);
 							
-                            System.out.println("Access token: " + tokens.getAccessToken());
-                            System.out.println("Refresh token: " + tokens.getRefreshToken());
-										
                             authorizationData = new AuthorizationData();
                             authorizationData.setDeveloperToken(DeveloperToken);
                             authorizationData.setAuthentication(oAuthDesktopMobileAuthCodeGrant);
