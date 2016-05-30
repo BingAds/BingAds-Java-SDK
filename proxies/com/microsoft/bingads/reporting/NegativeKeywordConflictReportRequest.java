@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{https://bingads.microsoft.com/Reporting/v9}ReportRequest">
  *       &lt;sequence>
  *         &lt;element name="Columns" type="{https://bingads.microsoft.com/Reporting/v9}ArrayOfNegativeKeywordConflictReportColumn"/>
+ *         &lt;element name="Filter" type="{https://bingads.microsoft.com/Reporting/v9}NegativeKeywordConflictReportFilter" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/Reporting/v9}AccountThroughAdGroupReportScope"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NegativeKeywordConflictReportRequest", propOrder = {
     "columns",
+    "filter",
     "scope"
 })
 public class NegativeKeywordConflictReportRequest
@@ -38,6 +40,8 @@ public class NegativeKeywordConflictReportRequest
 
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfNegativeKeywordConflictReportColumn columns;
+    @XmlElement(name = "Filter", nillable = true)
+    protected NegativeKeywordConflictReportFilter filter;
     @XmlElement(name = "Scope", required = true, nillable = true)
     protected AccountThroughAdGroupReportScope scope;
 
@@ -63,6 +67,30 @@ public class NegativeKeywordConflictReportRequest
      */
     public void setColumns(ArrayOfNegativeKeywordConflictReportColumn value) {
         this.columns = value;
+    }
+
+    /**
+     * Gets the value of the filter property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NegativeKeywordConflictReportFilter }
+     *     
+     */
+    public NegativeKeywordConflictReportFilter getFilter() {
+        return filter;
+    }
+
+    /**
+     * Sets the value of the filter property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NegativeKeywordConflictReportFilter }
+     *     
+     */
+    public void setFilter(NegativeKeywordConflictReportFilter value) {
+        this.filter = value;
     }
 
     /**

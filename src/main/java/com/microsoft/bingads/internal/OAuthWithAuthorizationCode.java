@@ -19,6 +19,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     private static final String AUTHORIZATION_CODE = "authorization_code";
 
     private static final String CODE = "code";
+    
+    private static final String STATE = "state";
 
     private OAuthService oauthService;
 
@@ -27,6 +29,11 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     private String clientSecret;
 
     private URL redirectionUri;
+    
+    /**
+     * An opaque value used by the client to maintain state between the request and callback
+     * */
+    private String state;
 
     private NewOAuthTokensReceivedListener newTokensListener;
 
@@ -41,6 +48,14 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     public URL getRedirectionUri() {
         return redirectionUri;
     }
+    
+    public String getState() {
+    	return state;
+    }
+    
+    public void setState(String state) {
+    	this.state = state;
+    }
 
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken) {
         this(clientId, clientSecret, redirectionUri, new LiveComOAuthService());
@@ -49,8 +64,17 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
             throw new NullPointerException("refreshToken must not be null");
         }
 
-
         oAuthTokens = new OAuthTokens(null, 0, refreshToken);
+    }
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens) {
+        this(clientId, clientSecret, redirectionUri, new LiveComOAuthService());
+
+        if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
+        	throw new NullPointerException("OAuth tokens must not be null");     	
+        } 
+        
+        oAuthTokens = new OAuthTokens(null, 0, oauthTokens.getRefreshToken());
     }
 
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri) {
@@ -71,7 +95,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri));
+        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.state));
     }
 
     /**
@@ -83,7 +107,10 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     public OAuthTokens requestAccessAndRefreshTokens(URL responseUrl) {
         Map<String, String> queryParts;
         queryParts = URLExtensions.parseQuery(responseUrl);
-
+        
+        if(!queryParts.containsKey(CODE)) {
+        	throw new IllegalArgumentException(ErrorMessages.UriDoesntContainCode);
+        }      
         String code = queryParts.get(CODE);
 
         this.oAuthTokens = this.oauthService.getAccessTokens(new OAuthRequestParameters(

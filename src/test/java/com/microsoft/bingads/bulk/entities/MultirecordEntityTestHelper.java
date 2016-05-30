@@ -3,6 +3,7 @@ package com.microsoft.bingads.bulk.entities;
 import com.microsoft.bingads.api.test.entities.DeleteAllRowPosition;
 import com.microsoft.bingads.internal.bulk.BulkObject;
 import com.microsoft.bingads.internal.bulk.BulkObjectReader;
+import com.microsoft.bingads.internal.bulk.FormatVersion;
 import com.microsoft.bingads.internal.bulk.entities.BulkAdExtensionIdentifier;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,8 @@ public class MultirecordEntityTestHelper {
     public static BulkObjectReader createFakeObjectReader(BulkObject... bulkEntities) {
         BulkObjectReader reader = createMock(BulkObjectReader.class);
 
-        UnknownBulkEntity formatVersion = new UnknownBulkEntity();
+        FormatVersion formatVersion = new FormatVersion();
+        formatVersion.setValue("3.0");
 
         expect(reader.readNextBulkObject()).andReturn(formatVersion);
 
@@ -53,7 +55,8 @@ public class MultirecordEntityTestHelper {
                 throw new UnsupportedOperationException("Unknown delete all row position!!!");
         }       
         
-        BulkEntity formatVersion = new UnknownBulkEntity();
+        FormatVersion formatVersion = new FormatVersion();
+        formatVersion.setValue("3.0");
 
         expect(objectReader.readNextBulkObject()).andReturn(formatVersion);
         

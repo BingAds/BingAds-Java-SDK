@@ -42,6 +42,7 @@ public class StringTable {
 
     public static final String TextAd = "Text Ad";
     public static final String ProductAd = "Product Ad";
+    public static final String AppInstallAd = "App Install Ad";
 
     public static final String Title = "Title";
     public static final String EditorialStatus = "Editorial Status";

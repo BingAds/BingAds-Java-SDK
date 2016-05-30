@@ -36,6 +36,7 @@ public class LiveComOAuthService implements OAuthService {
     private static final String GRANT_TYPE = "grant_type";
     private static final String REDIRECT_URI = "redirect_uri";
     private static final String RESPONSE_TYPE = "response_type";
+    private static final String STATE = "state";
 
     private enum HttpMethods {
 
@@ -120,7 +121,11 @@ public class LiveComOAuthService implements OAuthService {
         paramsMap.put(CLIENT_ID, parameters.getClientId());
         paramsMap.put(RESPONSE_TYPE, parameters.getResponseType());
         paramsMap.put(REDIRECT_URI, parameters.getRedirectionUri().toString());
-
+        
+        if (!StringExtensions.isNullOrEmpty(parameters.getState())) {
+        	paramsMap.put(STATE, parameters.getState());
+        }        
+        
         try {
             return new URL(String.format(
                     "https://login.live.com/oauth20_authorize.srf?scope=bingads.manage&%s",
@@ -154,10 +159,9 @@ public class LiveComOAuthService implements OAuthService {
             if (sb.length() > 0) {
                 sb.append('&');
             }
+            
             sb.append(URLEncoder.encode(e.getKey(), UTF_8)).append('=').append(URLEncoder.encode(e.getValue(), UTF_8));
         }
-
         return sb.toString();
     }
-
 }

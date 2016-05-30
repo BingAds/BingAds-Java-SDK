@@ -27,6 +27,7 @@ import java.util.List;
  *
  * @see BulkProductAd
  * @see BulkTextAd
+ * @see BulkAppInstallAd
  */
 class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
 

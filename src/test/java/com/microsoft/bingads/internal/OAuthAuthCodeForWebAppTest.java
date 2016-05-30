@@ -42,6 +42,50 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
             fail("Malformed Test URL");
         }
     }
+    
+    @Test
+    public void GetAuthorizationUrl_ReturnsCorrectUrl_WithState() {
+        try {
+            OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
+            
+            auth.setState("state_test");
+
+            URL authorizationUrl = auth.getAuthorizationEndpoint();
+
+            URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
+                    + "scope=bingads.manage&"
+                    + "response_type=code&"
+                    + "redirect_uri=https%3A%2F%2Ftest.com%2Flogin&"
+                    + "state=state_test&"
+                    + "client_id=test_id"
+            );
+            assertEquals(expectedUrl, authorizationUrl);
+        } catch (MalformedURLException e) {
+            fail("Malformed Test URL");
+        }
+    }
+    
+    @Test
+    public void GetAuthorizationUrl_ReturnsCorrectUrl_WithEmptyState() {
+        try {
+            OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
+            
+            auth.setState("");
+
+            URL authorizationUrl = auth.getAuthorizationEndpoint();
+
+            URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
+                    + "scope=bingads.manage&"
+                    + "response_type=code&"
+                    + "redirect_uri=https%3A%2F%2Ftest.com%2Flogin&"
+                    + "client_id=test_id"
+            );
+            assertEquals(expectedUrl, authorizationUrl);
+        } catch (MalformedURLException e) {
+            fail("Malformed Test URL");
+        }
+    }
+
 
     @Test
     public void RequestAccessAndRefreshTokensUsingResponseUri_ReturnsCorrectTokens() {

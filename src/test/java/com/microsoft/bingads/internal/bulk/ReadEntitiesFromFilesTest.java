@@ -3,7 +3,8 @@ package com.microsoft.bingads.internal.bulk;
 import com.googlecode.jcsv.reader.CSVReader;
 import com.microsoft.bingads.bulk.BulkFileReader;
 import com.microsoft.bingads.bulk.entities.BulkEntity;
-import com.microsoft.bingads.bulk.entities.UnknownBulkEntity;
+import com.microsoft.bingads.internal.bulk.FormatVersion;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +43,7 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
 
         String[] formatVersion = emptyArray.clone();
         formatVersion[0] = "Format Version";
-        formatVersion[46] = "3";
+        formatVersion[49] = "3.0";
 
         String[] campaign = emptyArray.clone();
         campaign[0] = "Campaign";
@@ -91,8 +92,11 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
     private BulkObjectFactory createFakeBulkObjectFactory(RowValues expectedRowValues,
             BulkEntity expectedEntity) {
         BulkObjectFactory factory = createMock(BulkObjectFactory.class);
+        
+        FormatVersion formatVersion = new FormatVersion();
+        formatVersion.setValue("3.0");
                 
-        expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(new UnknownBulkEntity());
+        expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(formatVersion);
         expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(expectedEntity);
         
         replay(factory);

@@ -2,6 +2,7 @@ package com.microsoft.bingads.internal.bulk;
 
 import com.microsoft.bingads.bulk.DownloadFileType;
 import com.microsoft.bingads.bulk.entities.UnknownBulkEntity;
+import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -89,10 +90,15 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
         if (!passedFirstRow) {
             BulkObject firstRowObject = objectReader.readNextBulkObject();
 
-            if (firstRowObject instanceof UnknownBulkEntity) {
-                UnknownBulkEntity formatVersion = (UnknownBulkEntity)firstRowObject;
+            if (firstRowObject instanceof FormatVersion) {
+            	FormatVersion formatVersion = (FormatVersion)firstRowObject;
                 
-                // TODO: validate format version
+                if(formatVersion != null) {
+                	String version = formatVersion.getValue();
+                	if (!version.equals("3") && !version.equals("3.0")) {
+                		throw new UnsupportedOperationException(ErrorMessages.FormatVersionIsNotSupported + version);
+                	}
+                }
             } else {
                 nextObject = firstRowObject;
             }

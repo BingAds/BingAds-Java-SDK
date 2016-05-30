@@ -10,6 +10,7 @@ import com.microsoft.bingads.v10.internal.bulk.entities.BulkCampaignNegativeSite
 import com.microsoft.bingads.v10.internal.bulk.entities.BulkEntityIdentifier;
 import com.microsoft.bingads.v10.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.v10.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
+import com.microsoft.bingads.v10.internal.bulk.FormatVersion;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.Collections;
 import java.util.HashMap;
@@ -61,6 +62,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkTextAd();
+            }
+        }));
+        m.put(StringTable.AppInstallAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAppInstallAd();
             }
         }));
         m.put(StringTable.Keyword, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -441,6 +448,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public BulkObject get() {
                 return new BulkKeywordFirstPageBid();
+            }
+        });
+        addl.put(StringTable.SemanticVersion, new Supplier<BulkObject>() {
+            @Override
+            public BulkObject get() {
+                return new FormatVersion();
             }
         });
 

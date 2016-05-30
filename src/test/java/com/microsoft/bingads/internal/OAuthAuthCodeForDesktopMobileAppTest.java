@@ -43,6 +43,49 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
     }
 
     @Test
+    public void GetAuthorizationUrl_ReturnsCorrectUrl_WithState() {
+        OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id");
+        
+        auth.setState("state_test");
+
+        URL authorizationUrl = auth.getAuthorizationEndpoint();
+
+        try {
+            URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
+                    + "scope=bingads.manage&"
+                    + "response_type=code&"
+                    + "redirect_uri=https%3A%2F%2Flogin.live.com%2Foauth20_desktop.srf&"
+                    + "state=state_test&"
+                    + "client_id=test_id"
+            );
+            assertEquals(expectedUrl, authorizationUrl);
+        } catch (MalformedURLException e) {
+            fail("Malformed Test URL");
+        }
+    }
+    
+    @Test
+    public void GetAuthorizationUrl_ReturnsCorrectUrl_WithEmptyState() {
+        OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id");
+        
+        auth.setState("");
+
+        URL authorizationUrl = auth.getAuthorizationEndpoint();
+
+        try {
+            URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
+                    + "scope=bingads.manage&"
+                    + "response_type=code&"
+                    + "redirect_uri=https%3A%2F%2Flogin.live.com%2Foauth20_desktop.srf&"
+                    + "client_id=test_id"
+            );
+            assertEquals(expectedUrl, authorizationUrl);
+        } catch (MalformedURLException e) {
+            fail("Malformed Test URL");
+        }
+    }
+    
+    @Test
     public void RequestAccessAndRefreshTokensUsingResponseUri_ReturnsCorrectTokens() {
         try {
             OAuthRequestParameters expectedRequestParameters = new OAuthRequestParameters(

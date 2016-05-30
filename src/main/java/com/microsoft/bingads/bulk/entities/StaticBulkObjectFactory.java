@@ -4,6 +4,7 @@ import com.microsoft.bingads.internal.StringTable;
 import com.microsoft.bingads.internal.bulk.BulkObject;
 import com.microsoft.bingads.internal.bulk.BulkObjectFactory;
 import com.microsoft.bingads.internal.bulk.Creator;
+import com.microsoft.bingads.internal.bulk.FormatVersion;
 import com.microsoft.bingads.internal.bulk.RowValues;
 import com.microsoft.bingads.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
 import com.microsoft.bingads.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
@@ -435,6 +436,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public BulkObject get() {
                 return new BulkKeywordFirstPageBid();
+            }
+        });
+        addl.put(StringTable.SemanticVersion, new Supplier<BulkObject>() {
+            @Override
+            public BulkObject get() {
+                return new FormatVersion();
             }
         });
 

@@ -179,6 +179,7 @@ public class ObjectFactory {
     private final static QName _AdDynamicTextPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdDynamicTextPerformanceReportColumn");
     private final static QName _ArrayOfAdGroupReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfAdGroupReportScope");
     private final static QName _AudiencePerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AudiencePerformanceReportColumn");
+    private final static QName _NegativeKeywordConflictReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "NegativeKeywordConflictReportFilter");
     private final static QName _ArrayOfAudiencePerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfAudiencePerformanceReportColumn");
     private final static QName _SortOrder_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "SortOrder");
     private final static QName _AdPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AdPerformanceReportRequest");
@@ -1200,6 +1201,14 @@ public class ObjectFactory {
      */
     public ProductTargetPerformanceReportFilter createProductTargetPerformanceReportFilter() {
         return new ProductTargetPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link NegativeKeywordConflictReportFilter }
+     * 
+     */
+    public NegativeKeywordConflictReportFilter createNegativeKeywordConflictReportFilter() {
+        return new NegativeKeywordConflictReportFilter();
     }
 
     /**
@@ -2783,6 +2792,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AudiencePerformanceReportColumn")
     public JAXBElement<AudiencePerformanceReportColumn> createAudiencePerformanceReportColumn(AudiencePerformanceReportColumn value) {
         return new JAXBElement<AudiencePerformanceReportColumn>(_AudiencePerformanceReportColumn_QNAME, AudiencePerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NegativeKeywordConflictReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "NegativeKeywordConflictReportFilter")
+    public JAXBElement<NegativeKeywordConflictReportFilter> createNegativeKeywordConflictReportFilter(NegativeKeywordConflictReportFilter value) {
+        return new JAXBElement<NegativeKeywordConflictReportFilter>(_NegativeKeywordConflictReportFilter_QNAME, NegativeKeywordConflictReportFilter.class, null, value);
     }
 
     /**

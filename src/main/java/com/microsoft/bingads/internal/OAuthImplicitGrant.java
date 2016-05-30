@@ -30,17 +30,30 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
     private static final String ACCESS_TOKEN = "access_token";
 
     private static final String TOKEN = "token";
+    
+    private static final String STATE = "state";
 
     private final String clientId;
     
     private final URL redirectionUri;
+    
+    /**
+     * An opaque value used by the client to maintain state between the request and callback
+     * */
+    private String state;
+    
+    public void setState( String state) {
+    	this.state = state;
+    }
 
-    public OAuthImplicitGrant(String clientId, URL redirectionUri) {
+    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens) {
         this.clientId = clientId;
         
         this.redirectionUri = redirectionUri;
+        
+        this.oAuthTokens = oauthTokens;
     }
-
+    
     /**
      * Gets the Microsoft Account authorization endpoint where the user should be navigated to give his or her consent.
      *
@@ -48,7 +61,7 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri));
+        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.state));
     }
 
     /**
@@ -61,7 +74,15 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
     public OAuthTokens extractAccessTokenFromUrl(URL redirectionUri) {
         Map<String, String> fragmentParts;
         fragmentParts = URLExtensions.parseFragment(redirectionUri);
-
+        
+        if(!fragmentParts.containsKey(ACCESS_TOKEN)) {
+        	throw new UnsupportedOperationException(ErrorMessages.UriDoesntContainAccessToken);
+        }
+        
+        if(!fragmentParts.containsKey(EXPIRES_IN)) {
+        	throw new UnsupportedOperationException(ErrorMessages.UriDoesntContainExpiresIn);
+        }
+        
         this.oAuthTokens = new OAuthTokens(
                 fragmentParts.get(ACCESS_TOKEN),
                 Integer.parseInt(fragmentParts.get(EXPIRES_IN)),

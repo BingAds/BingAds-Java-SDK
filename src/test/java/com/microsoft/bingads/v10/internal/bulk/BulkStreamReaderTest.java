@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v10.internal.bulk;
 
+import com.microsoft.bingads.v10.internal.bulk.FormatVersion;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaign;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
@@ -18,13 +19,16 @@ public class BulkStreamReaderTest extends EasyMockSupport {
 
     @Test
     public void test() {
+    	
+    	FormatVersion formatVersion = new FormatVersion();
+    	formatVersion.setValue("4.0");
 
         BulkCampaign expectedCampaign = new BulkCampaign();
 
         expect(reader.hasNext()).andReturn(true).times(2);
         expect(reader.hasNext()).andReturn(false);
 
-        expect(reader.readNextBulkObject()).andReturn(expectedCampaign); //Format Version that gets skipped
+        expect(reader.readNextBulkObject()).andReturn(formatVersion); //Format Version
         expect(reader.readNextBulkObject()).andReturn(expectedCampaign); //Campaign
         expect(reader.readNextBulkObject()).andReturn(null);
         replay(reader);
@@ -32,7 +36,7 @@ public class BulkStreamReaderTest extends EasyMockSupport {
         BulkStreamReader streamReader = new SimpleBulkStreamReader(reader);
 
         BulkObject bulkObject = streamReader.read();
-
+        
         assertEquals(expectedCampaign, bulkObject);
     }
 
