@@ -8,10 +8,11 @@
 	static AuthorizationData authorizationData;
 	static ServiceClient<ICustomerManagementService> CustomerService; 
 	
-	private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-	private static java.lang.String ClientId = "<ClientIdGoesHere>";
-	private static java.lang.String ClientSecret = "<ClientSecretGoesHere>";
-        private static java.lang.String RedirectUri = "<RedirectUriGoesHere>";
+	private static java.lang.String DeveloperToken = "DeveloperTokenGoesHere";
+	private static java.lang.String ClientId = "ClientIdGoesHere";
+	private static java.lang.String ClientSecret = "ClientSecretGoesHere";
+    private static java.lang.String RedirectUri = "RedirectUriGoesHere";
+	private static java.lang.String ClientState = "ClientStateGoesHere";
 	
 	static long accountsCount = 0;
  %>
@@ -71,13 +72,20 @@
 			ClientId, 
 			ClientSecret, 
 			new URL(RedirectUri));
+			
+		// It is recommended that you specify a non guessable 'state' request parameter to help prevent
+        // cross site request forgery (CSRF). 
+        oAuthWebAuthCodeGrant.setState(ClientState);
 
       	if (authorizationData == null) {
           	if (request.getParameter("code") == null) {				
 				URL authorizationUrl = oAuthWebAuthCodeGrant.getAuthorizationEndpoint();
 				response.sendRedirect(authorizationUrl.toString());
 				return;
-			} else {		
+			} else {	
+			    if (oAuthWebAuthCodeGrant.getState() != ClientState)
+                    throw new Exception("The OAuth response state does not match the client request state.");
+                	
 				OAuthTokens tokens = oAuthWebAuthCodeGrant.requestAccessAndRefreshTokens(
 					new URL(request.getRequestURL() + "?" + request.getQueryString()));
 		

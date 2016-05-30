@@ -21,8 +21,9 @@ public class OAuthDesktopApplication extends Application {
     static AuthorizationData authorizationData;
     static ServiceClient<ICustomerManagementService> CustomerService; 
     
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static java.lang.String ClientId = "<ClientIdGoesHere>";
+    private static java.lang.String DeveloperToken = "DeveloperTokenGoesHere";
+    private static java.lang.String ClientId = "ClientIdGoesHere";
+    private static java.lang.String ClientState = "ClientStateGoesHere";
 
     @Override
     public void start(Stage primaryStage) {
@@ -32,6 +33,10 @@ public class OAuthDesktopApplication extends Application {
 		
         final OAuthDesktopMobileAuthCodeGrant oAuthDesktopMobileAuthCodeGrant = new OAuthDesktopMobileAuthCodeGrant(ClientId);
     	
+        // It is recommended that you specify a non guessable 'state' request parameter to help prevent
+        // cross site request forgery (CSRF). 
+        oAuthDesktopMobileAuthCodeGrant.setState(ClientState);
+        
         oAuthDesktopMobileAuthCodeGrant.setNewTokensListener(new NewOAuthTokensReceivedListener() {
             @Override
             public void onNewOAuthTokensReceived(OAuthTokens newTokens) {
@@ -65,15 +70,23 @@ public class OAuthDesktopApplication extends Application {
 
                         System.out.println(url);
 
+                        // In this example, we handle WebEvents until redirection is complete 
+                        // and OAuthTokens are retreived.
                         if (url.getPath().equals("/oauth20_desktop.srf")) {
-                            //issue: WebView raises two events for each url. Need to figure out how to filter only one of them.
+                            // Open issue: WebView raises two events for each url. 
+                        	// TODO: Filter only one of them.
                             if (alreadyHaveRedirect) {
+                            	System.out.println("Program execution completed\n");
                                 return;
                             }
 
+                            if (oAuthDesktopMobileAuthCodeGrant.getState() != ClientState)
+                                throw new Exception("The OAuth response state does not match the client request state.");
+                            
                             alreadyHaveRedirect = true;
 
-                            // To get the initial access and refresh tokens you must call requestAccessAndRefreshTokens with the authorization redirection URL. 
+                            // To get the initial access and refresh tokens you must call 
+                            // requestAccessAndRefreshTokens with the authorization redirection URL. 
 							
                             OAuthTokens tokens = oAuthDesktopMobileAuthCodeGrant.requestAccessAndRefreshTokens(url);
 							
@@ -142,7 +155,7 @@ public class OAuthDesktopApplication extends Application {
         // The user will be prompted through the Microsoft Account authorization web browser control to grant permissions for your application
         // to manage their Bing Ads accounts. The authorization service calls back to your application with the redirection URI, which 
         // includes an authorization code if the user authorized your application to manage their Bing Ads accounts. 
-        // For example the callback URI includes an access token as follows if the user granted permissions for your application to manage 
+        // For example the callback URI includes an access code as follows if the user granted permissions for your application to manage 
         // their Bing Ads accounts: https://login.live.com/oauth20_desktop.srf?code=Access-Code-Provided-Here&lc=1033. 
 		
         Scene scene = new Scene(webView, 800, 600);
