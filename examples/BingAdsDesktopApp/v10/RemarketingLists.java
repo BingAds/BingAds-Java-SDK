@@ -33,7 +33,6 @@ public class RemarketingLists extends ExampleBase {
 	         
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
-                        ApiEnvironment.SANDBOX,
                         ICampaignManagementService.class);
 
             // To discover all remarketing lists that the user can associate with ad groups in the current account (per CustomerAccountId header), 
