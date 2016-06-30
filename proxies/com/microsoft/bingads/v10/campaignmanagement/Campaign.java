@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="BiddingScheme" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}BiddingScheme" minOccurs="0"/>
  *         &lt;element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v10}BudgetLimitType" minOccurs="0"/>
  *         &lt;element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="DaylightSaving" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="UrlCustomParameters" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}CustomParameters" minOccurs="0"/>
  *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v10}CampaignType" minOccurs="0"/>
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfSetting" minOccurs="0"/>
+ *         &lt;element name="BudgetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -45,6 +47,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Campaign", propOrder = {
+    "biddingScheme",
     "budgetType",
     "dailyBudget",
     "daylightSaving",
@@ -59,10 +62,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "trackingUrlTemplate",
     "urlCustomParameters",
     "campaignType",
-    "settings"
+    "settings",
+    "budgetId"
 })
 public class Campaign {
 
+    @XmlElement(name = "BiddingScheme", nillable = true)
+    protected BiddingScheme biddingScheme;
     @XmlElement(name = "BudgetType", nillable = true)
     @XmlSchemaType(name = "string")
     protected BudgetLimitType budgetType;
@@ -92,11 +98,37 @@ public class Campaign {
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignType> campaignType;
     @XmlElement(name = "Settings", nillable = true)
     protected ArrayOfSetting settings;
+    @XmlElement(name = "BudgetId", nillable = true)
+    protected Long budgetId;
+
+    /**
+     * Gets the value of the biddingScheme property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public BiddingScheme getBiddingScheme() {
+        return biddingScheme;
+    }
+
+    /**
+     * Sets the value of the biddingScheme property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public void setBiddingScheme(BiddingScheme value) {
+        this.biddingScheme = value;
+    }
 
     /**
      * Gets the value of the budgetType property.
@@ -456,6 +488,30 @@ public class Campaign {
      */
     public void setSettings(ArrayOfSetting value) {
         this.settings = value;
+    }
+
+    /**
+     * Gets the value of the budgetId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getBudgetId() {
+        return budgetId;
+    }
+
+    /**
+     * Sets the value of the budgetId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setBudgetId(Long value) {
+        this.budgetId = value;
     }
 
 }

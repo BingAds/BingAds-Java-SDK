@@ -42,7 +42,7 @@ public class DeleteCampaignCriterionsRequest {
     @XmlElement(name = "CampaignCriterionIds", nillable = true)
     protected ArrayOflong campaignCriterionIds;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignCriterionType> criterionType;
 

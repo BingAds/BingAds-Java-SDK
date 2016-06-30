@@ -44,7 +44,7 @@ public class CallDetailReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)

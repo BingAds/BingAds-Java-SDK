@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Bid" type="{https://bingads.microsoft.com/CampaignManagement/v10}Bid" minOccurs="0"/>
+ *         &lt;element name="BiddingScheme" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}BiddingScheme" minOccurs="0"/>
  *         &lt;element name="DestinationUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v10}KeywordEditorialStatus" minOccurs="0"/>
  *         &lt;element name="FinalAppUrls" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}ArrayOfAppUrl" minOccurs="0"/>
@@ -45,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Keyword", propOrder = {
     "bid",
+    "biddingScheme",
     "destinationUrl",
     "editorialStatus",
     "finalAppUrls",
@@ -65,6 +67,8 @@ public class Keyword {
 
     @XmlElement(name = "Bid", nillable = true)
     protected Bid bid;
+    @XmlElement(name = "BiddingScheme", nillable = true)
+    protected BiddingScheme biddingScheme;
     @XmlElement(name = "DestinationUrl", nillable = true)
     protected String destinationUrl;
     @XmlElement(name = "EditorialStatus", nillable = true)
@@ -121,6 +125,30 @@ public class Keyword {
      */
     public void setBid(Bid value) {
         this.bid = value;
+    }
+
+    /**
+     * Gets the value of the biddingScheme property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public BiddingScheme getBiddingScheme() {
+        return biddingScheme;
+    }
+
+    /**
+     * Sets the value of the biddingScheme property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public void setBiddingScheme(BiddingScheme value) {
+        this.biddingScheme = value;
     }
 
     /**

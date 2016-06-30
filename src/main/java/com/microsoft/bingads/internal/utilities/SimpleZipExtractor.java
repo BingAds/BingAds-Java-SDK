@@ -1,7 +1,6 @@
 package com.microsoft.bingads.internal.utilities;
 
 import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.internal.StringExtensions;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +27,7 @@ public class SimpleZipExtractor implements ZipExtractor {
             String zippedExtension = getFileExtension(entry.getName());
             
             File effectiveResultFile = setZippedFileExtension 
-                    ? StringExtensions.changeFileExtension(resultFile, "." + zippedExtension)
+                    ? changeFileExtension(resultFile, "." + zippedExtension)
                     : resultFile;
 
             if (!overwrite && effectiveResultFile.exists()) {
@@ -107,4 +106,15 @@ public class SimpleZipExtractor implements ZipExtractor {
         return extension;
     }
 
+    private File changeFileExtension(File file, String newExtension) {
+        String fullFileName = file.toString();
+
+        int indexOfDot = fullFileName.lastIndexOf('.');
+
+        if (indexOfDot != -1) {
+            return new File(fullFileName.substring(0, indexOfDot) + newExtension);
+        }
+
+        return new File(fullFileName + newExtension);
+    }
 }

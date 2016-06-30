@@ -16,8 +16,6 @@ import com.microsoft.bingads.v10.bulk.GetBulkUploadStatusRequest;
 import com.microsoft.bingads.v10.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v10.bulk.IBulkService;
 import com.microsoft.bingads.v10.api.test.operations.CompleteResponse;
-import com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusRequest;
-import com.microsoft.bingads.bulk.GetDetailedBulkUploadStatusResponse;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.HashMap;

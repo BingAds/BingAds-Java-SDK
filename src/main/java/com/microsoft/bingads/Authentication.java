@@ -1,7 +1,5 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.bulk.BulkServiceManager;
-
 /**
  * The abstract base class for all authentication classes.
  *

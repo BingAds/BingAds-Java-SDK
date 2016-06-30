@@ -1,7 +1,6 @@
 package com.microsoft.bingads;
 
 import com.microsoft.bingads.internal.ErrorMessages;
-import com.microsoft.bingads.bulk.BulkServiceManager;
 
 /**
  * Represents a user who intends to access the corresponding customer and

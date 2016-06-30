@@ -53,9 +53,9 @@ import javax.xml.bind.annotation.XmlType;
     "urlCustomParameters"
 })
 @XmlSeeAlso({
+    ProductAd.class,
     TextAd.class,
-    AppInstallAd.class,
-    ProductAd.class
+    AppInstallAd.class
 })
 public class Ad {
 

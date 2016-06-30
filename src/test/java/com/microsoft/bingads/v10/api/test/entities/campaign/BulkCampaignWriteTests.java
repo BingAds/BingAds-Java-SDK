@@ -22,7 +22,8 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkCampaignWriteToRowValuesPriorityShoppingSettingTest.class,
         BulkCampaignWriteToRowValuesPriorityOtherSettingTest.class,
         BulkCampaignWriteToRowValuesCountryCodeShoppingSettingTest.class,
-        BulkCampaignWriteToRowValuesCountryCodeOtherSettingTest.class
+        BulkCampaignWriteToRowValuesCountryCodeOtherSettingTest.class,
+        BulkCampaignWriteToRowValuesBidStrategyTypeTest.class
 })
 public class BulkCampaignWriteTests {
 

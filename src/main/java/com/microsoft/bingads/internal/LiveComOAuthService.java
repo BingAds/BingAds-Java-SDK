@@ -122,7 +122,7 @@ public class LiveComOAuthService implements OAuthService {
         paramsMap.put(RESPONSE_TYPE, parameters.getResponseType());
         paramsMap.put(REDIRECT_URI, parameters.getRedirectionUri().toString());
         
-        if (!StringExtensions.isNullOrEmpty(parameters.getState())) {
+        if (parameters.getState() != null && !parameters.getState().isEmpty()) {
         	paramsMap.put(STATE, parameters.getState());
         }        
         

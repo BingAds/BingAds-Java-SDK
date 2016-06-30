@@ -33,14 +33,17 @@ public class ObjectFactory {
     private final static QName _AdGroupNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupNegativeSites");
     private final static QName _CustomParameter_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "CustomParameter");
     private final static QName _CityTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CityTarget");
+    private final static QName _AdGroupRemarketingListAssociationStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupRemarketingListAssociationStatus");
     private final static QName _AssociationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AssociationType");
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
     private final static QName _AdExtensionsTypeFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtensionsTypeFilter");
     private final static QName _Date_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Date");
+    private final static QName _RemarketingTargetingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "RemarketingTargetingSetting");
     private final static QName _MediaMetaData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "MediaMetaData");
     private final static QName _ArrayOfStateTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfStateTargetBid");
     private final static QName _ArrayOfEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfEditorialReason");
     private final static QName _NegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "NegativeKeyword");
+    private final static QName _CampaignAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CampaignAdditionalField");
     private final static QName _AgeTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AgeTarget");
     private final static QName _EntityIdToParentIdAssociation_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "EntityIdToParentIdAssociation");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
@@ -58,10 +61,11 @@ public class ObjectFactory {
     private final static QName _ArrayOfSiteLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfSiteLink");
     private final static QName _NegativeCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "NegativeCampaignCriterion");
     private final static QName _ArrayOfAdGroupNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdGroupNegativeSites");
-    private final static QName _ArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfOperationError");
     private final static QName _CountryTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CountryTarget");
+    private final static QName _ArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfOperationError");
     private final static QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
+    private final static QName _AdGroupRemarketingListAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupRemarketingListAssociation");
     private final static QName _ReviewAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ReviewAdExtension");
     private final static QName _NegativeAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "NegativeAdGroupCriterion");
     private final static QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfSharedListItem");
@@ -78,8 +82,9 @@ public class ObjectFactory {
     private final static QName _ArrayOfCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfCampaignCriterion");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
-    private final static QName _ArrayOfAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdGroupCriterion");
     private final static QName _AdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupCriterion");
+    private final static QName _ArrayOfAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdGroupCriterion");
+    private final static QName _MaxConversionsBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "MaxConversionsBiddingScheme");
     private final static QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ApplicationToken");
     private final static QName _EntityNegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "EntityNegativeKeyword");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
@@ -99,9 +104,11 @@ public class ObjectFactory {
     private final static QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private final static QName _GenderType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "GenderType");
     private final static QName _ProductPartition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ProductPartition");
+    private final static QName _TargetCpaBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "TargetCpaBiddingScheme");
     private final static QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _Dimension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Dimension");
+    private final static QName _MaxClicksBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "MaxClicksBiddingScheme");
     private final static QName _EditorialApiFaultDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "EditorialApiFaultDetail");
     private final static QName _AppInstallAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AppInstallAd");
     private final static QName _Keyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Keyword");
@@ -113,17 +120,20 @@ public class ObjectFactory {
     private final static QName _ProductScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ProductScope");
     private final static QName _Target_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Target");
     private final static QName _PricingModel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "PricingModel");
-    private final static QName _TextAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "TextAd");
     private final static QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "MediaAssociation");
+    private final static QName _TextAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "TextAd");
     private final static QName _CampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CampaignSize");
     private final static QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CampaignStatus");
     private final static QName _ArrayOfAdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdType");
+    private final static QName _ArrayOfAdGroupRemarketingListAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdGroupRemarketingListAssociation");
     private final static QName _SiteLinksAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "SiteLinksAdExtension");
     private final static QName _AdExtensionAssociationCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtensionAssociationCollection");
+    private final static QName _KeywordAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "KeywordAdditionalField");
     private final static QName _CityTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CityTargetBid");
     private final static QName _ItemAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ItemAction");
     private final static QName _CustomerId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CustomerId");
     private final static QName _AdExtensionIdentity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtensionIdentity");
+    private final static QName _AdGroupAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupAdditionalField");
     private final static QName _AdExtensionIdToEntityIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtensionIdToEntityIdAssociation");
     private final static QName _ArrayOfAdExtensionEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdExtensionEditorialReason");
     private final static QName _ArrayOfEntityIdToParentIdAssociation_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "ArrayOfEntityIdToParentIdAssociation");
@@ -131,8 +141,10 @@ public class ObjectFactory {
     private final static QName _ArrayOfAdGroupCriterionAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdGroupCriterionAction");
     private final static QName _Network_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Network");
     private final static QName _ArrayOfAdExtensionEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdExtensionEditorialReasonCollection");
-    private final static QName _BiddingModel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "BiddingModel");
+    private final static QName _ArrayOfRemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfRemarketingList");
     private final static QName _Image_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Image");
+    private final static QName _BiddingModel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "BiddingModel");
+    private final static QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "EntityScope");
     private final static QName _LocationTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "LocationTarget");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _CountryTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CountryTargetBid");
@@ -147,6 +159,7 @@ public class ObjectFactory {
     private final static QName _CriterionBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CriterionBid");
     private final static QName _ArrayOfMetroAreaTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfMetroAreaTargetBid");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
+    private final static QName _BiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "BiddingScheme");
     private final static QName _UserName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "UserName");
     private final static QName _ArrayOfEditorialError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfEditorialError");
     private final static QName _ArrayOfSitePlacement_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfSitePlacement");
@@ -172,10 +185,12 @@ public class ObjectFactory {
     private final static QName _DeviceOSTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "DeviceOSTarget");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
     private final static QName _ArrayOfMediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfMediaRepresentation");
+    private final static QName _RemarketingListTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "RemarketingListTemplate");
     private final static QName _SharedList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "SharedList");
     private final static QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Campaign");
     private final static QName _ArrayOfAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAd");
     private final static QName _ImageAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ImageAdExtension");
+    private final static QName _ManualCpcBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "ManualCpcBiddingScheme");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
     private final static QName _ArrayOfBatchErrorCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfBatchErrorCollection");
     private final static QName _ProductCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ProductCondition");
@@ -195,6 +210,8 @@ public class ObjectFactory {
     private final static QName _AdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdExtension");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
     private final static QName _AdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdType");
+    private final static QName _ArrayOfBudget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfBudget");
+    private final static QName _InheritFromParentBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "InheritFromParentBiddingScheme");
     private final static QName _ArrayOfProductCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfProductCondition");
     private final static QName _ArrayOfNegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfNegativeKeyword");
     private final static QName _AppUrl_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "AppUrl");
@@ -212,18 +229,20 @@ public class ObjectFactory {
     private final static QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "OperationError");
     private final static QName _ArrayOfMediaMetaData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfMediaMetaData");
     private final static QName _MetroAreaTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "MetroAreaTarget");
-    private final static QName _ArrayOfCountryTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfCountryTargetBid");
     private final static QName _RadiusTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "RadiusTarget");
+    private final static QName _ArrayOfCountryTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfCountryTargetBid");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
-    private final static QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "BatchError");
     private final static QName _NegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "NegativeKeywordList");
-    private final static QName _AdRotationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdRotationType");
+    private final static QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "BatchError");
     private final static QName _AgeTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AgeTargetBid");
+    private final static QName _AdRotationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdRotationType");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _ArrayOfMedia_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfMedia");
     private final static QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private final static QName _AdStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdStatus");
+    private final static QName _Budget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Budget");
     private final static QName _DeviceOSTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "DeviceOSTargetBid");
+    private final static QName _StructuredSnippetAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "StructuredSnippetAdExtension");
     private final static QName _AgeRange_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AgeRange");
     private final static QName _Ad_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Ad");
     private final static QName _AdGroupStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupStatus");
@@ -245,8 +264,8 @@ public class ObjectFactory {
     private final static QName _ArrayOfAdExtensionAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAdExtensionAssociation");
     private final static QName _AdGroupCriterionAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupCriterionAction");
     private final static QName _IntentOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "IntentOption");
-    private final static QName _ArrayOfTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfTarget");
     private final static QName _KeywordEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "KeywordEditorialStatus");
+    private final static QName _ArrayOfTarget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfTarget");
     private final static QName _ShoppingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ShoppingSetting");
     private final static QName _ArrayOfEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfEditorialReasonCollection");
     private final static QName _ArrayOfAppUrl_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "ArrayOfAppUrl");
@@ -255,6 +274,8 @@ public class ObjectFactory {
     private final static QName _GenderTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "GenderTargetBid");
     private final static QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private final static QName _SiteLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "SiteLink");
+    private final static QName _EnhancedCpcBiddingScheme_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", "EnhancedCpcBiddingScheme");
+    private final static QName _RemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "RemarketingList");
     private final static QName _ArrayOfAgeTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfAgeTargetBid");
     private final static QName _ArrayOfCampaignNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfCampaignNegativeSites");
     private final static QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupCriterionStatus");
@@ -378,30 +399,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BMCStore }
-     * 
-     */
-    public BMCStore createBMCStore() {
-        return new BMCStore();
-    }
-
-    /**
-     * Create an instance of {@link GetTargetsInfoFromLibraryResponse }
-     * 
-     */
-    public GetTargetsInfoFromLibraryResponse createGetTargetsInfoFromLibraryResponse() {
-        return new GetTargetsInfoFromLibraryResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfTargetInfo }
-     * 
-     */
-    public ArrayOfTargetInfo createArrayOfTargetInfo() {
-        return new ArrayOfTargetInfo();
-    }
-
-    /**
      * Create an instance of {@link DeleteAdsResponse }
      * 
      */
@@ -434,30 +431,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MetroAreaTargetBid }
-     * 
-     */
-    public MetroAreaTargetBid createMetroAreaTargetBid() {
-        return new MetroAreaTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link GetCampaignCriterionsByIdsResponse }
-     * 
-     */
-    public GetCampaignCriterionsByIdsResponse createGetCampaignCriterionsByIdsResponse() {
-        return new GetCampaignCriterionsByIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfCampaignCriterion }
-     * 
-     */
-    public ArrayOfCampaignCriterion createArrayOfCampaignCriterion() {
-        return new ArrayOfCampaignCriterion();
-    }
-
-    /**
      * Create an instance of {@link GetMediaMetaDataByIdsResponse }
      * 
      */
@@ -479,14 +452,6 @@ public class ObjectFactory {
      */
     public EditorialError createEditorialError() {
         return new EditorialError();
-    }
-
-    /**
-     * Create an instance of {@link AddCampaignCriterionsRequest }
-     * 
-     */
-    public AddCampaignCriterionsRequest createAddCampaignCriterionsRequest() {
-        return new AddCampaignCriterionsRequest();
     }
 
     /**
@@ -522,30 +487,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfCampaignNegativeSites }
-     * 
-     */
-    public ArrayOfCampaignNegativeSites createArrayOfCampaignNegativeSites() {
-        return new ArrayOfCampaignNegativeSites();
-    }
-
-    /**
-     * Create an instance of {@link UpdateCampaignCriterionsResponse }
-     * 
-     */
-    public UpdateCampaignCriterionsResponse createUpdateCampaignCriterionsResponse() {
-        return new UpdateCampaignCriterionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfBatchErrorCollection }
-     * 
-     */
-    public ArrayOfBatchErrorCollection createArrayOfBatchErrorCollection() {
-        return new ArrayOfBatchErrorCollection();
-    }
-
-    /**
      * Create an instance of {@link UpdateAdsResponse }
      * 
      */
@@ -578,14 +519,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MediaType }
-     * 
-     */
-    public MediaType createMediaType() {
-        return new MediaType();
-    }
-
-    /**
      * Create an instance of {@link GenderTargetBid }
      * 
      */
@@ -602,30 +535,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfTarget }
-     * 
-     */
-    public ArrayOfTarget createArrayOfTarget() {
-        return new ArrayOfTarget();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAdExtensionsResponse }
-     * 
-     */
-    public DeleteAdExtensionsResponse createDeleteAdExtensionsResponse() {
-        return new DeleteAdExtensionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMediaRequest }
-     * 
-     */
-    public DeleteMediaRequest createDeleteMediaRequest() {
-        return new DeleteMediaRequest();
-    }
-
-    /**
      * Create an instance of {@link GetCampaignCriterionsByIdsRequest }
      * 
      */
@@ -634,27 +543,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ShoppingSetting }
-     * 
-     */
-    public ShoppingSetting createShoppingSetting() {
-        return new ShoppingSetting();
-    }
-
-    /**
      * Create an instance of {@link GetCampaignsByAccountIdRequest }
      * 
      */
     public GetCampaignsByAccountIdRequest createGetCampaignsByAccountIdRequest() {
         return new GetCampaignsByAccountIdRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetKeywordsByAdGroupIdRequest }
-     * 
-     */
-    public GetKeywordsByAdGroupIdRequest createGetKeywordsByAdGroupIdRequest() {
-        return new GetKeywordsByAdGroupIdRequest();
     }
 
     /**
@@ -674,30 +567,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteSitePlacementsResponse }
-     * 
-     */
-    public DeleteSitePlacementsResponse createDeleteSitePlacementsResponse() {
-        return new DeleteSitePlacementsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupCriterionAction }
-     * 
-     */
-    public AdGroupCriterionAction createAdGroupCriterionAction() {
-        return new AdGroupCriterionAction();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdExtensionAssociation }
-     * 
-     */
-    public ArrayOfAdExtensionAssociation createArrayOfAdExtensionAssociation() {
-        return new ArrayOfAdExtensionAssociation();
-    }
-
-    /**
      * Create an instance of {@link AddKeywordsResponse }
      * 
      */
@@ -714,35 +583,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateAdGroupCriterionsResponse }
-     * 
-     */
-    public UpdateAdGroupCriterionsResponse createUpdateAdGroupCriterionsResponse() {
-        return new UpdateAdGroupCriterionsResponse();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfMediaAssociation }
      * 
      */
     public ArrayOfMediaAssociation createArrayOfMediaAssociation() {
         return new ArrayOfMediaAssociation();
-    }
-
-    /**
-     * Create an instance of {@link AddSharedEntityResponse }
-     * 
-     */
-    public AddSharedEntityResponse createAddSharedEntityResponse() {
-        return new AddSharedEntityResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetSharedEntityAssociationsResponse }
-     * 
-     */
-    public SetSharedEntityAssociationsResponse createSetSharedEntityAssociationsResponse() {
-        return new SetSharedEntityAssociationsResponse();
     }
 
     /**
@@ -754,14 +599,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetInfo }
-     * 
-     */
-    public TargetInfo createTargetInfo() {
-        return new TargetInfo();
-    }
-
-    /**
      * Create an instance of {@link GetMediaMetaDataByAccountIdResponse }
      * 
      */
@@ -770,11 +607,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdRotation }
+     * Create an instance of {@link DeleteBudgetsResponse }
      * 
      */
-    public AdRotation createAdRotation() {
-        return new AdRotation();
+    public DeleteBudgetsResponse createDeleteBudgetsResponse() {
+        return new DeleteBudgetsResponse();
     }
 
     /**
@@ -799,14 +636,6 @@ public class ObjectFactory {
      */
     public DeleteAdGroupsResponse createDeleteAdGroupsResponse() {
         return new DeleteAdGroupsResponse();
-    }
-
-    /**
-     * Create an instance of {@link BatchErrorCollection }
-     * 
-     */
-    public BatchErrorCollection createBatchErrorCollection() {
-        return new BatchErrorCollection();
     }
 
     /**
@@ -874,51 +703,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LocationAdExtension }
-     * 
-     */
-    public LocationAdExtension createLocationAdExtension() {
-        return new LocationAdExtension();
-    }
-
-    /**
      * Create an instance of {@link Ad }
      * 
      */
     public Ad createAd() {
         return new Ad();
-    }
-
-    /**
-     * Create an instance of {@link DeviceOSTargetBid }
-     * 
-     */
-    public DeviceOSTargetBid createDeviceOSTargetBid() {
-        return new DeviceOSTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSitePlacementsRequest }
-     * 
-     */
-    public UpdateSitePlacementsRequest createUpdateSitePlacementsRequest() {
-        return new UpdateSitePlacementsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSitePlacement }
-     * 
-     */
-    public ArrayOfSitePlacement createArrayOfSitePlacement() {
-        return new ArrayOfSitePlacement();
-    }
-
-    /**
-     * Create an instance of {@link SetAdExtensionsAssociationsResponse }
-     * 
-     */
-    public SetAdExtensionsAssociationsResponse createSetAdExtensionsAssociationsResponse() {
-        return new SetAdExtensionsAssociationsResponse();
     }
 
     /**
@@ -935,6 +724,14 @@ public class ObjectFactory {
      */
     public ArrayOfAdExtensionEditorialReasonCollection createArrayOfAdExtensionEditorialReasonCollection() {
         return new ArrayOfAdExtensionEditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link Budget }
+     * 
+     */
+    public Budget createBudget() {
+        return new Budget();
     }
 
     /**
@@ -962,59 +759,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteTargetFromAdGroupResponse }
-     * 
-     */
-    public DeleteTargetFromAdGroupResponse createDeleteTargetFromAdGroupResponse() {
-        return new DeleteTargetFromAdGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAdExtensionsAssociationsRequest }
-     * 
-     */
-    public GetAdExtensionsAssociationsRequest createGetAdExtensionsAssociationsRequest() {
-        return new GetAdExtensionsAssociationsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetBMCStoresByCustomerIdResponse }
-     * 
-     */
-    public GetBMCStoresByCustomerIdResponse createGetBMCStoresByCustomerIdResponse() {
-        return new GetBMCStoresByCustomerIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfBMCStore }
-     * 
-     */
-    public ArrayOfBMCStore createArrayOfBMCStore() {
-        return new ArrayOfBMCStore();
-    }
-
-    /**
-     * Create an instance of {@link BatchError }
-     * 
-     */
-    public BatchError createBatchError() {
-        return new BatchError();
-    }
-
-    /**
      * Create an instance of {@link NegativeKeywordList }
      * 
      */
     public NegativeKeywordList createNegativeKeywordList() {
         return new NegativeKeywordList();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfCountryTargetBid }
-     * 
-     */
-    public ArrayOfCountryTargetBid createArrayOfCountryTargetBid() {
-        return new ArrayOfCountryTargetBid();
     }
 
     /**
@@ -1034,14 +783,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MetroAreaTarget }
-     * 
-     */
-    public MetroAreaTarget createMetroAreaTarget() {
-        return new MetroAreaTarget();
-    }
-
-    /**
      * Create an instance of {@link OperationError }
      * 
      */
@@ -1058,62 +799,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateAdExtensionsResponse }
-     * 
-     */
-    public UpdateAdExtensionsResponse createUpdateAdExtensionsResponse() {
-        return new UpdateAdExtensionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetTargetToCampaignRequest }
-     * 
-     */
-    public SetTargetToCampaignRequest createSetTargetToCampaignRequest() {
-        return new SetTargetToCampaignRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfDimension }
-     * 
-     */
-    public ArrayOfDimension createArrayOfDimension() {
-        return new ArrayOfDimension();
-    }
-
-    /**
-     * Create an instance of {@link CampaignNegativeSites }
-     * 
-     */
-    public CampaignNegativeSites createCampaignNegativeSites() {
-        return new CampaignNegativeSites();
-    }
-
-    /**
-     * Create an instance of {@link SetAdExtensionsAssociationsRequest }
-     * 
-     */
-    public SetAdExtensionsAssociationsRequest createSetAdExtensionsAssociationsRequest() {
-        return new SetAdExtensionsAssociationsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdExtensionIdToEntityIdAssociation }
-     * 
-     */
-    public ArrayOfAdExtensionIdToEntityIdAssociation createArrayOfAdExtensionIdToEntityIdAssociation() {
-        return new ArrayOfAdExtensionIdToEntityIdAssociation();
-    }
-
-    /**
-     * Create an instance of {@link GetSitePlacementsByIdsRequest }
-     * 
-     */
-    public GetSitePlacementsByIdsRequest createGetSitePlacementsByIdsRequest() {
-        return new GetSitePlacementsByIdsRequest();
-    }
-
-    /**
      * Create an instance of {@link AddListItemsToSharedListResponse }
      * 
      */
@@ -1127,14 +812,6 @@ public class ObjectFactory {
      */
     public SitePlacement createSitePlacement() {
         return new SitePlacement();
-    }
-
-    /**
-     * Create an instance of {@link StateTarget }
-     * 
-     */
-    public StateTarget createStateTarget() {
-        return new StateTarget();
     }
 
     /**
@@ -1186,46 +863,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAdsByAdGroupIdRequest }
-     * 
-     */
-    public GetAdsByAdGroupIdRequest createGetAdsByAdGroupIdRequest() {
-        return new GetAdsByAdGroupIdRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdType }
-     * 
-     */
-    public ArrayOfAdType createArrayOfAdType() {
-        return new ArrayOfAdType();
-    }
-
-    /**
-     * Create an instance of {@link AdExtension }
-     * 
-     */
-    public AdExtension createAdExtension() {
-        return new AdExtension();
-    }
-
-    /**
-     * Create an instance of {@link ImageMediaRepresentation }
-     * 
-     */
-    public ImageMediaRepresentation createImageMediaRepresentation() {
-        return new ImageMediaRepresentation();
-    }
-
-    /**
-     * Create an instance of {@link UpdateAdGroupsResponse }
-     * 
-     */
-    public UpdateAdGroupsResponse createUpdateAdGroupsResponse() {
-        return new UpdateAdGroupsResponse();
-    }
-
-    /**
      * Create an instance of {@link GeoPoint }
      * 
      */
@@ -1258,14 +895,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddSitePlacementsResponse }
-     * 
-     */
-    public AddSitePlacementsResponse createAddSitePlacementsResponse() {
-        return new AddSitePlacementsResponse();
-    }
-
-    /**
      * Create an instance of {@link AppAdExtension }
      * 
      */
@@ -1274,43 +903,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SharedEntityAssociation }
-     * 
-     */
-    public SharedEntityAssociation createSharedEntityAssociation() {
-        return new SharedEntityAssociation();
-    }
-
-    /**
      * Create an instance of {@link GetKeywordsByIdsResponse }
      * 
      */
     public GetKeywordsByIdsResponse createGetKeywordsByIdsResponse() {
         return new GetKeywordsByIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetSitePlacementsByAdGroupIdRequest }
-     * 
-     */
-    public GetSitePlacementsByAdGroupIdRequest createGetSitePlacementsByAdGroupIdRequest() {
-        return new GetSitePlacementsByAdGroupIdRequest();
-    }
-
-    /**
-     * Create an instance of {@link AddAdExtensionsRequest }
-     * 
-     */
-    public AddAdExtensionsRequest createAddAdExtensionsRequest() {
-        return new AddAdExtensionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdExtension }
-     * 
-     */
-    public ArrayOfAdExtension createArrayOfAdExtension() {
-        return new ArrayOfAdExtension();
     }
 
     /**
@@ -1346,35 +943,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAdsByEditorialStatusResponse }
+     * Create an instance of {@link ArrayOfBatchErrorCollection }
      * 
      */
-    public GetAdsByEditorialStatusResponse createGetAdsByEditorialStatusResponse() {
-        return new GetAdsByEditorialStatusResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAd }
-     * 
-     */
-    public ArrayOfAd createArrayOfAd() {
-        return new ArrayOfAd();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSharedEntitiesRequest }
-     * 
-     */
-    public UpdateSharedEntitiesRequest createUpdateSharedEntitiesRequest() {
-        return new UpdateSharedEntitiesRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSharedEntity }
-     * 
-     */
-    public ArrayOfSharedEntity createArrayOfSharedEntity() {
-        return new ArrayOfSharedEntity();
+    public ArrayOfBatchErrorCollection createArrayOfBatchErrorCollection() {
+        return new ArrayOfBatchErrorCollection();
     }
 
     /**
@@ -1394,14 +967,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetMediaMetaDataByAccountIdRequest }
-     * 
-     */
-    public GetMediaMetaDataByAccountIdRequest createGetMediaMetaDataByAccountIdRequest() {
-        return new GetMediaMetaDataByAccountIdRequest();
-    }
-
-    /**
      * Create an instance of {@link GetMediaAssociationsResponse }
      * 
      */
@@ -1418,27 +983,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteNegativeKeywordsFromEntitiesRequest }
-     * 
-     */
-    public DeleteNegativeKeywordsFromEntitiesRequest createDeleteNegativeKeywordsFromEntitiesRequest() {
-        return new DeleteNegativeKeywordsFromEntitiesRequest();
-    }
-
-    /**
      * Create an instance of {@link ImageAdExtension }
      * 
      */
     public ImageAdExtension createImageAdExtension() {
         return new ImageAdExtension();
-    }
-
-    /**
-     * Create an instance of {@link GetMediaMetaDataByIdsRequest }
-     * 
-     */
-    public GetMediaMetaDataByIdsRequest createGetMediaMetaDataByIdsRequest() {
-        return new GetMediaMetaDataByIdsRequest();
     }
 
     /**
@@ -1458,11 +1007,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SharedList }
+     * Create an instance of {@link ArrayOfAd }
      * 
      */
-    public SharedList createSharedList() {
-        return new SharedList();
+    public ArrayOfAd createArrayOfAd() {
+        return new ArrayOfAd();
     }
 
     /**
@@ -1471,6 +1020,1414 @@ public class ObjectFactory {
      */
     public GetListItemsBySharedListRequest createGetListItemsBySharedListRequest() {
         return new GetListItemsBySharedListRequest();
+    }
+
+    /**
+     * Create an instance of {@link SharedList }
+     * 
+     */
+    public SharedList createSharedList() {
+        return new SharedList();
+    }
+
+    /**
+     * Create an instance of {@link AddAdGroupCriterionsRequest }
+     * 
+     */
+    public AddAdGroupCriterionsRequest createAddAdGroupCriterionsRequest() {
+        return new AddAdGroupCriterionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link EditorialReason }
+     * 
+     */
+    public EditorialReason createEditorialReason() {
+        return new EditorialReason();
+    }
+
+    /**
+     * Create an instance of {@link GetSharedEntityAssociationsBySharedEntityIdsResponse }
+     * 
+     */
+    public GetSharedEntityAssociationsBySharedEntityIdsResponse createGetSharedEntityAssociationsBySharedEntityIdsResponse() {
+        return new GetSharedEntityAssociationsBySharedEntityIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSharedEntityAssociation }
+     * 
+     */
+    public ArrayOfSharedEntityAssociation createArrayOfSharedEntityAssociation() {
+        return new ArrayOfSharedEntityAssociation();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBMCStore }
+     * 
+     */
+    public ArrayOfBMCStore createArrayOfBMCStore() {
+        return new ArrayOfBMCStore();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRadiusTargetBid }
+     * 
+     */
+    public ArrayOfRadiusTargetBid createArrayOfRadiusTargetBid() {
+        return new ArrayOfRadiusTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link AddListItemsToSharedListRequest }
+     * 
+     */
+    public AddListItemsToSharedListRequest createAddListItemsToSharedListRequest() {
+        return new AddListItemsToSharedListRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSharedListItem }
+     * 
+     */
+    public ArrayOfSharedListItem createArrayOfSharedListItem() {
+        return new ArrayOfSharedListItem();
+    }
+
+    /**
+     * Create an instance of {@link Criterion }
+     * 
+     */
+    public Criterion createCriterion() {
+        return new Criterion();
+    }
+
+    /**
+     * Create an instance of {@link MediaRepresentation }
+     * 
+     */
+    public MediaRepresentation createMediaRepresentation() {
+        return new MediaRepresentation();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSharedEntitiesResponse }
+     * 
+     */
+    public DeleteSharedEntitiesResponse createDeleteSharedEntitiesResponse() {
+        return new DeleteSharedEntitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link Bid }
+     * 
+     */
+    public Bid createBid() {
+        return new Bid();
+    }
+
+    /**
+     * Create an instance of {@link UpdateKeywordsRequest }
+     * 
+     */
+    public UpdateKeywordsRequest createUpdateKeywordsRequest() {
+        return new UpdateKeywordsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteTargetFromCampaignResponse }
+     * 
+     */
+    public DeleteTargetFromCampaignResponse createDeleteTargetFromCampaignResponse() {
+        return new DeleteTargetFromCampaignResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddAdGroupsResponse }
+     * 
+     */
+    public AddAdGroupsResponse createAddAdGroupsResponse() {
+        return new AddAdGroupsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSitePlacementsRequest }
+     * 
+     */
+    public AddSitePlacementsRequest createAddSitePlacementsRequest() {
+        return new AddSitePlacementsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSitePlacement }
+     * 
+     */
+    public ArrayOfSitePlacement createArrayOfSitePlacement() {
+        return new ArrayOfSitePlacement();
+    }
+
+    /**
+     * Create an instance of {@link CriterionBid }
+     * 
+     */
+    public CriterionBid createCriterionBid() {
+        return new CriterionBid();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfMetroAreaTargetBid }
+     * 
+     */
+    public ArrayOfMetroAreaTargetBid createArrayOfMetroAreaTargetBid() {
+        return new ArrayOfMetroAreaTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByEditorialStatusRequest }
+     * 
+     */
+    public GetKeywordsByEditorialStatusRequest createGetKeywordsByEditorialStatusRequest() {
+        return new GetKeywordsByEditorialStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignSizesByAccountIdResponse }
+     * 
+     */
+    public GetCampaignSizesByAccountIdResponse createGetCampaignSizesByAccountIdResponse() {
+        return new GetCampaignSizesByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignSize }
+     * 
+     */
+    public ArrayOfCampaignSize createArrayOfCampaignSize() {
+        return new ArrayOfCampaignSize();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdExtensionIdToEntityIdAssociation }
+     * 
+     */
+    public ArrayOfAdExtensionIdToEntityIdAssociation createArrayOfAdExtensionIdToEntityIdAssociation() {
+        return new ArrayOfAdExtensionIdToEntityIdAssociation();
+    }
+
+    /**
+     * Create an instance of {@link AddAdExtensionsResponse }
+     * 
+     */
+    public AddAdExtensionsResponse createAddAdExtensionsResponse() {
+        return new AddAdExtensionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdExtensionIdentity }
+     * 
+     */
+    public ArrayOfAdExtensionIdentity createArrayOfAdExtensionIdentity() {
+        return new ArrayOfAdExtensionIdentity();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCampaignCriterionsRequest }
+     * 
+     */
+    public DeleteCampaignCriterionsRequest createDeleteCampaignCriterionsRequest() {
+        return new DeleteCampaignCriterionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link Address }
+     * 
+     */
+    public Address createAddress() {
+        return new Address();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfPostalCodeTargetBid }
+     * 
+     */
+    public ArrayOfPostalCodeTargetBid createArrayOfPostalCodeTargetBid() {
+        return new ArrayOfPostalCodeTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link DeleteTargetFromCampaignRequest }
+     * 
+     */
+    public DeleteTargetFromCampaignRequest createDeleteTargetFromCampaignRequest() {
+        return new DeleteTargetFromCampaignRequest();
+    }
+
+    /**
+     * Create an instance of {@link LocationTarget }
+     * 
+     */
+    public LocationTarget createLocationTarget() {
+        return new LocationTarget();
+    }
+
+    /**
+     * Create an instance of {@link UpdateKeywordsResponse }
+     * 
+     */
+    public UpdateKeywordsResponse createUpdateKeywordsResponse() {
+        return new UpdateKeywordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link Image }
+     * 
+     */
+    public Image createImage() {
+        return new Image();
+    }
+
+    /**
+     * Create an instance of {@link UpdateTargetsInLibraryRequest }
+     * 
+     */
+    public UpdateTargetsInLibraryRequest createUpdateTargetsInLibraryRequest() {
+        return new UpdateTargetsInLibraryRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTarget }
+     * 
+     */
+    public ArrayOfTarget createArrayOfTarget() {
+        return new ArrayOfTarget();
+    }
+
+    /**
+     * Create an instance of {@link ApplyProductPartitionActionsRequest }
+     * 
+     */
+    public ApplyProductPartitionActionsRequest createApplyProductPartitionActionsRequest() {
+        return new ApplyProductPartitionActionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdGroupCriterionAction }
+     * 
+     */
+    public ArrayOfAdGroupCriterionAction createArrayOfAdGroupCriterionAction() {
+        return new ArrayOfAdGroupCriterionAction();
+    }
+
+    /**
+     * Create an instance of {@link DeleteBudgetsRequest }
+     * 
+     */
+    public DeleteBudgetsRequest createDeleteBudgetsRequest() {
+        return new DeleteBudgetsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionIdToEntityIdAssociation }
+     * 
+     */
+    public AdExtensionIdToEntityIdAssociation createAdExtensionIdToEntityIdAssociation() {
+        return new AdExtensionIdToEntityIdAssociation();
+    }
+
+    /**
+     * Create an instance of {@link GetAdGroupRemarketingListAssociationsResponse }
+     * 
+     */
+    public GetAdGroupRemarketingListAssociationsResponse createGetAdGroupRemarketingListAssociationsResponse() {
+        return new GetAdGroupRemarketingListAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdGroupRemarketingListAssociation }
+     * 
+     */
+    public ArrayOfAdGroupRemarketingListAssociation createArrayOfAdGroupRemarketingListAssociation() {
+        return new ArrayOfAdGroupRemarketingListAssociation();
+    }
+
+    /**
+     * Create an instance of {@link GetSharedEntityAssociationsByEntityIdsRequest }
+     * 
+     */
+    public GetSharedEntityAssociationsByEntityIdsRequest createGetSharedEntityAssociationsByEntityIdsRequest() {
+        return new GetSharedEntityAssociationsByEntityIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddCampaignsRequest }
+     * 
+     */
+    public AddCampaignsRequest createAddCampaignsRequest() {
+        return new AddCampaignsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetSitePlacementsByAdGroupIdResponse }
+     * 
+     */
+    public GetSitePlacementsByAdGroupIdResponse createGetSitePlacementsByAdGroupIdResponse() {
+        return new GetSitePlacementsByAdGroupIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddAdsRequest }
+     * 
+     */
+    public AddAdsRequest createAddAdsRequest() {
+        return new AddAdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdGroupCriterionsRequest }
+     * 
+     */
+    public DeleteAdGroupCriterionsRequest createDeleteAdGroupCriterionsRequest() {
+        return new DeleteAdGroupCriterionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link CityTargetBid }
+     * 
+     */
+    public CityTargetBid createCityTargetBid() {
+        return new CityTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdExtensionsAssociationsResponse }
+     * 
+     */
+    public DeleteAdExtensionsAssociationsResponse createDeleteAdExtensionsAssociationsResponse() {
+        return new DeleteAdExtensionsAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddBudgetsRequest }
+     * 
+     */
+    public AddBudgetsRequest createAddBudgetsRequest() {
+        return new AddBudgetsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBudget }
+     * 
+     */
+    public ArrayOfBudget createArrayOfBudget() {
+        return new ArrayOfBudget();
+    }
+
+    /**
+     * Create an instance of {@link AddTargetsToLibraryRequest }
+     * 
+     */
+    public AddTargetsToLibraryRequest createAddTargetsToLibraryRequest() {
+        return new AddTargetsToLibraryRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdType }
+     * 
+     */
+    public ArrayOfAdType createArrayOfAdType() {
+        return new ArrayOfAdType();
+    }
+
+    /**
+     * Create an instance of {@link SetTargetToAdGroupRequest }
+     * 
+     */
+    public SetTargetToAdGroupRequest createSetTargetToAdGroupRequest() {
+        return new SetTargetToAdGroupRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetRemarketingListsRequest }
+     * 
+     */
+    public GetRemarketingListsRequest createGetRemarketingListsRequest() {
+        return new GetRemarketingListsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AppealEditorialRejectionsRequest }
+     * 
+     */
+    public AppealEditorialRejectionsRequest createAppealEditorialRejectionsRequest() {
+        return new AppealEditorialRejectionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfEntityIdToParentIdAssociation }
+     * 
+     */
+    public ArrayOfEntityIdToParentIdAssociation createArrayOfEntityIdToParentIdAssociation() {
+        return new ArrayOfEntityIdToParentIdAssociation();
+    }
+
+    /**
+     * Create an instance of {@link CampaignSize }
+     * 
+     */
+    public CampaignSize createCampaignSize() {
+        return new CampaignSize();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBudgetsRequest }
+     * 
+     */
+    public UpdateBudgetsRequest createUpdateBudgetsRequest() {
+        return new UpdateBudgetsRequest();
+    }
+
+    /**
+     * Create an instance of {@link SetTargetToCampaignResponse }
+     * 
+     */
+    public SetTargetToCampaignResponse createSetTargetToCampaignResponse() {
+        return new SetTargetToCampaignResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignSizesByAccountIdRequest }
+     * 
+     */
+    public GetCampaignSizesByAccountIdRequest createGetCampaignSizesByAccountIdRequest() {
+        return new GetCampaignSizesByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link MediaAssociation }
+     * 
+     */
+    public MediaAssociation createMediaAssociation() {
+        return new MediaAssociation();
+    }
+
+    /**
+     * Create an instance of {@link Target }
+     * 
+     */
+    public Target createTarget() {
+        return new Target();
+    }
+
+    /**
+     * Create an instance of {@link GetAdExtensionsByIdsResponse }
+     * 
+     */
+    public GetAdExtensionsByIdsResponse createGetAdExtensionsByIdsResponse() {
+        return new GetAdExtensionsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdExtension }
+     * 
+     */
+    public ArrayOfAdExtension createArrayOfAdExtension() {
+        return new ArrayOfAdExtension();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdExtensionsRequest }
+     * 
+     */
+    public UpdateAdExtensionsRequest createUpdateAdExtensionsRequest() {
+        return new UpdateAdExtensionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdExtensionsRequest }
+     * 
+     */
+    public DeleteAdExtensionsRequest createDeleteAdExtensionsRequest() {
+        return new DeleteAdExtensionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBudgetsResponse }
+     * 
+     */
+    public UpdateBudgetsResponse createUpdateBudgetsResponse() {
+        return new UpdateBudgetsResponse();
+    }
+
+    /**
+     * Create an instance of {@link EditorialApiFaultDetail }
+     * 
+     */
+    public EditorialApiFaultDetail createEditorialApiFaultDetail() {
+        return new EditorialApiFaultDetail();
+    }
+
+    /**
+     * Create an instance of {@link GetAdGroupCriterionsByIdsRequest }
+     * 
+     */
+    public GetAdGroupCriterionsByIdsRequest createGetAdGroupCriterionsByIdsRequest() {
+        return new GetAdGroupCriterionsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddNegativeKeywordsToEntitiesResponse }
+     * 
+     */
+    public AddNegativeKeywordsToEntitiesResponse createAddNegativeKeywordsToEntitiesResponse() {
+        return new AddNegativeKeywordsToEntitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfIdCollection }
+     * 
+     */
+    public ArrayOfIdCollection createArrayOfIdCollection() {
+        return new ArrayOfIdCollection();
+    }
+
+    /**
+     * Create an instance of {@link GetAdsByEditorialStatusRequest }
+     * 
+     */
+    public GetAdsByEditorialStatusRequest createGetAdsByEditorialStatusRequest() {
+        return new GetAdsByEditorialStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddCampaignsResponse }
+     * 
+     */
+    public AddCampaignsResponse createAddCampaignsResponse() {
+        return new AddCampaignsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddAdGroupCriterionsResponse }
+     * 
+     */
+    public AddAdGroupCriterionsResponse createAddAdGroupCriterionsResponse() {
+        return new AddAdGroupCriterionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSitePlacementsRequest }
+     * 
+     */
+    public DeleteSitePlacementsRequest createDeleteSitePlacementsRequest() {
+        return new DeleteSitePlacementsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAdExtensionIdsByAccountIdRequest }
+     * 
+     */
+    public GetAdExtensionIdsByAccountIdRequest createGetAdExtensionIdsByAccountIdRequest() {
+        return new GetAdExtensionIdsByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBSCCountriesResponse }
+     * 
+     */
+    public GetBSCCountriesResponse createGetBSCCountriesResponse() {
+        return new GetBSCCountriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfstring }
+     * 
+     */
+    public ArrayOfstring createArrayOfstring() {
+        return new ArrayOfstring();
+    }
+
+    /**
+     * Create an instance of {@link FixedBid }
+     * 
+     */
+    public FixedBid createFixedBid() {
+        return new FixedBid();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfPlacementDetail }
+     * 
+     */
+    public ArrayOfPlacementDetail createArrayOfPlacementDetail() {
+        return new ArrayOfPlacementDetail();
+    }
+
+    /**
+     * Create an instance of {@link ProductAd }
+     * 
+     */
+    public ProductAd createProductAd() {
+        return new ProductAd();
+    }
+
+    /**
+     * Create an instance of {@link GetAdGroupsByCampaignIdResponse }
+     * 
+     */
+    public GetAdGroupsByCampaignIdResponse createGetAdGroupsByCampaignIdResponse() {
+        return new GetAdGroupsByCampaignIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetMediaAssociationsRequest }
+     * 
+     */
+    public GetMediaAssociationsRequest createGetMediaAssociationsRequest() {
+        return new GetMediaAssociationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByAdGroupIdResponse }
+     * 
+     */
+    public GetKeywordsByAdGroupIdResponse createGetKeywordsByAdGroupIdResponse() {
+        return new GetKeywordsByAdGroupIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupCriterion }
+     * 
+     */
+    public AdGroupCriterion createAdGroupCriterion() {
+        return new AdGroupCriterion();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdGroupsRequest }
+     * 
+     */
+    public UpdateAdGroupsRequest createUpdateAdGroupsRequest() {
+        return new UpdateAdGroupsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByIdsRequest }
+     * 
+     */
+    public GetKeywordsByIdsRequest createGetKeywordsByIdsRequest() {
+        return new GetKeywordsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetEditorialReasonsByIdsRequest }
+     * 
+     */
+    public GetEditorialReasonsByIdsRequest createGetEditorialReasonsByIdsRequest() {
+        return new GetEditorialReasonsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignCriterion }
+     * 
+     */
+    public ArrayOfCampaignCriterion createArrayOfCampaignCriterion() {
+        return new ArrayOfCampaignCriterion();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfMigrationStatusInfo }
+     * 
+     */
+    public ArrayOfMigrationStatusInfo createArrayOfMigrationStatusInfo() {
+        return new ArrayOfMigrationStatusInfo();
+    }
+
+    /**
+     * Create an instance of {@link RadiusTargetBid }
+     * 
+     */
+    public RadiusTargetBid createRadiusTargetBid() {
+        return new RadiusTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionEditorialReasonCollection }
+     * 
+     */
+    public AdExtensionEditorialReasonCollection createAdExtensionEditorialReasonCollection() {
+        return new AdExtensionEditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link UpdateCampaignsResponse }
+     * 
+     */
+    public UpdateCampaignsResponse createUpdateCampaignsResponse() {
+        return new UpdateCampaignsResponse();
+    }
+
+    /**
+     * Create an instance of {@link NegativeAdGroupCriterion }
+     * 
+     */
+    public NegativeAdGroupCriterion createNegativeAdGroupCriterion() {
+        return new NegativeAdGroupCriterion();
+    }
+
+    /**
+     * Create an instance of {@link UpdateCampaignsRequest }
+     * 
+     */
+    public UpdateCampaignsRequest createUpdateCampaignsRequest() {
+        return new UpdateCampaignsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetTargetsByAdGroupIdsResponse }
+     * 
+     */
+    public GetTargetsByAdGroupIdsResponse createGetTargetsByAdGroupIdsResponse() {
+        return new GetTargetsByAdGroupIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetNegativeSitesToAdGroupsRequest }
+     * 
+     */
+    public SetNegativeSitesToAdGroupsRequest createSetNegativeSitesToAdGroupsRequest() {
+        return new SetNegativeSitesToAdGroupsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetMediaByIdsResponse }
+     * 
+     */
+    public GetMediaByIdsResponse createGetMediaByIdsResponse() {
+        return new GetMediaByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link CountryTarget }
+     * 
+     */
+    public CountryTarget createCountryTarget() {
+        return new CountryTarget();
+    }
+
+    /**
+     * Create an instance of {@link GetAdExtensionIdsByAccountIdResponse }
+     * 
+     */
+    public GetAdExtensionIdsByAccountIdResponse createGetAdExtensionIdsByAccountIdResponse() {
+        return new GetAdExtensionIdsByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ImpressionsPerDayRange }
+     * 
+     */
+    public ImpressionsPerDayRange createImpressionsPerDayRange() {
+        return new ImpressionsPerDayRange();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSiteLink }
+     * 
+     */
+    public ArrayOfSiteLink createArrayOfSiteLink() {
+        return new ArrayOfSiteLink();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdGroupRemarketingListAssociationsResponse }
+     * 
+     */
+    public UpdateAdGroupRemarketingListAssociationsResponse createUpdateAdGroupRemarketingListAssociationsResponse() {
+        return new UpdateAdGroupRemarketingListAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ApplyProductPartitionActionsResponse }
+     * 
+     */
+    public ApplyProductPartitionActionsResponse createApplyProductPartitionActionsResponse() {
+        return new ApplyProductPartitionActionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GenderTarget }
+     * 
+     */
+    public GenderTarget createGenderTarget() {
+        return new GenderTarget();
+    }
+
+    /**
+     * Create an instance of {@link GetSitePlacementsByIdsResponse }
+     * 
+     */
+    public GetSitePlacementsByIdsResponse createGetSitePlacementsByIdsResponse() {
+        return new GetSitePlacementsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfEditorialReason }
+     * 
+     */
+    public ArrayOfEditorialReason createArrayOfEditorialReason() {
+        return new ArrayOfEditorialReason();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfStateTargetBid }
+     * 
+     */
+    public ArrayOfStateTargetBid createArrayOfStateTargetBid() {
+        return new ArrayOfStateTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link NegativeKeyword }
+     * 
+     */
+    public NegativeKeyword createNegativeKeyword() {
+        return new NegativeKeyword();
+    }
+
+    /**
+     * Create an instance of {@link GetTargetsByIdsResponse }
+     * 
+     */
+    public GetTargetsByIdsResponse createGetTargetsByIdsResponse() {
+        return new GetTargetsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSharedEntityAssociationsByEntityIdsResponse }
+     * 
+     */
+    public GetSharedEntityAssociationsByEntityIdsResponse createGetSharedEntityAssociationsByEntityIdsResponse() {
+        return new GetSharedEntityAssociationsByEntityIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetTargetToAdGroupResponse }
+     * 
+     */
+    public SetTargetToAdGroupResponse createSetTargetToAdGroupResponse() {
+        return new SetTargetToAdGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEditorialReasonsByIdsResponse }
+     * 
+     */
+    public GetEditorialReasonsByIdsResponse createGetEditorialReasonsByIdsResponse() {
+        return new GetEditorialReasonsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdGroupsRequest }
+     * 
+     */
+    public DeleteAdGroupsRequest createDeleteAdGroupsRequest() {
+        return new DeleteAdGroupsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupNegativeSites }
+     * 
+     */
+    public AdGroupNegativeSites createAdGroupNegativeSites() {
+        return new AdGroupNegativeSites();
+    }
+
+    /**
+     * Create an instance of {@link CityTarget }
+     * 
+     */
+    public CityTarget createCityTarget() {
+        return new CityTarget();
+    }
+
+    /**
+     * Create an instance of {@link BMCStore }
+     * 
+     */
+    public BMCStore createBMCStore() {
+        return new BMCStore();
+    }
+
+    /**
+     * Create an instance of {@link GetTargetsInfoFromLibraryResponse }
+     * 
+     */
+    public GetTargetsInfoFromLibraryResponse createGetTargetsInfoFromLibraryResponse() {
+        return new GetTargetsInfoFromLibraryResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTargetInfo }
+     * 
+     */
+    public ArrayOfTargetInfo createArrayOfTargetInfo() {
+        return new ArrayOfTargetInfo();
+    }
+
+    /**
+     * Create an instance of {@link MetroAreaTargetBid }
+     * 
+     */
+    public MetroAreaTargetBid createMetroAreaTargetBid() {
+        return new MetroAreaTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignCriterionsByIdsResponse }
+     * 
+     */
+    public GetCampaignCriterionsByIdsResponse createGetCampaignCriterionsByIdsResponse() {
+        return new GetCampaignCriterionsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddCampaignCriterionsRequest }
+     * 
+     */
+    public AddCampaignCriterionsRequest createAddCampaignCriterionsRequest() {
+        return new AddCampaignCriterionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignNegativeSites }
+     * 
+     */
+    public ArrayOfCampaignNegativeSites createArrayOfCampaignNegativeSites() {
+        return new ArrayOfCampaignNegativeSites();
+    }
+
+    /**
+     * Create an instance of {@link UpdateCampaignCriterionsResponse }
+     * 
+     */
+    public UpdateCampaignCriterionsResponse createUpdateCampaignCriterionsResponse() {
+        return new UpdateCampaignCriterionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemarketingList }
+     * 
+     */
+    public RemarketingList createRemarketingList() {
+        return new RemarketingList();
+    }
+
+    /**
+     * Create an instance of {@link MediaType }
+     * 
+     */
+    public MediaType createMediaType() {
+        return new MediaType();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdExtensionsResponse }
+     * 
+     */
+    public DeleteAdExtensionsResponse createDeleteAdExtensionsResponse() {
+        return new DeleteAdExtensionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMediaRequest }
+     * 
+     */
+    public DeleteMediaRequest createDeleteMediaRequest() {
+        return new DeleteMediaRequest();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingSetting }
+     * 
+     */
+    public ShoppingSetting createShoppingSetting() {
+        return new ShoppingSetting();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByAdGroupIdRequest }
+     * 
+     */
+    public GetKeywordsByAdGroupIdRequest createGetKeywordsByAdGroupIdRequest() {
+        return new GetKeywordsByAdGroupIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBudgetsByIdsResponse }
+     * 
+     */
+    public GetBudgetsByIdsResponse createGetBudgetsByIdsResponse() {
+        return new GetBudgetsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSitePlacementsResponse }
+     * 
+     */
+    public DeleteSitePlacementsResponse createDeleteSitePlacementsResponse() {
+        return new DeleteSitePlacementsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupCriterionAction }
+     * 
+     */
+    public AdGroupCriterionAction createAdGroupCriterionAction() {
+        return new AdGroupCriterionAction();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdExtensionAssociation }
+     * 
+     */
+    public ArrayOfAdExtensionAssociation createArrayOfAdExtensionAssociation() {
+        return new ArrayOfAdExtensionAssociation();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdGroupCriterionsResponse }
+     * 
+     */
+    public UpdateAdGroupCriterionsResponse createUpdateAdGroupCriterionsResponse() {
+        return new UpdateAdGroupCriterionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSharedEntityResponse }
+     * 
+     */
+    public AddSharedEntityResponse createAddSharedEntityResponse() {
+        return new AddSharedEntityResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetSharedEntityAssociationsResponse }
+     * 
+     */
+    public SetSharedEntityAssociationsResponse createSetSharedEntityAssociationsResponse() {
+        return new SetSharedEntityAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link TargetInfo }
+     * 
+     */
+    public TargetInfo createTargetInfo() {
+        return new TargetInfo();
+    }
+
+    /**
+     * Create an instance of {@link AdRotation }
+     * 
+     */
+    public AdRotation createAdRotation() {
+        return new AdRotation();
+    }
+
+    /**
+     * Create an instance of {@link BatchErrorCollection }
+     * 
+     */
+    public BatchErrorCollection createBatchErrorCollection() {
+        return new BatchErrorCollection();
+    }
+
+    /**
+     * Create an instance of {@link AddAdGroupRemarketingListAssociationsRequest }
+     * 
+     */
+    public AddAdGroupRemarketingListAssociationsRequest createAddAdGroupRemarketingListAssociationsRequest() {
+        return new AddAdGroupRemarketingListAssociationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link LocationAdExtension }
+     * 
+     */
+    public LocationAdExtension createLocationAdExtension() {
+        return new LocationAdExtension();
+    }
+
+    /**
+     * Create an instance of {@link StructuredSnippetAdExtension }
+     * 
+     */
+    public StructuredSnippetAdExtension createStructuredSnippetAdExtension() {
+        return new StructuredSnippetAdExtension();
+    }
+
+    /**
+     * Create an instance of {@link DeviceOSTargetBid }
+     * 
+     */
+    public DeviceOSTargetBid createDeviceOSTargetBid() {
+        return new DeviceOSTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSitePlacementsRequest }
+     * 
+     */
+    public UpdateSitePlacementsRequest createUpdateSitePlacementsRequest() {
+        return new UpdateSitePlacementsRequest();
+    }
+
+    /**
+     * Create an instance of {@link SetAdExtensionsAssociationsResponse }
+     * 
+     */
+    public SetAdExtensionsAssociationsResponse createSetAdExtensionsAssociationsResponse() {
+        return new SetAdExtensionsAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteTargetFromAdGroupResponse }
+     * 
+     */
+    public DeleteTargetFromAdGroupResponse createDeleteTargetFromAdGroupResponse() {
+        return new DeleteTargetFromAdGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAdExtensionsAssociationsRequest }
+     * 
+     */
+    public GetAdExtensionsAssociationsRequest createGetAdExtensionsAssociationsRequest() {
+        return new GetAdExtensionsAssociationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBMCStoresByCustomerIdResponse }
+     * 
+     */
+    public GetBMCStoresByCustomerIdResponse createGetBMCStoresByCustomerIdResponse() {
+        return new GetBMCStoresByCustomerIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link BatchError }
+     * 
+     */
+    public BatchError createBatchError() {
+        return new BatchError();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCountryTargetBid }
+     * 
+     */
+    public ArrayOfCountryTargetBid createArrayOfCountryTargetBid() {
+        return new ArrayOfCountryTargetBid();
+    }
+
+    /**
+     * Create an instance of {@link MetroAreaTarget }
+     * 
+     */
+    public MetroAreaTarget createMetroAreaTarget() {
+        return new MetroAreaTarget();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdExtensionsResponse }
+     * 
+     */
+    public UpdateAdExtensionsResponse createUpdateAdExtensionsResponse() {
+        return new UpdateAdExtensionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetTargetToCampaignRequest }
+     * 
+     */
+    public SetTargetToCampaignRequest createSetTargetToCampaignRequest() {
+        return new SetTargetToCampaignRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDimension }
+     * 
+     */
+    public ArrayOfDimension createArrayOfDimension() {
+        return new ArrayOfDimension();
+    }
+
+    /**
+     * Create an instance of {@link CampaignNegativeSites }
+     * 
+     */
+    public CampaignNegativeSites createCampaignNegativeSites() {
+        return new CampaignNegativeSites();
+    }
+
+    /**
+     * Create an instance of {@link SetAdExtensionsAssociationsRequest }
+     * 
+     */
+    public SetAdExtensionsAssociationsRequest createSetAdExtensionsAssociationsRequest() {
+        return new SetAdExtensionsAssociationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetSitePlacementsByIdsRequest }
+     * 
+     */
+    public GetSitePlacementsByIdsRequest createGetSitePlacementsByIdsRequest() {
+        return new GetSitePlacementsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link StateTarget }
+     * 
+     */
+    public StateTarget createStateTarget() {
+        return new StateTarget();
+    }
+
+    /**
+     * Create an instance of {@link GetAdsByAdGroupIdRequest }
+     * 
+     */
+    public GetAdsByAdGroupIdRequest createGetAdsByAdGroupIdRequest() {
+        return new GetAdsByAdGroupIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link AdExtension }
+     * 
+     */
+    public AdExtension createAdExtension() {
+        return new AdExtension();
+    }
+
+    /**
+     * Create an instance of {@link GetCampaignIdsByBudgetIdsResponse }
+     * 
+     */
+    public GetCampaignIdsByBudgetIdsResponse createGetCampaignIdsByBudgetIdsResponse() {
+        return new GetCampaignIdsByBudgetIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ImageMediaRepresentation }
+     * 
+     */
+    public ImageMediaRepresentation createImageMediaRepresentation() {
+        return new ImageMediaRepresentation();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdGroupsResponse }
+     * 
+     */
+    public UpdateAdGroupsResponse createUpdateAdGroupsResponse() {
+        return new UpdateAdGroupsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSitePlacementsResponse }
+     * 
+     */
+    public AddSitePlacementsResponse createAddSitePlacementsResponse() {
+        return new AddSitePlacementsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddAdGroupRemarketingListAssociationsResponse }
+     * 
+     */
+    public AddAdGroupRemarketingListAssociationsResponse createAddAdGroupRemarketingListAssociationsResponse() {
+        return new AddAdGroupRemarketingListAssociationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link SharedEntityAssociation }
+     * 
+     */
+    public SharedEntityAssociation createSharedEntityAssociation() {
+        return new SharedEntityAssociation();
+    }
+
+    /**
+     * Create an instance of {@link GetSitePlacementsByAdGroupIdRequest }
+     * 
+     */
+    public GetSitePlacementsByAdGroupIdRequest createGetSitePlacementsByAdGroupIdRequest() {
+        return new GetSitePlacementsByAdGroupIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddAdExtensionsRequest }
+     * 
+     */
+    public AddAdExtensionsRequest createAddAdExtensionsRequest() {
+        return new AddAdExtensionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAdsByEditorialStatusResponse }
+     * 
+     */
+    public GetAdsByEditorialStatusResponse createGetAdsByEditorialStatusResponse() {
+        return new GetAdsByEditorialStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSharedEntitiesRequest }
+     * 
+     */
+    public UpdateSharedEntitiesRequest createUpdateSharedEntitiesRequest() {
+        return new UpdateSharedEntitiesRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSharedEntity }
+     * 
+     */
+    public ArrayOfSharedEntity createArrayOfSharedEntity() {
+        return new ArrayOfSharedEntity();
+    }
+
+    /**
+     * Create an instance of {@link GetMediaMetaDataByAccountIdRequest }
+     * 
+     */
+    public GetMediaMetaDataByAccountIdRequest createGetMediaMetaDataByAccountIdRequest() {
+        return new GetMediaMetaDataByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAdGroupRemarketingListAssociationsRequest }
+     * 
+     */
+    public GetAdGroupRemarketingListAssociationsRequest createGetAdGroupRemarketingListAssociationsRequest() {
+        return new GetAdGroupRemarketingListAssociationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteNegativeKeywordsFromEntitiesRequest }
+     * 
+     */
+    public DeleteNegativeKeywordsFromEntitiesRequest createDeleteNegativeKeywordsFromEntitiesRequest() {
+        return new DeleteNegativeKeywordsFromEntitiesRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetMediaMetaDataByIdsRequest }
+     * 
+     */
+    public GetMediaMetaDataByIdsRequest createGetMediaMetaDataByIdsRequest() {
+        return new GetMediaMetaDataByIdsRequest();
     }
 
     /**
@@ -1522,38 +2479,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddAdGroupCriterionsRequest }
-     * 
-     */
-    public AddAdGroupCriterionsRequest createAddAdGroupCriterionsRequest() {
-        return new AddAdGroupCriterionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link EditorialReason }
-     * 
-     */
-    public EditorialReason createEditorialReason() {
-        return new EditorialReason();
-    }
-
-    /**
-     * Create an instance of {@link GetSharedEntityAssociationsBySharedEntityIdsResponse }
-     * 
-     */
-    public GetSharedEntityAssociationsBySharedEntityIdsResponse createGetSharedEntityAssociationsBySharedEntityIdsResponse() {
-        return new GetSharedEntityAssociationsBySharedEntityIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSharedEntityAssociation }
-     * 
-     */
-    public ArrayOfSharedEntityAssociation createArrayOfSharedEntityAssociation() {
-        return new ArrayOfSharedEntityAssociation();
-    }
-
-    /**
      * Create an instance of {@link CampaignCriterion }
      * 
      */
@@ -1575,14 +2500,6 @@ public class ObjectFactory {
      */
     public CalloutAdExtension createCalloutAdExtension() {
         return new CalloutAdExtension();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfRadiusTargetBid }
-     * 
-     */
-    public ArrayOfRadiusTargetBid createArrayOfRadiusTargetBid() {
-        return new ArrayOfRadiusTargetBid();
     }
 
     /**
@@ -1626,27 +2543,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfCampaignSize }
+     * Create an instance of {@link GetBudgetsByIdsRequest }
      * 
      */
-    public ArrayOfCampaignSize createArrayOfCampaignSize() {
-        return new ArrayOfCampaignSize();
-    }
-
-    /**
-     * Create an instance of {@link AddListItemsToSharedListRequest }
-     * 
-     */
-    public AddListItemsToSharedListRequest createAddListItemsToSharedListRequest() {
-        return new AddListItemsToSharedListRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSharedListItem }
-     * 
-     */
-    public ArrayOfSharedListItem createArrayOfSharedListItem() {
-        return new ArrayOfSharedListItem();
+    public GetBudgetsByIdsRequest createGetBudgetsByIdsRequest() {
+        return new GetBudgetsByIdsRequest();
     }
 
     /**
@@ -1663,22 +2564,6 @@ public class ObjectFactory {
      */
     public GetAdsByIdsResponse createGetAdsByIdsResponse() {
         return new GetAdsByIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link Criterion }
-     * 
-     */
-    public Criterion createCriterion() {
-        return new Criterion();
-    }
-
-    /**
-     * Create an instance of {@link MediaRepresentation }
-     * 
-     */
-    public MediaRepresentation createMediaRepresentation() {
-        return new MediaRepresentation();
     }
 
     /**
@@ -1722,43 +2607,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteSharedEntitiesResponse }
-     * 
-     */
-    public DeleteSharedEntitiesResponse createDeleteSharedEntitiesResponse() {
-        return new DeleteSharedEntitiesResponse();
-    }
-
-    /**
-     * Create an instance of {@link Bid }
-     * 
-     */
-    public Bid createBid() {
-        return new Bid();
-    }
-
-    /**
-     * Create an instance of {@link UpdateKeywordsRequest }
-     * 
-     */
-    public UpdateKeywordsRequest createUpdateKeywordsRequest() {
-        return new UpdateKeywordsRequest();
-    }
-
-    /**
-     * Create an instance of {@link DeleteTargetFromCampaignResponse }
-     * 
-     */
-    public DeleteTargetFromCampaignResponse createDeleteTargetFromCampaignResponse() {
-        return new DeleteTargetFromCampaignResponse();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfEditorialError }
      * 
      */
     public ArrayOfEditorialError createArrayOfEditorialError() {
         return new ArrayOfEditorialError();
+    }
+
+    /**
+     * Create an instance of {@link GetBSCCountriesRequest }
+     * 
+     */
+    public GetBSCCountriesRequest createGetBSCCountriesRequest() {
+        return new GetBSCCountriesRequest();
     }
 
     /**
@@ -1770,43 +2631,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddAdGroupsResponse }
-     * 
-     */
-    public AddAdGroupsResponse createAddAdGroupsResponse() {
-        return new AddAdGroupsResponse();
-    }
-
-    /**
      * Create an instance of {@link UpdateSitePlacementsResponse }
      * 
      */
     public UpdateSitePlacementsResponse createUpdateSitePlacementsResponse() {
         return new UpdateSitePlacementsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddSitePlacementsRequest }
-     * 
-     */
-    public AddSitePlacementsRequest createAddSitePlacementsRequest() {
-        return new AddSitePlacementsRequest();
-    }
-
-    /**
-     * Create an instance of {@link CriterionBid }
-     * 
-     */
-    public CriterionBid createCriterionBid() {
-        return new CriterionBid();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfMetroAreaTargetBid }
-     * 
-     */
-    public ArrayOfMetroAreaTargetBid createArrayOfMetroAreaTargetBid() {
-        return new ArrayOfMetroAreaTargetBid();
     }
 
     /**
@@ -1826,51 +2655,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetKeywordsByEditorialStatusRequest }
-     * 
-     */
-    public GetKeywordsByEditorialStatusRequest createGetKeywordsByEditorialStatusRequest() {
-        return new GetKeywordsByEditorialStatusRequest();
-    }
-
-    /**
      * Create an instance of {@link AdExtensionEditorialReason }
      * 
      */
     public AdExtensionEditorialReason createAdExtensionEditorialReason() {
         return new AdExtensionEditorialReason();
-    }
-
-    /**
-     * Create an instance of {@link GetCampaignSizesByAccountIdResponse }
-     * 
-     */
-    public GetCampaignSizesByAccountIdResponse createGetCampaignSizesByAccountIdResponse() {
-        return new GetCampaignSizesByAccountIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddAdExtensionsResponse }
-     * 
-     */
-    public AddAdExtensionsResponse createAddAdExtensionsResponse() {
-        return new AddAdExtensionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdExtensionIdentity }
-     * 
-     */
-    public ArrayOfAdExtensionIdentity createArrayOfAdExtensionIdentity() {
-        return new ArrayOfAdExtensionIdentity();
-    }
-
-    /**
-     * Create an instance of {@link DeleteCampaignCriterionsRequest }
-     * 
-     */
-    public DeleteCampaignCriterionsRequest createDeleteCampaignCriterionsRequest() {
-        return new DeleteCampaignCriterionsRequest();
     }
 
     /**
@@ -1882,43 +2671,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Address }
-     * 
-     */
-    public Address createAddress() {
-        return new Address();
-    }
-
-    /**
      * Create an instance of {@link PostalCodeTargetBid }
      * 
      */
     public PostalCodeTargetBid createPostalCodeTargetBid() {
         return new PostalCodeTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfPostalCodeTargetBid }
-     * 
-     */
-    public ArrayOfPostalCodeTargetBid createArrayOfPostalCodeTargetBid() {
-        return new ArrayOfPostalCodeTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link DeleteTargetFromCampaignRequest }
-     * 
-     */
-    public DeleteTargetFromCampaignRequest createDeleteTargetFromCampaignRequest() {
-        return new DeleteTargetFromCampaignRequest();
-    }
-
-    /**
-     * Create an instance of {@link LocationTarget }
-     * 
-     */
-    public LocationTarget createLocationTarget() {
-        return new LocationTarget();
     }
 
     /**
@@ -1930,30 +2687,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateKeywordsResponse }
-     * 
-     */
-    public UpdateKeywordsResponse createUpdateKeywordsResponse() {
-        return new UpdateKeywordsResponse();
-    }
-
-    /**
-     * Create an instance of {@link Image }
-     * 
-     */
-    public Image createImage() {
-        return new Image();
-    }
-
-    /**
-     * Create an instance of {@link UpdateTargetsInLibraryRequest }
-     * 
-     */
-    public UpdateTargetsInLibraryRequest createUpdateTargetsInLibraryRequest() {
-        return new UpdateTargetsInLibraryRequest();
-    }
-
-    /**
      * Create an instance of {@link GetTargetsByIdsRequest }
      * 
      */
@@ -1962,11 +2695,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfAdGroupCriterionAction }
+     * Create an instance of {@link ArrayOfRemarketingList }
      * 
      */
-    public ArrayOfAdGroupCriterionAction createArrayOfAdGroupCriterionAction() {
-        return new ArrayOfAdGroupCriterionAction();
+    public ArrayOfRemarketingList createArrayOfRemarketingList() {
+        return new ArrayOfRemarketingList();
     }
 
     /**
@@ -1978,14 +2711,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ApplyProductPartitionActionsRequest }
-     * 
-     */
-    public ApplyProductPartitionActionsRequest createApplyProductPartitionActionsRequest() {
-        return new ApplyProductPartitionActionsRequest();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfAdExtensionEditorialReason }
      * 
      */
@@ -1994,27 +2719,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdExtensionIdToEntityIdAssociation }
-     * 
-     */
-    public AdExtensionIdToEntityIdAssociation createAdExtensionIdToEntityIdAssociation() {
-        return new AdExtensionIdToEntityIdAssociation();
-    }
-
-    /**
      * Create an instance of {@link GetNegativeSitesByCampaignIdsRequest }
      * 
      */
     public GetNegativeSitesByCampaignIdsRequest createGetNegativeSitesByCampaignIdsRequest() {
         return new GetNegativeSitesByCampaignIdsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetSharedEntityAssociationsByEntityIdsRequest }
-     * 
-     */
-    public GetSharedEntityAssociationsByEntityIdsRequest createGetSharedEntityAssociationsByEntityIdsRequest() {
-        return new GetSharedEntityAssociationsByEntityIdsRequest();
     }
 
     /**
@@ -2034,14 +2743,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddCampaignsRequest }
-     * 
-     */
-    public AddCampaignsRequest createAddCampaignsRequest() {
-        return new AddCampaignsRequest();
-    }
-
-    /**
      * Create an instance of {@link GetNegativeKeywordsByEntityIdsRequest }
      * 
      */
@@ -2055,22 +2756,6 @@ public class ObjectFactory {
      */
     public DeleteSharedEntitiesRequest createDeleteSharedEntitiesRequest() {
         return new DeleteSharedEntitiesRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetSitePlacementsByAdGroupIdResponse }
-     * 
-     */
-    public GetSitePlacementsByAdGroupIdResponse createGetSitePlacementsByAdGroupIdResponse() {
-        return new GetSitePlacementsByAdGroupIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddAdsRequest }
-     * 
-     */
-    public AddAdsRequest createAddAdsRequest() {
-        return new AddAdsRequest();
     }
 
     /**
@@ -2095,38 +2780,6 @@ public class ObjectFactory {
      */
     public GetNegativeSitesByCampaignIdsResponse createGetNegativeSitesByCampaignIdsResponse() {
         return new GetNegativeSitesByCampaignIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAdGroupCriterionsRequest }
-     * 
-     */
-    public DeleteAdGroupCriterionsRequest createDeleteAdGroupCriterionsRequest() {
-        return new DeleteAdGroupCriterionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link CityTargetBid }
-     * 
-     */
-    public CityTargetBid createCityTargetBid() {
-        return new CityTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAdExtensionsAssociationsResponse }
-     * 
-     */
-    public DeleteAdExtensionsAssociationsResponse createDeleteAdExtensionsAssociationsResponse() {
-        return new DeleteAdExtensionsAssociationsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddTargetsToLibraryRequest }
-     * 
-     */
-    public AddTargetsToLibraryRequest createAddTargetsToLibraryRequest() {
-        return new AddTargetsToLibraryRequest();
     }
 
     /**
@@ -2170,54 +2823,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetTargetToAdGroupRequest }
-     * 
-     */
-    public SetTargetToAdGroupRequest createSetTargetToAdGroupRequest() {
-        return new SetTargetToAdGroupRequest();
-    }
-
-    /**
-     * Create an instance of {@link AppealEditorialRejectionsRequest }
-     * 
-     */
-    public AppealEditorialRejectionsRequest createAppealEditorialRejectionsRequest() {
-        return new AppealEditorialRejectionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfEntityIdToParentIdAssociation }
-     * 
-     */
-    public ArrayOfEntityIdToParentIdAssociation createArrayOfEntityIdToParentIdAssociation() {
-        return new ArrayOfEntityIdToParentIdAssociation();
-    }
-
-    /**
-     * Create an instance of {@link CampaignSize }
-     * 
-     */
-    public CampaignSize createCampaignSize() {
-        return new CampaignSize();
-    }
-
-    /**
-     * Create an instance of {@link SetTargetToCampaignResponse }
-     * 
-     */
-    public SetTargetToCampaignResponse createSetTargetToCampaignResponse() {
-        return new SetTargetToCampaignResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCampaignSizesByAccountIdRequest }
-     * 
-     */
-    public GetCampaignSizesByAccountIdRequest createGetCampaignSizesByAccountIdRequest() {
-        return new GetCampaignSizesByAccountIdRequest();
-    }
-
-    /**
      * Create an instance of {@link GetCampaignsByAccountIdResponse }
      * 
      */
@@ -2234,27 +2839,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MediaAssociation }
-     * 
-     */
-    public MediaAssociation createMediaAssociation() {
-        return new MediaAssociation();
-    }
-
-    /**
      * Create an instance of {@link SetSharedEntityAssociationsRequest }
      * 
      */
     public SetSharedEntityAssociationsRequest createSetSharedEntityAssociationsRequest() {
         return new SetSharedEntityAssociationsRequest();
-    }
-
-    /**
-     * Create an instance of {@link Target }
-     * 
-     */
-    public Target createTarget() {
-        return new Target();
     }
 
     /**
@@ -2279,30 +2868,6 @@ public class ObjectFactory {
      */
     public GetTargetsByCampaignIdsResponse createGetTargetsByCampaignIdsResponse() {
         return new GetTargetsByCampaignIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAdExtensionsByIdsResponse }
-     * 
-     */
-    public GetAdExtensionsByIdsResponse createGetAdExtensionsByIdsResponse() {
-        return new GetAdExtensionsByIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateAdExtensionsRequest }
-     * 
-     */
-    public UpdateAdExtensionsRequest createUpdateAdExtensionsRequest() {
-        return new UpdateAdExtensionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAdExtensionsRequest }
-     * 
-     */
-    public DeleteAdExtensionsRequest createDeleteAdExtensionsRequest() {
-        return new DeleteAdExtensionsRequest();
     }
 
     /**
@@ -2338,14 +2903,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EditorialApiFaultDetail }
-     * 
-     */
-    public EditorialApiFaultDetail createEditorialApiFaultDetail() {
-        return new EditorialApiFaultDetail();
-    }
-
-    /**
      * Create an instance of {@link Dimension }
      * 
      */
@@ -2370,11 +2927,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAdGroupCriterionsByIdsRequest }
+     * Create an instance of {@link UpdateAdGroupRemarketingListAssociationsRequest }
      * 
      */
-    public GetAdGroupCriterionsByIdsRequest createGetAdGroupCriterionsByIdsRequest() {
-        return new GetAdGroupCriterionsByIdsRequest();
+    public UpdateAdGroupRemarketingListAssociationsRequest createUpdateAdGroupRemarketingListAssociationsRequest() {
+        return new UpdateAdGroupRemarketingListAssociationsRequest();
     }
 
     /**
@@ -2383,22 +2940,6 @@ public class ObjectFactory {
      */
     public AddAdGroupsRequest createAddAdGroupsRequest() {
         return new AddAdGroupsRequest();
-    }
-
-    /**
-     * Create an instance of {@link AddNegativeKeywordsToEntitiesResponse }
-     * 
-     */
-    public AddNegativeKeywordsToEntitiesResponse createAddNegativeKeywordsToEntitiesResponse() {
-        return new AddNegativeKeywordsToEntitiesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfIdCollection }
-     * 
-     */
-    public ArrayOfIdCollection createArrayOfIdCollection() {
-        return new ArrayOfIdCollection();
     }
 
     /**
@@ -2418,22 +2959,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAdsByEditorialStatusRequest }
-     * 
-     */
-    public GetAdsByEditorialStatusRequest createGetAdsByEditorialStatusRequest() {
-        return new GetAdsByEditorialStatusRequest();
-    }
-
-    /**
-     * Create an instance of {@link AddCampaignsResponse }
-     * 
-     */
-    public AddCampaignsResponse createAddCampaignsResponse() {
-        return new AddCampaignsResponse();
-    }
-
-    /**
      * Create an instance of {@link AdExtensionAssociation }
      * 
      */
@@ -2442,19 +2967,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddAdGroupCriterionsResponse }
+     * Create an instance of {@link GetCampaignIdsByBudgetIdsRequest }
      * 
      */
-    public AddAdGroupCriterionsResponse createAddAdGroupCriterionsResponse() {
-        return new AddAdGroupCriterionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSitePlacementsRequest }
-     * 
-     */
-    public DeleteSitePlacementsRequest createDeleteSitePlacementsRequest() {
-        return new DeleteSitePlacementsRequest();
+    public GetCampaignIdsByBudgetIdsRequest createGetCampaignIdsByBudgetIdsRequest() {
+        return new GetCampaignIdsByBudgetIdsRequest();
     }
 
     /**
@@ -2474,35 +2991,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAdExtensionIdsByAccountIdRequest }
-     * 
-     */
-    public GetAdExtensionIdsByAccountIdRequest createGetAdExtensionIdsByAccountIdRequest() {
-        return new GetAdExtensionIdsByAccountIdRequest();
-    }
-
-    /**
      * Create an instance of {@link DayTimeTargetBid }
      * 
      */
     public DayTimeTargetBid createDayTimeTargetBid() {
         return new DayTimeTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link FixedBid }
-     * 
-     */
-    public FixedBid createFixedBid() {
-        return new FixedBid();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfPlacementDetail }
-     * 
-     */
-    public ArrayOfPlacementDetail createArrayOfPlacementDetail() {
-        return new ArrayOfPlacementDetail();
     }
 
     /**
@@ -2514,38 +3007,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProductAd }
-     * 
-     */
-    public ProductAd createProductAd() {
-        return new ProductAd();
-    }
-
-    /**
-     * Create an instance of {@link GetAdGroupsByCampaignIdResponse }
-     * 
-     */
-    public GetAdGroupsByCampaignIdResponse createGetAdGroupsByCampaignIdResponse() {
-        return new GetAdGroupsByCampaignIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetMediaAssociationsRequest }
-     * 
-     */
-    public GetMediaAssociationsRequest createGetMediaAssociationsRequest() {
-        return new GetMediaAssociationsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetKeywordsByAdGroupIdResponse }
-     * 
-     */
-    public GetKeywordsByAdGroupIdResponse createGetKeywordsByAdGroupIdResponse() {
-        return new GetKeywordsByAdGroupIdResponse();
-    }
-
-    /**
      * Create an instance of {@link DeleteKeywordsResponse }
      * 
      */
@@ -2554,19 +3015,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdGroupCriterion }
+     * Create an instance of {@link DeleteAdGroupRemarketingListAssociationsRequest }
      * 
      */
-    public AdGroupCriterion createAdGroupCriterion() {
-        return new AdGroupCriterion();
-    }
-
-    /**
-     * Create an instance of {@link UpdateAdGroupsRequest }
-     * 
-     */
-    public UpdateAdGroupsRequest createUpdateAdGroupsRequest() {
-        return new UpdateAdGroupsRequest();
+    public DeleteAdGroupRemarketingListAssociationsRequest createDeleteAdGroupRemarketingListAssociationsRequest() {
+        return new DeleteAdGroupRemarketingListAssociationsRequest();
     }
 
     /**
@@ -2583,22 +3036,6 @@ public class ObjectFactory {
      */
     public DeleteCampaignsResponse createDeleteCampaignsResponse() {
         return new DeleteCampaignsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetKeywordsByIdsRequest }
-     * 
-     */
-    public GetKeywordsByIdsRequest createGetKeywordsByIdsRequest() {
-        return new GetKeywordsByIdsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetEditorialReasonsByIdsRequest }
-     * 
-     */
-    public GetEditorialReasonsByIdsRequest createGetEditorialReasonsByIdsRequest() {
-        return new GetEditorialReasonsByIdsRequest();
     }
 
     /**
@@ -2626,11 +3063,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfMigrationStatusInfo }
+     * Create an instance of {@link AddBudgetsResponse }
      * 
      */
-    public ArrayOfMigrationStatusInfo createArrayOfMigrationStatusInfo() {
-        return new ArrayOfMigrationStatusInfo();
+    public AddBudgetsResponse createAddBudgetsResponse() {
+        return new AddBudgetsResponse();
     }
 
     /**
@@ -2666,14 +3103,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RadiusTargetBid }
-     * 
-     */
-    public RadiusTargetBid createRadiusTargetBid() {
-        return new RadiusTargetBid();
-    }
-
-    /**
      * Create an instance of {@link DeleteAdExtensionsAssociationsRequest }
      * 
      */
@@ -2690,27 +3119,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdExtensionEditorialReasonCollection }
-     * 
-     */
-    public AdExtensionEditorialReasonCollection createAdExtensionEditorialReasonCollection() {
-        return new AdExtensionEditorialReasonCollection();
-    }
-
-    /**
      * Create an instance of {@link GetPlacementDetailsForUrlsRequest }
      * 
      */
     public GetPlacementDetailsForUrlsRequest createGetPlacementDetailsForUrlsRequest() {
         return new GetPlacementDetailsForUrlsRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfstring }
-     * 
-     */
-    public ArrayOfstring createArrayOfstring() {
-        return new ArrayOfstring();
     }
 
     /**
@@ -2722,43 +3135,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateCampaignsResponse }
+     * Create an instance of {@link AdGroupRemarketingListAssociation }
      * 
      */
-    public UpdateCampaignsResponse createUpdateCampaignsResponse() {
-        return new UpdateCampaignsResponse();
-    }
-
-    /**
-     * Create an instance of {@link NegativeAdGroupCriterion }
-     * 
-     */
-    public NegativeAdGroupCriterion createNegativeAdGroupCriterion() {
-        return new NegativeAdGroupCriterion();
-    }
-
-    /**
-     * Create an instance of {@link UpdateCampaignsRequest }
-     * 
-     */
-    public UpdateCampaignsRequest createUpdateCampaignsRequest() {
-        return new UpdateCampaignsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetTargetsByAdGroupIdsResponse }
-     * 
-     */
-    public GetTargetsByAdGroupIdsResponse createGetTargetsByAdGroupIdsResponse() {
-        return new GetTargetsByAdGroupIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetNegativeSitesToAdGroupsRequest }
-     * 
-     */
-    public SetNegativeSitesToAdGroupsRequest createSetNegativeSitesToAdGroupsRequest() {
-        return new SetNegativeSitesToAdGroupsRequest();
+    public AdGroupRemarketingListAssociation createAdGroupRemarketingListAssociation() {
+        return new AdGroupRemarketingListAssociation();
     }
 
     /**
@@ -2770,35 +3151,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetMediaByIdsResponse }
-     * 
-     */
-    public GetMediaByIdsResponse createGetMediaByIdsResponse() {
-        return new GetMediaByIdsResponse();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfOperationError }
      * 
      */
     public ArrayOfOperationError createArrayOfOperationError() {
         return new ArrayOfOperationError();
-    }
-
-    /**
-     * Create an instance of {@link CountryTarget }
-     * 
-     */
-    public CountryTarget createCountryTarget() {
-        return new CountryTarget();
-    }
-
-    /**
-     * Create an instance of {@link GetAdExtensionIdsByAccountIdResponse }
-     * 
-     */
-    public GetAdExtensionIdsByAccountIdResponse createGetAdExtensionIdsByAccountIdResponse() {
-        return new GetAdExtensionIdsByAccountIdResponse();
     }
 
     /**
@@ -2818,22 +3175,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ImpressionsPerDayRange }
-     * 
-     */
-    public ImpressionsPerDayRange createImpressionsPerDayRange() {
-        return new ImpressionsPerDayRange();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSiteLink }
-     * 
-     */
-    public ArrayOfSiteLink createArrayOfSiteLink() {
-        return new ArrayOfSiteLink();
-    }
-
-    /**
      * Create an instance of {@link GetListItemsBySharedListResponse }
      * 
      */
@@ -2847,30 +3188,6 @@ public class ObjectFactory {
      */
     public ArrayOfCityTargetBid createArrayOfCityTargetBid() {
         return new ArrayOfCityTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link ApplyProductPartitionActionsResponse }
-     * 
-     */
-    public ApplyProductPartitionActionsResponse createApplyProductPartitionActionsResponse() {
-        return new ApplyProductPartitionActionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GenderTarget }
-     * 
-     */
-    public GenderTarget createGenderTarget() {
-        return new GenderTarget();
-    }
-
-    /**
-     * Create an instance of {@link GetSitePlacementsByIdsResponse }
-     * 
-     */
-    public GetSitePlacementsByIdsResponse createGetSitePlacementsByIdsResponse() {
-        return new GetSitePlacementsByIdsResponse();
     }
 
     /**
@@ -2898,30 +3215,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfEditorialReason }
-     * 
-     */
-    public ArrayOfEditorialReason createArrayOfEditorialReason() {
-        return new ArrayOfEditorialReason();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfStateTargetBid }
-     * 
-     */
-    public ArrayOfStateTargetBid createArrayOfStateTargetBid() {
-        return new ArrayOfStateTargetBid();
-    }
-
-    /**
-     * Create an instance of {@link NegativeKeyword }
-     * 
-     */
-    public NegativeKeyword createNegativeKeyword() {
-        return new NegativeKeyword();
-    }
-
-    /**
      * Create an instance of {@link AddMediaRequest }
      * 
      */
@@ -2946,43 +3239,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetTargetsByIdsResponse }
-     * 
-     */
-    public GetTargetsByIdsResponse createGetTargetsByIdsResponse() {
-        return new GetTargetsByIdsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetSharedEntityAssociationsByEntityIdsResponse }
-     * 
-     */
-    public GetSharedEntityAssociationsByEntityIdsResponse createGetSharedEntityAssociationsByEntityIdsResponse() {
-        return new GetSharedEntityAssociationsByEntityIdsResponse();
-    }
-
-    /**
      * Create an instance of {@link Date }
      * 
      */
     public Date createDate() {
         return new Date();
-    }
-
-    /**
-     * Create an instance of {@link SetTargetToAdGroupResponse }
-     * 
-     */
-    public SetTargetToAdGroupResponse createSetTargetToAdGroupResponse() {
-        return new SetTargetToAdGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetEditorialReasonsByIdsResponse }
-     * 
-     */
-    public GetEditorialReasonsByIdsResponse createGetEditorialReasonsByIdsResponse() {
-        return new GetEditorialReasonsByIdsResponse();
     }
 
     /**
@@ -3002,19 +3263,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteAdGroupsRequest }
+     * Create an instance of {@link GetRemarketingListsResponse }
      * 
      */
-    public DeleteAdGroupsRequest createDeleteAdGroupsRequest() {
-        return new DeleteAdGroupsRequest();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupNegativeSites }
-     * 
-     */
-    public AdGroupNegativeSites createAdGroupNegativeSites() {
-        return new AdGroupNegativeSites();
+    public GetRemarketingListsResponse createGetRemarketingListsResponse() {
+        return new GetRemarketingListsResponse();
     }
 
     /**
@@ -3026,19 +3279,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CityTarget }
-     * 
-     */
-    public CityTarget createCityTarget() {
-        return new CityTarget();
-    }
-
-    /**
      * Create an instance of {@link ApiFaultDetail }
      * 
      */
     public ApiFaultDetail createApiFaultDetail() {
         return new ApiFaultDetail();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdGroupRemarketingListAssociationsResponse }
+     * 
+     */
+    public DeleteAdGroupRemarketingListAssociationsResponse createDeleteAdGroupRemarketingListAssociationsResponse() {
+        return new DeleteAdGroupRemarketingListAssociationsResponse();
     }
 
     /**
@@ -3050,11 +3303,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BiddingScheme }
+     * 
+     */
+    public BiddingScheme createBiddingScheme() {
+        return new BiddingScheme();
+    }
+
+    /**
      * Create an instance of {@link AppUrl }
      * 
      */
     public AppUrl createAppUrl() {
         return new AppUrl();
+    }
+
+    /**
+     * Create an instance of {@link TargetCpaBiddingScheme }
+     * 
+     */
+    public TargetCpaBiddingScheme createTargetCpaBiddingScheme() {
+        return new TargetCpaBiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link InheritFromParentBiddingScheme }
+     * 
+     */
+    public InheritFromParentBiddingScheme createInheritFromParentBiddingScheme() {
+        return new InheritFromParentBiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link ManualCpcBiddingScheme }
+     * 
+     */
+    public ManualCpcBiddingScheme createManualCpcBiddingScheme() {
+        return new ManualCpcBiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link MaxClicksBiddingScheme }
+     * 
+     */
+    public MaxClicksBiddingScheme createMaxClicksBiddingScheme() {
+        return new MaxClicksBiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link EnhancedCpcBiddingScheme }
+     * 
+     */
+    public EnhancedCpcBiddingScheme createEnhancedCpcBiddingScheme() {
+        return new EnhancedCpcBiddingScheme();
     }
 
     /**
@@ -3079,6 +3380,14 @@ public class ObjectFactory {
      */
     public CustomParameter createCustomParameter() {
         return new CustomParameter();
+    }
+
+    /**
+     * Create an instance of {@link MaxConversionsBiddingScheme }
+     * 
+     */
+    public MaxConversionsBiddingScheme createMaxConversionsBiddingScheme() {
+        return new MaxConversionsBiddingScheme();
     }
 
     /**
@@ -3207,6 +3516,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupRemarketingListAssociationStatus }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdGroupRemarketingListAssociationStatus")
+    public JAXBElement<AdGroupRemarketingListAssociationStatus> createAdGroupRemarketingListAssociationStatus(AdGroupRemarketingListAssociationStatus value) {
+        return new JAXBElement<AdGroupRemarketingListAssociationStatus>(_AdGroupRemarketingListAssociationStatus_QNAME, AdGroupRemarketingListAssociationStatus.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AssociationType }{@code >}}
      * 
      */
@@ -3229,7 +3547,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdExtensionsTypeFilter")
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     public JAXBElement<Collection<AdExtensionsTypeFilter>> createAdExtensionsTypeFilter(Collection<AdExtensionsTypeFilter> value) {
         return new JAXBElement<Collection<AdExtensionsTypeFilter>>(_AdExtensionsTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3241,6 +3559,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "Date")
     public JAXBElement<Date> createDate(Date value) {
         return new JAXBElement<Date>(_Date_QNAME, Date.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemarketingTargetingSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "RemarketingTargetingSetting")
+    public JAXBElement<RemarketingTargetingSetting> createRemarketingTargetingSetting(RemarketingTargetingSetting value) {
+        return new JAXBElement<RemarketingTargetingSetting>(_RemarketingTargetingSetting_QNAME, RemarketingTargetingSetting.class, null, value);
     }
 
     /**
@@ -3277,6 +3604,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "NegativeKeyword")
     public JAXBElement<NegativeKeyword> createNegativeKeyword(NegativeKeyword value) {
         return new JAXBElement<NegativeKeyword>(_NegativeKeyword_QNAME, NegativeKeyword.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CampaignAdditionalField")
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    public JAXBElement<Collection<CampaignAdditionalField>> createCampaignAdditionalField(Collection<CampaignAdditionalField> value) {
+        return new JAXBElement<Collection<CampaignAdditionalField>>(_CampaignAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -3433,21 +3770,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOperationError }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfOperationError")
-    public JAXBElement<ArrayOfOperationError> createArrayOfOperationError(ArrayOfOperationError value) {
-        return new JAXBElement<ArrayOfOperationError>(_ArrayOfOperationError_QNAME, ArrayOfOperationError.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CountryTarget }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CountryTarget")
     public JAXBElement<CountryTarget> createCountryTarget(CountryTarget value) {
         return new JAXBElement<CountryTarget>(_CountryTarget_QNAME, CountryTarget.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOperationError }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfOperationError")
+    public JAXBElement<ArrayOfOperationError> createArrayOfOperationError(ArrayOfOperationError value) {
+        return new JAXBElement<ArrayOfOperationError>(_ArrayOfOperationError_QNAME, ArrayOfOperationError.class, null, value);
     }
 
     /**
@@ -3466,6 +3803,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "QName")
     public JAXBElement<QName> createQName(QName value) {
         return new JAXBElement<QName>(_QName_QNAME, QName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupRemarketingListAssociation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdGroupRemarketingListAssociation")
+    public JAXBElement<AdGroupRemarketingListAssociation> createAdGroupRemarketingListAssociation(AdGroupRemarketingListAssociation value) {
+        return new JAXBElement<AdGroupRemarketingListAssociation>(_AdGroupRemarketingListAssociation_QNAME, AdGroupRemarketingListAssociation.class, null, value);
     }
 
     /**
@@ -3613,6 +3959,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdGroupCriterion")
+    public JAXBElement<AdGroupCriterion> createAdGroupCriterion(AdGroupCriterion value) {
+        return new JAXBElement<AdGroupCriterion>(_AdGroupCriterion_QNAME, AdGroupCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdGroupCriterion }{@code >}}
      * 
      */
@@ -3622,12 +3977,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterion }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MaxConversionsBiddingScheme }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdGroupCriterion")
-    public JAXBElement<AdGroupCriterion> createAdGroupCriterion(AdGroupCriterion value) {
-        return new JAXBElement<AdGroupCriterion>(_AdGroupCriterion_QNAME, AdGroupCriterion.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "MaxConversionsBiddingScheme")
+    public JAXBElement<MaxConversionsBiddingScheme> createMaxConversionsBiddingScheme(MaxConversionsBiddingScheme value) {
+        return new JAXBElement<MaxConversionsBiddingScheme>(_MaxConversionsBiddingScheme_QNAME, MaxConversionsBiddingScheme.class, null, value);
     }
 
     /**
@@ -3802,6 +4157,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetCpaBiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "TargetCpaBiddingScheme")
+    public JAXBElement<TargetCpaBiddingScheme> createTargetCpaBiddingScheme(TargetCpaBiddingScheme value) {
+        return new JAXBElement<TargetCpaBiddingScheme>(_TargetCpaBiddingScheme_QNAME, TargetCpaBiddingScheme.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfstring }{@code >}}
      * 
      */
@@ -3826,6 +4190,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "Dimension")
     public JAXBElement<Dimension> createDimension(Dimension value) {
         return new JAXBElement<Dimension>(_Dimension_QNAME, Dimension.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MaxClicksBiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "MaxClicksBiddingScheme")
+    public JAXBElement<MaxClicksBiddingScheme> createMaxClicksBiddingScheme(MaxClicksBiddingScheme value) {
+        return new JAXBElement<MaxClicksBiddingScheme>(_MaxClicksBiddingScheme_QNAME, MaxClicksBiddingScheme.class, null, value);
     }
 
     /**
@@ -3860,7 +4233,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CampaignCriterionType")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     public JAXBElement<Collection<CampaignCriterionType>> createCampaignCriterionType(Collection<CampaignCriterionType> value) {
         return new JAXBElement<Collection<CampaignCriterionType>>(_CampaignCriterionType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3929,21 +4302,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TextAd }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "TextAd")
-    public JAXBElement<TextAd> createTextAd(TextAd value) {
-        return new JAXBElement<TextAd>(_TextAd_QNAME, TextAd.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MediaAssociation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "MediaAssociation")
     public JAXBElement<MediaAssociation> createMediaAssociation(MediaAssociation value) {
         return new JAXBElement<MediaAssociation>(_MediaAssociation_QNAME, MediaAssociation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TextAd }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "TextAd")
+    public JAXBElement<TextAd> createTextAd(TextAd value) {
+        return new JAXBElement<TextAd>(_TextAd_QNAME, TextAd.class, null, value);
     }
 
     /**
@@ -3974,6 +4347,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdGroupRemarketingListAssociation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfAdGroupRemarketingListAssociation")
+    public JAXBElement<ArrayOfAdGroupRemarketingListAssociation> createArrayOfAdGroupRemarketingListAssociation(ArrayOfAdGroupRemarketingListAssociation value) {
+        return new JAXBElement<ArrayOfAdGroupRemarketingListAssociation>(_ArrayOfAdGroupRemarketingListAssociation_QNAME, ArrayOfAdGroupRemarketingListAssociation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SiteLinksAdExtension }{@code >}}
      * 
      */
@@ -3989,6 +4371,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdExtensionAssociationCollection")
     public JAXBElement<AdExtensionAssociationCollection> createAdExtensionAssociationCollection(AdExtensionAssociationCollection value) {
         return new JAXBElement<AdExtensionAssociationCollection>(_AdExtensionAssociationCollection_QNAME, AdExtensionAssociationCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link KeywordAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "KeywordAdditionalField")
+    @XmlJavaTypeAdapter(Adapter9 .class)
+    public JAXBElement<Collection<KeywordAdditionalField>> createKeywordAdditionalField(Collection<KeywordAdditionalField> value) {
+        return new JAXBElement<Collection<KeywordAdditionalField>>(_KeywordAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -4025,6 +4417,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdExtensionIdentity")
     public JAXBElement<AdExtensionIdentity> createAdExtensionIdentity(AdExtensionIdentity value) {
         return new JAXBElement<AdExtensionIdentity>(_AdExtensionIdentity_QNAME, AdExtensionIdentity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdGroupAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdGroupAdditionalField")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<AdGroupAdditionalField>> createAdGroupAdditionalField(Collection<AdGroupAdditionalField> value) {
+        return new JAXBElement<Collection<AdGroupAdditionalField>>(_AdGroupAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -4091,12 +4493,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BiddingModel }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRemarketingList }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "BiddingModel")
-    public JAXBElement<BiddingModel> createBiddingModel(BiddingModel value) {
-        return new JAXBElement<BiddingModel>(_BiddingModel_QNAME, BiddingModel.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfRemarketingList")
+    public JAXBElement<ArrayOfRemarketingList> createArrayOfRemarketingList(ArrayOfRemarketingList value) {
+        return new JAXBElement<ArrayOfRemarketingList>(_ArrayOfRemarketingList_QNAME, ArrayOfRemarketingList.class, null, value);
     }
 
     /**
@@ -4106,6 +4508,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "Image")
     public JAXBElement<Image> createImage(Image value) {
         return new JAXBElement<Image>(_Image_QNAME, Image.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BiddingModel }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "BiddingModel")
+    public JAXBElement<BiddingModel> createBiddingModel(BiddingModel value) {
+        return new JAXBElement<BiddingModel>(_BiddingModel_QNAME, BiddingModel.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EntityScope }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "EntityScope")
+    public JAXBElement<EntityScope> createEntityScope(EntityScope value) {
+        return new JAXBElement<EntityScope>(_EntityScope_QNAME, EntityScope.class, null, value);
     }
 
     /**
@@ -4232,6 +4652,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "ArrayOfAdApiError")
     public JAXBElement<ArrayOfAdApiError> createArrayOfAdApiError(ArrayOfAdApiError value) {
         return new JAXBElement<ArrayOfAdApiError>(_ArrayOfAdApiError_QNAME, ArrayOfAdApiError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "BiddingScheme")
+    public JAXBElement<BiddingScheme> createBiddingScheme(BiddingScheme value) {
+        return new JAXBElement<BiddingScheme>(_BiddingScheme_QNAME, BiddingScheme.class, null, value);
     }
 
     /**
@@ -4460,6 +4889,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemarketingListTemplate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "RemarketingListTemplate")
+    public JAXBElement<RemarketingListTemplate> createRemarketingListTemplate(RemarketingListTemplate value) {
+        return new JAXBElement<RemarketingListTemplate>(_RemarketingListTemplate_QNAME, RemarketingListTemplate.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SharedList }{@code >}}
      * 
      */
@@ -4493,6 +4931,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ImageAdExtension")
     public JAXBElement<ImageAdExtension> createImageAdExtension(ImageAdExtension value) {
         return new JAXBElement<ImageAdExtension>(_ImageAdExtension_QNAME, ImageAdExtension.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ManualCpcBiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "ManualCpcBiddingScheme")
+    public JAXBElement<ManualCpcBiddingScheme> createManualCpcBiddingScheme(ManualCpcBiddingScheme value) {
+        return new JAXBElement<ManualCpcBiddingScheme>(_ManualCpcBiddingScheme_QNAME, ManualCpcBiddingScheme.class, null, value);
     }
 
     /**
@@ -4563,7 +5010,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CampaignType")
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     public JAXBElement<Collection<CampaignType>> createCampaignType(Collection<CampaignType> value) {
         return new JAXBElement<Collection<CampaignType>>(_CampaignType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -4582,7 +5029,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CriterionType")
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     public JAXBElement<Collection<CriterionType>> createCriterionType(Collection<CriterionType> value) {
         return new JAXBElement<Collection<CriterionType>>(_CriterionType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -4619,7 +5066,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "MediaEnabledEntityFilter")
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     public JAXBElement<Collection<MediaEnabledEntityFilter>> createMediaEnabledEntityFilter(Collection<MediaEnabledEntityFilter> value) {
         return new JAXBElement<Collection<MediaEnabledEntityFilter>>(_MediaEnabledEntityFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -4667,6 +5114,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdType")
     public JAXBElement<AdType> createAdType(AdType value) {
         return new JAXBElement<AdType>(_AdType_QNAME, AdType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBudget }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfBudget")
+    public JAXBElement<ArrayOfBudget> createArrayOfBudget(ArrayOfBudget value) {
+        return new JAXBElement<ArrayOfBudget>(_ArrayOfBudget_QNAME, ArrayOfBudget.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InheritFromParentBiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "InheritFromParentBiddingScheme")
+    public JAXBElement<InheritFromParentBiddingScheme> createInheritFromParentBiddingScheme(InheritFromParentBiddingScheme value) {
+        return new JAXBElement<InheritFromParentBiddingScheme>(_InheritFromParentBiddingScheme_QNAME, InheritFromParentBiddingScheme.class, null, value);
     }
 
     /**
@@ -4755,7 +5220,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdDistribution")
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     public JAXBElement<Collection<AdDistribution>> createAdDistribution(Collection<AdDistribution> value) {
         return new JAXBElement<Collection<AdDistribution>>(_AdDistribution_QNAME, ((Class) Collection.class), null, value);
     }
@@ -4824,21 +5289,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCountryTargetBid }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfCountryTargetBid")
-    public JAXBElement<ArrayOfCountryTargetBid> createArrayOfCountryTargetBid(ArrayOfCountryTargetBid value) {
-        return new JAXBElement<ArrayOfCountryTargetBid>(_ArrayOfCountryTargetBid_QNAME, ArrayOfCountryTargetBid.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RadiusTarget }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "RadiusTarget")
     public JAXBElement<RadiusTarget> createRadiusTarget(RadiusTarget value) {
         return new JAXBElement<RadiusTarget>(_RadiusTarget_QNAME, RadiusTarget.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCountryTargetBid }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfCountryTargetBid")
+    public JAXBElement<ArrayOfCountryTargetBid> createArrayOfCountryTargetBid(ArrayOfCountryTargetBid value) {
+        return new JAXBElement<ArrayOfCountryTargetBid>(_ArrayOfCountryTargetBid_QNAME, ArrayOfCountryTargetBid.class, null, value);
     }
 
     /**
@@ -4852,15 +5317,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BatchError }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "BatchError")
-    public JAXBElement<BatchError> createBatchError(BatchError value) {
-        return new JAXBElement<BatchError>(_BatchError_QNAME, BatchError.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NegativeKeywordList }{@code >}}
      * 
      */
@@ -4870,12 +5326,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AdRotationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BatchError }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdRotationType")
-    public JAXBElement<AdRotationType> createAdRotationType(AdRotationType value) {
-        return new JAXBElement<AdRotationType>(_AdRotationType_QNAME, AdRotationType.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "BatchError")
+    public JAXBElement<BatchError> createBatchError(BatchError value) {
+        return new JAXBElement<BatchError>(_BatchError_QNAME, BatchError.class, null, value);
     }
 
     /**
@@ -4885,6 +5341,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AgeTargetBid")
     public JAXBElement<AgeTargetBid> createAgeTargetBid(AgeTargetBid value) {
         return new JAXBElement<AgeTargetBid>(_AgeTargetBid_QNAME, AgeTargetBid.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRotationType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "AdRotationType")
+    public JAXBElement<AdRotationType> createAdRotationType(AdRotationType value) {
+        return new JAXBElement<AdRotationType>(_AdRotationType_QNAME, AdRotationType.class, null, value);
     }
 
     /**
@@ -4924,12 +5389,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Budget }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "Budget")
+    public JAXBElement<Budget> createBudget(Budget value) {
+        return new JAXBElement<Budget>(_Budget_QNAME, Budget.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeviceOSTargetBid }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "DeviceOSTargetBid")
     public JAXBElement<DeviceOSTargetBid> createDeviceOSTargetBid(DeviceOSTargetBid value) {
         return new JAXBElement<DeviceOSTargetBid>(_DeviceOSTargetBid_QNAME, DeviceOSTargetBid.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StructuredSnippetAdExtension }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "StructuredSnippetAdExtension")
+    public JAXBElement<StructuredSnippetAdExtension> createStructuredSnippetAdExtension(StructuredSnippetAdExtension value) {
+        return new JAXBElement<StructuredSnippetAdExtension>(_StructuredSnippetAdExtension_QNAME, StructuredSnippetAdExtension.class, null, value);
     }
 
     /**
@@ -5122,21 +5605,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTarget }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfTarget")
-    public JAXBElement<ArrayOfTarget> createArrayOfTarget(ArrayOfTarget value) {
-        return new JAXBElement<ArrayOfTarget>(_ArrayOfTarget_QNAME, ArrayOfTarget.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link KeywordEditorialStatus }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "KeywordEditorialStatus")
     public JAXBElement<KeywordEditorialStatus> createKeywordEditorialStatus(KeywordEditorialStatus value) {
         return new JAXBElement<KeywordEditorialStatus>(_KeywordEditorialStatus_QNAME, KeywordEditorialStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTarget }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfTarget")
+    public JAXBElement<ArrayOfTarget> createArrayOfTarget(ArrayOfTarget value) {
+        return new JAXBElement<ArrayOfTarget>(_ArrayOfTarget_QNAME, ArrayOfTarget.class, null, value);
     }
 
     /**
@@ -5209,6 +5692,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "SiteLink")
     public JAXBElement<SiteLink> createSiteLink(SiteLink value) {
         return new JAXBElement<SiteLink>(_SiteLink_QNAME, SiteLink.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EnhancedCpcBiddingScheme }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10", name = "EnhancedCpcBiddingScheme")
+    public JAXBElement<EnhancedCpcBiddingScheme> createEnhancedCpcBiddingScheme(EnhancedCpcBiddingScheme value) {
+        return new JAXBElement<EnhancedCpcBiddingScheme>(_EnhancedCpcBiddingScheme_QNAME, EnhancedCpcBiddingScheme.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemarketingList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "RemarketingList")
+    public JAXBElement<RemarketingList> createRemarketingList(RemarketingList value) {
+        return new JAXBElement<RemarketingList>(_RemarketingList_QNAME, RemarketingList.class, null, value);
     }
 
     /**

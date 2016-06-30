@@ -362,6 +362,30 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkKeyword, String>(StringTable.BidStrategyType,
+                new Function<BulkKeyword, String>() {
+                    @Override
+                    public String apply(BulkKeyword c) {
+                        try {
+							return StringExtensions.toBiddingSchemeBulkString(c.getKeyword().getBiddingScheme());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						return null;
+                    }
+                },
+                new BiConsumer<String, BulkKeyword>() {
+                    @Override
+                    public void accept(String v, BulkKeyword c) {
+                        try {
+							c.getKeyword().setBiddingScheme(StringExtensions.parseBiddingScheme(v));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

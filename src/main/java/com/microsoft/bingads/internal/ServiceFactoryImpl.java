@@ -2,12 +2,8 @@ package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.adintelligence.IAdIntelligenceService;
-import com.microsoft.bingads.bulk.IBulkService;
-import com.microsoft.bingads.campaignmanagement.ICampaignManagementService;
 import com.microsoft.bingads.customerbilling.ICustomerBillingService;
 import com.microsoft.bingads.customermanagement.ICustomerManagementService;
-import com.microsoft.bingads.optimizer.IOptimizerService;
 import com.microsoft.bingads.reporting.IReportingService;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,31 +25,10 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "10.4.5";
+    private static final String VERSION = "10.4.6";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
-            put(IAdIntelligenceService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://api.bingads.microsoft.com/Api/Advertiser/AdIntelligence/v9/AdIntelligenceService.svc");
-                    setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/AdIntelligence/v9/AdIntelligenceService.svc");
-                }
-            });
-
-            put(IBulkService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/BulkService.svc");
-                    setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/BulkService.svc");
-                }
-            });
-
-            put(ICampaignManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/CampaignManagementService.svc");
-                    setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/CampaignManagementService.svc");
-                }
-            });
-
             put(ICustomerBillingService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v9/CustomerBillingService.svc");
@@ -64,13 +39,6 @@ class ServiceFactoryImpl implements ServiceFactory {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc");
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc");
-                }
-            });
-
-            put(IOptimizerService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://api.bingads.microsoft.com/Api/Advertiser/Optimizer/v9/OptimizerService.svc");
-                    setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/Optimizer/v9/OptimizerService.svc");
                 }
             });
 

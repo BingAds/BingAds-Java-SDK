@@ -82,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FinalURL"/>
  *     &lt;enumeration value="FinalMobileURL"/>
  *     &lt;enumeration value="FinalAppURL"/>
+ *     &lt;enumeration value="BidStrategyType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -226,7 +227,9 @@ public enum KeywordPerformanceReportColumn {
     @XmlEnumValue("FinalMobileURL")
     FINAL_MOBILE_URL("FinalMobileURL"),
     @XmlEnumValue("FinalAppURL")
-    FINAL_APP_URL("FinalAppURL");
+    FINAL_APP_URL("FinalAppURL"),
+    @XmlEnumValue("BidStrategyType")
+    BID_STRATEGY_TYPE("BidStrategyType");
     private final String value;
 
     KeywordPerformanceReportColumn(String v) {

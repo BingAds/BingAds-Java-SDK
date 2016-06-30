@@ -50,7 +50,7 @@ public class GetAdGroupCriterionsByIdsRequest {
     @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
     @XmlElement(name = "CriterionType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CriterionType> criterionType;
 

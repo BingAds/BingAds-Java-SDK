@@ -48,7 +48,7 @@ public class CampaignPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
@@ -56,7 +56,7 @@ public class CampaignPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Status", type = String.class, nillable = true)

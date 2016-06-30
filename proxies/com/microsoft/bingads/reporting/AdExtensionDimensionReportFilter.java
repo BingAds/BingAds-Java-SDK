@@ -42,7 +42,7 @@ public class AdExtensionDimensionReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
 

@@ -38,7 +38,13 @@ public enum BulkDownloadEntity {
     AD_GROUP_REVIEW_AD_EXTENSIONS("AdGroupReviewAdExtensions"),
     CALLOUT_AD_EXTENSIONS("CalloutAdExtensions"),
     CAMPAIGN_CALLOUT_AD_EXTENSIONS("CampaignCalloutAdExtensions"),
-    AD_GROUP_CALLOUT_AD_EXTENSIONS("AdGroupCalloutAdExtensions");
+    AD_GROUP_CALLOUT_AD_EXTENSIONS("AdGroupCalloutAdExtensions"),
+    STRUCTURED_SNIPPET_AD_EXTENSIONS("StructuredSnippetAdExtensions"),
+    CAMPAIGN_STRUCTURED_SNIPPET_AD_EXTENSIONS("CampaignStructuredSnippetAdExtensions"),
+    AD_GROUP_STRUCTURED_SNIPPET_AD_EXTENSIONS("AdGroupStructuredSnippetAdExtensions"),
+    REMARKETING_LISTS("RemarketingLists"),
+    AD_GROUP_REMARKETING_LIST_ASSOCIATIONS("AdGroupRemarketingListAssociations"),
+    BUDGETS("Budgets");
         
     private final String value;
 

@@ -37,6 +37,9 @@
     <bindings node="//xs:simpleType[@name='BidMatchTypeReportFilter']">
       <javaType name="java.util.Collection&lt;BidMatchTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.BidMatchTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.BidMatchTypeReportFilterConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='BidStrategyTypeReportFilter']">
+      <javaType name="java.util.Collection&lt;BidStrategyTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.BidStrategyTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.BidStrategyTypeReportFilterConverter.convertToString" />
+    </bindings>
     <bindings node="//xs:simpleType[@name='DeliveredMatchTypeReportFilter']">
       <javaType name="java.util.Collection&lt;DeliveredMatchTypeReportFilter&gt;" parseMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.reporting.DeliveredMatchTypeReportFilterConverter.convertToString" />
     </bindings>

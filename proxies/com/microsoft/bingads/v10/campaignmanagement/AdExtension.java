@@ -41,10 +41,11 @@ import javax.xml.bind.annotation.XmlType;
     "version"
 })
 @XmlSeeAlso({
-    LocationAdExtension.class,
     AppAdExtension.class,
     CallAdExtension.class,
     ImageAdExtension.class,
+    LocationAdExtension.class,
+    StructuredSnippetAdExtension.class,
     CalloutAdExtension.class,
     SiteLinksAdExtension.class,
     ReviewAdExtension.class

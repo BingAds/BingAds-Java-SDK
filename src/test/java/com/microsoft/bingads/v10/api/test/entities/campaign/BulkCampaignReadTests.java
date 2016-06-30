@@ -27,7 +27,8 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkCampaignReadFromRowValuesTimeZoneTest.class,
         BulkCampaignReadFromRowValuesNativeBidAdjustmentTest.class,
         BulkCampaignReadFromRowValuesCampaignTypeTest.class,
-        BulkCampaignReadFromRowValuesSettingsTest.class
+        BulkCampaignReadFromRowValuesSettingsTest.class,
+        BulkCampaignReadFromRowValuesBidStrategyTypeTest.class
 })
 public class BulkCampaignReadTests {
 

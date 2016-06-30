@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/CampaignManagement/v10}AdDistribution" minOccurs="0"/>
  *         &lt;element name="AdRotation" type="{https://bingads.microsoft.com/CampaignManagement/v10}AdRotation" minOccurs="0"/>
  *         &lt;element name="BiddingModel" type="{https://bingads.microsoft.com/CampaignManagement/v10}BiddingModel" minOccurs="0"/>
+ *         &lt;element name="BiddingScheme" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}BiddingScheme" minOccurs="0"/>
  *         &lt;element name="ContentMatchBid" type="{https://bingads.microsoft.com/CampaignManagement/v10}Bid" minOccurs="0"/>
  *         &lt;element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v10}Date" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="NativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v10}Network" minOccurs="0"/>
  *         &lt;element name="PricingModel" type="{https://bingads.microsoft.com/CampaignManagement/v10}PricingModel" minOccurs="0"/>
+ *         &lt;element name="RemarketingTargetingSetting" type="{https://bingads.microsoft.com/CampaignManagement/v10}RemarketingTargetingSetting" minOccurs="0"/>
  *         &lt;element name="SearchBid" type="{https://bingads.microsoft.com/CampaignManagement/v10}Bid" minOccurs="0"/>
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfSetting" minOccurs="0"/>
  *         &lt;element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v10}Date" minOccurs="0"/>
@@ -51,6 +53,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "adDistribution",
     "adRotation",
     "biddingModel",
+    "biddingScheme",
     "contentMatchBid",
     "endDate",
     "forwardCompatibilityMap",
@@ -60,6 +63,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "nativeBidAdjustment",
     "network",
     "pricingModel",
+    "remarketingTargetingSetting",
     "searchBid",
     "settings",
     "startDate",
@@ -70,7 +74,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdGroup {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistribution> adDistribution;
     @XmlElement(name = "AdRotation", nillable = true)
@@ -78,6 +82,8 @@ public class AdGroup {
     @XmlElement(name = "BiddingModel", nillable = true)
     @XmlSchemaType(name = "string")
     protected BiddingModel biddingModel;
+    @XmlElement(name = "BiddingScheme", nillable = true)
+    protected BiddingScheme biddingScheme;
     @XmlElement(name = "ContentMatchBid", nillable = true)
     protected Bid contentMatchBid;
     @XmlElement(name = "EndDate", nillable = true)
@@ -98,6 +104,9 @@ public class AdGroup {
     @XmlElement(name = "PricingModel", nillable = true)
     @XmlSchemaType(name = "string")
     protected PricingModel pricingModel;
+    @XmlElement(name = "RemarketingTargetingSetting", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected RemarketingTargetingSetting remarketingTargetingSetting;
     @XmlElement(name = "SearchBid", nillable = true)
     protected Bid searchBid;
     @XmlElement(name = "Settings", nillable = true)
@@ -182,6 +191,30 @@ public class AdGroup {
      */
     public void setBiddingModel(BiddingModel value) {
         this.biddingModel = value;
+    }
+
+    /**
+     * Gets the value of the biddingScheme property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public BiddingScheme getBiddingScheme() {
+        return biddingScheme;
+    }
+
+    /**
+     * Sets the value of the biddingScheme property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BiddingScheme }
+     *     
+     */
+    public void setBiddingScheme(BiddingScheme value) {
+        this.biddingScheme = value;
     }
 
     /**
@@ -398,6 +431,30 @@ public class AdGroup {
      */
     public void setPricingModel(PricingModel value) {
         this.pricingModel = value;
+    }
+
+    /**
+     * Gets the value of the remarketingTargetingSetting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RemarketingTargetingSetting }
+     *     
+     */
+    public RemarketingTargetingSetting getRemarketingTargetingSetting() {
+        return remarketingTargetingSetting;
+    }
+
+    /**
+     * Sets the value of the remarketingTargetingSetting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RemarketingTargetingSetting }
+     *     
+     */
+    public void setRemarketingTargetingSetting(RemarketingTargetingSetting value) {
+        this.remarketingTargetingSetting = value;
     }
 
     /**

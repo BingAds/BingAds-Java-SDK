@@ -11,7 +11,8 @@ public enum AdExtensionsTypeFilter {
     IMAGE_AD_EXTENSION("ImageAdExtension"),
     APP_AD_EXTENSION("AppAdExtension"),
     REVIEW_AD_EXTENSION("ReviewAdExtension"),
-    CALLOUT_AD_EXTENSION("CalloutAdExtension");
+    CALLOUT_AD_EXTENSION("CalloutAdExtension"),
+    STRUCTURED_SNIPPET_AD_EXTENSION("StructuredSnippetAdExtension");
         
     private final String value;
 

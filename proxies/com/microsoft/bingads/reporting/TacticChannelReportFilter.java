@@ -54,7 +54,7 @@ public class TacticChannelReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
@@ -64,7 +64,7 @@ public class TacticChannelReportFilter {
     @XmlElement(name = "ChannelIds", nillable = true)
     protected ArrayOflong channelIds;
     @XmlElement(name = "KeywordStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<KeywordStatusReportFilter> keywordStatus;
     @XmlElement(name = "TacticIds", nillable = true)

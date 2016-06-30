@@ -104,6 +104,8 @@ public class StringTable {
 
     public static final String LastModifiedTime = "Modified Time";
     
+    public static final String NativePreference = "Ad Format Preference";
+    
     // entity types
     public static final String SemanticVersion = "Format Version";
     public static final String LocationTarget = "Location Target";
@@ -306,6 +308,9 @@ public class StringTable {
     public static final String CampaignCalloutAdExtension = "Campaign Callout Ad Extension";
     public static final String AdGroupCalloutAdExtension = "Ad Group Callout Ad Extension";
     public static final String CalloutText = "Callout Text";
+    
+    //AutoBidding
+    public static final String BidStrategyType = "Bid Strategy Type";
 
     static {
         Map<String, String> m = new HashMap<String, String>();

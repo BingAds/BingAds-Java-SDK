@@ -9,16 +9,25 @@ import com.microsoft.bingads.v10.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v10.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfCustomParameter;
+import com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v10.campaignmanagement.Bid;
+import com.microsoft.bingads.v10.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.BusinessGeoCodeStatus;
 import com.microsoft.bingads.v10.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameter;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameters;
 import com.microsoft.bingads.v10.campaignmanagement.Date;
+import com.microsoft.bingads.v10.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v10.campaignmanagement.InheritFromParentBiddingScheme;
+import com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring;
+import com.microsoft.bingads.v10.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.MatchType;
+import com.microsoft.bingads.v10.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v10.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.Minute;
+import com.microsoft.bingads.v10.campaignmanagement.TargetCpaBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 
@@ -668,6 +677,82 @@ public class StringExtensions {
     	result.setParameters(customParametersArray);
     	
     	return result;
+    }
+    
+    public static BiddingScheme parseBiddingScheme(String s) throws Exception {
+    	if (StringExtensions.isNullOrEmpty(s))
+    		return null;
+    	
+    	BiddingScheme biddingScheme = null;
+    	
+    	if (s.equals("EnhancedCpc")) {
+    		biddingScheme = new EnhancedCpcBiddingScheme();
+    		biddingScheme.setType("EnhancedCpc");
+    	} else if (s.equals("InheritFromParent")) {
+    		biddingScheme = new InheritFromParentBiddingScheme();
+    		biddingScheme.setType("InheritFromParent");
+    	} else if (s.equals("MaxConversions")) {
+    		biddingScheme = new MaxConversionsBiddingScheme();
+    		biddingScheme.setType("MaxConversions");
+    	} else if (s.equals("ManualCpc")) {
+    		biddingScheme = new ManualCpcBiddingScheme();
+    		biddingScheme.setType("ManualCpc");
+    	} else if (s.equals("TargetCpa")) {
+    		biddingScheme = new TargetCpaBiddingScheme();
+    		biddingScheme.setType("TargetCpa");
+    	} else if (s.equals("MaxClicks")) {
+    		biddingScheme = new MaxClicksBiddingScheme();
+    		biddingScheme.setType("MaxClicks");
+    	} else {
+    		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
+    	}
+    	
+    	return biddingScheme;
+    }
+    
+    public static String toBiddingSchemeBulkString(BiddingScheme biddingScheme) throws Exception {
+    	if (biddingScheme == null)
+    		return null;
+    	
+    	if (biddingScheme instanceof EnhancedCpcBiddingScheme) {
+    		return "EnhancedCpc";
+    	} else if (biddingScheme instanceof InheritFromParentBiddingScheme) {;
+    		return "InheritFromParent";
+    	} else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
+    		return "MaxConversions";
+    	} else if (biddingScheme instanceof ManualCpcBiddingScheme) {
+    		return "ManualCpc";
+    	} else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+    		return "TargetCpa";
+    	} else if (biddingScheme instanceof MaxClicksBiddingScheme) {
+    		return "MaxClicks";
+    	} else {
+    		throw new IllegalArgumentException("Unknown bidding scheme");
+    	}
+    }
+    
+    public static String toNativePreferenceBulkString(ArrayOfKeyValuePairOfstringstring parameters) {
+    	if (parameters == null) {
+    		return null;
+    	}
+    	
+    	List<KeyValuePairOfstringstring> listOfKeyValuePair = parameters.getKeyValuePairOfstringstrings();
+    	
+    	for(KeyValuePairOfstringstring keyValuePair: listOfKeyValuePair) {   		
+    		if(keyValuePair.getKey().equals("NativePreference")) {   		
+    			
+    			String value = keyValuePair.getValue().toLowerCase();
+  			
+    			if(value.equals("true")) {
+    				return "Native";
+    			} else if (value.equals("false")){
+    				return "All";
+    			} else {
+    				throw new IllegalArgumentException(String.format("Unknown value for Native Preference : %s", value));
+    			}			 
+    		}
+    	}   	
+    	return null;
     }
     
     public static List<Long> parseImageMediaIds(String v) {

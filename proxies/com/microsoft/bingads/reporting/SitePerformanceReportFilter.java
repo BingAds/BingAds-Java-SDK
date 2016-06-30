@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AdGroupStatus" type="{https://bingads.microsoft.com/Reporting/v9}AdGroupStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="AdStatus" type="{https://bingads.microsoft.com/Reporting/v9}AdStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="AdType" type="{https://bingads.microsoft.com/Reporting/v9}AdTypeReportFilter" minOccurs="0"/>
+ *         &lt;element name="BidStrategyType" type="{https://bingads.microsoft.com/Reporting/v9}BidStrategyTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="CampaignStatus" type="{https://bingads.microsoft.com/Reporting/v9}CampaignStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="DeliveredMatchType" type="{https://bingads.microsoft.com/Reporting/v9}DeliveredMatchTypeReportFilter" minOccurs="0"/>
  *         &lt;element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v9}DeviceTypeReportFilter" minOccurs="0"/>
@@ -45,6 +46,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "adGroupStatus",
     "adStatus",
     "adType",
+    "bidStrategyType",
     "campaignStatus",
     "deliveredMatchType",
     "deviceType",
@@ -58,11 +60,11 @@ public class SitePerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
@@ -73,16 +75,20 @@ public class SitePerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter6 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdTypeReportFilter> adType;
+    @XmlElement(name = "BidStrategyType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<BidStrategyTypeReportFilter> bidStrategyType;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)
@@ -208,6 +214,30 @@ public class SitePerformanceReportFilter {
      */
     public void setAdType(Collection<AdTypeReportFilter> value) {
         this.adType = value;
+    }
+
+    /**
+     * Gets the value of the bidStrategyType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<BidStrategyTypeReportFilter> getBidStrategyType() {
+        return bidStrategyType;
+    }
+
+    /**
+     * Sets the value of the bidStrategyType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBidStrategyType(Collection<BidStrategyTypeReportFilter> value) {
+        this.bidStrategyType = value;
     }
 
     /**

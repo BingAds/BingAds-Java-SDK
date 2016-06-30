@@ -50,7 +50,7 @@ public class ProductOfferPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
@@ -62,7 +62,7 @@ public class ProductOfferPerformanceReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)

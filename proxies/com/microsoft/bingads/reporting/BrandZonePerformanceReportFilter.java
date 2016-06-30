@@ -44,15 +44,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class BrandZonePerformanceReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "Keywords", nillable = true)

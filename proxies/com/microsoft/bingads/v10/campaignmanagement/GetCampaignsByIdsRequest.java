@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="CampaignIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v10}CampaignType" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v10}CampaignAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +37,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "accountId",
     "campaignIds",
-    "campaignType"
+    "campaignType",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetCampaignsByIdsRequest")
 public class GetCampaignsByIdsRequest {
@@ -46,9 +48,13 @@ public class GetCampaignsByIdsRequest {
     @XmlElement(name = "CampaignIds", nillable = true)
     protected ArrayOflong campaignIds;
     @XmlElement(name = "CampaignType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignType> campaignType;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "anySimpleType")
+    protected Collection<CampaignAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the accountId property.
@@ -120,6 +126,30 @@ public class GetCampaignsByIdsRequest {
      */
     public void setCampaignType(Collection<CampaignType> value) {
         this.campaignType = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CampaignAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<CampaignAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

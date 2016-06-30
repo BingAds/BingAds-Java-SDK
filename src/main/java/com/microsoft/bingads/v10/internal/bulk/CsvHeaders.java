@@ -59,6 +59,7 @@ public class CsvHeaders {
             StringTable.EditorialReasonCode,
             StringTable.EditorialAppealStatus,
             StringTable.DevicePreference,
+            
 
             // Keywords
             StringTable.Keyword,
@@ -187,7 +188,13 @@ public class CsvHeaders {
             StringTable.Url,
 
             // Callout Ad Extension
-            StringTable.CalloutText
+            StringTable.CalloutText,
+            
+            // AutoBidding
+            StringTable.BidStrategyType,
+            
+            //Native Preference
+            StringTable.NativePreference
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

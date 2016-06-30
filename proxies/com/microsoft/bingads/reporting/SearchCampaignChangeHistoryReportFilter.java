@@ -40,11 +40,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class SearchCampaignChangeHistoryReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)

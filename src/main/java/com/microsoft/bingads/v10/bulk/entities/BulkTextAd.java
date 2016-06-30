@@ -2,6 +2,8 @@ package com.microsoft.bingads.v10.bulk.entities;
 
 import com.microsoft.bingads.v10.bulk.BulkServiceManager;
 import com.microsoft.bingads.v10.campaignmanagement.AdType;
+import com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
+import com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring;
 import com.microsoft.bingads.v10.campaignmanagement.TextAd;
 import com.microsoft.bingads.v10.bulk.BulkFileReader;
 import com.microsoft.bingads.v10.bulk.BulkFileWriter;
@@ -98,6 +100,45 @@ public class BulkTextAd extends BulkAd<TextAd> {
                     @Override
                     public void accept(String v, BulkTextAd c) {
                         c.getAd().setDestinationUrl(StringExtensions.getValueOrEmptyString(v));
+                    }
+                },
+                true
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkTextAd, String>(StringTable.NativePreference,
+                new Function<BulkTextAd, String>() {
+                    @Override
+                    public String apply(BulkTextAd c) {
+                        return StringExtensions.toNativePreferenceBulkString(c.getAd().getForwardCompatibilityMap());
+                    }
+                },
+                new BiConsumer<String, BulkTextAd>() {
+                    @Override
+                    public void accept(String v, BulkTextAd c) {
+                    	try{      
+                    			if(c.getAd().getForwardCompatibilityMap() == null) {
+                    				c.getAd().setForwardCompatibilityMap(new ArrayOfKeyValuePairOfstringstring());
+                    			}          	    	                   	    	
+                    	    	
+                    	    	KeyValuePairOfstringstring keyValuePair = new KeyValuePairOfstringstring();
+                    	    	
+                    	    	keyValuePair.setKey("NativePreference");
+                    	    	
+                    	    	if (StringExtensions.isNullOrEmpty(v) || v.equals("All")) {
+                    	    		keyValuePair.setValue("False");
+                    	    	} 
+                    	    	else if (v.equals("Native")) {
+                    	    		keyValuePair.setValue("True");
+                    	    	}
+                    	    	else {
+                    	    		throw new IllegalArgumentException(String.format("Unknown value for Native Preference: %s", v));
+                    	    	}
+                    	    	
+                    	    	c.getAd().getForwardCompatibilityMap().getKeyValuePairOfstringstrings().add(keyValuePair);  
+                    	    	
+                    	} catch(Exception e) {
+                    		e.printStackTrace();
+                    	}                     
                     }
                 },
                 true

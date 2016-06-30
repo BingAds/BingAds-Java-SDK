@@ -46,7 +46,7 @@ public class NegativeKeywordConflictReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
@@ -54,7 +54,7 @@ public class NegativeKeywordConflictReportFilter {
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "KeywordStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<KeywordStatusReportFilter> keywordStatus;
 
