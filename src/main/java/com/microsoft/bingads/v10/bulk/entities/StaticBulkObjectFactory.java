@@ -427,7 +427,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignNegativeKeywordList();
             }
         }));
-        
+        m.put(StringTable.RemarketingList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkRemarketingList();
+            }
+        }));
+        m.put(StringTable.AdGroupRemarketingList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupRemarketingList();
+            }
+        }));
 
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

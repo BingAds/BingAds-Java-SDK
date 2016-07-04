@@ -311,6 +311,16 @@ public class StringTable {
     
     //AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
+    
+    // Remarketing
+    public static final String RemarketingList = "Remarketing List";
+    public static final String AdGroupRemarketingList = "Ad Group Remarketing List Association";
+    public static final String Description = "Description";
+    public static final String MembershipDuration = "Membership Duration";
+    public static final String Scope = "Scope";
+    public static final String TagId = "UET Tag Id";
+    public static final String RemarketingListId = "Remarketing List Id";
+    public static final String RemarketingTargetingSetting = "Remarketing Targeting Setting";
 
     static {
         Map<String, String> m = new HashMap<String, String>();
