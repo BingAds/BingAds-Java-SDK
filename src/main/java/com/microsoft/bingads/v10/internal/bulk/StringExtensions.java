@@ -5,6 +5,7 @@ import com.microsoft.bingads.v10.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v10.bulk.entities.Status;
 import com.microsoft.bingads.v10.campaignmanagement.AdDistribution;
 import com.microsoft.bingads.v10.campaignmanagement.AdExtensionStatus;
+import com.microsoft.bingads.v10.campaignmanagement.AdGroupRemarketingListAssociationStatus;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v10.campaignmanagement.AdStatus;
@@ -435,6 +436,14 @@ public class StringExtensions {
     }
 
     public static String toAdExtensionStatusBulkString(AdExtensionStatus status) {
+        if (status == null) {
+            return null;
+        }
+
+        return status.value();
+    }
+    
+    public static String toAdGroupRemarketingListAssociationStatusBulkString(AdGroupRemarketingListAssociationStatus status) {
         if (status == null) {
             return null;
         }

@@ -194,7 +194,15 @@ public class CsvHeaders {
             StringTable.BidStrategyType,
             
             //Native Preference
-            StringTable.NativePreference
+            StringTable.NativePreference,
+            
+            // Remarketing
+            StringTable.RemarketingListId,
+            StringTable.Description,
+            StringTable.MembershipDuration,
+            StringTable.Scope,
+            StringTable.TagId,
+            StringTable.RemarketingTargetingSetting,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();
