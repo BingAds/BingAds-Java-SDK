@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "version"
 })
 @XmlSeeAlso({
+    Sitelink2AdExtension.class,
     AppAdExtension.class,
     CallAdExtension.class,
     ImageAdExtension.class,

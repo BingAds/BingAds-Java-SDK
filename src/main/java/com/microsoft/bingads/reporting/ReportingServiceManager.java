@@ -45,6 +45,11 @@ public class ReportingServiceManager {
      * The time interval in milliseconds between two status polling attempts.
      * */
     private int statusPollIntervalInMilliseconds;
+    
+    /**
+     * The timeout in milliseconds of HttpClient download operation.
+     */
+    private int downloadHttpTimeoutInMilliseconds;
 
     private final ServiceClient<IReportingService> serviceClient;
 
@@ -75,6 +80,8 @@ public class ReportingServiceManager {
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
         statusPollIntervalInMilliseconds = ReportingConfig.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
+        
+        downloadHttpTimeoutInMilliseconds = ReportingConfig.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
     }
 
     /**
@@ -199,6 +206,8 @@ public class ReportingServiceManager {
                     ReportingDownloadOperation operation = new ReportingDownloadOperation(response.getReportRequestId(), authorizationData, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
+                    
+                    operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
@@ -268,4 +277,18 @@ public class ReportingServiceManager {
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
+    
+    /**
+     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public int getDownloadHttpTimeoutInMilliseconds() {
+		return downloadHttpTimeoutInMilliseconds;
+	}
+
+	/**
+     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
+		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+	}
 }

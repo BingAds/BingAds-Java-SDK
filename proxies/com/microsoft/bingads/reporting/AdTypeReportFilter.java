@@ -13,7 +13,8 @@ public enum AdTypeReportFilter {
     THIRD_PARTY_CREATIVE("ThirdPartyCreative"),
     RICH_AD("RichAd"),
     PRODUCT("Product"),
-    APP_INSTALL("AppInstall");
+    APP_INSTALL("AppInstall"),
+    EXPANDED_TEXT("ExpandedText");
         
     private final String value;
 

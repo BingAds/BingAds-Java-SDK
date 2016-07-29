@@ -28,11 +28,13 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 public class HttpClientHttpFileService implements HttpFileService {
 	
     @Override
-    public void downloadFile(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
+    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws IOException, URISyntaxException {
         if (!overwrite && tempZipFile.exists()) {
             throw new IOException(String.format("Could not download result file due to file %s already exists", tempZipFile));
         }
@@ -41,6 +43,10 @@ public class HttpClientHttpFileService implements HttpFileService {
 
         try {
         	client = createHttpClientWithProxy();
+        	
+        	HttpParams params = client.getParams();
+        	HttpConnectionParams.setConnectionTimeout(params, timeoutInMilliseconds);
+        	HttpConnectionParams.setSoTimeout(params, timeoutInMilliseconds);
         	        	
             HttpGet httpget = new HttpGet(new URI(url));
             HttpResponse response = client.execute(httpget);
@@ -69,7 +75,7 @@ public class HttpClientHttpFileService implements HttpFileService {
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) {
+    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
         FileInputStream stream = null;
 
         try {
@@ -79,6 +85,10 @@ public class HttpClientHttpFileService implements HttpFileService {
 
             try {
             	client = createHttpClientWithProxy();
+            	
+            	HttpParams params = client.getParams();
+            	HttpConnectionParams.setConnectionTimeout(params, timeoutInMilliseconds);
+            	HttpConnectionParams.setSoTimeout(params, timeoutInMilliseconds);
             	            	
                 HttpPost post = new HttpPost(uri);
                 addHeaders.accept(post);
@@ -128,13 +138,17 @@ public class HttpClientHttpFileService implements HttpFileService {
     }
 
     @Override
-    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback) {
+    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds) {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         DefaultHttpClient client = null;
 
         try {
         	client = createHttpClientWithProxy();
+        	
+        	HttpParams params = client.getParams();
+        	HttpConnectionParams.setConnectionTimeout(params, timeoutInMilliseconds);
+        	HttpConnectionParams.setSoTimeout(params, timeoutInMilliseconds);
         	
             HttpGet httpget = new HttpGet(new URI(url));
             HttpResponse response = client.execute(httpget);

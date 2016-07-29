@@ -5,6 +5,7 @@ import com.microsoft.bingads.v10.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v10.bulk.entities.Status;
 import com.microsoft.bingads.v10.campaignmanagement.AdDistribution;
 import com.microsoft.bingads.v10.campaignmanagement.AdExtensionStatus;
+import com.microsoft.bingads.v10.campaignmanagement.AdGroupRemarketingListAssociationStatus;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v10.campaignmanagement.AdStatus;
@@ -442,6 +443,14 @@ public class StringExtensions {
         return status.value();
     }
 
+    public static String toAdGroupRemarketingListAssociationStatusBulkString(AdGroupRemarketingListAssociationStatus status) {
+        if (status == null) {
+            return null;
+        }
+
+        return status.value();
+    }
+    
     public static String toStatusBulkString(Status status) {
         if (status == null) {
             return null;
@@ -788,6 +797,39 @@ public class StringExtensions {
         }
 
         result.append(ids.getLongs().get(length - 1));
+
+        return result.toString();
+    }
+    
+    public static ArrayOfstring parseStructuredSnippetValues(String v) {
+    	if (StringExtensions.isNullOrEmpty(v))
+    		return null;
+    	
+    	ArrayOfstring valueArray = new ArrayOfstring();
+    	
+    	String[] values = v.split(";");
+    	
+    	for(String tmp : values) {
+    		if (!StringExtensions.isNullOrEmpty(tmp) && ! ";".equals(tmp))
+    			valueArray.getStrings().add(tmp);
+    	}	
+    	
+    	return valueArray;
+    }
+    
+    public static String writeStructuredSnippetValues(String separator, ArrayOfstring values) {
+    	if (values == null || values.getStrings().size() == 0) {
+            return null;
+        }
+                
+        StringBuilder result = new StringBuilder("");
+
+        int length =  values.getStrings().size();
+        for (Integer i = 0; i < length - 1; i++) {
+            result.append(values.getStrings().get(i) + separator);
+        }
+
+        result.append(values.getStrings().get(length - 1));
 
         return result.toString();
     }

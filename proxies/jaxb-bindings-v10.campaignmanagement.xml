@@ -28,5 +28,8 @@
     <bindings node="//xs:simpleType[@name='CampaignCriterionType']">
       <javaType name="java.util.Collection&lt;CampaignCriterionType&gt;" parseMethod="com.microsoft.bingads.v10.campaignmanagement.CampaignCriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.v10.campaignmanagement.CampaignCriterionTypeConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='ConversionGoalType']">
+      <javaType name="java.util.Collection&lt;ConversionGoalType&gt;" parseMethod="com.microsoft.bingads.v10.campaignmanagement.ConversionGoalTypeConverter.convertToList" printMethod="com.microsoft.bingads.v10.campaignmanagement.ConversionGoalTypeConverter.convertToString" />
+    </bindings>
   </bindings>
 </bindings>

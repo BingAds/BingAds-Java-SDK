@@ -44,6 +44,11 @@ public class ReportingDownloadOperation {
     private int statusPollIntervalInMilliseconds;
     
     /**
+     * The timeout in milliseconds of HttpClient download operation.
+     */
+    private int downloadHttpTimeoutInMilliseconds;
+    
+    /**
      * Provide the status of the reporting download operation.
      */
     ReportingStatusProvider statusProvider;
@@ -103,6 +108,8 @@ public class ReportingDownloadOperation {
         this.trackingId = trackingId;
 
         statusPollIntervalInMilliseconds = ReportingConfig.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
+        
+        downloadHttpTimeoutInMilliseconds = ReportingConfig.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
 
         this.serviceClient = new ServiceClient<IReportingService>(authorizationData, apiEnvironment, IReportingService.class);
 
@@ -270,7 +277,7 @@ public class ReportingDownloadOperation {
             httpFileService = new HttpClientHttpFileService();
         }
 
-        httpFileService.downloadFile(url, tempZipFile, overwrite);
+        httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
 
         return tempZipFile;
     }
@@ -393,4 +400,18 @@ public class ReportingDownloadOperation {
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
+    
+    /**
+     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public int getDownloadHttpTimeoutInMilliseconds() {
+		return downloadHttpTimeoutInMilliseconds;
+	}
+
+	/**
+     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
+		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+	}
 }

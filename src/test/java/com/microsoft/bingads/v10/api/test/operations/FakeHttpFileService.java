@@ -31,19 +31,19 @@ public class FakeHttpFileService implements HttpFileService {
     }
     
     @Override
-    public void downloadFile(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
+    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws IOException, URISyntaxException {
         onDownloadFile.accept(url, tempZipFile);
         
         downloadWasCalled = true;
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders) {
+    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback) {
+    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds) {
         onDownloadFile.accept(url, tempZipFile);
         
         Future<File> result = new CompleteResponse(tempZipFile, new ArrayList<StringHeader>());

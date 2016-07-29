@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Image"/>
  *     &lt;enumeration value="Product"/>
  *     &lt;enumeration value="AppInstall"/>
+ *     &lt;enumeration value="ExpandedText"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +35,9 @@ public enum AdType {
     @XmlEnumValue("Product")
     PRODUCT("Product"),
     @XmlEnumValue("AppInstall")
-    APP_INSTALL("AppInstall");
+    APP_INSTALL("AppInstall"),
+    @XmlEnumValue("ExpandedText")
+    EXPANDED_TEXT("ExpandedText");
     private final String value;
 
     AdType(String v) {

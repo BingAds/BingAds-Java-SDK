@@ -193,8 +193,27 @@ public class CsvHeaders {
             // AutoBidding
             StringTable.BidStrategyType,
             
-            //Native Preference
-            StringTable.NativePreference
+            // Native Preference
+            StringTable.NativePreference,
+            
+            // Remarketing
+            StringTable.RemarketingList,
+            StringTable.RemarketingListId,
+            StringTable.Description,
+            StringTable.MembershipDuration,
+            StringTable.Scope,
+            StringTable.TagId,
+            StringTable.RemarketingTargetingSetting,
+
+            // Structured Snippet Ad Extension
+            StringTable.StructuredSnippetHeader,
+            StringTable.StructuredSnippetValues,
+            
+            // Expanded Text Ad
+            StringTable.TitlePart1,
+            StringTable.TitlePart2,
+            StringTable.Path1,
+            StringTable.Path2
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -52,6 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
  *     &lt;enumeration value="AdStatus"/>
+ *     &lt;enumeration value="TrackingTemplate"/>
+ *     &lt;enumeration value="CustomParameters"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -136,7 +138,11 @@ public enum ProductPartitionUnitPerformanceReportColumn {
     @XmlEnumValue("RevenuePerAssist")
     REVENUE_PER_ASSIST("RevenuePerAssist"),
     @XmlEnumValue("AdStatus")
-    AD_STATUS("AdStatus");
+    AD_STATUS("AdStatus"),
+    @XmlEnumValue("TrackingTemplate")
+    TRACKING_TEMPLATE("TrackingTemplate"),
+    @XmlEnumValue("CustomParameters")
+    CUSTOM_PARAMETERS("CustomParameters");
     private final String value;
 
     ProductPartitionUnitPerformanceReportColumn(String v) {

@@ -47,6 +47,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
+ *     &lt;enumeration value="TitlePart1"/>
+ *     &lt;enumeration value="TitlePart2"/>
+ *     &lt;enumeration value="Path1"/>
+ *     &lt;enumeration value="Path2"/>
+ *     &lt;enumeration value="FinalURL"/>
+ *     &lt;enumeration value="FinalMobileURL"/>
+ *     &lt;enumeration value="FinalAppURL"/>
+ *     &lt;enumeration value="AdDescription"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -121,7 +129,23 @@ public enum AdDynamicTextPerformanceReportColumn {
     @XmlEnumValue("AdStatus")
     AD_STATUS("AdStatus"),
     @XmlEnumValue("KeywordStatus")
-    KEYWORD_STATUS("KeywordStatus");
+    KEYWORD_STATUS("KeywordStatus"),
+    @XmlEnumValue("TitlePart1")
+    TITLE_PART_1("TitlePart1"),
+    @XmlEnumValue("TitlePart2")
+    TITLE_PART_2("TitlePart2"),
+    @XmlEnumValue("Path1")
+    PATH_1("Path1"),
+    @XmlEnumValue("Path2")
+    PATH_2("Path2"),
+    @XmlEnumValue("FinalURL")
+    FINAL_URL("FinalURL"),
+    @XmlEnumValue("FinalMobileURL")
+    FINAL_MOBILE_URL("FinalMobileURL"),
+    @XmlEnumValue("FinalAppURL")
+    FINAL_APP_URL("FinalAppURL"),
+    @XmlEnumValue("AdDescription")
+    AD_DESCRIPTION("AdDescription");
     private final String value;
 
     AdDynamicTextPerformanceReportColumn(String v) {

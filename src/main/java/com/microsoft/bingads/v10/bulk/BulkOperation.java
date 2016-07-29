@@ -49,6 +49,11 @@ public abstract class BulkOperation<TStatus> {
      */   
     private int statusPollIntervalInMilliseconds;
     
+    /**
+     * The timeout in milliseconds of HttpClient download operation.
+     */
+    private int downloadHttpTimeoutInMilliseconds;
+    
     BulkOperationStatusProvider<TStatus> statusProvider;
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
@@ -80,6 +85,8 @@ public abstract class BulkOperation<TStatus> {
         this.trackingId = trackingId;
 
         statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
+        
+        downloadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
 
         this.serviceClient = new ServiceClient<IBulkService>(authorizationData, apiEnvironment, IBulkService.class);
 
@@ -222,6 +229,20 @@ public abstract class BulkOperation<TStatus> {
     }
 
     /**
+     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public int getDownloadHttpTimeoutInMilliseconds() {
+		return downloadHttpTimeoutInMilliseconds;
+	}
+
+	/**
+     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
+     */
+	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
+		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+	}
+
+	/**
      * Downloads and optionally decompress the result file from the bulk operation
      * @param localResultDirectoryName the directory to place the result file in
      * @param localResultFileName the name to use for final result file
@@ -318,7 +339,7 @@ public abstract class BulkOperation<TStatus> {
             httpFileService = new HttpClientHttpFileService();
         }
 
-        httpFileService.downloadFile(url, tempZipFile, overwrite);
+        httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
 
         return tempZipFile;
     }

@@ -309,8 +309,32 @@ public class StringTable {
     public static final String AdGroupCalloutAdExtension = "Ad Group Callout Ad Extension";
     public static final String CalloutText = "Callout Text";
     
-    //AutoBidding
+    // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
+    
+    // Remarketing
+    public static final String RemarketingList = "Remarketing List";
+    public static final String AdGroupRemarketingListAssociation = "Ad Group Remarketing List Association";
+    public static final String Description = "Description";
+    public static final String MembershipDuration = "Membership Duration";
+    public static final String Scope = "Scope";
+    public static final String TagId = "UET Tag Id";
+    public static final String RemarketingListId = "Remarketing List Id";
+    public static final String RemarketingTargetingSetting = "Remarketing Targeting Setting";
+
+    // Structured Snippet Ad Extension
+    public static final String CampaignStructuredSnippetAdExtension = "Campaign Structured Snippet Ad Extension";
+    public static final String AdGroupStructuredSnippetAdExtension = "Ad Group Structured Snippet Ad Extension";
+    public static final String StructuredSnippetAdExtension = "Structured Snippet Ad Extension";
+    public static final String StructuredSnippetHeader = "Structured Snippet Header";
+    public static final String StructuredSnippetValues = "Structured Snippet Values";
+
+    // Expanded Text Ad
+    public static final String ExpandedTextAd = "Expanded Text Ad";
+    public static final String TitlePart1 = "Title Part 1";
+    public static final String TitlePart2 = "Title Part 2";
+    public static final String Path1 = "Path 1";
+    public static final String Path2 = "Path 2";
 
     static {
         Map<String, String> m = new HashMap<String, String>();

@@ -55,6 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="OfferLanguage"/>
  *     &lt;enumeration value="CountryOfSale"/>
  *     &lt;enumeration value="AdStatus"/>
+ *     &lt;enumeration value="TrackingTemplate"/>
+ *     &lt;enumeration value="CustomParameters"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -145,7 +147,11 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("CountryOfSale")
     COUNTRY_OF_SALE("CountryOfSale"),
     @XmlEnumValue("AdStatus")
-    AD_STATUS("AdStatus");
+    AD_STATUS("AdStatus"),
+    @XmlEnumValue("TrackingTemplate")
+    TRACKING_TEMPLATE("TrackingTemplate"),
+    @XmlEnumValue("CustomParameters")
+    CUSTOM_PARAMETERS("CustomParameters");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

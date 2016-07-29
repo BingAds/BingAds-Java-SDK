@@ -74,7 +74,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdGroup {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdDistribution> adDistribution;
     @XmlElement(name = "AdRotation", nillable = true)
