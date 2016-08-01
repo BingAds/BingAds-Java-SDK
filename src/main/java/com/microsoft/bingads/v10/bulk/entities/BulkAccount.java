@@ -44,6 +44,8 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private long customerId;
 
     private Calendar syncTime;
+    
+    private String trackingUrlTemplate;
 
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
@@ -116,6 +118,22 @@ public class BulkAccount extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.TrackingTemplate,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount c) {
+                        return StringExtensions.toOptionalBulkString(c.getTrackingUrlTemplate());
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+        
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
@@ -187,6 +205,29 @@ public class BulkAccount extends SingleRecordBulkEntity {
     public void setSyncTime(Calendar syncTime) {
         this.syncTime = syncTime;
     }
+    
+    /**
+     * Gets the tracking URL template of the account.
+     *
+     * <p>
+     *     Corresponds to the 'Tracking Template' field in the bulk file.
+     * </p>
+     */
+    public String getTrackingUrlTemplate() {
+        return trackingUrlTemplate;
+    }
+
+    /**
+     * Sets the tracking URL template of the account.
+     *
+     * <p>
+     *     Corresponds to the 'Tracking Template' field in the bulk file.
+     * </p>
+     */
+    public void setTrackingUrlTemplate(String trackingUrlTemplate) {
+        this.trackingUrlTemplate = trackingUrlTemplate;
+    }
+
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {

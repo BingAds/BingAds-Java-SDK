@@ -15,6 +15,7 @@ import com.microsoft.bingads.v10.bulk.EntityUploadParameters;
 import com.microsoft.bingads.v10.bulk.FileUploadParameters;
 import com.microsoft.bingads.v10.bulk.ResponseMode;
 import com.microsoft.bingads.v10.bulk.ResultFileType;
+import com.microsoft.bingads.v10.bulk.entities.BulkAccount;
 import com.microsoft.bingads.v10.bulk.entities.BulkAdGroup;
 import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupProductPartition;
 import com.microsoft.bingads.v10.bulk.entities.BulkAppAdExtension;
@@ -122,6 +123,21 @@ public class BulkExampleBase extends ExampleBase {
         File bulkFilePath =
             BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
         return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
+    }
+	
+	static void outputBulkAccount(BulkAccount entity){
+        outputStatusMessage("\nBulkAccount: \n");
+        outputStatusMessage(String.format("AccountId: %s", entity.getId()));
+        outputStatusMessage(String.format("CustomerId: %s", entity.getCustomerId()));
+        outputStatusMessage(String.format("SyncTime: %s", entity.getSyncTime()));
+        outputStatusMessage(String.format("TrackingUrlTemplate: %s", entity.getTrackingUrlTemplate()));
+        if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+        }
+        
+        if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+        }
     }
 	
 	static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
