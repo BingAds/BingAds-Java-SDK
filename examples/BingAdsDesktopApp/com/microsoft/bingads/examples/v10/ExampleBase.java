@@ -9,32 +9,33 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 	public ExampleBase(){}
 	
 	static void outputCampaign(Campaign campaign){
-		if (campaign != null) {
-			outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
-            outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType()));
-            outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
-            outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
-            outputStatusMessage(String.format("Id: %s", campaign.getId()));
-            outputStatusMessage(String.format("MonthlyBudget: %s", campaign.getMonthlyBudget()));
-            outputStatusMessage(String.format("Name: %s", campaign.getName()));
-            outputStatusMessage(String.format("NativeBidAdjustment: %s", campaign.getNativeBidAdjustment()));
-            outputStatusMessage("Settings: ");
-            if (campaign.getSettings() != null)
-            {
-                for (Setting setting : campaign.getSettings().getSettings())
+            if (campaign != null) {
+                outputBiddingScheme(campaign.getBiddingScheme());
+                outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
+                outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType()));
+                outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
+                outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
+                outputStatusMessage(String.format("Id: %s", campaign.getId()));
+                outputStatusMessage(String.format("MonthlyBudget: %s", campaign.getMonthlyBudget()));
+                outputStatusMessage(String.format("Name: %s", campaign.getName()));
+                outputStatusMessage(String.format("NativeBidAdjustment: %s", campaign.getNativeBidAdjustment()));
+                outputStatusMessage("Settings: ");
+                if (campaign.getSettings() != null)
                 {
-                    if (setting instanceof ShoppingSetting)
+                    for (Setting setting : campaign.getSettings().getSettings())
                     {
-                        outputStatusMessage("ShoppingSetting: ");
-                        outputStatusMessage(String.format("Priority: %s", ((ShoppingSetting)setting).getPriority()));
-                        outputStatusMessage(String.format("SalesCountryCode: %s", ((ShoppingSetting)setting).getSalesCountryCode()));
-                        outputStatusMessage(String.format("StoreId: %s", ((ShoppingSetting)setting).getStoreId()));
+                        if (setting instanceof ShoppingSetting)
+                        {
+                            outputStatusMessage("ShoppingSetting: ");
+                            outputStatusMessage(String.format("Priority: %s", ((ShoppingSetting)setting).getPriority()));
+                            outputStatusMessage(String.format("SalesCountryCode: %s", ((ShoppingSetting)setting).getSalesCountryCode()));
+                            outputStatusMessage(String.format("StoreId: %s", ((ShoppingSetting)setting).getStoreId()));
+                        }
                     }
                 }
+                outputStatusMessage(String.format("Status: %s", campaign.getStatus()));
+                outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
             }
-            outputStatusMessage(String.format("Status: %s", campaign.getStatus()));
-            outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
-		}
 	}
     
 	static void outputAdGroup(AdGroup adGroup){
@@ -49,6 +50,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 }
                 outputStatusMessage(String.format("AdRotation: %s", 
                             adGroup.getAdRotation() != null ? adGroup.getAdRotation().getType() : null));
+                outputBiddingScheme(adGroup.getBiddingScheme());
                 outputStatusMessage(String.format("BiddingModel: %s", adGroup.getBiddingModel()));
                 outputStatusMessage(String.format("ContentMatchBid: %s", 
                             adGroup.getContentMatchBid() != null ? adGroup.getContentMatchBid().getAmount() : null));
@@ -253,6 +255,60 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
 
         outputStatusMessage("");
+    }
+    
+    static void outputKeyword(Keyword keyword){
+        if (keyword != null) {
+            outputStatusMessage(String.format("Bid.Amount: {0}", 
+                keyword.getBid() != null ? keyword.getBid().getAmount() : 0)
+            );
+            outputBiddingScheme(keyword.getBiddingScheme());
+            outputStatusMessage(String.format("DestinationUrl: {0}", keyword.getDestinationUrl()));
+            outputStatusMessage(String.format("EditorialStatus: {0}", keyword.getEditorialStatus()));
+            outputStatusMessage("FinalMobileUrls: ");
+            if (keyword.getFinalMobileUrls() != null)
+            {
+                for(java.lang.String finalMobileUrl : keyword.getFinalMobileUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t{0}", finalMobileUrl));
+                }
+            }
+
+            outputStatusMessage("FinalUrls: ");
+            if (keyword.getFinalUrls() != null)
+            {
+                for(java.lang.String finalUrl : keyword.getFinalUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t{0}", finalUrl));
+                }
+            }
+            outputStatusMessage("ForwardCompatibilityMap: ");
+            if (keyword.getForwardCompatibilityMap() != null)
+            {
+                for(KeyValuePairOfstringstring pair : keyword.getForwardCompatibilityMap().getKeyValuePairOfstringstrings())
+                {
+                    outputStatusMessage(String.format("Key: {0}", pair.getKey()));
+                    outputStatusMessage(String.format("Value: {0}", pair.getValue()));
+                }
+            }
+            outputStatusMessage(String.format("Id: {0}", keyword.getId()));
+            outputStatusMessage(String.format("MatchType: {0}", keyword.getMatchType()));
+            outputStatusMessage(String.format("Param1: {0}", keyword.getParam1()));
+            outputStatusMessage(String.format("Param2: {0}", keyword.getParam2()));
+            outputStatusMessage(String.format("Param3: {0}", keyword.getParam3()));
+            outputStatusMessage(String.format("Status: {0}", keyword.getStatus()));
+            outputStatusMessage(String.format("Text: {0}", keyword.getText()));
+            outputStatusMessage(String.format("TrackingUrlTemplate: {0}", keyword.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters: ");
+            if (keyword.getUrlCustomParameters() != null && keyword.getUrlCustomParameters().getParameters() != null)
+            {
+                for(CustomParameter customParameter : keyword.getUrlCustomParameters().getParameters().getCustomParameters())
+                {
+                    outputStatusMessage(String.format("\tKey: {0}", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: {0}", customParameter.getValue()));
+                }
+            }
+        }
     }
 
     // Prints the keyword identifiers, as well as any partial errors
@@ -782,5 +838,25 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("RemarketingListId: %s", adGroupRemarketingListAssociation.getRemarketingListId()));
             outputStatusMessage(String.format("Status: %s\n", adGroupRemarketingListAssociation.getStatus()));
         }
+    }
+    
+    static void outputBiddingScheme(BiddingScheme biddingScheme){
+        if (biddingScheme == null)
+            return;
+    	if (biddingScheme instanceof EnhancedCpcBiddingScheme) {
+            outputStatusMessage("BiddingScheme Type: EnhancedCpc");
+    	} else if (biddingScheme instanceof InheritFromParentBiddingScheme) {;
+            outputStatusMessage("BiddingScheme Type: InheritFromParent");
+    	} else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
+            outputStatusMessage("BiddingScheme Type: MaxConversions");
+    	} else if (biddingScheme instanceof ManualCpcBiddingScheme) {
+            outputStatusMessage("BiddingScheme Type: ManualCpc");
+    	} else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+            outputStatusMessage("BiddingScheme Type: TargetCpa");
+    	} else if (biddingScheme instanceof MaxClicksBiddingScheme) {
+            outputStatusMessage("BiddingScheme Type: MaxClicks");
+    	} else {
+            outputStatusMessage("BiddingScheme Type: Unknown bidding scheme");
+    	}
     }
 }

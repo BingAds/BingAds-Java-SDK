@@ -1,5 +1,6 @@
 package com.microsoft.bingads.examples.v10;
 
+import static com.microsoft.bingads.examples.v10.ExampleBase.outputCampaign;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ import com.microsoft.bingads.v10.bulk.entities.BulkSiteLinkAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkTextAd;
 import com.microsoft.bingads.v10.bulk.entities.PerformanceData;
 import com.microsoft.bingads.v10.bulk.entities.QualityScoreData;
+import com.microsoft.bingads.v10.bulk.entities.BidSuggestionData;
 import com.microsoft.bingads.v10.bulk.entities.BulkRemarketingList;
 import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupRemarketingListAssociation;
 import com.microsoft.bingads.v10.campaignmanagement.CityTargetBid;
@@ -186,12 +188,21 @@ public class BulkExampleBase extends ExampleBase {
     static void outputBulkKeywords(Iterable<BulkKeyword> bulkEntities){
         for (BulkKeyword entity : bulkEntities){
             outputStatusMessage("BulkKeyword: \n");
-            outputStatusMessage(String.format("Keyword Text: %s\nKeyword Id: %s", 
-                            entity.getKeyword().getText(),
-                            entity.getKeyword().getId()));
+            outputStatusMessage(String.format("AdGroupId: {0}", entity.getAdGroupId()));
+            outputStatusMessage(String.format("AdGroupName: {0}", entity.getAdGroupName()));
+            outputStatusMessage(String.format("CampaignName: {0}", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: {0}", entity.getClientId()));
+            outputStatusMessage(String.format("LastModifiedTime: {0}", entity.getLastModifiedTime()));
+
+            outputBulkPerformanceData(entity.getPerformanceData());
+            outputBulkQualityScoreData(entity.getQualityScoreData());
+            outputBulkBidSuggestions(entity.getBidSuggestions());
+
+            // Output the Campaign Management Keyword Object
+            outputKeyword(entity.getKeyword());
 
             if(entity.hasErrors()){
-                    outputBulkErrors(entity.getErrors());
+                outputBulkErrors(entity.getErrors());
             }
         }
     }
@@ -762,6 +773,17 @@ public class BulkExampleBase extends ExampleBase {
             outputStatusMessage(String.format("LandingPageRelevance: %s", qualityScoreData.getLandingPageRelevance()));
             outputStatusMessage(String.format("LandingPageUserExperience: %s", qualityScoreData.getLandingPageUserExperience()));
             outputStatusMessage(String.format("QualityScore: %s", qualityScoreData.getQualityScore()));
+        }
+    }
+    
+    static void outputBulkBidSuggestions(BidSuggestionData bidSuggestions){
+        if (bidSuggestions != null)
+        {
+            outputStatusMessage("QualityScoreData: ");
+            outputStatusMessage("BidSuggestions: ");
+            outputStatusMessage(String.format("BestPosition: {0}", bidSuggestions.getBestPosition()));
+            outputStatusMessage(String.format("MainLine: {0}", bidSuggestions.getMainLine()));
+            outputStatusMessage(String.format("FirstPage: {0}", bidSuggestions.getFirstPage()));
         }
     }
 
