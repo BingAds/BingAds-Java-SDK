@@ -259,18 +259,18 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputKeyword(Keyword keyword){
         if (keyword != null) {
-            outputStatusMessage(String.format("Bid.Amount: {0}", 
+            outputStatusMessage(String.format("Bid.Amount: %s", 
                 keyword.getBid() != null ? keyword.getBid().getAmount() : 0)
             );
             outputBiddingScheme(keyword.getBiddingScheme());
-            outputStatusMessage(String.format("DestinationUrl: {0}", keyword.getDestinationUrl()));
-            outputStatusMessage(String.format("EditorialStatus: {0}", keyword.getEditorialStatus()));
+            outputStatusMessage(String.format("DestinationUrl: %s", keyword.getDestinationUrl()));
+            outputStatusMessage(String.format("EditorialStatus: %s", keyword.getEditorialStatus()));
             outputStatusMessage("FinalMobileUrls: ");
             if (keyword.getFinalMobileUrls() != null)
             {
                 for(java.lang.String finalMobileUrl : keyword.getFinalMobileUrls().getStrings())
                 {
-                    outputStatusMessage(String.format("\t{0}", finalMobileUrl));
+                    outputStatusMessage(String.format("\t%s", finalMobileUrl));
                 }
             }
 
@@ -279,7 +279,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             {
                 for(java.lang.String finalUrl : keyword.getFinalUrls().getStrings())
                 {
-                    outputStatusMessage(String.format("\t{0}", finalUrl));
+                    outputStatusMessage(String.format("\t%s", finalUrl));
                 }
             }
             outputStatusMessage("ForwardCompatibilityMap: ");
@@ -287,25 +287,25 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             {
                 for(KeyValuePairOfstringstring pair : keyword.getForwardCompatibilityMap().getKeyValuePairOfstringstrings())
                 {
-                    outputStatusMessage(String.format("Key: {0}", pair.getKey()));
-                    outputStatusMessage(String.format("Value: {0}", pair.getValue()));
+                    outputStatusMessage(String.format("Key: %s", pair.getKey()));
+                    outputStatusMessage(String.format("Value: %s", pair.getValue()));
                 }
             }
-            outputStatusMessage(String.format("Id: {0}", keyword.getId()));
-            outputStatusMessage(String.format("MatchType: {0}", keyword.getMatchType()));
-            outputStatusMessage(String.format("Param1: {0}", keyword.getParam1()));
-            outputStatusMessage(String.format("Param2: {0}", keyword.getParam2()));
-            outputStatusMessage(String.format("Param3: {0}", keyword.getParam3()));
-            outputStatusMessage(String.format("Status: {0}", keyword.getStatus()));
-            outputStatusMessage(String.format("Text: {0}", keyword.getText()));
-            outputStatusMessage(String.format("TrackingUrlTemplate: {0}", keyword.getTrackingUrlTemplate()));
+            outputStatusMessage(String.format("Id: %s", keyword.getId()));
+            outputStatusMessage(String.format("MatchType: %s", keyword.getMatchType()));
+            outputStatusMessage(String.format("Param1: %s", keyword.getParam1()));
+            outputStatusMessage(String.format("Param2: %s", keyword.getParam2()));
+            outputStatusMessage(String.format("Param3: %s", keyword.getParam3()));
+            outputStatusMessage(String.format("Status: %s", keyword.getStatus()));
+            outputStatusMessage(String.format("Text: %s", keyword.getText()));
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", keyword.getTrackingUrlTemplate()));
             outputStatusMessage("UrlCustomParameters: ");
             if (keyword.getUrlCustomParameters() != null && keyword.getUrlCustomParameters().getParameters() != null)
             {
                 for(CustomParameter customParameter : keyword.getUrlCustomParameters().getParameters().getCustomParameters())
                 {
-                    outputStatusMessage(String.format("\tKey: {0}", customParameter.getKey()));
-                    outputStatusMessage(String.format("\tValue: {0}", customParameter.getValue()));
+                    outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
                 }
             }
         }
@@ -465,48 +465,381 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputStatusMessage("");
     }
     
-    static void outputAppAdExtension(AppAdExtension extension){
+    static AdExtension setReadOnlyAdExtensionElementsToNull(AdExtension extension)
+    {
+        if (extension == null || extension.getId() == null)
+        {
+            return extension;
+        }
+        else
+        {
+            // Set to null for all extension types.
+            extension.setVersion(null);
+
+            if (extension instanceof ImageAdExtension)
+            {
+                if (((ImageAdExtension)extension).getFinalMobileUrls() != null)
+                {
+                    com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring urls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+                    for (java.lang.String url : ((ImageAdExtension)extension).getFinalMobileUrls().getStrings())
+                    {
+                        // When retrieving ad extensions, null strings can be returned in the list.
+                        // We only want to keep non-null strings.
+                        if (url != null)
+                        {
+                            urls.getStrings().add(url);
+                        }
+                    }
+                    ((ImageAdExtension)extension).setFinalMobileUrls(urls);
+                }
+                if (((ImageAdExtension)extension).getFinalUrls() != null)
+                {
+                    com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring urls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+                    for (java.lang.String url : ((ImageAdExtension)extension).getFinalUrls().getStrings())
+                    {
+                        // When retrieving ad extensions, null strings can be returned in the list.
+                        // We only want to keep non-null strings.
+                        if (url != null)
+                        {
+                            urls.getStrings().add(url);
+                        }
+                    }
+                    ((ImageAdExtension)extension).setFinalUrls(urls);
+                }
+                if (((ImageAdExtension)extension).getUrlCustomParameters() != null && 
+                   ((ImageAdExtension)extension).getUrlCustomParameters().getParameters() != null)
+                {
+                    ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
+                    for (CustomParameter parameter : ((ImageAdExtension)extension).getUrlCustomParameters().getParameters().getCustomParameters())
+                    {
+                        // When retrieving ad extensions, null key and value pairs can be returned in the list.
+                        // We only want to keep non-null key and value pairs.
+                        if (parameter != null && parameter.getKey() != null)
+                        {
+                            customParameters.getCustomParameters().add(parameter);
+                        }
+                    }
+                    ((ImageAdExtension)extension).getUrlCustomParameters().setParameters(customParameters);
+                }
+            }
+            else if (extension instanceof LocationAdExtension)
+            {
+                ((LocationAdExtension)extension).setGeoCodeStatus(null);
+            }
+            else if (extension instanceof Sitelink2AdExtension)
+            {
+                if (((Sitelink2AdExtension)extension).getFinalMobileUrls() != null)
+                {
+                    com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring urls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+                    for (java.lang.String url : ((Sitelink2AdExtension)extension).getFinalMobileUrls().getStrings())
+                    {
+                        // When retrieving ad extensions, null strings can be returned in the list.
+                        // We only want to keep non-null strings.
+                        if (url != null)
+                        {
+                            urls.getStrings().add(url);
+                        }
+                    }
+                    ((Sitelink2AdExtension)extension).setFinalMobileUrls(urls);
+                }
+                if (((Sitelink2AdExtension)extension).getFinalUrls() != null)
+                {
+                    com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring urls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+                    for (java.lang.String url : ((Sitelink2AdExtension)extension).getFinalUrls().getStrings())
+                    {
+                        // When retrieving ad extensions, null strings can be returned in the list.
+                        // We only want to keep non-null strings.
+                        if (url != null)
+                        {
+                            urls.getStrings().add(url);
+                        }
+                    }
+                    ((Sitelink2AdExtension)extension).setFinalUrls(urls);
+                }
+                if (((Sitelink2AdExtension)extension).getUrlCustomParameters() != null && 
+                   ((Sitelink2AdExtension)extension).getUrlCustomParameters().getParameters() != null)
+                {
+                    ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
+                    for (CustomParameter parameter : ((Sitelink2AdExtension)extension).getUrlCustomParameters().getParameters().getCustomParameters())
+                    {
+                        // When retrieving ad extensions, null key and value pairs can be returned in the list.
+                        // We only want to keep non-null key and value pairs.
+                        if (parameter != null && parameter.getKey() != null)
+                        {
+                            customParameters.getCustomParameters().add(parameter);
+                        }
+                    }
+                    ((Sitelink2AdExtension)extension).getUrlCustomParameters().setParameters(customParameters);
+                }
+            }
+            return extension;
+        }
+    }
+    
+    static void outputAdExtensionsWithEditorialReasons(
+            ArrayOfAdExtension adExtensions, 
+            ArrayOfAdExtensionEditorialReasonCollection adExtensionEditorialReasonCollection){
+        
+        int index = 0;                     
+
+        for (AdExtension extension : adExtensions.getAdExtensions())
+        {
+            if (extension == null || extension.getId() == null)
+            {
+                outputStatusMessage("Extension is null or invalid.");
+            }
+            else
+            {
+                if (extension instanceof AppAdExtension)
+                {
+                    outputAppAdExtension((AppAdExtension)extension);
+                }
+                else if (extension instanceof CallAdExtension)
+                {
+                    outputCallAdExtension((CallAdExtension)extension);
+                }
+                else if (extension instanceof CalloutAdExtension)
+                {
+                    outputCalloutAdExtension((CalloutAdExtension)extension);
+                }
+                else if (extension instanceof ImageAdExtension)
+                {
+                    outputImageAdExtension((ImageAdExtension)extension);
+                }
+                else if (extension instanceof LocationAdExtension)
+                {
+                    outputLocationAdExtension((LocationAdExtension)extension);
+                }
+                else if (extension instanceof ReviewAdExtension)
+                {
+                    outputReviewAdExtension((ReviewAdExtension)extension);
+                }
+                else if (extension instanceof SiteLinksAdExtension)
+                {
+                    outputSiteLinksAdExtension((SiteLinksAdExtension)extension);
+                }
+                else if (extension instanceof Sitelink2AdExtension)
+                {
+                    outputSitelink2AdExtension((Sitelink2AdExtension)extension);
+                }
+                else if (extension instanceof StructuredSnippetAdExtension)
+                {
+                    outputStructuredSnippetAdExtension((StructuredSnippetAdExtension)extension);
+                }
+                else
+                {
+                    outputStatusMessage("Unknown extension type");
+                }
+
+                if (adExtensionEditorialReasonCollection != null 
+                        && adExtensionEditorialReasonCollection.getAdExtensionEditorialReasonCollections().size() > 0
+                        && adExtensionEditorialReasonCollection.getAdExtensionEditorialReasonCollections().get(index) != null)
+                {
+                    outputStatusMessage("\n");
+
+                    // Print any editorial rejection reasons for the corresponding extension. This sample 
+                    // assumes the same list index for adExtensions and adExtensionEditorialReasonCollection
+                    // as defined above.
+
+                    for (AdExtensionEditorialReason adExtensionEditorialReason : 
+                            adExtensionEditorialReasonCollection.getAdExtensionEditorialReasonCollections().get(index).getReasons().getAdExtensionEditorialReasons())
+                    {
+                        if (adExtensionEditorialReason != null &&
+                            adExtensionEditorialReason.getPublisherCountries() != null)
+                        {
+                            outputStatusMessage("Editorial Rejection Location: " + adExtensionEditorialReason.getLocation());
+                            outputStatusMessage("Editorial Rejection PublisherCountries: ");
+                            for (java.lang.String publisherCountry : adExtensionEditorialReason.getPublisherCountries().getStrings())
+                            {
+                                    outputStatusMessage("  " + publisherCountry);
+                            }
+                            outputStatusMessage("Editorial Rejection ReasonCode: " + adExtensionEditorialReason.getReasonCode());
+                            outputStatusMessage("Editorial Rejection Term: " + adExtensionEditorialReason.getTerm());
+                            outputStatusMessage("\n");
+                        }
+                    }
+                }
+            }
+
+            outputStatusMessage("");
+
+            index++;
+        }
+    }
+    
+    static void outputAdExtension(AdExtension extension){
         if (extension != null) {
             outputStatusMessage(String.format("Id: %s", extension.getId()));
             outputStatusMessage(String.format("Type: %s", extension.getType()));
+            outputStatusMessage("ForwardCompatibilityMap: ");
+            if(extension.getForwardCompatibilityMap() != null){
+                for (KeyValuePairOfstringstring pair : extension.getForwardCompatibilityMap().getKeyValuePairOfstringstrings()){
+                    outputStatusMessage(String.format("Key: %s", pair.getKey()));
+                    outputStatusMessage(String.format("Value: %s", pair.getValue()));
+                }
+            }
+            outputStatusMessage("Scheduling: ");
+            if (extension.getScheduling() != null)
+            {
+                outputSchedule(extension.getScheduling());
+            }
             outputStatusMessage(String.format("Status: %s", extension.getStatus()));
             outputStatusMessage(String.format("Version: %s", extension.getVersion()));
+        }
+    }
+    
+    static void outputSchedule(Schedule schedule)
+    {
+        if (schedule != null)
+        {
+            for (DayTime dayTime : schedule.getDayTimeRanges().getDayTimes())
+            {
+                outputStatusMessage(String.format("Day: %s", dayTime.getDay()));
+                outputStatusMessage(String.format("EndHour: %s", dayTime.getEndHour()));
+                outputStatusMessage(String.format("EndMinute: %s", dayTime.getEndMinute()));
+                outputStatusMessage(String.format("StartHour: %s", dayTime.getStartHour()));
+                outputStatusMessage(String.format("StartMinute: %s", dayTime.getStartMinute()));
+            }
+            if (schedule.getEndDate() != null)
+            {
+                outputStatusMessage(String.format("EndDate: %s/%s/%s",
+                schedule.getEndDate().getMonth(),
+                schedule.getEndDate().getDay(),
+                schedule.getEndDate().getYear()));
+            }
+            if (schedule.getStartDate() != null)
+            {
+                outputStatusMessage(String.format("StartDate: %s/%s/%s",
+                schedule.getStartDate().getMonth(),
+                schedule.getStartDate().getDay(),
+                schedule.getStartDate().getYear()));
+            }
+            boolean useSearcherTimeZone = 
+                (schedule.getUseSearcherTimeZone() != null && (boolean)schedule.getUseSearcherTimeZone()) ? true : false;
+            outputStatusMessage(String.format("UseSearcherTimeZone: %s", useSearcherTimeZone));
+        }
+    }
+    
+    static void outputAppAdExtension(AppAdExtension extension){
+        if (extension != null) {
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the AppAdExtension
             outputStatusMessage(String.format("AppPlatform: %s", extension.getAppPlatform()));
             outputStatusMessage(String.format("AppStoreId: %s", extension.getAppStoreId()));
             outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
             outputStatusMessage(String.format("DevicePreference: %s", extension.getDevicePreference()));
             outputStatusMessage(String.format("DisplayText: %s", extension.getDisplayText()));
+            outputStatusMessage("FinalMobileUrls: ");
+            if (extension.getFinalMobileUrls() != null)
+            {
+                for (java.lang.String finalMobileUrl : extension.getFinalMobileUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalMobileUrl));
+                }
+            }
+            outputStatusMessage("FinalUrls: ");
+            if (extension.getFinalUrls() != null)
+            {
+                for (java.lang.String finalUrl : extension.getFinalUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalUrl));
+                }
+            }
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", extension.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters: ");
+            if (extension.getUrlCustomParameters() != null &&
+                            extension.getUrlCustomParameters().getParameters() != null)
+            {
+                for (CustomParameter customParameter : extension.getUrlCustomParameters().getParameters().getCustomParameters())
+                {
+                    outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
+                }
+            }
         }
     }
     
     static void outputCallAdExtension(CallAdExtension extension){
         if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-            outputStatusMessage(String.format("Type: %s", extension.getType()));
-            outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-            outputStatusMessage(String.format("Version: %s", extension.getVersion()));
-            outputStatusMessage(String.format("Phone number: %s", extension.getPhoneNumber()));
-            outputStatusMessage(String.format("Country: %s", extension.getCountryCode()));
-            outputStatusMessage(String.format("Is only clickable item: %s", extension.getIsCallOnly()));
-            }
-	}
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the CallAdExtension
+            outputStatusMessage(String.format("CountryCode: %s", extension.getCountryCode()));
+            outputStatusMessage(String.format("DevicePreference: %s", extension.getDevicePreference()));
+            outputStatusMessage(String.format("IsCallOnly: %s", extension.getIsCallOnly()));
+            outputStatusMessage(String.format("IsCallTrackingEnabled: %s", extension.getIsCallTrackingEnabled()));
+            outputStatusMessage(String.format("PhoneNumber: %s", extension.getPhoneNumber()));
+            outputStatusMessage(String.format("RequireTollFreeTrackingNumber: %s", extension.getRequireTollFreeTrackingNumber()));
+        }
+    }
     
     static void outputCalloutAdExtension(CalloutAdExtension extension){
         if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-            outputStatusMessage(String.format("Type: %s", extension.getType()));
-            outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-            outputStatusMessage(String.format("Version: %s", extension.getVersion()));
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the CalloutAdExtension
             outputStatusMessage(String.format("Callout Text: %s", extension.getText()));
+        }
+    }
+    
+    static void outputImageAdExtension(ImageAdExtension extension){
+        if (extension != null) {
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the ImageAdExtension
+            outputStatusMessage(String.format("AppPlatform: %s", extension.getAlternativeText()));
+            outputStatusMessage(String.format("AppStoreId: %s", extension.getDescription()));
+            outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
+            outputStatusMessage("FinalMobileUrls: ");
+            if (extension.getFinalMobileUrls() != null)
+            {
+                for (java.lang.String finalMobileUrl : extension.getFinalMobileUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalMobileUrl));
+                }
+            }
+            outputStatusMessage("FinalUrls: ");
+            if (extension.getFinalUrls() != null)
+            {
+                for (java.lang.String finalUrl : extension.getFinalUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalUrl));
+                }
+            }
+            outputStatusMessage("ImageMediaIds: ");
+            if (extension.getFinalUrls() != null)
+            {
+                for (java.lang.Long id : extension.getImageMediaIds().getLongs())
+                {
+                    outputStatusMessage(String.format("\t%s", id));
+                }
+            }
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", extension.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters: ");
+            if (extension.getUrlCustomParameters() != null &&
+                            extension.getUrlCustomParameters().getParameters() != null)
+            {
+                for (CustomParameter customParameter : extension.getUrlCustomParameters().getParameters().getCustomParameters())
+                {
+                    outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
+                }
+            }
         }
     }
 	
     static void outputLocationAdExtension(LocationAdExtension extension){
         if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-            outputStatusMessage(String.format("Type: %s", extension.getType()));
-            outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-            outputStatusMessage(String.format("Version: %s", extension.getVersion()));
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the LocationAdExtension
+            outputStatusMessage("Address: ");
             if(extension.getAddress() != null){
                 outputStatusMessage(String.format("Street: %s", extension.getAddress().getStreetAddress()));
                 outputStatusMessage(String.format("City: %s", extension.getAddress().getCityName()));
@@ -531,34 +864,86 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
     static void outputReviewAdExtension(ReviewAdExtension extension){
         if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-            outputStatusMessage(String.format("Type: %s", extension.getType()));
-            outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-            outputStatusMessage(String.format("Version: %s", extension.getVersion()));
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the ReviewAdExtension
             outputStatusMessage(String.format("IsExact: %s", extension.getIsExact()));
             outputStatusMessage(String.format("Source: %s", extension.getSource()));
             outputStatusMessage(String.format("Text: %s", extension.getText()));
             outputStatusMessage(String.format("Url: %s", extension.getUrl()));
         }
     }
+    
+    static void outputStructuredSnippetAdExtension(StructuredSnippetAdExtension extension){
+        if (extension != null) {
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the StructuredSnippetAdExtension
+            outputStatusMessage(String.format("Header: %s", extension.getHeader()));
+            outputStatusMessage("Values: ");
+            if (extension.getValues() != null)
+            {
+                for (java.lang.String value : extension.getValues().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", value));
+                }
+            }
+        }
+    }
 
     static void outputSiteLinksAdExtension(SiteLinksAdExtension extension){
         if (extension != null) {
-            outputStatusMessage(String.format("Id: %s", extension.getId()));
-            outputStatusMessage(String.format("Type: %s", extension.getType()));
-            outputStatusMessage("ForwardCompatibilityMap:");
-            if(extension.getForwardCompatibilityMap() != null){
-                for (KeyValuePairOfstringstring pair : extension.getForwardCompatibilityMap().getKeyValuePairOfstringstrings()){
-                    outputStatusMessage(String.format("Key: %s", pair.getKey()));
-                    outputStatusMessage(String.format("Value: %s", pair.getValue()));
-                }
-            }
-            outputStatusMessage(String.format("Status: %s", extension.getStatus()));
-            outputStatusMessage(String.format("Version: %s\n", extension.getVersion()));
-
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the SiteLinksAdExtension
             if(extension.getSiteLinks() != null){
                     outputSiteLinks(extension.getSiteLinks().getSiteLinks());
             }	
+        }
+    }
+    
+    static void outputSitelink2AdExtension(Sitelink2AdExtension extension){
+        if (extension != null) {
+            // Output inherited properties of the AdExtension base class.
+            outputAdExtension(extension);
+            
+            // Output properties that are specific to the Sitelink2AdExtension
+            outputStatusMessage(String.format("Description1: %s", extension.getDescription1()));
+            outputStatusMessage(String.format("Description2: %s", extension.getDescription2()));
+            outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
+            outputStatusMessage(String.format("DevicePreference: %s", extension.getDevicePreference()));
+            outputStatusMessage(String.format("DisplayText: %s", extension.getDisplayText()));
+            outputStatusMessage("FinalMobileUrls: ");
+            if (extension.getFinalMobileUrls() != null)
+            {
+                for (java.lang.String finalMobileUrl : extension.getFinalMobileUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalMobileUrl));
+                }
+            }
+            outputStatusMessage("FinalUrls: ");
+            if (extension.getFinalUrls() != null)
+            {
+                for (java.lang.String finalUrl : extension.getFinalUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalUrl));
+                }
+            }
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", extension.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters: ");
+            if (extension.getUrlCustomParameters() != null &&
+                            extension.getUrlCustomParameters().getParameters() != null)
+            {
+                for (CustomParameter customParameter : extension.getUrlCustomParameters().getParameters().getCustomParameters())
+                {
+                    outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
+                }
+            }
+            outputStatusMessage("");
         }
     }
 
@@ -566,8 +951,11 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         if (siteLinks != null) {
             for (SiteLink siteLink : siteLinks)
             {
-                outputStatusMessage(String.format("DisplayText: %s", siteLink.getDisplayText()));
+                outputStatusMessage(String.format("Description1: %s", siteLink.getDescription1()));
+                outputStatusMessage(String.format("Description2: %s", siteLink.getDescription2()));
                 outputStatusMessage(String.format("DestinationUrl: %s", siteLink.getDestinationUrl()));
+                outputStatusMessage(String.format("DevicePreference: %s", siteLink.getDevicePreference()));
+                outputStatusMessage(String.format("DisplayText: %s", siteLink.getDisplayText()));
                 outputStatusMessage("FinalMobileUrls: ");
                 if (siteLink.getFinalMobileUrls() != null)
                 {
@@ -576,7 +964,6 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                         outputStatusMessage(String.format("\t%s", finalMobileUrl));
                     }
                 }
-
                 outputStatusMessage("FinalUrls: ");
                 if (siteLink.getFinalUrls() != null)
                 {
@@ -600,6 +987,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             }
         }
     }
+    
 	
     // Outputs the negative keyword identifiers added to each campaign or ad group entity. 
     // The IdCollection items are available by calling AddNegativeKeywordsToEntities.  
@@ -858,5 +1246,27 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     	} else {
             outputStatusMessage("BiddingScheme Type: Unknown bidding scheme");
     	}
+    }
+    
+    static void outputAccountMigrationStatusesInfo(AccountMigrationStatusesInfo accountMigrationStatusesInfo)
+    {
+        if (accountMigrationStatusesInfo != null)
+        {
+            outputStatusMessage(String.format("AccountId: %s", accountMigrationStatusesInfo.getAccountId()));
+            for (MigrationStatusInfo migrationStatusInfo : accountMigrationStatusesInfo.getMigrationStatusInfo().getMigrationStatusInfos())
+            {
+                outputMigrationStatusInfo(migrationStatusInfo);
+            }
+        }
+    }
+
+    static void outputMigrationStatusInfo(MigrationStatusInfo migrationStatusInfo)
+    {
+        if (migrationStatusInfo != null)
+        {
+            outputStatusMessage(String.format("MigrationType: %s", migrationStatusInfo.getMigrationType()));
+            outputStatusMessage(String.format("StartTimeInUtc: %s", migrationStatusInfo.getStartTimeInUtc()));
+            outputStatusMessage(String.format("Status: %s\n", migrationStatusInfo.getStatus()));
+        }
     }
 }
