@@ -11,8 +11,11 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 	static void outputCampaign(Campaign campaign){
             if (campaign != null) {
                 outputBiddingScheme(campaign.getBiddingScheme());
+                outputStatusMessage(String.format("BudgetId: %s", campaign.getBudgetId()));
                 outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
-                outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType()));
+                if(campaign.getCampaignType() != null){
+                    outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType().toArray()[0]));
+                }
                 outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
                 outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
                 outputStatusMessage(String.format("Id: %s", campaign.getId()));
@@ -37,6 +40,19 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
             }
 	}
+        
+        
+        static void outputBudget(Budget budget)
+        {
+            if (budget != null)
+            {
+                outputStatusMessage(String.format("Amount: %s", budget.getAmount()));
+                outputStatusMessage(String.format("AssociationCount: %s", budget.getAssociationCount()));
+                outputStatusMessage(String.format("BudgetType: %s", budget.getBudgetType()));
+                outputStatusMessage(String.format("Id: %s", budget.getId()));
+                outputStatusMessage(String.format("Name: %s\n", budget.getName()));
+            }
+        }
     
 	static void outputAdGroup(AdGroup adGroup){
             if (adGroup != null) {
@@ -259,8 +275,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputKeyword(Keyword keyword){
         if (keyword != null) {
-            outputStatusMessage(String.format("Bid.Amount: %s", 
-                keyword.getBid() != null ? keyword.getBid().getAmount() : 0)
+                outputStatusMessage(String.format("Bid.Amount: %s", keyword.getBid() != null ? keyword.getBid().getAmount() : 0)
             );
             outputBiddingScheme(keyword.getBiddingScheme());
             outputStatusMessage(String.format("DestinationUrl: %s", keyword.getDestinationUrl()));
@@ -1269,4 +1284,5 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("Status: %s\n", migrationStatusInfo.getStatus()));
         }
     }
+    
 }

@@ -6,11 +6,18 @@ import java.util.Calendar;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.customermanagement.*;
+import static com.microsoft.bingads.examples.v10.AdExtensions.authorizationData;
+import static com.microsoft.bingads.examples.v10.ExampleBase.outputCampaignsWithPartialErrors;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class KeywordsAds extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
+    static ServiceClient<ICustomerManagementService> CustomerService; 
     
     /*
     private static java.lang.String UserName = "<UserNameGoesHere>";
@@ -33,17 +40,55 @@ public class KeywordsAds extends ExampleBase {
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
                         ICampaignManagementService.class);
+            
+            CustomerService = new ServiceClient<ICustomerManagementService>(
+                    authorizationData, 
+                    ICustomerManagementService.class);
+            
+            // Determine whether you are able to add shared budgets by checking the pilot flags.
+
+            boolean enabledForSharedBudgets = false;
+
+            // Optionally you can find out which pilot features the customer is able to use.
+            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
+               
+            // The pilot flag value for shared budgets is 263.
+            // Pilot flags apply to all accounts within a given customer.
+            if (featurePilotFlags.getInts().contains(263))
+            {
+                enabledForSharedBudgets = true;
+            }
+            
+            // If the customer is enabled for shared budgets, let's create a new budget and
+            // share it with a new campaign.
+
+            ArrayOfNullableOflong budgetIds = new ArrayOfNullableOflong();
+            
+            if (enabledForSharedBudgets)
+            {
+                ArrayOfBudget budgets = new ArrayOfBudget();
+                Budget budget = new Budget();
+                budget.setAmount(new java.math.BigDecimal(50));
+                budget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+                budget.setName("My Shared Budget " + System.currentTimeMillis());
+                budgets.getBudgets().add(budget);
+
+                budgetIds = addBudgets(budgets).getBudgetIds();
+            }
 
             // Specify a campaign. 
 
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
             campaign.setName("Summer Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Summer shoes line.");
-            campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
-            campaign.setMonthlyBudget(1000.00);
+            campaign.setDescription("Red shoes line.");
+            // You must choose to set either the shared  budget ID or daily amount.
+            // You can set one or the other, but you may not set both.
+            campaign.setBudgetId(enabledForSharedBudgets ? budgetIds.getLongs().get(0) : 0L);
+            campaign.setDailyBudget(enabledForSharedBudgets ? 0.0 : 50.0);
+            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true);
+            campaign.setDaylightSaving(true); 
              
             // You can set your campaign bid strategy to Enhanced CPC (EnhancedCpcBiddingScheme) 
             // and then, at any time, set an individual ad group or keyword bid strategy to 
@@ -154,13 +199,13 @@ public class KeywordsAds extends ExampleBase {
 
                 // With FinalUrls you can separate the tracking template, custom parameters, and 
                 // landing page URLs. 
-                ArrayOfstring finalUrls = new ArrayOfstring();
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
                 textAd.setFinalUrls(finalUrls);
 
                 // Final Mobile URLs can also be used if you want to direct the user to a different page 
                 // for mobile devices.
-                ArrayOfstring finalMobileUrls = new ArrayOfstring();
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
                 textAd.setFinalMobileUrls(finalMobileUrls);
 
@@ -199,10 +244,10 @@ public class KeywordsAds extends ExampleBase {
             // Add the campaign, ad group, keywords, and ads
 
             AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
-            ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+            ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
 
-            AddAdGroupsResponse addAdGroupsResponse = addAdGroups(campaignIds.getLongs().get(0), adGroups);
+            AddAdGroupsResponse addAdGroupsResponse = addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups);
             ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
             ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
 
@@ -216,44 +261,156 @@ public class KeywordsAds extends ExampleBase {
 
             // Output the new assigned entity identifiers, as well as any partial errors
 
-            outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
+            outputCampaignsWithPartialErrors(campaigns, nullableCampaignIds, campaignErrors);
             outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
             outputKeywordsWithPartialErrors(keywords, keywordIds, keywordErrors);
             outputAdsWithPartialErrors(ads, adIds, adErrors);
 
-            // Here is a simple example that updates the campaign budget
-
-            Campaign updateCampaign = new Campaign();
-            updateCampaign.setId(campaignIds.getLongs().get(0));
-            updateCampaign.setMonthlyBudget(500.00);
-            campaigns = new ArrayOfCampaign();
-            campaigns.getCampaigns().add(updateCampaign);
-
-            // As an exercise you can step through using the debugger and view the results.
-
-            ArrayOflong updateCampaignIds = new ArrayOflong();
-            updateCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-
+            // Here is a simple example that updates the campaign budget.
+            // If the campaign has a shared budget you cannot update the Campaign budget amount,
+            // and you must instead update the amount in the Budget object. If you try to update 
+            // the budget amount of a campaign that has a shared budget, the service will return 
+            // the CampaignServiceCannotUpdateSharedBudget error code.
+            
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.SHOPPING);
             campaignTypes.add(CampaignType.SEARCH_AND_CONTENT);
             
             ArrayList<CampaignAdditionalField> campaignAdditionalFields = new ArrayList<CampaignAdditionalField>();
             campaignAdditionalFields.add(CampaignAdditionalField.BIDDING_SCHEME);
-
-            getCampaignsByIds(
+            campaignAdditionalFields.add(CampaignAdditionalField.BUDGET_ID);
+            
+            ArrayOfCampaign getCampaigns = getCampaignsByAccountId(
                 authorizationData.getAccountId(),
-                updateCampaignIds,
                 campaignTypes,
                 campaignAdditionalFields);
 
-            updateCampaigns(authorizationData.getAccountId(), campaigns);
+            ArrayOfCampaign updateCampaigns = new ArrayOfCampaign();
+            ArrayOfBudget updateBudgets = new ArrayOfBudget();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong campaignIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong getBudgetIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            
+            // Increase existing budgets by 20%
+            for (Campaign getCampaign : getCampaigns.getCampaigns())
+            {
+                // If the campaign has a shared budget, let's add the budget ID to the list we will update later.
+                if (getCampaign != null && getCampaign.getBudgetId() != null && getCampaign.getBudgetId() > 0)
+                {
+                    getBudgetIds.getLongs().add((long)getCampaign.getBudgetId());
+                }
+                // If the campaign has its own budget, let's add it to the list of campaigns to update later.
+                else if(getCampaign != null)
+                {
+                    updateCampaigns.getCampaigns().add(getCampaign);
+                }
+            }
 
-            getCampaignsByIds(
-                    authorizationData.getAccountId(),
-                    updateCampaignIds,
+            // Update shared budgets in Budget objects.
+            if (getBudgetIds.getLongs() != null)
+            {
+                ArrayList<java.lang.Long> distinctBudgetIds = new ArrayList<java.lang.Long>(new HashSet<Long>(getBudgetIds.getLongs()));
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOflong getDistinctBudgetIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+                for(java.lang.Long id : distinctBudgetIds){
+                    getDistinctBudgetIds.getLongs().add(id);
+                }
+                ArrayOfBudget getBudgets = getBudgetsByIds(getDistinctBudgetIds).getBudgets();
+
+                outputStatusMessage("List of shared budgets BEFORE update:\n");
+                for (Budget budget : getBudgets.getBudgets())
+                {
+                    outputStatusMessage("Budget:");
+                    outputBudget(budget);
+                }
+
+                outputStatusMessage("List of campaigns that share each budget:\n");
+                ArrayOfIdCollection getCampaignIdCollection = getCampaignIdsByBudgetIds(getDistinctBudgetIds).getCampaignIdCollection();
+                for(int index = 0; index < getCampaignIdCollection.getIdCollections().size(); index++)
+                {
+                    outputStatusMessage(String.format("BudgetId: %s", getDistinctBudgetIds.getLongs().get(index)));
+                    outputStatusMessage("Campaign Ids:");
+                    if(getCampaignIdCollection.getIdCollections().get(index) != null)
+                    {
+                        for (java.lang.Long id : getCampaignIdCollection.getIdCollections().get(index).getIds().getLongs())
+                        {
+                            outputStatusMessage(String.format("\t%s", id));
+                        }
+                    }
+                }
+
+                for (Budget budget : getBudgets.getBudgets())
+                {
+                    if (budget != null)
+                    {
+                        // Increase budget by 20 %
+                        budget.setAmount(new java.math.BigDecimal(budget.getAmount().doubleValue() * 1.2));
+                        updateBudgets.getBudgets().add(budget);
+                    }
+                }
+                updateBudgets(updateBudgets);
+
+                getBudgets = getBudgetsByIds(getDistinctBudgetIds).getBudgets();
+
+                outputStatusMessage("List of shared budgets AFTER update:\n");
+                for (Budget budget : getBudgets.getBudgets())
+                {
+                    outputStatusMessage("Budget:");
+                    outputBudget(budget);
+                }
+            }
+
+            // Update unshared budgets in Campaign objects.
+            if(updateCampaigns.getCampaigns() != null)
+            {
+                // The UpdateCampaigns operation only accepts 100 Campaign objects per call. 
+                // To simply the example we will update the first 100.
+                List<Campaign> campaignSubList = updateCampaigns.getCampaigns().subList(0, 99);
+                updateCampaigns = new ArrayOfCampaign();
+                for (Campaign updateCampaign : campaignSubList){
+                    updateCampaigns.getCampaigns().add(updateCampaign);
+                }
+                
+                outputStatusMessage("List of campaigns with unshared budget BEFORE budget update:\n");
+                for (Campaign updateCampaign : updateCampaigns.getCampaigns())
+                {
+                    outputStatusMessage("Campaign:");
+                    outputCampaign(updateCampaign);
+
+                    // Monthly budgets are deprecated and there will be a forced migration to daily budgets in calendar year 2017. 
+                    // Shared budgets do not support the monthly budget type, so this is only applicable to unshared budgets. 
+                    // During the migration all campaign level unshared budgets will be rationalized as daily. 
+                    // The formula that will be used to convert monthly to daily budgets is: Monthly budget amount / 30.4.
+                    // Moving campaign monthly budget to daily budget is encouraged before monthly budgets are migrated. 
+
+                    if (updateCampaign.getBudgetType() == BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED)
+                    {
+                        // Increase budget by 20 %
+                        updateCampaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+                        updateCampaign.setDailyBudget(((updateCampaign.getMonthlyBudget() / 30.4) * 1.2));
+                    }
+                    else
+                    {
+                        // Increase budget by 20 %
+                        updateCampaign.setDailyBudget(updateCampaign.getDailyBudget() * 1.2);
+                    }
+
+                    campaignIds.getLongs().add((long)updateCampaign.getId());
+                }
+
+                updateCampaigns(authorizationData.getAccountId(), updateCampaigns);
+                
+                
+                getCampaignsByIds(authorizationData.getAccountId(),
+                    campaignIds,
                     campaignTypes,
                     campaignAdditionalFields);
+
+                outputStatusMessage("List of campaigns with unshared budget AFTER budget update:\n");
+                for (Campaign getCampaign : getCampaigns.getCampaigns())
+                {
+                    outputStatusMessage("Campaign:");
+                    outputCampaign(getCampaign);
+                }
+            }
 
             // Update the Text for the 3 successfully created ads, and update some UrlCustomParameters.
 
@@ -296,7 +453,7 @@ public class KeywordsAds extends ExampleBase {
 
             // As an exercise you can step through using the debugger and view the results.
 
-            ArrayOflong updateAdGroupIds = new ArrayOflong();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong updateAdGroupIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
             updateAdGroupIds.getLongs().add(adGroupIds.getLongs().get(0));
 
             GetAdsByAdGroupIdResponse getAdsByAdGroupIdResponse = getAdsByAdGroupId(adGroupIds.getLongs().get(0));
@@ -315,7 +472,7 @@ public class KeywordsAds extends ExampleBase {
 
             // As an exercise you can step through using the debugger and view the results.
 
-            ArrayOflong updateKeywordIds = new ArrayOflong();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong updateKeywordIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
             updateKeywordIds.getLongs().add(keywordIds.getLongs().get(0));
             
             ArrayList<KeywordAdditionalField> keywordAdditionalFields = new ArrayList<KeywordAdditionalField>();
@@ -330,37 +487,82 @@ public class KeywordsAds extends ExampleBase {
             // You should remove this line if you want to view the added entities in the 
             // Bing Ads web application or another tool.
 
-            ArrayOflong deleteCampaignIds = new ArrayOflong();
-            deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            deleteCampaigns(AccountId, deleteCampaignIds);
-            System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+            campaignIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
+            deleteCampaigns(AccountId, campaignIds);
+            System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
 
             outputStatusMessage("Program execution completed\n"); 
 
         // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v10.campaignmanagement.AdApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            for (com.microsoft.bingads.v10.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
                 outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
+                                error.getCode(), error.getErrorCode(), error.getMessage()));
             }
-        
+
         // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (ApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v10.campaignmanagement.ApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
                 outputStatusMessage("OperationError\n");
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
+
+        // Some Campaign Management service operations such as SetAdExtensionsAssociations can throw EditorialApiFaultDetail.
+        } catch (com.microsoft.bingads.v10.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
+
+            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            {
+                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
+
+            for (com.microsoft.bingads.v10.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
+            {
+                outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+                outputStatusMessage(String.format("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", 
+                                error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
+            }
+
+            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            {
+                outputStatusMessage("OperationError\n");
+                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
+            
+        // Customer Management service operations can throw AdApiFaultDetail.
+        } catch (com.microsoft.bingads.customermanagement.AdApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
+
+            for (com.microsoft.bingads.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            {
+	            outputStatusMessage("AdApiError\n");
+	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+            }
+        
+        // Customer Management service operations can throw ApiFault.
+        } catch (com.microsoft.bingads.customermanagement.ApiFault_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
+
+            for (com.microsoft.bingads.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            {
+	            outputStatusMessage("OperationError\n");
+	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
         } catch (RemoteException ex) {
             outputStatusMessage("Service communication error encountered: ");
@@ -371,144 +573,231 @@ public class KeywordsAds extends ExampleBase {
             outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         }
-     }
+    }
+    
+    // Gets the list of pilot features that the customer is able to use.
+    
+    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
+    {       
+		
+        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
+        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
+        
+        return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
+    }
+    
+    // Adds one or more budgets that can be shared by campaigns in the account.
 
-     // Adds one or more campaigns to the specified account.
+    static AddBudgetsResponse addBudgets(ArrayOfBudget budgets) throws RemoteException, Exception
+    {
+        AddBudgetsRequest request = new AddBudgetsRequest();
 
-     static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
-     {
-         AddCampaignsRequest request = new AddCampaignsRequest();
-         
-         request.setAccountId(accountId);
-         request.setCampaigns(campaigns);
+        request.setBudgets(budgets);
+        
+        return CampaignService.getService().addBudgets(request);
+    }
+    
+    // Gets the specified budgets from the account's shared budget library.
 
-         return CampaignService.getService().addCampaigns(request);
-     }
-     
-     // Deletes one or more campaigns from the specified account.
+    static GetBudgetsByIdsResponse getBudgetsByIds(
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong budgetIds) throws RemoteException, Exception
+    {
+        GetBudgetsByIdsRequest request = new GetBudgetsByIdsRequest();
 
-     static void deleteCampaigns(long accountId, ArrayOflong campaignIds) throws RemoteException, Exception
-     {
-    	 DeleteCampaignsRequest request = new DeleteCampaignsRequest();
-         
-         request.setAccountId(accountId);
-         request.setCampaignIds(campaignIds);
+        request.setBudgetIds(budgetIds);
+        
+        return CampaignService.getService().getBudgetsByIds(request);
+    }
+    
+    // Gets the identifiers of campaigns that share each specified budget.
 
-         CampaignService.getService().deleteCampaigns(request);
-     }
-     
-     // Gets one or more campaigns for the specified campaign identifiers
-     
-     static ArrayOfCampaign getCampaignsByIds(
-    		 long accountId, 
-    		 ArrayOflong campaignIds,
-    		 ArrayList<CampaignType> campaignType,
-                 ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
-     {
-    	 GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
-         
-         request.setAccountId(accountId);;
-         request.setCampaignIds(campaignIds);
-         request.setCampaignType(campaignType);
-         request.setReturnAdditionalFields(returnAdditionalFields);
+    static GetCampaignIdsByBudgetIdsResponse getCampaignIdsByBudgetIds(
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong budgetIds) throws RemoteException, Exception
+    {
+        GetCampaignIdsByBudgetIdsRequest request = new GetCampaignIdsByBudgetIdsRequest();
 
-         return CampaignService.getService().getCampaignsByIds(request).getCampaigns();
-     }
-     
-     // Updates one or more campaigns.
+        request.setBudgetIds(budgetIds);
+        
+        return CampaignService.getService().getCampaignIdsByBudgetIds(request);
+    }
+    
+    // Updates one or more budgets that can be shared by campaigns in the account.
 
-     static void updateCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
-     {
-    	 UpdateCampaignsRequest request = new UpdateCampaignsRequest();
-         
-         request.setAccountId(accountId);
-         request.setCampaigns(campaigns);
+    static UpdateBudgetsResponse updateBudgets(ArrayOfBudget budgets) throws RemoteException, Exception
+    {
+        UpdateBudgetsRequest request = new UpdateBudgetsRequest();
 
-         CampaignService.getService().updateCampaigns(request);
-     }
-          
-     // Adds one or more ad groups to the specified campaign.
+        request.setBudgets(budgets);
+        
+        return CampaignService.getService().updateBudgets(request);
+    }
+    
+    // Deletes one or more budgets.
 
-     static AddAdGroupsResponse addAdGroups(long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
-     {
-         AddAdGroupsRequest request = new AddAdGroupsRequest();
-         
-         request.setCampaignId(campaignId);
-         request.setAdGroups(adGroups);
+    static void deleteBudgets(
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong budgetIds) throws RemoteException, Exception
+    {
+        DeleteBudgetsRequest request = new DeleteBudgetsRequest();
 
-         return CampaignService.getService().addAdGroups(request);
-     }
+        request.setBudgetIds(budgetIds);
+        
+        CampaignService.getService().deleteBudgets(request);
+    }
 
-     // Adds one or more keywords to the specified ad group.
+    // Adds one or more campaigns to the specified account.
 
-     static AddKeywordsResponse addKeywords(long adGroupId, ArrayOfKeyword keywords) throws RemoteException, Exception
-     {
-         AddKeywordsRequest request = new AddKeywordsRequest();
-         
-         request.setAdGroupId(adGroupId);
-         request.setKeywords(keywords);
+    static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
+    {
+        AddCampaignsRequest request = new AddCampaignsRequest();
 
-         return CampaignService.getService().addKeywords(request);
-     }
+        request.setAccountId(accountId);
+        request.setCampaigns(campaigns);
 
-     // Adds one or more ads to the specified ad group.
+        return CampaignService.getService().addCampaigns(request);
+    }
 
-     static AddAdsResponse addAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
-     {
-         AddAdsRequest request = new AddAdsRequest();
-         
-         request.setAdGroupId(adGroupId);
-         request.setAds(ads);
+    // Deletes one or more campaigns from the specified account.
 
-         return CampaignService.getService().addAds(request);
-     }
-     
-     // Gets the ads in the specified ad group.
+    static void deleteCampaigns(
+            long accountId, 
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong campaignIds) throws RemoteException, Exception
+    {
+        DeleteCampaignsRequest request = new DeleteCampaignsRequest();
 
-     static GetAdsByAdGroupIdResponse getAdsByAdGroupId(long adGroupId) throws RemoteException, Exception
-     {
-    	 GetAdsByAdGroupIdRequest request = new GetAdsByAdGroupIdRequest();
-         
-         request.setAdGroupId(adGroupId);
+        request.setAccountId(accountId);
+        request.setCampaignIds(campaignIds);
 
-         return CampaignService.getService().getAdsByAdGroupId(request);
-     }
-     
-     // Updates the ads in the specified ad group.
+        CampaignService.getService().deleteCampaigns(request);
+    }
 
-     static UpdateAdsResponse updateAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
-     {
-    	 UpdateAdsRequest request = new UpdateAdsRequest();
-         
-         request.setAdGroupId(adGroupId);
-         request.setAds(ads);
+    // Retrieves all the requested campaign types in the account.
 
-         return CampaignService.getService().updateAds(request);
-     }
-     
-     // Gets the keywords in the specified ad group.
+    static ArrayOfCampaign getCampaignsByAccountId(
+                long accountId, 
+                ArrayList<CampaignType> campaignType,
+                ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+    {
+        GetCampaignsByAccountIdRequest request = new GetCampaignsByAccountIdRequest();
 
-     static GetKeywordsByAdGroupIdResponse getKeywordsByAdGroupId(
-             long adGroupId, 
-             ArrayList<KeywordAdditionalField> returnAdditionalFields) throws RemoteException, Exception
-     {
-    	 GetKeywordsByAdGroupIdRequest request = new GetKeywordsByAdGroupIdRequest();
-         
-         request.setAdGroupId(adGroupId);
-         request.setReturnAdditionalFields(returnAdditionalFields);
+        request.setAccountId(accountId);
+        request.setCampaignType(campaignType);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
-         return CampaignService.getService().getKeywordsByAdGroupId(request);
-     }
-     
-     // Updates the keywords in the specified ad group.
+        return CampaignService.getService().getCampaignsByAccountId(request).getCampaigns();
+    }
+    
+    // Gets one or more campaigns for the specified campaign identifiers.
 
-     static UpdateKeywordsResponse updateKeywords(long adGroupId, ArrayOfKeyword keywords) throws RemoteException, Exception
-     {
-    	 UpdateKeywordsRequest request = new UpdateKeywordsRequest();
-         
-         request.setAdGroupId(adGroupId);
-         request.setKeywords(keywords);
+    static ArrayOfCampaign getCampaignsByIds(
+                long accountId, 
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOflong campaignIds,
+                ArrayList<CampaignType> campaignType,
+                ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+    {
+        GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
 
-         return CampaignService.getService().updateKeywords(request);
-     }
+        request.setAccountId(accountId);
+        request.setCampaignIds(campaignIds);
+        request.setCampaignType(campaignType);
+        request.setReturnAdditionalFields(returnAdditionalFields);
+
+        return CampaignService.getService().getCampaignsByIds(request).getCampaigns();
+    }
+
+    // Updates one or more campaigns.
+
+    static void updateCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
+    {
+        UpdateCampaignsRequest request = new UpdateCampaignsRequest();
+
+        request.setAccountId(accountId);
+        request.setCampaigns(campaigns);
+
+        CampaignService.getService().updateCampaigns(request);
+    }
+
+    // Adds one or more ad groups to the specified campaign.
+
+    static AddAdGroupsResponse addAdGroups(long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
+    {
+        AddAdGroupsRequest request = new AddAdGroupsRequest();
+
+        request.setCampaignId(campaignId);
+        request.setAdGroups(adGroups);
+
+        return CampaignService.getService().addAdGroups(request);
+    }
+
+    // Adds one or more keywords to the specified ad group.
+
+    static AddKeywordsResponse addKeywords(long adGroupId, ArrayOfKeyword keywords) throws RemoteException, Exception
+    {
+        AddKeywordsRequest request = new AddKeywordsRequest();
+
+        request.setAdGroupId(adGroupId);
+        request.setKeywords(keywords);
+
+        return CampaignService.getService().addKeywords(request);
+    }
+
+    // Adds one or more ads to the specified ad group.
+
+    static AddAdsResponse addAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
+    {
+        AddAdsRequest request = new AddAdsRequest();
+
+        request.setAdGroupId(adGroupId);
+        request.setAds(ads);
+
+        return CampaignService.getService().addAds(request);
+    }
+
+    // Gets the ads in the specified ad group.
+
+    static GetAdsByAdGroupIdResponse getAdsByAdGroupId(long adGroupId) throws RemoteException, Exception
+    {
+        GetAdsByAdGroupIdRequest request = new GetAdsByAdGroupIdRequest();
+
+        request.setAdGroupId(adGroupId);
+
+        return CampaignService.getService().getAdsByAdGroupId(request);
+    }
+
+    // Updates the ads in the specified ad group.
+
+    static UpdateAdsResponse updateAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
+    {
+        UpdateAdsRequest request = new UpdateAdsRequest();
+
+        request.setAdGroupId(adGroupId);
+        request.setAds(ads);
+
+        return CampaignService.getService().updateAds(request);
+    }
+
+    // Gets the keywords in the specified ad group.
+
+    static GetKeywordsByAdGroupIdResponse getKeywordsByAdGroupId(
+            long adGroupId, 
+            ArrayList<KeywordAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+    {
+        GetKeywordsByAdGroupIdRequest request = new GetKeywordsByAdGroupIdRequest();
+
+        request.setAdGroupId(adGroupId);
+        request.setReturnAdditionalFields(returnAdditionalFields);
+
+        return CampaignService.getService().getKeywordsByAdGroupId(request);
+    }
+
+    // Updates the keywords in the specified ad group.
+
+    static UpdateKeywordsResponse updateKeywords(long adGroupId, ArrayOfKeyword keywords) throws RemoteException, Exception
+    {
+        UpdateKeywordsRequest request = new UpdateKeywordsRequest();
+
+        request.setAdGroupId(adGroupId);
+        request.setKeywords(keywords);
+
+        return CampaignService.getService().updateKeywords(request);
+    }
  }
