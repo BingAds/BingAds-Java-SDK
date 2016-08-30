@@ -259,7 +259,7 @@ public class KeywordsAds extends ExampleBase {
             ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
             ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
 
-            // output the new assigned entity identifiers, as well as any partial errors
+            // Output the new assigned entity identifiers, as well as any partial errors
 
             outputCampaignsWithPartialErrors(campaigns, nullableCampaignIds, campaignErrors);
             outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
