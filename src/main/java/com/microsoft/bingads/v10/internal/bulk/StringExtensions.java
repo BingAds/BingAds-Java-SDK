@@ -10,6 +10,7 @@ import com.microsoft.bingads.v10.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v10.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v10.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfCustomParameter;
+import com.microsoft.bingads.v10.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v10.campaignmanagement.Bid;
@@ -19,6 +20,8 @@ import com.microsoft.bingads.v10.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameter;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameters;
 import com.microsoft.bingads.v10.campaignmanagement.Date;
+import com.microsoft.bingads.v10.campaignmanagement.Day;
+import com.microsoft.bingads.v10.campaignmanagement.DayTime;
 import com.microsoft.bingads.v10.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v10.campaignmanagement.InheritFromParentBiddingScheme;
@@ -43,6 +46,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.lang.IllegalArgumentException;
+import java.math.BigDecimal;
 
 import javax.xml.bind.JAXBElement;
 
@@ -57,6 +61,8 @@ public class StringExtensions {
     private static final String urlSplitter = ";\\s*(?=https?://)";
     private static final String customParameterSplitter = "(?<!\\\\);\\s*";
     private static final Pattern customKvPattern = Pattern.compile("^\\{_(.*?)\\}=(.*$)");
+    
+    private static final Pattern dayTimePattern = Pattern.compile("\\((Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)\\[(\\d\\d?):(\\d\\d)-(\\d\\d?):(\\d\\d)\\]\\)");
 
     public static String toKeywordBidBulkString(Bid bid) {
         if (bid == null) {
@@ -84,6 +90,23 @@ public class StringExtensions {
     	}
         try {
             return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+	
+	/**
+	 * Catches NumberFormatException and returns a null value instead
+	 * 
+	 * @param value
+	 * @return a BigDecimal or a null if the value is not parseable as a long
+	 */
+	public static BigDecimal nullOrBigDecimal(String value) {
+		if (isNullOrEmpty(value)) {
+    		return null;
+    	}
+        try {
+            return BigDecimal.valueOf(Double.parseDouble(value));
         } catch (NumberFormatException e) {
             return null;
         }
@@ -219,6 +242,15 @@ public class StringExtensions {
         }
 
         return String.format(DATE_OUTPUT_FORMAT, c.getMonth(), c.getDay(), c.getYear());
+    }
+    
+    public static String toScheduleDateBulkString(Date c) {
+    	if (c == null || (c.getMonth() == 0 && c.getDay() == 0 && c.getYear() == 0)) {
+            return StringTable.DeleteValue;
+        }
+
+        return String.format(DATE_OUTPUT_FORMAT, c.getMonth(), c.getDay(), c.getYear());
+    
     }
 
     /**
@@ -489,6 +521,24 @@ public class StringExtensions {
             default:
                 throw new IllegalArgumentException("Unknown minute");
         }
+    }
+    
+    public static Day parseDay(String s) {    	
+    	if (s.toLowerCase().equals("sunday"))
+    		return Day.SUNDAY;
+    	if (s.toLowerCase().equals("monday"))
+    		return Day.MONDAY;
+    	if (s.toLowerCase().equals("tuesday"))
+    		return Day.TUESDAY;
+    	if (s.toLowerCase().equals("wednesday"))
+    		return Day.WEDNESDAY;
+    	if (s.toLowerCase().equals("thursday"))
+    		return Day.THURSDAY;
+    	if (s.toLowerCase().equals("friday"))
+    		return Day.FRIDAY;
+    	if (s.toLowerCase().equals("saturday"))
+    		return Day.SATURDAY;
+    	throw new IllegalArgumentException("Unknown day");
     }
 
     public static LocationTargetType parseLocationTargetType(String s) {
@@ -832,5 +882,86 @@ public class StringExtensions {
         result.append(values.getStrings().get(length - 1));
 
         return result.toString();
+    }
+    
+    public static String toDayTimeRangesBulkString(ArrayOfDayTime arrayOfDayTime) {
+    	if (arrayOfDayTime == null) {
+    		return StringTable.DeleteValue;
+    	}
+    	
+    	List<DayTime> dayTimeRanges = arrayOfDayTime.getDayTimes();
+    	if (dayTimeRanges == null || dayTimeRanges.size() == 0) {
+    		return StringTable.DeleteValue;
+    	}
+    	
+    	String result = "";
+    	
+    	int length = dayTimeRanges.size();
+    	
+    	for (int i = 0; i < length - 1; i++) {
+    		DayTime dayTime = dayTimeRanges.get(i);
+   		 	String tmp = String.format(String.format("(%s[%02d:%02d-%02d:%02d])", dayTime.getDay().value(), dayTime.getStartHour(), 
+   		 		Integer.parseInt(toMinuteBulkString(dayTime.getStartMinute())), dayTime.getEndHour(), Integer.parseInt(toMinuteBulkString(dayTime.getEndMinute()))));  	
+   		 	
+   		 	result += tmp + ";";
+        }
+
+    	DayTime dayTime = dayTimeRanges.get(length - 1);		
+        result += String.format(String.format("(%s[%02d:%02d-%02d:%02d])", dayTime.getDay().value(), dayTime.getStartHour(), 
+        		Integer.parseInt(toMinuteBulkString(dayTime.getStartMinute())), dayTime.getEndHour(), Integer.parseInt(toMinuteBulkString(dayTime.getEndMinute()))));
+
+        return result;
+    }
+    
+    public static ArrayOfDayTime parseDayTimeRanges(String s) {
+    	if (StringExtensions.isNullOrEmpty(s))
+    		return null;
+    	
+    	String[] parameters = s.split(";");
+    	
+    	List<DayTime> dayTimeArray = new ArrayList<DayTime>();
+    	
+    	for (String p : parameters) {
+    		if (!StringExtensions.isNullOrEmpty(p)) {    		
+    			p = p.trim();
+    			Matcher match = dayTimePattern.matcher(p);
+    			if (match.find()) {
+    				DayTime dayTime = new DayTime();
+					dayTime.setDay(parseDay(match.group(1)));
+					dayTime.setStartHour(Integer.parseInt(match.group(2)));
+					dayTime.setStartMinute(parseMinute(match.group(3)));
+					dayTime.setEndHour(Integer.parseInt(match.group(4)));
+					dayTime.setEndMinute(parseMinute(match.group(5)));
+					dayTimeArray.add(dayTime);
+    			} else {   				
+					throw new IllegalArgumentException(String.format("Bad format for DateTimeRanges: %s", s));
+    			}
+    		}	
+    	}
+    	
+    	ArrayOfDayTime result = new ArrayOfDayTime();
+    	result.getDayTimes().addAll(dayTimeArray);
+    	
+    	return result;
+    }    
+    
+    public static String toUseSearcherTimeZoneBulkString(Boolean useSearcherTimeZone) {
+    	if (useSearcherTimeZone == null) {
+    		return StringTable.DeleteValue;
+    	}
+    	return useSearcherTimeZone ? "true": "false";
+    }
+    
+    public static Boolean parseUseSearcherTimeZone(String s) {
+    	if(StringExtensions.isNullOrEmpty(s)) {
+    		return null;
+    	}
+    	if (s.toLowerCase().equals("true")) {
+    		return true;
+    	} else if (s.toLowerCase().equals("false")) {
+    		return false;
+    	} else {
+    		throw new IllegalArgumentException(String.format("Unknown value for Use Searcher Time Zone : %s", s));
+    	}
     }
 }

@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetMediaAssociationsRequest {
 
     @XmlElement(name = "MediaEnabledEntities", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<MediaEnabledEntityFilter> mediaEnabledEntities;
     @XmlElement(name = "MediaIds", nillable = true)

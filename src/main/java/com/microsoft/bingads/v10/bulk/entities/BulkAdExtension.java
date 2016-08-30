@@ -5,6 +5,7 @@ import com.microsoft.bingads.v10.internal.bulk.StringTable;
 import com.microsoft.bingads.v10.campaignmanagement.AdExtension;
 import com.microsoft.bingads.v10.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v10.campaignmanagement.CallAdExtension;
+import com.microsoft.bingads.v10.campaignmanagement.Schedule;
 import com.microsoft.bingads.v10.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v10.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v10.internal.bulk.RowValues;
@@ -13,6 +14,7 @@ import com.microsoft.bingads.v10.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -151,6 +153,103 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         }));
                     }
                 }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAdExtension, String>(StringTable.AdSchedule,
+                new Function<BulkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAdExtension t) {
+                        if (t.getAdExtension().getScheduling() == null) {
+                        	return null;
+                        }
+                        
+                        return StringExtensions.toDayTimeRangesBulkString(t.getAdExtension().getScheduling().getDayTimeRanges());
+                    }
+                },
+                new BiConsumer<String, BulkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAdExtension c) {
+                    	if (c.getAdExtension().getScheduling() == null) {
+                    		c.getAdExtension().setScheduling(new Schedule());
+                    	}
+                    	
+                    	c.getAdExtension().getScheduling().setDayTimeRanges(StringExtensions.parseDayTimeRanges(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAdExtension, String>(StringTable.StartDate,
+                new Function<BulkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAdExtension t) {
+                        if (t.getAdExtension().getScheduling() == null) {
+                        	return null;
+                        }                        
+                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getStartDate());
+                    }
+                },
+                new BiConsumer<String, BulkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAdExtension c) {
+                    	if (c.getAdExtension().getScheduling() == null) {
+                    		c.getAdExtension().setScheduling(new Schedule());
+                    	}                    	
+                        try {
+							c.getAdExtension().getScheduling().setStartDate(StringExtensions.parseDate(v));
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAdExtension, String>(StringTable.EndDate,
+                new Function<BulkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAdExtension t) {
+                        if (t.getAdExtension().getScheduling() == null) {
+                        	return null;
+                        }                       
+                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getEndDate());
+                    }
+                },
+                new BiConsumer<String, BulkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAdExtension c) {
+                    	if (c.getAdExtension().getScheduling() == null) {
+                    		c.getAdExtension().setScheduling(new Schedule());
+                    	}                   	
+                        try {     	
+							c.getAdExtension().getScheduling().setEndDate(StringExtensions.parseDate(v));
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAdExtension, String>(StringTable.UseSearcherTimeZone,
+                new Function<BulkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAdExtension t) {
+                        if (t.getAdExtension().getScheduling() == null) {
+                        	return null;
+                        }
+
+                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getAdExtension().getScheduling().getUseSearcherTimeZone());
+                    }
+                },
+                new BiConsumer<String, BulkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAdExtension c) {
+                    	if (c.getAdExtension().getScheduling() == null) {
+                    		c.getAdExtension().setScheduling(new Schedule());
+                    	}
+
+                    	c.getAdExtension().getScheduling().setUseSearcherTimeZone(StringExtensions.parseUseSearcherTimeZone(v));       
+                    }
+                },
+                true
         ));
 
         MAPPINGS = Collections.unmodifiableList(m);

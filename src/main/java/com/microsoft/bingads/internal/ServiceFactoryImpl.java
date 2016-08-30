@@ -25,7 +25,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "10.4.7";
+    private static final String VERSION = "10.4.8";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {

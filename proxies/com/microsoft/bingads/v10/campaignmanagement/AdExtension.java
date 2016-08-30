@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Scheduling" type="{https://bingads.microsoft.com/CampaignManagement/v10}Schedule" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v10}AdExtensionStatus" minOccurs="0"/>
  *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Version" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AdExtension", propOrder = {
     "forwardCompatibilityMap",
     "id",
+    "scheduling",
     "status",
     "type",
     "version"
@@ -57,6 +59,8 @@ public class AdExtension {
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "Scheduling", nillable = true)
+    protected Schedule scheduling;
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected AdExtensionStatus status;
@@ -111,6 +115,30 @@ public class AdExtension {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the scheduling property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Schedule }
+     *     
+     */
+    public Schedule getScheduling() {
+        return scheduling;
+    }
+
+    /**
+     * Sets the value of the scheduling property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Schedule }
+     *     
+     */
+    public void setScheduling(Schedule value) {
+        this.scheduling = value;
     }
 
     /**

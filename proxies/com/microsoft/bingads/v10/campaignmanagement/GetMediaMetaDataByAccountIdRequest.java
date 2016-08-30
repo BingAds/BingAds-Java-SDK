@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetMediaMetaDataByAccountIdRequest {
 
     @XmlElement(name = "MediaEnabledEntities", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<MediaEnabledEntityFilter> mediaEnabledEntities;
 

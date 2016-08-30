@@ -47,7 +47,7 @@ public class GetKeywordsByEditorialStatusRequest {
     @XmlSchemaType(name = "string")
     protected KeywordEditorialStatus editorialStatus;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<KeywordAdditionalField> returnAdditionalFields;
 

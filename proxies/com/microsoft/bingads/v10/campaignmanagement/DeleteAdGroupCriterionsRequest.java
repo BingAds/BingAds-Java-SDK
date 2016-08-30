@@ -50,7 +50,7 @@ public class DeleteAdGroupCriterionsRequest {
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "CriterionType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CriterionType> criterionType;
 

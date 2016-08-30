@@ -42,7 +42,7 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
 
         String[] formatVersion = emptyArray.clone();
         formatVersion[0] = "Format Version";
-        formatVersion[49] = "4.0";
+        formatVersion[51] = "4.0";
 
         String[] campaign = emptyArray.clone();
         campaign[0] = "Campaign";

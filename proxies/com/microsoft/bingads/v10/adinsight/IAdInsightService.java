@@ -723,4 +723,45 @@ public interface IAdInsightService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v10.adinsight.GetCategoryListResponse>
+     */
+    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
+    public Response<GetCategoryListResponse> getCategoryListAsync(
+        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetCategoryListRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
+    public Future<?> getCategoryListAsync(
+        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetCategoryListRequest parameters,
+        @WebParam(name = "GetCategoryListResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCategoryListResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v10.adinsight.GetCategoryListResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
+    @WebResult(name = "GetCategoryListResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+    public GetCategoryListResponse getCategoryList(
+        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetCategoryListRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Currency" type="{https://bingads.microsoft.com/CampaignManagement/v10}Currency" minOccurs="0"/>
+ *         &lt;element name="CurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v10}ConversionGoalRevenueType" minOccurs="0"/>
  *         &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,15 +32,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConversionGoalRevenue", propOrder = {
-    "currency",
+    "currencyCode",
     "type",
     "value"
 })
 public class ConversionGoalRevenue {
 
-    @XmlElement(name = "Currency", nillable = true)
-    @XmlSchemaType(name = "string")
-    protected Currency currency;
+    @XmlElement(name = "CurrencyCode", nillable = true)
+    protected String currencyCode;
     @XmlElement(name = "Type", nillable = true)
     @XmlSchemaType(name = "string")
     protected ConversionGoalRevenueType type;
@@ -48,27 +47,27 @@ public class ConversionGoalRevenue {
     protected BigDecimal value;
 
     /**
-     * Gets the value of the currency property.
+     * Gets the value of the currencyCode property.
      * 
      * @return
      *     possible object is
-     *     {@link Currency }
+     *     {@link String }
      *     
      */
-    public Currency getCurrency() {
-        return currency;
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
     /**
-     * Sets the value of the currency property.
+     * Sets the value of the currencyCode property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Currency }
+     *     {@link String }
      *     
      */
-    public void setCurrency(Currency value) {
-        this.currency = value;
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
     }
 
     /**

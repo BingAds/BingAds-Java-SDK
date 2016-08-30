@@ -81,6 +81,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TrackingTemplate"/>
  *     &lt;enumeration value="CustomParameters"/>
  *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="BudgetName"/>
+ *     &lt;enumeration value="BudgetStatus"/>
+ *     &lt;enumeration value="BudgetAssociationStatus"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -223,7 +226,13 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("CustomParameters")
     CUSTOM_PARAMETERS("CustomParameters"),
     @XmlEnumValue("AccountStatus")
-    ACCOUNT_STATUS("AccountStatus");
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("BudgetName")
+    BUDGET_NAME("BudgetName"),
+    @XmlEnumValue("BudgetStatus")
+    BUDGET_STATUS("BudgetStatus"),
+    @XmlEnumValue("BudgetAssociationStatus")
+    BUDGET_ASSOCIATION_STATUS("BudgetAssociationStatus");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

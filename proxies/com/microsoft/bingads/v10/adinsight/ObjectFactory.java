@@ -45,6 +45,7 @@ public class ObjectFactory {
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _ArrayOfBatchError_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v10", "ArrayOfBatchError");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
+    private final static QName _ArrayOfSample_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfSample");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _AuctionInsightV2Entity_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "AuctionInsightV2Entity");
     private final static QName _MatchType_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "MatchType");
@@ -59,6 +60,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfKeywordCategory_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfKeywordCategory");
     private final static QName _ArrayOfOrderBy_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfOrderBy");
     private final static QName _DayMonthAndYear_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "DayMonthAndYear");
+    private final static QName _ArrayOfCategory_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfCategory");
     private final static QName _ArrayOfKeywordBidLandscape_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfKeywordBidLandscape");
     private final static QName _KeywordBidLandscape_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "KeywordBidLandscape");
     private final static QName _ArrayOfEstimatedBidAndTraffic_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfEstimatedBidAndTraffic");
@@ -91,6 +93,7 @@ public class ObjectFactory {
     private final static QName _ApiFaultDetail_QNAME = new QName("Microsoft.Advertiser.AdInsight.Api.Service", "ApiFaultDetail");
     private final static QName _KeywordSuggestion_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "KeywordSuggestion");
     private final static QName _ArrayOfField_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfField");
+    private final static QName _Category_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "Category");
     private final static QName _ArrayOfBidLandscapePoint_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfBidLandscapePoint");
     private final static QName _Operator_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "Operator");
     private final static QName _AuthenticationToken_QNAME = new QName("Microsoft.Advertiser.AdInsight.Api.Service", "AuthenticationToken");
@@ -115,6 +118,7 @@ public class ObjectFactory {
     private final static QName _KeywordEstimatedBid_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "KeywordEstimatedBid");
     private final static QName _ArrayOfKeywordEstimatedBid_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "ArrayOfKeywordEstimatedBid");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
+    private final static QName _Sample_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "Sample");
     private final static QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v10", "OperationError");
     private final static QName _TrackingId_QNAME = new QName("Microsoft.Advertiser.AdInsight.Api.Service", "TrackingId");
     private final static QName _TimeInterval_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", "TimeInterval");
@@ -349,6 +353,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetCategoryListResponse }
+     * 
+     */
+    public GetCategoryListResponse createGetCategoryListResponse() {
+        return new GetCategoryListResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCategory }
+     * 
+     */
+    public ArrayOfCategory createArrayOfCategory() {
+        return new ArrayOfCategory();
+    }
+
+    /**
      * Create an instance of {@link SuggestKeywordsForUrlResponse }
      * 
      */
@@ -530,6 +550,14 @@ public class ObjectFactory {
      */
     public ArrayOfKeywordLocationResult createArrayOfKeywordLocationResult() {
         return new ArrayOfKeywordLocationResult();
+    }
+
+    /**
+     * Create an instance of {@link GetCategoryListRequest }
+     * 
+     */
+    public GetCategoryListRequest createGetCategoryListRequest() {
+        return new GetCategoryListRequest();
     }
 
     /**
@@ -1013,6 +1041,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Category }
+     * 
+     */
+    public Category createCategory() {
+        return new Category();
+    }
+
+    /**
      * Create an instance of {@link KeywordKPI }
      * 
      */
@@ -1109,6 +1145,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Sample }
+     * 
+     */
+    public Sample createSample() {
+        return new Sample();
+    }
+
+    /**
      * Create an instance of {@link SearchCountsByAttributes }
      * 
      */
@@ -1122,6 +1166,14 @@ public class ObjectFactory {
      */
     public KeywordSearchCount createKeywordSearchCount() {
         return new KeywordSearchCount();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSample }
+     * 
+     */
+    public ArrayOfSample createArrayOfSample() {
+        return new ArrayOfSample();
     }
 
     /**
@@ -1406,6 +1458,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSample }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", name = "ArrayOfSample")
+    public JAXBElement<ArrayOfSample> createArrayOfSample(ArrayOfSample value) {
+        return new JAXBElement<ArrayOfSample>(_ArrayOfSample_QNAME, ArrayOfSample.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
      * 
      */
@@ -1529,6 +1590,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", name = "DayMonthAndYear")
     public JAXBElement<DayMonthAndYear> createDayMonthAndYear(DayMonthAndYear value) {
         return new JAXBElement<DayMonthAndYear>(_DayMonthAndYear_QNAME, DayMonthAndYear.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCategory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", name = "ArrayOfCategory")
+    public JAXBElement<ArrayOfCategory> createArrayOfCategory(ArrayOfCategory value) {
+        return new JAXBElement<ArrayOfCategory>(_ArrayOfCategory_QNAME, ArrayOfCategory.class, null, value);
     }
 
     /**
@@ -1821,6 +1891,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Category }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", name = "Category")
+    public JAXBElement<Category> createCategory(Category value) {
+        return new JAXBElement<Category>(_Category_QNAME, Category.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBidLandscapePoint }{@code >}}
      * 
      */
@@ -2035,6 +2114,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "char")
     public JAXBElement<Char> createChar(Char value) {
         return new JAXBElement<Char>(_Char_QNAME, Char.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sample }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.Entity", name = "Sample")
+    public JAXBElement<Sample> createSample(Sample value) {
+        return new JAXBElement<Sample>(_Sample_QNAME, Sample.class, null, value);
     }
 
     /**

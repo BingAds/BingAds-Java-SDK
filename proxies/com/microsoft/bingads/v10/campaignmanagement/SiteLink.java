@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="FinalAppUrls" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}ArrayOfAppUrl" minOccurs="0"/>
  *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         &lt;element name="Scheduling" type="{https://bingads.microsoft.com/CampaignManagement/v10}Schedule" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}CustomParameters" minOccurs="0"/>
  *       &lt;/sequence>
@@ -45,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
     "finalAppUrls",
     "finalMobileUrls",
     "finalUrls",
+    "scheduling",
     "trackingUrlTemplate",
     "urlCustomParameters"
 })
@@ -66,6 +68,8 @@ public class SiteLink {
     protected ArrayOfstring finalMobileUrls;
     @XmlElement(name = "FinalUrls", nillable = true)
     protected ArrayOfstring finalUrls;
+    @XmlElement(name = "Scheduling", nillable = true)
+    protected Schedule scheduling;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
@@ -261,6 +265,30 @@ public class SiteLink {
      */
     public void setFinalUrls(ArrayOfstring value) {
         this.finalUrls = value;
+    }
+
+    /**
+     * Gets the value of the scheduling property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Schedule }
+     *     
+     */
+    public Schedule getScheduling() {
+        return scheduling;
+    }
+
+    /**
+     * Sets the value of the scheduling property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Schedule }
+     *     
+     */
+    public void setScheduling(Schedule value) {
+        this.scheduling = value;
     }
 
     /**

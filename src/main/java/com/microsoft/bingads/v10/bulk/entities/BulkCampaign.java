@@ -37,6 +37,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private Campaign campaign;
     private QualityScoreData qualityScoreData;
     private PerformanceData performanceData;
+    
+    private String budgetName;
 
     private static final List<BulkMapping<BulkCampaign>> MAPPINGS;
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
@@ -275,6 +277,36 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                 return BudgetLimitType.fromValue(value);
                             }
                         }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BudgetId,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getCampaign().getBudgetId() != null ? c.getCampaign().getBudgetId().toString() : null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setBudgetId(StringExtensions.nullOrLong(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BudgetName,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getBudgetName();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.setBudgetName(v);
                     }
                 }
         ));
@@ -540,7 +572,21 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         return performanceData;
     }
 
-    @Override
+    /**
+     * Gets the budget name for the campaign
+     * */
+    public String getBudgetName() {
+		return budgetName;
+	}
+
+    /**
+     * Sets the budget name for the campaign
+     * */
+	public void setBudgetName(String budgetName) {
+		this.budgetName = budgetName;
+	}
+
+	@Override
     public void processMappingsFromRowValues(RowValues values) {
         this.setCampaign(new Campaign());
         MappingHelpers.convertToEntity(values, MAPPINGS, this);

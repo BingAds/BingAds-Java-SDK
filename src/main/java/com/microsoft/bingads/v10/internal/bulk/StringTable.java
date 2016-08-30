@@ -33,8 +33,10 @@ public class StringTable {
     public static final String TimeZone = "Time Zone";
 
     public static final String Budget = "Budget";
-
+    public static final String BudgetId = "Budget Id";
     public static final String BudgetType = "Budget Type";
+    public static final String BudgetName = "Budget Name";
+    		
     public static final String KeywordVariantMatchEnabled = "KeywordVariantMatchEnabled";
 
     public static final String AdGroup = "Ad Group";
@@ -194,7 +196,6 @@ public class StringTable {
     public static final String KeywordBestPositionBidType = "Keyword Best Position Bid";
 
     // Product ad extension
-
     public static final String ProductCondition4 = "Product Condition 4";
     public static final String ProductCondition5 = "Product Condition 5";
     public static final String ProductCondition6 = "Product Condition 6";
@@ -251,8 +252,6 @@ public class StringTable {
     public static final String NegativeKeywordList = "Negative Keyword List";
     public static final String CampaignNegativeKeywordList = "Campaign Negative Keyword List Association";
     public static final String ListNegativeKeyword = "Shared Negative Keyword";
-
-    
 
     // Subtypes
     public static final String MetroAreaSubType = "Metro Area";
@@ -311,7 +310,7 @@ public class StringTable {
     
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
-    
+
     // Remarketing
     public static final String RemarketingList = "Remarketing List";
     public static final String AdGroupRemarketingListAssociation = "Ad Group Remarketing List Association";
@@ -335,6 +334,15 @@ public class StringTable {
     public static final String TitlePart2 = "Title Part 2";
     public static final String Path1 = "Path 1";
     public static final String Path2 = "Path 2";
+    
+    // Sitelink2 Ad Extension
+    public static final String Sitelink2AdExtension = "Sitelink2 Ad Extension";
+    public static final String CampaignSitelink2AdExtension = "Campaign Sitelink2 Ad Extension";
+    public static final String AdGroupSitelink2AdExtension = "Ad Group Sitelink2 Ad Extension";
+    
+    // Ad Extension Schedule
+    public static final String AdSchedule = "Ad Schedule";
+    public static final String UseSearcherTimeZone = "Use Searcher Time Zone";
 
     static {
         Map<String, String> m = new HashMap<String, String>();

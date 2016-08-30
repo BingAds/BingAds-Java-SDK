@@ -29,6 +29,8 @@ public class CsvHeaders {
 
             // campaign
             StringTable.TimeZone,
+            StringTable.BudgetId,
+            StringTable.BudgetName,
             StringTable.Budget,
             StringTable.BudgetType,
             StringTable.KeywordVariantMatchEnabled,
@@ -89,6 +91,8 @@ public class CsvHeaders {
 
             // AdExtensions common
             StringTable.Version,
+            StringTable.AdSchedule,
+            StringTable.UseSearcherTimeZone,
 
             // Site link ad extensions
             StringTable.SiteLinkExtensionOrder,
@@ -213,7 +217,7 @@ public class CsvHeaders {
             StringTable.TitlePart1,
             StringTable.TitlePart2,
             StringTable.Path1,
-            StringTable.Path2
+            StringTable.Path2,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();
