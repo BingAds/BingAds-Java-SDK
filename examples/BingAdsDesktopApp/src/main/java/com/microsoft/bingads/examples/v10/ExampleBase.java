@@ -1269,4 +1269,76 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("Status: %s\n", migrationStatusInfo.getStatus()));
         }
     }
+    
+    static void outputUetTag(UetTag uetTag)
+    {
+        if (uetTag != null)
+        {
+            outputStatusMessage(String.format("Description: %s", uetTag.getDescription()));
+            outputStatusMessage(String.format("Id: %s", uetTag.getId()));
+            outputStatusMessage(String.format("Name: %s", uetTag.getName()));
+            outputStatusMessage(String.format("TrackingNoScript: %s", uetTag.getTrackingNoScript()));
+            outputStatusMessage(String.format("TrackingScript: %s", uetTag.getTrackingScript()));
+            outputStatusMessage(String.format("TrackingStatus: %s\n", uetTag.getTrackingStatus()));
+        }
+    }
+
+    static void outputConversionGoal(ConversionGoal conversionGoal)
+    {
+        if (conversionGoal != null)
+        {
+            outputStatusMessage(String.format("ConversionWindowInMinutes: %s", conversionGoal.getConversionWindowInMinutes()));
+            outputStatusMessage(String.format("CountType: %s", conversionGoal.getCountType()));
+            outputStatusMessage(String.format("Id: %s", conversionGoal.getId()));
+            outputStatusMessage(String.format("Name: %s", conversionGoal.getName()));
+            outputConversionGoalRevenue(conversionGoal.getRevenue());
+            outputStatusMessage(String.format("Scope: %s", conversionGoal.getScope()));
+            outputStatusMessage(String.format("Status: %s", conversionGoal.getStatus()));
+            outputStatusMessage(String.format("TagId: %s", conversionGoal.getTagId()));
+            outputStatusMessage(String.format("TrackingStatus: %s", conversionGoal.getTrackingStatus()));
+            if(conversionGoal.getType() != null){
+                outputStatusMessage(String.format("Type: %s", conversionGoal.getType().toArray()[0]));
+            }
+
+            if (conversionGoal instanceof AppInstallGoal)
+            {
+                outputStatusMessage(String.format("AppPlatform: %s", ((AppInstallGoal)conversionGoal).getAppPlatform()));
+                outputStatusMessage(String.format("AppStoreId: %s\n", ((AppInstallGoal)conversionGoal).getAppStoreId()));
+            }
+            else if (conversionGoal instanceof DurationGoal)
+            {
+                outputStatusMessage(String.format("MinimumDurationInSeconds: %s\n", ((DurationGoal)conversionGoal).getMinimumDurationInSeconds()));
+            }
+            else if (conversionGoal instanceof EventGoal)
+            {
+                outputStatusMessage(String.format("ActionExpression: %s", ((EventGoal)conversionGoal).getActionExpression()));
+                outputStatusMessage(String.format("ActionOperator: %s", ((EventGoal)conversionGoal).getActionOperator()));
+                outputStatusMessage(String.format("CategoryExpression: %s", ((EventGoal)conversionGoal).getCategoryExpression()));
+                outputStatusMessage(String.format("CategoryOperator: %s", ((EventGoal)conversionGoal).getCategoryOperator()));
+                outputStatusMessage(String.format("LabelExpression: %s", ((EventGoal)conversionGoal).getLabelExpression()));
+                outputStatusMessage(String.format("LabelOperator: %s", ((EventGoal)conversionGoal).getLabelOperator()));
+                outputStatusMessage(String.format("Value: %s", ((EventGoal)conversionGoal).getValue()));
+                outputStatusMessage(String.format("ValueOperator: %s\n", ((EventGoal)conversionGoal).getValueOperator()));
+            }
+            else if (conversionGoal instanceof PagesViewedPerVisitGoal)
+            {
+                outputStatusMessage(String.format("MinimumPagesViewed: %s\n", ((PagesViewedPerVisitGoal)conversionGoal).getMinimumPagesViewed()));
+            }
+            else if (conversionGoal instanceof UrlGoal)
+            {
+                outputStatusMessage(String.format("UrlExpression: %s", ((UrlGoal)conversionGoal).getUrlExpression()));
+                outputStatusMessage(String.format("UrlOperator: %s\n", ((UrlGoal)conversionGoal).getUrlOperator()));
+            }
+        }
+    }
+
+    static void outputConversionGoalRevenue(ConversionGoalRevenue conversionGoalRevenue)
+    {
+        if (conversionGoalRevenue != null)
+        {
+            outputStatusMessage(String.format("CurrencyCode: %s", conversionGoalRevenue.getCurrencyCode()));
+            outputStatusMessage(String.format("Type: %s", conversionGoalRevenue.getType()));
+            outputStatusMessage(String.format("Value: %s", conversionGoalRevenue.getValue()));
+        }
+    }
 }
