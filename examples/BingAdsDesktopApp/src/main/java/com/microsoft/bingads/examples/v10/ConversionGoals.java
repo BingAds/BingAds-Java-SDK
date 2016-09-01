@@ -267,13 +267,10 @@ public class ConversionGoals extends ExampleBase {
             
             EventGoal updateEventGoal = new EventGoal();
             // For both add and update conversion goal operations, you must include one or more  
-            // of the following event operator pairs: 
-            // (ActionOperator and ActionExpression), (CategoryOperator and CategoryExpression), 
-            // (LabelOperator and LabelExpression), (ValueOperator and Value).
-            // Each event pair (e.g. ActionOperator and ActionExpression) is optional if you include 
-            // one or more of the other events.
+            // of the following events: 
+            // ActionExpression, CategoryExpression, LabelExpression, or Value.
 
-            // For example if you do not include ActionOperator and ActionExpression during update, 
+            // For example if you do not include ActionExpression during update, 
             // any existing ActionOperator and ActionExpression settings will be deleted.
             updateEventGoal.setActionExpression(null);
             updateEventGoal.setActionOperator(null);
@@ -282,8 +279,7 @@ public class ConversionGoals extends ExampleBase {
             updateEventGoal.setId(conversionGoalIds.getLongs().get(0));
             updateEventGoal.setConversionWindowInMinutes(30);
             updateEventGoal.setCountType(ConversionGoalCountType.ALL);
-            // You cannot update the expression unless you also include the expression.
-            // Likewise, you cannot update the operator unless you also include the expression.
+            // You cannot update the operator unless you also include the expression.
             // The following attempt to update LabelOperator will result in an error.
             updateEventGoal.setLabelExpression(null);
             updateEventGoal.setLabelOperator(ExpressionOperator.EQUALS);
@@ -293,8 +289,8 @@ public class ConversionGoals extends ExampleBase {
             updateEventGoalRevenue.setValue(new java.math.BigDecimal(5.00));
             updateEventGoalRevenue.setCurrencyCode(null);
             updateEventGoal.setRevenue(updateEventGoalRevenue);
-            // You must specify the previous settings for Value and ValueOperator,
-            // unless you want them deleted during the update conversion goal operation.
+            // You must specify the previous settings unless you want
+            // them replaced during the update conversion goal operation.
             updateEventGoal.setValue(new java.math.BigDecimal(5.00));
             updateEventGoal.setValueOperator(ValueOperator.EQUALS);
             updateConversionGoals.getConversionGoals().add(updateEventGoal);
