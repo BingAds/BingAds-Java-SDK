@@ -615,13 +615,16 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     {
         if (schedule != null)
         {
-            for (DayTime dayTime : schedule.getDayTimeRanges().getDayTimes())
+            if (schedule.getDayTimeRanges() != null) 
             {
-                outputStatusMessage(String.format("Day: %s", dayTime.getDay()));
-                outputStatusMessage(String.format("EndHour: %s", dayTime.getEndHour()));
-                outputStatusMessage(String.format("EndMinute: %s", dayTime.getEndMinute()));
-                outputStatusMessage(String.format("StartHour: %s", dayTime.getStartHour()));
-                outputStatusMessage(String.format("StartMinute: %s", dayTime.getStartMinute()));
+                for (DayTime dayTime : schedule.getDayTimeRanges().getDayTimes())
+                {
+                    outputStatusMessage(String.format("Day: %s", dayTime.getDay()));
+                    outputStatusMessage(String.format("EndHour: %s", dayTime.getEndHour()));
+                    outputStatusMessage(String.format("EndMinute: %s", dayTime.getEndMinute()));
+                    outputStatusMessage(String.format("StartHour: %s", dayTime.getStartHour()));
+                    outputStatusMessage(String.format("StartMinute: %s", dayTime.getStartMinute()));
+                }
             }
             if (schedule.getEndDate() != null)
             {
