@@ -238,12 +238,13 @@ public class BulkServiceManager {
         }
     }
 
-    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(final FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
         final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws IOException {
+                parameters.getUploadFilePath().delete();
                 resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
             }
         });

@@ -9,9 +9,18 @@ import java.io.IOException;
 public class CSVBulkFileReaderFactory implements BulkFileReaderFactory {
 
     @Override
-    public BulkFileReader createBulkFileReader(File localFile,
-            ResultFileType resultType, DownloadFileType downloadFileType) throws IOException {
-        return new BulkFileReader(localFile, resultType, downloadFileType);
+    public BulkFileReader createBulkFileReader(final File localFile,
+                                               ResultFileType resultType, DownloadFileType downloadFileType) throws IOException {
+        return new BulkFileReader(localFile, resultType, downloadFileType) {
+            @Override
+            public void close() throws IOException {
+                try {
+                    super.close();
+                } finally {
+                    localFile.delete();
+                }
+            }
+        };
     }
 
 }
