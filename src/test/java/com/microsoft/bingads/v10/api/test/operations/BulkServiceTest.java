@@ -1,7 +1,29 @@
 package com.microsoft.bingads.v10.api.test.operations;
 
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.junit.Test;
+
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.PasswordAuthentication;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import com.microsoft.bingads.v10.bulk.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v10.bulk.BulkDownloadEntity;
 import com.microsoft.bingads.v10.bulk.BulkDownloadOperation;
@@ -18,34 +40,14 @@ import com.microsoft.bingads.v10.bulk.DownloadFileType;
 import com.microsoft.bingads.v10.bulk.DownloadParameters;
 import com.microsoft.bingads.v10.bulk.GetBulkDownloadStatusRequest;
 import com.microsoft.bingads.v10.bulk.GetBulkDownloadStatusResponse;
-//import com.microsoft.bingads.v10.bulk.GetDetailedBulkDownloadStatusRequest;
-//import com.microsoft.bingads.v10.bulk.GetDetailedBulkDownloadStatusResponse;
 import com.microsoft.bingads.v10.bulk.PerformanceStatsDateRange;
 import com.microsoft.bingads.v10.bulk.ResultFileType;
 import com.microsoft.bingads.v10.bulk.SubmitDownloadParameters;
 import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v10.internal.bulk.BulkFileReaderFactory;
-import com.microsoft.bingads.internal.utilities.ZipExtractor;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+
+//import com.microsoft.bingads.v10.bulk.GetDetailedBulkDownloadStatusRequest;
+//import com.microsoft.bingads.v10.bulk.GetDetailedBulkDownloadStatusResponse;
 
 public class BulkServiceTest extends FakeApiTest {
     
@@ -167,7 +169,7 @@ public class BulkServiceTest extends FakeApiTest {
     }
 
     @Test
-    public void BulkService_DownloadFile_CallsApiDownloadsAndExtractsFile() throws FileNotFoundException, UnsupportedEncodingException, IOException, URISyntaxException, InterruptedException, ExecutionException {
+    public void BulkService_DownloadFile_CallsApiDownloadsAndExtractsFile() throws IOException, URISyntaxException, InterruptedException, ExecutionException {
         final DownloadCampaignsByAccountIdsResponse apiResponse = new DownloadCampaignsByAccountIdsResponse();
         apiResponse.setDownloadRequestId("req456");        
         
@@ -347,7 +349,7 @@ public class BulkServiceTest extends FakeApiTest {
         
         expect(expectedReader.getEntities()).andReturn(bulkEntities);
         
-        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV)).andReturn(expectedReader);
+        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV, true)).andReturn(expectedReader);
         
         replay(zipExtractor, expectedReader, factory);
 
