@@ -1,39 +1,5 @@
 package com.microsoft.bingads.v10.bulk;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.Authentication;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.CouldNotUploadFileException;
-import com.microsoft.bingads.HeadersImpl;
-import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.HttpHeaders;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.v10.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v10.internal.bulk.Config;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.v10.internal.bulk.BulkFileReaderFactory;
-import com.microsoft.bingads.v10.internal.bulk.CSVBulkFileReaderFactory;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
-import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
-import com.microsoft.bingads.internal.utilities.ZipExtractor;
-import com.microsoft.bingads.v10.bulk.ArrayOfCampaignScope;
-import com.microsoft.bingads.v10.bulk.ArrayOflong;
-import com.microsoft.bingads.v10.bulk.CampaignScope;
-import com.microsoft.bingads.v10.bulk.DownloadCampaignsByAccountIdsRequest;
-import com.microsoft.bingads.v10.bulk.DownloadCampaignsByAccountIdsResponse;
-import com.microsoft.bingads.v10.bulk.DownloadCampaignsByCampaignIdsRequest;
-import com.microsoft.bingads.v10.bulk.DownloadCampaignsByCampaignIdsResponse;
-import com.microsoft.bingads.v10.bulk.DownloadFileType;
-import com.microsoft.bingads.v10.bulk.GetBulkUploadUrlRequest;
-import com.microsoft.bingads.v10.bulk.GetBulkUploadUrlResponse;
-import com.microsoft.bingads.v10.bulk.IBulkService;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -42,9 +8,34 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
+
 import org.apache.http.HttpRequest;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.Authentication;
+import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.CouldNotUploadFileException;
+import com.microsoft.bingads.HeadersImpl;
+import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.HttpHeaders;
+import com.microsoft.bingads.internal.ParentCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v10.internal.bulk.BulkFileReaderFactory;
+import com.microsoft.bingads.v10.internal.bulk.CSVBulkFileReaderFactory;
+import com.microsoft.bingads.v10.internal.bulk.Config;
+import com.microsoft.bingads.v10.internal.bulk.StringExtensions;
 
 /**
  * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides methods for submitting upload or download operations.
@@ -83,9 +74,14 @@ public class BulkServiceManager {
      */
     private int downloadHttpTimeoutInMilliseconds;
 
-	private final ServiceClient<IBulkService> serviceClient;
+    private final ServiceClient<IBulkService> serviceClient;
 
     private File workingDirectory;
+
+    /**
+     * Delete internally created temp files automatically?.
+     */
+    private boolean cleanupTempFilesAutomatically = false;
 
     /**
      * Initializes a new instance of this class with the specified {@link AuthorizationData}.
@@ -244,8 +240,14 @@ public class BulkServiceManager {
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws IOException {
-                parameters.getUploadFilePath().delete();
-                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
+                if (cleanupTempFilesAutomatically) {
+                    parameters.getUploadFilePath().delete();
+                }
+
+                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(
+                      resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, cleanupTempFilesAutomatically);
+
+                resultFuture.setResult(reader.getEntities());
             }
         });
 
@@ -291,7 +293,8 @@ public class BulkServiceManager {
             public void onSuccess(File result) throws IOException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
 
-                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType());
+                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(
+                      result, resultFileType, parameters.getFileType(), cleanupTempFilesAutomatically);
 
                 resultFuture.setResult(reader.getEntities());
             }
@@ -708,6 +711,20 @@ public class BulkServiceManager {
      */
     public void setWorkingDirectory(File value) {
         this.workingDirectory = value;
+    }
+
+    /**
+     * Delete internally created temp files automatically?.
+     */
+    public boolean isCleanupTempFilesAutomatically() {
+        return cleanupTempFilesAutomatically;
+    }
+
+    /**
+     * Set, if to delete internally created temp files automatically.
+     */
+    public void setCleanupTempFilesAutomatically(boolean cleanupTempFilesAutomatically) {
+        this.cleanupTempFilesAutomatically = cleanupTempFilesAutomatically;
     }
 
     /**
