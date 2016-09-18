@@ -44,7 +44,7 @@ public class ReadWriteEntitiesWithErrors extends EasyMockSupport {
 
         String[] formatVersion = emptyArray.clone();
         formatVersion[0] = "Format Version";
-        formatVersion[46] = "3";
+        formatVersion[51] = "4";
 
         String[] campaign = emptyArray.clone();
         campaign[0] = "Campaign";
@@ -115,8 +115,8 @@ public class ReadWriteEntitiesWithErrors extends EasyMockSupport {
     private BulkObjectFactory createFakeBulkObjectFactory(RowValues expectedRowValues,
             BulkEntity expectedEntity) {
         BulkObjectFactory factory = createMock(BulkObjectFactory.class);
-                
-        expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(new UnknownBulkEntity());
+
+        expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(new FormatVersion());
         expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(expectedEntity);
         expect(factory.createBulkObject(anyObject(RowValues.class))).andReturn(new BulkError());
         

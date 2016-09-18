@@ -238,9 +238,9 @@ public class BulkServiceTest extends FakeApiTest {
         
         ZipExtractor zipExtractor = createMock(ZipExtractor.class);
           
-        File expectedZipFile = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK\\req456.zip");
+        File expectedZipFile = new File(new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK"), "req456.zip");
         
-        File expectedResultFile = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK\\req456");
+        File expectedResultFile = new File(new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK"), "req456");
         
         expect(zipExtractor.extractFirstEntryToFile(expectedZipFile, expectedResultFile, true, false)).andReturn(new File("file path"));
         
@@ -333,9 +333,9 @@ public class BulkServiceTest extends FakeApiTest {
         
         ZipExtractor zipExtractor = createMock(ZipExtractor.class);
           
-        File expectedZipFile = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK\\req456.zip");
+        File expectedZipFile = new File(new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK"), "req456.zip");
         
-        File expectedResultFile = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK\\req456");
+        File expectedResultFile = new File(new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK"), "req456");
         
         expect(zipExtractor.extractFirstEntryToFile(expectedZipFile, expectedResultFile, true, false)).andReturn(new File("file path"));
         
