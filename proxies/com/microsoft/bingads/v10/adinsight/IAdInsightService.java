@@ -727,12 +727,12 @@ public interface IAdInsightService {
      * 
      * @param parameters
      * @return
-     *     returns javax.xml.ws.Response<com.microsoft.bingads.v10.adinsight.GetCategoryListResponse>
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v10.adinsight.GetDomainCategoriesResponse>
      */
-    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
-    public Response<GetCategoryListResponse> getCategoryListAsync(
-        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        GetCategoryListRequest parameters);
+    @WebMethod(operationName = "GetDomainCategories", action = "GetDomainCategories")
+    public Response<GetDomainCategoriesResponse> getDomainCategoriesAsync(
+        @WebParam(name = "GetDomainCategoriesRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetDomainCategoriesRequest parameters);
 
     /**
      * 
@@ -741,26 +741,26 @@ public interface IAdInsightService {
      * @return
      *     returns java.util.concurrent.Future<? extends java.lang.Object>
      */
-    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
-    public Future<?> getCategoryListAsync(
-        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        GetCategoryListRequest parameters,
-        @WebParam(name = "GetCategoryListResponse", targetNamespace = "", partName = "asyncHandler")
-        AsyncHandler<GetCategoryListResponse> asyncHandler);
+    @WebMethod(operationName = "GetDomainCategories", action = "GetDomainCategories")
+    public Future<?> getDomainCategoriesAsync(
+        @WebParam(name = "GetDomainCategoriesRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetDomainCategoriesRequest parameters,
+        @WebParam(name = "GetDomainCategoriesResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetDomainCategoriesResponse> asyncHandler);
 
     /**
      * 
      * @param parameters
      * @return
-     *     returns com.microsoft.bingads.v10.adinsight.GetCategoryListResponse
+     *     returns com.microsoft.bingads.v10.adinsight.GetDomainCategoriesResponse
      * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
      */
-    @WebMethod(operationName = "GetCategoryList", action = "GetCategoryList")
-    @WebResult(name = "GetCategoryListResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-    public GetCategoryListResponse getCategoryList(
-        @WebParam(name = "GetCategoryListRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
-        GetCategoryListRequest parameters)
+    @WebMethod(operationName = "GetDomainCategories", action = "GetDomainCategories")
+    @WebResult(name = "GetDomainCategoriesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+    public GetDomainCategoriesResponse getDomainCategories(
+        @WebParam(name = "GetDomainCategoriesRequest", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service", partName = "parameters")
+        GetDomainCategoriesRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

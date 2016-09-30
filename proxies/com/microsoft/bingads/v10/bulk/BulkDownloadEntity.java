@@ -51,7 +51,8 @@ public enum BulkDownloadEntity {
     TEXT_ADS("TextAds"),
     PRODUCT_ADS("ProductAds"),
     APP_INSTALL_ADS("AppInstallAds"),
-    EXPANDED_TEXT_ADS("ExpandedTextAds");
+    EXPANDED_TEXT_ADS("ExpandedTextAds"),
+    DYNAMIC_SEARCH_ADS("DynamicSearchAds");
         
     private final String value;
 

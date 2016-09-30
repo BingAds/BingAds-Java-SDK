@@ -5,7 +5,8 @@ package com.microsoft.bingads.v10.campaignmanagement;
  */
 public enum CampaignCriterionType {
 
-    PRODUCT_SCOPE("ProductScope");
+    PRODUCT_SCOPE("ProductScope"),
+    WEBPAGE("Webpage");
         
     private final String value;
 

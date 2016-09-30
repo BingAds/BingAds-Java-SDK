@@ -44,7 +44,7 @@ public class GetAdExtensionIdsByAccountIdRequest {
     @XmlElement(name = "AccountId")
     protected Long accountId;
     @XmlElement(name = "AdExtensionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdExtensionsTypeFilter> adExtensionType;
     @XmlElement(name = "AssociationType", nillable = true)

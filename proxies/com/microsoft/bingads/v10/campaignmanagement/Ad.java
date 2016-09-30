@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
     "urlCustomParameters"
 })
 @XmlSeeAlso({
+    DynamicSearchAd.class,
     ProductAd.class,
     TextAd.class,
     AppInstallAd.class,

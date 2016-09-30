@@ -24,9 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="MembershipDuration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Rule" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V10}RemarketingRule" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v10}EntityScope" minOccurs="0"/>
  *         &lt;element name="TagId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="Template" type="{https://bingads.microsoft.com/CampaignManagement/v10}RemarketingListTemplate" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,9 +43,9 @@ import javax.xml.bind.annotation.XmlType;
     "membershipDuration",
     "name",
     "parentId",
+    "rule",
     "scope",
-    "tagId",
-    "template"
+    "tagId"
 })
 public class RemarketingList {
 
@@ -61,14 +61,13 @@ public class RemarketingList {
     protected String name;
     @XmlElement(name = "ParentId")
     protected Long parentId;
+    @XmlElement(name = "Rule", nillable = true)
+    protected RemarketingRule rule;
     @XmlElement(name = "Scope")
     @XmlSchemaType(name = "string")
     protected EntityScope scope;
     @XmlElement(name = "TagId")
     protected Long tagId;
-    @XmlElement(name = "Template", nillable = true)
-    @XmlSchemaType(name = "string")
-    protected RemarketingListTemplate template;
 
     /**
      * Gets the value of the description property.
@@ -215,6 +214,30 @@ public class RemarketingList {
     }
 
     /**
+     * Gets the value of the rule property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RemarketingRule }
+     *     
+     */
+    public RemarketingRule getRule() {
+        return rule;
+    }
+
+    /**
+     * Sets the value of the rule property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RemarketingRule }
+     *     
+     */
+    public void setRule(RemarketingRule value) {
+        this.rule = value;
+    }
+
+    /**
      * Gets the value of the scope property.
      * 
      * @return
@@ -260,30 +283,6 @@ public class RemarketingList {
      */
     public void setTagId(Long value) {
         this.tagId = value;
-    }
-
-    /**
-     * Gets the value of the template property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RemarketingListTemplate }
-     *     
-     */
-    public RemarketingListTemplate getTemplate() {
-        return template;
-    }
-
-    /**
-     * Sets the value of the template property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RemarketingListTemplate }
-     *     
-     */
-    public void setTemplate(RemarketingListTemplate value) {
-        this.template = value;
     }
 
 }

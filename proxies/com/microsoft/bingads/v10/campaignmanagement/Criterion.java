@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     ProductScope.class,
-    ProductPartition.class
+    ProductPartition.class,
+    Webpage.class
 })
 public class Criterion {
 

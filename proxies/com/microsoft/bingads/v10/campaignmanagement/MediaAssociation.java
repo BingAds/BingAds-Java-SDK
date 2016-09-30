@@ -42,7 +42,7 @@ public class MediaAssociation {
     @XmlElement(name = "EntityId")
     protected Long entityId;
     @XmlElement(name = "MediaEnabledEntity", type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<MediaEnabledEntityFilter> mediaEnabledEntity;
     @XmlElement(name = "MediaId")

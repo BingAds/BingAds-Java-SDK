@@ -6,7 +6,8 @@ package com.microsoft.bingads.v10.campaignmanagement;
 public enum CampaignType {
 
     SEARCH_AND_CONTENT("SearchAndContent"),
-    SHOPPING("Shopping");
+    SHOPPING("Shopping"),
+    DYNAMIC_SEARCH_ADS("DynamicSearchAds");
         
     private final String value;
 

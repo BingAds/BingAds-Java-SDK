@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v10}CampaignType" minOccurs="0"/>
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfSetting" minOccurs="0"/>
  *         &lt;element name="BudgetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Languages" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -63,7 +64,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "urlCustomParameters",
     "campaignType",
     "settings",
-    "budgetId"
+    "budgetId",
+    "languages"
 })
 public class Campaign {
 
@@ -98,13 +100,15 @@ public class Campaign {
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<CampaignType> campaignType;
     @XmlElement(name = "Settings", nillable = true)
     protected ArrayOfSetting settings;
     @XmlElement(name = "BudgetId", nillable = true)
     protected Long budgetId;
+    @XmlElement(name = "Languages", nillable = true)
+    protected ArrayOfstring languages;
 
     /**
      * Gets the value of the biddingScheme property.
@@ -512,6 +516,30 @@ public class Campaign {
      */
     public void setBudgetId(Long value) {
         this.budgetId = value;
+    }
+
+    /**
+     * Gets the value of the languages property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getLanguages() {
+        return languages;
+    }
+
+    /**
+     * Sets the value of the languages property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setLanguages(ArrayOfstring value) {
+        this.languages = value;
     }
 
 }

@@ -48,11 +48,11 @@ public class GetAdExtensionsByIdsRequest {
     @XmlElement(name = "AdExtensionIds", nillable = true)
     protected ArrayOflong adExtensionIds;
     @XmlElement(name = "AdExtensionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdExtensionsTypeFilter> adExtensionType;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<AdExtensionAdditionalField> returnAdditionalFields;
 

@@ -31,6 +31,9 @@
     <bindings node="//xs:simpleType[@name='CampaignCriterionType']">
       <javaType name="java.util.Collection&lt;CampaignCriterionType&gt;" parseMethod="com.microsoft.bingads.v10.campaignmanagement.CampaignCriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.v10.campaignmanagement.CampaignCriterionTypeConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='RemarketingListAdditionalField']">
+      <javaType name="java.util.Collection&lt;RemarketingListAdditionalField&gt;" parseMethod="com.microsoft.bingads.v10.campaignmanagement.RemarketingListAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v10.campaignmanagement.RemarketingListAdditionalFieldConverter.convertToString" />
+    </bindings>
     <bindings node="//xs:simpleType[@name='ConversionGoalType']">
       <javaType name="java.util.Collection&lt;ConversionGoalType&gt;" parseMethod="com.microsoft.bingads.v10.campaignmanagement.ConversionGoalTypeConverter.convertToList" printMethod="com.microsoft.bingads.v10.campaignmanagement.ConversionGoalTypeConverter.convertToString" />
     </bindings>

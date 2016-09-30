@@ -33,9 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     TargetCpaBiddingScheme.class,
-    InheritFromParentBiddingScheme.class,
     ManualCpcBiddingScheme.class,
     MaxClicksBiddingScheme.class,
+    InheritFromParentBiddingScheme.class,
     EnhancedCpcBiddingScheme.class,
     MaxConversionsBiddingScheme.class
 })

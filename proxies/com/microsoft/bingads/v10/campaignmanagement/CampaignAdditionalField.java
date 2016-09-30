@@ -6,7 +6,8 @@ package com.microsoft.bingads.v10.campaignmanagement;
 public enum CampaignAdditionalField {
 
     BIDDING_SCHEME("BiddingScheme"),
-    BUDGET_ID("BudgetId");
+    BUDGET_ID("BudgetId"),
+    LANGUAGES("Languages");
         
     private final String value;
 
