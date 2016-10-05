@@ -32,8 +32,9 @@ public class RemarketingLists extends ExampleBase {
             authorizationData.setAccountId(AccountId);
 	         
             CampaignService = new ServiceClient<ICampaignManagementService>(
-                    	authorizationData, 
-                        ICampaignManagementService.class);
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICampaignManagementService.class);
 
             // To discover all remarketing lists that the user can associate with ad groups in the current account (per CustomerAccountId header), 
             // set RemarketingListIds to null when calling the GetRemarketingLists operation.

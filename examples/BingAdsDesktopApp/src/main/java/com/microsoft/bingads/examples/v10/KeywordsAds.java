@@ -38,11 +38,13 @@ public class KeywordsAds extends ExampleBase {
             authorizationData.setAccountId(AccountId);
 	         
             CampaignService = new ServiceClient<ICampaignManagementService>(
-                    	authorizationData, 
-                        ICampaignManagementService.class);
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICampaignManagementService.class);
             
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             // Determine whether you are able to add shared budgets by checking the pilot flags.
@@ -56,7 +58,11 @@ public class KeywordsAds extends ExampleBase {
             // Pilot flags apply to all accounts within a given customer.
             if (featurePilotFlags.getInts().contains(263))
             {
+                outputStatusMessage("Customer is in pilot for Shared Budget.\n");
                 enabledForSharedBudgets = true;
+            }
+            else{
+                outputStatusMessage("Customer is not in pilot for Shared Budget.\n");
             }
             
             // If the customer is enabled for shared budgets, let's create a new budget and
@@ -306,7 +312,7 @@ public class KeywordsAds extends ExampleBase {
             }
 
             // Update shared budgets in Budget objects.
-            if (getBudgetIds.getLongs() != null)
+            if (getBudgetIds.getLongs() != null && getBudgetIds.getLongs().size() > 0)
             {
                 ArrayList<java.lang.Long> distinctBudgetIds = new ArrayList<java.lang.Long>(new HashSet<Long>(getBudgetIds.getLongs()));
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOflong getDistinctBudgetIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
@@ -359,7 +365,7 @@ public class KeywordsAds extends ExampleBase {
             }
 
             // Update unshared budgets in Campaign objects.
-            if(updateCampaigns.getCampaigns() != null)
+            if(updateCampaigns.getCampaigns() != null && updateCampaigns.getCampaigns().size() > 0)
             {
                 // The UpdateCampaigns operation only accepts 100 Campaign objects per call. 
                 // To simply the example we will update the first 100.
@@ -491,7 +497,17 @@ public class KeywordsAds extends ExampleBase {
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
             deleteCampaigns(AccountId, campaignIds);
             System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
-
+            
+            // This sample will attempt to delete the budget that was created above 
+            // if the customer is enabled for shared budgets.
+            if(enabledForSharedBudgets){
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOflong deleteBudgetIds = 
+                        new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+                deleteBudgetIds.getLongs().add(budgetIds.getLongs().get(0));
+                deleteBudgets(deleteBudgetIds);
+                System.out.printf("Deleted BudgetId %d\n", deleteBudgetIds.getLongs().get(0));
+            }
+            
             outputStatusMessage("Program execution completed\n"); 
 
         // Campaign Management service operations can throw AdApiFaultDetail.

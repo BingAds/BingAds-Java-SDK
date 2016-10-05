@@ -61,17 +61,17 @@ public class ReportRequests extends ExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 	         
-            ReportingServiceManager = new ReportingServiceManager(authorizationData);
+            ReportingServiceManager = new ReportingServiceManager(authorizationData, API_ENVIRONMENT);
             ReportingServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             // You can submit one of the example reports, or build your own.
-			ReportRequest reportRequest = getKeywordPerformanceReportRequest();
-			
-			ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
-			reportingDownloadParameters.setReportRequest(reportRequest);
-			reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
-			reportingDownloadParameters.setResultFileName(ResultFileName);
-			reportingDownloadParameters.setOverwriteResultFile(true);
+            ReportRequest reportRequest = getKeywordPerformanceReportRequest();
+
+            ReportingDownloadParameters reportingDownloadParameters = new ReportingDownloadParameters();
+            reportingDownloadParameters.setReportRequest(reportRequest);
+            reportingDownloadParameters.setResultFileDirectory(new File(FileDirectory));
+            reportingDownloadParameters.setResultFileName(ResultFileName);
+            reportingDownloadParameters.setOverwriteResultFile(true);
                         
             // Option A - Background Completion with ReportingServiceManager
             // You can submit a download request and the ReportingServiceManager will automatically 

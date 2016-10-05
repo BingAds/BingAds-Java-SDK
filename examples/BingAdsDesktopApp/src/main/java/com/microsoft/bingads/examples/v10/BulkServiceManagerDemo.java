@@ -35,53 +35,53 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         
     public static void main(String[] args) {
 		
-		BulkEntityIterable downloadEntities = null;
-				
-		try {
-			authorizationData = new AuthorizationData();
-			authorizationData.setDeveloperToken(DeveloperToken);
-			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-			authorizationData.setCustomerId(CustomerId);
-			authorizationData.setAccountId(AccountId);
-						            				
-			BulkService = new BulkServiceManager(authorizationData);
-			BulkService.setStatusPollIntervalInMilliseconds(5000);
+    BulkEntityIterable downloadEntities = null;
 
-			// In this example we will download all ads and keywords in the account.
+    try {
+            authorizationData = new AuthorizationData();
+            authorizationData.setDeveloperToken(DeveloperToken);
+            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData.setCustomerId(CustomerId);
+            authorizationData.setAccountId(AccountId);
+
+            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkService.setStatusPollIntervalInMilliseconds(5000);
+
+            // In this example we will download all ads and keywords in the account.
             List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
-			entities.add(BulkDownloadEntity.ADS);
-			entities.add(BulkDownloadEntity.KEYWORDS);
-			
-			// Optionally you can request performance data for the requested bulk records.
-			List<DataScope> dataScopes = new ArrayList<DataScope>();
-			dataScopes.add(DataScope.ENTITY_DATA);
-			dataScopes.add(DataScope.ENTITY_PERFORMANCE_DATA);
-			PerformanceStatsDateRange performanceStatsDateRange = new PerformanceStatsDateRange();
-			performanceStatsDateRange.setPredefinedTime(ReportTimePeriod.LAST_FOUR_WEEKS);
-			
-			// DownloadParameters is used for Option A below.
-			DownloadParameters downloadParameters = new DownloadParameters();
-			downloadParameters.setCampaignIds(null);
-			downloadParameters.setDataScope(dataScopes);
-			downloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
-			downloadParameters.setEntities(entities);
-			downloadParameters.setFileType(DownloadFileType.CSV);
-			downloadParameters.setLastSyncTimeInUTC(null); 
-			downloadParameters.setResultFileDirectory(new File(FileDirectory));
-			downloadParameters.setResultFileName(DownloadFileName);
-			downloadParameters.setOverwriteResultFile(true);
-			
-			// SubmitDownloadParameters is used for Option B and Option C below.
-			SubmitDownloadParameters submitDownloadParameters = new SubmitDownloadParameters();
-			submitDownloadParameters.setCampaignIds(null);
-			submitDownloadParameters.setDataScope(dataScopes);
-			submitDownloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
-			submitDownloadParameters.setEntities(entities);
-			submitDownloadParameters.setFileType(DownloadFileType.CSV);
-			submitDownloadParameters.setLastSyncTimeInUTC(null); 
-			
-			
-			// Option A - Background Completion with BulkServiceManager
+            entities.add(BulkDownloadEntity.ADS);
+            entities.add(BulkDownloadEntity.KEYWORDS);
+
+            // Optionally you can request performance data for the requested bulk records.
+            List<DataScope> dataScopes = new ArrayList<DataScope>();
+            dataScopes.add(DataScope.ENTITY_DATA);
+            dataScopes.add(DataScope.ENTITY_PERFORMANCE_DATA);
+            PerformanceStatsDateRange performanceStatsDateRange = new PerformanceStatsDateRange();
+            performanceStatsDateRange.setPredefinedTime(ReportTimePeriod.LAST_FOUR_WEEKS);
+
+            // DownloadParameters is used for Option A below.
+            DownloadParameters downloadParameters = new DownloadParameters();
+            downloadParameters.setCampaignIds(null);
+            downloadParameters.setDataScope(dataScopes);
+            downloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
+            downloadParameters.setEntities(entities);
+            downloadParameters.setFileType(DownloadFileType.CSV);
+            downloadParameters.setLastSyncTimeInUTC(null); 
+            downloadParameters.setResultFileDirectory(new File(FileDirectory));
+            downloadParameters.setResultFileName(DownloadFileName);
+            downloadParameters.setOverwriteResultFile(true);
+
+            // SubmitDownloadParameters is used for Option B and Option C below.
+            SubmitDownloadParameters submitDownloadParameters = new SubmitDownloadParameters();
+            submitDownloadParameters.setCampaignIds(null);
+            submitDownloadParameters.setDataScope(dataScopes);
+            submitDownloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
+            submitDownloadParameters.setEntities(entities);
+            submitDownloadParameters.setFileType(DownloadFileType.CSV);
+            submitDownloadParameters.setLastSyncTimeInUTC(null); 
+
+
+            // Option A - Background Completion with BulkServiceManager
             // You can submit a download or upload request and the BulkServiceManager will automatically 
             // return results. The BulkServiceManager abstracts the details of checking for result file 
             // completion, and you don't have to write any code for results polling.

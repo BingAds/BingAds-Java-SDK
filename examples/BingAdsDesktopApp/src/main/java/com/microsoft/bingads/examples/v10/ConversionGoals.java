@@ -33,6 +33,7 @@ public class ConversionGoals extends ExampleBase {
 	         
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
+                        API_ENVIRONMENT,
                         ICampaignManagementService.class);
 
             // Before you can track conversions or target audiences using a remarketing list, 

@@ -28,6 +28,7 @@ public class SearchUserAccounts extends ExampleBase {
             	         
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             GetUserResponse getUserResponse = getUser(null);

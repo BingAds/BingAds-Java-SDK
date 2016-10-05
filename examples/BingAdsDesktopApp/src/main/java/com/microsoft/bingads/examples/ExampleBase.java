@@ -1,5 +1,7 @@
 package com.microsoft.bingads.examples;
 
+import com.microsoft.bingads.ApiEnvironment;
+
 public class ExampleBase {
 
     protected static java.lang.String UserName = "<UserNameGoesHere>";
@@ -7,6 +9,8 @@ public class ExampleBase {
     protected static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     protected static long CustomerId = <CustomerIdGoesHere>;
     protected static long AccountId = <AccountIdGoesHere>;
+    
+    protected static ApiEnvironment API_ENVIRONMENT = ApiEnvironment.SANDBOX;
     
     public ExampleBase() {}
 

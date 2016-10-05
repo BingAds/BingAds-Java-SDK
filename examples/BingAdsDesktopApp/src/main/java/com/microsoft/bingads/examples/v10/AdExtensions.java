@@ -37,10 +37,12 @@ public class AdExtensions extends ExampleBase {
 
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     authorizationData,
+                    API_ENVIRONMENT,
                     ICampaignManagementService.class);
             
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             Calendar calendar = Calendar.getInstance();

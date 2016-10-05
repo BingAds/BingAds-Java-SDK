@@ -21,7 +21,7 @@ public class InviteUser extends ExampleBase {
     final static java.lang.String UserInviteRecipientEmail = "<UserInviteRecipientEmailGoesHere>";
     
     /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     private static long CustomerId = <CustomerIdGoesHere>;
@@ -31,8 +31,8 @@ public class InviteUser extends ExampleBase {
    	 
     	try
         {
-    		outputStatusMessage("You must edit this example to provide the email address (UserInviteRecipientEmail) for " +
-                    "the user invitation.");
+            outputStatusMessage("You must edit this example to provide the email address (UserInviteRecipientEmail) for " +
+                "the user invitation.");
             outputStatusMessage("You must use Super Admin credentials to send a user invitation.\n");
             
             authorizationData = new AuthorizationData();
@@ -41,6 +41,7 @@ public class InviteUser extends ExampleBase {
             	         
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             // Prepare to invite a new user

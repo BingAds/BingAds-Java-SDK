@@ -22,7 +22,7 @@ import java.rmi.RemoteException;
 public class BulkAdExtensions extends BulkExampleBase {
 	
     /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     private static long CustomerId = <CustomerIdGoesHere>;
@@ -431,7 +431,8 @@ public class BulkAdExtensions extends BulkExampleBase {
                     // If you set the Scheduling element null, any existing scheduling set for the ad extension will remain unchanged. 
                     // If you set this to any non-null Schedule object, you are effectively replacing existing scheduling 
                     // for the ad extension. In this example, we will remove any existing scheduling by setting this element  
-                    // to an empty Schedule object.
+                    // to an empty Schedule object. 
+                    // The "delete_value" keyword will be written to the corresponding columns in the bulk file.
                     locationAdExtensionResult.getLocationAdExtension().setScheduling(new Schedule());
                     uploadEntities.add(locationAdExtensionResult);
                 }

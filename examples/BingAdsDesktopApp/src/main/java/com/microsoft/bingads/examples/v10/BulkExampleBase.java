@@ -21,6 +21,7 @@ import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupProductPartition;
 import com.microsoft.bingads.v10.bulk.entities.BulkAppAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCallAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCalloutAdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkBudget;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignAppAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCallAdExtension;
@@ -103,6 +104,7 @@ public class BulkExampleBase extends ExampleBase {
     final static long sitelink2AdExtensionIdKey = -17; 
     final static long structuredSnippetAdExtensionIdKey = -18; 
     final static long negativeKeywordListIdKey = -19; 
+    final static long budgetIdKey = -20;
     final static long campaignIdKey = -111; 
     final static long adGroupIdKey = -1111; 
     final static long negativeKeywordIdKey = -11111; 
@@ -133,6 +135,26 @@ public class BulkExampleBase extends ExampleBase {
         
         return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
     }
+    
+    static void outputBulkBudgets(Iterable<BulkBudget> bulkEntities){
+        for (BulkBudget entity : bulkEntities){
+            outputStatusMessage("\nBulkBudget: \n");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                    outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            // Output the Campaign Management Budget Object
+            outputBudget(entity.getBudget());
+
+            if(entity.hasErrors()){
+                    outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+
 
     static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
         for (BulkCampaign entity : bulkEntities){

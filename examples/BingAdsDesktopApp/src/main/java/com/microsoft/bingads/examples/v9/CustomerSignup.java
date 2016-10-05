@@ -28,6 +28,7 @@ public class CustomerSignup extends ExampleBase {
             	         
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             GetUserResponse getUserResponse = getUser(null);
@@ -61,11 +62,11 @@ public class CustomerSignup extends ExampleBase {
             customer.setIndustry(Industry.OTHER);
 
             // The primary country where the customer operates. This country will be the 
-            // default country for ad groups in the customer’s campaigns.
+            // default country for ad groups in the customerï¿½s campaigns.
             customer.setMarketCountry("US");
 
             // The primary language that the customer uses. This language will be the 
-            // default language for ad groups in the customer’s campaigns.
+            // default language for ad groups in the customerï¿½s campaigns.
             customer.setMarketLanguage(LanguageType.ENGLISH);
 
             // The name of the customer. This element can contain a maximum of 100 characters.

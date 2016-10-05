@@ -33,10 +33,12 @@ public class BudgetOpportunities extends ExampleBase {
 	         
             AdInsightService = new ServiceClient<IAdInsightService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     IAdInsightService.class);
             
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICampaignManagementService.class);
 	         
             // Get the budget opportunities for each campaign in the current authenticated account.
