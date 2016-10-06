@@ -50,8 +50,6 @@ public class KeywordsAds extends ExampleBase {
             // Determine whether you are able to add shared budgets by checking the pilot flags.
 
             boolean enabledForSharedBudgets = false;
-
-            // Optionally you can find out which pilot features the customer is able to use.
             ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
                
             // The pilot flag value for shared budgets is 263.
