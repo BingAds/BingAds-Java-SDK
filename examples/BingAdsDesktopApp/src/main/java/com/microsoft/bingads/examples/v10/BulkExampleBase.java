@@ -21,6 +21,7 @@ import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupProductPartition;
 import com.microsoft.bingads.v10.bulk.entities.BulkAppAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCallAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCalloutAdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkBudget;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignAppAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCallAdExtension;
@@ -35,6 +36,10 @@ import com.microsoft.bingads.v10.bulk.entities.BulkCampaignRadiusTarget;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignRadiusTargetBid;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignReviewAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignSiteLinkAdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkSitelink2AdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkCampaignSitelink2AdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkStructuredSnippetAdExtension;
+import com.microsoft.bingads.v10.bulk.entities.BulkCampaignStructuredSnippetAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
 import com.microsoft.bingads.v10.bulk.entities.BulkError;
 import com.microsoft.bingads.v10.bulk.entities.BulkKeyword;
@@ -96,7 +101,10 @@ public class BulkExampleBase extends ExampleBase {
     final static long locationAdExtensionIdKey = -15; 
     final static long reviewAdExtensionIdKey = -16; 
     final static long siteLinksAdExtensionIdKey = -17; 
-    final static long negativeKeywordListIdKey = -18; 
+    final static long sitelink2AdExtensionIdKey = -17; 
+    final static long structuredSnippetAdExtensionIdKey = -18; 
+    final static long negativeKeywordListIdKey = -19; 
+    final static long budgetIdKey = -20;
     final static long campaignIdKey = -111; 
     final static long adGroupIdKey = -1111; 
     final static long negativeKeywordIdKey = -11111; 
@@ -127,6 +135,26 @@ public class BulkExampleBase extends ExampleBase {
         
         return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
     }
+    
+    static void outputBulkBudgets(Iterable<BulkBudget> bulkEntities){
+        for (BulkBudget entity : bulkEntities){
+            outputStatusMessage("\nBulkBudget: \n");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                    outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            // Output the Campaign Management Budget Object
+            outputBudget(entity.getBudget());
+
+            if(entity.hasErrors()){
+                    outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+
 
     static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
         for (BulkCampaign entity : bulkEntities){
@@ -519,6 +547,76 @@ public class BulkExampleBase extends ExampleBase {
     static void outputBulkCampaignSiteLinkAdExtensions(Iterable<BulkCampaignSiteLinkAdExtension> bulkEntities){
         for (BulkCampaignSiteLinkAdExtension entity : bulkEntities){
             outputStatusMessage("\nBulkCampaignSiteLinkAdExtension: \n");
+            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
+                outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
+                outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
+            }
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage(String.format("EditorialStatus: %s", entity.getEditorialStatus()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkSitelink2AdExtensions(Iterable<BulkSitelink2AdExtension> bulkEntities){
+        for (BulkSitelink2AdExtension entity : bulkEntities){
+            outputStatusMessage("\nBulkSitelink2AdExtension: \n");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+
+            // Output the Campaign Management Sitelink2AdExtension Object
+            outputSitelink2AdExtension(entity.getSitelink2AdExtension());
+        }
+    }
+    
+    static void outputBulkCampaignSitelink2AdExtensions(Iterable<BulkCampaignSitelink2AdExtension> bulkEntities){
+        for (BulkCampaignSitelink2AdExtension entity : bulkEntities){
+            outputStatusMessage("\nBulkCampaignSitelink2AdExtension: \n");
+            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
+                outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
+                outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
+            }
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage(String.format("EditorialStatus: %s", entity.getEditorialStatus()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkStructuredSnippetAdExtensions(Iterable<BulkStructuredSnippetAdExtension> bulkEntities){
+        for (BulkStructuredSnippetAdExtension entity : bulkEntities){
+            outputStatusMessage("\nBulkStructuredSnippetAdExtension: \n");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+
+            // Output the Campaign Management StructuredSnippetAdExtension Object
+            outputStructuredSnippetAdExtension(entity.getStructuredSnippetAdExtension());
+        }
+    }
+    
+    static void outputBulkCampaignStructuredSnippetAdExtensions(Iterable<BulkCampaignStructuredSnippetAdExtension> bulkEntities){
+        for (BulkCampaignStructuredSnippetAdExtension entity : bulkEntities){
+            outputStatusMessage("\nBulkCampaignStructuredSnippetAdExtension: \n");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));

@@ -11,28 +11,29 @@ public class NegativeKeywords extends ExampleBase {
     static ServiceClient<ICampaignManagementService> CampaignService; 
     	
     /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     private static long CustomerId = <CustomerIdGoesHere>;
     private static long AccountId = <AccountIdGoesHere>;
     */
 
-	public static void main(java.lang.String[] args) {
+    public static void main(java.lang.String[] args) {
 	 
-		try
-		{
-			authorizationData = new AuthorizationData();
-			authorizationData.setDeveloperToken(DeveloperToken);
-			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-			authorizationData.setCustomerId(CustomerId);
-			authorizationData.setAccountId(AccountId);
-			 
-			CampaignService = new ServiceClient<ICampaignManagementService>(
-			        authorizationData, 
-			        ICampaignManagementService.class);
-			
-			// Specify a campaign. 
+        try
+        {
+            authorizationData = new AuthorizationData();
+            authorizationData.setDeveloperToken(DeveloperToken);
+            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData.setCustomerId(CustomerId);
+            authorizationData.setAccountId(AccountId);
+
+            CampaignService = new ServiceClient<ICampaignManagementService>(
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICampaignManagementService.class);
+
+            // Specify a campaign. 
 
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
@@ -44,7 +45,7 @@ public class NegativeKeywords extends ExampleBase {
             campaign.setDaylightSaving(true);
             campaigns.getCampaigns().add(campaign);
 			
-			// Add the campaign
+            // Add the campaign
 			 
             AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
@@ -54,323 +55,323 @@ public class NegativeKeywords extends ExampleBase {
             ArrayOflong campaignIds = new ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
 			
-			// You may choose to associate an exclusive set of negative keywords to an individual campaign 
-			// or ad group. An exclusive set of negative keywords cannot be shared with other campaigns 
-			// or ad groups. This sample only associates negative keywords with a campaign.
+            // You may choose to associate an exclusive set of negative keywords to an individual campaign 
+            // or ad group. An exclusive set of negative keywords cannot be shared with other campaigns 
+            // or ad groups. This sample only associates negative keywords with a campaign.
+
+            ArrayOfNegativeKeyword negativeKeywords = new ArrayOfNegativeKeyword();
+            NegativeKeyword negativeKeyword = new NegativeKeyword();
+            negativeKeyword.setMatchType(MatchType.PHRASE);
+            negativeKeyword.setText("auto");
+            negativeKeywords.getNegativeKeywords().add(negativeKeyword);
+
+            ArrayOfEntityNegativeKeyword entityNegativeKeywords = new ArrayOfEntityNegativeKeyword();
+            EntityNegativeKeyword entityNegativeKeyword = new EntityNegativeKeyword();
+            entityNegativeKeyword.setEntityId(campaignIds.getLongs().get(0));
+            entityNegativeKeyword.setEntityType("Campaign");
+            entityNegativeKeyword.setNegativeKeywords(negativeKeywords);
+            entityNegativeKeywords.getEntityNegativeKeywords().add(entityNegativeKeyword);
+
+            AddNegativeKeywordsToEntitiesResponse addNegativeKeywordsToEntitiesResponse = 
+                 addNegativeKeywordsToEntities(entityNegativeKeywords);
+            if (addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors() == null
+                 || addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors().getBatchErrorCollections().size() == 0)
+            {
+                    outputStatusMessage("Added an exclusive set of negative keywords to the Campaign.\n");
+                    outputNegativeKeywordIds(addNegativeKeywordsToEntitiesResponse.getNegativeKeywordIds());
+            }
+            else
+            {
+                    outputNestedPartialErrors(addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors());
+            }
+
+            GetNegativeKeywordsByEntityIdsResponse getNegativeKeywordsByEntityIdsResponse = 
+                 getNegativeKeywordsByEntityIds(campaignIds, "Campaign", AccountId);
+            if (getNegativeKeywordsByEntityIdsResponse.getPartialErrors() == null
+                 || getNegativeKeywordsByEntityIdsResponse.getPartialErrors().getBatchErrors().size() == 0)
+            {
+                    outputStatusMessage("Retrieved an exclusive set of negative keywords for the Campaign.\n");
+                    outputEntityNegativeKeywords(getNegativeKeywordsByEntityIdsResponse.getEntityNegativeKeywords());
+            }
+            else
+            {
+                    outputPartialErrors(getNegativeKeywordsByEntityIdsResponse.getPartialErrors());
+            }
+
+            // If you attempt to delete a negative keyword without an identifier the operation will
+            // succeed but will return partial errors corresponding to the index of the negative keyword
+            // that was not deleted. 
+            ArrayOfBatchErrorCollection nestedPartialErrors = deleteNegativeKeywordsFromEntities(entityNegativeKeywords);
+            if (nestedPartialErrors == null || nestedPartialErrors.getBatchErrorCollections().size() == 0)
+            {
+                    outputStatusMessage("Deleted an exclusive set of negative keywords from the Campaign.\n");
+            }
+            else
+            {
+                    outputStatusMessage("Attempt to DeleteNegativeKeywordsFromEntities without NegativeKeyword identifier partially fails by design.\n");
+                    outputNestedPartialErrors(nestedPartialErrors);
+            }
+
+            // Delete the negative keywords with identifiers that were returned above.
+            nestedPartialErrors = deleteNegativeKeywordsFromEntities(
+                 getNegativeKeywordsByEntityIdsResponse.getEntityNegativeKeywords());
+            if (nestedPartialErrors == null || nestedPartialErrors.getBatchErrorCollections().size() == 0)
+            {
+                    outputStatusMessage("Deleted an exclusive set of negative keywords from the Campaign.\n");
+            }
+            else
+            {
+                    outputNestedPartialErrors(nestedPartialErrors);
+            }
+
+            // Negative keywords can also be added and deleted from a shared negative keyword list. 
+            // The negative keyword list can be shared or associated with multiple campaigns.
+            // NegativeKeywordList inherits from SharedList which inherits from SharedEntity.
+
+            NegativeKeywordList negativeKeywordList = new NegativeKeywordList();
+            negativeKeywordList.setName("My Negative Keyword List " + System.currentTimeMillis());
+            negativeKeywordList.setType("NegativeKeywordList");
+
+            ArrayOfSharedListItem sharedListItems = new ArrayOfSharedListItem();
+            NegativeKeyword negativeKeyword1 = new NegativeKeyword();
+            negativeKeyword1.setText("car");
+            negativeKeyword1.setType("NegativeKeyword");
+            negativeKeyword1.setMatchType(MatchType.EXACT);
+            sharedListItems.getSharedListItems().add(negativeKeyword1);
+            NegativeKeyword negativeKeyword2 = new NegativeKeyword();
+            negativeKeyword2.setText("car");
+            negativeKeyword2.setType("NegativeKeyword");
+            negativeKeyword2.setMatchType(MatchType.PHRASE);
+            sharedListItems.getSharedListItems().add(negativeKeyword2);
+
+            // You can create a new list for negative keywords with or without negative keywords.
+
+            AddSharedEntityResponse addSharedEntityResponse = addSharedEntity(negativeKeywordList, sharedListItems);
+            long sharedEntityId = addSharedEntityResponse.getSharedEntityId();
+            ArrayOflong listItemIds = addSharedEntityResponse.getListItemIds();
+
+            outputStatusMessage(String.format("NegativeKeywordList successfully added to account library and assigned identifer %d\n\n", sharedEntityId));
+
+            outputNegativeKeywordIdsWithPartialErrors(
+                 sharedEntityId,
+                 sharedListItems, 
+                 listItemIds, 
+                 addSharedEntityResponse.getPartialErrors());
+
+            outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
+            negativeKeywordList.setId(sharedEntityId);
+
+            sharedListItems = getListItemsBySharedList(negativeKeywordList);
+            if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
+            {
+                    outputStatusMessage("None\n");
+            }
+            else
+            {
+                    outputSharedListItems(sharedListItems);
+            }             
+
+            // To update the list of negative keywords, you must either add or remove from the list
+            // using the respective AddListItemsToSharedList or DeleteListItemsFromSharedList operations.
+            // To remove the negative keywords from the list pass the negative keyword identifers
+            // and negative keyword list (SharedEntity) identifer.
+
+            ArrayOfBatchError partialErrors = deleteListItemsFromSharedList(listItemIds, negativeKeywordList);
+            if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
+            {
+                    outputStatusMessage("Deleted most recently added negative keywords from negative keyword list.\n");
+
+            }
+            else
+            {
+                    outputPartialErrors(partialErrors);
+            }
+
+            outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
+            sharedListItems = getListItemsBySharedList(negativeKeywordList);
+            if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
+            {
+                    outputStatusMessage("None\n");
+            }
+            else
+            {
+                    outputSharedListItems(sharedListItems);
+            }
+
+            // Whether you created the list with or without negative keywords, more can be added 
+            // using the AddListItemsToSharedList operation.
+
+            sharedListItems = new ArrayOfSharedListItem();
+            negativeKeyword1 = new NegativeKeyword();
+            negativeKeyword1.setText("auto");
+            negativeKeyword1.setType("NegativeKeyword");
+            negativeKeyword1.setMatchType(MatchType.EXACT);
+            sharedListItems.getSharedListItems().add(negativeKeyword1);
+            negativeKeyword2 = new NegativeKeyword();
+            negativeKeyword2.setText("auto");
+            negativeKeyword2.setType("NegativeKeyword");
+            negativeKeyword2.setMatchType(MatchType.PHRASE);
+            sharedListItems.getSharedListItems().add(negativeKeyword2);
+
+            AddListItemsToSharedListResponse addListItemsToSharedListResponse = addListItemsToSharedList(
+                 sharedListItems,
+                 negativeKeywordList);
+            listItemIds = addListItemsToSharedListResponse.getListItemIds();
+
+            outputNegativeKeywordIdsWithPartialErrors(
+                 sharedEntityId,
+                 sharedListItems, 
+                 listItemIds, 
+                 addListItemsToSharedListResponse.getPartialErrors());
+
+            outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
+            sharedListItems = getListItemsBySharedList(negativeKeywordList);
+            if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
+            {
+                    outputStatusMessage("None\n");
+            }
+            else
+            {
+                    outputSharedListItems(sharedListItems);
+            }
+
+            // You can update the name of the negative keyword list. 
+
+            negativeKeywordList.setName("My Updated Negative Keyword List");
+            negativeKeywordList.setType("NegativeKeywordList");
+
+            ArrayOfSharedEntity sharedEntities = new ArrayOfSharedEntity();
+            sharedEntities.getSharedEntities().add(negativeKeywordList);
+            partialErrors = updateSharedEntities(sharedEntities);
+            if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
+            {
+                    outputStatusMessage(String.format("Updated Negative Keyword List Name to %s.\n\n", negativeKeywordList.getName()));
+            }
+            else
+            {
+                    outputPartialErrors(partialErrors);
+            }
+
+            // Get and print the negative keyword lists and return the list of identifiers.
+
+            final java.lang.String sharedEntityType = "NegativeKeywordList";
+            sharedEntities = getSharedEntitiesByAccountId(sharedEntityType);
+            outputSharedEntityIdentifiers(sharedEntities);
 			
-			ArrayOfNegativeKeyword negativeKeywords = new ArrayOfNegativeKeyword();
-			NegativeKeyword negativeKeyword = new NegativeKeyword();
-			negativeKeyword.setMatchType(MatchType.PHRASE);
-			negativeKeyword.setText("auto");
-			negativeKeywords.getNegativeKeywords().add(negativeKeyword);
-			 
-			ArrayOfEntityNegativeKeyword entityNegativeKeywords = new ArrayOfEntityNegativeKeyword();
-			EntityNegativeKeyword entityNegativeKeyword = new EntityNegativeKeyword();
-			entityNegativeKeyword.setEntityId(campaignIds.getLongs().get(0));
-			entityNegativeKeyword.setEntityType("Campaign");
-			entityNegativeKeyword.setNegativeKeywords(negativeKeywords);
-			entityNegativeKeywords.getEntityNegativeKeywords().add(entityNegativeKeyword);
-			
-			AddNegativeKeywordsToEntitiesResponse addNegativeKeywordsToEntitiesResponse = 
-			     addNegativeKeywordsToEntities(entityNegativeKeywords);
-			if (addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors() == null
-			     || addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors().getBatchErrorCollections().size() == 0)
-			{
-				outputStatusMessage("Added an exclusive set of negative keywords to the Campaign.\n");
-				outputNegativeKeywordIds(addNegativeKeywordsToEntitiesResponse.getNegativeKeywordIds());
-			}
-			else
-			{
-				outputNestedPartialErrors(addNegativeKeywordsToEntitiesResponse.getNestedPartialErrors());
-			}
-			
-			GetNegativeKeywordsByEntityIdsResponse getNegativeKeywordsByEntityIdsResponse = 
-			     getNegativeKeywordsByEntityIds(campaignIds, "Campaign", AccountId);
-			if (getNegativeKeywordsByEntityIdsResponse.getPartialErrors() == null
-			     || getNegativeKeywordsByEntityIdsResponse.getPartialErrors().getBatchErrors().size() == 0)
-			{
-				outputStatusMessage("Retrieved an exclusive set of negative keywords for the Campaign.\n");
-				outputEntityNegativeKeywords(getNegativeKeywordsByEntityIdsResponse.getEntityNegativeKeywords());
-			}
-			else
-			{
-				outputPartialErrors(getNegativeKeywordsByEntityIdsResponse.getPartialErrors());
-			}
+            ArrayOflong sharedEntityIds = new ArrayOflong();
+            for (int index = 0; index < sharedEntities.getSharedEntities().size(); index++)
+            {
+                SharedEntity sharedEntity = sharedEntities.getSharedEntities().get(index);
+                if (sharedEntity.getId() != null)
+                {
+                    sharedEntityIds.getLongs().add((long)sharedEntity.getId());
+                }
+            }
 			    
-			// If you attempt to delete a negative keyword without an identifier the operation will
-			// succeed but will return partial errors corresponding to the index of the negative keyword
-			// that was not deleted. 
-			ArrayOfBatchErrorCollection nestedPartialErrors = deleteNegativeKeywordsFromEntities(entityNegativeKeywords);
-			if (nestedPartialErrors == null || nestedPartialErrors.getBatchErrorCollections().size() == 0)
-			{
-				outputStatusMessage("Deleted an exclusive set of negative keywords from the Campaign.\n");
-			}
-			else
-			{
-				outputStatusMessage("Attempt to DeleteNegativeKeywordsFromEntities without NegativeKeyword identifier partially fails by design.\n");
-				outputNestedPartialErrors(nestedPartialErrors);
-			}
-			
-			// Delete the negative keywords with identifiers that were returned above.
-			nestedPartialErrors = deleteNegativeKeywordsFromEntities(
-			     getNegativeKeywordsByEntityIdsResponse.getEntityNegativeKeywords());
-			if (nestedPartialErrors == null || nestedPartialErrors.getBatchErrorCollections().size() == 0)
-			{
-				outputStatusMessage("Deleted an exclusive set of negative keywords from the Campaign.\n");
-			}
-			else
-			{
-				outputNestedPartialErrors(nestedPartialErrors);
-			}
-			
-			// Negative keywords can also be added and deleted from a shared negative keyword list. 
-			// The negative keyword list can be shared or associated with multiple campaigns.
-			// NegativeKeywordList inherits from SharedList which inherits from SharedEntity.
-			
-			NegativeKeywordList negativeKeywordList = new NegativeKeywordList();
-			negativeKeywordList.setName("My Negative Keyword List " + System.currentTimeMillis());
-			negativeKeywordList.setType("NegativeKeywordList");
-			
-			ArrayOfSharedListItem sharedListItems = new ArrayOfSharedListItem();
-			NegativeKeyword negativeKeyword1 = new NegativeKeyword();
-			negativeKeyword1.setText("car");
-			negativeKeyword1.setType("NegativeKeyword");
-			negativeKeyword1.setMatchType(MatchType.EXACT);
-			sharedListItems.getSharedListItems().add(negativeKeyword1);
-			NegativeKeyword negativeKeyword2 = new NegativeKeyword();
-			negativeKeyword2.setText("car");
-			negativeKeyword2.setType("NegativeKeyword");
-			negativeKeyword2.setMatchType(MatchType.PHRASE);
-			sharedListItems.getSharedListItems().add(negativeKeyword2);
-			
-			// You can create a new list for negative keywords with or without negative keywords.
-			    
-			AddSharedEntityResponse addSharedEntityResponse = addSharedEntity(negativeKeywordList, sharedListItems);
-			long sharedEntityId = addSharedEntityResponse.getSharedEntityId();
-			ArrayOflong listItemIds = addSharedEntityResponse.getListItemIds();
-			
-			outputStatusMessage(String.format("NegativeKeywordList successfully added to account library and assigned identifer %d\n\n", sharedEntityId));
-			
-			outputNegativeKeywordIdsWithPartialErrors(
-			     sharedEntityId,
-			     sharedListItems, 
-			     listItemIds, 
-			     addSharedEntityResponse.getPartialErrors());
-			
-			outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
-			negativeKeywordList.setId(sharedEntityId);
-			 
-			sharedListItems = getListItemsBySharedList(negativeKeywordList);
-			if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
-			{
-				outputStatusMessage("None\n");
-			}
-			else
-			{
-				outputSharedListItems(sharedListItems);
-			}             
-			
-			// To update the list of negative keywords, you must either add or remove from the list
-			// using the respective AddListItemsToSharedList or DeleteListItemsFromSharedList operations.
-			// To remove the negative keywords from the list pass the negative keyword identifers
-			// and negative keyword list (SharedEntity) identifer.
-			
-			ArrayOfBatchError partialErrors = deleteListItemsFromSharedList(listItemIds, negativeKeywordList);
-			if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
-			{
-				outputStatusMessage("Deleted most recently added negative keywords from negative keyword list.\n");
-			
-			}
-			else
-			{
-				outputPartialErrors(partialErrors);
-			}
-			    
-			outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
-			sharedListItems = getListItemsBySharedList(negativeKeywordList);
-			if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
-			{
-				outputStatusMessage("None\n");
-			}
-			else
-			{
-				outputSharedListItems(sharedListItems);
-			}
-			    
-			// Whether you created the list with or without negative keywords, more can be added 
-			// using the AddListItemsToSharedList operation.
-			
-			sharedListItems = new ArrayOfSharedListItem();
-			negativeKeyword1 = new NegativeKeyword();
-			negativeKeyword1.setText("auto");
-			negativeKeyword1.setType("NegativeKeyword");
-			negativeKeyword1.setMatchType(MatchType.EXACT);
-			sharedListItems.getSharedListItems().add(negativeKeyword1);
-			negativeKeyword2 = new NegativeKeyword();
-			negativeKeyword2.setText("auto");
-			negativeKeyword2.setType("NegativeKeyword");
-			negativeKeyword2.setMatchType(MatchType.PHRASE);
-			sharedListItems.getSharedListItems().add(negativeKeyword2);
-			
-			AddListItemsToSharedListResponse addListItemsToSharedListResponse = addListItemsToSharedList(
-			     sharedListItems,
-			     negativeKeywordList);
-			listItemIds = addListItemsToSharedListResponse.getListItemIds();
-			
-			outputNegativeKeywordIdsWithPartialErrors(
-			     sharedEntityId,
-			     sharedListItems, 
-			     listItemIds, 
-			     addListItemsToSharedListResponse.getPartialErrors());
-			
-			outputStatusMessage("Negative keywords currently in NegativeKeywordList:");
-			sharedListItems = getListItemsBySharedList(negativeKeywordList);
-			if (sharedListItems == null || sharedListItems.getSharedListItems().size() == 0)
-			{
-				outputStatusMessage("None\n");
-			}
-			else
-			{
-				outputSharedListItems(sharedListItems);
-			}
-			
-			// You can update the name of the negative keyword list. 
-			
-			negativeKeywordList.setName("My Updated Negative Keyword List");
-			negativeKeywordList.setType("NegativeKeywordList");
-			    
-			ArrayOfSharedEntity sharedEntities = new ArrayOfSharedEntity();
-			sharedEntities.getSharedEntities().add(negativeKeywordList);
-			partialErrors = updateSharedEntities(sharedEntities);
-			if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
-			{
-				outputStatusMessage(String.format("Updated Negative Keyword List Name to %s.\n\n", negativeKeywordList.getName()));
-			}
-			else
-			{
-				outputPartialErrors(partialErrors);
-			}
-			
-			// Get and print the negative keyword lists and return the list of identifiers.
-			
-			final java.lang.String sharedEntityType = "NegativeKeywordList";
-			sharedEntities = getSharedEntitiesByAccountId(sharedEntityType);
-			outputSharedEntityIdentifiers(sharedEntities);
-			
-	    	ArrayOflong sharedEntityIds = new ArrayOflong();
-	        for (int index = 0; index < sharedEntities.getSharedEntities().size(); index++)
-	        {
-	            SharedEntity sharedEntity = sharedEntities.getSharedEntities().get(index);
-	            if (sharedEntity.getId() != null)
-	            {
-	                sharedEntityIds.getLongs().add((long)sharedEntity.getId());
-	            }
-	        }
-			    
-			// Negative keywords were added to the negative keyword list above. You can associate the 
-			// shared list of negative keywords with a campaign with or without negative keywords. 
-			// Shared negative keyword lists cannot be associated with an ad group. An ad group can only 
-			// be assigned an exclusive set of negative keywords. 
-			
-			ArrayOfSharedEntityAssociation associations = new ArrayOfSharedEntityAssociation();
-			SharedEntityAssociation association = new SharedEntityAssociation();
-			association.setEntityId(campaignIds.getLongs().get(0));
-			association.setEntityType("Campaign");
-			association.setSharedEntityId(sharedEntityId);
-			association.setSharedEntityType("NegativeKeywordList");
-			associations.getSharedEntityAssociations().add(association);
-			
-			partialErrors = setSharedEntityAssociations(associations);
-			if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
-			{
-				outputStatusMessage(String.format("Associated CampaignId %d with Negative Keyword List Id %d.\n\n", 
-			    		 campaignIds.getLongs().get(0), sharedEntityId));
-			}
-			else
-			{
-				outputPartialErrors(partialErrors);
-			}
-			    
-			// Get and print the associations either by Campaign or NegativeKeywordList identifier.
-			GetSharedEntityAssociationsByEntityIdsResponse getSharedEntityAssociationsByEntityIdsResponse = 
-			     getSharedEntityAssociationsByEntityIds(campaignIds, "Campaign", "NegativeKeywordList");
-			outputSharedEntityAssociations(getSharedEntityAssociationsByEntityIdsResponse.getAssociations());
-			outputPartialErrors(getSharedEntityAssociationsByEntityIdsResponse.getPartialErrors());
-			    
-			// Get the associations of the most recently added shared entity.
-			ArrayOflong associatedSharedEntityIds = new ArrayOflong();
-			associatedSharedEntityIds.getLongs().add(sharedEntityIds.getLongs().get(sharedEntityIds.getLongs().size()-1));
-			GetSharedEntityAssociationsBySharedEntityIdsResponse getSharedEntityAssociationsBySharedEntityIdsResponse = 
-			     getSharedEntityAssociationsBySharedEntityIds("Campaign", associatedSharedEntityIds, "NegativeKeywordList");
-			outputSharedEntityAssociations(getSharedEntityAssociationsBySharedEntityIdsResponse.getAssociations());
-			outputPartialErrors(getSharedEntityAssociationsBySharedEntityIdsResponse.getPartialErrors());
-			    
-			// Explicitly delete the association between the campaign and the negative keyword list.
-			
-			partialErrors = deleteSharedEntityAssociations(associations);
-			if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
-			{
-				outputStatusMessage("Deleted NegativeKeywordList associations\n");
-			}
-			else
-			{
-				outputPartialErrors(partialErrors);
-			}
-			    
-			// Delete the campaign and any remaining assocations. 
+            // Negative keywords were added to the negative keyword list above. You can associate the 
+            // shared list of negative keywords with a campaign with or without negative keywords. 
+            // Shared negative keyword lists cannot be associated with an ad group. An ad group can only 
+            // be assigned an exclusive set of negative keywords. 
+
+            ArrayOfSharedEntityAssociation associations = new ArrayOfSharedEntityAssociation();
+            SharedEntityAssociation association = new SharedEntityAssociation();
+            association.setEntityId(campaignIds.getLongs().get(0));
+            association.setEntityType("Campaign");
+            association.setSharedEntityId(sharedEntityId);
+            association.setSharedEntityType("NegativeKeywordList");
+            associations.getSharedEntityAssociations().add(association);
+
+            partialErrors = setSharedEntityAssociations(associations);
+            if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
+            {
+                    outputStatusMessage(String.format("Associated CampaignId %d with Negative Keyword List Id %d.\n\n", 
+                             campaignIds.getLongs().get(0), sharedEntityId));
+            }
+            else
+            {
+                    outputPartialErrors(partialErrors);
+            }
+
+            // Get and print the associations either by Campaign or NegativeKeywordList identifier.
+            GetSharedEntityAssociationsByEntityIdsResponse getSharedEntityAssociationsByEntityIdsResponse = 
+                 getSharedEntityAssociationsByEntityIds(campaignIds, "Campaign", "NegativeKeywordList");
+            outputSharedEntityAssociations(getSharedEntityAssociationsByEntityIdsResponse.getAssociations());
+            outputPartialErrors(getSharedEntityAssociationsByEntityIdsResponse.getPartialErrors());
+
+            // Get the associations of the most recently added shared entity.
+            ArrayOflong associatedSharedEntityIds = new ArrayOflong();
+            associatedSharedEntityIds.getLongs().add(sharedEntityIds.getLongs().get(sharedEntityIds.getLongs().size()-1));
+            GetSharedEntityAssociationsBySharedEntityIdsResponse getSharedEntityAssociationsBySharedEntityIdsResponse = 
+                 getSharedEntityAssociationsBySharedEntityIds("Campaign", associatedSharedEntityIds, "NegativeKeywordList");
+            outputSharedEntityAssociations(getSharedEntityAssociationsBySharedEntityIdsResponse.getAssociations());
+            outputPartialErrors(getSharedEntityAssociationsBySharedEntityIdsResponse.getPartialErrors());
+
+            // Explicitly delete the association between the campaign and the negative keyword list.
+
+            partialErrors = deleteSharedEntityAssociations(associations);
+            if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
+            {
+                    outputStatusMessage("Deleted NegativeKeywordList associations\n");
+            }
+            else
+            {
+                    outputPartialErrors(partialErrors);
+            }
+
+            // Delete the campaign and any remaining assocations. 
 			
             deleteCampaigns(AccountId, campaignIds);
             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
 			
-			// DeleteCampaigns does not delete the negative keyword list from the account's library. 
-			// Call the DeleteSharedEntities operation to delete the shared entities.
-			
-			partialErrors = deleteSharedEntities(sharedEntities);
-			if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
-			{
-			     outputStatusMessage(String.format("Deleted Negative Keyword List (SharedEntity) Id %d\n\n", sharedEntityId));
-			}
-			else
-			{
-				outputPartialErrors(partialErrors);
-			}
-			
-			outputStatusMessage("Program execution completed\n"); 
+            // DeleteCampaigns does not delete the negative keyword list from the account's library. 
+            // Call the DeleteSharedEntities operation to delete the shared entities.
+
+            partialErrors = deleteSharedEntities(sharedEntities);
+            if (partialErrors == null || partialErrors.getBatchErrors().size() == 0)
+            {
+                 outputStatusMessage(String.format("Deleted Negative Keyword List (SharedEntity) Id %d\n\n", sharedEntityId));
+            }
+            else
+            {
+                    outputPartialErrors(partialErrors);
+            }
+
+            outputStatusMessage("Program execution completed\n"); 
 			 
-		// Campaign Management service operations can throw AdApiFaultDetail.
-		} catch (AdApiFaultDetail_Exception ex) {
-			outputStatusMessage("The operation failed with the following faults:\n");
-			
-			for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-			{
-				outputStatusMessage("AdApiError\n");
-				outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-			}
-		
-		// Campaign Management service operations can throw ApiFaultDetail.
-		} catch (ApiFaultDetail_Exception ex) {
-			outputStatusMessage("The operation failed with the following faults:\n");
-		
-			for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-			{
-				outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-				outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-			}
-			
-			for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-			{
-				outputStatusMessage("OperationError\n");
-				outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-			}
-		} catch (RemoteException ex) {
-		     outputStatusMessage("Service communication error encountered: ");
-		     outputStatusMessage(ex.getMessage());
-		     ex.printStackTrace();
-		} catch (Exception ex) {
-                        outputStatusMessage("Error encountered: ");
-                        outputStatusMessage(ex.getMessage());
-                        ex.printStackTrace();
-        }
+            // Campaign Management service operations can throw AdApiFaultDetail.
+            } catch (AdApiFaultDetail_Exception ex) {
+                    outputStatusMessage("The operation failed with the following faults:\n");
+
+                    for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+                    {
+                            outputStatusMessage("AdApiError\n");
+                            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+                    }
+
+            // Campaign Management service operations can throw ApiFaultDetail.
+            } catch (ApiFaultDetail_Exception ex) {
+                    outputStatusMessage("The operation failed with the following faults:\n");
+
+                    for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+                    {
+                            outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
+                            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+                    }
+
+                    for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+                    {
+                            outputStatusMessage("OperationError\n");
+                            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+                    }
+            } catch (RemoteException ex) {
+                 outputStatusMessage("Service communication error encountered: ");
+                 outputStatusMessage(ex.getMessage());
+                 ex.printStackTrace();
+            } catch (Exception ex) {
+                    outputStatusMessage("Error encountered: ");
+                    outputStatusMessage(ex.getMessage());
+                    ex.printStackTrace();
+            }
 	}
 
 	//Adds one or more campaigns to the specified account.

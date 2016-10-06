@@ -38,7 +38,7 @@ public class BulkPauseAds extends BulkExampleBase {
 			authorizationData.setCustomerId(CustomerId);
 			authorizationData.setAccountId(AccountId);
 						            				
-			BulkService = new BulkServiceManager(authorizationData);
+			BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
 						
 			// Complete a full download of all ads in the account. 

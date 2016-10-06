@@ -16,7 +16,7 @@ public class AdExtensions extends ExampleBase {
     static ServiceClient<ICustomerManagementService> CustomerService; 
     
     private static java.lang.String SITELINK_MIGRATION = "SiteLinkAdExtension";
-    
+        
     /*
 	private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
@@ -37,10 +37,12 @@ public class AdExtensions extends ExampleBase {
 
             CampaignService = new ServiceClient<ICampaignManagementService>(
                     authorizationData,
+                    API_ENVIRONMENT,
                     ICampaignManagementService.class);
             
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
             Calendar calendar = Calendar.getInstance();
@@ -180,8 +182,8 @@ public class AdExtensions extends ExampleBase {
             adExtensions.getAdExtensions().add(callAdExtension);
 
             CalloutAdExtension calloutAdExtension = new CalloutAdExtension();
-                        calloutAdExtension.setText("Callout text");
-                        adExtensions.getAdExtensions().add(calloutAdExtension);
+            calloutAdExtension.setText("Callout text");
+            adExtensions.getAdExtensions().add(calloutAdExtension);
 
             LocationAdExtension locationAdExtension = new LocationAdExtension();
             locationAdExtension.setPhoneNumber("206-555-0100");
@@ -413,7 +415,7 @@ public class AdExtensions extends ExampleBase {
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-        // Some Campaign Management service operations such as SetAdExtensionsAssociations can throw EditorialApiFaultDetail.
+        // Campaign Management service operations can throw EditorialApiFaultDetail.
         } catch (com.microsoft.bingads.v10.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 

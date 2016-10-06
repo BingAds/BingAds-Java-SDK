@@ -40,6 +40,7 @@ public class ManageClient extends ExampleBase {
 	        
             CustomerService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
+                    API_ENVIRONMENT,
                     ICustomerManagementService.class);
 	        
             outputStatusMessage("You must edit this example to provide the ClientAccountId for " +

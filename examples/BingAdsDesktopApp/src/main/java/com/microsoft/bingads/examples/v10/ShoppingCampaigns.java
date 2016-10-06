@@ -38,106 +38,107 @@ public class ShoppingCampaigns extends ExampleBase {
    	 
         try
         {
-			authorizationData = new AuthorizationData();
-			authorizationData.setDeveloperToken(DeveloperToken);
-			authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-			authorizationData.setCustomerId(CustomerId);
-			authorizationData.setAccountId(AccountId);
-			 
-			CampaignService = new ServiceClient<ICampaignManagementService>(
-			       	authorizationData, 
-			       	ICampaignManagementService.class);
-			 
-			// Get the user's list of Bing Merchant Center (BMC) stores.
-			
-			final ArrayOfBMCStore stores = getBMCStoresByCustomerId();
-			 
-			if (stores == null)
-			{
-				outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
-				return;
-			}
-			 
-			// Create a Bing Shopping campaign using the ID of the first store in the list.
-	         
-			Campaign campaign = new Campaign();
-			campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
-			campaign.setDescription("Bing Shopping Campaign Example.");
-			campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
-			campaign.setMonthlyBudget(1000.00);
-			campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-			ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
-			campaignTypes.add(CampaignType.SHOPPING);
-			ArrayOfSetting settings = new ArrayOfSetting();
-			ShoppingSetting shoppingSetting = new ShoppingSetting();
-			shoppingSetting.setPriority(0);
-			shoppingSetting.setSalesCountryCode("US");
-			shoppingSetting.setStoreId(stores.getBMCStores().get(0).getId());
-			settings.getSettings().add(shoppingSetting);
-			campaign.setSettings(settings);
-			campaign.setCampaignType(campaignTypes);
-			campaign.setDaylightSaving(true);
-			ArrayOfCampaign campaigns = new ArrayOfCampaign();
-			campaigns.getCampaigns().add(campaign);
-			
-			AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
-			ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
-			ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
-			outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
-			 
-			ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
-			AdGroup adGroup = new AdGroup();
-			adGroup.setName("Product Categories");
-			ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
-			adDistribution.add(AdDistribution.SEARCH);
-			adGroup.setAdDistribution(adDistribution);
-			adGroup.setBiddingModel(BiddingModel.KEYWORD);
-			adGroup.setPricingModel(PricingModel.CPC);
-			adGroup.setStartDate(null);
-			Calendar calendar = Calendar.getInstance();
-			adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
-			adGroup.getEndDate().setDay(31);
-			adGroup.getEndDate().setMonth(12);
-			adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
-			adGroup.setLanguage("English");
-			adGroups.getAdGroups().add(adGroup);
-			
-			AddAdGroupsResponse addAdGroupsResponse = addAdGroups(campaignIds.getLongs().get(0), adGroups);
-			ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
-			ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
-			outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
-			
-			ArrayOfAd ads = new ArrayOfAd();
-			ProductAd productAd = new ProductAd();
-			productAd.setPromotionalText("Free shipping on $99 purchases.");
-			ads.getAds().add(productAd);
-			
-			AddAdsResponse addAdsResponse = addAds(adGroupIds.getLongs().get(0), ads);
-			ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
-			ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
-			outputAdsWithPartialErrors(ads, adIds, adErrors);
-			
-			// Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
-			// your product catalog. 
-			  
-			AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
-			printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
-			         
-			addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
-			ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
-			
-			long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
-			long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
-			updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
-			         
-			// Delete the campaign from the account.
-			
-			ArrayOflong deleteCampaignIds = new ArrayOflong();
-			deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-			deleteCampaigns(AccountId, deleteCampaignIds);
-			outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
-			
-			outputStatusMessage("Program execution completed\n"); 
+            authorizationData = new AuthorizationData();
+            authorizationData.setDeveloperToken(DeveloperToken);
+            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData.setCustomerId(CustomerId);
+            authorizationData.setAccountId(AccountId);
+
+            CampaignService = new ServiceClient<ICampaignManagementService>(
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICampaignManagementService.class);
+
+            // Get the user's list of Bing Merchant Center (BMC) stores.
+
+            final ArrayOfBMCStore stores = getBMCStoresByCustomerId();
+
+            if (stores == null)
+            {
+                    outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
+                    return;
+            }
+
+            // Create a Bing Shopping campaign using the ID of the first store in the list.
+
+            Campaign campaign = new Campaign();
+            campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
+            campaign.setDescription("Bing Shopping Campaign Example.");
+            campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
+            campaign.setMonthlyBudget(1000.00);
+            campaign.setTimeZone("PacificTimeUSCanadaTijuana");
+            ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+            campaignTypes.add(CampaignType.SHOPPING);
+            ArrayOfSetting settings = new ArrayOfSetting();
+            ShoppingSetting shoppingSetting = new ShoppingSetting();
+            shoppingSetting.setPriority(0);
+            shoppingSetting.setSalesCountryCode("US");
+            shoppingSetting.setStoreId(stores.getBMCStores().get(0).getId());
+            settings.getSettings().add(shoppingSetting);
+            campaign.setSettings(settings);
+            campaign.setCampaignType(campaignTypes);
+            campaign.setDaylightSaving(true);
+            ArrayOfCampaign campaigns = new ArrayOfCampaign();
+            campaigns.getCampaigns().add(campaign);
+
+            AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+            ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+            ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+            outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
+
+            ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
+            AdGroup adGroup = new AdGroup();
+            adGroup.setName("Product Categories");
+            ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
+            adDistribution.add(AdDistribution.SEARCH);
+            adGroup.setAdDistribution(adDistribution);
+            adGroup.setBiddingModel(BiddingModel.KEYWORD);
+            adGroup.setPricingModel(PricingModel.CPC);
+            adGroup.setStartDate(null);
+            Calendar calendar = Calendar.getInstance();
+            adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            adGroup.getEndDate().setDay(31);
+            adGroup.getEndDate().setMonth(12);
+            adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
+            adGroup.setLanguage("English");
+            adGroups.getAdGroups().add(adGroup);
+
+            AddAdGroupsResponse addAdGroupsResponse = addAdGroups(campaignIds.getLongs().get(0), adGroups);
+            ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
+            ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
+            outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
+
+            ArrayOfAd ads = new ArrayOfAd();
+            ProductAd productAd = new ProductAd();
+            productAd.setPromotionalText("Free shipping on $99 purchases.");
+            ads.getAds().add(productAd);
+
+            AddAdsResponse addAdsResponse = addAds(adGroupIds.getLongs().get(0), ads);
+            ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
+            ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
+            outputAdsWithPartialErrors(ads, adIds, adErrors);
+
+            // Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
+            // your product catalog. 
+
+            AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
+            printCampaignCriterionIdentifiers(addCriterionResponse.getCampaignCriterionIds(), addCriterionResponse.getNestedPartialErrors());
+
+            addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
+            ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
+
+            long rootId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
+            long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
+            updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
+
+            // Delete the campaign from the account.
+
+            ArrayOflong deleteCampaignIds = new ArrayOflong();
+            deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+            deleteCampaigns(AccountId, deleteCampaignIds);
+            outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
+
+            outputStatusMessage("Program execution completed\n"); 
              
          // Campaign Management service operations can throw AdApiFaultDetail.
          } catch (AdApiFaultDetail_Exception ex) {

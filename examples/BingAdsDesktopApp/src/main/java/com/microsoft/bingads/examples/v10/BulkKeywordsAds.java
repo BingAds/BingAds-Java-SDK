@@ -1,5 +1,6 @@
 package com.microsoft.bingads.examples.v10;
 
+import java.rmi.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,9 +10,14 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
+import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.customermanagement.*;
+import static com.microsoft.bingads.examples.v10.BulkExampleBase.BulkService;
+import static com.microsoft.bingads.examples.v10.BulkExampleBase.FileDirectory;
 import com.microsoft.bingads.v10.bulk.entities.*;
 import com.microsoft.bingads.v10.bulk.BulkDownloadCouldNotBeCompletedException;
 import com.microsoft.bingads.v10.bulk.BulkServiceManager;
+import com.microsoft.bingads.v10.bulk.DownloadParameters;
 import com.microsoft.bingads.v10.bulk.BulkEntityIterable;
 import com.microsoft.bingads.v10.bulk.BulkUploadCouldNotBeCompletedException;
 import com.microsoft.bingads.v10.bulk.BulkOperationInProgressException;
@@ -19,8 +25,12 @@ import com.microsoft.bingads.v10.bulk.AdApiError;
 import com.microsoft.bingads.v10.bulk.AdApiFaultDetail_Exception;
 import com.microsoft.bingads.v10.bulk.ApiFaultDetail_Exception;
 import com.microsoft.bingads.v10.bulk.BatchError;
+import com.microsoft.bingads.v10.bulk.BulkDownloadEntity;
+import com.microsoft.bingads.v10.bulk.BulkFileReader;
+import com.microsoft.bingads.v10.bulk.DownloadFileType;
 import com.microsoft.bingads.v10.bulk.OperationError;
-import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.v10.bulk.ResultFileType;
+
 
 public class BulkKeywordsAds extends BulkExampleBase {
 	
@@ -31,6 +41,10 @@ public class BulkKeywordsAds extends BulkExampleBase {
     private static long CustomerId = <CustomerIdGoesHere>;
     private static long AccountId = <AccountIdGoesHere>;
     */
+    
+    static ServiceClient<ICustomerManagementService> CustomerService; 
+    
+    private static java.lang.String SITELINK_MIGRATION = "SiteLinkAdExtension";
         
     public static void main(String[] args) {
 		
@@ -43,15 +57,48 @@ public class BulkKeywordsAds extends BulkExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 
-            BulkService = new BulkServiceManager(authorizationData);
+            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
             BulkService.setStatusPollIntervalInMilliseconds(5000);
-
-            // Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object, 
-            // and additional elements needed to read from and write to a bulk file. 
             
-            BulkAccount bulkAccount = new BulkAccount();
-            bulkAccount.setId(AccountId);
-            bulkAccount.setCustomerId(CustomerId);
+            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
+                                    
+            CustomerService = new ServiceClient<ICustomerManagementService>(
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICustomerManagementService.class);
+            
+            // Determine whether you are able to add shared budgets by checking the pilot flags.
+
+            boolean enabledForSharedBudgets = false;
+            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
+               
+            // The pilot flag value for shared budgets is 263.
+            // Pilot flags apply to all accounts within a given customer.
+            if (featurePilotFlags.getInts().contains(263))
+            {
+                outputStatusMessage("Customer is in pilot for Shared Budget.\n");
+                enabledForSharedBudgets = true;
+            }
+            else{
+                outputStatusMessage("Customer is not in pilot for Shared Budget.\n");
+            }
+            
+            // If the customer is enabled for shared budgets, let's create a new budget and
+            // share it with a new campaign.
+            
+            if (enabledForSharedBudgets)
+            {
+                BulkBudget bulkBudget = new BulkBudget();
+                bulkBudget.setClientId("YourClientIdGoesHere");
+                Budget budget = new Budget();
+                budget.setId(budgetIdKey);
+                budget.setAmount(new java.math.BigDecimal(50));
+                budget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+                budget.setName("My Shared Budget " + System.currentTimeMillis());
+                bulkBudget.setBudget(budget);
+                uploadEntities.add(bulkBudget);
+            }
+
 
             BulkCampaign bulkCampaign = new BulkCampaign();
             // ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
@@ -65,10 +112,12 @@ public class BulkKeywordsAds extends BulkExampleBase {
             campaign.setId(campaignIdKey);
             campaign.setName("Summer Shoes " + System.currentTimeMillis());
             campaign.setDescription("Summer shoes line.");
-            campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
-            campaign.setMonthlyBudget(1000.00);
+            // You must choose to set either the shared  budget ID or daily amount.
+            // You can set one or the other, but you may not set both.
+            campaign.setBudgetId(enabledForSharedBudgets ? budgetIdKey : 0);
+            campaign.setDailyBudget(enabledForSharedBudgets ? 0.0 : 50.0);
+            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true);
             campaign.setStatus(CampaignStatus.PAUSED);
 
             // DaylightSaving is not supported in the Bulk file schema. Whether or not you specify it in a BulkCampaign,
@@ -148,13 +197,13 @@ public class BulkKeywordsAds extends BulkExampleBase {
 
                 // With FinalUrls you can separate the tracking template, custom parameters, and 
                 // landing page URLs. 
-                ArrayOfstring finalUrls = new ArrayOfstring();
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
                 textAd.setFinalUrls(finalUrls);
 
                 // Final Mobile URLs can also be used if you want to direct the user to a different page 
                 // for mobile devices.
-                ArrayOfstring finalMobileUrls = new ArrayOfstring();
+                com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
                 textAd.setFinalMobileUrls(finalMobileUrls);
 
@@ -185,8 +234,8 @@ public class BulkKeywordsAds extends BulkExampleBase {
             }
             
             // This example sets ad format preference to Native only for the first ad.
-            ArrayOfKeyValuePairOfstringstring textAdFCM = new ArrayOfKeyValuePairOfstringstring();
-            KeyValuePairOfstringstring adFormatPreference = new KeyValuePairOfstringstring();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring textAdFCM = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring();
+            com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring adFormatPreference = new com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring();
             adFormatPreference.setKey("NativePreference");
             adFormatPreference.setValue("True");
             textAdFCM.getKeyValuePairOfstringstrings().add(adFormatPreference);
@@ -250,8 +299,6 @@ public class BulkKeywordsAds extends BulkExampleBase {
             // Dependent entities such as BulkKeyword must be written after any dependencies,   
             // for example the BulkCampaign and BulkAdGroup.  
 
-            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
-            uploadEntities.add(bulkAccount);
             uploadEntities.add(bulkCampaign);
             uploadEntities.add(bulkAdGroup);
 
@@ -271,9 +318,14 @@ public class BulkKeywordsAds extends BulkExampleBase {
             downloadEntities = Reader.getEntities();
 
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
+            List<BulkBudget> budgetResults = new ArrayList<BulkBudget>();
 
             for (BulkEntity entity : downloadEntities) {
-                if (entity instanceof BulkCampaign) {
+                if (entity instanceof BulkBudget) {
+                        budgetResults.add((BulkBudget) entity);
+                        outputBulkBudgets(Arrays.asList((BulkBudget) entity) );
+                }
+                else if (entity instanceof BulkCampaign) {
                         campaignResults.add((BulkCampaign) entity);
                         outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
                 }
@@ -289,6 +341,89 @@ public class BulkKeywordsAds extends BulkExampleBase {
             }
             downloadEntities.close();
             Reader.close();
+            
+            
+            // Here is a simple example that updates the campaign budget.
+                
+            List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
+            entities.add(BulkDownloadEntity.BUDGETS);
+            entities.add(BulkDownloadEntity.CAMPAIGNS);
+
+            DownloadParameters downloadParameters = new DownloadParameters();
+            downloadParameters.setEntities(entities);
+            downloadParameters.setFileType(DownloadFileType.CSV);
+            downloadParameters.setResultFileDirectory(new File(FileDirectory));
+            downloadParameters.setResultFileName(DownloadFileName);
+            downloadParameters.setOverwriteResultFile(true);
+            downloadParameters.setLastSyncTimeInUTC(null);
+            
+            // Download all campaigns and shared budgets in the account.
+            File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
+            outputStatusMessage("Downloaded all campaigns and shared budgets in the account.\n"); 
+            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
+            downloadEntities = Reader.getEntities();
+
+            uploadEntities = new ArrayList<BulkEntity>();
+
+            // If the campaign has a shared budget you cannot update the Campaign budget amount,
+            // and you must instead update the amount in the Budget record. If you try to update 
+            // the budget amount of a Campaign that has a shared budget, the service will return 
+            // the CampaignServiceCannotUpdateSharedBudget error code.
+            for (BulkEntity entity : downloadEntities) {
+                if (entity instanceof BulkBudget && ((BulkBudget)entity).getBudget().getId() > 0) {
+                    // Increase budget by 20 %
+                    ((BulkBudget)entity).getBudget().setAmount(new java.math.BigDecimal(((BulkBudget)entity).getBudget().getAmount().doubleValue() * 1.2));
+                    uploadEntities.add(entity);
+                }
+                else if (entity instanceof BulkCampaign && 
+                    (((BulkCampaign)entity).getCampaign().getBudgetId() == null || (((BulkCampaign)entity).getCampaign().getBudgetId() <= 0))) {
+                    
+                    // Increase existing budgets by 20%
+                    // Monthly budgets are deprecated and there will be a forced migration to daily budgets in calendar year 2017. 
+                    // Shared budgets do not support the monthly budget type, so this is only applicable to unshared budgets. 
+                    // During the migration all campaign level unshared budgets will be rationalized as daily. 
+                    // The formula that will be used to convert monthly to daily budgets is: Monthly budget amount / 30.4.
+                    // Moving campaign monthly budget to daily budget is encouraged before monthly budgets are migrated. 
+
+                    if (((BulkCampaign)entity).getCampaign().getBudgetType() == BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED)
+                    {
+                        // Increase budget by 20 %
+                        ((BulkCampaign)entity).getCampaign().setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+                        ((BulkCampaign)entity).getCampaign().setDailyBudget(((BulkCampaign)entity).getCampaign().getMonthlyBudget() / 30.4 * 1.2); 
+                    }
+                    else
+                    {
+                        // Increase budget by 20 %
+                        ((BulkCampaign)entity).getCampaign().setDailyBudget(((BulkCampaign)entity).getCampaign().getDailyBudget() * 1.2);
+                    }
+                        
+                    uploadEntities.add(entity);
+                }
+            }
+            downloadEntities.close();
+            Reader.close(); 
+
+            if (!uploadEntities.isEmpty()){
+                outputStatusMessage("Changed local campaign budget amounts. Starting upload.\n"); 
+
+                Reader = writeEntitiesAndUploadFile(uploadEntities);
+                downloadEntities = Reader.getEntities();
+                for (BulkEntity entity : downloadEntities) {
+                    if (entity instanceof BulkBudget) {
+                        outputBulkBudgets(Arrays.asList((BulkBudget) entity) );
+                    }
+                    else if (entity instanceof BulkCampaign) {
+                        outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
+                    }
+                }
+                downloadEntities.close();
+                Reader.close();
+            }
+            else
+            {
+                outputStatusMessage("No campaigns or shared budgets in account. \n");
+            }            
+            
 
             //Delete the campaign, ad group, ads, and keywords that were previously added. 
             //You should remove this region if you want to view the added entities in the 
@@ -301,6 +436,11 @@ public class BulkKeywordsAds extends BulkExampleBase {
 
             uploadEntities = new ArrayList<BulkEntity>();
 
+            for (BulkBudget budgetResult : budgetResults){
+                budgetResult.setStatus(Status.DELETED);
+                uploadEntities.add(budgetResult);
+            }
+            
             for (BulkCampaign campaignResult : campaignResults){
                 campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
                 uploadEntities.add(campaignResult);
@@ -312,16 +452,37 @@ public class BulkKeywordsAds extends BulkExampleBase {
             downloadEntities = Reader.getEntities();
 
             for (BulkEntity entity : downloadEntities) {
-                    if (entity instanceof BulkCampaign) {
-                            campaignResults.add((BulkCampaign) entity);
-                            outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
-                    }
+                if (entity instanceof BulkBudget) {
+                    outputBulkBudgets(Arrays.asList((BulkBudget) entity) );
+                }
+                else if (entity instanceof BulkCampaign) {
+                    outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
+                }
             }
             downloadEntities.close();
             Reader.close();
 
             outputStatusMessage("Program execution completed\n"); 
 
+        // Customer Management service operations can throw AdApiFaultDetail.
+        } catch (com.microsoft.bingads.customermanagement.AdApiFaultDetail_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
+
+            for (com.microsoft.bingads.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            {
+	            outputStatusMessage("AdApiError\n");
+	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
+            }
+        
+        // Customer Management service operations can throw ApiFault.
+        } catch (com.microsoft.bingads.customermanagement.ApiFault_Exception ex) {
+            outputStatusMessage("The operation failed with the following faults:\n");
+
+            for (com.microsoft.bingads.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            {
+	            outputStatusMessage("OperationError\n");
+	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
+            }
         } catch (BulkDownloadCouldNotBeCompletedException ee) {
                 outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
         } catch (BulkUploadCouldNotBeCompletedException ee) {
@@ -361,19 +522,34 @@ public class BulkKeywordsAds extends BulkExampleBase {
                     ee.printStackTrace();	
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+                ex.printStackTrace();
         } catch (InterruptedException ex) {
+                ex.printStackTrace();
+        } catch (Exception ex) {
+            outputStatusMessage("Error encountered: ");
+            outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         } finally {
-            if (downloadEntities != null){
-                    try {
-                            downloadEntities.close();
-                    } catch (IOException ex) {
-                            ex.printStackTrace();
-                    }
-            }
+                if (downloadEntities != null){
+                        try {
+                                downloadEntities.close();
+                        } catch (IOException ex) {
+                                ex.printStackTrace();
+                        }
+                }
         }
 
         System.exit(0);
+    }
+    
+    // Gets the list of pilot features that the customer is able to use.
+    
+    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
+    {       
+		
+        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
+        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
+        
+        return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
     }
 }

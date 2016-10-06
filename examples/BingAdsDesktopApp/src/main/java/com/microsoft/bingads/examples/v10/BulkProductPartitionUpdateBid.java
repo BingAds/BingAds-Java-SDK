@@ -38,10 +38,10 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 			authorizationData.setCustomerId(CustomerId);
 			authorizationData.setAccountId(AccountId);
 						            				
-			BulkService = new BulkServiceManager(authorizationData);
+			BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
 			BulkService.setStatusPollIntervalInMilliseconds(5000);
 
-            List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
+                        List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
 			entities.add(BulkDownloadEntity.AD_GROUP_PRODUCT_PARTITIONS);
 			
 			DownloadParameters downloadParameters = new DownloadParameters();
@@ -56,7 +56,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 			File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
 			outputStatusMessage("Downloaded all product partitions across all ad groups in the account.\n"); 
 			Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
-	        downloadEntities = Reader.getEntities();
+                        downloadEntities = Reader.getEntities();
 			
 			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 			
@@ -67,7 +67,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 						((ProductPartition)(((BulkAdGroupProductPartition)entity).getAdGroupCriterion().getCriterion())).getPartitionType() == ProductPartitionType.UNIT) {
 					AdGroupCriterion adGroupCriterion = ((BulkAdGroupProductPartition)entity).getAdGroupCriterion();
 					// Increase all bids by some predetermined amount or percentage. 
-                    // Implement your own logic to update bids by varying amounts.
+                                        // Implement your own logic to update bids by varying amounts.
 					double updatedBid = ((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().getAmount() + 0.01;
 					((FixedBid)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getBid().setAmount(updatedBid);;
 					uploadEntities.add(entity);
@@ -80,7 +80,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 				outputStatusMessage("Changed local bid of all product partitions. Starting upload.\n"); 
 				
 				Reader = writeEntitiesAndUploadFile(uploadEntities);
-		        downloadEntities = Reader.getEntities();
+                                downloadEntities = Reader.getEntities();
 				for (BulkEntity entity : downloadEntities) {
 					if (entity instanceof BulkAdGroupProductPartition) {
 						outputBulkAdGroupProductPartitions(Arrays.asList((BulkAdGroupProductPartition) entity) );

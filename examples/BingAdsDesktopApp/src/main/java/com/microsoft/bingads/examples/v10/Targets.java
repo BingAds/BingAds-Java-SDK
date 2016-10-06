@@ -31,8 +31,9 @@ public class Targets extends ExampleBase {
              authorizationData.setAccountId(AccountId);
 	         
              CampaignService = new ServiceClient<ICampaignManagementService>(
-	    				authorizationData, 
-	    				ICampaignManagementService.class);
+                    authorizationData, 
+                    API_ENVIRONMENT,
+                    ICampaignManagementService.class);
 
              // Specify a campaign. 
 
