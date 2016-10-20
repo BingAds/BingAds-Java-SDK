@@ -12,17 +12,6 @@ public class CSVBulkFileReaderFactory implements BulkFileReaderFactory {
     public BulkFileReader createBulkFileReader(
             final File localFile, ResultFileType resultType, DownloadFileType downloadFileType, final boolean deleteFileOnClose)
             throws IOException {
-        return new BulkFileReader(localFile, resultType, downloadFileType) {
-            @Override
-            public void close() throws IOException {
-                try {
-                    super.close();
-                } finally {
-                    if (deleteFileOnClose) {
-                        localFile.delete();
-                    }
-                }
-            }
-        };
+        return new BulkFileReader(localFile, resultType, downloadFileType, deleteFileOnClose);
     }
 }
