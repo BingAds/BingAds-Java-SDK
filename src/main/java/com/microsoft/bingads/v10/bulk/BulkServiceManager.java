@@ -88,6 +88,11 @@ public class BulkServiceManager {
     private File workingDirectory;
 
     /**
+     * Delete internally created temp files automatically?.
+     */
+    private boolean cleanupTempFilesAutomatically = false;
+
+    /**
      * Initializes a new instance of this class with the specified {@link AuthorizationData}.
      *
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
@@ -238,13 +243,20 @@ public class BulkServiceManager {
         }
     }
 
-    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(final FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
         final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws IOException {
-                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
+                if (cleanupTempFilesAutomatically) {
+                    parameters.getUploadFilePath().delete();
+                }
+
+                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(
+                      resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, cleanupTempFilesAutomatically);
+
+                resultFuture.setResult(reader.getEntities());
             }
         });
 
@@ -290,7 +302,7 @@ public class BulkServiceManager {
             public void onSuccess(File result) throws IOException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
 
-                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType());
+                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType(), cleanupTempFilesAutomatically);
 
                 resultFuture.setResult(reader.getEntities());
             }
@@ -707,6 +719,20 @@ public class BulkServiceManager {
      */
     public void setWorkingDirectory(File value) {
         this.workingDirectory = value;
+    }
+
+    /**
+     * Delete internally created temp files automatically?.
+     */
+    public boolean isCleanupTempFilesAutomatically() {
+        return cleanupTempFilesAutomatically;
+    }
+
+    /**
+     * Set, if to delete internally created temp files automatically.
+     */
+    public void setCleanupTempFilesAutomatically(boolean cleanupTempFilesAutomatically) {
+        this.cleanupTempFilesAutomatically = cleanupTempFilesAutomatically;
     }
 
     /**
