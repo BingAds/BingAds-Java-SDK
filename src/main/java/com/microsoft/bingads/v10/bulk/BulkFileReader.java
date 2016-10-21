@@ -27,7 +27,7 @@ public class BulkFileReader implements Closeable {
      * @throws IOException
      */
     public BulkFileReader(final File file, ResultFileType resultFileType, DownloadFileType fileFormat, final boolean deleteFileOnClose) throws IOException {
-        this(new ClosingSimpleBulkStreamReader(file, fileFormat, deleteFileOnClose), resultFileType);
+        this(new DeletingSimpleBulkStreamReader(file, fileFormat, deleteFileOnClose), resultFileType);
         this.bulkFilePath = file.getCanonicalPath();
     }
 
@@ -73,11 +73,20 @@ public class BulkFileReader implements Closeable {
     /**
      * {@link SimpleBulkStreamReader} that is able to delete its input file on {@link #close()}.
      */
-    private static class ClosingSimpleBulkStreamReader extends SimpleBulkStreamReader {
+    private static class DeletingSimpleBulkStreamReader extends SimpleBulkStreamReader {
         private final File file;
         private final boolean deleteFileOnClose;
 
-        public ClosingSimpleBulkStreamReader(File file, DownloadFileType fileFormat, boolean deleteFileOnClose) throws IOException {
+        /**
+         * Creates new instance
+         *
+         * @param file path of the bulk file to read
+         * @param fileFormat the bulk file format
+         * @param deleteFileOnClose delete file on end of iteration?
+         *
+         * @throws IOException
+         */
+        public DeletingSimpleBulkStreamReader(File file, DownloadFileType fileFormat, boolean deleteFileOnClose) throws IOException {
             super(file, fileFormat);
             this.file = file;
             this.deleteFileOnClose = deleteFileOnClose;
