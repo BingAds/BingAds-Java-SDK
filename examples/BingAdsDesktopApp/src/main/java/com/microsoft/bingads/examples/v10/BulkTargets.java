@@ -64,7 +64,6 @@ public class BulkTargets extends BulkExampleBase {
 
             BulkCampaignDayTimeTarget bulkCampaignDayTimeTarget = new BulkCampaignDayTimeTarget();
             bulkCampaignDayTimeTarget.setCampaignId(campaignIdKey);
-            bulkCampaignDayTimeTarget.setTargetId(targetIdKey);
             DayTimeTarget dayTimeTarget = new DayTimeTarget();
             ArrayOfDayTimeTargetBid dayTimeTargetBids = new ArrayOfDayTimeTargetBid();
             DayTimeTargetBid dayTimeTargetBid0 = new DayTimeTargetBid();
@@ -88,7 +87,6 @@ public class BulkTargets extends BulkExampleBase {
 
             BulkCampaignLocationTarget bulkCampaignLocationTarget = new BulkCampaignLocationTarget();
             bulkCampaignLocationTarget.setCampaignId(campaignIdKey);
-            bulkCampaignLocationTarget.setTargetId(targetIdKey);
 
             CityTarget cityTarget = new CityTarget();
             ArrayOfCityTargetBid cityTargetBids = new ArrayOfCityTargetBid();
@@ -142,12 +140,11 @@ public class BulkTargets extends BulkExampleBase {
             location.setMetroAreaTarget(metroAreaTarget);
             location.setStateTarget(stateTarget);
             location.setPostalCodeTarget(postalCodeTarget);
+            
             bulkCampaignLocationTarget.setLocation(location);
 
             BulkCampaignRadiusTarget bulkCampaignRadiusTarget = new BulkCampaignRadiusTarget();
             bulkCampaignRadiusTarget.setCampaignId(campaignIdKey);
-            bulkCampaignRadiusTarget.setTargetId(targetIdKey);
-
             RadiusTarget radiusTarget = new RadiusTarget();
             ArrayOfRadiusTargetBid radiusTargetBids = new ArrayOfRadiusTargetBid();
             RadiusTargetBid radiusTargetBid = new RadiusTargetBid();
@@ -158,8 +155,18 @@ public class BulkTargets extends BulkExampleBase {
             radiusTargetBid.setRadiusUnit(DistanceUnit.KILOMETERS);
             radiusTargetBids.getRadiusTargetBids().add(radiusTargetBid);
             radiusTarget.setBids(radiusTargetBids);
-
             bulkCampaignRadiusTarget.setRadiusTarget(radiusTarget);
+            
+            BulkCampaignDeviceOsTarget bulkCampaignDeviceOsTarget = new BulkCampaignDeviceOsTarget();
+            bulkCampaignDeviceOsTarget.setCampaignId(campaignIdKey);
+            DeviceOSTarget deviceOSTarget = new DeviceOSTarget();
+            ArrayOfDeviceOSTargetBid deviceOSTargetBids = new ArrayOfDeviceOSTargetBid();
+            DeviceOSTargetBid deviceOSTargetBid = new DeviceOSTargetBid();
+            deviceOSTargetBid.setBidAdjustment(20);
+            deviceOSTargetBid.setDeviceName("Tablets");
+            deviceOSTargetBids.getDeviceOSTargetBids().add(deviceOSTargetBid);
+            deviceOSTarget.setBids(deviceOSTargetBids);
+            bulkCampaignDeviceOsTarget.setDeviceOsTarget(deviceOSTarget);
 				
             // Upload the entities created above. 
 			
@@ -169,6 +176,7 @@ public class BulkTargets extends BulkExampleBase {
             uploadEntities.add(bulkCampaignDayTimeTarget);
             uploadEntities.add(bulkCampaignLocationTarget);
             uploadEntities.add(bulkCampaignRadiusTarget);
+            uploadEntities.add(bulkCampaignDeviceOsTarget);
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
@@ -191,10 +199,49 @@ public class BulkTargets extends BulkExampleBase {
                 else if (entity instanceof BulkCampaignRadiusTarget) {
                         outputBulkCampaignRadiusTargets(Arrays.asList((BulkCampaignRadiusTarget) entity) );
                 }
+                else if (entity instanceof BulkCampaignDeviceOsTarget) {
+                        outputBulkCampaignDeviceOsTargets(Arrays.asList((BulkCampaignDeviceOsTarget) entity) );
+                }
             }
 
             downloadEntities.close();
             Reader.close();
+            
+            // If the campaign was successfully added in the previous upload, let's append a new device bid.
+            if(campaignResults.size() > 0){
+                // In this example we want to keep the Tablets bid that was uploaded previously, so we will upload the BulkCampaignDeviceOsTargetBid.
+                // Each BulkCampaignDeviceOsTargetBid instance corresponds to one Campaign DeviceOS Target record in the bulk file. 
+                // If instead you want to replace all existing device target bids for the specified campaign, then you should upload 
+                // a BulkCampaignDeviceOsTarget. If you write a BulkCampaignDeviceOsTarget to the file (for example see the previous upload above),
+                // then an additional Campaign DeviceOS Target record is included automatically with Status set to Deleted. 
+                BulkCampaignDeviceOsTargetBid bulkCampaignDeviceOsTargetBid = new BulkCampaignDeviceOsTargetBid();
+                bulkCampaignDeviceOsTargetBid.setCampaignId(campaignResults.get(0).getCampaign().getId());
+                deviceOSTargetBid = new DeviceOSTargetBid();
+                deviceOSTargetBid.setBidAdjustment(20);
+                deviceOSTargetBid.setDeviceName("Smartphones");
+                bulkCampaignDeviceOsTargetBid.setDeviceOsTargetBid(deviceOSTargetBid);
+
+                // Upload the entities created above. 
+
+                uploadEntities = new ArrayList<BulkEntity>();
+
+                uploadEntities.add(bulkCampaignDeviceOsTargetBid);
+
+                Reader = writeEntitiesAndUploadFile(uploadEntities);
+                downloadEntities = Reader.getEntities();
+
+                // Upload and write the output
+
+                for (BulkEntity entity : downloadEntities) {
+                    if (entity instanceof BulkCampaignDeviceOsTargetBid) {
+                        outputBulkCampaignDeviceOsTargetBids(Arrays.asList((BulkCampaignDeviceOsTargetBid) entity) );
+                    }
+                }
+
+                downloadEntities.close();
+                Reader.close();
+            }
+            
 
             //Delete the campaign and target associations that were previously added. 
             //You should remove this region if you want to view the added entities in the 

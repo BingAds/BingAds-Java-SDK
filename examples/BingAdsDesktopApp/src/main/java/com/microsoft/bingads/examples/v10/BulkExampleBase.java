@@ -28,6 +28,8 @@ import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCallAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCalloutAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDayTimeTarget;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDayTimeTargetBid;
+import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDeviceOsTarget;
+import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDeviceOsTargetBid;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationAdExtension;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationTarget;
 import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationTargetBid;
@@ -57,6 +59,7 @@ import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupRemarketingListAssocia
 import com.microsoft.bingads.v10.campaignmanagement.CityTargetBid;
 import com.microsoft.bingads.v10.campaignmanagement.CountryTargetBid;
 import com.microsoft.bingads.v10.campaignmanagement.DayTimeTargetBid;
+import com.microsoft.bingads.v10.campaignmanagement.DeviceOSTargetBid;
 import com.microsoft.bingads.v10.campaignmanagement.DistanceUnit;
 import com.microsoft.bingads.v10.campaignmanagement.MetroAreaTargetBid;
 import com.microsoft.bingads.v10.campaignmanagement.PostalCodeTargetBid;
@@ -93,7 +96,6 @@ public class BulkExampleBase extends ExampleBase {
     // The maximum amount of time (in milliseconds) that you want to wait for the bulk download or upload.
     static int TimeoutInMilliseconds = 36000000;
     
-    final static long targetIdKey = -1; 
     final static long appAdExtensionIdKey = -11; 
     final static long callAdExtensionIdKey = -12; 
     final static long calloutAdExtensionIdKey = -13; 
@@ -801,6 +803,45 @@ public class BulkExampleBase extends ExampleBase {
             java.lang.String radiusUnit = entity.getRadiusTargetBid().getRadiusUnit() == 
                             DistanceUnit.KILOMETERS ? "Kilometers" : "Miles";
             outputStatusMessage(String.format("Radius Unit: %s", radiusUnit));
+
+            if(entity.hasErrors()){
+                    outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkCampaignDeviceOsTargets(Iterable<BulkCampaignDeviceOsTarget> bulkEntities) {
+        for (BulkCampaignDeviceOsTarget entity : bulkEntities){
+            // If the BulkCampaignDeviceOsTarget object was created by the application, and not read from a bulk file, 
+            // then there will be no BulkCampaignDeviceOsTargetBid objects. For example if you want to print the 
+            // BulkCampaignDeviceOsTarget prior to upload.
+            if (entity.getBids().size() == 0 && entity.getDeviceOsTarget() != null){
+                    outputStatusMessage("BulkCampaignDeviceOsTarget: \n");
+                    outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
+                    outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
+                    outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
+
+                    for (DeviceOSTargetBid bid : entity.getDeviceOsTarget().getBids().getDeviceOSTargetBids()){
+                            outputStatusMessage("Campaign Management DeviceOSTargetBid Object: ");
+                            outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
+                            outputStatusMessage(String.format("DeviceName : %s\n", bid.getDeviceName()));
+                    }
+            }
+            else {
+                    outputBulkCampaignDeviceOsTargetBids(entity.getBids());
+            }
+        }
+    }
+
+    static void outputBulkCampaignDeviceOsTargetBids(Iterable<BulkCampaignDeviceOsTargetBid> bulkEntities){
+        for (BulkCampaignDeviceOsTargetBid entity : bulkEntities){
+            outputStatusMessage("BulkCampaignDeviceOsTargetBid: \n");
+            outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("Campaign Id: %s", entity.getCampaignId()));
+            outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
+
+            outputStatusMessage(String.format("Bid Adjustment: %s", entity.getDeviceOsTargetBid().getBidAdjustment()));
+            outputStatusMessage(String.format("DeviceName : %s\n", entity.getDeviceOsTargetBid().getDeviceName()));
 
             if(entity.hasErrors()){
                     outputBulkErrors(entity.getErrors());
