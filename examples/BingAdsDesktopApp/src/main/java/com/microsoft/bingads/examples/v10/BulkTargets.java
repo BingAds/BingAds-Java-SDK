@@ -178,6 +178,7 @@ public class BulkTargets extends BulkExampleBase {
             uploadEntities.add(bulkCampaignRadiusTarget);
             uploadEntities.add(bulkCampaignDeviceOsTarget);
 
+            outputStatusMessage("\nAdding campaign and targets . . . ");
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
             
@@ -216,21 +217,19 @@ public class BulkTargets extends BulkExampleBase {
                 // then an additional Campaign DeviceOS Target record is included automatically with Status set to Deleted. 
                 BulkCampaignDeviceOsTargetBid bulkCampaignDeviceOsTargetBid = new BulkCampaignDeviceOsTargetBid();
                 bulkCampaignDeviceOsTargetBid.setCampaignId(campaignResults.get(0).getCampaign().getId());
+                // You can specify ClientId for BulkCampaignDeviceOsTargetBid, but not for BulkCampaignDeviceOsTarget.
+                bulkCampaignDeviceOsTargetBid.setClientId("My BulkCampaignDeviceOsTargetBid");
                 deviceOSTargetBid = new DeviceOSTargetBid();
                 deviceOSTargetBid.setBidAdjustment(20);
                 deviceOSTargetBid.setDeviceName("Smartphones");
                 bulkCampaignDeviceOsTargetBid.setDeviceOsTargetBid(deviceOSTargetBid);
 
-                // Upload the entities created above. 
-
                 uploadEntities = new ArrayList<BulkEntity>();
-
                 uploadEntities.add(bulkCampaignDeviceOsTargetBid);
 
+                outputStatusMessage("\nAdding Smartphones device target for campaign . . .");
                 Reader = writeEntitiesAndUploadFile(uploadEntities);
                 downloadEntities = Reader.getEntities();
-
-                // Upload and write the output
 
                 for (BulkEntity entity : downloadEntities) {
                     if (entity instanceof BulkCampaignDeviceOsTargetBid) {
@@ -247,13 +246,10 @@ public class BulkTargets extends BulkExampleBase {
             //You should remove this region if you want to view the added entities in the 
             //Bing Ads web application or another tool.
 
-            //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted.
-
-            //When you delete a BulkCampaign, the dependent entities such as BulkCampaignDayTimeTarget 
+            //You must set the Id field of the Campaign record that you want to delete, and the Status field to Deleted.
+            //In this example the Id is already set i.e. via the upload result captured above.
+            //When you delete a BulkCampaign, the dependent entities such as BulkCampaignDeviceOsTarget 
             //are deleted without being specified explicitly.  
-
-            //Deleting targets is not supported using the Bulk service.
-            //To delete targets you can use the DeleteTargetsFromLibrary operation via the Campaign Management service. 
             
             uploadEntities = new ArrayList<BulkEntity>();
             
@@ -261,10 +257,8 @@ public class BulkTargets extends BulkExampleBase {
             	campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
             	uploadEntities.add(campaignResult);
             }
-            
-            // Upload and write the output
-            
-            outputStatusMessage("\nDeleting campaign, ad group, keywords, and ads . . .\n");
+                        
+            outputStatusMessage("\nDeleting campaign and target associations . . .\n");
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
