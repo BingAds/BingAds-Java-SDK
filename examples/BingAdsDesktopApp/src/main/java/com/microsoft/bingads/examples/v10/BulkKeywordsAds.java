@@ -131,7 +131,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
             // If you do not set this element, then ManualCpcBiddingScheme is used by default.
             campaign.setBiddingScheme(new EnhancedCpcBiddingScheme());
 
-            // Used with FinalUrls shown in the text ads that we will add below.
+            // Used with FinalUrls shown in the expanded text ads that we will add below.
             campaign.setTrackingUrlTemplate(
                 "http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
 
@@ -174,44 +174,38 @@ public class BulkKeywordsAds extends BulkExampleBase {
             bulkAdGroup.setAdGroup(adGroup);
 
             // In this example only the first 3 ads should succeed. 
-            // The Title of the fourth ad is empty and not valid,
+            // The TitlePart2 of the fourth ad is empty and not valid,
             // and the fifth ad is a duplicate of the second ad. 
 
-            ArrayList<BulkTextAd> bulkTextAds = new ArrayList<BulkTextAd>();
+            ArrayList<BulkExpandedTextAd> bulkExpandedTextAds = new ArrayList<BulkExpandedTextAd>();
             
             for(int i=0; i < 5; i++){
-                BulkTextAd bulkTextAd = new BulkTextAd();
-                bulkTextAd.setAdGroupId(adGroupIdKey);
-                TextAd textAd = new TextAd();
-                textAd.setText("Huge Savings on red shoes.");
-                textAd.setDisplayUrl("Contoso.com");
-
-                // If you are currently using the Destination URL, you must upgrade to Final URLs. 
-                // Here is an example of a DestinationUrl you might have used previously. 
-                // textAd.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
-
-                // To migrate from DestinationUrl to FinalUrls for existing ads, you can set DestinationUrl
-                // to an empty string when updating the ad. If you are removing DestinationUrl,
-                // then FinalUrls is required.
-                // textAd.setDestinationUrl("");
+                BulkExpandedTextAd bulkExpandedTextAd = new BulkExpandedTextAd();
+                bulkExpandedTextAd.setAdGroupId(adGroupIdKey);
+                ExpandedTextAd expandedTextAd = new ExpandedTextAd();
+                expandedTextAd.setTitlePart1("Contoso");
+                expandedTextAd.setTitlePart2("Fast & Easy Setup");
+                expandedTextAd.setText("Find New Customers & Increase Sales! Start Advertising on Contoso Today.");
+                expandedTextAd.setPath1("seattle");
+                expandedTextAd.setPath2("shoe sale");
 
                 // With FinalUrls you can separate the tracking template, custom parameters, and 
                 // landing page URLs. 
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-                textAd.setFinalUrls(finalUrls);
+                expandedTextAd.setFinalUrls(finalUrls);
 
                 // Final Mobile URLs can also be used if you want to direct the user to a different page 
                 // for mobile devices.
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-                textAd.setFinalMobileUrls(finalMobileUrls);
+                expandedTextAd.setFinalMobileUrls(finalMobileUrls);
 
                 // You could use a tracking template which would override the campaign level
                 // tracking template. Tracking templates defined for lower level entities 
                 // override those set for higher level entities.
                 // In this example we are using the campaign level tracking template.
-                textAd.setTrackingUrlTemplate(null);
+                expandedTextAd.setTrackingUrlTemplate(null);
 
                 // Set custom parameters that are specific to this ad, 
                 // and can be used by the ad, ad group, campaign, or account level tracking template. 
@@ -227,28 +221,27 @@ public class BulkKeywordsAds extends BulkExampleBase {
                 customParameter2.setValue("summer");
                 customParameters.getCustomParameters().add(customParameter2);
                 urlCustomParameters.setParameters(customParameters);
-                textAd.setUrlCustomParameters(urlCustomParameters);
+                expandedTextAd.setUrlCustomParameters(urlCustomParameters);
 
-                bulkTextAd.setTextAd(textAd);
-                bulkTextAds.add(bulkTextAd);
+                bulkExpandedTextAd.setExpandedTextAd(expandedTextAd);
+                bulkExpandedTextAds.add(bulkExpandedTextAd);
             }
             
             // This example sets ad format preference to Native only for the first ad.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring textAdFCM = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring();
+            com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring expandedTextAdFCM = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring();
             com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring adFormatPreference = new com.microsoft.bingads.v10.campaignmanagement.KeyValuePairOfstringstring();
             adFormatPreference.setKey("NativePreference");
             adFormatPreference.setValue("True");
-            textAdFCM.getKeyValuePairOfstringstrings().add(adFormatPreference);
-            bulkTextAds.get(0).getAd().setForwardCompatibilityMap(textAdFCM);
+            expandedTextAdFCM.getKeyValuePairOfstringstrings().add(adFormatPreference);
+            bulkExpandedTextAds.get(0).getAd().setForwardCompatibilityMap(expandedTextAdFCM);
+            
+            bulkExpandedTextAds.get(1).getAd().setTitlePart2("Quick & Easy Setu");
+            bulkExpandedTextAds.get(2).getAd().setTitlePart2("Fast & Simple Setup");
+            bulkExpandedTextAds.get(3).getAd().setTitlePart2("");
+            bulkExpandedTextAds.get(4).getAd().setTitlePart2("Quick & Easy Setup");
             
             // In this example only the second keyword should succeed. The Text of the first keyword exceeds the limit,
             // and the third keyword is a duplicate of the second keyword. 
-
-            bulkTextAds.get(0).getAd().setTitle("Women's Shoe Sale");
-            bulkTextAds.get(1).getAd().setTitle("Women's Super Shoe Sale");
-            bulkTextAds.get(2).getAd().setTitle("Women's Red Shoe Sale");
-            bulkTextAds.get(3).getAd().setTitle("");
-            bulkTextAds.get(4).getAd().setTitle("Women's Super Shoe Sale");
 
             BulkKeyword[] bulkKeywords = new BulkKeyword[3];
             Keyword[] keywords = new Keyword[3];
@@ -306,8 +299,8 @@ public class BulkKeywordsAds extends BulkExampleBase {
                     uploadEntities.add(bulkKeyword);
             }
 
-            for (BulkTextAd bulkTextAd : bulkTextAds) {
-                    uploadEntities.add(bulkTextAd);
+            for (BulkExpandedTextAd bulkExpandedTextAd : bulkExpandedTextAds) {
+                    uploadEntities.add(bulkExpandedTextAd);
             }
 
             outputStatusMessage("\nAdding campaign, ad group, ads, and keywords...\n");
@@ -332,8 +325,8 @@ public class BulkKeywordsAds extends BulkExampleBase {
                 else if (entity instanceof BulkAdGroup) {
                         outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
                 }
-                else if (entity instanceof BulkTextAd) {
-                        outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+                else if (entity instanceof BulkExpandedTextAd) {
+                        outputBulkExpandedTextAds(Arrays.asList((BulkExpandedTextAd) entity) );
                 }
                 else if (entity instanceof BulkKeyword) {
                         outputBulkKeywords(Arrays.asList((BulkKeyword) entity) );
@@ -431,7 +424,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
 
             //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted. 
 
-            //When you delete a BulkCampaign, the dependent entities such as BulkAdGroup, BulkKeyword, and BulkTextAd 
+            //When you delete a BulkCampaign, the dependent entities such as BulkAdGroup, BulkKeyword, and BulkExpandedTextAd 
             //are deleted without being specified explicitly.   
 
             uploadEntities = new ArrayList<BulkEntity>();

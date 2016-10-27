@@ -96,16 +96,6 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             }
 	}
 	
-	static void outputProductAd(ProductAd productAd){
-            if (productAd != null) {
-                outputStatusMessage(String.format("DevicePreference: %s", productAd.getDevicePreference()));
-                outputStatusMessage(String.format("EditorialStatus: %s", productAd.getEditorialStatus()));
-                outputStatusMessage(String.format("Id: %s", productAd.getId()));
-                outputStatusMessage(String.format("PromotionalText: %s", productAd.getPromotionalText()));
-                outputStatusMessage(String.format("Status: %s", productAd.getStatus()));
-            }
-	}
-	
 	static void outputCampaignCriterionWithProductScope(CampaignCriterion campaignCriterion){
             if (campaignCriterion != null) {
                 outputStatusMessage(String.format("BidAdjustment: %s", campaignCriterion.getBidAdjustment()));
@@ -183,7 +173,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
             if (campaignIds.getLongs().get(index) != null)
             {
-                outputStatusMessage(String.format("Campaign[%d] (Name:%s) successfully added and assigned CampaignId %d\n", 
+                outputStatusMessage(String.format("Campaign[%s] (Name:%s) successfully added and assigned CampaignId %s\n", 
                     index,  
                     campaigns.getCampaigns().get(index).getName(),
                     campaignIds.getLongs().get(index)));
@@ -198,11 +188,11 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             // The index of the partial errors is equal to the index of the list
             // specified in the call to AddCampaigns.
 
-            outputStatusMessage(String.format("\nCampaign[%d] (Name:%s) not added due to the following error:\n", 
+            outputStatusMessage(String.format("\nCampaign[%s] (Name:%s) not added due to the following error:\n", 
            		 error.getIndex(), campaigns.getCampaigns().get(error.getIndex()).getName()));
 
-            outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
-            outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+            outputStatusMessage(String.format("\tIndex: %s\n", error.getIndex()));
+            outputStatusMessage(String.format("\tCode: %s\n", error.getCode()));
             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
@@ -212,7 +202,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
-                outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
+                outputStatusMessage(String.format("\tReasonCode: %s\n", ((EditorialError)(error)).getReasonCode()));
             }
         }
 
@@ -237,7 +227,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
             if (adGroupIds.getLongs().get(index) != null)
             {
-                outputStatusMessage(String.format("AdGroup[%d] (Name:%s) successfully added and assigned AdGroupId %d\n", 
+                outputStatusMessage(String.format("AdGroup[%s] (Name:%s) successfully added and assigned AdGroupId %s\n", 
                     index,  
                     adGroups.getAdGroups().get(index).getName(),
                     adGroupIds.getLongs().get(index)));
@@ -252,11 +242,11 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             // The index of the partial errors is equal to the index of the list
             // specified in the call to AddAdGroups.
 
-            outputStatusMessage(String.format("\nAdGroup[%d] (Name:%s) not added due to the following error:\n", 
+            outputStatusMessage(String.format("\nAdGroup[%s] (Name:%s) not added due to the following error:\n", 
            		 error.getIndex(), adGroups.getAdGroups().get(error.getIndex()).getName()));
 
-            outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
-            outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+            outputStatusMessage(String.format("\tIndex: %s\n", error.getIndex()));
+            outputStatusMessage(String.format("\tCode: %s\n", error.getCode()));
             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
@@ -266,7 +256,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
-                outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
+                outputStatusMessage(String.format("\tReasonCode: %s\n", ((EditorialError)(error)).getReasonCode()));
             }
         }
 
@@ -344,7 +334,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
             if (keywordIds.getLongs().get(index) != null)
             {
-                outputStatusMessage(String.format("Keyword[%d] (Text:%s) successfully added and assigned KeywordId %d\n", 
+                outputStatusMessage(String.format("Keyword[%s] (Text:%s) successfully added and assigned KeywordId %s\n", 
                     index,  
                     keywords.getKeywords().get(index).getText(),
                     keywordIds.getLongs().get(index)));
@@ -359,11 +349,11 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             // The index of the partial errors is equal to the index of the list
             // specified in the call to AddKeywords.
 
-            outputStatusMessage(String.format("\nKeyword[%d] (Text:%s) not added due to the following error:\n", 
+            outputStatusMessage(String.format("\nKeyword[%s] (Text:%s) not added due to the following error:\n", 
            		 error.getIndex(), keywords.getKeywords().get(error.getIndex()).getText()));
 
-            outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
-            outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+            outputStatusMessage(String.format("\tIndex: %s\n", error.getIndex()));
+            outputStatusMessage(String.format("\tCode: %s\n", error.getCode()));
             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
@@ -373,7 +363,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
-                outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
+                outputStatusMessage(String.format("\tReasonCode: %s\n", ((EditorialError)(error)).getReasonCode()));
             }
         }
 
@@ -389,67 +379,23 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             return;
         }
 
-        java.lang.String[] attributeValues = new java.lang.String[ads.getAds().size()];
-
         for (int index = 0; index < ads.getAds().size(); index++ )
         {
-            // Determine the type of ad. Prepare the corresponding attribute value to be printed,
-            // both for successful new ads and partial errors. 
-
-            if (ads.getAds().get(index) instanceof TextAd)
+            if (ads.getAds().get(index) instanceof ExpandedTextAd)
             {
-                attributeValues[index] = "Title:" + ((TextAd)ads.getAds().get(index)).getTitle();
-                outputStatusMessage(String.format("DestinationUrl: %s", ((TextAd)ads.getAds().get(index)).getDestinationUrl()));
+                outputExpandedTextAd((ExpandedTextAd)(ads.getAds().get(index)));
             }
             else if (ads.getAds().get(index) instanceof ProductAd)
             {
-                attributeValues[index] = "PromotionalText:" + ((ProductAd)ads.getAds().get(index)).getPromotionalText();
+                outputProductAd((ProductAd)(ads.getAds().get(index)));
+            }
+            else if (ads.getAds().get(index) instanceof TextAd)
+            {
+                outputTextAd((TextAd)(ads.getAds().get(index)));
             }
             else
             {
-                attributeValues[index] = "Unknown Ad Type";
-            }
-
-            // The array of ad identifiers equals the size of the attempted ads. If the element 
-            // is not null, the ad at that index was added successfully and has an ad identifier. 
-
-            if (adIds.getLongs().get(index) != null)
-            {
-                outputStatusMessage(String.format("Ad[%d] (%s) successfully added and assigned AdId %d\n", 
-                    index, 
-                    attributeValues[index], 
-                    adIds.getLongs().get(index)));
-                
-                Ad ad = ads.getAds().get(index);
-                
-                outputStatusMessage("FinalMobileUrls: ");
-                if (ad.getFinalMobileUrls() != null)
-                {
-                    for (java.lang.String finalMobileUrl : ad.getFinalMobileUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalMobileUrl));
-                    }
-                }
-
-                outputStatusMessage("FinalUrls: ");
-                if (ad.getFinalUrls() != null)
-                {
-                    for (java.lang.String finalUrl : ad.getFinalUrls().getStrings())
-                    {
-                        outputStatusMessage(String.format("\t%s", finalUrl));
-                    }
-                }
-                outputStatusMessage(String.format("TrackingUrlTemplate: %s", ad.getTrackingUrlTemplate()));
-                outputStatusMessage("UrlCustomParameters: ");
-                if (ad.getUrlCustomParameters() != null &&
-                		ad.getUrlCustomParameters().getParameters() != null)
-                {
-                    for (CustomParameter customParameter : ad.getUrlCustomParameters().getParameters().getCustomParameters())
-                    {
-                    	outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
-                    	outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
-                    }
-                }
+                outputStatusMessage("Unknown Ad Type");
             }
         }
 
@@ -461,10 +407,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             // The index of the partial errors is equal to the index of the list
             // specified in the call to AddAds.
 
-            outputStatusMessage(String.format("\nAd[%d] (%s) not added due to the following error:\n", error.getIndex(), attributeValues[error.getIndex()]));
+            outputStatusMessage(String.format("\nAd[%s] not added due to the following error:\n", error.getIndex()));
 
-            outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
-            outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+            outputStatusMessage(String.format("\tIndex: %s\n", error.getIndex()));
+            outputStatusMessage(String.format("\tCode: %s\n", error.getCode()));
             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
             outputStatusMessage(String.format("\tMessage: %s\n", error.getMessage()));
 
@@ -474,10 +420,83 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
-                outputStatusMessage(String.format("\tReasonCode: %d\n", ((EditorialError)(error)).getReasonCode()));
+                outputStatusMessage(String.format("\tReasonCode: %s\n", ((EditorialError)(error)).getReasonCode()));
             }
         }
         outputStatusMessage("");
+    }
+    
+    static void outputAd(Ad ad){
+        if(ad != null){
+            outputStatusMessage(String.format("DevicePreference: %s", ad.getDevicePreference()));
+            outputStatusMessage("FinalMobileUrls: ");
+            if (ad.getFinalMobileUrls() != null)
+            {
+                for (java.lang.String finalMobileUrl : ad.getFinalMobileUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalMobileUrl));
+                }
+            }
+
+            outputStatusMessage("FinalUrls: ");
+            if (ad.getFinalUrls() != null)
+            {
+                for (java.lang.String finalUrl : ad.getFinalUrls().getStrings())
+                {
+                    outputStatusMessage(String.format("\t%s", finalUrl));
+                }
+            }
+            outputStatusMessage(String.format("Status: %s", ad.getStatus()));
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", ad.getTrackingUrlTemplate()));
+            outputStatusMessage(String.format("Type: %s", ad.getType()));
+            outputStatusMessage("UrlCustomParameters: ");
+            if (ad.getUrlCustomParameters() != null && ad.getUrlCustomParameters().getParameters() != null)
+            {
+                for (CustomParameter customParameter : ad.getUrlCustomParameters().getParameters().getCustomParameters())
+                {
+                    outputStatusMessage(String.format("\tKey: %s", customParameter.getKey()));
+                    outputStatusMessage(String.format("\tValue: %s", customParameter.getValue()));
+                }
+            }
+        }
+    }
+    
+    static void outputExpandedTextAd(ExpandedTextAd ad){
+        if (ad != null) {
+            // Output inherited properties of the Ad base class.
+            outputAd(ad);
+            
+            // Output properties that are specific to the ExpandedTextAd
+            outputStatusMessage(String.format("DisplayUrl: %s", ad.getDisplayUrl()));
+            outputStatusMessage(String.format("Path1: %s", ad.getPath1()));
+            outputStatusMessage(String.format("Path2: %s", ad.getPath2()));
+            outputStatusMessage(String.format("Text: %s", ad.getText()));
+            outputStatusMessage(String.format("TitlePart1: %s", ad.getTitlePart1()));
+            outputStatusMessage(String.format("TitlePart2: %s", ad.getTitlePart2()));
+        }
+    }
+    
+    static void outputProductAd(ProductAd ad){
+        if (ad != null) {
+            // Output inherited properties of the Ad base class.
+            outputAd(ad);
+            
+            // Output properties that are specific to the ProductAd
+            outputStatusMessage(String.format("PromotionalText: %s", ad.getPromotionalText()));
+        }
+    }
+    
+    static void outputTextAd(TextAd ad){
+        if (ad != null) {
+            // Output inherited properties of the Ad base class.
+            outputAd(ad);
+            
+            // Output properties that are specific to the TextAd
+            outputStatusMessage(String.format("DestinationUrl: %s", ad.getDestinationUrl()));
+            outputStatusMessage(String.format("DisplayUrl: %s", ad.getDisplayUrl()));
+            outputStatusMessage(String.format("Text: %s", ad.getText()));
+            outputStatusMessage(String.format("Title: %s", ad.getTitle()));
+        }
     }
     
     static AdExtension setReadOnlyAdExtensionElementsToNull(AdExtension extension)
@@ -927,10 +946,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
         for (int index = 0; index < idCollections.getIdCollections().size(); index++)
         {
-            outputStatusMessage(String.format("NegativeKeyword Ids at entity index %d:\n\n", index));
+            outputStatusMessage(String.format("NegativeKeyword Ids at entity index %s:\n\n", index));
             for (long id : idCollections.getIdCollections().get(index).getIds().getLongs())
             {
-                outputStatusMessage(String.format("\tId: %d\n\n", id));
+                outputStatusMessage(String.format("\tId: %s\n\n", id));
             }
         }
     }
@@ -947,7 +966,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         for (NegativeKeyword negativeKeyword : negativeKeywords.getNegativeKeywords())
         {
             outputStatusMessage(String.format("\tNegativeKeyword Text: %s\n", negativeKeyword.getText()));
-            outputStatusMessage(String.format("\tId: %d\n", negativeKeyword.getId()));
+            outputStatusMessage(String.format("\tId: %s\n", negativeKeyword.getId()));
             outputStatusMessage(String.format("\tMatchType: %s\n\n", negativeKeyword.getMatchType()));
         }
     }
@@ -966,7 +985,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             if(sharedListItem instanceof NegativeKeyword)
             {
                 outputStatusMessage(String.format("\tNegativeKeyword Text: %s\n", ((NegativeKeyword)sharedListItem).getText()));
-                outputStatusMessage(String.format("\tId: %d\n", ((NegativeKeyword)sharedListItem).getId()));
+                outputStatusMessage(String.format("\tId: %s\n", ((NegativeKeyword)sharedListItem).getId()));
                 outputStatusMessage(String.format("\tMatchType: %s\n\n", ((NegativeKeyword)sharedListItem).getMatchType()));
             }
         }
@@ -984,7 +1003,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputStatusMessage("EntityNegativeKeyword items:\n");
         for (EntityNegativeKeyword entityNegativeKeyword : entityNegativeKeywords.getEntityNegativeKeywords())
         {
-            outputStatusMessage(String.format("\tEntityId: %d\n", entityNegativeKeyword.getEntityId()));
+            outputStatusMessage(String.format("\tEntityId: %s\n", entityNegativeKeyword.getEntityId()));
             outputStatusMessage(String.format("\tEntityType: %s\n\n", entityNegativeKeyword.getEntityType()));
             outputNegativeKeywords(entityNegativeKeyword.getNegativeKeywords());
         }
@@ -1001,7 +1020,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 SharedEntity sharedEntity = sharedEntities.getSharedEntities().get(index);
                 if (sharedEntity.getId() != null)
                 {
-                    outputStatusMessage(String.format("SharedEntity[%d] (%s) has SharedEntity Id %d.\n\n",
+                    outputStatusMessage(String.format("SharedEntity[%s] (%s) has SharedEntity Id %s.\n\n",
                                       index,
                                       sharedEntities.getSharedEntities().get(index).getName(),
                                       sharedEntities.getSharedEntities().get(index).getId()));
@@ -1022,8 +1041,8 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputStatusMessage("BatchError (PartialErrors) items:\n");
         for (BatchError error : partialErrors.getBatchErrors())
         {
-            outputStatusMessage(String.format("\tIndex: %d\n", error.getIndex()));
-            outputStatusMessage(String.format("\tCode: %d\n", error.getCode()));
+            outputStatusMessage(String.format("\tIndex: %s\n", error.getIndex()));
+            outputStatusMessage(String.format("\tCode: %s\n", error.getCode()));
             outputStatusMessage(String.format("\tErrorCode: %s\n", error.getErrorCode()));
             outputStatusMessage(String.format("\tMessage: %s\n\n", error.getMessage()));
 
@@ -1033,7 +1052,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 outputStatusMessage(String.format("\tDisapprovedText: %s\n", ((EditorialError)(error)).getDisapprovedText()));
                 outputStatusMessage(String.format("\tLocation: %s\n", ((EditorialError)(error)).getLocation()));
                 outputStatusMessage(String.format("\tPublisherCountry: %s\n", ((EditorialError)(error)).getPublisherCountry()));
-                outputStatusMessage(String.format("\tReasonCode: %d\n\n", ((EditorialError)(error)).getReasonCode()));
+                outputStatusMessage(String.format("\tReasonCode: %s\n\n", ((EditorialError)(error)).getReasonCode()));
             }
         }
     }
@@ -1059,7 +1078,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 // Determine if the corresponding index has a valid identifier
                 if(sharedListItemIds.getLongs().get(index) > 0)
                 {
-                    outputStatusMessage(String.format("NegativeKeyword[%d] (%s) successfully added to NegativeKeywordList (%d) and assigned Negative Keyword Id %d.\n",
+                    outputStatusMessage(String.format("NegativeKeyword[%s] (%s) successfully added to NegativeKeywordList (%s) and assigned Negative Keyword Id %s.\n",
                                   index,
                                   ((NegativeKeyword)(sharedListItems.getSharedListItems().get(index))).getText(),
                                   sharedListId,
@@ -1089,9 +1108,9 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputStatusMessage("SharedEntityAssociation items:\n");
         for (SharedEntityAssociation sharedEntityAssociation : associations.getSharedEntityAssociations())
         {
-            outputStatusMessage(String.format("\tEntityId: %d\n", sharedEntityAssociation.getEntityId()));
+            outputStatusMessage(String.format("\tEntityId: %s\n", sharedEntityAssociation.getEntityId()));
             outputStatusMessage(String.format("\tEntityType: %s\n", sharedEntityAssociation.getEntityType()));
-            outputStatusMessage(String.format("\tSharedEntityId: %d\n", sharedEntityAssociation.getSharedEntityId()));
+            outputStatusMessage(String.format("\tSharedEntityId: %s\n", sharedEntityAssociation.getSharedEntityId()));
             outputStatusMessage(String.format("\tSharedEntityType: %s\n\n", sharedEntityAssociation.getSharedEntityType()));
         }
     }
@@ -1114,8 +1133,8 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             {
                 if (collection.getCode() != null)
                 {
-                    outputStatusMessage(String.format("\tIndex: %d\n", collection.getIndex()));
-                    outputStatusMessage(String.format("\tCode: %d\n", collection.getCode()));
+                    outputStatusMessage(String.format("\tIndex: %s\n", collection.getIndex()));
+                    outputStatusMessage(String.format("\tCode: %s\n", collection.getCode()));
                     outputStatusMessage(String.format("\tErrorCode: %s\n", collection.getErrorCode()));
                     outputStatusMessage(String.format("\tMessage: %s\n\n", collection.getMessage()));
                 }
