@@ -101,7 +101,7 @@ public class KeywordsAds extends ExampleBase {
             // If you do not set this element, then ManualCpcBiddingScheme is used by default.
             campaign.setBiddingScheme(new EnhancedCpcBiddingScheme());
              
-            // Used with FinalUrls shown in the text ads that we will add below.
+            // Used with FinalUrls shown in the expanded text ads that we will add below.
             campaign.setTrackingUrlTemplate(
                 "http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
 
@@ -182,42 +182,36 @@ public class KeywordsAds extends ExampleBase {
 
 
             // In this example only the first 3 ads should succeed. 
-            // The Title of the fourth ad is empty and not valid,
+            // The TitlePart2 of the fourth ad is empty and not valid,
             // and the fifth ad is a duplicate of the second ad. 
 
             ArrayOfAd ads = new ArrayOfAd();
 
             for(int i=0; i < 5; i++){
-                TextAd textAd = new TextAd();
-                textAd.setText("Huge Savings on red shoes.");
-                textAd.setDisplayUrl("Contoso.com");
-
-                // If you are currently using the Destination URL, you must upgrade to Final URLs. 
-                // Here is an example of a DestinationUrl you might have used previously. 
-                // textAd.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
-
-                // To migrate from DestinationUrl to FinalUrls for existing ads, you can set DestinationUrl
-                // to an empty string when updating the ad. If you are removing DestinationUrl,
-                // then FinalUrls is required.
-                // textAd.setDestinationUrl("");
+                ExpandedTextAd expandedTextAd = new ExpandedTextAd();
+                expandedTextAd.setTitlePart1("Contoso");
+                expandedTextAd.setTitlePart2("Fast & Easy Setup");
+                expandedTextAd.setText("Find New Customers & Increase Sales! Start Advertising on Contoso Today.");
+                expandedTextAd.setPath1("seattle");
+                expandedTextAd.setPath2("shoe sale");
 
                 // With FinalUrls you can separate the tracking template, custom parameters, and 
                 // landing page URLs. 
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-                textAd.setFinalUrls(finalUrls);
+                expandedTextAd.setFinalUrls(finalUrls);
 
                 // Final Mobile URLs can also be used if you want to direct the user to a different page 
                 // for mobile devices.
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
                 finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-                textAd.setFinalMobileUrls(finalMobileUrls);
+                expandedTextAd.setFinalMobileUrls(finalMobileUrls);
 
                 // You could use a tracking template which would override the campaign level
                 // tracking template. Tracking templates defined for lower level entities 
                 // override those set for higher level entities.
                 // In this example we are using the campaign level tracking template.
-                textAd.setTrackingUrlTemplate(null);
+                expandedTextAd.setTrackingUrlTemplate(null);
 
                 // Set custom parameters that are specific to this ad, 
                 // and can be used by the ad, ad group, campaign, or account level tracking template. 
@@ -233,16 +227,15 @@ public class KeywordsAds extends ExampleBase {
                 customParameter2.setValue("summer");
                 customParameters.getCustomParameters().add(customParameter2);
                 urlCustomParameters.setParameters(customParameters);
-                textAd.setUrlCustomParameters(urlCustomParameters);
+                expandedTextAd.setUrlCustomParameters(urlCustomParameters);
 
-                ads.getAds().add(textAd);
+                ads.getAds().add(expandedTextAd);
             }
 
-            ((TextAd)(ads.getAds().get(0))).setTitle("Women's Shoe Sale");
-            ((TextAd)(ads.getAds().get(1))).setTitle("Women's Super Shoe Sale");
-            ((TextAd)(ads.getAds().get(2))).setTitle("Women's Red Shoe Sale");
-            ((TextAd)(ads.getAds().get(3))).setTitle("");
-            ((TextAd)(ads.getAds().get(4))).setTitle("Women's Super Shoe Sale");
+            ((ExpandedTextAd)(ads.getAds().get(1))).setTitlePart2("Quick & Easy Setu");
+            ((ExpandedTextAd)(ads.getAds().get(2))).setTitlePart2("Fast & Simple Setup");
+            ((ExpandedTextAd)(ads.getAds().get(3))).setTitlePart2("");
+            ((ExpandedTextAd)(ads.getAds().get(4))).setTitlePart2("Quick & Easy Setup");
 
 
             // Add the campaign, ad group, keywords, and ads
@@ -367,7 +360,8 @@ public class KeywordsAds extends ExampleBase {
             {
                 // The UpdateCampaigns operation only accepts 100 Campaign objects per call. 
                 // To simply the example we will update the first 100.
-                List<Campaign> campaignSubList = updateCampaigns.getCampaigns().subList(0, 99);
+                int maxIndex = updateCampaigns.getCampaigns().size() < 100 ? updateCampaigns.getCampaigns().size() : 99;
+                List<Campaign> campaignSubList = updateCampaigns.getCampaigns().subList(0, maxIndex);
                 updateCampaigns = new ArrayOfCampaign();
                 for (Campaign updateCampaign : campaignSubList){
                     updateCampaigns.getCampaigns().add(updateCampaign);
@@ -420,29 +414,29 @@ public class KeywordsAds extends ExampleBase {
 
             ArrayOfAd updateAds = new ArrayOfAd();
 
-            TextAd updateTextAd1 = new TextAd();
-            updateTextAd1.setId(adIds.getLongs().get(0));
-            updateTextAd1.setText("Huge Savings on All Red Shoes.");
+            ExpandedTextAd updateExpandedTextAd1 = new ExpandedTextAd();
+            updateExpandedTextAd1.setId(adIds.getLongs().get(0));
+            updateExpandedTextAd1.setText("Huge Savings on All Red Shoes.");
             // Set the UrlCustomParameters element to null or empty to retain any 
             // existing custom parameters.
             CustomParameters urlCustomParameters1 = null;
-            updateTextAd1.setUrlCustomParameters(urlCustomParameters1);
-            updateAds.getAds().add(updateTextAd1);
+            updateExpandedTextAd1.setUrlCustomParameters(urlCustomParameters1);
+            updateAds.getAds().add(updateExpandedTextAd1);
 
-            TextAd updateTextAd2 = new TextAd();
-            updateTextAd2.setId(adIds.getLongs().get(1));
-            updateTextAd2.setText("Huge Savings on All Red Shoes.");
+            ExpandedTextAd updateExpandedTextAd2 = new ExpandedTextAd();
+            updateExpandedTextAd2.setId(adIds.getLongs().get(1));
+            updateExpandedTextAd2.setText("Huge Savings on All Red Shoes.");
             // To remove all custom parameters, set the Parameters element of the 
             // CustomParameters object to null or empty.
             CustomParameters urlCustomParameters2 = new CustomParameters();
             ArrayOfCustomParameter customParameters2 = null;
             urlCustomParameters2.setParameters(customParameters2);
-            updateTextAd2.setUrlCustomParameters(urlCustomParameters2);
-            updateAds.getAds().add(updateTextAd2);
+            updateExpandedTextAd2.setUrlCustomParameters(urlCustomParameters2);
+            updateAds.getAds().add(updateExpandedTextAd2);
 
-            TextAd updateTextAd3 = new TextAd();
-            updateTextAd3.setId(adIds.getLongs().get(2));
-            updateTextAd3.setText("Huge Savings on All Red Shoes.");
+            ExpandedTextAd updateExpandedTextAd3 = new ExpandedTextAd();
+            updateExpandedTextAd3.setId(adIds.getLongs().get(2));
+            updateExpandedTextAd3.setText("Huge Savings on All Red Shoes.");
             // To remove a subset of custom parameters, specify the custom parameters that 
             // you want to keep in the Parameters element of the CustomParameters object.
             CustomParameters urlCustomParameters3 = new CustomParameters();
@@ -452,8 +446,8 @@ public class KeywordsAds extends ExampleBase {
             ArrayOfCustomParameter customParameters3 = new ArrayOfCustomParameter();
             customParameters3.getCustomParameters().add(customParameter3);
             urlCustomParameters3.setParameters(customParameters3);
-            updateTextAd3.setUrlCustomParameters(urlCustomParameters3);
-            updateAds.getAds().add(updateTextAd3);
+            updateExpandedTextAd3.setUrlCustomParameters(urlCustomParameters3);
+            updateAds.getAds().add(updateExpandedTextAd3);
 
             // As an exercise you can step through using the debugger and view the results.
 
