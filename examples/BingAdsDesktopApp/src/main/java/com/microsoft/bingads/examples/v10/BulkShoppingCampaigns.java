@@ -85,8 +85,8 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             campaign.setId(campaignIdKey);
             campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
             campaign.setDescription("Bing Shopping Campaign Example.");
-            campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
-            campaign.setMonthlyBudget(1000.00);
+            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.SHOPPING);

@@ -54,7 +54,7 @@ public class BulkPauseAdGroups extends BulkExampleBase {
 			File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
 			outputStatusMessage("Downloaded all ad groups in the account.\n"); 
 			Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
-		    downloadEntities = Reader.getEntities();
+		        downloadEntities = Reader.getEntities();
 				        
 			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 			
@@ -70,17 +70,17 @@ public class BulkPauseAdGroups extends BulkExampleBase {
 			Reader.close();
 			
 			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active ad groups to Paused. Ready for upload.\n"); 
-				
-				Reader = writeEntitiesAndUploadFile(uploadEntities);
-		        downloadEntities = Reader.getEntities();
-		        for (BulkEntity entity : downloadEntities) {
-					if (entity instanceof BulkAdGroup) {
-						outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
-					}
-				}
-				downloadEntities.close();
-				Reader.close();
+                            outputStatusMessage("Changed local status of all Active ad groups to Paused. Ready for upload.\n"); 
+
+                            Reader = writeEntitiesAndUploadFile(uploadEntities);
+                            downloadEntities = Reader.getEntities();
+                            for (BulkEntity entity : downloadEntities) {
+                                if (entity instanceof BulkAdGroup) {
+                                        outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
+                                }
+                            }
+                            downloadEntities.close();
+                            Reader.close();
 			}
 			else{
 				outputStatusMessage("All ad groups are already Paused. \n"); 

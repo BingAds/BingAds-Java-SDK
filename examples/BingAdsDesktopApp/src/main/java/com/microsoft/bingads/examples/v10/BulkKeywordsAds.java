@@ -11,7 +11,6 @@ import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
-import com.microsoft.bingads.customermanagement.*;
 import static com.microsoft.bingads.examples.v10.BulkExampleBase.BulkService;
 import static com.microsoft.bingads.examples.v10.BulkExampleBase.FileDirectory;
 import com.microsoft.bingads.v10.bulk.entities.*;
@@ -41,11 +40,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
     private static long CustomerId = <CustomerIdGoesHere>;
     private static long AccountId = <AccountIdGoesHere>;
     */
-    
-    static ServiceClient<ICustomerManagementService> CustomerService; 
-    
-    private static java.lang.String SITELINK_MIGRATION = "SiteLinkAdExtension";
-        
+                
     public static void main(String[] args) {
 		
         BulkEntityIterable downloadEntities = null;
@@ -61,44 +56,19 @@ public class BulkKeywordsAds extends BulkExampleBase {
             BulkService.setStatusPollIntervalInMilliseconds(5000);
             
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
-                                    
-            CustomerService = new ServiceClient<ICustomerManagementService>(
-                    authorizationData, 
-                    API_ENVIRONMENT,
-                    ICustomerManagementService.class);
+                                 
+            // Let's create a new budget and share it with a new campaign.
             
-            // Determine whether you are able to add shared budgets by checking the pilot flags.
-
-            boolean enabledForSharedBudgets = false;
-            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
-               
-            // The pilot flag value for shared budgets is 263.
-            // Pilot flags apply to all accounts within a given customer.
-            if (featurePilotFlags.getInts().contains(263))
-            {
-                outputStatusMessage("Customer is in pilot for Shared Budget.\n");
-                enabledForSharedBudgets = true;
-            }
-            else{
-                outputStatusMessage("Customer is not in pilot for Shared Budget.\n");
-            }
+            BulkBudget bulkBudget = new BulkBudget();
+            bulkBudget.setClientId("YourClientIdGoesHere");
+            Budget budget = new Budget();
+            budget.setId(budgetIdKey);
+            budget.setAmount(new java.math.BigDecimal(50));
+            budget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            budget.setName("My Shared Budget " + System.currentTimeMillis());
+            bulkBudget.setBudget(budget);
+            uploadEntities.add(bulkBudget);
             
-            // If the customer is enabled for shared budgets, let's create a new budget and
-            // share it with a new campaign.
-            
-            if (enabledForSharedBudgets)
-            {
-                BulkBudget bulkBudget = new BulkBudget();
-                bulkBudget.setClientId("YourClientIdGoesHere");
-                Budget budget = new Budget();
-                budget.setId(budgetIdKey);
-                budget.setAmount(new java.math.BigDecimal(50));
-                budget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
-                budget.setName("My Shared Budget " + System.currentTimeMillis());
-                bulkBudget.setBudget(budget);
-                uploadEntities.add(bulkBudget);
-            }
-
 
             BulkCampaign bulkCampaign = new BulkCampaign();
             // ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
@@ -114,9 +84,9 @@ public class BulkKeywordsAds extends BulkExampleBase {
             campaign.setDescription("Summer shoes line.");
             // You must choose to set either the shared  budget ID or daily amount.
             // You can set one or the other, but you may not set both.
-            campaign.setBudgetId(enabledForSharedBudgets ? budgetIdKey : 0);
-            campaign.setDailyBudget(enabledForSharedBudgets ? 0.0 : 50.0);
-            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            campaign.setBudgetId(budgetIdKey);
+            campaign.setDailyBudget(null);
+            campaign.setBudgetType(null);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setStatus(CampaignStatus.PAUSED);
 
@@ -457,25 +427,6 @@ public class BulkKeywordsAds extends BulkExampleBase {
 
             outputStatusMessage("Program execution completed\n"); 
 
-        // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.customermanagement.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-	            outputStatusMessage("AdApiError\n");
-	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Customer Management service operations can throw ApiFault.
-        } catch (com.microsoft.bingads.customermanagement.ApiFault_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-	            outputStatusMessage("OperationError\n");
-	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
         } catch (BulkDownloadCouldNotBeCompletedException ee) {
                 outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
         } catch (BulkUploadCouldNotBeCompletedException ee) {
@@ -533,16 +484,5 @@ public class BulkKeywordsAds extends BulkExampleBase {
         }
 
         System.exit(0);
-    }
-    
-    // Gets the list of pilot features that the customer is able to use.
-    
-    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
-    {       
-		
-        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
-        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
-        
-        return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
     }
 }

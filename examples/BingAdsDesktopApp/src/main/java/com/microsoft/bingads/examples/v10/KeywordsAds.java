@@ -6,7 +6,6 @@ import java.util.Calendar;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v10.campaignmanagement.*;
-import com.microsoft.bingads.customermanagement.*;
 import static com.microsoft.bingads.examples.v10.AdExtensions.authorizationData;
 import static com.microsoft.bingads.examples.v10.ExampleBase.outputCampaignsWithPartialErrors;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ public class KeywordsAds extends ExampleBase {
 
     static AuthorizationData authorizationData;
     static ServiceClient<ICampaignManagementService> CampaignService; 
-    static ServiceClient<ICustomerManagementService> CustomerService; 
     
     /*
     private static java.lang.String UserName = "<UserNameGoesHere>";
@@ -41,44 +39,22 @@ public class KeywordsAds extends ExampleBase {
                     authorizationData, 
                     API_ENVIRONMENT,
                     ICampaignManagementService.class);
+                        
             
-            CustomerService = new ServiceClient<ICustomerManagementService>(
-                    authorizationData, 
-                    API_ENVIRONMENT,
-                    ICustomerManagementService.class);
-            
-            // Determine whether you are able to add shared budgets by checking the pilot flags.
-
-            boolean enabledForSharedBudgets = false;
-            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
-               
-            // The pilot flag value for shared budgets is 263.
-            // Pilot flags apply to all accounts within a given customer.
-            if (featurePilotFlags.getInts().contains(263))
-            {
-                outputStatusMessage("Customer is in pilot for Shared Budget.\n");
-                enabledForSharedBudgets = true;
-            }
-            else{
-                outputStatusMessage("Customer is not in pilot for Shared Budget.\n");
-            }
-            
-            // If the customer is enabled for shared budgets, let's create a new budget and
-            // share it with a new campaign.
+            // Let's create a new budget and share it with a new campaign.
 
             ArrayOfNullableOflong budgetIds = new ArrayOfNullableOflong();
             
-            if (enabledForSharedBudgets)
-            {
-                ArrayOfBudget budgets = new ArrayOfBudget();
-                Budget budget = new Budget();
-                budget.setAmount(new java.math.BigDecimal(50));
-                budget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
-                budget.setName("My Shared Budget " + System.currentTimeMillis());
-                budgets.getBudgets().add(budget);
+            
+            ArrayOfBudget budgets = new ArrayOfBudget();
+            Budget addBudget = new Budget();
+            addBudget.setAmount(new java.math.BigDecimal(50));
+            addBudget.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            addBudget.setName("My Shared Budget " + System.currentTimeMillis());
+            budgets.getBudgets().add(addBudget);
 
-                budgetIds = addBudgets(budgets).getBudgetIds();
-            }
+            budgetIds = addBudgets(budgets).getBudgetIds();
+            
 
             // Specify a campaign. 
 
@@ -88,8 +64,8 @@ public class KeywordsAds extends ExampleBase {
             campaign.setDescription("Red shoes line.");
             // You must choose to set either the shared  budget ID or daily amount.
             // You can set one or the other, but you may not set both.
-            campaign.setBudgetId(enabledForSharedBudgets ? budgetIds.getLongs().get(0) : 0L);
-            campaign.setDailyBudget(enabledForSharedBudgets ? 0.0 : 50.0);
+            campaign.setBudgetId(budgetIds.getLongs().size() > 0 ? budgetIds.getLongs().get(0) : 0L);
+            campaign.setDailyBudget(budgetIds.getLongs().size() > 0 ? 0.0 : 50.0);
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setDaylightSaving(true); 
@@ -490,9 +466,8 @@ public class KeywordsAds extends ExampleBase {
             deleteCampaigns(AccountId, campaignIds);
             System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
             
-            // This sample will attempt to delete the budget that was created above 
-            // if the customer is enabled for shared budgets.
-            if(enabledForSharedBudgets){
+            // This sample will attempt to delete the budget that was created above.
+            if(budgetIds.getLongs().size() > 0){
                 com.microsoft.bingads.v10.campaignmanagement.ArrayOflong deleteBudgetIds = 
                         new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
                 deleteBudgetIds.getLongs().add(budgetIds.getLongs().get(0));
@@ -581,17 +556,6 @@ public class KeywordsAds extends ExampleBase {
             outputStatusMessage(ex.getMessage());
             ex.printStackTrace();
         }
-    }
-    
-    // Gets the list of pilot features that the customer is able to use.
-    
-    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
-    {       
-		
-        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
-        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
-        
-        return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
     }
     
     // Adds one or more budgets that can be shared by campaigns in the account.
