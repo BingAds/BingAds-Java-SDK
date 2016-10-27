@@ -232,7 +232,7 @@ public class KeywordsAds extends ExampleBase {
                 ads.getAds().add(expandedTextAd);
             }
 
-            ((ExpandedTextAd)(ads.getAds().get(1))).setTitlePart2("Quick & Easy Setu");
+            ((ExpandedTextAd)(ads.getAds().get(1))).setTitlePart2("Quick & Easy Setup");
             ((ExpandedTextAd)(ads.getAds().get(2))).setTitlePart2("Fast & Simple Setup");
             ((ExpandedTextAd)(ads.getAds().get(3))).setTitlePart2("");
             ((ExpandedTextAd)(ads.getAds().get(4))).setTitlePart2("Quick & Easy Setup");
