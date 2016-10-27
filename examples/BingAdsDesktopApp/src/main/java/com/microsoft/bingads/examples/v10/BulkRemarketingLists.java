@@ -88,8 +88,8 @@ public class BulkRemarketingLists extends BulkExampleBase {
             campaign.setId(campaignIdKey);
             campaign.setName("Summer Shoes " + System.currentTimeMillis());
             campaign.setDescription("Summer shoes line.");
-            campaign.setBudgetType(BudgetLimitType.MONTHLY_BUDGET_SPEND_UNTIL_DEPLETED);
-            campaign.setMonthlyBudget(1000.00);
+            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setDaylightSaving(true);
             campaign.setStatus(CampaignStatus.PAUSED);

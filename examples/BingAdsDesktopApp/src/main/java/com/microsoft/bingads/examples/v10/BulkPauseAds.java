@@ -54,45 +54,44 @@ public class BulkPauseAds extends BulkExampleBase {
 			File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
 			outputStatusMessage("Downloaded all ads in the account.\n"); 
 			Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
-	        downloadEntities = Reader.getEntities();
+                        downloadEntities = Reader.getEntities();
 			
 			List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 			
 			for (BulkEntity entity : downloadEntities) {
-				if (entity instanceof BulkTextAd 
-						&& ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
-					outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
-					
-					// Update the ad status to paused.
-					((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
-					
-				    // In this example we do not want to modify DestinationUrl so we set it to null.
-					// We don't round-trip the existing value because if DestinationUrl 
-					// is already empty, the value is deserialized as "". If you attempt to round-trip the object
-					// with DestinationUrl set to "", and if FinalUrls are not set, then the service will throw an error.
-					((BulkTextAd)entity).getAd().setDestinationUrl(null);
-					
-					uploadEntities.add(entity);
-				}
+                            if (entity instanceof BulkTextAd && ((BulkTextAd)entity).getAd().getStatus() == AdStatus.ACTIVE) {
+                                outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+
+                                // Update the ad status to paused.
+                                ((BulkTextAd)entity).getAd().setStatus(AdStatus.PAUSED);
+
+                                // In this example we do not want to modify DestinationUrl so we set it to null.
+                                // We don't round-trip the existing value because if DestinationUrl 
+                                // is already empty, the value is deserialized as "". If you attempt to round-trip the object
+                                // with DestinationUrl set to "", and if FinalUrls are not set, then the service will throw an error.
+                                ((BulkTextAd)entity).getAd().setDestinationUrl(null);
+
+                                uploadEntities.add(entity);
+                            }
 			}
 			downloadEntities.close();
 			Reader.close(); 
 			
 			if (!uploadEntities.isEmpty()){
-				outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
+                        outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
 
-				Reader = writeEntitiesAndUploadFile(uploadEntities);
+                        Reader = writeEntitiesAndUploadFile(uploadEntities);
 		        downloadEntities = Reader.getEntities();
 		        for (BulkEntity entity : downloadEntities) {
-					if (entity instanceof BulkTextAd) {
-						outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
-					}
-				}
-				downloadEntities.close();
-				Reader.close();
+                            if (entity instanceof BulkTextAd) {
+                                outputBulkTextAds(Arrays.asList((BulkTextAd) entity) );
+                            }
+                        }
+                        downloadEntities.close();
+                        Reader.close();
 			}
 			else{
-				outputStatusMessage("All text ads are already Paused. \n"); 
+                            outputStatusMessage("All text ads are already Paused. \n"); 
 			}
 			
 			outputStatusMessage("Program execution completed\n"); 
