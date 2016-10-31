@@ -32,6 +32,7 @@ public enum BulkDownloadEntity {
     AD_GROUP_APP_AD_EXTENSIONS("AdGroupAppAdExtensions"),
     CAMPAIGN_APP_AD_EXTENSIONS("CampaignAppAdExtensions"),
     REVIEW_AD_EXTENSIONS("ReviewAdExtensions"),
+    CAMPAIGN_NEGATIVE_DYNAMIC_SEARCH_AD_TARGETS("CampaignNegativeDynamicSearchAdTargets"),
     AD_GROUP_PRODUCT_PARTITIONS("AdGroupProductPartitions"),
     CAMPAIGN_PRODUCT_SCOPES("CampaignProductScopes"),
     CAMPAIGN_REVIEW_AD_EXTENSIONS("CampaignReviewAdExtensions"),
@@ -52,7 +53,9 @@ public enum BulkDownloadEntity {
     PRODUCT_ADS("ProductAds"),
     APP_INSTALL_ADS("AppInstallAds"),
     EXPANDED_TEXT_ADS("ExpandedTextAds"),
-    DYNAMIC_SEARCH_ADS("DynamicSearchAds");
+    DYNAMIC_SEARCH_ADS("DynamicSearchAds"),
+    AD_GROUP_DYNAMIC_SEARCH_AD_TARGETS("AdGroupDynamicSearchAdTargets"),
+    AD_GROUP_NEGATIVE_DYNAMIC_SEARCH_AD_TARGETS("AdGroupNegativeDynamicSearchAdTargets");
         
     private final String value;
 

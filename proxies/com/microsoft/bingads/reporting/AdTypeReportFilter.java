@@ -14,6 +14,7 @@ public enum AdTypeReportFilter {
     RICH_AD("RichAd"),
     PRODUCT("Product"),
     APP_INSTALL("AppInstall"),
+    DYNAMIC_SEARCH_AD("DynamicSearchAd"),
     EXPANDED_TEXT("ExpandedText");
         
     private final String value;

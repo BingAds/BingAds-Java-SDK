@@ -474,6 +474,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteRemarketingListsResponse }
+     * 
+     */
+    public DeleteRemarketingListsResponse createDeleteRemarketingListsResponse() {
+        return new DeleteRemarketingListsResponse();
+    }
+
+    /**
      * Create an instance of {@link GetMediaMetaDataByIdsResponse }
      * 
      */
@@ -994,6 +1002,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteRemarketingListsRequest }
+     * 
+     */
+    public DeleteRemarketingListsRequest createDeleteRemarketingListsRequest() {
+        return new DeleteRemarketingListsRequest();
+    }
+
+    /**
      * Create an instance of {@link DurationGoal }
      * 
      */
@@ -1439,6 +1455,14 @@ public class ObjectFactory {
      */
     public Image createImage() {
         return new Image();
+    }
+
+    /**
+     * Create an instance of {@link UpdateRemarketingListsResponse }
+     * 
+     */
+    public UpdateRemarketingListsResponse createUpdateRemarketingListsResponse() {
+        return new UpdateRemarketingListsResponse();
     }
 
     /**
@@ -3463,6 +3487,14 @@ public class ObjectFactory {
      */
     public NegativeCampaignCriterion createNegativeCampaignCriterion() {
         return new NegativeCampaignCriterion();
+    }
+
+    /**
+     * Create an instance of {@link UpdateRemarketingListsRequest }
+     * 
+     */
+    public UpdateRemarketingListsRequest createUpdateRemarketingListsRequest() {
+        return new UpdateRemarketingListsRequest();
     }
 
     /**

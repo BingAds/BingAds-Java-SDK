@@ -55,18 +55,18 @@ public class RemarketingList {
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
-    @XmlElement(name = "MembershipDuration")
+    @XmlElement(name = "MembershipDuration", nillable = true)
     protected Integer membershipDuration;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
-    @XmlElement(name = "ParentId")
+    @XmlElement(name = "ParentId", nillable = true)
     protected Long parentId;
     @XmlElement(name = "Rule", nillable = true)
     protected RemarketingRule rule;
     @XmlElement(name = "Scope")
     @XmlSchemaType(name = "string")
     protected EntityScope scope;
-    @XmlElement(name = "TagId")
+    @XmlElement(name = "TagId", nillable = true)
     protected Long tagId;
 
     /**
