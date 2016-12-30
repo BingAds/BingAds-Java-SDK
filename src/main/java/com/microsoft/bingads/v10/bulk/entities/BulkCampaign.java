@@ -53,6 +53,11 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     filteredSettings.add(setting);
                 }
             }
+            if (campaignType == CampaignType.DYNAMIC_SEARCH_ADS) {
+                if (setting instanceof DynamicSearchAdsSetting) {
+                    filteredSettings.add(setting);
+                }
+            }
         }
 
         return filteredSettings;
@@ -68,6 +73,18 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         }
 
         return (ShoppingSetting) shoppingSettings.get(0);
+    }
+    
+    private DynamicSearchAdsSetting getDynamicSearchAdsSetting() {
+    	if (getCampaign().getSettings() == null) return null;
+
+        List<Setting> dynamicSearchAdsSettings = filterSettings(getCampaign().getSettings().getSettings(), CampaignType.DYNAMIC_SEARCH_ADS);
+
+        if (dynamicSearchAdsSettings.size() != 1) {
+            throw new IllegalArgumentException("Can only have 1 DynamicSearchAdsSettings in Campaign Settings.");
+        }
+
+        return (DynamicSearchAdsSetting) dynamicSearchAdsSettings.get(0);
     }
 
     static {
@@ -175,6 +192,16 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                 shoppingSetting.setType(ShoppingSetting.class.getSimpleName());
 
                                 c.getCampaign().getSettings().getSettings().add(shoppingSetting);
+                            }
+                            
+                            if (campaignType == CampaignType.DYNAMIC_SEARCH_ADS) {
+                                c.getCampaign().setSettings(new ArrayOfSetting());
+
+                                DynamicSearchAdsSetting dynamicSearchAdsSetting = new DynamicSearchAdsSetting();
+
+                                dynamicSearchAdsSetting.setType(DynamicSearchAdsSetting.class.getSimpleName());
+
+                                c.getCampaign().getSettings().getSettings().add(dynamicSearchAdsSetting);
                             }
                         }
                     }
@@ -517,6 +544,88 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 						}
                     }
                 }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.Website,
+        		new Function<BulkCampaign, String>() {
+		            @Override
+		            public String apply(BulkCampaign c) {
+		                if (c.getCampaign().getCampaignType() == null) {
+		                    return null;
+		                }
+		
+		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
+		                    DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
+		
+		                    if (dynamicSearchAdsSetting == null) {
+		                        return null;
+		                    }
+		
+		                    return dynamicSearchAdsSetting.getDomainName();
+		                }
+		
+		                return null;
+		            }
+		        },
+		        new BiConsumer<String, BulkCampaign>() {
+		            @Override
+		            public void accept(String v, BulkCampaign c) {
+		                if (c.getCampaign().getCampaignType() == null) {
+		                    return;
+		                }
+		
+		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
+		                	DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
+		
+		                    if (dynamicSearchAdsSetting == null) {
+		                        return;
+		                    }
+		
+		                    dynamicSearchAdsSetting.setDomainName(v);
+		                }
+		            }
+		        }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.DomainLanguage,
+        		new Function<BulkCampaign, String>() {
+		            @Override
+		            public String apply(BulkCampaign c) {
+		                if (c.getCampaign().getCampaignType() == null) {
+		                    return null;
+		                }
+		
+		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
+		                    DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
+		
+		                    if (dynamicSearchAdsSetting == null) {
+		                        return null;
+		                    }
+		
+		                    return dynamicSearchAdsSetting.getLanguage();
+		                }
+		
+		                return null;
+		            }
+		        },
+		        new BiConsumer<String, BulkCampaign>() {
+		            @Override
+		            public void accept(String v, BulkCampaign c) {
+		                if (c.getCampaign().getCampaignType() == null) {
+		                    return;
+		                }
+		
+		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
+		                	DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
+		
+		                    if (dynamicSearchAdsSetting == null) {
+		                        return;
+		                    }
+		
+		                    dynamicSearchAdsSetting.setLanguage(v);
+		                }
+		            }
+		        }
         ));
         
         MAPPINGS = Collections.unmodifiableList(m);

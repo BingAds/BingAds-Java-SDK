@@ -68,6 +68,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AveragePagesPerVisit"/>
  *     &lt;enumeration value="AverageDurationPerVisit"/>
  *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="LowQualityGeneralClicks"/>
+ *     &lt;enumeration value="LowQualitySophisticatedClicks"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -184,7 +186,11 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("AverageDurationPerVisit")
     AVERAGE_DURATION_PER_VISIT("AverageDurationPerVisit"),
     @XmlEnumValue("AccountStatus")
-    ACCOUNT_STATUS("AccountStatus");
+    ACCOUNT_STATUS("AccountStatus"),
+    @XmlEnumValue("LowQualityGeneralClicks")
+    LOW_QUALITY_GENERAL_CLICKS("LowQualityGeneralClicks"),
+    @XmlEnumValue("LowQualitySophisticatedClicks")
+    LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

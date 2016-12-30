@@ -32,6 +32,7 @@ import com.microsoft.bingads.v10.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.Minute;
 import com.microsoft.bingads.v10.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v10.campaignmanagement.WebpageParameter;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 
@@ -203,7 +204,23 @@ public class StringExtensions {
             return null;
         }
     }
+	public static Bid parseAdGroupCriterionBid(String v) {
+        if (v == null || v.isEmpty()) {
+            return null;
+        }
 
+        Bid bid = new Bid();
+        
+        Double bidAmount = nullOrDouble(v);
+
+        if (bidAmount != null) {
+            bid.setAmount(bidAmount);
+            return bid;
+        } else {
+            return null;
+        }
+	 }
+	 
     public static Bid parseKeywordBid(String v) {
         if (v == null || v.isEmpty()) {
             return null;
@@ -402,6 +419,14 @@ public class StringExtensions {
 
         if (bid.getAmount() == 0.0) {
             return StringTable.DeleteValue;
+        }
+
+        return bid.getAmount().toString();
+    }
+    
+    public static String toAdGroupCriterionBidBulkString(Bid bid) {
+        if (bid == null || bid.getAmount() == null) {
+            return null;
         }
 
         return bid.getAmount().toString();
@@ -963,5 +988,22 @@ public class StringExtensions {
     	} else {
     		throw new IllegalArgumentException(String.format("Unknown value for Use Searcher Time Zone : %s", s));
     	}
+    }
+    
+    public static String toCriterionNameBulkString(WebpageParameter webpageParameter) {
+    	if (webpageParameter == null || webpageParameter.getCriterionName() == null) {
+			return null;
+		}
+		if (webpageParameter.getCriterionName().isEmpty()) {
+			return StringTable.DeleteValue;
+		}                    			
+		return webpageParameter.getCriterionName();
+    }
+    
+    public static String parseCriterionName(String s) {
+    	if (StringExtensions.isNullOrEmpty(s)) {
+    		return null;
+    	}   	
+    	return s;
     }
 }

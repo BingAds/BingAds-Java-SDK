@@ -84,6 +84,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="BudgetName"/>
  *     &lt;enumeration value="BudgetStatus"/>
  *     &lt;enumeration value="BudgetAssociationStatus"/>
+ *     &lt;enumeration value="LowQualityGeneralClicks"/>
+ *     &lt;enumeration value="LowQualitySophisticatedClicks"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -232,7 +234,11 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("BudgetStatus")
     BUDGET_STATUS("BudgetStatus"),
     @XmlEnumValue("BudgetAssociationStatus")
-    BUDGET_ASSOCIATION_STATUS("BudgetAssociationStatus");
+    BUDGET_ASSOCIATION_STATUS("BudgetAssociationStatus"),
+    @XmlEnumValue("LowQualityGeneralClicks")
+    LOW_QUALITY_GENERAL_CLICKS("LowQualityGeneralClicks"),
+    @XmlEnumValue("LowQualitySophisticatedClicks")
+    LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

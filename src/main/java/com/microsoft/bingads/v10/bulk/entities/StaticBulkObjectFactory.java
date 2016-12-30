@@ -76,6 +76,30 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkExpandedTextAd();
             }
         }));
+        m.put(StringTable.DynamicSearchAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkDynamicSearchAd();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeDynamicSearchAdTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeDynamicSearchAdTarget();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeDynamicSearchAdTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeDynamicSearchAdTarget();
+            }
+        }));
+        m.put(StringTable.AdGroupDynamicSearchAdTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupDynamicSearchAdTarget();
+            }
+        }));        
         m.put(StringTable.Keyword, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

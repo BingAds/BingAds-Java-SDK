@@ -218,6 +218,15 @@ public class CsvHeaders {
             StringTable.TitlePart2,
             StringTable.Path1,
             StringTable.Path2,
+            
+            // Dynamic Search Ad
+            StringTable.DomainLanguage,
+            StringTable.DynamicAdTargetCondition1,
+            StringTable.DynamicAdTargetCondition2,
+            StringTable.DynamicAdTargetCondition3,
+            StringTable.DynamicAdTargetValue1,
+            StringTable.DynamicAdTargetValue2,
+            StringTable.DynamicAdTargetValue3
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

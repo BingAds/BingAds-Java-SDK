@@ -28,7 +28,8 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkCampaignReadFromRowValuesNativeBidAdjustmentTest.class,
         BulkCampaignReadFromRowValuesCampaignTypeTest.class,
         BulkCampaignReadFromRowValuesSettingsTest.class,
-        BulkCampaignReadFromRowValuesBidStrategyTypeTest.class
+        BulkCampaignReadFromRowValuesBidStrategyTypeTest.class,
+        BulkCampaignReadFromRowValuesDSASettingsTest.class,
 })
 public class BulkCampaignReadTests {
 

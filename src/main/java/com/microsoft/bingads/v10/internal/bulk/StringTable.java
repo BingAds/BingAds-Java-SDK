@@ -343,7 +343,23 @@ public class StringTable {
     // Ad Extension Schedule
     public static final String AdSchedule = "Ad Schedule";
     public static final String UseSearcherTimeZone = "Use Searcher Time Zone";
-
+    
+    // Dynamic Search Ad   
+    public static final String DynamicSearchAd = "Dynamic Search Ad";
+    public static final String CampaignNegativeDynamicSearchAdTarget = "Campaign Negative Dynamic Search Ad Target";
+    public static final String AdGroupNegativeDynamicSearchAdTarget = "Ad Group Negative Dynamic Search Ad Target";
+    public static final String AdGroupDynamicSearchAdTarget = "Ad Group Dynamic Search Ad Target";
+        
+    public static final String DomainLanguage = "Domain Language";
+    public static final String DynamicAdTargetConditionColumnPrefix = "Dynamic Ad Target Condition ";
+    public static final String DynamicAdTargetCondition1 = "Dynamic Ad Target Condition 1";
+    public static final String DynamicAdTargetCondition2 = "Dynamic Ad Target Condition 2";
+    public static final String DynamicAdTargetCondition3 = "Dynamic Ad Target Condition 3";
+    public static final String DynamicAdTargetValueColumnPrefix = "Dynamic Ad Target Value ";
+    public static final String DynamicAdTargetValue1 = "Dynamic Ad Target Value 1";
+    public static final String DynamicAdTargetValue2 = "Dynamic Ad Target Value 2";
+    public static final String DynamicAdTargetValue3 = "Dynamic Ad Target Value 3";
+    
     static {
         Map<String, String> m = new HashMap<String, String>();
 

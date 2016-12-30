@@ -57,6 +57,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="TrackingTemplate"/>
  *     &lt;enumeration value="CustomParameters"/>
+ *     &lt;enumeration value="ImpressionSharePercent"/>
+ *     &lt;enumeration value="ImpressionLostToBudgetPercent"/>
+ *     &lt;enumeration value="ImpressionLostToRankPercent"/>
+ *     &lt;enumeration value="BenchmarkBid"/>
+ *     &lt;enumeration value="BenchmarkCtr"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -151,7 +156,17 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("TrackingTemplate")
     TRACKING_TEMPLATE("TrackingTemplate"),
     @XmlEnumValue("CustomParameters")
-    CUSTOM_PARAMETERS("CustomParameters");
+    CUSTOM_PARAMETERS("CustomParameters"),
+    @XmlEnumValue("ImpressionSharePercent")
+    IMPRESSION_SHARE_PERCENT("ImpressionSharePercent"),
+    @XmlEnumValue("ImpressionLostToBudgetPercent")
+    IMPRESSION_LOST_TO_BUDGET_PERCENT("ImpressionLostToBudgetPercent"),
+    @XmlEnumValue("ImpressionLostToRankPercent")
+    IMPRESSION_LOST_TO_RANK_PERCENT("ImpressionLostToRankPercent"),
+    @XmlEnumValue("BenchmarkBid")
+    BENCHMARK_BID("BenchmarkBid"),
+    @XmlEnumValue("BenchmarkCtr")
+    BENCHMARK_CTR("BenchmarkCtr");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {
