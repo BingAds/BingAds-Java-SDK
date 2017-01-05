@@ -63,7 +63,7 @@ public class RemarketingList {
     protected Long parentId;
     @XmlElement(name = "Rule", nillable = true)
     protected RemarketingRule rule;
-    @XmlElement(name = "Scope")
+    @XmlElement(name = "Scope", nillable = true)
     @XmlSchemaType(name = "string")
     protected EntityScope scope;
     @XmlElement(name = "TagId", nillable = true)

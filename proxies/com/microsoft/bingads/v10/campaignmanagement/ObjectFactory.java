@@ -1034,6 +1034,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetGeoLocationsFileUrlRequest }
+     * 
+     */
+    public GetGeoLocationsFileUrlRequest createGetGeoLocationsFileUrlRequest() {
+        return new GetGeoLocationsFileUrlRequest();
+    }
+
+    /**
      * Create an instance of {@link GetNegativeSitesByAdGroupIdsResponse }
      * 
      */
@@ -3271,6 +3279,14 @@ public class ObjectFactory {
      */
     public EditorialReasonCollection createEditorialReasonCollection() {
         return new EditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link GetGeoLocationsFileUrlResponse }
+     * 
+     */
+    public GetGeoLocationsFileUrlResponse createGetGeoLocationsFileUrlResponse() {
+        return new GetGeoLocationsFileUrlResponse();
     }
 
     /**

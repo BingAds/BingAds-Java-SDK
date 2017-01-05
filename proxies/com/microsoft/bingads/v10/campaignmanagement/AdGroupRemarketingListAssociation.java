@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="BidAdjustment" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="IsExcluded" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="RemarketingListId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v10}AdGroupRemarketingListAssociationStatus" minOccurs="0"/>
  *       &lt;/sequence>
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
     "adGroupId",
     "bidAdjustment",
     "id",
+    "isExcluded",
     "remarketingListId",
     "status"
 })
@@ -47,6 +49,8 @@ public class AdGroupRemarketingListAssociation {
     protected Double bidAdjustment;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "IsExcluded", nillable = true)
+    protected Boolean isExcluded;
     @XmlElement(name = "RemarketingListId", nillable = true)
     protected Long remarketingListId;
     @XmlElement(name = "Status", nillable = true)
@@ -123,6 +127,30 @@ public class AdGroupRemarketingListAssociation {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the isExcluded property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsExcluded() {
+        return isExcluded;
+    }
+
+    /**
+     * Sets the value of the isExcluded property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsExcluded(Boolean value) {
+        this.isExcluded = value;
     }
 
     /**
