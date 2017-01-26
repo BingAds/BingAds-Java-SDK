@@ -13,7 +13,7 @@ public class SearchUserAccounts extends ExampleBase {
     static ServiceClient<ICustomerManagementService> CustomerService; 
     
     /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
+    private static java.lang.String UserName = "<UserNameGoesHere>";
     private static java.lang.String Password = "<PasswordGoesHere>";
     private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
     */
@@ -38,13 +38,6 @@ public class SearchUserAccounts extends ExampleBase {
             
             ArrayOfAccount accounts = searchAccountsByUserId(user.getId());
             
-            // Optionally if you are enabled for Final Urls, you can update each account with a tracking template.
-            ArrayOfKeyValuePairOfstringstring accountFCM = new ArrayOfKeyValuePairOfstringstring();
-            KeyValuePairOfstringstring trackingUrlTemplate = new KeyValuePairOfstringstring();
-            trackingUrlTemplate.setKey("TrackingUrlTemplate");
-            trackingUrlTemplate.setValue("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
-            accountFCM.getKeyValuePairOfstringstrings().add(trackingUrlTemplate);
-            
             outputStatusMessage("The user can access the following Bing Ads accounts: \n");
             for (Account account : accounts.getAccounts())
             {
@@ -56,15 +49,17 @@ public class SearchUserAccounts extends ExampleBase {
                 outputStatusMessage("Customer Pilot flags:");
                 outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
                 
-                // Optionally if you are enabled for Final Urls, you can update each account with a tracking template.
-                // The pilot flag value for Final Urls is 194.
-                if (featurePilotFlags.getInts().contains(194))
-                {
-                    account.setForwardCompatibilityMap(accountFCM);
-                    updateAccount(account);
-                    outputStatusMessage(String.format("Updated the account with a TrackingUrlTemplate: %s\n", 
-                    		trackingUrlTemplate.getValue()));
-                }
+                // Optionally you can update each account with a tracking template.
+                ArrayOfKeyValuePairOfstringstring accountFCM = new ArrayOfKeyValuePairOfstringstring();
+                KeyValuePairOfstringstring trackingUrlTemplate = new KeyValuePairOfstringstring();
+                trackingUrlTemplate.setKey("TrackingUrlTemplate");
+                trackingUrlTemplate.setValue("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
+                accountFCM.getKeyValuePairOfstringstrings().add(trackingUrlTemplate);
+            
+                account.setForwardCompatibilityMap(accountFCM);
+                updateAccount(account);
+                outputStatusMessage(String.format("Updated the account with a TrackingUrlTemplate: %s\n", 
+                            trackingUrlTemplate.getValue()));
             }
             
             outputStatusMessage("Program execution completed\n"); 
