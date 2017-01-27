@@ -50,16 +50,16 @@ public class SearchUserAccounts extends ExampleBase {
                 outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
                 
                 // Optionally you can update each account with a tracking template.
-                ArrayOfKeyValuePairOfstringstring accountFCM = new ArrayOfKeyValuePairOfstringstring();
-                KeyValuePairOfstringstring trackingUrlTemplate = new KeyValuePairOfstringstring();
-                trackingUrlTemplate.setKey("TrackingUrlTemplate");
-                trackingUrlTemplate.setValue("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
-                accountFCM.getKeyValuePairOfstringstrings().add(trackingUrlTemplate);
+                //ArrayOfKeyValuePairOfstringstring accountFCM = new ArrayOfKeyValuePairOfstringstring();
+                //KeyValuePairOfstringstring trackingUrlTemplate = new KeyValuePairOfstringstring();
+                //trackingUrlTemplate.setKey("TrackingUrlTemplate");
+                //trackingUrlTemplate.setValue("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
+                //accountFCM.getKeyValuePairOfstringstrings().add(trackingUrlTemplate);
             
-                account.setForwardCompatibilityMap(accountFCM);
-                updateAccount(account);
-                outputStatusMessage(String.format("Updated the account with a TrackingUrlTemplate: %s\n", 
-                            trackingUrlTemplate.getValue()));
+                //account.setForwardCompatibilityMap(accountFCM);
+                //updateAccount(account);
+                //outputStatusMessage(String.format("Updated the account with a TrackingUrlTemplate: %s\n", 
+                //            trackingUrlTemplate.getValue()));
             }
             
             outputStatusMessage("Program execution completed\n"); 
