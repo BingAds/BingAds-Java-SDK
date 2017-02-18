@@ -1,72 +1,14 @@
 package com.microsoft.bingads.examples.v10;
 
-import static com.microsoft.bingads.examples.v10.ExampleBase.outputCampaign;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import com.microsoft.bingads.v10.bulk.BulkEntityIterable;
-import com.microsoft.bingads.v10.bulk.BulkFileReader;
-import com.microsoft.bingads.v10.bulk.BulkFileWriter;
-import com.microsoft.bingads.v10.bulk.BulkServiceManager;
-import com.microsoft.bingads.v10.bulk.DownloadFileType;
-import com.microsoft.bingads.v10.bulk.EntityUploadParameters;
-import com.microsoft.bingads.v10.bulk.FileUploadParameters;
-import com.microsoft.bingads.v10.bulk.ResponseMode;
-import com.microsoft.bingads.v10.bulk.ResultFileType;
-import com.microsoft.bingads.v10.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupProductPartition;
-import com.microsoft.bingads.v10.bulk.entities.BulkAppAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCallAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCalloutAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkBudget;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaign;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignAppAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCallAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignCalloutAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDayTimeTarget;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDayTimeTargetBid;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDeviceOsTarget;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignDeviceOsTargetBid;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationTarget;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignLocationTargetBid;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignProductScope;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignRadiusTarget;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignRadiusTargetBid;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignReviewAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignSiteLinkAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkSitelink2AdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignSitelink2AdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkStructuredSnippetAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkCampaignStructuredSnippetAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v10.bulk.entities.BulkError;
-import com.microsoft.bingads.v10.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v10.bulk.entities.BulkLocationAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkProductAd;
-import com.microsoft.bingads.v10.bulk.entities.BulkReviewAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkSiteLink;
-import com.microsoft.bingads.v10.bulk.entities.BulkSiteLinkAdExtension;
-import com.microsoft.bingads.v10.bulk.entities.BulkTextAd;
-import com.microsoft.bingads.v10.bulk.entities.BulkExpandedTextAd;
-import com.microsoft.bingads.v10.bulk.entities.PerformanceData;
-import com.microsoft.bingads.v10.bulk.entities.QualityScoreData;
-import com.microsoft.bingads.v10.bulk.entities.BidSuggestionData;
-import com.microsoft.bingads.v10.bulk.entities.BulkRemarketingList;
-import com.microsoft.bingads.v10.bulk.entities.BulkAdGroupRemarketingListAssociation;
-import com.microsoft.bingads.v10.campaignmanagement.CityTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.CountryTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.DayTimeTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.DeviceOSTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.DistanceUnit;
-import com.microsoft.bingads.v10.campaignmanagement.MetroAreaTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.PostalCodeTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.RadiusTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.SiteLink;
-import com.microsoft.bingads.v10.campaignmanagement.StateTargetBid;
+import com.microsoft.bingads.v10.bulk.*;
+import com.microsoft.bingads.v10.bulk.entities.*;
+import com.microsoft.bingads.v10.campaignmanagement.*;
 
 public class BulkExampleBase extends ExampleBase {
 
@@ -97,20 +39,20 @@ public class BulkExampleBase extends ExampleBase {
     // The maximum amount of time (in milliseconds) that you want to wait for the bulk download or upload.
     static int TimeoutInMilliseconds = 36000000;
     
-    final static long appAdExtensionIdKey = -11; 
-    final static long callAdExtensionIdKey = -12; 
-    final static long calloutAdExtensionIdKey = -13; 
-    final static long imageAdExtensionIdKey = -14; 
-    final static long locationAdExtensionIdKey = -15; 
-    final static long reviewAdExtensionIdKey = -16; 
-    final static long siteLinksAdExtensionIdKey = -17; 
-    final static long sitelink2AdExtensionIdKey = -17; 
-    final static long structuredSnippetAdExtensionIdKey = -18; 
-    final static long negativeKeywordListIdKey = -19; 
-    final static long budgetIdKey = -20;
-    final static long campaignIdKey = -111; 
-    final static long adGroupIdKey = -1111; 
-    final static long negativeKeywordIdKey = -11111; 
+    static long appAdExtensionIdKey = -11; 
+    static long callAdExtensionIdKey = -12; 
+    static long calloutAdExtensionIdKey = -13; 
+    static long imageAdExtensionIdKey = -14; 
+    static long locationAdExtensionIdKey = -15; 
+    static long reviewAdExtensionIdKey = -16; 
+    static long siteLinksAdExtensionIdKey = -17; 
+    static long sitelink2AdExtensionIdKey = -17; 
+    static long structuredSnippetAdExtensionIdKey = -18; 
+    static long negativeKeywordListIdKey = -19; 
+    static long budgetIdKey = -20;
+    static long campaignIdKey = -111; 
+    static long adGroupIdKey = -1111; 
+    static long negativeKeywordIdKey = -11111; 
      
     public BulkExampleBase() {}
 
@@ -971,5 +913,135 @@ public class BulkExampleBase extends ExampleBase {
                     outputStatusMessage(String.format("PublisherCountries: %s", error.getPublisherCountries()));
             }
         }
+    }
+    
+    static BulkEntity getExampleBulkCampaign() {
+        // Map properties in the Bulk file to the BulkAdGroup
+        BulkCampaign bulkCampaign = new BulkCampaign();
+        
+        // 'Parent Id' column header in the Bulk file
+        // This is not required for upload because the parent account identifier is set 
+        // with the CustomerAccountId header element in the Bulk upload service request.
+        //bulkCampaign.setAccountId(OptionalAccountIdHere);
+        // 'Client Id' column header in the Bulk file
+        bulkCampaign.setClientId("ClientIdGoesHere");
+        
+        // Map properties in the Bulk file to the 
+        // Campaign object of the Campaign Management service.
+        Campaign campaign = new Campaign();
+        
+        // 'Bid Strategy Type' column header in the Bulk file
+        campaign.setBiddingScheme(new EnhancedCpcBiddingScheme());
+        // 'Budget Id' column header in the Bulk file
+        campaign.setBudgetId(null);
+        // 'Budget Type' column header in the Bulk file
+        campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+        // 'Campaign Type' column header in the Bulk file
+        ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+        campaignTypes.add(CampaignType.SEARCH_AND_CONTENT);
+        campaign.setCampaignType(campaignTypes);
+        // 'Budget' column header in the Bulk file
+        campaign.setDailyBudget(50D);
+        // 'Description' column header in the Bulk file
+        campaign.setDescription("Red shoes line.");
+        // 'Id' column header in the Bulk file
+        campaign.setId(campaignIdKey);
+        // 'Language' column header in the Bulk file
+        campaign.setLanguages(null);
+        // 'Name' column header in the Bulk file
+        campaign.setName("Women's Shoes " + System.currentTimeMillis());
+        // 'Bid Adjustment' column header in the Bulk file
+        campaign.setNativeBidAdjustment(null);
+        // 'Status' column header in the Bulk file
+        campaign.setStatus(CampaignStatus.PAUSED);
+        // 'Time Zone' column header in the Bulk file
+        campaign.setTimeZone("PacificTimeUSCanadaTijuana");
+        // 'Tracking Template' column header in the Bulk file
+        campaign.setTrackingUrlTemplate(null);
+        // 'Custom Parameter' column header in the Bulk file
+        campaign.setUrlCustomParameters(getExampleCustomParameters());
+        
+        bulkCampaign.setCampaign(campaign);
+        
+        return bulkCampaign;
+    }
+    
+    static BulkEntity getExampleBulkAdGroup() {
+        // Map properties in the Bulk file to the BulkAdGroup
+        BulkAdGroup bulkAdGroup = new BulkAdGroup();
+        
+        // 'Campaign' column header in the Bulk file
+        bulkAdGroup.setCampaignName("ParentCampaignNameGoesHere");
+        // 'Parent Id' column header in the Bulk file
+        bulkAdGroup.setCampaignId(campaignIdKey);
+        // 'Client Id' column header in the Bulk file
+        bulkAdGroup.setClientId("ClientIdGoesHere");
+        
+        // Map properties in the Bulk file to the 
+        // AdGroup object of the Campaign Management service.
+        AdGroup adGroup = new AdGroup();
+
+        // 'Search Network' or 'Content Network' column header in the Bulk file
+        ArrayList<AdDistribution> adDistributions = new ArrayList<AdDistribution>();
+        adDistributions.add(AdDistribution.SEARCH);
+        adGroup.setAdDistribution(adDistributions);
+        // 'Ad Rotation' column header in the Bulk file
+        AdRotation adRotation = new AdRotation();
+        adRotation.setType(AdRotationType.ROTATE_ADS_EVENLY);
+        adGroup.setAdRotation(adRotation);
+        // 'Bid Adjustment' column header in the Bulk file
+        adGroup.setNativeBidAdjustment(10);
+        // The AdGroup.BiddingModel property is not supported in the Bulk file.
+        adGroup.setBiddingModel(BiddingModel.KEYWORD);
+        // 'Bid Strategy Type' column header in the Bulk file
+        adGroup.setBiddingScheme(new ManualCpcBiddingScheme());
+        // 'Content Bid' column header in the Bulk file
+        adGroup.setContentMatchBid(null);
+        // 'End Date' column header in the Bulk file
+        adGroup.setEndDate(null);
+        // 'Id' column header in the Bulk file
+        adGroup.setId(adGroupIdKey);
+        // 'Language' column header in the Bulk file
+        adGroup.setLanguage("English");
+        // 'Ad Group' column header in the Bulk file
+        adGroup.setName("Women's Red Shoe Sale");
+        // 'Network Distribution' column header in the Bulk file
+        adGroup.setNetwork(Network.OWNED_AND_OPERATED_AND_SYNDICATED_SEARCH);
+        // 'Pricing Model' column header in the Bulk file
+        adGroup.setPricingModel(PricingModel.CPC);
+        // 'Remarketing Targeting Setting' column header in the Bulk file
+        adGroup.setRemarketingTargetingSetting(RemarketingTargetingSetting.TARGET_AND_BID);
+        // 'Search Bid' column header in the Bulk file
+        Bid bid = new Bid();
+        bid.setAmount(10D);
+        adGroup.setSearchBid(bid);
+        // 'Start Date' column header in the Bulk file
+        adGroup.setStartDate(null);
+        // 'Status' column header in the Bulk file
+        adGroup.setStatus(AdGroupStatus.ACTIVE);
+        // 'Tracking Template' column header in the Bulk file
+        adGroup.setTrackingUrlTemplate(null);
+        // 'Custom Parameter' column header in the Bulk file
+        adGroup.setUrlCustomParameters(getExampleCustomParameters());
+        
+        bulkAdGroup.setAdGroup(adGroup);
+        
+        return bulkAdGroup;
+    }
+    
+    static CustomParameters getExampleCustomParameters(){
+        CustomParameters customParameters = new CustomParameters();
+        CustomParameter customParameter1 = new CustomParameter();
+        customParameter1.setKey("promoCode");
+        customParameter1.setValue("PROMO");
+        ArrayOfCustomParameter parameters = new ArrayOfCustomParameter();
+        parameters.getCustomParameters().add(customParameter1);
+        CustomParameter customParameter2 = new CustomParameter();
+        customParameter2.setKey("season");
+        customParameter2.setValue("summer");
+        parameters.getCustomParameters().add(customParameter2);
+        customParameters.setParameters(parameters);
+        
+        return customParameters;
     }
 }
