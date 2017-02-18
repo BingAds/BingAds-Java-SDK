@@ -228,7 +228,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
     static List<BulkEntity> uploadEntitiesAsync(List<BulkEntity> uploadEntities) throws IOException, ExecutionException, InterruptedException 
     {
     	// The system temp directory will be used if another working directory is not specified. If you are 
-        // using a cloud service such as Azure you'll want to ensure you do not exceed the file or directory limits. 
+        // using a cloud service such as Microsoft Azure you'll want to ensure you do not exceed the file or directory limits. 
         // You can specify a different working directory for each BulkServiceManager instance.
 
         BulkService.setWorkingDirectory(new File(FileDirectory));
@@ -264,7 +264,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
     static List<BulkEntity> downloadEntitiesAsync(DownloadParameters downloadParameters) throws IOException, ExecutionException, InterruptedException 
     {
     	// The system temp directory will be used if another working directory is not specified. If you are 
-        // using a cloud service such as Azure you'll want to ensure you do not exceed the file or directory limits. 
+        // using a cloud service such as Microsoft Azure you'll want to ensure you do not exceed the file or directory limits. 
         // You can specify a different working directory for each BulkServiceManager instance.
 
         BulkService.setWorkingDirectory(new File(FileDirectory));
