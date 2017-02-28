@@ -196,6 +196,21 @@ public class BulkRemarketingList extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.RemarketingRule,
+                new Function<BulkRemarketingList, String>() {
+                    @Override
+                    public String apply(BulkRemarketingList c) {
+                        return StringExtensions.toRemarketingRuleBulkString(c.getRemarketingList().getRule());
+                    }
+                },
+                new BiConsumer<String, BulkRemarketingList>() {
+                    @Override
+                    public void accept(String v, BulkRemarketingList c) {
+                        c.getRemarketingList().setRule(StringExtensions.parseRemarketingRule(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

@@ -12,11 +12,14 @@ import com.microsoft.bingads.v10.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
+import com.microsoft.bingads.v10.campaignmanagement.ArrayOfRuleItem;
+import com.microsoft.bingads.v10.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v10.campaignmanagement.Bid;
 import com.microsoft.bingads.v10.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.BusinessGeoCodeStatus;
 import com.microsoft.bingads.v10.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v10.campaignmanagement.CustomEventsRule;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameter;
 import com.microsoft.bingads.v10.campaignmanagement.CustomParameters;
 import com.microsoft.bingads.v10.campaignmanagement.Date;
@@ -31,6 +34,15 @@ import com.microsoft.bingads.v10.campaignmanagement.MatchType;
 import com.microsoft.bingads.v10.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.Minute;
+import com.microsoft.bingads.v10.campaignmanagement.NumberOperator;
+import com.microsoft.bingads.v10.campaignmanagement.PageVisitorsRule;
+import com.microsoft.bingads.v10.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
+import com.microsoft.bingads.v10.campaignmanagement.PageVisitorsWhoVisitedAnotherPageRule;
+import com.microsoft.bingads.v10.campaignmanagement.RemarketingRule;
+import com.microsoft.bingads.v10.campaignmanagement.RuleItem;
+import com.microsoft.bingads.v10.campaignmanagement.RuleItemGroup;
+import com.microsoft.bingads.v10.campaignmanagement.StringOperator;
+import com.microsoft.bingads.v10.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v10.campaignmanagement.TargetCpaBiddingScheme;
 import com.microsoft.bingads.v10.campaignmanagement.WebpageParameter;
 import com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring;
@@ -40,7 +52,6 @@ import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
@@ -64,7 +75,13 @@ public class StringExtensions {
     private static final Pattern customKvPattern = Pattern.compile("^\\{_(.*?)\\}=(.*$)");
     
     private static final Pattern dayTimePattern = Pattern.compile("\\((Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)\\[(\\d\\d?):(\\d\\d)-(\\d\\d?):(\\d\\d)\\]\\)");
-
+ 
+    //Remarketing rule pattern
+    private static final Pattern pageRulePattern = Pattern.compile("^(Url|ReferrerUrl|None) (Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
+    private static final Pattern operandPattern = Pattern.compile("^(Category|Action|Label|Value) ([^()]*)$");
+	private static final Pattern stringOperatorPattern = Pattern.compile("^(Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
+	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
+	
     public static String toKeywordBidBulkString(Bid bid) {
         if (bid == null) {
             return null;
@@ -1006,4 +1023,290 @@ public class StringExtensions {
     	}   	
     	return s;
     }
+    
+    public static String toRemarketingRuleBulkString(RemarketingRule remarketingRule) {
+    	if (remarketingRule == null) {
+    		return null;
+    	}
+    	if (remarketingRule instanceof CustomEventsRule) {
+    		return String.format("CustomEvents%s", getCustomEventsRule((CustomEventsRule)remarketingRule));
+    	} else if (remarketingRule instanceof PageVisitorsRule) {
+    		return String.format("PageVisitors%s", getRuleItemGroups(((PageVisitorsRule)remarketingRule).getRuleItemGroups().getRuleItemGroups()));
+    	} else if (remarketingRule instanceof PageVisitorsWhoVisitedAnotherPageRule) {
+    		return String.format("PageVisitorsWhoVisitedAnotherPage(%s) and (%s)", getRuleItemGroups(
+    				((PageVisitorsWhoVisitedAnotherPageRule)remarketingRule).getRuleItemGroups().getRuleItemGroups()),
+    				getRuleItemGroups(((PageVisitorsWhoVisitedAnotherPageRule)remarketingRule).getAnotherRuleItemGroups().getRuleItemGroups()));
+    	} else if (remarketingRule instanceof PageVisitorsWhoDidNotVisitAnotherPageRule) {
+    		return String.format("PageVisitorsWhoDidNotVisitAnotherPage(%s) and not (%s)", getRuleItemGroups(
+    				((PageVisitorsWhoDidNotVisitAnotherPageRule)remarketingRule).getIncludeRuleItemGroups().getRuleItemGroups()),
+    				getRuleItemGroups(((PageVisitorsWhoDidNotVisitAnotherPageRule)remarketingRule).getExcludeRuleItemGroups().getRuleItemGroups()));
+    	} else if (remarketingRule instanceof RemarketingRule){
+    		return null;
+    	} else {
+    		throw new IllegalArgumentException("Invalid Remarketing Rule");
+    	}
+    }
+    
+    private static String getCustomEventsRule(CustomEventsRule rule) {
+    	if (rule == null)
+    		 return null;
+    	List<String> rules = new ArrayList<String>();
+    	if (rule.getCategoryOperator() != null && rule.getCategory() != null) {
+    		rules.add(String.format("Category %s %s", rule.getCategoryOperator().value(), rule.getCategory()));
+    	}
+    	if (rule.getActionOperator() != null && rule.getAction() != null) {
+    		rules.add(String.format("Action %s %s", rule.getActionOperator().value(), rule.getAction()));
+    	}
+    	if (rule.getLabelOperator() != null && rule.getLabel() != null) {
+    		rules.add(String.format("Label %s %s", rule.getLabelOperator().value(), rule.getLabel()));
+    	}
+    	if (rule.getValueOperator() != null && rule.getValue() != null) {
+    		rules.add(String.format("Value %s %s", rule.getValueOperator().value(), rule.getValue()));
+    	}
+    	if (rules.size() == 0) {
+    		throw new IllegalArgumentException("Invalid Custom Events Rule");
+    	}
+    	StringBuilder str = new StringBuilder();
+    	int index = 0;
+    	for(; index < rules.size() - 1; index++) {
+    		str.append(String.format(("(%s)"), rules.get(index)));
+    		str.append(" and ");
+    	}
+    	str.append(String.format(("(%s)"), rules.get(index)));
+    	return str.toString();
+    }
+     
+    private static String getRuleItemGroups(List<RuleItemGroup> ruleItemGroups) {
+    	if (ruleItemGroups == null || ruleItemGroups.size() == 0) {
+    		return null;
+    	}
+    	StringBuffer str = new StringBuffer();
+    	int index = 0;
+    	for(; index < ruleItemGroups.size() - 1; index++) {
+    		str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems())));
+    		str.append(" or ");
+    	}
+    	str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems())));
+    	return str.toString();
+    }
+    
+    private static String getRuleItems(List<RuleItem> ruleItems) {
+    	if (ruleItems == null || ruleItems.size() == 0) {
+    		return null;
+    	}
+    	StringBuffer str = new StringBuffer();
+    	int index = 0;
+    	for(; index < ruleItems.size() - 1; index++) {
+    		str.append(getRuleItem(ruleItems.get(index)));
+    		str.append(" and ");
+    	}
+    	str.append(getRuleItem(ruleItems.get(index)));
+    	return str.toString();
+    }
+    
+    private static String getRuleItem(RuleItem ruleItem) {
+    	if (ruleItem instanceof StringRuleItem) {  		
+    		return String.format(("(%s %s %s)"), ((StringRuleItem)ruleItem).getOperand(), ((StringRuleItem)ruleItem).getOperator().value(), ((StringRuleItem)ruleItem).getValue());
+    	}
+    	return null;
+    }
+    
+    public static RemarketingRule parseRemarketingRule(String s) {
+    	if (StringExtensions.isNullOrEmpty(s))
+    		return null;
+    	int pos = s.indexOf('(');
+    	if (pos == -1) {
+    		throw new IllegalArgumentException(String.format("Invalid Remarketing Rule: %s", s));
+    	}    	
+    	String type = s.substring(0, pos);
+    	String ruleStr = s.substring(pos + 1, s.length() - 1);    	
+    	if (type.toLowerCase().equals("pagevisitors")) {
+    		return parsePageVisitorsRule(ruleStr);
+    	} else if (type.toLowerCase().equals("pagevisitorswhovisitedanotherpage")) {
+    		return parsePageVisitorsWhoVisitedAnotherPageRule(ruleStr);
+    	} else if (type.toLowerCase().equals("pagevisitorswhodidnotvisitanotherpage")) {
+    		return parsePageVisitorsWhoDidNotVisitAnotherPage(ruleStr);
+    	} else if (type.toLowerCase().equals("customevents")) {
+    		return parseCustomeventsRule(ruleStr);
+    	} else {
+    		throw new IllegalArgumentException(String.format("Invalid Custom Remarketing Rule Type: %s", type));
+    	}
+    }
+    
+    private static RemarketingRule parsePageVisitorsRule(String ruleStr) {
+    	if (StringExtensions.isNullOrEmpty(ruleStr)) {
+    		return null;
+    	}
+    	PageVisitorsRule rule = new PageVisitorsRule();
+    	rule.setType("PageVisitors");
+    	rule.setRuleItemGroups(parseRuleItemGroups(ruleStr));
+    	return rule;
+    }
+    
+    private static RemarketingRule parsePageVisitorsWhoVisitedAnotherPageRule(String ruleStr) {
+    	if (StringExtensions.isNullOrEmpty(ruleStr)) {
+    		return null;
+    	}
+    	PageVisitorsWhoVisitedAnotherPageRule rule = new PageVisitorsWhoVisitedAnotherPageRule();
+    	rule.setType("PageVisitorsWhoVisitedAnotherPage");
+    	String[] groups = ruleStr.split("\\)\\)\\) and \\(\\(\\(");
+    	if (groups != null && groups.length == 2) {
+    		rule.setRuleItemGroups(parseRuleItemGroups(groups[0]));
+    		rule.setAnotherRuleItemGroups(parseRuleItemGroups(groups[1]));
+    	}
+    	return rule;
+    }
+    
+    private static RemarketingRule parsePageVisitorsWhoDidNotVisitAnotherPage(String ruleStr) {
+    	if (StringExtensions.isNullOrEmpty(ruleStr)) {
+    		return null;
+    	}
+    	PageVisitorsWhoDidNotVisitAnotherPageRule rule = new PageVisitorsWhoDidNotVisitAnotherPageRule();
+    	rule.setType("PageVisitorsWhoDidNotVisitAnotherPage");
+    	String[] groups = ruleStr.split("\\)\\)\\) and not \\(\\(\\(");
+    	if (groups != null && groups.length == 2) {
+    		rule.setIncludeRuleItemGroups(parseRuleItemGroups(groups[0]));
+    		rule.setExcludeRuleItemGroups(parseRuleItemGroups(groups[1]));
+    	}
+    	return rule;
+    }
+    
+    private static RemarketingRule parseCustomeventsRule(String ruleStr) {
+    	if (StringExtensions.isNullOrEmpty(ruleStr)) {
+    		return null;
+    	}
+    	CustomEventsRule rule = new CustomEventsRule();
+    	rule.setType("CustomEvents");
+    	String ruleItemDelimiter = "\\) and \\(";
+    	String[] ruleItemStrs = ruleStr.split(ruleItemDelimiter);
+    	for (String ruleItemStr: ruleItemStrs) {
+    		ruleItemStr = ruleItemStr.replaceAll("\\(", "").replaceAll("\\)", "");
+    		Matcher operandMatcher = operandPattern.matcher(ruleItemStr);
+    		if (operandMatcher.find()) {
+    			String operand = operandMatcher.group(1).toLowerCase();
+    			String operatorStr = operandMatcher.group(2);
+    			
+    			if (operand.equals("value")) {
+    				Matcher numberOperator = numberOperatorPattern.matcher(operatorStr);
+    				if (numberOperator.find()) {
+    					rule.setValueOperator(parseNumberOperator(numberOperator.group(1)));
+    					rule.setValue(new BigDecimal(numberOperator.group(2)));
+    				} else {   				
+    					throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item Value Operator: %s", operatorStr));
+    				}
+    			} else {
+    				Matcher stringOperator = stringOperatorPattern.matcher(operatorStr);
+    				if (stringOperator.find()) {
+    					if (operand.equals("category")) {
+    						rule.setCategoryOperator(parseStringOperator(stringOperator.group(1)));
+    						rule.setCategory(stringOperator.group(2));
+    					} else if (operand.equals("label")) {
+    						rule.setLabelOperator(parseStringOperator(stringOperator.group(1)));
+    						rule.setLabel(stringOperator.group(2));    						
+    					} else if (operand.equals("action")) {
+    						rule.setActionOperator(parseStringOperator(stringOperator.group(1)));
+    						rule.setAction(stringOperator.group(2));
+    					} else {
+    						throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item Operand: %s", operand));
+    					}
+    				} else {   				
+    					throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item String Operator: %s", operatorStr));
+    				}
+    			}	
+    		} else {   				
+    			throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item: %s", ruleItemStr));
+    		}
+    	}
+    	return rule;
+    }
+    
+    private static ArrayOfRuleItemGroup parseRuleItemGroups(String groups) {
+    	String groupDelimiter = "\\)\\) or \\(\\(";
+    	String[] groupItems = groups.split(groupDelimiter);
+    	ArrayOfRuleItemGroup ruleItemGroups = new ArrayOfRuleItemGroup();
+    	for (String group: groupItems) {
+    		RuleItemGroup ruleItemGroup = parseRuleItemGroup(group);
+    		if (ruleItemGroup != null) {
+    			ruleItemGroups.getRuleItemGroups().add(ruleItemGroup);
+    		}
+    	}
+    	return ruleItemGroups;
+    }
+    
+    private static RuleItemGroup parseRuleItemGroup(String group) {
+    	String ruleItemDelimiter = "\\) and \\(";
+    	String[] ruleItems = group.split(ruleItemDelimiter);
+    	RuleItemGroup ruleItemGroup = new RuleItemGroup();
+    	ruleItemGroup.setItems(new ArrayOfRuleItem());
+    	for (String ruleItemStr: ruleItems) {
+    		RuleItem ruleItem = parseRuleItem(ruleItemStr);
+    		if (ruleItems != null) {
+    			ruleItemGroup.getItems().getRuleItems().add(ruleItem);
+    		}
+    	}
+    	return ruleItemGroup;
+    }
+    
+    private static StringRuleItem parseRuleItem(String ruleItemStr) {
+    	ruleItemStr = ruleItemStr.replaceAll("\\(", "").replaceAll("\\)", "");   	
+		Matcher match = pageRulePattern.matcher(ruleItemStr);
+		if (match.find()) {
+			StringRuleItem ruleItem = new StringRuleItem();
+			ruleItem.setType("String");
+			ruleItem.setOperand(match.group(1));
+			ruleItem.setOperator(parseStringOperator(match.group(2)));
+			ruleItem.setValue(match.group(3));
+			return ruleItem;
+		} else {   				
+			throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
+		}
+    }
+    
+    private static NumberOperator parseNumberOperator(String operator) {
+    	if (operator == null) {
+    		return null;
+    	}
+    	operator = operator.toLowerCase();
+    	if (operator.equals("equals")) {
+    		return NumberOperator.EQUALS;
+    	} else if (operator.equals("greaterthan")) {
+    		return NumberOperator.GREATER_THAN;
+    	} else if (operator.equals("lessthan")) {
+    		return NumberOperator.LESS_THAN;
+    	} else if (operator.equals("greaterthanequalto")) {
+    		return NumberOperator.GREATER_THAN_EQUAL_TO;
+    	} else if (operator.equals("lessthanequalto")) {
+    		return NumberOperator.LESS_THAN_EQUAL_TO;
+    	} else {
+    		throw new IllegalArgumentException(String.format("Invalid Number Rule Item operator: ", operator));
+    	}
+    }
+    
+    private static StringOperator parseStringOperator(String operator) {
+    	if (operator == null) {
+    		return null;
+    	}
+    	operator = operator.toLowerCase();
+    	if (operator.equals("equals")) {
+    		return StringOperator.EQUALS;
+    	} else if (operator.equals("contains")) {
+    		return StringOperator.CONTAINS;
+    	} else if (operator.equals("beginswith")) {
+    		return StringOperator.BEGINS_WITH;
+    	} else if (operator.equals("endswith")) {
+    		return StringOperator.ENDS_WITH;
+    	} else if (operator.equals("notequals")) {
+    		return StringOperator.NOT_EQUALS;
+    	} else if (operator.equals("doesnotcontain")) {
+    		return StringOperator.DOES_NOT_CONTAIN;
+    	} else if (operator.equals("doesnotbeginwith")) {
+    		return StringOperator.DOES_NOT_BEGIN_WITH;
+    	} else if (operator.equals("doesnotendwith")) {
+    		return StringOperator.DOES_NOT_END_WITH;
+    	} else {
+    		throw new IllegalArgumentException(String.format("Invalid String Rule Item perator: ", operator));
+    	}
+    }
+  
+        
 }

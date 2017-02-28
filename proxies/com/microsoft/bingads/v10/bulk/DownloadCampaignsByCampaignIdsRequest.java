@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Campaigns" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfCampaignScope" minOccurs="0"/>
  *         &lt;element name="CompressionType" type="{https://bingads.microsoft.com/CampaignManagement/v10}CompressionType" minOccurs="0"/>
  *         &lt;element name="DataScope" type="{https://bingads.microsoft.com/CampaignManagement/v10}DataScope" minOccurs="0"/>
+ *         &lt;element name="DownloadEntities" type="{https://bingads.microsoft.com/CampaignManagement/v10}ArrayOfDownloadEntity" minOccurs="0"/>
  *         &lt;element name="DownloadFileType" type="{https://bingads.microsoft.com/CampaignManagement/v10}DownloadFileType" minOccurs="0"/>
  *         &lt;element name="Entities" type="{https://bingads.microsoft.com/CampaignManagement/v10}BulkDownloadEntity" minOccurs="0"/>
  *         &lt;element name="FormatVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "campaigns",
     "compressionType",
     "dataScope",
+    "downloadEntities",
     "downloadFileType",
     "entities",
     "formatVersion",
@@ -61,6 +63,8 @@ public class DownloadCampaignsByCampaignIdsRequest {
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "anySimpleType")
     protected Collection<DataScope> dataScope;
+    @XmlElement(name = "DownloadEntities", nillable = true)
+    protected ArrayOfDownloadEntity downloadEntities;
     @XmlElement(name = "DownloadFileType", nillable = true)
     @XmlSchemaType(name = "string")
     protected DownloadFileType downloadFileType;
@@ -147,6 +151,30 @@ public class DownloadCampaignsByCampaignIdsRequest {
      */
     public void setDataScope(Collection<DataScope> value) {
         this.dataScope = value;
+    }
+
+    /**
+     * Gets the value of the downloadEntities property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDownloadEntity }
+     *     
+     */
+    public ArrayOfDownloadEntity getDownloadEntities() {
+        return downloadEntities;
+    }
+
+    /**
+     * Sets the value of the downloadEntities property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDownloadEntity }
+     *     
+     */
+    public void setDownloadEntities(ArrayOfDownloadEntity value) {
+        this.downloadEntities = value;
     }
 
     /**

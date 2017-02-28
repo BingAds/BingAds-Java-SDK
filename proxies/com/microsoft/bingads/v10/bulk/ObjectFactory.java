@@ -48,12 +48,14 @@ public class ObjectFactory {
     private final static QName _Password_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Password");
     private final static QName _UnsignedInt_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedInt");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
+    private final static QName _ArrayOfDownloadEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfDownloadEntity");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _ArrayOfCampaignScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfCampaignScope");
     private final static QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private final static QName _PerformanceStatsDateRange_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "PerformanceStatsDateRange");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "CustomerAccountId");
+    private final static QName _DownloadEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "DownloadEntity");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _ArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfOperationError");
     private final static QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
@@ -69,8 +71,8 @@ public class ObjectFactory {
     private final static QName _AdApiError_QNAME = new QName("https://adapi.microsoft.com", "AdApiError");
     private final static QName _BulkDownloadEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "BulkDownloadEntity");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
-    private final static QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
+    private final static QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private final static QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ApplicationToken");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
     private final static QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
@@ -233,6 +235,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfDownloadEntity }
+     * 
+     */
+    public ArrayOfDownloadEntity createArrayOfDownloadEntity() {
+        return new ArrayOfDownloadEntity();
+    }
+
+    /**
      * Create an instance of {@link PerformanceStatsDateRange }
      * 
      */
@@ -369,6 +379,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Duration }
+     * 
+     */
+    public Duration createDuration() {
+        return new Duration();
+    }
+
+    /**
+     * Create an instance of {@link Char }
+     * 
+     */
+    public Char createChar() {
+        return new Char();
+    }
+
+    /**
+     * Create an instance of {@link Guid }
+     * 
+     */
+    public Guid createGuid() {
+        return new Guid();
+    }
+
+    /**
      * Create an instance of {@link ApplicationFault }
      * 
      */
@@ -406,30 +440,6 @@ public class ObjectFactory {
      */
     public KeyValuePairOfstringstring createKeyValuePairOfstringstring() {
         return new KeyValuePairOfstringstring();
-    }
-
-    /**
-     * Create an instance of {@link Duration }
-     * 
-     */
-    public Duration createDuration() {
-        return new Duration();
-    }
-
-    /**
-     * Create an instance of {@link Char }
-     * 
-     */
-    public Char createChar() {
-        return new Char();
-    }
-
-    /**
-     * Create an instance of {@link Guid }
-     * 
-     */
-    public Guid createGuid() {
-        return new Guid();
     }
 
     /**
@@ -614,6 +624,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDownloadEntity }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "ArrayOfDownloadEntity")
+    public JAXBElement<ArrayOfDownloadEntity> createArrayOfDownloadEntity(ArrayOfDownloadEntity value) {
+        return new JAXBElement<ArrayOfDownloadEntity>(_ArrayOfDownloadEntity_QNAME, ArrayOfDownloadEntity.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
      * 
      */
@@ -665,6 +684,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "CustomerAccountId")
     public JAXBElement<String> createCustomerAccountId(String value) {
         return new JAXBElement<String>(_CustomerAccountId_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DownloadEntity }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "DownloadEntity")
+    public JAXBElement<DownloadEntity> createDownloadEntity(DownloadEntity value) {
+        return new JAXBElement<DownloadEntity>(_DownloadEntity_QNAME, DownloadEntity.class, null, value);
     }
 
     /**
@@ -805,21 +833,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AdApiFaultDetail }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "AdApiFaultDetail")
-    public JAXBElement<AdApiFaultDetail> createAdApiFaultDetail(AdApiFaultDetail value) {
-        return new JAXBElement<AdApiFaultDetail>(_AdApiFaultDetail_QNAME, AdApiFaultDetail.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Guid }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "guid")
     public JAXBElement<Guid> createGuid(Guid value) {
         return new JAXBElement<Guid>(_Guid_QNAME, Guid.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdApiFaultDetail }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "AdApiFaultDetail")
+    public JAXBElement<AdApiFaultDetail> createAdApiFaultDetail(AdApiFaultDetail value) {
+        return new JAXBElement<AdApiFaultDetail>(_AdApiFaultDetail_QNAME, AdApiFaultDetail.class, null, value);
     }
 
     /**

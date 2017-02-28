@@ -13,8 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkRemarketingListReadFromRowValuesDescriptionTest.class,
         BulkRemarketingListReadFromRowValuesIdTest.class,
         BulkRemarketingListReadFromRowValuesMembershipDurationTest.class,
-        BulkRemarketingListReadFromRowValuesScopeTest.class
-        
+        BulkRemarketingListReadFromRowValuesScopeTest.class,
+        BulkRemarketingListReadFromRowValuesRemarketingRuleTest.class
 })
 public class BulkRemarketingListReadTests {
 

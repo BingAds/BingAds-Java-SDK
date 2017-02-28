@@ -62,6 +62,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ImpressionLostToRankPercent"/>
  *     &lt;enumeration value="BenchmarkBid"/>
  *     &lt;enumeration value="BenchmarkCtr"/>
+ *     &lt;enumeration value="AdDistribution"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -166,7 +167,9 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("BenchmarkBid")
     BENCHMARK_BID("BenchmarkBid"),
     @XmlEnumValue("BenchmarkCtr")
-    BENCHMARK_CTR("BenchmarkCtr");
+    BENCHMARK_CTR("BenchmarkCtr"),
+    @XmlEnumValue("AdDistribution")
+    AD_DISTRIBUTION("AdDistribution");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

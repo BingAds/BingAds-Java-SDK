@@ -320,6 +320,7 @@ public class StringTable {
     public static final String TagId = "UET Tag Id";
     public static final String RemarketingListId = "Remarketing List Id";
     public static final String RemarketingTargetingSetting = "Remarketing Targeting Setting";
+    public static final String RemarketingRule = "Remarketing Rule";
 
     // Structured Snippet Ad Extension
     public static final String CampaignStructuredSnippetAdExtension = "Campaign Structured Snippet Ad Extension";

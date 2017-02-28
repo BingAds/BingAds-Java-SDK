@@ -281,6 +281,7 @@ public class ObjectFactory {
     private final static QName _DeviceOSTargetBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "DeviceOSTargetBid");
     private final static QName _ArrayOfUetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "ArrayOfUetTag");
     private final static QName _StructuredSnippetAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "StructuredSnippetAdExtension");
+    private final static QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
     private final static QName _AgeRange_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AgeRange");
     private final static QName _Ad_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "Ad");
     private final static QName _AdGroupStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v10", "AdGroupStatus");
@@ -3866,6 +3867,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
+    }
+
+    /**
      * Create an instance of {@link KeyValuePairOfstringstring }
      * 
      */
@@ -6224,6 +6233,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v10", name = "StructuredSnippetAdExtension")
     public JAXBElement<StructuredSnippetAdExtension> createStructuredSnippetAdExtension(StructuredSnippetAdExtension value) {
         return new JAXBElement<StructuredSnippetAdExtension>(_StructuredSnippetAdExtension_QNAME, StructuredSnippetAdExtension.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfint")
+    public JAXBElement<ArrayOfint> createArrayOfint(ArrayOfint value) {
+        return new JAXBElement<ArrayOfint>(_ArrayOfint_QNAME, ArrayOfint.class, null, value);
     }
 
     /**

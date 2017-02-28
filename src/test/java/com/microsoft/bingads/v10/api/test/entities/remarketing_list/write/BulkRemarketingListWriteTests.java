@@ -4,7 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.microsoft.bingads.v10.api.test.entities.remarketing_list.read.BulkRemarketingListReadFromRowValuesScopeTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -15,7 +14,8 @@ import com.microsoft.bingads.v10.api.test.entities.remarketing_list.read.BulkRem
         BulkRemarketingListWriteToRowValuesTagIdTest.class,
         BulkRemarketingListWriteToRowValuesNameTest.class,
         BulkRemarketingListWriteToRowValuesStatusTest.class,
-        BulkRemarketingListReadFromRowValuesScopeTest.class
+        BulkRemarketingListWriteToRowValuesScopeTest.class,
+        BulkRemarketingListWriteToRowValuesRemarketingRuleTest.class
 })
 public class BulkRemarketingListWriteTests {
 
