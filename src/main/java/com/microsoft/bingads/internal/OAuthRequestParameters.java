@@ -87,6 +87,17 @@ class OAuthRequestParameters {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = this.clientId != null ? this.clientId.hashCode() : 0;
+        result = 31 * result + (this.clientSecret != null ? this.clientSecret.hashCode() : 0);
+        result = 31 * result + (this.redirectionUri != null ? this.redirectionUri.hashCode() : 0);
+        result = 31 * result + (this.grantType != null ? this.grantType.hashCode() : 0);
+        result = 31 * result + (this.grantParamName != null ? this.grantParamName.hashCode() : 0);
+        result = 31 * result + (this.grantValue != null ? this.grantValue.hashCode() : 0);
+        return result;
+    }
+
     public String getClientId() {
         return clientId;
     }
