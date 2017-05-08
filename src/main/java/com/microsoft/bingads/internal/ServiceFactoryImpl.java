@@ -25,7 +25,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "10.4.13";
+    private static final String VERSION = "11.5.1";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
@@ -64,6 +64,43 @@ class ServiceFactoryImpl implements ServiceFactory {
                 {
                     setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
                     setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v11.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v11/CustomerBillingService.svc");
+                }
+            });
+
+            put(com.microsoft.bingads.v11.customermanagement.ICustomerManagementService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v11/CustomerManagementService.svc");
+                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v11/CustomerManagementService.svc");
+                }
+            });
+
+            put(com.microsoft.bingads.v11.reporting.IReportingService.class, new ServiceInfo() {
+                {
+                	setProductionUrl("https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc");
+                    setSandboxUrl("https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v11.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/CampaignManagementService.svc");
+                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/CampaignManagementService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v11.adinsight.IAdInsightService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/V11/AdInsightService.svc");
+                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V11/AdInsightService.svc");
+                }
+            });
+            put(com.microsoft.bingads.v11.bulk.IBulkService.class, new ServiceInfo() {
+                {
+                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/BulkService.svc");
+                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/BulkService.svc");
                 }
             });
         }

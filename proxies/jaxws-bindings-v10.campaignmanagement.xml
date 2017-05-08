@@ -5,7 +5,7 @@
 	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='ApiFaultDetailFault']">
 	    <class name="ApiFaultDetail"/>
 	</bindings>
-	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='AdApiFaultDetailFault']">
+	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='AdApiFaultDetail2Fault']">
 	    <class name="AdApiFaultDetail"/>
 	</bindings>
 	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='EditorialApiFaultDetailFault']">
