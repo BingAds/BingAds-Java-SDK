@@ -52,7 +52,6 @@ public class RemarketingLists extends ExampleBase {
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true);	 
             campaigns.getCampaigns().add(campaign);
             
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();

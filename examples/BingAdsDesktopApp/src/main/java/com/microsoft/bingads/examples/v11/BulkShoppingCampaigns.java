@@ -90,7 +90,6 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             settings.getSettings().add(shoppingSetting);
             campaign.setSettings(settings);
             campaign.setCampaignType(campaignTypes);
-            campaign.setDaylightSaving(true);
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             campaigns.getCampaigns().add(campaign);
             bulkCampaign.setCampaign(campaign);

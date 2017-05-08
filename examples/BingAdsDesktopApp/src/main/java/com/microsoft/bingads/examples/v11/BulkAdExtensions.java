@@ -119,10 +119,6 @@ public class BulkAdExtensions extends BulkExampleBase {
             campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setStatus(CampaignStatus.PAUSED);
-			
-            // DaylightSaving is not supported in the Bulk file schema. Whether or not you specify it in a BulkCampaign,
-            // the value is not written to the Bulk file, and by default DaylightSaving is set to true.
-            campaign.setDaylightSaving(true);
 
             // Used with FinalUrls shown in the sitelinks that we will add below.
             campaign.setTrackingUrlTemplate("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");

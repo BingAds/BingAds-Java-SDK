@@ -60,7 +60,6 @@ public class KeywordsAds extends ExampleBase {
             campaign.setDailyBudget(budgetIds.getLongs().size() > 0 ? 0.0 : 50.0);
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true); 
              
             // You can set your campaign bid strategy to Enhanced CPC (EnhancedCpcBiddingScheme) 
             // and then, at any time, set an individual ad group or keyword bid strategy to 

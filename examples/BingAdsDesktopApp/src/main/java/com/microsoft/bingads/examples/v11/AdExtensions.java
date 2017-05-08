@@ -96,7 +96,6 @@ public class AdExtensions extends ExampleBase {
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true);
 
             // Used with FinalUrls shown in the sitelinks that we will add below.
             campaign.setTrackingUrlTemplate(

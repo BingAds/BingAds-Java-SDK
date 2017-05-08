@@ -91,7 +91,6 @@ public class BulkRemarketingLists extends BulkExampleBase {
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setDaylightSaving(true);
             campaign.setStatus(CampaignStatus.PAUSED);
             // DaylightSaving is not supported in the Bulk file schema. Whether or not you specify it in a BulkCampaign,
             // the value is not written to the Bulk file, and by default DaylightSaving is set to true.

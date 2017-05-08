@@ -82,10 +82,6 @@ public class BulkKeywordsAds extends BulkExampleBase {
             campaign.setBudgetType(null);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setStatus(CampaignStatus.PAUSED);
-
-            // DaylightSaving is not supported in the Bulk file schema. Whether or not you specify it in a BulkCampaign,
-            // the value is not written to the Bulk file, and by default DaylightSaving is set to true.
-            campaign.setDaylightSaving(true);
             
             // You can set your campaign bid strategy to Enhanced CPC (EnhancedCpcBiddingScheme) 
             // and then, at any time, set an individual ad group or keyword bid strategy to 

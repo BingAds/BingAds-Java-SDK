@@ -69,7 +69,6 @@ public class ShoppingCampaigns extends ExampleBase {
             settings.getSettings().add(shoppingSetting);
             campaign.setSettings(settings);
             campaign.setCampaignType(campaignTypes);
-            campaign.setDaylightSaving(true);
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             campaigns.getCampaigns().add(campaign);
 
