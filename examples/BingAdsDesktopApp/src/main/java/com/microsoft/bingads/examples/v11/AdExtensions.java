@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v11;
 
 import java.rmi.*;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v10.campaignmanagement.*;
-import com.microsoft.bingads.customermanagement.*;
+import com.microsoft.bingads.v11.campaignmanagement.*;
+import com.microsoft.bingads.v11.customermanagement.*;
 
 public class AdExtensions extends ExampleBase {
 
@@ -17,14 +17,6 @@ public class AdExtensions extends ExampleBase {
     
     private static java.lang.String SITELINK_MIGRATION = "SiteLinkAdExtension";
         
-    /*
-	private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
-    */
-
     public static void main(java.lang.String[] args) {
    	 
         try
@@ -56,7 +48,7 @@ public class AdExtensions extends ExampleBase {
 
             // Optionally you can find out which pilot features the customer is able to use. Even if the customer 
             // is in pilot for sitelink migrations, the accounts that it contains might not be migrated.
-            com.microsoft.bingads.customermanagement.ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
+            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
             outputStatusMessage("Customer Pilot flags:");
             outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
                 
@@ -76,7 +68,7 @@ public class AdExtensions extends ExampleBase {
             
             // Even if you have multiple accounts per customer, each account will have its own
             // migration status. This example checks one account using the provided AuthorizationData.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong accountIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             accountIds.getLongs().add(authorizationData.getAccountId());
             ArrayOfAccountMigrationStatusesInfo accountMigrationStatusesInfos = getAccountMigrationStatuses(
                 accountIds,
@@ -173,7 +165,7 @@ public class AdExtensions extends ExampleBase {
             callFriday.setEndMinute(Minute.ZERO);
             callDayTimeRanges.getDayTimes().add(callFriday);
             callScheduling.setDayTimeRanges(callDayTimeRanges);
-            callScheduling.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            callScheduling.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
             callScheduling.getEndDate().setDay(31);
             callScheduling.getEndDate().setMonth(12);
             callScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -190,8 +182,8 @@ public class AdExtensions extends ExampleBase {
             locationAdExtension.setCompanyName("Contoso Shoes");
             locationAdExtension.setIconMediaId(null); 
             locationAdExtension.setImageMediaId(null);
-            com.microsoft.bingads.v10.campaignmanagement.Address address = 
-                    new com.microsoft.bingads.v10.campaignmanagement.Address();
+            com.microsoft.bingads.v11.campaignmanagement.Address address = 
+                    new com.microsoft.bingads.v11.campaignmanagement.Address();
             address.setStreetAddress("1234 Washington Place");
             address.setStreetAddress2("Suite 1210");
             address.setCityName("Woodinville");
@@ -211,7 +203,7 @@ public class AdExtensions extends ExampleBase {
             locationDayTime.setEndMinute(Minute.ZERO);
             locationDayTimeRanges.getDayTimes().add(locationDayTime);
             locationScheduling.setDayTimeRanges(locationDayTimeRanges);
-            locationScheduling.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            locationScheduling.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
             locationScheduling.getEndDate().setDay(31);
             locationScheduling.getEndDate().setMonth(12);
             locationScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -229,7 +221,7 @@ public class AdExtensions extends ExampleBase {
                         
             StructuredSnippetAdExtension structuredSnippetAdExtension = new StructuredSnippetAdExtension();
             structuredSnippetAdExtension.setHeader("Brands");
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             values.getStrings().add("Windows");
             values.getStrings().add("Xbox");
             values.getStrings().add("Skype");
@@ -243,11 +235,14 @@ public class AdExtensions extends ExampleBase {
 
             
             // Add all extensions to the account's ad extension library
-            ArrayOfAdExtensionIdentity adExtensionIdentities = addAdExtensions(
+            AddAdExtensionsResponse addAdExtensionsResponse = addAdExtensions(
                 authorizationData.getAccountId(),
                 adExtensions
                 );
 
+            outputBatchErrorCollections(addAdExtensionsResponse.getNestedPartialErrors());
+            ArrayOfAdExtensionIdentity adExtensionIdentities = addAdExtensionsResponse.getAdExtensionIdentities();
+                    
             outputStatusMessage("Added ad extensions.\n");
 
             // DeleteAdExtensionsAssociations, SetAdExtensionsAssociations, and GetAdExtensionsEditorialReasons 
@@ -255,7 +250,7 @@ public class AdExtensions extends ExampleBase {
             ArrayOfAdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociations = new ArrayOfAdExtensionIdToEntityIdAssociation();
 
             // GetAdExtensionsByIds requires a list of type long.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong adExtensionIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong adExtensionIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
 
             // Loop through the list of extension IDs and build any required data structures
             // for subsequent operations. 
@@ -279,11 +274,13 @@ public class AdExtensions extends ExampleBase {
             outputStatusMessage("Set ad extension associations.\n");
 
             // Get editorial rejection reasons for the respective ad extension and entity associations.
-            ArrayOfAdExtensionEditorialReasonCollection adExtensionEditorialReasonCollection = getAdExtensionsEditorialReasons(
+            GetAdExtensionsEditorialReasonsResponse getAdExtensionsEditorialReasonsResponse = getAdExtensionsEditorialReasons(
                 authorizationData.getAccountId(), 
                 adExtensionIdToEntityIdAssociations, 
                 AssociationType.CAMPAIGN
                 );
+            
+            ArrayOfAdExtensionEditorialReasonCollection adExtensionEditorialReasonCollection = getAdExtensionsEditorialReasonsResponse.getEditorialReasons();
 
             ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
             
@@ -298,17 +295,15 @@ public class AdExtensions extends ExampleBase {
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.REVIEW_AD_EXTENSION);
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.STRUCTURED_SNIPPET_AD_EXTENSION);
-            
-            ArrayList<AdExtensionAdditionalField> returnAdditionalFields = new ArrayList<AdExtensionAdditionalField>();
-            returnAdditionalFields.add(AdExtensionAdditionalField.SCHEDULING);
-            
+                        
             // Get the specified ad extensions from the account�s ad extension library.
-            adExtensions = getAdExtensionsByIds(
+            GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds, 
-                adExtensionsTypeFilter,
-                returnAdditionalFields
+                adExtensionsTypeFilter
             );
+            adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
+            outputPartialErrors(getAdExtensionsByIdsResponse.getPartialErrors());
 
             outputStatusMessage("List of ad extensions that were added above:\n");
             outputAdExtensionsWithEditorialReasons(adExtensions, adExtensionEditorialReasonCollection);
@@ -319,15 +314,16 @@ public class AdExtensions extends ExampleBase {
             adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
 
-            adExtensions = getAdExtensionsByIds(
+            getAdExtensionsByIdsResponse = getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter,
-                returnAdditionalFields
+                adExtensionsTypeFilter
             );
+            adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
+            outputPartialErrors(getAdExtensionsByIdsResponse.getPartialErrors());
 
             ArrayOfAdExtension updateExtensions = new ArrayOfAdExtension();
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong updateExtensionIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong updateExtensionIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
 
             for (AdExtension extension : adExtensions.getAdExtensions())
             {
@@ -352,12 +348,13 @@ public class AdExtensions extends ExampleBase {
             updateAdExtensions(authorizationData.getAccountId(), updateExtensions);
 
             // Get only the location extension to output the result.
-            adExtensions = getAdExtensionsByIds(
+            getAdExtensionsByIdsResponse = getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 updateExtensionIds,
-                adExtensionsTypeFilter,
-                returnAdditionalFields
+                adExtensionsTypeFilter
             );
+            adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
+            outputPartialErrors(getAdExtensionsByIdsResponse.getPartialErrors());
 
             outputStatusMessage("List of ad extensions that were updated above:\n");
             outputAdExtensionsWithEditorialReasons(adExtensions, null);
@@ -383,16 +380,16 @@ public class AdExtensions extends ExampleBase {
 
             // Delete the campaign from the account.
 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong deleteCampaignIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong deleteCampaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
             deleteCampaigns(authorizationData.getAccountId(), deleteCampaignIds);
             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
              
         // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.AdApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.AdApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
                 outputStatusMessage("AdApiError\n");
                 outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
@@ -400,32 +397,32 @@ public class AdExtensions extends ExampleBase {
             }
 
         // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.ApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
                 outputStatusMessage("OperationError\n");
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
         // Campaign Management service operations can throw EditorialApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
             {
                 outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
@@ -433,27 +430,27 @@ public class AdExtensions extends ExampleBase {
                                 error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
                 outputStatusMessage("OperationError\n");
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
             
         // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.customermanagement.AdApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.customermanagement.AdApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            for (com.microsoft.bingads.v11.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
 	            outputStatusMessage("AdApiError\n");
 	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
         
         // Customer Management service operations can throw ApiFault.
-        } catch (com.microsoft.bingads.customermanagement.ApiFault_Exception ex) {
+        } catch (com.microsoft.bingads.v11.customermanagement.ApiFault_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
 	            outputStatusMessage("OperationError\n");
 	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
@@ -471,7 +468,7 @@ public class AdExtensions extends ExampleBase {
     
     // Gets the list of pilot features that the customer is able to use.
     
-    static com.microsoft.bingads.customermanagement.ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
+    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
     {       
 		
         final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
@@ -483,7 +480,7 @@ public class AdExtensions extends ExampleBase {
     // Gets the account's migration statuses.
 
     private static ArrayOfAccountMigrationStatusesInfo getAccountMigrationStatuses(
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOflong accountIds,
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds,
         java.lang.String migrationType)  throws RemoteException, Exception
     {
         GetAccountMigrationStatusesRequest request = new GetAccountMigrationStatusesRequest();
@@ -510,7 +507,7 @@ public class AdExtensions extends ExampleBase {
 
     static void deleteCampaigns(
             long accountId, 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong campaignIds) throws RemoteException, Exception
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong campaignIds) throws RemoteException, Exception
     {
         DeleteCampaignsRequest request = new DeleteCampaignsRequest();
 
@@ -522,21 +519,21 @@ public class AdExtensions extends ExampleBase {
 
     // Adds one or more ad extensions to the account's ad extension library.
 
-    static ArrayOfAdExtensionIdentity addAdExtensions(long accountId, ArrayOfAdExtension adExtensions) throws RemoteException, Exception
+    static AddAdExtensionsResponse addAdExtensions(long accountId, ArrayOfAdExtension adExtensions) throws RemoteException, Exception
     {
         AddAdExtensionsRequest request = new AddAdExtensionsRequest();
 
         request.setAccountId(accountId);
         request.setAdExtensions(adExtensions);
 
-        return CampaignService.getService().addAdExtensions(request).getAdExtensionIdentities();
+        return CampaignService.getService().addAdExtensions(request);
     }
 
     // Deletes one or more ad extensions from the account�s ad extension library.
 
     static void deleteAdExtensions(
             long accountId, 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong adExtensionIds) throws RemoteException, Exception
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong adExtensionIds) throws RemoteException, Exception
     {
         DeleteAdExtensionsRequest request = new DeleteAdExtensionsRequest();
 
@@ -586,26 +583,24 @@ public class AdExtensions extends ExampleBase {
 
     // Gets the specified ad extensions from the account's extension library.
 
-    static ArrayOfAdExtension getAdExtensionsByIds(
+    static GetAdExtensionsByIdsResponse getAdExtensionsByIds(
             long accountId, 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong adExtensionIds, 
-            ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter,
-            ArrayList<AdExtensionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong adExtensionIds, 
+            ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter) throws RemoteException, Exception
     {
         GetAdExtensionsByIdsRequest request = new GetAdExtensionsByIdsRequest();
 
         request.setAccountId(accountId);
         request.setAdExtensionIds(adExtensionIds);
         request.setAdExtensionType(adExtensionsTypeFilter);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
-        return CampaignService.getService().getAdExtensionsByIds(request).getAdExtensions();
+        return CampaignService.getService().getAdExtensionsByIds(request);
     }
 
     // Gets the reasons why the specified extension failed editorial when 
     // in the context of an associated campaign or ad group.
 
-    private static ArrayOfAdExtensionEditorialReasonCollection getAdExtensionsEditorialReasons(
+    private static GetAdExtensionsEditorialReasonsResponse getAdExtensionsEditorialReasons(
         long accountId,
         ArrayOfAdExtensionIdToEntityIdAssociation associations,
         AssociationType associationType)  throws RemoteException, Exception
@@ -616,7 +611,7 @@ public class AdExtensions extends ExampleBase {
         request.setAdExtensionIdToEntityIdAssociations(associations);
         request.setAssociationType(associationType);
 
-        return CampaignService.getService().getAdExtensionsEditorialReasons(request).getEditorialReasons();
+        return CampaignService.getService().getAdExtensionsEditorialReasons(request);
     }     
     
     private static ArrayList<SiteLinksAdExtension> getSampleSiteLinksAdExtensions(){
@@ -642,13 +637,13 @@ public class AdExtensions extends ExampleBase {
 
         // With FinalUrls you can separate the tracking template, custom parameters, and 
         // landing page URLs. 
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
         finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
         siteLinkA.setFinalUrls(finalUrls);
 
         // Final Mobile URLs can also be used if you want to direct the user to a different page 
         // for mobile devices.
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
         finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
         siteLinkA.setFinalMobileUrls(finalMobileUrls);
 
@@ -726,13 +721,13 @@ public class AdExtensions extends ExampleBase {
 
         // With FinalUrls you can separate the tracking template, custom parameters, and 
         // landing page URLs. 
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
         finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
         sitelink2AdExtensionA.setFinalUrls(finalUrls);
 
         // Final Mobile URLs can also be used if you want to direct the user to a different page 
         // for mobile devices.
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
         finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
         sitelink2AdExtensionA.setFinalMobileUrls(finalMobileUrls);
 

@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v11;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,27 +8,19 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v10.bulk.entities.*;
-import com.microsoft.bingads.v10.bulk.*;
-import com.microsoft.bingads.v10.bulk.AdApiError;
-import com.microsoft.bingads.v10.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v10.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v10.bulk.BatchError;
-import com.microsoft.bingads.v10.bulk.OperationError;
-import com.microsoft.bingads.v10.campaignmanagement.*;
-import com.microsoft.bingads.customermanagement.*;
+import com.microsoft.bingads.v11.bulk.entities.*;
+import com.microsoft.bingads.v11.bulk.*;
+import com.microsoft.bingads.v11.bulk.AdApiError;
+import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.bulk.BatchError;
+import com.microsoft.bingads.v11.bulk.OperationError;
+import com.microsoft.bingads.v11.campaignmanagement.*;
+import com.microsoft.bingads.v11.customermanagement.*;
 import java.rmi.RemoteException;
 
 public class BulkAdExtensions extends BulkExampleBase {
 	
-    /*
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
-    */
-    
     static ServiceClient<ICampaignManagementService> CampaignService; 
     static ServiceClient<ICustomerManagementService> CustomerService; 
     
@@ -66,7 +58,7 @@ public class BulkAdExtensions extends BulkExampleBase {
 
             // Optionally you can find out which pilot features the customer is able to use. Even if the customer 
             // is in pilot for sitelink migrations, the accounts that it contains might not be migrated.
-            com.microsoft.bingads.customermanagement.ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
+            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
             outputStatusMessage("Customer Pilot flags:");
             outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
                 
@@ -86,7 +78,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             
             // Even if you have multiple accounts per customer, each account will have its own
             // migration status. This example checks one account using the provided AuthorizationData.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOflong accountIds = new com.microsoft.bingads.v10.campaignmanagement.ArrayOflong();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             accountIds.getLongs().add(authorizationData.getAccountId());
             ArrayOfAccountMigrationStatusesInfo accountMigrationStatusesInfos = getAccountMigrationStatuses(
                 accountIds,
@@ -195,7 +187,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             callFriday.setEndMinute(Minute.ZERO);
             callDayTimeRanges.getDayTimes().add(callFriday);
             callScheduling.setDayTimeRanges(callDayTimeRanges);
-            callScheduling.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            callScheduling.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
             callScheduling.getEndDate().setDay(31);
             callScheduling.getEndDate().setMonth(12);
             callScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -218,7 +210,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             locationAdExtension.setCompanyName("Contoso Shoes");
             locationAdExtension.setIconMediaId(null);
             locationAdExtension.setImageMediaId(null);
-            com.microsoft.bingads.v10.campaignmanagement.Address address = new com.microsoft.bingads.v10.campaignmanagement.Address();
+            com.microsoft.bingads.v11.campaignmanagement.Address address = new com.microsoft.bingads.v11.campaignmanagement.Address();
             address.setStreetAddress("1234 Washington Place");
             address.setStreetAddress2("Suite 1210");
             address.setCityName("Woodinville");
@@ -238,7 +230,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             locationDayTime.setEndMinute(Minute.ZERO);
             locationDayTimeRanges.getDayTimes().add(locationDayTime);
             locationScheduling.setDayTimeRanges(locationDayTimeRanges);
-            locationScheduling.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            locationScheduling.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
             locationScheduling.getEndDate().setDay(31);
             locationScheduling.getEndDate().setMonth(12);
             locationScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -262,7 +254,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             bulkStructuredSnippetAdExtension.setAccountId(authorizationData.getAccountId());
             StructuredSnippetAdExtension structuredSnippetAdExtension = new StructuredSnippetAdExtension();
             structuredSnippetAdExtension.setHeader("Brands");
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             values.getStrings().add("Windows");
             values.getStrings().add("Xbox");
             values.getStrings().add("Skype");
@@ -561,10 +553,10 @@ public class BulkAdExtensions extends BulkExampleBase {
             outputStatusMessage("Program execution completed\n"); 
 		
         // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.AdApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.AdApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
                 outputStatusMessage("AdApiError\n");
                 outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
@@ -572,32 +564,32 @@ public class BulkAdExtensions extends BulkExampleBase {
             }
 
         // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.ApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
                 outputStatusMessage("OperationError\n");
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
         // Campaign Management service operations can throw EditorialApiFaultDetail.
-        } catch (com.microsoft.bingads.v10.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.v10.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
             {
                 outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
             {
                 outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
@@ -605,27 +597,27 @@ public class BulkAdExtensions extends BulkExampleBase {
                                 error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
             }
 
-            for (com.microsoft.bingads.v10.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
                 outputStatusMessage("OperationError\n");
                 outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
             }
             
         // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.customermanagement.AdApiFaultDetail_Exception ex) {
+        } catch (com.microsoft.bingads.v11.customermanagement.AdApiFaultDetail_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
+            for (com.microsoft.bingads.v11.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
             {
 	            outputStatusMessage("AdApiError\n");
 	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
             }
         
         // Customer Management service operations can throw ApiFault.
-        } catch (com.microsoft.bingads.customermanagement.ApiFault_Exception ex) {
+        } catch (com.microsoft.bingads.v11.customermanagement.ApiFault_Exception ex) {
             outputStatusMessage("The operation failed with the following faults:\n");
 
-            for (com.microsoft.bingads.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
+            for (com.microsoft.bingads.v11.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
             {
 	            outputStatusMessage("OperationError\n");
 	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
@@ -691,7 +683,7 @@ public class BulkAdExtensions extends BulkExampleBase {
     
     // Gets the list of pilot features that the customer is able to use.
     
-    static com.microsoft.bingads.customermanagement.ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
+    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
     {       
 		
         final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
@@ -703,7 +695,7 @@ public class BulkAdExtensions extends BulkExampleBase {
     // Gets the account's migration statuses.
 
     private static ArrayOfAccountMigrationStatusesInfo getAccountMigrationStatuses(
-        com.microsoft.bingads.v10.campaignmanagement.ArrayOflong accountIds,
+        com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds,
         java.lang.String migrationType)  throws RemoteException, Exception
     {
         GetAccountMigrationStatusesRequest request = new GetAccountMigrationStatusesRequest();
@@ -752,13 +744,13 @@ public class BulkAdExtensions extends BulkExampleBase {
 
             // With FinalUrls you can separate the tracking template, custom parameters, and 
             // landing page URLs. 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
             siteLink.setFinalUrls(finalUrls);
 
             // Final Mobile URLs can also be used if you want to direct the user to a different page 
             // for mobile devices.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
             siteLink.setFinalMobileUrls(finalMobileUrls);
 
@@ -832,13 +824,13 @@ public class BulkAdExtensions extends BulkExampleBase {
 
             // With FinalUrls you can separate the tracking template, custom parameters, and 
             // landing page URLs. 
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
             sitelink2AdExtension.setFinalUrls(finalUrls);
 
             // Final Mobile URLs can also be used if you want to direct the user to a different page 
             // for mobile devices.
-            com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v10.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
             finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
             sitelink2AdExtension.setFinalMobileUrls(finalMobileUrls);
 

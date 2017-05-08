@@ -1,186 +1,98 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v11;
 
 import java.rmi.RemoteException;
 
-import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 	
-	public ExampleBase(){}
-	
-	static void outputCampaign(Campaign campaign){
-            if (campaign != null) {
-                outputBiddingScheme(campaign.getBiddingScheme());
-                outputStatusMessage(String.format("BudgetId: %s", campaign.getBudgetId()));
-                outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
-                if(campaign.getCampaignType() != null){
-                    outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType().toArray()[0]));
-                }
-                outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
-                outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
-                outputStatusMessage(String.format("Id: %s", campaign.getId()));
-                outputStatusMessage(String.format("MonthlyBudget: %s", campaign.getMonthlyBudget()));
-                outputStatusMessage(String.format("Name: %s", campaign.getName()));
-                outputStatusMessage(String.format("NativeBidAdjustment: %s", campaign.getNativeBidAdjustment()));
-                outputStatusMessage("Settings: ");
-                if (campaign.getSettings() != null)
-                {
-                    for (Setting setting : campaign.getSettings().getSettings())
-                    {
-                        if (setting instanceof ShoppingSetting)
-                        {
-                            outputStatusMessage("ShoppingSetting: ");
-                            outputStatusMessage(String.format("Priority: %s", ((ShoppingSetting)setting).getPriority()));
-                            outputStatusMessage(String.format("SalesCountryCode: %s", ((ShoppingSetting)setting).getSalesCountryCode()));
-                            outputStatusMessage(String.format("StoreId: %s", ((ShoppingSetting)setting).getStoreId()));
-                        }
-                    }
-                }
-                outputStatusMessage(String.format("Status: %s", campaign.getStatus()));
-                outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
-            }
-	}
-        
-        
-        static void outputBudget(Budget budget)
-        {
-            if (budget != null)
-            {
-                outputStatusMessage(String.format("Amount: %s", budget.getAmount()));
-                outputStatusMessage(String.format("AssociationCount: %s", budget.getAssociationCount()));
-                outputStatusMessage(String.format("BudgetType: %s", budget.getBudgetType()));
-                outputStatusMessage(String.format("Id: %s", budget.getId()));
-                outputStatusMessage(String.format("Name: %s\n", budget.getName()));
-            }
-        }
-    
-	static void outputAdGroup(AdGroup adGroup){
-            if (adGroup != null) {
-                if (adGroup.getAdDistribution() != null)
-                {
-                    outputStatusMessage("AdDistribution: ");
-                    for (AdDistribution distribution : adGroup.getAdDistribution())
-                    {
-                            outputStatusMessage(String.format("\t%s", distribution));
-                    }
-                }
-                outputStatusMessage(String.format("AdRotation: %s", 
-                            adGroup.getAdRotation() != null ? adGroup.getAdRotation().getType() : null));
-                outputBiddingScheme(adGroup.getBiddingScheme());
-                outputStatusMessage(String.format("BiddingModel: %s", adGroup.getBiddingModel()));
-                outputStatusMessage(String.format("ContentMatchBid: %s", 
-                            adGroup.getContentMatchBid() != null ? adGroup.getContentMatchBid().getAmount() : null));
-                if (adGroup.getEndDate() != null)
-                {
-                    outputStatusMessage(String.format("EndDate: %s/%s/%s",
-                    adGroup.getEndDate().getMonth(),
-                    adGroup.getEndDate().getDay(),
-                    adGroup.getEndDate().getYear()));
-                }
-                outputStatusMessage(String.format("Id: %s", adGroup.getId()));
-                outputStatusMessage(String.format("Language: %s", adGroup.getLanguage()));
-                outputStatusMessage(String.format("Name: %s", adGroup.getName()));
-                outputStatusMessage(String.format("NativeBidAdjustment: %s", adGroup.getNativeBidAdjustment()));
-                outputStatusMessage(String.format("Network: %s", adGroup.getNetwork()));
-                outputStatusMessage(String.format("PricingModel: %s", adGroup.getPricingModel()));
-                outputStatusMessage(String.format("SearchBid: %s", 
-                            adGroup.getSearchBid() != null ? adGroup.getSearchBid().getAmount() : null));
-                if (adGroup.getStartDate() != null)
-                {
-                    outputStatusMessage(String.format("StartDate: %s/%s/%s",
-                    adGroup.getStartDate().getMonth(),
-                    adGroup.getStartDate().getDay(),
-                    adGroup.getStartDate().getYear()));
-                }
-                outputStatusMessage(String.format("Status: %s", adGroup.getStatus()));
-            }
-	}
-	
-	static void outputCampaignCriterionWithProductScope(CampaignCriterion campaignCriterion){
-            if (campaignCriterion != null) {
-                outputStatusMessage(String.format("BidAdjustment: %s", campaignCriterion.getBidAdjustment()));
-                outputStatusMessage(String.format("CampaignId: %s", campaignCriterion.getCampaignId()));
-                outputStatusMessage(String.format("CampaignCriterion Id: %s", campaignCriterion.getId()));
-                outputStatusMessage(String.format("CampaignCriterion Type: %s", campaignCriterion.getType()));
+    public ExampleBase(){}
 
-                // Output the Campaign Management ProductScope Object
-                outputProductScope((ProductScope)campaignCriterion.getCriterion());
+    static void outputCampaign(Campaign campaign){
+        if (campaign != null) {
+            outputBiddingScheme(campaign.getBiddingScheme());
+            outputStatusMessage(String.format("BudgetId: %s", campaign.getBudgetId()));
+            outputStatusMessage(String.format("BudgetType: %s", campaign.getBudgetType()));
+            if(campaign.getCampaignType() != null){
+                outputStatusMessage(String.format("CampaignType: %s", campaign.getCampaignType().toArray()[0]));
             }
-	}
-	
-	static void outputProductScope(ProductScope productScope){
-            if (productScope != null) {
-                outputStatusMessage("Product Conditions: ");
-                for (ProductCondition condition : productScope.getConditions().getProductConditions())
+            outputStatusMessage(String.format("DailyBudget: %s", campaign.getDailyBudget()));
+            outputStatusMessage(String.format("Description: %s", campaign.getDescription()));
+            outputStatusMessage(String.format("Id: %s", campaign.getId()));
+            outputStatusMessage(String.format("Name: %s", campaign.getName()));
+            outputStatusMessage(String.format("NativeBidAdjustment: %s", campaign.getNativeBidAdjustment()));
+            outputStatusMessage("Settings: ");
+            if (campaign.getSettings() != null)
+            {
+                for (Setting setting : campaign.getSettings().getSettings())
                 {
-                    outputStatusMessage(String.format("\tOperand: %s", condition.getOperand()));
-                    outputStatusMessage(String.format("\tAttribute: %s", condition.getAttribute()));
+                    if (setting instanceof ShoppingSetting)
+                    {
+                        outputStatusMessage("ShoppingSetting: ");
+                        outputStatusMessage(String.format("Priority: %s", ((ShoppingSetting)setting).getPriority()));
+                        outputStatusMessage(String.format("SalesCountryCode: %s", ((ShoppingSetting)setting).getSalesCountryCode()));
+                        outputStatusMessage(String.format("StoreId: %s", ((ShoppingSetting)setting).getStoreId()));
+                    }
                 }
             }
-	}
-	
-	static void outputCriterion(Criterion criterion)
-    {
-        if (criterion != null)
-        {
-            outputStatusMessage(String.format("Criterion Type: %s", criterion.getType()));
-            if (criterion instanceof ProductPartition)
-            {
-                outputProductPartition((ProductPartition)criterion);
-            }
-            else if (criterion instanceof ProductScope)
-            {
-                outputProductScope((ProductScope)criterion);
-            }
-            else if (criterion instanceof Webpage)
-            {
-                outputWebpage((Webpage)criterion);
-            }
+            outputStatusMessage(String.format("Status: %s", campaign.getStatus()));
+            outputStatusMessage(String.format("TimeZone: %s", campaign.getTimeZone()));
         }
     }
 
-    static void outputProductPartition(ProductPartition productPartition){
-        if (productPartition != null) {
-            outputStatusMessage(String.format("ParentCriterionId: %s", productPartition.getParentCriterionId()));
-            outputStatusMessage(String.format("PartitionType: %s", productPartition.getPartitionType()));
-            if (productPartition.getCondition() != null) {
-                outputStatusMessage("Condition: ");
-                outputStatusMessage(String.format("\tOperand: %s", productPartition.getCondition().getOperand()));
-                outputStatusMessage(String.format("\tAttribute: %s", productPartition.getCondition().getAttribute()));
-            }
-        }
-    }
-    
-    static void outputWebpage(Webpage webpage){
-        if (webpage != null && webpage.getParameter() != null && webpage.getParameter().getConditions() != null) {
-            outputStatusMessage(String.format("Webpage CriterionName: %s", webpage.getParameter().getCriterionName()));
-            outputStatusMessage("Webpage Conditions: ");
-            for (WebpageCondition condition : webpage.getParameter().getConditions().getWebpageConditions())
-            {
-                outputStatusMessage(String.format("\tOperand: %s", condition.getOperand()));
-                outputStatusMessage(String.format("\tArgument: %s", condition.getArgument()));
-            }
-        }
-    }
-    
-    static void outputCriterionBid(CriterionBid criterionBid)
+    static void outputBudget(Budget budget)
     {
-        if (criterionBid != null)
+        if (budget != null)
         {
-            outputStatusMessage(String.format("CriterionBid Type: %s", criterionBid.getType()));
-            if (criterionBid instanceof FixedBid)
+            outputStatusMessage(String.format("Amount: %s", budget.getAmount()));
+            outputStatusMessage(String.format("AssociationCount: %s", budget.getAssociationCount()));
+            outputStatusMessage(String.format("BudgetType: %s", budget.getBudgetType()));
+            outputStatusMessage(String.format("Id: %s", budget.getId()));
+            outputStatusMessage(String.format("Name: %s\n", budget.getName()));
+        }
+    }
+
+    static void outputAdGroup(AdGroup adGroup){
+        if (adGroup != null) {
+            if (adGroup.getAdDistribution() != null)
             {
-                outputFixedBid((FixedBid)criterionBid);
-            }          
+                outputStatusMessage("AdDistribution: ");
+                for (AdDistribution distribution : adGroup.getAdDistribution())
+                {
+                        outputStatusMessage(String.format("\t%s", distribution));
+                }
+            }
+            outputStatusMessage(String.format("AdRotation: %s", 
+                        adGroup.getAdRotation() != null ? adGroup.getAdRotation().getType() : null));
+            outputBiddingScheme(adGroup.getBiddingScheme());
+            outputStatusMessage(String.format("ContentMatchBid: %s", 
+                        adGroup.getContentMatchBid() != null ? adGroup.getContentMatchBid().getAmount() : null));
+            if (adGroup.getEndDate() != null)
+            {
+                outputStatusMessage(String.format("EndDate: %s/%s/%s",
+                adGroup.getEndDate().getMonth(),
+                adGroup.getEndDate().getDay(),
+                adGroup.getEndDate().getYear()));
+            }
+            outputStatusMessage(String.format("Id: %s", adGroup.getId()));
+            outputStatusMessage(String.format("Language: %s", adGroup.getLanguage()));
+            outputStatusMessage(String.format("Name: %s", adGroup.getName()));
+            outputStatusMessage(String.format("NativeBidAdjustment: %s", adGroup.getNativeBidAdjustment()));
+            outputStatusMessage(String.format("Network: %s", adGroup.getNetwork()));
+            outputStatusMessage(String.format("PricingModel: %s", adGroup.getPricingModel()));
+            outputStatusMessage(String.format("SearchBid: %s", 
+                        adGroup.getSearchBid() != null ? adGroup.getSearchBid().getAmount() : null));
+            if (adGroup.getStartDate() != null)
+            {
+                outputStatusMessage(String.format("StartDate: %s/%s/%s",
+                adGroup.getStartDate().getMonth(),
+                adGroup.getStartDate().getDay(),
+                adGroup.getStartDate().getYear()));
+            }
+            outputStatusMessage(String.format("Status: %s", adGroup.getStatus()));
         }
     }
-	
-    static void outputFixedBid(FixedBid fixedBid){
-        if (fixedBid != null && fixedBid.getBid() != null) {
-                outputStatusMessage(String.format("Bid Amount: %s", fixedBid.getBid().getAmount()));
-        }
-    }
-    
+
     static void outputBiddableAdGroupCriterion(BiddableAdGroupCriterion criterion)
     {
         if (criterion != null)
@@ -243,6 +155,146 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("Id: %s", criterion.getId()));
             outputStatusMessage(String.format("Status: %s", criterion.getStatus()));
             outputStatusMessage(String.format("AdGroupCriterion Type: %s", criterion.getType()));
+        }
+    }
+    
+    static void outputBiddableCampaignCriterion(BiddableCampaignCriterion criterion)
+    {
+        if (criterion != null)
+        {
+            // output inherited properties of the CampaignCriterion base class.
+            outputCampaignCriterion(criterion);
+
+            // output properties that are specific to the BiddableCampaignCriterion
+            outputCriterionBid(criterion.getCriterionBid());
+        }
+    }
+
+    static void outputNegativeCampaignCriterion(NegativeCampaignCriterion criterion)
+    {
+        if (criterion != null)
+        {
+            // output inherited properties of the CampaignCriterion base class.
+            outputCampaignCriterion(criterion);
+
+            // There aren't any properties that are specific to the NegativeCampaignCriterion
+        }
+    }
+
+    static void outputCampaignCriterion(CampaignCriterion criterion)
+    {
+        if (criterion != null)
+        {
+            outputStatusMessage(String.format("CampaignId: %s", criterion.getCampaignId()));
+            outputCriterion(criterion.getCriterion());
+            outputStatusMessage("ForwardCompatibilityMap: ");
+            if (criterion.getForwardCompatibilityMap() != null)
+            {
+                for(KeyValuePairOfstringstring pair : criterion.getForwardCompatibilityMap().getKeyValuePairOfstringstrings())
+                {
+                    outputStatusMessage(String.format("Key: %s", pair.getKey()));
+                    outputStatusMessage(String.format("Value: %s", pair.getValue()));
+                }
+            }
+            outputStatusMessage(String.format("Id: %s", criterion.getId()));
+            outputStatusMessage(String.format("Status: %s", criterion.getStatus()));
+            outputStatusMessage(String.format("CampaignCriterion Type: %s", criterion.getType()));
+        }
+    }
+
+    static void outputCriterion(Criterion criterion)
+    {
+        if (criterion != null)
+        {
+            outputStatusMessage(String.format("Criterion Type: %s", criterion.getType()));
+            if (criterion instanceof ProductPartition)
+            {
+                outputProductPartition((ProductPartition)criterion);
+            }
+            else if (criterion instanceof ProductScope)
+            {
+                outputProductScope((ProductScope)criterion);
+            }
+            else if (criterion instanceof Webpage)
+            {
+                outputWebpage((Webpage)criterion);
+            }
+            else if (criterion instanceof AudienceCriterion)
+            {
+                outputAudienceCriterion((AudienceCriterion)criterion);
+            }
+        }
+    }
+
+    static void outputProductScope(ProductScope productScope){
+        if (productScope != null) {
+            outputStatusMessage("Product Conditions: ");
+            for (ProductCondition condition : productScope.getConditions().getProductConditions())
+            {
+                outputStatusMessage(String.format("\tOperand: %s", condition.getOperand()));
+                outputStatusMessage(String.format("\tAttribute: %s", condition.getAttribute()));
+            }
+        }
+    }
+
+    static void outputProductPartition(ProductPartition productPartition){
+        if (productPartition != null) {
+            outputStatusMessage(String.format("ParentCriterionId: %s", productPartition.getParentCriterionId()));
+            outputStatusMessage(String.format("PartitionType: %s", productPartition.getPartitionType()));
+            if (productPartition.getCondition() != null) {
+                outputStatusMessage("Condition: ");
+                outputStatusMessage(String.format("\tOperand: %s", productPartition.getCondition().getOperand()));
+                outputStatusMessage(String.format("\tAttribute: %s", productPartition.getCondition().getAttribute()));
+            }
+        }
+    }
+    
+    static void outputWebpage(Webpage webpage){
+        if (webpage != null && webpage.getParameter() != null && webpage.getParameter().getConditions() != null) {
+            outputStatusMessage(String.format("Webpage CriterionName: %s", webpage.getParameter().getCriterionName()));
+            outputStatusMessage("Webpage Conditions: ");
+            for (WebpageCondition condition : webpage.getParameter().getConditions().getWebpageConditions())
+            {
+                outputStatusMessage(String.format("\tOperand: %s", condition.getOperand()));
+                outputStatusMessage(String.format("\tArgument: %s", condition.getArgument()));
+            }
+        }
+    }
+    
+    static void outputAudienceCriterion(AudienceCriterion audienceCriterion){
+        if (audienceCriterion != null) {
+            outputStatusMessage(String.format("AudienceId: %s", audienceCriterion.getAudienceId()));
+            outputStatusMessage(String.format("AudienceType: %s", audienceCriterion.getAudienceType()));
+        }
+    }
+
+    static void outputCriterionBid(CriterionBid criterionBid)
+    {
+        if (criterionBid != null)
+        {
+            outputStatusMessage(String.format("CriterionBid Type: %s", criterionBid.getType()));
+            if (criterionBid instanceof FixedBid)
+            {
+                outputFixedBid((FixedBid)criterionBid);
+            }
+            else if (criterionBid instanceof BidMultiplier)
+            {
+                outputBidMultiplier((BidMultiplier)criterionBid);
+            }            
+        }
+    }
+
+    static void outputFixedBid(FixedBid fixedBid){
+        if (fixedBid != null) {
+                outputStatusMessage(String.format("Fixed Bid Amount: %s", fixedBid.getAmount()));
+        }
+    }
+
+    static void outputBidMultiplier(BidMultiplier bidMultiplier)
+    {
+        if (bidMultiplier != null)
+        {
+            outputStatusMessage(String.format("Bid Multiplier: %s", bidMultiplier.getMultiplier()));
         }
     }
 
@@ -554,10 +606,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputExpandedTextAd(ExpandedTextAd ad){
         if (ad != null) {
-            // Output inherited properties of the Ad base class.
+            // output inherited properties of the Ad base class.
             outputAd(ad);
             
-            // Output properties that are specific to the ExpandedTextAd
+            // output properties that are specific to the ExpandedTextAd
             outputStatusMessage(String.format("DisplayUrl: %s", ad.getDisplayUrl()));
             outputStatusMessage(String.format("Path1: %s", ad.getPath1()));
             outputStatusMessage(String.format("Path2: %s", ad.getPath2()));
@@ -569,20 +621,20 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputProductAd(ProductAd ad){
         if (ad != null) {
-            // Output inherited properties of the Ad base class.
+            // output inherited properties of the Ad base class.
             outputAd(ad);
             
-            // Output properties that are specific to the ProductAd
+            // output properties that are specific to the ProductAd
             outputStatusMessage(String.format("PromotionalText: %s", ad.getPromotionalText()));
         }
     }
     
     static void outputTextAd(TextAd ad){
         if (ad != null) {
-            // Output inherited properties of the Ad base class.
+            // output inherited properties of the Ad base class.
             outputAd(ad);
             
-            // Output properties that are specific to the TextAd
+            // output properties that are specific to the TextAd
             outputStatusMessage(String.format("DestinationUrl: %s", ad.getDestinationUrl()));
             outputStatusMessage(String.format("DisplayUrl: %s", ad.getDisplayUrl()));
             outputStatusMessage(String.format("Text: %s", ad.getText()));
@@ -758,10 +810,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputAppAdExtension(AppAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the AppAdExtension
+            // output properties that are specific to the AppAdExtension
             outputStatusMessage(String.format("AppPlatform: %s", extension.getAppPlatform()));
             outputStatusMessage(String.format("AppStoreId: %s", extension.getAppStoreId()));
             outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
@@ -799,10 +851,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputCallAdExtension(CallAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the CallAdExtension
+            // output properties that are specific to the CallAdExtension
             outputStatusMessage(String.format("CountryCode: %s", extension.getCountryCode()));
             outputStatusMessage(String.format("DevicePreference: %s", extension.getDevicePreference()));
             outputStatusMessage(String.format("IsCallOnly: %s", extension.getIsCallOnly()));
@@ -814,20 +866,20 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputCalloutAdExtension(CalloutAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the CalloutAdExtension
+            // output properties that are specific to the CalloutAdExtension
             outputStatusMessage(String.format("Callout Text: %s", extension.getText()));
         }
     }
     
     static void outputImageAdExtension(ImageAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the ImageAdExtension
+            // output properties that are specific to the ImageAdExtension
             outputStatusMessage(String.format("AppPlatform: %s", extension.getAlternativeText()));
             outputStatusMessage(String.format("AppStoreId: %s", extension.getDescription()));
             outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
@@ -871,10 +923,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 	
     static void outputLocationAdExtension(LocationAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the LocationAdExtension
+            // output properties that are specific to the LocationAdExtension
             outputStatusMessage("Address: ");
             if(extension.getAddress() != null){
                 outputStatusMessage(String.format("Street: %s", extension.getAddress().getStreetAddress()));
@@ -900,10 +952,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
     static void outputReviewAdExtension(ReviewAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the ReviewAdExtension
+            // output properties that are specific to the ReviewAdExtension
             outputStatusMessage(String.format("IsExact: %s", extension.getIsExact()));
             outputStatusMessage(String.format("Source: %s", extension.getSource()));
             outputStatusMessage(String.format("Text: %s", extension.getText()));
@@ -913,10 +965,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputStructuredSnippetAdExtension(StructuredSnippetAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the StructuredSnippetAdExtension
+            // output properties that are specific to the StructuredSnippetAdExtension
             outputStatusMessage(String.format("Header: %s", extension.getHeader()));
             outputStatusMessage("Values: ");
             if (extension.getValues() != null)
@@ -931,10 +983,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
     static void outputSiteLinksAdExtension(SiteLinksAdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the SiteLinksAdExtension
+            // output properties that are specific to the SiteLinksAdExtension
             if(extension.getSiteLinks() != null){
                     outputSiteLinks(extension.getSiteLinks().getSiteLinks());
             }	
@@ -943,10 +995,10 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputSitelink2AdExtension(Sitelink2AdExtension extension){
         if (extension != null) {
-            // Output inherited properties of the AdExtension base class.
+            // output inherited properties of the AdExtension base class.
             outputAdExtension(extension);
             
-            // Output properties that are specific to the Sitelink2AdExtension
+            // output properties that are specific to the Sitelink2AdExtension
             outputStatusMessage(String.format("Description1: %s", extension.getDescription1()));
             outputStatusMessage(String.format("Description2: %s", extension.getDescription2()));
             outputStatusMessage(String.format("DestinationUrl: %s", extension.getDestinationUrl()));
@@ -1025,7 +1077,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     }
     
 	
-    // Outputs the negative keyword identifiers added to each campaign or ad group entity. 
+    // outputs the negative keyword identifiers added to each campaign or ad group entity. 
     // The IdCollection items are available by calling AddNegativeKeywordsToEntities.  
 
     static void outputNegativeKeywordIds(ArrayOfIdCollection idCollections)
@@ -1045,7 +1097,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
 
-    // Outputs the negative keywords  
+    // outputs the negative keywords  
 
     static void outputNegativeKeywords(ArrayOfNegativeKeyword negativeKeywords)
     {
@@ -1062,7 +1114,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
     
-    // Outputs the shared list items e.g. negative keywords  
+    // outputs the shared list items e.g. negative keywords  
     
     static void outputSharedListItems(ArrayOfSharedListItem sharedListItems)
     {
@@ -1082,7 +1134,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
     
-    // Outputs a list of EntityNegativeKeyword objects  
+    // outputs a list of EntityNegativeKeyword objects  
 
     static void outputEntityNegativeKeywords(ArrayOfEntityNegativeKeyword entityNegativeKeywords)
     {
@@ -1100,7 +1152,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
 
-    // Outputs a list of EntityNegativeKeyword objects  
+    // outputs a list of EntityNegativeKeyword objects  
 
     static void outputSharedEntityIdentifiers(ArrayOfSharedEntity sharedEntities) throws RemoteException, Exception
     {
@@ -1120,7 +1172,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
 
-    // Outputs a list of BatchError objects that represent partial errors while managing negative keywords.
+    // outputs a list of BatchError objects that represent partial errors while managing negative keywords.
 
     static void outputPartialErrors(ArrayOfBatchError partialErrors)
     {
@@ -1148,7 +1200,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
 
-    // Outputs the list item identifiers, as well as any partial errors  
+    // outputs the list item identifiers, as well as any partial errors  
 
     static void outputNegativeKeywordIdsWithPartialErrors(
            long sharedListId,
@@ -1187,7 +1239,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputPartialErrors(partialErrors);
     }
 
-    // Outputs a list of SharedEntityAssociation objects.
+    // outputs a list of SharedEntityAssociation objects.
 
     static void outputSharedEntityAssociations(ArrayOfSharedEntityAssociation associations)
     {
@@ -1206,10 +1258,9 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
 
-    // Outputs a list of BatchErrorCollection objects that represent partial errors while managing 
-    // negative keywords.
+    // outputs a list of BatchErrorCollection objects
 
-    static void outputNestedPartialErrors(ArrayOfBatchErrorCollection nestedPartialErrors)
+    static void outputBatchErrorCollections(ArrayOfBatchErrorCollection nestedPartialErrors)
     {
         if (nestedPartialErrors == null || nestedPartialErrors.getBatchErrorCollections().size() == 0)
         {
@@ -1219,7 +1270,6 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         outputStatusMessage("BatchErrorCollection (NestedPartialErrors) items:\n");
         for (BatchErrorCollection collection : nestedPartialErrors.getBatchErrorCollections())
         {
-            // The top level list index corresponds to the campaign or ad group index identifier.
             if (collection != null)
             {
                 if (collection.getCode() != null)
@@ -1237,30 +1287,120 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
     
     static void outputRemarketingList(RemarketingList remarketingList){
         if (remarketingList != null) {
-            outputStatusMessage(String.format("Description: %s", remarketingList.getDescription()));
+            // Output inherited properties of the Audience base class.
+            outputAudience(remarketingList);
+
+            // Output properties that are specific to the RemarketingList
+            outputStatusMessage(String.format("TagId: %s", remarketingList.getTagId()));
+            outputRemarketingRule(remarketingList.getRule());
+            outputStatusMessage("\n");
+        }
+    }
+    
+    static void outputRemarketingRule(RemarketingRule remarketingRule)
+    {
+        if (remarketingRule != null)
+        {
+            outputStatusMessage(String.format("Type: %s", remarketingRule.getType()));
+
+            if (remarketingRule instanceof CustomEventsRule)
+            {
+                CustomEventsRule customEventsRule = (CustomEventsRule)remarketingRule;
+                outputStatusMessage(String.format("Action: %s", customEventsRule.getAction()));
+                outputStatusMessage(String.format("ActionOperator: %s", customEventsRule.getActionOperator()));
+                outputStatusMessage(String.format("Category: %s", customEventsRule.getCategory()));
+                outputStatusMessage(String.format("CategoryOperator: %s", customEventsRule.getCategoryOperator()));
+                outputStatusMessage(String.format("Label: %s", customEventsRule.getLabel()));
+                outputStatusMessage(String.format("LabelOperator: %s", customEventsRule.getLabelOperator()));
+                outputStatusMessage(String.format("Value: %s", customEventsRule.getValue()));
+                outputStatusMessage(String.format("ValueOperator: %s", customEventsRule.getValueOperator()));
+            }
+            else if (remarketingRule instanceof PageVisitorsRule)
+            {
+                PageVisitorsRule pageVisitorsRule = (PageVisitorsRule)remarketingRule;
+                if (pageVisitorsRule.getRuleItemGroups() != null)
+                {
+                    outputStatusMessage("RuleItemGroups: ");
+                    outputRuleItemGroups(pageVisitorsRule.getRuleItemGroups());
+                }
+            }
+            else if (remarketingRule instanceof PageVisitorsWhoDidNotVisitAnotherPageRule)
+            {
+                PageVisitorsWhoDidNotVisitAnotherPageRule pageVisitorsWhoDidNotVisitAnotherPageRule = (PageVisitorsWhoDidNotVisitAnotherPageRule)remarketingRule;
+                if (pageVisitorsWhoDidNotVisitAnotherPageRule.getExcludeRuleItemGroups() != null)
+                {
+                    outputStatusMessage("ExcludeRuleItemGroups: ");
+                    outputRuleItemGroups(pageVisitorsWhoDidNotVisitAnotherPageRule.getExcludeRuleItemGroups());
+                }
+                if (pageVisitorsWhoDidNotVisitAnotherPageRule.getIncludeRuleItemGroups() != null)
+                {
+                    outputStatusMessage("IncludeRuleItemGroups: ");
+                    outputRuleItemGroups(pageVisitorsWhoDidNotVisitAnotherPageRule.getIncludeRuleItemGroups());
+                }
+            }
+            else if (remarketingRule instanceof PageVisitorsWhoVisitedAnotherPageRule)
+            {
+                PageVisitorsWhoVisitedAnotherPageRule pageVisitorsWhoVisitedAnotherPageRule = (PageVisitorsWhoVisitedAnotherPageRule)remarketingRule;
+                if (pageVisitorsWhoVisitedAnotherPageRule.getAnotherRuleItemGroups() != null)
+                {
+                    outputStatusMessage("AnotherRuleItemGroups: ");
+                    outputRuleItemGroups(pageVisitorsWhoVisitedAnotherPageRule.getAnotherRuleItemGroups());
+                }
+                if (pageVisitorsWhoVisitedAnotherPageRule.getRuleItemGroups() != null)
+                {
+                    outputStatusMessage("RuleItemGroups: ");
+                    outputRuleItemGroups(pageVisitorsWhoVisitedAnotherPageRule.getRuleItemGroups());
+                }
+            }
+            else
+            {
+                outputStatusMessage("Unknown remarketing rule type.");
+            }
+        }
+    }
+
+    static void outputRuleItemGroups(ArrayOfRuleItemGroup ruleItemGroups)
+    {
+        if (ruleItemGroups != null)
+        {
+            for (RuleItemGroup ruleItemGroup : ruleItemGroups.getRuleItemGroups())
+            {
+                if (ruleItemGroup.getItems() != null)
+                {
+                    for (RuleItem ruleItem : ruleItemGroup.getItems().getRuleItems())
+                    {
+                        if (ruleItem instanceof StringRuleItem)
+                        {
+                            outputStatusMessage("\tRuleItem:");
+                            outputStatusMessage(String.format("\tOperand: %s", ((StringRuleItem) ruleItem).getOperand()));
+                            outputStatusMessage(String.format("\tOperator: %s", ((StringRuleItem) ruleItem).getOperator()));
+                            outputStatusMessage(String.format("\tValue: %s\n", ((StringRuleItem) ruleItem).getValue()));
+                        }
+                        else
+                        {
+                            outputStatusMessage("Unknown remarketing rule item type.");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    static void outputAudience(Audience audience){
+        if (audience != null) {
+            outputStatusMessage(String.format("Description: %s", audience.getDescription()));
             outputStatusMessage("ForwardCompatibilityMap:");
-            if(remarketingList.getForwardCompatibilityMap() != null){
-                for (KeyValuePairOfstringstring pair : remarketingList.getForwardCompatibilityMap().getKeyValuePairOfstringstrings()){
+            if(audience.getForwardCompatibilityMap() != null){
+                for (KeyValuePairOfstringstring pair : audience.getForwardCompatibilityMap().getKeyValuePairOfstringstrings()){
                     outputStatusMessage(String.format("Key: %s", pair.getKey()));
                     outputStatusMessage(String.format("Value: %s", pair.getValue()));
                 }
             }
-            outputStatusMessage(String.format("Id: %s", remarketingList.getId()));
-            outputStatusMessage(String.format("MembershipDuration: %s", remarketingList.getMembershipDuration()));
-            outputStatusMessage(String.format("Name: %s", remarketingList.getName()));
-            outputStatusMessage(String.format("ParentId: %s", remarketingList.getParentId()));
-            outputStatusMessage(String.format("Scope: %s", remarketingList.getScope()));
-            outputStatusMessage(String.format("TagId: %s\n", remarketingList.getTagId()));
-        }
-    }
-    
-    static void outputAdGroupRemarketingListAssociation(AdGroupRemarketingListAssociation adGroupRemarketingListAssociation){
-        if (adGroupRemarketingListAssociation != null) {
-            outputStatusMessage(String.format("AdGroupId: %s", adGroupRemarketingListAssociation.getAdGroupId()));
-            outputStatusMessage(String.format("BidAdjustment: %s", adGroupRemarketingListAssociation.getBidAdjustment()));
-            outputStatusMessage(String.format("Id: %s", adGroupRemarketingListAssociation.getId()));
-            outputStatusMessage(String.format("RemarketingListId: %s", adGroupRemarketingListAssociation.getRemarketingListId()));
-            outputStatusMessage(String.format("Status: %s\n", adGroupRemarketingListAssociation.getStatus()));
+            outputStatusMessage(String.format("Id: %s", audience.getId()));
+            outputStatusMessage(String.format("MembershipDuration: %s", audience.getMembershipDuration()));
+            outputStatusMessage(String.format("Name: %s", audience.getName()));
+            outputStatusMessage(String.format("ParentId: %s", audience.getParentId()));
+            outputStatusMessage(String.format("Scope: %s", audience.getScope()));
         }
     }
     

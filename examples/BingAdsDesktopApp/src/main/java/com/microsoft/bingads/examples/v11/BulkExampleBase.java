@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v11;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import com.microsoft.bingads.v10.bulk.*;
-import com.microsoft.bingads.v10.bulk.entities.*;
-import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.v11.bulk.*;
+import com.microsoft.bingads.v11.bulk.entities.*;
+import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class BulkExampleBase extends ExampleBase {
 
@@ -244,8 +244,8 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            // Output the Campaign Management CampaignCriterion and ProductScope Objects
-            outputCampaignCriterionWithProductScope(entity.getCampaignCriterion());
+            // Output the Campaign Management BiddableCampaignCriterion
+            outputBiddableCampaignCriterion((BiddableCampaignCriterion)entity.getBiddableCampaignCriterion());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -262,7 +262,7 @@ public class BulkExampleBase extends ExampleBase {
             if(entity.getLastModifiedTime() != null){
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
-
+            
             // BulkAdGroupProductPartition can have either BiddableAdGroupCriterion or NegativeAdGroupCriterion
 
             if (entity.getAdGroupCriterion() instanceof BiddableAdGroupCriterion)
@@ -625,217 +625,6 @@ public class BulkExampleBase extends ExampleBase {
         }
     }
 
-    static void outputBulkCampaignDayTimeTargets(Iterable<BulkCampaignDayTimeTarget> bulkEntities) {
-        for (BulkCampaignDayTimeTarget entity : bulkEntities){
-            // If the BulkCampaignDayTimeTarget object was created by the application, and not read from a bulk file, 
-            // then there will be no BulkCampaignDayTimeTargetBid objects. For example if you want to print the 
-            // BulkCampaignDayTimeTarget prior to upload.
-            if (entity.getBids().size() == 0 && entity.getDayTimeTarget() != null){
-                    outputStatusMessage("\nBulkCampaignDayTimeTarget: \n");
-                    outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-                    outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-                    outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-                    for (DayTimeTargetBid bid : entity.getDayTimeTarget().getBids().getDayTimeTargetBids()){
-                            outputStatusMessage("Campaign Management DayTimeTargetBid Object: ");
-                            outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                            outputStatusMessage(String.format("Day : %s", bid.getDay()));
-                            outputStatusMessage(String.format("From Hour : %s", bid.getFromHour()));
-                            outputStatusMessage(String.format("From Minute: %s", bid.getFromMinute()));
-                            outputStatusMessage(String.format("To Hour : %s", bid.getToHour()));
-                            outputStatusMessage(String.format("To Minute: %s\n", bid.getToMinute()));
-                    }
-            }
-            else {
-                    outputBulkCampaignDayTimeTargetBids(entity.getBids());
-            }
-        }
-    }
-
-    static void outputBulkCampaignDayTimeTargetBids(Iterable<BulkCampaignDayTimeTargetBid> bulkEntities){
-        for (BulkCampaignDayTimeTargetBid entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignDayTimeTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: %s", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-            outputStatusMessage(String.format("Bid Adjustment: %s", entity.getDayTimeTargetBid().getBidAdjustment()));
-            outputStatusMessage(String.format("Day : %s", entity.getDayTimeTargetBid().getDay()));
-            outputStatusMessage(String.format("From Hour : %s", entity.getDayTimeTargetBid().getFromHour()));
-            outputStatusMessage(String.format("From Minute: %s", entity.getDayTimeTargetBid().getFromMinute()));
-            outputStatusMessage(String.format("To Hour : %s", entity.getDayTimeTargetBid().getToHour()));
-            outputStatusMessage(String.format("To Minute: %s\n", entity.getDayTimeTargetBid().getToMinute()));
-
-            if(entity.hasErrors()){
-                outputBulkErrors(entity.getErrors());
-            }
-        }
-    }
-
-    static void outputBulkCampaignLocationTargets(Iterable<BulkCampaignLocationTarget> bulkEntities) {
-        for (BulkCampaignLocationTarget entity : bulkEntities){
-            // If the BulkCampaignLocationTarget object was created by the application, and not read from a bulk file, 
-            // then there will be no BulkCampaignLocationTargetBid objects. For example if you want to print the 
-            // BulkCampaignLocationTarget prior to upload.
-            if (entity.getBids().size() == 0){
-                outputStatusMessage("\nBulkCampaignLocationTarget: \n");
-                outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-                outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-                outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-                outputStatusMessage(String.format("Intent Option: %s\n", entity.getIntentOption()));
-
-                if (entity.getCityTarget() != null){
-                    for (CityTargetBid bid : entity.getCityTarget().getBids().getCityTargetBids()){
-                        outputStatusMessage("Campaign Management CityTargetBid Object: ");
-                        outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                        outputStatusMessage(String.format("City : %s", bid.getCity()));
-                        outputStatusMessage(String.format("Location Is Excluded: %s", bid.isIsExcluded()));
-                    }
-                }
-                if (entity.getCountryTarget() != null){
-                    for (CountryTargetBid bid : entity.getCountryTarget().getBids().getCountryTargetBids()){
-                        outputStatusMessage("Campaign Management CountryTargetBid Object: ");
-                        outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                        outputStatusMessage(String.format("CountryAndRegion : %s", bid.getCountryAndRegion()));
-                        outputStatusMessage(String.format("Location Is Excluded: %s", bid.isIsExcluded()));
-                    }
-                }
-                if (entity.getMetroAreaTarget() != null){
-                    for (MetroAreaTargetBid bid : entity.getMetroAreaTarget().getBids().getMetroAreaTargetBids()){
-                        outputStatusMessage("Campaign Management MetroAreaTargetBid Object: ");
-                        outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                        outputStatusMessage(String.format("MetroArea : %s", bid.getMetroArea()));
-                        outputStatusMessage(String.format("Location Is Excluded: %s", bid.isIsExcluded()));
-                    }
-                }
-                if (entity.getPostalCodeTarget() != null){
-                    for (PostalCodeTargetBid bid : entity.getPostalCodeTarget().getBids().getPostalCodeTargetBids()){
-                        outputStatusMessage("Campaign Management PostalTargetBid Object: ");
-                        outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                        outputStatusMessage(String.format("PostalCode : %s", bid.getPostalCode()));
-                        outputStatusMessage(String.format("Location Is Excluded: %s", bid.isIsExcluded()));
-                    }
-                }
-                if (entity.getStateTarget() != null){
-                    for (StateTargetBid bid : entity.getStateTarget().getBids().getStateTargetBids()){
-                        outputStatusMessage("Campaign Management StateTargetBid Object: ");
-                        outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                        outputStatusMessage(String.format("State", bid.getState()));
-                        outputStatusMessage(String.format("Location Is Excluded: %s", bid.isIsExcluded()));
-                    }
-                }
-            }
-            else {
-                    outputBulkCampaignLocationTargetBids(entity.getBids());
-            }
-
-        }
-    }
-
-    static void outputBulkCampaignLocationTargetBids(Iterable<BulkCampaignLocationTargetBid> bulkEntities){
-        for (BulkCampaignLocationTargetBid entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignDayTimeTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: %s", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-            outputStatusMessage(String.format("IntentOption: %s\n", entity.getIntentOption()));
-
-            outputStatusMessage(String.format("Bid Adjustment: %s", entity.getBidAdjustment()));
-            outputStatusMessage(String.format("Location Type: %s", entity.getLocationType()));
-            outputStatusMessage(String.format("Location: %s\n", entity.getLocation()));
-
-            if(entity.hasErrors()){
-                outputBulkErrors(entity.getErrors());
-            }
-        }
-    }
-
-    static void outputBulkCampaignRadiusTargets(Iterable<BulkCampaignRadiusTarget> bulkEntities) {
-        for (BulkCampaignRadiusTarget entity : bulkEntities){
-            // If the BulkCampaignRadiusTarget object was created by the application, and not read from a bulk file, 
-            // then there will be no BulkCampaignRadiusTargetBid objects. For example if you want to print the 
-            // BulkCampaignRadiusTarget prior to upload.
-            if (entity.getBids().size() == 0 && entity.getRadiusTarget() != null){
-                outputStatusMessage("\nBulkCampaignRadiusTarget: \n");
-                outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-                outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-                outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-                for (RadiusTargetBid bid : entity.getRadiusTarget().getBids().getRadiusTargetBids()){
-                    outputStatusMessage("Campaign Management RadiusTargetBid Object: ");
-                    outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                    outputStatusMessage(String.format("Name : %s", bid.getName()));
-                    outputStatusMessage(String.format("Radius : %s", bid.getRadius()));
-                    java.lang.String radiusUnit = bid.getRadiusUnit() == DistanceUnit.KILOMETERS ? "Kilometers" : "Miles";
-                    outputStatusMessage(String.format("Radius Unit: %s", radiusUnit));
-                }
-            }
-            else {
-                    outputBulkCampaignRadiusTargetBids(entity.getBids());
-            }
-        }
-    }
-
-    static void outputBulkCampaignRadiusTargetBids(Iterable<BulkCampaignRadiusTargetBid> bulkEntities){
-        for (BulkCampaignRadiusTargetBid entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignRadiusTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-            outputStatusMessage("Campaign Management RadiusTargetBid Object: ");
-            outputStatusMessage(String.format("Bid Adjustment: %s", entity.getRadiusTargetBid().getBidAdjustment()));
-            outputStatusMessage(String.format("Name : %s", entity.getRadiusTargetBid().getName()));
-            outputStatusMessage(String.format("Radius : %s", entity.getRadiusTargetBid().getRadius()));
-            java.lang.String radiusUnit = entity.getRadiusTargetBid().getRadiusUnit() == 
-                            DistanceUnit.KILOMETERS ? "Kilometers" : "Miles";
-            outputStatusMessage(String.format("Radius Unit: %s", radiusUnit));
-
-            if(entity.hasErrors()){
-                outputBulkErrors(entity.getErrors());
-            }
-        }
-    }
-    
-    static void outputBulkCampaignDeviceOsTargets(Iterable<BulkCampaignDeviceOsTarget> bulkEntities) {
-        for (BulkCampaignDeviceOsTarget entity : bulkEntities){
-            // If the BulkCampaignDeviceOsTarget object was created by the application, and not read from a bulk file, 
-            // then there will be no BulkCampaignDeviceOsTargetBid objects. For example if you want to print the 
-            // BulkCampaignDeviceOsTarget prior to upload.
-            if (entity.getBids().size() == 0 && entity.getDeviceOsTarget() != null){
-                    outputStatusMessage("\nBulkCampaignDeviceOsTarget: \n");
-                    outputStatusMessage(String.format("Campaign Name: %s\n", entity.getCampaignName()));
-                    outputStatusMessage(String.format("Campaign Id: %s\n", entity.getCampaignId()));
-                    outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-                    for (DeviceOSTargetBid bid : entity.getDeviceOsTarget().getBids().getDeviceOSTargetBids()){
-                            outputStatusMessage("Campaign Management DeviceOSTargetBid Object: ");
-                            outputStatusMessage(String.format("Bid Adjustment: %s", bid.getBidAdjustment()));
-                            outputStatusMessage(String.format("DeviceName : %s\n", bid.getDeviceName()));
-                    }
-            }
-            else {
-                    outputBulkCampaignDeviceOsTargetBids(entity.getBids());
-            }
-        }
-    }
-
-    static void outputBulkCampaignDeviceOsTargetBids(Iterable<BulkCampaignDeviceOsTargetBid> bulkEntities){
-        for (BulkCampaignDeviceOsTargetBid entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignDeviceOsTargetBid: \n");
-            outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
-            outputStatusMessage(String.format("Campaign Id: %s", entity.getCampaignId()));
-            outputStatusMessage(String.format("Target Id: %s\n", entity.getTargetId()));
-
-            outputStatusMessage(String.format("Bid Adjustment: %s", entity.getDeviceOsTargetBid().getBidAdjustment()));
-            outputStatusMessage(String.format("DeviceName : %s\n", entity.getDeviceOsTargetBid().getDeviceName()));
-
-            if(entity.hasErrors()){
-                outputBulkErrors(entity.getErrors());
-            }
-        }
-    }
-        
     static void outputBulkRemarketingLists(Iterable<BulkRemarketingList> bulkEntities){
         for (BulkRemarketingList entity : bulkEntities){
             outputStatusMessage("\nBulkRemarketingList: \n");
@@ -855,7 +644,7 @@ public class BulkExampleBase extends ExampleBase {
         }
     }
 
-    static void outputBulkAdGroupRemarketingLists(Iterable<BulkAdGroupRemarketingListAssociation> bulkEntities){
+    static void outputBulkAdGroupRemarketingListAssociations(Iterable<BulkAdGroupRemarketingListAssociation> bulkEntities){
         for (BulkAdGroupRemarketingListAssociation entity : bulkEntities){
             outputStatusMessage("\nBulkAdGroupRemarketingList: \n");
             outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
@@ -865,8 +654,8 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
             }
 
-            // Output the Campaign Management AdGroupRemarketingListAssociation Object
-            outputAdGroupRemarketingListAssociation(entity.getAdGroupRemarketingListAssociation());
+            // Output the Campaign Management BiddableAdGroupCriterion Object
+            outputBiddableAdGroupCriterion(entity.getBiddableAdGroupCriterion());
 
             if (entity.hasErrors())
             {
@@ -1002,8 +791,6 @@ public class BulkExampleBase extends ExampleBase {
         adGroup.setAdRotation(adRotation);
         // 'Bid Adjustment' column header in the Bulk file
         adGroup.setNativeBidAdjustment(10);
-        // The AdGroup.BiddingModel property is not supported in the Bulk file.
-        adGroup.setBiddingModel(BiddingModel.KEYWORD);
         // 'Bid Strategy Type' column header in the Bulk file
         adGroup.setBiddingScheme(new ManualCpcBiddingScheme());
         // 'Content Bid' column header in the Bulk file
