@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v10;
+package com.microsoft.bingads.examples.v11;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,25 +9,17 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v10.bulk.entities.*;
-import com.microsoft.bingads.v10.bulk.*;
-import com.microsoft.bingads.v10.bulk.AdApiError;
-import com.microsoft.bingads.v10.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v10.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v10.bulk.BatchError;
-import com.microsoft.bingads.v10.bulk.OperationError;
-import com.microsoft.bingads.v10.campaignmanagement.*;
+import com.microsoft.bingads.v11.bulk.entities.*;
+import com.microsoft.bingads.v11.bulk.*;
+import com.microsoft.bingads.v11.bulk.AdApiError;
+import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.bulk.BatchError;
+import com.microsoft.bingads.v11.bulk.OperationError;
+import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class BulkRemarketingLists extends BulkExampleBase {
-	
-    /*
-    private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>;
-    */
-        
+	        
     public static void main(String[] args) {
 		
         BulkEntityIterable downloadEntities = null;
@@ -42,11 +34,11 @@ public class BulkRemarketingLists extends BulkExampleBase {
             BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
             BulkService.setStatusPollIntervalInMilliseconds(5000);
 
-            List<BulkDownloadEntity> entities = new ArrayList<BulkDownloadEntity>();
-            entities.add(BulkDownloadEntity.REMARKETING_LISTS);
+            ArrayOfDownloadEntity entities = new ArrayOfDownloadEntity();
+            entities.getDownloadEntities().add(DownloadEntity.REMARKETING_LISTS);
 
             DownloadParameters downloadParameters = new DownloadParameters();
-            downloadParameters.setEntities(entities);
+            downloadParameters.setDownloadEntities(entities);
             downloadParameters.setFileType(DownloadFileType.CSV);
             downloadParameters.setResultFileDirectory(new File(FileDirectory));
             downloadParameters.setResultFileName(DownloadFileName);
@@ -70,8 +62,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
             downloadEntities.close();
             Reader.close();
 
-            // You must already have at least one remarketing list. The Bing Ads API does not support
-            // remarketing list add, update, or delete operations.
+            // You must already have at least one remarketing list. 
             if (remarketingListResults.size() < 1)
             {
                 return;
@@ -92,9 +83,6 @@ public class BulkRemarketingLists extends BulkExampleBase {
             campaign.setDailyBudget(50.00);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaign.setStatus(CampaignStatus.PAUSED);
-            // DaylightSaving is not supported in the Bulk file schema. Whether or not you specify it in a BulkCampaign,
-            // the value is not written to the Bulk file, and by default DaylightSaving is set to true.
-            campaign.setDaylightSaving(true);
 
             EnhancedCpcBiddingScheme enhancedCpcBiddingScheme = new EnhancedCpcBiddingScheme();
             enhancedCpcBiddingScheme.setType("EnhancedCpcBiddingScheme");
@@ -118,11 +106,10 @@ public class BulkRemarketingLists extends BulkExampleBase {
             List<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
             adDistribution.add(AdDistribution.SEARCH);
             adGroup.setAdDistribution(adDistribution);
-            adGroup.setBiddingModel(BiddingModel.KEYWORD);
             adGroup.setPricingModel(PricingModel.CPC);
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
-            adGroup.setEndDate(new com.microsoft.bingads.v10.campaignmanagement.Date());
+            adGroup.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
             adGroup.getEndDate().setMonth(12);
             adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
@@ -148,16 +135,23 @@ public class BulkRemarketingLists extends BulkExampleBase {
             for (BulkRemarketingList bulkRemarketingList : remarketingListResults) {
                 if(bulkRemarketingList.getRemarketingList() != null && bulkRemarketingList.getRemarketingList().getId() != null)
                 {
-                    BulkAdGroupRemarketingListAssociation bulkAdGroupRemarketingList = new BulkAdGroupRemarketingListAssociation();
-                    bulkAdGroupRemarketingList.setClientId("MyBulkAdGroupRemarketingList " + bulkRemarketingList.getRemarketingList().getId());
-                    AdGroupRemarketingListAssociation adGroupRemarketingListAssociation = new AdGroupRemarketingListAssociation();
-                    adGroupRemarketingListAssociation.setAdGroupId(adGroupIdKey);
-                    adGroupRemarketingListAssociation.setBidAdjustment(90.00);
-                    adGroupRemarketingListAssociation.setRemarketingListId(bulkRemarketingList.getRemarketingList().getId());
-                    adGroupRemarketingListAssociation.setStatus(AdGroupRemarketingListAssociationStatus.PAUSED);
-                    bulkAdGroupRemarketingList.setAdGroupRemarketingListAssociation(adGroupRemarketingListAssociation);
+                    BulkAdGroupRemarketingListAssociation bulkAdGroupRemarketingListAssociation = new BulkAdGroupRemarketingListAssociation();
+                    bulkAdGroupRemarketingListAssociation.setClientId("MyBulkAdGroupRemarketingList " + bulkRemarketingList.getRemarketingList().getId());
+                    BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
+                    biddableAdGroupCriterion.setAdGroupId(adGroupIdKey);
+                    AudienceCriterion audienceCriterion = new AudienceCriterion();
+                    audienceCriterion.setAudienceId(bulkRemarketingList.getRemarketingList().getId());
+                    ArrayList<AudienceType> audienceType = new ArrayList<AudienceType>();
+                    audienceType.add(AudienceType.REMARKETING_LIST);
+                    audienceCriterion.setAudienceType(audienceType);
+                    biddableAdGroupCriterion.setCriterion(audienceCriterion);
+                    BidMultiplier bidMultiplier = new BidMultiplier();
+                    bidMultiplier.setMultiplier(90D);
+                    biddableAdGroupCriterion.setCriterionBid(bidMultiplier);
+                    biddableAdGroupCriterion.setStatus(AdGroupCriterionStatus.PAUSED);
+                    bulkAdGroupRemarketingListAssociation.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
 
-                    uploadEntities.add(bulkAdGroupRemarketingList);
+                    uploadEntities.add(bulkAdGroupRemarketingListAssociation);
                 }
             }
 
@@ -179,7 +173,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
                 }
                 else if (entity instanceof BulkAdGroupRemarketingListAssociation) {
-                    outputBulkAdGroupRemarketingLists(Arrays.asList((BulkAdGroupRemarketingListAssociation) entity) );
+                    outputBulkAdGroupRemarketingListAssociations(Arrays.asList((BulkAdGroupRemarketingListAssociation) entity) );
                 }
             }
             downloadEntities.close();

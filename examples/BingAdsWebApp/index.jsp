@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.net.URL" %>
 <%@ page import="com.microsoft.bingads.*" %>
-<%@ page import="com.microsoft.bingads.customermanagement.*" %>
+<%@ page import="com.microsoft.bingads.v11.customermanagement.*" %>
 
 <%! 
 
