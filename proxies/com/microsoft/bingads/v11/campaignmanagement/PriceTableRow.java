@@ -20,12 +20,14 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="CurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring"/>
+ *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring"/>
  *         &lt;element name="Header" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Price" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="PriceQualifier" type="{https://bingads.microsoft.com/CampaignManagement/v11}PriceQualifier"/>
  *         &lt;element name="PriceUnit" type="{https://bingads.microsoft.com/CampaignManagement/v11}PriceUnit"/>
+ *         &lt;element name="TermsAndConditions" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TermsAndConditionsUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +45,9 @@ import javax.xml.bind.annotation.XmlType;
     "header",
     "price",
     "priceQualifier",
-    "priceUnit"
+    "priceUnit",
+    "termsAndConditions",
+    "termsAndConditionsUrl"
 })
 public class PriceTableRow {
 
@@ -51,7 +55,7 @@ public class PriceTableRow {
     protected String currencyCode;
     @XmlElement(name = "Description", required = true, nillable = true)
     protected String description;
-    @XmlElement(name = "FinalMobileUrls", required = true, nillable = true)
+    @XmlElement(name = "FinalMobileUrls", nillable = true)
     protected ArrayOfstring finalMobileUrls;
     @XmlElement(name = "FinalUrls", required = true, nillable = true)
     protected ArrayOfstring finalUrls;
@@ -65,6 +69,10 @@ public class PriceTableRow {
     @XmlElement(name = "PriceUnit", required = true)
     @XmlSchemaType(name = "string")
     protected PriceUnit priceUnit;
+    @XmlElement(name = "TermsAndConditions", nillable = true)
+    protected String termsAndConditions;
+    @XmlElement(name = "TermsAndConditionsUrl", nillable = true)
+    protected String termsAndConditionsUrl;
 
     /**
      * Gets the value of the currencyCode property.
@@ -248,6 +256,54 @@ public class PriceTableRow {
      */
     public void setPriceUnit(PriceUnit value) {
         this.priceUnit = value;
+    }
+
+    /**
+     * Gets the value of the termsAndConditions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTermsAndConditions() {
+        return termsAndConditions;
+    }
+
+    /**
+     * Sets the value of the termsAndConditions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTermsAndConditions(String value) {
+        this.termsAndConditions = value;
+    }
+
+    /**
+     * Gets the value of the termsAndConditionsUrl property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTermsAndConditionsUrl() {
+        return termsAndConditionsUrl;
+    }
+
+    /**
+     * Sets the value of the termsAndConditionsUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTermsAndConditionsUrl(String value) {
+        this.termsAndConditionsUrl = value;
     }
 
 }

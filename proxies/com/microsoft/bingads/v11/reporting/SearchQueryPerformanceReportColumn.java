@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AveragePosition"/>
  *     &lt;enumeration value="SearchQuery"/>
  *     &lt;enumeration value="Keyword"/>
- *     &lt;enumeration value="ProductTarget"/>
  *     &lt;enumeration value="AdGroupCriterionId"/>
  *     &lt;enumeration value="Conversions"/>
  *     &lt;enumeration value="ConversionRate"/>
@@ -113,8 +112,6 @@ public enum SearchQueryPerformanceReportColumn {
     SEARCH_QUERY("SearchQuery"),
     @XmlEnumValue("Keyword")
     KEYWORD("Keyword"),
-    @XmlEnumValue("ProductTarget")
-    PRODUCT_TARGET("ProductTarget"),
     @XmlEnumValue("AdGroupCriterionId")
     AD_GROUP_CRITERION_ID("AdGroupCriterionId"),
     @XmlEnumValue("Conversions")

@@ -74,7 +74,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Labels"/>
  *     &lt;enumeration value="CampaignLabels"/>
  *     &lt;enumeration value="AdGroupLabels"/>
- *     &lt;enumeration value="AdLabels"/>
+ *     &lt;enumeration value="TextAdLabels"/>
  *     &lt;enumeration value="KeywordLabels"/>
  *     &lt;enumeration value="AdGroupNegativeRemarketingListAssociations"/>
  *     &lt;enumeration value="CustomAudiences"/>
@@ -86,6 +86,19 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Audiences"/>
  *     &lt;enumeration value="AdGroupAudienceAssociations"/>
  *     &lt;enumeration value="AdGroupNegativeAudienceAssociations"/>
+ *     &lt;enumeration value="ProductAdLabels"/>
+ *     &lt;enumeration value="AppInstallAdLabels"/>
+ *     &lt;enumeration value="ExpandedTextAdLabels"/>
+ *     &lt;enumeration value="DynamicSearchAdLabels"/>
+ *     &lt;enumeration value="AccountLocationAdExtensions"/>
+ *     &lt;enumeration value="AccountImageAdExtensions"/>
+ *     &lt;enumeration value="AccountAppAdExtensions"/>
+ *     &lt;enumeration value="AccountPriceAdExtensions"/>
+ *     &lt;enumeration value="AccountReviewAdExtensions"/>
+ *     &lt;enumeration value="AccountCalloutAdExtensions"/>
+ *     &lt;enumeration value="AccountSitelink2AdExtensions"/>
+ *     &lt;enumeration value="AccountActionLinkAdExtensions"/>
+ *     &lt;enumeration value="AccountStructuredSnippetAdExtensions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -215,8 +228,8 @@ public enum DownloadEntity {
     CAMPAIGN_LABELS("CampaignLabels"),
     @XmlEnumValue("AdGroupLabels")
     AD_GROUP_LABELS("AdGroupLabels"),
-    @XmlEnumValue("AdLabels")
-    AD_LABELS("AdLabels"),
+    @XmlEnumValue("TextAdLabels")
+    TEXT_AD_LABELS("TextAdLabels"),
     @XmlEnumValue("KeywordLabels")
     KEYWORD_LABELS("KeywordLabels"),
     @XmlEnumValue("AdGroupNegativeRemarketingListAssociations")
@@ -238,7 +251,33 @@ public enum DownloadEntity {
     @XmlEnumValue("AdGroupAudienceAssociations")
     AD_GROUP_AUDIENCE_ASSOCIATIONS("AdGroupAudienceAssociations"),
     @XmlEnumValue("AdGroupNegativeAudienceAssociations")
-    AD_GROUP_NEGATIVE_AUDIENCE_ASSOCIATIONS("AdGroupNegativeAudienceAssociations");
+    AD_GROUP_NEGATIVE_AUDIENCE_ASSOCIATIONS("AdGroupNegativeAudienceAssociations"),
+    @XmlEnumValue("ProductAdLabels")
+    PRODUCT_AD_LABELS("ProductAdLabels"),
+    @XmlEnumValue("AppInstallAdLabels")
+    APP_INSTALL_AD_LABELS("AppInstallAdLabels"),
+    @XmlEnumValue("ExpandedTextAdLabels")
+    EXPANDED_TEXT_AD_LABELS("ExpandedTextAdLabels"),
+    @XmlEnumValue("DynamicSearchAdLabels")
+    DYNAMIC_SEARCH_AD_LABELS("DynamicSearchAdLabels"),
+    @XmlEnumValue("AccountLocationAdExtensions")
+    ACCOUNT_LOCATION_AD_EXTENSIONS("AccountLocationAdExtensions"),
+    @XmlEnumValue("AccountImageAdExtensions")
+    ACCOUNT_IMAGE_AD_EXTENSIONS("AccountImageAdExtensions"),
+    @XmlEnumValue("AccountAppAdExtensions")
+    ACCOUNT_APP_AD_EXTENSIONS("AccountAppAdExtensions"),
+    @XmlEnumValue("AccountPriceAdExtensions")
+    ACCOUNT_PRICE_AD_EXTENSIONS("AccountPriceAdExtensions"),
+    @XmlEnumValue("AccountReviewAdExtensions")
+    ACCOUNT_REVIEW_AD_EXTENSIONS("AccountReviewAdExtensions"),
+    @XmlEnumValue("AccountCalloutAdExtensions")
+    ACCOUNT_CALLOUT_AD_EXTENSIONS("AccountCalloutAdExtensions"),
+    @XmlEnumValue("AccountSitelink2AdExtensions")
+    ACCOUNT_SITELINK_2_AD_EXTENSIONS("AccountSitelink2AdExtensions"),
+    @XmlEnumValue("AccountActionLinkAdExtensions")
+    ACCOUNT_ACTION_LINK_AD_EXTENSIONS("AccountActionLinkAdExtensions"),
+    @XmlEnumValue("AccountStructuredSnippetAdExtensions")
+    ACCOUNT_STRUCTURED_SNIPPET_AD_EXTENSIONS("AccountStructuredSnippetAdExtensions");
     private final String value;
 
     DownloadEntity(String v) {

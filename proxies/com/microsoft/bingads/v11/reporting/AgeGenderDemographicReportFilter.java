@@ -46,10 +46,10 @@ public class AgeGenderDemographicReportFilter {
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter7 .class)

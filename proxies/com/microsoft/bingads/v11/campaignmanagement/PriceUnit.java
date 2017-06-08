@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="PerMonth"/>
  *     &lt;enumeration value="PerYear"/>
  *     &lt;enumeration value="None"/>
+ *     &lt;enumeration value="PerNight"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -43,7 +44,9 @@ public enum PriceUnit {
     @XmlEnumValue("PerYear")
     PER_YEAR("PerYear"),
     @XmlEnumValue("None")
-    NONE("None");
+    NONE("None"),
+    @XmlEnumValue("PerNight")
+    PER_NIGHT("PerNight");
     private final String value;
 
     PriceUnit(String v) {

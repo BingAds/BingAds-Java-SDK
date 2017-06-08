@@ -42,7 +42,7 @@ public class AudiencePerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter7 .class)

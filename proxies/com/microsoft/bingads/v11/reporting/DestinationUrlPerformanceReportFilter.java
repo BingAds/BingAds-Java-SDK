@@ -50,10 +50,10 @@ public class DestinationUrlPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter8 .class)
@@ -62,7 +62,7 @@ public class DestinationUrlPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;

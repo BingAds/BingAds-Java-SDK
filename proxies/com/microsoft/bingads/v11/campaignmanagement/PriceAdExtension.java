@@ -21,8 +21,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="PriceExtensionType" type="{https://bingads.microsoft.com/CampaignManagement/v11}PriceExtensionType"/>
  *         &lt;element name="TableRows" type="{https://bingads.microsoft.com/CampaignManagement/v11}ArrayOfPriceTableRow"/>
- *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="UrlCustomParameters" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11}ArrayOfCustomParameter"/>
+ *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="UrlCustomParameters" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11}CustomParameters" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,10 +50,10 @@ public class PriceAdExtension
     protected PriceExtensionType priceExtensionType;
     @XmlElement(name = "TableRows", required = true, nillable = true)
     protected ArrayOfPriceTableRow tableRows;
-    @XmlElement(name = "TrackingUrlTemplate", required = true, nillable = true)
+    @XmlElement(name = "TrackingUrlTemplate", nillable = true)
     protected String trackingUrlTemplate;
-    @XmlElement(name = "UrlCustomParameters", required = true, nillable = true)
-    protected ArrayOfCustomParameter urlCustomParameters;
+    @XmlElement(name = "UrlCustomParameters", nillable = true)
+    protected CustomParameters urlCustomParameters;
 
     /**
      * Gets the value of the language property.
@@ -156,10 +156,10 @@ public class PriceAdExtension
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfCustomParameter }
+     *     {@link CustomParameters }
      *     
      */
-    public ArrayOfCustomParameter getUrlCustomParameters() {
+    public CustomParameters getUrlCustomParameters() {
         return urlCustomParameters;
     }
 
@@ -168,10 +168,10 @@ public class PriceAdExtension
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfCustomParameter }
+     *     {@link CustomParameters }
      *     
      */
-    public void setUrlCustomParameters(ArrayOfCustomParameter value) {
+    public void setUrlCustomParameters(CustomParameters value) {
         this.urlCustomParameters = value;
     }
 

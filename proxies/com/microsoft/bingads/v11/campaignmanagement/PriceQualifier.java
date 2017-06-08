@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="From"/>
  *     &lt;enumeration value="UpTo"/>
  *     &lt;enumeration value="None"/>
+ *     &lt;enumeration value="Average"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +35,9 @@ public enum PriceQualifier {
     @XmlEnumValue("UpTo")
     UP_TO("UpTo"),
     @XmlEnumValue("None")
-    NONE("None");
+    NONE("None"),
+    @XmlEnumValue("Average")
+    AVERAGE("Average");
     private final String value;
 
     PriceQualifier(String v) {

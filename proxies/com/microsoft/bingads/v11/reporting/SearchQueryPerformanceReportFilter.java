@@ -56,7 +56,7 @@ public class SearchQueryPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter8 .class)
@@ -68,12 +68,12 @@ public class SearchQueryPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "ExcludeZeroClicks")
     protected Boolean excludeZeroClicks;
     @XmlElement(name = "KeywordStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<KeywordStatusReportFilter> keywordStatus;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;

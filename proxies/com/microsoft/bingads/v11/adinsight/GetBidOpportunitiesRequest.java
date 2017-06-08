@@ -45,7 +45,7 @@ public class GetBidOpportunitiesRequest {
     @XmlElement(name = "CampaignId", namespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", nillable = true)
     protected Long campaignId;
     @XmlElement(name = "OpportunityType", namespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<BidOpportunityType> opportunityType;
 
     /**

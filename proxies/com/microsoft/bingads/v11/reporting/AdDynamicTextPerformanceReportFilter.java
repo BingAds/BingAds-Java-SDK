@@ -52,10 +52,10 @@ public class AdDynamicTextPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter8 .class)
@@ -64,10 +64,10 @@ public class AdDynamicTextPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<AdTypeReportFilter> adType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "KeywordStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<KeywordStatusReportFilter> keywordStatus;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;

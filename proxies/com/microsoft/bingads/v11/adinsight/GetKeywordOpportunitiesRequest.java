@@ -45,7 +45,7 @@ public class GetKeywordOpportunitiesRequest {
     @XmlElement(name = "CampaignId", namespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", nillable = true)
     protected Long campaignId;
     @XmlElement(name = "OpportunityType", namespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     protected Collection<KeywordOpportunityType> opportunityType;
 
     /**

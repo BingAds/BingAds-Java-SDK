@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class UserLocationPerformanceReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "CountryCode", nillable = true)
     protected ArrayOfstring countryCode;

@@ -43,5 +43,8 @@
     <bindings node="//xs:simpleType[@name='ChangeEntityReportFilter']">
       <javaType name="java.util.Collection&lt;ChangeEntityReportFilter&gt;" parseMethod="com.microsoft.bingads.v11.reporting.ChangeEntityReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.v11.reporting.ChangeEntityReportFilterConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='DynamicAdTargetStatusReportFilter']">
+      <javaType name="java.util.Collection&lt;DynamicAdTargetStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.v11.reporting.DynamicAdTargetStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.v11.reporting.DynamicAdTargetStatusReportFilterConverter.convertToString" />
+    </bindings>
   </bindings>
 </bindings>

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "AdInsightService", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", wsdlLocation = "https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v11/AdInsightService.svc?wsdl")
+@WebServiceClient(name = "AdInsightService", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", wsdlLocation = "https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V11/AdInsightService.svc?wsdl")
 public class AdInsightService
     extends Service
 {
@@ -30,7 +30,7 @@ public class AdInsightService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v11/AdInsightService.svc?wsdl");
+            url = new URL("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V11/AdInsightService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
