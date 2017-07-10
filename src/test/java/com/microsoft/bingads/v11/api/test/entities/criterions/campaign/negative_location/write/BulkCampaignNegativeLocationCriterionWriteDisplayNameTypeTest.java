@@ -38,7 +38,7 @@ public class BulkCampaignNegativeLocationCriterionWriteDisplayNameTypeTest exten
                 new BiConsumer<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public void accept(BulkCampaignNegativeLocationCriterion c, String v) {
-                        ((LocationCriterion)c.getCampaignCriterion().getCriterion()).setDisplayName(v);
+                        ((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).setDisplayName(v);
                     }
                 }
         );

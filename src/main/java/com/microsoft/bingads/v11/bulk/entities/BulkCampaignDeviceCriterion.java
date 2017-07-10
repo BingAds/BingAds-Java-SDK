@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableCampaignCriterion campaignCriterion;
+	private BiddableCampaignCriterion biddableCampaignCriterion;
 	
 	private String campaignName;
 
@@ -50,7 +50,7 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -58,7 +58,7 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -72,13 +72,13 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDeviceCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -92,13 +92,13 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDeviceCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -122,8 +122,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid();
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -137,8 +137,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -150,8 +150,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DeviceCriterion) {    
-                    		return ((DeviceCriterion) c.getCampaignCriterion().getCriterion()).getDeviceName();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DeviceCriterion) {    
+                    		return ((DeviceCriterion) c.getBiddableCampaignCriterion().getCriterion()).getDeviceName();
                     	}
                     	return null;
                     }
@@ -159,8 +159,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DeviceCriterion) {                   		
-	                		((DeviceCriterion)c.getCampaignCriterion().getCriterion()).setDeviceName(v);
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DeviceCriterion) {                   		
+	                		((DeviceCriterion)c.getBiddableCampaignCriterion().getCriterion()).setDeviceName(v);
                     	}
                     }
                 }
@@ -170,8 +170,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DeviceCriterion) {    
-                    		return ((DeviceCriterion) c.getCampaignCriterion().getCriterion()).getOSName();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DeviceCriterion) {    
+                    		return ((DeviceCriterion) c.getBiddableCampaignCriterion().getCriterion()).getOSName();
                     	}
                     	return null;
                     }
@@ -179,8 +179,8 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DeviceCriterion) {                   		
-	                		((DeviceCriterion)c.getCampaignCriterion().getCriterion()).setOSName(v);
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DeviceCriterion) {                   		
+	                		((DeviceCriterion)c.getBiddableCampaignCriterion().getCriterion()).setOSName(v);
                     	}
                     }
                 }
@@ -203,14 +203,14 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
     	campaignCriterion.setCriterionBid(bidMultiplier);
     	campaignCriterion.setType("BiddableCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setBiddableCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -218,15 +218,15 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
     /**
      * Gets a Campaign Criterion.
      */
-    public BiddableCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
+        return biddableCampaignCriterion;
     }
 
     /**
      * Sets a Campaign Criterion
      */
-    public void setCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setBiddableCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
+        this.biddableCampaignCriterion = campaignCriterion;
     }
 
     /**

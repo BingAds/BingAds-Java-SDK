@@ -125,23 +125,14 @@ public class StringTable {
     public static final String TargetAll = "Target All";
 
     public static final String SiteLinksAdExtension = "Sitelink Ad Extension";
-    public static final String LocationAdExtension = "Location Ad Extension";
-
-    public static final String CallAdExtension = "Call Ad Extension";
-    public static final String ImageAdExtension = "Image Ad Extension";
-    public static final String SocialNetworkAdExtension = "Social Network Ad Extension";
-
+    
     public static final String Version = "Version";
-
-    // Social network ad extension
-    // NOTE: The "Social Network" Bulk Upload/Download column maps to the SocialNetworkType attribute of SocialNetworkAdExtension in the MT
-    public static final String SocialNetworkType = "Social Network";
-    public static final String CampaignSocialNetworkAdExtension = "Campaign Social Network Ad Extension";
-    public static final String AdGroupSocialNetworkAdExtension = "AdGroup Social Network Ad Extension";
 
     //Image ad extension
     public static final String AltText = "Alternative Text";
     public static final String MediaIds = "Media Ids";
+    public static final String ImageAdExtension = "Image Ad Extension";
+    public static final String AccountImageAdExtension = "Account Image Ad Extension";
     public static final String CampaignImageAdExtension = "Campaign Image Ad Extension";
     public static final String AdGroupImageAdExtension = "Ad Group Image Ad Extension";
 
@@ -166,11 +157,14 @@ public class StringTable {
     public static final String GeoCodeStatus = "Geo Code Status";
     public static final String IconMediaId = "Map Icon";
     public static final String ImageMediaId = "Business Icon";
+    public static final String LocationAdExtension = "Location Ad Extension";
+    public static final String AccountLocationAdExtension = "Account Location Ad Extension";
     public static final String CampaignLocationAdExtension = "Campaign Location Ad Extension";
 
     // Call ad extensions
     public static final String CountryCode = "Country Code";
     public static final String IsCallOnly = "Call Only";
+    public static final String CallAdExtension = "Call Ad Extension";
     public static final String CampaignCallAdExtension = "Campaign Call Ad Extension";
     public static final String IsCallTrackingEnabled = "Call Tracking Enabled";
     public static final String RequireTollFreeTrackingNumber = "Toll Free";
@@ -214,6 +208,7 @@ public class StringTable {
     public static final String AppPlatform = "App Platform";
     public static final String AppStoreId = "App Id";
     public static final String CampaignAppAdExtension = "Campaign App Ad Extension";
+    public static final String AccountAppAdExtension = "Account App Ad Extension";
     public static final String AdGroupAppAdExtension = "Ad Group App Ad Extension";
     public static final String IsTrackingEnabled = "Tracking Enabled";
 
@@ -287,6 +282,7 @@ public class StringTable {
     public static final String ParentAdGroupCriterionId = "Parent Criterion Id";
     public static final String CampaignType = "Campaign Type";
     public static final String CampaignPriority = "Priority";
+    public static final String LocalInventoryAdsEnabled = "LocalInventoryAdsEnabled";
     
     //Upgrade URL
     public static final String FinalUrl = "Final Url";
@@ -296,25 +292,115 @@ public class StringTable {
 
     // Review Ad Extension
     public static final String ReviewAdExtension = "Review Ad Extension";
+    public static final String AccountReviewAdExtension = "Account Review Ad Extension";
     public static final String CampaignReviewAdExtension = "Campaign Review Ad Extension";
     public static final String AdGroupReviewAdExtension = "Ad Group Review Ad Extension";
     public static final String IsExact = "Is Exact";
     public static final String Source = "Source";
     public static final String Url = "Url";
 
+    // Price Ad Extension
+    public static final String PriceAdExtension = "Price Ad Extension";
+    public static final String AccountPriceAdExtension = "Account Price Ad Extension";
+    public static final String CampaignPriceAdExtension = "Campaign Price Ad Extension";
+    public static final String AdGroupPriceAdExtension = "Ad Group Price Ad Extension";
+    public static final String PriceExtensionType = "Price Extension Type";
+    public static final String HeaderColumnPrefix = "Header ";
+    public static final String Header1 = "Header 1";
+    public static final String Header2 = "Header 2";  
+    public static final String Header3 = "Header 3";
+    public static final String Header4 = "Header 4";
+    public static final String Header5 = "Header 5";
+    public static final String Header6 = "Header 6";
+    public static final String Header7 = "Header 7";
+    public static final String Header8 = "Header 8";
+    public static final String PriceDescriptionColumnPrefix = "Price Description ";
+    public static final String PriceDescription1 = "Price Description 1";
+    public static final String PriceDescription2 = "Price Description 2";
+    public static final String PriceDescription3 = "Price Description 3";
+    public static final String PriceDescription4 = "Price Description 4";
+    public static final String PriceDescription5 = "Price Description 5";
+    public static final String PriceDescription6 = "Price Description 6";
+    public static final String PriceDescription7 = "Price Description 7";
+    public static final String PriceDescription8 = "Price Description 8";
+    public static final String FinalUrlColumnPrefix = "Final Url ";
+    public static final String FinalUrl1 = "Final Url 1";
+    public static final String FinalUrl2 = "Final Url 2";
+    public static final String FinalUrl3 = "Final Url 3";
+    public static final String FinalUrl4 = "Final Url 4";
+    public static final String FinalUrl5 = "Final Url 5";
+    public static final String FinalUrl6 = "Final Url 6";
+    public static final String FinalUrl7 = "Final Url 7";
+    public static final String FinalUrl8 = "Final Url 8";
+    public static final String FinalMobileUrlColumnPrefix = "Final Mobile Url ";
+    public static final String FinalMobileUrl1 = "Final Mobile Url 1";
+    public static final String FinalMobileUrl2 = "Final Mobile Url 2";
+    public static final String FinalMobileUrl3 = "Final Mobile Url 3";
+    public static final String FinalMobileUrl4 = "Final Mobile Url 4";
+    public static final String FinalMobileUrl5 = "Final Mobile Url 5";
+    public static final String FinalMobileUrl6 = "Final Mobile Url 6";
+    public static final String FinalMobileUrl7 = "Final Mobile Url 7";
+    public static final String FinalMobileUrl8 = "Final Mobile Url 8";
+    public static final String PriceColumnPrefix = "Price ";
+    public static final String Price1 = "Price 1"; 
+    public static final String Price2 = "Price 2";
+    public static final String Price3 = "Price 3";
+    public static final String Price4 = "Price 4";
+    public static final String Price5 = "Price 5";
+    public static final String Price6 = "Price 6";
+    public static final String Price7 = "Price 7";
+    public static final String Price8 = "Price 8";
+    public static final String CurrencyCodeColumnPrefix = "Currency Code ";
+    public static final String CurrencyCode1 = "Currency Code 1";
+    public static final String CurrencyCode2 = "Currency Code 2";
+    public static final String CurrencyCode3 = "Currency Code 3";
+    public static final String CurrencyCode4 = "Currency Code 4";
+    public static final String CurrencyCode5 = "Currency Code 5";
+    public static final String CurrencyCode6 = "Currency Code 6";
+    public static final String CurrencyCode7 = "Currency Code 7";
+    public static final String CurrencyCode8 = "Currency Code 8";
+    public static final String PriceUnitColumnPrefix = "Price Unit ";
+    public static final String PriceUnit1 = "Price Unit 1";
+    public static final String PriceUnit2 = "Price Unit 2";
+    public static final String PriceUnit3 = "Price Unit 3";
+    public static final String PriceUnit4 = "Price Unit 4";
+    public static final String PriceUnit5 = "Price Unit 5";
+    public static final String PriceUnit6 = "Price Unit 6";
+    public static final String PriceUnit7 = "Price Unit 7";
+    public static final String PriceUnit8 = "Price Unit 8";
+    public static final String PriceQualifierColumnPrefix = "Price Qualifier ";
+    public static final String PriceQualifier1 = "Price Qualifier 1";
+    public static final String PriceQualifier2 = "Price Qualifier 2";
+    public static final String PriceQualifier3 = "Price Qualifier 3";
+    public static final String PriceQualifier4 = "Price Qualifier 4";
+    public static final String PriceQualifier5 = "Price Qualifier 5";
+    public static final String PriceQualifier6 = "Price Qualifier 6";
+    public static final String PriceQualifier7 = "Price Qualifier 7";
+    public static final String PriceQualifier8 = "Price Qualifier 8";
+
     // Callout Ad Extension
     public static final String CalloutAdExtension = "Callout Ad Extension";
+    public static final String AccountCalloutAdExtension = "Account Callout Ad Extension";
     public static final String CampaignCalloutAdExtension = "Campaign Callout Ad Extension";
     public static final String AdGroupCalloutAdExtension = "Ad Group Callout Ad Extension";
     public static final String CalloutText = "Callout Text";
     
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
+    public static final String BidStrategyMaxCpc = "Bid Strategy MaxCpc";
+    public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";
 
-    // Remarketing
+    // Audience
     public static final String RemarketingList = "Remarketing List";
-    public static final String Audience = "Audience";
     public static final String AdGroupRemarketingListAssociation = "Ad Group Remarketing List Association";
+    public static final String AdGroupNegativeRemarketingListAssociation = "Ad Group Negative Remarketing List Association";
+    public static final String CustomAudience = "Custom Audience";
+    public static final String AdGroupCustomAudienceAssociation = "Ad Group Custom Audience Association";
+    public static final String AdGroupNegativeCustomAudienceAssociation = "Ad Group Negative Custom Audience Association";
+    public static final String InMarketAudience = "In Market Audience";
+    public static final String AdGroupInMarketAudienceAssociation = "Ad Group In Market Audience Association";
+    public static final String AdGroupNegativeInMarketAudienceAssociation = "Ad Group Negative In Market Audience Association";
+    public static final String Audience = "Audience";
     public static final String Description = "Description";
     public static final String MembershipDuration = "Membership Duration";
     public static final String Scope = "Scope";
@@ -324,6 +410,7 @@ public class StringTable {
     public static final String RemarketingRule = "Remarketing Rule";
 
     // Structured Snippet Ad Extension
+    public static final String AccountStructuredSnippetAdExtension = "Account Structured Snippet Ad Extension";
     public static final String CampaignStructuredSnippetAdExtension = "Campaign Structured Snippet Ad Extension";
     public static final String AdGroupStructuredSnippetAdExtension = "Ad Group Structured Snippet Ad Extension";
     public static final String StructuredSnippetAdExtension = "Structured Snippet Ad Extension";
@@ -339,6 +426,7 @@ public class StringTable {
     
     // Sitelink2 Ad Extension
     public static final String Sitelink2AdExtension = "Sitelink2 Ad Extension";
+    public static final String AccountSitelink2AdExtension = "Account Sitelink2 Ad Extension";
     public static final String CampaignSitelink2AdExtension = "Campaign Sitelink2 Ad Extension";
     public static final String AdGroupSitelink2AdExtension = "Ad Group Sitelink2 Ad Extension";
     

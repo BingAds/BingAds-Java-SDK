@@ -39,7 +39,7 @@ public class BulkAdGroupAgeCriterionWriteIdTest extends BulkAdGroupAgeCriterionT
                 new BiConsumer<BulkAdGroupAgeCriterion, Long>() {
                     @Override
                     public void accept(BulkAdGroupAgeCriterion c, Long v) {
-                        c.getAdGroupCriterion().setId(v);
+                        c.getBiddableAdGroupCriterion().setId(v);
                     }
                 }
         );

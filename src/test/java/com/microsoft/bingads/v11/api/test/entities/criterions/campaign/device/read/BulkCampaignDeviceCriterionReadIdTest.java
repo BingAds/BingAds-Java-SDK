@@ -40,7 +40,7 @@ public class BulkCampaignDeviceCriterionReadIdTest extends BulkCampaignDeviceCri
                 new Function<BulkCampaignDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDeviceCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 }
         );

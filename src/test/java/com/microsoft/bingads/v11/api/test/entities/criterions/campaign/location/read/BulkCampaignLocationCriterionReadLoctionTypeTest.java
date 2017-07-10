@@ -40,7 +40,7 @@ public class BulkCampaignLocationCriterionReadLoctionTypeTest extends BulkCampai
                 new Function<BulkCampaignLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignLocationCriterion c) {
-                        return ((LocationCriterion)c.getCampaignCriterion().getCriterion()).getLocationType();
+                        return ((LocationCriterion)c.getBiddableCampaignCriterion().getCriterion()).getLocationType();
                     }
                 }
         );

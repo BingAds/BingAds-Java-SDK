@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -40,8 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GeographicalLocationReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "CountryCode", nillable = true)
     protected ArrayOfstring countryCode;

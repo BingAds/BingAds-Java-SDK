@@ -130,6 +130,7 @@ public class ObjectFactory {
     private final static QName _LocationSearchParameter_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity.SearchParameters", "LocationSearchParameter");
     private final static QName _SuggestedBidSearchParameter_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity.SearchParameters", "SuggestedBidSearchParameter");
     private final static QName _AdGroupBidLandscape_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity", "AdGroupBidLandscape");
+    private final static QName _DateRangeSearchParameter_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity.SearchParameters", "DateRangeSearchParameter");
     private final static QName _CompetitionLevel_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity.Common", "CompetitionLevel");
     private final static QName _ArrayOfKeywordSuggestion_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity", "ArrayOfKeywordSuggestion");
     private final static QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
@@ -1747,6 +1748,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateRangeSearchParameter }
+     * 
+     */
+    public DateRangeSearchParameter createDateRangeSearchParameter() {
+        return new DateRangeSearchParameter();
+    }
+
+    /**
      * Create an instance of {@link CategorySearchParameter }
      * 
      */
@@ -2703,6 +2712,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity", name = "AdGroupBidLandscape")
     public JAXBElement<AdGroupBidLandscape> createAdGroupBidLandscape(AdGroupBidLandscape value) {
         return new JAXBElement<AdGroupBidLandscape>(_AdGroupBidLandscape_QNAME, AdGroupBidLandscape.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DateRangeSearchParameter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V11.Entity.SearchParameters", name = "DateRangeSearchParameter")
+    public JAXBElement<DateRangeSearchParameter> createDateRangeSearchParameter(DateRangeSearchParameter value) {
+        return new JAXBElement<DateRangeSearchParameter>(_DateRangeSearchParameter_QNAME, DateRangeSearchParameter.class, null, value);
     }
 
     /**

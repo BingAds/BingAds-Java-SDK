@@ -38,7 +38,7 @@ public class BulkAdGroupDayTimeCriterionWriteParentIdTest extends BulkAdGroupDay
                 new BiConsumer<BulkAdGroupDayTimeCriterion, Long>() {
                     @Override
                     public void accept(BulkAdGroupDayTimeCriterion c, Long v) {
-                        c.getAdGroupCriterion().setAdGroupId(v);
+                        c.getBiddableAdGroupCriterion().setAdGroupId(v);
                     }
                 }
         );

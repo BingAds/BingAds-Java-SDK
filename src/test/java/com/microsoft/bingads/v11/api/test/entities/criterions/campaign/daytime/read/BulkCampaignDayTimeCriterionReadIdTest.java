@@ -40,7 +40,7 @@ public class BulkCampaignDayTimeCriterionReadIdTest extends BulkCampaignDayTimeC
                 new Function<BulkCampaignDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 }
         );

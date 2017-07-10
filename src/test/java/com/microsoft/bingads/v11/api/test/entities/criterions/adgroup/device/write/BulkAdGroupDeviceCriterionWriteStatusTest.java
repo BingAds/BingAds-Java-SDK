@@ -41,7 +41,7 @@ public class BulkAdGroupDeviceCriterionWriteStatusTest extends BulkAdGroupDevice
                 new BiConsumer<BulkAdGroupDeviceCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupDeviceCriterion c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getBiddableAdGroupCriterion().setStatus(v);
                     }
                 }
         );

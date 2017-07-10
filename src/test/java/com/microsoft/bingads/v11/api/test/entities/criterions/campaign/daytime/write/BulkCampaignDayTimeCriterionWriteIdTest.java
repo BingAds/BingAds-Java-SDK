@@ -39,7 +39,7 @@ public class BulkCampaignDayTimeCriterionWriteIdTest extends BulkCampaignDayTime
                 new BiConsumer<BulkCampaignDayTimeCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignDayTimeCriterion c, Long v) {
-                        c.getCampaignCriterion().setId(v);
+                        c.getBiddableCampaignCriterion().setId(v);
                     }
                 }
         );

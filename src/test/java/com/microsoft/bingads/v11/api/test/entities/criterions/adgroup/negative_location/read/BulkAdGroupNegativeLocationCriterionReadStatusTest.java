@@ -42,7 +42,7 @@ public class BulkAdGroupNegativeLocationCriterionReadStatusTest extends BulkAdGr
                 new Function<BulkAdGroupNegativeLocationCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public AdGroupCriterionStatus apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return c.getAdGroupCriterion().getStatus();
+                        return c.getNegativeAdGroupCriterion().getStatus();
                     }
                 }
         );

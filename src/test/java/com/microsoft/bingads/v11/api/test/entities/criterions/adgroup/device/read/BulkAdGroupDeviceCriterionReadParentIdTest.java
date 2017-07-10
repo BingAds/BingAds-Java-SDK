@@ -37,7 +37,7 @@ public class BulkAdGroupDeviceCriterionReadParentIdTest extends BulkAdGroupDevic
                 new Function<BulkAdGroupDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDeviceCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 }
         );

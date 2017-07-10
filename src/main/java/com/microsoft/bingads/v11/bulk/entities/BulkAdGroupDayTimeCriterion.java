@@ -39,7 +39,7 @@ import java.util.List;
  */
 public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableAdGroupCriterion adGroupCriterion;
+	private BiddableAdGroupCriterion biddableAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -54,7 +54,7 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getBiddableAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -62,7 +62,7 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -76,13 +76,13 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -96,13 +96,13 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -141,8 +141,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid();
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -156,8 +156,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -169,8 +169,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {    
-                    		Day day = ((DayTimeCriterion) c.getAdGroupCriterion().getCriterion()).getDay();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {    
+                    		Day day = ((DayTimeCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getDay();
                     		return day == null ? null : day.value();
                     	} 
                     	return null;
@@ -179,9 +179,9 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
+	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
 	                                @Override
 	                                public Day apply(String s) {
 	                                    return Day.fromValue(s);
@@ -196,8 +196,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Integer hour = ((DayTimeCriterion) c.getAdGroupCriterion().getCriterion()).getFromHour();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Integer hour = ((DayTimeCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getFromHour();
                     		return StringExtensions.toBulkString(hour);
                     	} 
                     	return null;
@@ -206,9 +206,9 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setFromHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setFromHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
 	                                @Override
 	                                public Integer apply(String s) {
 	                                    return Integer.parseInt(s);
@@ -223,8 +223,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Integer hour = ((DayTimeCriterion) c.getAdGroupCriterion().getCriterion()).getToHour();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Integer hour = ((DayTimeCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getToHour();
                     		return StringExtensions.toBulkString(hour);
                     	} 
                     	return null;
@@ -233,9 +233,9 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setToHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setToHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
 	                                @Override
 	                                public Integer apply(String s) {
 	                                    return Integer.parseInt(s);
@@ -250,8 +250,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Minute minute = ((DayTimeCriterion) c.getAdGroupCriterion().getCriterion()).getFromMinute();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Minute minute = ((DayTimeCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getFromMinute();
                     		return minute == null ? null : StringExtensions.toMinuteBulkString(minute);
                     	} 
                     	return null;
@@ -260,9 +260,9 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setFromMinute(StringExtensions.parseMinute(v));
+	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setFromMinute(StringExtensions.parseMinute(v));
                     	}
                     }
                 }
@@ -272,8 +272,8 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDayTimeCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Minute minute = ((DayTimeCriterion) c.getAdGroupCriterion().getCriterion()).getToMinute();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Minute minute = ((DayTimeCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getToMinute();
                     		return minute == null ? null : StringExtensions.toMinuteBulkString(minute);
                     	} 
                     	return null;
@@ -282,9 +282,9 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setToMinute(StringExtensions.parseMinute(v));
+	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setToMinute(StringExtensions.parseMinute(v));
                     	}
                     }
                 }
@@ -307,14 +307,14 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
     	adGroupCriterion.setCriterionBid(bidMultiplier);
     	adGroupCriterion.setType("BiddableAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);  
+    	setBiddableAdGroupCriterion(adGroupCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -322,15 +322,15 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
     /**
      * Gets an Ad Group Criterion.
      */
-    public BiddableAdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public BiddableAdGroupCriterion getBiddableAdGroupCriterion() {
+        return biddableAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(BiddableAdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setBiddableAdGroupCriterion(BiddableAdGroupCriterion biddableAdGroupCriterion) {
+        this.biddableAdGroupCriterion = biddableAdGroupCriterion;
     }
 
     /**

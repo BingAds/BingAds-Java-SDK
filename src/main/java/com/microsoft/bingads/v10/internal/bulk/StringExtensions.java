@@ -94,7 +94,17 @@ public class StringExtensions {
         return StringExtensions.toBulkString(bid.getAmount());
     }
 
-    ;
+    public static String toBidBulkString(Bid bid) {
+        if (bid == null) {
+            return null;
+        }
+
+        if (bid.getAmount() == null) {
+            return StringTable.DeleteValue;
+        }
+
+        return StringExtensions.toBulkString(bid.getAmount());
+    }
 	
 	/**
 	 * Catches NumberFormatException and returns a null value instead
@@ -239,6 +249,28 @@ public class StringExtensions {
 	 }
 	 
     public static Bid parseKeywordBid(String v) {
+        if (v == null || v.isEmpty()) {
+            return null;
+        }
+
+        Bid bid = new Bid();
+
+        if (v.equals(StringTable.DeleteValue)) {
+            bid.setAmount(null);
+            return bid;
+        }
+
+        Double bidAmount = nullOrDouble(v);
+
+        if (bidAmount != null) {
+            bid.setAmount(bidAmount);
+            return bid;
+        } else {
+            return null;
+        }
+    }
+
+    public static Bid parseBid(String v) {
         if (v == null || v.isEmpty()) {
             return null;
         }
@@ -691,6 +723,43 @@ public class StringExtensions {
     	}	
     	
     	return urlArray; 	
+    }
+
+    public static String writeCampaignLanguages(String separator, ArrayOfstring strings) {
+        if (strings == null) {
+            return null;
+        }
+        
+        if (strings.getStrings().size() == 0) {
+        	return StringTable.DeleteValue;
+        }
+        
+        StringBuilder result = new StringBuilder("");
+
+        int length =  strings.getStrings().size();
+        for (Integer i = 0; i < length - 1; i++) {
+            result.append(strings.getStrings().get(i) + separator);
+        }
+
+        result.append(strings.getStrings().get(length - 1));
+
+        return result.toString();
+    }
+    
+    public static List<String> parseCampaignLanguages(String s) {
+    	if (StringExtensions.isNullOrEmpty(s))
+    		return null;
+    	
+    	List<String> languageArray = new ArrayList<String>();
+    	
+    	String[] languages = s.split("[;\\s?]");
+    	
+    	for(String tmp : languages) {
+    		if (!StringExtensions.isNullOrEmpty(tmp) && ! ";".equals(tmp))
+    			languageArray.add(tmp);
+    	}	
+    	
+    	return languageArray; 	
     }
     
     public static String toCustomParaBulkString(CustomParameters parameters) {

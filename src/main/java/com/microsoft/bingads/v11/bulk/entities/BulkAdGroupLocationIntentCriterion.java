@@ -38,7 +38,7 @@ import java.util.List;
  */
 public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableAdGroupCriterion adGroupCriterion;
+	private BiddableAdGroupCriterion biddableAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -53,7 +53,7 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupLocationIntentCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupLocationIntentCriterion c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getBiddableAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -61,7 +61,7 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupLocationIntentCriterion c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -75,13 +75,13 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupLocationIntentCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupLocationIntentCriterion c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -95,13 +95,13 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupLocationIntentCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupLocationIntentCriterion c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -140,8 +140,8 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupLocationIntentCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupLocationIntentCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationIntentCriterion) {    
-                    		IntentOption intentOption = ((LocationIntentCriterion) c.getAdGroupCriterion().getCriterion()).getIntentOption();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof LocationIntentCriterion) {    
+                    		IntentOption intentOption = ((LocationIntentCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getIntentOption();
                     		return intentOption == null ? null : intentOption.value();
                     	} 
                     	return null;
@@ -150,8 +150,8 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupLocationIntentCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationIntentCriterion) {                   		
-	                		((LocationIntentCriterion)c.getAdGroupCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof LocationIntentCriterion) {                   		
+	                		((LocationIntentCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
 	                                @Override
 	                                public IntentOption apply(String s) {
 	                                    return IntentOption.fromValue(s);
@@ -175,14 +175,14 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
     	adGroupCriterion.getCriterion().setType(LocationIntentCriterion.class.getSimpleName());
     	adGroupCriterion.setType("BiddableAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);  
+    	setBiddableAdGroupCriterion(adGroupCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -190,15 +190,15 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
     /**
      * Gets an Ad Group Criterion.
      */
-    public BiddableAdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public BiddableAdGroupCriterion getBiddableAdGroupCriterion() {
+        return biddableAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(BiddableAdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setBiddableAdGroupCriterion(BiddableAdGroupCriterion biddableAdGroupCriterion) {
+        this.biddableAdGroupCriterion = biddableAdGroupCriterion;
     }
 
     /**

@@ -38,7 +38,7 @@ import java.util.List;
  */
 public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableCampaignCriterion campaignCriterion;
+	private BiddableCampaignCriterion biddableCampaignCriterion;
 	
 	private String campaignName;
 
@@ -51,7 +51,7 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -59,7 +59,7 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -73,13 +73,13 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignRadiusCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -93,13 +93,13 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignRadiusCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -123,8 +123,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid();
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -138,8 +138,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -151,8 +151,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		return ((RadiusCriterion) c.getCampaignCriterion().getCriterion()).getName();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		return ((RadiusCriterion) c.getBiddableCampaignCriterion().getCriterion()).getName();
                     	} 
                     	return null;
                     }
@@ -160,8 +160,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setName(v);
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setName(v);
                     	}
                     }
                 }
@@ -171,8 +171,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Double latitude = ((RadiusCriterion) c.getCampaignCriterion().getCriterion()).getLatitudeDegrees();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Double latitude = ((RadiusCriterion) c.getBiddableCampaignCriterion().getCriterion()).getLatitudeDegrees();
                     		return latitude == null ? null: latitude.toString();
                     	} 
                     	return null;
@@ -181,8 +181,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setLatitudeDegrees(StringExtensions.nullOrDouble(v));
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setLatitudeDegrees(StringExtensions.nullOrDouble(v));
                     	}
                     }
                 }
@@ -192,8 +192,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Double longitude = ((RadiusCriterion) c.getCampaignCriterion().getCriterion()).getLongitudeDegrees();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Double longitude = ((RadiusCriterion) c.getBiddableCampaignCriterion().getCriterion()).getLongitudeDegrees();
                     		return longitude == null ? null: longitude.toString();
                     	} 
                     	return null;
@@ -202,8 +202,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setLongitudeDegrees(StringExtensions.nullOrDouble(v));
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setLongitudeDegrees(StringExtensions.nullOrDouble(v));
                     	}
                     }
                 }
@@ -213,8 +213,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Long radius = ((RadiusCriterion) c.getCampaignCriterion().getCriterion()).getRadius();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Long radius = ((RadiusCriterion) c.getBiddableCampaignCriterion().getCriterion()).getRadius();
                     		return radius == null ? null: radius.toString();
                     	} 
                     	return null;
@@ -223,8 +223,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setRadius(StringExtensions.nullOrLong(v));
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setRadius(StringExtensions.nullOrLong(v));
                     	}
                     }
                 }
@@ -234,8 +234,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignRadiusCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		DistanceUnit radiusUnit = ((RadiusCriterion) c.getCampaignCriterion().getCriterion()).getRadiusUnit();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		DistanceUnit radiusUnit = ((RadiusCriterion) c.getBiddableCampaignCriterion().getCriterion()).getRadiusUnit();
                     		return radiusUnit == null ? null: radiusUnit.value();
                     	} 
                     	return null;
@@ -244,8 +244,8 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setRadiusUnit(StringExtensions.parseOptional(v, new Function<String, DistanceUnit>() {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setRadiusUnit(StringExtensions.parseOptional(v, new Function<String, DistanceUnit>() {
 	                            @Override
 	                            public DistanceUnit apply(String s) {
 	                                return DistanceUnit.fromValue(s);
@@ -273,14 +273,14 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
     	campaignCriterion.setCriterionBid(bidMultiplier);
     	campaignCriterion.setType("BiddableCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setBiddableCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -288,15 +288,15 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
     /**
      * Gets an Campaign Criterion.
      */
-    public BiddableCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
+        return biddableCampaignCriterion;
     }
 
     /**
      * Sets an Campaign Criterion
      */
-    public void setCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
+        this.biddableCampaignCriterion = biddableCampaignCriterion;
     }
 
     /**

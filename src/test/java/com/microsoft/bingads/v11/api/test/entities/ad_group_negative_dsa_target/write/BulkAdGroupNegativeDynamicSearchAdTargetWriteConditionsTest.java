@@ -59,7 +59,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetWriteConditionsTest extends
                     new BiConsumer<BulkAdGroupNegativeDynamicSearchAdTarget, ArrayOfWebpageCondition>() {
                         @Override
                         public void accept(BulkAdGroupNegativeDynamicSearchAdTarget c, ArrayOfWebpageCondition v) {
-                            ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter().setConditions(v);
+                            ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter().setConditions(v);
                         }
                     }
             );

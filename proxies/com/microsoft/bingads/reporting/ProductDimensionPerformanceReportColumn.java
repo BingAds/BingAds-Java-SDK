@@ -69,6 +69,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="BenchmarkCtr"/>
  *     &lt;enumeration value="TopVsOther"/>
  *     &lt;enumeration value="AdDistribution"/>
+ *     &lt;enumeration value="ClickTypeId"/>
+ *     &lt;enumeration value="TotalClicksOnAdElements"/>
+ *     &lt;enumeration value="ClickType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -187,7 +190,13 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("TopVsOther")
     TOP_VS_OTHER("TopVsOther"),
     @XmlEnumValue("AdDistribution")
-    AD_DISTRIBUTION("AdDistribution");
+    AD_DISTRIBUTION("AdDistribution"),
+    @XmlEnumValue("ClickTypeId")
+    CLICK_TYPE_ID("ClickTypeId"),
+    @XmlEnumValue("TotalClicksOnAdElements")
+    TOTAL_CLICKS_ON_AD_ELEMENTS("TotalClicksOnAdElements"),
+    @XmlEnumValue("ClickType")
+    CLICK_TYPE("ClickType");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

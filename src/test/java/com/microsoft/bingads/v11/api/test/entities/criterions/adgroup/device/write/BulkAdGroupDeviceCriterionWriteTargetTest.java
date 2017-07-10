@@ -39,7 +39,7 @@ public class BulkAdGroupDeviceCriterionWriteTargetTest extends BulkAdGroupDevice
                 new BiConsumer<BulkAdGroupDeviceCriterion, String>() {
                     @Override
                     public void accept(BulkAdGroupDeviceCriterion c, String v) {
-                        ((DeviceCriterion)c.getAdGroupCriterion().getCriterion()).setDeviceName(v);
+                        ((DeviceCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setDeviceName(v);
                     }
                 }
         );

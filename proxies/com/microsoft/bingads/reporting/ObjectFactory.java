@@ -49,6 +49,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfProductPartitionUnitPerformanceReportColumn");
     private final static QName _DestinationUrlPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "DestinationUrlPerformanceReportColumn");
     private final static QName _CampaignPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "CampaignPerformanceReportRequest");
+    private final static QName _ArrayOfProductSearchQueryPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfProductSearchQueryPerformanceReportColumn");
     private final static QName _SitePerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "SitePerformanceReportColumn");
     private final static QName _AgeGenderDemographicReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AgeGenderDemographicReportRequest");
     private final static QName _ChangeTypeReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ChangeTypeReportFilter");
@@ -127,6 +128,7 @@ public class ObjectFactory {
     private final static QName _TrafficSourcesReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "TrafficSourcesReportColumn");
     private final static QName _SitePerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "SitePerformanceReportFilter");
     private final static QName _ProductOfferPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductOfferPerformanceReportRequest");
+    private final static QName _ProductSearchQueryPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductSearchQueryPerformanceReportColumn");
     private final static QName _ReportTimePeriod_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ReportTimePeriod");
     private final static QName _ReportAggregation_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ReportAggregation");
     private final static QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "BatchError");
@@ -206,6 +208,7 @@ public class ObjectFactory {
     private final static QName _ProductTargetPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductTargetPerformanceReportColumn");
     private final static QName _AccountStatusReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AccountStatusReportFilter");
     private final static QName _GeoLocationPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "GeoLocationPerformanceReportRequest");
+    private final static QName _ProductSearchQueryPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductSearchQueryPerformanceReportFilter");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _BidMatchTypeReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "BidMatchTypeReportFilter");
     private final static QName _ConversionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ConversionPerformanceReportColumn");
@@ -237,6 +240,7 @@ public class ObjectFactory {
     private final static QName _ReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ReportRequest");
     private final static QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private final static QName _PublisherUsagePerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "PublisherUsagePerformanceReportFilter");
+    private final static QName _ProductSearchQueryPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ProductSearchQueryPerformanceReportRequest");
     private final static QName _AccountThroughAdGroupReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "AccountThroughAdGroupReportScope");
     private final static QName _ArrayOfAdGroupPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "ArrayOfAdGroupPerformanceReportColumn");
     private final static QName _BrandZonePerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v9", "BrandZonePerformanceReportFilter");
@@ -365,14 +369,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchCampaignChangeHistoryReportRequest }
-     * 
-     */
-    public SearchCampaignChangeHistoryReportRequest createSearchCampaignChangeHistoryReportRequest() {
-        return new SearchCampaignChangeHistoryReportRequest();
-    }
-
-    /**
      * Create an instance of {@link CampaignReportScope }
      * 
      */
@@ -389,27 +385,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SubmitGenerateReportResponse }
-     * 
-     */
-    public SubmitGenerateReportResponse createSubmitGenerateReportResponse() {
-        return new SubmitGenerateReportResponse();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfProductPartitionPerformanceReportColumn }
      * 
      */
     public ArrayOfProductPartitionPerformanceReportColumn createArrayOfProductPartitionPerformanceReportColumn() {
         return new ArrayOfProductPartitionPerformanceReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link CampaignPerformanceReportFilter }
-     * 
-     */
-    public CampaignPerformanceReportFilter createCampaignPerformanceReportFilter() {
-        return new CampaignPerformanceReportFilter();
     }
 
     /**
@@ -429,51 +409,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfSearchQueryPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfSearchQueryPerformanceReportColumn createArrayOfSearchQueryPerformanceReportColumn() {
-        return new ArrayOfSearchQueryPerformanceReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link ConversionPerformanceReportRequest }
-     * 
-     */
-    public ConversionPerformanceReportRequest createConversionPerformanceReportRequest() {
-        return new ConversionPerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfGoalsAndFunnelsReportColumn }
-     * 
-     */
-    public ArrayOfGoalsAndFunnelsReportColumn createArrayOfGoalsAndFunnelsReportColumn() {
-        return new ArrayOfGoalsAndFunnelsReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link NegativeKeywordConflictReportRequest }
-     * 
-     */
-    public NegativeKeywordConflictReportRequest createNegativeKeywordConflictReportRequest() {
-        return new NegativeKeywordConflictReportRequest();
-    }
-
-    /**
      * Create an instance of {@link GoalsAndFunnelsReportRequest }
      * 
      */
     public GoalsAndFunnelsReportRequest createGoalsAndFunnelsReportRequest() {
         return new GoalsAndFunnelsReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link GeoLocationPerformanceReportRequest }
-     * 
-     */
-    public GeoLocationPerformanceReportRequest createGeoLocationPerformanceReportRequest() {
-        return new GeoLocationPerformanceReportRequest();
     }
 
     /**
@@ -490,22 +430,6 @@ public class ObjectFactory {
      */
     public ArrayOfKeywordPerformanceReportSort createArrayOfKeywordPerformanceReportSort() {
         return new ArrayOfKeywordPerformanceReportSort();
-    }
-
-    /**
-     * Create an instance of {@link ProductPartitionUnitPerformanceReportFilter }
-     * 
-     */
-    public ProductPartitionUnitPerformanceReportFilter createProductPartitionUnitPerformanceReportFilter() {
-        return new ProductPartitionUnitPerformanceReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSitePerformanceReportColumn }
-     * 
-     */
-    public ArrayOfSitePerformanceReportColumn createArrayOfSitePerformanceReportColumn() {
-        return new ArrayOfSitePerformanceReportColumn();
     }
 
     /**
@@ -533,30 +457,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProductDimensionPerformanceReportFilter }
-     * 
-     */
-    public ProductDimensionPerformanceReportFilter createProductDimensionPerformanceReportFilter() {
-        return new ProductDimensionPerformanceReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link TrafficSourcesReportRequest }
-     * 
-     */
-    public TrafficSourcesReportRequest createTrafficSourcesReportRequest() {
-        return new TrafficSourcesReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfConversionPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfConversionPerformanceReportColumn createArrayOfConversionPerformanceReportColumn() {
-        return new ArrayOfConversionPerformanceReportColumn();
-    }
-
-    /**
      * Create an instance of {@link SearchCampaignChangeHistoryReportFilter }
      * 
      */
@@ -570,14 +470,6 @@ public class ObjectFactory {
      */
     public AdExtensionDetailReportRequest createAdExtensionDetailReportRequest() {
         return new AdExtensionDetailReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link DestinationUrlPerformanceReportFilter }
-     * 
-     */
-    public DestinationUrlPerformanceReportFilter createDestinationUrlPerformanceReportFilter() {
-        return new DestinationUrlPerformanceReportFilter();
     }
 
     /**
@@ -605,43 +497,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AccountPerformanceReportRequest }
-     * 
-     */
-    public AccountPerformanceReportRequest createAccountPerformanceReportRequest() {
-        return new AccountPerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link GeographicalLocationReportRequest }
-     * 
-     */
-    public GeographicalLocationReportRequest createGeographicalLocationReportRequest() {
-        return new GeographicalLocationReportRequest();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfAdExtensionByKeywordReportColumn }
      * 
      */
     public ArrayOfAdExtensionByKeywordReportColumn createArrayOfAdExtensionByKeywordReportColumn() {
         return new ArrayOfAdExtensionByKeywordReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link AdExtensionByAdReportRequest }
-     * 
-     */
-    public AdExtensionByAdReportRequest createAdExtensionByAdReportRequest() {
-        return new AdExtensionByAdReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdExtensionByAdReportColumn }
-     * 
-     */
-    public ArrayOfAdExtensionByAdReportColumn createArrayOfAdExtensionByAdReportColumn() {
-        return new ArrayOfAdExtensionByAdReportColumn();
     }
 
     /**
@@ -685,14 +545,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportRequest }
-     * 
-     */
-    public ReportRequest createReportRequest() {
-        return new ReportRequest();
-    }
-
-    /**
      * Create an instance of {@link BatchError }
      * 
      */
@@ -709,51 +561,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PublisherUsagePerformanceReportFilter }
-     * 
-     */
-    public PublisherUsagePerformanceReportFilter createPublisherUsagePerformanceReportFilter() {
-        return new PublisherUsagePerformanceReportFilter();
-    }
-
-    /**
      * Create an instance of {@link OperationError }
      * 
      */
     public OperationError createOperationError() {
         return new OperationError();
-    }
-
-    /**
-     * Create an instance of {@link AccountThroughAdGroupReportScope }
-     * 
-     */
-    public AccountThroughAdGroupReportScope createAccountThroughAdGroupReportScope() {
-        return new AccountThroughAdGroupReportScope();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdGroupPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfAdGroupPerformanceReportColumn createArrayOfAdGroupPerformanceReportColumn() {
-        return new ArrayOfAdGroupPerformanceReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link BrandZonePerformanceReportFilter }
-     * 
-     */
-    public BrandZonePerformanceReportFilter createBrandZonePerformanceReportFilter() {
-        return new BrandZonePerformanceReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ShareOfVoiceReportFilter }
-     * 
-     */
-    public ShareOfVoiceReportFilter createShareOfVoiceReportFilter() {
-        return new ShareOfVoiceReportFilter();
     }
 
     /**
@@ -805,6 +617,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReportRequest }
+     * 
+     */
+    public ReportRequest createReportRequest() {
+        return new ReportRequest();
+    }
+
+    /**
      * Create an instance of {@link TacticChannelReportFilter }
      * 
      */
@@ -821,14 +641,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdPerformanceReportFilter }
-     * 
-     */
-    public AdPerformanceReportFilter createAdPerformanceReportFilter() {
-        return new AdPerformanceReportFilter();
-    }
-
-    /**
      * Create an instance of {@link CallDetailReportFilter }
      * 
      */
@@ -842,14 +654,6 @@ public class ObjectFactory {
      */
     public ArrayOfGeoLocationPerformanceReportColumn createArrayOfGeoLocationPerformanceReportColumn() {
         return new ArrayOfGeoLocationPerformanceReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link TrafficSourcesReportFilter }
-     * 
-     */
-    public TrafficSourcesReportFilter createTrafficSourcesReportFilter() {
-        return new TrafficSourcesReportFilter();
     }
 
     /**
@@ -893,22 +697,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PublisherUsagePerformanceReportRequest }
-     * 
-     */
-    public PublisherUsagePerformanceReportRequest createPublisherUsagePerformanceReportRequest() {
-        return new PublisherUsagePerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link CallDetailReportRequest }
-     * 
-     */
-    public CallDetailReportRequest createCallDetailReportRequest() {
-        return new CallDetailReportRequest();
-    }
-
-    /**
      * Create an instance of {@link TacticChannelReportRequest }
      * 
      */
@@ -941,11 +729,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportTime }
+     * Create an instance of {@link ArrayOfProductSearchQueryPerformanceReportColumn }
      * 
      */
-    public ReportTime createReportTime() {
-        return new ReportTime();
+    public ArrayOfProductSearchQueryPerformanceReportColumn createArrayOfProductSearchQueryPerformanceReportColumn() {
+        return new ArrayOfProductSearchQueryPerformanceReportColumn();
     }
 
     /**
@@ -957,35 +745,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdExtensionByKeywordReportFilter }
-     * 
-     */
-    public AdExtensionByKeywordReportFilter createAdExtensionByKeywordReportFilter() {
-        return new AdExtensionByKeywordReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAccountPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfAccountPerformanceReportColumn createArrayOfAccountPerformanceReportColumn() {
-        return new ArrayOfAccountPerformanceReportColumn();
-    }
-
-    /**
      * Create an instance of {@link GeographicalLocationReportFilter }
      * 
      */
     public GeographicalLocationReportFilter createGeographicalLocationReportFilter() {
         return new GeographicalLocationReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link AgeGenderDemographicReportFilter }
-     * 
-     */
-    public AgeGenderDemographicReportFilter createAgeGenderDemographicReportFilter() {
-        return new AgeGenderDemographicReportFilter();
     }
 
     /**
@@ -1005,14 +769,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfTacticChannelReportColumn }
-     * 
-     */
-    public ArrayOfTacticChannelReportColumn createArrayOfTacticChannelReportColumn() {
-        return new ArrayOfTacticChannelReportColumn();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfShareOfVoiceReportColumn }
      * 
      */
@@ -1026,22 +782,6 @@ public class ObjectFactory {
      */
     public ArrayOfCallDetailReportColumn createArrayOfCallDetailReportColumn() {
         return new ArrayOfCallDetailReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link ConversionPerformanceReportFilter }
-     * 
-     */
-    public ConversionPerformanceReportFilter createConversionPerformanceReportFilter() {
-        return new ConversionPerformanceReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfOperationError }
-     * 
-     */
-    public ArrayOfOperationError createArrayOfOperationError() {
-        return new ArrayOfOperationError();
     }
 
     /**
@@ -1061,27 +801,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdExtensionDetailReportFilter }
-     * 
-     */
-    public AdExtensionDetailReportFilter createAdExtensionDetailReportFilter() {
-        return new AdExtensionDetailReportFilter();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfAdPerformanceReportColumn }
      * 
      */
     public ArrayOfAdPerformanceReportColumn createArrayOfAdPerformanceReportColumn() {
         return new ArrayOfAdPerformanceReportColumn();
-    }
-
-    /**
-     * Create an instance of {@link ProductDimensionPerformanceReportRequest }
-     * 
-     */
-    public ProductDimensionPerformanceReportRequest createProductDimensionPerformanceReportRequest() {
-        return new ProductDimensionPerformanceReportRequest();
     }
 
     /**
@@ -1109,14 +833,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfProductDimensionPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfProductDimensionPerformanceReportColumn createArrayOfProductDimensionPerformanceReportColumn() {
-        return new ArrayOfProductDimensionPerformanceReportColumn();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfDestinationUrlPerformanceReportColumn }
      * 
      */
@@ -1130,14 +846,6 @@ public class ObjectFactory {
      */
     public ProductPartitionPerformanceReportRequest createProductPartitionPerformanceReportRequest() {
         return new ProductPartitionPerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link SearchQueryPerformanceReportRequest }
-     * 
-     */
-    public SearchQueryPerformanceReportRequest createSearchQueryPerformanceReportRequest() {
-        return new SearchQueryPerformanceReportRequest();
     }
 
     /**
@@ -1173,22 +881,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfBatchError }
-     * 
-     */
-    public ArrayOfBatchError createArrayOfBatchError() {
-        return new ArrayOfBatchError();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdGroupReportScope }
-     * 
-     */
-    public ArrayOfAdGroupReportScope createArrayOfAdGroupReportScope() {
-        return new ArrayOfAdGroupReportScope();
-    }
-
-    /**
      * Create an instance of {@link AdExtensionByAdReportFilter }
      * 
      */
@@ -1205,43 +897,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NegativeKeywordConflictReportFilter }
-     * 
-     */
-    public NegativeKeywordConflictReportFilter createNegativeKeywordConflictReportFilter() {
-        return new NegativeKeywordConflictReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAudiencePerformanceReportColumn }
-     * 
-     */
-    public ArrayOfAudiencePerformanceReportColumn createArrayOfAudiencePerformanceReportColumn() {
-        return new ArrayOfAudiencePerformanceReportColumn();
-    }
-
-    /**
      * Create an instance of {@link GoalsAndFunnelsReportFilter }
      * 
      */
     public GoalsAndFunnelsReportFilter createGoalsAndFunnelsReportFilter() {
         return new GoalsAndFunnelsReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link AdPerformanceReportRequest }
-     * 
-     */
-    public AdPerformanceReportRequest createAdPerformanceReportRequest() {
-        return new AdPerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfNegativeKeywordConflictReportColumn }
-     * 
-     */
-    public ArrayOfNegativeKeywordConflictReportColumn createArrayOfNegativeKeywordConflictReportColumn() {
-        return new ArrayOfNegativeKeywordConflictReportColumn();
     }
 
     /**
@@ -1253,43 +913,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Date }
-     * 
-     */
-    public Date createDate() {
-        return new Date();
-    }
-
-    /**
-     * Create an instance of {@link AdExtensionDimensionReportFilter }
-     * 
-     */
-    public AdExtensionDimensionReportFilter createAdExtensionDimensionReportFilter() {
-        return new AdExtensionDimensionReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfKeywordPerformanceReportColumn }
-     * 
-     */
-    public ArrayOfKeywordPerformanceReportColumn createArrayOfKeywordPerformanceReportColumn() {
-        return new ArrayOfKeywordPerformanceReportColumn();
-    }
-
-    /**
      * Create an instance of {@link AudiencePerformanceReportRequest }
      * 
      */
     public AudiencePerformanceReportRequest createAudiencePerformanceReportRequest() {
         return new AudiencePerformanceReportRequest();
-    }
-
-    /**
-     * Create an instance of {@link AdGroupPerformanceReportRequest }
-     * 
-     */
-    public AdGroupPerformanceReportRequest createAdGroupPerformanceReportRequest() {
-        return new AdGroupPerformanceReportRequest();
     }
 
     /**
@@ -1317,6 +945,414 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link KeywordPerformanceReportFilter }
+     * 
+     */
+    public KeywordPerformanceReportFilter createKeywordPerformanceReportFilter() {
+        return new KeywordPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link SearchCampaignChangeHistoryReportRequest }
+     * 
+     */
+    public SearchCampaignChangeHistoryReportRequest createSearchCampaignChangeHistoryReportRequest() {
+        return new SearchCampaignChangeHistoryReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link SubmitGenerateReportResponse }
+     * 
+     */
+    public SubmitGenerateReportResponse createSubmitGenerateReportResponse() {
+        return new SubmitGenerateReportResponse();
+    }
+
+    /**
+     * Create an instance of {@link CampaignPerformanceReportFilter }
+     * 
+     */
+    public CampaignPerformanceReportFilter createCampaignPerformanceReportFilter() {
+        return new CampaignPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSearchQueryPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfSearchQueryPerformanceReportColumn createArrayOfSearchQueryPerformanceReportColumn() {
+        return new ArrayOfSearchQueryPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link ConversionPerformanceReportRequest }
+     * 
+     */
+    public ConversionPerformanceReportRequest createConversionPerformanceReportRequest() {
+        return new ConversionPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfGoalsAndFunnelsReportColumn }
+     * 
+     */
+    public ArrayOfGoalsAndFunnelsReportColumn createArrayOfGoalsAndFunnelsReportColumn() {
+        return new ArrayOfGoalsAndFunnelsReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link NegativeKeywordConflictReportRequest }
+     * 
+     */
+    public NegativeKeywordConflictReportRequest createNegativeKeywordConflictReportRequest() {
+        return new NegativeKeywordConflictReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link GeoLocationPerformanceReportRequest }
+     * 
+     */
+    public GeoLocationPerformanceReportRequest createGeoLocationPerformanceReportRequest() {
+        return new GeoLocationPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ProductSearchQueryPerformanceReportFilter }
+     * 
+     */
+    public ProductSearchQueryPerformanceReportFilter createProductSearchQueryPerformanceReportFilter() {
+        return new ProductSearchQueryPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ProductPartitionUnitPerformanceReportFilter }
+     * 
+     */
+    public ProductPartitionUnitPerformanceReportFilter createProductPartitionUnitPerformanceReportFilter() {
+        return new ProductPartitionUnitPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSitePerformanceReportColumn }
+     * 
+     */
+    public ArrayOfSitePerformanceReportColumn createArrayOfSitePerformanceReportColumn() {
+        return new ArrayOfSitePerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link ProductDimensionPerformanceReportFilter }
+     * 
+     */
+    public ProductDimensionPerformanceReportFilter createProductDimensionPerformanceReportFilter() {
+        return new ProductDimensionPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link TrafficSourcesReportRequest }
+     * 
+     */
+    public TrafficSourcesReportRequest createTrafficSourcesReportRequest() {
+        return new TrafficSourcesReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfConversionPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfConversionPerformanceReportColumn createArrayOfConversionPerformanceReportColumn() {
+        return new ArrayOfConversionPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link DestinationUrlPerformanceReportFilter }
+     * 
+     */
+    public DestinationUrlPerformanceReportFilter createDestinationUrlPerformanceReportFilter() {
+        return new DestinationUrlPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link AccountPerformanceReportRequest }
+     * 
+     */
+    public AccountPerformanceReportRequest createAccountPerformanceReportRequest() {
+        return new AccountPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link GeographicalLocationReportRequest }
+     * 
+     */
+    public GeographicalLocationReportRequest createGeographicalLocationReportRequest() {
+        return new GeographicalLocationReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionByAdReportRequest }
+     * 
+     */
+    public AdExtensionByAdReportRequest createAdExtensionByAdReportRequest() {
+        return new AdExtensionByAdReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdExtensionByAdReportColumn }
+     * 
+     */
+    public ArrayOfAdExtensionByAdReportColumn createArrayOfAdExtensionByAdReportColumn() {
+        return new ArrayOfAdExtensionByAdReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link PublisherUsagePerformanceReportFilter }
+     * 
+     */
+    public PublisherUsagePerformanceReportFilter createPublisherUsagePerformanceReportFilter() {
+        return new PublisherUsagePerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ProductSearchQueryPerformanceReportRequest }
+     * 
+     */
+    public ProductSearchQueryPerformanceReportRequest createProductSearchQueryPerformanceReportRequest() {
+        return new ProductSearchQueryPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link AccountThroughAdGroupReportScope }
+     * 
+     */
+    public AccountThroughAdGroupReportScope createAccountThroughAdGroupReportScope() {
+        return new AccountThroughAdGroupReportScope();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdGroupPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfAdGroupPerformanceReportColumn createArrayOfAdGroupPerformanceReportColumn() {
+        return new ArrayOfAdGroupPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link BrandZonePerformanceReportFilter }
+     * 
+     */
+    public BrandZonePerformanceReportFilter createBrandZonePerformanceReportFilter() {
+        return new BrandZonePerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ShareOfVoiceReportFilter }
+     * 
+     */
+    public ShareOfVoiceReportFilter createShareOfVoiceReportFilter() {
+        return new ShareOfVoiceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link AdPerformanceReportFilter }
+     * 
+     */
+    public AdPerformanceReportFilter createAdPerformanceReportFilter() {
+        return new AdPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link TrafficSourcesReportFilter }
+     * 
+     */
+    public TrafficSourcesReportFilter createTrafficSourcesReportFilter() {
+        return new TrafficSourcesReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link PublisherUsagePerformanceReportRequest }
+     * 
+     */
+    public PublisherUsagePerformanceReportRequest createPublisherUsagePerformanceReportRequest() {
+        return new PublisherUsagePerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link CallDetailReportRequest }
+     * 
+     */
+    public CallDetailReportRequest createCallDetailReportRequest() {
+        return new CallDetailReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ReportTime }
+     * 
+     */
+    public ReportTime createReportTime() {
+        return new ReportTime();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionByKeywordReportFilter }
+     * 
+     */
+    public AdExtensionByKeywordReportFilter createAdExtensionByKeywordReportFilter() {
+        return new AdExtensionByKeywordReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAccountPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfAccountPerformanceReportColumn createArrayOfAccountPerformanceReportColumn() {
+        return new ArrayOfAccountPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link AgeGenderDemographicReportFilter }
+     * 
+     */
+    public AgeGenderDemographicReportFilter createAgeGenderDemographicReportFilter() {
+        return new AgeGenderDemographicReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTacticChannelReportColumn }
+     * 
+     */
+    public ArrayOfTacticChannelReportColumn createArrayOfTacticChannelReportColumn() {
+        return new ArrayOfTacticChannelReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link ConversionPerformanceReportFilter }
+     * 
+     */
+    public ConversionPerformanceReportFilter createConversionPerformanceReportFilter() {
+        return new ConversionPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfOperationError }
+     * 
+     */
+    public ArrayOfOperationError createArrayOfOperationError() {
+        return new ArrayOfOperationError();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionDetailReportFilter }
+     * 
+     */
+    public AdExtensionDetailReportFilter createAdExtensionDetailReportFilter() {
+        return new AdExtensionDetailReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ProductDimensionPerformanceReportRequest }
+     * 
+     */
+    public ProductDimensionPerformanceReportRequest createProductDimensionPerformanceReportRequest() {
+        return new ProductDimensionPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfProductDimensionPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfProductDimensionPerformanceReportColumn createArrayOfProductDimensionPerformanceReportColumn() {
+        return new ArrayOfProductDimensionPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link SearchQueryPerformanceReportRequest }
+     * 
+     */
+    public SearchQueryPerformanceReportRequest createSearchQueryPerformanceReportRequest() {
+        return new SearchQueryPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBatchError }
+     * 
+     */
+    public ArrayOfBatchError createArrayOfBatchError() {
+        return new ArrayOfBatchError();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdGroupReportScope }
+     * 
+     */
+    public ArrayOfAdGroupReportScope createArrayOfAdGroupReportScope() {
+        return new ArrayOfAdGroupReportScope();
+    }
+
+    /**
+     * Create an instance of {@link NegativeKeywordConflictReportFilter }
+     * 
+     */
+    public NegativeKeywordConflictReportFilter createNegativeKeywordConflictReportFilter() {
+        return new NegativeKeywordConflictReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAudiencePerformanceReportColumn }
+     * 
+     */
+    public ArrayOfAudiencePerformanceReportColumn createArrayOfAudiencePerformanceReportColumn() {
+        return new ArrayOfAudiencePerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link AdPerformanceReportRequest }
+     * 
+     */
+    public AdPerformanceReportRequest createAdPerformanceReportRequest() {
+        return new AdPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfNegativeKeywordConflictReportColumn }
+     * 
+     */
+    public ArrayOfNegativeKeywordConflictReportColumn createArrayOfNegativeKeywordConflictReportColumn() {
+        return new ArrayOfNegativeKeywordConflictReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link Date }
+     * 
+     */
+    public Date createDate() {
+        return new Date();
+    }
+
+    /**
+     * Create an instance of {@link AdExtensionDimensionReportFilter }
+     * 
+     */
+    public AdExtensionDimensionReportFilter createAdExtensionDimensionReportFilter() {
+        return new AdExtensionDimensionReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeywordPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfKeywordPerformanceReportColumn createArrayOfKeywordPerformanceReportColumn() {
+        return new ArrayOfKeywordPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link AdGroupPerformanceReportRequest }
+     * 
+     */
+    public AdGroupPerformanceReportRequest createAdGroupPerformanceReportRequest() {
+        return new AdGroupPerformanceReportRequest();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfAdExtensionDetailReportColumn }
      * 
      */
@@ -1330,14 +1366,6 @@ public class ObjectFactory {
      */
     public ProductPartitionPerformanceReportFilter createProductPartitionPerformanceReportFilter() {
         return new ProductPartitionPerformanceReportFilter();
-    }
-
-    /**
-     * Create an instance of {@link KeywordPerformanceReportFilter }
-     * 
-     */
-    public KeywordPerformanceReportFilter createKeywordPerformanceReportFilter() {
-        return new KeywordPerformanceReportFilter();
     }
 
     /**
@@ -1523,7 +1551,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "BidStrategyTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     public JAXBElement<Collection<BidStrategyTypeReportFilter>> createBidStrategyTypeReportFilter(Collection<BidStrategyTypeReportFilter> value) {
         return new JAXBElement<Collection<BidStrategyTypeReportFilter>>(_BidStrategyTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -1619,6 +1647,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfProductSearchQueryPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ArrayOfProductSearchQueryPerformanceReportColumn")
+    public JAXBElement<ArrayOfProductSearchQueryPerformanceReportColumn> createArrayOfProductSearchQueryPerformanceReportColumn(ArrayOfProductSearchQueryPerformanceReportColumn value) {
+        return new JAXBElement<ArrayOfProductSearchQueryPerformanceReportColumn>(_ArrayOfProductSearchQueryPerformanceReportColumn_QNAME, ArrayOfProductSearchQueryPerformanceReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SitePerformanceReportColumn }{@code >}}
      * 
      */
@@ -1641,7 +1678,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ChangeTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     public JAXBElement<Collection<ChangeTypeReportFilter>> createChangeTypeReportFilter(Collection<ChangeTypeReportFilter> value) {
         return new JAXBElement<Collection<ChangeTypeReportFilter>>(_ChangeTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -1939,7 +1976,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdDistributionReportFilter")
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     public JAXBElement<Collection<AdDistributionReportFilter>> createAdDistributionReportFilter(Collection<AdDistributionReportFilter> value) {
         return new JAXBElement<Collection<AdDistributionReportFilter>>(_AdDistributionReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2192,7 +2229,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeviceOSReportFilter")
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     public JAXBElement<Collection<DeviceOSReportFilter>> createDeviceOSReportFilter(Collection<DeviceOSReportFilter> value) {
         return new JAXBElement<Collection<DeviceOSReportFilter>>(_DeviceOSReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2256,7 +2293,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdStatusReportFilter")
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     public JAXBElement<Collection<AdStatusReportFilter>> createAdStatusReportFilter(Collection<AdStatusReportFilter> value) {
         return new JAXBElement<Collection<AdStatusReportFilter>>(_AdStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2322,6 +2359,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductOfferPerformanceReportRequest")
     public JAXBElement<ProductOfferPerformanceReportRequest> createProductOfferPerformanceReportRequest(ProductOfferPerformanceReportRequest value) {
         return new JAXBElement<ProductOfferPerformanceReportRequest>(_ProductOfferPerformanceReportRequest_QNAME, ProductOfferPerformanceReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductSearchQueryPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductSearchQueryPerformanceReportColumn")
+    public JAXBElement<ProductSearchQueryPerformanceReportColumn> createProductSearchQueryPerformanceReportColumn(ProductSearchQueryPerformanceReportColumn value) {
+        return new JAXBElement<ProductSearchQueryPerformanceReportColumn>(_ProductSearchQueryPerformanceReportColumn_QNAME, ProductSearchQueryPerformanceReportColumn.class, null, value);
     }
 
     /**
@@ -2500,7 +2546,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "RichAdSubTypeFilter")
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     public JAXBElement<Collection<RichAdSubTypeFilter>> createRichAdSubTypeFilter(Collection<RichAdSubTypeFilter> value) {
         return new JAXBElement<Collection<RichAdSubTypeFilter>>(_RichAdSubTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2591,7 +2637,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeviceTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     public JAXBElement<Collection<DeviceTypeReportFilter>> createDeviceTypeReportFilter(Collection<DeviceTypeReportFilter> value) {
         return new JAXBElement<Collection<DeviceTypeReportFilter>>(_DeviceTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2682,7 +2728,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "DeliveredMatchTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     public JAXBElement<Collection<DeliveredMatchTypeReportFilter>> createDeliveredMatchTypeReportFilter(Collection<DeliveredMatchTypeReportFilter> value) {
         return new JAXBElement<Collection<DeliveredMatchTypeReportFilter>>(_DeliveredMatchTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2764,7 +2810,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdGroupStatusReportFilter")
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     public JAXBElement<Collection<AdGroupStatusReportFilter>> createAdGroupStatusReportFilter(Collection<AdGroupStatusReportFilter> value) {
         return new JAXBElement<Collection<AdGroupStatusReportFilter>>(_AdGroupStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3027,7 +3073,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AccountStatusReportFilter")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     public JAXBElement<Collection<AccountStatusReportFilter>> createAccountStatusReportFilter(Collection<AccountStatusReportFilter> value) {
         return new JAXBElement<Collection<AccountStatusReportFilter>>(_AccountStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3039,6 +3085,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "GeoLocationPerformanceReportRequest")
     public JAXBElement<GeoLocationPerformanceReportRequest> createGeoLocationPerformanceReportRequest(GeoLocationPerformanceReportRequest value) {
         return new JAXBElement<GeoLocationPerformanceReportRequest>(_GeoLocationPerformanceReportRequest_QNAME, GeoLocationPerformanceReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductSearchQueryPerformanceReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductSearchQueryPerformanceReportFilter")
+    public JAXBElement<ProductSearchQueryPerformanceReportFilter> createProductSearchQueryPerformanceReportFilter(ProductSearchQueryPerformanceReportFilter value) {
+        return new JAXBElement<ProductSearchQueryPerformanceReportFilter>(_ProductSearchQueryPerformanceReportFilter_QNAME, ProductSearchQueryPerformanceReportFilter.class, null, value);
     }
 
     /**
@@ -3056,7 +3111,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "BidMatchTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     public JAXBElement<Collection<BidMatchTypeReportFilter>> createBidMatchTypeReportFilter(Collection<BidMatchTypeReportFilter> value) {
         return new JAXBElement<Collection<BidMatchTypeReportFilter>>(_BidMatchTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3120,7 +3175,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "PricingModelReportFilter")
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     public JAXBElement<Collection<PricingModelReportFilter>> createPricingModelReportFilter(Collection<PricingModelReportFilter> value) {
         return new JAXBElement<Collection<PricingModelReportFilter>>(_PricingModelReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3139,7 +3194,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ChangeEntityReportFilter")
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     public JAXBElement<Collection<ChangeEntityReportFilter>> createChangeEntityReportFilter(Collection<ChangeEntityReportFilter> value) {
         return new JAXBElement<Collection<ChangeEntityReportFilter>>(_ChangeEntityReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3149,7 +3204,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "AdTypeReportFilter")
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     public JAXBElement<Collection<AdTypeReportFilter>> createAdTypeReportFilter(Collection<AdTypeReportFilter> value) {
         return new JAXBElement<Collection<AdTypeReportFilter>>(_AdTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3213,7 +3268,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ComponentTypeFilter")
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     public JAXBElement<Collection<ComponentTypeFilter>> createComponentTypeFilter(Collection<ComponentTypeFilter> value) {
         return new JAXBElement<Collection<ComponentTypeFilter>>(_ComponentTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3241,7 +3296,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "CampaignStatusReportFilter")
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     public JAXBElement<Collection<CampaignStatusReportFilter>> createCampaignStatusReportFilter(Collection<CampaignStatusReportFilter> value) {
         return new JAXBElement<Collection<CampaignStatusReportFilter>>(_CampaignStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -3325,6 +3380,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "PublisherUsagePerformanceReportFilter")
     public JAXBElement<PublisherUsagePerformanceReportFilter> createPublisherUsagePerformanceReportFilter(PublisherUsagePerformanceReportFilter value) {
         return new JAXBElement<PublisherUsagePerformanceReportFilter>(_PublisherUsagePerformanceReportFilter_QNAME, PublisherUsagePerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductSearchQueryPerformanceReportRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v9", name = "ProductSearchQueryPerformanceReportRequest")
+    public JAXBElement<ProductSearchQueryPerformanceReportRequest> createProductSearchQueryPerformanceReportRequest(ProductSearchQueryPerformanceReportRequest value) {
+        return new JAXBElement<ProductSearchQueryPerformanceReportRequest>(_ProductSearchQueryPerformanceReportRequest_QNAME, ProductSearchQueryPerformanceReportRequest.class, null, value);
     }
 
     /**

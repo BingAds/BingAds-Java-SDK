@@ -37,7 +37,7 @@ public class BulkCampaignDeviceCriterionReadParentIdTest extends BulkCampaignDev
                 new Function<BulkCampaignDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDeviceCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

@@ -41,7 +41,7 @@ public class BulkCampaignAgeCriterionReadStatusTest extends BulkCampaignAgeCrite
                 new Function<BulkCampaignAgeCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignAgeCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

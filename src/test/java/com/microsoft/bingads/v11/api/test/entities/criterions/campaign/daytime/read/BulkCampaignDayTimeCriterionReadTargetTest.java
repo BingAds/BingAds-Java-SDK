@@ -42,7 +42,7 @@ public class BulkCampaignDayTimeCriterionReadTargetTest extends BulkCampaignDayT
                 new Function<BulkCampaignDayTimeCriterion, Day>() {
                     @Override
                     public Day apply(BulkCampaignDayTimeCriterion c) {
-                        return ((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).getDay();
+                        return ((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).getDay();
                     }
                 }
         );

@@ -39,7 +39,7 @@ public class BulkAdGroupRadiusCriterionWriteLatitudeTest extends BulkAdGroupRadi
                 new BiConsumer<BulkAdGroupRadiusCriterion, Double>() {
                     @Override
                     public void accept(BulkAdGroupRadiusCriterion c, Double v) {
-                    	((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setLatitudeDegrees(v);
+                    	((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setLatitudeDegrees(v);
                     }
                 }
         );

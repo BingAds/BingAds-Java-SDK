@@ -42,7 +42,7 @@ public class BulkAdGroupGenderCriterionReadTargetTest extends BulkAdGroupGenderC
                 new Function<BulkAdGroupGenderCriterion, GenderType>() {
                     @Override
                     public GenderType apply(BulkAdGroupGenderCriterion c) {
-                        return ((GenderCriterion)c.getAdGroupCriterion().getCriterion()).getGenderType();
+                        return ((GenderCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getGenderType();
                     }
                 }
         );

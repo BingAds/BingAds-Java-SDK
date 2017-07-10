@@ -39,7 +39,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetWriteCriterionNameTest exte
                 new BiConsumer<BulkAdGroupNegativeDynamicSearchAdTarget, String>() {
                     @Override
                     public void accept(BulkAdGroupNegativeDynamicSearchAdTarget c, String v) {
-                        ((Webpage)c.getAdGroupCriterion().getCriterion()).getParameter().setCriterionName(v);
+                        ((Webpage)c.getNegativeAdGroupCriterion().getCriterion()).getParameter().setCriterionName(v);
                     }
                 }
         );

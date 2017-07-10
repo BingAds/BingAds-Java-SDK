@@ -38,7 +38,7 @@ import java.util.List;
  */
 public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableAdGroupCriterion adGroupCriterion;
+	private BiddableAdGroupCriterion biddableAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -53,7 +53,7 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getBiddableAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -61,7 +61,7 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -75,13 +75,13 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupRadiusCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -95,13 +95,13 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupRadiusCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -140,8 +140,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid();
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -155,8 +155,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -168,8 +168,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		return ((RadiusCriterion) c.getAdGroupCriterion().getCriterion()).getName();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		return ((RadiusCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getName();
                     	} 
                     	return null;
                     }
@@ -177,8 +177,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setName(v);
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setName(v);
                     	}
                     }
                 }
@@ -188,8 +188,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Double latitude = ((RadiusCriterion) c.getAdGroupCriterion().getCriterion()).getLatitudeDegrees();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Double latitude = ((RadiusCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getLatitudeDegrees();
                     		return latitude == null ? null: latitude.toString();
                     	} 
                     	return null;
@@ -198,8 +198,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setLatitudeDegrees(StringExtensions.nullOrDouble(v));
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setLatitudeDegrees(StringExtensions.nullOrDouble(v));
                     	}
                     }
                 }
@@ -209,8 +209,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Double longitude = ((RadiusCriterion) c.getAdGroupCriterion().getCriterion()).getLongitudeDegrees();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Double longitude = ((RadiusCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getLongitudeDegrees();
                     		return longitude == null ? null: longitude.toString();
                     	} 
                     	return null;
@@ -219,8 +219,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setLongitudeDegrees(StringExtensions.nullOrDouble(v));
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setLongitudeDegrees(StringExtensions.nullOrDouble(v));
                     	}
                     }
                 }
@@ -230,8 +230,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		Long radius = ((RadiusCriterion) c.getAdGroupCriterion().getCriterion()).getRadius();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		Long radius = ((RadiusCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getRadius();
                     		return radius == null ? null: radius.toString();
                     	} 
                     	return null;
@@ -240,8 +240,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setRadius(StringExtensions.nullOrLong(v));
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setRadius(StringExtensions.nullOrLong(v));
                     	}
                     }
                 }
@@ -251,8 +251,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
-                    		DistanceUnit radiusUnit = ((RadiusCriterion) c.getAdGroupCriterion().getCriterion()).getRadiusUnit();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {    
+                    		DistanceUnit radiusUnit = ((RadiusCriterion) c.getBiddableAdGroupCriterion().getCriterion()).getRadiusUnit();
                     		return radiusUnit == null ? null: radiusUnit.value();
                     	} 
                     	return null;
@@ -261,8 +261,8 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupRadiusCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
-	                		((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setRadiusUnit(StringExtensions.parseOptional(v, new Function<String, DistanceUnit>() {
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof RadiusCriterion) {                   		
+	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setRadiusUnit(StringExtensions.parseOptional(v, new Function<String, DistanceUnit>() {
 	                            @Override
 	                            public DistanceUnit apply(String s) {
 	                                return DistanceUnit.fromValue(s);
@@ -290,14 +290,14 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
     	adGroupCriterion.setCriterionBid(bidMultiplier);
     	adGroupCriterion.setType("BiddableAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);  
+    	setBiddableAdGroupCriterion(adGroupCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -305,15 +305,15 @@ public class BulkAdGroupRadiusCriterion extends SingleRecordBulkEntity {
     /**
      * Gets an Ad Group Criterion.
      */
-    public BiddableAdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public BiddableAdGroupCriterion getBiddableAdGroupCriterion() {
+        return biddableAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(BiddableAdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setBiddableAdGroupCriterion(BiddableAdGroupCriterion biddableAdGroupCriterion) {
+        this.biddableAdGroupCriterion = biddableAdGroupCriterion;
     }
 
     /**

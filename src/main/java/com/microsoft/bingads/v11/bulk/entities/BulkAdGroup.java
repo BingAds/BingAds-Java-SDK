@@ -318,13 +318,13 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        return c.getAdGroup().getLanguage();
+                        return StringExtensions.toOptionalBulkString(c.getAdGroup().getLanguage());
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
                     @Override
                     public void accept(String v, BulkAdGroup c) {
-                        c.getAdGroup().setLanguage(v);
+                        c.getAdGroup().setLanguage(StringExtensions.getValueOrEmptyString(v));
                     }
                 }
         ));

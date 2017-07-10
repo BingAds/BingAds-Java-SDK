@@ -41,7 +41,7 @@ public class BulkAdGroupDynamicSearchAdTargetWriteStatusTest extends BulkAdGroup
                 new BiConsumer<BulkAdGroupDynamicSearchAdTarget, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupDynamicSearchAdTarget c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getBiddableAdGroupCriterion().setStatus(v);
                     }
                 }
         );

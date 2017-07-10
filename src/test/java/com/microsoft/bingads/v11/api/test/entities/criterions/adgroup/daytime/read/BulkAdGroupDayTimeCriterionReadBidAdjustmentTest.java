@@ -42,7 +42,7 @@ public class BulkAdGroupDayTimeCriterionReadBidAdjustmentTest extends BulkAdGrou
                 new Function<BulkAdGroupDayTimeCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupDayTimeCriterion c) {
-                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

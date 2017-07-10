@@ -116,21 +116,6 @@ public class BulkAppAdExtension extends BulkAdExtension<AppAdExtension> {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkAppAdExtension, String>(StringTable.DevicePreference,
-                new Function<BulkAppAdExtension, String>() {
-                    @Override
-                    public String apply(BulkAppAdExtension c) {
-                        return StringExtensions.toDevicePreferenceBulkString(c.getAppAdExtension().getDevicePreference());
-                    }
-                },
-                new BiConsumer<String, BulkAppAdExtension>() {
-                    @Override
-                    public void accept(String v, BulkAppAdExtension c) {
-                        c.getAppAdExtension().setDevicePreference(StringExtensions.parseDevicePreference(v));
-                    }
-                }
-        ));
-
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

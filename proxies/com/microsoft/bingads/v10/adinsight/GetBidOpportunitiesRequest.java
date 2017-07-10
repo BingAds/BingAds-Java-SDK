@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -47,7 +46,6 @@ public class GetBidOpportunitiesRequest {
     protected Long campaignId;
     @XmlElement(name = "OpportunityType", namespace = "Microsoft.Advertiser.AdInsight.Api.Service", type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
-    @XmlSchemaType(name = "anySimpleType")
     protected Collection<BidOpportunityType> opportunityType;
 
     /**

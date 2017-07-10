@@ -100,21 +100,6 @@ public class BulkSitelink2AdExtension extends BulkAdExtension<Sitelink2AdExtensi
                 },
                 true
         ));
-
-        m.add(new SimpleBulkMapping<BulkSitelink2AdExtension, String>(StringTable.DevicePreference,
-                new Function<BulkSitelink2AdExtension, String>() {
-                    @Override
-                    public String apply(BulkSitelink2AdExtension c) {
-                        return StringExtensions.toDevicePreferenceBulkString(c.getAdExtension().getDevicePreference());
-                    }
-                },
-                new BiConsumer<String, BulkSitelink2AdExtension>() {
-                    @Override
-                    public void accept(String v, BulkSitelink2AdExtension c) {
-                        c.getAdExtension().setDevicePreference(StringExtensions.parseDevicePreference(v));
-                    }
-                }
-        ));
         
         m.add(new SimpleBulkMapping<BulkSitelink2AdExtension, String>(StringTable.SiteLinkDisplayText,
                 new Function<BulkSitelink2AdExtension, String>() {

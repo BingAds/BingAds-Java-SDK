@@ -45,7 +45,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadUrlCustomParametersTest extends
                 new Function<BulkAdGroupDynamicSearchAdTarget, CustomParameters>() {
                     @Override
                     public CustomParameters apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getUrlCustomParameters();
+                        return ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters();
                     }
                 }
         );
@@ -73,7 +73,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadUrlCustomParametersTest extends
         new Function<BulkAdGroupDynamicSearchAdTarget, CustomParameters>() {
             @Override
             public CustomParameters apply(BulkAdGroupDynamicSearchAdTarget c) {
-                return ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getUrlCustomParameters();
+                return ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters();
             }
         }, new Supplier<BulkAdGroupDynamicSearchAdTarget>() {
             @Override

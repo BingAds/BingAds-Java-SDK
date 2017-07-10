@@ -9,6 +9,7 @@ import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.internal.bulk.StringTable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -284,6 +285,29 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.Language,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return StringExtensions.writeCampaignLanguages(";", c.getCampaign().getLanguages());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                    	ArrayOfstring languages = new ArrayOfstring();
+                    	List<String> languageArray = StringExtensions.parseCampaignLanguages(v);
+                    	if(languageArray == null) {
+                    		languages = null;
+                    	} else {
+                    		languages.getStrings().addAll(languageArray);
+                    	}
+                    	
+                        c.getCampaign().setLanguages(languages);
+                    }
+                }
+        ));
+
         m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BudgetType,
                 new Function<BulkCampaign, String>() {
                     @Override
@@ -483,6 +507,52 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.LocalInventoryAdsEnabled,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return null;
+                            }
+
+                            return StringExtensions.toBooleanBulkString(shoppingSetting.getLocalInventoryAdsEnabled());
+                        }
+
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
+                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+
+                            if (shoppingSetting == null) {
+                                return;
+                            }
+
+                            shoppingSetting.setLocalInventoryAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                                @Override
+                                public Boolean apply(String value) {
+                                    return Boolean.parseBoolean(value);
+                                }
+                            }));
+                        }
+                    }
+                }
+        ));
         
         m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.TrackingTemplate,
                 new Function<BulkCampaign, String>() {
@@ -517,27 +587,76 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
-        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BidStrategyType,
-                new Function<BulkCampaign, String>() {
+
+        m.add(new ComplexBulkMapping<BulkCampaign>(
+                new BiConsumer<BulkCampaign, RowValues>() {
                     @Override
-                    public String apply(BulkCampaign c) {
+                    public void accept(BulkCampaign c, RowValues values) {
+                        // BiddingScheme to Csv
                         try {
-							return StringExtensions.toBiddingSchemeBulkString(c.getCampaign().getBiddingScheme());
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						return null;
+                            BiddingScheme biddingScheme = c.getCampaign().getBiddingScheme();
+
+                            if (biddingScheme == null) {
+                                return;
+                            }
+
+                            values.put(StringTable.BidStrategyType, StringExtensions.toBiddingSchemeBulkString(biddingScheme));
+
+                            if (c.getCampaign().getBiddingScheme() instanceof MaxClicksBiddingScheme) {
+                                Bid maxCpc = ((MaxClicksBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                            }
+                            else if (c.getCampaign().getBiddingScheme() instanceof MaxConversionsBiddingScheme) {
+                                Bid maxCpc = ((MaxConversionsBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                            }
+                            else if (c.getCampaign().getBiddingScheme() instanceof TargetCpaBiddingScheme) {
+                                Bid maxCpc = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                                Double targetCpa = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getTargetCpa();
+                                if (targetCpa != null) {
+                                	values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());
+                                }
+                            }
+                        
+                        } catch (Exception e) {
+                                e.printStackTrace();
+                        }
                     }
                 },
-                new BiConsumer<String, BulkCampaign>() {
+                new BiConsumer<RowValues, BulkCampaign>() {
                     @Override
-                    public void accept(String v, BulkCampaign c) {
+                    public void accept(RowValues values, BulkCampaign c) {
+                        // Csv to BiddingScheme
                         try {
-							c.getCampaign().setBiddingScheme(StringExtensions.parseBiddingScheme(v));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+                            String bidStrategyTypeRowValue = values.get(StringTable.BidStrategyType);
+                            BiddingScheme biddingScheme = StringExtensions.parseBiddingScheme(bidStrategyTypeRowValue);
+
+                            if (biddingScheme == null) {
+                                return;
+                            }
+
+                            String maxCpcRowValue = values.get(StringTable.BidStrategyMaxCpc);
+                            String targetCpaRowValue = values.get(StringTable.BidStrategyTargetCpa);
+
+                            Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
+                            Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
+
+                            if (biddingScheme instanceof MaxClicksBiddingScheme) {
+                                ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                            }
+                            else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
+                                ((MaxConversionsBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                            }
+                            else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+                                ((TargetCpaBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                                ((TargetCpaBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
+                            }
+
+                            c.getCampaign().setBiddingScheme(biddingScheme);
+                        } catch (Exception e) {
+                                e.printStackTrace();
+                        }
                     }
                 }
         ));

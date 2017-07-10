@@ -37,7 +37,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadParentIdTest extends BulkAdGrou
                 new Function<BulkAdGroupDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 }
         );

@@ -42,7 +42,7 @@ public class BulkCampaignDayTimeCriterionReadToMinuteTest extends BulkCampaignDa
                 new Function<BulkCampaignDayTimeCriterion, Minute>() {
                     @Override
                     public Minute apply(BulkCampaignDayTimeCriterion c) {
-                        return ((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).getFromMinute();
+                        return ((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).getFromMinute();
                     }
                 }
         );

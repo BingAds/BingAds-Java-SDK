@@ -41,7 +41,7 @@ public class BulkCampaignDeviceCriterionWriteBidAdjustmentTest extends BulkCampa
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setCampaignCriterion(adGroupCriterion);
+                        c.setBiddableCampaignCriterion(adGroupCriterion);
 
                         BidMultiplier bid = new BidMultiplier();
 

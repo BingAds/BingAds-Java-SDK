@@ -42,7 +42,7 @@ public class BulkAdGroupDayTimeCriterionReadToMinuteTest extends BulkAdGroupDayT
                 new Function<BulkAdGroupDayTimeCriterion, Minute>() {
                     @Override
                     public Minute apply(BulkAdGroupDayTimeCriterion c) {
-                        return ((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).getFromMinute();
+                        return ((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getFromMinute();
                     }
                 }
         );

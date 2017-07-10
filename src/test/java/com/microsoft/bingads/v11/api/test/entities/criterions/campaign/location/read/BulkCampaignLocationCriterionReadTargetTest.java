@@ -40,7 +40,7 @@ public class BulkCampaignLocationCriterionReadTargetTest extends BulkCampaignLoc
                 new Function<BulkCampaignLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignLocationCriterion c) {
-                        return ((LocationCriterion)c.getCampaignCriterion().getCriterion()).getLocationId();
+                        return ((LocationCriterion)c.getBiddableCampaignCriterion().getCriterion()).getLocationId();
                     }
                 }
         );

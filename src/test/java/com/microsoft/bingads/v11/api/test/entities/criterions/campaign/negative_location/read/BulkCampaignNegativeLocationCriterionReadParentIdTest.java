@@ -37,7 +37,7 @@ public class BulkCampaignNegativeLocationCriterionReadParentIdTest extends BulkC
                 new Function<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeLocationCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getNegativeCampaignCriterion().getCampaignId();
                     }
                 }
         );

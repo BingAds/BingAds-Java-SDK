@@ -40,7 +40,7 @@ public class BulkAdGroupDayTimeCriterionWriteToHourTest extends BulkAdGroupDayTi
                 new BiConsumer<BulkAdGroupDayTimeCriterion, Integer>() {
                     @Override
                     public void accept(BulkAdGroupDayTimeCriterion c, Integer v) {
-                        ((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).setToHour(v);
+                        ((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setToHour(v);
                     }
                 }
         );

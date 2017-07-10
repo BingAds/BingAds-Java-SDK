@@ -39,7 +39,7 @@ import java.util.List;
  */
 public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableCampaignCriterion campaignCriterion;
+	private BiddableCampaignCriterion biddableCampaignCriterion;
 	
 	private String campaignName;
 
@@ -52,7 +52,7 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -60,7 +60,7 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -74,13 +74,13 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -94,13 +94,13 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -124,8 +124,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid();
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -139,8 +139,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -152,8 +152,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {    
-                    		Day day = ((DayTimeCriterion) c.getCampaignCriterion().getCriterion()).getDay();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {    
+                    		Day day = ((DayTimeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getDay();
                     		return day == null ? null : day.value();
                     	} 
                     	return null;
@@ -162,9 +162,9 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
+	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
 	                                @Override
 	                                public Day apply(String s) {
 	                                    return Day.fromValue(s);
@@ -179,8 +179,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Integer hour = ((DayTimeCriterion) c.getCampaignCriterion().getCriterion()).getFromHour();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Integer hour = ((DayTimeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getFromHour();
                     		return StringExtensions.toBulkString(hour);
                     	} 
                     	return null;
@@ -189,9 +189,9 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setFromHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setFromHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
 	                                @Override
 	                                public Integer apply(String s) {
 	                                    return Integer.parseInt(s);
@@ -206,8 +206,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Integer hour = ((DayTimeCriterion) c.getCampaignCriterion().getCriterion()).getToHour();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Integer hour = ((DayTimeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getToHour();
                     		return StringExtensions.toBulkString(hour);
                     	} 
                     	return null;
@@ -216,9 +216,9 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setToHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setToHour(StringExtensions.parseOptional(v, new Function<String, Integer>() {
 	                                @Override
 	                                public Integer apply(String s) {
 	                                    return Integer.parseInt(s);
@@ -233,8 +233,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Minute minute = ((DayTimeCriterion) c.getCampaignCriterion().getCriterion()).getFromMinute();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Minute minute = ((DayTimeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getFromMinute();
                     		return minute == null ? null : StringExtensions.toMinuteBulkString(minute);
                     	} 
                     	return null;
@@ -243,9 +243,9 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setFromMinute(StringExtensions.parseMinute(v));
+	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setFromMinute(StringExtensions.parseMinute(v));
                     	}
                     }
                 }
@@ -255,8 +255,8 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignDayTimeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDayTimeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
-                    		Minute minute = ((DayTimeCriterion) c.getCampaignCriterion().getCriterion()).getToMinute();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    		Minute minute = ((DayTimeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getToMinute();
                     		return minute == null ? null : StringExtensions.toMinuteBulkString(minute);
                     	} 
                     	return null;
@@ -265,9 +265,9 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof DayTimeCriterion) {
                     		
-	                		((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setToMinute(StringExtensions.parseMinute(v));
+	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setToMinute(StringExtensions.parseMinute(v));
                     	}
                     }
                 }
@@ -290,14 +290,14 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
     	campaignCriterion.setCriterionBid(bidMultiplier);
     	campaignCriterion.setType("BiddableCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setBiddableCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -305,15 +305,15 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
     /**
      * Gets a Campaign Criterion.
      */
-    public BiddableCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
+        return biddableCampaignCriterion;
     }
 
     /**
      * Sets a Campaign Criterion
      */
-    public void setCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
+        this.biddableCampaignCriterion = biddableCampaignCriterion;
     }
 
     /**

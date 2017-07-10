@@ -40,7 +40,7 @@ public class BulkAdGroupRadiusCriterionReadRadiusTest extends BulkAdGroupRadiusC
                 new Function<BulkAdGroupRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).getRadius();
+                        return ((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getRadius();
                     }
                 }
         );

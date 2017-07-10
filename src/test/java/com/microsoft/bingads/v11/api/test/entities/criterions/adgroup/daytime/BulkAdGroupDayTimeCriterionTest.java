@@ -19,7 +19,7 @@ public abstract class BulkAdGroupDayTimeCriterionTest extends BulkEntityTest<Bul
         BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
         biddableAdGroupCriterion.setCriterion(daytimeCriterion);
 
-        entity.setAdGroupCriterion(biddableAdGroupCriterion);
+        entity.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
     }
 
     @Override

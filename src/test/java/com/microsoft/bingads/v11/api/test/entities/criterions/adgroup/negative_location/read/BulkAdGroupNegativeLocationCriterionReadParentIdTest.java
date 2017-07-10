@@ -37,7 +37,7 @@ public class BulkAdGroupNegativeLocationCriterionReadParentIdTest extends BulkAd
                 new Function<BulkAdGroupNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getNegativeAdGroupCriterion().getAdGroupId();
                     }
                 }
         );

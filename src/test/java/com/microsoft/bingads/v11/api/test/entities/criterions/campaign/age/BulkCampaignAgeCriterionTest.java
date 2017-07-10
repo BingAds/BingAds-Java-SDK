@@ -19,7 +19,7 @@ public abstract class BulkCampaignAgeCriterionTest extends BulkEntityTest<BulkCa
         BiddableCampaignCriterion biddableCampaignCriterion = new BiddableCampaignCriterion();
         biddableCampaignCriterion.setCriterion(ageCriterion);
 
-        entity.setCampaignCriterion(biddableCampaignCriterion);
+        entity.setBiddableCampaignCriterion(biddableCampaignCriterion);
     }
 
     @Override

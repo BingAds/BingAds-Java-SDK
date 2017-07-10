@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableCampaignCriterion campaignCriterion;
+	private BiddableCampaignCriterion biddableCampaignCriterion;
 	
 	private String campaignName;
 
@@ -49,7 +49,7 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new Function<BulkCampaignLocationIntentCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignLocationIntentCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -57,7 +57,7 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new BiConsumer<String, BulkCampaignLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignLocationIntentCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -71,13 +71,13 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new Function<BulkCampaignLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignLocationIntentCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignLocationIntentCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -91,13 +91,13 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new Function<BulkCampaignLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignLocationIntentCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignLocationIntentCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -121,8 +121,8 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new Function<BulkCampaignLocationIntentCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignLocationIntentCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationIntentCriterion) {    
-                    		IntentOption intentOption = ((LocationIntentCriterion) c.getCampaignCriterion().getCriterion()).getIntentOption();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof LocationIntentCriterion) {    
+                    		IntentOption intentOption = ((LocationIntentCriterion) c.getBiddableCampaignCriterion().getCriterion()).getIntentOption();
                     		return intentOption == null ? null : intentOption.value();
                     	} 
                     	return null;
@@ -131,8 +131,8 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                 new BiConsumer<String, BulkCampaignLocationIntentCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignLocationIntentCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationIntentCriterion) {                   		
-	                		((LocationIntentCriterion)c.getCampaignCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof LocationIntentCriterion) {                   		
+	                		((LocationIntentCriterion)c.getBiddableCampaignCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
 	                                @Override
 	                                public IntentOption apply(String s) {
 	                                    return IntentOption.fromValue(s);
@@ -156,14 +156,14 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
     	campaignCriterion.getCriterion().setType(LocationIntentCriterion.class.getSimpleName());
     	campaignCriterion.setType("BiddableCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setBiddableCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -171,15 +171,15 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
     /**
      * Gets a Campaign Criterion.
      */
-    public BiddableCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
+        return biddableCampaignCriterion;
     }
 
     /**
      * Sets a Campaign Criterion
      */
-    public void setCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
+        this.biddableCampaignCriterion = biddableCampaignCriterion;
     }
 
     /**

@@ -38,7 +38,7 @@ public class BulkCampaignNegativeLocationCriterionWriteParentIdTest extends Bulk
                 new BiConsumer<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignNegativeLocationCriterion c, Long v) {
-                        c.getCampaignCriterion().setCampaignId(v);
+                        c.getNegativeCampaignCriterion().setCampaignId(v);
                     }
                 }
         );

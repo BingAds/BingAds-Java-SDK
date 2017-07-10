@@ -41,7 +41,7 @@ public class BulkCampaignDayTimeCriterionReadStatusTest extends BulkCampaignDayT
                 new Function<BulkCampaignDayTimeCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

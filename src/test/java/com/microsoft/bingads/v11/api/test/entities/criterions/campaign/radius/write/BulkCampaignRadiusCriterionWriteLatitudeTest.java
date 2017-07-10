@@ -39,7 +39,7 @@ public class BulkCampaignRadiusCriterionWriteLatitudeTest extends BulkCampaignRa
                 new BiConsumer<BulkCampaignRadiusCriterion, Double>() {
                     @Override
                     public void accept(BulkCampaignRadiusCriterion c, Double v) {
-                    	((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setLatitudeDegrees(v);
+                    	((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setLatitudeDegrees(v);
                     }
                 }
         );

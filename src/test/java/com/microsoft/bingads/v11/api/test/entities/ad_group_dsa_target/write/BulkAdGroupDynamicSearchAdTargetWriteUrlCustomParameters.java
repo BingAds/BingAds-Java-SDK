@@ -41,7 +41,7 @@ public class BulkAdGroupDynamicSearchAdTargetWriteUrlCustomParameters extends Bu
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setAdGroupCriterion(adGroupCriterion);
+                        c.setBiddableAdGroupCriterion(adGroupCriterion);
 
                         adGroupCriterion.setTrackingUrlTemplate(v);
                     }

@@ -41,7 +41,7 @@ import java.util.List;
  */
 public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
 	
-	private AdGroupCriterion adGroupCriterion;
+	private BiddableAdGroupCriterion biddableAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -58,7 +58,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getBiddableAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -66,7 +66,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -80,13 +80,13 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -100,13 +100,13 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -145,8 +145,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid();
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -160,8 +160,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((FixedBid) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).setAmount((
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((FixedBid) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).setAmount((
                                     StringExtensions.nullOrDouble(v))
                             );
                         }
@@ -173,8 +173,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getTrackingUrlTemplate());
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getTrackingUrlTemplate());
                         } else {
                             return null;
                         }
@@ -183,8 +183,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));;
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));;
                         }
                     }
                 }
@@ -194,8 +194,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getUrlCustomParameters());
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters());
                         } else {
                             return null;
                         }
@@ -204,9 +204,9 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
                             try {
-								((BiddableAdGroupCriterion) c.getAdGroupCriterion()).setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
+								((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -219,8 +219,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<BulkAdGroupDynamicSearchAdTarget, RowValues>() {
                     @Override
                     public void accept(BulkAdGroupDynamicSearchAdTarget c, RowValues v) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();                   	
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter();                   	
 	                        if (webpageParameter == null || webpageParameter.getConditions() == null) {
 	                            return;
 	                        }	                        
@@ -231,8 +231,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<RowValues, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(RowValues v, BulkAdGroupDynamicSearchAdTarget c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter();
                     		if (webpageParameter != null) {
                     			webpageParameter.setConditions(new ArrayOfWebpageCondition());                        
                         		WebpageConditionHelper.addConditionsFromRowValues(v, webpageParameter.getConditions());
@@ -246,8 +246,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {    
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof Webpage) {    
+                    		WebpageParameter webpageParameter = ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter();
                     		return StringExtensions.toCriterionNameBulkString(webpageParameter);
                     	} 
                     	return null;
@@ -256,8 +256,8 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();                        	
+                    	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter();                        	
                         	if (webpageParameter != null) {
                         		webpageParameter.setCriterionName(StringExtensions.parseCriterionName(v));
                             }
@@ -284,7 +284,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
     	adGroupCriterion.setCriterionBid(fixedBid);
     	adGroupCriterion.setType("BiddableAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);  
+    	setBiddableAdGroupCriterion(adGroupCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);    	
     	performanceData = PerformanceData.readFromRowValuesOrNull(values);   
@@ -292,7 +292,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), AdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableAdGroupCriterion(), AdGroupCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);        
         if (!excludeReadonlyData) {
@@ -304,15 +304,15 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
     /**
      * Gets an Ad Group Criterion.
      */
-    public AdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public AdGroupCriterion getBiddableAdGroupCriterion() {
+        return biddableAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(AdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setBiddableAdGroupCriterion(BiddableAdGroupCriterion biddableAdGroupCriterion) {
+        this.biddableAdGroupCriterion = biddableAdGroupCriterion;
     }
 
     /**

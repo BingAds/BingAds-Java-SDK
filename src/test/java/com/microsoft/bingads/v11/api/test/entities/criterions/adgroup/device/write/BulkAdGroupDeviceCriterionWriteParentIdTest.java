@@ -38,7 +38,7 @@ public class BulkAdGroupDeviceCriterionWriteParentIdTest extends BulkAdGroupDevi
                 new BiConsumer<BulkAdGroupDeviceCriterion, Long>() {
                     @Override
                     public void accept(BulkAdGroupDeviceCriterion c, Long v) {
-                        c.getAdGroupCriterion().setAdGroupId(v);
+                        c.getBiddableAdGroupCriterion().setAdGroupId(v);
                     }
                 }
         );

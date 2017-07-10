@@ -41,7 +41,7 @@ public class BulkCampaignLocationIntentCriterionReadStatusTest extends BulkCampa
                 new Function<BulkCampaignLocationIntentCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignLocationIntentCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

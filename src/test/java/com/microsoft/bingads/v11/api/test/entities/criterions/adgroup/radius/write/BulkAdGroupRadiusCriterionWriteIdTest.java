@@ -39,7 +39,7 @@ public class BulkAdGroupRadiusCriterionWriteIdTest extends BulkAdGroupRadiusCrit
                 new BiConsumer<BulkAdGroupRadiusCriterion, Long>() {
                     @Override
                     public void accept(BulkAdGroupRadiusCriterion c, Long v) {
-                        c.getAdGroupCriterion().setId(v);
+                        c.getBiddableAdGroupCriterion().setId(v);
                     }
                 }
         );

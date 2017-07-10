@@ -41,7 +41,7 @@ public class BulkAdGroupDeviceCriterionReadOsNamesTest extends BulkAdGroupDevice
                 new Function<BulkAdGroupDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDeviceCriterion c) {
-                        return ((DeviceCriterion)c.getAdGroupCriterion().getCriterion()).getOSName();
+                        return ((DeviceCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getOSName();
                     }
                 }
         );

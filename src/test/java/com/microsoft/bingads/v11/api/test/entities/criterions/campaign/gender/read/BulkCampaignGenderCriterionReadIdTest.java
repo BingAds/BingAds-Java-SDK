@@ -40,7 +40,7 @@ public class BulkCampaignGenderCriterionReadIdTest extends BulkCampaignGenderCri
                 new Function<BulkCampaignGenderCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignGenderCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 }
         );

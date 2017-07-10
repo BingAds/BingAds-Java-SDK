@@ -42,7 +42,7 @@ public class BulkAdGroupLocationCriterionReadBidAdjustmentTest extends BulkAdGro
                 new Function<BulkAdGroupLocationCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupLocationCriterion c) {
-                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

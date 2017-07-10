@@ -41,7 +41,7 @@ public class BulkAdGroupGenderCriterionWriteBidAdjustmentTest extends BulkAdGrou
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setAdGroupCriterion(adGroupCriterion);
+                        c.setBiddableAdGroupCriterion(adGroupCriterion);
 
                         BidMultiplier bid = new BidMultiplier();
 

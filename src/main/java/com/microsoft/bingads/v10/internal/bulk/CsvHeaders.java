@@ -196,6 +196,8 @@ public class CsvHeaders {
             
             // AutoBidding
             StringTable.BidStrategyType,
+            StringTable.BidStrategyMaxCpc,
+            StringTable.BidStrategyTargetCpa,
             
             // Native Preference
             StringTable.NativePreference,

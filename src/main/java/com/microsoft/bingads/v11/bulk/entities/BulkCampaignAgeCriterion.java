@@ -38,7 +38,7 @@ import java.util.List;
  */
 public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
 	
-	private BiddableCampaignCriterion campaignCriterion;
+	private BiddableCampaignCriterion biddableCampaignCriterion;
 	
 	private String campaignName;
 	
@@ -51,7 +51,7 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignAgeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignAgeCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -59,7 +59,7 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -73,13 +73,13 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignAgeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignAgeCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -93,13 +93,13 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignAgeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignAgeCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -123,8 +123,8 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignAgeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignAgeCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid();
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
                             if (bid == null) {
                                 return null;
                             } else {
@@ -138,8 +138,8 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                        if (c.getCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).setMultiplier(
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
                                     StringExtensions.nullOrDouble(v)
                             );
                         }
@@ -151,8 +151,8 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new Function<BulkCampaignAgeCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignAgeCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof AgeCriterion) {    
-                    		AgeRange ageRange = ((AgeCriterion) c.getCampaignCriterion().getCriterion()).getAgeRange();
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof AgeCriterion) {    
+                    		AgeRange ageRange = ((AgeCriterion) c.getBiddableCampaignCriterion().getCriterion()).getAgeRange();
                     		return ageRange == null ? null : ageRange.value();
                     	} 
                     	return null;
@@ -161,9 +161,9 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof AgeCriterion) {
+                    	if (c.getBiddableCampaignCriterion().getCriterion() instanceof AgeCriterion) {
                     		
-	                		((AgeCriterion)c.getCampaignCriterion().getCriterion()).setAgeRange(StringExtensions.parseOptional(v, new Function<String, AgeRange>() {
+	                		((AgeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setAgeRange(StringExtensions.parseOptional(v, new Function<String, AgeRange>() {
 	                                @Override
 	                                public AgeRange apply(String s) {
 	                                    return AgeRange.fromValue(s);
@@ -191,14 +191,14 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
         campaignCriterion.setCriterionBid(bidMultiplier);
         campaignCriterion.setType("BiddableCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setBiddableCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -206,15 +206,15 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
     /**
      * Gets a Campaign Criterion.
      */
-    public BiddableCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
+        return biddableCampaignCriterion;
     }
 
     /**
      * Sets a Campaign Criterion
      */
-    public void setCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
+        this.biddableCampaignCriterion = biddableCampaignCriterion;
     }
 
     /**

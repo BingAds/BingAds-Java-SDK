@@ -38,7 +38,7 @@ public class BulkCampaignRadiusCriterionWriteParentIdTest extends BulkCampaignRa
                 new BiConsumer<BulkCampaignRadiusCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignRadiusCriterion c, Long v) {
-                        c.getCampaignCriterion().setCampaignId(v);
+                        c.getBiddableCampaignCriterion().setCampaignId(v);
                     }
                 }
         );

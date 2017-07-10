@@ -19,77 +19,25 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class BulkTextAdWriteToRowValuesNativePreference extends BulkTextAdTest {
-
-    @Parameter(value = 1)
-    public ArrayOfKeyValuePairOfstringstring propertyValue;
-
-    @Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-            {null, null},
-        });
-    }
+	
+	@Parameter(value = 1)
+	public String expected;
+	
+	@Parameters
+	public static Collection<Object[]> data() {
+            return Arrays.asList(new Object[][]{
+                {null, null},
+                {"Native", "Native"},
+                {"All", "All"},
+            });
+	}
 
     @Test
     public void testWrite() {
-    	
-    	this.<ArrayOfKeyValuePairOfstringstring>testWriteProperty("Ad Format Preference", this.datum, this.propertyValue, new BiConsumer<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
+    	this.<String>testWriteProperty("Ad Format Preference", expected, datum, new BiConsumer<BulkTextAd, String>() {
             @Override
-            public void accept(BulkTextAd c, ArrayOfKeyValuePairOfstringstring v) {
-                c.getTextAd().setForwardCompatibilityMap(v);;
-            }
-        });
-    	
-    	KeyValuePairOfstringstring keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("True");
-		
-    	propertyValue = new ArrayOfKeyValuePairOfstringstring();
-    	
-        this.<ArrayOfKeyValuePairOfstringstring>testWriteProperty("Ad Format Preference", this.datum, this.propertyValue, new BiConsumer<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-            @Override
-            public void accept(BulkTextAd c, ArrayOfKeyValuePairOfstringstring v) {
-                c.getTextAd().setForwardCompatibilityMap(v);;
-            }
-        });
-       
-        this.datum = "Native";		
-    	
-    	keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("True");
-		
-    	propertyValue = new ArrayOfKeyValuePairOfstringstring();
-		
-    	propertyValue.getKeyValuePairOfstringstrings().add(keyValuePair);
-    	
-        this.<ArrayOfKeyValuePairOfstringstring>testWriteProperty("Ad Format Preference", this.datum, this.propertyValue, new BiConsumer<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-            @Override
-            public void accept(BulkTextAd c, ArrayOfKeyValuePairOfstringstring v) {
-                c.getTextAd().setForwardCompatibilityMap(v);;
-            }
-        });
-        
-        this.datum = "All";		
-    	
-    	keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("False");
-		
-    	propertyValue = new ArrayOfKeyValuePairOfstringstring();
-		
-    	propertyValue.getKeyValuePairOfstringstrings().add(keyValuePair);
-    	
-        this.<ArrayOfKeyValuePairOfstringstring>testWriteProperty("Ad Format Preference", this.datum, this.propertyValue, new BiConsumer<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-            @Override
-            public void accept(BulkTextAd c, ArrayOfKeyValuePairOfstringstring v) {
-                c.getTextAd().setForwardCompatibilityMap(v);;
+            public void accept(BulkTextAd c, String v) {
+            	c.getAd().setAdFormatPreference(v);
             }
         });
     }

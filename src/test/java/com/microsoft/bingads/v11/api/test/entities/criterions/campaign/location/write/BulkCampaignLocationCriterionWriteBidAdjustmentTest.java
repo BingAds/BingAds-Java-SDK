@@ -41,7 +41,7 @@ public class BulkCampaignLocationCriterionWriteBidAdjustmentTest extends BulkCam
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setCampaignCriterion(adGroupCriterion);
+                        c.setBiddableCampaignCriterion(adGroupCriterion);
 
                         BidMultiplier bid = new BidMultiplier();
 

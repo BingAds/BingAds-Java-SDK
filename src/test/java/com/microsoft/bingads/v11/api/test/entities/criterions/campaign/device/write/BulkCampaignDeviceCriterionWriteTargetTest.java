@@ -39,7 +39,7 @@ public class BulkCampaignDeviceCriterionWriteTargetTest extends BulkCampaignDevi
                 new BiConsumer<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public void accept(BulkCampaignDeviceCriterion c, String v) {
-                        ((DeviceCriterion)c.getCampaignCriterion().getCriterion()).setDeviceName(v);
+                        ((DeviceCriterion)c.getBiddableCampaignCriterion().getCriterion()).setDeviceName(v);
                     }
                 }
         );

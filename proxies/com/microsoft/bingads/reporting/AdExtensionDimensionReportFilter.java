@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -38,12 +37,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdExtensionDimensionReportFilter {
 
     @XmlElement(name = "DeviceOS", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter7 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<DeviceOSReportFilter> deviceOS;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<DeviceTypeReportFilter> deviceType;
 
     /**

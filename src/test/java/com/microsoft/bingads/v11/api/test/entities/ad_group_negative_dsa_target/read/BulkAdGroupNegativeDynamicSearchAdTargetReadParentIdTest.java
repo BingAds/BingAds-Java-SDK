@@ -37,7 +37,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetReadParentIdTest extends Bu
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getNegativeAdGroupCriterion().getAdGroupId();
                     }
                 }
         );

@@ -41,7 +41,7 @@ public class BulkCampaignGenderCriterionReadStatusTest extends BulkCampaignGende
                 new Function<BulkCampaignGenderCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignGenderCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

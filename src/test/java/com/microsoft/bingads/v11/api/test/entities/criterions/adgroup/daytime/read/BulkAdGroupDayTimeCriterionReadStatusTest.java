@@ -42,7 +42,7 @@ public class BulkAdGroupDayTimeCriterionReadStatusTest extends BulkAdGroupDayTim
                 new Function<BulkAdGroupDayTimeCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public AdGroupCriterionStatus apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getAdGroupCriterion().getStatus();
+                        return c.getBiddableAdGroupCriterion().getStatus();
                     }
                 }
         );

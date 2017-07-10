@@ -40,7 +40,7 @@ public class BulkCampaignRadiusCriterionReadLongitudeTest extends BulkCampaignRa
                 new Function<BulkCampaignRadiusCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getCampaignCriterion().getCriterion()).getLongitudeDegrees();
+                        return ((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).getLongitudeDegrees();
                     }
                 }
         );

@@ -310,6 +310,8 @@ public class StringTable {
     
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
+    public static final String BidStrategyMaxCpc = "Bid Strategy MaxCpc";
+    public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";
 
     // Remarketing
     public static final String RemarketingList = "Remarketing List";

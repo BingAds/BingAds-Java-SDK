@@ -41,7 +41,7 @@ public class BulkAdGroupDayTimeCriterionWriteStatusTest extends BulkAdGroupDayTi
                 new BiConsumer<BulkAdGroupDayTimeCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupDayTimeCriterion c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getBiddableAdGroupCriterion().setStatus(v);
                     }
                 }
         );

@@ -19,7 +19,7 @@ public abstract class BulkCampaignGenderCriterionTest extends BulkEntityTest<Bul
         BiddableCampaignCriterion biddableCampaignCriterion = new BiddableCampaignCriterion();
         biddableCampaignCriterion.setCriterion(genderCriterion);
 
-        entity.setCampaignCriterion(biddableCampaignCriterion);
+        entity.setBiddableCampaignCriterion(biddableCampaignCriterion);
     }
 
     @Override

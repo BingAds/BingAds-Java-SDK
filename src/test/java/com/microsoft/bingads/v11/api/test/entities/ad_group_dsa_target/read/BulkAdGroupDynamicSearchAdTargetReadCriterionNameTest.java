@@ -41,7 +41,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadCriterionNameTest extends BulkA
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return ((Webpage)c.getAdGroupCriterion().getCriterion()).getParameter().getCriterionName();
+                        return ((Webpage)c.getBiddableAdGroupCriterion().getCriterion()).getParameter().getCriterionName();
                     }
                 }
         );

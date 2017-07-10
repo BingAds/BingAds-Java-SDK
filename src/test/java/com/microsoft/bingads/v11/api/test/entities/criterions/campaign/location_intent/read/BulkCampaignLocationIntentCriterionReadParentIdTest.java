@@ -37,7 +37,7 @@ public class BulkCampaignLocationIntentCriterionReadParentIdTest extends BulkCam
                 new Function<BulkCampaignLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignLocationIntentCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

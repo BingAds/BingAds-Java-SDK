@@ -41,7 +41,7 @@ public class BulkAdGroupDynamicSearchAdTargetWriteTrackingTemplateTest extends B
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setAdGroupCriterion(adGroupCriterion);
+                        c.setBiddableAdGroupCriterion(adGroupCriterion);
 
                         adGroupCriterion.setTrackingUrlTemplate(v);
                     }

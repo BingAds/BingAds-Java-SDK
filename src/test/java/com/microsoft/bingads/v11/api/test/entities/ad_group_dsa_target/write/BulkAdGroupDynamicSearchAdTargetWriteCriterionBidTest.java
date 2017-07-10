@@ -47,7 +47,7 @@ public class BulkAdGroupDynamicSearchAdTargetWriteCriterionBidTest extends BulkA
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setAdGroupCriterion(adGroupCriterion);
+                        c.setBiddableAdGroupCriterion(adGroupCriterion);
 
                         adGroupCriterion.setCriterionBid(v);
                     }

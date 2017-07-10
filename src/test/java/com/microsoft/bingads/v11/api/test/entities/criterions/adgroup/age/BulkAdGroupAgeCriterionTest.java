@@ -19,7 +19,7 @@ public abstract class BulkAdGroupAgeCriterionTest extends BulkEntityTest<BulkAdG
         BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
         biddableAdGroupCriterion.setCriterion(ageCriterion);
 
-        entity.setAdGroupCriterion(biddableAdGroupCriterion);
+        entity.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
     }
 
     @Override

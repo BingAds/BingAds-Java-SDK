@@ -42,7 +42,7 @@ public class BulkAdGroupAgeCriterionReadBidAdjustmentTest extends BulkAdGroupAge
                 new Function<BulkAdGroupAgeCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupAgeCriterion c) {
-                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

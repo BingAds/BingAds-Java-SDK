@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="BillingThresholdAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="TaxIdStatus" type="{https://bingads.microsoft.com/Customer/v9/Entities}TaxIdStatus" minOccurs="0"/>
  *         &lt;element name="BusinessAddress" type="{https://bingads.microsoft.com/Customer/v9/Entities}Address" minOccurs="0"/>
+ *         &lt;element name="TaxInformation" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -46,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
     "backUpPaymentInstrumentId",
     "billingThresholdAmount",
     "taxIdStatus",
-    "businessAddress"
+    "businessAddress",
+    "taxInformation"
 })
 public class AdvertiserAccount
     extends Account
@@ -72,6 +74,8 @@ public class AdvertiserAccount
     protected TaxIdStatus taxIdStatus;
     @XmlElement(name = "BusinessAddress", nillable = true)
     protected Address businessAddress;
+    @XmlElement(name = "TaxInformation", nillable = true)
+    protected ArrayOfKeyValuePairOfstringstring taxInformation;
 
     /**
      * Gets the value of the agencyContactName property.
@@ -287,6 +291,30 @@ public class AdvertiserAccount
      */
     public void setBusinessAddress(Address value) {
         this.businessAddress = value;
+    }
+
+    /**
+     * Gets the value of the taxInformation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfKeyValuePairOfstringstring }
+     *     
+     */
+    public ArrayOfKeyValuePairOfstringstring getTaxInformation() {
+        return taxInformation;
+    }
+
+    /**
+     * Sets the value of the taxInformation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfKeyValuePairOfstringstring }
+     *     
+     */
+    public void setTaxInformation(ArrayOfKeyValuePairOfstringstring value) {
+        this.taxInformation = value;
     }
 
 }

@@ -55,7 +55,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetReadConditionsTest extends 
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, ArrayOfWebpageCondition>() {
                     @Override
                     public ArrayOfWebpageCondition apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        return ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter().getConditions();
+                        return ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter().getConditions();
                     }
                 },
                 new Supplier<BulkAdGroupNegativeDynamicSearchAdTarget>() {

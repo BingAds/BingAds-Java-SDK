@@ -40,7 +40,7 @@ public class BulkAdGroupRadiusCriterionReadIdTest extends BulkAdGroupRadiusCrite
                 new Function<BulkAdGroupRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupRadiusCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 }
         );

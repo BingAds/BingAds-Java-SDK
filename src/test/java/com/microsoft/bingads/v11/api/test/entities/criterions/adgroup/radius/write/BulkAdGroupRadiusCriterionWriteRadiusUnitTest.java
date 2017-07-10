@@ -41,7 +41,7 @@ public class BulkAdGroupRadiusCriterionWriteRadiusUnitTest extends BulkAdGroupRa
                 new BiConsumer<BulkAdGroupRadiusCriterion, DistanceUnit>() {
                     @Override
                     public void accept(BulkAdGroupRadiusCriterion c, DistanceUnit v) {
-                    	((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).setRadiusUnit(v);
+                    	((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setRadiusUnit(v);
                     }
                 }
         );

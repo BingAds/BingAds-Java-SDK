@@ -42,7 +42,7 @@ public class BulkAdGroupGenderCriterionReadBidAdjustmentTest extends BulkAdGroup
                 new Function<BulkAdGroupGenderCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupGenderCriterion c) {
-                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

@@ -38,7 +38,7 @@ public class BulkCampaignNegativeLocationCriterionWriteNegativeLocationTypeTest 
                 new BiConsumer<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public void accept(BulkCampaignNegativeLocationCriterion c, String v) {
-                        ((LocationCriterion)c.getCampaignCriterion().getCriterion()).setLocationType(v);
+                        ((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).setLocationType(v);
                     }
                 }
         );

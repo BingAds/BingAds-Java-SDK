@@ -41,7 +41,7 @@ public class BulkAdGroupRadiusCriterionReadNameTest extends BulkAdGroupRadiusCri
                 new Function<BulkAdGroupRadiusCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).getName();
+                        return ((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getName();
                     }
                 }
         );

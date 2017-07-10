@@ -6,6 +6,7 @@ import com.microsoft.bingads.v11.bulk.BulkOperation;
 import com.microsoft.bingads.v11.bulk.BulkServiceManager;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfProductCondition;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableCampaignCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.CampaignCriterionStatus;
 import com.microsoft.bingads.v11.campaignmanagement.ProductScope;
 import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
@@ -40,8 +41,6 @@ public class BulkCampaignProductScope extends SingleRecordBulkEntity {
 
     private String campaignName;
 
-    private Status status;
-
     private static final List<BulkMapping<BulkCampaignProductScope>> MAPPINGS;
 
     static {
@@ -51,16 +50,18 @@ public class BulkCampaignProductScope extends SingleRecordBulkEntity {
                 new Function<BulkCampaignProductScope, String>() {
                     @Override
                     public String apply(BulkCampaignProductScope c) {
-                        return c.getStatus() != null ? c.getStatus().value() : null;
+                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
+                    	
+                        return status == null ? null : status.value();
                     }
                 },
                 new BiConsumer<String, BulkCampaignProductScope>() {
                     @Override
                     public void accept(String v, BulkCampaignProductScope c) {
-                        c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
+                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
-                            public Status apply(String value) {
-                                return Status.fromValue(value);
+                            public CampaignCriterionStatus apply(String s) {
+                                return CampaignCriterionStatus.fromValue(s);
                             }
                         }));
                     }
@@ -194,19 +195,5 @@ public class BulkCampaignProductScope extends SingleRecordBulkEntity {
      */
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
-    }
-
-    /**
-     * Gets the status of the Campaign Criterion.
-     */
-    public Status getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the status of the Campaign Criterion.
-     */
-    public void setStatus(Status status) {
-        this.status = status;
     }
 }

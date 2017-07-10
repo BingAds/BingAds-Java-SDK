@@ -40,7 +40,7 @@ public class BulkCampaignDayTimeCriterionWriteFromHourTest extends BulkCampaignD
                 new BiConsumer<BulkCampaignDayTimeCriterion, Integer>() {
                     @Override
                     public void accept(BulkCampaignDayTimeCriterion c, Integer v) {
-                        ((DayTimeCriterion)c.getCampaignCriterion().getCriterion()).setFromHour(v);
+                        ((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setFromHour(v);
                     }
                 }
         );

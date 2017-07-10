@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -46,26 +45,21 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class PublisherUsagePerformanceReportFilter {
 
     @XmlElement(name = "AccountStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter2 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter9 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;
     @XmlElement(name = "PricingModel", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter4 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected Collection<PricingModelReportFilter> pricingModel;
 
     /**

@@ -40,7 +40,7 @@ public class BulkAdGroupNegativeLocationCriterionReadDisplayNameTest extends Bul
                 new Function<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return ((LocationCriterion)c.getAdGroupCriterion().getCriterion()).getDisplayName();
+                        return ((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).getDisplayName();
                     }
                 }
         );

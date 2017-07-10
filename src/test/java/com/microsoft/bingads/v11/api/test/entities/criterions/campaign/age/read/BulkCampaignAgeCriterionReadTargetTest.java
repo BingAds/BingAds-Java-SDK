@@ -42,7 +42,7 @@ public class BulkCampaignAgeCriterionReadTargetTest extends BulkCampaignAgeCrite
                 new Function<BulkCampaignAgeCriterion, AgeRange>() {
                     @Override
                     public AgeRange apply(BulkCampaignAgeCriterion c) {
-                        return ((AgeCriterion)c.getCampaignCriterion().getCriterion()).getAgeRange();
+                        return ((AgeCriterion)c.getBiddableCampaignCriterion().getCriterion()).getAgeRange();
                     }
                 }
         );

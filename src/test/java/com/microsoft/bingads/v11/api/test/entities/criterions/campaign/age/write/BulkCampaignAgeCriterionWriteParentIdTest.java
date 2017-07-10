@@ -38,7 +38,7 @@ public class BulkCampaignAgeCriterionWriteParentIdTest extends BulkCampaignAgeCr
                 new BiConsumer<BulkCampaignAgeCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignAgeCriterion c, Long v) {
-                        c.getCampaignCriterion().setCampaignId(v);
+                        c.getBiddableCampaignCriterion().setCampaignId(v);
                     }
                 }
         );

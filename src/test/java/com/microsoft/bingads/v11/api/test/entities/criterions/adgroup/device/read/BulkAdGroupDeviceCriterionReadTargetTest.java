@@ -41,7 +41,7 @@ public class BulkAdGroupDeviceCriterionReadTargetTest extends BulkAdGroupDeviceC
                 new Function<BulkAdGroupDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupDeviceCriterion c) {
-                        return ((DeviceCriterion)c.getAdGroupCriterion().getCriterion()).getDeviceName();
+                        return ((DeviceCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getDeviceName();
                     }
                 }
         );

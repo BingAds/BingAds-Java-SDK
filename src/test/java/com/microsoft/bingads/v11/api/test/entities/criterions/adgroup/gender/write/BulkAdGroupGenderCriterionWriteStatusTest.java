@@ -41,7 +41,7 @@ public class BulkAdGroupGenderCriterionWriteStatusTest extends BulkAdGroupGender
                 new BiConsumer<BulkAdGroupGenderCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupGenderCriterion c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getBiddableAdGroupCriterion().setStatus(v);
                     }
                 }
         );

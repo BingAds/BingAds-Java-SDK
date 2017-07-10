@@ -42,7 +42,7 @@ public class BulkAdGroupAgeCriterionReadStatusTest extends BulkAdGroupAgeCriteri
                 new Function<BulkAdGroupAgeCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public AdGroupCriterionStatus apply(BulkAdGroupAgeCriterion c) {
-                        return c.getAdGroupCriterion().getStatus();
+                        return c.getBiddableAdGroupCriterion().getStatus();
                     }
                 }
         );

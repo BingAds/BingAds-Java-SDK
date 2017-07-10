@@ -40,7 +40,7 @@ public class BulkCampaignDeviceCriterionWriteStatusTest extends BulkCampaignDevi
                 new BiConsumer<BulkCampaignDeviceCriterion, CampaignCriterionStatus>() {
                     @Override
                     public void accept(BulkCampaignDeviceCriterion c, CampaignCriterionStatus v) {
-                        c.getCampaignCriterion().setStatus(v);
+                        c.getBiddableCampaignCriterion().setStatus(v);
                     }
                 }
         );

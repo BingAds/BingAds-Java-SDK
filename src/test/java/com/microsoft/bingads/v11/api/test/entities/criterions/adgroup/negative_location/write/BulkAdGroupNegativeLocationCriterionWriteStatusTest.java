@@ -41,7 +41,7 @@ public class BulkAdGroupNegativeLocationCriterionWriteStatusTest extends BulkAdG
                 new BiConsumer<BulkAdGroupNegativeLocationCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupNegativeLocationCriterion c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getNegativeAdGroupCriterion().setStatus(v);
                     }
                 }
         );

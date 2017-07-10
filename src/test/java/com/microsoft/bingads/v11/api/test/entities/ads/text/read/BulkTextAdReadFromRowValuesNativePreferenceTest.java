@@ -16,91 +16,35 @@ import com.microsoft.bingads.v11.bulk.entities.BulkTextAd;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v11.campaignmanagement.KeyValuePairOfstringstring;
 
-public class BulkTextAdReadFromRowValuesNativePreferenceTest extends BulkTextAdTest{
+public class BulkTextAdReadFromRowValuesNativePreferenceTest extends BulkTextAdTest {
 
-	@Parameter(value = 1)
-	public ArrayOfKeyValuePairOfstringstring expectedResult;
-	
-	@Parameters
-	public static Collection<Object[]> data() {
-		//Initialization
-		return Arrays.asList(new Object[][] {
-			{"", null},
-		});
-	}
-	
-	@Test
-	public void testRead() {
-		KeyValuePairOfstringstring keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("False");
-		
-		expectedResult = new ArrayOfKeyValuePairOfstringstring();
-		
-		expectedResult.getKeyValuePairOfstringstrings().add(keyValuePair);
-		
-		this.<ArrayOfKeyValuePairOfstringstring>testReadProperty("Ad Format Preference", this.datum, this.expectedResult, new Function<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-			@Override
-			public ArrayOfKeyValuePairOfstringstring apply(BulkTextAd c) {
-				return c.getTextAd().getForwardCompatibilityMap();
-			}
-		}, new Supplier<BulkTextAd>() {
-            @Override
-            public BulkTextAd get() {
-                return new BulkTextAd();
-            }
-        }, new ObjectComparer<ArrayOfKeyValuePairOfstringstring>());
-		
-		this.datum = "All";		
-    	
-    	keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("False");
-		
-		expectedResult = new ArrayOfKeyValuePairOfstringstring();
-		
-		expectedResult.getKeyValuePairOfstringstrings().add(keyValuePair);
-		
-		this.<ArrayOfKeyValuePairOfstringstring>testReadProperty("Ad Format Preference", this.datum, this.expectedResult, new Function<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-			@Override
-			public ArrayOfKeyValuePairOfstringstring apply(BulkTextAd c) {
-				return c.getTextAd().getForwardCompatibilityMap();
-			}
-		}, new Supplier<BulkTextAd>() {
-            @Override
-            public BulkTextAd get() {
-                return new BulkTextAd();
-            }
-        }, new ObjectComparer<ArrayOfKeyValuePairOfstringstring>());
-		
-		this.datum = "Native";		
-		    	
-    	keyValuePair = new KeyValuePairOfstringstring();
-    	
-    	keyValuePair.setKey("NativePreference");
-    	    	
-    	keyValuePair.setValue("True");
-		
-		expectedResult = new ArrayOfKeyValuePairOfstringstring();
-		
-		expectedResult.getKeyValuePairOfstringstrings().add(keyValuePair);
-		
-		this.<ArrayOfKeyValuePairOfstringstring>testReadProperty("Ad Format Preference", this.datum, this.expectedResult, new Function<BulkTextAd, ArrayOfKeyValuePairOfstringstring>() {
-			@Override
-			public ArrayOfKeyValuePairOfstringstring apply(BulkTextAd c) {
-				return c.getTextAd().getForwardCompatibilityMap();
-			}
-		}, new Supplier<BulkTextAd>() {
-            @Override
-            public BulkTextAd get() {
-                return new BulkTextAd();
-            }
-        }, new ObjectComparer<ArrayOfKeyValuePairOfstringstring>());
-	}
+    @Parameter(value = 1)
+    public String expected;
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(
+            new Object[][] { 
+                { null, "" }, 
+                { "", "" }, 
+                { "All", "All" }, 
+                { "Native", "Native" }
+                }
+            );
+    }
+
+    @Test
+    public void testRead() {
+        this.<String>testReadProperty("Ad Format Preference", datum, expected, new Function<BulkTextAd, String>() {
+                @Override
+                public String apply(BulkTextAd c) {
+                        return c.getAd().getAdFormatPreference();
+                }
+        }, new Supplier<BulkTextAd>() {
+                @Override
+                public BulkTextAd get() {
+                        return new BulkTextAd();
+                }
+        }, new ObjectComparer<String>());
+    }
 }

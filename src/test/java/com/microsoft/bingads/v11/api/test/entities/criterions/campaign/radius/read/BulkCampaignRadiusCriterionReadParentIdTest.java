@@ -37,7 +37,7 @@ public class BulkCampaignRadiusCriterionReadParentIdTest extends BulkCampaignRad
                 new Function<BulkCampaignRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignRadiusCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

@@ -39,7 +39,7 @@ public class BulkAdGroupLocationIntentCriterionWriteTargetTest extends BulkAdGro
                 new BiConsumer<BulkAdGroupLocationIntentCriterion, IntentOption>() {
                     @Override
                     public void accept(BulkAdGroupLocationIntentCriterion c, IntentOption v) {
-                        ((LocationIntentCriterion)c.getAdGroupCriterion().getCriterion()).setIntentOption(v);
+                        ((LocationIntentCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setIntentOption(v);
                     }
                 }
         );

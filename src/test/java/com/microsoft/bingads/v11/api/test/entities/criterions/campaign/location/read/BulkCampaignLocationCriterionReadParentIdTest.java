@@ -37,7 +37,7 @@ public class BulkCampaignLocationCriterionReadParentIdTest extends BulkCampaignL
                 new Function<BulkCampaignLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignLocationCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

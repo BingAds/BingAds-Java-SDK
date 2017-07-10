@@ -42,7 +42,7 @@ public class BulkAdGroupDayTimeCriterionReadTargetTest extends BulkAdGroupDayTim
                 new Function<BulkAdGroupDayTimeCriterion, Day>() {
                     @Override
                     public Day apply(BulkAdGroupDayTimeCriterion c) {
-                        return ((DayTimeCriterion)c.getAdGroupCriterion().getCriterion()).getDay();
+                        return ((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getDay();
                     }
                 }
         );

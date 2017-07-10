@@ -41,7 +41,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetReadCriterionNameTest exten
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        return ((Webpage)c.getAdGroupCriterion().getCriterion()).getParameter().getCriterionName();
+                        return ((Webpage)c.getNegativeAdGroupCriterion().getCriterion()).getParameter().getCriterionName();
                     }
                 }
         );

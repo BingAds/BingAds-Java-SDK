@@ -41,7 +41,7 @@ public class BulkCampaignLocationIntentCriterionReadTargetTest extends BulkCampa
                 new Function<BulkCampaignLocationIntentCriterion, IntentOption>() {
                     @Override
                     public IntentOption apply(BulkCampaignLocationIntentCriterion c) {
-                        return ((LocationIntentCriterion)c.getCampaignCriterion().getCriterion()).getIntentOption();
+                        return ((LocationIntentCriterion)c.getBiddableCampaignCriterion().getCriterion()).getIntentOption();
                     }
                 }
         );

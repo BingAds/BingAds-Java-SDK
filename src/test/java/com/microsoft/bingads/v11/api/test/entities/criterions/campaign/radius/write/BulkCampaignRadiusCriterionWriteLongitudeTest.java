@@ -39,7 +39,7 @@ public class BulkCampaignRadiusCriterionWriteLongitudeTest extends BulkCampaignR
                 new BiConsumer<BulkCampaignRadiusCriterion, Double>() {
                     @Override
                     public void accept(BulkCampaignRadiusCriterion c, Double v) {
-                    	((RadiusCriterion)c.getCampaignCriterion().getCriterion()).setLongitudeDegrees(v);
+                    	((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).setLongitudeDegrees(v);
                     }
                 }
         );

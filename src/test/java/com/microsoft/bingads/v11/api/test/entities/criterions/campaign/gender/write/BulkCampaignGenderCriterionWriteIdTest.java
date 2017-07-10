@@ -39,7 +39,7 @@ public class BulkCampaignGenderCriterionWriteIdTest extends BulkCampaignGenderCr
                 new BiConsumer<BulkCampaignGenderCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignGenderCriterion c, Long v) {
-                        c.getCampaignCriterion().setId(v);
+                        c.getBiddableCampaignCriterion().setId(v);
                     }
                 }
         );

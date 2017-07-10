@@ -37,7 +37,7 @@ public class BulkCampaignDayTimeCriterionReadParentIdTest extends BulkCampaignDa
                 new Function<BulkCampaignDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

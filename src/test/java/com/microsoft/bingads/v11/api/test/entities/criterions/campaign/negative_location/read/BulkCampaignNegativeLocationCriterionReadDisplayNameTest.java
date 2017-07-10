@@ -40,7 +40,7 @@ public class BulkCampaignNegativeLocationCriterionReadDisplayNameTest extends Bu
                 new Function<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignNegativeLocationCriterion c) {
-                        return ((LocationCriterion)c.getCampaignCriterion().getCriterion()).getDisplayName();
+                        return ((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).getDisplayName();
                     }
                 }
         );

@@ -41,7 +41,7 @@ public class BulkCampaignDeviceCriterionReadStatusTest extends BulkCampaignDevic
                 new Function<BulkCampaignDeviceCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignDeviceCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

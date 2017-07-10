@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -56,40 +55,31 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class SitePerformanceReportFilter {
 
     @XmlElement(name = "AccountStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter2 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AccountStatusReportFilter> accountStatus;
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
     @XmlElement(name = "AdStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter10 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter3 .class)
     protected Collection<AdStatusReportFilter> adStatus;
     @XmlElement(name = "AdType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<AdTypeReportFilter> adType;
     @XmlElement(name = "BidStrategyType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<BidStrategyTypeReportFilter> bidStrategyType;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter9 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DeliveredMatchType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<DeliveredMatchTypeReportFilter> deliveredMatchType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter13 .class)
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<DeviceTypeReportFilter> deviceType;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;

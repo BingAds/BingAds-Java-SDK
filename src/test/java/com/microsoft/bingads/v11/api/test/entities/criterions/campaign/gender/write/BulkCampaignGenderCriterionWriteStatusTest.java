@@ -40,7 +40,7 @@ public class BulkCampaignGenderCriterionWriteStatusTest extends BulkCampaignGend
                 new BiConsumer<BulkCampaignGenderCriterion, CampaignCriterionStatus>() {
                     @Override
                     public void accept(BulkCampaignGenderCriterion c, CampaignCriterionStatus v) {
-                        c.getCampaignCriterion().setStatus(v);
+                        c.getBiddableCampaignCriterion().setStatus(v);
                     }
                 }
         );

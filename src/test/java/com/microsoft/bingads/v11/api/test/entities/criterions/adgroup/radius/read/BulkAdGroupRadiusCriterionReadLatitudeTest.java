@@ -40,7 +40,7 @@ public class BulkAdGroupRadiusCriterionReadLatitudeTest extends BulkAdGroupRadiu
                 new Function<BulkAdGroupRadiusCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).getLatitudeDegrees();
+                        return ((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getLatitudeDegrees();
                     }
                 }
         );

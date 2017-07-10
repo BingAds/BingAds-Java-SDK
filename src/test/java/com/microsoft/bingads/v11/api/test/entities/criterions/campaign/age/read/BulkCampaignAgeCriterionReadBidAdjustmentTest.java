@@ -42,7 +42,7 @@ public class BulkCampaignAgeCriterionReadBidAdjustmentTest extends BulkCampaignA
                 new Function<BulkCampaignAgeCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignAgeCriterion c) {
-                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

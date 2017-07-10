@@ -40,7 +40,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadTrackingTemplateTest extends Bu
                 new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getTrackingUrlTemplate();
+                        return ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getTrackingUrlTemplate();
                     }
                 }
         );

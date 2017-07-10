@@ -42,7 +42,7 @@ public class BulkCampaignGenderCriterionReadBidAdjustmentTest extends BulkCampai
                 new Function<BulkCampaignGenderCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignGenderCriterion c) {
-                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

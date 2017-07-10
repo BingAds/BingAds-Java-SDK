@@ -41,7 +41,7 @@ public class BulkAdGroupAgeCriterionWriteStatusTest extends BulkAdGroupAgeCriter
                 new BiConsumer<BulkAdGroupAgeCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public void accept(BulkAdGroupAgeCriterion c, AdGroupCriterionStatus v) {
-                        c.getAdGroupCriterion().setStatus(v);
+                        c.getBiddableAdGroupCriterion().setStatus(v);
                     }
                 }
         );

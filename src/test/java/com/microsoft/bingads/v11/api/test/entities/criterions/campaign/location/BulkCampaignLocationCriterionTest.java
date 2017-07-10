@@ -19,7 +19,7 @@ public abstract class BulkCampaignLocationCriterionTest extends BulkEntityTest<B
         BiddableCampaignCriterion biddableCampaignCriterion = new BiddableCampaignCriterion();
         biddableCampaignCriterion.setCriterion(locationCriterion);
 
-        entity.setCampaignCriterion(biddableCampaignCriterion);
+        entity.setBiddableCampaignCriterion(biddableCampaignCriterion);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class BulkCampaignDeviceCriterionReadOsNamesTest extends BulkCampaignDevi
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) {
-                        return ((DeviceCriterion)c.getCampaignCriterion().getCriterion()).getOSName();
+                        return ((DeviceCriterion)c.getBiddableCampaignCriterion().getCriterion()).getOSName();
                     }
                 }
         );

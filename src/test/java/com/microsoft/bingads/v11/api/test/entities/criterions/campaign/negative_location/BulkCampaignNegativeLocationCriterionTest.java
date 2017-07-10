@@ -19,7 +19,7 @@ public abstract class BulkCampaignNegativeLocationCriterionTest extends BulkEnti
         NegativeCampaignCriterion biddableCampaignCriterion = new NegativeCampaignCriterion();
         biddableCampaignCriterion.setCriterion(locationCriterion);
 
-        entity.setCampaignCriterion(biddableCampaignCriterion);
+        entity.setNegativeCampaignCriterion(biddableCampaignCriterion);
     }
 
     @Override

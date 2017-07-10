@@ -40,7 +40,7 @@ public class BulkCampaignAgeCriterionReadIdTest extends BulkCampaignAgeCriterion
                 new Function<BulkCampaignAgeCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignAgeCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getBiddableCampaignCriterion().getId();
                     }
                 }
         );

@@ -40,7 +40,7 @@ public class BulkCampaignNegativeLocationCriterionWriteStatusTest extends BulkCa
                 new BiConsumer<BulkCampaignNegativeLocationCriterion, CampaignCriterionStatus>() {
                     @Override
                     public void accept(BulkCampaignNegativeLocationCriterion c, CampaignCriterionStatus v) {
-                        c.getCampaignCriterion().setStatus(v);
+                        c.getNegativeCampaignCriterion().setStatus(v);
                     }
                 }
         );

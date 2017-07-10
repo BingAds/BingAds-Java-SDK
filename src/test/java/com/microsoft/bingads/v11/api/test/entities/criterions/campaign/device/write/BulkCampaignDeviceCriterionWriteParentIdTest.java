@@ -38,7 +38,7 @@ public class BulkCampaignDeviceCriterionWriteParentIdTest extends BulkCampaignDe
                 new BiConsumer<BulkCampaignDeviceCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignDeviceCriterion c, Long v) {
-                        c.getCampaignCriterion().setCampaignId(v);
+                        c.getBiddableCampaignCriterion().setCampaignId(v);
                     }
                 }
         );

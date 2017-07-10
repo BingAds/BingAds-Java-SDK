@@ -42,7 +42,7 @@ public class BulkAdGroupAgeCriterionReadTargetTest extends BulkAdGroupAgeCriteri
                 new Function<BulkAdGroupAgeCriterion, AgeRange>() {
                     @Override
                     public AgeRange apply(BulkAdGroupAgeCriterion c) {
-                        return ((AgeCriterion)c.getAdGroupCriterion().getCriterion()).getAgeRange();
+                        return ((AgeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getAgeRange();
                     }
                 }
         );

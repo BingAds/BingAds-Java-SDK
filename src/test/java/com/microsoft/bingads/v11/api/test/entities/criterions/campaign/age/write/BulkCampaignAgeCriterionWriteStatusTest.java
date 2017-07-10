@@ -40,7 +40,7 @@ public class BulkCampaignAgeCriterionWriteStatusTest extends BulkCampaignAgeCrit
                 new BiConsumer<BulkCampaignAgeCriterion, CampaignCriterionStatus>() {
                     @Override
                     public void accept(BulkCampaignAgeCriterion c, CampaignCriterionStatus v) {
-                        c.getCampaignCriterion().setStatus(v);
+                        c.getBiddableCampaignCriterion().setStatus(v);
                     }
                 }
         );

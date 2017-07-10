@@ -56,8 +56,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetBillingDocumentsInfoResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocumentsInfo", action = "GetBillingDocumentsInfo")
@@ -98,8 +98,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetBillingDocumentsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocuments", action = "GetBillingDocuments")
@@ -140,8 +140,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetDisplayInvoicesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetDisplayInvoices", action = "GetDisplayInvoices")
@@ -182,8 +182,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.AddInsertionOrderResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddInsertionOrder", action = "AddInsertionOrder")
     @WebResult(name = "AddInsertionOrderResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v9", partName = "parameters")
@@ -223,8 +223,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.UpdateInsertionOrderResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateInsertionOrder", action = "UpdateInsertionOrder")
     @WebResult(name = "UpdateInsertionOrderResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v9", partName = "parameters")
@@ -264,8 +264,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetInsertionOrdersByAccountResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetInsertionOrdersByAccount", action = "GetInsertionOrdersByAccount")
     @WebResult(name = "GetInsertionOrdersByAccountResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v9", partName = "parameters")
@@ -305,8 +305,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.SearchInsertionOrdersResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SearchInsertionOrders", action = "SearchInsertionOrders")
     @WebResult(name = "SearchInsertionOrdersResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v9", partName = "parameters")
@@ -346,8 +346,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetKOHIOInvoicesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetKOHIOInvoices", action = "GetKOHIOInvoices")
@@ -388,8 +388,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.customerbilling.GetAccountMonthlySpendResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAccountMonthlySpend", action = "GetAccountMonthlySpend")
     @WebResult(name = "GetAccountMonthlySpendResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v9", partName = "parameters")

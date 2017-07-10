@@ -40,7 +40,7 @@ public class BulkAdGroupAgeCriterionReadIdTest extends BulkAdGroupAgeCriterionTe
                 new Function<BulkAdGroupAgeCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupAgeCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 }
         );

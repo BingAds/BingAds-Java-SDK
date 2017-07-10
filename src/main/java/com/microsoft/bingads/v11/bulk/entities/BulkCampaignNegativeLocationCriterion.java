@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntity {
 	
-	private NegativeCampaignCriterion campaignCriterion;
+	private NegativeCampaignCriterion negativeCampaignCriterion;
 	
 	private String campaignName;
 
@@ -48,7 +48,7 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignNegativeLocationCriterion c) {
-                    	CampaignCriterionStatus status = c.getCampaignCriterion().getStatus();
+                    	CampaignCriterionStatus status = c.getNegativeCampaignCriterion().getStatus();
                     	
                         return status == null ? null : status.value();
                     }
@@ -56,7 +56,7 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                        c.getCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
+                        c.getNegativeCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
                                 return CampaignCriterionStatus.fromValue(s);
@@ -70,13 +70,13 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeLocationCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getNegativeCampaignCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                        c.getCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getNegativeCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -90,13 +90,13 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeLocationCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getNegativeCampaignCriterion().getCampaignId();
                     }
                 },
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                        c.getCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getNegativeCampaignCriterion().setCampaignId(Long.parseLong(v));
                     }
                 }
         ));
@@ -120,8 +120,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignNegativeLocationCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		Long locationId = ((LocationCriterion) c.getCampaignCriterion().getCriterion()).getLocationId();
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		Long locationId = ((LocationCriterion) c.getNegativeCampaignCriterion().getCriterion()).getLocationId();
                     		return locationId == null ? null : locationId.toString();
                     	} 
                     	return null;
@@ -130,8 +130,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getCampaignCriterion().getCriterion()).setLocationId(Long.parseLong(v));
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).setLocationId(Long.parseLong(v));
                     	}
                     }
                 }
@@ -141,8 +141,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignNegativeLocationCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		return ((LocationCriterion) c.getCampaignCriterion().getCriterion()).getLocationType();
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		return ((LocationCriterion) c.getNegativeCampaignCriterion().getCriterion()).getLocationType();
                     	} 
                     	return null;
                     }
@@ -150,8 +150,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getCampaignCriterion().getCriterion()).setLocationType(v);
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).setLocationType(v);
                     	}
                     }
                 }
@@ -161,8 +161,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new Function<BulkCampaignNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignNegativeLocationCriterion c) { 
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		return ((LocationCriterion) c.getCampaignCriterion().getCriterion()).getDisplayName();
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		return ((LocationCriterion) c.getNegativeCampaignCriterion().getCriterion()).getDisplayName();
                     	} 
                     	return null;
                     }
@@ -170,8 +170,8 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                    	if (c.getCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getCampaignCriterion().getCriterion()).setDisplayName(v);
+                    	if (c.getNegativeCampaignCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).setDisplayName(v);
                     	}
                     }
                 }
@@ -190,14 +190,14 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
     	campaignCriterion.getCriterion().setType(LocationCriterion.class.getSimpleName());
     	campaignCriterion.setType("NegativeCampaignCriterion");
     	
-    	setCampaignCriterion(campaignCriterion);  
+    	setNegativeCampaignCriterion(campaignCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getCampaignCriterion(), NegativeCampaignCriterion.class.getSimpleName());
+        validatePropertyNotNull(getNegativeCampaignCriterion(), NegativeCampaignCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -205,15 +205,15 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
     /**
      * Gets an Campaign Criterion.
      */
-    public NegativeCampaignCriterion getCampaignCriterion() {
-        return campaignCriterion;
+    public NegativeCampaignCriterion getNegativeCampaignCriterion() {
+        return negativeCampaignCriterion;
     }
 
     /**
      * Sets an Campaign Criterion
      */
-    public void setCampaignCriterion(NegativeCampaignCriterion campaignCriterion) {
-        this.campaignCriterion = campaignCriterion;
+    public void setNegativeCampaignCriterion(NegativeCampaignCriterion negativeCampaignCriterion) {
+        this.negativeCampaignCriterion = negativeCampaignCriterion;
     }
 
     /**

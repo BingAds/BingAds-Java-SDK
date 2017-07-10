@@ -42,7 +42,7 @@ public class BulkAdGroupRadiusCriterionReadRadiusUnitTest extends BulkAdGroupRad
                 new Function<BulkAdGroupRadiusCriterion, DistanceUnit>() {
                     @Override
                     public DistanceUnit apply(BulkAdGroupRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getAdGroupCriterion().getCriterion()).getRadiusUnit();
+                        return ((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getRadiusUnit();
                     }
                 }
         );

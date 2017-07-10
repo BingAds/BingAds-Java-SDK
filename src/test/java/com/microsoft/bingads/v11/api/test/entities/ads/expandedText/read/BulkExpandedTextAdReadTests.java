@@ -14,7 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	BulkExpandedTextAdReadFromRowValuesPath2Test.class,	
     BulkExpandedTextAdReadFromRowValuesTextTest.class,
     BulkExpandedTextAdReadFromRowValuesTitlePart1Test.class,
-    BulkExpandedTextAdReadFromRowValuesTitlePart2Test.class})
+    BulkExpandedTextAdReadFromRowValuesTitlePart2Test.class,
+    BulkExpandedTextAdReadFromRowValuesNativePreferenceTest.class})
 public class BulkExpandedTextAdReadTests {
 
 }

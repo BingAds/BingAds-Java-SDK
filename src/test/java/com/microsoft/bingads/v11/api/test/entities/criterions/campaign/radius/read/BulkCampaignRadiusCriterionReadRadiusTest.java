@@ -40,7 +40,7 @@ public class BulkCampaignRadiusCriterionReadRadiusTest extends BulkCampaignRadiu
                 new Function<BulkCampaignRadiusCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getCampaignCriterion().getCriterion()).getRadius();
+                        return ((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).getRadius();
                     }
                 }
         );

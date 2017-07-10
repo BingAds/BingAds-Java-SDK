@@ -38,7 +38,7 @@ public class BulkAdGroupNegativeLocationCriterionWriteNegativeLocationTypeTest e
                 new BiConsumer<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public void accept(BulkAdGroupNegativeLocationCriterion c, String v) {
-                        ((LocationCriterion)c.getAdGroupCriterion().getCriterion()).setLocationType(v);
+                        ((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setLocationType(v);
                     }
                 }
         );

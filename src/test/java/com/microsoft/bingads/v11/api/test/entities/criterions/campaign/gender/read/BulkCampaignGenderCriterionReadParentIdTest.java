@@ -37,7 +37,7 @@ public class BulkCampaignGenderCriterionReadParentIdTest extends BulkCampaignGen
                 new Function<BulkCampaignGenderCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignGenderCriterion c) {
-                        return c.getCampaignCriterion().getCampaignId();
+                        return c.getBiddableCampaignCriterion().getCampaignId();
                     }
                 }
         );

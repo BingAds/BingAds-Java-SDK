@@ -48,6 +48,8 @@ public class BulkAdGroupRemarketingListAssociation extends SingleRecordBulkEntit
 
     private String remarketingListName;
 
+    private PerformanceData performanceData;
+
     private static final List<BulkMapping<BulkAdGroupRemarketingListAssociation>> MAPPINGS;
 
     static {
@@ -244,6 +246,7 @@ public class BulkAdGroupRemarketingListAssociation extends SingleRecordBulkEntit
 
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
 
+        performanceData = PerformanceData.readFromRowValuesOrNull(values);
     }
 
     @Override
@@ -251,6 +254,10 @@ public class BulkAdGroupRemarketingListAssociation extends SingleRecordBulkEntit
         validatePropertyNotNull(getBiddableAdGroupCriterion(), "AdGroupRemarketingListAssociation");
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
+
+        if (!excludeReadonlyData) {
+            PerformanceData.writeToRowValuesIfNotNull(performanceData, values);
+        }
     }
 
     /**
@@ -291,7 +298,7 @@ public class BulkAdGroupRemarketingListAssociation extends SingleRecordBulkEntit
     }
 
     /**
-     * Sets the name of the ad group.remarketingListName
+     * Sets the name of the ad group.
      */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
@@ -305,7 +312,7 @@ public class BulkAdGroupRemarketingListAssociation extends SingleRecordBulkEntit
     }
 
     /**
-     * Sets the name of the reamarting list.
+     * Sets the name of the remarketing list.
      */
     public void setRemarketingListName(String remarketingListName) {
         this.remarketingListName = remarketingListName;

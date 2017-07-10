@@ -55,7 +55,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadConditionsTest extends BulkAdGr
                 new Function<BulkAdGroupDynamicSearchAdTarget, ArrayOfWebpageCondition>() {
                     @Override
                     public ArrayOfWebpageCondition apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter().getConditions();
+                        return ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter().getConditions();
                     }
                 },
                 new Supplier<BulkAdGroupDynamicSearchAdTarget>() {

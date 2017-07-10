@@ -31,10 +31,7 @@ public class BulkCampaignWriteToRowValuesBidStrategyTypeTest extends BulkCampaig
         // These data are hard-coded into the class, but they could be
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
-        	{"EnhancedCpc", new EnhancedCpcBiddingScheme()},
-            {"InheritFromParent", new InheritFromParentBiddingScheme()},
             {"MaxConversions", new MaxConversionsBiddingScheme()},
-            {"ManualCpc", new ManualCpcBiddingScheme()},
             {"TargetCpa", new TargetCpaBiddingScheme()},
             {"MaxClicks", new MaxClicksBiddingScheme()}
         });

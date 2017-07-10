@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity {
 	
-	private NegativeAdGroupCriterion adGroupCriterion;
+	private NegativeAdGroupCriterion negativeAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -50,7 +50,7 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeLocationCriterion c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getNegativeAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -58,7 +58,7 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getNegativeAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -72,13 +72,13 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getNegativeAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getNegativeAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -92,13 +92,13 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getNegativeAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -137,8 +137,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeLocationCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		Long locationId = ((LocationCriterion) c.getAdGroupCriterion().getCriterion()).getLocationId();
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		Long locationId = ((LocationCriterion) c.getNegativeAdGroupCriterion().getCriterion()).getLocationId();
                     		return locationId == null ? null : locationId.toString();
                     	} 
                     	return null;
@@ -147,8 +147,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getAdGroupCriterion().getCriterion()).setLocationId(Long.parseLong(v));
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setLocationId(Long.parseLong(v));
                     	}
                     }
                 }
@@ -158,8 +158,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeLocationCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		return ((LocationCriterion) c.getAdGroupCriterion().getCriterion()).getLocationType();
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		return ((LocationCriterion) c.getNegativeAdGroupCriterion().getCriterion()).getLocationType();
                     	} 
                     	return null;
                     }
@@ -167,8 +167,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getAdGroupCriterion().getCriterion()).setLocationType(v);
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setLocationType(v);
                     	}
                     }
                 }
@@ -178,8 +178,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new Function<BulkAdGroupNegativeLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeLocationCriterion c) { 
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
-                    		return ((LocationCriterion) c.getAdGroupCriterion().getCriterion()).getDisplayName();
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {    
+                    		return ((LocationCriterion) c.getNegativeAdGroupCriterion().getCriterion()).getDisplayName();
                     	} 
                     	return null;
                     }
@@ -187,8 +187,8 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
-	                		((LocationCriterion)c.getAdGroupCriterion().getCriterion()).setDisplayName(v);
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof LocationCriterion) {                   		
+	                		((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setDisplayName(v);
                     	}
                     }
                 }
@@ -207,14 +207,14 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
     	adGroupCriterion.getCriterion().setType(LocationCriterion.class.getSimpleName());
     	adGroupCriterion.setType("NegativeAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);  
+    	setNegativeAdGroupCriterion(adGroupCriterion);  
     	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), NegativeAdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getNegativeAdGroupCriterion(), NegativeAdGroupCriterion.class.getSimpleName());
         
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -222,15 +222,15 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
     /**
      * Gets an Ad Group Criterion.
      */
-    public NegativeAdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public NegativeAdGroupCriterion getNegativeAdGroupCriterion() {
+        return negativeAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(NegativeAdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setNegativeAdGroupCriterion(NegativeAdGroupCriterion negativeAdGroupCriterion) {
+        this.negativeAdGroupCriterion = negativeAdGroupCriterion;
     }
 
     /**

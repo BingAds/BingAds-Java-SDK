@@ -27,10 +27,10 @@ public abstract class BulkAdGroupNegativeDynamicSearchAdTargetTest extends BulkE
         webpage.setParameter(new WebpageParameter());
         webpage.setType("Webpage");
 
-        AdGroupCriterion negativeAdGroupCriterion = new NegativeAdGroupCriterion();
+        NegativeAdGroupCriterion negativeAdGroupCriterion = new NegativeAdGroupCriterion();
         negativeAdGroupCriterion.setCriterion(webpage);
 
-        entity.setAdGroupCriterion(negativeAdGroupCriterion);
+        entity.setNegativeAdGroupCriterion(negativeAdGroupCriterion);
     }
 
     @Override

@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
     QuerySearchParameter.class,
     ExcludeAccountKeywordsSearchParameter.class,
     ImpressionShareSearchParameter.class,
+    DateRangeSearchParameter.class,
     CategorySearchParameter.class,
     DeviceSearchParameter.class,
     SearchVolumeSearchParameter.class,

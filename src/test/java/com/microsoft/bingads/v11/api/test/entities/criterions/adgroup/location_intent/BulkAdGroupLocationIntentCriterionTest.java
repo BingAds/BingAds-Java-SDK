@@ -19,7 +19,7 @@ public abstract class BulkAdGroupLocationIntentCriterionTest extends BulkEntityT
         BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
         biddableAdGroupCriterion.setCriterion(locationIntentCriterion);
 
-        entity.setAdGroupCriterion(biddableAdGroupCriterion);
+        entity.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
     }
 
     @Override

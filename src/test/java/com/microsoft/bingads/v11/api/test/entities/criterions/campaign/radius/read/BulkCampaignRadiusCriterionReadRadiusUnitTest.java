@@ -42,7 +42,7 @@ public class BulkCampaignRadiusCriterionReadRadiusUnitTest extends BulkCampaignR
                 new Function<BulkCampaignRadiusCriterion, DistanceUnit>() {
                     @Override
                     public DistanceUnit apply(BulkCampaignRadiusCriterion c) {
-                        return ((RadiusCriterion)c.getCampaignCriterion().getCriterion()).getRadiusUnit();
+                        return ((RadiusCriterion)c.getBiddableCampaignCriterion().getCriterion()).getRadiusUnit();
                     }
                 }
         );

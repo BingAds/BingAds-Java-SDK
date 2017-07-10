@@ -40,7 +40,7 @@ public class BulkAdGroupLocationCriterionReadDisplayNameTest extends BulkAdGroup
                 new Function<BulkAdGroupLocationCriterion, String>() {
                     @Override
                     public String apply(BulkAdGroupLocationCriterion c) {
-                        return ((LocationCriterion)c.getAdGroupCriterion().getCriterion()).getDisplayName();
+                        return ((LocationCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getDisplayName();
                     }
                 }
         );

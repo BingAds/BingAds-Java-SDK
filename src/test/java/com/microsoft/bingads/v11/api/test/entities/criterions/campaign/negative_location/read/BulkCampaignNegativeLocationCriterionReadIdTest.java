@@ -40,7 +40,7 @@ public class BulkCampaignNegativeLocationCriterionReadIdTest extends BulkCampaig
                 new Function<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeLocationCriterion c) {
-                        return c.getCampaignCriterion().getId();
+                        return c.getNegativeCampaignCriterion().getId();
                     }
                 }
         );

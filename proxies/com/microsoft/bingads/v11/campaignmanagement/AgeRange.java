@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ThirtyFiveToFourtyNine"/>
  *     &lt;enumeration value="FiftyToSixtyFour"/>
  *     &lt;enumeration value="SixtyFiveAndAbove"/>
+ *     &lt;enumeration value="ThirteenToSeventeen"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -40,7 +41,9 @@ public enum AgeRange {
     @XmlEnumValue("FiftyToSixtyFour")
     FIFTY_TO_SIXTY_FOUR("FiftyToSixtyFour"),
     @XmlEnumValue("SixtyFiveAndAbove")
-    SIXTY_FIVE_AND_ABOVE("SixtyFiveAndAbove");
+    SIXTY_FIVE_AND_ABOVE("SixtyFiveAndAbove"),
+    @XmlEnumValue("ThirteenToSeventeen")
+    THIRTEEN_TO_SEVENTEEN("ThirteenToSeventeen");
     private final String value;
 
     AgeRange(String v) {

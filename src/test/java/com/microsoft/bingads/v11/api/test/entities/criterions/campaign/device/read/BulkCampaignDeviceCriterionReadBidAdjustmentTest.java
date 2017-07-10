@@ -42,7 +42,7 @@ public class BulkCampaignDeviceCriterionReadBidAdjustmentTest extends BulkCampai
                 new Function<BulkCampaignDeviceCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignDeviceCriterion c) {
-                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

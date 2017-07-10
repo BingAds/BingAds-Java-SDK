@@ -37,7 +37,7 @@ public class BulkAdGroupGenderCriterionReadParentIdTest extends BulkAdGroupGende
                 new Function<BulkAdGroupGenderCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupGenderCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 }
         );

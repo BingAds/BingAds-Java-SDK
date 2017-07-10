@@ -19,7 +19,7 @@ public abstract class BulkAdGroupDeviceCriterionTest extends BulkEntityTest<Bulk
         BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
         biddableAdGroupCriterion.setCriterion(deviceCriterion);
 
-        entity.setAdGroupCriterion(biddableAdGroupCriterion);
+        entity.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
     }
 
     @Override

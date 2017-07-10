@@ -38,7 +38,7 @@ public class BulkCampaignLocationCriterionWriteDisplayNameTypeTest extends BulkC
                 new BiConsumer<BulkCampaignLocationCriterion, String>() {
                     @Override
                     public void accept(BulkCampaignLocationCriterion c, String v) {
-                        ((LocationCriterion)c.getCampaignCriterion().getCriterion()).setDisplayName(v);
+                        ((LocationCriterion)c.getBiddableCampaignCriterion().getCriterion()).setDisplayName(v);
                     }
                 }
         );

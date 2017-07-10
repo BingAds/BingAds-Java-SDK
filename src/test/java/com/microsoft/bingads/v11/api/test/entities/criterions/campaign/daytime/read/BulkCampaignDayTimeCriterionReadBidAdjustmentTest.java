@@ -42,7 +42,7 @@ public class BulkCampaignDayTimeCriterionReadBidAdjustmentTest extends BulkCampa
                 new Function<BulkCampaignDayTimeCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignDayTimeCriterion c) {
-                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getCampaignCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

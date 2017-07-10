@@ -42,7 +42,7 @@ public class BulkAdGroupLocationIntentCriterionReadStatusTest extends BulkAdGrou
                 new Function<BulkAdGroupLocationIntentCriterion, AdGroupCriterionStatus>() {
                     @Override
                     public AdGroupCriterionStatus apply(BulkAdGroupLocationIntentCriterion c) {
-                        return c.getAdGroupCriterion().getStatus();
+                        return c.getBiddableAdGroupCriterion().getStatus();
                     }
                 }
         );

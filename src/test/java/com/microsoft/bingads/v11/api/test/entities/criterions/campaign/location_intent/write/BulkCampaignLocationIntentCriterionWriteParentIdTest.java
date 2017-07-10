@@ -38,7 +38,7 @@ public class BulkCampaignLocationIntentCriterionWriteParentIdTest extends BulkCa
                 new BiConsumer<BulkCampaignLocationIntentCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignLocationIntentCriterion c, Long v) {
-                        c.getCampaignCriterion().setCampaignId(v);
+                        c.getBiddableCampaignCriterion().setCampaignId(v);
                     }
                 }
         );

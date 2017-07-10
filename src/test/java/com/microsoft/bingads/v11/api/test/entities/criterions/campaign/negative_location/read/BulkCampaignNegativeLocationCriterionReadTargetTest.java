@@ -40,7 +40,7 @@ public class BulkCampaignNegativeLocationCriterionReadTargetTest extends BulkCam
                 new Function<BulkCampaignNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeLocationCriterion c) {
-                        return ((LocationCriterion)c.getCampaignCriterion().getCriterion()).getLocationId();
+                        return ((LocationCriterion)c.getNegativeCampaignCriterion().getCriterion()).getLocationId();
                     }
                 }
         );

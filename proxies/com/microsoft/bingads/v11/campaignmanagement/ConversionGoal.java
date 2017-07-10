@@ -57,7 +57,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     DurationGoal.class,
     AppInstallGoal.class,
     EventGoal.class,
-    PagesViewedPerVisitGoal.class
+    PagesViewedPerVisitGoal.class,
+    OfflineConversionGoal.class
 })
 public class ConversionGoal {
 

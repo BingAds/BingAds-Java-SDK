@@ -40,7 +40,7 @@ public class BulkAdGroupDayTimeCriterionReadIdTest extends BulkAdGroupDayTimeCri
                 new Function<BulkAdGroupDayTimeCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 }
         );

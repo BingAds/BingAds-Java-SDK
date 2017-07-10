@@ -41,7 +41,7 @@ public class BulkCampaignRadiusCriterionReadStatusTest extends BulkCampaignRadiu
                 new Function<BulkCampaignRadiusCriterion, CampaignCriterionStatus>() {
                     @Override
                     public CampaignCriterionStatus apply(BulkCampaignRadiusCriterion c) {
-                        return c.getCampaignCriterion().getStatus();
+                        return c.getBiddableCampaignCriterion().getStatus();
                     }
                 }
         );

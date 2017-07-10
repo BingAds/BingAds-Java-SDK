@@ -40,7 +40,7 @@ public class BulkAdGroupDeviceCriterionReadIdTest extends BulkAdGroupDeviceCrite
                 new Function<BulkAdGroupDeviceCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupDeviceCriterion c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getBiddableAdGroupCriterion().getId();
                     }
                 }
         );

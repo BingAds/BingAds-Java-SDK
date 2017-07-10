@@ -41,7 +41,7 @@ public class BulkAdGroupLocationIntentCriterionReadTargetTest extends BulkAdGrou
                 new Function<BulkAdGroupLocationIntentCriterion, IntentOption>() {
                     @Override
                     public IntentOption apply(BulkAdGroupLocationIntentCriterion c) {
-                        return ((LocationIntentCriterion)c.getAdGroupCriterion().getCriterion()).getIntentOption();
+                        return ((LocationIntentCriterion)c.getBiddableAdGroupCriterion().getCriterion()).getIntentOption();
                     }
                 }
         );

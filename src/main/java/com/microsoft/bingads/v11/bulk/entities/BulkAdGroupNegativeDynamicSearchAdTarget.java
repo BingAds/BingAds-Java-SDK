@@ -41,7 +41,7 @@ import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
  */
 public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEntity {
 	
-	private AdGroupCriterion adGroupCriterion;
+	private NegativeAdGroupCriterion negativeAdGroupCriterion;
 	
 	private String campaignName;
 	
@@ -56,7 +56,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        AdGroupCriterionStatus status = c.getAdGroupCriterion().getStatus();
+                        AdGroupCriterionStatus status = c.getNegativeAdGroupCriterion().getStatus();
 
                         return status == null ? null : status.value();
                     }
@@ -64,7 +64,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new BiConsumer<String, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
+                        c.getNegativeAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
                                 return AdGroupCriterionStatus.fromValue(s);
@@ -78,13 +78,13 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getId();
+                        return c.getNegativeAdGroupCriterion().getId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                        c.getNegativeAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String s) {
                                 return Long.parseLong(s);
@@ -98,13 +98,13 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getNegativeAdGroupCriterion().getAdGroupId();
                     }
                 },
                 new BiConsumer<String, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        c.getAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
                     }
                 }
         ));
@@ -143,8 +143,8 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new BiConsumer<BulkAdGroupNegativeDynamicSearchAdTarget, RowValues>() {
                     @Override
                     public void accept(BulkAdGroupNegativeDynamicSearchAdTarget c, RowValues v) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();                   	
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter();                   	
 	                        if (webpageParameter == null || webpageParameter.getConditions() == null) {
 	                            return;
 	                        }	                        
@@ -155,8 +155,8 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new BiConsumer<RowValues, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(RowValues v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter();
                     		if (webpageParameter != null) {
                     			webpageParameter.setConditions(new ArrayOfWebpageCondition());                        
                         		WebpageConditionHelper.addConditionsFromRowValues(v, webpageParameter.getConditions());
@@ -170,8 +170,8 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new Function<BulkAdGroupNegativeDynamicSearchAdTarget, String>() {
                     @Override
                     public String apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {    
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof Webpage) {    
+                    		WebpageParameter webpageParameter = ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter();
                     		return StringExtensions.toCriterionNameBulkString(webpageParameter);
                     	} 
                     	return null; 
@@ -180,8 +180,8 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new BiConsumer<String, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                    	if (c.getAdGroupCriterion().getCriterion() instanceof Webpage) {
-                    		WebpageParameter webpageParameter = ((Webpage) c.getAdGroupCriterion().getCriterion()).getParameter();                        	
+                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof Webpage) {
+                    		WebpageParameter webpageParameter = ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter();                        	
                         	if (webpageParameter != null) {
                         		webpageParameter.setCriterionName(StringExtensions.parseCriterionName(v));
                             }
@@ -195,7 +195,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-    	AdGroupCriterion adGroupCriterion = new NegativeAdGroupCriterion();
+    	NegativeAdGroupCriterion adGroupCriterion = new NegativeAdGroupCriterion();
 
     	Webpage webpage = new Webpage();
         webpage.setParameter(new WebpageParameter());
@@ -204,14 +204,14 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
     	adGroupCriterion.getCriterion().setType(Webpage.class.getSimpleName());
     	adGroupCriterion.setType("NegativeAdGroupCriterion");
     	
-    	setAdGroupCriterion(adGroupCriterion);
+    	setNegativeAdGroupCriterion(adGroupCriterion);
 
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getAdGroupCriterion(), AdGroupCriterion.class.getSimpleName());
+        validatePropertyNotNull(getNegativeAdGroupCriterion(), AdGroupCriterion.class.getSimpleName());
 
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
@@ -219,15 +219,15 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
     /**
      * Gets an Ad Group Criterion.
      */
-    public AdGroupCriterion getAdGroupCriterion() {
-        return adGroupCriterion;
+    public NegativeAdGroupCriterion getNegativeAdGroupCriterion() {
+        return negativeAdGroupCriterion;
     }
 
     /**
      * Sets an Ad Group Criterion
      */
-    public void setAdGroupCriterion(AdGroupCriterion adGroupCriterion) {
-        this.adGroupCriterion = adGroupCriterion;
+    public void setNegativeAdGroupCriterion(NegativeAdGroupCriterion negativeAdGroupCriterion) {
+        this.negativeAdGroupCriterion = negativeAdGroupCriterion;
     }
 
     /**

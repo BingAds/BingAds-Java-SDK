@@ -41,7 +41,7 @@ public class BulkAdGroupDayTimeCriterionWriteBidAdjustmentTest extends BulkAdGro
 
                         adGroupCriterion.setCriterion(criterion);
 
-                        c.setAdGroupCriterion(adGroupCriterion);
+                        c.setBiddableAdGroupCriterion(adGroupCriterion);
 
                         BidMultiplier bid = new BidMultiplier();
 

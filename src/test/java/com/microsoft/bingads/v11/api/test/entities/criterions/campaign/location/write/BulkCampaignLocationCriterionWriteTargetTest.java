@@ -38,7 +38,7 @@ public class BulkCampaignLocationCriterionWriteTargetTest extends BulkCampaignLo
                 new BiConsumer<BulkCampaignLocationCriterion, Long>() {
                     @Override
                     public void accept(BulkCampaignLocationCriterion c, Long v) {
-                        ((LocationCriterion)c.getCampaignCriterion().getCriterion()).setLocationId(v);
+                        ((LocationCriterion)c.getBiddableCampaignCriterion().getCriterion()).setLocationId(v);
                     }
                 }
         );

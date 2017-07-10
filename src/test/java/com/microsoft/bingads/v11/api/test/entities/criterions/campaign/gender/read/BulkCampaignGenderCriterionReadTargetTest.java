@@ -42,7 +42,7 @@ public class BulkCampaignGenderCriterionReadTargetTest extends BulkCampaignGende
                 new Function<BulkCampaignGenderCriterion, GenderType>() {
                     @Override
                     public GenderType apply(BulkCampaignGenderCriterion c) {
-                        return ((GenderCriterion)c.getCampaignCriterion().getCriterion()).getGenderType();
+                        return ((GenderCriterion)c.getBiddableCampaignCriterion().getCriterion()).getGenderType();
                     }
                 }
         );

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="IncludeTaxDetails" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="IncludeTaxInformation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "accountId",
-    "includeTaxDetails"
+    "includeTaxDetails",
+    "includeTaxInformation"
 })
 @XmlRootElement(name = "GetAccountRequest")
 public class GetAccountRequest {
@@ -40,6 +42,8 @@ public class GetAccountRequest {
     protected Long accountId;
     @XmlElement(name = "IncludeTaxDetails", nillable = true)
     protected Boolean includeTaxDetails;
+    @XmlElement(name = "IncludeTaxInformation", nillable = true)
+    protected Boolean includeTaxInformation;
 
     /**
      * Gets the value of the accountId property.
@@ -87,6 +91,30 @@ public class GetAccountRequest {
      */
     public void setIncludeTaxDetails(Boolean value) {
         this.includeTaxDetails = value;
+    }
+
+    /**
+     * Gets the value of the includeTaxInformation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIncludeTaxInformation() {
+        return includeTaxInformation;
+    }
+
+    /**
+     * Sets the value of the includeTaxInformation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeTaxInformation(Boolean value) {
+        this.includeTaxInformation = value;
     }
 
 }

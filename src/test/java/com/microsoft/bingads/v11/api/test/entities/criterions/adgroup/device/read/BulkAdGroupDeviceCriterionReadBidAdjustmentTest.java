@@ -42,7 +42,7 @@ public class BulkAdGroupDeviceCriterionReadBidAdjustmentTest extends BulkAdGroup
                 new Function<BulkAdGroupDeviceCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupDeviceCriterion c) {
-                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).getMultiplier();
+                        return ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).getMultiplier();
                     }
                 }
         );

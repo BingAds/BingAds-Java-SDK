@@ -42,7 +42,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadStatusTest extends BulkAdGroupD
                 new Function<BulkAdGroupDynamicSearchAdTarget, AdGroupCriterionStatus>() {
                     @Override
                     public AdGroupCriterionStatus apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return c.getAdGroupCriterion().getStatus();
+                        return c.getBiddableAdGroupCriterion().getStatus();
                     }
                 }
         );

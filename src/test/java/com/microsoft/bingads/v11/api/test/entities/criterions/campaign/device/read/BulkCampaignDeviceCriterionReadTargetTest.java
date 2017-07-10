@@ -41,7 +41,7 @@ public class BulkCampaignDeviceCriterionReadTargetTest extends BulkCampaignDevic
                 new Function<BulkCampaignDeviceCriterion, String>() {
                     @Override
                     public String apply(BulkCampaignDeviceCriterion c) {
-                        return ((DeviceCriterion)c.getCampaignCriterion().getCriterion()).getDeviceName();
+                        return ((DeviceCriterion)c.getBiddableCampaignCriterion().getCriterion()).getDeviceName();
                     }
                 }
         );

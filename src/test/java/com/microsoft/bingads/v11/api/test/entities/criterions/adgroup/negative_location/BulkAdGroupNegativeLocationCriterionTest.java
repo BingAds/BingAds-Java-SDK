@@ -19,7 +19,7 @@ public abstract class BulkAdGroupNegativeLocationCriterionTest extends BulkEntit
         NegativeAdGroupCriterion biddableAdGroupCriterion = new NegativeAdGroupCriterion();
         biddableAdGroupCriterion.setCriterion(locationCriterion);
 
-        entity.setAdGroupCriterion(biddableAdGroupCriterion);
+        entity.setNegativeAdGroupCriterion(biddableAdGroupCriterion);
     }
 
     @Override

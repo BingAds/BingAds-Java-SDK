@@ -77,11 +77,14 @@ public class ObjectFactory {
     private final static QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfSharedEntity");
     private final static QName _Media_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Media");
     private final static QName _ExpandedTextAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ExpandedTextAd");
+    private final static QName _OfflineConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "OfflineConversionGoal");
     private final static QName _ArrayOfMigrationStatusInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfMigrationStatusInfo");
     private final static QName _ConversionGoalRevenueType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ConversionGoalRevenueType");
     private final static QName _ArrayOfCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfCampaignCriterion");
+    private final static QName _Paging_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Paging");
     private final static QName _Setting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Setting");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
+    private final static QName _ArrayOfLabel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfLabel");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _AdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdGroupCriterion");
     private final static QName _ArrayOfAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAdGroupCriterion");
@@ -120,6 +123,7 @@ public class ObjectFactory {
     private final static QName _SharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "SharedEntity");
     private final static QName _Minute_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Minute");
     private final static QName _ProductScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ProductScope");
+    private final static QName _OfflineConversion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "OfflineConversion");
     private final static QName _PricingModel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "PricingModel");
     private final static QName _BidMultiplier_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "BidMultiplier");
     private final static QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "MediaAssociation");
@@ -154,6 +158,7 @@ public class ObjectFactory {
     private final static QName _Address_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Address");
     private final static QName _ArrayOfAccountMigrationStatusesInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAccountMigrationStatusesInfo");
     private final static QName _ConversionGoalType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ConversionGoalType");
+    private final static QName _ArrayOfLabelAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfLabelAssociation");
     private final static QName _AdExtensionEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdExtensionEditorialReason");
     private final static QName _ArrayOfCustomParameter_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", "ArrayOfCustomParameter");
     private final static QName _ArrayOfAdExtensionIdToEntityIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAdExtensionIdToEntityIdAssociation");
@@ -162,6 +167,7 @@ public class ObjectFactory {
     private final static QName _CriterionBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CriterionBid");
     private final static QName _InheritFromParentBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "InheritFromParentBiddingScheme");
     private final static QName _CustomAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CustomAudience");
+    private final static QName _AccountProperty_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AccountProperty");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
     private final static QName _AudienceCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AudienceCriterion");
     private final static QName _UserName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "UserName");
@@ -172,6 +178,7 @@ public class ObjectFactory {
     private final static QName _Criterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Criterion");
     private final static QName _PageVisitorsWhoDidNotVisitAnotherPageRule_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", "PageVisitorsWhoDidNotVisitAnotherPageRule");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
+    private final static QName _ArrayOfOfflineConversion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfOfflineConversion");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CustomerAccountId");
     private final static QName _MediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "MediaRepresentation");
     private final static QName _ArrayOfSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfSetting");
@@ -217,12 +224,14 @@ public class ObjectFactory {
     private final static QName _CampaignCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CampaignCriterionStatus");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
     private final static QName _DurationGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "DurationGoal");
+    private final static QName _Label_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Label");
     private final static QName _AdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdType");
     private final static QName _ArrayOfBudget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfBudget");
     private final static QName _ArrayOfProductCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfProductCondition");
     private final static QName _BiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "BiddingScheme");
     private final static QName _ArrayOfNegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfNegativeKeyword");
     private final static QName _AppUrl_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", "AppUrl");
+    private final static QName _AccountPropertyName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AccountPropertyName");
     private final static QName _PriceQualifier_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "PriceQualifier");
     private final static QName _ArrayOfKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfKeyword");
     private final static QName _SharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "SharedListItem");
@@ -244,6 +253,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfConversionGoal");
     private final static QName _Sitelink2AdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Sitelink2AdExtension");
     private final static QName _ArrayOfMedia_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfMedia");
+    private final static QName _ArrayOfAccountPropertyName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAccountPropertyName");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private final static QName _Budget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "Budget");
@@ -276,6 +286,7 @@ public class ObjectFactory {
     private final static QName _CustomEventsRule_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", "CustomEventsRule");
     private final static QName _AdGroupCriterionAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdGroupCriterionAction");
     private final static QName _KeywordEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "KeywordEditorialStatus");
+    private final static QName _LabelAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "LabelAssociation");
     private final static QName _ShoppingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ShoppingSetting");
     private final static QName _ArrayOfAppUrl_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", "ArrayOfAppUrl");
     private final static QName _ArrayOfEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfEditorialReasonCollection");
@@ -288,6 +299,7 @@ public class ObjectFactory {
     private final static QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdGroupCriterionStatus");
     private final static QName _UrlGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "UrlGoal");
     private final static QName _ArrayOfDayTime_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfDayTime");
+    private final static QName _ArrayOfAccountProperty_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAccountProperty");
     private final static QName _EditorialError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "EditorialError");
     private final static QName _DayTimeCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "DayTimeCriterion");
     private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
@@ -408,11 +420,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteAdsResponse }
+     * Create an instance of {@link ApplyOfflineConversionsResponse }
      * 
      */
-    public DeleteAdsResponse createDeleteAdsResponse() {
-        return new DeleteAdsResponse();
+    public ApplyOfflineConversionsResponse createApplyOfflineConversionsResponse() {
+        return new ApplyOfflineConversionsResponse();
     }
 
     /**
@@ -421,6 +433,14 @@ public class ObjectFactory {
      */
     public ArrayOfBatchError createArrayOfBatchError() {
         return new ArrayOfBatchError();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAdsResponse }
+     * 
+     */
+    public DeleteAdsResponse createDeleteAdsResponse() {
+        return new DeleteAdsResponse();
     }
 
     /**
@@ -581,6 +601,14 @@ public class ObjectFactory {
      */
     public GetUetTagsByIdsRequest createGetUetTagsByIdsRequest() {
         return new GetUetTagsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link LabelAssociation }
+     * 
+     */
+    public LabelAssociation createLabelAssociation() {
+        return new LabelAssociation();
     }
 
     /**
@@ -864,6 +892,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteLabelsResponse }
+     * 
+     */
+    public DeleteLabelsResponse createDeleteLabelsResponse() {
+        return new DeleteLabelsResponse();
+    }
+
+    /**
      * Create an instance of {@link AddListItemsToSharedListResponse }
      * 
      */
@@ -949,6 +985,14 @@ public class ObjectFactory {
      */
     public GetGeoLocationsFileUrlRequest createGetGeoLocationsFileUrlRequest() {
         return new GetGeoLocationsFileUrlRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddLabelsResponse }
+     * 
+     */
+    public AddLabelsResponse createAddLabelsResponse() {
+        return new AddLabelsResponse();
     }
 
     /**
@@ -1200,6 +1244,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AccountProperty }
+     * 
+     */
+    public AccountProperty createAccountProperty() {
+        return new AccountProperty();
+    }
+
+    /**
      * Create an instance of {@link GetKeywordsByEditorialStatusRequest }
      * 
      */
@@ -1349,6 +1401,22 @@ public class ObjectFactory {
      */
     public GetSharedEntityAssociationsByEntityIdsRequest createGetSharedEntityAssociationsByEntityIdsRequest() {
         return new GetSharedEntityAssociationsByEntityIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddLabelsRequest }
+     * 
+     */
+    public AddLabelsRequest createAddLabelsRequest() {
+        return new AddLabelsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLabel }
+     * 
+     */
+    public ArrayOfLabel createArrayOfLabel() {
+        return new ArrayOfLabel();
     }
 
     /**
@@ -1672,11 +1740,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Paging }
+     * 
+     */
+    public Paging createPaging() {
+        return new Paging();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfMigrationStatusInfo }
      * 
      */
     public ArrayOfMigrationStatusInfo createArrayOfMigrationStatusInfo() {
         return new ArrayOfMigrationStatusInfo();
+    }
+
+    /**
+     * Create an instance of {@link GetLabelAssociationsByLabelIdsResponse }
+     * 
+     */
+    public GetLabelAssociationsByLabelIdsResponse createGetLabelAssociationsByLabelIdsResponse() {
+        return new GetLabelAssociationsByLabelIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLabelAssociation }
+     * 
+     */
+    public ArrayOfLabelAssociation createArrayOfLabelAssociation() {
+        return new ArrayOfLabelAssociation();
     }
 
     /**
@@ -1792,6 +1884,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetLabelAssociationsRequest }
+     * 
+     */
+    public SetLabelAssociationsRequest createSetLabelAssociationsRequest() {
+        return new SetLabelAssociationsRequest();
+    }
+
+    /**
      * Create an instance of {@link UpdateAudiencesRequest }
      * 
      */
@@ -1848,6 +1948,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetLabelAssociationsByLabelIdsRequest }
+     * 
+     */
+    public GetLabelAssociationsByLabelIdsRequest createGetLabelAssociationsByLabelIdsRequest() {
+        return new GetLabelAssociationsByLabelIdsRequest();
+    }
+
+    /**
      * Create an instance of {@link DynamicSearchAdsSetting }
      * 
      */
@@ -1888,6 +1996,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfAccountProperty }
+     * 
+     */
+    public ArrayOfAccountProperty createArrayOfAccountProperty() {
+        return new ArrayOfAccountProperty();
+    }
+
+    /**
      * Create an instance of {@link LocationIntentCriterion }
      * 
      */
@@ -1925,6 +2041,30 @@ public class ObjectFactory {
      */
     public RemarketingList createRemarketingList() {
         return new RemarketingList();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLabelsRequest }
+     * 
+     */
+    public UpdateLabelsRequest createUpdateLabelsRequest() {
+        return new UpdateLabelsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ApplyOfflineConversionsRequest }
+     * 
+     */
+    public ApplyOfflineConversionsRequest createApplyOfflineConversionsRequest() {
+        return new ApplyOfflineConversionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfOfflineConversion }
+     * 
+     */
+    public ArrayOfOfflineConversion createArrayOfOfflineConversion() {
+        return new ArrayOfOfflineConversion();
     }
 
     /**
@@ -2072,6 +2212,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfAccountPropertyName }
+     * 
+     */
+    public ArrayOfAccountPropertyName createArrayOfAccountPropertyName() {
+        return new ArrayOfAccountPropertyName();
+    }
+
+    /**
      * Create an instance of {@link UpdateAudiencesResponse }
      * 
      */
@@ -2133,6 +2281,14 @@ public class ObjectFactory {
      */
     public BiddingScheme createBiddingScheme() {
         return new BiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link Label }
+     * 
+     */
+    public Label createLabel() {
+        return new Label();
     }
 
     /**
@@ -2232,6 +2388,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteLabelAssociationsResponse }
+     * 
+     */
+    public DeleteLabelAssociationsResponse createDeleteLabelAssociationsResponse() {
+        return new DeleteLabelAssociationsResponse();
+    }
+
+    /**
      * Create an instance of {@link DeleteNegativeKeywordsFromEntitiesRequest }
      * 
      */
@@ -2253,6 +2417,22 @@ public class ObjectFactory {
      */
     public GetMediaMetaDataByIdsRequest createGetMediaMetaDataByIdsRequest() {
         return new GetMediaMetaDataByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link SetAccountPropertiesRequest }
+     * 
+     */
+    public SetAccountPropertiesRequest createSetAccountPropertiesRequest() {
+        return new SetAccountPropertiesRequest();
+    }
+
+    /**
+     * Create an instance of {@link SetAccountPropertiesResponse }
+     * 
+     */
+    public SetAccountPropertiesResponse createSetAccountPropertiesResponse() {
+        return new SetAccountPropertiesResponse();
     }
 
     /**
@@ -2512,6 +2692,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAccountPropertiesResponse }
+     * 
+     */
+    public GetAccountPropertiesResponse createGetAccountPropertiesResponse() {
+        return new GetAccountPropertiesResponse();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfAdExtensionAssociationCollection }
      * 
      */
@@ -2600,6 +2788,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetLabelsByIdsResponse }
+     * 
+     */
+    public GetLabelsByIdsResponse createGetLabelsByIdsResponse() {
+        return new GetLabelsByIdsResponse();
+    }
+
+    /**
      * Create an instance of {@link AdExtensionAssociationCollection }
      * 
      */
@@ -2637,6 +2833,14 @@ public class ObjectFactory {
      */
     public DeleteNegativeKeywordsFromEntitiesResponse createDeleteNegativeKeywordsFromEntitiesResponse() {
         return new DeleteNegativeKeywordsFromEntitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteLabelAssociationsRequest }
+     * 
+     */
+    public DeleteLabelAssociationsRequest createDeleteLabelAssociationsRequest() {
+        return new DeleteLabelAssociationsRequest();
     }
 
     /**
@@ -2685,6 +2889,14 @@ public class ObjectFactory {
      */
     public ProductScope createProductScope() {
         return new ProductScope();
+    }
+
+    /**
+     * Create an instance of {@link OfflineConversion }
+     * 
+     */
+    public OfflineConversion createOfflineConversion() {
+        return new OfflineConversion();
     }
 
     /**
@@ -2816,6 +3028,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetLabelAssociationsResponse }
+     * 
+     */
+    public SetLabelAssociationsResponse createSetLabelAssociationsResponse() {
+        return new SetLabelAssociationsResponse();
+    }
+
+    /**
      * Create an instance of {@link LocationCriterion }
      * 
      */
@@ -2888,6 +3108,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OfflineConversionGoal }
+     * 
+     */
+    public OfflineConversionGoal createOfflineConversionGoal() {
+        return new OfflineConversionGoal();
+    }
+
+    /**
      * Create an instance of {@link UpdateSharedEntitiesResponse }
      * 
      */
@@ -2928,11 +3156,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteLabelsRequest }
+     * 
+     */
+    public DeleteLabelsRequest createDeleteLabelsRequest() {
+        return new DeleteLabelsRequest();
+    }
+
+    /**
      * Create an instance of {@link GetConversionGoalsByIdsResponse }
      * 
      */
     public GetConversionGoalsByIdsResponse createGetConversionGoalsByIdsResponse() {
         return new GetConversionGoalsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLabelAssociationsByEntityIdsRequest }
+     * 
+     */
+    public GetLabelAssociationsByEntityIdsRequest createGetLabelAssociationsByEntityIdsRequest() {
+        return new GetLabelAssociationsByEntityIdsRequest();
     }
 
     /**
@@ -2968,11 +3212,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetLabelAssociationsByEntityIdsResponse }
+     * 
+     */
+    public GetLabelAssociationsByEntityIdsResponse createGetLabelAssociationsByEntityIdsResponse() {
+        return new GetLabelAssociationsByEntityIdsResponse();
+    }
+
+    /**
      * Create an instance of {@link GetListItemsBySharedListResponse }
      * 
      */
     public GetListItemsBySharedListResponse createGetListItemsBySharedListResponse() {
         return new GetListItemsBySharedListResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLabelsByIdsRequest }
+     * 
+     */
+    public GetLabelsByIdsRequest createGetLabelsByIdsRequest() {
+        return new GetLabelsByIdsRequest();
     }
 
     /**
@@ -3013,6 +3273,14 @@ public class ObjectFactory {
      */
     public UetTag createUetTag() {
         return new UetTag();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLabelsResponse }
+     * 
+     */
+    public UpdateLabelsResponse createUpdateLabelsResponse() {
+        return new UpdateLabelsResponse();
     }
 
     /**
@@ -3077,6 +3345,14 @@ public class ObjectFactory {
      */
     public UpdateAdsRequest createUpdateAdsRequest() {
         return new UpdateAdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAccountPropertiesRequest }
+     * 
+     */
+    public GetAccountPropertiesRequest createGetAccountPropertiesRequest() {
+        return new GetAccountPropertiesRequest();
     }
 
     /**
@@ -3764,6 +4040,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OfflineConversionGoal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "OfflineConversionGoal")
+    public JAXBElement<OfflineConversionGoal> createOfflineConversionGoal(OfflineConversionGoal value) {
+        return new JAXBElement<OfflineConversionGoal>(_OfflineConversionGoal_QNAME, OfflineConversionGoal.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfMigrationStatusInfo }{@code >}}
      * 
      */
@@ -3791,6 +4076,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Paging }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "Paging")
+    public JAXBElement<Paging> createPaging(Paging value) {
+        return new JAXBElement<Paging>(_Paging_QNAME, Paging.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}}
      * 
      */
@@ -3806,6 +4100,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "anyType")
     public JAXBElement<Object> createAnyType(Object value) {
         return new JAXBElement<Object>(_AnyType_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLabel }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfLabel")
+    public JAXBElement<ArrayOfLabel> createArrayOfLabel(ArrayOfLabel value) {
+        return new JAXBElement<ArrayOfLabel>(_ArrayOfLabel_QNAME, ArrayOfLabel.class, null, value);
     }
 
     /**
@@ -4152,6 +4455,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OfflineConversion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "OfflineConversion")
+    public JAXBElement<OfflineConversion> createOfflineConversion(OfflineConversion value) {
+        return new JAXBElement<OfflineConversion>(_OfflineConversion_QNAME, OfflineConversion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PricingModel }{@code >}}
      * 
      */
@@ -4459,6 +4771,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLabelAssociation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfLabelAssociation")
+    public JAXBElement<ArrayOfLabelAssociation> createArrayOfLabelAssociation(ArrayOfLabelAssociation value) {
+        return new JAXBElement<ArrayOfLabelAssociation>(_ArrayOfLabelAssociation_QNAME, ArrayOfLabelAssociation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdExtensionEditorialReason }{@code >}}
      * 
      */
@@ -4528,6 +4849,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "CustomAudience")
     public JAXBElement<CustomAudience> createCustomAudience(CustomAudience value) {
         return new JAXBElement<CustomAudience>(_CustomAudience_QNAME, CustomAudience.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountProperty }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "AccountProperty")
+    public JAXBElement<AccountProperty> createAccountProperty(AccountProperty value) {
+        return new JAXBElement<AccountProperty>(_AccountProperty_QNAME, AccountProperty.class, null, value);
     }
 
     /**
@@ -4618,6 +4948,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "boolean")
     public JAXBElement<Boolean> createBoolean(Boolean value) {
         return new JAXBElement<Boolean>(_Boolean_QNAME, Boolean.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOfflineConversion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfOfflineConversion")
+    public JAXBElement<ArrayOfOfflineConversion> createArrayOfOfflineConversion(ArrayOfOfflineConversion value) {
+        return new JAXBElement<ArrayOfOfflineConversion>(_ArrayOfOfflineConversion_QNAME, ArrayOfOfflineConversion.class, null, value);
     }
 
     /**
@@ -5028,6 +5367,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Label }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "Label")
+    public JAXBElement<Label> createLabel(Label value) {
+        return new JAXBElement<Label>(_Label_QNAME, Label.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdType }{@code >}}
      * 
      */
@@ -5079,6 +5427,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11", name = "AppUrl")
     public JAXBElement<AppUrl> createAppUrl(AppUrl value) {
         return new JAXBElement<AppUrl>(_AppUrl_QNAME, AppUrl.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountPropertyName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "AccountPropertyName")
+    public JAXBElement<AccountPropertyName> createAccountPropertyName(AccountPropertyName value) {
+        return new JAXBElement<AccountPropertyName>(_AccountPropertyName_QNAME, AccountPropertyName.class, null, value);
     }
 
     /**
@@ -5270,6 +5627,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfMedia")
     public JAXBElement<ArrayOfMedia> createArrayOfMedia(ArrayOfMedia value) {
         return new JAXBElement<ArrayOfMedia>(_ArrayOfMedia_QNAME, ArrayOfMedia.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAccountPropertyName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfAccountPropertyName")
+    public JAXBElement<ArrayOfAccountPropertyName> createArrayOfAccountPropertyName(ArrayOfAccountPropertyName value) {
+        return new JAXBElement<ArrayOfAccountPropertyName>(_ArrayOfAccountPropertyName_QNAME, ArrayOfAccountPropertyName.class, null, value);
     }
 
     /**
@@ -5561,6 +5927,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LabelAssociation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "LabelAssociation")
+    public JAXBElement<LabelAssociation> createLabelAssociation(LabelAssociation value) {
+        return new JAXBElement<LabelAssociation>(_LabelAssociation_QNAME, LabelAssociation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}}
      * 
      */
@@ -5666,6 +6041,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfDayTime")
     public JAXBElement<ArrayOfDayTime> createArrayOfDayTime(ArrayOfDayTime value) {
         return new JAXBElement<ArrayOfDayTime>(_ArrayOfDayTime_QNAME, ArrayOfDayTime.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAccountProperty }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfAccountProperty")
+    public JAXBElement<ArrayOfAccountProperty> createArrayOfAccountProperty(ArrayOfAccountProperty value) {
+        return new JAXBElement<ArrayOfAccountProperty>(_ArrayOfAccountProperty_QNAME, ArrayOfAccountProperty.class, null, value);
     }
 
     /**

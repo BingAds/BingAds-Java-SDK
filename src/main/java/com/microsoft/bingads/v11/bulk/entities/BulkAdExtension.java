@@ -252,6 +252,21 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                 true
         ));
 
+        m.add(new SimpleBulkMapping<BulkAdExtension, String>(StringTable.DevicePreference,
+                new Function<BulkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAdExtension c) {
+                        return StringExtensions.toDevicePreferenceBulkString(c.getAdExtension().getDevicePreference());
+                    }
+                },
+                new BiConsumer<String, BulkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAdExtension c) {
+                        c.getAdExtension().setDevicePreference(StringExtensions.parseDevicePreference(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

@@ -39,7 +39,7 @@ public class BulkAdGroupDynamicSearchAdTargetWriteIdTest extends BulkAdGroupDyna
                 new BiConsumer<BulkAdGroupDynamicSearchAdTarget, Long>() {
                     @Override
                     public void accept(BulkAdGroupDynamicSearchAdTarget c, Long v) {
-                        c.getAdGroupCriterion().setId(v);
+                        c.getBiddableAdGroupCriterion().setId(v);
                     }
                 }
         );

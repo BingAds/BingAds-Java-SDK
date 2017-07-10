@@ -38,7 +38,7 @@ public class BulkAdGroupLocationCriterionWriteLocationTypeTest extends BulkAdGro
                 new BiConsumer<BulkAdGroupLocationCriterion, String>() {
                     @Override
                     public void accept(BulkAdGroupLocationCriterion c, String v) {
-                        ((LocationCriterion)c.getAdGroupCriterion().getCriterion()).setLocationType(v);
+                        ((LocationCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setLocationType(v);
                     }
                 }
         );

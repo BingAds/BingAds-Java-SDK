@@ -53,7 +53,7 @@ public class BulkAdGroupDynamicSearchAdTargetReadCriterionBidTest extends BulkAd
                 new Function<BulkAdGroupDynamicSearchAdTarget, FixedBid>() {
                     @Override
                     public FixedBid apply(BulkAdGroupDynamicSearchAdTarget c) {
-                        return ((FixedBid) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid());
+                        return ((FixedBid) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid());
                     }
                 },
                 new Supplier<BulkAdGroupDynamicSearchAdTarget>() {

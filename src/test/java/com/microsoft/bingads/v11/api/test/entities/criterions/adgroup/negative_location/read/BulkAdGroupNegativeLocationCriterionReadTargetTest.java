@@ -40,7 +40,7 @@ public class BulkAdGroupNegativeLocationCriterionReadTargetTest extends BulkAdGr
                 new Function<BulkAdGroupNegativeLocationCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupNegativeLocationCriterion c) {
-                        return ((LocationCriterion)c.getAdGroupCriterion().getCriterion()).getLocationId();
+                        return ((LocationCriterion)c.getNegativeAdGroupCriterion().getCriterion()).getLocationId();
                     }
                 }
         );

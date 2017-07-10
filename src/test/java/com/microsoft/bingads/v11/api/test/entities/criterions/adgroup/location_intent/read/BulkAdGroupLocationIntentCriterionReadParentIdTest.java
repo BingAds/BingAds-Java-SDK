@@ -37,7 +37,7 @@ public class BulkAdGroupLocationIntentCriterionReadParentIdTest extends BulkAdGr
                 new Function<BulkAdGroupLocationIntentCriterion, Long>() {
                     @Override
                     public Long apply(BulkAdGroupLocationIntentCriterion c) {
-                        return c.getAdGroupCriterion().getAdGroupId();
+                        return c.getBiddableAdGroupCriterion().getAdGroupId();
                     }
                 }
         );
