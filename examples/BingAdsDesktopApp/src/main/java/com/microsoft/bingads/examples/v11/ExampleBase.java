@@ -158,6 +158,17 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         }
     }
     
+    static void outputAdGroupCriterions(ArrayOfAdGroupCriterion criterions)
+    {
+        if (criterions != null)
+    	{
+            for (AdGroupCriterion criterion : criterions.getAdGroupCriterions())
+            {
+                outputAdGroupCriterion(criterion);
+            }
+    	}	
+    }
+    
     static void outputBiddableCampaignCriterion(BiddableCampaignCriterion criterion)
     {
         if (criterion != null)
@@ -201,6 +212,17 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("CampaignCriterion Type: %s", criterion.getType()));
         }
     }
+    
+    static void outputCampaignCriterions(ArrayOfCampaignCriterion criterions)
+    {
+    	if (criterions != null)
+    	{
+            for (CampaignCriterion criterion : criterions.getCampaignCriterions())
+            {
+                outputCampaignCriterion(criterion);
+            }
+    	}
+    }
 
     static void outputCriterion(Criterion criterion)
     {
@@ -222,6 +244,34 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             else if (criterion instanceof AudienceCriterion)
             {
                 outputAudienceCriterion((AudienceCriterion)criterion);
+            }
+            else if (criterion instanceof AgeCriterion)
+            {
+                outputAgeCriterion((AgeCriterion)criterion);
+            }
+            else if (criterion instanceof DayTimeCriterion)
+            {
+                outputDayTimeCriterion((DayTimeCriterion)criterion);
+            }
+            else if (criterion instanceof DeviceCriterion)
+            {
+                outputDeviceCriterion((DeviceCriterion)criterion);
+            }
+            else if (criterion instanceof GenderCriterion)
+            {
+                outputGenderCriterion((GenderCriterion)criterion);
+            }
+            else if (criterion instanceof LocationCriterion)
+            {
+                outputLocationCriterion((LocationCriterion)criterion);
+            }
+            else if (criterion instanceof LocationIntentCriterion)
+            {
+                outputLocationIntentCriterion((LocationIntentCriterion)criterion);
+            }
+            else if (criterion instanceof RadiusCriterion)
+            {
+                outputRadiusCriterion((RadiusCriterion)criterion);
             }
         }
     }
@@ -267,6 +317,58 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
             outputStatusMessage(String.format("AudienceType: %s", audienceCriterion.getAudienceType()));
         }
     }
+    
+    static void outputAgeCriterion(AgeCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("AgeRange: %s", criterion.getAgeRange()));
+        }
+    }
+    
+    static void outputDayTimeCriterion(DayTimeCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("Day: %s", criterion.getDay()));
+            outputStatusMessage(String.format("FromHour: %s", criterion.getFromHour()));
+            outputStatusMessage(String.format("FromMinute: %s", criterion.getFromMinute()));
+            outputStatusMessage(String.format("ToHour: %s", criterion.getToHour()));
+            outputStatusMessage(String.format("ToMinute: %s", criterion.getToMinute()));
+        }
+    }
+    
+    static void outputDeviceCriterion(DeviceCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("DeviceName: %s", criterion.getDeviceName()));
+        }
+    }
+    
+    static void outputGenderCriterion(GenderCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("GenderType: %s", criterion.getGenderType()));
+        }
+    }
+    
+    static void outputLocationCriterion(LocationCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("DisplayName: %s", criterion.getDisplayName()));
+            outputStatusMessage(String.format("LocationId: %s", criterion.getLocationId()));
+            outputStatusMessage(String.format("LocationType: %s", criterion.getLocationType()));
+        }
+    }
+    
+    static void outputLocationIntentCriterion(LocationIntentCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("IntentOption: %s", criterion.getIntentOption()));
+        }
+    }
+    
+    static void outputRadiusCriterion(RadiusCriterion criterion){
+        if (criterion != null) {
+            outputStatusMessage(String.format("LatitudeDegrees: %s", criterion.getLatitudeDegrees()));
+            outputStatusMessage(String.format("LongitudeDegrees: %s", criterion.getLongitudeDegrees()));
+            outputStatusMessage(String.format("Name: %s", criterion.getName()));
+            outputStatusMessage(String.format("Radius: %s", criterion.getRadius()));
+            outputStatusMessage(String.format("RadiusUnit: %s", criterion.getRadiusUnit()));
+        }
+    }
 
     static void outputCriterionBid(CriterionBid criterionBid)
     {
@@ -295,6 +397,20 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
         if (bidMultiplier != null)
         {
             outputStatusMessage(String.format("Bid Multiplier: %s", bidMultiplier.getMultiplier()));
+        }
+    }
+    
+    static void outputIds(ArrayOfNullableOflong ids) 
+    {
+        if (ids == null || ids.getLongs().size() == 0)
+        {
+            outputStatusMessage("No Ids\n");
+            return;
+        }
+
+        for (long id: ids.getLongs())
+        {
+            outputStatusMessage("" + id);
         }
     }
 
