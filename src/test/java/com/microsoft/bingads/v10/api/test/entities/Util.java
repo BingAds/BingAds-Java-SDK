@@ -1,5 +1,11 @@
 package com.microsoft.bingads.v10.api.test.entities;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.junit.Assert;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -8,11 +14,6 @@ import com.microsoft.bingads.v10.bulk.BulkFileWriter;
 import com.microsoft.bingads.v10.bulk.DownloadFileType;
 import com.microsoft.bingads.v10.bulk.ResultFileType;
 import com.microsoft.bingads.v10.bulk.entities.BulkEntity;
-import org.junit.Assert;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Util {
 
@@ -25,12 +26,11 @@ public class Util {
                 writer.writeEntity(entity);
             }
             writer.close();
-            BulkFileReader reader = new BulkFileReader(new File(filePath), ResultFileType.FULL_DOWNLOAD, DownloadFileType.CSV);
+            BulkFileReader reader = new BulkFileReader(new File(filePath), ResultFileType.FULL_DOWNLOAD, DownloadFileType.CSV, true);
             for (BulkEntity entity: reader.getEntities()) {
                 results.add(entity);
             }
             reader.close();
-            new File(filePath).delete();
         } catch (IOException ex) {
             Assert.fail("Exceptions while writing or reading file");
         }

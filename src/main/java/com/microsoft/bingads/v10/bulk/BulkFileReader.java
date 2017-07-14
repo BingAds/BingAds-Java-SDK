@@ -1,13 +1,11 @@
 package com.microsoft.bingads.v10.bulk;
 
-import com.microsoft.bingads.v10.bulk.DownloadFileType;
-import com.microsoft.bingads.v10.internal.bulk.BulkStreamReader;
-import com.microsoft.bingads.v10.internal.bulk.SimpleBulkStreamReader;
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
+import com.microsoft.bingads.v10.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v10.internal.bulk.SimpleBulkStreamReader;
 
 /**
  * Provides a method to read bulk entities from a bulk file and make them accessible as an Iterable.
@@ -24,12 +22,13 @@ public class BulkFileReader implements Closeable {
      * @param file path of the bulk file to read
      * @param resultFileType the type of bulk file download which is being read
      * @param fileFormat the bulk file format
+     * @param deleteFileOnClose delete file on end of iteration?
      *
      * @throws IOException
      */
-    public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat) throws IOException {
-        this(new SimpleBulkStreamReader(file, fileFormat), resultFileType);
-        bulkFilePath = file.getCanonicalPath();
+    public BulkFileReader(final File file, ResultFileType resultFileType, DownloadFileType fileFormat, final boolean deleteFileOnClose) throws IOException {
+        this(new DeletingSimpleBulkStreamReader(file, fileFormat, deleteFileOnClose), resultFileType);
+        this.bulkFilePath = file.getCanonicalPath();
     }
 
     /**
@@ -41,7 +40,7 @@ public class BulkFileReader implements Closeable {
      public BulkFileReader(BulkStreamReader reader, ResultFileType fileType) {
         this.bulkStreamReader = reader;
         this.fileType = fileType;
-    }
+     }
 
     /**
      * Returns entities stored in the file.
@@ -69,5 +68,39 @@ public class BulkFileReader implements Closeable {
      */
     public String getBulkFilePath() {
         return bulkFilePath;
+    }
+
+    /**
+     * {@link SimpleBulkStreamReader} that is able to delete its input file on {@link #close()}.
+     */
+    private static class DeletingSimpleBulkStreamReader extends SimpleBulkStreamReader {
+        private final File file;
+        private final boolean deleteFileOnClose;
+
+        /**
+         * Creates new instance
+         *
+         * @param file path of the bulk file to read
+         * @param fileFormat the bulk file format
+         * @param deleteFileOnClose delete file on end of iteration?
+         *
+         * @throws IOException
+         */
+        public DeletingSimpleBulkStreamReader(File file, DownloadFileType fileFormat, boolean deleteFileOnClose) throws IOException {
+            super(file, fileFormat);
+            this.file = file;
+            this.deleteFileOnClose = deleteFileOnClose;
+        }
+
+        @Override
+        public void close() throws IOException {
+            try {
+                super.close();
+            } finally {
+                if (deleteFileOnClose) {
+                    file.delete();
+                }
+            }
+        }
     }
 }

@@ -349,7 +349,7 @@ public class BulkServiceTest extends FakeApiTest {
         
         expect(expectedReader.getEntities()).andReturn(bulkEntities);
         
-        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV)).andReturn(expectedReader);
+        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV, false)).andReturn(expectedReader);
         
         replay(zipExtractor, expectedReader, factory);
 
