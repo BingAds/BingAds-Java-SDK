@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     UrlGoal.class,
     DurationGoal.class,
     AppInstallGoal.class,
+    InStoreTransactionGoal.class,
     EventGoal.class,
     PagesViewedPerVisitGoal.class,
     OfflineConversionGoal.class
@@ -85,7 +86,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<ConversionGoalType> type;
 
     /**

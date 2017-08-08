@@ -3,11 +3,8 @@ package com.microsoft.bingads.v11.bulk;
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.internal.bulk.BulkStreamReader;
 import com.microsoft.bingads.v11.internal.bulk.SimpleBulkStreamReader;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
+import java.io.*;
 
 /**
  * Provides a method to read bulk entities from a bulk file and make them accessible as an Iterable.
@@ -30,6 +27,19 @@ public class BulkFileReader implements Closeable {
     public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat) throws IOException {
         this(new SimpleBulkStreamReader(file, fileFormat), resultFileType);
         bulkFilePath = file.getCanonicalPath();
+    }
+
+    /**
+     * Creates new instance from given stream
+     *
+     * @param inputStream InputStream to read
+     * @param resultFileType the type of bulk file download which is being read
+     * @param fileFormat the bulk file format
+     *
+     * @throws IOException
+     */
+    public BulkFileReader(InputStream inputStream, ResultFileType resultFileType, DownloadFileType fileFormat) throws IOException {
+        this(new SimpleBulkStreamReader(inputStream, fileFormat), resultFileType);
     }
 
     /**

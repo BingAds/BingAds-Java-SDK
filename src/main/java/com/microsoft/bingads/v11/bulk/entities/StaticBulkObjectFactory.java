@@ -548,6 +548,68 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
 
+        m.put(StringTable.Label, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkLabel();
+            }
+        }));
+        m.put(StringTable.CampaignLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignLabel();
+            }
+        }));
+        m.put(StringTable.AdGroupLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupLabel();
+            }
+        }));
+        m.put(StringTable.KeywordLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkKeywordLabel();
+            }
+        }));
+        m.put(StringTable.AppInstallAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAppInstallAdLabel();
+            }
+        }));
+        m.put(StringTable.DynamicSearchAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkDynamicSearchAdLabel();
+            }
+        }));
+        m.put(StringTable.ExpandedTextAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkExpandedTextAdLabel();
+            }
+        }));
+        m.put(StringTable.ProductAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkProductAdLabel();
+            }
+        }));
+        m.put(StringTable.TextAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkTextAdLabel();
+            }
+        }));
+
+        m.put(StringTable.OfflineConversion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkOfflineConversion();
+            }
+        }));
+
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 
         Map<String, Supplier<BulkObject>> addl = new HashMap<String, Supplier<BulkObject>>();

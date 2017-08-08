@@ -1,9 +1,12 @@
 package com.microsoft.bingads;
 
+import com.ctc.wstx.util.StringUtil;
 import com.microsoft.bingads.internal.HeaderHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
+import com.microsoft.bingads.internal.ServiceUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -147,7 +150,7 @@ public class ServiceClient<T> {
     private ApiEnvironment getEnvironmentFromConfig() {
         InputStream input = null;
         try {
-            input = this.getClass().getClassLoader().getResourceAsStream("bingads.properties");
+            input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
 
             if (input == null) {
                 return null;

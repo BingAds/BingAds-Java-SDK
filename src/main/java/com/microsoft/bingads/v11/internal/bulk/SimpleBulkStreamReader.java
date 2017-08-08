@@ -4,10 +4,8 @@ import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.bulk.entities.UnknownBulkEntity;
 import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
+import java.io.*;
 
 /**
  * Reads a bulk object and also its related data (for example corresponding
@@ -21,6 +19,10 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
 
     public SimpleBulkStreamReader(File file, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException {        
         this(new SimpleBulkObjectReader(file, fileFormat == DownloadFileType.TSV ? '\t' : ','));
+    }
+
+    public SimpleBulkStreamReader(InputStream inputStream, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException {
+        this(new SimpleBulkObjectReader(inputStream, fileFormat == DownloadFileType.TSV ? '\t' : ','));
     }
 
     public SimpleBulkStreamReader(BulkObjectReader reader) {

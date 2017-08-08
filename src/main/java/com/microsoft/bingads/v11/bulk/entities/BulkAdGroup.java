@@ -5,13 +5,8 @@ import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.BulkOperation;
 import com.microsoft.bingads.v11.bulk.BulkServiceManager;
 import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v11.internal.bulk.StringTable;
+import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.internal.UncheckedParseException;
-import com.microsoft.bingads.v11.internal.bulk.BulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.MappingHelpers;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
-import com.microsoft.bingads.v11.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
@@ -343,7 +338,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.TrackingTemplate,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -358,7 +353,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.CustomParameter,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -370,38 +365,29 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     @Override
                     public void accept(String v, BulkAdGroup c) {
                         try {
-							c.getAdGroup().setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+                            c.getAdGroup().setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
         ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.BidStrategyType,
-                new Function<BulkAdGroup, String>() {
+
+        m.add(new ComplexBulkMapping<BulkAdGroup>(
+                new BiConsumer<BulkAdGroup, RowValues>() {
                     @Override
-                    public String apply(BulkAdGroup c) {
-                        try {
-							return StringExtensions.toBiddingSchemeBulkString(c.getAdGroup().getBiddingScheme());
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						return null;
+                    public void accept(BulkAdGroup c, RowValues v) {
+                        biddingSchemeToCsv(c, v);
                     }
                 },
-                new BiConsumer<String, BulkAdGroup>() {
+                new BiConsumer<RowValues, BulkAdGroup>() {
                     @Override
-                    public void accept(String v, BulkAdGroup c) {
-                        try {
-							c.getAdGroup().setBiddingScheme(StringExtensions.parseBiddingScheme(v));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+                    public void accept(RowValues v, BulkAdGroup c) {
+                        csvToBiddingScheme(v, c);
                     }
                 }
         ));
-        
+
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.RemarketingTargetingSetting,
                 new Function<BulkAdGroup, String>() {
                     @Override
@@ -423,6 +409,44 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         ));
 
         MAPPINGS = Collections.unmodifiableList(m);
+    }
+
+    private static void csvToBiddingScheme(RowValues values, BulkAdGroup c) {
+        try {
+            String bidStrategyTypeRowValue = values.tryGet(StringTable.BidStrategyType);
+            if (bidStrategyTypeRowValue == null) {
+                return;
+            }
+            BiddingScheme biddingScheme = StringExtensions.parseBiddingScheme(bidStrategyTypeRowValue);
+            if (biddingScheme == null) {
+                return;
+            }
+            if (biddingScheme instanceof InheritFromParentBiddingScheme) {
+                InheritFromParentBiddingScheme inheritFromParentBiddingScheme = new InheritFromParentBiddingScheme();
+                inheritFromParentBiddingScheme.setType("InheritFromParent");
+                inheritFromParentBiddingScheme.setInheritedBidStrategyType(values.tryGet(StringTable.InheritedBidStrategyType));
+                c.getAdGroup().setBiddingScheme(inheritFromParentBiddingScheme);
+            } else {
+                c.getAdGroup().setBiddingScheme(biddingScheme);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void biddingSchemeToCsv(BulkAdGroup c, RowValues values) {
+        BiddingScheme biddingScheme = c.getAdGroup().getBiddingScheme();
+        if (biddingScheme == null) {
+            return;
+        }
+        try {
+            values.put(StringTable.BidStrategyType, StringExtensions.toBiddingSchemeBulkString(biddingScheme));
+            if (biddingScheme instanceof InheritFromParentBiddingScheme) {
+                values.put(StringTable.InheritedBidStrategyType, ((InheritFromParentBiddingScheme) biddingScheme).getInheritedBidStrategyType());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

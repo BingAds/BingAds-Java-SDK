@@ -65,6 +65,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ClickTypeId"/>
  *     &lt;enumeration value="TotalClicksOnAdElements"/>
  *     &lt;enumeration value="ClickType"/>
+ *     &lt;enumeration value="ReturnOnAdSpend"/>
+ *     &lt;enumeration value="BidStrategyType"/>
+ *     &lt;enumeration value="LocalStoreCode"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -175,7 +178,13 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("TotalClicksOnAdElements")
     TOTAL_CLICKS_ON_AD_ELEMENTS("TotalClicksOnAdElements"),
     @XmlEnumValue("ClickType")
-    CLICK_TYPE("ClickType");
+    CLICK_TYPE("ClickType"),
+    @XmlEnumValue("ReturnOnAdSpend")
+    RETURN_ON_AD_SPEND("ReturnOnAdSpend"),
+    @XmlEnumValue("BidStrategyType")
+    BID_STRATEGY_TYPE("BidStrategyType"),
+    @XmlEnumValue("LocalStoreCode")
+    LOCAL_STORE_CODE("LocalStoreCode");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

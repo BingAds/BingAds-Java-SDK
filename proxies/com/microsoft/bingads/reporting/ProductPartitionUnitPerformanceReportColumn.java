@@ -54,6 +54,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="TrackingTemplate"/>
  *     &lt;enumeration value="CustomParameters"/>
+ *     &lt;enumeration value="ReturnOnAdSpend"/>
+ *     &lt;enumeration value="BidStrategyType"/>
+ *     &lt;enumeration value="LocalStoreCode"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -142,7 +145,13 @@ public enum ProductPartitionUnitPerformanceReportColumn {
     @XmlEnumValue("TrackingTemplate")
     TRACKING_TEMPLATE("TrackingTemplate"),
     @XmlEnumValue("CustomParameters")
-    CUSTOM_PARAMETERS("CustomParameters");
+    CUSTOM_PARAMETERS("CustomParameters"),
+    @XmlEnumValue("ReturnOnAdSpend")
+    RETURN_ON_AD_SPEND("ReturnOnAdSpend"),
+    @XmlEnumValue("BidStrategyType")
+    BID_STRATEGY_TYPE("BidStrategyType"),
+    @XmlEnumValue("LocalStoreCode")
+    LOCAL_STORE_CODE("LocalStoreCode");
     private final String value;
 
     ProductPartitionUnitPerformanceReportColumn(String v) {

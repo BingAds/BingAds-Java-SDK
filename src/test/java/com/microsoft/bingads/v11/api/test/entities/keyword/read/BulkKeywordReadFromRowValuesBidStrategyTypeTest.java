@@ -27,97 +27,38 @@ public class BulkKeywordReadFromRowValuesBidStrategyTypeTest extends BulkKeyword
 
     @Parameters
     public static Collection<Object[]> data() {
+        BiddingScheme b1, b2, b3, b4, b5, b6;
+        b1 = new EnhancedCpcBiddingScheme();
+        b1.setType("EnhancedCpc");
+
+        b2 = new InheritFromParentBiddingScheme();
+        b2.setType("InheritFromParent");
+
+        b3 = new MaxConversionsBiddingScheme();
+        b3.setType("MaxConversions");
+
+        b4 = new ManualCpcBiddingScheme();
+        b4.setType("ManualCpc");
+
+        b5 = new TargetCpaBiddingScheme();
+        b5.setType("TargetCpa");
+
+        b6 = new MaxClicksBiddingScheme();
+        b6.setType("MaxClicks");
+
         return Arrays.asList(new Object[][]{
-        	{"", null}
+                {"EnhancedCpc", b1},
+                {"InheritFromParent", b2},
+                {"MaxConversions", b3},
+                {"ManualCpc", b4},
+                {"TargetCpa", b5},
+                {"MaxClicks", b6}
+
         });
     }
 
     @Test
     public void testRead() {
-    	datum = "EnhancedCpc";
-    	expectedResult = new EnhancedCpcBiddingScheme();
-    	expectedResult.setType("EnhancedCpc");
-    	
-        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
-            @Override
-            public BiddingScheme apply(BulkKeyword c) {
-                return c.getKeyword().getBiddingScheme();
-            }
-        }, new Supplier<BulkKeyword>() {
-            @Override
-            public BulkKeyword get() {
-                return new BulkKeyword();
-            }
-        }, new ObjectComparer<BiddingScheme>());
-        
-        datum = "InheritFromParent";
-    	expectedResult = new InheritFromParentBiddingScheme();
-    	expectedResult.setType("InheritFromParent");
-    	
-        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
-            @Override
-            public BiddingScheme apply(BulkKeyword c) {
-                return c.getKeyword().getBiddingScheme();
-            }
-        }, new Supplier<BulkKeyword>() {
-            @Override
-            public BulkKeyword get() {
-                return new BulkKeyword();
-            }
-        }, new ObjectComparer<BiddingScheme>());
-        
-        datum = "MaxConversions";
-    	expectedResult = new MaxConversionsBiddingScheme();
-    	expectedResult.setType("MaxConversions");
-    	
-        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
-            @Override
-            public BiddingScheme apply(BulkKeyword c) {
-                return c.getKeyword().getBiddingScheme();
-            }
-        }, new Supplier<BulkKeyword>() {
-            @Override
-            public BulkKeyword get() {
-                return new BulkKeyword();
-            }
-        }, new ObjectComparer<BiddingScheme>());
-        
-        datum = "ManualCpc";
-    	expectedResult = new ManualCpcBiddingScheme();
-    	expectedResult.setType("ManualCpc");
-    	
-        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
-            @Override
-            public BiddingScheme apply(BulkKeyword c) {
-                return c.getKeyword().getBiddingScheme();
-            }
-        }, new Supplier<BulkKeyword>() {
-            @Override
-            public BulkKeyword get() {
-                return new BulkKeyword();
-            }
-        }, new ObjectComparer<BiddingScheme>());
-        
-        datum = "TargetCpa";
-    	expectedResult = new TargetCpaBiddingScheme();
-    	expectedResult.setType("TargetCpa");
-    	
-        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
-            @Override
-            public BiddingScheme apply(BulkKeyword c) {
-                return c.getKeyword().getBiddingScheme();
-            }
-        }, new Supplier<BulkKeyword>() {
-            @Override
-            public BulkKeyword get() {
-                return new BulkKeyword();
-            }
-        }, new ObjectComparer<BiddingScheme>());
-        
-        datum = "MaxClicks";
-    	expectedResult = new MaxClicksBiddingScheme();
-    	expectedResult.setType("MaxClicks");
-    	
         this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkKeyword, BiddingScheme>() {
             @Override
             public BiddingScheme apply(BulkKeyword c) {

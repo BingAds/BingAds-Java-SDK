@@ -14,7 +14,7 @@ if exist ..\tools\WsdlEnumGenerator\bin\Debug\WsdlEnumGenerator.exe (
 	call generateProxy v11.reporting https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc
 	
 	call generateProxy v11.campaignmanagement https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/CampaignManagementService.svc
-    call generateProxy v11.bulk https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/BulkService.svc
+	call generateProxy v11.bulk https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v11/BulkService.svc
 	call generateProxy v11.adinsight https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v11/AdInsightService.svc
 	
 ) else (	

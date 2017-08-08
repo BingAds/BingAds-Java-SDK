@@ -261,6 +261,7 @@ public class CsvHeaders {
             StringTable.BidStrategyType,
             StringTable.BidStrategyMaxCpc,
             StringTable.BidStrategyTargetCpa,
+            StringTable.InheritedBidStrategyType,
             
             // Native Preference
             StringTable.NativePreference,
@@ -292,7 +293,18 @@ public class CsvHeaders {
             StringTable.DynamicAdTargetCondition3,
             StringTable.DynamicAdTargetValue1,
             StringTable.DynamicAdTargetValue2,
-            StringTable.DynamicAdTargetValue3
+            StringTable.DynamicAdTargetValue3,
+
+            // Labels
+            StringTable.ColorCode,
+            StringTable.Label,
+
+            // Offline Conversions
+            StringTable.ConversionCurrencyCode,
+            StringTable.ConversionName,
+            StringTable.ConversionTime,
+            StringTable.ConversionValue,
+            StringTable.MicrosoftClickId,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

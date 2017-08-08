@@ -25,7 +25,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "11.5.3";
+    private static final String VERSION = "11.5.4";
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
@@ -163,7 +163,7 @@ class ServiceFactoryImpl implements ServiceFactory {
     private String getServiceUrlFromConfig(Class serviceInterface) {
         InputStream input = null;
         try {
-            input = this.getClass().getClassLoader().getResourceAsStream("bingads.properties");
+            input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
 
             if (input == null) {
                 return null;

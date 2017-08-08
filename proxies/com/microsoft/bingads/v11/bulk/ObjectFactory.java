@@ -58,6 +58,7 @@ public class ObjectFactory {
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CustomerAccountId");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _ArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfOperationError");
+    private final static QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
     private final static QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
@@ -87,6 +88,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeyValueOfstringstring }
+     * 
+     */
+    public ArrayOfKeyValueOfstringstring createArrayOfKeyValueOfstringstring() {
+        return new ArrayOfKeyValueOfstringstring();
     }
 
     /**
@@ -442,6 +451,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfKeyValueOfstringstring.KeyValueOfstringstring }
+     * 
+     */
+    public ArrayOfKeyValueOfstringstring.KeyValueOfstringstring createArrayOfKeyValueOfstringstringKeyValueOfstringstring() {
+        return new ArrayOfKeyValueOfstringstring.KeyValueOfstringstring();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CompressionType }{@code >}}
      * 
      */
@@ -710,6 +727,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "ArrayOfOperationError")
     public JAXBElement<ArrayOfOperationError> createArrayOfOperationError(ArrayOfOperationError value) {
         return new JAXBElement<ArrayOfOperationError>(_ArrayOfOperationError_QNAME, ArrayOfOperationError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfKeyValueOfstringstring")
+    public JAXBElement<ArrayOfKeyValueOfstringstring> createArrayOfKeyValueOfstringstring(ArrayOfKeyValueOfstringstring value) {
+        return new JAXBElement<ArrayOfKeyValueOfstringstring>(_ArrayOfKeyValueOfstringstring_QNAME, ArrayOfKeyValueOfstringstring.class, null, value);
     }
 
     /**

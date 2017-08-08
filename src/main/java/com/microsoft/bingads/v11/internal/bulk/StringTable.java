@@ -389,6 +389,7 @@ public class StringTable {
     public static final String BidStrategyType = "Bid Strategy Type";
     public static final String BidStrategyMaxCpc = "Bid Strategy MaxCpc";
     public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";
+    public static final String InheritedBidStrategyType = "Inherited Bid Strategy Type";
 
     // Audience
     public static final String RemarketingList = "Remarketing List";
@@ -469,6 +470,26 @@ public class StringTable {
     public static final String CampaignLocationCriterion = "Campaign Location Criterion";
     public static final String CampaignLocationIntentCriterion = "Campaign Location Intent Criterion";
     public static final String CampaignNegativeLocationCriterion = "Campaign Negative Location Criterion";
+
+    // Label
+    public static final String ColorCode = "Color";
+    public static final String Label = "Label";
+    public static final String CampaignLabel = "Campaign Label";
+    public static final String AdGroupLabel = "Ad Group Label";
+    public static final String KeywordLabel = "Keyword Label";
+    public static final String AppInstallAdLabel = "App Install Ad Label";
+    public static final String DynamicSearchAdLabel = "Dynamic Search Ad Label";
+    public static final String ExpandedTextAdLabel = "Expanded Text Ad Label";
+    public static final String ProductAdLabel = "Product Ad Label";
+    public static final String TextAdLabel = "Text Ad Label";
+
+    // Offline Conversions
+    public static final String OfflineConversion = "Offline Conversion";
+    public static final String ConversionCurrencyCode = "Conversion Currency Code";
+    public static final String ConversionName = "Conversion Name";
+    public static final String ConversionTime = "Conversion Time";
+    public static final String ConversionValue = "Conversion Value";
+    public static final String MicrosoftClickId = "Microsoft Click Id";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

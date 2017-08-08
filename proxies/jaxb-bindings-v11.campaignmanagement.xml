@@ -7,6 +7,12 @@
     <bindings node="//xs:simpleType[@name='AdDistribution']">
       <javaType name="java.util.Collection&lt;AdDistribution&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.AdDistributionConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.AdDistributionConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='AdGroupAdditionalField']">
+      <javaType name="java.util.Collection&lt;AdGroupAdditionalField&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.AdGroupAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.AdGroupAdditionalFieldConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='KeywordAdditionalField']">
+      <javaType name="java.util.Collection&lt;KeywordAdditionalField&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.KeywordAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.KeywordAdditionalFieldConverter.convertToString" />
+    </bindings>
     <bindings node="//xs:simpleType[@name='AdExtensionsTypeFilter']">
       <javaType name="java.util.Collection&lt;AdExtensionsTypeFilter&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.AdExtensionsTypeFilterConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.AdExtensionsTypeFilterConverter.convertToString" />
     </bindings>

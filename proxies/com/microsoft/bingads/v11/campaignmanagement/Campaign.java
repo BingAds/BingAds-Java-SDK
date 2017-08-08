@@ -92,7 +92,7 @@ public class Campaign {
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<CampaignType> campaignType;
     @XmlElement(name = "Settings", nillable = true)
     protected ArrayOfSetting settings;

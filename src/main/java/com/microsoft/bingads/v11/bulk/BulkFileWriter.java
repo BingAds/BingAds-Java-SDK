@@ -1,12 +1,12 @@
 package com.microsoft.bingads.v11.bulk;
 
-import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
 import com.microsoft.bingads.v11.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.v11.internal.bulk.SimpleBulkObjectWriter;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Provides methods to write bulk entities to a file.
@@ -26,6 +26,28 @@ public class BulkFileWriter implements Closeable {
      */
     public BulkFileWriter(File filePath) throws IOException {
         this(filePath, DownloadFileType.CSV);
+    }
+
+    /**
+     * Creates a new instance of this class with the specified stream.
+     *
+     * @param outputStream OutputStream to write
+     *
+     * @throws IOException
+     */
+    public BulkFileWriter(OutputStream outputStream) throws IOException {
+        this.bulkObjectWriter = new SimpleBulkObjectWriter(outputStream, DownloadFileType.CSV);
+    }
+
+    /**
+     * Creates a new instance of this class with the specified stream.
+     *
+     * @param outputStream OutputStream to write
+     *
+     * @throws IOException
+     */
+    public BulkFileWriter(OutputStream outputStream, DownloadFileType fileFormat) throws IOException {
+        this.bulkObjectWriter = new SimpleBulkObjectWriter(outputStream, fileFormat);
     }
 
     /**

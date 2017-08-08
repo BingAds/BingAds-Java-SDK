@@ -56,8 +56,8 @@ public interface IReportingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.reporting.SubmitGenerateReportResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SubmitGenerateReport", action = "SubmitGenerateReport")
     @WebResult(name = "SubmitGenerateReportResponse", targetNamespace = "https://bingads.microsoft.com/Reporting/v9", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IReportingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.reporting.PollGenerateReportResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "PollGenerateReport", action = "PollGenerateReport")
     @WebResult(name = "PollGenerateReportResponse", targetNamespace = "https://bingads.microsoft.com/Reporting/v9", partName = "parameters")

@@ -71,7 +71,7 @@ public class Audience {
     @XmlSchemaType(name = "string")
     protected EntityScope scope;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AudienceType> type;
 
     /**

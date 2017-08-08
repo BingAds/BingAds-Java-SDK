@@ -6,11 +6,8 @@ import com.googlecode.jcsv.writer.internal.CSVWriterBuilder;
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.bulk.entities.StaticBulkObjectFactory;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+
+import java.io.*;
 
 /**
  *
@@ -27,6 +24,14 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
 
         writer = new OutputStreamWriter(new FileOutputStream(filePath), "UTF-8");        
         
+        csvWriter = this.buildCSVWriter(writer, fileFormat == DownloadFileType.CSV ? ',' : '\t');
+    }
+
+    public SimpleBulkObjectWriter(OutputStream outputStream, DownloadFileType fileFormat) throws IOException {
+        bulkObjectFactory = new StaticBulkObjectFactory();
+
+        writer = new OutputStreamWriter(outputStream, "UTF-8");
+
         csvWriter = this.buildCSVWriter(writer, fileFormat == DownloadFileType.CSV ? ',' : '\t');
     }
 

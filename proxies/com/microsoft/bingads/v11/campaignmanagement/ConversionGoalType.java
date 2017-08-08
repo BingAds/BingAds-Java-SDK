@@ -10,7 +10,8 @@ public enum ConversionGoalType {
     PAGES_VIEWED_PER_VISIT("PagesViewedPerVisit"),
     EVENT("Event"),
     APP_INSTALL("AppInstall"),
-    OFFLINE_CONVERSION("OfflineConversion");
+    OFFLINE_CONVERSION("OfflineConversion"),
+    IN_STORE_TRANSACTION("InStoreTransaction");
         
     private final String value;
 

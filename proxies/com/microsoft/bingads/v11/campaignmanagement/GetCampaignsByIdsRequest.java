@@ -45,7 +45,7 @@ public class GetCampaignsByIdsRequest {
     @XmlElement(name = "CampaignIds", nillable = true)
     protected ArrayOflong campaignIds;
     @XmlElement(name = "CampaignType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<CampaignType> campaignType;
 
     /**

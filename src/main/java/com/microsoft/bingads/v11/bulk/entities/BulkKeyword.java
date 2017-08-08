@@ -1,24 +1,11 @@
 package com.microsoft.bingads.v11.bulk.entities;
 
 import com.microsoft.bingads.v11.bulk.BulkServiceManager;
-import com.microsoft.bingads.v11.campaignmanagement.AdExtensionEditorialStatus;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v11.campaignmanagement.Keyword;
-import com.microsoft.bingads.v11.campaignmanagement.KeywordEditorialStatus;
-import com.microsoft.bingads.v11.campaignmanagement.KeywordStatus;
-import com.microsoft.bingads.v11.campaignmanagement.MatchType;
+import com.microsoft.bingads.v11.campaignmanagement.*;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.BulkOperation;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v11.internal.bulk.StringTable;
-import com.microsoft.bingads.v11.internal.bulk.BulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v11.internal.bulk.BulkStreamReader;
-import com.microsoft.bingads.v11.internal.bulk.MappingHelpers;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
-import com.microsoft.bingads.v11.internal.bulk.SimpleBulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.TryResult;
+import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
@@ -362,32 +349,61 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
-        m.add(new SimpleBulkMapping<BulkKeyword, String>(StringTable.BidStrategyType,
-                new Function<BulkKeyword, String>() {
+
+        m.add(new ComplexBulkMapping<BulkKeyword>(
+                new BiConsumer<BulkKeyword, RowValues>() {
                     @Override
-                    public String apply(BulkKeyword c) {
-                        try {
-							return StringExtensions.toBiddingSchemeBulkString(c.getKeyword().getBiddingScheme());
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						return null;
+                    public void accept(BulkKeyword c, RowValues v) {
+                        biddingSchemeToCsv(c, v);
                     }
                 },
-                new BiConsumer<String, BulkKeyword>() {
+                new BiConsumer<RowValues, BulkKeyword>() {
                     @Override
-                    public void accept(String v, BulkKeyword c) {
-                        try {
-							c.getKeyword().setBiddingScheme(StringExtensions.parseBiddingScheme(v));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+                    public void accept(RowValues v, BulkKeyword c) {
+                        csvToBiddingScheme(v, c);
                     }
                 }
         ));
 
         MAPPINGS = Collections.unmodifiableList(m);
+    }
+
+    private static void csvToBiddingScheme(RowValues values, BulkKeyword c) {
+        try {
+            String bidStrategyTypeRowValue = values.tryGet(StringTable.BidStrategyType);
+            if (bidStrategyTypeRowValue == null) {
+                return;
+            }
+            BiddingScheme biddingScheme = StringExtensions.parseBiddingScheme(bidStrategyTypeRowValue);
+            if (biddingScheme == null) {
+                return;
+            }
+            if (biddingScheme instanceof InheritFromParentBiddingScheme) {
+                InheritFromParentBiddingScheme inheritFromParentBiddingScheme = new InheritFromParentBiddingScheme();
+                inheritFromParentBiddingScheme.setType("InheritFromParent");
+                inheritFromParentBiddingScheme.setInheritedBidStrategyType(values.tryGet(StringTable.InheritedBidStrategyType));
+                c.getKeyword().setBiddingScheme(inheritFromParentBiddingScheme);
+            } else {
+                c.getKeyword().setBiddingScheme(biddingScheme);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void biddingSchemeToCsv(BulkKeyword c, RowValues values) {
+        BiddingScheme biddingScheme = c.getKeyword().getBiddingScheme();
+        if (biddingScheme == null) {
+            return;
+        }
+        try {
+            values.put(StringTable.BidStrategyType, StringExtensions.toBiddingSchemeBulkString(biddingScheme));
+            if (biddingScheme instanceof InheritFromParentBiddingScheme) {
+                values.put(StringTable.InheritedBidStrategyType, ((InheritFromParentBiddingScheme) biddingScheme).getInheritedBidStrategyType());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
