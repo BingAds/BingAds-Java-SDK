@@ -29,9 +29,9 @@ public class GeographicalLocations extends ExampleBase {
 
     private static final java.lang.String LANGUAGE_LOCALE = "en";
     
-    // The only supported file format version is 1.0. 
+    // The latest supported file format version is 2.0. 
 
-    private static final java.lang.String VERSION= "1.0";
+    private static final java.lang.String VERSION= "2.0";
 
     public static void main(java.lang.String[] args) {
    	
@@ -53,7 +53,7 @@ public class GeographicalLocations extends ExampleBase {
             // and compare it with the last modified time provided by the service.
             Calendar previousSyncTimeUtc = Calendar.getInstance();
             previousSyncTimeUtc.setTimeZone(TimeZone.getTimeZone("GMT"));
-            previousSyncTimeUtc.set(2016, 11, 29, 0, 0, 0);
+            previousSyncTimeUtc.set(2017, 8, 10, 0, 0, 0);
 
             java.lang.String fileUrl = getGeoLocationsFileUrlResponse.getFileUrl();
             Calendar fileUrlExpiryTimeUtc = getGeoLocationsFileUrlResponse.getFileUrlExpiryTimeUtc();
