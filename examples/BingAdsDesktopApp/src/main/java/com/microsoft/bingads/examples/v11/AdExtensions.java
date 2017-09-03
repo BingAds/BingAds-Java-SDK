@@ -295,7 +295,7 @@ public class AdExtensions extends ExampleBase {
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.REVIEW_AD_EXTENSION);
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.STRUCTURED_SNIPPET_AD_EXTENSION);
                         
-            // Get the specified ad extensions from the account�s ad extension library.
+            // Get the specified ad extensions from the account's ad extension library.
             GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds, 
@@ -369,7 +369,7 @@ public class AdExtensions extends ExampleBase {
 
             outputStatusMessage("Deleted ad extension associations.\n");
 
-            // Deletes the ad extensions from the account�s ad extension library.
+            // Deletes the ad extensions from the account's ad extension library.
             deleteAdExtensions(
                 authorizationData.getAccountId(),
                 adExtensionIds
@@ -528,7 +528,7 @@ public class AdExtensions extends ExampleBase {
         return CampaignService.getService().addAdExtensions(request);
     }
 
-    // Deletes one or more ad extensions from the account�s ad extension library.
+    // Deletes one or more ad extensions from the account's ad extension library.
 
     static void deleteAdExtensions(
             long accountId, 
