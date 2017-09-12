@@ -15,16 +15,11 @@ public class DownloadParameters {
 
     private SubmitDownloadParameters submitDownloadParameters;
 
-    SubmitDownloadParameters getSubmitDownloadParameters() {
-        return submitDownloadParameters;
-    }
-
-    void setSubmitDownloadParameters(SubmitDownloadParameters submitParams) {
-        this.submitDownloadParameters = submitParams;
-    }
-
     private File resultFileDirectory;
+
     private String resultFileName;
+
+    private boolean autoDeleteTempFile;
 
     /**
      * Gets or sets a value indicating whether the local result file should be
@@ -34,6 +29,15 @@ public class DownloadParameters {
 
     public DownloadParameters() {
         this.submitDownloadParameters = new SubmitDownloadParameters();
+    }
+    
+
+    SubmitDownloadParameters getSubmitDownloadParameters() {
+        return submitDownloadParameters;
+    }
+
+    void setSubmitDownloadParameters(SubmitDownloadParameters submitParams) {
+        this.submitDownloadParameters = submitParams;
     }
 
     /**
@@ -190,4 +194,19 @@ public class DownloadParameters {
     public void setDownloadEntities(ArrayOfDownloadEntity entities) {
         submitDownloadParameters.setDownloadEntities(entities);
     }
+
+    /**
+     * Gets whether the temporary upload file should be deleted.
+     */
+	public boolean getAutoDeleteTempFile() {
+		return autoDeleteTempFile;
+	}
+
+    /**
+     * Sets whether the temporary upload file should be deleted.
+     */
+	public void setAutoDeleteTempFile(boolean autoDeleteTempFile) {
+		this.autoDeleteTempFile = autoDeleteTempFile;
+	}
+
 }

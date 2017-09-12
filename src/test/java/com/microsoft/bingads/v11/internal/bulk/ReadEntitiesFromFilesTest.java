@@ -12,6 +12,8 @@ import java.util.List;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
+
+import org.easymock.EasyMock;
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
@@ -104,7 +106,7 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
     }
 
     private CSVReader<String[]> createFakeCsvReader(Iterator<String[]> iterator) {
-        CSVReader<String[]> reader = createMock(CSVReader.class);
+        CSVReader<String[]> reader = createNiceMock(CSVReader.class);
         
         expect(reader.iterator()).andReturn(iterator);
         

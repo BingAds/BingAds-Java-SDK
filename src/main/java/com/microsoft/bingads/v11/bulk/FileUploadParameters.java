@@ -15,6 +15,8 @@ public class FileUploadParameters {
     private String resultFileName;
 
     private boolean overwriteResultFile;
+    
+    private boolean autoDeleteTempFile;
 
     /**
      * Reserved for internal use.
@@ -106,4 +108,18 @@ public class FileUploadParameters {
     public void setOverwriteResultFile(boolean overwriteResultFile) {
         this.overwriteResultFile = overwriteResultFile;
     }
+
+    /**
+     * Gets whether the temporary upload file should be deleted.
+     */
+	public boolean getAutoDeleteTempFile() {
+		return autoDeleteTempFile;
+	}
+
+    /**
+     * Sets whether the temporary upload file should be deleted.
+     */
+	public void setAutoDeleteTempFile(boolean autoDeleteTempFile) {
+		this.autoDeleteTempFile = autoDeleteTempFile;
+	}
 }

@@ -19,6 +19,8 @@ public class EntityUploadParameters {
 
     private boolean overwriteResultFile;
     
+    private boolean autoDeleteTempFile;
+
     /**
      * Initializes a new instance of this class.
      */
@@ -95,5 +97,19 @@ public class EntityUploadParameters {
     public void setOverwriteResultFile(boolean overwriteResultFile) {
         this.overwriteResultFile = overwriteResultFile;
     }
+
+    /**
+     * Gets whether the temporary upload file should be deleted.
+     */
+	public boolean getAutoDeleteTempFile() {
+		return autoDeleteTempFile;
+	}
+
+    /**
+     * Sets whether the temporary upload file should be deleted.
+     */
+	public void setAutoDeleteTempFile(boolean autoDeleteTempFile) {
+		this.autoDeleteTempFile = autoDeleteTempFile;
+	}
 
 }

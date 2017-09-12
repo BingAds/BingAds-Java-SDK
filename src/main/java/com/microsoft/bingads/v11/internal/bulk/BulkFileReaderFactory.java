@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public interface BulkFileReaderFactory {
 
-	BulkFileReader createBulkFileReader(File localFile, ResultFileType fileType, DownloadFileType downloadFileType)
+	BulkFileReader createBulkFileReader(File localFile, ResultFileType fileType, DownloadFileType downloadFileType, boolean deleteFileOnClose)
 			throws IOException;
 
 }

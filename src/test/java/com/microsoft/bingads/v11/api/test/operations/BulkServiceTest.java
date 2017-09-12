@@ -208,7 +208,7 @@ public class BulkServiceTest extends FakeApiTest {
         
         parameters.setDataScope(new ArrayList<DataScope>());
         parameters.getDataScope().add(DataScope.ENTITY_DATA);
-        parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);                  
+        parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);
 
         parameters.setDownloadEntities(new ArrayOfDownloadEntity());
         ArrayOfDownloadEntity entities = parameters.getDownloadEntities();
@@ -297,11 +297,11 @@ public class BulkServiceTest extends FakeApiTest {
         
         final AuthorizationData authorizationData = createUserData();
         
-        final DownloadParameters parameters = new DownloadParameters();        
+        final DownloadParameters parameters = new DownloadParameters();
         
         parameters.setDataScope(new ArrayList<DataScope>());
         parameters.getDataScope().add(DataScope.ENTITY_DATA);
-        parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);        
+        parameters.getDataScope().add(DataScope.ENTITY_PERFORMANCE_DATA);
 
         parameters.setDownloadEntities(new ArrayOfDownloadEntity());
         ArrayOfDownloadEntity entities = parameters.getDownloadEntities();
@@ -349,7 +349,7 @@ public class BulkServiceTest extends FakeApiTest {
         
         expect(expectedReader.getEntities()).andReturn(bulkEntities);
         
-        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV)).andReturn(expectedReader);
+        expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV, false)).andReturn(expectedReader);
         
         replay(zipExtractor, expectedReader, factory);
 

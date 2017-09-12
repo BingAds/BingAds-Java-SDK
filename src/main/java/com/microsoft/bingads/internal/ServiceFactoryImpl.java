@@ -14,6 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jws.WebService;
@@ -25,7 +31,15 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "11.5.4";
+    private static final String VERSION = "11.5.5";
+    
+    private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
+    
+    private static final int WS_CREATE_RETRY_INTERVAL_IN_SECOND = 5;
+    
+    private static final int WS_CREATE_RETRY_TIMES = 3;
+
+    private static Logger logger = Logger.getLogger(ServiceFactoryImpl.class.getName());
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
@@ -107,19 +121,66 @@ class ServiceFactoryImpl implements ServiceFactory {
     };
 
     @Override
-    public Service createService(Class serviceInterface, ApiEnvironment env) {
-        QName qName = getServiceQname(serviceInterface);
-
-        // CXF doesn't require WSDL url to be passed
-        if (Provider.provider().getClass().getName().contains("org.apache.cxf")) {
-           return Service.create(qName);
+    public Service createService(Class serviceInterface, ApiEnvironment env)
+    {
+        try {
+            return createServiceWithRetry(serviceInterface, env);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new InternalException(e);
         }
+    }
+
+    // per #863657, Service.Create sometimes get hang. We implement timeout and retry for it.
+    private Service createServiceWithRetry(Class serviceInterface, ApiEnvironment env) throws Exception {
+
+        final QName qName = getServiceQname(serviceInterface);
+        final URL url = new URL(getServiceUrl(serviceInterface, env) + "?wsdl");
+        final boolean isCxf = Provider.provider().getClass().getName().contains("org.apache.cxf");
+
+        int retryLeft = WS_CREATE_RETRY_TIMES;
+        int timeout = 0;
+        ExecutorService pool = Executors.newSingleThreadExecutor();
 
         try {
-            return Service.create(new URL(getServiceUrl(serviceInterface, env) + "?wsdl"), qName);
-        } catch (MalformedURLException e) {
-            throw new InternalException(e);
-        }        
+            while (retryLeft > 0) {
+                retryLeft--;
+                timeout = prolongTimeout(timeout);
+                Future<Service> future = pool.submit(new Callable<Service>() {
+                    public Service call() throws Exception {
+                        if (isCxf) {
+                            // CXF doesn't require WSDL url to be passed
+                            return Service.create(qName);
+                        } else {
+                            return Service.create(url, qName);
+                        }
+                    }
+                });
+
+                try {
+                    return future.get(timeout, TimeUnit.SECONDS);
+                } catch (TimeoutException e) {
+                    System.out.println(String.format("Timeout. Failed to create web service %s in %d seconds for %s. retry left %d",
+                            serviceInterface.getName(), timeout, env.value(), retryLeft));
+                    future.cancel(true);
+
+                    try {
+                        if (retryLeft > 0) {
+                            Thread.sleep(WS_CREATE_RETRY_INTERVAL_IN_SECOND * 1000);
+                        }
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        } finally {
+            pool.shutdown();
+        }
+        throw new Exception(String.format("Failed to create Service %s for %s!", serviceInterface.getName(), env.value()));
+    }
+
+    private int prolongTimeout(int timeout) {
+        return timeout + DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND;
     }
 
     private String getServiceUrl(Class serviceInterface, ApiEnvironment env) {
@@ -164,17 +225,15 @@ class ServiceFactoryImpl implements ServiceFactory {
         InputStream input = null;
         try {
             input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
-
             if (input == null) {
                 return null;
             }
-
             Properties props = new Properties();
-
             props.load(input);
-
             return props.getProperty(serviceInterface.getCanonicalName() + ".url");
         } catch (IOException ex) {
+            ex.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to read propertyFile: " + ServiceUtils.getPropertyFile(), ex);
             return null;
         } finally {
             try {
@@ -182,7 +241,7 @@ class ServiceFactoryImpl implements ServiceFactory {
                     input.close();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(ServiceFactoryImpl.class.getName()).log(Level.SEVERE, null, ex);
+                logger.log(Level.SEVERE, null, ex);
             }
         }
     }

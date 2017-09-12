@@ -25,7 +25,21 @@ public class BulkFileReader implements Closeable {
      * @throws IOException
      */
     public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat) throws IOException {
-        this(new SimpleBulkStreamReader(file, fileFormat), resultFileType);
+        this(file, resultFileType, fileFormat, false);
+    }
+
+    /**
+     * Reserved for internal use. 
+     * 
+     * @param file path of the bulk file to read
+     * @param resultFileType the type of bulk file download which is being read
+     * @param fileFormat the bulk file format
+     * @param deleteFileOnClose whether delete the temporary bulk file on close
+     *
+     * @throws IOException
+     */
+    public BulkFileReader(File file, ResultFileType resultFileType, DownloadFileType fileFormat, boolean deleteFileOnClose) throws IOException {
+        this(new SimpleBulkStreamReader(file, fileFormat, deleteFileOnClose), resultFileType);
         bulkFilePath = file.getCanonicalPath();
     }
 

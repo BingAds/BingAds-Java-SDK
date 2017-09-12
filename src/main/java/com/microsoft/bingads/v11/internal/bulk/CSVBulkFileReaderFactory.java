@@ -10,8 +10,8 @@ public class CSVBulkFileReaderFactory implements BulkFileReaderFactory {
 
     @Override
     public BulkFileReader createBulkFileReader(File localFile,
-            ResultFileType resultType, DownloadFileType downloadFileType) throws IOException {
-        return new BulkFileReader(localFile, resultType, downloadFileType);
+            ResultFileType resultType, DownloadFileType downloadFileType, boolean deleteFileOnClose) throws IOException {
+        return new BulkFileReader(localFile, resultType, downloadFileType, deleteFileOnClose);
     }
 
 }

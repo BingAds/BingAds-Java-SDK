@@ -16,9 +16,17 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
     private BulkObjectReader objectReader;
     private BulkObject nextObject;    
     private boolean passedFirstRow = false;
+    private boolean deleteFileOnClose;
+    private File file;
 
-    public SimpleBulkStreamReader(File file, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException {        
+    public SimpleBulkStreamReader(File file, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException { 
+        this(file, fileFormat, false);
+    }
+
+    public SimpleBulkStreamReader(File file, DownloadFileType fileFormat, boolean deleteFileOnClose) throws FileNotFoundException, UnsupportedEncodingException { 
         this(new SimpleBulkObjectReader(file, fileFormat == DownloadFileType.TSV ? '\t' : ','));
+        this.file = file;
+        this.deleteFileOnClose = deleteFileOnClose;
     }
 
     public SimpleBulkStreamReader(InputStream inputStream, DownloadFileType fileFormat) throws FileNotFoundException, UnsupportedEncodingException {
@@ -41,6 +49,12 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
             return result.getResult();
         }
 
+        try {
+            // reaching here mean there is no more content to read. We'd close it.
+            close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -119,6 +133,12 @@ public class SimpleBulkStreamReader implements BulkStreamReader {
 
     @Override
     public void close() throws IOException {
-        this.objectReader.close();
+        try {
+            this.objectReader.close();
+        } finally {
+            if (deleteFileOnClose && file != null && file.exists()) {
+                file.delete();
+            }
+        }
     }
 }

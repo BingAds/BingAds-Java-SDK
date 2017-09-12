@@ -8,14 +8,14 @@ import com.microsoft.bingads.v11.internal.bulk.entities.BulkAdExtensionIdentifie
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.*;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 
 public class MultirecordEntityTestHelper {
 
     public static BulkObjectReader createFakeObjectReader(BulkObject... bulkEntities) {
-        BulkObjectReader reader = createMock(BulkObjectReader.class);
+        BulkObjectReader reader = createNiceMock(BulkObjectReader.class);
 
         FormatVersion formatVersion = new FormatVersion();
         formatVersion.setValue("5.0");
@@ -37,7 +37,7 @@ public class MultirecordEntityTestHelper {
             BulkObject[] entities,
             BulkAdExtensionIdentifier deleteAllRow,
             DeleteAllRowPosition deleteAllRowPosition) {
-        BulkObjectReader objectReader = createMock(BulkObjectReader.class);
+        BulkObjectReader objectReader = createNiceMock(BulkObjectReader.class);
 
         List<BulkObject> entityList = new ArrayList<BulkObject>(Arrays.asList(entities));
 

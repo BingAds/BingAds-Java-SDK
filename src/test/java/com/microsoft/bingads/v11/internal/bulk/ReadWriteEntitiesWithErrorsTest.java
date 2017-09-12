@@ -126,7 +126,7 @@ public class ReadWriteEntitiesWithErrorsTest extends EasyMockSupport {
     }
 
     private CSVReader<String[]> createFakeCsvReader(Iterator<String[]> iterator) {
-        CSVReader<String[]> reader = createMock(CSVReader.class);
+        CSVReader<String[]> reader = createNiceMock(CSVReader.class);
         
         expect(reader.iterator()).andReturn(iterator);
         

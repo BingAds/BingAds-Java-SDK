@@ -136,7 +136,7 @@ public class BulkServiceManager {
      * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> downloadEntitiesAsync(DownloadParameters parameters, AsyncCallback<BulkEntityIterable> callback) {
-        return this.downloadEntitiesAsync(parameters, null, callback);
+        return downloadEntitiesAsync(parameters, null, callback);
     }
 
     /**
@@ -238,13 +238,13 @@ public class BulkServiceManager {
         }
     }
 
-    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(final FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
         final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws IOException {
-                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV).getEntities());
+                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, parameters.getAutoDeleteTempFile()).getEntities());
             }
         });
 
@@ -289,9 +289,7 @@ public class BulkServiceManager {
             @Override
             public void onSuccess(File result) throws IOException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
-
-                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType());
-
+                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType(), parameters.getAutoDeleteTempFile());
                 resultFuture.setResult(reader.getEntities());
             }
         });
@@ -532,6 +530,10 @@ public class BulkServiceManager {
                         compressedFilePath.delete();
                     }
 
+                    if (parameters.getAutoDeleteTempFile()) {
+                    	parameters.getUploadFilePath().delete();
+                    }
+
                     BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
@@ -649,6 +651,7 @@ public class BulkServiceManager {
         fileUploadParameters.setResultFileDirectory(parameters.getResultFileDirectory());
         fileUploadParameters.setResultFileName(parameters.getResultFileName());
         fileUploadParameters.setOverwriteResultFile(parameters.getOverwriteResultFile());
+        fileUploadParameters.setAutoDeleteTempFile(parameters.getAutoDeleteTempFile());
 
         return fileUploadParameters;
     }

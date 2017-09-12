@@ -10,6 +10,8 @@ import com.microsoft.bingads.internal.ServiceUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +40,7 @@ import javax.xml.ws.handler.PortInfo;
  *
  */
 public class ServiceClient<T> {
+    private static Logger logger = Logger.getLogger(ServiceClient.class.getName());
 
     private final AuthorizationData authorizationData;
 
@@ -151,13 +154,10 @@ public class ServiceClient<T> {
         InputStream input = null;
         try {
             input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
-
             if (input == null) {
                 return null;
             }
-
             Properties props = new Properties();
-
             props.load(input);
 
             String envString = props.getProperty("environment");
@@ -168,6 +168,8 @@ public class ServiceClient<T> {
 
             return ApiEnvironment.fromValue(envString);
         } catch (IOException ex) {
+            ex.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to read propertyFile: " + ServiceUtils.getPropertyFile(), ex);
             return null;
         } finally {
             try {
