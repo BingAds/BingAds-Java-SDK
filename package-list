@@ -3,6 +3,7 @@ com.microsoft.bingads.customerbilling
 com.microsoft.bingads.customermanagement
 com.microsoft.bingads.internal
 com.microsoft.bingads.internal.functionalinterfaces
+com.microsoft.bingads.internal.interceptor
 com.microsoft.bingads.internal.utilities
 com.microsoft.bingads.reporting
 com.microsoft.bingads.v10.adinsight
