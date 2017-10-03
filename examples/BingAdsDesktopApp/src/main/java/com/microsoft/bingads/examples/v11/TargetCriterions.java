@@ -6,25 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v10.campaignmanagement.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v10.campaignmanagement.AddTargetsToLibraryRequest;
-import com.microsoft.bingads.v10.campaignmanagement.AddTargetsToLibraryResponse;
-import com.microsoft.bingads.v10.campaignmanagement.ArrayOfDeviceOSTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.SetTargetToAdGroupRequest;
-import com.microsoft.bingads.v10.campaignmanagement.ArrayOfTarget;
-import com.microsoft.bingads.v10.campaignmanagement.DeviceOSTarget;
-import com.microsoft.bingads.v10.campaignmanagement.DeviceOSTargetBid;
-import com.microsoft.bingads.v10.campaignmanagement.Target;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class TargetCriterions extends ExampleBase {
 
-    static ServiceClient<com.microsoft.bingads.v10.campaignmanagement.ICampaignManagementService> CampaignServiceV10;
     static ServiceClient<ICampaignManagementService> CampaignService; 
         
     public static void main(java.lang.String[] args) 
     {
-    	AuthorizationData authorizationData;
+        AuthorizationData authorizationData;
         
         authorizationData = new AuthorizationData();
         authorizationData.setDeveloperToken(DeveloperToken);
@@ -36,12 +26,7 @@ public class TargetCriterions extends ExampleBase {
                 authorizationData, 
                 ExampleBase.API_ENVIRONMENT,
                 ICampaignManagementService.class);
-        
-        CampaignServiceV10 = new ServiceClient<com.microsoft.bingads.v10.campaignmanagement.ICampaignManagementService>(
-                authorizationData, 
-                ExampleBase.API_ENVIRONMENT,
-                com.microsoft.bingads.v10.campaignmanagement.ICampaignManagementService.class);
-                
+                        
         ArrayList<CampaignCriterionType> allTargetCampaignCriterionTypes = new ArrayList<CampaignCriterionType>();
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.AGE);
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.DAY_TIME);
@@ -127,20 +112,9 @@ public class TargetCriterions extends ExampleBase {
 		    criterionTypes.add(CampaignCriterionType.TARGETS);
                     AddCampaignCriterionsResponse addCriterionsResponse = addCampaignCriterions(campaignCriterions, criterionTypes);
 
-                    // If the campaign used to share target criterions with another campaign or ad group,
-                    // and the add operation resulted in new target criterion identifiers for this campaign,
-                    // then we need to get the new criterion IDs.
-
-                    // Otherwise we only need to capture the new criterion IDs.
+                    // Capture the new criterion IDs.
         			
-                    if(addCriterionsResponse.getIsMigrated() == true)
-                    {
-                        campaignCriterions = getCampaignCriterionsByIds(
-                            campaignIds.getLongs().get(0), 
-                            null, 
-                            allTargetCampaignCriterionTypes).getCampaignCriterions();
-                    }
-                    else if(addCriterionsResponse.getCampaignCriterionIds().getLongs().isEmpty())
+                    if(addCriterionsResponse.getCampaignCriterionIds().getLongs().isEmpty())
                     {
                         List<Long> criterionIds = addCriterionsResponse.getCampaignCriterionIds().getLongs();
                         for (int index = 0; index < criterionIds.size(); index++)
@@ -150,8 +124,7 @@ public class TargetCriterions extends ExampleBase {
                     }
                 }
         		
-                // You can now store or output the campaign criterions, whether or not they were 
-                // migrated from a shared target library.
+                // You can now store or output the campaign criterions.
 
                 outputStatusMessage("Campaign Criterions: \n");
                 outputCampaignCriterions(campaignCriterions);
@@ -169,55 +142,44 @@ public class TargetCriterions extends ExampleBase {
                         adGroup.getId(), 
                         null, 
                         allTargetAdGroupCriterionTypes).getAdGroupCriterions();
-
-                    // If the Smartphones device criterion already exists, we'll increase the bid multiplier by 5 percent.
-
-                    ArrayOfAdGroupCriterion updateAdGroupCriterions = new ArrayOfAdGroupCriterion();
                     
-                    for(AdGroupCriterion adGroupCriterion: adGroupCriterions.getAdGroupCriterions())
+                    if(adGroupCriterions.getAdGroupCriterions().size() > 0)
                     {
-                        if(adGroupCriterion.getCriterion() instanceof DeviceCriterion)
+                        // If the Smartphones device criterion already exists, we'll increase the bid multiplier by 5 percent.
+
+                        ArrayOfAdGroupCriterion updateAdGroupCriterions = new ArrayOfAdGroupCriterion();
+
+                        for(AdGroupCriterion adGroupCriterion: adGroupCriterions.getAdGroupCriterions())
                         {
-                            DeviceCriterion deviceCriterion = (DeviceCriterion) adGroupCriterion.getCriterion();
-                            if(deviceCriterion.getDeviceName() == "Smartphones")
+                            if(adGroupCriterion.getCriterion() instanceof DeviceCriterion)
                             {
-                                double multiplier = ((BidMultiplier)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getMultiplier();
-                                ((BidMultiplier)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).setMultiplier(multiplier * 1.05);
-                                updateAdGroupCriterions.getAdGroupCriterions().add(adGroupCriterion);
+                                DeviceCriterion deviceCriterion = (DeviceCriterion) adGroupCriterion.getCriterion();
+                                if(deviceCriterion.getDeviceName() == "Smartphones")
+                                {
+                                    double multiplier = ((BidMultiplier)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).getMultiplier();
+                                    ((BidMultiplier)((BiddableAdGroupCriterion)adGroupCriterion).getCriterionBid()).setMultiplier(multiplier * 1.05);
+                                    updateAdGroupCriterions.getAdGroupCriterions().add(adGroupCriterion);
+                                }
                             }
                         }
-                    }
 
-                    GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = null;
+                        GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = null;
 
-                    if(updateAdGroupCriterions.getAdGroupCriterions().size() > 0)
-                    {
-                        ArrayList<AdGroupCriterionType> adGroupCriterionTypes = new ArrayList<AdGroupCriterionType>();
-    	                adGroupCriterionTypes.add(AdGroupCriterionType.TARGETS);
-        
-                        UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = updateAdGroupCriterions(
-                                updateAdGroupCriterions, 
-                                adGroupCriterionTypes);
-
-                        // If the ad group used to share target criterions with another campaign or ad group,
-                        // and the update operation resulted in new target criterion identifiers for this ad group,
-                        // then we need to get the new criterion IDs.
-
-                	if (updateAdGroupCriterionsResponse.getIsMigrated())
+                        if(updateAdGroupCriterions.getAdGroupCriterions().size() > 0)
                         {
-                            getAdGroupCriterionsByIdsResponse = getAdGroupCriterionsByIds(
-                                adGroup.getId(), 
-                                null, 
-                                allTargetAdGroupCriterionTypes);
-                            adGroupCriterions = getAdGroupCriterionsByIdsResponse.getAdGroupCriterions();
+                            ArrayList<AdGroupCriterionType> adGroupCriterionTypes = new ArrayList<AdGroupCriterionType>();
+                            adGroupCriterionTypes.add(AdGroupCriterionType.TARGETS);
+
+                            UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = updateAdGroupCriterions(
+                                    updateAdGroupCriterions, 
+                                    adGroupCriterionTypes);
                         }
+
+                        // You can now store or output the ad group criterions.
+
+                        outputStatusMessage("Ad Group Criterions: ");
+                        outputAdGroupCriterions(adGroupCriterions);
                     }
-
-                    // You can now store or output the ad group criterions, whether or not they were 
-                    // migrated from a shared target library.
-
-                    outputStatusMessage("Ad Group Criterions: ");
-                    outputAdGroupCriterions(adGroupCriterions);
                 }
             }
             
@@ -316,8 +278,6 @@ public class TargetCriterions extends ExampleBase {
             ArrayOfNullableOflong nullableAdGroupIds = addAdGroupsResponse.getAdGroupIds();
             outputIds(nullableAdGroupIds);
             outputPartialErrors(addAdGroupsResponse.getPartialErrors());
-
-            shareDeprecatedTargets(authorizationData, nullableAdGroupIds.getLongs());
 
             ArrayOflong campaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
@@ -456,45 +416,5 @@ public class TargetCriterions extends ExampleBase {
         request.setCriterionType(criterionType);
 
         return CampaignService.getService().updateAdGroupCriterions(request);
-    }
-     
-    private static java.lang.Long shareDeprecatedTargets(AuthorizationData authorizationData, List<Long> adGroupIds) throws AdApiFaultDetail_Exception, Exception
-    {
-    	DeviceOSTargetBid bid = new DeviceOSTargetBid();
-    	bid.setBidAdjustment(20);
-    	bid.setDeviceName("Computers");
-    	
-    	ArrayOfDeviceOSTargetBid bids = new ArrayOfDeviceOSTargetBid();
-    	bids.getDeviceOSTargetBids().add(bid);
-    	
-    	DeviceOSTarget deviceOS = new DeviceOSTarget();
-    	deviceOS.setBids(bids);
-    	
-    	Target sharedTarget = new Target();
-    	sharedTarget.setName("My Target");
-    	sharedTarget.setDeviceOS(deviceOS);
-    	
-    	ArrayOfTarget targets = new ArrayOfTarget();
-    	targets.getTargets().add(sharedTarget);
-    	
-    	AddTargetsToLibraryRequest addTargetsToLibraryRequest = new AddTargetsToLibraryRequest();
-    	addTargetsToLibraryRequest.setTargets(targets);
-    	
-    	AddTargetsToLibraryResponse addTargetsToLibraryResponse = CampaignServiceV10.getService().addTargetsToLibrary(addTargetsToLibraryRequest);
-    	long sharedTargetId = addTargetsToLibraryResponse.getTargetIds().getLongs().get(0);
-    	outputStatusMessage("Added Target Id: \n" + sharedTargetId);
-    	
-    	for(long adGroupId: adGroupIds)
-    	{
-            SetTargetToAdGroupRequest setTargetToAdGroupRequest = new SetTargetToAdGroupRequest();
-            setTargetToAdGroupRequest.setAdGroupId(adGroupId);
-            setTargetToAdGroupRequest.setTargetId(sharedTargetId);
-
-            CampaignServiceV10.getService().setTargetToAdGroup(setTargetToAdGroupRequest);
-
-            outputStatusMessage("Associated AdGroupId " + adGroupId + " with TargetId " + sharedTargetId + ".\n");
-    	}
-        
-        return sharedTargetId;
     }
 }
