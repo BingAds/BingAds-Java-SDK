@@ -135,8 +135,8 @@ class ServiceFactoryImpl implements ServiceFactory {
     private Service createServiceWithRetry(Class serviceInterface, ApiEnvironment env) throws Exception {
 
         final QName qName = getServiceQname(serviceInterface);
-        final URL url = new URL(getServiceUrl(serviceInterface, env) + "?wsdl");
         final boolean isCxf = Provider.provider().getClass().getName().contains("org.apache.cxf");
+        final URL url = isCxf ? null : new URL(getServiceUrl(serviceInterface, env) + "?wsdl");
 
         int retryLeft = WS_CREATE_RETRY_TIMES;
         int timeout = 0;
