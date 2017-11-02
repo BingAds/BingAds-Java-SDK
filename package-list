@@ -1,17 +1,7 @@
 com.microsoft.bingads
-com.microsoft.bingads.customerbilling
-com.microsoft.bingads.customermanagement
 com.microsoft.bingads.internal
 com.microsoft.bingads.internal.functionalinterfaces
-com.microsoft.bingads.internal.interceptor
 com.microsoft.bingads.internal.utilities
-com.microsoft.bingads.reporting
-com.microsoft.bingads.v10.adinsight
-com.microsoft.bingads.v10.bulk
-com.microsoft.bingads.v10.bulk.entities
-com.microsoft.bingads.v10.campaignmanagement
-com.microsoft.bingads.v10.internal.bulk
-com.microsoft.bingads.v10.internal.bulk.entities
 com.microsoft.bingads.v11.adinsight
 com.microsoft.bingads.v11.bulk
 com.microsoft.bingads.v11.bulk.entities
