@@ -57,6 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
  *     &lt;enumeration value="BidStrategyType"/>
+ *     &lt;enumeration value="KeywordLabels"/>
+ *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -151,7 +153,11 @@ public enum ShareOfVoiceReportColumn {
     @XmlEnumValue("KeywordStatus")
     KEYWORD_STATUS("KeywordStatus"),
     @XmlEnumValue("BidStrategyType")
-    BID_STRATEGY_TYPE("BidStrategyType");
+    BID_STRATEGY_TYPE("BidStrategyType"),
+    @XmlEnumValue("KeywordLabels")
+    KEYWORD_LABELS("KeywordLabels"),
+    @XmlEnumValue("ExactMatchImpressionSharePercent")
+    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent");
     private final String value;
 
     ShareOfVoiceReportColumn(String v) {

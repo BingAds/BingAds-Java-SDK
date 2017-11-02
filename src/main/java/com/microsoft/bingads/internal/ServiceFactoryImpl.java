@@ -2,12 +2,8 @@ package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.customerbilling.ICustomerBillingService;
-import com.microsoft.bingads.customermanagement.ICustomerManagementService;
-import com.microsoft.bingads.reporting.IReportingService;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,7 +27,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "11.5.5";
+    private static final String VERSION = "11.5.6";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -43,43 +39,6 @@ class ServiceFactoryImpl implements ServiceFactory {
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
-            put(ICustomerBillingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v9/CustomerBillingService.svc");
-                }
-            });
-
-            put(ICustomerManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc");
-                }
-            });
-
-            put(IReportingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://api.bingads.microsoft.com/Api/Advertiser/Reporting/v9/ReportingService.svc");
-                    setSandboxUrl("https://api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v9/ReportingService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v10.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/CampaignManagementService.svc");
-                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/CampaignManagementService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v10.adinsight.IAdInsightService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/V10/AdInsightService.svc");
-                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V10/AdInsightService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v10.bulk.IBulkService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
-                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v10/BulkService.svc");
-                }
-            });
             put(com.microsoft.bingads.v11.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v11/CustomerBillingService.svc");
@@ -135,8 +94,8 @@ class ServiceFactoryImpl implements ServiceFactory {
     private Service createServiceWithRetry(Class serviceInterface, ApiEnvironment env) throws Exception {
 
         final QName qName = getServiceQname(serviceInterface);
-        final URL url = new URL(getServiceUrl(serviceInterface, env) + "?wsdl");
         final boolean isCxf = Provider.provider().getClass().getName().contains("org.apache.cxf");
+        final URL url = (isCxf ? null : new URL(getServiceUrl(serviceInterface, env) + "?wsdl")); 
 
         int retryLeft = WS_CREATE_RETRY_TIMES;
         int timeout = 0;

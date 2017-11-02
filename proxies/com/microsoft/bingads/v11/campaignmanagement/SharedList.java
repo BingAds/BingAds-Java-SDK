@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v11}SharedEntity">
  *       &lt;sequence>
- *         &lt;element name="ItemCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="ItemCount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -38,7 +38,7 @@ public class SharedList
     extends SharedEntity
 {
 
-    @XmlElement(name = "ItemCount", required = true, type = Integer.class, nillable = true)
+    @XmlElement(name = "ItemCount", nillable = true)
     protected Integer itemCount;
 
     /**

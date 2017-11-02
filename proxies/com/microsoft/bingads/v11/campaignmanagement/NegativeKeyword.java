@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v11}SharedListItem">
  *       &lt;sequence>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="MatchType" type="{https://bingads.microsoft.com/CampaignManagement/v11}MatchType"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
@@ -39,7 +39,7 @@ public class NegativeKeyword
     extends SharedListItem
 {
 
-    @XmlElement(name = "Id", required = true, type = Long.class, nillable = true)
+    @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "MatchType", required = true)
     @XmlSchemaType(name = "string")

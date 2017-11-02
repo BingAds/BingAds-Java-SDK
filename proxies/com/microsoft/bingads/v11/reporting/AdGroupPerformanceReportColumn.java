@@ -75,6 +75,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CustomParameters"/>
  *     &lt;enumeration value="AccountStatus"/>
  *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupLabels"/>
+ *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -205,7 +207,11 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("AccountStatus")
     ACCOUNT_STATUS("AccountStatus"),
     @XmlEnumValue("CampaignStatus")
-    CAMPAIGN_STATUS("CampaignStatus");
+    CAMPAIGN_STATUS("CampaignStatus"),
+    @XmlEnumValue("AdGroupLabels")
+    AD_GROUP_LABELS("AdGroupLabels"),
+    @XmlEnumValue("ExactMatchImpressionSharePercent")
+    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

@@ -17,10 +17,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v11}AdExtension">
  *       &lt;sequence>
- *         &lt;element name="Description1" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Description2" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="DestinationUrl" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="DisplayText" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Description1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Description2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="DestinationUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="DisplayText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalAppUrls" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11}ArrayOfAppUrl" minOccurs="0"/>
  *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
@@ -50,13 +50,13 @@ public class Sitelink2AdExtension
     extends AdExtension
 {
 
-    @XmlElement(name = "Description1", required = true, nillable = true)
+    @XmlElement(name = "Description1", nillable = true)
     protected String description1;
-    @XmlElement(name = "Description2", required = true, nillable = true)
+    @XmlElement(name = "Description2", nillable = true)
     protected String description2;
-    @XmlElement(name = "DestinationUrl", required = true, nillable = true)
+    @XmlElement(name = "DestinationUrl", nillable = true)
     protected String destinationUrl;
-    @XmlElement(name = "DisplayText", required = true, nillable = true)
+    @XmlElement(name = "DisplayText", nillable = true)
     protected String displayText;
     @XmlElement(name = "FinalAppUrls", nillable = true)
     protected ArrayOfAppUrl finalAppUrls;

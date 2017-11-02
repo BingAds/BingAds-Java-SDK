@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="Criterion" type="{https://bingads.microsoft.com/CampaignManagement/v11}Criterion" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v11}CampaignCriterionStatus" minOccurs="0"/>
  *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -54,7 +54,7 @@ public class CampaignCriterion {
     protected Criterion criterion;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
-    @XmlElement(name = "Id", required = true, type = Long.class, nillable = true)
+    @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")

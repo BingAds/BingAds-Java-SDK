@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="DisplayUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Path1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Path2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="TitlePart1" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="TitlePart2" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TitlePart1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TitlePart2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,11 +50,11 @@ public class ExpandedTextAd
     protected String path1;
     @XmlElement(name = "Path2", nillable = true)
     protected String path2;
-    @XmlElement(name = "Text", required = true, nillable = true)
+    @XmlElement(name = "Text", nillable = true)
     protected String text;
-    @XmlElement(name = "TitlePart1", required = true, nillable = true)
+    @XmlElement(name = "TitlePart1", nillable = true)
     protected String titlePart1;
-    @XmlElement(name = "TitlePart2", required = true, nillable = true)
+    @XmlElement(name = "TitlePart2", nillable = true)
     protected String titlePart2;
 
     /**

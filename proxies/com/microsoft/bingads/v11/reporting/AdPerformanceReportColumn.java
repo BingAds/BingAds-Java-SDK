@@ -69,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TitlePart2"/>
  *     &lt;enumeration value="Path1"/>
  *     &lt;enumeration value="Path2"/>
+ *     &lt;enumeration value="AdLabels"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -187,7 +188,9 @@ public enum AdPerformanceReportColumn {
     @XmlEnumValue("Path1")
     PATH_1("Path1"),
     @XmlEnumValue("Path2")
-    PATH_2("Path2");
+    PATH_2("Path2"),
+    @XmlEnumValue("AdLabels")
+    AD_LABELS("AdLabels");
     private final String value;
 
     AdPerformanceReportColumn(String v) {

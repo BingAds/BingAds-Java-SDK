@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,7 +40,7 @@ public class SharedListItem {
 
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
-    @XmlElement(name = "Type", required = true, nillable = true)
+    @XmlElement(name = "Type", nillable = true)
     protected String type;
 
     /**

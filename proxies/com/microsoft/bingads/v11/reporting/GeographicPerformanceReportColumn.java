@@ -57,6 +57,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountStatus"/>
  *     &lt;enumeration value="CampaignStatus"/>
  *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="County"/>
+ *     &lt;enumeration value="PostalCode"/>
+ *     &lt;enumeration value="LocationId"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -151,7 +154,13 @@ public enum GeographicPerformanceReportColumn {
     @XmlEnumValue("CampaignStatus")
     CAMPAIGN_STATUS("CampaignStatus"),
     @XmlEnumValue("AdGroupStatus")
-    AD_GROUP_STATUS("AdGroupStatus");
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("County")
+    COUNTY("County"),
+    @XmlEnumValue("PostalCode")
+    POSTAL_CODE("PostalCode"),
+    @XmlEnumValue("LocationId")
+    LOCATION_ID("LocationId");
     private final String value;
 
     GeographicPerformanceReportColumn(String v) {

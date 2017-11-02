@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Scheduling" type="{https://bingads.microsoft.com/CampaignManagement/v11}Schedule" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v11}AdExtensionStatus" minOccurs="0"/>
- *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Version" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -69,7 +69,7 @@ public class AdExtension {
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected AdExtensionStatus status;
-    @XmlElement(name = "Type", required = true, nillable = true)
+    @XmlElement(name = "Type", nillable = true)
     protected String type;
     @XmlElement(name = "Version", nillable = true)
     protected Integer version;

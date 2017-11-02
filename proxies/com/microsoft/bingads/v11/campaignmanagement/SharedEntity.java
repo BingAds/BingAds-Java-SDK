@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="AssociationCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -48,11 +48,11 @@ public class SharedEntity {
     protected Integer associationCount;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
-    @XmlElement(name = "Id", required = true, type = Long.class, nillable = true)
+    @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Name", required = true, nillable = true)
     protected String name;
-    @XmlElement(name = "Type", required = true, nillable = true)
+    @XmlElement(name = "Type", nillable = true)
     protected String type;
 
     /**

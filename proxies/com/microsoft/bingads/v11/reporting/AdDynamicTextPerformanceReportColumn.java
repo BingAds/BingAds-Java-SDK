@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FinalMobileURL"/>
  *     &lt;enumeration value="FinalAppURL"/>
  *     &lt;enumeration value="AdDescription"/>
+ *     &lt;enumeration value="AdLabels"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -139,7 +140,9 @@ public enum AdDynamicTextPerformanceReportColumn {
     @XmlEnumValue("FinalAppURL")
     FINAL_APP_URL("FinalAppURL"),
     @XmlEnumValue("AdDescription")
-    AD_DESCRIPTION("AdDescription");
+    AD_DESCRIPTION("AdDescription"),
+    @XmlEnumValue("AdLabels")
+    AD_LABELS("AdLabels");
     private final String value;
 
     AdDynamicTextPerformanceReportColumn(String v) {

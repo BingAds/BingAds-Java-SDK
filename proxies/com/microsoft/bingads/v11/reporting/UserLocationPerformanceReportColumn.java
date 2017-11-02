@@ -56,6 +56,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CostPerAssist"/>
  *     &lt;enumeration value="RevenuePerConversion"/>
  *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="County"/>
+ *     &lt;enumeration value="PostalCode"/>
+ *     &lt;enumeration value="QueryIntentCounty"/>
+ *     &lt;enumeration value="QueryIntentPostalCode"/>
+ *     &lt;enumeration value="LocationId"/>
+ *     &lt;enumeration value="QueryIntentLocationId"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -148,7 +154,19 @@ public enum UserLocationPerformanceReportColumn {
     @XmlEnumValue("RevenuePerConversion")
     REVENUE_PER_CONVERSION("RevenuePerConversion"),
     @XmlEnumValue("RevenuePerAssist")
-    REVENUE_PER_ASSIST("RevenuePerAssist");
+    REVENUE_PER_ASSIST("RevenuePerAssist"),
+    @XmlEnumValue("County")
+    COUNTY("County"),
+    @XmlEnumValue("PostalCode")
+    POSTAL_CODE("PostalCode"),
+    @XmlEnumValue("QueryIntentCounty")
+    QUERY_INTENT_COUNTY("QueryIntentCounty"),
+    @XmlEnumValue("QueryIntentPostalCode")
+    QUERY_INTENT_POSTAL_CODE("QueryIntentPostalCode"),
+    @XmlEnumValue("LocationId")
+    LOCATION_ID("LocationId"),
+    @XmlEnumValue("QueryIntentLocationId")
+    QUERY_INTENT_LOCATION_ID("QueryIntentLocationId");
     private final String value;
 
     UserLocationPerformanceReportColumn(String v) {
