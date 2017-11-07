@@ -347,7 +347,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException 
     {
 
-        BulkDownloadOperation bulkDownloadOperation = new BulkDownloadOperation(requestId, authorizationData);
+        BulkDownloadOperation bulkDownloadOperation = new BulkDownloadOperation(requestId, authorizationData, API_ENVIRONMENT);
 
         bulkDownloadOperation.setStatusPollIntervalInMilliseconds(5000);
 
