@@ -230,7 +230,7 @@ public class ReportRequests extends ExampleBase {
     private static void downloadResultsAsync(java.lang.String requestId) 
         throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException {
 
-        ReportingDownloadOperation reportingDownloadOperation = new ReportingDownloadOperation(requestId, authorizationData);
+        ReportingDownloadOperation reportingDownloadOperation = new ReportingDownloadOperation(requestId, authorizationData, API_ENVIRONMENT);
 
         reportingDownloadOperation.setStatusPollIntervalInMilliseconds(5000);
 
