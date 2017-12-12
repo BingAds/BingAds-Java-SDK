@@ -1,19 +1,20 @@
 package com.microsoft.bingads.v11.reporting;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.concurrent.Future;
+
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.concurrent.Future;
 
 /**
  * Reserved for internal use.

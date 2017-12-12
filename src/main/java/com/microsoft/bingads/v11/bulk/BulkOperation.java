@@ -1,24 +1,25 @@
 package com.microsoft.bingads.v11.bulk;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.v11.internal.bulk.BulkOperationStatusProvider;
-import com.microsoft.bingads.v11.internal.bulk.BulkOperationTracker;
-import com.microsoft.bingads.v11.internal.bulk.Config;
-import com.microsoft.bingads.v11.internal.bulk.PollingBulkOperationTracker;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
-import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
-import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.Future;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.ParentCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import com.microsoft.bingads.v11.internal.bulk.BulkOperationStatusProvider;
+import com.microsoft.bingads.v11.internal.bulk.BulkOperationTracker;
+import com.microsoft.bingads.v11.internal.bulk.Config;
+import com.microsoft.bingads.v11.internal.bulk.PollingBulkOperationTracker;
 
 /**
  * Reserved for internal use.

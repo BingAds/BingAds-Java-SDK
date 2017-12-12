@@ -1,39 +1,5 @@
 package com.microsoft.bingads.v11.bulk;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.Authentication;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.CouldNotUploadFileException;
-import com.microsoft.bingads.HeadersImpl;
-import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
-import com.microsoft.bingads.internal.HttpHeaders;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v11.internal.bulk.Config;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.v11.internal.bulk.BulkFileReaderFactory;
-import com.microsoft.bingads.v11.internal.bulk.CSVBulkFileReaderFactory;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
-import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
-import com.microsoft.bingads.internal.utilities.ZipExtractor;
-import com.microsoft.bingads.v11.bulk.ArrayOfCampaignScope;
-import com.microsoft.bingads.v11.bulk.ArrayOflong;
-import com.microsoft.bingads.v11.bulk.CampaignScope;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsRequest;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsResponse;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsRequest;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsResponse;
-import com.microsoft.bingads.v11.bulk.DownloadFileType;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlRequest;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlResponse;
-import com.microsoft.bingads.v11.bulk.IBulkService;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -42,9 +8,34 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
+
 import org.apache.http.HttpRequest;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.Authentication;
+import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.CouldNotUploadFileException;
+import com.microsoft.bingads.HeadersImpl;
+import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.HttpHeaders;
+import com.microsoft.bingads.internal.ParentCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v11.internal.bulk.BulkFileReaderFactory;
+import com.microsoft.bingads.v11.internal.bulk.CSVBulkFileReaderFactory;
+import com.microsoft.bingads.v11.internal.bulk.Config;
+import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 
 /**
  * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides methods for submitting upload or download operations.

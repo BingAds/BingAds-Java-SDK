@@ -27,7 +27,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "11.5.6";
+    private static final String VERSION = "11.5.7";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -208,7 +208,7 @@ class ServiceFactoryImpl implements ServiceFactory {
     private <T> void addUserAgent(T port) {
         Map<String, List> headers = new HashMap<String, List>();
 
-        headers.put("User-Agent", Arrays.asList("BingAdsSDKJava " + VERSION));
+        headers.put("User-Agent", Arrays.asList("BingAdsSDKJava " + VERSION, "JDK " + System.getProperty("java.version")));
 
         ((BindingProvider) port).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, headers);
     }

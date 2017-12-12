@@ -1,24 +1,26 @@
 package com.microsoft.bingads.v11.reporting;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.Authentication;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
-import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
-import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.Authentication;
+import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.ParentCallback;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
 
 /**
  * Provides high level methods for downloading reporting using the Reporting API functionality. Also provides methods for submitting download operations.
