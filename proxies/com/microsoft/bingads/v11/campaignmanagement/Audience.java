@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v11}EntityScope" minOccurs="0"/>
+ *         &lt;element name="SearchSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -46,6 +47,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "name",
     "parentId",
     "scope",
+    "searchSize",
     "type"
 })
 @XmlSeeAlso({
@@ -70,8 +72,10 @@ public class Audience {
     @XmlElement(name = "Scope", nillable = true)
     @XmlSchemaType(name = "string")
     protected EntityScope scope;
+    @XmlElement(name = "SearchSize", nillable = true)
+    protected Long searchSize;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected Collection<AudienceType> type;
 
     /**
@@ -240,6 +244,30 @@ public class Audience {
      */
     public void setScope(EntityScope value) {
         this.scope = value;
+    }
+
+    /**
+     * Gets the value of the searchSize property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSearchSize() {
+        return searchSize;
+    }
+
+    /**
+     * Sets the value of the searchSize property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSearchSize(Long value) {
+        this.searchSize = value;
     }
 
     /**

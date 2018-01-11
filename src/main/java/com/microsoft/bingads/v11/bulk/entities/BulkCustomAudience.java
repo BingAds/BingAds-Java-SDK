@@ -121,7 +121,27 @@ public class BulkCustomAudience extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
+
+        m.add(new SimpleBulkMapping<BulkCustomAudience, Long>(StringTable.AudienceSearchSize,
+                new Function<BulkCustomAudience, Long>() {
+                    @Override
+                    public Long apply(BulkCustomAudience c) {
+                        return c.getCustomAudience().getSearchSize();
+                    }
+                },
+                new BiConsumer<String, BulkCustomAudience>() {
+                    @Override
+                    public void accept(String v, BulkCustomAudience c) {
+                        c.getCustomAudience().setSearchSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+
         m.add(new SimpleBulkMapping<BulkCustomAudience, String>(StringTable.Description,
                 new Function<BulkCustomAudience, String>() {
                     @Override

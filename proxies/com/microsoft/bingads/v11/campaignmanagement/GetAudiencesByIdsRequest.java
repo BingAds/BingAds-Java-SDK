@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       &lt;sequence>
  *         &lt;element name="AudienceIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceType" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "audienceIds",
-    "type"
+    "type",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAudiencesByIdsRequest")
 public class GetAudiencesByIdsRequest {
@@ -41,8 +43,11 @@ public class GetAudiencesByIdsRequest {
     @XmlElement(name = "AudienceIds", nillable = true)
     protected ArrayOflong audienceIds;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected Collection<AudienceType> type;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    protected Collection<AudienceAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the audienceIds property.
@@ -90,6 +95,30 @@ public class GetAudiencesByIdsRequest {
      */
     public void setType(Collection<AudienceType> value) {
         this.type = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AudienceAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AudienceAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

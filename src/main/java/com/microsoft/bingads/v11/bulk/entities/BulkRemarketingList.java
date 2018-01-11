@@ -121,7 +121,27 @@ public class BulkRemarketingList extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
+
+        m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.AudienceSearchSize,
+                new Function<BulkRemarketingList, Long>() {
+                    @Override
+                    public Long apply(BulkRemarketingList c) {
+                        return c.getRemarketingList().getSearchSize();
+                    }
+                },
+                new BiConsumer<String, BulkRemarketingList>() {
+                    @Override
+                    public void accept(String v, BulkRemarketingList c) {
+                        c.getRemarketingList().setSearchSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+
         m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.Description,
                 new Function<BulkRemarketingList, String>() {
                     @Override

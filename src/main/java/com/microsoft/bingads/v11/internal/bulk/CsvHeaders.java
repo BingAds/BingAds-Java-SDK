@@ -275,6 +275,7 @@ public class CsvHeaders {
             StringTable.TagId,
             StringTable.RemarketingTargetingSetting,
             StringTable.RemarketingRule,
+            StringTable.AudienceSearchSize,
 
             // Structured Snippet Ad Extension
             StringTable.StructuredSnippetHeader,

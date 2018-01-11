@@ -402,6 +402,7 @@ public class StringTable {
     public static final String AdGroupInMarketAudienceAssociation = "Ad Group In Market Audience Association";
     public static final String AdGroupNegativeInMarketAudienceAssociation = "Ad Group Negative In Market Audience Association";
     public static final String Audience = "Audience";
+    public static final String AudienceSearchSize = "Audience Search Size";
     public static final String Description = "Description";
     public static final String MembershipDuration = "Membership Duration";
     public static final String Scope = "Scope";

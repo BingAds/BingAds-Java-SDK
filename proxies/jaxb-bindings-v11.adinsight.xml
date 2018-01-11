@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
-  <bindings schemaLocation="https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/V11/AdInsightService.svc?xsd=xsd2">
+  <bindings schemaLocation="https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v11/AdInsightService.svc?xsd=xsd2">
     <bindings node="//xs:simpleType[@name='BidOpportunityType']">
       <javaType name="java.util.Collection&lt;BidOpportunityType&gt;" parseMethod="com.microsoft.bingads.v11.adinsight.BidOpportunityTypeConverter.convertToList" printMethod="com.microsoft.bingads.v11.adinsight.BidOpportunityTypeConverter.convertToString" />
     </bindings>

@@ -5,16 +5,16 @@ import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter9
-    extends XmlAdapter<String, Collection<KeywordAdditionalField>>
+    extends XmlAdapter<String, Collection<AdGroupCriterionType>>
 {
 
 
-    public Collection<KeywordAdditionalField> unmarshal(String value) {
-        return (com.microsoft.bingads.v11.campaignmanagement.KeywordAdditionalFieldConverter.convertToList(value));
+    public Collection<AdGroupCriterionType> unmarshal(String value) {
+        return (com.microsoft.bingads.v11.campaignmanagement.AdGroupCriterionTypeConverter.convertToList(value));
     }
 
-    public String marshal(Collection<KeywordAdditionalField> value) {
-        return (com.microsoft.bingads.v11.campaignmanagement.KeywordAdditionalFieldConverter.convertToString(value));
+    public String marshal(Collection<AdGroupCriterionType> value) {
+        return (com.microsoft.bingads.v11.campaignmanagement.AdGroupCriterionTypeConverter.convertToString(value));
     }
 
 }

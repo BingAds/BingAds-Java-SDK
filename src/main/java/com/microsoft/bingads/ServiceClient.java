@@ -2,6 +2,7 @@ package com.microsoft.bingads;
 
 import com.ctc.wstx.util.StringUtil;
 import com.microsoft.bingads.internal.HeaderHandler;
+import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
@@ -133,6 +134,7 @@ public class ServiceClient<T> {
             public List<Handler> getHandlerChain(PortInfo portInfo) {
                 List<Handler> handlerList = new ArrayList<Handler>();
                 handlerList.add(new HeaderHandler(ns, headers));
+                handlerList.add(MessageHandler.getInstance());
                 return handlerList;
             }
         });

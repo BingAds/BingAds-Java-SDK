@@ -45,7 +45,7 @@ public class GetKeywordsByIdsRequest {
     @XmlElement(name = "KeywordIds", nillable = true)
     protected ArrayOflong keywordIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<KeywordAdditionalField> returnAdditionalFields;
 
     /**

@@ -28,6 +28,9 @@
     <bindings node="//xs:simpleType[@name='CampaignCriterionType']">
       <javaType name="java.util.Collection&lt;CampaignCriterionType&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.CampaignCriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.CampaignCriterionTypeConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='AudienceAdditionalField']">
+      <javaType name="java.util.Collection&lt;AudienceAdditionalField&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.AudienceAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.AudienceAdditionalFieldConverter.convertToString" />
+    </bindings>
     <bindings node="//xs:simpleType[@name='ConversionGoalType']">
       <javaType name="java.util.Collection&lt;ConversionGoalType&gt;" parseMethod="com.microsoft.bingads.v11.campaignmanagement.ConversionGoalTypeConverter.convertToList" printMethod="com.microsoft.bingads.v11.campaignmanagement.ConversionGoalTypeConverter.convertToString" />
     </bindings>
