@@ -275,9 +275,6 @@ public class KeywordPlanner extends ExampleBase {
                 // Use the suggested keyword
                 keyword.setText(keywordIdea.getKeyword());
                 keywordEstimator.setKeyword(keyword);
-                // Round the suggested bid to two decimal places
-                //double maxCpc2 = Math.round(keywordIdea.getSuggestedBid()) > 0.04 ? 
-                //        Math.round(keywordIdea.getSuggestedBid()) : null;
                 double maxCpc = keywordIdea.getSuggestedBid() > 0.04 ? 
                         keywordIdea.getSuggestedBid() : null;
                 keywordEstimator.setMaxCpc(maxCpc);
