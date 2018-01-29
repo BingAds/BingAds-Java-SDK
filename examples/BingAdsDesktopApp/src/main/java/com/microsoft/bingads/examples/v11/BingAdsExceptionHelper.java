@@ -47,10 +47,10 @@ public class BingAdsExceptionHelper {
         try{
             // SDK Exceptions
             if (exception instanceof com.microsoft.bingads.CouldNotDownloadResultFileException) {
-                stream.println(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotDownloadResultFileException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.CouldNotUploadFileException) {
-                stream.println(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotUploadFileException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.OAuthTokenRequestException) {
                 stream.println(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", exception.getMessage()));
@@ -59,37 +59,37 @@ public class BingAdsExceptionHelper {
                 stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.v11.bulk.BulkOperationInProgressException) {
-                stream.println(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.v11.bulk.BulkUploadCouldNotBeCompletedException) {
-                stream.println(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
             }  
             else if(exception instanceof com.microsoft.bingads.v11.bulk.CouldNotGetBulkOperationStatusException) {
-                stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotGetBulkOperationStatusException   : %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if(exception instanceof com.microsoft.bingads.v11.bulk.CouldNotSubmitBulkDownloadException) {
-                stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotSubmitBulkDownloadException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
-            else if (exception instanceof com.microsoft.bingads.v11.bulk.CouldNotSubmitBulkUploadException) {
-                stream.println(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+            else if (exception instanceof com.microsoft.bingads.v11.bulk.CouldNotSubmitBulkDownloadException) {
+                stream.println(String.format("CouldNotSubmitBulkDownloadException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.v11.bulk.EntityReadException) {
-                stream.println(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("EntityReadException: %s\nMessage: %s\n\n", exception.getMessage()));
             }  
             else if(exception instanceof com.microsoft.bingads.v11.bulk.EntityWriteException) {
-                stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("EntityWriteException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if(exception instanceof com.microsoft.bingads.v11.reporting.CouldNotGetReportingDownloadStatusException) {
-                stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotGetReportingDownloadStatusException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.v11.reporting.CouldNotSubmitReportingDownloadException) {
-                stream.println(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("CouldNotSubmitReportingDownloadException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             else if (exception instanceof com.microsoft.bingads.v11.reporting.ReportingOperationCouldNotBeCompletedException) {
-                stream.println(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("ReportingOperationCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
             }  
             else if(exception instanceof com.microsoft.bingads.v11.reporting.ReportingOperationInProgressException) {
-                stream.println(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", exception.getMessage()));
+                stream.println(String.format("ReportingOperationInProgressException: %s\nMessage: %s\n\n", exception.getMessage()));
             } 
             
             // Ad Insight Service Execution Exceptions
