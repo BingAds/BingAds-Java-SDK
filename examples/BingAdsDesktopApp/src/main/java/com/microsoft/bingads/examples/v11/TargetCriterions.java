@@ -1,16 +1,12 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class TargetCriterions extends ExampleBase {
-
-    static ServiceClient<ICampaignManagementService> CampaignService; 
         
     public static void main(java.lang.String[] args) 
     {
@@ -22,11 +18,11 @@ public class TargetCriterions extends ExampleBase {
         authorizationData.setCustomerId(CustomerId);
         authorizationData.setAccountId(AccountId);
          
-        CampaignService = new ServiceClient<ICampaignManagementService>(
-                authorizationData, 
-                ExampleBase.API_ENVIRONMENT,
-                ICampaignManagementService.class);
-                        
+        CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                    	authorizationData, 
+                        API_ENVIRONMENT,
+                        ICampaignManagementService.class);
+        
         ArrayList<CampaignCriterionType> allTargetCampaignCriterionTypes = new ArrayList<CampaignCriterionType>();
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.AGE);
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.DAY_TIME);
@@ -57,10 +53,10 @@ public class TargetCriterions extends ExampleBase {
             // You can set campaignIds null to get all campaigns in the account, instead of 
             // adding and retrieving the example campaigns.
             
-            ArrayOfCampaign getCampaigns = getCampaignsByIds(
+            ArrayOfCampaign getCampaigns = CampaignManagementExampleHelper.getCampaignsByIds(
                     authorizationData.getAccountId(),
                     campaignIds,
-                    campaignTypes);
+                    campaignTypes).getCampaigns();
             
             // Loop through all campaigns and ad groups to get the target criterion IDs.
 
@@ -69,9 +65,9 @@ public class TargetCriterions extends ExampleBase {
                 // Set campaignCriterionIds null to get all criterions 
                 // (of the specified target criterion type or types) for the current campaign.
                 
-                GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIdsResponse = getCampaignCriterionsByIds(
-                    campaignIds.getLongs().get(0), 
+                GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIdsResponse = CampaignManagementExampleHelper.getCampaignCriterionsByIds(
                     null, 
+                    campaignIds.getLongs().get(0), 
                     allTargetCampaignCriterionTypes);
                 ArrayOfCampaignCriterion campaignCriterions = getCampaignCriterionsByIdsResponse.getCampaignCriterions();
 
@@ -110,7 +106,7 @@ public class TargetCriterions extends ExampleBase {
 
                     ArrayList<CampaignCriterionType> criterionTypes = new ArrayList<CampaignCriterionType>();
 		    criterionTypes.add(CampaignCriterionType.TARGETS);
-                    AddCampaignCriterionsResponse addCriterionsResponse = addCampaignCriterions(campaignCriterions, criterionTypes);
+                    AddCampaignCriterionsResponse addCriterionsResponse = CampaignManagementExampleHelper.addCampaignCriterions(campaignCriterions, criterionTypes);
 
                     // Capture the new criterion IDs.
         			
@@ -127,9 +123,10 @@ public class TargetCriterions extends ExampleBase {
                 // You can now store or output the campaign criterions.
 
                 outputStatusMessage("Campaign Criterions: \n");
-                outputCampaignCriterions(campaignCriterions);
+                CampaignManagementExampleHelper.outputArrayOfCampaignCriterion(campaignCriterions);
                 
-                List<AdGroup> adGroups = getAdGroupsByCampaignId(campaign.getId()).getAdGroups().getAdGroups();
+                List<AdGroup> adGroups = CampaignManagementExampleHelper.getAdGroupsByCampaignId(
+                        campaign.getId(), null).getAdGroups().getAdGroups();
                 
                 // Loop through all ad groups to get the target criterion IDs.
                 
@@ -138,9 +135,9 @@ public class TargetCriterions extends ExampleBase {
                     // Set adGroupCriterionIds null to get all criterions 
                     // (of the specified target criterion type or types) for the current ad group.
                     
-                    ArrayOfAdGroupCriterion adGroupCriterions = getAdGroupCriterionsByIds(
-                        adGroup.getId(), 
+                    ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
                         null, 
+                        adGroup.getId(), 
                         allTargetAdGroupCriterionTypes).getAdGroupCriterions();
                     
                     if(adGroupCriterions.getAdGroupCriterions().size() > 0)
@@ -170,7 +167,7 @@ public class TargetCriterions extends ExampleBase {
                             ArrayList<AdGroupCriterionType> adGroupCriterionTypes = new ArrayList<AdGroupCriterionType>();
                             adGroupCriterionTypes.add(AdGroupCriterionType.TARGETS);
 
-                            UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = updateAdGroupCriterions(
+                            UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = CampaignManagementExampleHelper.updateAdGroupCriterions(
                                     updateAdGroupCriterions, 
                                     adGroupCriterionTypes);
                         }
@@ -178,40 +175,22 @@ public class TargetCriterions extends ExampleBase {
                         // You can now store or output the ad group criterions.
 
                         outputStatusMessage("Ad Group Criterions: ");
-                        outputAdGroupCriterions(adGroupCriterions);
+                        CampaignManagementExampleHelper.outputArrayOfAdGroupCriterion(adGroupCriterions);
                     }
                 }
             }
             
             // Delete the campaign and ad group that were previously added. 
 
-            deleteCampaigns(authorizationData.getAccountId(), campaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
             System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
                         
             outputStatusMessage("Program execution completed\n"); 
-        }
-        // Catch authentication exceptions
-        catch (OAuthTokenRequestException ex)
-        {
-            outputStatusMessage("Couldn't get OAuth tokens. Error: " + ex.getDetails().getError() + "/nDescription: " + ex.getDetails().getDescription());
-        }
-        // Catch Campaign Management service exceptions
-        catch (ApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        catch (AdApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        catch (EditorialApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        // Catch general exception
-        catch(Exception e)
-        {
-            outputStatusMessage(e.getMessage());
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
         }
     }
     
@@ -268,153 +247,27 @@ public class TargetCriterions extends ExampleBase {
        try
        {
             outputStatusMessage("Add campaigns:\n");
-            AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
-            outputIds(nullableCampaignIds);
-            outputPartialErrors(addCampaignsResponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());
 
             outputStatusMessage("Add ad groups:\n");
-            AddAdGroupsResponse addAdGroupsResponse = addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups);
+            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups);
             ArrayOfNullableOflong nullableAdGroupIds = addAdGroupsResponse.getAdGroupIds();
-            outputIds(nullableAdGroupIds);
-            outputPartialErrors(addAdGroupsResponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableAdGroupIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(addAdGroupsResponse.getPartialErrors());
 
             ArrayOflong campaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
 
             return campaignIds;
         }
-        catch(Exception e)
-        {
-            outputStatusMessage(e.getMessage());
-
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
             return null;
         }
-    }
-    
-    // Adds one or more campaigns to the specified account.
-
-    static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
-    {
-        AddCampaignsRequest request = new AddCampaignsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaigns(campaigns);
-
-        return CampaignService.getService().addCampaigns(request);
-    }
-
-    // Deletes one or more campaigns from the specified account.
-
-    static void deleteCampaigns(
-            long accountId, 
-            ArrayOflong campaignIds) throws RemoteException, Exception
-    {
-        DeleteCampaignsRequest request = new DeleteCampaignsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaignIds(campaignIds);
-
-        CampaignService.getService().deleteCampaigns(request);
-    }
-
-    // Adds one or more ad groups to the specified campaign.
-
-    static AddAdGroupsResponse addAdGroups(long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
-    {
-        AddAdGroupsRequest request = new AddAdGroupsRequest();
-
-        request.setCampaignId(campaignId);
-        request.setAdGroups(adGroups);
-
-        return CampaignService.getService().addAdGroups(request);
-    }
-
-
-    static ArrayOfCampaign getCampaignsByIds(
-                long accountId, 
-                ArrayOflong campaignIds,
-                ArrayList<CampaignType> campaignType) throws RemoteException, Exception
-    {
-        GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaignIds(campaignIds);
-        request.setCampaignType(campaignType);
-
-        return CampaignService.getService().getCampaignsByIds(request).getCampaigns();
-    }
-
-    static GetAdGroupsByCampaignIdResponse getAdGroupsByCampaignId(long campaignId) throws RemoteException, Exception
-    {
-        GetAdGroupsByCampaignIdRequest request = new GetAdGroupsByCampaignIdRequest();
-
-        request.setCampaignId(campaignId);
-
-        return CampaignService.getService().getAdGroupsByCampaignId(request);
-    }
-    
-    static AddAdGroupCriterionsResponse addAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupCriterions,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        AddAdGroupCriterionsRequest request = new AddAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().addAdGroupCriterions(request);
-    }
-
-    static GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIds(
-        long adGroupId,
-        ArrayOflong adGroupCriterionIds,
-        ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
-
-        request.setAdGroupCriterionIds(adGroupCriterionIds);
-        request.setAdGroupId(adGroupId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().getAdGroupCriterionsByIds(request);
-    }
-    
-    static AddCampaignCriterionsResponse addCampaignCriterions(
-            ArrayOfCampaignCriterion campaignCriterions,
-            ArrayList<CampaignCriterionType> criterionType) throws RemoteException, Exception
-    {
-        AddCampaignCriterionsRequest request = new AddCampaignCriterionsRequest();
-
-        request.setCampaignCriterions(campaignCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().addCampaignCriterions(request);
-    }
-
-    static GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
-        long campaignId,
-        ArrayOflong campaignCriterionIds,
-        ArrayList<CampaignCriterionType> criterionType) throws RemoteException, Exception
-    {
-        GetCampaignCriterionsByIdsRequest request = new GetCampaignCriterionsByIdsRequest();
-
-        request.setCampaignCriterionIds(campaignCriterionIds);
-        request.setCampaignId(campaignId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().getCampaignCriterionsByIds(request);
-    }
-
-    static UpdateAdGroupCriterionsResponse updateAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupCriterions,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        UpdateAdGroupCriterionsRequest request = new UpdateAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().updateAdGroupCriterions(request);
     }
 }

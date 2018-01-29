@@ -21,12 +21,6 @@ public class ReportRequests extends ExampleBase {
     static AuthorizationData authorizationData;
     static ReportingServiceManager ReportingServiceManager; 
     
-    /*private static java.lang.String UserName = "<UserNameGoesHere>";
-    private static java.lang.String Password = "<PasswordGoesHere>";
-    private static java.lang.String DeveloperToken = "<DeveloperTokenGoesHere>";
-    private static long CustomerId = <CustomerIdGoesHere>;
-    private static long AccountId = <AccountIdGoesHere>; ;*/
-        
     // The directory for the report file.
     static java.lang.String FileDirectory = "c:\\reports\\";
 
@@ -107,55 +101,12 @@ public class ReportRequests extends ExampleBase {
             
             outputStatusMessage("Program execution completed\n"); 
         
-        } catch (ExecutionException ee) {
-			Throwable cause = ee.getCause();
-			if (cause instanceof AdApiFaultDetail_Exception) {
-				AdApiFaultDetail_Exception ex = (AdApiFaultDetail_Exception)cause;
-				outputStatusMessage("The operation failed with the following faults:\n");
-				
-				for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-				{
-					outputStatusMessage("AdApiError\n");
-					outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-							error.getCode(), error.getErrorCode(), error.getMessage()));
-				}
-			} else if (cause instanceof ApiFaultDetail_Exception) {
-				ApiFaultDetail_Exception ex = (ApiFaultDetail_Exception)cause;
-				outputStatusMessage("The operation failed with the following faults:\n");
-				
-				for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-				{
-					outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-					outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-				}
-				
-				for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-				{
-					outputStatusMessage("OperationError\n");
-					outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-				}
-			} else {
-				ee.printStackTrace();	
-			}
-		} catch (OAuthTokenRequestException ex) {
-			outputStatusMessage(String.format("Couldn't get OAuth tokens. Error: {0}. Description: {1}", 
-					ex.getDetails().getError(), ex.getDetails().getDescription()));
-			ex.printStackTrace();
-		} catch (ReportingOperationInProgressException ex) {
-			outputStatusMessage("The result file for the reporting operation is not yet available for download.");
-			ex.printStackTrace();
-		} catch (ReportingOperationCouldNotBeCompletedException ex) {
-			outputStatusMessage(String.format("ReportingOperationCouldNotBeCompletedException Message: {0}", ex.getMessage()));
-			ex.printStackTrace();
-		} catch (InterruptedException ex) {
-			ex.printStackTrace();
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} catch (URISyntaxException ex) {
-			ex.printStackTrace();
-		} catch (TimeoutException ex) {
-			ex.printStackTrace();
-		}
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
+        }
     }
     
     // You can submit a download request and the ReportingServiceManager will automatically 
@@ -280,7 +231,7 @@ public class ReportRequests extends ExampleBase {
         report.getTime().setPredefinedTime(ReportTimePeriod.YESTERDAY);
         
         // You may either use a custom date range or predefined time.
-		//Calendar calendar = Calendar.getInstance();
+        //Calendar calendar = Calendar.getInstance();
         //report.getTime().setCustomDateRangeStart(new Date());
         //report.getTime().getCustomDateRangeStart().setMonth(1);
         //report.getTime().getCustomDateRangeStart().setDay(1);

@@ -6,16 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.bulk.entities.*;
 import com.microsoft.bingads.v11.bulk.*;
-import com.microsoft.bingads.v11.bulk.AdApiError;
-import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.BatchError;
-import com.microsoft.bingads.v11.bulk.OperationError;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class BulkRemarketingLists extends BulkExampleBase {
@@ -31,8 +25,8 @@ public class BulkRemarketingLists extends BulkExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 
-            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
-            BulkService.setStatusPollIntervalInMilliseconds(5000);
+            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             ArrayOfDownloadEntity entities = new ArrayOfDownloadEntity();
             entities.getDownloadEntities().add(DownloadEntity.REMARKETING_LISTS);
@@ -46,7 +40,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
             downloadParameters.setLastSyncTimeInUTC(null);
 
             // Download all remarketing lists across all ad groups in the account.
-            File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
+            File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
             outputStatusMessage("Downloaded all remarketing lists that the current user can associate with ad groups.\n"); 
             Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
             downloadEntities = Reader.getEntities();
@@ -73,7 +67,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
 
             BulkCampaign bulkCampaign = new BulkCampaign();
             Campaign campaign = new Campaign();
-            // When using the Campaign Management service, the Id cannot be set. In the context of a BulkCampaign, the Id is optional  
+            // When adding an entity using the Campaign Management service, the Id cannot be set. In the context of a BulkCampaign, the Id is optional  
             // and may be used as a negative reference key during bulk upload. For example the same negative reference key for the campaign Id  
             // will be used when adding new ad groups to this new campaign, or when associating ad extensions with the campaign. 
             campaign.setId(campaignIdKey);
@@ -97,10 +91,10 @@ public class BulkRemarketingLists extends BulkExampleBase {
             bulkAdGroup.setClientId("YourClientIdGoesHere");
 
             AdGroup adGroup = new AdGroup();
-            // When using the Campaign Management service, the Id cannot be set. In the context of a BulkAdGroup, the Id is optional 
-            // and may be used as a negative reference key during bulk upload. For example the same negative value set for the  
-            // ad group Id will be used when associating this new ad group with a new ad group remarketing list association
-            // in the BulkAdGroupRemarketingList object below. 
+            // When adding an entity using the Campaign Management service, the Id cannot be set. In the context of a BulkAdGroup,  
+            // the Id is optional and may be used as a negative reference key during bulk upload. 
+            // For example the same negative value set for the ad group Id will be used when associating this new ad group with a 
+            // new ad group remarketing list association in the BulkAdGroupRemarketingList object below. 
             adGroup.setId(adGroupIdKey);
             adGroup.setName("Women's Red Shoes");
             List<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
@@ -212,59 +206,23 @@ public class BulkRemarketingLists extends BulkExampleBase {
 
             outputStatusMessage("Program execution completed\n"); 
 
-        } catch (BulkDownloadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkUploadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (OAuthTokenRequestException ee) {
-                outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkOperationInProgressException ee) {
-                outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (ExecutionException ee) {
-            Throwable cause = ee.getCause();
-            if (cause instanceof AdApiFaultDetail_Exception) {
-                AdApiFaultDetail_Exception ex = (AdApiFaultDetail_Exception)cause;
-                outputStatusMessage("The operation failed with the following faults:\n");
-
-                for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-                {
-                        outputStatusMessage("AdApiError\n");
-                        outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-                                        error.getCode(), error.getErrorCode(), error.getMessage()));
+        }
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
+        } 
+        finally {
+            if (downloadEntities != null){
+                try {
+                    downloadEntities.close();
+                } 
+                catch (IOException ex) {
+                    ex.printStackTrace();
                 }
-            } else if (cause instanceof ApiFaultDetail_Exception) {
-                ApiFaultDetail_Exception ex = (ApiFaultDetail_Exception)cause;
-                outputStatusMessage("The operation failed with the following faults:\n");
-
-                for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-                {
-                        outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                        outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                }
-
-                for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-                {
-                        outputStatusMessage("OperationError\n");
-                        outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                }
-            } else {
-                ee.printStackTrace();	
             }
-        } catch (IOException ex) {
-                ex.printStackTrace();
-        } catch (InterruptedException ex) {
-                ex.printStackTrace();
-        } finally {
-                if (downloadEntities != null){
-                        try {
-                                downloadEntities.close();
-                        } catch (IOException ex) {
-                                ex.printStackTrace();
-                        }
-                }
         }
 
         System.exit(0);
     }
-   
 }

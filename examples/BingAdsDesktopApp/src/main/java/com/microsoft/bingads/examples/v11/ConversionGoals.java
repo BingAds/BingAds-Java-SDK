@@ -1,17 +1,13 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.microsoft.bingads.*;
-import static com.microsoft.bingads.examples.v11.ExampleBase.outputUetTag;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class ConversionGoals extends ExampleBase {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICampaignManagementService> CampaignService; 
     
     public static void main(java.lang.String[] args) {
    	 
@@ -23,7 +19,7 @@ public class ConversionGoals extends ExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 	         
-            CampaignService = new ServiceClient<ICampaignManagementService>(
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
                         API_ENVIRONMENT,
                         ICampaignManagementService.class);
@@ -31,12 +27,12 @@ public class ConversionGoals extends ExampleBase {
             // Before you can track conversions or target audiences using a remarketing list, 
             // you need to create a UET tag in Bing Ads (web application or API) and then 
             // add the UET tag tracking code to every page of your website. For more information, please see 
-            // Universal Event Tracking at https://msdn.microsoft.com/library/bing-ads-universal-event-tracking-guide.aspx.
+            // Universal Event Tracking at https://docs.microsoft.com/en-us/bingads/guides/universal-event-tracking.
 
             // First you should call the GetUetTagsByIds operation to check whether a tag has already been created. 
             // You can leave the TagIds element null or empty to request all UET tags available for the customer.
 
-            ArrayOfUetTag uetTags = getUetTagsByIds(null).getUetTags();
+            ArrayOfUetTag uetTags = CampaignManagementExampleHelper.getUetTagsByIds(null).getUetTags();
 
             // If you do not already have a UET tag that can be used, or if you need another UET tag, 
             // call the AddUetTags service operation to create a new UET tag. If the call is successful, 
@@ -51,7 +47,7 @@ public class ConversionGoals extends ExampleBase {
                 uetTag.setName("New Uet Tag");
                 addUetTags.getUetTags().add(uetTag);
                         
-                uetTags = addUetTags(addUetTags).getUetTags();
+                uetTags = CampaignManagementExampleHelper.addUetTags(addUetTags).getUetTags();
             }
 
             if (uetTags == null || uetTags.getUetTags().size() < 1)
@@ -65,7 +61,7 @@ public class ConversionGoals extends ExampleBase {
             outputStatusMessage("List of all UET Tags:\n");
             for (UetTag uetTag : uetTags.getUetTags())
             {
-                outputUetTag(uetTag);
+                CampaignManagementExampleHelper.outputUetTag(uetTag);
             }
 
             // After you retreive the tracking script from the AddUetTags or GetUetTagsByIds operation, 
@@ -73,7 +69,7 @@ public class ConversionGoals extends ExampleBase {
             // or your website administrator, add it to your entire website in either the head or body sections. 
             // If your website has a master page, then that is the best place to add it because you add it once 
             // and it is included on all pages. For more information, please see 
-            // Universal Event Tracking at https://msdn.microsoft.com/library/bing-ads-universal-event-tracking-guide.aspx.
+            // Universal Event Tracking at https://docs.microsoft.com/en-us/bingads/guides/universal-event-tracking.
 
 
             // We will use the same UET tag for the remainder of this example.
@@ -83,7 +79,7 @@ public class ConversionGoals extends ExampleBase {
             // Optionally you can update the name and description of a UetTag with the UpdateUetTags operation.
 
             outputStatusMessage("UET Tag BEFORE update:\n");
-            outputUetTag(uetTags.getUetTags().get(0));
+            CampaignManagementExampleHelper.outputUetTag(uetTags.getUetTags().get(0));
 
             uetTags = new ArrayOfUetTag();
             UetTag updateUetTag = new UetTag();
@@ -92,14 +88,14 @@ public class ConversionGoals extends ExampleBase {
             updateUetTag.setName("Updated Uet Tag Name " + System.currentTimeMillis());
             uetTags.getUetTags().add(updateUetTag);
             
-            updateUetTags(uetTags);
+            CampaignManagementExampleHelper.updateUetTags(uetTags);
 
             ArrayOflong tagIds = new ArrayOflong();
             tagIds.getLongs().add(tagId);
-            uetTags = getUetTagsByIds(tagIds).getUetTags();
+            uetTags = CampaignManagementExampleHelper.getUetTagsByIds(tagIds).getUetTags();
 
             outputStatusMessage("UET Tag AFTER update:\n");
-            outputUetTag(uetTags.getUetTags().get(0));
+            CampaignManagementExampleHelper.outputUetTag(uetTags.getUetTags().get(0));
             
             // Add conversion goals that depend on the UET Tag Id retreived above.
             // Please note that you cannot delete conversion goals. If you want to stop 
@@ -202,7 +198,7 @@ public class ConversionGoals extends ExampleBase {
             addAppInstallGoal.setTagId(null);
             addConversionGoals.getConversionGoals().add(addAppInstallGoal);
             
-            AddConversionGoalsResponse addConversionGoalsResponse = addConversionGoals(addConversionGoals);
+            AddConversionGoalsResponse addConversionGoalsResponse = CampaignManagementExampleHelper.addConversionGoals(addConversionGoals);
 
             // Find the conversion goals that were added successfully. 
 
@@ -216,7 +212,7 @@ public class ConversionGoals extends ExampleBase {
             }
 
             outputStatusMessage("List of errors returned from AddConversionGoals (if any):\n");
-            outputPartialErrors(addConversionGoalsResponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfBatchError(addConversionGoalsResponse.getPartialErrors());
 
             ArrayList<ConversionGoalType> conversionGoalTypes = new ArrayList<ConversionGoalType>();
             conversionGoalTypes.add(ConversionGoalType.APP_INSTALL);
@@ -226,12 +222,12 @@ public class ConversionGoals extends ExampleBase {
             conversionGoalTypes.add(ConversionGoalType.URL);
             
             ArrayOfConversionGoal getConversionGoals = 
-                getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
+                CampaignManagementExampleHelper.getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
 
             outputStatusMessage("List of conversion goals BEFORE update:\n");
             for (ConversionGoal conversionGoal : getConversionGoals.getConversionGoals())
             {
-                outputConversionGoal(conversionGoal);
+                CampaignManagementExampleHelper.outputConversionGoal(conversionGoal);
             }
 
             ArrayOfConversionGoal updateConversionGoals = new ArrayOfConversionGoal();
@@ -307,126 +303,27 @@ public class ConversionGoals extends ExampleBase {
             updateUrlGoal.setUrlOperator(ExpressionOperator.BEGINS_WITH);
             updateConversionGoals.getConversionGoals().add(updateUrlGoal);
             
-
-            UpdateConversionGoalsResponse updateConversionGoalsResponse = updateConversionGoals(updateConversionGoals);
+            UpdateConversionGoalsResponse updateConversionGoalsResponse = CampaignManagementExampleHelper.updateConversionGoals(updateConversionGoals);
             
             outputStatusMessage("List of errors returned from UpdateConversionGoals (if any):\n");
-            outputPartialErrors(updateConversionGoalsResponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfBatchError(updateConversionGoalsResponse.getPartialErrors());
 
             getConversionGoals = 
-                getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
+                CampaignManagementExampleHelper.getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
 
             outputStatusMessage("List of conversion goals AFTER update:\n");
             for (ConversionGoal conversionGoal : getConversionGoals.getConversionGoals())
             {
-                outputConversionGoal(conversionGoal);
+                CampaignManagementExampleHelper.outputConversionGoal(conversionGoal);
             }
 
             outputStatusMessage("Program execution completed\n"); 
 
-        // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-                outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (RemoteException ex) {
-            outputStatusMessage("Service communication error encountered: ");
-            outputStatusMessage(ex.getMessage());
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            outputStatusMessage("Error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
         }
-     }
-
-    // Adds one or more conversion goals.
-
-    static AddConversionGoalsResponse addConversionGoals(ArrayOfConversionGoal conversionGoals) throws RemoteException, Exception
-    {
-        AddConversionGoalsRequest request = new AddConversionGoalsRequest();
-
-        request.setConversionGoals(conversionGoals);
-
-        return CampaignService.getService().addConversionGoals(request);
-    }
-    
-    // Gets one or more conversion goals for the specified conversion goal identifiers.
-
-    static GetConversionGoalsByIdsResponse getConversionGoalsByIds(
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong conversionGoalIds,
-            ArrayList<ConversionGoalType> conversionGoalTypes) throws RemoteException, Exception
-    {
-        GetConversionGoalsByIdsRequest request = new GetConversionGoalsByIdsRequest();
-
-        request.setConversionGoalIds(conversionGoalIds);
-        request.setConversionGoalTypes(conversionGoalTypes);
-
-        return CampaignService.getService().getConversionGoalsByIds(request);
-    }
-    
-    // Updates one or more conversion goals.
-
-    static UpdateConversionGoalsResponse updateConversionGoals(ArrayOfConversionGoal conversionGoals) throws RemoteException, Exception
-    {
-        UpdateConversionGoalsRequest request = new UpdateConversionGoalsRequest();
-
-        request.setConversionGoals(conversionGoals);
-
-        return CampaignService.getService().updateConversionGoals(request);
-    }
-         
-    // Adds one or more UET tags.
-
-    static AddUetTagsResponse addUetTags(ArrayOfUetTag uetTags) throws RemoteException, Exception
-    {
-        AddUetTagsRequest request = new AddUetTagsRequest();
-
-        request.setUetTags(uetTags);
-
-        return CampaignService.getService().addUetTags(request);
-    }
-     
-    // Gets one or more UET Tags.
-
-    static GetUetTagsByIdsResponse getUetTagsByIds(
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong tagIds) throws RemoteException, Exception
-    {
-        GetUetTagsByIdsRequest request = new GetUetTagsByIdsRequest();
-
-        request.setTagIds(tagIds);
-
-        return CampaignService.getService().getUetTagsByIds(request);
-    }
-    
-    // Updates one or more UET tags.
-
-    static UpdateUetTagsResponse updateUetTags(ArrayOfUetTag uetTags) throws RemoteException, Exception
-    {
-        UpdateUetTagsRequest request = new UpdateUetTagsRequest();
-
-        request.setUetTags(uetTags);
-
-        return CampaignService.getService().updateUetTags(request);
     }
  }

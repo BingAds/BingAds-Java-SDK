@@ -5,27 +5,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.bulk.entities.*;
 import com.microsoft.bingads.v11.bulk.*;
-import com.microsoft.bingads.v11.bulk.AdApiError;
-import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.BatchError;
-import com.microsoft.bingads.v11.bulk.OperationError;
 import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.v11.customermanagement.*;
-import java.rmi.RemoteException;
 
 public class BulkAdExtensions extends BulkExampleBase {
-	
-    static ServiceClient<ICampaignManagementService> CampaignService; 
-    static ServiceClient<ICustomerManagementService> CustomerService; 
-    
-    private static java.lang.String SITELINK_MIGRATION = "SiteLinkAdExtension";
-        
+	        
     public static void main(String[] args) {
 		
         BulkEntityIterable downloadEntities = null;
@@ -36,69 +23,11 @@ public class BulkAdExtensions extends BulkExampleBase {
             authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
-            
-            CampaignService = new ServiceClient<ICampaignManagementService>(
-                    authorizationData,
-                    API_ENVIRONMENT,
-                    ICampaignManagementService.class);
-            
-            CustomerService = new ServiceClient<ICustomerManagementService>(
-                    authorizationData,
-                    API_ENVIRONMENT,
-                    ICustomerManagementService.class);
-            
+                        
             Calendar calendar = Calendar.getInstance();
-                         
-            // To prepare for the sitelink ad extensions migration in 2017, you will need to determine
-            // whether the account has been migrated from SiteLinksAdExtension to Sitelink2AdExtension. 
-            // All ad extension service operations available for both types of sitelinks; however you will 
-            // need to determine which type to add, update, and retrieve.
-
-            boolean sitelinkMigrationIsCompleted = false;
-
-            // Optionally you can find out which pilot features the customer is able to use. Even if the customer 
-            // is in pilot for sitelink migrations, the accounts that it contains might not be migrated.
-            ArrayOfint featurePilotFlags = getCustomerPilotFeatures((long)authorizationData.getCustomerId());
-            outputStatusMessage("Customer Pilot flags:");
-            outputStatusMessage(Arrays.toString(featurePilotFlags.getInts().toArray()));
-                
-            // The pilot flag value for Sitelink ad extension migration is 253.
-            // Pilot flags apply to all accounts within a given customer; however,
-            // each account goes through migration individually and has its own migration status.
-            if (featurePilotFlags.getInts().contains(253))
-            {
-                // Account migration status below will be either NotStarted, InProgress, or Completed.
-                outputStatusMessage("Customer is in pilot for Sitelink migration.\n");
-            }
-            else
-            {
-                // Account migration status below will be NotInPilot.
-                outputStatusMessage("Customer is not in pilot for Sitelink migration.\n");
-            }
             
-            // Even if you have multiple accounts per customer, each account will have its own
-            // migration status. This example checks one account using the provided AuthorizationData.
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
-            accountIds.getLongs().add(authorizationData.getAccountId());
-            ArrayOfAccountMigrationStatusesInfo accountMigrationStatusesInfos = getAccountMigrationStatuses(
-                accountIds,
-                SITELINK_MIGRATION
-            );
-
-            for (AccountMigrationStatusesInfo accountMigrationStatusesInfo : accountMigrationStatusesInfos.getAccountMigrationStatusesInfos())
-            {
-                outputAccountMigrationStatusesInfo(accountMigrationStatusesInfo);
-
-                for (MigrationStatusInfo migrationStatusInfo : accountMigrationStatusesInfo.getMigrationStatusInfo().getMigrationStatusInfos()){
-                    if (migrationStatusInfo.getStatus().equals(MigrationStatus.COMPLETED) && SITELINK_MIGRATION.equals(migrationStatusInfo.getMigrationType())) 
-                    {
-                        sitelinkMigrationIsCompleted = true;
-                    }
-                }
-            }
-
-            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
-            BulkService.setStatusPollIntervalInMilliseconds(5000);
+            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             // Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object, 
             // and additional elements needed to read from and write to a bulk file. 
@@ -316,12 +245,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             uploadEntities.add(bulkCampaignReviewAdExtension);
             uploadEntities.add(bulkStructuredSnippetAdExtension);
             uploadEntities.add(bulkCampaignStructuredSnippetAdExtension);
-            
-            // Before migration only the deprecated BulkSiteLinkAdExtension type can be added, 
-            // and after migration only the new BulkSitelink2AdExtension type can be added.
-            uploadEntities.addAll(sitelinkMigrationIsCompleted ? 
-                    getSampleBulkSitelink2AdExtensions(authorizationData.getAccountId()) : 
-                    getSampleBulkSiteLinkAdExtensions(authorizationData.getAccountId()));
+            uploadEntities.addAll(getSampleBulkSitelink2AdExtensions(authorizationData.getAccountId()));
 
             outputStatusMessage("\nAdding campaign, ad extensions, and associations . . .\n");
             
@@ -336,7 +260,6 @@ public class BulkAdExtensions extends BulkExampleBase {
             List<BulkCalloutAdExtension> calloutAdExtensionResults = new ArrayList<BulkCalloutAdExtension>();
             List<BulkLocationAdExtension> locationAdExtensionResults = new ArrayList<BulkLocationAdExtension>();
             List<BulkReviewAdExtension> reviewAdExtensionResults = new ArrayList<BulkReviewAdExtension>();
-            List<BulkSiteLinkAdExtension> siteLinkAdExtensionResults = new ArrayList<BulkSiteLinkAdExtension>();
             List<BulkSitelink2AdExtension> sitelink2AdExtensionResults = new ArrayList<BulkSitelink2AdExtension>();
             List<BulkStructuredSnippetAdExtension> structuredSnippetAdExtensionResults = new ArrayList<BulkStructuredSnippetAdExtension>();
             
@@ -387,20 +310,11 @@ public class BulkAdExtensions extends BulkExampleBase {
                 else if (entity instanceof BulkCampaignStructuredSnippetAdExtension) {
                     outputBulkCampaignStructuredSnippetAdExtensions(Arrays.asList((BulkCampaignStructuredSnippetAdExtension) entity) );
                 }
-                // Before migration only the deprecated BulkSiteLinkAdExtension results will be returned, 
-                // and after migration only the new BulkSitelink2AdExtension results will be returned.
-                else if (entity instanceof BulkSiteLinkAdExtension) {
-                    siteLinkAdExtensionResults.add((BulkSiteLinkAdExtension) entity);
-                    outputBulkSiteLinkAdExtensions(Arrays.asList((BulkSiteLinkAdExtension) entity) );
-                }
-                else if (entity instanceof BulkCampaignSiteLinkAdExtension) {
-                    outputBulkCampaignSiteLinkAdExtensions(Arrays.asList((BulkCampaignSiteLinkAdExtension) entity) );
-                }
                 else if (entity instanceof BulkSitelink2AdExtension) {
                     sitelink2AdExtensionResults.add((BulkSitelink2AdExtension) entity);
                     outputBulkSitelink2AdExtensions(Arrays.asList((BulkSitelink2AdExtension) entity) );
                 }
-                else if (entity instanceof BulkCampaignSiteLinkAdExtension) {
+                else if (entity instanceof BulkCampaignSitelink2AdExtension) {
                     outputBulkCampaignSitelink2AdExtensions(Arrays.asList((BulkCampaignSitelink2AdExtension) entity) );
                 }
             }
@@ -485,11 +399,6 @@ public class BulkAdExtensions extends BulkExampleBase {
             	uploadEntities.add(reviewAdExtensionResult);
             }
             
-            for (BulkSiteLinkAdExtension siteLinkAdExtensionResult : siteLinkAdExtensionResults){
-            	siteLinkAdExtensionResult.getSiteLinksAdExtension().setStatus(AdExtensionStatus.DELETED);
-            	uploadEntities.add(siteLinkAdExtensionResult);
-            }
-            
             for (BulkSitelink2AdExtension sitelink2AdExtensionResult : sitelink2AdExtensionResults){
             	sitelink2AdExtensionResult.getSitelink2AdExtension().setStatus(AdExtensionStatus.DELETED);
             	uploadEntities.add(sitelink2AdExtensionResult);
@@ -534,10 +443,6 @@ public class BulkAdExtensions extends BulkExampleBase {
                     structuredSnippetAdExtensionResults.add((BulkStructuredSnippetAdExtension) entity);
                     outputBulkStructuredSnippetAdExtensions(Arrays.asList((BulkStructuredSnippetAdExtension) entity) );
                 }
-                else if (entity instanceof BulkSiteLinkAdExtension) {
-                    siteLinkAdExtensionResults.add((BulkSiteLinkAdExtension) entity);
-                    outputBulkSiteLinkAdExtensions(Arrays.asList((BulkSiteLinkAdExtension) entity) );
-                }
                 else if (entity instanceof BulkSitelink2AdExtension) {
                     sitelink2AdExtensionResults.add((BulkSitelink2AdExtension) entity);
                     outputBulkSitelink2AdExtensions(Arrays.asList((BulkSitelink2AdExtension) entity) );
@@ -547,256 +452,28 @@ public class BulkAdExtensions extends BulkExampleBase {
             Reader.close();
             
             outputStatusMessage("Program execution completed\n"); 
-		
-        // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-                outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-                                error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-
-        // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-        // Campaign Management service operations can throw EditorialApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.EditorialApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (com.microsoft.bingads.v11.campaignmanagement.EditorialError error : ex.getFaultInfo().getEditorialErrors().getEditorialErrors())
-            {
-                outputStatusMessage(String.format("EditorialError at Index: %d\n\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                outputStatusMessage(String.format("Appealable: %s\nDisapproved Text: %s\nCountry: %s\n\n", 
-                                error.getAppealable(), error.getDisapprovedText(), error.getPublisherCountry()));
-            }
-
-            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-            
-        // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.customermanagement.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.customermanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-	            outputStatusMessage("AdApiError\n");
-	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
         
-        // Customer Management service operations can throw ApiFault.
-        } catch (com.microsoft.bingads.v11.customermanagement.ApiFault_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.customermanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-	            outputStatusMessage("OperationError\n");
-	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (BulkDownloadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkUploadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (OAuthTokenRequestException ee) {
-                outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkOperationInProgressException ee) {
-                outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (ExecutionException ee) {
-            Throwable cause = ee.getCause();
-            if (cause instanceof AdApiFaultDetail_Exception) {
-                    AdApiFaultDetail_Exception ex = (AdApiFaultDetail_Exception)cause;
-                    outputStatusMessage("The operation failed with the following faults:\n");
-
-                    for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-                    {
-                            outputStatusMessage("AdApiError\n");
-                            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-                                            error.getCode(), error.getErrorCode(), error.getMessage()));
-                    }
-            } else if (cause instanceof ApiFaultDetail_Exception) {
-                    ApiFaultDetail_Exception ex = (ApiFaultDetail_Exception)cause;
-                    outputStatusMessage("The operation failed with the following faults:\n");
-
-                    for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-                    {
-                            outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                    }
-
-                    for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-                    {
-                            outputStatusMessage("OperationError\n");
-                            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                    }
-            } else {
-                    ee.printStackTrace();	
-            }
-        } catch (IOException ex) {
-                ex.printStackTrace();
-        } catch (InterruptedException ex) {
-                ex.printStackTrace();
-        } catch (Exception ex) {
-            outputStatusMessage("Error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        }
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
-        } finally {
-                if (downloadEntities != null){
-                        try {
-                                downloadEntities.close();
-                        } catch (IOException ex) {
-                                ex.printStackTrace();
-                        }
+        } 
+        finally {
+            if (downloadEntities != null){
+                try {
+                    downloadEntities.close();
+                } 
+                catch (IOException ex) {
+                    ex.printStackTrace();
                 }
+            }
         }
 
         System.exit(0);
     }
     
-    // Gets the list of pilot features that the customer is able to use.
-    
-    static ArrayOfint getCustomerPilotFeatures(java.lang.Long customerId) throws RemoteException, Exception 
-    {       
-		
-        final GetCustomerPilotFeaturesRequest getCustomerPilotFeaturesRequest = new GetCustomerPilotFeaturesRequest();
-        getCustomerPilotFeaturesRequest.setCustomerId(customerId);
-        
-        return CustomerService.getService().getCustomerPilotFeatures(getCustomerPilotFeaturesRequest).getFeaturePilotFlags();
-    }
-     
-    // Gets the account's migration statuses.
-
-    private static ArrayOfAccountMigrationStatusesInfo getAccountMigrationStatuses(
-        com.microsoft.bingads.v11.campaignmanagement.ArrayOflong accountIds,
-        java.lang.String migrationType)  throws RemoteException, Exception
-    {
-        GetAccountMigrationStatusesRequest request = new GetAccountMigrationStatusesRequest();
-
-        request.setAccountIds(accountIds);
-        request.setMigrationType(migrationType);
-
-        return CampaignService.getService().getAccountMigrationStatuses(request).getMigrationStatuses();
-    }     
-    
-    // Gets example BulkSiteLinkAdExtension and BulkCampaignSiteLinkAdExtension objects. You can use 
-    // this type of ad extension if your account has not yet been migrated to BulkSitelink2AdExtension.
-    private static ArrayList<BulkEntity> getSampleBulkSiteLinkAdExtensions(java.lang.Long accountId) {
-        ArrayList<BulkEntity> entities = new ArrayList<BulkEntity>();
-        
-        // Note that when written to file using the BulkFileWriter, an extra Sitelink Ad Extension record with Deleted
-        // status precedes the actual site link record or records that you want to upload. All bulk entities 
-        // that are derived from MultiRecordBulkEntiy are preceded with a Deleted record using the BulkFileWriter. 
-        // In this example it is a moot point because we are creating a new ad extension. If the specified
-        // ad extension Id already exists in your account, the Deleted record effectively deletes the existing
-        // extension and replaces it with the SiteLinksAdExtension specified below.
-
-        BulkSiteLinkAdExtension bulkSiteLinkAdExtension = new BulkSiteLinkAdExtension();
-        bulkSiteLinkAdExtension.setAccountId(accountId);
-        SiteLinksAdExtension siteLinksAdExtension = new SiteLinksAdExtension();
-
-        // Note that if you do not specify a negative Id as reference key, each of SiteLinks items will
-        // be split during upload into separate sitelink ad extensions with unique ad extension identifiers.
-        siteLinksAdExtension.setId(siteLinksAdExtensionIdKey);
-        ArrayOfSiteLink siteLinks = new ArrayOfSiteLink();
-
-        for(int i=0; i < 2; i++){
-            SiteLink siteLink = new SiteLink();
-            siteLink.setDescription1("Simple & Transparent.");
-            siteLink.setDescription2("No Upfront Cost.");
-            siteLink.setDisplayText("Women's Shoe Sale " + (i+1));
-
-            // If you are currently using the Destination URL, you must upgrade to Final URLs. 
-            // Here is an example of a DestinationUrl you might have used previously. 
-            // siteLink.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
-
-            // To migrate from DestinationUrl to FinalUrls, you can set DestinationUrl
-            // to an empty string when updating the sitelink. If you are removing DestinationUrl,
-            // then FinalUrls is required.
-            // siteLink.setDestinationUrl("");
-
-            // With FinalUrls you can separate the tracking template, custom parameters, and 
-            // landing page URLs. 
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-            siteLink.setFinalUrls(finalUrls);
-
-            // Final Mobile URLs can also be used if you want to direct the user to a different page 
-            // for mobile devices.
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring();
-            finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-            siteLink.setFinalMobileUrls(finalMobileUrls);
-
-            // You could use a tracking template which would override the campaign level
-            // tracking template. Tracking templates defined for lower level entities 
-            // override those set for higher level entities.
-            // In this example we are using the campaign level tracking template.
-            siteLink.setTrackingUrlTemplate(null);
-
-            // Set custom parameters that are specific to this sitelink, 
-            // and can be used by the sitelink, ad group, campaign, or account level tracking template. 
-            // In this example we are using the campaign level tracking template.
-            CustomParameters urlCustomParameters = new CustomParameters();
-            CustomParameter customParameter1 = new CustomParameter();
-            customParameter1.setKey("promoCode");
-            customParameter1.setValue("PROMO" + (i+1));
-            ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
-            customParameters.getCustomParameters().add(customParameter1);
-            CustomParameter customParameter2 = new CustomParameter();
-            customParameter2.setKey("season");
-            customParameter2.setValue("summer");
-            customParameters.getCustomParameters().add(customParameter2);
-            urlCustomParameters.setParameters(customParameters);
-            siteLink.setUrlCustomParameters(urlCustomParameters);
-
-            siteLinks.getSiteLinks().add(siteLink);
-        }
-
-        siteLinksAdExtension.setSiteLinks(siteLinks);
-        bulkSiteLinkAdExtension.setSiteLinksAdExtension(siteLinksAdExtension);
-        // Note that BulkSiteLinkAdExtension.SiteLinks is read only and only 
-        // accessible when reading results from the download or upload results file.
-        // To upload new site links for a new site links ad extension, you should specify
-        // BulkSiteLinkAdExtension.SiteLinksAdExtension.SiteLinks as shown above.
-        
-        entities.add(bulkSiteLinkAdExtension);
-        
-        BulkCampaignSiteLinkAdExtension bulkCampaignSiteLinkAdExtension = new BulkCampaignSiteLinkAdExtension();
-        AdExtensionIdToEntityIdAssociation siteLinkAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
-        siteLinkAdExtensionIdToEntityIdAssociation.setAdExtensionId(siteLinksAdExtensionIdKey);
-        siteLinkAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
-        bulkCampaignSiteLinkAdExtension.setAdExtensionIdToEntityIdAssociation(siteLinkAdExtensionIdToEntityIdAssociation);
-        
-        entities.add(bulkCampaignSiteLinkAdExtension);
-
-        return entities;
-    }
-    
-    // Gets example BulkSitelink2AdExtension and BulkCampaignSitelink2AdExtension objects. You can use 
-    // this type of ad extension if your account has been migrated to BulkSitelink2AdExtension.
+    // Gets example BulkSitelink2AdExtension and BulkCampaignSitelink2AdExtension objects. 
     private static ArrayList<BulkEntity> getSampleBulkSitelink2AdExtensions(java.lang.Long accountId) {
         ArrayList<BulkEntity> entities = new ArrayList<BulkEntity>();
         
@@ -808,15 +485,6 @@ public class BulkAdExtensions extends BulkExampleBase {
             sitelink2AdExtension.setDescription1("Simple & Transparent.");
             sitelink2AdExtension.setDescription2("No Upfront Cost.");
             sitelink2AdExtension.setDisplayText("Women's Shoe Sale " + (i+1));
-
-            // If you are currently using the Destination URL, you must upgrade to Final URLs. 
-            // Here is an example of a DestinationUrl you might have used previously. 
-            // sitelink2AdExtension.setDestinationUrl("http://www.contoso.com/womenshoesale/?season=spring&promocode=PROMO123");
-
-            // To migrate from DestinationUrl to FinalUrls, you can set DestinationUrl
-            // to an empty string when updating the ad extension. If you are removing DestinationUrl,
-            // then FinalUrls is required.
-            // sitelink2AdExtension.setDestinationUrl("");
 
             // With FinalUrls you can separate the tracking template, custom parameters, and 
             // landing page URLs. 

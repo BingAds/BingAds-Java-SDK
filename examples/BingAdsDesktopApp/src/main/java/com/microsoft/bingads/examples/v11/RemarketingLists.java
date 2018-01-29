@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.microsoft.bingads.*;
-import static com.microsoft.bingads.examples.v11.ExampleBase.outputCampaignsWithPartialErrors;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class RemarketingLists extends ExampleBase {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICampaignManagementService> CampaignService; 
     
     public static void main(java.lang.String[] args) {
    	 
@@ -23,17 +21,17 @@ public class RemarketingLists extends ExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 	         
-            CampaignService = new ServiceClient<ICampaignManagementService>(
-                    authorizationData, 
-                    API_ENVIRONMENT,
-                    ICampaignManagementService.class);
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                    	authorizationData, 
+                        API_ENVIRONMENT,
+                        ICampaignManagementService.class);
 
             // To discover all remarketing lists that the user can associate with ad groups in the current account (per CustomerAccountId header), 
             // set RemarketingListIds to null when calling the GetRemarketingLists operation.
 
             ArrayList<AudienceType> audienceType = new ArrayList<AudienceType>();
             audienceType.add(AudienceType.REMARKETING_LIST);
-            ArrayOfAudience remarketingLists = getAudiencesByIds(null, audienceType).getAudiences();
+            ArrayOfAudience remarketingLists = CampaignManagementExampleHelper.getAudiencesByIds(null, audienceType, null).getAudiences();
 
             // You must already have at least one remarketing list for the remainder of this example. 
 
@@ -70,27 +68,25 @@ public class RemarketingLists extends ExampleBase {
             searchBid.setAmount(0.09);
             adGroup.setSearchBid(searchBid);
             adGroup.setLanguage("English");
-
             // Applicable for all remarketing lists that are associated with this ad group. TARGET_AND_BID indicates 
             // that you want to show ads only to people included in the remarketing list, with the option to change
             // the bid amount. Ads in this ad group will only show to people included in the remarketing list.
             adGroup.setRemarketingTargetingSetting(RemarketingTargetingSetting.TARGET_AND_BID);
-
             adGroups.getAdGroups().add(adGroup);
-
             
             // Add the campaign, ad group, keywords, and ads
 
-            AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
-            outputCampaignsWithPartialErrors(campaigns, campaignIds, campaignErrors);
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
             
-            AddAdGroupsResponse addAdGroupsResponse = addAdGroups(campaignIds.getLongs().get(0), adGroups);
+            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(campaignIds.getLongs().get(0), adGroups);
             ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
             ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
-            outputAdGroupsWithPartialErrors(adGroups, adGroupIds, adGroupErrors);
-            
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors);            
 
             // If the campaign or ad group add operations failed then we cannot continue this example. 
 
@@ -121,7 +117,7 @@ public class RemarketingLists extends ExampleBase {
                     adGroupRemarketingListAssociations.getAdGroupCriterions().add(biddableAdGroupCriterion);
 
                     outputStatusMessage("\nAssociating the following remarketing list with the ad group.\n");
-                    outputRemarketingList((RemarketingList)remarketingList);
+                    CampaignManagementExampleHelper.outputRemarketingList((RemarketingList)remarketingList);
                 }
             }
             
@@ -131,7 +127,7 @@ public class RemarketingLists extends ExampleBase {
             ArrayList<AdGroupCriterionType> getCriterionType = new ArrayList<AdGroupCriterionType>();
             getCriterionType.add(AdGroupCriterionType.REMARKETING_LIST);
 
-            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse = addAdGroupCriterions(
+            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse = CampaignManagementExampleHelper.addAdGroupCriterions(
                     adGroupRemarketingListAssociations,
                     criterionType);
 
@@ -141,15 +137,16 @@ public class RemarketingLists extends ExampleBase {
                 adGroupCriterionIds.getLongs().add(id);
             }
                         
-            GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = getAdGroupCriterionsByIds(adGroupIds.getLongs().get(0), 
-                            adGroupCriterionIds,
-                            getCriterionType);
+            GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
+                    adGroupCriterionIds,
+                    adGroupIds.getLongs().get(0), 
+                    getCriterionType);
             
             for (AdGroupCriterion adGroupRemarketingListAssociation : 
                     getAdGroupCriterionsByIdsResponse.getAdGroupCriterions().getAdGroupCriterions())
             {
                 outputStatusMessage("\nThe following ad group remarketing list association was added.\n");
-                outputAdGroupCriterion(adGroupRemarketingListAssociation);
+                CampaignManagementExampleHelper.outputAdGroupCriterion(adGroupRemarketingListAssociation);
             }
 
             // You can store the association IDs which can be used to update or delete associations later. 
@@ -175,13 +172,13 @@ public class RemarketingLists extends ExampleBase {
                 
                 adGroupRemarketingListAssociationsUpdates.getAdGroupCriterions().add(biddableAdGroupCriterion);
 
-                updateAdGroupCriterions(
+                CampaignManagementExampleHelper.updateAdGroupCriterions(
                         adGroupRemarketingListAssociationsUpdates, 
                         criterionType);
 
-                deleteAdGroupCriterions(
-                        adGroupIds.getLongs().get(0), 
+                CampaignManagementExampleHelper.deleteAdGroupCriterions(
                         adGroupCriterionIds, 
+                        adGroupIds.getLongs().get(0), 
                         criterionType);
             }
 
@@ -192,150 +189,16 @@ public class RemarketingLists extends ExampleBase {
 
             ArrayOflong deleteCampaignIds = new ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            deleteCampaigns(AccountId, deleteCampaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(AccountId, deleteCampaignIds);
             System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
 
             outputStatusMessage("Program execution completed\n"); 
          
-          // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-                outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (RemoteException ex) {
-            outputStatusMessage("Service communication error encountered: ");
-            outputStatusMessage(ex.getMessage());
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            outputStatusMessage("Error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
         }
-    }
-
-    // Adds one or more campaigns to the specified account.
-
-    static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
-    {
-        AddCampaignsRequest request = new AddCampaignsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaigns(campaigns);
-
-        return CampaignService.getService().addCampaigns(request);
-    }
-     
-    // Deletes one or more campaigns from the specified account.
-
-    static void deleteCampaigns(long accountId, ArrayOflong campaignIds) throws RemoteException, Exception
-    {
-        DeleteCampaignsRequest request = new DeleteCampaignsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaignIds(campaignIds);
-
-        CampaignService.getService().deleteCampaigns(request);
-    }
-    
-    // Adds one or more ad groups to the specified campaign.
-
-    static AddAdGroupsResponse addAdGroups(
-            long campaignId, 
-            ArrayOfAdGroup adGroups) throws RemoteException, Exception
-    {
-        AddAdGroupsRequest request = new AddAdGroupsRequest();
-
-        request.setCampaignId(campaignId);
-        request.setAdGroups(adGroups);
-
-        return CampaignService.getService().addAdGroups(request);
-    }
-     
-    static GetAudiencesByIdsResponse getAudiencesByIds(
-            ArrayOflong audienceIds,
-            ArrayList<AudienceType> type) throws RemoteException, Exception
-    {
-        GetAudiencesByIdsRequest request = new GetAudiencesByIdsRequest();
-
-        request.setAudienceIds(audienceIds);
-        request.setType(type);
-
-        return CampaignService.getService().getAudiencesByIds(request);
-    }
-    
-    static AddAdGroupCriterionsResponse addAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupCriterions,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        AddAdGroupCriterionsRequest request = new AddAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().addAdGroupCriterions(request);
-    }
-
-    static DeleteAdGroupCriterionsResponse deleteAdGroupCriterions(
-        long adGroupId,
-        ArrayOflong adGroupCriterionIds,
-        ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        DeleteAdGroupCriterionsRequest request = new DeleteAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterionIds(adGroupCriterionIds);
-        request.setAdGroupId(adGroupId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().deleteAdGroupCriterions(request);
-    }
-
-    // Gets the ad group remarketing list associations.
-
-    static GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIds(
-        long adGroupId,
-        ArrayOflong adGroupCriterionIds,
-        ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
-
-        request.setAdGroupCriterionIds(adGroupCriterionIds);
-        request.setAdGroupId(adGroupId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().getAdGroupCriterionsByIds(request);
-    }
-
-    // Updates one or more ad group remarketing list associations.
-
-    static UpdateAdGroupCriterionsResponse updateAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupRemarketingListAssociations,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        UpdateAdGroupCriterionsRequest request = new UpdateAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupRemarketingListAssociations);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().updateAdGroupCriterions(request);
     }
  }

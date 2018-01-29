@@ -7,29 +7,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
-import static com.microsoft.bingads.examples.v11.BulkExampleBase.BulkService;
 import static com.microsoft.bingads.examples.v11.BulkExampleBase.FileDirectory;
 import com.microsoft.bingads.v11.bulk.entities.*;
-import com.microsoft.bingads.v11.bulk.BulkDownloadCouldNotBeCompletedException;
 import com.microsoft.bingads.v11.bulk.BulkServiceManager;
 import com.microsoft.bingads.v11.bulk.DownloadParameters;
 import com.microsoft.bingads.v11.bulk.BulkEntityIterable;
-import com.microsoft.bingads.v11.bulk.BulkUploadCouldNotBeCompletedException;
-import com.microsoft.bingads.v11.bulk.BulkOperationInProgressException;
-import com.microsoft.bingads.v11.bulk.AdApiError;
-import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.bulk.BatchError;
 import com.microsoft.bingads.v11.bulk.DownloadEntity;
 import com.microsoft.bingads.v11.bulk.ArrayOfDownloadEntity;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
-import com.microsoft.bingads.v11.bulk.OperationError;
 import com.microsoft.bingads.v11.bulk.ResultFileType;
+import static com.microsoft.bingads.examples.v11.BulkExampleBase.BulkServiceManager;
 
 
 public class BulkKeywordsAds extends BulkExampleBase {
@@ -45,8 +36,8 @@ public class BulkKeywordsAds extends BulkExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 
-            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
-            BulkService.setStatusPollIntervalInMilliseconds(5000);
+            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
             
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
                                  
@@ -309,7 +300,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
             downloadParameters.setLastSyncTimeInUTC(null);
             
             // Download all campaigns and shared budgets in the account.
-            File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
+            File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
             outputStatusMessage("Downloaded all campaigns and shared budgets in the account.\n"); 
             Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
             downloadEntities = Reader.getEntities();
@@ -358,8 +349,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
             else
             {
                 outputStatusMessage("No campaigns or shared budgets in account. \n");
-            }            
-            
+            }                        
 
             //Delete the campaign, ad group, ads, and keywords that were previously added. 
             //You should remove this region if you want to view the added entities in the 
@@ -399,61 +389,21 @@ public class BulkKeywordsAds extends BulkExampleBase {
             Reader.close();
 
             outputStatusMessage("Program execution completed\n"); 
-
-        } catch (BulkDownloadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkUploadCouldNotBeCompletedException ee) {
-                outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (OAuthTokenRequestException ee) {
-                outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (BulkOperationInProgressException ee) {
-                outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
-        } catch (ExecutionException ee) {
-            Throwable cause = ee.getCause();
-            if (cause instanceof AdApiFaultDetail_Exception) {
-                AdApiFaultDetail_Exception ex = (AdApiFaultDetail_Exception)cause;
-                outputStatusMessage("The operation failed with the following faults:\n");
-
-                for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-                {
-                    outputStatusMessage("AdApiError\n");
-                    outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-                                    error.getCode(), error.getErrorCode(), error.getMessage()));
-                }
-            } else if (cause instanceof ApiFaultDetail_Exception) {
-                ApiFaultDetail_Exception ex = (ApiFaultDetail_Exception)cause;
-                outputStatusMessage("The operation failed with the following faults:\n");
-
-                for (BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-                {
-                    outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                    outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                }
-
-                for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-                {
-                    outputStatusMessage("OperationError\n");
-                    outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-                }
-            } else {
-                ee.printStackTrace();	
-            }
-        } catch (IOException ex) {
-                ex.printStackTrace();
-        } catch (InterruptedException ex) {
-                ex.printStackTrace();
-        } catch (Exception ex) {
-            outputStatusMessage("Error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        }
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
-        } finally {
-                if (downloadEntities != null){
-                        try {
-                                downloadEntities.close();
-                        } catch (IOException ex) {
-                                ex.printStackTrace();
-                        }
+        } 
+        finally {
+            if (downloadEntities != null){
+                try {
+                    downloadEntities.close();
+                } 
+                catch (IOException ex) {
+                    ex.printStackTrace();
                 }
+            }
         }
 
         System.exit(0);
