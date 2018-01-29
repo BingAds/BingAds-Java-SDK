@@ -1,16 +1,11 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.customermanagement.*;
 
 public class CustomerSignup extends ExampleBase {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICustomerManagementService> CustomerService; 
         
     public static void main(java.lang.String[] args) {
    	 
@@ -20,12 +15,12 @@ public class CustomerSignup extends ExampleBase {
             authorizationData.setDeveloperToken(DeveloperToken);
             authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
             	         
-            CustomerService = new ServiceClient<ICustomerManagementService>(
+            CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
-            GetUserResponse getUserResponse = getUser(null);
+            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null);
             User user = getUserResponse.getUser();
                             
             // Only a user with the aggregator role (33) can sign up new customers. 
@@ -114,10 +109,11 @@ public class CustomerSignup extends ExampleBase {
             account.setTimeZone(TimeZoneType.PACIFIC_TIME_US_CANADA_TIJUANA);
             
             // Signup a new customer and account for the reseller. 
-            SignupCustomerResponse signupCustomerResponse = signupCustomer(
+            SignupCustomerResponse signupCustomerResponse = CustomerManagementExampleHelper.signupCustomer(
                 customer,
                 account,
-                user.getCustomerId());
+                user.getCustomerId(),
+                null);
 
             outputStatusMessage(String.format("New Customer and Account:\n"));
 
@@ -139,56 +135,11 @@ public class CustomerSignup extends ExampleBase {
             
             outputStatusMessage("Program execution completed\n"); 
         
-        // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-	            outputStatusMessage("AdApiError\n");
-	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Customer Management service operations can throw ApiFault.
-        } catch (ApiFault_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-	            outputStatusMessage("OperationError\n");
-	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (Exception ex) {
-             outputStatusMessage("Error encountered: ");
-             outputStatusMessage(ex.getMessage());
-             ex.printStackTrace();
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
         }
     }
-
-    
-    // Gets a Bing Ads user and user roles by the specified Bing Ads user identifier.
-
-    static GetUserResponse getUser(java.lang.Long userId) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	GetUserRequest request = new GetUserRequest();
-        request.setUserId(userId);
-
-        return CustomerService.getService().getUser(request);
-    }
-    
-    // Creates a new child customer and account that rolls up to the reseller's billing invoice.
-    
-    static SignupCustomerResponse signupCustomer(
-    		Customer customer,
-    		Account account,
-    		java.lang.Long parentCustomerId
-    	) throws AdApiFaultDetail_Exception, ApiFault_Exception {       
-		
-        final SignupCustomerRequest signupCustomerRequest = new SignupCustomerRequest();
-        signupCustomerRequest.setCustomer(customer);
-        signupCustomerRequest.setAccount(account);
-        signupCustomerRequest.setParentCustomerId(parentCustomerId);
-        
-		return CustomerService.getService().signupCustomer(signupCustomerRequest);
-	}
 }

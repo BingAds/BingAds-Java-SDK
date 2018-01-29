@@ -2,7 +2,6 @@ package com.microsoft.bingads.examples.v11;
 
 import java.net.*;
 import java.io.*;
-import java.rmi.*;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -17,7 +16,6 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
 public class GeographicalLocations extends ExampleBase {
     
     static AuthorizationData authorizationData;
-    static ServiceClient<ICampaignManagementService> CampaignService; 
 
     // The full path to the geographical locations file.
 
@@ -43,11 +41,12 @@ public class GeographicalLocations extends ExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAccountId(AccountId);
 
-            CampaignService = new ServiceClient<ICampaignManagementService>(
-                    authorizationData,
-                    ICampaignManagementService.class);
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                    	authorizationData, 
+                        API_ENVIRONMENT,
+                        ICampaignManagementService.class);
             
-            GetGeoLocationsFileUrlResponse getGeoLocationsFileUrlResponse = getGeoLocationsFileUrl(VERSION, LANGUAGE_LOCALE);
+            GetGeoLocationsFileUrlResponse getGeoLocationsFileUrlResponse = CampaignManagementExampleHelper.getGeoLocationsFileUrl(VERSION, LANGUAGE_LOCALE);
 
             // Going forward you should track the date and time of the previous download,  
             // and compare it with the last modified time provided by the service.
@@ -69,48 +68,13 @@ public class GeographicalLocations extends ExampleBase {
                 downloadFile(fileUrl, LOCAL_FILE);
             }
             
-        // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-                outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", 
-                                error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-
-        // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }         
-        } catch (Exception ex) {
-            outputStatusMessage(String.format("Error encountered: %s", ex.getMessage()));
         } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
+        }
     }    
-        
-    // Gets a temporary URL that you can use to download a file that contains the supported geographical location targeting codes.
-
-    static GetGeoLocationsFileUrlResponse getGeoLocationsFileUrl(java.lang.String version, java.lang.String languageLocale) throws RemoteException, Exception
-    {
-        GetGeoLocationsFileUrlRequest request = new GetGeoLocationsFileUrlRequest();
-
-        request.setLanguageLocale(languageLocale);
-        request.setVersion(version);
-
-        return CampaignService.getService().getGeoLocationsFileUrl(request);
-    }
     
     // Downloads a file from the remote file URL to a local file URL.
     
@@ -120,8 +84,7 @@ public class GeographicalLocations extends ExampleBase {
         BufferedInputStream reader = null;
         BufferedOutputStream writer = null;
         
-        try
-        {
+        try {
             URL url = new URL(fileUrl);
             connection = (HttpURLConnection) url.openConnection();
 
@@ -145,20 +108,23 @@ public class GeographicalLocations extends ExampleBase {
                 outputStatusMessage(String.format("HTTP Response Code: %s\n", connection.getResponseCode()));  
                 outputStatusMessage(String.format("HTTP Response Message: %s\n", connection.getResponseMessage()));  
             } 
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) {
             outputStatusMessage(String.format("IO Exception encountered: %s", ex.getMessage()));
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             outputStatusMessage(String.format("Error encountered: %s", ex.getMessage()));
-        } finally {
-            try
-            {
+        } 
+        finally {
+            try {
                 if (reader != null) reader.close();
                 if (writer != null)
                 {
                     writer.flush();
                     writer.close();
                 }
-            } catch (IOException ex) {
+            } 
+            catch (IOException ex) {
             	outputStatusMessage(String.format("IO Exception encountered: %s", ex.getMessage()));
             }
         }  

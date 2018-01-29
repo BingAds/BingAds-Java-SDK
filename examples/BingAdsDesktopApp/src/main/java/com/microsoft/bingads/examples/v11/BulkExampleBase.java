@@ -13,7 +13,7 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
 public class BulkExampleBase extends ExampleBase {
 
     // Provides methods for downloading and uploading bulk files. 
-    static BulkServiceManager BulkService;
+    static BulkServiceManager BulkServiceManager;
 
     // Provides methods to write a bulk entity to file. 
     static BulkFileWriter Writer;
@@ -76,11 +76,11 @@ public class BulkExampleBase extends ExampleBase {
         fileUploadParameters.setResponseMode(ResponseMode.ERRORS_AND_RESULTS);
         fileUploadParameters.setOverwriteResultFile(true);
         
-        File bulkFilePath = BulkService.uploadFileAsync(fileUploadParameters, null, null).get();
+        File bulkFilePath = BulkServiceManager.uploadFileAsync(fileUploadParameters, null, null).get();
         
         return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
     }
-    
+        
     static void outputBulkBudgets(Iterable<BulkBudget> bulkEntities){
         for (BulkBudget entity : bulkEntities){
             outputStatusMessage("\nBulkBudget: \n");
@@ -92,7 +92,7 @@ public class BulkExampleBase extends ExampleBase {
             outputStatusMessage(String.format("Status: %s", entity.getStatus()));
 
             // Output the Campaign Management Budget Object
-            outputBudget(entity.getBudget());
+            CampaignManagementExampleHelper.outputBudget(entity.getBudget());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -107,14 +107,14 @@ public class BulkExampleBase extends ExampleBase {
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
-                    outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
             outputBulkPerformanceData(entity.getPerformanceData());
             outputBulkQualityScoreData(entity.getQualityScoreData());
 
             // Output the Campaign Management Campaign Object
-            outputCampaign(entity.getCampaign());
+            CampaignManagementExampleHelper.outputCampaign(entity.getCampaign());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -137,7 +137,7 @@ public class BulkExampleBase extends ExampleBase {
             outputBulkQualityScoreData(entity.getQualityScoreData());
 
             // Output the Campaign Management AdGroup Object
-            outputAdGroup(entity.getAdGroup());
+            CampaignManagementExampleHelper.outputAdGroup(entity.getAdGroup());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -159,7 +159,7 @@ public class BulkExampleBase extends ExampleBase {
             outputBulkPerformanceData(entity.getPerformanceData());
 
             // Output the Campaign Management TextAd Object
-            outputTextAd(entity.getTextAd());
+            CampaignManagementExampleHelper.outputTextAd(entity.getTextAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -181,7 +181,7 @@ public class BulkExampleBase extends ExampleBase {
             outputBulkPerformanceData(entity.getPerformanceData());
 
             // Output the Campaign Management ExpandedTextAd Object
-            outputExpandedTextAd(entity.getExpandedTextAd());
+            CampaignManagementExampleHelper.outputExpandedTextAd(entity.getExpandedTextAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -205,7 +205,7 @@ public class BulkExampleBase extends ExampleBase {
             outputBulkBidSuggestions(entity.getBidSuggestions());
 
             // Output the Campaign Management Keyword Object
-            outputKeyword(entity.getKeyword());
+            CampaignManagementExampleHelper.outputKeyword(entity.getKeyword());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -227,7 +227,7 @@ public class BulkExampleBase extends ExampleBase {
             outputBulkPerformanceData(entity.getPerformanceData());
 
             // Output the Campaign Management ProductAd Object
-            outputProductAd(entity.getProductAd());
+            CampaignManagementExampleHelper.outputProductAd(entity.getProductAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -245,7 +245,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management BiddableCampaignCriterion
-            outputBiddableCampaignCriterion((BiddableCampaignCriterion)entity.getBiddableCampaignCriterion());
+            CampaignManagementExampleHelper.outputBiddableCampaignCriterion((BiddableCampaignCriterion)entity.getBiddableCampaignCriterion());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -268,13 +268,13 @@ public class BulkExampleBase extends ExampleBase {
             if (entity.getAdGroupCriterion() instanceof BiddableAdGroupCriterion)
             {
                 // Output the Campaign Management BiddableAdGroupCriterion
-                outputBiddableAdGroupCriterion((BiddableAdGroupCriterion)entity.getAdGroupCriterion());
+                CampaignManagementExampleHelper.outputBiddableAdGroupCriterion((BiddableAdGroupCriterion)entity.getAdGroupCriterion());
 
             }
             else if (entity.getAdGroupCriterion() instanceof NegativeAdGroupCriterion)
             {                
                 // Output the Campaign Management NegativeAdGroupCriterion
-                outputNegativeAdGroupCriterion((NegativeAdGroupCriterion)entity.getAdGroupCriterion());
+                CampaignManagementExampleHelper.outputNegativeAdGroupCriterion((NegativeAdGroupCriterion)entity.getAdGroupCriterion());
             }
 
             if(entity.hasErrors()){
@@ -293,7 +293,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management AppAdExtension Object
-            outputAppAdExtension(entity.getAppAdExtension());
+            CampaignManagementExampleHelper.outputAppAdExtension(entity.getAppAdExtension());
 
             if (entity.hasErrors())
             {
@@ -334,7 +334,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management CallAdExtension Object
-            outputCallAdExtension(entity.getCallAdExtension());
+            CampaignManagementExampleHelper.outputCallAdExtension(entity.getCallAdExtension());
 
             if (entity.hasErrors())
             {
@@ -375,7 +375,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management CalloutAdExtension Object
-            outputCalloutAdExtension(entity.getCalloutAdExtension());
+            CampaignManagementExampleHelper.outputCalloutAdExtension(entity.getCalloutAdExtension());
 
             if (entity.hasErrors())
             {
@@ -416,7 +416,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management LocationAdExtension Object
-            outputLocationAdExtension(entity.getLocationAdExtension());
+            CampaignManagementExampleHelper.outputLocationAdExtension(entity.getLocationAdExtension());
 
             if (entity.hasErrors())
             {
@@ -457,7 +457,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management ReviewAdExtension Object
-            outputReviewAdExtension(entity.getReviewAdExtension());
+            CampaignManagementExampleHelper.outputReviewAdExtension(entity.getReviewAdExtension());
 
             if (entity.hasErrors())
             {
@@ -497,7 +497,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management SiteLinksAdExtension Object
-            outputSiteLinksAdExtension(entity.getSiteLinksAdExtension());
+            CampaignManagementExampleHelper.outputSiteLinksAdExtension(entity.getSiteLinksAdExtension());
 
             if (entity.getSiteLinks() != null && entity.getSiteLinks().size() > 0)
             {
@@ -522,9 +522,9 @@ public class BulkExampleBase extends ExampleBase {
             outputStatusMessage(String.format("Version: %s", entity.getVersion()));
 
             // Output the Campaign Management SiteLink Object
-            List<SiteLink> siteLinks = new ArrayList<SiteLink>();
-            siteLinks.add(entity.getSiteLink());
-            outputSiteLinks(siteLinks);
+            ArrayOfSiteLink siteLinks = new ArrayOfSiteLink();
+            siteLinks.getSiteLinks().add(entity.getSiteLink());
+            CampaignManagementExampleHelper.outputArrayOfSiteLink(siteLinks);
 
             if (entity.hasErrors())
             {
@@ -564,7 +564,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management Sitelink2AdExtension Object
-            outputSitelink2AdExtension(entity.getSitelink2AdExtension());
+            CampaignManagementExampleHelper.outputSitelink2AdExtension(entity.getSitelink2AdExtension());
         }
     }
     
@@ -599,7 +599,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management StructuredSnippetAdExtension Object
-            outputStructuredSnippetAdExtension(entity.getStructuredSnippetAdExtension());
+            CampaignManagementExampleHelper.outputStructuredSnippetAdExtension(entity.getStructuredSnippetAdExtension());
         }
     }
     
@@ -635,7 +635,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management RemarketingList Object
-            outputRemarketingList(entity.getRemarketingList());
+            CampaignManagementExampleHelper.outputRemarketingList(entity.getRemarketingList());
 
             if (entity.hasErrors())
             {
@@ -655,7 +655,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management BiddableAdGroupCriterion Object
-            outputBiddableAdGroupCriterion(entity.getBiddableAdGroupCriterion());
+            CampaignManagementExampleHelper.outputBiddableAdGroupCriterion(entity.getBiddableAdGroupCriterion());
 
             if (entity.hasErrors())
             {

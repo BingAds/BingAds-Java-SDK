@@ -3,15 +3,11 @@ package com.microsoft.bingads.examples.v11;
 import java.time.Instant;
 import java.time.*;
 import java.util.List;
-import java.rmi.*;
 import java.util.ArrayList;
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v10.campaignmanagement.AdApiFaultDetail_Exception;
 import com.microsoft.bingads.v11.adinsight.ArrayOfDomainCategory;
-import com.microsoft.bingads.v11.adinsight.GetDomainCategoriesRequest;
 import com.microsoft.bingads.v11.adinsight.GetDomainCategoriesResponse;
 import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfBatchError;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v11.campaignmanagement.BudgetLimitType;
@@ -22,9 +18,6 @@ public class DynamicSearchCampaigns extends ExampleBase {
     public final static String DOMAIN_NAME = "contoso.com";
     public final static String LANGUAGE = "EN";
     
-    static ServiceClient<ICampaignManagementService> CampaignService; 
-    static ServiceClient<IAdInsightService> AdInsightService;
-
     public static void main(String[] args) {
         
     	AuthorizationData authorizationData;
@@ -35,8 +28,15 @@ public class DynamicSearchCampaigns extends ExampleBase {
         authorizationData.setCustomerId(CustomerId);
         authorizationData.setAccountId(AccountId);
         
-        AdInsightService = new ServiceClient<IAdInsightService>(authorizationData, API_ENVIRONMENT, IAdInsightService.class);        
-        CampaignService = new ServiceClient<ICampaignManagementService>(authorizationData, API_ENVIRONMENT, ICampaignManagementService.class);
+        AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
+                    	authorizationData, 
+                        API_ENVIRONMENT,
+                        IAdInsightService.class);    
+        
+        CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                    	authorizationData, 
+                        API_ENVIRONMENT,
+                        ICampaignManagementService.class);
         
         ArrayOfCampaign campaigns = null;
         ArrayOfAdGroup adGroups = null;
@@ -46,18 +46,18 @@ public class DynamicSearchCampaigns extends ExampleBase {
             // To get started with dynamic search ads, first you'll need to add a new Campaign 
             // with its type set to DynamicSearchAds. When you create the campaign, you'll need to 
             // include a DynamicSearchAdsSetting that specifies the target web site domain and language.      
-            campaigns = getExampleCampaigns();   	
-            AddCampaignsResponse addCampaignsResponse = addCampaigns(AccountId, campaigns);
+            campaigns = getExampleDSACampaigns();   	
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
-            outputIds(nullableCampaignIds);
-            outputPartialErrors(addCampaignsResponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());
 
             // Next, create a new AdGroup within the dynamic search ads campaign. 
             adGroups = getExampleAdGroups();
-            AddAdGroupsResponse addAdGroupsReponse = addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups);
+            AddAdGroupsResponse addAdGroupsReponse = CampaignManagementExampleHelper.addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups);
             ArrayOfNullableOflong adGroupIds = addAdGroupsReponse.getAdGroupIds();
-            outputIds(adGroupIds);
-            outputPartialErrors(addAdGroupsReponse.getPartialErrors());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(addAdGroupsReponse.getPartialErrors());
 
             // You can add one or more Webpage criterions to each ad group that helps determine 
             // whether or not to serve dynamic search ads.
@@ -68,7 +68,7 @@ public class DynamicSearchCampaigns extends ExampleBase {
             // To discover the categories that you can use for Webpage criterion (positive or negative), 
             // use the GetDomainCategories operation with the Ad Insight service.
             
-            GetDomainCategoriesResponse getDomainCategoriesResponse = getDomainCategories(DOMAIN_NAME, LANGUAGE);
+            GetDomainCategoriesResponse getDomainCategoriesResponse = AdInsightExampleHelper.getDomainCategories(null, DOMAIN_NAME, LANGUAGE);
             ArrayOfDomainCategory categories = getDomainCategoriesResponse.getCategories();
 
             // If any categories are available let's use one as a condition.
@@ -84,16 +84,16 @@ public class DynamicSearchCampaigns extends ExampleBase {
             adGroupCriterions.getAdGroupCriterions().add(adGroupWebpageNegativeUrl);
             
             outputStatusMessage("Adding Ad Group Webpage Criterion . . . \n");
-            outputAdGroupCriterions(adGroupCriterions);
+            CampaignManagementExampleHelper.outputArrayOfAdGroupCriterion(adGroupCriterions);
             
             ArrayList<AdGroupCriterionType> adGroupCriterionTypes = new ArrayList<AdGroupCriterionType>();
             adGroupCriterionTypes.add(AdGroupCriterionType.WEBPAGE);
-            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse = addAdGroupCriterions(adGroupCriterions, adGroupCriterionTypes);
+            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse = CampaignManagementExampleHelper.addAdGroupCriterions(adGroupCriterions, adGroupCriterionTypes);
             outputStatusMessage("New Ad Group Criterion Ids:\n");
-            outputIds(addAdGroupCriterionsResponse.getAdGroupCriterionIds());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(addAdGroupCriterionsResponse.getAdGroupCriterionIds());
             ArrayOfBatchErrorCollection adGroupCriterionErrors = addAdGroupCriterionsResponse.getNestedPartialErrors();
             outputStatusMessage("\nAddAdGroupCriterions Errors:\n");
-            outputBatchErrorCollections(adGroupCriterionErrors);
+            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(adGroupCriterionErrors);
             
             // The negative Webpage criterion at the campaign level applies to all ad groups 
             // within the campaign; however, if you define ad group level negative Webpage criterion, 
@@ -103,16 +103,16 @@ public class DynamicSearchCampaigns extends ExampleBase {
             campaignCriterions.getCampaignCriterions().add(negativeCampaignCriterion);
             
             outputStatusMessage("Adding Campaign Webpage Criterion . . . \n");
-            outputCampaignCriterions(campaignCriterions);
+            CampaignManagementExampleHelper.outputArrayOfCampaignCriterion(campaignCriterions);
             
             ArrayList<CampaignCriterionType> campaignCriterionTypes = new ArrayList<CampaignCriterionType>();
             campaignCriterionTypes.add(CampaignCriterionType.WEBPAGE);
-            AddCampaignCriterionsResponse addCampaignCriterionsResponse = addCampaignCriterions(campaignCriterions, campaignCriterionTypes);
+            AddCampaignCriterionsResponse addCampaignCriterionsResponse = CampaignManagementExampleHelper.addCampaignCriterions(campaignCriterions, campaignCriterionTypes);
             outputStatusMessage("\nNew Campaign Criterion Ids:\n");
-            outputIds(addCampaignCriterionsResponse.getCampaignCriterionIds());
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(addCampaignCriterionsResponse.getCampaignCriterionIds());
             ArrayOfBatchErrorCollection campaignCriterionErrors = addCampaignCriterionsResponse.getNestedPartialErrors();
             outputStatusMessage("\nAddCampaignCriterions Errors:\n");
-            outputBatchErrorCollections(campaignCriterionErrors);
+            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(campaignCriterionErrors);
             
             // Finally you can add a DynamicSearchAd into the ad group. The ad title and display URL 
             // are generated automatically based on the web site domain and language that you want to target.
@@ -120,32 +120,32 @@ public class DynamicSearchCampaigns extends ExampleBase {
             ArrayOfAd ads = new ArrayOfAd();
             ads.getAds().add(dynamicSearchAd);
             
-            AddAdsResponse addAdsResponse = addAds(adGroupIds.getLongs().get(0), ads);
+            AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(adGroupIds.getLongs().get(0), ads);
             ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
             ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
-            outputIds(adIds);
-            outputPartialErrors(adErrors);
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adIds);
+            CampaignManagementExampleHelper.outputArrayOfBatchError(adErrors);
             
             // Retrieve the Webpage criterion for the campaign.
-            GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIdsResponse = getCampaignCriterionsByIds(
-                    nullableCampaignIds.getLongs().get(0), 
-                    null, 
+            GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIdsResponse = CampaignManagementExampleHelper.getCampaignCriterionsByIds(
+                    null,
+                    nullableCampaignIds.getLongs().get(0),
                     campaignCriterionTypes);
             
             outputStatusMessage("Retrieving the Campaign Webpage Criterions that we added . . . \n");
             campaignCriterions = getCampaignCriterionsByIdsResponse.getCampaignCriterions();
-            outputCampaignCriterions(campaignCriterions);
+            CampaignManagementExampleHelper.outputArrayOfCampaignCriterion(campaignCriterions);
             
             // Retrieve the Webpage criterion for the ad group and then test some update scenarios.
             
-            GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = getAdGroupCriterionsByIds(
-                adGroupIds.getLongs().get(0),
+            GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
                 null,
+                adGroupIds.getLongs().get(0),
                 adGroupCriterionTypes);
             
             outputStatusMessage("Retrieving the Ad Group Webpage Criterions that we added . . . \n");
             adGroupCriterions = getAdGroupCriterionsByIdsResponse.getAdGroupCriterions();
-            outputAdGroupCriterions(adGroupCriterions);
+            CampaignManagementExampleHelper.outputArrayOfAdGroupCriterion(adGroupCriterions);
             
             // You can update the Webpage criterion name but cannot update the conditions. 
             // To update the conditions you must delete the criterion and add a new criterion.
@@ -190,163 +190,31 @@ public class DynamicSearchCampaigns extends ExampleBase {
             }     
             
             outputStatusMessage("Updating Ad Group Webpage Criterion . . . \n");
-            outputAdGroupCriterions(adGroupCriterions);
+            CampaignManagementExampleHelper.outputArrayOfAdGroupCriterion(adGroupCriterions);
                         
-            UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = updateAdGroupCriterions(adGroupCriterions, adGroupCriterionTypes);
+            UpdateAdGroupCriterionsResponse updateAdGroupCriterionsResponse = CampaignManagementExampleHelper.updateAdGroupCriterions(adGroupCriterions, adGroupCriterionTypes);
             adGroupCriterionErrors = updateAdGroupCriterionsResponse.getNestedPartialErrors();
             outputStatusMessage("UpdateAdGroupCriterions Errors:\n");
-            outputBatchErrorCollections(adGroupCriterionErrors);
+            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(adGroupCriterionErrors);
             
             // Delete the campaign, ad group, criterion, and ad that were previously added. 
             // You should remove this operation if you want to view the added entities in the 
             // Bing Ads web application or another tool.
             ArrayOflong campaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
-            deleteCampaigns(AccountId, campaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(AccountId, campaignIds);
             System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
             
             outputStatusMessage("Program execution completed\n"); 
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
         }
-        // Catch authentication exceptions
-        catch (OAuthTokenRequestException ex)
-        {
-            outputStatusMessage("Couldn't get OAuth tokens. Error: " + ex.getDetails().getError() + "/nDescription: " + ex.getDetails().getDescription());
-        }
-        // Catch Campaign Management service exceptions
-        catch (ApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        catch (AdApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        catch (EditorialApiFaultDetail_Exception ex)
-        {
-            outputStatusMessage(ex.getMessage());
-        }
-        // Catch general exception
-        catch(Exception e)
-        {
-            outputStatusMessage(e.getMessage());
-        }
-    }
-    
-    public static GetDomainCategoriesResponse getDomainCategories(java.lang.String domainName, java.lang.String language) throws RemoteException, Exception
-    {
-        GetDomainCategoriesRequest request = new GetDomainCategoriesRequest();
-        request.setDomainName(domainName);
-        request.setLanguage(language);
-            
-        return AdInsightService.getService().getDomainCategories(request);
-    }
-    
-    static AddCampaignsResponse addCampaigns(long accountId, ArrayOfCampaign campaigns) throws RemoteException, Exception
-    {
-        AddCampaignsRequest request = new AddCampaignsRequest();
+    }    
 
-        request.setAccountId(accountId);
-        request.setCampaigns(campaigns);
-
-        return CampaignService.getService().addCampaigns(request);
-    }
-
-    static void deleteCampaigns(
-            long accountId, 
-            com.microsoft.bingads.v11.campaignmanagement.ArrayOflong campaignIds) throws RemoteException, Exception
-    {
-        DeleteCampaignsRequest request = new DeleteCampaignsRequest();
-
-        request.setAccountId(accountId);
-        request.setCampaignIds(campaignIds);
-
-        CampaignService.getService().deleteCampaigns(request);
-    }
-    
-    static AddAdGroupsResponse addAdGroups(Long campaignId, ArrayOfAdGroup adGroups) throws RemoteException, Exception
-    {
-    	AddAdGroupsRequest request = new AddAdGroupsRequest();
-        request.setCampaignId(campaignId);
-        request.setAdGroups(adGroups);
-
-        return CampaignService.getService().addAdGroups(request);
-    }
-
-    static AddAdsResponse addAds(long adGroupId, ArrayOfAd ads) throws RemoteException, Exception
-    {
-        AddAdsRequest request = new AddAdsRequest();
-
-        request.setAdGroupId(adGroupId);
-        request.setAds(ads);
-
-        return CampaignService.getService().addAds(request);
-    }
-    
-    static AddAdGroupCriterionsResponse addAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupCriterions,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        AddAdGroupCriterionsRequest request = new AddAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().addAdGroupCriterions(request);
-    }
-
-    static GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIds(
-        long adGroupId,
-        ArrayOflong adGroupCriterionIds,
-        ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
-
-        request.setAdGroupCriterionIds(adGroupCriterionIds);
-        request.setAdGroupId(adGroupId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().getAdGroupCriterionsByIds(request);
-    }
-    
-    static AddCampaignCriterionsResponse addCampaignCriterions(
-            ArrayOfCampaignCriterion campaignCriterions,
-            ArrayList<CampaignCriterionType> criterionType) throws RemoteException, Exception
-    {
-        AddCampaignCriterionsRequest request = new AddCampaignCriterionsRequest();
-
-        request.setCampaignCriterions(campaignCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().addCampaignCriterions(request);
-    }
-
-    static GetCampaignCriterionsByIdsResponse getCampaignCriterionsByIds(
-        long campaignId,
-        ArrayOflong campaignCriterionIds,
-        ArrayList<CampaignCriterionType> criterionType) throws RemoteException, Exception
-    {
-        GetCampaignCriterionsByIdsRequest request = new GetCampaignCriterionsByIdsRequest();
-
-        request.setCampaignCriterionIds(campaignCriterionIds);
-        request.setCampaignId(campaignId);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().getCampaignCriterionsByIds(request);
-    }
-
-    static UpdateAdGroupCriterionsResponse updateAdGroupCriterions(
-            ArrayOfAdGroupCriterion adGroupCriterions,
-            ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
-    {
-        UpdateAdGroupCriterionsRequest request = new UpdateAdGroupCriterionsRequest();
-
-        request.setAdGroupCriterions(adGroupCriterions);
-        request.setCriterionType(criterionType);
-
-        return CampaignService.getService().updateAdGroupCriterions(request);
-    }
-
-    protected static ArrayOfCampaign getExampleCampaigns()
+    protected static ArrayOfCampaign getExampleDSACampaigns()
     {
         Campaign campaign = new Campaign();	
 

@@ -1,7 +1,5 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
-
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.customermanagement.*;
 
@@ -13,16 +11,14 @@ import com.microsoft.bingads.v11.customermanagement.*;
 /// 
 public class ManageClient extends ExampleBase {
 
-    static AuthorizationData authorizationData;
-    static ServiceClient<ICustomerManagementService> CustomerService; 
+    static AuthorizationData authorizationData; 
         
     // Agency Customer Id
     private static long CustomerId = <CustomerIdGoesHere>;
     
     // Client Account Id
     private static long ClientAccountId = <ClientAccountIdGoesHere>;
-        
-
+    
     public static void main(java.lang.String[] args) {
    	 
     	try
@@ -32,7 +28,7 @@ public class ManageClient extends ExampleBase {
             authorizationData.setCustomerId(CustomerId);
             authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
 	        
-            CustomerService = new ServiceClient<ICustomerManagementService>(
+            CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
@@ -68,10 +64,10 @@ public class ManageClient extends ExampleBase {
             
             // Search for client links that match the specified criteria.
 
-            ArrayOfClientLink clientLinks = searchClientLinks(
+            ArrayOfClientLink clientLinks = CustomerManagementExampleHelper.searchClientLinks(
+                predicates,
                 ordering,
-                pageInfo,
-                predicates);
+                pageInfo).getClientLinks();
 
             // Determine whether the agency is already managing the specified client account. 
             // If a link exists with status either Active, LinkInProgress, LinkPending, 
@@ -84,7 +80,7 @@ public class ManageClient extends ExampleBase {
             {
                 clientLink = clientLinks.getClientLinks().get(0);
                 outputStatusMessage(String.format("Current ClientLink Status: %s.\n\n", clientLink.getStatus()));
-                printClientLinks(clientLinks);
+                CustomerManagementExampleHelper.outputArrayOfClientLink(clientLinks);
                 
                 ArrayOfClientLink updateClientLinks = new ArrayOfClientLink();
                 updateClientLinks.getClientLinks().add(clientLink);
@@ -95,7 +91,7 @@ public class ManageClient extends ExampleBase {
                     // which would terminate the existing relationship with the client. 
                     case ACTIVE:
                         clientLink.setStatus(ClientLinkStatus.UNLINK_REQUESTED);
-                        updateClientLinksResponse = updateClientLinks(updateClientLinks);
+                        updateClientLinksResponse = CustomerManagementExampleHelper.updateClientLinks(updateClientLinks);
                         outputStatusMessage("UpdateClientLinks : UnlinkRequested.\n");
                         newLinkRequired = false;
                         break;
@@ -116,12 +112,12 @@ public class ManageClient extends ExampleBase {
                     // does not update the status to LinkCanceled, the system updates the status to LinkExpired.
                     case LINK_PENDING:
                         /*
-                        clientLink.setStatus(ClientLinkStatus.LinkCanceled);
-                        updateClientLinksResponse = UpdateClientLinks(updateClientLinks);
+                        clientLink.setStatus(ClientLinkStatus.LINK_CANCELED);
+                        updateClientLinksResponse = CustomerManagementExampleHelper.updateClientLinks(updateClientLinks);
                         outputStatusMessage("UpdateClientLinks: LinkCanceled.\n");
-                         */
+                        */
                         clientLink.setStatus(ClientLinkStatus.LINK_ACCEPTED);
-                        updateClientLinksResponse = updateClientLinks(updateClientLinks);
+                        updateClientLinksResponse = CustomerManagementExampleHelper.updateClientLinks(updateClientLinks);
                         outputStatusMessage("UpdateClientLinks: LinkAccepted.\n");
                         newLinkRequired = false;
                         break;
@@ -144,8 +140,11 @@ public class ManageClient extends ExampleBase {
                 // Print errors if any occurred when updating the client link.
                 if (updateClientLinksResponse != null)
                 {
-                    printPartialErrors(updateClientLinksResponse.getOperationErrors(),
-                                       updateClientLinksResponse.getPartialErrors());
+                    CustomerManagementExampleHelper.outputArrayOfOperationError(updateClientLinksResponse.getOperationErrors());   
+                    for(ArrayOfOperationError operationErrors: updateClientLinksResponse.getPartialErrors().getArrayOfOperationErrors())
+                    {
+                        CustomerManagementExampleHelper.outputArrayOfOperationError(operationErrors);   
+                    }
                 }
             }
 
@@ -166,153 +165,33 @@ public class ManageClient extends ExampleBase {
                 ArrayOfClientLink addClientLinks = new ArrayOfClientLink();
                 addClientLinks.getClientLinks().add(clientLink);
                 
-                AddClientLinksResponse addClientLinksResponse = addClientLinks(addClientLinks);
+                AddClientLinksResponse addClientLinksResponse = CustomerManagementExampleHelper.addClientLinks(addClientLinks);
 
-                // Print errors if any occurred when adding the client link.
-                printPartialErrors(addClientLinksResponse.getOperationErrors(), addClientLinksResponse.getPartialErrors());
+                // Print errors if any occurred when adding the client link.                
                 outputStatusMessage("The user attempted to add a new ClientLink.\n");
+                CustomerManagementExampleHelper.outputArrayOfOperationError(addClientLinksResponse.getOperationErrors());   
+                for(ArrayOfOperationError operationErrors: addClientLinksResponse.getPartialErrors().getArrayOfOperationErrors())
+                {
+                    CustomerManagementExampleHelper.outputArrayOfOperationError(operationErrors);   
+                }
             }
 
             // Get and print the current client link
 
-            clientLinks = searchClientLinks(
-                    ordering,
-                    pageInfo,
-                    predicates);
+            clientLinks = CustomerManagementExampleHelper.searchClientLinks(
+                predicates,
+                ordering,
+                pageInfo).getClientLinks();
 
-            printClientLinks(clientLinks);
+            CustomerManagementExampleHelper.outputArrayOfClientLink(clientLinks);
             
             outputStatusMessage("Program execution completed\n"); 
         
-        // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-	            outputStatusMessage("AdApiError\n");
-	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Customer Management service operations can throw ApiFault.
-        } catch (ApiFault_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-	            outputStatusMessage("OperationError\n");
-	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (RemoteException ex) {
-            outputStatusMessage("Service communication error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
-        } catch (Exception ex) {
-             outputStatusMessage("Error encountered: ");
-             outputStatusMessage(ex.getMessage());
-             ex.printStackTrace();
-        }
-    }
-
-    // Searches client links for the customer of the current authenticated user,
-    // filtered by the search criteria.
-
-    static ArrayOfClientLink searchClientLinks(
-        ArrayOfOrderBy ordering,
-        Paging pageInfo,
-        ArrayOfPredicate predicates) throws RemoteException, Exception
-    {
-        SearchClientLinksRequest request = new SearchClientLinksRequest();
-        request.setOrdering(ordering);
-        request.setPageInfo(pageInfo);
-        request.setPredicates(predicates);
-           
-        return CustomerService.getService().searchClientLinks(request).getClientLinks();
-    }
-
-    // Initiates the client link process to manage the account of another customer. 
-    // Sends an invitation from an agency to a potential client.
-
-    static AddClientLinksResponse addClientLinks(ArrayOfClientLink clientLinks) throws RemoteException, Exception
-    {
-        AddClientLinksRequest request = new AddClientLinksRequest();
-
-        request.setClientLinks(clientLinks);
-
-        return CustomerService.getService().addClientLinks(request);
-    }
-
-    // Using agency credentials, updates the status of the specified client links.
-
-    static UpdateClientLinksResponse updateClientLinks(ArrayOfClientLink clientLinks) throws RemoteException, Exception
-    {
-        UpdateClientLinksRequest request = new UpdateClientLinksRequest();
-
-        request.setClientLinks(clientLinks);
-
-        return CustomerService.getService().updateClientLinks(request);
-    }
-
-    // Prints a list of client links.
-
-    private static void printClientLinks(ArrayOfClientLink clientLinks)
-    {
-        if (clientLinks == null)
-        {
-            return;
-        }
-
-        for (ClientLink clientLink : clientLinks.getClientLinks())
-        {
-            outputStatusMessage(String.format("Status: %s\n", clientLink.getStatus()));
-            outputStatusMessage(String.format("ClientAccountId: %s\n", clientLink.getClientAccountId()));
-            outputStatusMessage(String.format("ClientAccountNumber: %s\n", clientLink.getClientAccountNumber()));
-            outputStatusMessage(String.format("ManagingAgencyCustomerId: %s\n", clientLink.getManagingCustomerId()));
-            outputStatusMessage(String.format("ManagingCustomerNumber: %s\n", clientLink.getManagingCustomerNumber()));
-            outputStatusMessage(clientLink.getIsBillToClient() ? "IsBillToClient: True\n" : "IsBillToClient: False\n");
-            outputStatusMessage(String.format("InviterEmail: %s\n", clientLink.getInviterEmail()));
-            outputStatusMessage(String.format("InviterName: %s\n", clientLink.getInviterName()));
-            outputStatusMessage(String.format("InviterPhone: %s\n", clientLink.getInviterPhone()));
-            outputStatusMessage(String.format("LastModifiedByUserId: %s\n", clientLink.getLastModifiedByUserId()));
-            outputStatusMessage(String.format("Name: %s\n", clientLink.getName()));
-            outputStatusMessage(String.format("Note: %s\n", clientLink.getNote()));
-            outputStatusMessage("\n");
-        }
-    }
-
-    // Print errors if any occurred when adding or updating the client link.
-
-    static void printPartialErrors(ArrayOfOperationError operationErrors, ArrayOfArrayOfOperationError partialErrors)
-    {
-        if (operationErrors == null)
-        {
-            return;
-        }
-
-        for (OperationError error : operationErrors.getOperationErrors())
-        {
-            outputStatusMessage("OperationError");
-            outputStatusMessage(String.format("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage()));
-        }
-
-        if (partialErrors == null)
-        {
-            return;
-        }
-
-        for (ArrayOfOperationError errors : partialErrors.getArrayOfOperationErrors())
-        {
-            if (errors != null)
-            {
-                for (OperationError error : errors.getOperationErrors())
-                {
-                    if (error != null)
-                    {
-                    	outputStatusMessage("OperationError");
-                        outputStatusMessage(String.format("Code: %d\nMessage: %s\n", error.getCode(), error.getMessage()));
-                    }
-                }
-            }
         }
     }
 }

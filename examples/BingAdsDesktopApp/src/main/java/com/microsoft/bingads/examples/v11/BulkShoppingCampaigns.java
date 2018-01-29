@@ -2,7 +2,6 @@ package com.microsoft.bingads.examples.v11;
 
 import java.io.File;
 import java.io.IOException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -17,9 +16,7 @@ import com.microsoft.bingads.v11.bulk.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class BulkShoppingCampaigns extends BulkExampleBase {
-	
-    static ServiceClient<ICampaignManagementService> CampaignService;
-        
+	        
     private static ArrayList<BulkAdGroupProductPartition> _partitionActions = new ArrayList<BulkAdGroupProductPartition>();
     private static long _referenceId = -1;
         
@@ -38,14 +35,14 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             // when creating a new Bing Shopping Campaign.
             // For other operations such as adding product conditions, you can manage Bing Shopping Campaigns solely with the Bulk Service. 
 
-            CampaignService = new ServiceClient<ICampaignManagementService>(
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                 authorizationData, 
                 API_ENVIRONMENT,
                 ICampaignManagementService.class);
 
             // Get the user's list of Bing Merchant Center (BMC) stores.
 
-            final ArrayOfBMCStore stores = getBMCStoresByCustomerId();
+            final ArrayOfBMCStore stores = CampaignManagementExampleHelper.getBMCStoresByCustomerId().getBMCStores();
 
             if (stores == null)
             {
@@ -54,8 +51,8 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             }
 
 
-            BulkService = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
-            BulkService.setStatusPollIntervalInMilliseconds(5000);
+            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 
@@ -172,20 +169,20 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
             for (BulkEntity entity : downloadEntities) {
                 if (entity instanceof BulkCampaign) {
-                        campaignResults.add((BulkCampaign) entity);
-                        outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
+                    campaignResults.add((BulkCampaign) entity);
+                    outputBulkCampaigns(Arrays.asList((BulkCampaign) entity));
                 }
                 else if (entity instanceof BulkAdGroup) {
-                        adGroupResults.add((BulkAdGroup) entity);
-                        outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
+                    adGroupResults.add((BulkAdGroup) entity);
+                    outputBulkAdGroups(Arrays.asList((BulkAdGroup) entity) );
                 }
                 else if (entity instanceof BulkProductAd) {
-                        productAdResults.add((BulkProductAd) entity);
-                        outputBulkProductAds(Arrays.asList((BulkProductAd) entity) );
+                    productAdResults.add((BulkProductAd) entity);
+                    outputBulkProductAds(Arrays.asList((BulkProductAd) entity) );
                 }
                 else if (entity instanceof BulkCampaignProductScope) {
-                        campaignProductScopeResults.add((BulkCampaignProductScope) entity);
-                        outputBulkCampaignProductScopes(Arrays.asList((BulkCampaignProductScope) entity) );
+                    campaignProductScopeResults.add((BulkCampaignProductScope) entity);
+                    outputBulkCampaignProductScopes(Arrays.asList((BulkCampaignProductScope) entity) );
                 }
             }
 
@@ -246,8 +243,8 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
              * You could build the entire tree in a single call since there are less than 20,000 nodes; however, 
              * we will build it in steps to demonstrate how to use the results from bulk upload to update the tree. 
              * 
-             * For a list of validation rules, see the Bing Shopping Campaigns technical guide:
-             * https://msdn.microsoft.com/en-US/library/bing-ads-campaign-management-bing-shopping-campaigns.aspx
+             * For a list of validation rules, see the Productt Ads technical guide:
+             * https://docs.microsoft.com/en-us/bingads/guides/product-ads.
              */
 
             _partitionActions.clear();
@@ -278,7 +275,7 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
              * The direct children of any node must have the same Operand. 
              * For this example we will use CategoryL1 nodes as children of the root. 
              * For a list of valid CategoryL1 through CategoryL5 values, see the Bing Category Taxonomy:
-             * http://advertise.bingads.microsoft.com/en-us/WWDocs/user/search/en-us/Bing_Category_Taxonomy.txt
+             * http://go.microsoft.com/fwlink?LinkId=507666
              */
 
             ProductCondition animalsSubdivisionCondition = new ProductCondition();
@@ -590,86 +587,25 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
             outputStatusMessage("Program execution completed\n"); 
 		
-        // Bulk service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.bulk.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-                outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-            
-        // Bulk service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.bulk.ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.bulk.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (com.microsoft.bingads.v11.bulk.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-         // Campaign Management service operations can throw AdApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-            	outputStatusMessage("AdApiError\n");
-                outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-            
-        // Campaign Management service operations can throw ApiFaultDetail.
-        } catch (com.microsoft.bingads.v11.campaignmanagement.ApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (com.microsoft.bingads.v11.campaignmanagement.BatchError error : ex.getFaultInfo().getBatchErrors().getBatchErrors())
-            {
-                outputStatusMessage(String.format("BatchError at Index: %d\n", error.getIndex()));
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-
-            for (com.microsoft.bingads.v11.campaignmanagement.OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-                outputStatusMessage("OperationError\n");
-                outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (RemoteException ex) {
-            outputStatusMessage("Service communication error encountered: ");
-            outputStatusMessage(ex.getMessage());
+        }
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
             ex.printStackTrace();
-        } catch (BulkDownloadCouldNotBeCompletedException ee) {
-			outputStatusMessage(String.format("BulkDownloadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-		} catch (BulkUploadCouldNotBeCompletedException ee) {
-			outputStatusMessage(String.format("BulkUploadCouldNotBeCompletedException: %s\nMessage: %s\n\n", ee.getMessage()));
-		} catch (OAuthTokenRequestException ee) {
-			outputStatusMessage(String.format("OAuthTokenRequestException: %s\nMessage: %s\n\n", ee.getMessage()));
-		} catch (BulkOperationInProgressException ee) {
-			outputStatusMessage(String.format("BulkOperationInProgressException: %s\nMessage: %s\n\n", ee.getMessage()));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} catch (InterruptedException ex) {
-			ex.printStackTrace();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (downloadEntities != null){
-				try {
-					downloadEntities.close();
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				}
-			}
-		}
+        } 
+        finally {
+            if (downloadEntities != null){
+                try {
+                    downloadEntities.close();
+                } 
+                catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
 	
-		System.exit(0);
-	}
+        System.exit(0);
+    }
     
     // Uploads a list of BulkAdGroupProductPartition objects that must represent
     // a product partition tree for one ad group. You can include BulkAdGroupProductPartition records for more than one
@@ -722,7 +658,7 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
         downloadParameters.setOverwriteResultFile(true);
         downloadParameters.setLastSyncTimeInUTC(null);
 
-        File bulkFilePath = BulkService.downloadFileAsync(downloadParameters, null, null).get();
+        File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
         Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
         BulkEntityIterable bulkEntities = Reader.getEntities();
         List<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
@@ -747,16 +683,7 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
         return bulkAdGroupProductPartitions;
     }
-    
-    // Returns an array of Bing Merchant Center stores that the customer owns.
-    
-    static ArrayOfBMCStore getBMCStoresByCustomerId() throws RemoteException, Exception
-    {
-        GetBMCStoresByCustomerIdRequest request = new GetBMCStoresByCustomerIdRequest();
-
-        return CampaignService.getService().getBMCStoresByCustomerId(request).getBMCStores();
-    }
-    
+        
     // Gets a fixed bid object with the specified bid amount.
     
     static FixedBid getFixedBid(final double bidAmount)

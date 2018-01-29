@@ -1,8 +1,5 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -13,7 +10,6 @@ import com.microsoft.bingads.v11.customermanagement.*;
 public class InviteUser extends ExampleBase {
 
     static AuthorizationData authorizationData;
-    static ServiceClient<ICustomerManagementService> CustomerService; 
     
     // Specify the email address where the invitation should be sent. 
     // It is important to note that the recipient can accept the invitation 
@@ -32,7 +28,7 @@ public class InviteUser extends ExampleBase {
             authorizationData.setDeveloperToken(DeveloperToken);
             authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
             	         
-            CustomerService = new ServiceClient<ICustomerManagementService>(
+            CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
@@ -67,7 +63,7 @@ public class InviteUser extends ExampleBase {
             
             // Once you send a user invitation, there is no option to rescind the invitation using the API.
             // You can delete a pending invitation in the Accounts & Billing -> Users tab of the Bing Ads web application. 
-            java.lang.Long userInvitationId = sendUserInvitation(userInvitation);
+            java.lang.Long userInvitationId = CustomerManagementExampleHelper.sendUserInvitation(userInvitation).getUserInvitationId();
             outputStatusMessage(String.format("Sent new user invitation to %s.\n", UserInviteRecipientEmail));
 
             // It is possible to have multiple pending invitations sent to the same email address, 
@@ -98,9 +94,9 @@ public class InviteUser extends ExampleBase {
             predicate.setValue(String.valueOf(CustomerId));
             predicates.getPredicates().add(predicate);
             
-            ArrayOfUserInvitation userInvitations = searchUserInvitations(predicates);
+            ArrayOfUserInvitation userInvitations = CustomerManagementExampleHelper.searchUserInvitations(predicates).getUserInvitations();
             outputStatusMessage("Existing UserInvitation(s):\n");
-            outputUserInvitations(userInvitations);
+            CustomerManagementExampleHelper.outputArrayOfUserInvitation(userInvitations);
 
             // Determine whether the invitation has been accepted or has expired.
             // If you specified a valid InvitationId, and if the invitation is not found, 
@@ -127,7 +123,7 @@ public class InviteUser extends ExampleBase {
             {
                 // Once you send a user invitation, there is no option to rescind the invitation using the API.
                 // You can delete a pending invitation in the Accounts & Billing -> Users tab of the Bing Ads web application. 
-                userInvitationId = sendUserInvitation(userInvitation);
+                userInvitationId = CustomerManagementExampleHelper.sendUserInvitation(userInvitation).getUserInvitationId();
                 outputStatusMessage(String.format("Sent new user invitation to %s.\n", UserInviteRecipientEmail));
             }
             else
@@ -140,7 +136,7 @@ public class InviteUser extends ExampleBase {
             // different than the invitation email address, you cannot determine with certainty the mapping from UserInvitation 
             // to accepted User. With the user ID returned by GetUsersInfo or GetUser, you can call DeleteUser to remove the user.
 
-            ArrayOfUserInfo usersInfo = getUsersInfo(CustomerId);
+            ArrayOfUserInfo usersInfo = CustomerManagementExampleHelper.getUsersInfo(CustomerId, null).getUsersInfo();
             UserInfo confirmedUserInfo = null;
             
             for (UserInfo userInfo : usersInfo.getUserInfos()){
@@ -153,9 +149,9 @@ public class InviteUser extends ExampleBase {
             // If a user has already accepted an invitation, you can call GetUser to view all user details.
             if (confirmedUserInfo != null)
             {
-            	GetUserResponse getUserResponse = getUser(confirmedUserInfo.getId());
+            	GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(confirmedUserInfo.getId());
                 outputStatusMessage("Found Requested User Details (Not necessarily related to above Invitation ID(s):");
-                outputUser(getUserResponse.getUser());
+                CustomerManagementExampleHelper.outputUser(getUserResponse.getUser());
                 outputStatusMessage("Role Ids:");
                 for (int role : getUserResponse.getRoles().getInts()){
                 	outputStatusMessage(String.format("%s; ", role));
@@ -164,118 +160,17 @@ public class InviteUser extends ExampleBase {
                 // You have the option of calling DeleteUser to revoke a user's access to your customer accounts.
                 // Note: Only a super admin or aggregator user can delete users.
                 //byte[] timeStamp = getUserResponse.getUser().getTimeStamp();
-                //deleteUser(confirmedUserInfo.getId(), timeStamp);
+                //CustomerManagementExampleHelper.deleteUser(confirmedUserInfo.getId(), timeStamp);
                 //outputStatusMessage(String.format("Deleted UserName %s.\n", UserInviteRecipientEmail));
             }
             
             outputStatusMessage("\nProgram execution completed\n"); 
         
-        // Customer Management service operations can throw AdApiFaultDetail.
-        } catch (AdApiFaultDetail_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (AdApiError error : ex.getFaultInfo().getErrors().getAdApiErrors())
-            {
-	            outputStatusMessage("AdApiError\n");
-	            outputStatusMessage(String.format("Code: %d\nError Code: %s\nMessage: %s\n\n", error.getCode(), error.getErrorCode(), error.getMessage()));
-            }
-        
-        // Customer Management service operations can throw ApiFault.
-        } catch (ApiFault_Exception ex) {
-            outputStatusMessage("The operation failed with the following faults:\n");
-
-            for (OperationError error : ex.getFaultInfo().getOperationErrors().getOperationErrors())
-            {
-	            outputStatusMessage("OperationError\n");
-	            outputStatusMessage(String.format("Code: %d\nMessage: %s\n\n", error.getCode(), error.getMessage()));
-            }
-        } catch (Exception ex) {
-             outputStatusMessage("Error encountered: ");
-             outputStatusMessage(ex.getMessage());
-             ex.printStackTrace();
+        } 
+        catch (Exception ex) {
+            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            ex.printStackTrace();
         }
     }
-
-    // Searches user invitations for the customer of the current authenticated user,
-    // filtered by the search criteria.
-
-    static ArrayOfUserInvitation searchUserInvitations(ArrayOfPredicate predicates) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	SearchUserInvitationsRequest request = new SearchUserInvitationsRequest();
-        request.setPredicates(predicates);
-
-        return CustomerService.getService().searchUserInvitations(request).getUserInvitations();
-    }
-    
-    // Invites a user to manage one or more accounts of a customer. 
-    
-    static java.lang.Long sendUserInvitation(UserInvitation userInvitation) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	SendUserInvitationRequest request = new SendUserInvitationRequest();
-        request.setUserInvitation(userInvitation);
-
-        return CustomerService.getService().sendUserInvitation(request).getUserInvitationId();
-    }
-    
-    // Gets a Bing Ads user and user roles by the specified Bing Ads user identifier.
-
-    static GetUserResponse getUser(java.lang.Long userId) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	GetUserRequest request = new GetUserRequest();
-        request.setUserId(userId);
-
-        return CustomerService.getService().getUser(request);
-    }
-    
-    // Gets the username and user ID for each user managed by the specified customer ID.
-    
-    static ArrayOfUserInfo getUsersInfo(java.lang.Long customerId) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	GetUsersInfoRequest request = new GetUsersInfoRequest();
-        request.setCustomerId(customerId);
-
-        return CustomerService.getService().getUsersInfo(request).getUsersInfo();
-    }
-    
-    // Deletes the user corresponding to the specified user identifier.
-
-    static void deleteUser(java.lang.Long userId, byte[] timeStamp) throws AdApiFaultDetail_Exception, ApiFault_Exception {
-        
-    	DeleteUserRequest request = new DeleteUserRequest();
-        request.setUserId(userId);
-        request.setTimeStamp(timeStamp);
-
-        CustomerService.getService().deleteUser(request);
-    }
-    
-    // Outputs a list of user invitations.
-    
-    private static void outputUserInvitations(ArrayOfUserInvitation userInvitations)
-    {
-        if (userInvitations.getUserInvitations() == null)
-        {
-            return;
-        }
-
-        for (UserInvitation userInvitation : userInvitations.getUserInvitations())
-        {
-            outputStatusMessage(String.format("FirstName: %s", userInvitation.getFirstName()));
-            outputStatusMessage(String.format("LastName: %s", userInvitation.getLastName()));
-            outputStatusMessage(String.format("Email: %s", userInvitation.getEmail()));
-            outputStatusMessage(String.format("Role: %s", userInvitation.getRole()));
-            outputStatusMessage(String.format("Invitation Id: %s\n", userInvitation.getId()));
-        }
-    }
-
-    // Outputs a subset of the properties of a User data object.
-    
-    private static void outputUser(User user)
-    {
-        outputStatusMessage(String.format("Id: %s", user.getId()));
-        outputStatusMessage(String.format("UserName: %s", user.getUserName()));
-        outputStatusMessage(String.format("Contact Email: %s", user.getContactInfo().getEmail()));
-        outputStatusMessage(String.format("First Name: %s", user.getName().getFirstName()));
-        outputStatusMessage(String.format("Last Name: %s", user.getName().getLastName()));
-    }
-    
 }
