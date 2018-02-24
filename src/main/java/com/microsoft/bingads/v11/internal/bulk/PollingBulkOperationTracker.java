@@ -136,14 +136,15 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         }
     }
 
-    private void reportProgress() {        
+    private void reportProgress() {
+        final int percentage = currentStatus.getPercentComplete();
         ThreadPool.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    progress.report(new BulkOperationProgressInfo(currentStatus.getPercentComplete()));
+                    progress.report(new BulkOperationProgressInfo(percentage));
                 
-                    updateLastProgressReported();
+                    updateLastProgressReported(percentage);
                 } catch (Exception ex) {
                     // ignore exceptions from progress update thread
                 }
@@ -159,8 +160,8 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         return currentStatus.getPercentComplete() != lastProgressReported;
     }
 
-    private void updateLastProgressReported() {
-        this.lastProgressReported = currentStatus.getPercentComplete();
+    private void updateLastProgressReported(int per) {
+        this.lastProgressReported = per;
     }
 
     private void propagateExceptionToCallingThread(Throwable ex) {
