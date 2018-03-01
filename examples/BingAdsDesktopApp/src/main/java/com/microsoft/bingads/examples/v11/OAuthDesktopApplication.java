@@ -3,6 +3,27 @@ package com.microsoft.bingads.examples.v11;
 import java.net.URL;
 import java.rmi.RemoteException;
 
+import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.NewOAuthTokensReceivedListener;
+import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
+import com.microsoft.bingads.OAuthTokens;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.MessageHandler;
+import com.microsoft.bingads.v11.customermanagement.Account;
+import com.microsoft.bingads.v11.customermanagement.AdApiError;
+import com.microsoft.bingads.v11.customermanagement.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.customermanagement.ApiFault_Exception;
+import com.microsoft.bingads.v11.customermanagement.ArrayOfAccount;
+import com.microsoft.bingads.v11.customermanagement.ArrayOfPredicate;
+import com.microsoft.bingads.v11.customermanagement.GetUserRequest;
+import com.microsoft.bingads.v11.customermanagement.ICustomerManagementService;
+import com.microsoft.bingads.v11.customermanagement.OperationError;
+import com.microsoft.bingads.v11.customermanagement.Paging;
+import com.microsoft.bingads.v11.customermanagement.Predicate;
+import com.microsoft.bingads.v11.customermanagement.PredicateOperator;
+import com.microsoft.bingads.v11.customermanagement.SearchAccountsRequest;
+import com.microsoft.bingads.v11.customermanagement.User;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -10,9 +31,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-
-import com.microsoft.bingads.*;
-import com.microsoft.bingads.v11.customermanagement.*;
 
 public class OAuthDesktopApplication extends Application {
 
@@ -27,6 +45,7 @@ public class OAuthDesktopApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        MessageHandler.getInstance().setTraceOn(true);
 
     	// Create an instance of OAuthDesktopMobileAuthCodeGrant that will be used to manage Microsoft Account user authorization. 
     	// Replace ClientId with the value configured when you registered your application. 
