@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     LocationIntentCriterion.class,
     RadiusCriterion.class,
     ProductScope.class,
+    ProfileCriterion.class,
     ProductPartition.class,
     GenderCriterion.class,
     LocationCriterion.class,

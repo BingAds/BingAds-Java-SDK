@@ -1,12 +1,14 @@
 package com.microsoft.bingads.internal;
 
+import java.net.URL;
+
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
-import java.net.URL;
 
 /**
  * The abstract base class for all OAuth authentication classes.
@@ -38,12 +40,18 @@ abstract class OAuthAuthorization extends Authentication {
      * {@link OAuthWithAuthorizationCode}
      */
     protected OAuthTokens oAuthTokens;
+    
+    protected ApiEnvironment environment;
 
     /**
      * Gets information about OAuth access tokens received from the Microsoft Account authorization service.
      */
     public OAuthTokens getOAuthTokens() {
         return oAuthTokens;
+    }
+    
+    public OAuthAuthorization(ApiEnvironment env) {
+        this.environment = env;
     }
 
     /**
@@ -66,4 +74,16 @@ abstract class OAuthAuthorization extends Authentication {
     public void addHeaders(HeadersImpl headersImplementation) {
         headersImplementation.addHeader(HttpHeaders.AUTHENTICATION_TOKEN, this.getOAuthTokens().getAccessToken());
     }
+
+    @Override
+    
+    public ApiEnvironment getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(ApiEnvironment environment) {
+        this.environment = environment;
+    }
+    
+    
 }

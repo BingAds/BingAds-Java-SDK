@@ -5,7 +5,9 @@ package com.microsoft.bingads.v11.campaignmanagement;
  */
 public enum AdGroupAdditionalField {
 
-    INHERITED_BID_STRATEGY_TYPE("InheritedBidStrategyType");
+    INHERITED_BID_STRATEGY_TYPE("InheritedBidStrategyType"),
+    PRIVACY_STATUS("PrivacyStatus"),
+    TARGET_SETTING("TargetSetting");
         
     private final String value;
 

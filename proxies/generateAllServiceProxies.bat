@@ -1,6 +1,11 @@
 @echo off
 
-if exist ..\tools\WsdlEnumGenerator\bin\Debug\WsdlEnumGenerator.exe (
+if exist ..\tools\WsdlEnumGenerator\bin\Debug\WsdlEnumGenerator.exe (	
+	del jaxb-bindings-v11.reporting.xml
+	del jaxb-bindings-v11.campaignmanagement.xml
+	del jaxb-bindings-v11.bulk.xml
+	del jaxb-bindings-v11.adinsight.xml
+	
 	call generateProxy v11.customerbilling https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v11/CustomerBillingService.svc
 	call generateProxy v11.customermanagement https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v11/CustomerManagementService.svc
 	call generateProxy v11.reporting https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc

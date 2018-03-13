@@ -27,7 +27,7 @@ import javax.xml.ws.spi.Provider;
 
 class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "11.5.8.1";
+    private static final String VERSION = "11.5.9";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -42,6 +42,7 @@ class ServiceFactoryImpl implements ServiceFactory {
             put(com.microsoft.bingads.v11.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v11/CustomerBillingService.svc");
+                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v11/CustomerBillingService.svc");
                 }
             });
 

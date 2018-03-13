@@ -7,11 +7,11 @@ import java.net.URL;
 public class OAuthTest {
 
     public static OAuthDesktopMobileAuthCodeGrant CreateDesktopAuth(String clientId) {
-        return new OAuthDesktopMobileAuthCodeGrant(clientId);
+        return new OAuthDesktopMobileAuthCodeGrant(clientId, ApiEnvironment.PRODUCTION);
     }
 
     public static OAuthDesktopMobileAuthCodeGrant CreateDesktopAuth(String clientId, OAuthService service) {
-        return new OAuthDesktopMobileAuthCodeGrant(clientId, service);
+        return new OAuthDesktopMobileAuthCodeGrant(clientId, service, ApiEnvironment.PRODUCTION);
     }
 
     public static OAuthWebAuthCodeGrant CreateWebAuth(String clientId, String clientSecret) throws MalformedURLException {

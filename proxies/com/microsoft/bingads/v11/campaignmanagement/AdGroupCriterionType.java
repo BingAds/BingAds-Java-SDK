@@ -18,7 +18,10 @@ public enum AdGroupCriterionType {
     AUDIENCE("Audience"),
     CUSTOM_AUDIENCE("CustomAudience"),
     IN_MARKET_AUDIENCE("InMarketAudience"),
-    REMARKETING_LIST("RemarketingList");
+    REMARKETING_LIST("RemarketingList"),
+    COMPANY_NAME("CompanyName"),
+    JOB_FUNCTION("JobFunction"),
+    INDUSTRY("Industry");
         
     private final String value;
 

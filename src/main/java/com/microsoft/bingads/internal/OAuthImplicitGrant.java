@@ -1,9 +1,11 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.OAuthTokens;
 import java.net.URL;
 import java.util.Map;
+
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.OAuthTokens;
 
 /**
  * Represents an OAuth authorization object implementing the implicit grant flow for use in a desktop or mobile application.
@@ -46,7 +48,9 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
     	this.state = state;
     }
 
-    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens) {
+    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env) {
+        super(env);
+        
         this.clientId = clientId;
         
         this.redirectionUri = redirectionUri;
@@ -61,7 +65,7 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.state));
+        return UriOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.state), this.getEnvironment());
     }
 
     /**

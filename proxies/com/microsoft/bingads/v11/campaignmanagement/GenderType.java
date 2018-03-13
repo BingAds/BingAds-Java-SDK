@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="GenderType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
  *     &lt;enumeration value="Male"/>
  *     &lt;enumeration value="Female"/>
  *   &lt;/restriction>
@@ -25,6 +26,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum GenderType {
 
+    @XmlEnumValue("Unknown")
+    UNKNOWN("Unknown"),
     @XmlEnumValue("Male")
     MALE("Male"),
     @XmlEnumValue("Female")

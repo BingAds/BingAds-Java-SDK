@@ -84,9 +84,15 @@ public class ServiceClient<T> {
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
+        
+        if (environment == null) {
+            if (authorizationData.getAuthentication() != null) {
+                environment = authorizationData.getAuthentication().getEnvironment();
+            }
+        }
 
         if (environment == null) {
-            environment = getEnvironmentFromConfig();
+            environment = ServiceUtils.getEnvironmentFromConfig();
         }
 
         if (environment == null) {
@@ -152,35 +158,4 @@ public class ServiceClient<T> {
         }
     }
 
-    private ApiEnvironment getEnvironmentFromConfig() {
-        InputStream input = null;
-        try {
-            input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
-            if (input == null) {
-                return null;
-            }
-            Properties props = new Properties();
-            props.load(input);
-
-            String envString = props.getProperty("environment");
-
-            if (envString == null) {
-                return null;
-            }
-
-            return ApiEnvironment.fromValue(envString);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.log(Level.SEVERE, "Failed to read propertyFile: " + ServiceUtils.getPropertyFile(), ex);
-            return null;
-        } finally {
-            try {
-                if (input != null) {
-                    input.close();
-                }
-            } catch (IOException ex) {
-                throw new InternalException(ex);
-            }
-        }
-    }
 }

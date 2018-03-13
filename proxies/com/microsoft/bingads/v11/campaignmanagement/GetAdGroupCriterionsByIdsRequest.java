@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="AdGroupCriterionIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="ReturnAgeGenderUnknownValue" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="CriterionType" type="{https://bingads.microsoft.com/CampaignManagement/v11}AdGroupCriterionType" minOccurs="0"/>
  *       &lt;/sequence>
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "adGroupCriterionIds",
+    "returnAgeGenderUnknownValue",
     "adGroupId",
     "criterionType"
 })
@@ -42,6 +44,8 @@ public class GetAdGroupCriterionsByIdsRequest {
 
     @XmlElement(name = "AdGroupCriterionIds", nillable = true)
     protected ArrayOflong adGroupCriterionIds;
+    @XmlElement(name = "ReturnAgeGenderUnknownValue", nillable = true)
+    protected Boolean returnAgeGenderUnknownValue;
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "CriterionType", type = String.class)
@@ -70,6 +74,30 @@ public class GetAdGroupCriterionsByIdsRequest {
      */
     public void setAdGroupCriterionIds(ArrayOflong value) {
         this.adGroupCriterionIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAgeGenderUnknownValue property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnAgeGenderUnknownValue() {
+        return returnAgeGenderUnknownValue;
+    }
+
+    /**
+     * Sets the value of the returnAgeGenderUnknownValue property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnAgeGenderUnknownValue(Boolean value) {
+        this.returnAgeGenderUnknownValue = value;
     }
 
     /**

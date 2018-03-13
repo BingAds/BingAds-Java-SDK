@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    TargetSetting.class,
     DynamicSearchAdsSetting.class,
     ShoppingSetting.class
 })

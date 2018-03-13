@@ -1,5 +1,6 @@
 package com.microsoft.bingads.internal;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthTokens;
 import java.net.MalformedURLException;
@@ -91,6 +92,6 @@ public class OAuthImplicitGrantForDesktopMobileAppTest {
     }
 
     private static OAuthDesktopMobileImplicitGrant CreateAuth(String clientId) {
-        return new OAuthDesktopMobileImplicitGrant(clientId);
+        return new OAuthDesktopMobileImplicitGrant(clientId, ApiEnvironment.PRODUCTION);
     }
 }

@@ -1,3 +1,10 @@
+
+set pkgpath="com\microsoft\bingads\%1"
+set "pkgpath=%pkgpath:.=\%"
+echo pkgpath=%pkgpath%
+rd /s /q "%pkgpath%"
+pause
+
 call ..\tools\WsdlEnumGenerator\bin\Debug\WsdlEnumGenerator %1 %2
 
 if exist jaxb-bindings-%1.xml (

@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     DynamicSearchAd.class,
     ProductAd.class,
+    ResponsiveAd.class,
     TextAd.class,
     AppInstallAd.class,
     ExpandedTextAd.class

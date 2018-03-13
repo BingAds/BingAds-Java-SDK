@@ -99,6 +99,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountSitelink2AdExtensions"/>
  *     &lt;enumeration value="AccountActionLinkAdExtensions"/>
  *     &lt;enumeration value="AccountStructuredSnippetAdExtensions"/>
+ *     &lt;enumeration value="CoOpCampaigns"/>
+ *     &lt;enumeration value="ResponsiveAds"/>
+ *     &lt;enumeration value="ResponsiveAdLabels"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -277,7 +280,13 @@ public enum DownloadEntity {
     @XmlEnumValue("AccountActionLinkAdExtensions")
     ACCOUNT_ACTION_LINK_AD_EXTENSIONS("AccountActionLinkAdExtensions"),
     @XmlEnumValue("AccountStructuredSnippetAdExtensions")
-    ACCOUNT_STRUCTURED_SNIPPET_AD_EXTENSIONS("AccountStructuredSnippetAdExtensions");
+    ACCOUNT_STRUCTURED_SNIPPET_AD_EXTENSIONS("AccountStructuredSnippetAdExtensions"),
+    @XmlEnumValue("CoOpCampaigns")
+    CO_OP_CAMPAIGNS("CoOpCampaigns"),
+    @XmlEnumValue("ResponsiveAds")
+    RESPONSIVE_ADS("ResponsiveAds"),
+    @XmlEnumValue("ResponsiveAdLabels")
+    RESPONSIVE_AD_LABELS("ResponsiveAdLabels");
     private final String value;
 
     DownloadEntity(String v) {

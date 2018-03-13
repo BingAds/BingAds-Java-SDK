@@ -1,18 +1,24 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
-import com.microsoft.bingads.OAuthTest;
-import com.microsoft.bingads.OAuthTokens;
+import static org.easymock.EasyMock.expect;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import java.net.MalformedURLException;
 import java.net.URL;
-import static org.easymock.EasyMock.expect;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
+import com.microsoft.bingads.OAuthTest;
+import com.microsoft.bingads.OAuthTokens;
 
 @RunWith(EasyMockRunner.class)
 public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
@@ -22,6 +28,10 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
 
     @Mock
     private OAuthTokens expectedTokenInfo;
+    
+
+    @Parameter
+    public ApiEnvironment env;
 
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl() {
@@ -98,11 +108,10 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
             );
 
             expect(oauthService.getAccessTokens(expectedRequestParameters)).andReturn(expectedTokenInfo);
-
-            OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
-
+            expect(oauthService.getRedirectUrl()).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
-
+            
+            OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
             OAuthTokens tokens = auth.requestAccessAndRefreshTokens(new URL("http://test.com/login?code=123"));
 
             assertEquals(expectedTokenInfo, tokens);
@@ -124,9 +133,10 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "xxx"
             ))).andReturn(expectedTokenInfo);
 
-            OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
-
+            expect(oauthService.getRedirectUrl()).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
+            
+            OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
 
             OAuthTokens tokens = auth.requestAccessAndRefreshTokens("xxx");
 

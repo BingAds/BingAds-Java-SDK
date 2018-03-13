@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="NativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v11}Network" minOccurs="0"/>
  *         &lt;element name="PricingModel" type="{https://bingads.microsoft.com/CampaignManagement/v11}PricingModel" minOccurs="0"/>
+ *         &lt;element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v11}AdGroupPrivacyStatus" minOccurs="0"/>
  *         &lt;element name="RemarketingTargetingSetting" type="{https://bingads.microsoft.com/CampaignManagement/v11}RemarketingTargetingSetting" minOccurs="0"/>
  *         &lt;element name="SearchBid" type="{https://bingads.microsoft.com/CampaignManagement/v11}Bid" minOccurs="0"/>
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v11}ArrayOfSetting" minOccurs="0"/>
@@ -61,6 +62,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "nativeBidAdjustment",
     "network",
     "pricingModel",
+    "privacyStatus",
     "remarketingTargetingSetting",
     "searchBid",
     "settings",
@@ -72,7 +74,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AdGroup {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<AdDistribution> adDistribution;
     @XmlElement(name = "AdRotation", nillable = true)
     protected AdRotation adRotation;
@@ -98,6 +100,9 @@ public class AdGroup {
     @XmlElement(name = "PricingModel", nillable = true)
     @XmlSchemaType(name = "string")
     protected PricingModel pricingModel;
+    @XmlElement(name = "PrivacyStatus", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AdGroupPrivacyStatus privacyStatus;
     @XmlElement(name = "RemarketingTargetingSetting", nillable = true)
     @XmlSchemaType(name = "string")
     protected RemarketingTargetingSetting remarketingTargetingSetting;
@@ -401,6 +406,30 @@ public class AdGroup {
      */
     public void setPricingModel(PricingModel value) {
         this.pricingModel = value;
+    }
+
+    /**
+     * Gets the value of the privacyStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdGroupPrivacyStatus }
+     *     
+     */
+    public AdGroupPrivacyStatus getPrivacyStatus() {
+        return privacyStatus;
+    }
+
+    /**
+     * Sets the value of the privacyStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdGroupPrivacyStatus }
+     *     
+     */
+    public void setPrivacyStatus(AdGroupPrivacyStatus value) {
+        this.privacyStatus = value;
     }
 
     /**

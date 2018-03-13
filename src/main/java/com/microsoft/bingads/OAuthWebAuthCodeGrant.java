@@ -1,9 +1,9 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.LiveComOAuthService;
+import java.net.URL;
+
 import com.microsoft.bingads.internal.OAuthService;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import java.net.URL;
 
 /**
  * Represents an OAuth authorization object implementing the authorization code grant flow for use in a web application. 
@@ -11,7 +11,11 @@ import java.net.URL;
 public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
 
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken) {
-        super(clientId, clientSecret, redirectionUrl, refreshToken);
+        this(clientId, clientSecret, redirectionUrl, refreshToken, ApiEnvironment.PRODUCTION);
+    }
+    
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken, ApiEnvironment env) {
+        super(clientId, clientSecret, redirectionUrl, refreshToken, env);
     }
 
     /**
@@ -24,13 +28,32 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @param clientSecret client secret
      * @param redirectionUrl redirect URL
      *
+     * @see <a href="https://tools.ietf.org/html/rfc6749#section-4.1">https://tools.ietf.org/html/rfc6749#section-4.1</a>
+     * @see <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">https://tools.ietf.org/html/rfc6749#section-3.1.2</a>
+     */
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl) {
+        this(clientId, clientSecret, redirectionUrl, ApiEnvironment.PRODUCTION);
+    }
+    
+
+    /**
+     * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
+     *
+     * See this page for additional information on these values:
+     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     *
+     * @param clientId client id
+     * @param clientSecret client secret
+     * @param redirectionUrl redirect URL
+     * @param env Bing Ads Environment
+     *
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
-    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl) {
-        super(clientId, clientSecret, redirectionUrl);
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, ApiEnvironment env) {
+        super(clientId, clientSecret, redirectionUrl, env);
     }
-    
+
     /**
      * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
      *
@@ -46,7 +69,26 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, OAuthTokens oauthTokens) {
-    	super(clientId, clientSecret, redirectionUrl, oauthTokens);        
+        this(clientId, clientSecret, redirectionUrl, oauthTokens, ApiEnvironment.PRODUCTION);        
+    }
+    
+    /**
+     * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
+     *
+     * See this page for additional information on these values:
+     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     *
+     * @param clientId client id
+     * @param clientSecret client secret
+     * @param redirectionUrl redirect URL
+     * @param oauthTokens contains information about OAuth access tokens received from the Microsoft Account authorization service
+     * @param env Bing Ads Environment
+     *
+     * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
+     * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
+     */
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, OAuthTokens oauthTokens, ApiEnvironment env) {
+    	super(clientId, clientSecret, redirectionUrl, oauthTokens, env);        
     }
     
     /**
@@ -64,6 +106,25 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService) {
-        super(clientId, clientSecret, redirectionUri, oAuthService);
+        this(clientId, clientSecret, redirectionUri, oAuthService, ApiEnvironment.PRODUCTION);
+    }
+    
+    /**
+     * Creates new instance of the class with a specified OAuthService object.
+     *
+     * See this page for additional information on these values:
+     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     *
+     * @param clientId client id
+     * @param clientSecret client secret
+     * @param redirectionUri redirect URL
+     * @param oAuthService custom {@link OAuthService} object
+     * @param env Bing Ads Environment
+     *
+     * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
+     * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
+     */
+    OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService, ApiEnvironment env) {
+        super(clientId, clientSecret, redirectionUri, oAuthService, env);
     }
 }

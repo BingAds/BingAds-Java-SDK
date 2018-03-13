@@ -5,7 +5,8 @@ package com.microsoft.bingads.v11.campaignmanagement;
  */
 public enum MediaEnabledEntityFilter {
 
-    IMAGE_AD_EXTENSION("ImageAdExtension");
+    IMAGE_AD_EXTENSION("ImageAdExtension"),
+    RESPONSIVE_AD("ResponsiveAd");
         
     private final String value;
 

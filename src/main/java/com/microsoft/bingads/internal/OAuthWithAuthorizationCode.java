@@ -1,10 +1,12 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.NewOAuthTokensReceivedListener;
-import com.microsoft.bingads.OAuthTokens;
 import java.net.URL;
 import java.util.Map;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.NewOAuthTokensReceivedListener;
+import com.microsoft.bingads.OAuthTokens;
+import com.microsoft.bingads.ServiceClient;
 
 /**
  * Implements the OAuth Authorization Code Grant Flow {@link "http://msdn.microsoft.com/en-us/library/dn277356.aspx"}
@@ -57,8 +59,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     	this.state = state;
     }
 
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken) {
-        this(clientId, clientSecret, redirectionUri, new LiveComOAuthService());
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env) {
+        this(clientId, clientSecret, redirectionUri, env);
 
         if (refreshToken == null) {
             throw new NullPointerException("refreshToken must not be null");
@@ -67,21 +69,26 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         oAuthTokens = new OAuthTokens(null, 0, refreshToken);
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens) {
-        this(clientId, clientSecret, redirectionUri, new LiveComOAuthService());
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env) {
 
+        this(clientId, clientSecret, redirectionUri, env);
         if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
         	throw new NullPointerException("OAuth tokens must not be null");     	
         } 
         
         oAuthTokens = new OAuthTokens(null, 0, oauthTokens.getRefreshToken());
     }
-
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri) {
-        this(clientId, clientSecret, redirectionUri, new LiveComOAuthService());
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env) {
+        super(env);
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.redirectionUri = redirectionUri;
+        this.oauthService = new UriOAuthService(environment);
     }
-
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService) {
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env) {
+        super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
@@ -95,7 +102,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return LiveComOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.state));
+        return UriOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.state), this.getEnvironment());
     }
 
     /**

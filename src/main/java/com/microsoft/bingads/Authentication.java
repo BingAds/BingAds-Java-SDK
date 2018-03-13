@@ -14,4 +14,8 @@ public abstract class Authentication {
      * @param headersImplementation Implementation that should be called to add headers.
      */
     public abstract void addHeaders(HeadersImpl headersImplementation);
+    
+    public ApiEnvironment getEnvironment() {
+        return null;
+    };
 }

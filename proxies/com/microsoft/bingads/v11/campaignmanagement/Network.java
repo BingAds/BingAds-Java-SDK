@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="OwnedAndOperatedAndSyndicatedSearch"/>
  *     &lt;enumeration value="OwnedAndOperatedOnly"/>
  *     &lt;enumeration value="SyndicatedSearchOnly"/>
+ *     &lt;enumeration value="InHousePromotion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -31,7 +32,9 @@ public enum Network {
     @XmlEnumValue("OwnedAndOperatedOnly")
     OWNED_AND_OPERATED_ONLY("OwnedAndOperatedOnly"),
     @XmlEnumValue("SyndicatedSearchOnly")
-    SYNDICATED_SEARCH_ONLY("SyndicatedSearchOnly");
+    SYNDICATED_SEARCH_ONLY("SyndicatedSearchOnly"),
+    @XmlEnumValue("InHousePromotion")
+    IN_HOUSE_PROMOTION("InHousePromotion");
     private final String value;
 
     Network(String v) {

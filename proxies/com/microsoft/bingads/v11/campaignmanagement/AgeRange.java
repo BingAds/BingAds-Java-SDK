@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="AgeRange">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
  *     &lt;enumeration value="ZeroToSeventeen"/>
  *     &lt;enumeration value="EighteenToTwentyFour"/>
  *     &lt;enumeration value="TwentyFiveToThirtyFour"/>
@@ -30,6 +31,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum AgeRange {
 
+    @XmlEnumValue("Unknown")
+    UNKNOWN("Unknown"),
     @XmlEnumValue("ZeroToSeventeen")
     ZERO_TO_SEVENTEEN("ZeroToSeventeen"),
     @XmlEnumValue("EighteenToTwentyFour")
