@@ -11,19 +11,15 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
-import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v11.bulk.entities.BulkSiteLink;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfCustomParameter;
-import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.CustomParameter;
-import com.microsoft.bingads.v11.campaignmanagement.CustomParameters;
-
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.BulkAdGroupProductPartitionTest;
-import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfCustomParameter;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.CustomParameter;
+import com.microsoft.bingads.v11.campaignmanagement.CustomParameters;
 
 public class ReadUrlCustomParametersTest extends BulkAdGroupProductPartitionTest{
 

@@ -1,8 +1,16 @@
 package com.microsoft.bingads.v11.api.test.entities.keyword.read;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
 import com.microsoft.bingads.v11.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.EnhancedCpcBiddingScheme;
@@ -11,14 +19,6 @@ import com.microsoft.bingads.v11.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.TargetCpaBiddingScheme;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Arrays;
-import java.util.Collection;
-import org.junit.Test;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
 
 public class BulkKeywordReadFromRowValuesBidStrategyTypeTest extends BulkKeywordTest {
 

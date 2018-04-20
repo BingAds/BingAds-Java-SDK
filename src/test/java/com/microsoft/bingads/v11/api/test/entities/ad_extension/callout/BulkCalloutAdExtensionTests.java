@@ -1,10 +1,11 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.callout;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.read.BulkCalloutAdExtensionReadTests;
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.write.BulkCalloutAdExtensionWriteTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.read.BulkCalloutAdExtensionReadTests;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.write.BulkCalloutAdExtensionWriteTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({

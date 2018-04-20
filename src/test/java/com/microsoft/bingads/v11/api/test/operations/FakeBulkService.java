@@ -1,32 +1,31 @@
 package com.microsoft.bingads.v11.api.test.operations;
 
 
-import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsRequest;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsResponse;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsRequest;
-import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsResponse;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusRequest;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusResponse;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlRequest;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlResponse;
-import com.microsoft.bingads.v11.bulk.GetBulkDownloadStatusRequest;
-import com.microsoft.bingads.v11.bulk.GetBulkDownloadStatusResponse;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusRequest;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusResponse;
-import com.microsoft.bingads.v11.bulk.IBulkService;
-import com.microsoft.bingads.v11.api.test.operations.CompleteResponse;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
+
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Binding;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.EndpointReference;
 import javax.xml.ws.Response;
+
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsRequest;
+import com.microsoft.bingads.v11.bulk.DownloadCampaignsByAccountIdsResponse;
+import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsRequest;
+import com.microsoft.bingads.v11.bulk.DownloadCampaignsByCampaignIdsResponse;
+import com.microsoft.bingads.v11.bulk.GetBulkDownloadStatusRequest;
+import com.microsoft.bingads.v11.bulk.GetBulkDownloadStatusResponse;
+import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusRequest;
+import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusResponse;
+import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlRequest;
+import com.microsoft.bingads.v11.bulk.GetBulkUploadUrlResponse;
+import com.microsoft.bingads.v11.bulk.IBulkService;
 
 public class FakeBulkService implements IBulkService, BindingProvider {
 

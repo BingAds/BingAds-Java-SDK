@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.bulk_site_link.read;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.bulk_site_link.BulkAdGroupSiteLinkAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupSiteLinkAdExtension;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.bulk_site_link.BulkAdGroupSiteLinkAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupSiteLinkAdExtension;
 
 public class BulkAdGroupSiteLinkAdExtensionReadFromRowValuesCampaignNameTest extends BulkAdGroupSiteLinkAdExtensionTest {
     @Parameterized.Parameter(value = 1)

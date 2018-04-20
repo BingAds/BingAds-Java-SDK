@@ -41,7 +41,7 @@ public class GetKeywordsByAdGroupIdRequest {
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<KeywordAdditionalField> returnAdditionalFields;
 
     /**

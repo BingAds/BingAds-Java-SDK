@@ -57,8 +57,8 @@ public interface ICustomerBillingService {
      * @return
      *     returns com.microsoft.bingads.v11.customerbilling.GetBillingDocumentsInfoResponse
      * @throws ApiFault_Exception
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocumentsInfo", action = "GetBillingDocumentsInfo")
     @WebResult(name = "GetBillingDocumentsInfoResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v11", partName = "parameters")
@@ -99,8 +99,8 @@ public interface ICustomerBillingService {
      * @return
      *     returns com.microsoft.bingads.v11.customerbilling.GetBillingDocumentsResponse
      * @throws ApiFault_Exception
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocuments", action = "GetBillingDocuments")
     @WebResult(name = "GetBillingDocumentsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v11", partName = "parameters")
@@ -141,8 +141,8 @@ public interface ICustomerBillingService {
      * @return
      *     returns com.microsoft.bingads.v11.customerbilling.GetDisplayInvoicesResponse
      * @throws ApiFault_Exception
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetDisplayInvoices", action = "GetDisplayInvoices")
     @WebResult(name = "GetDisplayInvoicesResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v11", partName = "parameters")
@@ -347,8 +347,8 @@ public interface ICustomerBillingService {
      * @return
      *     returns com.microsoft.bingads.v11.customerbilling.GetKOHIOInvoicesResponse
      * @throws ApiFault_Exception
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetKOHIOInvoices", action = "GetKOHIOInvoices")
     @WebResult(name = "GetKOHIOInvoicesResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v11", partName = "parameters")

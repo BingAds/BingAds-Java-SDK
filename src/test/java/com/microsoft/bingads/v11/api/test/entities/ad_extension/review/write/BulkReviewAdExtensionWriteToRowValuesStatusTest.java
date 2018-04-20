@@ -1,15 +1,16 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.review.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.review.BulkReviewAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkReviewAdExtension;
-import com.microsoft.bingads.v11.campaignmanagement.AdExtensionStatus;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.review.BulkReviewAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkReviewAdExtension;
+import com.microsoft.bingads.v11.campaignmanagement.AdExtensionStatus;
 
 public class BulkReviewAdExtensionWriteToRowValuesStatusTest extends BulkReviewAdExtensionTest {
 

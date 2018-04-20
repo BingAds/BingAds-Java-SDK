@@ -1,15 +1,15 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.device.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.device.BulkAdGroupDeviceCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDeviceCriterion;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.device.BulkAdGroupDeviceCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDeviceCriterion;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupDeviceCriterionWriteCampaignNameTest extends BulkAdGroupDeviceCriterionTest {

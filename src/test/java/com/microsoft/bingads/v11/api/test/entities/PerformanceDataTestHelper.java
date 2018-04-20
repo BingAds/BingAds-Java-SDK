@@ -6,10 +6,12 @@
 package com.microsoft.bingads.v11.api.test.entities;
 
 import static com.microsoft.bingads.v11.api.test.entities.RowValuesAssert.assertContains;
-import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v11.internal.bulk.RowValues;
 
 public class PerformanceDataTestHelper {
 

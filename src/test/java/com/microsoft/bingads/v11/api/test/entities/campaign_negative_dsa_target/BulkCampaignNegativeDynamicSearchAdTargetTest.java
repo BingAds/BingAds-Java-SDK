@@ -1,5 +1,8 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target;
 
+import java.util.List;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
@@ -11,9 +14,6 @@ import com.microsoft.bingads.v11.campaignmanagement.Webpage;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageCondition;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageConditionOperand;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageParameter;
-
-import java.util.List;
-import java.util.Map;
 
 public abstract class BulkCampaignNegativeDynamicSearchAdTargetTest extends BulkEntityTest<BulkCampaignNegativeDynamicSearchAdTarget> {
 

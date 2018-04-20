@@ -41,7 +41,7 @@ public class GetConversionGoalsByIdsRequest {
     @XmlElement(name = "ConversionGoalIds", nillable = true)
     protected ArrayOflong conversionGoalIds;
     @XmlElement(name = "ConversionGoalTypes", type = String.class)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     protected Collection<ConversionGoalType> conversionGoalTypes;
 
     /**

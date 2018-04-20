@@ -1,15 +1,19 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.write;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.BulkAdGroupProductPartitionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
-import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.BulkAdGroupProductPartitionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
+import com.microsoft.bingads.v11.campaignmanagement.AdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.NegativeAdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.ProductCondition;
+import com.microsoft.bingads.v11.campaignmanagement.ProductPartition;
 
 public class WriteProductValueTest extends BulkAdGroupProductPartitionTest {
     @Parameterized.Parameter(value = 1)

@@ -1,13 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link2;
 
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkSitelink2AdExtension;
 import com.microsoft.bingads.v11.campaignmanagement.Sitelink2AdExtension;
-
-import java.util.Map;
 
 public abstract class BulkSitelink2AdExtensionTest extends BulkEntityTest<BulkSitelink2AdExtension> {
 

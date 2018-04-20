@@ -5,16 +5,16 @@ import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter13
-    extends XmlAdapter<String, Collection<AdDistribution>>
+    extends XmlAdapter<String, Collection<ProfileType>>
 {
 
 
-    public Collection<AdDistribution> unmarshal(String value) {
-        return (com.microsoft.bingads.v11.campaignmanagement.AdDistributionConverter.convertToList(value));
+    public Collection<ProfileType> unmarshal(String value) {
+        return (com.microsoft.bingads.v11.campaignmanagement.ProfileTypeConverter.convertToList(value));
     }
 
-    public String marshal(Collection<AdDistribution> value) {
-        return (com.microsoft.bingads.v11.campaignmanagement.AdDistributionConverter.convertToString(value));
+    public String marshal(Collection<ProfileType> value) {
+        return (com.microsoft.bingads.v11.campaignmanagement.ProfileTypeConverter.convertToString(value));
     }
 
 }

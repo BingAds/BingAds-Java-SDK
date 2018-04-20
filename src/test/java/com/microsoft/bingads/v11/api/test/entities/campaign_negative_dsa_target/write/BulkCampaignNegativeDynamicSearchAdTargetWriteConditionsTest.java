@@ -1,10 +1,10 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.BulkCampaignNegativeDynamicSearchAdTargetTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeDynamicSearchAdTarget;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfWebpageCondition;
-import com.microsoft.bingads.v11.campaignmanagement.Webpage;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,11 +12,11 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.BulkCampaignNegativeDynamicSearchAdTargetTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeDynamicSearchAdTarget;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfWebpageCondition;
+import com.microsoft.bingads.v11.campaignmanagement.Webpage;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignNegativeDynamicSearchAdTargetWriteConditionsTest extends BulkCampaignNegativeDynamicSearchAdTargetTest {

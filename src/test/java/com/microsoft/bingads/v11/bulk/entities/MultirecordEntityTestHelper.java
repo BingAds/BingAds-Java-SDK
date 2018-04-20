@@ -1,16 +1,18 @@
 package com.microsoft.bingads.v11.bulk.entities;
 
+import static org.easymock.EasyMock.createNiceMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.microsoft.bingads.v11.api.test.entities.DeleteAllRowPosition;
 import com.microsoft.bingads.v11.internal.bulk.BulkObject;
 import com.microsoft.bingads.v11.internal.bulk.BulkObjectReader;
 import com.microsoft.bingads.v11.internal.bulk.FormatVersion;
 import com.microsoft.bingads.v11.internal.bulk.entities.BulkAdExtensionIdentifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import static org.easymock.EasyMock.*;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
 
 public class MultirecordEntityTestHelper {
 

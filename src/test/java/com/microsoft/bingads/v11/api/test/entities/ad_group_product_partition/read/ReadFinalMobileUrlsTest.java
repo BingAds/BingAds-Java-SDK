@@ -3,23 +3,19 @@ package com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.r
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
-import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.ad_group_product_partition.BulkAdGroupProductPartitionTest;
-import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupProductPartition;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
 
 public class ReadFinalMobileUrlsTest extends BulkAdGroupProductPartitionTest{
 

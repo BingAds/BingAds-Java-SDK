@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime;
 
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaignDayTimeCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.DayTimeCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableCampaignCriterion;
-import java.util.Map;
+import com.microsoft.bingads.v11.campaignmanagement.DayTimeCriterion;
 
 public abstract class BulkCampaignDayTimeCriterionTest extends BulkEntityTest<BulkCampaignDayTimeCriterion> {
 

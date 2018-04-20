@@ -102,6 +102,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CoOpCampaigns"/>
  *     &lt;enumeration value="ResponsiveAds"/>
  *     &lt;enumeration value="ResponsiveAdLabels"/>
+ *     &lt;enumeration value="ProductAudiences"/>
+ *     &lt;enumeration value="AdGroupProductAudienceAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeProductAudienceAssociations"/>
+ *     &lt;enumeration value="AudienceNetworkInMarketAudiences"/>
+ *     &lt;enumeration value="AudienceNetworkAudiences"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -286,7 +291,17 @@ public enum DownloadEntity {
     @XmlEnumValue("ResponsiveAds")
     RESPONSIVE_ADS("ResponsiveAds"),
     @XmlEnumValue("ResponsiveAdLabels")
-    RESPONSIVE_AD_LABELS("ResponsiveAdLabels");
+    RESPONSIVE_AD_LABELS("ResponsiveAdLabels"),
+    @XmlEnumValue("ProductAudiences")
+    PRODUCT_AUDIENCES("ProductAudiences"),
+    @XmlEnumValue("AdGroupProductAudienceAssociations")
+    AD_GROUP_PRODUCT_AUDIENCE_ASSOCIATIONS("AdGroupProductAudienceAssociations"),
+    @XmlEnumValue("AdGroupNegativeProductAudienceAssociations")
+    AD_GROUP_NEGATIVE_PRODUCT_AUDIENCE_ASSOCIATIONS("AdGroupNegativeProductAudienceAssociations"),
+    @XmlEnumValue("AudienceNetworkInMarketAudiences")
+    AUDIENCE_NETWORK_IN_MARKET_AUDIENCES("AudienceNetworkInMarketAudiences"),
+    @XmlEnumValue("AudienceNetworkAudiences")
+    AUDIENCE_NETWORK_AUDIENCES("AudienceNetworkAudiences");
     private final String value;
 
     DownloadEntity(String v) {

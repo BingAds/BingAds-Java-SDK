@@ -1,5 +1,20 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.write;
 
+import static org.easymock.EasyMock.and;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.cmp;
+import static org.easymock.EasyMock.eq;
+
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+
+import org.easymock.EasyMockRunner;
+import org.easymock.LogicalOperator;
+import org.easymock.Mock;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.BulkSiteLinkAdExtensionTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkSiteLink;
 import com.microsoft.bingads.v11.bulk.entities.BulkSiteLinkAdExtension;
@@ -9,18 +24,6 @@ import com.microsoft.bingads.v11.campaignmanagement.SiteLink;
 import com.microsoft.bingads.v11.campaignmanagement.SiteLinksAdExtension;
 import com.microsoft.bingads.v11.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.v11.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import static org.easymock.EasyMock.and;
-import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.cmp;
-import static org.easymock.EasyMock.eq;
-import org.easymock.EasyMockRunner;
-import org.easymock.LogicalOperator;
-import org.easymock.Mock;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 @RunWith(EasyMockRunner.class)
 public class BulkSiteLinkAdExtensionWriteToStreamTest extends

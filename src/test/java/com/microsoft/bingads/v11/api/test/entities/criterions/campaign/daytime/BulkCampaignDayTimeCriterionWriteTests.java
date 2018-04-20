@@ -3,8 +3,8 @@ package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteBidAdjustmentTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteFromHourTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteFromMinuteTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.daytime.write.BulkCampaignDayTimeCriterionWriteIdTest;

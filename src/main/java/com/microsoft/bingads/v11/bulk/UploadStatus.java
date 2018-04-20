@@ -6,7 +6,7 @@ package com.microsoft.bingads.v11.bulk;
 public enum UploadStatus {
 
     /**
-     * The upload completed with one or more errors.
+     * The upload completed with no errors.
      */
     COMPLETED("Completed"),
     /**

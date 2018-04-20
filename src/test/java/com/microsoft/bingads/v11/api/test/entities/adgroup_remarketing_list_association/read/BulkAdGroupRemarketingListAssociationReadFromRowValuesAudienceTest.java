@@ -1,13 +1,15 @@
 package com.microsoft.bingads.v11.api.test.entities.adgroup_remarketing_list_association.read;
 
-import com.microsoft.bingads.v11.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupRemarketingListAssociation;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupRemarketingListAssociation;
 
 public class BulkAdGroupRemarketingListAssociationReadFromRowValuesAudienceTest extends BulkAdGroupRemarketingListAssociationTest {
 

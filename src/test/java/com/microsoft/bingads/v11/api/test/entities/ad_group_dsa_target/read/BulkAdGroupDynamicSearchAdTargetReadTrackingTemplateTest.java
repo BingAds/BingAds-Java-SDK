@@ -9,10 +9,10 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
-import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.BulkAdGroupDynamicSearchAdTargetTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
 
 
 public class BulkAdGroupDynamicSearchAdTargetReadTrackingTemplateTest extends BulkAdGroupDynamicSearchAdTargetTest{

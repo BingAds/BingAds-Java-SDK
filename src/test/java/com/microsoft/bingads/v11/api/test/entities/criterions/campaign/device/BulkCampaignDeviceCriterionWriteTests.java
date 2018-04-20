@@ -3,8 +3,8 @@ package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteBidAdjustmentTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteOsNamesTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write.BulkCampaignDeviceCriterionWriteParentIdTest;

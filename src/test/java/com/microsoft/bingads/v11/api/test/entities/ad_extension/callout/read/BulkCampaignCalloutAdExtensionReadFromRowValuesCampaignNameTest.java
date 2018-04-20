@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.read;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.BulkCampaignCalloutAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignCalloutAdExtension;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.callout.BulkCampaignCalloutAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignCalloutAdExtension;
 
 public class BulkCampaignCalloutAdExtensionReadFromRowValuesCampaignNameTest extends BulkCampaignCalloutAdExtensionTest {
     @Parameterized.Parameter(value = 1)

@@ -1,14 +1,15 @@
 package com.microsoft.bingads.v11.api.test.operations;
 
-import com.microsoft.bingads.internal.ServiceUtils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
 import javax.xml.ws.Response;
+
+import com.microsoft.bingads.internal.ServiceUtils;
 
 public class CompleteResponse<T> implements Response<T> {
 

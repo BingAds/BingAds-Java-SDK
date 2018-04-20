@@ -1,18 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign_product_scope;
 
+import java.util.List;
+import java.util.Map;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaignProductScope;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfProductCondition;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableCampaignCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.CampaignCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.ProductCondition;
 import com.microsoft.bingads.v11.campaignmanagement.ProductScope;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.List;
-import java.util.Map;
 
 public abstract class BulkCampaignProductScopeTest extends BulkEntityTest<BulkCampaignProductScope> {
 

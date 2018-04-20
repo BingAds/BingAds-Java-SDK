@@ -1,29 +1,31 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
-import com.googlecode.jcsv.reader.CSVReader;
-import com.microsoft.bingads.v11.bulk.BulkFileReader;
-import com.microsoft.bingads.v11.bulk.BulkFileWriter;
-import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v11.bulk.entities.BulkError;
-import com.microsoft.bingads.v11.bulk.entities.UnknownBulkEntity;
-import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.googlecode.jcsv.reader.CSVReader;
+import com.microsoft.bingads.v11.bulk.BulkFileReader;
+import com.microsoft.bingads.v11.bulk.BulkFileWriter;
+import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v11.bulk.entities.BulkError;
+import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 
 @RunWith(EasyMockRunner.class)
 public class ReadWriteEntitiesWithErrorsTest extends EasyMockSupport {

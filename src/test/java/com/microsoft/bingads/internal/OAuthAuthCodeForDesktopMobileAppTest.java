@@ -12,7 +12,6 @@ import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 
 import com.microsoft.bingads.ApiEnvironment;

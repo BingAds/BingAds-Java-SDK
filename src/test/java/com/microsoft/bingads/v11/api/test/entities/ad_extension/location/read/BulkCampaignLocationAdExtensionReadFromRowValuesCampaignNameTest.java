@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.location.read;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.location.BulkCampaignLocationAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignLocationAdExtension;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.location.BulkCampaignLocationAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignLocationAdExtension;
 
 public class BulkCampaignLocationAdExtensionReadFromRowValuesCampaignNameTest extends BulkCampaignLocationAdExtensionTest {
     @Parameterized.Parameter(value = 1)

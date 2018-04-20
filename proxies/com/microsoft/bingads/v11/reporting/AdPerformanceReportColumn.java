@@ -67,6 +67,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="TitlePart1"/>
  *     &lt;enumeration value="TitlePart2"/>
+ *     &lt;enumeration value="Headline"/>
+ *     &lt;enumeration value="LongHeadline"/>
+ *     &lt;enumeration value="BusinessName"/>
  *     &lt;enumeration value="Path1"/>
  *     &lt;enumeration value="Path2"/>
  *     &lt;enumeration value="AdLabels"/>
@@ -185,6 +188,12 @@ public enum AdPerformanceReportColumn {
     TITLE_PART_1("TitlePart1"),
     @XmlEnumValue("TitlePart2")
     TITLE_PART_2("TitlePart2"),
+    @XmlEnumValue("Headline")
+    HEADLINE("Headline"),
+    @XmlEnumValue("LongHeadline")
+    LONG_HEADLINE("LongHeadline"),
+    @XmlEnumValue("BusinessName")
+    BUSINESS_NAME("BusinessName"),
     @XmlEnumValue("Path1")
     PATH_1("Path1"),
     @XmlEnumValue("Path2")

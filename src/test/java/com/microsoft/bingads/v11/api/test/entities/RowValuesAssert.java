@@ -1,8 +1,10 @@
 package com.microsoft.bingads.v11.api.test.entities;
 
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
-import java.util.Map;
 import static org.junit.Assert.assertEquals;
+
+import java.util.Map;
+
+import com.microsoft.bingads.v11.internal.bulk.RowValues;
 
 public class RowValuesAssert {
 

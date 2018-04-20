@@ -1,17 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location_intent.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location_intent.BulkAdGroupLocationIntentCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupLocationIntentCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.IntentOption;
-import com.microsoft.bingads.v11.campaignmanagement.LocationIntentCriterion;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location_intent.BulkAdGroupLocationIntentCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupLocationIntentCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.IntentOption;
+import com.microsoft.bingads.v11.campaignmanagement.LocationIntentCriterion;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupLocationIntentCriterionWriteTargetTest extends BulkAdGroupLocationIntentCriterionTest {

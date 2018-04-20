@@ -1,5 +1,7 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.write;
 
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,8 +12,6 @@ import com.microsoft.bingads.v11.bulk.entities.Status;
 import com.microsoft.bingads.v11.campaignmanagement.NegativeCampaignCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.Webpage;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageParameter;
-
-import java.util.ArrayList;
 
 public class BulkCampaignNegativeDynamicSearchAdTargetWriteDeleteStatusTest {
 

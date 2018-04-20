@@ -1,17 +1,18 @@
 package com.microsoft.bingads.v11.api.test.entities.remarketing_list.write;
 
-import com.microsoft.bingads.v11.api.test.entities.remarketing_list.BulkRemarketingListTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkRemarketingList;
-import com.microsoft.bingads.v11.campaignmanagement.RemarketingRule;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.remarketing_list.BulkRemarketingListTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkRemarketingList;
+import com.microsoft.bingads.v11.campaignmanagement.RemarketingRule;
 
 @RunWith(Parameterized.class)
 public class BulkRemarketingListWriteToRowValuesRemarketingRuleTest extends BulkRemarketingListTest {

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SeeMore"/>
  *     &lt;enumeration value="ShopNow"/>
  *     &lt;enumeration value="SignUp"/>
- *     &lt;enumeration value="Subscrib"/>
+ *     &lt;enumeration value="Subscribe"/>
  *     &lt;enumeration value="Unknown"/>
  *     &lt;enumeration value="VisitSite"/>
  *   &lt;/restriction>
@@ -80,8 +80,8 @@ public enum CallToAction {
     SHOP_NOW("ShopNow"),
     @XmlEnumValue("SignUp")
     SIGN_UP("SignUp"),
-    @XmlEnumValue("Subscrib")
-    SUBSCRIB("Subscrib"),
+    @XmlEnumValue("Subscribe")
+    SUBSCRIBE("Subscribe"),
     @XmlEnumValue("Unknown")
     UNKNOWN("Unknown"),
     @XmlEnumValue("VisitSite")

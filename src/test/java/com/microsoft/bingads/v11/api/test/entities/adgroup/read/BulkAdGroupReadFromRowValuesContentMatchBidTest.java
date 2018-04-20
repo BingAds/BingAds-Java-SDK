@@ -1,18 +1,19 @@
 package com.microsoft.bingads.v11.api.test.entities.adgroup.read;
 
-import com.microsoft.bingads.v11.api.test.entities.BidComparer;
-import com.microsoft.bingads.v11.api.test.entities.adgroup.BulkAdGroupTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v11.campaignmanagement.Bid;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.BidComparer;
+import com.microsoft.bingads.v11.api.test.entities.adgroup.BulkAdGroupTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.v11.campaignmanagement.Bid;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupReadFromRowValuesContentMatchBidTest extends BulkAdGroupTest {

@@ -1,15 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.write;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.BulkCampaignDeviceCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignDeviceCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.BulkCampaignDeviceCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignDeviceCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.BidMultiplier;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableCampaignCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.DeviceCriterion;
 
 public class BulkCampaignDeviceCriterionWriteBidAdjustmentTest extends BulkCampaignDeviceCriterionTest {
     @Parameterized.Parameter(value = 1)

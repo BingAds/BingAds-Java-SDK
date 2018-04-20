@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="CriterionTypeGroup" type="{https://bingads.microsoft.com/CampaignManagement/v11}CriterionTypeGroup" minOccurs="0"/>
- *         &lt;element name="TargetAll" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="TargetAndBid" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,15 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TargetSettingDetail", propOrder = {
     "criterionTypeGroup",
-    "targetAll"
+    "targetAndBid"
 })
 public class TargetSettingDetail {
 
     @XmlElement(name = "CriterionTypeGroup")
     @XmlSchemaType(name = "string")
     protected CriterionTypeGroup criterionTypeGroup;
-    @XmlElement(name = "TargetAll")
-    protected Boolean targetAll;
+    @XmlElement(name = "TargetAndBid")
+    protected Boolean targetAndBid;
 
     /**
      * Gets the value of the criterionTypeGroup property.
@@ -66,27 +66,27 @@ public class TargetSettingDetail {
     }
 
     /**
-     * Gets the value of the targetAll property.
+     * Gets the value of the targetAndBid property.
      * 
      * @return
      *     possible object is
      *     {@link Boolean }
      *     
      */
-    public Boolean getTargetAll() {
-        return targetAll;
+    public Boolean getTargetAndBid() {
+        return targetAndBid;
     }
 
     /**
-     * Sets the value of the targetAll property.
+     * Sets the value of the targetAndBid property.
      * 
      * @param value
      *     allowed object is
      *     {@link Boolean }
      *     
      */
-    public void setTargetAll(Boolean value) {
-        this.targetAll = value;
+    public void setTargetAndBid(Boolean value) {
+        this.targetAndBid = value;
     }
 
 }

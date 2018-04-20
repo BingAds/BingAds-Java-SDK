@@ -1,15 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_keywords.adgroup_negative_keyword.read;
 
-import com.microsoft.bingads.v11.api.test.entities.negative_keywords.adgroup_negative_keyword.BulkAdGroupNegativeKeywordTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeKeyword;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.negative_keywords.adgroup_negative_keyword.BulkAdGroupNegativeKeywordTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeKeyword;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupNegativeKeywordReadFromRowValuesIdTest extends BulkAdGroupNegativeKeywordTest {

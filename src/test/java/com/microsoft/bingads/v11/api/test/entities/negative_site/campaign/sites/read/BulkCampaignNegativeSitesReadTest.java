@@ -1,5 +1,16 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_site.campaign.sites.read;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.easymock.EasyMockRunner;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import com.microsoft.bingads.v11.api.test.entities.negative_site.campaign.sites.BulkCampaignNegativeSitesTest;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.ResultFileType;
@@ -12,14 +23,6 @@ import com.microsoft.bingads.v11.internal.bulk.BulkObject;
 import com.microsoft.bingads.v11.internal.bulk.BulkObjectReader;
 import com.microsoft.bingads.v11.internal.bulk.TestFactory;
 import com.microsoft.bingads.v11.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
-import java.util.ArrayList;
-import java.util.List;
-import org.easymock.EasyMockRunner;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 @RunWith(EasyMockRunner.class)
 public class BulkCampaignNegativeSitesReadTest extends BulkCampaignNegativeSitesTest {

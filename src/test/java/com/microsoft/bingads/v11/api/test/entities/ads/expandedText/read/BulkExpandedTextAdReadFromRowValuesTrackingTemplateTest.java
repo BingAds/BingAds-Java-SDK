@@ -3,7 +3,6 @@ package com.microsoft.bingads.v11.api.test.entities.ads.expandedText.read;
 import java.util.Arrays;
 import java.util.Collection;
 
-
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;

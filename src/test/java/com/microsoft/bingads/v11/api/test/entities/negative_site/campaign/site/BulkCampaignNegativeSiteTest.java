@@ -1,11 +1,12 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_site.campaign.site;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeSite;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeSite;
 
 public abstract class BulkCampaignNegativeSiteTest extends BulkEntityTest<BulkCampaignNegativeSite> {
 

@@ -3,16 +3,16 @@ package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadBidAdjustmentTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadLatitudeTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadLongitudeTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadParentIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadRadiusTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadRadiusUnitTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadStatusTest;
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadNameTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

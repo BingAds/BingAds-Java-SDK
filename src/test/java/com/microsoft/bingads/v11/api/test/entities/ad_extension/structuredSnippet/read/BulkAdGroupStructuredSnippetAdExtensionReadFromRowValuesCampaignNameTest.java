@@ -1,14 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.structuredSnippet.read;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.structuredSnippet.BulkAdGroupStructuredSnippetAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupStructuredSnippetAdExtension;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.structuredSnippet.BulkAdGroupStructuredSnippetAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupStructuredSnippetAdExtension;
 
 public class BulkAdGroupStructuredSnippetAdExtensionReadFromRowValuesCampaignNameTest extends BulkAdGroupStructuredSnippetAdExtensionTest {
     @Parameterized.Parameter(value = 1)

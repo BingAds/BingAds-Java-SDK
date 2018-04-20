@@ -2,6 +2,7 @@ package com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
 import com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.read.BulkAdGroupNegativeDynamicSearchAdTargetReadAdGroupNameTest;
 import com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.read.BulkAdGroupNegativeDynamicSearchAdTargetReadCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.read.BulkAdGroupNegativeDynamicSearchAdTargetReadConditionsTest;

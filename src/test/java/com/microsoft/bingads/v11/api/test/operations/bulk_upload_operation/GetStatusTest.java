@@ -1,21 +1,24 @@
 package com.microsoft.bingads.v11.api.test.operations.bulk_upload_operation;
 
-import com.microsoft.bingads.v11.api.test.operations.FakeBulkService;
-import com.microsoft.bingads.v11.bulk.BulkOperationStatus;
-import com.microsoft.bingads.v11.bulk.BulkUploadOperation;
-import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusResponse;
-import com.microsoft.bingads.v11.bulk.UploadStatus;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.v11.api.test.operations.FakeBulkService;
+import com.microsoft.bingads.v11.bulk.BulkOperationStatus;
+import com.microsoft.bingads.v11.bulk.BulkUploadOperation;
+import com.microsoft.bingads.v11.bulk.GetBulkUploadStatusResponse;
+import com.microsoft.bingads.v11.bulk.UploadStatus;
 
 @RunWith(Parameterized.class)
 public class GetStatusTest extends BulkUploadOperationTest {

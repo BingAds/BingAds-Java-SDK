@@ -1,7 +1,9 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.OAuthTokens;
+import static org.easymock.EasyMock.expect;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ProtocolVersion;
@@ -17,15 +20,14 @@ import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.message.BasicStatusLine;
-import static org.easymock.EasyMock.expect;
-
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.OAuthTokens;
 
 @RunWith(EasyMockRunner.class)
 public class UriOAuthServiceTest extends EasyMockSupport {

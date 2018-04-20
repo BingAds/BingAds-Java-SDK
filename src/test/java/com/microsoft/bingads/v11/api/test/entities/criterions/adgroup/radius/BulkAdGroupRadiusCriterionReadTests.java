@@ -9,11 +9,11 @@ import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.rea
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadLatitudeTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadLongitudeTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadParentIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadRadiusTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadRadiusUnitTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadStatusTest;
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.read.BulkAdGroupRadiusCriterionReadNameTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

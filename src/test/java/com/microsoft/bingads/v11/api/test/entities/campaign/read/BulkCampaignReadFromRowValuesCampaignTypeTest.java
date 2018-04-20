@@ -1,18 +1,18 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign.read;
 
-import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
-import com.microsoft.bingads.v11.api.test.entities.campaign.BulkCampaignTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
-import com.microsoft.bingads.v11.campaignmanagement.CampaignType;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
+import com.microsoft.bingads.v11.api.test.entities.campaign.BulkCampaignTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
+import com.microsoft.bingads.v11.campaignmanagement.CampaignType;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignReadFromRowValuesCampaignTypeTest extends BulkCampaignTest {

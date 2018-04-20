@@ -1,17 +1,18 @@
 package com.microsoft.bingads.v11.api.test.entities.label_association.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.label_association.BulkLabelAssociationTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignLabel;
-import com.microsoft.bingads.v11.bulk.entities.Status;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.label_association.BulkLabelAssociationTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignLabel;
+import com.microsoft.bingads.v11.bulk.entities.Status;
 
 @RunWith(Parameterized.class)
 public class BulkLabelAssociationWriteToRowValueStatusTest extends BulkLabelAssociationTest {

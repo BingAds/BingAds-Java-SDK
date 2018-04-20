@@ -1,9 +1,10 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
+import java.io.FileNotFoundException;
+
 import com.googlecode.jcsv.reader.CSVReader;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.ResultFileType;
-import java.io.FileNotFoundException;
 
 public class TestFactory {
 

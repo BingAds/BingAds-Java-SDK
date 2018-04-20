@@ -21,7 +21,8 @@ public enum AdGroupCriterionType {
     REMARKETING_LIST("RemarketingList"),
     COMPANY_NAME("CompanyName"),
     JOB_FUNCTION("JobFunction"),
-    INDUSTRY("Industry");
+    INDUSTRY("Industry"),
+    PRODUCT_AUDIENCE("ProductAudience");
         
     private final String value;
 

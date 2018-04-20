@@ -1,15 +1,15 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.negative_location.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.negative_location.BulkCampaignNegativeLocationCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeLocationCriterion;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.negative_location.BulkCampaignNegativeLocationCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeLocationCriterion;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignNegativeLocationCriterionWriteCampaignNameTest extends BulkCampaignNegativeLocationCriterionTest {

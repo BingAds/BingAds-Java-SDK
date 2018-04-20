@@ -5,7 +5,8 @@ package com.microsoft.bingads.v11.campaignmanagement;
  */
 public enum AudienceAdditionalField {
 
-    SEARCH_SIZE("SearchSize");
+    SEARCH_SIZE("SearchSize"),
+    AUDIENCE_NETWORK_SIZE("AudienceNetworkSize");
         
     private final String value;
 

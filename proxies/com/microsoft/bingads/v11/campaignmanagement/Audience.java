@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="AudienceNetworkSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="ParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v11}EntityScope" minOccurs="0"/>
  *         &lt;element name="SearchSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="SupportedCampaignTypes" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -40,6 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Audience", propOrder = {
+    "audienceNetworkSize",
     "description",
     "forwardCompatibilityMap",
     "id",
@@ -48,15 +51,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "parentId",
     "scope",
     "searchSize",
+    "supportedCampaignTypes",
     "type"
 })
 @XmlSeeAlso({
+    ProductAudience.class,
     RemarketingList.class,
     CustomAudience.class,
     InMarketAudience.class
 })
 public class Audience {
 
+    @XmlElement(name = "AudienceNetworkSize", nillable = true)
+    protected Long audienceNetworkSize;
     @XmlElement(name = "Description", nillable = true)
     protected String description;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
@@ -74,9 +81,35 @@ public class Audience {
     protected EntityScope scope;
     @XmlElement(name = "SearchSize", nillable = true)
     protected Long searchSize;
+    @XmlElement(name = "SupportedCampaignTypes", nillable = true)
+    protected ArrayOfstring supportedCampaignTypes;
     @XmlElement(name = "Type", type = String.class)
     @XmlJavaTypeAdapter(Adapter8 .class)
     protected Collection<AudienceType> type;
+
+    /**
+     * Gets the value of the audienceNetworkSize property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAudienceNetworkSize() {
+        return audienceNetworkSize;
+    }
+
+    /**
+     * Sets the value of the audienceNetworkSize property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAudienceNetworkSize(Long value) {
+        this.audienceNetworkSize = value;
+    }
 
     /**
      * Gets the value of the description property.
@@ -268,6 +301,30 @@ public class Audience {
      */
     public void setSearchSize(Long value) {
         this.searchSize = value;
+    }
+
+    /**
+     * Gets the value of the supportedCampaignTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getSupportedCampaignTypes() {
+        return supportedCampaignTypes;
+    }
+
+    /**
+     * Sets the value of the supportedCampaignTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setSupportedCampaignTypes(ArrayOfstring value) {
+        this.supportedCampaignTypes = value;
     }
 
     /**

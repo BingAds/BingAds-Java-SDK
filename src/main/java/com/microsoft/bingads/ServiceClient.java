@@ -1,6 +1,5 @@
 package com.microsoft.bingads;
 
-import com.ctc.wstx.util.StringUtil;
 import com.microsoft.bingads.internal.HeaderHandler;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
@@ -8,10 +7,6 @@ import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Map;
 import java.util.HashMap;

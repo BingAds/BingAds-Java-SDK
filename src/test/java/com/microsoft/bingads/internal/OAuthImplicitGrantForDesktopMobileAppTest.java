@@ -1,15 +1,18 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
-import com.microsoft.bingads.OAuthTokens;
-import java.net.MalformedURLException;
-import java.net.URL;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
+import com.microsoft.bingads.OAuthTokens;
 
 @RunWith(JUnit4.class)
 public class OAuthImplicitGrantForDesktopMobileAppTest {

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
+  <bindings schemaLocation="https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v12/AdInsightService.svc?xsd=xsd2">
+    <bindings node="//xs:simpleType[@name='BidOpportunityType']">
+      <javaType name="java.util.Collection&lt;BidOpportunityType&gt;" parseMethod="com.microsoft.bingads.v12.adinsight.BidOpportunityTypeConverter.convertToList" printMethod="com.microsoft.bingads.v12.adinsight.BidOpportunityTypeConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='KeywordOpportunityType']">
+      <javaType name="java.util.Collection&lt;KeywordOpportunityType&gt;" parseMethod="com.microsoft.bingads.v12.adinsight.KeywordOpportunityTypeConverter.convertToList" printMethod="com.microsoft.bingads.v12.adinsight.KeywordOpportunityTypeConverter.convertToString" />
+    </bindings>
+  </bindings>
+</bindings>

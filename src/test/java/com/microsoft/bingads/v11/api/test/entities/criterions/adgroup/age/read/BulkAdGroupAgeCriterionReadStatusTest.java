@@ -1,9 +1,7 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.read;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.BulkAdGroupAgeCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAgeCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.AdGroupCriterionStatus;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +9,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.BulkAdGroupAgeCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAgeCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.AdGroupCriterionStatus;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupAgeCriterionReadStatusTest extends BulkAdGroupAgeCriterionTest {

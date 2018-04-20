@@ -1,21 +1,20 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.app.write;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.app.BulkAppAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAppAdExtension;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfDayTime;
-import com.microsoft.bingads.v11.campaignmanagement.Date;
-import com.microsoft.bingads.v11.campaignmanagement.Day;
-import com.microsoft.bingads.v11.campaignmanagement.DayTime;
-import com.microsoft.bingads.v11.campaignmanagement.Minute;
-import com.microsoft.bingads.v11.campaignmanagement.Schedule;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.app.BulkAppAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAppAdExtension;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfDayTime;
+import com.microsoft.bingads.v11.campaignmanagement.Day;
+import com.microsoft.bingads.v11.campaignmanagement.DayTime;
+import com.microsoft.bingads.v11.campaignmanagement.Minute;
+import com.microsoft.bingads.v11.campaignmanagement.Schedule;
 
 public class BulkAppAdExtensionWriteFromRowValuesDayTimeRangesTest extends BulkAppAdExtensionTest {
 

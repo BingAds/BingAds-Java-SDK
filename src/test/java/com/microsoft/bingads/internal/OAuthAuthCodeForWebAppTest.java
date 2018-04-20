@@ -1,19 +1,22 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.OAuthTest;
-import com.microsoft.bingads.OAuthTokens;
-import com.microsoft.bingads.OAuthWebAuthCodeGrant;
-import java.net.MalformedURLException;
-import java.net.URL;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.microsoft.bingads.OAuthTest;
+import com.microsoft.bingads.OAuthTokens;
+import com.microsoft.bingads.OAuthWebAuthCodeGrant;
 
 @RunWith(EasyMockRunner.class)
 public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {

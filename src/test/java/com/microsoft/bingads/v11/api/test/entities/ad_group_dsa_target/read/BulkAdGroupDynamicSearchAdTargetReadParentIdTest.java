@@ -1,16 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.read;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.BulkAdGroupDynamicSearchAdTargetTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.BulkAdGroupDynamicSearchAdTargetTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupDynamicSearchAdTargetReadParentIdTest extends BulkAdGroupDynamicSearchAdTargetTest {

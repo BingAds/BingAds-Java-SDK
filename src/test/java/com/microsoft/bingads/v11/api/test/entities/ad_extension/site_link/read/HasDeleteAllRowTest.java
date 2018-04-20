@@ -1,5 +1,20 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.read;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
 import com.microsoft.bingads.v11.api.test.entities.DeleteAllRowPosition;
 import com.microsoft.bingads.v11.api.test.entities.ad_extension.site_link.BulkSiteLinkAdExtensionTest;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
@@ -12,18 +27,6 @@ import com.microsoft.bingads.v11.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v11.internal.bulk.BulkObjectReader;
 import com.microsoft.bingads.v11.internal.bulk.TestFactory;
 import com.microsoft.bingads.v11.internal.bulk.entities.SiteLinkAdExtensionIdentifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class HasDeleteAllRowTest extends BulkSiteLinkAdExtensionTest {

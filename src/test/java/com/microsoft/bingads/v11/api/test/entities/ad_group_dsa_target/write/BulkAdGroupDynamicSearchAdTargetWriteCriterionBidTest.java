@@ -1,15 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.write;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.BulkAdGroupDynamicSearchAdTargetTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
-import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.ad_group_dsa_target.BulkAdGroupDynamicSearchAdTargetTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupDynamicSearchAdTarget;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v11.campaignmanagement.Webpage;
 
 public class BulkAdGroupDynamicSearchAdTargetWriteCriterionBidTest extends BulkAdGroupDynamicSearchAdTargetTest {
     @Parameterized.Parameter(value = 1)

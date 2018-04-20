@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
+  <bindings schemaLocation="https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v12/CustomerBillingService.svc?xsd=xsd0">
+    <bindings node="//xs:element[@name='ApiBatchFault']">
+      <factoryMethod name="ApiBatchFaultElement"/>
+    </bindings>
+    <bindings node="//xs:element[@name='ApiFault']">
+      <factoryMethod name="ApiFaultElement"/>
+    </bindings>
+  </bindings>
+  <bindings schemaLocation="https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v12/CustomerBillingService.svc?xsd=xsd5">
+
+  </bindings>
+</bindings>

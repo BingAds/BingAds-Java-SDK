@@ -1,5 +1,11 @@
 package com.microsoft.bingads.v11.api.test.entities.remarketing_list;
 
+import java.math.BigDecimal;
+import java.util.Map;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.api.test.entities.EqualityComparerWithDescription;
 import com.microsoft.bingads.v11.bulk.entities.BulkRemarketingList;
@@ -14,12 +20,6 @@ import com.microsoft.bingads.v11.campaignmanagement.RemarketingList;
 import com.microsoft.bingads.v11.campaignmanagement.RuleItemGroup;
 import com.microsoft.bingads.v11.campaignmanagement.StringOperator;
 import com.microsoft.bingads.v11.campaignmanagement.StringRuleItem;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.math.BigDecimal;
-import java.util.Map;
 
 public abstract class BulkRemarketingListTest extends BulkEntityTest<BulkRemarketingList> {
 

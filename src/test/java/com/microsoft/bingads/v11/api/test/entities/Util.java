@@ -1,5 +1,11 @@
 package com.microsoft.bingads.v11.api.test.entities;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.junit.Assert;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -8,11 +14,6 @@ import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.bulk.ResultFileType;
 import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
-import org.junit.Assert;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Util {
 

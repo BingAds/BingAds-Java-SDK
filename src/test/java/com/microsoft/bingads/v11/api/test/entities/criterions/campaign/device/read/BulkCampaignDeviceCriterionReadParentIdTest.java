@@ -1,16 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.read;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.BulkCampaignDeviceCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignDeviceCriterion;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.device.BulkCampaignDeviceCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignDeviceCriterion;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignDeviceCriterionReadParentIdTest extends BulkCampaignDeviceCriterionTest {

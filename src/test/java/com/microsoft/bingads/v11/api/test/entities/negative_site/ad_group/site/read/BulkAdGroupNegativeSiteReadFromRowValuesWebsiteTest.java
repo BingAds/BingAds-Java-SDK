@@ -1,13 +1,15 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.site.read;
 
-import com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.site.BulkAdGroupNegativeSiteTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeSite;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.site.BulkAdGroupNegativeSiteTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeSite;
 
 public class BulkAdGroupNegativeSiteReadFromRowValuesWebsiteTest extends BulkAdGroupNegativeSiteTest {
 

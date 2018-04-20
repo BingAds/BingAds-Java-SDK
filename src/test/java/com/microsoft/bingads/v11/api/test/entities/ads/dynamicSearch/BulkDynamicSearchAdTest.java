@@ -1,13 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.ads.dynamicSearch;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkDynamicSearchAd;
-import com.microsoft.bingads.v11.campaignmanagement.DynamicSearchAd;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkDynamicSearchAd;
+import com.microsoft.bingads.v11.campaignmanagement.DynamicSearchAd;
 
 public abstract class BulkDynamicSearchAdTest extends BulkEntityTest<BulkDynamicSearchAd> {
 

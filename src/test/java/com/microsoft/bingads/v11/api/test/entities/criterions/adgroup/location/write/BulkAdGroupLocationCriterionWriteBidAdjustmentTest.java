@@ -1,15 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location.write;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location.BulkAdGroupLocationCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupLocationCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location.BulkAdGroupLocationCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupLocationCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.BidMultiplier;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.LocationCriterion;
 
 public class BulkAdGroupLocationCriterionWriteBidAdjustmentTest extends BulkAdGroupLocationCriterionTest {
     @Parameterized.Parameter(value = 1)

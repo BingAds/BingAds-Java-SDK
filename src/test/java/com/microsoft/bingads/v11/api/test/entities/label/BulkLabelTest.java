@@ -1,15 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.label;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkLabel;
-import com.microsoft.bingads.v11.bulk.entities.Status;
-import com.microsoft.bingads.v11.campaignmanagement.AdGroupStatus;
-import com.microsoft.bingads.v11.campaignmanagement.Label;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkLabel;
+import com.microsoft.bingads.v11.campaignmanagement.Label;
 
 public abstract class BulkLabelTest extends BulkEntityTest<BulkLabel> {
 

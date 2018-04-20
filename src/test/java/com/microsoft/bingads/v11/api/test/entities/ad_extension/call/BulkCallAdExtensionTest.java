@@ -1,13 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.call;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCallAdExtension;
-import com.microsoft.bingads.v11.campaignmanagement.CallAdExtension;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCallAdExtension;
+import com.microsoft.bingads.v11.campaignmanagement.CallAdExtension;
 
 public abstract class BulkCallAdExtensionTest extends BulkEntityTest<BulkCallAdExtension> {
 

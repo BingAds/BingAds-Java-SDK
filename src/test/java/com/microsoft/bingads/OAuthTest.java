@@ -1,8 +1,9 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.OAuthService;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import com.microsoft.bingads.internal.OAuthService;
 
 public class OAuthTest {
 

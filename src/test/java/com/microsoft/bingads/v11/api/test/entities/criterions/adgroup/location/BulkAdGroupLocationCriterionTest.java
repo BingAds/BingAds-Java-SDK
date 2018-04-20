@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.location;
 
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupLocationCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.LocationCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
-import java.util.Map;
+import com.microsoft.bingads.v11.campaignmanagement.LocationCriterion;
 
 public abstract class BulkAdGroupLocationCriterionTest extends BulkEntityTest<BulkAdGroupLocationCriterion> {
 

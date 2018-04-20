@@ -1,19 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.keyword.write;
 
-import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
 
 @RunWith(Parameterized.class)
 public class BulkKeywordWriteToRowValuesTrackingTemplateTest extends BulkKeywordTest {

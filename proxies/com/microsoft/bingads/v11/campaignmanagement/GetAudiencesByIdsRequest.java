@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AudienceIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceType" minOccurs="0"/>
  *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v11}AudienceAdditionalField" minOccurs="0"/>
+ *         &lt;element name="ReturnSupportedCampaignTypes" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "audienceIds",
     "type",
-    "returnAdditionalFields"
+    "returnAdditionalFields",
+    "returnSupportedCampaignTypes"
 })
 @XmlRootElement(name = "GetAudiencesByIdsRequest")
 public class GetAudiencesByIdsRequest {
@@ -48,6 +50,8 @@ public class GetAudiencesByIdsRequest {
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<AudienceAdditionalField> returnAdditionalFields;
+    @XmlElement(name = "ReturnSupportedCampaignTypes", nillable = true)
+    protected Boolean returnSupportedCampaignTypes;
 
     /**
      * Gets the value of the audienceIds property.
@@ -119,6 +123,30 @@ public class GetAudiencesByIdsRequest {
      */
     public void setReturnAdditionalFields(Collection<AudienceAdditionalField> value) {
         this.returnAdditionalFields = value;
+    }
+
+    /**
+     * Gets the value of the returnSupportedCampaignTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnSupportedCampaignTypes() {
+        return returnSupportedCampaignTypes;
+    }
+
+    /**
+     * Sets the value of the returnSupportedCampaignTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnSupportedCampaignTypes(Boolean value) {
+        this.returnSupportedCampaignTypes = value;
     }
 
 }

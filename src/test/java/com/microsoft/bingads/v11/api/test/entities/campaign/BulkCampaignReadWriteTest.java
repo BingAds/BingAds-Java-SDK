@@ -1,9 +1,10 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign;
 
+import org.junit.Test;
+
 import com.microsoft.bingads.v11.api.test.entities.PerformanceDataTestHelper;
 import com.microsoft.bingads.v11.api.test.entities.QualityScoreDataTestHelper;
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
-import org.junit.Test;
 
 public class BulkCampaignReadWriteTest {
 

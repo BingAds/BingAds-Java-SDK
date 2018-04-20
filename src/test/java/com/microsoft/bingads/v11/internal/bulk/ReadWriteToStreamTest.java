@@ -1,5 +1,15 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+import org.junit.Test;
+
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
@@ -7,15 +17,6 @@ import com.microsoft.bingads.v11.bulk.ResultFileType;
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
 import com.microsoft.bingads.v11.campaignmanagement.Campaign;
-import org.junit.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class ReadWriteToStreamTest {
 

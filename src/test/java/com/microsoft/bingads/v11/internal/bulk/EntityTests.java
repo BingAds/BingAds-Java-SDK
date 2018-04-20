@@ -1,5 +1,9 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
 import com.microsoft.bingads.v11.api.test.entities.account.BulkAccountTests;
 import com.microsoft.bingads.v11.api.test.entities.ad_extension.call.BulkCallAdExtensionTests;
 import com.microsoft.bingads.v11.api.test.entities.ad_extension.image.BulkImageAdExtensionTests;
@@ -22,9 +26,6 @@ import com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.site.B
 import com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.sites.BulkAdGroupNegativeSitesTests;
 import com.microsoft.bingads.v11.api.test.entities.negative_site.campaign.site.BulkCampaignNegativeSiteTests;
 import com.microsoft.bingads.v11.api.test.entities.unknown.UnknownBulkEntityTests;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({

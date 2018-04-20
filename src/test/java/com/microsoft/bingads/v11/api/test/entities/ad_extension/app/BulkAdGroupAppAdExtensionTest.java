@@ -1,12 +1,12 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.app;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAppAdExtension;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAppAdExtension;
 
 public abstract class BulkAdGroupAppAdExtensionTest extends BulkEntityTest<BulkAdGroupAppAdExtension> {
     @Override

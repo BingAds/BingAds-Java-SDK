@@ -1,5 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.read;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Test;
+import org.junit.runners.Parameterized;
+
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ArrayOfWebpageConditionComparer;
@@ -7,14 +15,6 @@ import com.microsoft.bingads.v11.api.test.entities.campaign_negative_dsa_target.
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeDynamicSearchAdTarget;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfWebpageCondition;
 import com.microsoft.bingads.v11.campaignmanagement.Webpage;
-
-import org.junit.Test;
-import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BulkCampaignNegativeDynamicSearchAdTargetReadConditionsTest extends BulkCampaignNegativeDynamicSearchAdTargetTest {
     @Parameterized.Parameter(value = 1)

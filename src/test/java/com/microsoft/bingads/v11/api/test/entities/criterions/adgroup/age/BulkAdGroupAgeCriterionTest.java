@@ -1,5 +1,7 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age;
 
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
@@ -7,7 +9,6 @@ import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAgeCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.AgeCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
-import java.util.Map;
 
 public abstract class BulkAdGroupAgeCriterionTest extends BulkEntityTest<BulkAdGroupAgeCriterion> {
 

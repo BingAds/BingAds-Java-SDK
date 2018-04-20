@@ -7,7 +7,8 @@ public enum AudienceType {
 
     REMARKETING_LIST("RemarketingList"),
     CUSTOM("Custom"),
-    IN_MARKET("InMarket");
+    IN_MARKET("InMarket"),
+    PRODUCT("Product");
         
     private final String value;
 

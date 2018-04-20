@@ -9,15 +9,14 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.ads.expandedText.BulkExpandedTextAdTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkExpandedTextAd;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v11.campaignmanagement.CustomParameter;
 import com.microsoft.bingads.v11.campaignmanagement.CustomParameters;
-
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 
 public class BulkExpandedTextAdReadFromRowValuesUrlCustomParametersTest extends BulkExpandedTextAdTest{

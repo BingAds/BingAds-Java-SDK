@@ -1,15 +1,17 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.write;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.BulkAdGroupAgeCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAgeCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.*;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.age.BulkAdGroupAgeCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAgeCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.AgeCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.BidMultiplier;
+import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
 
 public class BulkAdGroupAgeCriterionWriteBidAdjustmentTest extends BulkAdGroupAgeCriterionTest {
     @Parameterized.Parameter(value = 1)

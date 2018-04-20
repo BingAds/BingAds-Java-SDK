@@ -1,13 +1,13 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_keywords.campaign_negative_keyword_list;
 
-import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeKeywordList;
-import com.microsoft.bingads.v11.campaignmanagement.SharedEntityAssociation;
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-
-import java.util.Map;
+import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaignNegativeKeywordList;
+import com.microsoft.bingads.v11.campaignmanagement.SharedEntityAssociation;
 
 public abstract class BulkCampaignNegativeKeywordListTest extends BulkEntityTest<BulkCampaignNegativeKeywordList> {
 

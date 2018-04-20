@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.gender;
 
+import java.util.Map;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupGenderCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.GenderCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableAdGroupCriterion;
-import java.util.Map;
+import com.microsoft.bingads.v11.campaignmanagement.GenderCriterion;
 
 public abstract class BulkAdGroupGenderCriterionTest extends BulkEntityTest<BulkAdGroupGenderCriterion> {
 

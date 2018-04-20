@@ -1,18 +1,18 @@
 package com.microsoft.bingads.v11.api.test.entities.campaign.write;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
+import org.junit.Test;
+import org.junit.runners.Parameterized;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v11.api.test.entities.campaign.BulkCampaignTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v11.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v11.campaignmanagement.ShoppingSetting;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-
-import org.junit.Test;
-import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 public class BulkCampaignWriteToRowValuesPriorityShoppingSettingTest extends BulkCampaignTest {
     @Parameterized.Parameter(value = 1)

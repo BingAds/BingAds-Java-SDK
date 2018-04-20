@@ -7,12 +7,12 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.ads.appInstall.BulkAppInstallAdTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkAppInstallAd;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class BulkAppInstallAdReadFromRowValuesFinalUrlsTest extends BulkAppInstallAdTest{
 

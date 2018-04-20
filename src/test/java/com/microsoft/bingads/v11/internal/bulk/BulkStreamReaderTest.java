@@ -1,15 +1,16 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
-import com.microsoft.bingads.v11.internal.bulk.FormatVersion;
-import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 
 @RunWith(EasyMockRunner.class)
 public class BulkStreamReaderTest extends EasyMockSupport {

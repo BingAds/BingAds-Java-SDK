@@ -1,16 +1,16 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.BulkAdGroupNegativeDynamicSearchAdTargetTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeDynamicSearchAdTarget;
-import com.microsoft.bingads.v11.campaignmanagement.Webpage;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.ad_group_negative_dsa_target.BulkAdGroupNegativeDynamicSearchAdTargetTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeDynamicSearchAdTarget;
+import com.microsoft.bingads.v11.campaignmanagement.Webpage;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupNegativeDynamicSearchAdTargetWriteCriterionNameTest extends BulkAdGroupNegativeDynamicSearchAdTargetTest {

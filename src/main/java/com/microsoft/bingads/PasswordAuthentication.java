@@ -1,10 +1,6 @@
 package com.microsoft.bingads;
 
 import com.microsoft.bingads.internal.HttpHeaders;
-import java.util.List;
-import javax.xml.bind.JAXBException;
-import javax.xml.namespace.QName;
-import org.apache.http.HttpRequest;
 
 /**
  * Represents a legacy Bing Ads authentication method using user name and password.

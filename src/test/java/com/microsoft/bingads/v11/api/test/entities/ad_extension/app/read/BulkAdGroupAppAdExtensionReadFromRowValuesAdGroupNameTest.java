@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.ad_extension.app.read;
 
-import com.microsoft.bingads.v11.api.test.entities.ad_extension.app.BulkAdGroupAppAdExtensionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAppAdExtension;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v11.api.test.entities.ad_extension.app.BulkAdGroupAppAdExtensionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupAppAdExtension;
 
 public class BulkAdGroupAppAdExtensionReadFromRowValuesAdGroupNameTest extends BulkAdGroupAppAdExtensionTest {
     @Parameterized.Parameter(value = 1)

@@ -1,16 +1,16 @@
 package com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.write;
 
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.BulkAdGroupRadiusCriterionTest;
-import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupRadiusCriterion;
-import com.microsoft.bingads.v11.campaignmanagement.RadiusCriterion;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.v11.api.test.entities.criterions.adgroup.radius.BulkAdGroupRadiusCriterionTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupRadiusCriterion;
+import com.microsoft.bingads.v11.campaignmanagement.RadiusCriterion;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupRadiusCriterionWriteNameTest extends BulkAdGroupRadiusCriterionTest {

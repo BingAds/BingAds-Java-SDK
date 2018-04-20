@@ -6,12 +6,13 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.ads.expandedText.BulkExpandedTextAdTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkExpandedTextAd;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class BulkExpandedTextAdReadFromRowValuesFinalUrlsTest extends BulkExpandedTextAdTest{
 

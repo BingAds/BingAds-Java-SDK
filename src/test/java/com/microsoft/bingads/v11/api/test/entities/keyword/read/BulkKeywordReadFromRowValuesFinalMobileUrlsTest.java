@@ -2,19 +2,17 @@ package com.microsoft.bingads.v11.api.test.entities.keyword.read;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v11.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v11.api.test.entities.keyword.BulkKeywordTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkKeyword;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
 
 public class BulkKeywordReadFromRowValuesFinalMobileUrlsTest extends BulkKeywordTest{
 

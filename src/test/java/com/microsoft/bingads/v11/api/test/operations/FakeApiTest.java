@@ -1,13 +1,11 @@
 
 package com.microsoft.bingads.v11.api.test.operations;
 
-import com.microsoft.bingads.internal.ServiceFactory;
-import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,6 +15,10 @@ import org.junit.Before;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import com.microsoft.bingads.internal.ServiceFactory;
+import com.microsoft.bingads.internal.ServiceFactoryFactory;
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class FakeApiTest {   
     @Before

@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v11.api.test.entities.negative_site.ad_group.sites;
 
+import java.util.ArrayList;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 import com.microsoft.bingads.v11.api.test.entities.Util;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeSite;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroupNegativeSites;
 import com.microsoft.bingads.v11.bulk.entities.BulkEntity;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class BulkAdGroupNegativeSitesReadWriteTest {
 

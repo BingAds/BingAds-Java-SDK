@@ -3,8 +3,8 @@ package com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadBidAdjustmentTest;
+import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadCampaignNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadDisplayNameTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadIdTest;
 import com.microsoft.bingads.v11.api.test.entities.criterions.campaign.location.read.BulkCampaignLocationCriterionReadLoctionTypeTest;
