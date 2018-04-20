@@ -9,6 +9,15 @@ import com.microsoft.bingads.v11.adinsight.*;
 class AdInsightExampleHelper
 {
     static ServiceClient<IAdInsightService> AdInsightService;
+    static GetAuctionInsightDataResponse getAuctionInsightData(
+        Selector selector) throws RemoteException, Exception
+    {
+        GetAuctionInsightDataRequest request = new GetAuctionInsightDataRequest();
+
+        request.setSelector(selector);
+
+        return AdInsightService.getService().getAuctionInsightData(request);
+    }
     static GetBidLandscapeByAdGroupIdsResponse getBidLandscapeByAdGroupIds(
         ArrayOfAdGroupBidLandscapeInput adGroupBidLandscapeInputs) throws RemoteException, Exception
     {
@@ -473,6 +482,70 @@ class AdInsightExampleHelper
             }
         }
     }
+    static void outputAuctionInsightKPINode(AuctionInsightKPINode dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputArrayOfstring(dataObject.getDimensionNames());
+            outputStatusMessage(String.format("ImpressionShare: %s", dataObject.getImpressionShare()));
+            outputStatusMessage(String.format("OverlapRate: %s", dataObject.getOverlapRate()));
+            outputStatusMessage(String.format("AveragePosition: %s", dataObject.getAveragePosition()));
+            outputStatusMessage(String.format("AboveRate: %s", dataObject.getAboveRate()));
+            outputStatusMessage(String.format("TopOfPageRate: %s", dataObject.getTopOfPageRate()));
+        }
+    }
+    static void outputArrayOfAuctionInsightKPINode(ArrayOfAuctionInsightKPINode dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AuctionInsightKPINode dataObject : dataObjects.getAuctionInsightKPINodes())
+            {
+                outputAuctionInsightKPINode(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputAuctionInsightResult(AuctionInsightResult dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("TotalNumEntries: %s", dataObject.getTotalNumEntries()));
+            outputArrayOfAuctionInsightV2Entity(dataObject.getEntries());
+            outputStatusMessage(String.format("UsedImpressions: %s", dataObject.getUsedImpressions()));
+            outputStatusMessage(String.format("UsedKeywords: %s", dataObject.getUsedKeywords()));
+        }
+    }
+    static void outputArrayOfAuctionInsightResult(ArrayList<AuctionInsightResult> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AuctionInsightResult dataObject : dataObjects)
+            {
+                outputAuctionInsightResult(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputAuctionInsightV2Entity(AuctionInsightV2Entity dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("DisplayDomain: %s", dataObject.getDisplayDomain()));
+            outputAuctionInsightKPINode(dataObject.getAggregatedKPI());
+            outputArrayOfAuctionInsightKPINode(dataObject.getKPIs());
+        }
+    }
+    static void outputArrayOfAuctionInsightV2Entity(ArrayOfAuctionInsightV2Entity dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AuctionInsightV2Entity dataObject : dataObjects.getAuctionInsightV2Entities())
+            {
+                outputAuctionInsightV2Entity(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputBatchError(BatchError dataObject)
     {
         if (null != dataObject)
@@ -746,6 +819,25 @@ class AdInsightExampleHelper
             for (Criterion dataObject : dataObjects.getCriterions())
             {
                 outputCriterion(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputDateRange(DateRange dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("MaxDate: %s", dataObject.getMaxDate()));
+            outputStatusMessage(String.format("MinDate: %s", dataObject.getMinDate()));
+        }
+    }
+    static void outputArrayOfDateRange(ArrayList<DateRange> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (DateRange dataObject : dataObjects)
+            {
+                outputDateRange(dataObject);
                 outputStatusMessage("\n");
             }
         }
@@ -1633,6 +1725,64 @@ class AdInsightExampleHelper
             }
         }
     }
+    static void outputOrderBy(OrderBy dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("SortOrder: %s", dataObject.getSortOrder()));
+            outputStatusMessage(String.format("SortingField: %s", dataObject.getSortingField()));
+        }
+    }
+    static void outputArrayOfOrderBy(ArrayOfOrderBy dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (OrderBy dataObject : dataObjects.getOrderBies())
+            {
+                outputOrderBy(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputPaging(Paging dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
+            outputStatusMessage(String.format("Size: %s", dataObject.getSize()));
+        }
+    }
+    static void outputArrayOfPaging(ArrayList<Paging> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Paging dataObject : dataObjects)
+            {
+                outputPaging(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputPredicate(Predicate dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("FilteringField: %s", dataObject.getFilteringField()));
+            outputStatusMessage(String.format("Operator: %s", dataObject.getOperator()));
+            outputArrayOfstring(dataObject.getValues());
+        }
+    }
+    static void outputArrayOfPredicate(ArrayOfPredicate dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Predicate dataObject : dataObjects.getPredicates())
+            {
+                outputPredicate(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputQuerySearchParameter(QuerySearchParameter dataObject)
     {
         if (null != dataObject)
@@ -1758,6 +1908,29 @@ class AdInsightExampleHelper
             for (SearchVolumeSearchParameter dataObject : dataObjects)
             {
                 outputSearchVolumeSearchParameter(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputSelector(Selector dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputDateRange(dataObject.getDateRange());
+            outputArrayOfField(dataObject.getGroupBy());
+            outputArrayOfOrderBy(dataObject.getOrdering());
+            outputPaging(dataObject.getPageInfo());
+            outputArrayOfPredicate(dataObject.getPredicates());
+            outputArrayOfField(dataObject.getSelectedFields());
+        }
+    }
+    static void outputArrayOfSelector(ArrayList<Selector> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Selector dataObject : dataObjects)
+            {
+                outputSelector(dataObject);
                 outputStatusMessage("\n");
             }
         }
@@ -1999,6 +2172,60 @@ class AdInsightExampleHelper
             for (AdPosition valueSet : valueSets)
             {
                 outputAdPosition(valueSet);
+            }
+        }
+    }
+    static void outputField(Field valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (Field value : Field.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfField(ArrayOfField valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (Field valueSet : valueSets.getFields())
+            {
+                outputField(valueSet);
+            }
+        }
+    }
+    static void outputSortOrder(SortOrder valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (SortOrder value : SortOrder.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfSortOrder(ArrayList<SortOrder> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (SortOrder valueSet : valueSets)
+            {
+                outputSortOrder(valueSet);
+            }
+        }
+    }
+    static void outputOperator(Operator valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (Operator value : Operator.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfOperator(ArrayList<Operator> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (Operator valueSet : valueSets)
+            {
+                outputOperator(valueSet);
             }
         }
     }

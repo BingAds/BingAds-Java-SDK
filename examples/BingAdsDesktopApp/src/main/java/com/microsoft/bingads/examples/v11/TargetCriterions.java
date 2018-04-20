@@ -10,19 +10,6 @@ public class TargetCriterions extends ExampleBase {
         
     public static void main(java.lang.String[] args) 
     {
-        AuthorizationData authorizationData;
-        
-        authorizationData = new AuthorizationData();
-        authorizationData.setDeveloperToken(DeveloperToken);
-        authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-        authorizationData.setCustomerId(CustomerId);
-        authorizationData.setAccountId(AccountId);
-         
-        CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
-                    	authorizationData, 
-                        API_ENVIRONMENT,
-                        ICampaignManagementService.class);
-        
         ArrayList<CampaignCriterionType> allTargetCampaignCriterionTypes = new ArrayList<CampaignCriterionType>();
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.AGE);
         allTargetCampaignCriterionTypes.add(CampaignCriterionType.DAY_TIME);
@@ -43,6 +30,13 @@ public class TargetCriterions extends ExampleBase {
         
         try
         {
+            authorizationData = getAuthorizationData(null,null);
+         
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                authorizationData, 
+                API_ENVIRONMENT,
+                ICampaignManagementService.class);
+        
             ArrayOflong campaignIds = GetExampleCampaignIds(authorizationData);
                      
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
@@ -137,6 +131,7 @@ public class TargetCriterions extends ExampleBase {
                     
                     ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
                         null, 
+                        null,
                         adGroup.getId(), 
                         allTargetAdGroupCriterionTypes).getAdGroupCriterions();
                     
@@ -247,7 +242,7 @@ public class TargetCriterions extends ExampleBase {
        try
        {
             outputStatusMessage("Add campaigns:\n");
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());

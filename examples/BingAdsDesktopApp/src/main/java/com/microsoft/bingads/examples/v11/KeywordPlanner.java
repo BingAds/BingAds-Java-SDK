@@ -8,18 +8,12 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.adinsight.*;
 
 public class KeywordPlanner extends ExampleBase {
-
-    static AuthorizationData authorizationData;
     
     public static void main(java.lang.String[] args) {
    	 
     	try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null); 
 	         
             AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
                     authorizationData, 

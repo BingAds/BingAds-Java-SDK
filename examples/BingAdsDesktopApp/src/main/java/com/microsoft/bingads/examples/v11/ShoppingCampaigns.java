@@ -16,8 +16,6 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
 // Center store.
 
 public class ShoppingCampaigns extends ExampleBase {
-
-    static AuthorizationData authorizationData;
         
     private static ArrayOfAdGroupCriterionAction _partitionActions = new ArrayOfAdGroupCriterionAction();
     private static long _referenceId = -1;
@@ -29,11 +27,7 @@ public class ShoppingCampaigns extends ExampleBase {
    	 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
@@ -71,7 +65,7 @@ public class ShoppingCampaigns extends ExampleBase {
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             campaigns.getCampaigns().add(campaign);
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
@@ -127,7 +121,7 @@ public class ShoppingCampaigns extends ExampleBase {
 
             ArrayOflong deleteCampaignIds = new ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(AccountId, deleteCampaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), deleteCampaignIds);
             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
 
             outputStatusMessage("Program execution completed\n"); 
@@ -198,9 +192,10 @@ public class ShoppingCampaigns extends ExampleBase {
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
-                        null,
-                        adGroupId, 
-                        criterionType).getAdGroupCriterions();
+            null,
+            null,
+            adGroupId, 
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("Printing the ad group's product partition; contains only the tree root node\n");
         printProductPartitions(adGroupCriterions);
@@ -222,9 +217,10 @@ public class ShoppingCampaigns extends ExampleBase {
 
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
-                        null,
-                        adGroupId, 
-                        criterionType).getAdGroupCriterions();
+            null,
+            null,
+            adGroupId, 
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("Updated the bid for the tree root node\n");
         printProductPartitions(adGroupCriterions);
@@ -239,9 +235,10 @@ public class ShoppingCampaigns extends ExampleBase {
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
-                        null,
-                        adGroupId, 
-                        criterionType).getAdGroupCriterions();
+            null,
+            null,
+            adGroupId, 
+            criterionType).getAdGroupCriterions();
 
         AdGroupCriterion existingRoot = getRootNode(adGroupCriterions);
 
@@ -364,9 +361,10 @@ public class ShoppingCampaigns extends ExampleBase {
         ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(_partitionActions);
 
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
-                        null,
-                        adGroupId, 
-                        criterionType).getAdGroupCriterions();
+            null,
+            null,
+            adGroupId, 
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("The product partition group tree now has 9 nodes\n");
         printProductPartitions(adGroupCriterions);
@@ -442,9 +440,10 @@ public class ShoppingCampaigns extends ExampleBase {
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
-                        null,
-                        adGroupId, 
-                        criterionType).getAdGroupCriterions();
+            null,
+            null,
+            adGroupId, 
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("The product partition group tree now has 12 nodes\n");
         printProductPartitions(adGroupCriterions);

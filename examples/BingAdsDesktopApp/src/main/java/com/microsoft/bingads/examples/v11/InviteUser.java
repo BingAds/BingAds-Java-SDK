@@ -8,8 +8,6 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.customermanagement.*;
 
 public class InviteUser extends ExampleBase {
-
-    static AuthorizationData authorizationData;
     
     // Specify the email address where the invitation should be sent. 
     // It is important to note that the recipient can accept the invitation 
@@ -24,9 +22,8 @@ public class InviteUser extends ExampleBase {
                 "the user invitation.");
             outputStatusMessage("You must use Super Admin credentials to send a user invitation.\n");
             
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData = getAuthorizationData(null,null); 
+            java.lang.Long customerId = authorizationData.getCustomerId();
             	         
             CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
@@ -38,7 +35,7 @@ public class InviteUser extends ExampleBase {
             
             // The identifier of the customer this user is invited to manage. 
             // The AccountIds element determines which customer accounts the user can manage.
-            userInvitation.setCustomerId(CustomerId);
+            userInvitation.setCustomerId(customerId);
 
             // Users with account level roles such as Advertiser Campaign Manager can be restricted to specific accounts. 
             // Users with customer level roles such as Super Admin can access all accounts within the user�s customer, 
@@ -91,7 +88,7 @@ public class InviteUser extends ExampleBase {
             Predicate predicate = new Predicate();
             predicate.setField("CustomerId");
             predicate.setOperator(PredicateOperator.IN);
-            predicate.setValue(String.valueOf(CustomerId));
+            predicate.setValue(String.valueOf(customerId));
             predicates.getPredicates().add(predicate);
             
             ArrayOfUserInvitation userInvitations = CustomerManagementExampleHelper.searchUserInvitations(predicates).getUserInvitations();
@@ -136,7 +133,7 @@ public class InviteUser extends ExampleBase {
             // different than the invitation email address, you cannot determine with certainty the mapping from UserInvitation 
             // to accepted User. With the user ID returned by GetUsersInfo or GetUser, you can call DeleteUser to remove the user.
 
-            ArrayOfUserInfo usersInfo = CustomerManagementExampleHelper.getUsersInfo(CustomerId, null).getUsersInfo();
+            ArrayOfUserInfo usersInfo = CustomerManagementExampleHelper.getUsersInfo(customerId, null).getUsersInfo();
             UserInfo confirmedUserInfo = null;
             
             for (UserInfo userInfo : usersInfo.getUserInfos()){

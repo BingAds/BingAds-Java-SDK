@@ -8,18 +8,12 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class RemarketingLists extends ExampleBase {
-
-    static AuthorizationData authorizationData;
     
     public static void main(java.lang.String[] args) {
    	 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
@@ -31,7 +25,7 @@ public class RemarketingLists extends ExampleBase {
 
             ArrayList<AudienceType> audienceType = new ArrayList<AudienceType>();
             audienceType.add(AudienceType.REMARKETING_LIST);
-            ArrayOfAudience remarketingLists = CampaignManagementExampleHelper.getAudiencesByIds(null, audienceType, null).getAudiences();
+            ArrayOfAudience remarketingLists = CampaignManagementExampleHelper.getAudiencesByIds(null, audienceType, null, true).getAudiences();
 
             // You must already have at least one remarketing list for the remainder of this example. 
 
@@ -76,7 +70,7 @@ public class RemarketingLists extends ExampleBase {
             
             // Add the campaign, ad group, keywords, and ads
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
@@ -139,6 +133,7 @@ public class RemarketingLists extends ExampleBase {
                         
             GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
                     adGroupCriterionIds,
+                    null,
                     adGroupIds.getLongs().get(0), 
                     getCriterionType);
             
@@ -189,7 +184,7 @@ public class RemarketingLists extends ExampleBase {
 
             ArrayOflong deleteCampaignIds = new ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(AccountId, deleteCampaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), deleteCampaignIds);
             System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
 
             outputStatusMessage("Program execution completed\n"); 

@@ -9,18 +9,12 @@ import java.util.HashSet;
 import java.util.List;
 
 public class KeywordsAds extends ExampleBase {
-
-    static AuthorizationData authorizationData;
     
     public static void main(java.lang.String[] args) {
    	 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null); 
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
@@ -198,7 +192,7 @@ public class KeywordsAds extends ExampleBase {
 
             // Add the campaign, ad group, keywords, and ads
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
@@ -418,7 +412,7 @@ public class KeywordsAds extends ExampleBase {
 
             campaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(AccountId, campaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
             System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
             
             // This sample will attempt to delete the budget that was created above.

@@ -9,25 +9,18 @@ import java.util.concurrent.TimeUnit;
 import java.net.URISyntaxException;
 import java.util.concurrent.TimeoutException;
 
-import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.bulk.entities.*;
 import com.microsoft.bingads.v11.bulk.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class BulkServiceManagerDemo extends BulkExampleBase {
-	
-    static AuthorizationData authorizationData;
-        
+    
     public static void main(String[] args) {
 		
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
@@ -73,7 +66,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
             downloadParameters.setDataScope(dataScopes);
             downloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
             downloadParameters.setDownloadEntities(entities);
-            downloadParameters.setFileType(DownloadFileType.CSV);
+            downloadParameters.setFileType(BulkDownloadFileType.CSV);
             downloadParameters.setLastSyncTimeInUTC(null); 
             downloadParameters.setResultFileDirectory(new File(FileDirectory));
             downloadParameters.setResultFileName(DownloadFileName);
@@ -86,7 +79,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
             submitDownloadParameters.setDataScope(dataScopes);
             submitDownloadParameters.setPerformanceStatsDateRange(performanceStatsDateRange);
             submitDownloadParameters.setDownloadEntities(entities);
-            submitDownloadParameters.setFileType(DownloadFileType.CSV);
+            submitDownloadParameters.setFileType(BulkDownloadFileType.CSV);
             submitDownloadParameters.setLastSyncTimeInUTC(null); 
 
 

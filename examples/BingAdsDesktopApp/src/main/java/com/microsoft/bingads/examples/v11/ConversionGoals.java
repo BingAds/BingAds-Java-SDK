@@ -7,17 +7,11 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class ConversionGoals extends ExampleBase {
 
-    static AuthorizationData authorizationData;
-    
     public static void main(java.lang.String[] args) {
    	 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 

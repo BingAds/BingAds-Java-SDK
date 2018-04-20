@@ -461,12 +461,14 @@ class CampaignManagementExampleHelper
     }
     static GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIds(
         ArrayOflong adGroupCriterionIds,
+        java.lang.Boolean returnAgeGenderUnknownValue,
         java.lang.Long adGroupId,
         ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
     {
         GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
 
         request.setAdGroupCriterionIds(adGroupCriterionIds);
+        request.setReturnAgeGenderUnknownValue(returnAgeGenderUnknownValue);
         request.setAdGroupId(adGroupId);
         request.setCriterionType(criterionType);
 
@@ -536,13 +538,15 @@ class CampaignManagementExampleHelper
     static GetAudiencesByIdsResponse getAudiencesByIds(
         ArrayOflong audienceIds,
         ArrayList<AudienceType> type,
-        ArrayList<AudienceAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayList<AudienceAdditionalField> returnAdditionalFields,
+        java.lang.Boolean returnSupportedCampaignTypes) throws RemoteException, Exception
     {
         GetAudiencesByIdsRequest request = new GetAudiencesByIdsRequest();
 
         request.setAudienceIds(audienceIds);
         request.setType(type);
         request.setReturnAdditionalFields(returnAdditionalFields);
+        request.setReturnSupportedCampaignTypes(returnSupportedCampaignTypes);
 
         return CampaignManagementService.getService().getAudiencesByIds(request);
     }
@@ -816,6 +820,17 @@ class CampaignManagementExampleHelper
         request.setCampaignIds(campaignIds);
 
         return CampaignManagementService.getService().getNegativeSitesByCampaignIds(request);
+    }
+    static GetProfileDataFileUrlResponse getProfileDataFileUrl(
+        java.lang.String languageLocale,
+        ArrayList<ProfileType> profileType) throws RemoteException, Exception
+    {
+        GetProfileDataFileUrlRequest request = new GetProfileDataFileUrlRequest();
+
+        request.setLanguageLocale(languageLocale);
+        request.setProfileType(profileType);
+
+        return CampaignManagementService.getService().getProfileDataFileUrl(request);
     }
     static GetSharedEntitiesByAccountIdResponse getSharedEntitiesByAccountId(
         java.lang.String sharedEntityType) throws RemoteException, Exception
@@ -1128,6 +1143,10 @@ class CampaignManagementExampleHelper
             {
                 outputProductAd((ProductAd)dataObject);
             }
+            if(dataObject instanceof ResponsiveAd)
+            {
+                outputResponsiveAd((ResponsiveAd)dataObject);
+            }
             if(dataObject instanceof TextAd)
             {
                 outputTextAd((TextAd)dataObject);
@@ -1405,6 +1424,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("NativeBidAdjustment: %s", dataObject.getNativeBidAdjustment()));
             outputStatusMessage(String.format("Network: %s", dataObject.getNetwork()));
             outputStatusMessage(String.format("PricingModel: %s", dataObject.getPricingModel()));
+            outputStatusMessage(String.format("PrivacyStatus: %s", dataObject.getPrivacyStatus()));
             outputStatusMessage(String.format("RemarketingTargetingSetting: %s", dataObject.getRemarketingTargetingSetting()));
             outputBid(dataObject.getSearchBid());
             outputArrayOfSetting(dataObject.getSettings());
@@ -1669,6 +1689,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage(String.format("AudienceNetworkSize: %s", dataObject.getAudienceNetworkSize()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
@@ -1677,6 +1698,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("ParentId: %s", dataObject.getParentId()));
             outputStatusMessage(String.format("Scope: %s", dataObject.getScope()));
             outputStatusMessage(String.format("SearchSize: %s", dataObject.getSearchSize()));
+            outputArrayOfstring(dataObject.getSupportedCampaignTypes());
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof CustomAudience)
             {
@@ -1685,6 +1707,10 @@ class CampaignManagementExampleHelper
             if(dataObject instanceof InMarketAudience)
             {
                 outputInMarketAudience((InMarketAudience)dataObject);
+            }
+            if(dataObject instanceof ProductAudience)
+            {
+                outputProductAudience((ProductAudience)dataObject);
             }
             if(dataObject instanceof RemarketingList)
             {
@@ -2180,6 +2206,10 @@ class CampaignManagementExampleHelper
             if(dataObject instanceof ProductScope)
             {
                 outputProductScope((ProductScope)dataObject);
+            }
+            if(dataObject instanceof ProfileCriterion)
+            {
+                outputProfileCriterion((ProfileCriterion)dataObject);
             }
             if(dataObject instanceof RadiusCriterion)
             {
@@ -3432,6 +3462,25 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputProductAudience(ProductAudience dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("ProductAudienceType: %s", dataObject.getProductAudienceType()));
+            outputStatusMessage(String.format("TagId: %s", dataObject.getTagId()));
+        }
+    }
+    static void outputArrayOfProductAudience(ArrayList<ProductAudience> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProductAudience dataObject : dataObjects)
+            {
+                outputProductAudience(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputProductCondition(ProductCondition dataObject)
     {
         if (null != dataObject)
@@ -3485,6 +3534,25 @@ class CampaignManagementExampleHelper
             for (ProductScope dataObject : dataObjects)
             {
                 outputProductScope(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputProfileCriterion(ProfileCriterion dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("ProfileId: %s", dataObject.getProfileId()));
+            outputStatusMessage(String.format("ProfileType: %s", dataObject.getProfileType()));
+        }
+    }
+    static void outputArrayOfProfileCriterion(ArrayList<ProfileCriterion> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProfileCriterion dataObject : dataObjects)
+            {
+                outputProfileCriterion(dataObject);
                 outputStatusMessage("\n");
             }
         }
@@ -3560,6 +3628,32 @@ class CampaignManagementExampleHelper
             for (RemarketingRule dataObject : dataObjects)
             {
                 outputRemarketingRule(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputResponsiveAd(ResponsiveAd dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("BusinessName: %s", dataObject.getBusinessName()));
+            outputStatusMessage(String.format("CallToAction: %s", dataObject.getCallToAction()));
+            outputStatusMessage(String.format("Headline: %s", dataObject.getHeadline()));
+            outputStatusMessage(String.format("LandscapeImageMediaId: %s", dataObject.getLandscapeImageMediaId()));
+            outputStatusMessage(String.format("LandscapeLogoMediaId: %s", dataObject.getLandscapeLogoMediaId()));
+            outputStatusMessage(String.format("LongHeadline: %s", dataObject.getLongHeadline()));
+            outputStatusMessage(String.format("SquareImageMediaId: %s", dataObject.getSquareImageMediaId()));
+            outputStatusMessage(String.format("SquareLogoMediaId: %s", dataObject.getSquareLogoMediaId()));
+            outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+        }
+    }
+    static void outputArrayOfResponsiveAd(ArrayList<ResponsiveAd> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ResponsiveAd dataObject : dataObjects)
+            {
+                outputResponsiveAd(dataObject);
                 outputStatusMessage("\n");
             }
         }
@@ -3658,6 +3752,10 @@ class CampaignManagementExampleHelper
             if(dataObject instanceof ShoppingSetting)
             {
                 outputShoppingSetting((ShoppingSetting)dataObject);
+            }
+            if(dataObject instanceof TargetSetting)
+            {
+                outputTargetSetting((TargetSetting)dataObject);
             }
         }
     }
@@ -3915,6 +4013,43 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputTargetSetting(TargetSetting dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputArrayOfTargetSettingDetail(dataObject.getDetails());
+        }
+    }
+    static void outputArrayOfTargetSetting(ArrayList<TargetSetting> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (TargetSetting dataObject : dataObjects)
+            {
+                outputTargetSetting(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputTargetSettingDetail(TargetSettingDetail dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("CriterionTypeGroup: %s", dataObject.getCriterionTypeGroup()));
+            outputStatusMessage(String.format("TargetAndBid: %s", dataObject.getTargetAndBid()));
+        }
+    }
+    static void outputArrayOfTargetSettingDetail(ArrayOfTargetSettingDetail dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (TargetSettingDetail dataObject : dataObjects.getTargetSettingDetails())
+            {
+                outputTargetSettingDetail(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputTextAd(TextAd dataObject)
     {
         if (null != dataObject)
@@ -4088,6 +4223,24 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputCallToAction(CallToAction valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (CallToAction value : CallToAction.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfCallToAction(ArrayList<CallToAction> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (CallToAction valueSet : valueSets)
+            {
+                outputCallToAction(valueSet);
+            }
+        }
+    }
     static void outputBudgetLimitType(BudgetLimitType valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -4139,6 +4292,42 @@ class CampaignManagementExampleHelper
             for (CampaignType valueSet : valueSets)
             {
                 outputCampaignType(valueSet);
+            }
+        }
+    }
+    static void outputCriterionTypeGroup(CriterionTypeGroup valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (CriterionTypeGroup value : CriterionTypeGroup.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfCriterionTypeGroup(ArrayList<CriterionTypeGroup> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (CriterionTypeGroup valueSet : valueSets)
+            {
+                outputCriterionTypeGroup(valueSet);
+            }
+        }
+    }
+    static void outputBidOption(BidOption valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (BidOption value : BidOption.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfBidOption(ArrayList<BidOption> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (BidOption valueSet : valueSets)
+            {
+                outputBidOption(valueSet);
             }
         }
     }
@@ -4211,6 +4400,24 @@ class CampaignManagementExampleHelper
             for (PricingModel valueSet : valueSets)
             {
                 outputPricingModel(valueSet);
+            }
+        }
+    }
+    static void outputAdGroupPrivacyStatus(AdGroupPrivacyStatus valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AdGroupPrivacyStatus value : AdGroupPrivacyStatus.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAdGroupPrivacyStatus(ArrayList<AdGroupPrivacyStatus> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AdGroupPrivacyStatus valueSet : valueSets)
+            {
+                outputAdGroupPrivacyStatus(valueSet);
             }
         }
     }
@@ -4754,6 +4961,24 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputProfileType(ProfileType valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ProfileType value : ProfileType.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfProfileType(ArrayList<ProfileType> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ProfileType valueSet : valueSets)
+            {
+                outputProfileType(valueSet);
+            }
+        }
+    }
     static void outputAdGroupCriterionStatus(AdGroupCriterionStatus valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -4805,6 +5030,24 @@ class CampaignManagementExampleHelper
             for (ItemAction valueSet : valueSets)
             {
                 outputItemAction(valueSet);
+            }
+        }
+    }
+    static void outputBMCStoreSubType(BMCStoreSubType valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (BMCStoreSubType value : BMCStoreSubType.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfBMCStoreSubType(ArrayList<BMCStoreSubType> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (BMCStoreSubType valueSet : valueSets)
+            {
+                outputBMCStoreSubType(valueSet);
             }
         }
     }
@@ -4895,6 +5138,24 @@ class CampaignManagementExampleHelper
             for (NumberOperator valueSet : valueSets)
             {
                 outputNumberOperator(valueSet);
+            }
+        }
+    }
+    static void outputProductAudienceType(ProductAudienceType valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ProductAudienceType value : ProductAudienceType.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfProductAudienceType(ArrayList<ProductAudienceType> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ProductAudienceType valueSet : valueSets)
+            {
+                outputProductAudienceType(valueSet);
             }
         }
     }

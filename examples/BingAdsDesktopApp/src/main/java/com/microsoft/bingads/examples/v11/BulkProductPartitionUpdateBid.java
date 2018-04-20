@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.bulk.entities.*;
 import com.microsoft.bingads.v11.bulk.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
@@ -19,11 +18,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 
         try {
             
-            AuthorizationData authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
@@ -33,7 +28,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 
             DownloadParameters downloadParameters = new DownloadParameters();
             downloadParameters.setDownloadEntities(entities);
-            downloadParameters.setFileType(DownloadFileType.CSV);
+            downloadParameters.setFileType(BulkDownloadFileType.CSV);
             downloadParameters.setResultFileDirectory(new File(FileDirectory));
             downloadParameters.setResultFileName(DownloadFileName);
             downloadParameters.setOverwriteResultFile(true);
@@ -42,7 +37,7 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
             // Download all product partitions across all ad groups in the account.
             File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
             outputStatusMessage("Downloaded all product partitions across all ad groups in the account.\n"); 
-            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
+            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
             downloadEntities = Reader.getEntities();
 
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
