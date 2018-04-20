@@ -25,11 +25,7 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            AuthorizationData authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             // You will need to use the Campaign Management service to get the Bing Merchant Center Store Id. This will be used
             // when creating a new Bing Shopping Campaign.
@@ -126,7 +122,6 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             ArrayList<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
             adDistribution.add(AdDistribution.SEARCH);
             adGroup.setAdDistribution(adDistribution);
-            adGroup.setPricingModel(PricingModel.CPC);
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
@@ -652,14 +647,14 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
         DownloadParameters downloadParameters = new DownloadParameters();
         downloadParameters.setDownloadEntities(downloadEntities);
-        downloadParameters.setFileType(DownloadFileType.CSV);
+        downloadParameters.setFileType(BulkDownloadFileType.CSV);
         downloadParameters.setResultFileDirectory(new File(FileDirectory));
         downloadParameters.setResultFileName(ResultFileName);
         downloadParameters.setOverwriteResultFile(true);
         downloadParameters.setLastSyncTimeInUTC(null);
 
         File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
-        Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
+        Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
         BulkEntityIterable bulkEntities = Reader.getEntities();
         List<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
         for (BulkEntity entity : bulkEntities) {

@@ -18,7 +18,6 @@ import com.microsoft.bingads.v11.reporting.*;
 
 public class ReportRequests extends ExampleBase {
 
-    static AuthorizationData authorizationData;
     static ReportingServiceManager ReportingServiceManager; 
     
     // The directory for the report file.
@@ -49,11 +48,7 @@ public class ReportRequests extends ExampleBase {
 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 	         
             ReportingServiceManager = new ReportingServiceManager(authorizationData, API_ENVIRONMENT);
             ReportingServiceManager.setStatusPollIntervalInMilliseconds(5000);

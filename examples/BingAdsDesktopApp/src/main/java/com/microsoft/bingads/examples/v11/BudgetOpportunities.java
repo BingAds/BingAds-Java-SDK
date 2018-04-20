@@ -8,7 +8,6 @@ import com.microsoft.bingads.v11.adinsight.*;
 
 public class BudgetOpportunities extends ExampleBase {
 
-    static AuthorizationData authorizationData;
     static ServiceClient<IAdInsightService> AdInsightService;
     static ServiceClient<ICampaignManagementService> CampaignService;
     
@@ -16,11 +15,7 @@ public class BudgetOpportunities extends ExampleBase {
    	 
     	try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 	         
             AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
                     authorizationData, 
@@ -36,7 +31,7 @@ public class BudgetOpportunities extends ExampleBase {
 
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.SEARCH_AND_CONTENT);
-            ArrayOfCampaign campaigns = CampaignManagementExampleHelper.getCampaignsByAccountId(AccountId, campaignTypes).getCampaigns();
+            ArrayOfCampaign campaigns = CampaignManagementExampleHelper.getCampaignsByAccountId(authorizationData.getAccountId(), campaignTypes).getCampaigns();
             
             ArrayOfBudgetOpportunity opportunities = null;
             

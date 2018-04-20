@@ -19,35 +19,29 @@ public class DynamicSearchCampaigns extends ExampleBase {
     public final static String LANGUAGE = "EN";
     
     public static void main(String[] args) {
-        
-    	AuthorizationData authorizationData;
-        
-        authorizationData = new AuthorizationData();
-        authorizationData.setDeveloperToken(DeveloperToken);
-        authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-        authorizationData.setCustomerId(CustomerId);
-        authorizationData.setAccountId(AccountId);
-        
-        AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
-                    	authorizationData, 
-                        API_ENVIRONMENT,
-                        IAdInsightService.class);    
-        
-        CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
-                    	authorizationData, 
-                        API_ENVIRONMENT,
-                        ICampaignManagementService.class);
-        
+
         ArrayOfCampaign campaigns = null;
         ArrayOfAdGroup adGroups = null;
         
         try
         {      
+            authorizationData = getAuthorizationData(null,null); 
+        
+            AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
+                            authorizationData, 
+                            API_ENVIRONMENT,
+                            IAdInsightService.class);    
+
+            CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
+                            authorizationData, 
+                            API_ENVIRONMENT,
+                            ICampaignManagementService.class);
+        
             // To get started with dynamic search ads, first you'll need to add a new Campaign 
             // with its type set to DynamicSearchAds. When you create the campaign, you'll need to 
             // include a DynamicSearchAdsSetting that specifies the target web site domain and language.      
             campaigns = getExampleDSACampaigns();   	
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());
@@ -140,6 +134,7 @@ public class DynamicSearchCampaigns extends ExampleBase {
             
             GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIdsResponse = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
                 null,
+                null,
                 adGroupIds.getLongs().get(0),
                 adGroupCriterionTypes);
             
@@ -202,7 +197,7 @@ public class DynamicSearchCampaigns extends ExampleBase {
             // Bing Ads web application or another tool.
             ArrayOflong campaignIds = new com.microsoft.bingads.v11.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(AccountId, campaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
             System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
             
             outputStatusMessage("Program execution completed\n"); 

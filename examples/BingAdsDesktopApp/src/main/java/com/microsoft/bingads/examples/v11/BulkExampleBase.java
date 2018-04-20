@@ -34,7 +34,7 @@ public class BulkExampleBase extends ExampleBase {
     static java.lang.String ResultFileName = "result.csv";
     
     // The bulk file extension type.
-    static DownloadFileType FileType = DownloadFileType.CSV; 
+    static DownloadFileType BulkDownloadFileType = DownloadFileType.CSV; 
     
     // The maximum amount of time (in milliseconds) that you want to wait for the bulk download or upload.
     static int TimeoutInMilliseconds = 36000000;
@@ -78,7 +78,7 @@ public class BulkExampleBase extends ExampleBase {
         
         File bulkFilePath = BulkServiceManager.uploadFileAsync(fileUploadParameters, null, null).get();
         
-        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, FileType);
+        return new BulkFileReader(bulkFilePath, ResultFileType.UPLOAD, BulkDownloadFileType);
     }
         
     static void outputBulkBudgets(Iterable<BulkBudget> bulkEntities){
@@ -793,8 +793,6 @@ public class BulkExampleBase extends ExampleBase {
         adGroup.setNativeBidAdjustment(10);
         // 'Bid Strategy Type' column header in the Bulk file
         adGroup.setBiddingScheme(new ManualCpcBiddingScheme());
-        // 'Content Bid' column header in the Bulk file
-        adGroup.setContentMatchBid(null);
         // 'End Date' column header in the Bulk file
         adGroup.setEndDate(null);
         // 'Id' column header in the Bulk file

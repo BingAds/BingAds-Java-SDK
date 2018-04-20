@@ -15,8 +15,6 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
     
 public class GeographicalLocations extends ExampleBase {
     
-    static AuthorizationData authorizationData;
-
     // The full path to the geographical locations file.
 
     private static final java.lang.String LOCAL_FILE= "c:\\geolocations\\geolocations.csv";
@@ -35,11 +33,7 @@ public class GeographicalLocations extends ExampleBase {
    	
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new com.microsoft.bingads.PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null); 
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 

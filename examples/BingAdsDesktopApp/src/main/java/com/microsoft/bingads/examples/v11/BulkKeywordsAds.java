@@ -1,6 +1,5 @@
 package com.microsoft.bingads.examples.v11;
 
-import java.rmi.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Calendar;
 
-import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 import static com.microsoft.bingads.examples.v11.BulkExampleBase.FileDirectory;
 import com.microsoft.bingads.v11.bulk.entities.*;
@@ -22,7 +20,6 @@ import com.microsoft.bingads.v11.bulk.DownloadFileType;
 import com.microsoft.bingads.v11.bulk.ResultFileType;
 import static com.microsoft.bingads.examples.v11.BulkExampleBase.BulkServiceManager;
 
-
 public class BulkKeywordsAds extends BulkExampleBase {
 	                
     public static void main(String[] args) {
@@ -30,11 +27,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            AuthorizationData authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
@@ -98,7 +91,6 @@ public class BulkKeywordsAds extends BulkExampleBase {
             List<AdDistribution> adDistribution = new ArrayList<AdDistribution>();
             adDistribution.add(AdDistribution.SEARCH);
             adGroup.setAdDistribution(adDistribution);
-            adGroup.setPricingModel(PricingModel.CPC);
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v11.campaignmanagement.Date());
@@ -293,7 +285,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
 
             DownloadParameters downloadParameters = new DownloadParameters();
             downloadParameters.setDownloadEntities(entities);
-            downloadParameters.setFileType(DownloadFileType.CSV);
+            downloadParameters.setFileType(BulkDownloadFileType.CSV);
             downloadParameters.setResultFileDirectory(new File(FileDirectory));
             downloadParameters.setResultFileName(DownloadFileName);
             downloadParameters.setOverwriteResultFile(true);
@@ -302,7 +294,7 @@ public class BulkKeywordsAds extends BulkExampleBase {
             // Download all campaigns and shared budgets in the account.
             File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
             outputStatusMessage("Downloaded all campaigns and shared budgets in the account.\n"); 
-            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, FileType);
+            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
             downloadEntities = Reader.getEntities();
 
             uploadEntities = new ArrayList<BulkEntity>();

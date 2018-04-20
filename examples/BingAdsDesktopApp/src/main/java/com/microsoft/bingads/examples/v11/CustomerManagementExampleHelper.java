@@ -9,6 +9,15 @@ import com.microsoft.bingads.v11.customermanagement.*;
 class CustomerManagementExampleHelper
 {
     static ServiceClient<ICustomerManagementService> CustomerManagementService;
+    static AddAccountResponse addAccount(
+        Account account) throws RemoteException, Exception
+    {
+        AddAccountRequest request = new AddAccountRequest();
+
+        request.setAccount(account);
+
+        return CustomerManagementService.getService().addAccount(request);
+    }
     static AddClientLinksResponse addClientLinks(
         ArrayOfClientLink clientLinks) throws RemoteException, Exception
     {

@@ -12,21 +12,15 @@ import com.microsoft.bingads.v11.customermanagement.*;
 public class ManageClient extends ExampleBase {
 
     static AuthorizationData authorizationData; 
-        
-    // Agency Customer Id
-    private static long CustomerId = <CustomerIdGoesHere>;
     
-    // Client Account Id
-    private static long ClientAccountId = <ClientAccountIdGoesHere>;
+    // You must specify the Client Account Id that you want to manage.
+    private static long ClientAccountId = -1; 
     
     public static void main(java.lang.String[] args) {
    	 
     	try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData = getAuthorizationData(null,null); 
 	        
             CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 

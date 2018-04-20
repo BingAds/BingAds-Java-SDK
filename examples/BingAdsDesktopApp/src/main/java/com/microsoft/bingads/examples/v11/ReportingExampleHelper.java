@@ -461,6 +461,50 @@ class ReportingExampleHelper
             }
         }
     }
+    static void outputAgeGenderAudienceReportFilter(AgeGenderAudienceReportFilter dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
+            outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
+            outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
+            outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputArrayOfstring(dataObject.getLanguageCode());
+        }
+    }
+    static void outputArrayOfAgeGenderAudienceReportFilter(ArrayList<AgeGenderAudienceReportFilter> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AgeGenderAudienceReportFilter dataObject : dataObjects)
+            {
+                outputAgeGenderAudienceReportFilter(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputAgeGenderAudienceReportRequest(AgeGenderAudienceReportRequest dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputArrayOfAgeGenderAudienceReportColumn(dataObject.getColumns());
+            outputAgeGenderAudienceReportFilter(dataObject.getFilter());
+            outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputReportTime(dataObject.getTime());
+        }
+    }
+    static void outputArrayOfAgeGenderAudienceReportRequest(ArrayList<AgeGenderAudienceReportRequest> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AgeGenderAudienceReportRequest dataObject : dataObjects)
+            {
+                outputAgeGenderAudienceReportRequest(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputAgeGenderDemographicReportFilter(AgeGenderDemographicReportFilter dataObject)
     {
         if (null != dataObject)
@@ -1281,6 +1325,27 @@ class ReportingExampleHelper
             }
         }
     }
+    static void outputProductMatchCountReportRequest(ProductMatchCountReportRequest dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputArrayOfProductMatchCountReportColumn(dataObject.getColumns());
+            outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputReportTime(dataObject.getTime());
+        }
+    }
+    static void outputArrayOfProductMatchCountReportRequest(ArrayList<ProductMatchCountReportRequest> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProductMatchCountReportRequest dataObject : dataObjects)
+            {
+                outputProductMatchCountReportRequest(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputProductPartitionPerformanceReportFilter(ProductPartitionPerformanceReportFilter dataObject)
     {
         if (null != dataObject)
@@ -1418,6 +1483,50 @@ class ReportingExampleHelper
             }
         }
     }
+    static void outputProfessionalDemographicsAudienceReportFilter(ProfessionalDemographicsAudienceReportFilter dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
+            outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
+            outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
+            outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputArrayOfstring(dataObject.getLanguageCode());
+        }
+    }
+    static void outputArrayOfProfessionalDemographicsAudienceReportFilter(ArrayList<ProfessionalDemographicsAudienceReportFilter> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProfessionalDemographicsAudienceReportFilter dataObject : dataObjects)
+            {
+                outputProfessionalDemographicsAudienceReportFilter(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputProfessionalDemographicsAudienceReportRequest(ProfessionalDemographicsAudienceReportRequest dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputArrayOfProfessionalDemographicsAudienceReportColumn(dataObject.getColumns());
+            outputProfessionalDemographicsAudienceReportFilter(dataObject.getFilter());
+            outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputReportTime(dataObject.getTime());
+        }
+    }
+    static void outputArrayOfProfessionalDemographicsAudienceReportRequest(ArrayList<ProfessionalDemographicsAudienceReportRequest> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProfessionalDemographicsAudienceReportRequest dataObject : dataObjects)
+            {
+                outputProfessionalDemographicsAudienceReportRequest(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputPublisherUsagePerformanceReportFilter(PublisherUsagePerformanceReportFilter dataObject)
     {
         if (null != dataObject)
@@ -1501,6 +1610,10 @@ class ReportingExampleHelper
             {
                 outputAdPerformanceReportRequest((AdPerformanceReportRequest)dataObject);
             }
+            if(dataObject instanceof AgeGenderAudienceReportRequest)
+            {
+                outputAgeGenderAudienceReportRequest((AgeGenderAudienceReportRequest)dataObject);
+            }
             if(dataObject instanceof AgeGenderDemographicReportRequest)
             {
                 outputAgeGenderDemographicReportRequest((AgeGenderDemographicReportRequest)dataObject);
@@ -1561,6 +1674,10 @@ class ReportingExampleHelper
             {
                 outputProductDimensionPerformanceReportRequest((ProductDimensionPerformanceReportRequest)dataObject);
             }
+            if(dataObject instanceof ProductMatchCountReportRequest)
+            {
+                outputProductMatchCountReportRequest((ProductMatchCountReportRequest)dataObject);
+            }
             if(dataObject instanceof ProductPartitionPerformanceReportRequest)
             {
                 outputProductPartitionPerformanceReportRequest((ProductPartitionPerformanceReportRequest)dataObject);
@@ -1572,6 +1689,10 @@ class ReportingExampleHelper
             if(dataObject instanceof ProductSearchQueryPerformanceReportRequest)
             {
                 outputProductSearchQueryPerformanceReportRequest((ProductSearchQueryPerformanceReportRequest)dataObject);
+            }
+            if(dataObject instanceof ProfessionalDemographicsAudienceReportRequest)
+            {
+                outputProfessionalDemographicsAudienceReportRequest((ProfessionalDemographicsAudienceReportRequest)dataObject);
             }
             if(dataObject instanceof PublisherUsagePerformanceReportRequest)
             {
@@ -2331,6 +2452,42 @@ class ReportingExampleHelper
             }
         }
     }
+    static void outputAgeGenderAudienceReportColumn(AgeGenderAudienceReportColumn valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AgeGenderAudienceReportColumn value : AgeGenderAudienceReportColumn.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAgeGenderAudienceReportColumn(ArrayOfAgeGenderAudienceReportColumn valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AgeGenderAudienceReportColumn valueSet : valueSets.getAgeGenderAudienceReportColumns())
+            {
+                outputAgeGenderAudienceReportColumn(valueSet);
+            }
+        }
+    }
+    static void outputProfessionalDemographicsAudienceReportColumn(ProfessionalDemographicsAudienceReportColumn valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ProfessionalDemographicsAudienceReportColumn value : ProfessionalDemographicsAudienceReportColumn.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfProfessionalDemographicsAudienceReportColumn(ArrayOfProfessionalDemographicsAudienceReportColumn valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ProfessionalDemographicsAudienceReportColumn valueSet : valueSets.getProfessionalDemographicsAudienceReportColumns())
+            {
+                outputProfessionalDemographicsAudienceReportColumn(valueSet);
+            }
+        }
+    }
     static void outputUserLocationPerformanceReportColumn(UserLocationPerformanceReportColumn valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -2670,6 +2827,24 @@ class ReportingExampleHelper
             for (ProductSearchQueryPerformanceReportColumn valueSet : valueSets.getProductSearchQueryPerformanceReportColumns())
             {
                 outputProductSearchQueryPerformanceReportColumn(valueSet);
+            }
+        }
+    }
+    static void outputProductMatchCountReportColumn(ProductMatchCountReportColumn valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ProductMatchCountReportColumn value : ProductMatchCountReportColumn.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfProductMatchCountReportColumn(ArrayOfProductMatchCountReportColumn valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ProductMatchCountReportColumn valueSet : valueSets.getProductMatchCountReportColumns())
+            {
+                outputProductMatchCountReportColumn(valueSet);
             }
         }
     }

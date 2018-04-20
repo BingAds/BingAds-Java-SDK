@@ -4,16 +4,12 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.customermanagement.*;
 
 public class CustomerSignup extends ExampleBase {
-
-    static AuthorizationData authorizationData;
         
     public static void main(java.lang.String[] args) {
    	 
     	try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
+            authorizationData = getAuthorizationData(null,null);
             	         
             CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 

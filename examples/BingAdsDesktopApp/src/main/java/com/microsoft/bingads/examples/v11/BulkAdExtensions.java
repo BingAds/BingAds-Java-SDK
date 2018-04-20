@@ -18,11 +18,7 @@ public class BulkAdExtensions extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            AuthorizationData authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
                         
             Calendar calendar = Calendar.getInstance();
             
@@ -133,8 +129,6 @@ public class BulkAdExtensions extends BulkExampleBase {
             LocationAdExtension locationAdExtension = new LocationAdExtension();
             locationAdExtension.setPhoneNumber("206-555-0100");
             locationAdExtension.setCompanyName("Contoso Shoes");
-            locationAdExtension.setIconMediaId(null);
-            locationAdExtension.setImageMediaId(null);
             com.microsoft.bingads.v11.campaignmanagement.Address address = new com.microsoft.bingads.v11.campaignmanagement.Address();
             address.setStreetAddress("1234 Washington Place");
             address.setStreetAddress2("Suite 1210");

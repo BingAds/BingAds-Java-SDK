@@ -4,18 +4,12 @@ import com.microsoft.bingads.*;
 import com.microsoft.bingads.v11.campaignmanagement.*;
 
 public class NegativeKeywords extends ExampleBase {
-
-    static AuthorizationData authorizationData;
     	
     public static void main(java.lang.String[] args) {
 	 
         try
         {
-            authorizationData = new AuthorizationData();
-            authorizationData.setDeveloperToken(DeveloperToken);
-            authorizationData.setAuthentication(new PasswordAuthentication(UserName, Password));
-            authorizationData.setCustomerId(CustomerId);
-            authorizationData.setAccountId(AccountId);
+            authorizationData = getAuthorizationData(null,null);
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
@@ -35,7 +29,7 @@ public class NegativeKeywords extends ExampleBase {
 			
             // Add the campaign
 			 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(AccountId, campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
@@ -75,7 +69,7 @@ public class NegativeKeywords extends ExampleBase {
             }
 
             GetNegativeKeywordsByEntityIdsResponse getNegativeKeywordsByEntityIdsResponse = 
-                 CampaignManagementExampleHelper.getNegativeKeywordsByEntityIds(campaignIds, "Campaign", AccountId);
+                 CampaignManagementExampleHelper.getNegativeKeywordsByEntityIds(campaignIds, "Campaign", authorizationData.getAccountId());
             if (getNegativeKeywordsByEntityIdsResponse.getPartialErrors() == null
                  || getNegativeKeywordsByEntityIdsResponse.getPartialErrors().getBatchErrors().size() == 0)
             {
@@ -305,7 +299,7 @@ public class NegativeKeywords extends ExampleBase {
 
             // Delete the campaign and any remaining assocations. 
 			
-            CampaignManagementExampleHelper.deleteCampaigns(AccountId, campaignIds);
+            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
             outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
 			
             // DeleteCampaigns does not delete the negative keyword list from the account's library. 
