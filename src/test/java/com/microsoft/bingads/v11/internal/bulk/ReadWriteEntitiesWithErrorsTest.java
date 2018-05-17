@@ -46,7 +46,14 @@ public class ReadWriteEntitiesWithErrorsTest extends EasyMockSupport {
 
         String[] formatVersion = emptyArray.clone();
         formatVersion[0] = "Format Version";
-        formatVersion[51] = "5.0";
+        int index = 0;
+        for (; index < CsvHeaders.Headers.length; index++) {
+            if (StringTable.Name.equals(CsvHeaders.Headers[index])){
+                break;
+            }
+        }
+        
+        formatVersion[index] = "5.0";
 
         String[] campaign = emptyArray.clone();
         campaign[0] = "Campaign";

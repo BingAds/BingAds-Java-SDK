@@ -42,6 +42,7 @@ public class BulkCampaignWriteToRowValuesStoreIdShoppingSettingTest extends Bulk
                         c.getCampaign().setSettings(new ArrayOfSetting());
 
                         ShoppingSetting setting = new ShoppingSetting();
+                        setting.setType("ShoppingSetting");
 
                         setting.setStoreId(v);
 

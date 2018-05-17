@@ -88,6 +88,9 @@ public class StringTable {
 
     public static final String Bid = "Bid";
 
+    public static final String Profile = "Profile";
+    public static final String ProfileId = "Profile Id";
+
     public static final String BidAdjustment = "Bid Adjustment";
     public static final String SubType = "Sub Type";
 
@@ -100,6 +103,7 @@ public class StringTable {
     public static final String CpcBid = "Cpc Bid";
     public static final String ContentBid = "Content Bid";
     public static final String AdRotation = "Ad Rotation";
+    public static final String PrivacyStatus = "Privacy Status";
 
     public static final String Account = "Account";
     public static final String SyncTime = "Sync Time";
@@ -393,6 +397,12 @@ public class StringTable {
     public static final String AdGroupInMarketAudienceAssociation = "Ad Group In Market Audience Association";
     public static final String AdGroupNegativeInMarketAudienceAssociation = "Ad Group Negative In Market Audience Association";
     public static final String Audience = "Audience";
+    public static final String ProductAudience = "Product Audience";
+    public static final String AdGroupProductAudienceAssociation = "Ad Group Product Audience Association";
+    public static final String AdGroupNegativeProductAudienceAssociation = "Ad Group Negative Product Audience Association";
+    public static final String AudienceNetworkSize = "Audience Network Size";
+    public static final String SupportedCampaignTypes = "Supported Campaign Types";
+    public static final String ProductAudienceType = "Product Audience Type";
     public static final String AudienceSearchSize = "Audience Search Size";
     public static final String Description = "Description";
     public static final String MembershipDuration = "Membership Duration";
@@ -426,6 +436,16 @@ public class StringTable {
     // Ad Extension Schedule
     public static final String AdSchedule = "Ad Schedule";
     public static final String UseSearcherTimeZone = "Use Searcher Time Zone";
+
+    // Responsive Ad
+    public static final String ResponsiveAd = "Responsive Ad";
+    public static final String CallToAction = "Call To Action";
+    public static final String Headline = "Headline";
+    public static final String LandscapeImageMediaId = "Landscape Image Media Id";
+    public static final String LandscapeLogoMediaId = "Landscape Logo Media Id";
+    public static final String LongHeadline = "Long Headline";
+    public static final String SquareImageMediaId = "Square Image Media Id";
+    public static final String SquareLogoMediaId = "Square Logo Media Id";
     
     // Dynamic Search Ad   
     public static final String DynamicSearchAd = "Dynamic Search Ad";
@@ -452,7 +472,15 @@ public class StringTable {
     public static final String AdGroupLocationCriterion = "Ad Group Location Criterion";
     public static final String AdGroupLocationIntentCriterion = "Ad Group Location Intent Criterion";
     public static final String AdGroupNegativeLocationCriterion = "Ad Group Negative Location Criterion";    
-    
+    public static final String AdGroupCompanyNameCriterion = "Ad Group Company Name Criterion";
+    public static final String AdGroupIndustryCriterion = "Ad Group Industry Criterion";
+    public static final String AdGroupJobFunctionCriterion = "Ad Group Job Function Criterion";
+    public static final String AdGroupNegativeAgeCriterion = "Ad Group Negative Age Criterion";
+    public static final String AdGroupNegativeCompanyNameCriterion = "Ad Group Negative Company Name Criterion";
+    public static final String AdGroupNegativeGenderCriterion = "Ad Group Negative Gender Criterion";
+    public static final String AdGroupNegativeIndustryCriterion = "Ad Group Negative Industry Criterion";
+    public static final String AdGroupNegativeJobFunctionCriterion = "Ad Group Negative Job Function Criterion";
+
     // Campaign Criterion
     public static final String CampaignAgeCriterion = "Campaign Age Criterion";
     public static final String CampaignDayTimeCriterion = "Campaign DayTime Criterion";
@@ -474,6 +502,7 @@ public class StringTable {
     public static final String ExpandedTextAdLabel = "Expanded Text Ad Label";
     public static final String ProductAdLabel = "Product Ad Label";
     public static final String TextAdLabel = "Text Ad Label";
+    public static final String ResponsiveAdLabel = "Responsive Ad Label";
 
     // Offline Conversions
     public static final String OfflineConversion = "Offline Conversion";

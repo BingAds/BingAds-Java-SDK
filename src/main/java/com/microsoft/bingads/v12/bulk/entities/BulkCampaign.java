@@ -1,20 +1,39 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.bulk.BulkFileReader;
-import com.microsoft.bingads.v12.bulk.BulkFileWriter;
-import com.microsoft.bingads.v12.bulk.BulkOperation;
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-import com.microsoft.bingads.v12.internal.bulk.*;
-import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.bulk.BulkFileReader;
+import com.microsoft.bingads.v12.bulk.BulkFileWriter;
+import com.microsoft.bingads.v12.bulk.BulkOperation;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfSetting;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v12.campaignmanagement.Bid;
+import com.microsoft.bingads.v12.campaignmanagement.BiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.BudgetLimitType;
+import com.microsoft.bingads.v12.campaignmanagement.Campaign;
+import com.microsoft.bingads.v12.campaignmanagement.CampaignStatus;
+import com.microsoft.bingads.v12.campaignmanagement.CampaignType;
+import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSetting;
+import com.microsoft.bingads.v12.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.MaxConversionsBiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.Setting;
+import com.microsoft.bingads.v12.campaignmanagement.ShoppingSetting;
+import com.microsoft.bingads.v12.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a campaign that can be read or written in a bulk file.
@@ -45,47 +64,56 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
 
-    private static List<Setting> filterSettings(List<Setting> settings, CampaignType campaignType) {
-        ArrayList<Setting> filteredSettings = new ArrayList<Setting>();
-
-        for (Setting setting : settings) {
-            if (campaignType == CampaignType.SHOPPING) {
-                if (setting instanceof ShoppingSetting) {
-                    filteredSettings.add(setting);
-                }
-            }
-            if (campaignType == CampaignType.DYNAMIC_SEARCH_ADS) {
-                if (setting instanceof DynamicSearchAdsSetting) {
-                    filteredSettings.add(setting);
-                }
-            }
+    private Setting getCampaignSetting(Class<? extends Setting> settingClass) {
+        if (campaign.getSettings() == null) {
+            tryAddCampaignSettings();
         }
-
-        return filteredSettings;
-    }
-
-    private ShoppingSetting getShoppingSetting() {
         if (getCampaign().getSettings() == null) return null;
+        
+        List<Setting> settings = getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == settingClass).collect(Collectors.toList());
 
-        List<Setting> shoppingSettings = filterSettings(getCampaign().getSettings().getSettings(), CampaignType.SHOPPING);
-
-        if (shoppingSettings.size() != 1) {
-            throw new IllegalArgumentException("Can only have 1 ShoppingSetting in Campaign Settings.");
+        if (settings.isEmpty()) return null;
+        
+        if (settings.size() != 1) {
+            throw new IllegalArgumentException(String.format("Can only have 1 %s in Campaign Settings.", settingClass.getSimpleName()));
         }
 
-        return (ShoppingSetting) shoppingSettings.get(0);
+        return settings.get(0);
     }
-    
-    private DynamicSearchAdsSetting getDynamicSearchAdsSetting() {
-    	if (getCampaign().getSettings() == null) return null;
 
-        List<Setting> dynamicSearchAdsSettings = filterSettings(getCampaign().getSettings().getSettings(), CampaignType.DYNAMIC_SEARCH_ADS);
-
-        if (dynamicSearchAdsSettings.size() != 1) {
-            throw new IllegalArgumentException("Can only have 1 DynamicSearchAdsSettings in Campaign Settings.");
+    private void tryAddCampaignSettings() {
+        Collection<CampaignType> campaignTypes = campaign.getCampaignType();
+        if (campaignTypes.isEmpty()) return;
+        if (campaignTypes.size() > 1) {
+            throw new IllegalArgumentException("Can only have 1 campaign type in Campaign types.");
         }
+        for (CampaignType type : campaignTypes) {
+            // in fact there is only one item in the list.
+            addCampaignSettings(type);
+        }
+    }
 
-        return (DynamicSearchAdsSetting) dynamicSearchAdsSettings.get(0);
+    private void addCampaignSettings(CampaignType campaignType) {
+
+        ArrayOfSetting arrayOfSettings = new ArrayOfSetting();
+        Setting setting = null;
+        switch (campaignType) {
+        case SEARCH:
+            break;
+        case SHOPPING:
+        case AUDIENCE:
+            setting = new ShoppingSetting();
+            setting.setType(ShoppingSetting.class.getSimpleName());
+            break;
+        case DYNAMIC_SEARCH_ADS:
+            setting = new DynamicSearchAdsSetting();
+            setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
+            break;
+        }
+        if (setting != null) {
+            arrayOfSettings.getSettings().add(setting);
+            campaign.setSettings(arrayOfSettings);
+        }
     }
 
     static {
@@ -175,31 +203,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         });
 
                         if (campaignType != null) {
-                            List<CampaignType> campaignTypes = new ArrayList<CampaignType>();
-
-                            campaignTypes.add(campaignType);
-
-                            c.getCampaign().setCampaignType(campaignTypes);
-
-                            if (campaignType == CampaignType.SHOPPING) {
-                                c.getCampaign().setSettings(new ArrayOfSetting());
-
-                                ShoppingSetting shoppingSetting = new ShoppingSetting();
-
-                                shoppingSetting.setType(ShoppingSetting.class.getSimpleName());
-
-                                c.getCampaign().getSettings().getSettings().add(shoppingSetting);
-                            }
-                            
-                            if (campaignType == CampaignType.DYNAMIC_SEARCH_ADS) {
-                                c.getCampaign().setSettings(new ArrayOfSetting());
-
-                                DynamicSearchAdsSetting dynamicSearchAdsSetting = new DynamicSearchAdsSetting();
-
-                                dynamicSearchAdsSetting.setType(DynamicSearchAdsSetting.class.getSimpleName());
-
-                                c.getCampaign().getSettings().getSettings().add(dynamicSearchAdsSetting);
-                            }
+                            c.getCampaign().setCampaignType(Collections.singleton(campaignType));
+                            c.addCampaignSettings(campaignType);
                         }
                     }
                 }
@@ -383,17 +388,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
-
-                            if (shoppingSetting == null) {
-                                return null;
-                            }
-
-                            return shoppingSetting.getStoreId();
-                        }
-
-                        return null;
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        return setting == null? null : ((ShoppingSetting)setting).getStoreId();
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -403,20 +399,18 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
 
-                            if (shoppingSetting == null) {
-                                return;
-                            }
-
-                            shoppingSetting.setStoreId(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                                @Override
-                                public Long apply(String s) {
-                                    return Long.parseLong(s);
-                                }
-                            }));
+                        if (setting == null) {
+                            return;
                         }
+
+                        ((ShoppingSetting)setting).setStoreId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String s) {
+                                return Long.parseLong(s);
+                            }
+                        }));
                     }
                 }
         ));
@@ -429,17 +423,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
-
-                            if (shoppingSetting == null) {
-                                return null;
-                            }
-
-                            return shoppingSetting.getPriority();
-                        }
-
-                        return null;
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        return setting == null? null : ((ShoppingSetting)setting).getPriority();
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -449,20 +434,18 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
 
-                            if (shoppingSetting == null) {
-                                return;
-                            }
-
-                            shoppingSetting.setPriority(StringExtensions.parseOptional(v, new Function<String, Integer>() {
-                                @Override
-                                public Integer apply(String s) {
-                                    return Integer.parseInt(s);
-                                }
-                            }));
+                        if (setting == null) {
+                            return;
                         }
+
+                        ((ShoppingSetting)setting).setPriority(StringExtensions.parseOptional(v, new Function<String, Integer>() {
+                            @Override
+                            public Integer apply(String s) {
+                                return Integer.parseInt(s);
+                            }
+                        }));
                     }
                 }
         ));
@@ -475,17 +458,9 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        return setting == null? null : ((ShoppingSetting)setting).getSalesCountryCode();
 
-                            if (shoppingSetting == null) {
-                                return null;
-                            }
-
-                            return shoppingSetting.getSalesCountryCode();
-                        }
-
-                        return null;
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -494,16 +469,13 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         if (c.getCampaign().getCampaignType() == null) {
                             return;
                         }
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
-
-                            if (shoppingSetting == null) {
-                                return;
-                            }
-
-                            shoppingSetting.setSalesCountryCode(v);
+                        if (setting == null) {
+                            return;
                         }
+
+                        ((ShoppingSetting)setting).setSalesCountryCode(v);
                     }
                 }
         ));
@@ -516,17 +488,14 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
 
-                            if (shoppingSetting == null) {
-                                return null;
-                            }
-
-                            return StringExtensions.toBooleanBulkString(shoppingSetting.getLocalInventoryAdsEnabled());
+                        if (setting == null) {
+                            return null;
                         }
 
-                        return null;
+                        return StringExtensions.toBooleanBulkString(((ShoppingSetting)setting).getLocalInventoryAdsEnabled());
+
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -536,20 +505,18 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        if (c.getCampaign().getCampaignType().contains(CampaignType.SHOPPING)) {
-                            ShoppingSetting shoppingSetting = c.getShoppingSetting();
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
 
-                            if (shoppingSetting == null) {
-                                return;
-                            }
-
-                            shoppingSetting.setLocalInventoryAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
-                                @Override
-                                public Boolean apply(String value) {
-                                    return Boolean.parseBoolean(value);
-                                }
-                            }));
+                        if (setting == null) {
+                            return;
                         }
+
+                        ((ShoppingSetting)setting).setLocalInventoryAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                            @Override
+                            public Boolean apply(String value) {
+                                return Boolean.parseBoolean(value);
+                            }
+                        }));
                     }
                 }
         ));
@@ -669,17 +636,13 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return null;
 		                }
 		
-		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
-		                    DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
-		
-		                    if (dynamicSearchAdsSetting == null) {
-		                        return null;
-		                    }
-		
-		                    return dynamicSearchAdsSetting.getDomainName();
-		                }
-		
-		                return null;
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+		                
+                        if (setting == null) {
+                            return null;
+                        }
+    
+                        return ((DynamicSearchAdsSetting)setting).getDomainName();
 		            }
 		        },
 		        new BiConsumer<String, BulkCampaign>() {
@@ -688,16 +651,14 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                if (c.getCampaign().getCampaignType() == null) {
 		                    return;
 		                }
-		
-		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
-		                	DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
-		
-		                    if (dynamicSearchAdsSetting == null) {
-		                        return;
-		                    }
-		
-		                    dynamicSearchAdsSetting.setDomainName(v);
-		                }
+		                
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+                        
+                        if (setting == null) {
+                            return;
+                        }
+    
+                        ((DynamicSearchAdsSetting)setting).setDomainName(v);
 		            }
 		        }
         ));
@@ -710,17 +671,13 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return null;
 		                }
 		
-		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
-		                    DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
-		
-		                    if (dynamicSearchAdsSetting == null) {
-		                        return null;
-		                    }
-		
-		                    return dynamicSearchAdsSetting.getLanguage();
-		                }
-		
-		                return null;
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+
+                        if (setting == null) {
+                            return null;
+                        }
+    
+                        return ((DynamicSearchAdsSetting)setting).getLanguage();
 		            }
 		        },
 		        new BiConsumer<String, BulkCampaign>() {
@@ -730,15 +687,13 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return;
 		                }
 		
-		                if (c.getCampaign().getCampaignType().contains(CampaignType.DYNAMIC_SEARCH_ADS)) {
-		                	DynamicSearchAdsSetting dynamicSearchAdsSetting = c.getDynamicSearchAdsSetting();
-		
-		                    if (dynamicSearchAdsSetting == null) {
-		                        return;
-		                    }
-		
-		                    dynamicSearchAdsSetting.setLanguage(v);
-		                }
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+
+                        if (setting == null) {
+                            return;
+                        }
+    
+                        ((DynamicSearchAdsSetting)setting).setLanguage(v);
 		            }
 		        }
         ));

@@ -12,7 +12,7 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object. See this page for additional
      * information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId the client identifier corresponding to your registered application
      * 
@@ -26,7 +26,7 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object. See this page for additional
      * information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId the client identifier corresponding to your registered application
      * @param env Bing Ads Environment
@@ -41,7 +41,7 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object. See this page for additional
      * information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId the client identifier corresponding to your registered application
      * @param oauthTokens contains information about OAuth access tokens received from the Microsoft Account authorization service
@@ -56,7 +56,7 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object. See this page for additional
      * information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId the client identifier corresponding to your registered application
      * @param oauthTokens contains information about OAuth access tokens received from the Microsoft Account authorization service

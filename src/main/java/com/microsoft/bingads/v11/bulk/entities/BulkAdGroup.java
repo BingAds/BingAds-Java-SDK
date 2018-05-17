@@ -8,6 +8,12 @@ import com.microsoft.bingads.v11.campaignmanagement.*;
 import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfSetting;
+import com.microsoft.bingads.v11.campaignmanagement.TargetSetting;
+import com.microsoft.bingads.v11.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 
@@ -49,6 +55,20 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
     private boolean isExpired;
 
     private static final List<BulkMapping<BulkAdGroup>> MAPPINGS;
+    
+
+    private TargetSetting getTargetSetting() { 
+        if (adGroup.getSettings() == null || adGroup.getSettings().getSettings().size() == 0) return null;
+        
+        TargetSetting[] targetSettings = adGroup.getSettings().getSettings().stream().filter(e -> e instanceof TargetSetting).toArray(TargetSetting[]::new);
+        
+        if (targetSettings.length == 1)
+        {
+            return targetSettings[0];
+        }
+        
+        return null;
+    }
 
     private static final BiConsumer<String, BulkAdGroup> orSearchAdDistribution = new BiConsumer<String, BulkAdGroup>() {
         @Override
@@ -372,6 +392,28 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.PrivacyStatus,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+
+                        return c.getAdGroup().getPrivacyStatus() != null ? c.getAdGroup().getPrivacyStatus().value() : null;
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                            c.getAdGroup().setPrivacyStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupPrivacyStatus>() {
+                                @Override
+                                public AdGroupPrivacyStatus apply(String value) {
+                                    return AdGroupPrivacyStatus.fromValue(value);
+                                }
+                            }));
+                    }
+                }
+        ));
 
         m.add(new ComplexBulkMapping<BulkAdGroup>(
                 new BiConsumer<BulkAdGroup, RowValues>() {
@@ -407,6 +449,29 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.TargetSetting,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        TargetSetting targetSetting = c.getTargetSetting();
+                        return targetSetting == null? null : StringExtensions.toBulkString(targetSetting);
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        TargetSetting targetSetting = StringExtensions.parseTargetSetting(v);
+                        if (targetSetting == null) return;
+                        if (c.getAdGroup().getSettings() == null) {
+                            c.getAdGroup().setSettings(new ArrayOfSetting());
+                        }
+                        
+                        c.getAdGroup().getSettings().getSettings().add(targetSetting);
+                    }
+                }
+        ));
+        
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

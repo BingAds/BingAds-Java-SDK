@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       &lt;sequence>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v11}AdGroupAdditionalField" minOccurs="0"/>
+ *         &lt;element name="ReturnCoOpAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "campaignId",
-    "returnAdditionalFields"
+    "returnAdditionalFields",
+    "returnCoOpAdGroups"
 })
 @XmlRootElement(name = "GetAdGroupsByCampaignIdRequest")
 public class GetAdGroupsByCampaignIdRequest {
@@ -43,6 +45,8 @@ public class GetAdGroupsByCampaignIdRequest {
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AdGroupAdditionalField> returnAdditionalFields;
+    @XmlElement(name = "ReturnCoOpAdGroups", nillable = true)
+    protected Boolean returnCoOpAdGroups;
 
     /**
      * Gets the value of the campaignId property.
@@ -90,6 +94,30 @@ public class GetAdGroupsByCampaignIdRequest {
      */
     public void setReturnAdditionalFields(Collection<AdGroupAdditionalField> value) {
         this.returnAdditionalFields = value;
+    }
+
+    /**
+     * Gets the value of the returnCoOpAdGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnCoOpAdGroups() {
+        return returnCoOpAdGroups;
+    }
+
+    /**
+     * Sets the value of the returnCoOpAdGroups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnCoOpAdGroups(Boolean value) {
+        this.returnCoOpAdGroups = value;
     }
 
 }

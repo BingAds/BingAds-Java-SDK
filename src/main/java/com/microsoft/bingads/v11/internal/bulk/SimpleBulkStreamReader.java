@@ -1,7 +1,6 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
 import com.microsoft.bingads.v11.bulk.DownloadFileType;
-import com.microsoft.bingads.v11.bulk.entities.UnknownBulkEntity;
 import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 

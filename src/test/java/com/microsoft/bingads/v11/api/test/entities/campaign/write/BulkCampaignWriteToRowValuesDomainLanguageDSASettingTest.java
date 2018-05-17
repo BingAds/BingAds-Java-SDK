@@ -35,6 +35,7 @@ public class BulkCampaignWriteToRowValuesDomainLanguageDSASettingTest extends Bu
                 c.getCampaign().setCampaignType(Collections.singletonList(CampaignType.DYNAMIC_SEARCH_ADS));
                 c.getCampaign().setSettings(new ArrayOfSetting());
                 DynamicSearchAdsSetting setting = new DynamicSearchAdsSetting();
+                setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
                 setting.setLanguage(v);
                 c.getCampaign().getSettings().getSettings().add(setting);
             }

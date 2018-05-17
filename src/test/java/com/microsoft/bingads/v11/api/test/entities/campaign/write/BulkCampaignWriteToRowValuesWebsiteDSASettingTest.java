@@ -13,6 +13,7 @@ import com.microsoft.bingads.v11.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v11.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v11.campaignmanagement.DynamicSearchAdsSetting;
+import com.microsoft.bingads.v11.campaignmanagement.ShoppingSetting;
 
 public class BulkCampaignWriteToRowValuesWebsiteDSASettingTest extends BulkCampaignTest {
     @Parameterized.Parameter(value = 1)
@@ -35,6 +36,7 @@ public class BulkCampaignWriteToRowValuesWebsiteDSASettingTest extends BulkCampa
                 c.getCampaign().setCampaignType(Collections.singletonList(CampaignType.DYNAMIC_SEARCH_ADS));
                 c.getCampaign().setSettings(new ArrayOfSetting());
                 DynamicSearchAdsSetting setting = new DynamicSearchAdsSetting();
+                setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
                 setting.setDomainName(v);
                 c.getCampaign().getSettings().getSettings().add(setting);
             }

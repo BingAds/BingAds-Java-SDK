@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * A representation of a block of data (set of csv lines) provided in the
  *
- * <a href="http://msdn.microsoft.com/en-us/library/dn539651.aspx">Bulk
+ * <a href="https://docs.microsoft.com/en-us/bingads/bulk-service/bulk-file-schema?view=bingads-12">Bulk
  * File Schema</a>.
  *
  */

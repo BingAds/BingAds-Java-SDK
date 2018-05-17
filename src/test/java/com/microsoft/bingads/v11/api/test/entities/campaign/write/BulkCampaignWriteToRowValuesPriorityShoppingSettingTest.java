@@ -43,7 +43,7 @@ public class BulkCampaignWriteToRowValuesPriorityShoppingSettingTest extends Bul
                         c.getCampaign().setSettings(new ArrayOfSetting());
 
                         ShoppingSetting setting = new ShoppingSetting();
-
+                        setting.setType(ShoppingSetting.class.getSimpleName());
                         setting.setPriority(v);
 
                         c.getCampaign().getSettings().getSettings().add(setting);

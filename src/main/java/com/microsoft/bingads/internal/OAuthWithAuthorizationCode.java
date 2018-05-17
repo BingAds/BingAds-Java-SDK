@@ -9,7 +9,7 @@ import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.ServiceClient;
 
 /**
- * Implements the OAuth Authorization Code Grant Flow {@link "http://msdn.microsoft.com/en-us/library/dn277356.aspx"}
+ * Implements the OAuth Authorization Code Grant Flow {@link "https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12"}
  *
  */
 public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {

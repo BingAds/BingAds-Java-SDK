@@ -3,6 +3,7 @@ package com.microsoft.bingads.v11.campaignmanagement;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="ReturnCoOpStores" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,9 +28,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "", propOrder = {
+    "returnCoOpStores"
+})
 @XmlRootElement(name = "GetBMCStoresByCustomerIdRequest")
 public class GetBMCStoresByCustomerIdRequest {
 
+    @XmlElement(name = "ReturnCoOpStores", nillable = true)
+    protected Boolean returnCoOpStores;
+
+    /**
+     * Gets the value of the returnCoOpStores property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnCoOpStores() {
+        return returnCoOpStores;
+    }
+
+    /**
+     * Sets the value of the returnCoOpStores property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnCoOpStores(Boolean value) {
+        this.returnCoOpStores = value;
+    }
 
 }

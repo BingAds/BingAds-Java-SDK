@@ -22,7 +22,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret
@@ -40,7 +40,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret
@@ -58,7 +58,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret
@@ -76,7 +76,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class that can be used in the {@link AuthorizationData} object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret
@@ -95,7 +95,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class with a specified OAuthService object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret
@@ -113,7 +113,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * Creates new instance of the class with a specified OAuthService object.
      *
      * See this page for additional information on these values:
-     * <a href="http://msdn.microsoft.com/en-us/library/dn277356.aspx">http://msdn.microsoft.com/en-us/library/dn277356.aspx</a>
+     * <a href="https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12">https://docs.microsoft.com/en-us/bingads/guides/authentication-oauth?view=bingads-12</a>
      *
      * @param clientId client id
      * @param clientSecret client secret

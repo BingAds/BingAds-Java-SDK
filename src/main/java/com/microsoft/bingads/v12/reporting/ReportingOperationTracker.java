@@ -1,27 +1,28 @@
 package com.microsoft.bingads.v12.reporting;
 
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.internal.OperationStatusRetry;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
-import com.microsoft.bingads.internal.utilities.ThreadPool;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.OperationStatusRetry;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
+
 /**
  * Track the status of reporting operation.
  */
-public class ReportingOperationTracker{
-	
+public class ReportingOperationTracker {
+
     private static final int INITIAL_STATUS_CHECK_INTERVAL_IN_MS = 1000;
     private static final int NUMBER_OF_INITIAL_STATUS_CHECKS = 5;
-    
+
     private int numberOfStatusChecks = 0;
     private ScheduledExecutorService executorService;
     private ReportingStatusProvider statusProvider;
@@ -33,9 +34,9 @@ public class ReportingOperationTracker{
     private ResultFuture<ReportingOperationStatus> trackResultFuture;
 
     private ServiceClient<IReportingService> serviceClient;
-    
+
     private OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService> operationStatusRetry;
-    private int numberOfStatusRetry = 3;
+    private int numberOfStatusRetry = 4;
 
     private final Runnable pollExecutorTask = new Runnable() {
         @Override
@@ -44,15 +45,31 @@ public class ReportingOperationTracker{
         }
     };
 
-    public ReportingOperationTracker(
-    		ReportingStatusProvider statusProvider,
-            ServiceClient<IReportingService> serviceClient,
-            int statusCheckIntervalInMs) {
+    public ReportingOperationTracker(ReportingStatusProvider statusProvider,
+            ServiceClient<IReportingService> serviceClient, int statusCheckIntervalInMs) {
 
         this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
         this.serviceClient = serviceClient;
-        this.operationStatusRetry = new OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService>();
+        this.operationStatusRetry = new OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService>(
+                new Function<Exception, Integer>() {
+
+                    @Override
+                    public Integer apply(Exception exception) {
+
+                        Throwable cause = exception.getCause();
+                        int errorCode = -1;
+                        try {
+                            errorCode = ((AdApiFaultDetail_Exception) cause).getFaultInfo().getErrors().getAdApiErrors()
+                                    .get(0).getCode();
+                        } catch (Exception e) {
+                            // Ignore
+                        }
+
+                        return errorCode;
+                    }
+
+                });
     }
 
     AtomicBoolean statusUpdateInProgress = new AtomicBoolean(false);
@@ -79,7 +96,6 @@ public class ReportingOperationTracker{
 
                         numberOfStatusChecks++;
 
-
                         completeTaskIfOperationIsComplete();
                     } catch (InterruptedException ex) {
                         stopTracking();
@@ -87,7 +103,7 @@ public class ReportingOperationTracker{
                         propagateExceptionToCallingThread(new CouldNotGetReportingDownloadStatusException(ex));
                     } catch (ExecutionException ex) {
                         stopTracking();
-                        
+
                         propagateExceptionToCallingThread(new CouldNotGetReportingDownloadStatusException(ex));
                     } finally {
                         statusUpdateInProgress.set(false);
@@ -140,34 +156,30 @@ public class ReportingOperationTracker{
     }
 
     private void refreshStatus(AsyncCallback<ReportingOperationStatus> callback) {
-        final ResultFuture<ReportingOperationStatus> resultFuture = new ResultFuture<ReportingOperationStatus>(callback);
-        
-        operationStatusRetry.executeWithRetry(
-        	new TriConsumer<ReportingStatusProvider, ServiceClient<IReportingService>, AsyncCallback<ReportingOperationStatus>>() {
-                @Override
-                public void accept(ReportingStatusProvider statusProvider, ServiceClient<IReportingService> serviceClient, 
-                		AsyncCallback<ReportingOperationStatus> callback) {
-                    statusProvider.getCurrentStatus(serviceClient, callback);
-                }
-            },
-        	statusProvider,
-        	serviceClient,
-    		new Consumer<ReportingOperationStatus>() {
-    			@Override
-    			public void accept(ReportingOperationStatus status) {
-    				currentStatus = status;
+        final ResultFuture<ReportingOperationStatus> resultFuture = new ResultFuture<ReportingOperationStatus>(
+                callback);
 
-    				resultFuture.setResult(currentStatus);
-    			}
-    		},
-    		new Consumer<Exception>() {
-    			@Override
-    			public void accept(Exception exception) {
-    				resultFuture.setException(exception);
-    			}
-    		},
-    		numberOfStatusRetry
-    	);
+        operationStatusRetry.executeWithRetry(
+                new TriConsumer<ReportingStatusProvider, ServiceClient<IReportingService>, AsyncCallback<ReportingOperationStatus>>() {
+                    @Override
+                    public void accept(ReportingStatusProvider statusProvider,
+                            ServiceClient<IReportingService> serviceClient,
+                            AsyncCallback<ReportingOperationStatus> callback) {
+                        statusProvider.getCurrentStatus(serviceClient, callback);
+                    }
+                }, statusProvider, serviceClient, new Consumer<ReportingOperationStatus>() {
+                    @Override
+                    public void accept(ReportingOperationStatus status) {
+                        currentStatus = status;
+
+                        resultFuture.setResult(currentStatus);
+                    }
+                }, new Consumer<Exception>() {
+                    @Override
+                    public void accept(Exception exception) {
+                        resultFuture.setException(exception);
+                    }
+                }, numberOfStatusRetry);
     }
 
     private boolean trackingWasStopped() {
@@ -179,7 +191,7 @@ public class ReportingOperationTracker{
 
         this.executorService.shutdown();
     }
-    
+
     public Future<ReportingOperationStatus> trackResultFileAsync(AsyncCallback<ReportingOperationStatus> callback) {
         this.trackResultFuture = new ResultFuture<ReportingOperationStatus>(callback);
 
@@ -190,7 +202,7 @@ public class ReportingOperationTracker{
 
     private void startTracking() {
         executorService = Executors.newSingleThreadScheduledExecutor();
-        
+
         executorService.schedule(pollExecutorTask, INITIAL_STATUS_CHECK_INTERVAL_IN_MS, TimeUnit.MILLISECONDS);
     }
 }

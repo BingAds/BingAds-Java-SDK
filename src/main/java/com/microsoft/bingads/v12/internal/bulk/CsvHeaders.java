@@ -43,6 +43,7 @@ public class CsvHeaders {
             StringTable.CpcBid,
             StringTable.ContentBid,
             StringTable.Language,
+            StringTable.PrivacyStatus,
 
             // Ads
             StringTable.Title,
@@ -85,6 +86,10 @@ public class CsvHeaders {
             StringTable.FromMinute,
             StringTable.ToHour,
             StringTable.ToMinute,
+
+            // Profile Criterion
+            StringTable.Profile,
+            StringTable.ProfileId,
 
             // AdExtensions common
             StringTable.Version,
@@ -273,6 +278,9 @@ public class CsvHeaders {
             StringTable.TargetSetting,
             StringTable.RemarketingRule,
             StringTable.AudienceSearchSize,
+            StringTable.AudienceNetworkSize,
+            StringTable.SupportedCampaignTypes,
+            StringTable.ProductAudienceType,
 
             // Structured Snippet Ad Extension
             StringTable.StructuredSnippetHeader,
@@ -283,6 +291,15 @@ public class CsvHeaders {
             StringTable.TitlePart2,
             StringTable.Path1,
             StringTable.Path2,
+
+            // Responsive Ad
+            StringTable.CallToAction,
+            StringTable.Headline,
+            StringTable.LandscapeImageMediaId,
+            StringTable.LandscapeLogoMediaId,
+            StringTable.LongHeadline,
+            StringTable.SquareImageMediaId,
+            StringTable.SquareLogoMediaId,
             
             // Dynamic Search Ad
             StringTable.DomainLanguage,
@@ -292,7 +309,7 @@ public class CsvHeaders {
             StringTable.DynamicAdTargetValue1,
             StringTable.DynamicAdTargetValue2,
             StringTable.DynamicAdTargetValue3,
-
+            
             // Labels
             StringTable.ColorCode,
             StringTable.Label,

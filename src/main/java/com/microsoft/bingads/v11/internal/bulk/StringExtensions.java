@@ -1,6 +1,23 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
 
+import java.awt.datatransfer.StringSelection;
+import java.io.File;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import javax.xml.bind.JAXBElement;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v11.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v11.bulk.entities.Status;
 import com.microsoft.bingads.v11.campaignmanagement.AdDistribution;
@@ -10,14 +27,15 @@ import com.microsoft.bingads.v11.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v11.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfDayTime;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOflong;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v11.campaignmanagement.Bid;
 import com.microsoft.bingads.v11.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.BusinessGeoCodeStatus;
 import com.microsoft.bingads.v11.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v11.campaignmanagement.CriterionTypeGroup;
 import com.microsoft.bingads.v11.campaignmanagement.CustomEventsRule;
 import com.microsoft.bingads.v11.campaignmanagement.CustomParameter;
 import com.microsoft.bingads.v11.campaignmanagement.CustomParameters;
@@ -27,7 +45,6 @@ import com.microsoft.bingads.v11.campaignmanagement.DayTime;
 import com.microsoft.bingads.v11.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v11.campaignmanagement.InheritFromParentBiddingScheme;
-import com.microsoft.bingads.v11.campaignmanagement.KeyValuePairOfstringstring;
 import com.microsoft.bingads.v11.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.MatchType;
 import com.microsoft.bingads.v11.campaignmanagement.MaxClicksBiddingScheme;
@@ -37,6 +54,7 @@ import com.microsoft.bingads.v11.campaignmanagement.NumberOperator;
 import com.microsoft.bingads.v11.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v11.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
 import com.microsoft.bingads.v11.campaignmanagement.PageVisitorsWhoVisitedAnotherPageRule;
+import com.microsoft.bingads.v11.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v11.campaignmanagement.RemarketingRule;
 import com.microsoft.bingads.v11.campaignmanagement.RuleItem;
 import com.microsoft.bingads.v11.campaignmanagement.RuleItemGroup;
@@ -44,22 +62,10 @@ import com.microsoft.bingads.v11.campaignmanagement.StringOperator;
 import com.microsoft.bingads.v11.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v11.campaignmanagement.TargetCpaBiddingScheme;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageParameter;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.lang.IllegalArgumentException;
-import java.math.BigDecimal;
-
-import javax.xml.bind.JAXBElement;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfTargetSettingDetail;
+import com.microsoft.bingads.v11.campaignmanagement.TargetSetting;
+import com.microsoft.bingads.v11.campaignmanagement.TargetSettingDetail;
 
 public class StringExtensions {
 
@@ -75,6 +81,8 @@ public class StringExtensions {
     
     private static final Pattern dayTimePattern = Pattern.compile("\\((Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)\\[(\\d\\d?):(\\d\\d)-(\\d\\d?):(\\d\\d)\\]\\)");
  
+    private static final Pattern targetSettingDetailsPattern = Pattern.compile("^(Age|Audience|CompanyName|Gender|Industry|JobFunction)$");
+    
     //Remarketing rule pattern
     private static final Pattern pageRulePattern = Pattern.compile("^(Url|ReferrerUrl|None) (Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
     private static final Pattern operandPattern = Pattern.compile("^(Category|Action|Label|Value) ([^()]*)$");
@@ -654,6 +662,28 @@ public class StringExtensions {
     	throw new IllegalArgumentException("Unknown day");
     }
 
+    public static CriterionTypeGroup ParseCriterionTypeGroup(String s)
+    {
+        switch (s.toLowerCase())
+        {
+            case "age":
+                return CriterionTypeGroup.AGE;
+            case "audience":
+                return CriterionTypeGroup.AUDIENCE;
+            case "companyname":
+                return CriterionTypeGroup.COMPANY_NAME;
+            case "gender":
+                return CriterionTypeGroup.GENDER;
+            case "industry":
+                return CriterionTypeGroup.INDUSTRY;
+            case "jobfunction":
+                return CriterionTypeGroup.JOB_FUNCTION;
+            default:
+                throw new IllegalArgumentException("Unknown criterion type group");
+        }
+    }
+
+    
     public static LocationTargetType parseLocationTargetType(String s) {
         if (s.equals("Metro Area")) {
             return LocationTargetType.METRO_AREA;
@@ -1398,6 +1428,99 @@ public class StringExtensions {
     		throw new IllegalArgumentException(String.format("Invalid String Rule Item perator: ", operator));
     	}
     }
-  
+
+
+    public static String toBulkString(TargetSetting targetSetting) {
+        if (targetSetting == null) {
+            return null;
+        }
+        
+        if (targetSetting.getDetails() == null || targetSetting.getDetails().getTargetSettingDetails().size() == 0) {
+            return StringTable.DeleteValue;
+        }
+        
+        return String.join("; ", 
+                targetSetting.getDetails()
+                .getTargetSettingDetails()
+                .stream()
+                .filter(e -> e.getTargetAndBid())
+                .map(e -> e.getCriterionTypeGroup().value())
+                .toArray(CharSequence[]::new));
+    }
+
+    private static List<TargetSettingDetail> parseTargetSettingDetails(String details) {
+        if (details == null || details.length() == 0) return null;
+        
+        return Arrays.stream(details.split(";"))
+            .map(s -> s.trim())
+            .map(s -> {
+                Matcher m = targetSettingDetailsPattern.matcher(s);
+                if (m.matches()) {
+                    return m.group(1);
+                }
+                return null;
+            })
+            .filter(s -> s != null )
+            .map(s -> {
+                TargetSettingDetail targetSettingDetail = new TargetSettingDetail();
+                targetSettingDetail.setCriterionTypeGroup(CriterionTypeGroup.fromValue(s));
+                targetSettingDetail.setTargetAndBid(true);
+                return targetSettingDetail;
+            })
+            .collect(Collectors.toList());
+    }
+    
+    public static TargetSetting parseTargetSetting(String value) {
+        List<TargetSettingDetail> targetSettingDetails = parseTargetSettingDetails(value);
+        if (targetSettingDetails == null) return null;
+        
+        TargetSetting targetSetting = new TargetSetting();
+        targetSetting.setType("TargetSetting");
+        targetSetting.setDetails(new ArrayOfTargetSettingDetail());
+        
+        if ( targetSettingDetails != null ) {
+            targetSetting.getDetails().getTargetSettingDetails().addAll(targetSettingDetails);
+        }
+        return targetSetting;
+    }
+
+    public static String writeArrayOfstring(ArrayOfstring arrayOfString, String separator) {
+        if (arrayOfString == null) return null;
+        
+        if (arrayOfString.getStrings().size() == 0) return StringTable.DeleteValue;
+        
+        return String.join(separator, arrayOfString.getStrings());
+    }
+
+    public static ArrayOfstring parseArrayOfString(String value) {
+        // TODO Auto-generated method stub
+        if (isNullOrEmpty(value) ) return null;
+        
+        String[] parts = value.split(";");
+        ArrayOfstring ret = new ArrayOfstring();
+        ret.getStrings().addAll(
+                Arrays.stream(parts)
+                .map(s -> s.trim())
+                .filter(s -> {
+                    return s.length() > 0 && false == ";".equals(s);
+                    }
+                )
+                .collect(Collectors.toList()));
+        return ret;
+    }
+
+    public static String writeProductAudienceType(Collection<ProductAudienceType> productAudienceType, String separator) {
+        if (productAudienceType == null) return null;
+        
+        if (productAudienceType.size() == 0) return StringTable.DeleteValue;
+        
+        return String.join(separator, productAudienceType.stream().map(p -> p.value()).collect(Collectors.toList()));
+    }
+
+    public static Collection<ProductAudienceType> parseProductAudienceType(String value) {
+        if (isNullOrEmpty(value) ) return null;
+        String[] parts = value.split(";");
+        return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
+    }
         
 }

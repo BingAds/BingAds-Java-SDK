@@ -1,7 +1,5 @@
 package com.microsoft.bingads.internal;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.InternalException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -18,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.jws.WebService;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -25,9 +24,12 @@ import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.spi.Provider;
 
-class ServiceFactoryImpl implements ServiceFactory {
+import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.InternalException;
 
-    private static final String VERSION = "11.12.1";
+public class ServiceFactoryImpl implements ServiceFactory {
+
+    private static final String VERSION = "11.12.2";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -131,7 +133,6 @@ class ServiceFactoryImpl implements ServiceFactory {
 
     // per #863657, Service.Create sometimes get hang. We implement timeout and retry for it.
     private Service createServiceWithRetry(Class serviceInterface, ApiEnvironment env) throws Exception {
-
         final QName qName = getServiceQname(serviceInterface);
         final boolean isCxf = Provider.provider().getClass().getName().contains("org.apache.cxf");
         final URL url = (isCxf ? null : new URL(getServiceUrl(serviceInterface, env) + "?wsdl")); 
@@ -209,14 +210,20 @@ class ServiceFactoryImpl implements ServiceFactory {
     @Override
     public <T> T createProxyFromService(Service service, ApiEnvironment env, Class<T> serviceInterface) {
         T port = service.getPort(serviceInterface);
-
         String serviceUrl = getServiceUrl(serviceInterface, env);
-
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, serviceUrl);
-
+        configServiceProxy(port);
         addUserAgent(port);
 
         return port;
+    }
+
+    /**
+     * Inherited class could set timeout properties by override this method.
+     * @param port Proxy supports Service T
+     */
+    protected <T> void configServiceProxy(T port) {
+        // By default nothing is add here.
     }
 
     private String getServiceUrlFromConfig(Class serviceInterface) {

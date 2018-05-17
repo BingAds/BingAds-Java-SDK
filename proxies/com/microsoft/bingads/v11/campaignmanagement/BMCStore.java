@@ -4,6 +4,7 @@ package com.microsoft.bingads.v11.campaignmanagement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -22,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="IsActive" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="IsProductAdsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="SubType" type="{https://bingads.microsoft.com/CampaignManagement/v11}BMCStoreSubType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "isActive",
     "isProductAdsEnabled",
-    "name"
+    "name",
+    "subType"
 })
 public class BMCStore {
 
@@ -50,6 +53,9 @@ public class BMCStore {
     protected Boolean isProductAdsEnabled;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "SubType", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected BMCStoreSubType subType;
 
     /**
      * Gets the value of the hasCatalog property.
@@ -169,6 +175,30 @@ public class BMCStore {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the subType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BMCStoreSubType }
+     *     
+     */
+    public BMCStoreSubType getSubType() {
+        return subType;
+    }
+
+    /**
+     * Sets the value of the subType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BMCStoreSubType }
+     *     
+     */
+    public void setSubType(BMCStoreSubType value) {
+        this.subType = value;
     }
 
 }

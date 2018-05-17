@@ -336,6 +336,28 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+		
+		
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.PrivacyStatus,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+
+                        return c.getAdGroup().getPrivacyStatus() != null ? c.getAdGroup().getPrivacyStatus().value() : null;
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                            c.getAdGroup().setPrivacyStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupPrivacyStatus>() {
+                                @Override
+                                public AdGroupPrivacyStatus apply(String value) {
+                                    return AdGroupPrivacyStatus.fromValue(value);
+                                }
+                            }));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

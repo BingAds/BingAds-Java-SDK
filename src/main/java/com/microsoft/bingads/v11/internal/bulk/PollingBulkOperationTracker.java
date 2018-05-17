@@ -1,27 +1,29 @@
 package com.microsoft.bingads.v11.internal.bulk;
 
-import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.internal.OperationStatusRetry;
-import com.microsoft.bingads.internal.ParentCallback;
-import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.v11.bulk.CouldNotGetBulkOperationStatusException;
-import com.microsoft.bingads.v11.bulk.BulkOperationProgressInfo;
-import com.microsoft.bingads.v11.bulk.BulkOperationStatus;
-import com.microsoft.bingads.v11.bulk.IBulkService;
-import com.microsoft.bingads.v11.bulk.Progress;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
-import com.microsoft.bingads.internal.utilities.ThreadPool;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.OperationStatusRetry;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
+import com.microsoft.bingads.internal.utilities.ThreadPool;
+import com.microsoft.bingads.v11.bulk.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v11.bulk.BulkOperationProgressInfo;
+import com.microsoft.bingads.v11.bulk.BulkOperationStatus;
+import com.microsoft.bingads.v11.bulk.CouldNotGetBulkOperationStatusException;
+import com.microsoft.bingads.v11.bulk.IBulkService;
+import com.microsoft.bingads.v11.bulk.Progress;
 
 public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracker<TStatus> {
-    
+
     private static final int INITIAL_STATUS_CHECK_INTERVAL_IN_MS = 1000;
     private static final int NUMBER_OF_INITIAL_STATUS_CHECKS = 5;
     private int numberOfStatusChecks = 0;
@@ -36,9 +38,9 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     private ResultFuture<BulkOperationStatus<TStatus>> trackResultFuture;
 
     private ServiceClient<IBulkService> serviceClient;
-    
+
     private OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService> operationStatusRetry;
-    private int numberOfStatusRetry = 3;
+    private int numberOfStatusRetry = 4;
 
     private final Runnable pollExecutorTask = new Runnable() {
         @Override
@@ -47,17 +49,33 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         }
     };
 
-    public PollingBulkOperationTracker(
-            BulkOperationStatusProvider<TStatus> statusProvider,
-            ServiceClient<IBulkService> serviceClient,
-            Progress<BulkOperationProgressInfo> progress,
+    public PollingBulkOperationTracker(BulkOperationStatusProvider<TStatus> statusProvider,
+            ServiceClient<IBulkService> serviceClient, Progress<BulkOperationProgressInfo> progress,
             int statusCheckIntervalInMs) {
 
         this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
         this.serviceClient = serviceClient;
         this.progress = progress;
-        this.operationStatusRetry = new OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService>();
+        this.operationStatusRetry = new OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService>(
+                new Function<Exception, Integer>() {
+
+                    @Override
+                    public Integer apply(Exception exception) {
+
+                        Throwable cause = exception.getCause();
+                        int errorCode = -1;
+                        try {
+                            errorCode = ((AdApiFaultDetail_Exception) cause).getFaultInfo().getErrors().getAdApiErrors()
+                                    .get(0).getCode();
+                        } catch (Exception e) {
+                            // Ignore
+                        }
+
+                        return errorCode;
+                    }
+
+                });
     }
 
     AtomicBoolean statusUpdateInProgress = new AtomicBoolean(false);
@@ -93,7 +111,7 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                         propagateExceptionToCallingThread(new CouldNotGetBulkOperationStatusException(ex));
                     } catch (ExecutionException ex) {
                         stopTracking();
-                        
+
                         propagateExceptionToCallingThread(new CouldNotGetBulkOperationStatusException(ex));
                     } finally {
                         statusUpdateInProgress.set(false);
@@ -143,13 +161,13 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
             public void run() {
                 try {
                     progress.report(new BulkOperationProgressInfo(percentage));
-                
+
                     updateLastProgressReported(percentage);
                 } catch (Exception ex) {
                     // ignore exceptions from progress update thread
                 }
             }
-        });       
+        });
     }
 
     private boolean userRequestedProgressReports() {
@@ -184,37 +202,32 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     }
 
     private void refreshStatus(AsyncCallback<BulkOperationStatus<TStatus>> callback) {
-        final ResultFuture<BulkOperationStatus<TStatus>> resultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(callback);
-        
-		operationStatusRetry.executeWithRetry(
-			new TriConsumer<BulkOperationStatusProvider<TStatus>, ServiceClient<IBulkService>, AsyncCallback<BulkOperationStatus<TStatus>>>() {
-				@Override
-				public void accept(BulkOperationStatusProvider<TStatus> statusProvider,
-						ServiceClient<IBulkService> serviceClient,
-						AsyncCallback<BulkOperationStatus<TStatus>> callback) {
-					statusProvider.getCurrentStatus(serviceClient, callback);
-				}
-			}, 
-			statusProvider,
-			serviceClient,
-			new Consumer<BulkOperationStatus<TStatus>>() {
-				@Override
-				public void accept(BulkOperationStatus<TStatus> status) {
-					currentStatus = status;
+        final ResultFuture<BulkOperationStatus<TStatus>> resultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(
+                callback);
 
-					resultFuture.setResult(currentStatus);
-				}
-			}, 
-			new Consumer<Exception>() {
-				@Override
-				public void accept(Exception exception) {
-					resultFuture.setException(exception);
-				}
-			}, 
-			numberOfStatusRetry
-		);
+        operationStatusRetry.executeWithRetry(
+                new TriConsumer<BulkOperationStatusProvider<TStatus>, ServiceClient<IBulkService>, AsyncCallback<BulkOperationStatus<TStatus>>>() {
+                    @Override
+                    public void accept(BulkOperationStatusProvider<TStatus> statusProvider,
+                            ServiceClient<IBulkService> serviceClient,
+                            AsyncCallback<BulkOperationStatus<TStatus>> callback) {
+                        statusProvider.getCurrentStatus(serviceClient, callback);
+                    }
+                }, statusProvider, serviceClient, new Consumer<BulkOperationStatus<TStatus>>() {
+                    @Override
+                    public void accept(BulkOperationStatus<TStatus> status) {
+                        currentStatus = status;
+
+                        resultFuture.setResult(currentStatus);
+                    }
+                }, new Consumer<Exception>() {
+                    @Override
+                    public void accept(Exception exception) {
+                        resultFuture.setException(exception);
+                    }
+                }, numberOfStatusRetry);
     }
-    
+
     private boolean trackingWasStopped() {
         return this.stopTracking;
     }
@@ -225,11 +238,16 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         this.executorService.shutdown();
     }
 
-    /* (non-Javadoc)
-     * @see com.microsoft.bingads.api.internal.bulk.operations.BulkOperationTracker#trackResultFileAsync()
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.microsoft.bingads.api.internal.bulk.operations.BulkOperationTracker#
+     * trackResultFileAsync()
      */
     @Override
-    public Future<BulkOperationStatus<TStatus>> trackResultFileAsync(AsyncCallback<BulkOperationStatus<TStatus>> callback) {
+    public Future<BulkOperationStatus<TStatus>> trackResultFileAsync(
+            AsyncCallback<BulkOperationStatus<TStatus>> callback) {
         this.trackResultFuture = new ResultFuture<BulkOperationStatus<TStatus>>(callback);
 
         this.startTracking();
@@ -239,7 +257,7 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
 
     private void startTracking() {
         executorService = Executors.newSingleThreadScheduledExecutor();
-        
+
         executorService.schedule(pollExecutorTask, INITIAL_STATUS_CHECK_INTERVAL_IN_MS, TimeUnit.MILLISECONDS);
     }
 }

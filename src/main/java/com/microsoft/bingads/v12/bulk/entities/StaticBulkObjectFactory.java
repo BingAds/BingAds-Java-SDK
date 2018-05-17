@@ -1,20 +1,21 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
-import com.microsoft.bingads.v12.internal.bulk.BulkObject;
-import com.microsoft.bingads.v12.internal.bulk.BulkObjectFactory;
-import com.microsoft.bingads.v12.internal.bulk.Creator;
-import com.microsoft.bingads.v12.internal.bulk.RowValues;
-import com.microsoft.bingads.v12.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
-import com.microsoft.bingads.v12.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
-import com.microsoft.bingads.v12.internal.bulk.entities.BulkEntityIdentifier;
-import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.v12.internal.bulk.FormatVersion;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.v12.internal.bulk.BulkObject;
+import com.microsoft.bingads.v12.internal.bulk.BulkObjectFactory;
+import com.microsoft.bingads.v12.internal.bulk.Creator;
+import com.microsoft.bingads.v12.internal.bulk.FormatVersion;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
+import com.microsoft.bingads.v12.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
+import com.microsoft.bingads.v12.internal.bulk.entities.BulkEntityIdentifier;
+import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Reserved for internal use.
@@ -77,6 +78,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkDynamicSearchAd();
+            }
+        }));
+        m.put(StringTable.ResponsiveAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkResponsiveAd();
             }
         }));
         m.put(StringTable.CampaignNegativeDynamicSearchAdTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -420,6 +427,24 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupNegativeInMarketAudienceAssociation();
             }
         }));
+        m.put(StringTable.ProductAudience, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkProductAudience();
+            }
+        }));
+        m.put(StringTable.AdGroupProductAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupProductAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeProductAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeProductAudienceAssociation();
+            }
+        }));
         m.put(StringTable.Budget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -430,6 +455,24 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAdGroupAgeCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupCompanyNameCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupCompanyNameCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupIndustryCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupIndustryCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupJobFunctionCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupJobFunctionCriterion();
             }
         }));
         m.put(StringTable.AdGroupDeviceCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -474,7 +517,37 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupNegativeLocationCriterion();
             }
         }));
-        
+
+        m.put(StringTable.AdGroupNegativeAgeCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeAgeCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeCompanyNameCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeCompanyNameCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeGenderCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeGenderCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeIndustryCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeIndustryCriterion();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeJobFunctionCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeJobFunctionCriterion();
+            }
+        }));
         m.put(StringTable.CampaignAgeCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -570,6 +643,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkProductAdLabel();
+            }
+        }));
+        m.put(StringTable.ResponsiveAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkResponsiveAdLabel();
             }
         }));
         m.put(StringTable.TextAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {

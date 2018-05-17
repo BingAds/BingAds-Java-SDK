@@ -33,6 +33,7 @@ public class ObjectFactory {
     private final static QName _BudgetLimitType_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity", "BudgetLimitType");
     private final static QName _ArrayOfCriterion_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity.Criterions", "ArrayOfCriterion");
     private final static QName _TrackingId_QNAME = new QName("Microsoft.Advertiser.AdInsight.Api.Service.V12", "TrackingId");
+    private final static QName _ArrayOfAuctionSegment_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity", "ArrayOfAuctionSegment");
     private final static QName _KeywordSuggestion_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity", "KeywordSuggestion");
     private final static QName _KeywordIdeaAttribute_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity.Common", "KeywordIdeaAttribute");
     private final static QName _Criterion_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity.Criterions", "Criterion");
@@ -1052,6 +1053,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfAuctionSegment }
+     * 
+     */
+    public ArrayOfAuctionSegment createArrayOfAuctionSegment() {
+        return new ArrayOfAuctionSegment();
+    }
+
+    /**
      * Create an instance of {@link KeywordSuggestion }
      * 
      */
@@ -1774,6 +1783,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "Microsoft.Advertiser.AdInsight.Api.Service.V12", name = "TrackingId")
     public JAXBElement<String> createTrackingId(String value) {
         return new JAXBElement<String>(_TrackingId_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuctionSegment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V12.Entity", name = "ArrayOfAuctionSegment")
+    public JAXBElement<ArrayOfAuctionSegment> createArrayOfAuctionSegment(ArrayOfAuctionSegment value) {
+        return new JAXBElement<ArrayOfAuctionSegment>(_ArrayOfAuctionSegment_QNAME, ArrayOfAuctionSegment.class, null, value);
     }
 
     /**

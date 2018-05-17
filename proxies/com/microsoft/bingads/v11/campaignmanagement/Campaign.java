@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="NativeBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v11}CampaignStatus" minOccurs="0"/>
+ *         &lt;element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V11}CustomParameters" minOccurs="0"/>
@@ -55,6 +56,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "name",
     "nativeBidAdjustment",
     "status",
+    "subType",
     "timeZone",
     "trackingUrlTemplate",
     "urlCustomParameters",
@@ -85,6 +87,8 @@ public class Campaign {
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected CampaignStatus status;
+    @XmlElement(name = "SubType", nillable = true)
+    protected String subType;
     @XmlElement(name = "TimeZone", nillable = true)
     protected String timeZone;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
@@ -315,6 +319,30 @@ public class Campaign {
      */
     public void setStatus(CampaignStatus value) {
         this.status = value;
+    }
+
+    /**
+     * Gets the value of the subType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubType() {
+        return subType;
+    }
+
+    /**
+     * Sets the value of the subType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubType(String value) {
+        this.subType = value;
     }
 
     /**

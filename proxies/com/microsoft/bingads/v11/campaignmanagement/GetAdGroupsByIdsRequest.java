@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AdGroupIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v11}AdGroupAdditionalField" minOccurs="0"/>
+ *         &lt;element name="ReturnCoOpAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "campaignId",
     "adGroupIds",
-    "returnAdditionalFields"
+    "returnAdditionalFields",
+    "returnCoOpAdGroups"
 })
 @XmlRootElement(name = "GetAdGroupsByIdsRequest")
 public class GetAdGroupsByIdsRequest {
@@ -47,6 +49,8 @@ public class GetAdGroupsByIdsRequest {
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AdGroupAdditionalField> returnAdditionalFields;
+    @XmlElement(name = "ReturnCoOpAdGroups", nillable = true)
+    protected Boolean returnCoOpAdGroups;
 
     /**
      * Gets the value of the campaignId property.
@@ -118,6 +122,30 @@ public class GetAdGroupsByIdsRequest {
      */
     public void setReturnAdditionalFields(Collection<AdGroupAdditionalField> value) {
         this.returnAdditionalFields = value;
+    }
+
+    /**
+     * Gets the value of the returnCoOpAdGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnCoOpAdGroups() {
+        return returnCoOpAdGroups;
+    }
+
+    /**
+     * Sets the value of the returnCoOpAdGroups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnCoOpAdGroups(Boolean value) {
+        this.returnCoOpAdGroups = value;
     }
 
 }

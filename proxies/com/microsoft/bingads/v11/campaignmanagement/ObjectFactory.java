@@ -73,6 +73,7 @@ public class ObjectFactory {
     private final static QName _EntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "EntityType");
     private final static QName _AdExtensionEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdExtensionEditorialReasonCollection");
     private final static QName _AudienceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AudienceType");
+    private final static QName _BidOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "BidOption");
     private final static QName _MigrationStatusInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "MigrationStatusInfo");
     private final static QName _ArrayOfIdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfIdCollection");
     private final static QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfSharedEntity");
@@ -176,6 +177,7 @@ public class ObjectFactory {
     private final static QName _InheritFromParentBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "InheritFromParentBiddingScheme");
     private final static QName _CustomAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CustomAudience");
     private final static QName _AccountProperty_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AccountProperty");
+    private final static QName _CoOpSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "CoOpSetting");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
     private final static QName _AudienceCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AudienceCriterion");
     private final static QName _UserName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "UserName");
@@ -283,6 +285,7 @@ public class ObjectFactory {
     private final static QName _AdGroupStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "AdGroupStatus");
     private final static QName _ArrayOfAdGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAdGroup");
     private final static QName _IdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "IdCollection");
+    private final static QName _BMCStoreSubType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "BMCStoreSubType");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _ArrayOfAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v11", "ArrayOfAudience");
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
@@ -2748,6 +2751,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CoOpSetting }
+     * 
+     */
+    public CoOpSetting createCoOpSetting() {
+        return new CoOpSetting();
+    }
+
+    /**
      * Create an instance of {@link GetSharedEntityAssociationsBySharedEntityIdsRequest }
      * 
      */
@@ -4108,6 +4119,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BidOption }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "BidOption")
+    public JAXBElement<BidOption> createBidOption(BidOption value) {
+        return new JAXBElement<BidOption>(_BidOption_QNAME, BidOption.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MigrationStatusInfo }{@code >}}
      * 
      */
@@ -5036,6 +5056,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "AccountProperty")
     public JAXBElement<AccountProperty> createAccountProperty(AccountProperty value) {
         return new JAXBElement<AccountProperty>(_AccountProperty_QNAME, AccountProperty.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CoOpSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "CoOpSetting")
+    public JAXBElement<CoOpSetting> createCoOpSetting(CoOpSetting value) {
+        return new JAXBElement<CoOpSetting>(_CoOpSetting_QNAME, CoOpSetting.class, null, value);
     }
 
     /**
@@ -6006,6 +6035,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "IdCollection")
     public JAXBElement<IdCollection> createIdCollection(IdCollection value) {
         return new JAXBElement<IdCollection>(_IdCollection_QNAME, IdCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BMCStoreSubType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v11", name = "BMCStoreSubType")
+    public JAXBElement<BMCStoreSubType> createBMCStoreSubType(BMCStoreSubType value) {
+        return new JAXBElement<BMCStoreSubType>(_BMCStoreSubType_QNAME, BMCStoreSubType.class, null, value);
     }
 
     /**

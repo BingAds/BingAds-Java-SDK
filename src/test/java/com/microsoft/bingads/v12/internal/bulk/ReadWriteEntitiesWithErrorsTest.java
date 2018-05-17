@@ -21,6 +21,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.googlecode.jcsv.reader.CSVReader;
+import com.microsoft.bingads.v12.internal.bulk.CsvHeaders;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
@@ -46,7 +48,13 @@ public class ReadWriteEntitiesWithErrorsTest extends EasyMockSupport {
 
         String[] formatVersion = emptyArray.clone();
         formatVersion[0] = "Format Version";
-        formatVersion[48] = "6.0";//StringTable.FORMAT_VERSION;
+        int index = 0;
+        for (; index < CsvHeaders.Headers.length; index++) {
+            if (StringTable.Name.equals(CsvHeaders.Headers[index])){
+                break;
+            }
+        }
+        formatVersion[index] = StringTable.FORMAT_VERSION;
 
         String[] campaign = emptyArray.clone();
         campaign[0] = "Campaign";

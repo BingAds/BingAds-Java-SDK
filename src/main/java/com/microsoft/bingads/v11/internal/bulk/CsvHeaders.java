@@ -46,6 +46,7 @@ public class CsvHeaders {
             StringTable.ContentNetwork,
             StringTable.ContentBid,
             StringTable.Language,
+            StringTable.PrivacyStatus,
 
             // Ads
             StringTable.Title,
@@ -88,6 +89,10 @@ public class CsvHeaders {
             StringTable.FromMinute,
             StringTable.ToHour,
             StringTable.ToMinute,
+            
+            // Profile Criterion
+            StringTable.Profile,
+            StringTable.ProfileId,
 
             // AdExtensions common
             StringTable.Version,
@@ -263,6 +268,9 @@ public class CsvHeaders {
             StringTable.BidStrategyTargetCpa,
             StringTable.InheritedBidStrategyType,
             
+            // Target and bid
+            StringTable.TargetSetting,
+            
             // Native Preference
             StringTable.NativePreference,
             
@@ -276,6 +284,9 @@ public class CsvHeaders {
             StringTable.RemarketingTargetingSetting,
             StringTable.RemarketingRule,
             StringTable.AudienceSearchSize,
+            StringTable.AudienceNetworkSize,
+            StringTable.SupportedCampaignTypes,
+            StringTable.ProductAudienceType,
 
             // Structured Snippet Ad Extension
             StringTable.StructuredSnippetHeader,
@@ -286,6 +297,15 @@ public class CsvHeaders {
             StringTable.TitlePart2,
             StringTable.Path1,
             StringTable.Path2,
+            
+            // Responsive Ad
+            StringTable.CallToAction,
+            StringTable.Headline,
+            StringTable.LandscapeImageMediaId,
+            StringTable.LandscapeLogoMediaId,
+            StringTable.LongHeadline,
+            StringTable.SquareImageMediaId,
+            StringTable.SquareLogoMediaId,
             
             // Dynamic Search Ad
             StringTable.DomainLanguage,

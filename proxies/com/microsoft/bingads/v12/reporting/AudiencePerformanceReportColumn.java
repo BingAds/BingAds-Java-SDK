@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountStatus"/>
  *     &lt;enumeration value="CampaignStatus"/>
  *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="AudienceType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -106,7 +107,9 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("CampaignStatus")
     CAMPAIGN_STATUS("CampaignStatus"),
     @XmlEnumValue("AdGroupStatus")
-    AD_GROUP_STATUS("AdGroupStatus");
+    AD_GROUP_STATUS("AdGroupStatus"),
+    @XmlEnumValue("AudienceType")
+    AUDIENCE_TYPE("AudienceType");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

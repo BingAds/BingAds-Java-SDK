@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Segment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Segments" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="ImpressionShare" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="OverlapRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="AveragePosition" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AuctionInsightKpi", propOrder = {
-    "segment",
+    "segments",
     "impressionShare",
     "overlapRate",
     "averagePosition",
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class AuctionInsightKpi {
 
-    @XmlElement(name = "Segment", nillable = true)
-    protected String segment;
+    @XmlElement(name = "Segments", nillable = true)
+    protected ArrayOfstring segments;
     @XmlElement(name = "ImpressionShare")
     protected Double impressionShare;
     @XmlElement(name = "OverlapRate")
@@ -60,27 +60,27 @@ public class AuctionInsightKpi {
     protected Double outrankingShare;
 
     /**
-     * Gets the value of the segment property.
+     * Gets the value of the segments property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArrayOfstring }
      *     
      */
-    public String getSegment() {
-        return segment;
+    public ArrayOfstring getSegments() {
+        return segments;
     }
 
     /**
-     * Sets the value of the segment property.
+     * Sets the value of the segments property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArrayOfstring }
      *     
      */
-    public void setSegment(String value) {
-        this.segment = value;
+    public void setSegments(ArrayOfstring value) {
+        this.segments = value;
     }
 
     /**

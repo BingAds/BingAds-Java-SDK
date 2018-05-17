@@ -1,24 +1,24 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.InMarketAudience;
-import com.microsoft.bingads.v12.campaignmanagement.EntityScope;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
+import com.microsoft.bingads.v12.campaignmanagement.EntityScope;
+import com.microsoft.bingads.v12.campaignmanagement.InMarketAudience;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Represents an in market audience that can be read or written in a bulk file.
@@ -193,6 +193,42 @@ public class BulkInMarketAudience extends SingleRecordBulkEntity {
                                 return EntityScope.fromValue(value);
                             }
                         }));
+                    }
+                }
+        ));
+		
+		
+        m.add(new SimpleBulkMapping<BulkInMarketAudience, Long>(StringTable.AudienceNetworkSize,
+                new Function<BulkInMarketAudience, Long>() {
+                    @Override
+                    public Long apply(BulkInMarketAudience c) {
+                        return c.getInMarketAudience().getAudienceNetworkSize();
+                    }
+                },
+                new BiConsumer<String, BulkInMarketAudience>() {
+                    @Override
+                    public void accept(String v, BulkInMarketAudience c) {
+                        c.getInMarketAudience().setAudienceNetworkSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkInMarketAudience, String>(StringTable.SupportedCampaignTypes,
+                new Function<BulkInMarketAudience, String>() {
+                    @Override
+                    public String apply(BulkInMarketAudience c) {
+                        return StringExtensions.writeArrayOfstring(c.getInMarketAudience().getSupportedCampaignTypes(), ";");
+                    }
+                },
+                new BiConsumer<String, BulkInMarketAudience>() {
+                    @Override
+                    public void accept(String v, BulkInMarketAudience c) {
+                        c.getInMarketAudience().setSupportedCampaignTypes(StringExtensions.parseArrayOfString(v));
                     }
                 }
         ));

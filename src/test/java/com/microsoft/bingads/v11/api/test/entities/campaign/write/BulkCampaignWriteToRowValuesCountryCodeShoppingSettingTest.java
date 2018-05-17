@@ -36,6 +36,7 @@ public class BulkCampaignWriteToRowValuesCountryCodeShoppingSettingTest extends 
                 c.getCampaign().setCampaignType(Collections.singletonList(CampaignType.SHOPPING));
                 c.getCampaign().setSettings(new ArrayOfSetting());
                 ShoppingSetting setting = new ShoppingSetting();
+                setting.setType(ShoppingSetting.class.getSimpleName());
                 setting.setSalesCountryCode(v);
                 c.getCampaign().getSettings().getSettings().add(setting);
             }

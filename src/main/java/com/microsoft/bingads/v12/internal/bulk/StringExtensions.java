@@ -1,6 +1,23 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
 
+import java.io.File;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import javax.xml.bind.JAXBElement;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v12.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v12.bulk.entities.Status;
 import com.microsoft.bingads.v12.campaignmanagement.AdExtensionStatus;
@@ -9,11 +26,11 @@ import com.microsoft.bingads.v12.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v12.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfDayTime;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOflong;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v12.campaignmanagement.Bid;
 import com.microsoft.bingads.v12.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.BusinessGeoCodeStatus;
@@ -28,7 +45,6 @@ import com.microsoft.bingads.v12.campaignmanagement.DayTime;
 import com.microsoft.bingads.v12.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v12.campaignmanagement.InheritFromParentBiddingScheme;
-import com.microsoft.bingads.v12.campaignmanagement.KeyValuePairOfstringstring;
 import com.microsoft.bingads.v12.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.MatchType;
 import com.microsoft.bingads.v12.campaignmanagement.MaxClicksBiddingScheme;
@@ -44,29 +60,9 @@ import com.microsoft.bingads.v12.campaignmanagement.RuleItemGroup;
 import com.microsoft.bingads.v12.campaignmanagement.StringOperator;
 import com.microsoft.bingads.v12.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.TargetCpaBiddingScheme;
-import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
-import com.ibm.wsdl.util.StringUtils;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v12.campaignmanagement.TargetSettingDetail;
-
-import java.awt.datatransfer.StringSelection;
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.lang.IllegalArgumentException;
-import java.math.BigDecimal;
-
-import javax.xml.bind.JAXBElement;
+import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
 
 public class StringExtensions {
 
@@ -1425,5 +1421,45 @@ public class StringExtensions {
         }
         return targetSetting;
     }
+    
+
+    public static String writeArrayOfstring(ArrayOfstring arrayOfString, String separator) {
+        if (arrayOfString == null) return null;
         
+        if (arrayOfString.getStrings().size() == 0) return StringTable.DeleteValue;
+        
+        return String.join(separator, arrayOfString.getStrings());
+    }
+
+    public static ArrayOfstring parseArrayOfString(String value) {
+        // TODO Auto-generated method stub
+        if (isNullOrEmpty(value) ) return null;
+        
+        String[] parts = value.split(";");
+        ArrayOfstring ret = new ArrayOfstring();
+        ret.getStrings().addAll(
+                Arrays.stream(parts)
+                .map(s -> s.trim())
+                .filter(s -> {
+                    return s.length() > 0 && false == ";".equals(s);
+                    }
+                )
+                .collect(Collectors.toList()));
+        return ret;
+    }
+
+    public static String writeProductAudienceType(Collection<ProductAudienceType> productAudienceType, String separator) {
+        if (productAudienceType == null) return null;
+        
+        if (productAudienceType.size() == 0) return StringTable.DeleteValue;
+        
+        return String.join(separator, productAudienceType.stream().map(p -> p.value()).collect(Collectors.toList()));
+    }
+
+    public static Collection<ProductAudienceType> parseProductAudienceType(String value) {
+        if (isNullOrEmpty(value) ) return null;
+        String[] parts = value.split(";");
+        return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
+    }
+
 }

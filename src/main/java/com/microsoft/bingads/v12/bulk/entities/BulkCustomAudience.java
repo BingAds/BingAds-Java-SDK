@@ -196,6 +196,42 @@ public class BulkCustomAudience extends SingleRecordBulkEntity {
                     }
                 }
         ));
+		
+		
+        m.add(new SimpleBulkMapping<BulkCustomAudience, Long>(StringTable.AudienceNetworkSize,
+                new Function<BulkCustomAudience, Long>() {
+                    @Override
+                    public Long apply(BulkCustomAudience c) {
+                        return c.getCustomAudience().getAudienceNetworkSize();
+                    }
+                },
+                new BiConsumer<String, BulkCustomAudience>() {
+                    @Override
+                    public void accept(String v, BulkCustomAudience c) {
+                        c.getCustomAudience().setAudienceNetworkSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCustomAudience, String>(StringTable.SupportedCampaignTypes,
+                new Function<BulkCustomAudience, String>() {
+                    @Override
+                    public String apply(BulkCustomAudience c) {
+                        return StringExtensions.writeArrayOfstring(c.getCustomAudience().getSupportedCampaignTypes(), ";");
+                    }
+                },
+                new BiConsumer<String, BulkCustomAudience>() {
+                    @Override
+                    public void accept(String v, BulkCustomAudience c) {
+                        c.getCustomAudience().setSupportedCampaignTypes(StringExtensions.parseArrayOfString(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

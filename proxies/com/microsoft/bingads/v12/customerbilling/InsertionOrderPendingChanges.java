@@ -71,7 +71,7 @@ public class InsertionOrderPendingChanges {
     protected Double notificationThreshold;
     @XmlElement(name = "ReferenceId", nillable = true)
     protected Long referenceId;
-    @XmlElement(name = "SpendCapAmount")
+    @XmlElement(name = "SpendCapAmount", nillable = true)
     protected Double spendCapAmount;
     @XmlElement(name = "StartDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
