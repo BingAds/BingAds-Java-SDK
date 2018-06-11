@@ -12,7 +12,10 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkAdGroupWriteToRowValuesStartDateTests.class,
         BulkAdGroupWriteToRowValuesAudienceAdsBidAdjustmentTest.class,
         BulkAdGroupWriteToRowValuesBidStrategyTypeTest.class,
-        BulkAdGroupWriteToRowValuesTargetSettingTests.class
+        BulkAdGroupWriteToRowValuesTargetSettingTests.class,
+        BulkAdGroupWriteToRowValuesCoOpBidOptionTests.class,
+        BulkAdGroupWriteToRowValuesCoOpBidBoostValueTests.class,
+        BulkAdGroupWriteToRowValuesCoOpMaximumBidTests.class
 })
 public class BulkAdGroupWriteTests {
 

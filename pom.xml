@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.microsoft.bingads</groupId>
-    <version>11.12.2</version>
+    <version>11.12.3</version>
     <name>Bing Ads Java SDK</name>
     <description>The Bing Ads Java SDK is a library improving developer experience when working with the Bing Ads services by providing high-level access to features such as Bulk API, OAuth Authorization and SOAP API.</description>
     <url>https://github.com/BingAds/BingAds-Java-SDK</url>
@@ -31,8 +31,6 @@
     </developers>
     
     <build>
-        <directory>${env.SDKMAVENOUTDIR}</directory>
-        <outputDirectory>${project.build.directory}/classes</outputDirectory>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

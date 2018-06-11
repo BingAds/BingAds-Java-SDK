@@ -181,6 +181,11 @@ public class CsvHeaders {
             StringTable.CampaignPriority,
             StringTable.LocalInventoryAdsEnabled,
             
+            // CoOp
+            StringTable.BidOption,
+            StringTable.BidBoostValue,
+            StringTable.MaximumBid,
+            
             //Upgrade Url
             StringTable.FinalUrl,
             StringTable.FinalMobileUrl,
@@ -326,6 +331,10 @@ public class CsvHeaders {
             StringTable.ConversionTime,
             StringTable.ConversionValue,
             StringTable.MicrosoftClickId,
+            
+            // Account
+            StringTable.MSCLKIDAutoTaggingEnabled,
+
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

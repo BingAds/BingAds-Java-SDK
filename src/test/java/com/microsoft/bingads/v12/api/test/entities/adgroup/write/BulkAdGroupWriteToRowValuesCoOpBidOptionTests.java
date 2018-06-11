@@ -10,17 +10,16 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v12.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v12.api.test.entities.adgroup.BulkAdGroupTest;
 import com.microsoft.bingads.v12.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.campaignmanagement.BidOption;
+import com.microsoft.bingads.v12.campaignmanagement.CoOpSetting;
 
 @RunWith(Parameterized.class)
-public class BulkAdGroupWriteToRowValuesTargetSettingTests extends BulkAdGroupTest {
+public class BulkAdGroupWriteToRowValuesCoOpBidOptionTests extends BulkAdGroupTest {
 
     @Parameter(value = 1)
-    public String propertyValue;
+    public BidOption propertyValue;
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -29,22 +28,18 @@ public class BulkAdGroupWriteToRowValuesTargetSettingTests extends BulkAdGroupTe
         // These data are hard-coded into the class, but they could be
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
-            {"Age", "Age; "},
-            {"delete_value", ","},
-            {"delete_value", ";"},
-            {"Age", "Age"},
-            {"Age; Audience", "Age;Audience"},
+            {"BidBoost", BidOption.BID_BOOST},
+            {"BidValue", BidOption.BID_VALUE},
         });
     }
 
     @Test
     public void testWrite() {
-        this.<String>testWriteProperty("Target Setting", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, String>() {
+        this.<BidOption>testWriteProperty("Bid Option", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, BidOption>() {
             @Override
-            public void accept(BulkAdGroup c, String v) {
-                TargetSetting settng  = (TargetSetting)c.getSetting(TargetSetting.class);
-                settng.setDetails(new ArrayOfTargetSettingDetail());
-                settng.getDetails().getTargetSettingDetails().addAll(StringExtensions.parseTargetSettingDetails(v));
+            public void accept(BulkAdGroup c, BidOption v) {
+                CoOpSetting s  = (CoOpSetting)c.getSetting(CoOpSetting.class);
+                s.setBidOption(v);
             }
         });
     }

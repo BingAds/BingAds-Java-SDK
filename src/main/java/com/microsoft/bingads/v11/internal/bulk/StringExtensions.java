@@ -1448,7 +1448,7 @@ public class StringExtensions {
                 .toArray(CharSequence[]::new));
     }
 
-    private static List<TargetSettingDetail> parseTargetSettingDetails(String details) {
+    public static List<TargetSettingDetail> parseTargetSettingDetails(String details) {
         if (details == null || details.length() == 0) return null;
         
         return Arrays.stream(details.split(";"))
@@ -1468,20 +1468,6 @@ public class StringExtensions {
                 return targetSettingDetail;
             })
             .collect(Collectors.toList());
-    }
-    
-    public static TargetSetting parseTargetSetting(String value) {
-        List<TargetSettingDetail> targetSettingDetails = parseTargetSettingDetails(value);
-        if (targetSettingDetails == null) return null;
-        
-        TargetSetting targetSetting = new TargetSetting();
-        targetSetting.setType("TargetSetting");
-        targetSetting.setDetails(new ArrayOfTargetSettingDetail());
-        
-        if ( targetSettingDetails != null ) {
-            targetSetting.getDetails().getTargetSettingDetails().addAll(targetSettingDetails);
-        }
-        return targetSetting;
     }
 
     public static String writeArrayOfstring(ArrayOfstring arrayOfString, String separator) {

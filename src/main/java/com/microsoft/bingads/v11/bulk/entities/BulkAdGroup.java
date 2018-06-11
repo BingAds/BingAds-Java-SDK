@@ -9,8 +9,6 @@ import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v11.campaignmanagement.ArrayOfSetting;
-import com.microsoft.bingads.v11.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v11.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
@@ -56,17 +54,38 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     private static final List<BulkMapping<BulkAdGroup>> MAPPINGS;
     
-
-    private TargetSetting getTargetSetting() { 
-        if (adGroup.getSettings() == null || adGroup.getSettings().getSettings().size() == 0) return null;
-        
-        TargetSetting[] targetSettings = adGroup.getSettings().getSettings().stream().filter(e -> e instanceof TargetSetting).toArray(TargetSetting[]::new);
-        
-        if (targetSettings.length == 1)
-        {
-            return targetSettings[0];
+    public Setting getSetting(Class<? extends Setting> settingClass) { 
+        if (adGroup.getSettings() == null || adGroup.getSettings().getSettings().size() == 0) {
+            return addAdGroupSetting(settingClass);
         }
         
+        Setting[] settings = adGroup.getSettings().getSettings().stream().filter(e -> e.getClass() == settingClass).toArray(Setting[]::new);
+        if (settings.length == 0) {
+            return addAdGroupSetting(settingClass);
+        }
+        
+        if (settings.length == 1)
+        {
+            return settings[0];
+        }
+        
+        return null;
+    }
+
+    private Setting addAdGroupSetting(Class<? extends Setting> settingClass) {
+        try {
+            Setting setting = settingClass.newInstance();
+            setting.setType(settingClass.getSimpleName());
+            if (adGroup.getSettings() == null) {
+                adGroup.setSettings(new ArrayOfSetting());
+            }
+            adGroup.getSettings().getSettings().add(setting);
+            return setting;
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -454,24 +473,89 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        TargetSetting targetSetting = c.getTargetSetting();
+                        TargetSetting targetSetting = (TargetSetting)c.getSetting(TargetSetting.class);
                         return targetSetting == null? null : StringExtensions.toBulkString(targetSetting);
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
                     @Override
                     public void accept(String v, BulkAdGroup c) {
-                        TargetSetting targetSetting = StringExtensions.parseTargetSetting(v);
-                        if (targetSetting == null) return;
-                        if (c.getAdGroup().getSettings() == null) {
-                            c.getAdGroup().setSettings(new ArrayOfSetting());
+                        TargetSetting targetSetting = (TargetSetting)c.getSetting(TargetSetting.class);
+                        List<TargetSettingDetail> targetSettingDetails = StringExtensions.parseTargetSettingDetails(v);
+                        if (targetSetting != null && targetSettingDetails != null) {
+                            targetSetting.setDetails(new ArrayOfTargetSettingDetail());
+                            targetSetting.getDetails().getTargetSettingDetails().addAll(targetSettingDetails);
                         }
-                        
-                        c.getAdGroup().getSettings().getSettings().add(targetSetting);
                     }
                 }
         ));
         
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.BidOption, new Function<BulkAdGroup, String>() {
+            @Override
+            public String apply(BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                return (setting == null || setting.getBidOption() == null) ? null : setting.getBidOption().value();
+            }
+        }, new BiConsumer<String, BulkAdGroup>() {
+            @Override
+            public void accept(String v, BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                BidOption bo = StringExtensions.parseOptional(v, new Function<String, BidOption>() {
+                    @Override
+                    public BidOption apply(String value) {
+                        return BidOption.fromValue(value);
+                    }
+                });
+                if (setting != null && bo != null) {
+                    setting.setBidOption(bo);
+                }
+            }
+        }));
+        
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, Double>(StringTable.BidBoostValue, new Function<BulkAdGroup, Double>() {
+            @Override
+            public Double apply(BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                return setting == null ? null : setting.getBidBoostValue();
+            }
+        }, new BiConsumer<String, BulkAdGroup>() {
+            @Override
+            public void accept(String v, BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                if (setting != null) {
+                    setting.setBidBoostValue(StringExtensions.parseOptional(v, new Function<String, Double>() {
+                        @Override
+                        public Double apply(String value) {
+                            return Double.parseDouble(value);
+                        }
+                    }));
+                }
+            }
+        }));
+        
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, Double>(StringTable.MaximumBid, new Function<BulkAdGroup, Double>() {
+            @Override
+            public Double apply(BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                return setting == null ? null : setting.getBidMaxValue();
+            }
+        }, new BiConsumer<String, BulkAdGroup>() {
+            @Override
+            public void accept(String v, BulkAdGroup c) {
+                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+                if (setting != null) {
+                    setting.setBidMaxValue(StringExtensions.parseOptional(v, new Function<String, Double>() {
+                        @Override
+                        public Double apply(String value) {
+                            return Double.parseDouble(value);
+                        }
+                    }));
+                }
+            }
+        }));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

@@ -1,4 +1,4 @@
-package com.microsoft.bingads.v12.api.test.entities.adgroup.write;
+package com.microsoft.bingads.v11.api.test.entities.adgroup.write;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,11 +10,11 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v12.campaignmanagement.TargetSetting;
-import com.microsoft.bingads.v12.api.test.entities.adgroup.BulkAdGroupTest;
-import com.microsoft.bingads.v12.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v11.campaignmanagement.TargetSetting;
+import com.microsoft.bingads.v11.api.test.entities.adgroup.BulkAdGroupTest;
+import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
+import com.microsoft.bingads.v11.campaignmanagement.ArrayOfTargetSettingDetail;
+import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupWriteToRowValuesTargetSettingTests extends BulkAdGroupTest {

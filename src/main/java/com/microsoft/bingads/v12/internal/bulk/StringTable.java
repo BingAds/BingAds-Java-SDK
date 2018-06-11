@@ -278,6 +278,11 @@ public class StringTable {
     public static final String CampaignType = "Campaign Type";
     public static final String CampaignPriority = "Priority";
     public static final String LocalInventoryAdsEnabled = "LocalInventoryAdsEnabled";
+
+    // CoOp
+    public static final String BidOption = "Bid Option";
+    public static final String BidBoostValue = "Bid Boost Value";
+    public static final String MaximumBid = "Maximum Bid";
     
     //Upgrade URL
     public static final String FinalUrl = "Final Url";
@@ -511,6 +516,9 @@ public class StringTable {
     public static final String ConversionTime = "Conversion Time";
     public static final String ConversionValue = "Conversion Value";
     public static final String MicrosoftClickId = "Microsoft Click Id";
+    
+    // Account
+    public static final String MSCLKIDAutoTaggingEnabled = "MSCLKID Auto Tagging Enabled";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

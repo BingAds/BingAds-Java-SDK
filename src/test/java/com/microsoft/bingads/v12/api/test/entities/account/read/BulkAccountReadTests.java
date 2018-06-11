@@ -7,7 +7,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({BulkAccountReadFromRowValuesCustomerIdTest.class,
     BulkAccountReadFromRowValuesIdTest.class,
-    BulkAccountReadFromRowValuesSyncTimeTest.class})
+    BulkAccountReadFromRowValuesSyncTimeTest.class,
+    BulkAccountReadFromRowValuesMSCLKIDAutoTaggingEnabledTest.class,
+    BulkAccountReadFromRowValuesTrackingTemplateTest.class})
 public class BulkAccountReadTests {
 
 }

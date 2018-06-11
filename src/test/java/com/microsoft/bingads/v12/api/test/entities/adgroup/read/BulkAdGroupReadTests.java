@@ -4,6 +4,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.microsoft.bingads.v11.api.test.entities.adgroup.read.BulkAdGroupReadFromRowValuesCoOpBidBoostValueTest;
+import com.microsoft.bingads.v11.api.test.entities.adgroup.read.BulkAdGroupReadFromRowValuesCoOpBidOptionTest;
+import com.microsoft.bingads.v11.api.test.entities.adgroup.read.BulkAdGroupReadFromRowValuesCoOpMaximumBidTest;
+
 @RunWith(Suite.class)
 @SuiteClasses({
         BulkAdGroupReadFromRowValuesAdRotationNullTest.class,
@@ -22,7 +26,10 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkAdGroupReadFromRowValuesStatusTest.class,
         BulkAdGroupReadFromRowValuesAudienceAdsBidAdjustmentTest.class,
         BulkAdGroupReadFromRowValuesBidStrategyTypeTest.class,
-        BulkAdGroupReadFromRowValuesTargetSettingTest.class
+        BulkAdGroupReadFromRowValuesTargetSettingTest.class,
+        BulkAdGroupReadFromRowValuesCoOpBidOptionTest.class,
+        BulkAdGroupReadFromRowValuesCoOpBidBoostValueTest.class,
+        BulkAdGroupReadFromRowValuesCoOpMaximumBidTest.class
 })
 public class BulkAdGroupReadTests {
 

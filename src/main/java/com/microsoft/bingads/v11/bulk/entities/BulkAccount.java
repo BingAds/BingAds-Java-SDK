@@ -44,6 +44,10 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private long customerId;
 
     private Calendar syncTime;
+    
+    private Boolean MSCLKIDAutoTaggingEnabled;
+
+    private String trackingUrlTemplate;
 
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
@@ -117,6 +121,36 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.MSCLKIDAutoTaggingEnabled,
+                new Function<BulkAccount, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkAccount t) {
+                        return t.getMSCLKIDAutoTaggingEnabled();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setMSCLKIDAutoTaggingEnabled(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.TrackingTemplate,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount t) {
+                        return t.getTrackingUrlTemplate();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -186,6 +220,23 @@ public class BulkAccount extends SingleRecordBulkEntity {
      */
     public void setSyncTime(Calendar syncTime) {
         this.syncTime = syncTime;
+    }
+
+    public Boolean getMSCLKIDAutoTaggingEnabled() {
+        return MSCLKIDAutoTaggingEnabled;
+    }
+    
+
+    public void setMSCLKIDAutoTaggingEnabled(Boolean msclkAutoTagEnabled) {
+        this.MSCLKIDAutoTaggingEnabled = msclkAutoTagEnabled;
+    }
+
+    public String getTrackingUrlTemplate() {
+        return trackingUrlTemplate;
+    }
+
+    public void setTrackingUrlTemplate(String trackingTemplate) {
+        this.trackingUrlTemplate = trackingTemplate;
     }
 
     @Override
