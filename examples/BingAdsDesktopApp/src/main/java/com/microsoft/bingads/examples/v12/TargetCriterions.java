@@ -176,7 +176,7 @@ public class TargetCriterions extends ExampleBase {
             // Delete the campaign and ad group that were previously added. 
 
             CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
-            System.out.printf("Deleted CampaignId %d\n", campaignIds.getLongs().get(0));
+            outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
                         
             outputStatusMessage("Program execution completed\n"); 
         } 

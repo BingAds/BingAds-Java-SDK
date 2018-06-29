@@ -89,9 +89,16 @@ public class ShoppingCampaigns extends ExampleBase {
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors);
 
+            /*
+             * Create a product ad. You must add at least one product ad to the ad group. 
+             * The product ad identifier can be used for reporting analytics.
+             * Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
+             * as "special offer" links, helping to increase customer engagement. For details
+             * on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
+             */
+            
             ArrayOfAd ads = new ArrayOfAd();
             ProductAd productAd = new ProductAd();
-            productAd.setPromotionalText("Free shipping on $99 purchases.");
             ads.getAds().add(productAd);
 
             AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(adGroupIds.getLongs().get(0), ads);
@@ -147,12 +154,12 @@ public class ShoppingCampaigns extends ExampleBase {
         ProductScope criterion = new ProductScope();
         ArrayOfProductCondition conditions = new ArrayOfProductCondition();
         ProductCondition condition1 = new ProductCondition();
-        condition1.setAttribute("Condition");
-        condition1.setOperand("New");
+        condition1.setAttribute("New");
+        condition1.setOperand("Condition");
         conditions.getProductConditions().add(condition1);
         ProductCondition condition2 = new ProductCondition();
-        condition2.setAttribute("Brand");
-        condition2.setOperand("Contoso");
+        condition2.setAttribute("MerchantDefinedCustomLabel");
+        condition2.setOperand("CustomLabel0");
         conditions.getProductConditions().add(condition2);
         criterion.setConditions(conditions);
         campaignCriterion.setCriterion(criterion);

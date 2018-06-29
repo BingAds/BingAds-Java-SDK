@@ -119,7 +119,7 @@ public class OAuthDesktopApplication extends Application {
 		
         Scene scene = new Scene(webView, 800, 600);
 		
-        primaryStage.setTitle("Bing Ads Web Application Example");
+        primaryStage.setTitle("Bing Ads Desktop Application Example");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

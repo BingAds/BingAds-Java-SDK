@@ -510,7 +510,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
-            outputStatusMessage(String.format("Segment: %s", dataObject.getSegment()));
+            outputArrayOfstring(dataObject.getSegments());
             outputStatusMessage(String.format("ImpressionShare: %s", dataObject.getImpressionShare()));
             outputStatusMessage(String.format("OverlapRate: %s", dataObject.getOverlapRate()));
             outputStatusMessage(String.format("AveragePosition: %s", dataObject.getAveragePosition()));
@@ -534,7 +534,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
-            outputStatusMessage(String.format("Segment: %s", dataObject.getSegment()));
+            outputArrayOfAuctionSegment(dataObject.getSegments());
             outputArrayOfAuctionInsightEntry(dataObject.getEntries());
             outputStatusMessage(String.format("UsedImpressions: %s", dataObject.getUsedImpressions()));
             outputStatusMessage(String.format("UsedKeywords: %s", dataObject.getUsedKeywords()));
@@ -2128,11 +2128,11 @@ class AdInsightExampleHelper
             outputStatusMessage(value.toString());
         }
     }
-    static void outputArrayOfAuctionSegment(ArrayList<AuctionSegment> valueSets)
+    static void outputArrayOfAuctionSegment(ArrayOfAuctionSegment valueSets)
     {
         if (null != valueSets)
         {
-            for (AuctionSegment valueSet : valueSets)
+            for (AuctionSegment valueSet : valueSets.getAuctionSegments())
             {
                 outputAuctionSegment(valueSet);
             }
