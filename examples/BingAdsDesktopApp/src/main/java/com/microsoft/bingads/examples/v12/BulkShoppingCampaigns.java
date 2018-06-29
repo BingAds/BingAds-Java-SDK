@@ -101,12 +101,12 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             ProductScope criterion = new ProductScope();
             ArrayOfProductCondition conditions = new ArrayOfProductCondition();
             ProductCondition condition1 = new ProductCondition();
-            condition1.setAttribute("Condition");
-            condition1.setOperand("New");
+            condition1.setAttribute("New");
+            condition1.setOperand("Condition");
             conditions.getProductConditions().add(condition1);
             ProductCondition condition2 = new ProductCondition();
-            condition2.setAttribute("Brand");
-            condition2.setOperand("Contoso");
+            condition2.setAttribute("MerchantDefinedCustomLabel");
+            condition2.setOperand("CustomLabel0");
             conditions.getProductConditions().add(condition2);
             criterion.setConditions(conditions);
             campaignCriterion.setCriterion(criterion);
@@ -129,19 +129,16 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             bulkAdGroup.setAdGroup(adGroup);
 
             /*
-             * Create a product ad. You must add at least one ProductAd to the corresponding ad group. 
-             * A ProductAd is not used directly for delivered ad copy. Instead, the delivery engine generates 
-             * product ads from the product details that it finds in your Bing Merchant Center store's product catalog. 
-             * The primary purpose of the ProductAd object is to provide promotional text that the delivery engine 
-             * adds to the product ads that it generates. For example, if the promotional text is set to 
-             * 'Free shipping on $99 purchases', the delivery engine will set the product ad's description to 
-             * 'Free shipping on $99 purchases.'
+             * Create a product ad. You must add at least one product ad to the ad group. 
+             * The product ad identifier can be used for reporting analytics.
+             * Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
+             * as "special offer" links, helping to increase customer engagement. For details
+             * on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
              */
 
             BulkProductAd bulkProductAd = new BulkProductAd();
             bulkProductAd.setAdGroupId(adGroupIdKey);
             ProductAd productAd = new ProductAd();
-            productAd.setPromotionalText("Free shipping on $99 purchases.");
             bulkProductAd.setAd(productAd);
 
             uploadEntities.add(bulkCampaign);

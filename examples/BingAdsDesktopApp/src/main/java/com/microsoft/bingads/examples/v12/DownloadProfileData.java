@@ -7,28 +7,24 @@ import java.util.TimeZone;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
+import java.util.ArrayList;
 
 /**
- * This example demonstrates how to download the comma separated value (CSV) file that contains geographical location information 
- * that can be used with Bing Ads location targeting.
+ * This example demonstrates how to download the comma separated value (CSV) file that contains profile data 
+ * that can be used with Bing Ads profile criteria.
  */
     
-public class GeographicalLocations extends ExampleBase {
+public class DownloadProfileData extends ExampleBase {
     
-    // The full path to the geographical locations file.
+    // The full path to the profile data.
 
-    private static final java.lang.String LOCAL_FILE= "c:\\geolocations\\geolocations.csv";
+    private static final java.lang.String LOCAL_FILE= "c:\\profiledata\\profiledata.csv";
 
-    // The language and locale of the geographical locations file available for download.
-    // This example uses 'en' (English). Supported locales are 'zh-Hant' (Traditional Chinese), 'en' (English), 'fr' (French), 
-    // 'de' (German), 'it' (Italian), 'pt-BR' (Portuguese - Brazil), and 'es' (Spanish). 
+    // The language and locale of the profile data available for download.
+    // This example uses 'en' (English). 
 
     private static final java.lang.String LANGUAGE_LOCALE = "en";
     
-    // The latest supported file format version is 2.0. 
-
-    private static final java.lang.String VERSION= "2.0";
-
     public static void main(java.lang.String[] args) {
    	
         try
@@ -40,7 +36,13 @@ public class GeographicalLocations extends ExampleBase {
                         API_ENVIRONMENT,
                         ICampaignManagementService.class);
             
-            GetGeoLocationsFileUrlResponse getGeoLocationsFileUrlResponse = CampaignManagementExampleHelper.getGeoLocationsFileUrl(VERSION, LANGUAGE_LOCALE);
+            // Supported profile types are CompanyName, Industry, and JobFunction
+            ArrayList<ProfileType> profileTypes = new ArrayList<ProfileType>();
+            profileTypes.add(ProfileType.COMPANY_NAME);
+            
+            GetProfileDataFileUrlResponse getProfileDataFileUrlResponse = CampaignManagementExampleHelper.getProfileDataFileUrl(
+                    LANGUAGE_LOCALE,
+                    profileTypes);
 
             // Going forward you should track the date and time of the previous download,  
             // and compare it with the last modified time provided by the service.
@@ -48,9 +50,9 @@ public class GeographicalLocations extends ExampleBase {
             previousSyncTimeUtc.setTimeZone(TimeZone.getTimeZone("GMT"));
             previousSyncTimeUtc.set(2018, 4, 26, 0, 0, 0);
 
-            java.lang.String fileUrl = getGeoLocationsFileUrlResponse.getFileUrl();
-            Calendar fileUrlExpiryTimeUtc = getGeoLocationsFileUrlResponse.getFileUrlExpiryTimeUtc();
-            Calendar lastModifiedTimeUtc = getGeoLocationsFileUrlResponse.getLastModifiedTimeUtc();
+            java.lang.String fileUrl = getProfileDataFileUrlResponse.getFileUrl();
+            Calendar fileUrlExpiryTimeUtc = getProfileDataFileUrlResponse.getFileUrlExpiryTimeUtc();
+            Calendar lastModifiedTimeUtc = getProfileDataFileUrlResponse.getLastModifiedTimeUtc();
 
             outputStatusMessage(String.format("FileUrl: %s\n", fileUrl));
             outputStatusMessage(String.format("FileUrlExpiryTimeUtc: %s\n", fileUrlExpiryTimeUtc.getTime().toString()));
@@ -62,6 +64,7 @@ public class GeographicalLocations extends ExampleBase {
                 downloadFile(fileUrl, LOCAL_FILE);
             }
             
+            outputStatusMessage("Program execution completed\n"); 
         } 
         catch (Exception ex) {
             String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
@@ -84,7 +87,7 @@ public class GeographicalLocations extends ExampleBase {
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) 
             {
-                outputStatusMessage(String.format("Downloaded the geographical locations to %s.\n", localFile));
+                outputStatusMessage(String.format("Downloaded the profile data to %s.\n", localFile));
                 reader = new BufferedInputStream(connection.getInputStream());
                 writer = new BufferedOutputStream(new FileOutputStream(localFile));
 

@@ -418,7 +418,7 @@ public class KeywordsAds extends ExampleBase {
             campaignIds = new com.microsoft.bingads.v12.campaignmanagement.ArrayOflong();
             campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
             CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
-            System.out.printf("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0));
+            outputStatusMessage(String.format("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0)));
             
             // This sample will attempt to delete the budget that was created above.
             if(budgetIds.getLongs().size() > 0){
@@ -426,7 +426,7 @@ public class KeywordsAds extends ExampleBase {
                         new com.microsoft.bingads.v12.campaignmanagement.ArrayOflong();
                 deleteBudgetIds.getLongs().add(budgetIds.getLongs().get(0));
                 CampaignManagementExampleHelper.deleteBudgets(deleteBudgetIds);
-                System.out.printf("Deleted BudgetId %d\n", deleteBudgetIds.getLongs().get(0));
+                outputStatusMessage(String.format("Deleted BudgetId %d\n", deleteBudgetIds.getLongs().get(0)));
             }
             
             outputStatusMessage("Program execution completed\n"); 

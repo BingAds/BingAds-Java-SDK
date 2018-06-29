@@ -219,10 +219,7 @@ public class ConversionGoals extends ExampleBase {
                 CampaignManagementExampleHelper.getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
 
             outputStatusMessage("List of conversion goals BEFORE update:\n");
-            for (ConversionGoal conversionGoal : getConversionGoals.getConversionGoals())
-            {
-                CampaignManagementExampleHelper.outputConversionGoal(conversionGoal);
-            }
+            CampaignManagementExampleHelper.outputArrayOfConversionGoal(getConversionGoals);
 
             ArrayOfConversionGoal updateConversionGoals = new ArrayOfConversionGoal();
             DurationGoal updateDurationGoal = new DurationGoal();
