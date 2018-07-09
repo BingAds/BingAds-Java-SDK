@@ -62,6 +62,7 @@ public class UriOAuthServiceTest extends EasyMockSupport {
         params.add(new BasicNameValuePair("grant_type", "authorization_code"));
         params.add(new BasicNameValuePair("code", "123"));
         params.add(new BasicNameValuePair("redirect_uri", "http://test.com/login"));
+        params.add(new BasicNameValuePair("scope", "bingads.manage"));
         
         HttpResponse response = new BasicHttpResponse(new BasicStatusLine(new ProtocolVersion("http", 1, 1), 200, null));
         //TODO: fix length

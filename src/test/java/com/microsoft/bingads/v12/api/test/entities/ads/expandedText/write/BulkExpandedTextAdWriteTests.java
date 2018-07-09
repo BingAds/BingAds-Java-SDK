@@ -15,6 +15,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkExpandedTextAdWriteToRowValuesUrlCustomParameters.class,
     BulkExpandedTextAdWriteToRowValuesFinalMobileUrlsTest.class,
     BulkExpandedTextAdWriteToRowValuesFinalUrlsTest.class,
+    BulkExpandedTextAdWriteToRowValuesDomainTest.class,
     BulkExpandedTextAdWriteToRowValuesNativePreference.class})
 public class BulkExpandedTextAdWriteTests {
 

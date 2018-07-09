@@ -34,7 +34,7 @@ public class BulkExpandedTextAdReadFromRowValuesPath2Test extends BulkExpandedTe
         return Arrays.asList(new Object[][]{
             {"path2", "path2"},
             {"", ""},
-            {null, null}
+            {null, ""}
         });
     }
 

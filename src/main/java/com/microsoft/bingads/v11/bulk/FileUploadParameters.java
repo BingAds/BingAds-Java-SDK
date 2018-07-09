@@ -122,4 +122,13 @@ public class FileUploadParameters {
 	public void setAutoDeleteTempFile(boolean autoDeleteTempFile) {
 		this.autoDeleteTempFile = autoDeleteTempFile;
 	}
+
+    public boolean getRenameUploadFileToMatchRequestId() {
+        return submitUploadParameters.getRenameUploadFileToMatchRequestId();
+    }
+    
+    public void setRenameUploadFileToMatchRequestId(boolean arg) {
+        submitUploadParameters.submitUploadParameters(arg);
+    }
+    
 }

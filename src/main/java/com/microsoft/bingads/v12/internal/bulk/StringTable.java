@@ -431,6 +431,7 @@ public class StringTable {
     public static final String TitlePart2 = "Title Part 2";
     public static final String Path1 = "Path 1";
     public static final String Path2 = "Path 2";
+    public static final String Domain = "Domain";
     
     // Sitelink2 Ad Extension
     public static final String SitelinkAdExtension = "Sitelink Ad Extension";

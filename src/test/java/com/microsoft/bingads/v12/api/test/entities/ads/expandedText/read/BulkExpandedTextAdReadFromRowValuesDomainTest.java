@@ -14,7 +14,7 @@ import com.microsoft.bingads.v12.api.test.entities.ads.expandedText.BulkExpanded
 import com.microsoft.bingads.v12.bulk.entities.BulkExpandedTextAd;
 
 @RunWith(Parameterized.class)
-public class BulkExpandedTextAdReadFromRowValuesPath2Test extends BulkExpandedTextAdTest {
+public class BulkExpandedTextAdReadFromRowValuesDomainTest extends BulkExpandedTextAdTest {
 
     @Parameter(value = 1)
     public String expectedResult;
@@ -32,7 +32,7 @@ public class BulkExpandedTextAdReadFromRowValuesPath2Test extends BulkExpandedTe
         // These data are hard-coded into the class, but they could be
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
-            {"path2", "path2"},
+            {"Domain Url", "Domain Url"},
             {"", ""},
             {null, ""}
         });
@@ -40,10 +40,10 @@ public class BulkExpandedTextAdReadFromRowValuesPath2Test extends BulkExpandedTe
 
     @Test
     public void testRead() {
-        this.<String>testReadProperty("Path 2", this.datum, this.expectedResult, new Function<BulkExpandedTextAd, String>() {
+        this.<String>testReadProperty("Domain", this.datum, this.expectedResult, new Function<BulkExpandedTextAd, String>() {
             @Override
             public String apply(BulkExpandedTextAd c) {
-                return c.getExpandedTextAd().getPath2();
+                return c.getExpandedTextAd().getDomain();
             }
         });
     }

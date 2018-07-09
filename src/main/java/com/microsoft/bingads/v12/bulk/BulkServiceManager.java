@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -492,6 +493,11 @@ public class BulkServiceManager {
 
                     File effectiveUploadPath = parameters.getUploadFilePath();
 
+                    if (parameters.getRenameUploadFileToMatchRequestId())
+                    {
+                        effectiveUploadPath = renameUploadFileToMatchRequestId(effectiveUploadPath, response.getRequestId());
+                    }
+
                     boolean shouldCompress = parameters.getCompressUploadFile() && !StringExtensions.getFileExtension(effectiveUploadPath.toString()).equals(".zip");
 
                     File compressedFilePath = null;
@@ -545,6 +551,16 @@ public class BulkServiceManager {
                 } catch (CouldNotUploadFileException e) {
                     resultFuture.setException(e);
                 }
+            }
+
+            private File renameUploadFileToMatchRequestId(File uploadFilePath, String requestId) {
+                uploadFilePath.renameTo(uploadFilePath);
+                Path path = uploadFilePath.toPath();
+                File newFile = path.resolveSibling("upload_"+requestId+".csv").toFile();
+                if (uploadFilePath.renameTo(newFile)) {
+                    return newFile;
+                }
+                return uploadFilePath;
             }
         });
 

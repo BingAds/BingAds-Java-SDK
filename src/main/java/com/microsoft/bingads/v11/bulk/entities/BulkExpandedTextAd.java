@@ -7,6 +7,7 @@ import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.BulkOperation;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
+import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v11.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v11.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v11.internal.bulk.RowValues;
@@ -90,13 +91,13 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return c.getAd().getPath1();
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath1());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
                     @Override
                     public void accept(String v, BulkExpandedTextAd c) {
-                        c.getAd().setPath1(v);;
+                        c.getAd().setPath1(StringExtensions.getValueOrEmptyString(v));
                     }
                 },
                 true
@@ -106,17 +107,33 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return c.getAd().getPath2();
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath2());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
                     @Override
                     public void accept(String v, BulkExpandedTextAd c) {
-                        c.getAd().setPath2(v);;
+                        c.getAd().setPath2(StringExtensions.getValueOrEmptyString(v));
                     }
                 },
                 true
-        ));       
+        ));
+
+        m.add(new SimpleBulkMapping<BulkExpandedTextAd, String>(StringTable.DisplayUrl,
+                new Function<BulkExpandedTextAd, String>() {
+                    @Override
+                    public String apply(BulkExpandedTextAd c) {
+                        return StringExtensions.toOptionalBulkString(c.getAd().getDisplayUrl());
+                    }
+                },
+                new BiConsumer<String, BulkExpandedTextAd>() {
+                    @Override
+                    public void accept(String v, BulkExpandedTextAd c) {
+                        c.getAd().setDisplayUrl(StringExtensions.getValueOrEmptyString(v));
+                    }
+                },
+                true
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
     }

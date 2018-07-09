@@ -38,6 +38,7 @@ public class UriOAuthService implements OAuthService {
     private static final String REDIRECT_URI = "redirect_uri";
     private static final String RESPONSE_TYPE = "response_type";
     private static final String STATE = "state";
+    private static final String SCOPE = "scope";
     
     public static final Map<ApiEnvironment, OAuthEndpoints> endpointUrls = new HashMap();
 
@@ -152,6 +153,7 @@ public class UriOAuthService implements OAuthService {
         params.add(new BasicNameValuePair(GRANT_TYPE, requestParams.getGrantType()));
         params.add(new BasicNameValuePair(requestParams.getGrantParamName(), requestParams.getGrantValue()));
         params.add(new BasicNameValuePair(REDIRECT_URI, requestParams.getRedirectionUri().toString()));
+        params.add(new BasicNameValuePair(SCOPE, "bingads.manage"));
 
         return params;
     }

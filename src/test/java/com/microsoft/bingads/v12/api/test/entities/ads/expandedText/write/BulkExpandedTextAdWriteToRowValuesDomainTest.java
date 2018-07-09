@@ -14,7 +14,7 @@ import com.microsoft.bingads.v12.api.test.entities.ads.expandedText.BulkExpanded
 import com.microsoft.bingads.v12.bulk.entities.BulkExpandedTextAd;
 
 @RunWith(Parameterized.class)
-public class BulkExpandedTextAdWriteToRowValuesPath1Test extends BulkExpandedTextAdTest {
+public class BulkExpandedTextAdWriteToRowValuesDomainTest extends BulkExpandedTextAdTest {
 
     @Parameter(value = 1)
     public String propertyValue;
@@ -22,17 +22,17 @@ public class BulkExpandedTextAdWriteToRowValuesPath1Test extends BulkExpandedTex
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-            {"path1", "path1"},
+            {"Domain Url", "Domain Url"},
             {"delete_value", ""},
             {null, null},});
     }
 
     @Test
     public void testWrite() {
-        this.<String>testWriteProperty("Path 1", this.datum, this.propertyValue, new BiConsumer<BulkExpandedTextAd, String>() {
+        this.<String>testWriteProperty("Domain", this.datum, this.propertyValue, new BiConsumer<BulkExpandedTextAd, String>() {
             @Override
             public void accept(BulkExpandedTextAd c, String v) {
-                c.getExpandedTextAd().setPath1(v);
+                c.getExpandedTextAd().setDomain(v);
             }
         });
     }

@@ -444,6 +444,7 @@ public class StringTable {
     public static final String TitlePart2 = "Title Part 2";
     public static final String Path1 = "Path 1";
     public static final String Path2 = "Path 2";
+    public static final String Domain = "Domain";
     
     // Responsive Ad
     public static final String ResponsiveAd = "Responsive Ad";

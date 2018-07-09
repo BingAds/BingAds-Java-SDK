@@ -296,6 +296,7 @@ public class CsvHeaders {
             StringTable.TitlePart2,
             StringTable.Path1,
             StringTable.Path2,
+            StringTable.Domain,
 
             // Responsive Ad
             StringTable.CallToAction,

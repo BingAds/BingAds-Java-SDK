@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="RoleId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="CustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AccountIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="LinkedAccountIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CustomerRole", namespace = "https://bingads.microsoft.com/Customer/v12/Entities", propOrder = {
     "roleId",
     "customerId",
-    "accountIds"
+    "accountIds",
+    "linkedAccountIds"
 })
 public class CustomerRole {
 
@@ -42,6 +44,8 @@ public class CustomerRole {
     protected Long customerId;
     @XmlElement(name = "AccountIds", nillable = true)
     protected ArrayOflong accountIds;
+    @XmlElement(name = "LinkedAccountIds", nillable = true)
+    protected ArrayOflong linkedAccountIds;
 
     /**
      * Gets the value of the roleId property.
@@ -113,6 +117,30 @@ public class CustomerRole {
      */
     public void setAccountIds(ArrayOflong value) {
         this.accountIds = value;
+    }
+
+    /**
+     * Gets the value of the linkedAccountIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getLinkedAccountIds() {
+        return linkedAccountIds;
+    }
+
+    /**
+     * Sets the value of the linkedAccountIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setLinkedAccountIds(ArrayOflong value) {
+        this.linkedAccountIds = value;
     }
 
 }

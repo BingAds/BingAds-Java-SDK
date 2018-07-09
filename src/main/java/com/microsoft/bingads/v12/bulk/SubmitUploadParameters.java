@@ -15,6 +15,8 @@ public class SubmitUploadParameters {
 
     private boolean compressUploadFile;
 
+    private boolean renameUploadFileToMatchRequestId;
+
     /**
      * Initializes a new instance of the class
      */
@@ -64,5 +66,14 @@ public class SubmitUploadParameters {
      */
     public void setCompressUploadFile(boolean compressUploadFile) {
         this.compressUploadFile = compressUploadFile;
+    }
+
+    public boolean getRenameUploadFileToMatchRequestId() {
+        return this.renameUploadFileToMatchRequestId;
+    }
+
+    public void submitUploadParameters(boolean arg) {
+        this.renameUploadFileToMatchRequestId = arg;
+        
     }
 }

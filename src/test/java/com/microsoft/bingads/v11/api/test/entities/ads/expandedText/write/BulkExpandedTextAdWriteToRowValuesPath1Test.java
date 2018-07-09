@@ -23,7 +23,7 @@ public class BulkExpandedTextAdWriteToRowValuesPath1Test extends BulkExpandedTex
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
             {"path1", "path1"},
-            {"", ""},
+            {"delete_value", ""},
             {null, null},});
     }
 
