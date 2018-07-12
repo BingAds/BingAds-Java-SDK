@@ -15,6 +15,7 @@ import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.examples.v12.BingAdsExceptionHelper;
 import java.net.URL;
+import java.util.Objects;
 
 public class ExampleBase {
 
@@ -41,6 +42,7 @@ public class ExampleBase {
         //System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
         
         OAuthDesktopMobileAuthCodeGrant oAuthDesktopMobileAuthCodeGrant = new OAuthDesktopMobileAuthCodeGrant(ClientId, API_ENVIRONMENT);
+        oAuthDesktopMobileAuthCodeGrant.setState(ClientState);
 
         authorizationData = new AuthorizationData();
         authorizationData.setAuthentication(oAuthDesktopMobileAuthCodeGrant);
@@ -66,7 +68,7 @@ public class ExampleBase {
             ex.printStackTrace();
         }
     }
-    protected static void requestUserConsent() throws IOException
+    protected static void requestUserConsent() throws Exception, IOException
     {
         System.out.printf("You need to provide consent for the application to access your Bing Ads accounts. " +
               "Copy and paste this authorization endpoint into a web browser and sign in with a Microsoft account " +
@@ -78,6 +80,12 @@ public class ExampleBase {
         Scanner scanner = new Scanner(System.in);
         java.lang.String responseUri = scanner.nextLine();
         URL url = new URL(responseUri);
+        
+        String query = url.getQuery();
+        if (!query.contains("state=" + ClientState))
+        {
+            throw new Exception("The OAuth response state does not match the client request state.");
+        }
         
         OAuthTokens tokens = ((OAuthDesktopMobileAuthCodeGrant)(authorizationData.getAuthentication())).requestAccessAndRefreshTokens(url);
         writeOAuthRefreshToken(tokens.getRefreshToken());

@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.microsoft.bingads</groupId>
             <artifactId>microsoft.bingads</artifactId>
-            <version>11.12.3</version>
+            <version>11.12.4</version>
         </dependency>
     </dependencies>
 </project>
