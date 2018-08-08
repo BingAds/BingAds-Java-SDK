@@ -38,8 +38,11 @@ public class BulkAdGroupWriteToRowValuesCoOpBidOptionTests extends BulkAdGroupTe
         this.<BidOption>testWriteProperty("Bid Option", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, BidOption>() {
             @Override
             public void accept(BulkAdGroup c, BidOption v) {
-                CoOpSetting s  = (CoOpSetting)c.getSetting(CoOpSetting.class);
-                s.setBidOption(v);
+                CoOpSetting setting = new CoOpSetting();
+                setting.setType(CoOpSetting.class.getSimpleName());
+                setting.setBidOption(v);
+                
+                c.addAdGroupSetting(setting);
             }
         });
     }

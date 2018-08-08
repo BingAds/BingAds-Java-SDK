@@ -8,6 +8,7 @@ import java.util.List;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.entities.BulkAdGroup;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v12.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v12.campaignmanagement.Setting;
@@ -332,6 +333,22 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+
+        m.add(new ComplexBulkMapping<BulkAdGroup>(
+                new BiConsumer<BulkAdGroup, RowValues>() {
+                    @Override
+                    public void accept(BulkAdGroup c, RowValues v) {
+                        coOpSettingtoCsv(c, v);
+                    }
+                },
+                new BiConsumer<RowValues, BulkAdGroup>() {
+                    @Override
+                    public void accept(RowValues v, BulkAdGroup c) {
+                        csvToCoOpSetting(v, c);
+                    }
+                }
+        ));
 
         m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.TargetSetting,
                 new Function<BulkAdGroup, String>() {
@@ -344,11 +361,13 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroup>() {
                     @Override
                     public void accept(String v, BulkAdGroup c) {
-                        TargetSetting targetSetting = (TargetSetting)c.getSetting(TargetSetting.class);
                         List<TargetSettingDetail> targetSettingDetails = StringExtensions.parseTargetSettingDetails(v);
-                        if (targetSetting != null && targetSettingDetails != null) {
+                        if (targetSettingDetails != null) {
+                            TargetSetting targetSetting = new TargetSetting();
+                            targetSetting.setType(TargetSetting.class.getSimpleName());
                             targetSetting.setDetails(new ArrayOfTargetSettingDetail());
                             targetSetting.getDetails().getTargetSettingDetails().addAll(targetSettingDetails);
+                            c.addAdGroupSetting(targetSetting);
                         }
                     }
                 }
@@ -377,83 +396,19 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         ));
         
 
-        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.BidOption, new Function<BulkAdGroup, String>() {
-            @Override
-            public String apply(BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                return (setting == null || setting.getBidOption() == null) ? null : setting.getBidOption().value();
-            }
-        }, new BiConsumer<String, BulkAdGroup>() {
-            @Override
-            public void accept(String v, BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                BidOption bo = StringExtensions.parseOptional(v, new Function<String, BidOption>() {
-                    @Override
-                    public BidOption apply(String value) {
-                        return BidOption.fromValue(value);
-                    }
-                });
-                if (setting != null && bo != null) {
-                    setting.setBidOption(bo);
-                }
-            }
-        }));
-        
-
-        m.add(new SimpleBulkMapping<BulkAdGroup, Double>(StringTable.BidBoostValue, new Function<BulkAdGroup, Double>() {
-            @Override
-            public Double apply(BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                return setting == null ? null : setting.getBidBoostValue();
-            }
-        }, new BiConsumer<String, BulkAdGroup>() {
-            @Override
-            public void accept(String v, BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                if (setting != null) {
-                    setting.setBidBoostValue(StringExtensions.parseOptional(v, new Function<String, Double>() {
-                        @Override
-                        public Double apply(String value) {
-                            return Double.parseDouble(value);
-                        }
-                    }));
-                }
-            }
-        }));
-        
-
-        m.add(new SimpleBulkMapping<BulkAdGroup, Double>(StringTable.MaximumBid, new Function<BulkAdGroup, Double>() {
-            @Override
-            public Double apply(BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                return setting == null ? null : setting.getBidMaxValue();
-            }
-        }, new BiConsumer<String, BulkAdGroup>() {
-            @Override
-            public void accept(String v, BulkAdGroup c) {
-                CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
-                if (setting != null) {
-                    setting.setBidMaxValue(StringExtensions.parseOptional(v, new Function<String, Double>() {
-                        @Override
-                        public Double apply(String value) {
-                            return Double.parseDouble(value);
-                        }
-                    }));
-                }
-            }
-        }));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
     
+
     public Setting getSetting(Class<? extends Setting> settingClass) { 
         if (adGroup.getSettings() == null || adGroup.getSettings().getSettings().size() == 0) {
-            return addAdGroupSetting(settingClass);
+            return null;
         }
         
         Setting[] settings = adGroup.getSettings().getSettings().stream().filter(e -> e.getClass() == settingClass).toArray(Setting[]::new);
         if (settings.length == 0) {
-            return addAdGroupSetting(settingClass);
+            return null;
         }
         
         if (settings.length == 1)
@@ -464,23 +419,12 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         return null;
     }
 
-    private Setting addAdGroupSetting(Class<? extends Setting> settingClass) {
-        try {
-            Setting setting = settingClass.newInstance();
-            setting.setType(settingClass.getSimpleName());
-            if (adGroup.getSettings() == null) {
-                adGroup.setSettings(new ArrayOfSetting());
-            }
-            adGroup.getSettings().getSettings().add(setting);
-            return setting;
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+    public void addAdGroupSetting(Setting setting) {
+        if (adGroup.getSettings() == null) {
+            adGroup.setSettings(new ArrayOfSetting());
         }
-        return null;
+        adGroup.getSettings().getSettings().add(setting);
     }
-
     private static void csvToBiddingScheme(RowValues values, BulkAdGroup c) {
         try {
             String bidStrategyTypeRowValue = values.tryGet(StringTable.BidStrategyType);
@@ -517,6 +461,52 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+
+    private static void csvToCoOpSetting(RowValues values, BulkAdGroup c) {
+        BidOption bo = StringExtensions.parseOptional(values.tryGet(StringTable.BidOption), new Function<String, BidOption>() {
+            @Override
+            public BidOption apply(String value) {
+                return BidOption.fromValue(value);
+            }
+        });
+        Double boostValue = StringExtensions.parseOptional(values.tryGet(StringTable.BidBoostValue), new Function<String, Double>() {
+            @Override
+            public Double apply(String value) {
+                return Double.parseDouble(value);
+            }
+        });
+        
+        Double maximumBid = StringExtensions.parseOptional(values.tryGet(StringTable.MaximumBid), new Function<String, Double>() {
+            @Override
+            public Double apply(String value) {
+                return Double.parseDouble(value);
+            }
+        });
+
+        if (bo != null || boostValue != null || maximumBid != null) {
+            CoOpSetting setting = new CoOpSetting();
+            setting.setType(CoOpSetting.class.getSimpleName());
+            setting.setBidOption(bo);
+            setting.setBidBoostValue(boostValue);
+            setting.setBidMaxValue(maximumBid);
+            c.addAdGroupSetting(setting);
+        }
+    }
+    
+    private static void coOpSettingtoCsv(BulkAdGroup c, RowValues values) {
+        CoOpSetting setting = (CoOpSetting) c.getSetting(CoOpSetting.class);
+        if (setting == null) {
+            return;
+        }
+
+        if (setting.getBidOption() != null) {
+            values.put(StringTable.BidOption, StringExtensions.toBulkString(setting.getBidOption().value()));
+        }
+        values.put(StringTable.BidBoostValue, StringExtensions.toBulkString(setting.getBidBoostValue()));
+        values.put(StringTable.MaximumBid, StringExtensions.toBulkString(setting.getBidMaxValue()));
+        
     }
 
     @Override

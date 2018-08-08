@@ -33,7 +33,6 @@ public class CsvHeaders {
             StringTable.BudgetName,
             StringTable.Budget,
             StringTable.BudgetType,
-            StringTable.KeywordVariantMatchEnabled,
 
             // Ad Group
             StringTable.StartDate,

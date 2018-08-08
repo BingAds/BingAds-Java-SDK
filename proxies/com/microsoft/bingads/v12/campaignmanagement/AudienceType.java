@@ -8,7 +8,8 @@ public enum AudienceType {
     REMARKETING_LIST("RemarketingList"),
     CUSTOM("Custom"),
     IN_MARKET("InMarket"),
-    PRODUCT("Product");
+    PRODUCT("Product"),
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList");
         
     private final String value;
 

@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="CustomerLifeCycleStatus" type="{https://bingads.microsoft.com/Customer/v12/Entities}CustomerLifeCycleStatus" minOccurs="0"/>
  *         &lt;element name="TimeStamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CustomerAddress" type="{https://bingads.microsoft.com/Customer/v12/Entities}Address" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -55,7 +56,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "serviceLevel",
     "customerLifeCycleStatus",
     "timeStamp",
-    "number"
+    "number",
+    "customerAddress"
 })
 public class Customer {
 
@@ -92,6 +94,8 @@ public class Customer {
     protected byte[] timeStamp;
     @XmlElement(name = "Number", nillable = true)
     protected String number;
+    @XmlElement(name = "CustomerAddress", nillable = true)
+    protected Address customerAddress;
 
     /**
      * Gets the value of the customerFinancialStatus property.
@@ -401,6 +405,30 @@ public class Customer {
      */
     public void setNumber(String value) {
         this.number = value;
+    }
+
+    /**
+     * Gets the value of the customerAddress property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Address }
+     *     
+     */
+    public Address getCustomerAddress() {
+        return customerAddress;
+    }
+
+    /**
+     * Sets the value of the customerAddress property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Address }
+     *     
+     */
+    public void setCustomerAddress(Address value) {
+        this.customerAddress = value;
     }
 
 }

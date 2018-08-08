@@ -2,7 +2,7 @@
 <bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://java.sun.com/xml/ns/jaxws">
 	<enableAsyncMapping>true</enableAsyncMapping>
 	<enableWrapperStyle>false</enableWrapperStyle>
-	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='ApiFaultDetail3Fault']">
+	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='ApiFaultDetail2Fault']">
 	    <class name="ApiFaultDetail"/>
 	</bindings>
 	<bindings node="wsdl:definitions/wsdl:portType/wsdl:operation/wsdl:fault[@name='AdApiFaultDetailFault']">

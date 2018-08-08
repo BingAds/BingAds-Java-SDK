@@ -32,6 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="HowChanged"/>
  *     &lt;enumeration value="OldValue"/>
  *     &lt;enumeration value="NewValue"/>
+ *     &lt;enumeration value="EntityName"/>
+ *     &lt;enumeration value="EntityId"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -76,7 +78,11 @@ public enum SearchCampaignChangeHistoryReportColumn {
     @XmlEnumValue("OldValue")
     OLD_VALUE("OldValue"),
     @XmlEnumValue("NewValue")
-    NEW_VALUE("NewValue");
+    NEW_VALUE("NewValue"),
+    @XmlEnumValue("EntityName")
+    ENTITY_NAME("EntityName"),
+    @XmlEnumValue("EntityId")
+    ENTITY_ID("EntityId");
     private final String value;
 
     SearchCampaignChangeHistoryReportColumn(String v) {

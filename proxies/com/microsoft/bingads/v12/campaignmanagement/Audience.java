@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 @XmlSeeAlso({
     ProductAudience.class,
+    SimilarRemarketingList.class,
     RemarketingList.class,
     CustomAudience.class,
     InMarketAudience.class

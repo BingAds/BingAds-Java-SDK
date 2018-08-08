@@ -123,6 +123,7 @@ public class ObjectFactory {
     private final static QName _CallToAction_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "CallToAction");
     private final static QName _Keyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "Keyword");
     private final static QName _AdEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "AdEditorialStatus");
+    private final static QName _SimilarRemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "SimilarRemarketingList");
     private final static QName _SharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "SharedEntity");
     private final static QName _WebpageCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "WebpageCondition");
     private final static QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "AdGroupCriterionEditorialStatus");
@@ -1661,6 +1662,14 @@ public class ObjectFactory {
      */
     public UpdateBudgetsResponse createUpdateBudgetsResponse() {
         return new UpdateBudgetsResponse();
+    }
+
+    /**
+     * Create an instance of {@link SimilarRemarketingList }
+     * 
+     */
+    public SimilarRemarketingList createSimilarRemarketingList() {
+        return new SimilarRemarketingList();
     }
 
     /**
@@ -4528,6 +4537,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "AdEditorialStatus")
     public JAXBElement<AdEditorialStatus> createAdEditorialStatus(AdEditorialStatus value) {
         return new JAXBElement<AdEditorialStatus>(_AdEditorialStatus_QNAME, AdEditorialStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SimilarRemarketingList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "SimilarRemarketingList")
+    public JAXBElement<SimilarRemarketingList> createSimilarRemarketingList(SimilarRemarketingList value) {
+        return new JAXBElement<SimilarRemarketingList>(_SimilarRemarketingList_QNAME, SimilarRemarketingList.class, null, value);
     }
 
     /**

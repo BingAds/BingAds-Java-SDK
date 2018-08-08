@@ -37,8 +37,6 @@ public class StringTable {
     public static final String BudgetType = "Budget Type";
     public static final String BudgetName = "Budget Name";
     		
-    public static final String KeywordVariantMatchEnabled = "KeywordVariantMatchEnabled";
-
     public static final String AdGroup = "Ad Group";
     public static final String Keyword = "Keyword";
 

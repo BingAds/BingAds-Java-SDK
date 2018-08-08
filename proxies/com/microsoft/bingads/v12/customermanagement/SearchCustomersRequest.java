@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="DateRange" type="{https://bingads.microsoft.com/Customer/v12/Entities}DateRange" minOccurs="0"/>
  *         &lt;element name="Ordering" type="{https://bingads.microsoft.com/Customer/v12/Entities}ArrayOfOrderBy" minOccurs="0"/>
  *         &lt;element name="PageInfo" type="{https://bingads.microsoft.com/Customer/v12/Entities}Paging" minOccurs="0"/>
+ *         &lt;element name="IncludeCustomerAddress" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "predicates",
     "dateRange",
     "ordering",
-    "pageInfo"
+    "pageInfo",
+    "includeCustomerAddress"
 })
 @XmlRootElement(name = "SearchCustomersRequest")
 public class SearchCustomersRequest {
@@ -48,6 +50,8 @@ public class SearchCustomersRequest {
     protected ArrayOfOrderBy ordering;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
+    @XmlElement(name = "IncludeCustomerAddress")
+    protected Boolean includeCustomerAddress;
 
     /**
      * Gets the value of the predicates property.
@@ -143,6 +147,30 @@ public class SearchCustomersRequest {
      */
     public void setPageInfo(Paging value) {
         this.pageInfo = value;
+    }
+
+    /**
+     * Gets the value of the includeCustomerAddress property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIncludeCustomerAddress() {
+        return includeCustomerAddress;
+    }
+
+    /**
+     * Sets the value of the includeCustomerAddress property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeCustomerAddress(Boolean value) {
+        this.includeCustomerAddress = value;
     }
 
 }

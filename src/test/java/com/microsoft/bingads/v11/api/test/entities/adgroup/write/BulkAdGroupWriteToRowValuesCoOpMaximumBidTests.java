@@ -36,8 +36,11 @@ public class BulkAdGroupWriteToRowValuesCoOpMaximumBidTests extends BulkAdGroupT
         this.<Double>testWriteProperty("Maximum Bid", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, Double>() {
             @Override
             public void accept(BulkAdGroup c, Double v) {
-                CoOpSetting s  = (CoOpSetting)c.getSetting(CoOpSetting.class);
-                s.setBidMaxValue(v);
+                CoOpSetting setting = new CoOpSetting();
+                setting.setType(CoOpSetting.class.getSimpleName());
+                setting.setBidMaxValue(v);
+                
+                c.addAdGroupSetting(setting);
             }
         });
     }

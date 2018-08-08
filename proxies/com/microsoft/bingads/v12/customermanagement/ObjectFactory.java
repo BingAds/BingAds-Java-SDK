@@ -89,6 +89,7 @@ public class ObjectFactory {
     private final static QName _Password_QNAME = new QName("https://bingads.microsoft.com/Customer/v12", "Password");
     private final static QName _SecretQuestion_QNAME = new QName("https://bingads.microsoft.com/Customer/v12/Entities", "SecretQuestion");
     private final static QName _ArrayOfPredicate_QNAME = new QName("https://bingads.microsoft.com/Customer/v12/Entities", "ArrayOfPredicate");
+    private final static QName _ArrayOfAddress_QNAME = new QName("https://bingads.microsoft.com/Customer/v12/Entities", "ArrayOfAddress");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
     private final static QName _PaymentMethodType_QNAME = new QName("https://bingads.microsoft.com/Customer/v12/Entities", "PaymentMethodType");
     private final static QName _AdApiError_QNAME = new QName("https://adapi.microsoft.com", "AdApiError");
@@ -926,6 +927,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValidateAddressResponse }
+     * 
+     */
+    public ValidateAddressResponse createValidateAddressResponse() {
+        return new ValidateAddressResponse();
+    }
+
+    /**
+     * Create an instance of {@link Address }
+     * 
+     */
+    public Address createAddress() {
+        return new Address();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAddress }
+     * 
+     */
+    public ArrayOfAddress createArrayOfAddress() {
+        return new ArrayOfAddress();
+    }
+
+    /**
      * Create an instance of {@link UpdatePrepayAccountResponse }
      * 
      */
@@ -950,19 +975,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValidateAddressRequest }
+     * 
+     */
+    public ValidateAddressRequest createValidateAddressRequest() {
+        return new ValidateAddressRequest();
+    }
+
+    /**
      * Create an instance of {@link ClientLink }
      * 
      */
     public ClientLink createClientLink() {
         return new ClientLink();
-    }
-
-    /**
-     * Create an instance of {@link Address }
-     * 
-     */
-    public Address createAddress() {
-        return new Address();
     }
 
     /**
@@ -1682,6 +1707,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v12/Entities", name = "ArrayOfPredicate")
     public JAXBElement<ArrayOfPredicate> createArrayOfPredicate(ArrayOfPredicate value) {
         return new JAXBElement<ArrayOfPredicate>(_ArrayOfPredicate_QNAME, ArrayOfPredicate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAddress }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v12/Entities", name = "ArrayOfAddress")
+    public JAXBElement<ArrayOfAddress> createArrayOfAddress(ArrayOfAddress value) {
+        return new JAXBElement<ArrayOfAddress>(_ArrayOfAddress_QNAME, ArrayOfAddress.class, null, value);
     }
 
     /**

@@ -42,9 +42,12 @@ public class BulkAdGroupWriteToRowValuesTargetSettingTests extends BulkAdGroupTe
         this.<String>testWriteProperty("Target Setting", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, String>() {
             @Override
             public void accept(BulkAdGroup c, String v) {
-                TargetSetting settng  = (TargetSetting)c.getSetting(TargetSetting.class);
-                settng.setDetails(new ArrayOfTargetSettingDetail());
-                settng.getDetails().getTargetSettingDetails().addAll(StringExtensions.parseTargetSettingDetails(v));
+                TargetSetting setting = new TargetSetting();
+                setting.setType(TargetSetting.class.getSimpleName());
+                setting.setDetails(new ArrayOfTargetSettingDetail());
+                setting.getDetails().getTargetSettingDetails().addAll(StringExtensions.parseTargetSettingDetails(v));
+                
+                c.addAdGroupSetting(setting);
             }
         });
     }

@@ -14,6 +14,7 @@ import com.microsoft.bingads.v11.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v11.api.test.entities.adgroup.BulkAdGroupTest;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfTargetSettingDetail;
+import com.microsoft.bingads.v11.campaignmanagement.CoOpSetting;
 import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
 
 @RunWith(Parameterized.class)
@@ -42,9 +43,12 @@ public class BulkAdGroupWriteToRowValuesTargetSettingTests extends BulkAdGroupTe
         this.<String>testWriteProperty("Target Setting", this.datum, this.propertyValue, new BiConsumer<BulkAdGroup, String>() {
             @Override
             public void accept(BulkAdGroup c, String v) {
-                TargetSetting settng  = (TargetSetting)c.getSetting(TargetSetting.class);
-                settng.setDetails(new ArrayOfTargetSettingDetail());
-                settng.getDetails().getTargetSettingDetails().addAll(StringExtensions.parseTargetSettingDetails(v));
+                TargetSetting setting = new TargetSetting();
+                setting.setType(TargetSetting.class.getSimpleName());
+                setting.setDetails(new ArrayOfTargetSettingDetail());
+                setting.getDetails().getTargetSettingDetails().addAll(StringExtensions.parseTargetSettingDetails(v));
+                
+                c.addAdGroupSetting(setting);
             }
         });
     }

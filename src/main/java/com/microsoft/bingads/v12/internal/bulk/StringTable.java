@@ -41,8 +41,6 @@ public class StringTable {
     public static final String BudgetType = "Budget Type";
     public static final String BudgetName = "Budget Name";
     		
-    public static final String KeywordVariantMatchEnabled = "KeywordVariantMatchEnabled";
-
     public static final String AdGroup = "Ad Group";
     public static final String Keyword = "Keyword";
 
@@ -489,9 +487,12 @@ public class StringTable {
 
     // Campaign Criterion
     public static final String CampaignAgeCriterion = "Campaign Age Criterion";
+    public static final String CampaignCompanyNameCriterion = "Campaign Company Name Criterion";
     public static final String CampaignDayTimeCriterion = "Campaign DayTime Criterion";
     public static final String CampaignDeviceCriterion = "Campaign DeviceOS Criterion";
     public static final String CampaignGenderCriterion = "Campaign Gender Criterion";
+    public static final String CampaignIndustryCriterion = "Campaign Industry Criterion";
+    public static final String CampaignJobFunctionCriterion = "Campaign Job Function Criterion";
     public static final String CampaignRadiusCriterion = "Campaign Radius Criterion";
     public static final String CampaignLocationCriterion = "Campaign Location Criterion";
     public static final String CampaignLocationIntentCriterion = "Campaign Location Intent Criterion";

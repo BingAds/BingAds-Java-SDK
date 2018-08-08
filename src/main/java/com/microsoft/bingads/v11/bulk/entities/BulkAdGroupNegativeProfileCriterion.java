@@ -25,7 +25,7 @@ import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
  * Represents a negative profile criterion that is assigned to an ad group. Each profile location criterion can be read or written in a bulk file.
  *
  * <p>
- *     For more information, see Ad Group Negative Company Name Criterion at
+ *     For more information, see Bulk File Schema at
  *     <a href="https://go.microsoft.com/fwlink/?linkid=846127>https://go.microsoft.com/fwlink/?linkid=846127</a>.
  * </p>
  *

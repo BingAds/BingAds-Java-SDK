@@ -62,7 +62,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
 
-    private Setting getCampaignSetting(Class<? extends Setting> settingClass) {
+    private Setting getCampaignSetting(Class<? extends Setting> settingClass, boolean addIfNotExist) {
         if (campaign.getSettings() == null) {
             tryAddCampaignSettings();
         }
@@ -386,7 +386,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
                         return setting == null? null : ((ShoppingSetting)setting).getStoreId();
                     }
                 },
@@ -397,7 +397,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
 
                         if (setting == null) {
                             return;
@@ -421,7 +421,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
                         return setting == null? null : ((ShoppingSetting)setting).getPriority();
                     }
                 },
@@ -432,7 +432,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
 
                         if (setting == null) {
                             return;
@@ -456,7 +456,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
                         return setting == null? null : ((ShoppingSetting)setting).getSalesCountryCode();
                     }
                 },
@@ -467,7 +467,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
 
                         if (setting == null) {
                             return;
@@ -486,7 +486,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
 
                         if (setting == null) {
                             return null;
@@ -502,7 +502,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return;
                         }
 
-                        Setting setting = c.getCampaignSetting(ShoppingSetting.class);
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
 
                         if (setting == null) {
                             return;
@@ -633,7 +633,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return null;
 		                }
 		
-	                    Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+	                    Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, false);
 	
 	                    if (setting == null) {
 	                        return null;
@@ -649,7 +649,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return;
 		                }
 
-                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, true);
                         
 	                    if (setting == null) {
 	                        return;
@@ -668,7 +668,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return null;
 		                }
 		
-		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, false);
 
 	                    if (setting == null) {
 	                        return null;
@@ -684,7 +684,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		                    return;
 		                }
 		
-		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class);
+		                Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, true);
 
 	                    if (setting == null) {
 	                        return;

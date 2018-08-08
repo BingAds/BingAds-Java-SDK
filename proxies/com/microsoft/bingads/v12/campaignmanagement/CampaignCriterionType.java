@@ -14,7 +14,10 @@ public enum CampaignCriterionType {
     LOCATION("Location"),
     RADIUS("Radius"),
     DEVICE("Device"),
-    LOCATION_INTENT("LocationIntent");
+    LOCATION_INTENT("LocationIntent"),
+    COMPANY_NAME("CompanyName"),
+    JOB_FUNCTION("JobFunction"),
+    INDUSTRY("Industry");
         
     private final String value;
 

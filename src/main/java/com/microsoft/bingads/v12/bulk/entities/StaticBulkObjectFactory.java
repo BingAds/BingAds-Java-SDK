@@ -554,6 +554,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignAgeCriterion();
             }
         }));
+        m.put(StringTable.CampaignCompanyNameCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignCompanyNameCriterion();
+            }
+        }));
         m.put(StringTable.CampaignDeviceCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -576,6 +582,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkCampaignGenderCriterion();
+            }
+        }));
+        m.put(StringTable.CampaignIndustryCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignIndustryCriterion();
+            }
+        }));
+        m.put(StringTable.CampaignJobFunctionCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignJobFunctionCriterion();
             }
         }));
         m.put(StringTable.CampaignLocationCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
