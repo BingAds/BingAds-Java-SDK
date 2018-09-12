@@ -1,10 +1,11 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
 
 /**
  * Provides an iterable interface for the BulkStreamReader

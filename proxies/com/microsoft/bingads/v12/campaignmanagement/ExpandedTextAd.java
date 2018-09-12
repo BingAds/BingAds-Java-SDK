@@ -21,8 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Path1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Path2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TextPart2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TitlePart1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TitlePart2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TitlePart3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -37,8 +39,10 @@ import javax.xml.bind.annotation.XmlType;
     "path1",
     "path2",
     "text",
+    "textPart2",
     "titlePart1",
-    "titlePart2"
+    "titlePart2",
+    "titlePart3"
 })
 public class ExpandedTextAd
     extends Ad
@@ -52,10 +56,14 @@ public class ExpandedTextAd
     protected String path2;
     @XmlElement(name = "Text", nillable = true)
     protected String text;
+    @XmlElement(name = "TextPart2", nillable = true)
+    protected String textPart2;
     @XmlElement(name = "TitlePart1", nillable = true)
     protected String titlePart1;
     @XmlElement(name = "TitlePart2", nillable = true)
     protected String titlePart2;
+    @XmlElement(name = "TitlePart3", nillable = true)
+    protected String titlePart3;
 
     /**
      * Gets the value of the domain property.
@@ -154,6 +162,30 @@ public class ExpandedTextAd
     }
 
     /**
+     * Gets the value of the textPart2 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTextPart2() {
+        return textPart2;
+    }
+
+    /**
+     * Sets the value of the textPart2 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTextPart2(String value) {
+        this.textPart2 = value;
+    }
+
+    /**
      * Gets the value of the titlePart1 property.
      * 
      * @return
@@ -199,6 +231,30 @@ public class ExpandedTextAd
      */
     public void setTitlePart2(String value) {
         this.titlePart2 = value;
+    }
+
+    /**
+     * Gets the value of the titlePart3 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTitlePart3() {
+        return titlePart3;
+    }
+
+    /**
+     * Sets the value of the titlePart3 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTitlePart3(String value) {
+        this.titlePart3 = value;
     }
 
 }

@@ -1,11 +1,12 @@
 package com.microsoft.bingads.v12.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
-import com.microsoft.bingads.v12.internal.bulk.EntityIterator;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Iterator;
+
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v12.internal.bulk.EntityIterator;
 
 /**
  * Allows to iterate through a list of entities stored in a file.

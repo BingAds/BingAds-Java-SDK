@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
@@ -32,6 +31,7 @@ import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 

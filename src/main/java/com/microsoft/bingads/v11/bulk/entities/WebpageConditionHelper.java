@@ -1,10 +1,11 @@
 package com.microsoft.bingads.v11.bulk.entities;
 
+import com.microsoft.bingads.v11.internal.bulk.RowValues;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfWebpageCondition;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageCondition;
 import com.microsoft.bingads.v11.campaignmanagement.WebpageConditionOperand;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
+
 import java.util.List;
 
 class WebpageConditionHelper {

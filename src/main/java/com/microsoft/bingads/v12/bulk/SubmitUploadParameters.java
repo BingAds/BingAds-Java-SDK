@@ -2,8 +2,6 @@ package com.microsoft.bingads.v12.bulk;
 
 import java.io.File;
 
-import com.microsoft.bingads.v12.bulk.ResponseMode;
-
 /**
  * Describes the minimum available parameters when submitting a file for upload, such as the path of the upload file. 
  */

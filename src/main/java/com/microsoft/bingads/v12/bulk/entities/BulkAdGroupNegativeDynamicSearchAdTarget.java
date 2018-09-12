@@ -1,13 +1,5 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterion;
-import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfWebpageCondition;
-import com.microsoft.bingads.v12.campaignmanagement.NegativeAdGroupCriterion;
-import com.microsoft.bingads.v12.campaignmanagement.Webpage;
-import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +9,13 @@ import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfWebpageCondition;
+import com.microsoft.bingads.v12.campaignmanagement.NegativeAdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.Webpage;
+import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;

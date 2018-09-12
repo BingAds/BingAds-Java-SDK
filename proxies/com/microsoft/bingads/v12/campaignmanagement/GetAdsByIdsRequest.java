@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v12.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AdIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="AdTypes" type="{https://bingads.microsoft.com/CampaignManagement/v12}ArrayOfAdType" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v12}AdAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "adGroupId",
     "adIds",
-    "adTypes"
+    "adTypes",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAdsByIdsRequest")
 public class GetAdsByIdsRequest {
@@ -44,6 +48,9 @@ public class GetAdsByIdsRequest {
     protected ArrayOflong adIds;
     @XmlElement(name = "AdTypes", nillable = true)
     protected ArrayOfAdType adTypes;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter11 .class)
+    protected Collection<AdAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the adGroupId property.
@@ -115,6 +122,30 @@ public class GetAdsByIdsRequest {
      */
     public void setAdTypes(ArrayOfAdType value) {
         this.adTypes = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AdAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

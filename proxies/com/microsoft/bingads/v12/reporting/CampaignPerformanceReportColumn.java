@@ -80,6 +80,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="LowQualitySophisticatedClicks"/>
  *     &lt;enumeration value="CampaignLabels"/>
  *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -220,7 +222,11 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("CampaignLabels")
     CAMPAIGN_LABELS("CampaignLabels"),
     @XmlEnumValue("ExactMatchImpressionSharePercent")
-    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent");
+    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent"),
+    @XmlEnumValue("CustomerId")
+    CUSTOMER_ID("CustomerId"),
+    @XmlEnumValue("CustomerName")
+    CUSTOMER_NAME("CustomerName");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

@@ -63,6 +63,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="LowQualityGeneralClicks"/>
  *     &lt;enumeration value="LowQualitySophisticatedClicks"/>
  *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -169,7 +171,11 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("LowQualitySophisticatedClicks")
     LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks"),
     @XmlEnumValue("ExactMatchImpressionSharePercent")
-    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent");
+    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent"),
+    @XmlEnumValue("CustomerId")
+    CUSTOMER_ID("CustomerId"),
+    @XmlEnumValue("CustomerName")
+    CUSTOMER_NAME("CustomerName");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

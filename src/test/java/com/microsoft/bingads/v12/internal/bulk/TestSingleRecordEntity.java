@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 
 public class TestSingleRecordEntity extends SingleRecordBulkEntity {

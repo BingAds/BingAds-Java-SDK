@@ -9,9 +9,6 @@ import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.v11.bulk.entities.BulkAdGroup;
-import com.microsoft.bingads.v11.internal.bulk.SimpleBulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 

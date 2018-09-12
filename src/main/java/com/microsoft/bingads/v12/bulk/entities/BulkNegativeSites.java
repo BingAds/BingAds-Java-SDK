@@ -1,15 +1,16 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 import com.microsoft.bingads.v12.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
 import com.microsoft.bingads.v12.internal.bulk.TryResult;
 import com.microsoft.bingads.v12.internal.bulk.entities.BulkNegativeSiteIdentifier;
 import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This abstract base class for the bulk negative sites that assigned in sets to

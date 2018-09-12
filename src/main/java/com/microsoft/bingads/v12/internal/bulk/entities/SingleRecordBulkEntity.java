@@ -9,11 +9,12 @@ import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
-import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.TryResult;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

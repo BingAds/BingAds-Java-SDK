@@ -1,7 +1,8 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 import java.util.Iterator;
+
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 
 public class ExtractChildEntitiesIterator implements Iterator<BulkEntity> {
 

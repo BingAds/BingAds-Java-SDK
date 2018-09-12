@@ -1,11 +1,10 @@
 package com.microsoft.bingads.v12.bulk;
 
+import java.util.List;
+
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.v12.internal.bulk.DownloadStatusProvider;
-
-
-import java.util.List;
 
 /**
  * Represents a bulk download operation requested by a user. You can use this

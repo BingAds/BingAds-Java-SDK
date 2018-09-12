@@ -2,12 +2,12 @@ package com.microsoft.bingads.v12.bulk.entities;
 
 import java.util.Collections;
 
-import com.microsoft.bingads.v12.campaignmanagement.ProfileType;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.campaignmanagement.ProfileCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.ProfileType;
 
 /**
  * Represents a negative industry criterion that is assigned to an ad group. Each industry criterion can be read or written in a bulk file.

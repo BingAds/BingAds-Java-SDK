@@ -1,14 +1,15 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.DynamicColumnNameMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This abstract base class for all bulk negative keywords that are assigned individually to a campaign or ad group entity.

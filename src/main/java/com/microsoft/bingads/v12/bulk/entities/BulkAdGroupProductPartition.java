@@ -1,23 +1,32 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v12.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v12.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v12.campaignmanagement.NegativeAdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.ProductCondition;
+import com.microsoft.bingads.v12.campaignmanagement.ProductPartition;
+import com.microsoft.bingads.v12.campaignmanagement.ProductPartitionType;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Represents a Ad Group Criterion that can be read or written in a bulk file.

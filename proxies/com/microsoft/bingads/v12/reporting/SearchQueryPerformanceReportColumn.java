@@ -57,6 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
  *     &lt;enumeration value="CampaignType"/>
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -151,7 +153,11 @@ public enum SearchQueryPerformanceReportColumn {
     @XmlEnumValue("KeywordStatus")
     KEYWORD_STATUS("KeywordStatus"),
     @XmlEnumValue("CampaignType")
-    CAMPAIGN_TYPE("CampaignType");
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("CustomerId")
+    CUSTOMER_ID("CustomerId"),
+    @XmlEnumValue("CustomerName")
+    CUSTOMER_NAME("CustomerName");
     private final String value;
 
     SearchQueryPerformanceReportColumn(String v) {

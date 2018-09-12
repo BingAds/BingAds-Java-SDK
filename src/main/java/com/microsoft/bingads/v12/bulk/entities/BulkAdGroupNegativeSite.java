@@ -2,8 +2,8 @@ package com.microsoft.bingads.v12.bulk.entities;
 
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.internal.bulk.entities.BulkAdGroupNegativeSitesIdentifier;
 import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
 

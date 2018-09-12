@@ -17,8 +17,8 @@ import org.junit.runners.Parameterized.Parameter;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
-import com.microsoft.bingads.v12.internal.bulk.BulkObject;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.BulkObject;
 
 @RunWith(Parameterized.class)
 public abstract class BulkEntityTest<TEntity extends BulkObject> {

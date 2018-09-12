@@ -1,13 +1,14 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
+import java.util.Calendar;
+import java.util.List;
+
+import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
-import com.microsoft.bingads.internal.ErrorMessages;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.internal.bulk.BulkObject;
-import java.util.Calendar;
-import java.util.List;
 
 /**
  * The abstract base class for all bulk entities that can be read or written in a bulk file.

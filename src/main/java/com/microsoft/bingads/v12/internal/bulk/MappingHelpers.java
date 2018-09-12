@@ -1,9 +1,10 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
+import java.util.List;
+
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.v12.bulk.EntityReadException;
 import com.microsoft.bingads.v12.bulk.EntityWriteException;
-import java.util.List;
 
 public class MappingHelpers {
 

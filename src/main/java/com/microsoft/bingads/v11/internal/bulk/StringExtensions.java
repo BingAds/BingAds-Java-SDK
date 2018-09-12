@@ -431,7 +431,7 @@ public class StringExtensions {
     }
 
     public static String getValueOrEmptyString(String v) {
-        if (v == null || v.isEmpty()) {
+        if (v == null || v.isEmpty() || v.equals(StringTable.DeleteValue)) {
             return "";
         }
 

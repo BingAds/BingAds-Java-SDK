@@ -5,8 +5,8 @@ import static com.microsoft.bingads.v12.api.test.entities.RowValuesAssert.assert
 import java.util.HashMap;
 import java.util.Map;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 
 public class QualityScoreDataTestHelper {
 

@@ -411,10 +411,14 @@ public class StringTable {
     public static final String MembershipDuration = "Membership Duration";
     public static final String Scope = "Scope";
     public static final String TagId = "UET Tag Id";
+    public static final String SourceId = "Source Id";
     public static final String AudienceId = "Audience Id";
     public static final String TargetSetting = "Target Setting";
     public static final String RemarketingRule = "Remarketing Rule";
-
+    public static final String SimilarRemarketingList = "Similar Remarketing List";
+    public static final String AdGroupSimilarRemarketingListAssociation = "Ad Group Similar Remarketing List Association";
+    public static final String AdGroupNegativeSimilarRemarketingListAssociation = "Ad Group Negative Similar Remarketing List Association";
+    
     // Structured Snippet Ad Extension
     public static final String AccountStructuredSnippetAdExtension = "Account Structured Snippet Ad Extension";
     public static final String CampaignStructuredSnippetAdExtension = "Campaign Structured Snippet Ad Extension";

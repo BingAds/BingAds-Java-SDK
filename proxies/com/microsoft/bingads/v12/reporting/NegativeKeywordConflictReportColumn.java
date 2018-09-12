@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CampaignStatus"/>
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
+ *     &lt;enumeration value="ConflictType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -82,7 +83,9 @@ public enum NegativeKeywordConflictReportColumn {
     @XmlEnumValue("AdGroupStatus")
     AD_GROUP_STATUS("AdGroupStatus"),
     @XmlEnumValue("KeywordStatus")
-    KEYWORD_STATUS("KeywordStatus");
+    KEYWORD_STATUS("KeywordStatus"),
+    @XmlEnumValue("ConflictType")
+    CONFLICT_TYPE("ConflictType");
     private final String value;
 
     NegativeKeywordConflictReportColumn(String v) {

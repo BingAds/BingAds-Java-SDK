@@ -1,16 +1,15 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfPriceTableRow;
-import com.microsoft.bingads.v12.campaignmanagement.PriceTableRow;
-import com.microsoft.bingads.v12.campaignmanagement.PriceQualifier;
-import com.microsoft.bingads.v12.campaignmanagement.PriceUnit;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v12.internal.bulk.RowValues;
-
-import com.microsoft.bingads.v12.internal.bulk.*;
-
 import java.util.List;
+
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfPriceTableRow;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v12.campaignmanagement.PriceQualifier;
+import com.microsoft.bingads.v12.campaignmanagement.PriceTableRow;
+import com.microsoft.bingads.v12.campaignmanagement.PriceUnit;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
 
 class PriceTableRowHelper {
 

@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 import com.googlecode.jcsv.reader.CSVReader;
 import com.microsoft.bingads.v12.internal.bulk.CsvHeaders;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 

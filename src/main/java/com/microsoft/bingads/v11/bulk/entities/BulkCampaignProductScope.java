@@ -8,8 +8,6 @@ import com.microsoft.bingads.v11.campaignmanagement.ArrayOfProductCondition;
 import com.microsoft.bingads.v11.campaignmanagement.BiddableCampaignCriterion;
 import com.microsoft.bingads.v11.campaignmanagement.CampaignCriterionStatus;
 import com.microsoft.bingads.v11.campaignmanagement.ProductScope;
-import com.microsoft.bingads.v11.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.v11.internal.bulk.*;
 import com.microsoft.bingads.v11.internal.bulk.entities.SingleRecordBulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;

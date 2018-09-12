@@ -682,6 +682,27 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkOfflineConversion();
             }
         }));
+        
+        m.put(StringTable.SimilarRemarketingList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkSimilarRemarketingList();
+            }
+        }));
+
+        m.put(StringTable.AdGroupSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupSimilarRemarketingListAssociation();
+            }
+        }));
+
+        m.put(StringTable.AdGroupNegativeSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeSimilarRemarketingListAssociation();
+            }
+        }));
 
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

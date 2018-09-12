@@ -1,9 +1,10 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.internal.bulk.RowValues;
-import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Describes an entity whose type is unknown

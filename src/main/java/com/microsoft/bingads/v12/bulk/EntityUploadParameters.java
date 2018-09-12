@@ -1,8 +1,8 @@
 package com.microsoft.bingads.v12.bulk;
 
-import com.microsoft.bingads.v12.bulk.ResponseMode;
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 import java.io.File;
+
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 
 /**
  * Describes the available parameters when submitting entities for upload, such as the entities that you want to upload.

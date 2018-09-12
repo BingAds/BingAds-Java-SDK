@@ -1,19 +1,20 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
+
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.v12.bulk.BulkOperationStatus;
 import com.microsoft.bingads.v12.bulk.GetBulkUploadStatusRequest;
 import com.microsoft.bingads.v12.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v12.bulk.IBulkService;
 import com.microsoft.bingads.v12.bulk.UploadStatus;
-import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.ServiceUtils;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import javax.xml.ws.AsyncHandler;
-import javax.xml.ws.Response;
 
 public class UploadStatusProvider implements BulkOperationStatusProvider<UploadStatus> {
 

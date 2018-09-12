@@ -1,26 +1,27 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.Authentication;
-import com.microsoft.bingads.HeadersImpl;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
+import com.microsoft.bingads.v12.campaignmanagement.AudienceCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.BidMultiplier;
+import com.microsoft.bingads.v12.campaignmanagement.BiddableAdGroupCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Represents an Ad Group In Market Audience Association that can be read or written in a bulk file.

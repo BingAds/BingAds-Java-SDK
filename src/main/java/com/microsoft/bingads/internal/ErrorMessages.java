@@ -17,9 +17,9 @@ public class ErrorMessages {
     public static final String UriDoesntMatchState = "The state passed in Uri does not match the state value specified in authentication";
 
 
-    public static final String UserDataAuthenticationIsNull = "User Data Authentication is null";
+    public static final String UserDataAuthenticationIsNull = "AuthorizationData object has the Authentication property set to null. Please make sure it's not null before calling this method";
     
-    public static final String UserDataDeveloperTokenIsNull = "User Data Developer Token is null";
+    public static final String UserDataDeveloperTokenIsNull = "AuthorizationData object has the DeveloperToken property set to null. Please make sure it's not null before calling this method";
     
     public static final String OAuthError = "Couldn't request OAuth AccessTokens. Please use the getDetails() method to get more information";
     

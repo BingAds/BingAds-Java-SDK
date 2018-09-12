@@ -1,8 +1,9 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
+
 
 /**
  * A simple bulk mapping which translates values from a single field to a single

@@ -4,10 +4,11 @@ import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupNegativeSites;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
-import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+
 import static com.microsoft.bingads.internal.utilities.Comparer.compareNullable;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -56,8 +56,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetBidOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidOpportunities", action = "GetBidOpportunities")
     @WebResult(name = "GetBidOpportunitiesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetBudgetOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBudgetOpportunities", action = "GetBudgetOpportunities")
     @WebResult(name = "GetBudgetOpportunitiesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -138,8 +138,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordOpportunitiesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordOpportunities", action = "GetKeywordOpportunities")
     @WebResult(name = "GetKeywordOpportunitiesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -179,8 +179,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetEstimatedBidByKeywordIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEstimatedBidByKeywordIds", action = "GetEstimatedBidByKeywordIds")
     @WebResult(name = "GetEstimatedBidByKeywordIdsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -220,8 +220,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetEstimatedPositionByKeywordIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEstimatedPositionByKeywordIds", action = "GetEstimatedPositionByKeywordIds")
     @WebResult(name = "GetEstimatedPositionByKeywordIdsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -261,8 +261,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetEstimatedBidByKeywordsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEstimatedBidByKeywords", action = "GetEstimatedBidByKeywords")
     @WebResult(name = "GetEstimatedBidByKeywordsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -302,8 +302,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetEstimatedPositionByKeywordsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEstimatedPositionByKeywords", action = "GetEstimatedPositionByKeywords")
     @WebResult(name = "GetEstimatedPositionByKeywordsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -343,8 +343,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetBidLandscapeByAdGroupIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidLandscapeByAdGroupIds", action = "GetBidLandscapeByAdGroupIds")
     @WebResult(name = "GetBidLandscapeByAdGroupIdsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -384,8 +384,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetBidLandscapeByKeywordIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidLandscapeByKeywordIds", action = "GetBidLandscapeByKeywordIds")
     @WebResult(name = "GetBidLandscapeByKeywordIdsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -425,8 +425,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetHistoricalKeywordPerformanceResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetHistoricalKeywordPerformance", action = "GetHistoricalKeywordPerformance")
     @WebResult(name = "GetHistoricalKeywordPerformanceResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -466,8 +466,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetHistoricalSearchCountResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetHistoricalSearchCount", action = "GetHistoricalSearchCount")
     @WebResult(name = "GetHistoricalSearchCountResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -507,8 +507,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordCategoriesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordCategories", action = "GetKeywordCategories")
     @WebResult(name = "GetKeywordCategoriesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -548,8 +548,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordDemographicsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordDemographics", action = "GetKeywordDemographics")
     @WebResult(name = "GetKeywordDemographicsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -589,8 +589,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordLocationsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordLocations", action = "GetKeywordLocations")
     @WebResult(name = "GetKeywordLocationsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -630,8 +630,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.SuggestKeywordsForUrlResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SuggestKeywordsForUrl", action = "SuggestKeywordsForUrl")
     @WebResult(name = "SuggestKeywordsForUrlResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -671,8 +671,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.SuggestKeywordsFromExistingKeywordsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SuggestKeywordsFromExistingKeywords", action = "SuggestKeywordsFromExistingKeywords")
     @WebResult(name = "SuggestKeywordsFromExistingKeywordsResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -712,8 +712,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetAuctionInsightDataResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAuctionInsightData", action = "GetAuctionInsightData")
     @WebResult(name = "GetAuctionInsightDataResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -753,8 +753,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetDomainCategoriesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDomainCategories", action = "GetDomainCategories")
     @WebResult(name = "GetDomainCategoriesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -794,8 +794,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.PutMetricDataResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "PutMetricData", action = "PutMetricData")
     @WebResult(name = "PutMetricDataResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -835,8 +835,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordIdeaCategoriesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordIdeaCategories", action = "GetKeywordIdeaCategories")
     @WebResult(name = "GetKeywordIdeaCategoriesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -876,8 +876,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordIdeasResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordIdeas", action = "GetKeywordIdeas")
     @WebResult(name = "GetKeywordIdeasResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")
@@ -917,8 +917,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v11.adinsight.GetKeywordTrafficEstimatesResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordTrafficEstimates", action = "GetKeywordTrafficEstimates")
     @WebResult(name = "GetKeywordTrafficEstimatesResponse", targetNamespace = "Microsoft.Advertiser.AdInsight.Api.Service.V11", partName = "parameters")

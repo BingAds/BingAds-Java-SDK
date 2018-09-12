@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.BinaryOperator;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
@@ -12,7 +11,6 @@ import com.microsoft.bingads.v12.bulk.BulkFileReader;
 import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v12.campaignmanagement.EntityScope;
 import com.microsoft.bingads.v12.campaignmanagement.ProductAudience;
 import com.microsoft.bingads.v12.campaignmanagement.ProductAudienceType;

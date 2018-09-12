@@ -1,7 +1,8 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 import java.io.Closeable;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 
 public interface BulkStreamReader extends Closeable {
 

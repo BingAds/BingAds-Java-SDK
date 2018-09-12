@@ -1,5 +1,14 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.BulkFileReader;
+import com.microsoft.bingads.v12.bulk.BulkFileWriter;
+import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
 import com.microsoft.bingads.v12.campaignmanagement.AgeCriterion;
@@ -7,11 +16,6 @@ import com.microsoft.bingads.v12.campaignmanagement.AgeRange;
 import com.microsoft.bingads.v12.campaignmanagement.BidMultiplier;
 import com.microsoft.bingads.v12.campaignmanagement.BiddableAdGroupCriterion;
 import com.microsoft.bingads.v12.campaignmanagement.CriterionBid;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.bulk.BulkFileReader;
-import com.microsoft.bingads.v12.bulk.BulkFileWriter;
-import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
@@ -19,9 +23,6 @@ import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Represents an age criterion that is assigned to an ad group. Each age criterion can be read or written in a bulk file.

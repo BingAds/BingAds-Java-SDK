@@ -2,9 +2,6 @@ package com.microsoft.bingads.v11.bulk.entities;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.internal.bulk.BulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.ComplexBulkMapping;
-import com.microsoft.bingads.v11.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v11.bulk.BulkFileReader;
 import com.microsoft.bingads.v11.bulk.BulkFileWriter;
 import com.microsoft.bingads.v11.bulk.BulkOperation;

@@ -1,9 +1,10 @@
 package com.microsoft.bingads.v11.bulk.entities;
 
+import com.microsoft.bingads.v11.internal.bulk.RowValues;
 import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfProductCondition;
 import com.microsoft.bingads.v11.campaignmanagement.ProductCondition;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
+
 import java.util.List;
 
 class ProductConditionHelper {

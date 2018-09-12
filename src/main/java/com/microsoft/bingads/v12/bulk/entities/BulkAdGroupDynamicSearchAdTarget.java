@@ -1,5 +1,14 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.BulkFileReader;
+import com.microsoft.bingads.v12.bulk.BulkFileWriter;
+import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterion;
 import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
@@ -9,11 +18,6 @@ import com.microsoft.bingads.v12.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v12.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v12.campaignmanagement.Webpage;
 import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.bulk.BulkFileReader;
-import com.microsoft.bingads.v12.bulk.BulkFileWriter;
-import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
@@ -22,9 +26,6 @@ import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
 import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Represents a dynamic search ad target that is assigned to an ad group. Each dynamic search ad target can be read or written in a bulk file.

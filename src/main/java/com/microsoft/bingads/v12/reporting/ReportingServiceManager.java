@@ -99,6 +99,35 @@ public class ReportingServiceManager {
             throw new NullPointerException("parameters must not be null");
         }
     }
+    
+
+    /**
+     * Downloads the reporting file to a Report Object in async mode.
+     *
+     * @param parameters
+     *            Determines the download request and file path.
+     * @param callback
+     *            a callback which is called with the report object when the report file is
+     *            downloaded and available
+     *
+     * @return a {@link Future} that will indicate completion of the operation
+     */
+    public Future<Report> downloadReportAsync(ReportingDownloadParameters parameters, AsyncCallback<Report> callback) {
+        final ResultFuture<Report> resultFuture = new ResultFuture<Report>(callback);
+        
+        downloadFileAsync(parameters, new ParentCallback<File>(resultFuture) {
+            @Override
+            public void onSuccess(File result) throws Exception {
+                if (result == null) {
+                    resultFuture.setResult(null);
+                } else {
+                    resultFuture.setResult(new ReportFileReader(result, parameters.getReportRequest().getFormat()).getReport());
+                }
+            }
+        });
+
+        return resultFuture;
+    }
 
     /**
      * Downloads the reporting file to a local file.
@@ -293,4 +322,13 @@ public class ReportingServiceManager {
 	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
 		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
 	}
+	
+    /**
+     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another instance.
+     */
+    public void cleanupTempFiles() {
+        for(File file : workingDirectory.listFiles()) {
+            file.delete();
+        }
+    }
 }

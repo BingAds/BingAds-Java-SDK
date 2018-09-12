@@ -1,10 +1,12 @@
 package com.microsoft.bingads.v12.bulk;
 
-import com.microsoft.bingads.v12.bulk.DownloadFileType;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkStreamReader;
-
-import java.io.*;
 
 /**
  * Provides a method to read bulk entities from a bulk file and make them accessible as an Iterable.

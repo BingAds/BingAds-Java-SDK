@@ -1,13 +1,17 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
 import com.googlecode.jcsv.CSVStrategy;
 import com.googlecode.jcsv.writer.CSVWriter;
 import com.googlecode.jcsv.writer.internal.CSVWriterBuilder;
 import com.microsoft.bingads.v12.bulk.DownloadFileType;
 import com.microsoft.bingads.v12.bulk.entities.StaticBulkObjectFactory;
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
-
-import java.io.*;
 
 /**
  *

@@ -1,13 +1,10 @@
 package com.microsoft.bingads.v11.bulk.entities;
 
-import com.microsoft.bingads.v11.internal.bulk.StringTable;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfPriceTableRow;
 import com.microsoft.bingads.v11.campaignmanagement.PriceTableRow;
 import com.microsoft.bingads.v11.campaignmanagement.PriceQualifier;
 import com.microsoft.bingads.v11.campaignmanagement.PriceUnit;
 import com.microsoft.bingads.v11.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v11.internal.bulk.RowValues;
-
 import com.microsoft.bingads.v11.internal.bulk.*;
 
 import java.util.List;

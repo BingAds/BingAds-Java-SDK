@@ -1,12 +1,13 @@
 package com.microsoft.bingads.v12.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v12.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v12.internal.bulk.SimpleBulkObjectWriter;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
+import com.microsoft.bingads.v12.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.v12.internal.bulk.SimpleBulkObjectWriter;
 
 /**
  * Provides methods to write bulk entities to a file.

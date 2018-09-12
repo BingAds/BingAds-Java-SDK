@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
-import com.microsoft.bingads.v12.bulk.DownloadFileType;
-
 
 /**
  * Describes the available parameters when performing a download, such as the type of entities and data scope that you want to download. 

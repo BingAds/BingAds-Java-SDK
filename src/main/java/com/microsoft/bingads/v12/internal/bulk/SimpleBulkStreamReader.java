@@ -1,11 +1,14 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.bulk.DownloadFileType;
-import com.microsoft.bingads.v12.bulk.entities.UnknownBulkEntity;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+
 import com.microsoft.bingads.internal.ErrorMessages;
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
-
-import java.io.*;
+import com.microsoft.bingads.v12.bulk.DownloadFileType;
 
 /**
  * Reads a bulk object and also its related data (for example corresponding

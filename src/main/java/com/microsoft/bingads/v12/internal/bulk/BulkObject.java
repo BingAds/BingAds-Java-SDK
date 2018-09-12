@@ -1,7 +1,8 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
 import java.io.IOException;
+
+import com.microsoft.bingads.v12.internal.bulk.entities.MultiRecordBulkEntity;
 
 /**
  * A representation of a block of data (set of csv lines) provided in the

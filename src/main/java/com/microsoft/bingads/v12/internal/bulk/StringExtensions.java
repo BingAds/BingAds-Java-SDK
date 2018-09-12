@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 import javax.xml.bind.JAXBElement;
 
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v12.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v12.bulk.entities.Status;
 import com.microsoft.bingads.v12.campaignmanagement.AdExtensionStatus;
@@ -28,7 +27,6 @@ import com.microsoft.bingads.v12.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItemGroup;
-import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v12.campaignmanagement.Bid;
@@ -54,6 +52,7 @@ import com.microsoft.bingads.v12.campaignmanagement.NumberOperator;
 import com.microsoft.bingads.v12.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v12.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
 import com.microsoft.bingads.v12.campaignmanagement.PageVisitorsWhoVisitedAnotherPageRule;
+import com.microsoft.bingads.v12.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v12.campaignmanagement.RemarketingRule;
 import com.microsoft.bingads.v12.campaignmanagement.RuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.RuleItemGroup;
@@ -391,7 +390,7 @@ public class StringExtensions {
     }
 
     public static String getValueOrEmptyString(String v) {
-        if (v == null || v.isEmpty()) {
+        if (v == null || v.isEmpty() || v.equals(StringTable.DeleteValue)) {
             return "";
         }
 

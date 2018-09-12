@@ -1,9 +1,9 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.entities.BulkEntity;
 
 abstract class SingleFieldBulkMapping<TEntity, TProperty> implements BulkMapping<TEntity> {
 

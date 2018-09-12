@@ -1,7 +1,5 @@
 package com.microsoft.bingads.v12.internal.bulk;
 
-import com.microsoft.bingads.v12.internal.bulk.StringTable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -279,6 +277,7 @@ public class CsvHeaders {
             StringTable.MembershipDuration,
             StringTable.Scope,
             StringTable.TagId,
+            StringTable.SourceId,
             StringTable.TargetSetting,
             StringTable.RemarketingRule,
             StringTable.AudienceSearchSize,

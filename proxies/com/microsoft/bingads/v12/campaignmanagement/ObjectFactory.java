@@ -307,6 +307,7 @@ public class ObjectFactory {
     private final static QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private final static QName _RemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "RemarketingList");
     private final static QName _ArrayOfCampaignNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "ArrayOfCampaignNegativeSites");
+    private final static QName _AdAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "AdAdditionalField");
     private final static QName _LocationIntentCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "LocationIntentCriterion");
     private final static QName _TargetSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "TargetSetting");
     private final static QName _ArrayOfDayTime_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "ArrayOfDayTime");
@@ -6199,6 +6200,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "ArrayOfCampaignNegativeSites")
     public JAXBElement<ArrayOfCampaignNegativeSites> createArrayOfCampaignNegativeSites(ArrayOfCampaignNegativeSites value) {
         return new JAXBElement<ArrayOfCampaignNegativeSites>(_ArrayOfCampaignNegativeSites_QNAME, ArrayOfCampaignNegativeSites.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AdAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "AdAdditionalField")
+    @XmlJavaTypeAdapter(Adapter11 .class)
+    public JAXBElement<Collection<AdAdditionalField>> createAdAdditionalField(Collection<AdAdditionalField> value) {
+        return new JAXBElement<Collection<AdAdditionalField>>(_AdAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

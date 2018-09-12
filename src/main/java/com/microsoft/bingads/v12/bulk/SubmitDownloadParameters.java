@@ -4,10 +4,6 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
-import com.microsoft.bingads.v12.bulk.DataScope;
-import com.microsoft.bingads.v12.bulk.DownloadFileType;
-import com.microsoft.bingads.v12.bulk.PerformanceStatsDateRange;
-
 /**
  * Describes the service request parameters such as the type of entities and data scope that you want to download.
  */

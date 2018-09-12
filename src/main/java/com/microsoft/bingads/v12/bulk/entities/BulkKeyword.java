@@ -1,19 +1,34 @@
 package com.microsoft.bingads.v12.bulk.entities;
 
-import com.microsoft.bingads.v12.bulk.BulkServiceManager;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-import com.microsoft.bingads.v12.bulk.BulkFileReader;
-import com.microsoft.bingads.v12.bulk.BulkFileWriter;
-import com.microsoft.bingads.v12.bulk.BulkOperation;
-import com.microsoft.bingads.v12.internal.bulk.*;
-import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
-import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.internal.functionalinterfaces.Function;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.bulk.BulkFileReader;
+import com.microsoft.bingads.v12.bulk.BulkFileWriter;
+import com.microsoft.bingads.v12.bulk.BulkOperation;
+import com.microsoft.bingads.v12.bulk.BulkServiceManager;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v12.campaignmanagement.BiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.InheritFromParentBiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.Keyword;
+import com.microsoft.bingads.v12.campaignmanagement.KeywordEditorialStatus;
+import com.microsoft.bingads.v12.campaignmanagement.KeywordStatus;
+import com.microsoft.bingads.v12.campaignmanagement.MatchType;
+import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.BulkObjectWriter;
+import com.microsoft.bingads.v12.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
+import com.microsoft.bingads.v12.internal.bulk.RowValues;
+import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
+import com.microsoft.bingads.v12.internal.bulk.StringTable;
+import com.microsoft.bingads.v12.internal.bulk.TryResult;
+import com.microsoft.bingads.v12.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a keyword that can be read or written in a bulk file.
