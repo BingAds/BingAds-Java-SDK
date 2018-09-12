@@ -19,4 +19,5 @@ com.microsoft.bingads.v12.customerbilling
 com.microsoft.bingads.v12.customermanagement
 com.microsoft.bingads.v12.internal.bulk
 com.microsoft.bingads.v12.internal.bulk.entities
+com.microsoft.bingads.v12.internal.reporting
 com.microsoft.bingads.v12.reporting
