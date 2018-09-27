@@ -39,7 +39,12 @@ public class HttpClientHttpFileService implements HttpFileService {
         }
 
         CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
-                .setConnectionRequestTimeout(timeoutInMilliseconds).setConnectTimeout(timeoutInMilliseconds).setSocketTimeout(timeoutInMilliseconds).build()).build();
+                .setConnectionRequestTimeout(timeoutInMilliseconds)
+                .setConnectTimeout(timeoutInMilliseconds)
+                .setSocketTimeout(timeoutInMilliseconds).build())
+                .useSystemProperties()
+                .build();
+
         try {
             HttpGet httpget = new HttpGet(new URI(url));
             HttpResponse response = client.execute(httpget);
@@ -74,8 +79,14 @@ public class HttpClientHttpFileService implements HttpFileService {
         try {
             stream = new FileInputStream(uploadFilePath);
 
-            CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
-                    .setConnectionRequestTimeout(timeoutInMilliseconds).setConnectTimeout(timeoutInMilliseconds).setSocketTimeout(timeoutInMilliseconds).build()).build();
+            CloseableHttpClient client = HttpClients.custom()
+                    .setDefaultRequestConfig(RequestConfig.custom()
+                        .setConnectionRequestTimeout(timeoutInMilliseconds)
+                        .setConnectTimeout(timeoutInMilliseconds)
+                        .setSocketTimeout(timeoutInMilliseconds)
+                        .build())
+                    .useSystemProperties()
+                    .build();
             
 
             try {            	
@@ -134,8 +145,15 @@ public class HttpClientHttpFileService implements HttpFileService {
     public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds) {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
-        CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
-                .setConnectionRequestTimeout(timeoutInMilliseconds).setConnectTimeout(timeoutInMilliseconds).setSocketTimeout(timeoutInMilliseconds).build()).build();
+        CloseableHttpClient client = HttpClients
+                .custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                    .setConnectionRequestTimeout(timeoutInMilliseconds)
+                    .setConnectTimeout(timeoutInMilliseconds)
+                    .setSocketTimeout(timeoutInMilliseconds)
+                    .build())
+                .useSystemProperties()
+                .build();
 
         try {
         	
