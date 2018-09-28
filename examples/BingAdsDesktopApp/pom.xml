@@ -19,7 +19,12 @@
         <dependency>
             <groupId>com.microsoft.bingads</groupId>
             <artifactId>microsoft.bingads</artifactId>
-            <version>11.12.5</version>
+            <version>11.12.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
 </project>
