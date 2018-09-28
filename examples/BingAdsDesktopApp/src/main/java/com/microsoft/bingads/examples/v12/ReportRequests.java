@@ -67,7 +67,7 @@ public class ReportRequests extends ExampleBase {
             reportingDownloadParameters.setOverwriteResultFile(true);
             
             // Option A - Background Completion with ReportingServiceManager
-            // You can submit a download or upload request and the ReportingServiceManager will automatically 
+            // You can submit a download request and the ReportingServiceManager will automatically 
             // return results. The ReportingServiceManager abstracts the details of checking for result file 
             // completion, and you don't have to write any code for results polling.
 
