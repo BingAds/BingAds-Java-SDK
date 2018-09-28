@@ -22,6 +22,8 @@ public class SearchUserAccounts extends ExampleBase {
             User user = getUserResponse.getUser();
 
             // Search for the accounts that the user can access.
+            // To retrieve more than 100 accounts, increase the page size up to 1,000.
+            // To retrieve more than 1,000 accounts you'll need to implement paging.
             
             ArrayOfPredicate predicates = new ArrayOfPredicate();
             Predicate predicate = new Predicate();
@@ -32,7 +34,7 @@ public class SearchUserAccounts extends ExampleBase {
 
             Paging paging = new Paging();
             paging.setIndex(0);
-            paging.setSize(10);
+            paging.setSize(100);
 
             final SearchAccountsRequest searchAccountsRequest = new SearchAccountsRequest();
             searchAccountsRequest.setPredicates(predicates);

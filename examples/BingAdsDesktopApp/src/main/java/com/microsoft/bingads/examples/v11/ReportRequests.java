@@ -4,16 +4,10 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.Objects;
 import java.net.*;
 import java.io.*;
 
-import com.microsoft.bingads.*;
-import com.microsoft.bingads.PasswordAuthentication;
-import com.microsoft.bingads.v11.reporting.AdApiError;
-import com.microsoft.bingads.v11.reporting.AdApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.reporting.ApiFaultDetail_Exception;
-import com.microsoft.bingads.v11.reporting.BatchError;
-import com.microsoft.bingads.v11.reporting.OperationError;
 import com.microsoft.bingads.v11.reporting.*;
 
 public class ReportRequests extends ExampleBase {
@@ -114,7 +108,7 @@ public class ReportRequests extends ExampleBase {
                         reportingDownloadParameters, 
                         null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
         
-        if(resultFile != null && resultFile.getName() != "")
+        if(resultFile != null && !Objects.equals(resultFile.getName(), ""))
         {
             outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
         }
@@ -159,7 +153,7 @@ public class ReportRequests extends ExampleBase {
             true,  // Set this value true if you want to overwrite the named file.
             null).get();
 	
-        if(resultFile != null && resultFile.getName() != "")
+        if(resultFile != null && !Objects.equals(resultFile.getName(), ""))
         {
             outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
         }
@@ -194,7 +188,7 @@ public class ReportRequests extends ExampleBase {
             true,  // Set this value true if you want to overwrite the named file.
             null).get();
 
-        if(resultFile != null && resultFile.getName() != "")
+        if(resultFile != null && !Objects.equals(resultFile.getName(), ""))
         {
             outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
             outputStatusMessage(String.format("Status: %s", reportingOperationStatus.getStatus()));
