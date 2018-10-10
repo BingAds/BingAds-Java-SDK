@@ -7,6 +7,7 @@ import java.util.concurrent.Future;
  *
  * @param <T> the type of result
  */
+@FunctionalInterface
 public interface AsyncCallback<T> {
 
     /**

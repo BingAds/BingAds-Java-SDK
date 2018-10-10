@@ -1,5 +1,7 @@
 package com.microsoft.bingads;
 
+import java.util.Arrays;
+
 /**
  * Represents Bing Ads API environment (Production or Sandbox).
  */
@@ -26,11 +28,7 @@ public enum ApiEnvironment {
     }
 
     public static ApiEnvironment fromValue(String v) {
-        for (ApiEnvironment c : ApiEnvironment.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return Arrays.stream(values()).filter((env) -> env.value.equals(v)).findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(v));
     }
 }
