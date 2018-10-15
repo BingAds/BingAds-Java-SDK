@@ -99,7 +99,7 @@ public class BulkCampaignDeviceCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignDeviceCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignDeviceCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

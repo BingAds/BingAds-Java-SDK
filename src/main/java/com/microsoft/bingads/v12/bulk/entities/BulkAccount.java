@@ -80,7 +80,12 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAccount>() {
                     @Override
                     public void accept(String v, BulkAccount c) {
-                        c.setCustomerId(Long.parseLong(v));
+                        c.setCustomerId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

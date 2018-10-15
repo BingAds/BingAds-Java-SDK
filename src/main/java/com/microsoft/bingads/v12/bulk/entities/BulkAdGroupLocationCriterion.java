@@ -101,7 +101,12 @@ public class BulkAdGroupLocationCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupLocationCriterion c) {
-                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

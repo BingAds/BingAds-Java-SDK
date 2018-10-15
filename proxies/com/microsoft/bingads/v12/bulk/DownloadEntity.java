@@ -104,6 +104,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SimilarRemarketingLists"/>
  *     &lt;enumeration value="AdGroupSimilarRemarketingListAssociations"/>
  *     &lt;enumeration value="AdGroupNegativeSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="Experiments"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -292,7 +293,9 @@ public enum DownloadEntity {
     @XmlEnumValue("AdGroupSimilarRemarketingListAssociations")
     AD_GROUP_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("AdGroupSimilarRemarketingListAssociations"),
     @XmlEnumValue("AdGroupNegativeSimilarRemarketingListAssociations")
-    AD_GROUP_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("AdGroupNegativeSimilarRemarketingListAssociations");
+    AD_GROUP_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("AdGroupNegativeSimilarRemarketingListAssociations"),
+    @XmlEnumValue("Experiments")
+    EXPERIMENTS("Experiments");
     private final String value;
 
     DownloadEntity(String v) {

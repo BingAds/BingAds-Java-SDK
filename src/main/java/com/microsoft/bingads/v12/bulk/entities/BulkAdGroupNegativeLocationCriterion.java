@@ -99,7 +99,12 @@ public class BulkAdGroupNegativeLocationCriterion extends SingleRecordBulkEntity
                 new BiConsumer<String, BulkAdGroupNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeLocationCriterion c) {
-                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

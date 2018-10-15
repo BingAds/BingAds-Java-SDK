@@ -68,7 +68,7 @@ public class BulkLabelAssociation extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkLabelAssociation>() {
                     @Override
                     public void accept(String v, BulkLabelAssociation c) {
-                        c.getLabelAssociation().setEntityId(Long.valueOf(v));
+                        c.getLabelAssociation().setEntityId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

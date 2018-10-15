@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
-  <bindings schemaLocation="https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/V11/ReportingService.svc?xsd=xsd0">
+  <bindings schemaLocation="https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/V11/ReportingService.svc?xsd=xsd0">
     <bindings node="//xs:simpleType[@name='AccountStatusReportFilter']">
       <javaType name="java.util.Collection&lt;AccountStatusReportFilter&gt;" parseMethod="com.microsoft.bingads.v11.reporting.AccountStatusReportFilterConverter.convertToList" printMethod="com.microsoft.bingads.v11.reporting.AccountStatusReportFilterConverter.convertToString" />
     </bindings>

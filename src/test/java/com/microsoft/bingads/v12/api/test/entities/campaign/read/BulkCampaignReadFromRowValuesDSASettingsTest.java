@@ -16,6 +16,7 @@ import com.microsoft.bingads.v12.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v12.api.test.entities.campaign.BulkCampaignTest;
 import com.microsoft.bingads.v12.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSetting;
+import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSource;
 import com.microsoft.bingads.v12.campaignmanagement.Setting;
 
 @RunWith(Parameterized.class)
@@ -26,8 +27,11 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
 
     @Parameterized.Parameter(value = 2)
     public String domainLanguage;
-
+    
     @Parameterized.Parameter(value = 3)
+    public String source;
+
+    @Parameterized.Parameter(value = 4)
     public List<Setting> expectedResult;
 
     @Parameterized.Parameters
@@ -35,17 +39,19 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         DynamicSearchAdsSetting setting1 = new DynamicSearchAdsSetting();
         setting1.setDomainName("bing.com");
         setting1.setLanguage("English");
+        setting1.setSource(DynamicSearchAdsSource.ALL);
         setting1.setType("DynamicSearchAdsSetting");
 
         DynamicSearchAdsSetting setting2 = new DynamicSearchAdsSetting();
         setting2.setDomainName("baidu.com");
         setting2.setLanguage("Chinese");
+        setting2.setSource(DynamicSearchAdsSource.SYSTEM_INDEX);
         setting2.setType("DynamicSearchAdsSetting");
 
         return Arrays.asList(
                 new Object[][]{
-                        {"DynamicSearchAds", "bing.com", "English", Collections.singletonList(setting1)},
-                        {"DynamicSearchAds", "baidu.com", "Chinese", Collections.singletonList(setting2)},
+                        {"DynamicSearchAds", "bing.com", "English", "All", Collections.singletonList(setting1)},
+                        {"DynamicSearchAds", "baidu.com", "Chinese", "SystemIndex", Collections.singletonList(setting2)},
                 }
         );
     }
@@ -57,6 +63,7 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         values.put("Campaign Type", datum);
         values.put("Website", website);
         values.put("Domain Language", domainLanguage);
+        values.put("Source", source);
 
         testReadProperty(
                 values,

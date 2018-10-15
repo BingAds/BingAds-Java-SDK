@@ -149,9 +149,15 @@ public class BulkAdGroupNegativeAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupNegativeAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeAgeCriterion c) {
-                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof AgeCriterion) {                   		
-	                		((AgeCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setAgeRange(AgeRange.fromValue(v));
-                    	}
+                        if (c.getNegativeAdGroupCriterion().getCriterion() instanceof AgeCriterion) {
+                            ((AgeCriterion) c.getNegativeAdGroupCriterion().getCriterion())
+                                    .setAgeRange(StringExtensions.parseOptional(v, new Function<String, AgeRange>() {
+                                        @Override
+                                        public AgeRange apply(String s) {
+                                            return AgeRange.fromValue(s);
+                                        }
+                                    }));
+                        }
                     }
                 }
         ));

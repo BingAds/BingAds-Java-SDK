@@ -99,7 +99,7 @@ public class BulkCampaignNegativeDynamicSearchAdTarget extends SingleRecordBulkE
                 new BiConsumer<String, BulkCampaignNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeDynamicSearchAdTarget c) {
-                        c.getNegativeCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getNegativeCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

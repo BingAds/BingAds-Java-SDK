@@ -103,7 +103,12 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                 new BiConsumer<String, BulkAdGroupNegativeDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeDynamicSearchAdTarget c) {
-                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

@@ -100,7 +100,7 @@ public class BulkCampaignAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignAgeCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

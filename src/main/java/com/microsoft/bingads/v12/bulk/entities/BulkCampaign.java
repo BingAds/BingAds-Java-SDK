@@ -21,6 +21,7 @@ import com.microsoft.bingads.v12.campaignmanagement.Campaign;
 import com.microsoft.bingads.v12.campaignmanagement.CampaignStatus;
 import com.microsoft.bingads.v12.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSetting;
+import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSource;
 import com.microsoft.bingads.v12.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.Setting;
@@ -696,6 +697,55 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         ((DynamicSearchAdsSetting)setting).setLanguage(v);
 		            }
 		        }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.Source,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+        
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+                        
+                        DynamicSearchAdsSetting dsaSetting = (DynamicSearchAdsSetting)setting;
+                        if (dsaSetting.getSource() == null) {
+                            return null;
+                        }
+    
+                        return dsaSetting.getSource().value();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+        
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+    
+                        ((DynamicSearchAdsSetting)setting).setSource(
+                            StringExtensions.parseOptional(v,
+                                new Function<String, DynamicSearchAdsSource>() {
+                                    @Override
+                                    public DynamicSearchAdsSource apply(String value) {
+                                        return DynamicSearchAdsSource.fromValue(value);
+                                    }
+                                }
+                            )
+                        );
+                    }
+                }
         ));
 
         m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.SubType,

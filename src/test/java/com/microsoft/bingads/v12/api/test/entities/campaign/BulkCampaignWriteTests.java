@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAccountIdTest;
+import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBidStrategyTypeTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBudgetTypeTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesCampaignTypeTest;
@@ -15,9 +16,9 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWr
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesIdTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesNameTest;
-import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPriorityOtherSettingTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPriorityShoppingSettingTest;
+import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesSourceDSASettingTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesStatusTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesStoreIdOtherSettingTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesStoreIdShoppingSettingTest;
@@ -47,6 +48,7 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesWebsiteOtherSettingTest.class,
         BulkCampaignWriteToRowValuesDomainLanguageDSASettingTest.class,
         BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest.class,
+        BulkCampaignWriteToRowValuesSourceDSASettingTest.class,
 })
 public class BulkCampaignWriteTests {
 

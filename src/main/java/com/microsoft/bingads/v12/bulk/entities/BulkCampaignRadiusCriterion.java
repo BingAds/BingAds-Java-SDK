@@ -100,7 +100,7 @@ public class BulkCampaignRadiusCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignRadiusCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignRadiusCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

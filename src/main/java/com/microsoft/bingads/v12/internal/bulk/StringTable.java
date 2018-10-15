@@ -431,6 +431,8 @@ public class StringTable {
     public static final String ExpandedTextAd = "Expanded Text Ad";
     public static final String TitlePart1 = "Title Part 1";
     public static final String TitlePart2 = "Title Part 2";
+    public static final String TitlePart3 = "Title Part 3";
+    public static final String TextPart2 = "Text Part 2";
     public static final String Path1 = "Path 1";
     public static final String Path2 = "Path 2";
     public static final String Domain = "Domain";

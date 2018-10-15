@@ -99,7 +99,7 @@ public abstract class BulkCampaignProfileCriterion extends SingleRecordBulkEntit
                 }, new BiConsumer<String, BulkCampaignProfileCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignProfileCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }));
 

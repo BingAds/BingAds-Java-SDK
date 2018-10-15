@@ -102,7 +102,12 @@ public class BulkAdGroupAgeCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupAgeCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupAgeCriterion c) {
-                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

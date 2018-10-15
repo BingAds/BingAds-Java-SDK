@@ -71,6 +71,21 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkExpandedTextAd, String>(StringTable.TitlePart3,
+                new Function<BulkExpandedTextAd, String>() {
+                    @Override
+                    public String apply(BulkExpandedTextAd c) {
+                        return StringExtensions.toOptionalBulkString(c.getAd().getTitlePart3());
+                    }
+                },
+                new BiConsumer<String, BulkExpandedTextAd>() {
+                    @Override
+                    public void accept(String v, BulkExpandedTextAd c) {
+                        c.getAd().setTitlePart3(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
 
         m.add(new SimpleBulkMapping<BulkExpandedTextAd, String>(StringTable.Text,
                 new Function<BulkExpandedTextAd, String>() {
@@ -83,6 +98,21 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                     @Override
                     public void accept(String v, BulkExpandedTextAd c) {
                         c.getAd().setText(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkExpandedTextAd, String>(StringTable.TextPart2,
+                new Function<BulkExpandedTextAd, String>() {
+                    @Override
+                    public String apply(BulkExpandedTextAd c) {
+                        return StringExtensions.toOptionalBulkString(c.getAd().getTextPart2());
+                    }
+                },
+                new BiConsumer<String, BulkExpandedTextAd>() {
+                    @Override
+                    public void accept(String v, BulkExpandedTextAd c) {
+                        c.getAd().setTextPart2(StringExtensions.getValueOrEmptyString(v));
                     }
                 }
         ));

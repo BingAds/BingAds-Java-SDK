@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "CampaignManagementService", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v12", wsdlLocation = "https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc?wsdl")
+@WebServiceClient(name = "CampaignManagementService", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v12", wsdlLocation = "https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc?wsdl")
 public class CampaignManagementService
     extends Service
 {
@@ -30,7 +30,7 @@ public class CampaignManagementService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc?wsdl");
+            url = new URL("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

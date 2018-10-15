@@ -107,7 +107,12 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
                     @Override
                     public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
-                        c.getBiddableAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getBiddableAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

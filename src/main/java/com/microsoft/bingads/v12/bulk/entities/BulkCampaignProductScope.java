@@ -102,7 +102,7 @@ public class BulkCampaignProductScope extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignProductScope>() {
                     @Override
                     public void accept(String v, BulkCampaignProductScope c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

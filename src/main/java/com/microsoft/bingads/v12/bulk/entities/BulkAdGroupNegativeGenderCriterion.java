@@ -100,7 +100,12 @@ public class BulkAdGroupNegativeGenderCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupNegativeGenderCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeGenderCriterion c) {
-                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));
@@ -148,9 +153,15 @@ public class BulkAdGroupNegativeGenderCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkAdGroupNegativeGenderCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeGenderCriterion c) {
-                    	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof GenderCriterion) {                   		
-	                		((GenderCriterion)c.getNegativeAdGroupCriterion().getCriterion()).setGenderType(GenderType.fromValue(v));
-                    	}
+                        if (c.getNegativeAdGroupCriterion().getCriterion() instanceof GenderCriterion) {
+                            ((GenderCriterion) c.getNegativeAdGroupCriterion().getCriterion()).setGenderType(
+                                    StringExtensions.parseOptional(v, new Function<String, GenderType>() {
+                                        @Override
+                                        public GenderType apply(String s) {
+                                            return GenderType.fromValue(s);
+                                        }
+                                    }));
+                        }
                     }
                 }
         ));

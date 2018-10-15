@@ -100,7 +100,7 @@ public class BulkCampaignGenderCriterion extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkCampaignGenderCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignGenderCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));

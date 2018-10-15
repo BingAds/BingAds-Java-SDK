@@ -101,7 +101,12 @@ public abstract class BulkAdGroupNegativeProfileCriterion extends SingleRecordBu
                 new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
                     @Override
                     public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.getNegativeAdGroupCriterion().setAdGroupId(Long.parseLong(v));
+                        c.getNegativeAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));

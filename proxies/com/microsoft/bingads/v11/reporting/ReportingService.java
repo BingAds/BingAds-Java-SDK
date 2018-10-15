@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "ReportingService", targetNamespace = "https://bingads.microsoft.com/Reporting/v11", wsdlLocation = "https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc?wsdl")
+@WebServiceClient(name = "ReportingService", targetNamespace = "https://bingads.microsoft.com/Reporting/v11", wsdlLocation = "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc?wsdl")
 public class ReportingService
     extends Service
 {
@@ -30,7 +30,7 @@ public class ReportingService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc?wsdl");
+            url = new URL("https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v11/ReportingService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

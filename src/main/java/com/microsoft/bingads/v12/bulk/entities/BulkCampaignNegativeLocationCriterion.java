@@ -97,7 +97,7 @@ public class BulkCampaignNegativeLocationCriterion extends SingleRecordBulkEntit
                 new BiConsumer<String, BulkCampaignNegativeLocationCriterion>() {
                     @Override
                     public void accept(String v, BulkCampaignNegativeLocationCriterion c) {
-                        c.getNegativeCampaignCriterion().setCampaignId(Long.parseLong(v));
+                        c.getNegativeCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
                     }
                 }
         ));
