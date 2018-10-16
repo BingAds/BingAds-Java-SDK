@@ -197,7 +197,10 @@ public class KeywordsAds extends ExampleBase {
 
             // Add the campaign, ad group, keywords, and ads
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
@@ -327,7 +330,10 @@ public class KeywordsAds extends ExampleBase {
                     campaignIds.getLongs().add((long)updateCampaign.getId());
                 }
                 
-                CampaignManagementExampleHelper.updateCampaigns(authorizationData.getAccountId(), updateCampaigns);
+                CampaignManagementExampleHelper.updateCampaigns(
+                        authorizationData.getAccountId(), 
+                        updateCampaigns,
+                        false);
                                 
                 campaigns = CampaignManagementExampleHelper.getCampaignsByIds(authorizationData.getAccountId(),
                     campaignIds,
@@ -387,9 +393,15 @@ public class KeywordsAds extends ExampleBase {
 
             ArrayOfAdType adTypes = new ArrayOfAdType();
             adTypes.getAdTypes().add(AdType.EXPANDED_TEXT);            
-            GetAdsByAdGroupIdResponse getAdsByAdGroupIdResponse = CampaignManagementExampleHelper.getAdsByAdGroupId(adGroupIds.getLongs().get(0), adTypes);
+            GetAdsByAdGroupIdResponse getAdsByAdGroupIdResponse = CampaignManagementExampleHelper.getAdsByAdGroupId(
+                    adGroupIds.getLongs().get(0), 
+                    adTypes,
+                    null);
             UpdateAdsResponse updateAdsResponse = CampaignManagementExampleHelper.updateAds(adGroupIds.getLongs().get(0), updateAds);
-            getAdsByAdGroupIdResponse = CampaignManagementExampleHelper.getAdsByAdGroupId(adGroupIds.getLongs().get(0), adTypes);
+            getAdsByAdGroupIdResponse = CampaignManagementExampleHelper.getAdsByAdGroupId(
+                    adGroupIds.getLongs().get(0), 
+                    adTypes,
+                    null);
 
 
             // Here is a simple example that updates the keyword bid to use the ad group bid.

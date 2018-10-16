@@ -86,12 +86,14 @@ class CampaignManagementExampleHelper
     }
     static AddCampaignsResponse addCampaigns(
         java.lang.Long accountId,
-        ArrayOfCampaign campaigns) throws RemoteException, Exception
+        ArrayOfCampaign campaigns,
+        java.lang.Boolean includeDynamicSearchAdsSource) throws RemoteException, Exception
     {
         AddCampaignsRequest request = new AddCampaignsRequest();
 
         request.setAccountId(accountId);
         request.setCampaigns(campaigns);
+        request.setIncludeDynamicSearchAdsSource(includeDynamicSearchAdsSource);
 
         return CampaignManagementService.getService().addCampaigns(request);
     }
@@ -498,38 +500,44 @@ class CampaignManagementExampleHelper
     }
     static GetAdsByAdGroupIdResponse getAdsByAdGroupId(
         java.lang.Long adGroupId,
-        ArrayOfAdType adTypes) throws RemoteException, Exception
+        ArrayOfAdType adTypes,
+        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAdsByAdGroupIdRequest request = new GetAdsByAdGroupIdRequest();
 
         request.setAdGroupId(adGroupId);
         request.setAdTypes(adTypes);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByAdGroupId(request);
     }
     static GetAdsByEditorialStatusResponse getAdsByEditorialStatus(
         java.lang.Long adGroupId,
         AdEditorialStatus editorialStatus,
-        ArrayOfAdType adTypes) throws RemoteException, Exception
+        ArrayOfAdType adTypes,
+        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAdsByEditorialStatusRequest request = new GetAdsByEditorialStatusRequest();
 
         request.setAdGroupId(adGroupId);
         request.setEditorialStatus(editorialStatus);
         request.setAdTypes(adTypes);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByEditorialStatus(request);
     }
     static GetAdsByIdsResponse getAdsByIds(
         java.lang.Long adGroupId,
         ArrayOflong adIds,
-        ArrayOfAdType adTypes) throws RemoteException, Exception
+        ArrayOfAdType adTypes,
+        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAdsByIdsRequest request = new GetAdsByIdsRequest();
 
         request.setAdGroupId(adGroupId);
         request.setAdIds(adIds);
         request.setAdTypes(adTypes);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByIds(request);
     }
@@ -996,12 +1004,14 @@ class CampaignManagementExampleHelper
     }
     static UpdateCampaignsResponse updateCampaigns(
         java.lang.Long accountId,
-        ArrayOfCampaign campaigns) throws RemoteException, Exception
+        ArrayOfCampaign campaigns,
+        java.lang.Boolean includeDynamicSearchAdsSource) throws RemoteException, Exception
     {
         UpdateCampaignsRequest request = new UpdateCampaignsRequest();
 
         request.setAccountId(accountId);
         request.setCampaigns(campaigns);
+        request.setIncludeDynamicSearchAdsSource(includeDynamicSearchAdsSource);
 
         return CampaignManagementService.getService().updateCampaigns(request);
     }
@@ -1688,6 +1698,10 @@ class CampaignManagementExampleHelper
             if(dataObject instanceof RemarketingList)
             {
                 outputRemarketingList((RemarketingList)dataObject);
+            }
+            if(dataObject instanceof SimilarRemarketingList)
+            {
+                outputSimilarRemarketingList((SimilarRemarketingList)dataObject);
             }
         }
     }
@@ -2673,8 +2687,10 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("Path1: %s", dataObject.getPath1()));
             outputStatusMessage(String.format("Path2: %s", dataObject.getPath2()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage(String.format("TextPart2: %s", dataObject.getTextPart2()));
             outputStatusMessage(String.format("TitlePart1: %s", dataObject.getTitlePart1()));
             outputStatusMessage(String.format("TitlePart2: %s", dataObject.getTitlePart2()));
+            outputStatusMessage(String.format("TitlePart3: %s", dataObject.getTitlePart3()));
         }
     }
     static void outputArrayOfExpandedTextAd(ArrayList<ExpandedTextAd> dataObjects)
@@ -3908,6 +3924,24 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputSimilarRemarketingList(SimilarRemarketingList dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage(String.format("SourceId: %s", dataObject.getSourceId()));
+        }
+    }
+    static void outputArrayOfSimilarRemarketingList(ArrayList<SimilarRemarketingList> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (SimilarRemarketingList dataObject : dataObjects)
+            {
+                outputSimilarRemarketingList(dataObject);
+                outputStatusMessage("\n");
+            }
+        }
+    }
     static void outputSitelinkAdExtension(SitelinkAdExtension dataObject)
     {
         if (null != dataObject)
@@ -4220,6 +4254,24 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputAssetLinkEditorialStatus(AssetLinkEditorialStatus valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AssetLinkEditorialStatus value : AssetLinkEditorialStatus.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAssetLinkEditorialStatus(ArrayList<AssetLinkEditorialStatus> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AssetLinkEditorialStatus valueSet : valueSets)
+            {
+                outputAssetLinkEditorialStatus(valueSet);
+            }
+        }
+    }
     static void outputBudgetLimitType(BudgetLimitType valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -4397,6 +4449,24 @@ class CampaignManagementExampleHelper
             for (AdGroupStatus valueSet : valueSets)
             {
                 outputAdGroupStatus(valueSet);
+            }
+        }
+    }
+    static void outputAdAdditionalField(AdAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AdAdditionalField value : AdAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAdAdditionalField(ArrayList<AdAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AdAdditionalField valueSet : valueSets)
+            {
+                outputAdAdditionalField(valueSet);
             }
         }
     }

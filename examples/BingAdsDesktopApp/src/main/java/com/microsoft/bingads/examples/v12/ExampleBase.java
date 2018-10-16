@@ -41,7 +41,7 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
 
-                GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null);
+                GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null, true);
                 User user = getUserResponse.getUser();
 
                 // Search for the accounts that the user can access.

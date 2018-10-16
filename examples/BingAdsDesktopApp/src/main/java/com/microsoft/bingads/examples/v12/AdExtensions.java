@@ -38,7 +38,10 @@ public class AdExtensions extends ExampleBase {
 
             campaigns.getCampaigns().add(campaign);
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);

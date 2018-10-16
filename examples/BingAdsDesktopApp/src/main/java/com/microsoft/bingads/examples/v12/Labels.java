@@ -96,7 +96,10 @@ public class Labels extends ExampleBase {
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableLabelIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(labelErrors);
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             outputStatusMessage("New Campaign Ids:");

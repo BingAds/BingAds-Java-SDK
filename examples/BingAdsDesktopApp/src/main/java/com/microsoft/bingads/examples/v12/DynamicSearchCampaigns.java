@@ -41,7 +41,10 @@ public class DynamicSearchCampaigns extends ExampleBase {
             // with its type set to DynamicSearchAds. When you create the campaign, you'll need to 
             // include a DynamicSearchAdsSetting that specifies the target web site domain and language.      
             campaigns = getExampleDSACampaigns();   	
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());
