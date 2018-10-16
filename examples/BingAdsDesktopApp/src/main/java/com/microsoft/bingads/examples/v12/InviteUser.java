@@ -137,7 +137,7 @@ public class InviteUser extends ExampleBase {
             ArrayOfUserInfo usersInfo = CustomerManagementExampleHelper.getUsersInfo(customerId, null).getUsersInfo();
             
             for (UserInfo userInfo : usersInfo.getUserInfos()){
-            	GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(userInfo.getId());
+            	GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(userInfo.getId(), true);
                 CustomerManagementExampleHelper.outputUser(getUserResponse.getUser());
                 CustomerManagementExampleHelper.outputArrayOfCustomerRole(getUserResponse.getCustomerRoles());
             }

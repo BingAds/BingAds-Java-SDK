@@ -105,11 +105,13 @@ class CustomerManagementExampleHelper
         return CustomerManagementService.getService().getAccountsInfo(request);
     }
     static GetCustomerResponse getCustomer(
-        java.lang.Long customerId) throws RemoteException, Exception
+        java.lang.Long customerId,
+        java.lang.Boolean includeCustomerAddress) throws RemoteException, Exception
     {
         GetCustomerRequest request = new GetCustomerRequest();
 
         request.setCustomerId(customerId);
+        request.setIncludeCustomerAddress(includeCustomerAddress);
 
         return CustomerManagementService.getService().getCustomer(request);
     }
@@ -134,11 +136,13 @@ class CustomerManagementExampleHelper
         return CustomerManagementService.getService().getCustomersInfo(request);
     }
     static GetUserResponse getUser(
-        java.lang.Long userId) throws RemoteException, Exception
+        java.lang.Long userId,
+        java.lang.Boolean includeLinkedAccountIds) throws RemoteException, Exception
     {
         GetUserRequest request = new GetUserRequest();
 
         request.setUserId(userId);
+        request.setIncludeLinkedAccountIds(includeLinkedAccountIds);
 
         return CustomerManagementService.getService().getUser(request);
     }
@@ -183,7 +187,8 @@ class CustomerManagementExampleHelper
         ArrayOfPredicate predicates,
         DateRange dateRange,
         ArrayOfOrderBy ordering,
-        Paging pageInfo) throws RemoteException, Exception
+        Paging pageInfo,
+        java.lang.Boolean includeCustomerAddress) throws RemoteException, Exception
     {
         SearchCustomersRequest request = new SearchCustomersRequest();
 
@@ -191,6 +196,7 @@ class CustomerManagementExampleHelper
         request.setDateRange(dateRange);
         request.setOrdering(ordering);
         request.setPageInfo(pageInfo);
+        request.setIncludeCustomerAddress(includeCustomerAddress);
 
         return CustomerManagementService.getService().searchCustomers(request);
     }
@@ -283,6 +289,15 @@ class CustomerManagementExampleHelper
         request.setDeleteCustomerIds(deleteCustomerIds);
 
         return CustomerManagementService.getService().updateUserRoles(request);
+    }
+    static ValidateAddressResponse validateAddress(
+        Address address) throws RemoteException, Exception
+    {
+        ValidateAddressRequest request = new ValidateAddressRequest();
+
+        request.setAddress(address);
+
+        return CustomerManagementService.getService().validateAddress(request);
     }
     static void outputAccountInfo(AccountInfo dataObject)
     {
@@ -386,11 +401,11 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("BusinessName: %s", dataObject.getBusinessName()));
         }
     }
-    static void outputArrayOfAddress(ArrayList<Address> dataObjects)
+    static void outputArrayOfAddress(ArrayOfAddress dataObjects)
     {
         if (null != dataObjects)
         {
-            for (Address dataObject : dataObjects)
+            for (Address dataObject : dataObjects.getAddresses())
             {
                 outputAddress(dataObject);
                 outputStatusMessage("\n");
@@ -563,6 +578,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("CustomerLifeCycleStatus: %s", dataObject.getCustomerLifeCycleStatus()));
             outputStatusMessage(String.format("TimeStamp: %s", dataObject.getTimeStamp()));
             outputStatusMessage(String.format("Number: %s", dataObject.getNumber()));
+            outputAddress(dataObject.getCustomerAddress());
         }
     }
     static void outputArrayOfCustomer(ArrayOfCustomer dataObjects)
@@ -602,6 +618,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("RoleId: %s", dataObject.getRoleId()));
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
             outputArrayOflong(dataObject.getAccountIds());
+            outputArrayOflong(dataObject.getLinkedAccountIds());
         }
     }
     static void outputArrayOfCustomerRole(ArrayOfCustomerRole dataObjects)

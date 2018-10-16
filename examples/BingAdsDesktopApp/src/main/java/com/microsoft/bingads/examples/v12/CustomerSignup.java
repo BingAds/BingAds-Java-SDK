@@ -16,7 +16,7 @@ public class CustomerSignup extends ExampleBase {
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
-            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null);
+            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null, true);
             User user = getUserResponse.getUser();
                             
             // Only a user with the aggregator role (33) can sign up new customers. 

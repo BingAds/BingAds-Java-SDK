@@ -126,7 +126,10 @@ public class AudienceCampaigns extends ExampleBase {
 
             // Add the campaign, ad group, and ad
 
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);

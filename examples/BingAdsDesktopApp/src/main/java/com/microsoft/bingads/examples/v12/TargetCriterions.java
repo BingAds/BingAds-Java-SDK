@@ -231,7 +231,10 @@ public class TargetCriterions extends ExampleBase {
        try
        {
             outputStatusMessage("Add campaigns:\n");
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(authorizationData.getAccountId(), campaigns);
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);
             ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
             CampaignManagementExampleHelper.outputArrayOfBatchError(addCampaignsResponse.getPartialErrors());

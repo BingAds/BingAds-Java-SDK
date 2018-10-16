@@ -18,7 +18,7 @@ public class SearchUserAccounts extends ExampleBase {
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
-            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null);
+            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null, true);
             User user = getUserResponse.getUser();
 
             // Search for the accounts that the user can access.
