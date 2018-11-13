@@ -52,6 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="RevenuePerAssist"/>
  *     &lt;enumeration value="CustomerId"/>
  *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="AssistedImpressions"/>
+ *     &lt;enumeration value="AssistedClicks"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -136,7 +138,11 @@ public enum ProductSearchQueryPerformanceReportColumn {
     @XmlEnumValue("CustomerId")
     CUSTOMER_ID("CustomerId"),
     @XmlEnumValue("CustomerName")
-    CUSTOMER_NAME("CustomerName");
+    CUSTOMER_NAME("CustomerName"),
+    @XmlEnumValue("AssistedImpressions")
+    ASSISTED_IMPRESSIONS("AssistedImpressions"),
+    @XmlEnumValue("AssistedClicks")
+    ASSISTED_CLICKS("AssistedClicks");
     private final String value;
 
     ProductSearchQueryPerformanceReportColumn(String v) {

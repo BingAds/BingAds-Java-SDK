@@ -65,6 +65,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
  *     &lt;enumeration value="CustomerId"/>
  *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="ClickSharePercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -175,7 +177,11 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("CustomerId")
     CUSTOMER_ID("CustomerId"),
     @XmlEnumValue("CustomerName")
-    CUSTOMER_NAME("CustomerName");
+    CUSTOMER_NAME("CustomerName"),
+    @XmlEnumValue("ClickSharePercent")
+    CLICK_SHARE_PERCENT("ClickSharePercent"),
+    @XmlEnumValue("AbsoluteTopImpressionSharePercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

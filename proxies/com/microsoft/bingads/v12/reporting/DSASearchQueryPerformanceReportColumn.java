@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="RevenuePerAssist"/>
  *     &lt;enumeration value="CustomerId"/>
  *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="FeedUrl"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -151,7 +152,9 @@ public enum DSASearchQueryPerformanceReportColumn {
     @XmlEnumValue("CustomerId")
     CUSTOMER_ID("CustomerId"),
     @XmlEnumValue("CustomerName")
-    CUSTOMER_NAME("CustomerName");
+    CUSTOMER_NAME("CustomerName"),
+    @XmlEnumValue("FeedUrl")
+    FEED_URL("FeedUrl");
     private final String value;
 
     DSASearchQueryPerformanceReportColumn(String v) {

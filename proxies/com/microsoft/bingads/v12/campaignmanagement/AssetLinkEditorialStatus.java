@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="AssetLinkEditorialStatus">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
  *     &lt;enumeration value="Active"/>
  *     &lt;enumeration value="Disapproved"/>
  *     &lt;enumeration value="Inactive"/>
@@ -27,6 +28,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum AssetLinkEditorialStatus {
 
+    @XmlEnumValue("Unknown")
+    UNKNOWN("Unknown"),
     @XmlEnumValue("Active")
     ACTIVE("Active"),
     @XmlEnumValue("Disapproved")

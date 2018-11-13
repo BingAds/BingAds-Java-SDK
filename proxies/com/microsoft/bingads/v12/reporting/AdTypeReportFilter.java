@@ -10,7 +10,9 @@ public enum AdTypeReportFilter {
     PRODUCT("Product"),
     APP_INSTALL("AppInstall"),
     DYNAMIC_SEARCH_AD("DynamicSearchAd"),
-    EXPANDED_TEXT("ExpandedText");
+    EXPANDED_TEXT("ExpandedText"),
+    RESPONSIVE_AD("ResponsiveAd"),
+    RESPONSIVE_SEARCH_AD("ResponsiveSearchAd");
         
     private final String value;
 

@@ -68,6 +68,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ReturnOnAdSpend"/>
  *     &lt;enumeration value="BidStrategyType"/>
  *     &lt;enumeration value="LocalStoreCode"/>
+ *     &lt;enumeration value="AssistedImpressions"/>
+ *     &lt;enumeration value="AssistedClicks"/>
+ *     &lt;enumeration value="ClickSharePercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -184,7 +188,15 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("BidStrategyType")
     BID_STRATEGY_TYPE("BidStrategyType"),
     @XmlEnumValue("LocalStoreCode")
-    LOCAL_STORE_CODE("LocalStoreCode");
+    LOCAL_STORE_CODE("LocalStoreCode"),
+    @XmlEnumValue("AssistedImpressions")
+    ASSISTED_IMPRESSIONS("AssistedImpressions"),
+    @XmlEnumValue("AssistedClicks")
+    ASSISTED_CLICKS("AssistedClicks"),
+    @XmlEnumValue("ClickSharePercent")
+    CLICK_SHARE_PERCENT("ClickSharePercent"),
+    @XmlEnumValue("AbsoluteTopImpressionSharePercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

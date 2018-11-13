@@ -86,6 +86,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkResponsiveAd();
             }
         }));
+        m.put(StringTable.ResponsiveSearchAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkResponsiveSearchAd();
+            }
+        }));
         m.put(StringTable.CampaignNegativeDynamicSearchAdTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -667,6 +673,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkResponsiveAdLabel();
+            }
+        }));
+        m.put(StringTable.ResponsiveSearchAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkResponsiveSearchAdLabel();
             }
         }));
         m.put(StringTable.TextAdLabel, new EntityInfo(new Creator<SingleRecordBulkEntity>() {

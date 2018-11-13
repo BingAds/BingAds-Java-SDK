@@ -47,12 +47,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="KeywordStatus"/>
  *     &lt;enumeration value="TitlePart1"/>
  *     &lt;enumeration value="TitlePart2"/>
+ *     &lt;enumeration value="TitlePart3"/>
  *     &lt;enumeration value="Path1"/>
  *     &lt;enumeration value="Path2"/>
  *     &lt;enumeration value="FinalUrl"/>
  *     &lt;enumeration value="FinalMobileUrl"/>
  *     &lt;enumeration value="FinalAppUrl"/>
  *     &lt;enumeration value="AdDescription"/>
+ *     &lt;enumeration value="AdDescription2"/>
  *     &lt;enumeration value="AdLabels"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -129,6 +131,8 @@ public enum AdDynamicTextPerformanceReportColumn {
     TITLE_PART_1("TitlePart1"),
     @XmlEnumValue("TitlePart2")
     TITLE_PART_2("TitlePart2"),
+    @XmlEnumValue("TitlePart3")
+    TITLE_PART_3("TitlePart3"),
     @XmlEnumValue("Path1")
     PATH_1("Path1"),
     @XmlEnumValue("Path2")
@@ -141,6 +145,8 @@ public enum AdDynamicTextPerformanceReportColumn {
     FINAL_APP_URL("FinalAppUrl"),
     @XmlEnumValue("AdDescription")
     AD_DESCRIPTION("AdDescription"),
+    @XmlEnumValue("AdDescription2")
+    AD_DESCRIPTION_2("AdDescription2"),
     @XmlEnumValue("AdLabels")
     AD_LABELS("AdLabels");
     private final String value;

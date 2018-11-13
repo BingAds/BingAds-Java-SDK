@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupId"/>
  *     &lt;enumeration value="AdTitle"/>
  *     &lt;enumeration value="AdDescription"/>
+ *     &lt;enumeration value="AdDescription2"/>
  *     &lt;enumeration value="AdType"/>
  *     &lt;enumeration value="CurrencyCode"/>
  *     &lt;enumeration value="AdDistribution"/>
@@ -63,6 +64,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="TitlePart1"/>
  *     &lt;enumeration value="TitlePart2"/>
+ *     &lt;enumeration value="TitlePart3"/>
  *     &lt;enumeration value="Headline"/>
  *     &lt;enumeration value="LongHeadline"/>
  *     &lt;enumeration value="BusinessName"/>
@@ -102,6 +104,8 @@ public enum AdPerformanceReportColumn {
     AD_TITLE("AdTitle"),
     @XmlEnumValue("AdDescription")
     AD_DESCRIPTION("AdDescription"),
+    @XmlEnumValue("AdDescription2")
+    AD_DESCRIPTION_2("AdDescription2"),
     @XmlEnumValue("AdType")
     AD_TYPE("AdType"),
     @XmlEnumValue("CurrencyCode")
@@ -178,6 +182,8 @@ public enum AdPerformanceReportColumn {
     TITLE_PART_1("TitlePart1"),
     @XmlEnumValue("TitlePart2")
     TITLE_PART_2("TitlePart2"),
+    @XmlEnumValue("TitlePart3")
+    TITLE_PART_3("TitlePart3"),
     @XmlEnumValue("Headline")
     HEADLINE("Headline"),
     @XmlEnumValue("LongHeadline")

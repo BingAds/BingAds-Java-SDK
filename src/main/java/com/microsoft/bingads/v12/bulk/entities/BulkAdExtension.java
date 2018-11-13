@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v11.bulk.entities.BulkSiteLinkAdExtension;
 import com.microsoft.bingads.v12.campaignmanagement.AdExtension;
 import com.microsoft.bingads.v12.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v12.campaignmanagement.CallAdExtension;

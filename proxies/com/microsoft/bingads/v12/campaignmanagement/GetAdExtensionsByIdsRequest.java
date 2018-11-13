@@ -45,7 +45,7 @@ public class GetAdExtensionsByIdsRequest {
     @XmlElement(name = "AdExtensionIds", nillable = true)
     protected ArrayOflong adExtensionIds;
     @XmlElement(name = "AdExtensionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<AdExtensionsTypeFilter> adExtensionType;
 
     /**

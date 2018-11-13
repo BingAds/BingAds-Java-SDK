@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="TitlePart1"/>
  *     &lt;enumeration value="TitlePart2"/>
+ *     &lt;enumeration value="TitlePart3"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -145,7 +146,9 @@ public enum AdExtensionByAdReportColumn {
     @XmlEnumValue("TitlePart1")
     TITLE_PART_1("TitlePart1"),
     @XmlEnumValue("TitlePart2")
-    TITLE_PART_2("TitlePart2");
+    TITLE_PART_2("TitlePart2"),
+    @XmlEnumValue("TitlePart3")
+    TITLE_PART_3("TitlePart3");
     private final String value;
 
     AdExtensionByAdReportColumn(String v) {

@@ -2,6 +2,7 @@ package com.microsoft.bingads.v12.internal.bulk;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 
 import javax.xml.bind.JAXBElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v12.bulk.entities.Status;
@@ -23,12 +27,16 @@ import com.microsoft.bingads.v12.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v12.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v12.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v12.campaignmanagement.AdStatus;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfAssetLink;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v12.campaignmanagement.Asset;
+import com.microsoft.bingads.v12.campaignmanagement.AssetLink;
+import com.microsoft.bingads.v12.campaignmanagement.AssetLinkEditorialStatus;
 import com.microsoft.bingads.v12.campaignmanagement.Bid;
 import com.microsoft.bingads.v12.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.BusinessGeoCodeStatus;
@@ -61,6 +69,7 @@ import com.microsoft.bingads.v12.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.TargetCpaBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v12.campaignmanagement.TargetSettingDetail;
+import com.microsoft.bingads.v12.campaignmanagement.TextAsset;
 import com.microsoft.bingads.v12.campaignmanagement.WebpageParameter;
 
 public class StringExtensions {
@@ -1443,6 +1452,104 @@ public class StringExtensions {
         if (isNullOrEmpty(value) ) return null;
         String[] parts = value.split(";");
         return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
+    }
+    
+    private static class TextAssetLinkContract {
+
+        // The Asset Id
+        @JsonProperty
+        public long id;
+
+        // The Asset Text
+        @JsonProperty
+        public String text;
+
+        // The AssetLink PinnedField
+        @JsonProperty
+        public String pinnedField;
+
+        // The AssetLink EditorialStatus
+        @JsonProperty
+        public String editorialStatus;
+
+        // The AssetLink AssetPerformanceLabel is reserved for future use
+        @JsonProperty
+        public String assetPerformanceLabel;
+
+        // The Asset Name is reserved for future use.
+        @JsonProperty
+        public String name;
+    }
+    
+    public static String toTextAssetLinksBulkString(ArrayOfAssetLink arrayOfAssetLink)
+    {
+        if (arrayOfAssetLink == null 
+                || arrayOfAssetLink.getAssetLinks() == null 
+                || arrayOfAssetLink.getAssetLinks().size() == 0) {
+            return null;
+        }
+        List<AssetLink> assetLinks = arrayOfAssetLink
+                .getAssetLinks()
+                .stream()
+                .filter(s -> "TextAsset".equals(s.getAsset().getType()))
+                .collect(Collectors.toList());
+        if (assetLinks.size() == 0) {
+            return null;
+        }
+        
+        List<TextAssetLinkContract> textAssetLinkContracts = new ArrayList<TextAssetLinkContract>(assetLinks.size());
+        
+        for (AssetLink assetLink : assetLinks) {
+            TextAssetLinkContract textAssetLinkContract = new TextAssetLinkContract();
+            textAssetLinkContract.editorialStatus = assetLink.getEditorialStatus() == null? null : assetLink.getEditorialStatus().value();
+            textAssetLinkContract.id = assetLink.getAsset().getId();
+            textAssetLinkContract.name =assetLink.getAsset().getName();
+            textAssetLinkContract.pinnedField = assetLink.getPinnedField();
+            textAssetLinkContract.text = ((TextAsset)assetLink.getAsset()).getText();
+            textAssetLinkContract.assetPerformanceLabel = assetLink.getAssetPerformanceLabel();
+            textAssetLinkContracts.add(textAssetLinkContract);
+        }
+        try {
+            return new ObjectMapper().writeValueAsString(textAssetLinkContracts);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayOfAssetLink parseTextAssetLinks(String value)
+    {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+        
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
+            
+            List<TextAssetLinkContract> textAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, TextAssetLinkContract.class));
+            for (TextAssetLinkContract contract : textAssetLinkContracts) {
+                AssetLink assetLink = new AssetLink();
+                if (contract.editorialStatus != null) {
+                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                }
+                assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
+                assetLink.setPinnedField(contract.pinnedField);
+                TextAsset asset = new TextAsset();
+                asset.setId(contract.id);
+                asset.setName(contract.name);
+                asset.setText(contract.text);
+                asset.setType("TextAsset");
+                assetLink.setAsset(asset);
+                assetLinks.getAssetLinks().add(assetLink);
+            }
+            return assetLinks;
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

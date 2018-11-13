@@ -457,6 +457,9 @@ public class StringTable {
     public static final String SquareImageMediaId = "Square Image Media Id";
     public static final String SquareLogoMediaId = "Square Logo Media Id";
     
+    // Responsive Search Ad
+    public static final String ResponsiveSearchAd = "Responsive Search Ad";
+    
     // Dynamic Search Ad   
     public static final String DynamicSearchAd = "Dynamic Search Ad";
     public static final String CampaignNegativeDynamicSearchAdTarget = "Campaign Negative Dynamic Search Ad Target";
@@ -516,6 +519,7 @@ public class StringTable {
     public static final String ProductAdLabel = "Product Ad Label";
     public static final String TextAdLabel = "Text Ad Label";
     public static final String ResponsiveAdLabel = "Responsive Ad Label";
+    public static final String ResponsiveSearchAdLabel = "Responsive Search Ad Label";
 
     // Offline Conversions
     public static final String OfflineConversion = "Offline Conversion";

@@ -53,7 +53,8 @@ import javax.xml.bind.annotation.XmlType;
     PriceAdExtension.class,
     CalloutAdExtension.class,
     ReviewAdExtension.class,
-    SitelinkAdExtension.class
+    SitelinkAdExtension.class,
+    ActionAdExtension.class
 })
 public class AdExtension {
 

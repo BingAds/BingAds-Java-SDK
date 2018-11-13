@@ -105,6 +105,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupSimilarRemarketingListAssociations"/>
  *     &lt;enumeration value="AdGroupNegativeSimilarRemarketingListAssociations"/>
  *     &lt;enumeration value="Experiments"/>
+ *     &lt;enumeration value="ActionAdExtensions"/>
+ *     &lt;enumeration value="CampaignActionAdExtensions"/>
+ *     &lt;enumeration value="AdGroupActionAdExtensions"/>
+ *     &lt;enumeration value="AccountActionAdExtensions"/>
+ *     &lt;enumeration value="ResponsiveSearchAds"/>
+ *     &lt;enumeration value="ResponsiveSearchAdLabels"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -295,7 +301,19 @@ public enum DownloadEntity {
     @XmlEnumValue("AdGroupNegativeSimilarRemarketingListAssociations")
     AD_GROUP_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("AdGroupNegativeSimilarRemarketingListAssociations"),
     @XmlEnumValue("Experiments")
-    EXPERIMENTS("Experiments");
+    EXPERIMENTS("Experiments"),
+    @XmlEnumValue("ActionAdExtensions")
+    ACTION_AD_EXTENSIONS("ActionAdExtensions"),
+    @XmlEnumValue("CampaignActionAdExtensions")
+    CAMPAIGN_ACTION_AD_EXTENSIONS("CampaignActionAdExtensions"),
+    @XmlEnumValue("AdGroupActionAdExtensions")
+    AD_GROUP_ACTION_AD_EXTENSIONS("AdGroupActionAdExtensions"),
+    @XmlEnumValue("AccountActionAdExtensions")
+    ACCOUNT_ACTION_AD_EXTENSIONS("AccountActionAdExtensions"),
+    @XmlEnumValue("ResponsiveSearchAds")
+    RESPONSIVE_SEARCH_ADS("ResponsiveSearchAds"),
+    @XmlEnumValue("ResponsiveSearchAdLabels")
+    RESPONSIVE_SEARCH_AD_LABELS("ResponsiveSearchAdLabels");
     private final String value;
 
     DownloadEntity(String v) {

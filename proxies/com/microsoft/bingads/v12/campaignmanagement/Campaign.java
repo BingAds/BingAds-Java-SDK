@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v12}BudgetLimitType" minOccurs="0"/>
  *         &lt;element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ExperimentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -52,6 +53,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "budgetType",
     "dailyBudget",
     "description",
+    "experimentId",
     "forwardCompatibilityMap",
     "id",
     "name",
@@ -78,6 +80,8 @@ public class Campaign {
     protected Double dailyBudget;
     @XmlElement(name = "Description", nillable = true)
     protected String description;
+    @XmlElement(name = "ExperimentId", nillable = true)
+    protected Long experimentId;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Id", nillable = true)
@@ -223,6 +227,30 @@ public class Campaign {
      */
     public void setDescription(String value) {
         this.description = value;
+    }
+
+    /**
+     * Gets the value of the experimentId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getExperimentId() {
+        return experimentId;
+    }
+
+    /**
+     * Sets the value of the experimentId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setExperimentId(Long value) {
+        this.experimentId = value;
     }
 
     /**

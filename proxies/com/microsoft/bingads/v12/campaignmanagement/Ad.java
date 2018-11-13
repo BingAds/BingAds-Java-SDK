@@ -60,7 +60,8 @@ import javax.xml.bind.annotation.XmlType;
     ResponsiveAd.class,
     TextAd.class,
     AppInstallAd.class,
-    ExpandedTextAd.class
+    ExpandedTextAd.class,
+    ResponsiveSearchAd.class
 })
 public class Ad {
 
