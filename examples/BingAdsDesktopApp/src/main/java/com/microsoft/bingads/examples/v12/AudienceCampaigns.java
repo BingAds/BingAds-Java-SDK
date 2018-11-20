@@ -151,8 +151,8 @@ public class AudienceCampaigns extends ExampleBase {
             // criterion type group, you can set bid adjustments for specific criteria.
             
             ArrayOfAdGroupCriterion adGroupCriterions = new ArrayOfAdGroupCriterion();
-            FixedBid criterionBid = new FixedBid();
-            criterionBid.setAmount(0.50D);
+            BidMultiplier criterionBid = new BidMultiplier();
+            criterionBid.setMultiplier(20D);
 
             // ProfileCriterion for CompanyName
             BiddableAdGroupCriterion adGroupCompanyNameCriterion = new BiddableAdGroupCriterion();
