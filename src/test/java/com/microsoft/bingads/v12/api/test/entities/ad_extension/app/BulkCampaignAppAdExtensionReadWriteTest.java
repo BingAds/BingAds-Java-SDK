@@ -8,7 +8,7 @@ import com.microsoft.bingads.v12.bulk.entities.BulkCampaignAppAdExtension;
 public class BulkCampaignAppAdExtensionReadWriteTest {
 
     @Test
-    public void bulkCampaignImageAdExtension_ReadPerfData_WriteToFile() {
+    public void bulkCampaignAppAdExtension_ReadPerfData_WriteToFile() {
         PerformanceDataTestHelper.testPerformanceDataReadWrite(new BulkCampaignAppAdExtension());
     }
 }

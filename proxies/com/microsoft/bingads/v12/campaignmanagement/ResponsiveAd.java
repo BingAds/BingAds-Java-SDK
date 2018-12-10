@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CallToAction" type="{https://bingads.microsoft.com/CampaignManagement/v12}CallToAction" minOccurs="0"/>
  *         &lt;element name="Headline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v12}ArrayOfAssetLink" minOccurs="0"/>
  *         &lt;element name="LandscapeImageMediaId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="LandscapeLogoMediaId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="LongHeadline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "businessName",
     "callToAction",
     "headline",
+    "images",
     "landscapeImageMediaId",
     "landscapeLogoMediaId",
     "longHeadline",
@@ -58,6 +60,8 @@ public class ResponsiveAd
     protected CallToAction callToAction;
     @XmlElement(name = "Headline", nillable = true)
     protected String headline;
+    @XmlElement(name = "Images", nillable = true)
+    protected ArrayOfAssetLink images;
     @XmlElement(name = "LandscapeImageMediaId", nillable = true)
     protected Long landscapeImageMediaId;
     @XmlElement(name = "LandscapeLogoMediaId", nillable = true)
@@ -141,6 +145,30 @@ public class ResponsiveAd
      */
     public void setHeadline(String value) {
         this.headline = value;
+    }
+
+    /**
+     * Gets the value of the images property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getImages() {
+        return images;
+    }
+
+    /**
+     * Sets the value of the images property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setImages(ArrayOfAssetLink value) {
+        this.images = value;
     }
 
     /**

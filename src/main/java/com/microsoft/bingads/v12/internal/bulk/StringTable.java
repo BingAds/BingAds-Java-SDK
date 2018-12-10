@@ -40,6 +40,13 @@ public class StringTable {
     public static final String BudgetId = "Budget Id";
     public static final String BudgetType = "Budget Type";
     public static final String BudgetName = "Budget Name";
+    
+
+    public static final String Experiment = "Experiment";
+    public static final String TrafficSplitPercent = "Traffic Split Percent";
+    public static final String BaseCampaignId = "Base Campaign Id";
+    public static final String ExperimentCampaignId = "Experiment Campaign Id";
+    public static final String ExperimentId = "Experiment Id";
     		
     public static final String AdGroup = "Ad Group";
     public static final String Keyword = "Keyword";
@@ -382,6 +389,13 @@ public class StringTable {
     public static final String CampaignCalloutAdExtension = "Campaign Callout Ad Extension";
     public static final String AdGroupCalloutAdExtension = "Ad Group Callout Ad Extension";
     public static final String CalloutText = "Callout Text";
+    
+    // Action Ad Extension
+    public static final String ActionAdExtension = "Action Ad Extension";
+    public static final String AccountActionAdExtension = "Account Action Ad Extension";
+    public static final String CampaignActionAdExtension = "Campaign Action Ad Extension";
+    public static final String AdGroupActionAdExtension = "Ad Group Action Ad Extension";
+    public static final String ActionType = "Action Type";
     
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";

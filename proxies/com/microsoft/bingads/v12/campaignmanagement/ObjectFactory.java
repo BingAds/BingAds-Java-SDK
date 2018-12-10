@@ -131,6 +131,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfExperiment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "ArrayOfExperiment");
     private final static QName _SimilarRemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "SimilarRemarketingList");
     private final static QName _SharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "SharedEntity");
+    private final static QName _ImageAsset_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "ImageAsset");
     private final static QName _WebpageCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "WebpageCondition");
     private final static QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "AdGroupCriterionEditorialStatus");
     private final static QName _ProfileCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v12", "ProfileCriterion");
@@ -1722,6 +1723,14 @@ public class ObjectFactory {
      */
     public DeleteAdExtensionsRequest createDeleteAdExtensionsRequest() {
         return new DeleteAdExtensionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ImageAsset }
+     * 
+     */
+    public ImageAsset createImageAsset() {
+        return new ImageAsset();
     }
 
     /**
@@ -4750,6 +4759,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "SharedEntity")
     public JAXBElement<SharedEntity> createSharedEntity(SharedEntity value) {
         return new JAXBElement<SharedEntity>(_SharedEntity_QNAME, SharedEntity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImageAsset }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v12", name = "ImageAsset")
+    public JAXBElement<ImageAsset> createImageAsset(ImageAsset value) {
+        return new JAXBElement<ImageAsset>(_ImageAsset_QNAME, ImageAsset.class, null, value);
     }
 
     /**

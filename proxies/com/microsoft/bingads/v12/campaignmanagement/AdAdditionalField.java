@@ -6,7 +6,8 @@ package com.microsoft.bingads.v12.campaignmanagement;
 public enum AdAdditionalField {
 
     TITLE_PART3("TitlePart3"),
-    TEXT_PART2("TextPart2");
+    TEXT_PART2("TextPart2"),
+    IMAGES("Images");
         
     private final String value;
 

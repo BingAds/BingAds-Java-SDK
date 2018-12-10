@@ -74,6 +74,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkExpandedTextAd();
             }
         }));
+        m.put(StringTable.Experiment, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkExperiment();
+            }
+        }));
         m.put(StringTable.DynamicSearchAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -218,6 +224,31 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupCalloutAdExtension();
             }
         }));
+        m.put(StringTable.ActionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkActionAdExtension();
+            }
+        }));
+        m.put(StringTable.AdGroupActionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupActionAdExtension();
+            }
+        }));
+        m.put(StringTable.AccountActionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountActionAdExtension();
+            }
+        }));
+        m.put(StringTable.CampaignActionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignActionAdExtension();
+            }
+        }));
+        
         m.put(StringTable.PriceAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

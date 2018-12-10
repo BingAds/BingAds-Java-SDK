@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v12.bulk.entities.Status;
+import com.microsoft.bingads.v12.campaignmanagement.ActionAdExtensionActionType;
 import com.microsoft.bingads.v12.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v12.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v12.campaignmanagement.AdRotationType;
@@ -34,7 +35,6 @@ import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v12.campaignmanagement.Asset;
 import com.microsoft.bingads.v12.campaignmanagement.AssetLink;
 import com.microsoft.bingads.v12.campaignmanagement.AssetLinkEditorialStatus;
 import com.microsoft.bingads.v12.campaignmanagement.Bid;
@@ -1550,6 +1550,14 @@ public class StringExtensions {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public static String toActionAdExtensionActionTypeBulkString(ActionAdExtensionActionType type) {
+        if (type == null) {
+            return null;
+        }
+
+        return type.value();
     }
 
 }

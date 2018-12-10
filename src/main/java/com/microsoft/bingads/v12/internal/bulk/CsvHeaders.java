@@ -93,6 +93,9 @@ public class CsvHeaders {
             StringTable.AdSchedule,
             StringTable.UseSearcherTimeZone,
 
+            // Action ad extension
+            StringTable.ActionType,
+
             // Site link ad extensions
             StringTable.SiteLinkExtensionOrder,
             StringTable.SiteLinkDisplayText,
@@ -172,9 +175,16 @@ public class CsvHeaders {
             StringTable.IsExcluded,
             StringTable.ParentAdGroupCriterionId,
             StringTable.CampaignType,
+
             StringTable.CampaignPriority,
             StringTable.LocalInventoryAdsEnabled,
-            
+
+            // experiment
+            StringTable.TrafficSplitPercent,
+            StringTable.BaseCampaignId,
+            StringTable.ExperimentCampaignId,
+            StringTable.ExperimentId,
+
             // CoOp
             StringTable.BidOption,
             StringTable.BidBoostValue,

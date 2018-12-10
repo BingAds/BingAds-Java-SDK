@@ -5,11 +5,13 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAccountIdTest;
+import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesBidStrategyTypeTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesBudgetTypeTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesCampaignTypeTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDSASettingsTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDailyBudgetTest;
+import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesExperimentIdTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesIdTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceNotSetTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceTest;
@@ -18,7 +20,6 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesLandingPageUserExperienceNotSetTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesLandingPageUserExperienceTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesNameTest;
-import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesPerformanceDataSpendNotSetTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesPerformanceDataSpendTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesQualityScoreNotSetTest;
@@ -51,6 +52,7 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesSettingsTest.class,
         BulkCampaignReadFromRowValuesBidStrategyTypeTest.class,
         BulkCampaignReadFromRowValuesDSASettingsTest.class,
+        BulkCampaignReadFromRowValuesExperimentIdTest.class,
 })
 public class BulkCampaignReadTests {
 
