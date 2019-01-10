@@ -3,12 +3,16 @@ package com.microsoft.bingads.v12.api.test.entities.adgroup_remarketing_list_ass
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v12.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
+import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupRemarketingListAssociation;
+import com.microsoft.bingads.v12.campaignmanagement.AdGroupCriterionStatus;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupRemarketingListAssociationWriteToRowValuesStatusTest extends BulkAdGroupRemarketingListAssociationTest {
@@ -16,26 +20,26 @@ public class BulkAdGroupRemarketingListAssociationWriteToRowValuesStatusTest ext
     @Parameter
     public String datum;
 
-//    @Parameter(value = 1)
-//    public AdGroupRemarketingListAssociationStatus propertyValue;
+    @Parameter(value = 1)
+    public AdGroupCriterionStatus propertyValue;
 
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-//            {"Active", AdGroupRemarketingListAssociationStatus.ACTIVE},
-//            {"Deleted", AdGroupRemarketingListAssociationStatus.DELETED},
-//            {"Paused", AdGroupRemarketingListAssociationStatus.PAUSED},
-//            {null, null}
+            {"Active", AdGroupCriterionStatus.ACTIVE},
+            {"Deleted", AdGroupCriterionStatus.DELETED},
+            {"Paused", AdGroupCriterionStatus.PAUSED},
+            {null, null}
         });
     }
 
-//    @Test
-//    public void testWrite() {
-//        this.<AdGroupRemarketingListAssociationStatus>testWriteProperty("Status", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, AdGroupRemarketingListAssociationStatus>() {
-//            @Override
-//            public void accept(BulkAdGroupRemarketingListAssociation c, AdGroupRemarketingListAssociationStatus v) {
-////                c.getAdGroupRemarketingListAssociation().setStatus(v);;
-//            }
-//        });
-//    }
+    @Test
+    public void testWrite() {
+        this.<AdGroupCriterionStatus>testWriteProperty("Status", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, AdGroupCriterionStatus>() {
+            @Override
+            public void accept(BulkAdGroupRemarketingListAssociation c, AdGroupCriterionStatus v) {
+                c.getBiddableAdGroupCriterion().setStatus(v);;
+            }
+        });
+    }
 }

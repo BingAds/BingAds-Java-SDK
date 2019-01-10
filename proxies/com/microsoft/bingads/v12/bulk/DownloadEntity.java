@@ -111,6 +111,18 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountActionAdExtensions"/>
  *     &lt;enumeration value="ResponsiveSearchAds"/>
  *     &lt;enumeration value="ResponsiveSearchAdLabels"/>
+ *     &lt;enumeration value="CampaignAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignCustomAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCustomAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignProductAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeProductAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeSimilarRemarketingListAssociations"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -313,7 +325,31 @@ public enum DownloadEntity {
     @XmlEnumValue("ResponsiveSearchAds")
     RESPONSIVE_SEARCH_ADS("ResponsiveSearchAds"),
     @XmlEnumValue("ResponsiveSearchAdLabels")
-    RESPONSIVE_SEARCH_AD_LABELS("ResponsiveSearchAdLabels");
+    RESPONSIVE_SEARCH_AD_LABELS("ResponsiveSearchAdLabels"),
+    @XmlEnumValue("CampaignAudienceAssociations")
+    CAMPAIGN_AUDIENCE_ASSOCIATIONS("CampaignAudienceAssociations"),
+    @XmlEnumValue("CampaignNegativeAudienceAssociations")
+    CAMPAIGN_NEGATIVE_AUDIENCE_ASSOCIATIONS("CampaignNegativeAudienceAssociations"),
+    @XmlEnumValue("CampaignCustomAudienceAssociations")
+    CAMPAIGN_CUSTOM_AUDIENCE_ASSOCIATIONS("CampaignCustomAudienceAssociations"),
+    @XmlEnumValue("CampaignNegativeCustomAudienceAssociations")
+    CAMPAIGN_NEGATIVE_CUSTOM_AUDIENCE_ASSOCIATIONS("CampaignNegativeCustomAudienceAssociations"),
+    @XmlEnumValue("CampaignInMarketAudienceAssociations")
+    CAMPAIGN_IN_MARKET_AUDIENCE_ASSOCIATIONS("CampaignInMarketAudienceAssociations"),
+    @XmlEnumValue("CampaignNegativeInMarketAudienceAssociations")
+    CAMPAIGN_NEGATIVE_IN_MARKET_AUDIENCE_ASSOCIATIONS("CampaignNegativeInMarketAudienceAssociations"),
+    @XmlEnumValue("CampaignProductAudienceAssociations")
+    CAMPAIGN_PRODUCT_AUDIENCE_ASSOCIATIONS("CampaignProductAudienceAssociations"),
+    @XmlEnumValue("CampaignNegativeProductAudienceAssociations")
+    CAMPAIGN_NEGATIVE_PRODUCT_AUDIENCE_ASSOCIATIONS("CampaignNegativeProductAudienceAssociations"),
+    @XmlEnumValue("CampaignRemarketingListAssociations")
+    CAMPAIGN_REMARKETING_LIST_ASSOCIATIONS("CampaignRemarketingListAssociations"),
+    @XmlEnumValue("CampaignNegativeRemarketingListAssociations")
+    CAMPAIGN_NEGATIVE_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeRemarketingListAssociations"),
+    @XmlEnumValue("CampaignSimilarRemarketingListAssociations")
+    CAMPAIGN_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("CampaignSimilarRemarketingListAssociations"),
+    @XmlEnumValue("CampaignNegativeSimilarRemarketingListAssociations")
+    CAMPAIGN_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeSimilarRemarketingListAssociations");
     private final String value;
 
     DownloadEntity(String v) {

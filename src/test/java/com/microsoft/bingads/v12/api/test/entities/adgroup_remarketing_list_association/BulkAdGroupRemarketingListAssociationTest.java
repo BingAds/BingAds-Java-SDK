@@ -8,12 +8,29 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v12.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v12.api.test.entities.EqualityComparerWithDescription;
 import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupRemarketingListAssociation;
+import com.microsoft.bingads.v12.campaignmanagement.AudienceCriterion;
+import com.microsoft.bingads.v12.campaignmanagement.BidMultiplier;
+import com.microsoft.bingads.v12.campaignmanagement.BiddableAdGroupCriterion;
 
 public abstract class BulkAdGroupRemarketingListAssociationTest extends BulkEntityTest<BulkAdGroupRemarketingListAssociation> {
 
     @Override
     protected void onEntityCreation(BulkAdGroupRemarketingListAssociation entity) {
-//        entity.setAdGroupRemarketingListAssociation(new AdGroupRemarketingListAssociation());
+        
+
+        BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();
+        adGroupCriterion.setType(BiddableAdGroupCriterion.class.getSimpleName());
+
+        BidMultiplier bidMultiplier = new BidMultiplier();
+        bidMultiplier.setType(BidMultiplier.class.getSimpleName());
+
+        AudienceCriterion audienceCriterion = new AudienceCriterion();
+        audienceCriterion.setType(AudienceCriterion.class.getSimpleName());
+
+        adGroupCriterion.setCriterion(audienceCriterion);
+        adGroupCriterion.setCriterionBid(bidMultiplier);
+        
+        entity.setBiddableAdGroupCriterion(adGroupCriterion);
     }
 
     @Override

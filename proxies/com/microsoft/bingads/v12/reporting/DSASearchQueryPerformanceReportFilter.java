@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AdStatus" type="{https://bingads.microsoft.com/Reporting/v12}AdStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="CampaignStatus" type="{https://bingads.microsoft.com/Reporting/v12}CampaignStatusReportFilter" minOccurs="0"/>
  *         &lt;element name="ExcludeZeroClicks" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="FeedUrl" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="LanguageCode" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="SearchQueries" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *       &lt;/sequence>
@@ -41,6 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "adStatus",
     "campaignStatus",
     "excludeZeroClicks",
+    "feedUrl",
     "languageCode",
     "searchQueries"
 })
@@ -60,6 +62,8 @@ public class DSASearchQueryPerformanceReportFilter {
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "ExcludeZeroClicks")
     protected Boolean excludeZeroClicks;
+    @XmlElement(name = "FeedUrl", nillable = true)
+    protected Boolean feedUrl;
     @XmlElement(name = "LanguageCode", nillable = true)
     protected ArrayOfstring languageCode;
     @XmlElement(name = "SearchQueries", nillable = true)
@@ -183,6 +187,30 @@ public class DSASearchQueryPerformanceReportFilter {
      */
     public void setExcludeZeroClicks(Boolean value) {
         this.excludeZeroClicks = value;
+    }
+
+    /**
+     * Gets the value of the feedUrl property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getFeedUrl() {
+        return feedUrl;
+    }
+
+    /**
+     * Sets the value of the feedUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setFeedUrl(Boolean value) {
+        this.feedUrl = value;
     }
 
     /**

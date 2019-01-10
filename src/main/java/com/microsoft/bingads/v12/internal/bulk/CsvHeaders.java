@@ -311,6 +311,7 @@ public class CsvHeaders {
             // Responsive Ad
             StringTable.CallToAction,
             StringTable.Headline,
+            StringTable.Images,
             StringTable.LandscapeImageMediaId,
             StringTable.LandscapeLogoMediaId,
             StringTable.LongHeadline,

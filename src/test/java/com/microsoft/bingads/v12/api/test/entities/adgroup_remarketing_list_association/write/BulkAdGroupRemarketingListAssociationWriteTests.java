@@ -12,7 +12,6 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkAdGroupRemarketingListAssociationWriteToRowValuesCampaignNameTest.class,
         BulkAdGroupRemarketingListAssociationWriteToRowValuesBidAdjustmentTest.class,
         BulkAdGroupRemarketingListAssociationWriteToRowValuesRemarketingListIdTest.class,
-        BulkAdGroupRemarketingListAssociationWriteToRowValuesRemarketingListTest.class,
         BulkAdGroupRemarketingListAssociationWriteToRowValuesStatusTest.class
 })
 public class BulkAdGroupRemarketingListAssociationWriteTests {

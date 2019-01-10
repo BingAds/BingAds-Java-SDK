@@ -13,6 +13,7 @@ import com.microsoft.bingads.v12.bulk.BulkFileWriter;
 import com.microsoft.bingads.v12.bulk.BulkOperation;
 import com.microsoft.bingads.v12.bulk.BulkServiceManager;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfSetting;
+import com.microsoft.bingads.v12.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v12.campaignmanagement.Bid;
 import com.microsoft.bingads.v12.campaignmanagement.BiddingScheme;
@@ -27,6 +28,8 @@ import com.microsoft.bingads.v12.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.Setting;
 import com.microsoft.bingads.v12.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v12.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v12.campaignmanagement.TargetSetting;
+import com.microsoft.bingads.v12.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
@@ -81,7 +84,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
         return settings.get(0);
     }
-
+    
     private void tryAddCampaignSettings() {
         Collection<CampaignType> campaignTypes = campaign.getCampaignType();
         if (campaignTypes.isEmpty()) return;
@@ -113,8 +116,12 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         }
         if (setting != null) {
             arrayOfSettings.getSettings().add(setting);
-            campaign.setSettings(arrayOfSettings);
         }
+
+        setting = new TargetSetting();
+        setting.setType(TargetSetting.class.getSimpleName());
+        arrayOfSettings.getSettings().add(setting);
+        campaign.setSettings(arrayOfSettings);
     }
 
     static {
@@ -518,6 +525,46 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                 return Boolean.parseBoolean(value);
                             }
                         }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.TargetSetting,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+        
+                        Setting setting = c.getCampaignSetting(TargetSetting.class, false);
+        
+                        return StringExtensions.toBulkString((TargetSetting)setting);
+        
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(TargetSetting.class, true);
+                        List<TargetSettingDetail> details = StringExtensions.parseTargetSettingDetails(v);
+
+                        if (setting == null || details == null) {
+                            return;
+                        }
+                        TargetSetting targetSetting = new TargetSetting();
+                        targetSetting.setType(TargetSetting.class.getSimpleName());
+                        targetSetting.setDetails(new ArrayOfTargetSettingDetail());
+                        targetSetting.getDetails().getTargetSettingDetails().addAll(details);
+
+                        if (c.getCampaign().getSettings() == null) {
+                            c.getCampaign().setSettings(new ArrayOfSetting());
+                        }
+                        c.getCampaign().getSettings().getSettings().add(setting);
                     }
                 }
         ));

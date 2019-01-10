@@ -13,7 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkResponsiveAdWriteFromRowValuesLandscapeLogoMediaIdTest.class,
     BulkResponsiveAdWriteFromRowValuesLongHeadlineTest.class,
     BulkResponsiveAdWriteFromRowValuesSquareImageMediaIdTest.class,
-    BulkResponsiveAdWriteFromRowValuesSquareLogoMediaIdTest.class})
+    BulkResponsiveAdWriteFromRowValuesSquareLogoMediaIdTest.class,
+    BulkResponsiveAdWriteFromRowValuesImageTest.class})
 public class BulkResponsiveAdWriteTests {
 
 }

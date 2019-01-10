@@ -9,7 +9,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v12.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
+import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupRemarketingListAssociation;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupRemarketingListAssociationWriteToRowValuesAdGroupIdTest extends BulkAdGroupRemarketingListAssociationTest {
@@ -31,11 +33,11 @@ public class BulkAdGroupRemarketingListAssociationWriteToRowValuesAdGroupIdTest 
 
     @Test
     public void testWrite() {
-//        this.<Long>testWriteProperty("Parent Id", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, Long>() {
-//            @Override
-//            public void accept(BulkAdGroupRemarketingListAssociation c, Long v) {
-////                c.getAdGroupRemarketingListAssociation().setAdGroupId(v);
-//            }
-//        });
+        this.<Long>testWriteProperty("Parent Id", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, Long>() {
+            @Override
+            public void accept(BulkAdGroupRemarketingListAssociation c, Long v) {
+                c.getBiddableAdGroupCriterion().setAdGroupId(v);
+            }
+        });
     }
 }

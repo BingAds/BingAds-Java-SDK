@@ -14,7 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkResponsiveAdReadFromRowValuesLandscapeImageMediaIdTest.class,
     BulkResponsiveAdReadFromRowValuesLandscapeLogoMediaIdTest.class,
     BulkResponsiveAdReadFromRowValuesSquareImageMediaIdTest.class,
-    BulkResponsiveAdReadFromRowValuesSquareLogoMediaIdTest.class})
+    BulkResponsiveAdReadFromRowValuesSquareLogoMediaIdTest.class,
+    BulkResponsiveAdReadFromRowValuesImagesTest.class})
 public class BulkResponsiveAdReadTests {
 
 }

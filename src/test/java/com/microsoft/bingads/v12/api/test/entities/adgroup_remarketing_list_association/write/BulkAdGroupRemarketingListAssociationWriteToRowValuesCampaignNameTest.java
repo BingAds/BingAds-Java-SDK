@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v12.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
+import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupRemarketingListAssociation;
 
 public class BulkAdGroupRemarketingListAssociationWriteToRowValuesCampaignNameTest extends BulkAdGroupRemarketingListAssociationTest {
 
@@ -17,19 +19,19 @@ public class BulkAdGroupRemarketingListAssociationWriteToRowValuesCampaignNameTe
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-//            {"Test Campaign 1", "Test Campaign 1"},
-//            {"", ""},
+            {"Test Campaign 1", "Test Campaign 1"},
+            {"", ""},
             {null, null}
         });
     }
 
     @Test
     public void testWrite() {
-//        this.<String>testWriteProperty("Campaign", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, String>() {
-//            @Override
-//            public void accept(BulkAdGroupRemarketingListAssociation c, String v) {
-////                c.setCampaignName(v);
-//            }
-//        });
+        this.<String>testWriteProperty("Campaign", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, String>() {
+            @Override
+            public void accept(BulkAdGroupRemarketingListAssociation c, String v) {
+                c.setCampaignName(v);
+            }
+        });
     }
 }

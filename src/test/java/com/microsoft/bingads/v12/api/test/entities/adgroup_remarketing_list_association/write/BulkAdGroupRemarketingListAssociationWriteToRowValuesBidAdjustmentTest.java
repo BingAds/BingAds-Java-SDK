@@ -9,7 +9,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v12.api.test.entities.adgroup_remarketing_list_association.BulkAdGroupRemarketingListAssociationTest;
+import com.microsoft.bingads.v12.bulk.entities.BulkAdGroupRemarketingListAssociation;
+import com.microsoft.bingads.v12.campaignmanagement.BidMultiplier;
 
 @RunWith(Parameterized.class)
 public class BulkAdGroupRemarketingListAssociationWriteToRowValuesBidAdjustmentTest extends BulkAdGroupRemarketingListAssociationTest {
@@ -30,19 +33,19 @@ public class BulkAdGroupRemarketingListAssociationWriteToRowValuesBidAdjustmentT
         // These data are hard-coded into the class, but they could be
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
-//            {"-12.3", -12.3},
-//            {"12.3", 12.3},
+            {"-12.3", -12.3},
+            {"12.3", 12.3},
             {null, null}
         });
     }
     
     @Test
     public void testWrite() {
-//        this.<Double>testWriteProperty("Bid Adjustment", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, Double>() {
-//            @Override
-//            public void accept(BulkAdGroupRemarketingListAssociation c, Double v) {
-////                c.getAdGroupRemarketingListAssociation().setBidAdjustment(v);;
-//            }
-//        });
+        this.<Double>testWriteProperty("Bid Adjustment", this.datum, this.propertyValue, new BiConsumer<BulkAdGroupRemarketingListAssociation, Double>() {
+            @Override
+            public void accept(BulkAdGroupRemarketingListAssociation c, Double v) {
+                ((BidMultiplier)(c.getBiddableAdGroupCriterion().getCriterionBid())).setMultiplier(v);
+            }
+        });
     }
 }

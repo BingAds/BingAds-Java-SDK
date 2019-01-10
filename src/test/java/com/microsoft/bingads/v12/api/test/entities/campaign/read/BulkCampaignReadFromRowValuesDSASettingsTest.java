@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,7 +75,10 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
                         if (c.getCampaign().getSettings() == null) {
                             return null;
                         }
-                        return c.getCampaign().getSettings().getSettings();
+                        
+                        //List<Setting> settings = getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == settingClass).collect(Collectors.toList());
+
+                        return c.getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == DynamicSearchAdsSetting.class).collect(Collectors.toList());
                     }
                 },
                 new ObjectComparer<List<Setting>>()

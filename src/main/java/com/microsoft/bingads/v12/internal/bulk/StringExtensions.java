@@ -50,6 +50,7 @@ import com.microsoft.bingads.v12.campaignmanagement.Day;
 import com.microsoft.bingads.v12.campaignmanagement.DayTime;
 import com.microsoft.bingads.v12.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v12.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v12.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v12.campaignmanagement.MatchType;
@@ -1454,6 +1455,39 @@ public class StringExtensions {
         return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
     }
     
+    private static class ImageAssetLinkContract
+    {
+        // The Asset Id
+        public long id;
+
+        // The Asset SubType
+        public String subType;
+
+        // The Asset CropHeight
+        public int cropHeight;
+
+        // The Asset CropWidth
+        public int cropWidth;
+
+        // The Asset CropX
+        public int cropX;
+
+        // The Asset CropY
+        public int cropY;
+        
+        // The AssetLink PinnedField
+        public String pinnedField;
+
+        // The AssetLink EditorialStatus
+        public String editorialStatus;
+
+        // The AssetLink AssetPerformanceLabel is reserved for future use.
+        public String assetPerformanceLabel;
+
+        // The Asset Name is reserved for future use.
+        public String name;
+    }
+    
     private static class TextAssetLinkContract {
 
         // The Asset Id
@@ -1479,6 +1513,89 @@ public class StringExtensions {
         // The Asset Name is reserved for future use.
         @JsonProperty
         public String name;
+    }
+
+    public static String toImageAssetLinksBulkString(ArrayOfAssetLink arrayOfAssetLink)
+    {
+        if (arrayOfAssetLink == null 
+                || arrayOfAssetLink.getAssetLinks() == null 
+                || arrayOfAssetLink.getAssetLinks().size() == 0) {
+            return null;
+        }
+        List<AssetLink> assetLinks = arrayOfAssetLink
+                .getAssetLinks()
+                .stream()
+                .filter(s -> "ImageAsset".equals(s.getAsset().getType()))
+                .collect(Collectors.toList());
+        if (assetLinks.size() == 0) {
+            return null;
+        }
+        
+        List<ImageAssetLinkContract> imageAssetLinkContracts = new ArrayList<ImageAssetLinkContract>(assetLinks.size());
+        
+        for (AssetLink assetLink : assetLinks) {
+            ImageAsset asset = (ImageAsset)assetLink.getAsset();
+            ImageAssetLinkContract contract = new ImageAssetLinkContract();
+            contract.assetPerformanceLabel = assetLink.getAssetPerformanceLabel();
+            contract.cropHeight = asset.getCropHeight();
+            contract.cropWidth = asset.getCropWidth();
+            contract.cropX = asset.getCropX();
+            contract.cropY = asset.getCropY();
+            contract.id = asset.getId();
+            contract.editorialStatus = assetLink.getEditorialStatus() == null? null : assetLink.getEditorialStatus().value();
+            contract.name = asset.getName();
+            contract.pinnedField = assetLink.getPinnedField();
+            contract.subType = asset.getSubType();
+            
+            imageAssetLinkContracts.add(contract);
+        }
+        try {
+            return new ObjectMapper().writeValueAsString(imageAssetLinkContracts);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+
+    public static ArrayOfAssetLink parseImageAssetLinks(String value)
+    {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+        
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
+            
+            List<ImageAssetLinkContract> imageAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, ImageAssetLinkContract.class));
+            for (ImageAssetLinkContract contract : imageAssetLinkContracts) {
+                AssetLink assetLink = new AssetLink();
+                if (contract.editorialStatus != null) {
+                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                }
+                assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
+                assetLink.setPinnedField(contract.pinnedField);
+                
+                ImageAsset asset = new ImageAsset();
+                asset.setId(contract.id);
+                asset.setName(contract.name);
+                asset.setCropHeight(contract.cropHeight);
+                asset.setCropWidth(contract.cropWidth);
+                asset.setCropX(contract.cropX);
+                asset.setCropY(contract.cropY);
+                asset.setSubType(contract.subType);
+                asset.setType("ImageAsset");
+                assetLink.setAsset(asset);
+                assetLinks.getAssetLinks().add(assetLink);
+            }
+            return assetLinks;
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
     
     public static String toTextAssetLinksBulkString(ArrayOfAssetLink arrayOfAssetLink)

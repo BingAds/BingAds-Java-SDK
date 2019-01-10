@@ -30,7 +30,7 @@ public class BulkAdGroupSimilarRemarketingListAssociationReadAudienceTest extend
         this.<String>testReadProperty("Audience", this.datum, this.expectedResult, new Function<BulkAdGroupSimilarRemarketingListAssociation, String>() {
             @Override
             public String apply(BulkAdGroupSimilarRemarketingListAssociation c) {
-                return c.getRemarketingListName();
+                return c.getAudienceName();
             }
         });
     }

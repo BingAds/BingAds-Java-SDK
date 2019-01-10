@@ -428,6 +428,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupNegativeRemarketingListAssociation();
             }
         }));
+        m.put(StringTable.CampaignRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignRemarketingListAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeRemarketingListAssociation();
+            }
+        }));
         m.put(StringTable.CustomAudience, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -444,6 +456,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAdGroupNegativeCustomAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignCustomAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignCustomAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeCustomAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeCustomAudienceAssociation();
             }
         }));
         m.put(StringTable.InMarketAudience, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -464,6 +488,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupNegativeInMarketAudienceAssociation();
             }
         }));
+        m.put(StringTable.CampaignInMarketAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignInMarketAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeInMarketAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeInMarketAudienceAssociation();
+            }
+        }));
         m.put(StringTable.ProductAudience, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -480,6 +516,52 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAdGroupNegativeProductAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignProductAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignProductAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeProductAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeProductAudienceAssociation();
+            }
+        }));
+        m.put(StringTable.SimilarRemarketingList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkSimilarRemarketingList();
+            }
+        }));
+
+        m.put(StringTable.AdGroupSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupSimilarRemarketingListAssociation();
+            }
+        }));
+
+        m.put(StringTable.AdGroupNegativeSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeSimilarRemarketingListAssociation();
+            }
+        }));
+
+        m.put(StringTable.CampaignSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignSimilarRemarketingListAssociation();
+            }
+        }));
+
+        m.put(StringTable.CampaignNegativeSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeSimilarRemarketingListAssociation();
             }
         }));
         m.put(StringTable.Budget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -726,26 +808,6 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
         
-        m.put(StringTable.SimilarRemarketingList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkSimilarRemarketingList();
-            }
-        }));
-
-        m.put(StringTable.AdGroupSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAdGroupSimilarRemarketingListAssociation();
-            }
-        }));
-
-        m.put(StringTable.AdGroupNegativeSimilarRemarketingListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAdGroupNegativeSimilarRemarketingListAssociation();
-            }
-        }));
 
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

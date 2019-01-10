@@ -94,6 +94,22 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
         ));
         
 
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Images,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.toImageAssetLinksBulkString(c.getAd().getImages());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        c.getAd().setImages(StringExtensions.parseImageAssetLinks(v));
+                    }
+                }
+        ));
+        
+
         m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.LongHeadline,
                 new Function<BulkResponsiveAd, String>() {
                     @Override

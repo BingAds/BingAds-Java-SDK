@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v12.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v12.api.test.entities.campaign.BulkCampaignTest;
 import com.microsoft.bingads.v12.bulk.entities.BulkCampaign;
+import com.microsoft.bingads.v12.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v12.campaignmanagement.Setting;
 import com.microsoft.bingads.v12.campaignmanagement.ShoppingSetting;
 
@@ -51,9 +53,9 @@ public class BulkCampaignReadFromRowValuesSettingsTest extends BulkCampaignTest 
                 new Object[][]{
                         {"Shopping", "123", "1", "US", Collections.singletonList(setting1)},
                         {"Shopping", "2147483647", "2", "CHINA", Collections.singletonList(setting2)},
-                        {"Search", "", "", "", null},
+                        {"Search", "", "", "", Collections.EMPTY_LIST},
                         {"", "", "", "", null},
-                        {"Search", "1234", "123", "CANADA", null},
+                        {"Search", "1234", "123", "CANADA", Collections.EMPTY_LIST},
                 }
         );
     }
@@ -76,7 +78,8 @@ public class BulkCampaignReadFromRowValuesSettingsTest extends BulkCampaignTest 
                         if (c.getCampaign().getSettings() == null) {
                             return null;
                         }
-                        return c.getCampaign().getSettings().getSettings();
+//                        return c.getCampaign().getSettings().getSettings();
+                        return c.getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == ShoppingSetting.class).collect(Collectors.toList());
                     }
                 },
                 new ObjectComparer<List<Setting>>()

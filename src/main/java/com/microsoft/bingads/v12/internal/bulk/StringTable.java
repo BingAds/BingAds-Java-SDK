@@ -407,16 +407,29 @@ public class StringTable {
     public static final String RemarketingList = "Remarketing List";
     public static final String AdGroupRemarketingListAssociation = "Ad Group Remarketing List Association";
     public static final String AdGroupNegativeRemarketingListAssociation = "Ad Group Negative Remarketing List Association";
+    public static final String CampaignRemarketingListAssociation = "Campaign Remarketing List Association";
+    public static final String CampaignNegativeRemarketingListAssociation = "Campaign Negative Remarketing List Association";
     public static final String CustomAudience = "Custom Audience";
     public static final String AdGroupCustomAudienceAssociation = "Ad Group Custom Audience Association";
     public static final String AdGroupNegativeCustomAudienceAssociation = "Ad Group Negative Custom Audience Association";
+    public static final String CampaignCustomAudienceAssociation = "Campaign Custom Audience Association";
+    public static final String CampaignNegativeCustomAudienceAssociation = "Campaign Negative Custom Audience Association";
     public static final String InMarketAudience = "In Market Audience";
     public static final String AdGroupInMarketAudienceAssociation = "Ad Group In Market Audience Association";
     public static final String AdGroupNegativeInMarketAudienceAssociation = "Ad Group Negative In Market Audience Association";
+    public static final String CampaignInMarketAudienceAssociation = "Campaign In Market Audience Association";
+    public static final String CampaignNegativeInMarketAudienceAssociation = "Campaign Negative In Market Audience Association";
+    public static final String SimilarRemarketingList = "Similar Remarketing List";
+    public static final String AdGroupSimilarRemarketingListAssociation = "Ad Group Similar Remarketing List Association";
+    public static final String AdGroupNegativeSimilarRemarketingListAssociation = "Ad Group Negative Similar Remarketing List Association";
+    public static final String CampaignSimilarRemarketingListAssociation = "Campaign Similar Remarketing List Association";
+    public static final String CampaignNegativeSimilarRemarketingListAssociation = "Campaign Negative Similar Remarketing List Association";
     public static final String Audience = "Audience";
     public static final String ProductAudience = "Product Audience";
     public static final String AdGroupProductAudienceAssociation = "Ad Group Product Audience Association";
     public static final String AdGroupNegativeProductAudienceAssociation = "Ad Group Negative Product Audience Association";
+    public static final String CampaignProductAudienceAssociation = "Campaign Product Audience Association";
+    public static final String CampaignNegativeProductAudienceAssociation = "Campaign Negative Product Audience Association";
     public static final String AudienceNetworkSize = "Audience Network Size";
     public static final String SupportedCampaignTypes = "Supported Campaign Types";
     public static final String ProductAudienceType = "Product Audience Type";
@@ -429,9 +442,6 @@ public class StringTable {
     public static final String AudienceId = "Audience Id";
     public static final String TargetSetting = "Target Setting";
     public static final String RemarketingRule = "Remarketing Rule";
-    public static final String SimilarRemarketingList = "Similar Remarketing List";
-    public static final String AdGroupSimilarRemarketingListAssociation = "Ad Group Similar Remarketing List Association";
-    public static final String AdGroupNegativeSimilarRemarketingListAssociation = "Ad Group Negative Similar Remarketing List Association";
     
     // Structured Snippet Ad Extension
     public static final String AccountStructuredSnippetAdExtension = "Account Structured Snippet Ad Extension";
@@ -465,6 +475,7 @@ public class StringTable {
     public static final String ResponsiveAd = "Responsive Ad";
     public static final String CallToAction = "Call To Action";
     public static final String Headline = "Headline";
+    public static final String Images = "Images";
     public static final String LandscapeImageMediaId = "Landscape Image Media Id";
     public static final String LandscapeLogoMediaId = "Landscape Logo Media Id";
     public static final String LongHeadline = "Long Headline";

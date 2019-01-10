@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.microsoft.bingads</groupId>
-    <version>12.0.2</version>
+    <version>12.0.3</version>
     <name>Bing Ads Java SDK</name>
     <description>The Bing Ads Java SDK is a library improving developer experience when working with the Bing Ads services by providing high-level access to features such as Bulk API, OAuth Authorization and SOAP API.</description>
     <url>https://github.com/BingAds/BingAds-Java-SDK</url>
@@ -135,7 +135,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.6</version>
+            <version>2.9.8</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.jcsv</groupId>
@@ -177,7 +177,7 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>3.0.15</cxf.version>
+        <cxf.version>3.2.7</cxf.version>
         <http.version>4.5.3</http.version>
     </properties>
     <artifactId>microsoft.bingads</artifactId>
