@@ -6,7 +6,7 @@ import com.microsoft.bingads.v12.campaignmanagement.*;
 import java.util.Calendar;
 import java.util.ArrayList;
 
-public class TargetCriterions extends ExampleBase {
+public class TargetCriteria extends ExampleBase {
         
     public static void main(java.lang.String[] args) 
     {        
