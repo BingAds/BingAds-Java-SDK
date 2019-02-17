@@ -326,10 +326,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -339,7 +341,6 @@ class AdInsightExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -347,7 +348,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -357,7 +361,6 @@ class AdInsightExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -365,11 +368,16 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupBidLandscape * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupBidLandscapeType: %s", dataObject.getAdGroupBidLandscapeType()));
+            outputStatusMessage("StartDate:");
             outputDayMonthAndYear(dataObject.getStartDate());
+            outputStatusMessage("EndDate:");
             outputDayMonthAndYear(dataObject.getEndDate());
+            outputStatusMessage("BidLandscapePoints:");
             outputArrayOfBidLandscapePoint(dataObject.getBidLandscapePoints());
+            outputStatusMessage("* * * End OutputAdGroupBidLandscape * * *");
         }
     }
     static void outputArrayOfAdGroupBidLandscape(ArrayOfAdGroupBidLandscape dataObjects)
@@ -379,7 +387,6 @@ class AdInsightExampleHelper
             for (AdGroupBidLandscape dataObject : dataObjects.getAdGroupBidLandscapes())
             {
                 outputAdGroupBidLandscape(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -387,8 +394,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupBidLandscapeInput * * *");
             outputStatusMessage(String.format("AdGroupBidLandscapeType: %s", dataObject.getAdGroupBidLandscapeType()));
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("* * * End OutputAdGroupBidLandscapeInput * * *");
         }
     }
     static void outputArrayOfAdGroupBidLandscapeInput(ArrayOfAdGroupBidLandscapeInput dataObjects)
@@ -398,7 +407,6 @@ class AdInsightExampleHelper
             for (AdGroupBidLandscapeInput dataObject : dataObjects.getAdGroupBidLandscapeInputs())
             {
                 outputAdGroupBidLandscapeInput(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -406,8 +414,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupEstimate * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("KeywordEstimates:");
             outputArrayOfKeywordEstimate(dataObject.getKeywordEstimates());
+            outputStatusMessage("* * * End OutputAdGroupEstimate * * *");
         }
     }
     static void outputArrayOfAdGroupEstimate(ArrayOfAdGroupEstimate dataObjects)
@@ -417,7 +428,6 @@ class AdInsightExampleHelper
             for (AdGroupEstimate dataObject : dataObjects.getAdGroupEstimates())
             {
                 outputAdGroupEstimate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -425,9 +435,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupEstimator * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("KeywordEstimators:");
             outputArrayOfKeywordEstimator(dataObject.getKeywordEstimators());
             outputStatusMessage(String.format("MaxCpc: %s", dataObject.getMaxCpc()));
+            outputStatusMessage("* * * End OutputAdGroupEstimator * * *");
         }
     }
     static void outputArrayOfAdGroupEstimator(ArrayOfAdGroupEstimator dataObjects)
@@ -437,7 +450,6 @@ class AdInsightExampleHelper
             for (AdGroupEstimator dataObject : dataObjects.getAdGroupEstimators())
             {
                 outputAdGroupEstimator(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -445,8 +457,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFaultDetail * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputApiFaultDetail * * *");
         }
     }
     static void outputArrayOfApiFaultDetail(ArrayList<ApiFaultDetail> dataObjects)
@@ -456,7 +472,6 @@ class AdInsightExampleHelper
             for (ApiFaultDetail dataObject : dataObjects)
             {
                 outputApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -464,6 +479,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -473,6 +489,7 @@ class AdInsightExampleHelper
             {
                 outputApiFaultDetail((ApiFaultDetail)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -482,7 +499,6 @@ class AdInsightExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -490,9 +506,13 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAuctionInsightEntry * * *");
             outputStatusMessage(String.format("DisplayDomain: %s", dataObject.getDisplayDomain()));
+            outputStatusMessage("AggregatedKpi:");
             outputAuctionInsightKpi(dataObject.getAggregatedKpi());
+            outputStatusMessage("SegmentedKpis:");
             outputArrayOfAuctionInsightKpi(dataObject.getSegmentedKpis());
+            outputStatusMessage("* * * End OutputAuctionInsightEntry * * *");
         }
     }
     static void outputArrayOfAuctionInsightEntry(ArrayOfAuctionInsightEntry dataObjects)
@@ -502,7 +522,6 @@ class AdInsightExampleHelper
             for (AuctionInsightEntry dataObject : dataObjects.getAuctionInsightEntries())
             {
                 outputAuctionInsightEntry(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -510,6 +529,8 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAuctionInsightKpi * * *");
+            outputStatusMessage("Segments:");
             outputArrayOfstring(dataObject.getSegments());
             outputStatusMessage(String.format("ImpressionShare: %s", dataObject.getImpressionShare()));
             outputStatusMessage(String.format("OverlapRate: %s", dataObject.getOverlapRate()));
@@ -517,6 +538,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("AboveRate: %s", dataObject.getAboveRate()));
             outputStatusMessage(String.format("TopOfPageRate: %s", dataObject.getTopOfPageRate()));
             outputStatusMessage(String.format("OutrankingShare: %s", dataObject.getOutrankingShare()));
+            outputStatusMessage("* * * End OutputAuctionInsightKpi * * *");
         }
     }
     static void outputArrayOfAuctionInsightKpi(ArrayOfAuctionInsightKpi dataObjects)
@@ -526,7 +548,6 @@ class AdInsightExampleHelper
             for (AuctionInsightKpi dataObject : dataObjects.getAuctionInsightKpis())
             {
                 outputAuctionInsightKpi(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -534,10 +555,14 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAuctionInsightResult * * *");
+            outputStatusMessage("Segments:");
             outputArrayOfAuctionSegment(dataObject.getSegments());
+            outputStatusMessage("Entries:");
             outputArrayOfAuctionInsightEntry(dataObject.getEntries());
             outputStatusMessage(String.format("UsedImpressions: %s", dataObject.getUsedImpressions()));
             outputStatusMessage(String.format("UsedKeywords: %s", dataObject.getUsedKeywords()));
+            outputStatusMessage("* * * End OutputAuctionInsightResult * * *");
         }
     }
     static void outputArrayOfAuctionInsightResult(ArrayList<AuctionInsightResult> dataObjects)
@@ -547,7 +572,6 @@ class AdInsightExampleHelper
             for (AuctionInsightResult dataObject : dataObjects)
             {
                 outputAuctionInsightResult(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -555,7 +579,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAuctionSegmentSearchParameter * * *");
             outputStatusMessage(String.format("Segment: %s", dataObject.getSegment()));
+            outputStatusMessage("* * * End OutputAuctionSegmentSearchParameter * * *");
         }
     }
     static void outputArrayOfAuctionSegmentSearchParameter(ArrayList<AuctionSegmentSearchParameter> dataObjects)
@@ -565,7 +591,6 @@ class AdInsightExampleHelper
             for (AuctionSegmentSearchParameter dataObject : dataObjects)
             {
                 outputAuctionSegmentSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -573,11 +598,13 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputBatchError * * *");
         }
     }
     static void outputArrayOfBatchError(ArrayOfBatchError dataObjects)
@@ -587,7 +614,6 @@ class AdInsightExampleHelper
             for (BatchError dataObject : dataObjects.getBatchErrors())
             {
                 outputBatchError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -595,6 +621,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBidLandscapePoint * * *");
             outputStatusMessage(String.format("Bid: %s", dataObject.getBid()));
             outputStatusMessage(String.format("Clicks: %s", dataObject.getClicks()));
             outputStatusMessage(String.format("Impressions: %s", dataObject.getImpressions()));
@@ -602,6 +629,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("Cost: %s", dataObject.getCost()));
             outputStatusMessage(String.format("MarginalCPC: %s", dataObject.getMarginalCPC()));
+            outputStatusMessage("* * * End OutputBidLandscapePoint * * *");
         }
     }
     static void outputArrayOfBidLandscapePoint(ArrayOfBidLandscapePoint dataObjects)
@@ -611,7 +639,6 @@ class AdInsightExampleHelper
             for (BidLandscapePoint dataObject : dataObjects.getBidLandscapePoints())
             {
                 outputBidLandscapePoint(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -619,6 +646,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBidOpportunity * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
             outputStatusMessage(String.format("CurrentBid: %s", dataObject.getCurrentBid()));
@@ -628,6 +656,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("KeywordId: %s", dataObject.getKeywordId()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("SuggestedBid: %s", dataObject.getSuggestedBid()));
+            outputStatusMessage("* * * End OutputBidOpportunity * * *");
         }
     }
     static void outputArrayOfBidOpportunity(ArrayOfBidOpportunity dataObjects)
@@ -637,7 +666,6 @@ class AdInsightExampleHelper
             for (BidOpportunity dataObject : dataObjects.getBidOpportunities())
             {
                 outputBidOpportunity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -645,6 +673,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBroadMatchKeywordOpportunity * * *");
             outputStatusMessage(String.format("AverageCPC: %s", dataObject.getAverageCPC()));
             outputStatusMessage(String.format("AverageCTR: %s", dataObject.getAverageCTR()));
             outputStatusMessage(String.format("ClickShare: %s", dataObject.getClickShare()));
@@ -652,7 +681,9 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("ReferenceKeywordBid: %s", dataObject.getReferenceKeywordBid()));
             outputStatusMessage(String.format("ReferenceKeywordId: %s", dataObject.getReferenceKeywordId()));
             outputStatusMessage(String.format("ReferenceKeywordMatchType: %s", dataObject.getReferenceKeywordMatchType()));
+            outputStatusMessage("SearchQueryKPIs:");
             outputArrayOfBroadMatchSearchQueryKPI(dataObject.getSearchQueryKPIs());
+            outputStatusMessage("* * * End OutputBroadMatchKeywordOpportunity * * *");
         }
     }
     static void outputArrayOfBroadMatchKeywordOpportunity(ArrayList<BroadMatchKeywordOpportunity> dataObjects)
@@ -662,7 +693,6 @@ class AdInsightExampleHelper
             for (BroadMatchKeywordOpportunity dataObject : dataObjects)
             {
                 outputBroadMatchKeywordOpportunity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -670,11 +700,13 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBroadMatchSearchQueryKPI * * *");
             outputStatusMessage(String.format("AverageCTR: %s", dataObject.getAverageCTR()));
             outputStatusMessage(String.format("Clicks: %s", dataObject.getClicks()));
             outputStatusMessage(String.format("Impressions: %s", dataObject.getImpressions()));
             outputStatusMessage(String.format("SRPV: %s", dataObject.getSRPV()));
             outputStatusMessage(String.format("SearchQuery: %s", dataObject.getSearchQuery()));
+            outputStatusMessage("* * * End OutputBroadMatchSearchQueryKPI * * *");
         }
     }
     static void outputArrayOfBroadMatchSearchQueryKPI(ArrayOfBroadMatchSearchQueryKPI dataObjects)
@@ -684,7 +716,6 @@ class AdInsightExampleHelper
             for (BroadMatchSearchQueryKPI dataObject : dataObjects.getBroadMatchSearchQueryKPIs())
             {
                 outputBroadMatchSearchQueryKPI(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -692,6 +723,8 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBudgetOpportunity * * *");
+            outputStatusMessage("BudgetPoints:");
             outputArrayOfBudgetPoint(dataObject.getBudgetPoints());
             outputStatusMessage(String.format("BudgetType: %s", dataObject.getBudgetType()));
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
@@ -701,6 +734,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("PercentageIncreaseInClicks: %s", dataObject.getPercentageIncreaseInClicks()));
             outputStatusMessage(String.format("PercentageIncreaseInImpressions: %s", dataObject.getPercentageIncreaseInImpressions()));
             outputStatusMessage(String.format("RecommendedBudget: %s", dataObject.getRecommendedBudget()));
+            outputStatusMessage("* * * End OutputBudgetOpportunity * * *");
         }
     }
     static void outputArrayOfBudgetOpportunity(ArrayOfBudgetOpportunity dataObjects)
@@ -710,7 +744,6 @@ class AdInsightExampleHelper
             for (BudgetOpportunity dataObject : dataObjects.getBudgetOpportunities())
             {
                 outputBudgetOpportunity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -718,11 +751,13 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBudgetPoint * * *");
             outputStatusMessage(String.format("BudgetAmount: %s", dataObject.getBudgetAmount()));
             outputStatusMessage(String.format("BudgetPointType: %s", dataObject.getBudgetPointType()));
             outputStatusMessage(String.format("EstimatedWeeklyClicks: %s", dataObject.getEstimatedWeeklyClicks()));
             outputStatusMessage(String.format("EstimatedWeeklyCost: %s", dataObject.getEstimatedWeeklyCost()));
             outputStatusMessage(String.format("EstimatedWeeklyImpressions: %s", dataObject.getEstimatedWeeklyImpressions()));
+            outputStatusMessage("* * * End OutputBudgetPoint * * *");
         }
     }
     static void outputArrayOfBudgetPoint(ArrayOfBudgetPoint dataObjects)
@@ -732,7 +767,6 @@ class AdInsightExampleHelper
             for (BudgetPoint dataObject : dataObjects.getBudgetPoints())
             {
                 outputBudgetPoint(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -740,8 +774,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignEstimate * * *");
+            outputStatusMessage("AdGroupEstimates:");
             outputArrayOfAdGroupEstimate(dataObject.getAdGroupEstimates());
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
+            outputStatusMessage("* * * End OutputCampaignEstimate * * *");
         }
     }
     static void outputArrayOfCampaignEstimate(ArrayOfCampaignEstimate dataObjects)
@@ -751,7 +788,6 @@ class AdInsightExampleHelper
             for (CampaignEstimate dataObject : dataObjects.getCampaignEstimates())
             {
                 outputCampaignEstimate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -759,11 +795,16 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignEstimator * * *");
+            outputStatusMessage("AdGroupEstimators:");
             outputArrayOfAdGroupEstimator(dataObject.getAdGroupEstimators());
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
+            outputStatusMessage("Criteria:");
             outputArrayOfCriterion(dataObject.getCriteria());
             outputStatusMessage(String.format("DailyBudget: %s", dataObject.getDailyBudget()));
+            outputStatusMessage("NegativeKeywords:");
             outputArrayOfNegativeKeyword(dataObject.getNegativeKeywords());
+            outputStatusMessage("* * * End OutputCampaignEstimator * * *");
         }
     }
     static void outputArrayOfCampaignEstimator(ArrayOfCampaignEstimator dataObjects)
@@ -773,7 +814,6 @@ class AdInsightExampleHelper
             for (CampaignEstimator dataObject : dataObjects.getCampaignEstimators())
             {
                 outputCampaignEstimator(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -781,7 +821,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCategorySearchParameter * * *");
             outputStatusMessage(String.format("CategoryId: %s", dataObject.getCategoryId()));
+            outputStatusMessage("* * * End OutputCategorySearchParameter * * *");
         }
     }
     static void outputArrayOfCategorySearchParameter(ArrayList<CategorySearchParameter> dataObjects)
@@ -791,7 +833,6 @@ class AdInsightExampleHelper
             for (CategorySearchParameter dataObject : dataObjects)
             {
                 outputCategorySearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -799,7 +840,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCompetitionSearchParameter * * *");
+            outputStatusMessage("CompetitionLevels:");
             outputArrayOfCompetitionLevel(dataObject.getCompetitionLevels());
+            outputStatusMessage("* * * End OutputCompetitionSearchParameter * * *");
         }
     }
     static void outputArrayOfCompetitionSearchParameter(ArrayList<CompetitionSearchParameter> dataObjects)
@@ -809,7 +853,6 @@ class AdInsightExampleHelper
             for (CompetitionSearchParameter dataObject : dataObjects)
             {
                 outputCompetitionSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -817,6 +860,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCriterion * * *");
             if(dataObject instanceof DeviceCriterion)
             {
                 outputDeviceCriterion((DeviceCriterion)dataObject);
@@ -833,6 +877,7 @@ class AdInsightExampleHelper
             {
                 outputNetworkCriterion((NetworkCriterion)dataObject);
             }
+            outputStatusMessage("* * * End OutputCriterion * * *");
         }
     }
     static void outputArrayOfCriterion(ArrayOfCriterion dataObjects)
@@ -842,7 +887,6 @@ class AdInsightExampleHelper
             for (Criterion dataObject : dataObjects.getCriterions())
             {
                 outputCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -850,8 +894,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDateRangeSearchParameter * * *");
+            outputStatusMessage("EndDate:");
             outputDayMonthAndYear(dataObject.getEndDate());
+            outputStatusMessage("StartDate:");
             outputDayMonthAndYear(dataObject.getStartDate());
+            outputStatusMessage("* * * End OutputDateRangeSearchParameter * * *");
         }
     }
     static void outputArrayOfDateRangeSearchParameter(ArrayList<DateRangeSearchParameter> dataObjects)
@@ -861,7 +909,6 @@ class AdInsightExampleHelper
             for (DateRangeSearchParameter dataObject : dataObjects)
             {
                 outputDateRangeSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -869,9 +916,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDayMonthAndYear * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("Month: %s", dataObject.getMonth()));
             outputStatusMessage(String.format("Year: %s", dataObject.getYear()));
+            outputStatusMessage("* * * End OutputDayMonthAndYear * * *");
         }
     }
     static void outputArrayOfDayMonthAndYear(ArrayList<DayMonthAndYear> dataObjects)
@@ -881,7 +930,6 @@ class AdInsightExampleHelper
             for (DayMonthAndYear dataObject : dataObjects)
             {
                 outputDayMonthAndYear(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -889,7 +937,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDeviceCriterion * * *");
             outputStatusMessage(String.format("DeviceName: %s", dataObject.getDeviceName()));
+            outputStatusMessage("* * * End OutputDeviceCriterion * * *");
         }
     }
     static void outputArrayOfDeviceCriterion(ArrayList<DeviceCriterion> dataObjects)
@@ -899,7 +949,6 @@ class AdInsightExampleHelper
             for (DeviceCriterion dataObject : dataObjects)
             {
                 outputDeviceCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -907,7 +956,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDeviceSearchParameter * * *");
+            outputStatusMessage("Device:");
             outputDeviceCriterion(dataObject.getDevice());
+            outputStatusMessage("* * * End OutputDeviceSearchParameter * * *");
         }
     }
     static void outputArrayOfDeviceSearchParameter(ArrayList<DeviceSearchParameter> dataObjects)
@@ -917,7 +969,6 @@ class AdInsightExampleHelper
             for (DeviceSearchParameter dataObject : dataObjects)
             {
                 outputDeviceSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -925,9 +976,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDomainCategory * * *");
             outputStatusMessage(String.format("Bid: %s", dataObject.getBid()));
             outputStatusMessage(String.format("CategoryName: %s", dataObject.getCategoryName()));
             outputStatusMessage(String.format("Coverage: %s", dataObject.getCoverage()));
+            outputStatusMessage("* * * End OutputDomainCategory * * *");
         }
     }
     static void outputArrayOfDomainCategory(ArrayOfDomainCategory dataObjects)
@@ -937,7 +990,6 @@ class AdInsightExampleHelper
             for (DomainCategory dataObject : dataObjects.getDomainCategories())
             {
                 outputDomainCategory(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -945,6 +997,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEstimatedBidAndTraffic * * *");
             outputStatusMessage(String.format("MinClicksPerWeek: %s", dataObject.getMinClicksPerWeek()));
             outputStatusMessage(String.format("MaxClicksPerWeek: %s", dataObject.getMaxClicksPerWeek()));
             outputStatusMessage(String.format("AverageCPC: %s", dataObject.getAverageCPC()));
@@ -956,6 +1009,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("EstimatedMinBid: %s", dataObject.getEstimatedMinBid()));
+            outputStatusMessage("* * * End OutputEstimatedBidAndTraffic * * *");
         }
     }
     static void outputArrayOfEstimatedBidAndTraffic(ArrayOfEstimatedBidAndTraffic dataObjects)
@@ -965,7 +1019,6 @@ class AdInsightExampleHelper
             for (EstimatedBidAndTraffic dataObject : dataObjects.getEstimatedBidAndTraffics())
             {
                 outputEstimatedBidAndTraffic(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -973,6 +1026,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEstimatedPositionAndTraffic * * *");
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("MinClicksPerWeek: %s", dataObject.getMinClicksPerWeek()));
             outputStatusMessage(String.format("MaxClicksPerWeek: %s", dataObject.getMaxClicksPerWeek()));
@@ -984,6 +1038,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("MaxTotalCostPerWeek: %s", dataObject.getMaxTotalCostPerWeek()));
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("EstimatedAdPosition: %s", dataObject.getEstimatedAdPosition()));
+            outputStatusMessage("* * * End OutputEstimatedPositionAndTraffic * * *");
         }
     }
     static void outputArrayOfEstimatedPositionAndTraffic(ArrayOfEstimatedPositionAndTraffic dataObjects)
@@ -993,7 +1048,6 @@ class AdInsightExampleHelper
             for (EstimatedPositionAndTraffic dataObject : dataObjects.getEstimatedPositionAndTraffics())
             {
                 outputEstimatedPositionAndTraffic(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1001,7 +1055,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputExcludeAccountKeywordsSearchParameter * * *");
             outputStatusMessage(String.format("ExcludeAccountKeywords: %s", dataObject.getExcludeAccountKeywords()));
+            outputStatusMessage("* * * End OutputExcludeAccountKeywordsSearchParameter * * *");
         }
     }
     static void outputArrayOfExcludeAccountKeywordsSearchParameter(ArrayList<ExcludeAccountKeywordsSearchParameter> dataObjects)
@@ -1011,7 +1067,6 @@ class AdInsightExampleHelper
             for (ExcludeAccountKeywordsSearchParameter dataObject : dataObjects)
             {
                 outputExcludeAccountKeywordsSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1019,8 +1074,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputHistoricalSearchCountPeriodic * * *");
             outputStatusMessage(String.format("SearchCount: %s", dataObject.getSearchCount()));
+            outputStatusMessage("DayMonthAndYear:");
             outputDayMonthAndYear(dataObject.getDayMonthAndYear());
+            outputStatusMessage("* * * End OutputHistoricalSearchCountPeriodic * * *");
         }
     }
     static void outputArrayOfHistoricalSearchCountPeriodic(ArrayOfHistoricalSearchCountPeriodic dataObjects)
@@ -1030,7 +1088,6 @@ class AdInsightExampleHelper
             for (HistoricalSearchCountPeriodic dataObject : dataObjects.getHistoricalSearchCountPeriodics())
             {
                 outputHistoricalSearchCountPeriodic(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1038,8 +1095,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputIdeaTextSearchParameter * * *");
+            outputStatusMessage("Excluded:");
             outputArrayOfKeyword(dataObject.getExcluded());
+            outputStatusMessage("Included:");
             outputArrayOfKeyword(dataObject.getIncluded());
+            outputStatusMessage("* * * End OutputIdeaTextSearchParameter * * *");
         }
     }
     static void outputArrayOfIdeaTextSearchParameter(ArrayList<IdeaTextSearchParameter> dataObjects)
@@ -1049,7 +1110,6 @@ class AdInsightExampleHelper
             for (IdeaTextSearchParameter dataObject : dataObjects)
             {
                 outputIdeaTextSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1057,8 +1117,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputImpressionShareSearchParameter * * *");
             outputStatusMessage(String.format("Maximum: %s", dataObject.getMaximum()));
             outputStatusMessage(String.format("Minimum: %s", dataObject.getMinimum()));
+            outputStatusMessage("* * * End OutputImpressionShareSearchParameter * * *");
         }
     }
     static void outputArrayOfImpressionShareSearchParameter(ArrayList<ImpressionShareSearchParameter> dataObjects)
@@ -1068,7 +1130,6 @@ class AdInsightExampleHelper
             for (ImpressionShareSearchParameter dataObject : dataObjects)
             {
                 outputImpressionShareSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1076,9 +1137,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeyword * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputKeyword * * *");
         }
     }
     static void outputArrayOfKeyword(ArrayOfKeyword dataObjects)
@@ -1088,7 +1151,6 @@ class AdInsightExampleHelper
             for (Keyword dataObject : dataObjects.getKeywords())
             {
                 outputKeyword(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1096,8 +1158,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordAndConfidence * * *");
             outputStatusMessage(String.format("SuggestedKeyword: %s", dataObject.getSuggestedKeyword()));
             outputStatusMessage(String.format("ConfidenceScore: %s", dataObject.getConfidenceScore()));
+            outputStatusMessage("* * * End OutputKeywordAndConfidence * * *");
         }
     }
     static void outputArrayOfKeywordAndConfidence(ArrayOfKeywordAndConfidence dataObjects)
@@ -1107,7 +1171,6 @@ class AdInsightExampleHelper
             for (KeywordAndConfidence dataObject : dataObjects.getKeywordAndConfidences())
             {
                 outputKeywordAndConfidence(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1115,8 +1178,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordAndMatchType * * *");
             outputStatusMessage(String.format("KeywordText: %s", dataObject.getKeywordText()));
+            outputStatusMessage("MatchTypes:");
             outputArrayOfMatchType(dataObject.getMatchTypes());
+            outputStatusMessage("* * * End OutputKeywordAndMatchType * * *");
         }
     }
     static void outputArrayOfKeywordAndMatchType(ArrayOfKeywordAndMatchType dataObjects)
@@ -1126,7 +1192,6 @@ class AdInsightExampleHelper
             for (KeywordAndMatchType dataObject : dataObjects.getKeywordAndMatchTypes())
             {
                 outputKeywordAndMatchType(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1134,10 +1199,15 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordBidLandscape * * *");
             outputStatusMessage(String.format("KeywordId: %s", dataObject.getKeywordId()));
+            outputStatusMessage("StartDate:");
             outputDayMonthAndYear(dataObject.getStartDate());
+            outputStatusMessage("EndDate:");
             outputDayMonthAndYear(dataObject.getEndDate());
+            outputStatusMessage("BidLandscapePoints:");
             outputArrayOfBidLandscapePoint(dataObject.getBidLandscapePoints());
+            outputStatusMessage("* * * End OutputKeywordBidLandscape * * *");
         }
     }
     static void outputArrayOfKeywordBidLandscape(ArrayOfKeywordBidLandscape dataObjects)
@@ -1147,7 +1217,6 @@ class AdInsightExampleHelper
             for (KeywordBidLandscape dataObject : dataObjects.getKeywordBidLandscapes())
             {
                 outputKeywordBidLandscape(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1155,8 +1224,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordCategory * * *");
             outputStatusMessage(String.format("Category: %s", dataObject.getCategory()));
             outputStatusMessage(String.format("ConfidenceScore: %s", dataObject.getConfidenceScore()));
+            outputStatusMessage("* * * End OutputKeywordCategory * * *");
         }
     }
     static void outputArrayOfKeywordCategory(ArrayOfKeywordCategory dataObjects)
@@ -1166,7 +1237,6 @@ class AdInsightExampleHelper
             for (KeywordCategory dataObject : dataObjects.getKeywordCategories())
             {
                 outputKeywordCategory(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1174,8 +1244,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordCategoryResult * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("KeywordCategories:");
             outputArrayOfKeywordCategory(dataObject.getKeywordCategories());
+            outputStatusMessage("* * * End OutputKeywordCategoryResult * * *");
         }
     }
     static void outputArrayOfKeywordCategoryResult(ArrayOfKeywordCategoryResult dataObjects)
@@ -1185,7 +1258,6 @@ class AdInsightExampleHelper
             for (KeywordCategoryResult dataObject : dataObjects.getKeywordCategoryResults())
             {
                 outputKeywordCategoryResult(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1193,6 +1265,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordDemographic * * *");
             outputStatusMessage(String.format("Device: %s", dataObject.getDevice()));
             outputStatusMessage(String.format("EighteenToTwentyFour: %s", dataObject.getEighteenToTwentyFour()));
             outputStatusMessage(String.format("TwentyFiveToThirtyFour: %s", dataObject.getTwentyFiveToThirtyFour()));
@@ -1203,6 +1276,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("Female: %s", dataObject.getFemale()));
             outputStatusMessage(String.format("Male: %s", dataObject.getMale()));
             outputStatusMessage(String.format("GenderUnknown: %s", dataObject.getGenderUnknown()));
+            outputStatusMessage("* * * End OutputKeywordDemographic * * *");
         }
     }
     static void outputArrayOfKeywordDemographic(ArrayOfKeywordDemographic dataObjects)
@@ -1212,7 +1286,6 @@ class AdInsightExampleHelper
             for (KeywordDemographic dataObject : dataObjects.getKeywordDemographics())
             {
                 outputKeywordDemographic(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1220,8 +1293,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordDemographicResult * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("KeywordDemographics:");
             outputArrayOfKeywordDemographic(dataObject.getKeywordDemographics());
+            outputStatusMessage("* * * End OutputKeywordDemographicResult * * *");
         }
     }
     static void outputArrayOfKeywordDemographicResult(ArrayOfKeywordDemographicResult dataObjects)
@@ -1231,7 +1307,6 @@ class AdInsightExampleHelper
             for (KeywordDemographicResult dataObject : dataObjects.getKeywordDemographicResults())
             {
                 outputKeywordDemographicResult(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1239,9 +1314,14 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordEstimate * * *");
+            outputStatusMessage("Keyword:");
             outputKeyword(dataObject.getKeyword());
+            outputStatusMessage("Maximum:");
             outputTrafficEstimate(dataObject.getMaximum());
+            outputStatusMessage("Minimum:");
             outputTrafficEstimate(dataObject.getMinimum());
+            outputStatusMessage("* * * End OutputKeywordEstimate * * *");
         }
     }
     static void outputArrayOfKeywordEstimate(ArrayOfKeywordEstimate dataObjects)
@@ -1251,7 +1331,6 @@ class AdInsightExampleHelper
             for (KeywordEstimate dataObject : dataObjects.getKeywordEstimates())
             {
                 outputKeywordEstimate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1259,8 +1338,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordEstimatedBid * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("EstimatedBids:");
             outputArrayOfEstimatedBidAndTraffic(dataObject.getEstimatedBids());
+            outputStatusMessage("* * * End OutputKeywordEstimatedBid * * *");
         }
     }
     static void outputArrayOfKeywordEstimatedBid(ArrayOfKeywordEstimatedBid dataObjects)
@@ -1270,7 +1352,6 @@ class AdInsightExampleHelper
             for (KeywordEstimatedBid dataObject : dataObjects.getKeywordEstimatedBids())
             {
                 outputKeywordEstimatedBid(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1278,8 +1359,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordEstimatedPosition * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("EstimatedPositions:");
             outputArrayOfEstimatedPositionAndTraffic(dataObject.getEstimatedPositions());
+            outputStatusMessage("* * * End OutputKeywordEstimatedPosition * * *");
         }
     }
     static void outputArrayOfKeywordEstimatedPosition(ArrayOfKeywordEstimatedPosition dataObjects)
@@ -1289,7 +1373,6 @@ class AdInsightExampleHelper
             for (KeywordEstimatedPosition dataObject : dataObjects.getKeywordEstimatedPositions())
             {
                 outputKeywordEstimatedPosition(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1297,8 +1380,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordEstimator * * *");
+            outputStatusMessage("Keyword:");
             outputKeyword(dataObject.getKeyword());
             outputStatusMessage(String.format("MaxCpc: %s", dataObject.getMaxCpc()));
+            outputStatusMessage("* * * End OutputKeywordEstimator * * *");
         }
     }
     static void outputArrayOfKeywordEstimator(ArrayOfKeywordEstimator dataObjects)
@@ -1308,7 +1394,6 @@ class AdInsightExampleHelper
             for (KeywordEstimator dataObject : dataObjects.getKeywordEstimators())
             {
                 outputKeywordEstimator(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1316,8 +1401,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordHistoricalPerformance * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("KeywordKPIs:");
             outputArrayOfKeywordKPI(dataObject.getKeywordKPIs());
+            outputStatusMessage("* * * End OutputKeywordHistoricalPerformance * * *");
         }
     }
     static void outputArrayOfKeywordHistoricalPerformance(ArrayOfKeywordHistoricalPerformance dataObjects)
@@ -1327,7 +1415,6 @@ class AdInsightExampleHelper
             for (KeywordHistoricalPerformance dataObject : dataObjects.getKeywordHistoricalPerformances())
             {
                 outputKeywordHistoricalPerformance(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1335,15 +1422,18 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordIdea * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: %s", dataObject.getAdGroupName()));
             outputStatusMessage(String.format("AdImpressionShare: %s", dataObject.getAdImpressionShare()));
             outputStatusMessage(String.format("Competition: %s", dataObject.getCompetition()));
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("MonthlySearchCounts:");
             outputArrayOflong(dataObject.getMonthlySearchCounts());
             outputStatusMessage(String.format("Relevance: %s", dataObject.getRelevance()));
             outputStatusMessage(String.format("Source: %s", dataObject.getSource()));
             outputStatusMessage(String.format("SuggestedBid: %s", dataObject.getSuggestedBid()));
+            outputStatusMessage("* * * End OutputKeywordIdea * * *");
         }
     }
     static void outputArrayOfKeywordIdea(ArrayOfKeywordIdea dataObjects)
@@ -1353,7 +1443,6 @@ class AdInsightExampleHelper
             for (KeywordIdea dataObject : dataObjects.getKeywordIdeas())
             {
                 outputKeywordIdea(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1361,8 +1450,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordIdeaCategory * * *");
             outputStatusMessage(String.format("CategoryId: %s", dataObject.getCategoryId()));
             outputStatusMessage(String.format("CategoryName: %s", dataObject.getCategoryName()));
+            outputStatusMessage("* * * End OutputKeywordIdeaCategory * * *");
         }
     }
     static void outputArrayOfKeywordIdeaCategory(ArrayOfKeywordIdeaCategory dataObjects)
@@ -1372,7 +1463,6 @@ class AdInsightExampleHelper
             for (KeywordIdeaCategory dataObject : dataObjects.getKeywordIdeaCategories())
             {
                 outputKeywordIdeaCategory(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1380,8 +1470,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordIdEstimatedBid * * *");
             outputStatusMessage(String.format("KeywordId: %s", dataObject.getKeywordId()));
+            outputStatusMessage("KeywordEstimatedBid:");
             outputKeywordEstimatedBid(dataObject.getKeywordEstimatedBid());
+            outputStatusMessage("* * * End OutputKeywordIdEstimatedBid * * *");
         }
     }
     static void outputArrayOfKeywordIdEstimatedBid(ArrayOfKeywordIdEstimatedBid dataObjects)
@@ -1391,7 +1484,6 @@ class AdInsightExampleHelper
             for (KeywordIdEstimatedBid dataObject : dataObjects.getKeywordIdEstimatedBids())
             {
                 outputKeywordIdEstimatedBid(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1399,8 +1491,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordIdEstimatedPosition * * *");
             outputStatusMessage(String.format("KeywordId: %s", dataObject.getKeywordId()));
+            outputStatusMessage("KeywordEstimatedPosition:");
             outputKeywordEstimatedPosition(dataObject.getKeywordEstimatedPosition());
+            outputStatusMessage("* * * End OutputKeywordIdEstimatedPosition * * *");
         }
     }
     static void outputArrayOfKeywordIdEstimatedPosition(ArrayOfKeywordIdEstimatedPosition dataObjects)
@@ -1410,7 +1505,6 @@ class AdInsightExampleHelper
             for (KeywordIdEstimatedPosition dataObject : dataObjects.getKeywordIdEstimatedPositions())
             {
                 outputKeywordIdEstimatedPosition(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1418,6 +1512,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordKPI * * *");
             outputStatusMessage(String.format("Device: %s", dataObject.getDevice()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("AdPosition: %s", dataObject.getAdPosition()));
@@ -1427,6 +1522,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("CTR: %s", dataObject.getCTR()));
             outputStatusMessage(String.format("TotalCost: %s", dataObject.getTotalCost()));
             outputStatusMessage(String.format("AverageBid: %s", dataObject.getAverageBid()));
+            outputStatusMessage("* * * End OutputKeywordKPI * * *");
         }
     }
     static void outputArrayOfKeywordKPI(ArrayOfKeywordKPI dataObjects)
@@ -1436,7 +1532,6 @@ class AdInsightExampleHelper
             for (KeywordKPI dataObject : dataObjects.getKeywordKPIs())
             {
                 outputKeywordKPI(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1444,9 +1539,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordLocation * * *");
             outputStatusMessage(String.format("Device: %s", dataObject.getDevice()));
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
             outputStatusMessage(String.format("Percentage: %s", dataObject.getPercentage()));
+            outputStatusMessage("* * * End OutputKeywordLocation * * *");
         }
     }
     static void outputArrayOfKeywordLocation(ArrayOfKeywordLocation dataObjects)
@@ -1456,7 +1553,6 @@ class AdInsightExampleHelper
             for (KeywordLocation dataObject : dataObjects.getKeywordLocations())
             {
                 outputKeywordLocation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1464,8 +1560,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordLocationResult * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("KeywordLocations:");
             outputArrayOfKeywordLocation(dataObject.getKeywordLocations());
+            outputStatusMessage("* * * End OutputKeywordLocationResult * * *");
         }
     }
     static void outputArrayOfKeywordLocationResult(ArrayOfKeywordLocationResult dataObjects)
@@ -1475,7 +1574,6 @@ class AdInsightExampleHelper
             for (KeywordLocationResult dataObject : dataObjects.getKeywordLocationResults())
             {
                 outputKeywordLocationResult(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1483,6 +1581,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordOpportunity * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: %s", dataObject.getAdGroupName()));
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
@@ -1499,6 +1598,7 @@ class AdInsightExampleHelper
             {
                 outputBroadMatchKeywordOpportunity((BroadMatchKeywordOpportunity)dataObject);
             }
+            outputStatusMessage("* * * End OutputKeywordOpportunity * * *");
         }
     }
     static void outputArrayOfKeywordOpportunity(ArrayOfKeywordOpportunity dataObjects)
@@ -1508,7 +1608,6 @@ class AdInsightExampleHelper
             for (KeywordOpportunity dataObject : dataObjects.getKeywordOpportunities())
             {
                 outputKeywordOpportunity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1516,8 +1615,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordSearchCount * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("SearchCountsByAttributes:");
             outputArrayOfSearchCountsByAttributes(dataObject.getSearchCountsByAttributes());
+            outputStatusMessage("* * * End OutputKeywordSearchCount * * *");
         }
     }
     static void outputArrayOfKeywordSearchCount(ArrayOfKeywordSearchCount dataObjects)
@@ -1527,7 +1629,6 @@ class AdInsightExampleHelper
             for (KeywordSearchCount dataObject : dataObjects.getKeywordSearchCounts())
             {
                 outputKeywordSearchCount(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1535,8 +1636,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordSuggestion * * *");
             outputStatusMessage(String.format("Keyword: %s", dataObject.getKeyword()));
+            outputStatusMessage("SuggestionsAndConfidence:");
             outputArrayOfKeywordAndConfidence(dataObject.getSuggestionsAndConfidence());
+            outputStatusMessage("* * * End OutputKeywordSuggestion * * *");
         }
     }
     static void outputArrayOfKeywordSuggestion(ArrayOfKeywordSuggestion dataObjects)
@@ -1546,7 +1650,6 @@ class AdInsightExampleHelper
             for (KeywordSuggestion dataObject : dataObjects.getKeywordSuggestions())
             {
                 outputKeywordSuggestion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1554,7 +1657,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLanguageCriterion * * *");
             outputStatusMessage(String.format("Language: %s", dataObject.getLanguage()));
+            outputStatusMessage("* * * End OutputLanguageCriterion * * *");
         }
     }
     static void outputArrayOfLanguageCriterion(ArrayOfLanguageCriterion dataObjects)
@@ -1564,7 +1669,6 @@ class AdInsightExampleHelper
             for (LanguageCriterion dataObject : dataObjects.getLanguageCriterions())
             {
                 outputLanguageCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1572,7 +1676,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLanguageSearchParameter * * *");
+            outputStatusMessage("Languages:");
             outputArrayOfLanguageCriterion(dataObject.getLanguages());
+            outputStatusMessage("* * * End OutputLanguageSearchParameter * * *");
         }
     }
     static void outputArrayOfLanguageSearchParameter(ArrayList<LanguageSearchParameter> dataObjects)
@@ -1582,7 +1689,6 @@ class AdInsightExampleHelper
             for (LanguageSearchParameter dataObject : dataObjects)
             {
                 outputLanguageSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1590,7 +1696,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLocationCriterion * * *");
             outputStatusMessage(String.format("LocationId: %s", dataObject.getLocationId()));
+            outputStatusMessage("* * * End OutputLocationCriterion * * *");
         }
     }
     static void outputArrayOfLocationCriterion(ArrayOfLocationCriterion dataObjects)
@@ -1600,7 +1708,6 @@ class AdInsightExampleHelper
             for (LocationCriterion dataObject : dataObjects.getLocationCriterions())
             {
                 outputLocationCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1608,7 +1715,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLocationSearchParameter * * *");
+            outputStatusMessage("Locations:");
             outputArrayOfLocationCriterion(dataObject.getLocations());
+            outputStatusMessage("* * * End OutputLocationSearchParameter * * *");
         }
     }
     static void outputArrayOfLocationSearchParameter(ArrayList<LocationSearchParameter> dataObjects)
@@ -1618,7 +1728,6 @@ class AdInsightExampleHelper
             for (LocationSearchParameter dataObject : dataObjects)
             {
                 outputLocationSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1626,9 +1735,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeKeyword * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputNegativeKeyword * * *");
         }
     }
     static void outputArrayOfNegativeKeyword(ArrayOfNegativeKeyword dataObjects)
@@ -1638,7 +1749,6 @@ class AdInsightExampleHelper
             for (NegativeKeyword dataObject : dataObjects.getNegativeKeywords())
             {
                 outputNegativeKeyword(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1646,7 +1756,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNetworkCriterion * * *");
             outputStatusMessage(String.format("Network: %s", dataObject.getNetwork()));
+            outputStatusMessage("* * * End OutputNetworkCriterion * * *");
         }
     }
     static void outputArrayOfNetworkCriterion(ArrayList<NetworkCriterion> dataObjects)
@@ -1656,7 +1768,6 @@ class AdInsightExampleHelper
             for (NetworkCriterion dataObject : dataObjects)
             {
                 outputNetworkCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1664,7 +1775,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNetworkSearchParameter * * *");
+            outputStatusMessage("Network:");
             outputNetworkCriterion(dataObject.getNetwork());
+            outputStatusMessage("* * * End OutputNetworkSearchParameter * * *");
         }
     }
     static void outputArrayOfNetworkSearchParameter(ArrayList<NetworkSearchParameter> dataObjects)
@@ -1674,7 +1788,6 @@ class AdInsightExampleHelper
             for (NetworkSearchParameter dataObject : dataObjects)
             {
                 outputNetworkSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1682,10 +1795,12 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -1695,7 +1810,6 @@ class AdInsightExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1703,6 +1817,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOpportunity * * *");
             outputStatusMessage(String.format("OpportunityKey: %s", dataObject.getOpportunityKey()));
             if(dataObject instanceof BidOpportunity)
             {
@@ -1716,6 +1831,7 @@ class AdInsightExampleHelper
             {
                 outputKeywordOpportunity((KeywordOpportunity)dataObject);
             }
+            outputStatusMessage("* * * End OutputOpportunity * * *");
         }
     }
     static void outputArrayOfOpportunity(ArrayList<Opportunity> dataObjects)
@@ -1725,7 +1841,6 @@ class AdInsightExampleHelper
             for (Opportunity dataObject : dataObjects)
             {
                 outputOpportunity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1733,7 +1848,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputQuerySearchParameter * * *");
+            outputStatusMessage("Queries:");
             outputArrayOfstring(dataObject.getQueries());
+            outputStatusMessage("* * * End OutputQuerySearchParameter * * *");
         }
     }
     static void outputArrayOfQuerySearchParameter(ArrayList<QuerySearchParameter> dataObjects)
@@ -1743,7 +1861,6 @@ class AdInsightExampleHelper
             for (QuerySearchParameter dataObject : dataObjects)
             {
                 outputQuerySearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1751,8 +1868,11 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchCountsByAttributes * * *");
             outputStatusMessage(String.format("Device: %s", dataObject.getDevice()));
+            outputStatusMessage("HistoricalSearchCounts:");
             outputArrayOfHistoricalSearchCountPeriodic(dataObject.getHistoricalSearchCounts());
+            outputStatusMessage("* * * End OutputSearchCountsByAttributes * * *");
         }
     }
     static void outputArrayOfSearchCountsByAttributes(ArrayOfSearchCountsByAttributes dataObjects)
@@ -1762,7 +1882,6 @@ class AdInsightExampleHelper
             for (SearchCountsByAttributes dataObject : dataObjects.getSearchCountsByAttributes())
             {
                 outputSearchCountsByAttributes(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1770,6 +1889,7 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchParameter * * *");
             if(dataObject instanceof AuctionSegmentSearchParameter)
             {
                 outputAuctionSegmentSearchParameter((AuctionSegmentSearchParameter)dataObject);
@@ -1830,6 +1950,7 @@ class AdInsightExampleHelper
             {
                 outputUrlSearchParameter((UrlSearchParameter)dataObject);
             }
+            outputStatusMessage("* * * End OutputSearchParameter * * *");
         }
     }
     static void outputArrayOfSearchParameter(ArrayOfSearchParameter dataObjects)
@@ -1839,7 +1960,6 @@ class AdInsightExampleHelper
             for (SearchParameter dataObject : dataObjects.getSearchParameters())
             {
                 outputSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1847,8 +1967,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchVolumeSearchParameter * * *");
             outputStatusMessage(String.format("Maximum: %s", dataObject.getMaximum()));
             outputStatusMessage(String.format("Minimum: %s", dataObject.getMinimum()));
+            outputStatusMessage("* * * End OutputSearchVolumeSearchParameter * * *");
         }
     }
     static void outputArrayOfSearchVolumeSearchParameter(ArrayList<SearchVolumeSearchParameter> dataObjects)
@@ -1858,7 +1980,6 @@ class AdInsightExampleHelper
             for (SearchVolumeSearchParameter dataObject : dataObjects)
             {
                 outputSearchVolumeSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1866,8 +1987,10 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSuggestedBidSearchParameter * * *");
             outputStatusMessage(String.format("Maximum: %s", dataObject.getMaximum()));
             outputStatusMessage(String.format("Minimum: %s", dataObject.getMinimum()));
+            outputStatusMessage("* * * End OutputSuggestedBidSearchParameter * * *");
         }
     }
     static void outputArrayOfSuggestedBidSearchParameter(ArrayList<SuggestedBidSearchParameter> dataObjects)
@@ -1877,7 +2000,6 @@ class AdInsightExampleHelper
             for (SuggestedBidSearchParameter dataObject : dataObjects)
             {
                 outputSuggestedBidSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1885,12 +2007,14 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputTrafficEstimate * * *");
             outputStatusMessage(String.format("AverageCpc: %s", dataObject.getAverageCpc()));
             outputStatusMessage(String.format("AveragePosition: %s", dataObject.getAveragePosition()));
             outputStatusMessage(String.format("Clicks: %s", dataObject.getClicks()));
             outputStatusMessage(String.format("Ctr: %s", dataObject.getCtr()));
             outputStatusMessage(String.format("Impressions: %s", dataObject.getImpressions()));
             outputStatusMessage(String.format("TotalCost: %s", dataObject.getTotalCost()));
+            outputStatusMessage("* * * End OutputTrafficEstimate * * *");
         }
     }
     static void outputArrayOfTrafficEstimate(ArrayList<TrafficEstimate> dataObjects)
@@ -1900,7 +2024,6 @@ class AdInsightExampleHelper
             for (TrafficEstimate dataObject : dataObjects)
             {
                 outputTrafficEstimate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1908,7 +2031,9 @@ class AdInsightExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUrlSearchParameter * * *");
             outputStatusMessage(String.format("Url: %s", dataObject.getUrl()));
+            outputStatusMessage("* * * End OutputUrlSearchParameter * * *");
         }
     }
     static void outputArrayOfUrlSearchParameter(ArrayList<UrlSearchParameter> dataObjects)
@@ -1918,7 +2043,6 @@ class AdInsightExampleHelper
             for (UrlSearchParameter dataObject : dataObjects)
             {
                 outputUrlSearchParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2221,7 +2345,7 @@ class AdInsightExampleHelper
         {
             for (java.lang.String item : items.getStrings())
             {
-                outputStatusMessage(String.format("Value of the string: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -2231,7 +2355,7 @@ class AdInsightExampleHelper
         {
             for (java.lang.Long item : items.getLongs())
             {
-                outputStatusMessage(String.format("Value of the long: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }

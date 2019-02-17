@@ -18,9 +18,12 @@ public class BulkRemarketingLists extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             ArrayOfDownloadEntity entities = new ArrayOfDownloadEntity();
@@ -34,10 +37,20 @@ public class BulkRemarketingLists extends BulkExampleBase {
             downloadParameters.setOverwriteResultFile(true);
             downloadParameters.setLastSyncTimeInUTC(null);
 
-            // Download all remarketing lists across all ad groups in the account.
-            File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
-            outputStatusMessage("Downloaded all remarketing lists that the current user can associate with ad groups.\n"); 
-            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
+            outputStatusMessage("-----\nDownloading all remarketing lists that the current user can associate with ad groups.");
+            
+            File bulkFilePath = BulkServiceManager.downloadFileAsync(
+                    downloadParameters, 
+                    null, 
+                    null).get();
+            
+            Reader = new BulkFileReader(
+                    bulkFilePath, 
+                    ResultFileType.FULL_DOWNLOAD, 
+                    BulkDownloadFileType);
+            
+            outputStatusMessage("Download results:");
+            
             downloadEntities = Reader.getEntities();
 
             List<BulkRemarketingList> remarketingListResults = new ArrayList<BulkRemarketingList>();
@@ -48,64 +61,52 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     outputBulkRemarketingLists(Arrays.asList((BulkRemarketingList) entity) );
                 }
             }
+            
             downloadEntities.close();
             Reader.close();
 
             // You must already have at least one remarketing list. 
+            
             if (remarketingListResults.size() < 1)
             {
                 return;
             }
+            
+            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 
-
-            // Prepare the bulk entities that you want to upload. 
-
+            // Add an ad group in a campaign. The ad group will later be associated with remarketing lists.
+            
             BulkCampaign bulkCampaign = new BulkCampaign();
             Campaign campaign = new Campaign();
-            // When adding an entity using the Campaign Management service, the Id cannot be set. In the context of a BulkCampaign, the Id is optional  
-            // and may be used as a negative reference key during bulk upload. For example the same negative reference key for the campaign Id  
-            // will be used when adding new ad groups to this new campaign, or when associating ad extensions with the campaign. 
-            campaign.setId(campaignIdKey);
-            campaign.setName("Summer Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Summer shoes line.");
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
+            campaign.setId(campaignIdKey);
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setStatus(CampaignStatus.PAUSED);
-
-            EnhancedCpcBiddingScheme enhancedCpcBiddingScheme = new EnhancedCpcBiddingScheme();
-            enhancedCpcBiddingScheme.setType("EnhancedCpcBiddingScheme");
-            campaign.setBiddingScheme(enhancedCpcBiddingScheme);
             bulkCampaign.setCampaign(campaign);
+
+            uploadEntities.add(bulkCampaign);
 
             BulkAdGroup bulkAdGroup = new BulkAdGroup();
             bulkAdGroup.setCampaignId(campaignIdKey);
-            // ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
-            // is not used or stored by the server; it is simply copied from the uploaded record to the corresponding result record. 
-            // Note: This bulk file Client Id is not related to an application Client Id for OAuth. 
-            bulkAdGroup.setClientId("YourClientIdGoesHere");
-
             AdGroup adGroup = new AdGroup();
-            // When adding an entity using the Campaign Management service, the Id cannot be set. In the context of a BulkAdGroup,  
-            // the Id is optional and may be used as a negative reference key during bulk upload. 
-            // For example the same negative value set for the ad group Id will be used when associating this new ad group with a 
-            // new ad group remarketing list association in the BulkAdGroupRemarketingList object below. 
+            Bid CpcBid = new Bid();
+            CpcBid.setAmount(0.09);
+            adGroup.setCpcBid(CpcBid);
             adGroup.setId(adGroupIdKey);
-            adGroup.setName("Women's Red Shoes");
-            adGroup.setStartDate(null);
+            adGroup.setName("Women's Red Shoe Sale");
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
             adGroup.getEndDate().setMonth(12);
             adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
-            Bid CpcBid = new Bid();
-            CpcBid.setAmount(0.09);
-            adGroup.setCpcBid(CpcBid);
-            adGroup.setLanguage("English");
-
-            // Applicable for all audiences that are associated with this ad group. Set TargetAndBid to True 
-            // if you want to show ads only to people included in the remarketing list, with the option to change
-            // the bid amount. 
+            adGroup.setStartDate(null);            
+            // Applicable for all remarketing lists that are associated with this ad group. TargetAndBid indicates 
+            // that you want to show ads only to people included in the remarketing list, with the option to change
+            // the bid amount. Ads in this ad group will only show to people included in the remarketing list.
             ArrayOfSetting settings = new ArrayOfSetting();
             TargetSetting targetSetting = new TargetSetting();
             ArrayOfTargetSettingDetail targetSettingDetails = new ArrayOfTargetSettingDetail();
@@ -116,21 +117,17 @@ public class BulkRemarketingLists extends BulkExampleBase {
             targetSetting.setDetails(targetSettingDetails);
             settings.getSettings().add(targetSetting);
             adGroup.setSettings(settings);
-
             bulkAdGroup.setAdGroup(adGroup);
-
-
-            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
-            uploadEntities.add(bulkCampaign);
+            
             uploadEntities.add(bulkAdGroup);
 
-            // This example associates all of the remarketing lists with the new ad group.
+            // For example, associate all of the remarketing lists with the new ad group.
 
             for (BulkRemarketingList bulkRemarketingList : remarketingListResults) {
                 if(bulkRemarketingList.getRemarketingList() != null && bulkRemarketingList.getRemarketingList().getId() != null)
                 {
                     BulkAdGroupRemarketingListAssociation bulkAdGroupRemarketingListAssociation = new BulkAdGroupRemarketingListAssociation();
-                    bulkAdGroupRemarketingListAssociation.setClientId("MyBulkAdGroupRemarketingList " + bulkRemarketingList.getRemarketingList().getId());
+                    bulkAdGroupRemarketingListAssociation.setClientId("MyBulkAdGroupRemarketingListAssociation " + bulkRemarketingList.getRemarketingList().getId());
                     BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
                     biddableAdGroupCriterion.setAdGroupId(adGroupIdKey);
                     AudienceCriterion audienceCriterion = new AudienceCriterion();
@@ -140,7 +137,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     audienceCriterion.setAudienceType(audienceType);
                     biddableAdGroupCriterion.setCriterion(audienceCriterion);
                     BidMultiplier bidMultiplier = new BidMultiplier();
-                    bidMultiplier.setMultiplier(90D);
+                    bidMultiplier.setMultiplier(20D);
                     biddableAdGroupCriterion.setCriterionBid(bidMultiplier);
                     biddableAdGroupCriterion.setStatus(AdGroupCriterionStatus.PAUSED);
                     bulkAdGroupRemarketingListAssociation.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
@@ -149,13 +146,15 @@ public class BulkRemarketingLists extends BulkExampleBase {
                 }
             }
 
-            outputStatusMessage("\nAdding campaign, ad group, and ad group remarketing list associations...\n");
+            outputStatusMessage("\nAdding campaign, ad group, and ad group remarketing list associations...");
 
             // Upload and write the output
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
 
+            outputStatusMessage("Upload results:");
+            
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
 
             for (BulkEntity entity : downloadEntities) {
@@ -170,47 +169,42 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     outputBulkAdGroupRemarketingListAssociations(Arrays.asList((BulkAdGroupRemarketingListAssociation) entity) );
                 }
             }
+            
             downloadEntities.close();
             Reader.close();
 
-            // Delete the campaign, ad group, and ad group remarketing list associations that were previously added.
-            // The remarketing lists will not be deleted. 
-            // You should remove this region if you want to view the added entities in the 
-            // Bing Ads web application or another tool.
-
-            // You must set the Id field to the corresponding entity identifier, and the Status field to Deleted.
-
-            // When you delete a BulkCampaign, the dependent entities such as BulkAdGroup and BulkAdGroupRemarketingList 
-            // are deleted without being specified explicitly.   
+            // Delete the campaign and everything it contains e.g., ad groups and ads.   
 
             uploadEntities = new ArrayList<BulkEntity>();
-
+            
             for (BulkCampaign campaignResult : campaignResults){
                 campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
                 uploadEntities.add(campaignResult);
             }
 
             // Upload and write the output
+            
+            outputStatusMessage("-----\nDeleting the campaign and everything it contains e.g., ad groups and ads...");
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
+            
+            outputStatusMessage("Upload results:");
 
             for (BulkEntity entity : downloadEntities) {
                 if (entity instanceof BulkCampaign) {
-                    campaignResults.add((BulkCampaign) entity);
                     outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
                 }
             }
+            
             downloadEntities.close();
             Reader.close();
-
-            outputStatusMessage("Program execution completed\n"); 
-
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -218,11 +212,9 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-
-        System.exit(0);
     }
 }

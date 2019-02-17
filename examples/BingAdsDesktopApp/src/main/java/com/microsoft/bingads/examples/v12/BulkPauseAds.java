@@ -1,14 +1,14 @@
 package com.microsoft.bingads.examples.v12;
 
+import com.microsoft.bingads.v12.bulk.entities.*;
+import com.microsoft.bingads.v12.bulk.*;
+import com.microsoft.bingads.v12.campaignmanagement.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
 
 public class BulkPauseAds extends BulkExampleBase {
 	
@@ -17,9 +17,12 @@ public class BulkPauseAds extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             // Complete a full download of all ads in the account. 
@@ -32,9 +35,18 @@ public class BulkPauseAds extends BulkExampleBase {
             downloadParameters.setFileType(DownloadFileType.CSV);
 
             // Download all ads in the account.
-            File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
-            outputStatusMessage("Downloaded all ads in the account.\n"); 
-            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
+            File bulkFilePath = BulkServiceManager.downloadFileAsync(
+                    downloadParameters, 
+                    null, 
+                    null).get();
+            
+            outputStatusMessage("-----\nDownloaded all ads in the account."); 
+            
+            Reader = new BulkFileReader(
+                    bulkFilePath, 
+                    ResultFileType.FULL_DOWNLOAD, 
+                    BulkDownloadFileType);
+            
             downloadEntities = Reader.getEntities();
 
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
@@ -53,7 +65,7 @@ public class BulkPauseAds extends BulkExampleBase {
             Reader.close(); 
 
             if (!uploadEntities.isEmpty()){
-            outputStatusMessage("Changed local status of all Active text ads to Paused. Ready for upload.\n"); 
+            outputStatusMessage("-----\nChanged local status of all Active text ads to Paused. Uploading..."); 
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
@@ -66,16 +78,14 @@ public class BulkPauseAds extends BulkExampleBase {
             Reader.close();
             }
             else{
-                outputStatusMessage("All text ads are already Paused. \n"); 
+                outputStatusMessage("-----\nAll text ads are already Paused."); 
             }
-
-            outputStatusMessage("Program execution completed\n"); 
-
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -83,11 +93,9 @@ public class BulkPauseAds extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-
-        System.exit(0);
-    }		
+    }
 }

@@ -1,5 +1,8 @@
 package com.microsoft.bingads.examples.v12;
 
+import com.microsoft.bingads.v12.bulk.entities.*;
+import com.microsoft.bingads.v12.bulk.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,10 +12,6 @@ import java.util.concurrent.TimeUnit;
 import java.net.URISyntaxException;
 import java.util.concurrent.TimeoutException;
 
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-
 public class BulkServiceManagerDemo extends BulkExampleBase {
     
     public static void main(String[] args) {
@@ -20,36 +19,20 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
-
-            // In this example we'll upload a new campaign and then delete it. 
-
-            List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
-            uploadEntities.add(getExampleBulkCampaign());
-
-            outputStatusMessage("Uploading a campaign with UploadEntitiesAsync . . .");
-            List<BulkEntity> resultEntities = uploadEntitiesAsync(uploadEntities);
-
-            uploadEntities = new ArrayList<BulkEntity>();
-            for(BulkEntity entity : resultEntities)
-            {
-                if (entity instanceof BulkCampaign){
-                    ((BulkCampaign)entity).getCampaign().setStatus(CampaignStatus.DELETED);
-                    uploadEntities.add(entity);
-                }
-            }
-
-            outputStatusMessage("Deleting a campaign with UploadEntitiesAsync . . .");
-            resultEntities = uploadEntitiesAsync(uploadEntities);
-
-            // In this example we will download all ads and keywords in the account.
+            
+            // Download all campaigns, ad groups, and ads in the account.
 
             ArrayOfDownloadEntity entities = new ArrayOfDownloadEntity();
-            entities.getDownloadEntities().add(DownloadEntity.ADS);
+            entities.getDownloadEntities().add(DownloadEntity.CAMPAIGNS);
             entities.getDownloadEntities().add(DownloadEntity.AD_GROUPS);
+            entities.getDownloadEntities().add(DownloadEntity.ADS);
 
             // Optionally you can request quality score data for the requested bulk records.
 
@@ -78,28 +61,27 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
             submitDownloadParameters.setFileType(DownloadFileType.CSV);
             submitDownloadParameters.setLastSyncTimeInUTC(null); 
 
-
             // Option A - Background Completion with BulkServiceManager
             // You can submit a download or upload request and the BulkServiceManager will automatically 
             // return results. The BulkServiceManager abstracts the details of checking for result file 
             // completion, and you don't have to write any code for results polling.
 
-            outputStatusMessage("Awaiting Background Completion . . .");
+            outputStatusMessage("-----\nAwaiting Background Completion...");
             backgroundCompletionAsync(downloadParameters);
 
             // Alternatively we can use downloadEntitiesAsync if we want to work with the entities in memory.
             // If you enable this option the result file from BackgroundCompletionAsync will also be deleted
             // if written to the same working directory.
-            outputStatusMessage("Awaiting Background Completion with DownloadEntitiesAsync . . .");
-            resultEntities = downloadEntitiesAsync(downloadParameters);
+            outputStatusMessage("-----\nAwaiting Background Completion with DownloadEntitiesAsync...");
+            List<BulkEntity> resultEntities = downloadEntitiesAsync(downloadParameters);
 
             // Option B - Submit and Download with BulkServiceManager
             // Submit the download request and then use the BulkDownloadOperation result to 
             // track status until the download is complete e.g. either using
             // trackAsync or getStatusAsync.
 
-            outputStatusMessage("Awaiting Submit and Download . . .");
-            submitAndDownloadAsync(submitDownloadParameters);
+            outputStatusMessage("-----\nAwaiting Submit and Download...");
+            submitTrackDownloadAsync(submitDownloadParameters);
 
             // Option C - Download Results with BulkServiceManager
             // If for any reason you have to resume from a previous application state, 
@@ -114,16 +96,14 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
             // Given the request ID above, you can resume the workflow and download the bulk file.
             // The download request identifier is valid for two days. 
             // If you do not download the bulk file within two days, you must request it again.
-            outputStatusMessage("Awaiting Download Results . . .");
+            outputStatusMessage("-----\nAwaiting Download Results...");
             downloadResultsAsync(requestId);
-
-            outputStatusMessage("Program execution completed\n"); 
-
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -131,12 +111,10 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-
-        System.exit(0);
     }
     
     // Writes the specified entities to a local temporary file prior to upload.
@@ -170,7 +148,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         // The cleanupTempFiles method removes all files (not sub-directories) within the working directory, 
         // whether or not the files were created by this BulkServiceManager instance. 
         
-        BulkServiceManager.cleanupTempFiles();
+        //BulkServiceManager.cleanupTempFiles();
         
         return resultEntities;
     }
@@ -199,7 +177,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         // The cleanupTempFiles method removes all files (not sub-directories) within the working directory, 
         // whether or not the files were created by this BulkServiceManager instance. 
         
-        BulkServiceManager.cleanupTempFiles();
+        //BulkServiceManager.cleanupTempFiles();
         
         return resultEntities;
     }
@@ -214,13 +192,12 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
     	// You may optionally cancel the downloadFileAsync operation after a specified time interval. 
         File resultFile = BulkServiceManager.downloadFileAsync(downloadParameters, null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
 
-        outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
+        outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
     }
     
     // Submit the download request and then use the BulkDownloadOperation result to 
-    // track status until the download is complete e.g. either using
-    // trackAsync or getStatusAsync.
-    private static void submitAndDownloadAsync(SubmitDownloadParameters submitDownloadParameters) 
+    // track status until the download is complete using trackAsync.
+    private static void submitTrackDownloadAsync(SubmitDownloadParameters submitDownloadParameters) 
         throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException 
     {
         BulkDownloadOperation bulkDownloadOperation = BulkServiceManager.submitDownloadAsync(submitDownloadParameters, null).get();
@@ -228,21 +205,35 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
         // You may optionally cancel the trackAsync operation after a specified time interval.
         BulkOperationStatus<DownloadStatus> downloadStatus = 
             bulkDownloadOperation.trackAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
+        
+        File resultFile = bulkDownloadOperation.downloadResultFileAsync(
+            new File(FileDirectory),
+            ResultFileName,
+            true, // Set this value to true if you want to decompress the ZIP file.
+            true,  // Set this value true if you want to overwrite the named file.
+            null).get();
 
-        // You can use trackAsync to poll until complete as shown above, 
-        // or use custom polling logic with getStatusAsync as shown below.
+        outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
+    }
+    
+    // Submit the download request and then use the BulkDownloadOperation result to 
+    // track status until the download is complete using getStatusAsync.
+    private static void submitPollDownloadAsync(SubmitDownloadParameters submitDownloadParameters) 
+        throws ExecutionException, InterruptedException, URISyntaxException, IOException, TimeoutException 
+    {
+        BulkDownloadOperation bulkDownloadOperation = BulkServiceManager.submitDownloadAsync(submitDownloadParameters, null).get();
 
-//	BulkOperationStatus<DownloadStatus> downloadStatus;
-//		
-//	for (int i = 0; i < 24; i++)
-//	{
-//	    Thread.sleep(5000);
-//	    downloadStatus = bulkDownloadOperation.getStatusAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
-//	    if (downloadStatus.getStatus() == DownloadStatus.COMPLETED)
-//	    {
-//	        break;
-//	    }
-//	}
+	BulkOperationStatus<DownloadStatus> downloadStatus;
+		
+	for (int i = 0; i < 24; i++)
+	{
+	    Thread.sleep(5000);
+	    downloadStatus = bulkDownloadOperation.getStatusAsync(null).get(TimeoutInMilliseconds, TimeUnit.MILLISECONDS);
+	    if (downloadStatus.getStatus() == DownloadStatus.COMPLETED)
+	    {
+	        break;
+	    }
+	}
 
         File resultFile = bulkDownloadOperation.downloadResultFileAsync(
             new File(FileDirectory),
@@ -251,7 +242,7 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
             true,  // Set this value true if you want to overwrite the named file.
             null).get();
 
-        outputStatusMessage(String.format("Download result file: %s\n", resultFile.getName()));
+        outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
     }
     
     // If for any reason you have to resume from a previous application state, 
@@ -282,6 +273,6 @@ public class BulkServiceManagerDemo extends BulkExampleBase {
 
         outputStatusMessage(String.format("Download result file: %s", resultFile.getName()));
         outputStatusMessage(String.format("Status: %s", downloadStatus.getStatus()));
-        outputStatusMessage(String.format("TrackingId: %s\n", downloadStatus.getTrackingId()));
+        outputStatusMessage(String.format("TrackingId: %s", downloadStatus.getTrackingId()));
     }
 }

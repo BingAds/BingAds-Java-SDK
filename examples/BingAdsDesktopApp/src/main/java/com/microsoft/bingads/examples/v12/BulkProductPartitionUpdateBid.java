@@ -1,14 +1,14 @@
 package com.microsoft.bingads.examples.v12;
 
+import com.microsoft.bingads.v12.bulk.entities.*;
+import com.microsoft.bingads.v12.bulk.*;
+import com.microsoft.bingads.v12.campaignmanagement.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
 
 public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 	        
@@ -18,9 +18,12 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
 
         try {
             
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             ArrayOfDownloadEntity entities = new ArrayOfDownloadEntity();
@@ -35,19 +38,31 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
             downloadParameters.setLastSyncTimeInUTC(null);
 
             // Download all product partitions across all ad groups in the account.
-            File bulkFilePath = BulkServiceManager.downloadFileAsync(downloadParameters, null, null).get();
-            outputStatusMessage("Downloaded all product partitions across all ad groups in the account.\n"); 
-            Reader = new BulkFileReader(bulkFilePath, ResultFileType.FULL_DOWNLOAD, BulkDownloadFileType);
+            
+            outputStatusMessage("-----\nDownloading all product partitions across all ad groups in the account..."); 
+            
+            File bulkFilePath = BulkServiceManager.downloadFileAsync(
+                    downloadParameters, 
+                    null, 
+                    null).get(); 
+            
+            Reader = new BulkFileReader(
+                    bulkFilePath, 
+                    ResultFileType.FULL_DOWNLOAD, 
+                    BulkDownloadFileType);
+            
             downloadEntities = Reader.getEntities();
 
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 
             // Within the downloaded records, find all product partition leaf nodes that have bids.
+            
             for (BulkEntity entity : downloadEntities) 
             {
                 if (entity instanceof BulkAdGroupProductPartition &&
-                            ((BulkAdGroupProductPartition)entity).getAdGroupCriterion() instanceof BiddableAdGroupCriterion &&
-                            ((ProductPartition)(((BulkAdGroupProductPartition)entity).getAdGroupCriterion().getCriterion())).getPartitionType() == ProductPartitionType.UNIT) {
+                    ((BulkAdGroupProductPartition)entity).getAdGroupCriterion() instanceof BiddableAdGroupCriterion &&
+                    ((ProductPartition)(((BulkAdGroupProductPartition)entity).getAdGroupCriterion().getCriterion())).getPartitionType() == ProductPartitionType.UNIT) 
+                {
                     AdGroupCriterion adGroupCriterion = ((BulkAdGroupProductPartition)entity).getAdGroupCriterion();
                     // Increase all bids by some predetermined amount or percentage. 
                     // Implement your own logic to update bids by varying amounts.
@@ -79,14 +94,12 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
             {
                 outputStatusMessage("No product partitions in account. \n"); 
             }
-
-            outputStatusMessage("Program execution completed\n"); 
-
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -94,11 +107,9 @@ public class BulkProductPartitionUpdateBid extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-
-        System.exit(0);
     }
 }

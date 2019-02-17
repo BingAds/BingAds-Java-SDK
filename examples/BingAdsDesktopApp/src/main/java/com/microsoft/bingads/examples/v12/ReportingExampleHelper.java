@@ -31,10 +31,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("* * * End OutputAccountPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfAccountPerformanceReportFilter(ArrayList<AccountPerformanceReportFilter> dataObjects)
@@ -44,7 +46,6 @@ class ReportingExampleHelper
             for (AccountPerformanceReportFilter dataObject : dataObjects)
             {
                 outputAccountPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -52,11 +53,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAccountPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAccountPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAccountPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfAccountPerformanceReportRequest(ArrayList<AccountPerformanceReportRequest> dataObjects)
@@ -66,7 +73,6 @@ class ReportingExampleHelper
             for (AccountPerformanceReportRequest dataObject : dataObjects)
             {
                 outputAccountPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -74,7 +80,10 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountReportScope * * *");
+            outputStatusMessage("AccountIds:");
             outputArrayOflong(dataObject.getAccountIds());
+            outputStatusMessage("* * * End OutputAccountReportScope * * *");
         }
     }
     static void outputArrayOfAccountReportScope(ArrayList<AccountReportScope> dataObjects)
@@ -84,7 +93,6 @@ class ReportingExampleHelper
             for (AccountReportScope dataObject : dataObjects)
             {
                 outputAccountReportScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -92,9 +100,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountThroughAdGroupReportScope * * *");
+            outputStatusMessage("AccountIds:");
             outputArrayOflong(dataObject.getAccountIds());
+            outputStatusMessage("AdGroups:");
             outputArrayOfAdGroupReportScope(dataObject.getAdGroups());
+            outputStatusMessage("Campaigns:");
             outputArrayOfCampaignReportScope(dataObject.getCampaigns());
+            outputStatusMessage("* * * End OutputAccountThroughAdGroupReportScope * * *");
         }
     }
     static void outputArrayOfAccountThroughAdGroupReportScope(ArrayList<AccountThroughAdGroupReportScope> dataObjects)
@@ -104,7 +117,6 @@ class ReportingExampleHelper
             for (AccountThroughAdGroupReportScope dataObject : dataObjects)
             {
                 outputAccountThroughAdGroupReportScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -112,8 +124,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountThroughCampaignReportScope * * *");
+            outputStatusMessage("AccountIds:");
             outputArrayOflong(dataObject.getAccountIds());
+            outputStatusMessage("Campaigns:");
             outputArrayOfCampaignReportScope(dataObject.getCampaigns());
+            outputStatusMessage("* * * End OutputAccountThroughCampaignReportScope * * *");
         }
     }
     static void outputArrayOfAccountThroughCampaignReportScope(ArrayList<AccountThroughCampaignReportScope> dataObjects)
@@ -123,7 +139,6 @@ class ReportingExampleHelper
             for (AccountThroughCampaignReportScope dataObject : dataObjects)
             {
                 outputAccountThroughCampaignReportScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -131,10 +146,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -144,7 +161,6 @@ class ReportingExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -152,7 +168,10 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -162,7 +181,6 @@ class ReportingExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -170,6 +188,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdDynamicTextPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
@@ -177,7 +196,9 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("AdType: %s", dataObject.getAdType()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputAdDynamicTextPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfAdDynamicTextPerformanceReportFilter(ArrayList<AdDynamicTextPerformanceReportFilter> dataObjects)
@@ -187,7 +208,6 @@ class ReportingExampleHelper
             for (AdDynamicTextPerformanceReportFilter dataObject : dataObjects)
             {
                 outputAdDynamicTextPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -195,11 +215,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdDynamicTextPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdDynamicTextPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdDynamicTextPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdDynamicTextPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfAdDynamicTextPerformanceReportRequest(ArrayList<AdDynamicTextPerformanceReportRequest> dataObjects)
@@ -209,7 +235,6 @@ class ReportingExampleHelper
             for (AdDynamicTextPerformanceReportRequest dataObject : dataObjects)
             {
                 outputAdDynamicTextPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -217,12 +242,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionByAdReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("* * * End OutputAdExtensionByAdReportFilter * * *");
         }
     }
     static void outputArrayOfAdExtensionByAdReportFilter(ArrayList<AdExtensionByAdReportFilter> dataObjects)
@@ -232,7 +259,6 @@ class ReportingExampleHelper
             for (AdExtensionByAdReportFilter dataObject : dataObjects)
             {
                 outputAdExtensionByAdReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -240,11 +266,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionByAdReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdExtensionByAdReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdExtensionByAdReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdExtensionByAdReportRequest * * *");
         }
     }
     static void outputArrayOfAdExtensionByAdReportRequest(ArrayList<AdExtensionByAdReportRequest> dataObjects)
@@ -254,7 +286,6 @@ class ReportingExampleHelper
             for (AdExtensionByAdReportRequest dataObject : dataObjects)
             {
                 outputAdExtensionByAdReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -262,12 +293,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionByKeywordReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("* * * End OutputAdExtensionByKeywordReportFilter * * *");
         }
     }
     static void outputArrayOfAdExtensionByKeywordReportFilter(ArrayList<AdExtensionByKeywordReportFilter> dataObjects)
@@ -277,7 +310,6 @@ class ReportingExampleHelper
             for (AdExtensionByKeywordReportFilter dataObject : dataObjects)
             {
                 outputAdExtensionByKeywordReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -285,11 +317,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionByKeywordReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdExtensionByKeywordReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdExtensionByKeywordReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdExtensionByKeywordReportRequest * * *");
         }
     }
     static void outputArrayOfAdExtensionByKeywordReportRequest(ArrayList<AdExtensionByKeywordReportRequest> dataObjects)
@@ -299,7 +337,6 @@ class ReportingExampleHelper
             for (AdExtensionByKeywordReportRequest dataObject : dataObjects)
             {
                 outputAdExtensionByKeywordReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -307,12 +344,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionDetailReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("* * * End OutputAdExtensionDetailReportFilter * * *");
         }
     }
     static void outputArrayOfAdExtensionDetailReportFilter(ArrayList<AdExtensionDetailReportFilter> dataObjects)
@@ -322,7 +361,6 @@ class ReportingExampleHelper
             for (AdExtensionDetailReportFilter dataObject : dataObjects)
             {
                 outputAdExtensionDetailReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -330,11 +368,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionDetailReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdExtensionDetailReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdExtensionDetailReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdExtensionDetailReportRequest * * *");
         }
     }
     static void outputArrayOfAdExtensionDetailReportRequest(ArrayList<AdExtensionDetailReportRequest> dataObjects)
@@ -344,7 +388,6 @@ class ReportingExampleHelper
             for (AdExtensionDetailReportRequest dataObject : dataObjects)
             {
                 outputAdExtensionDetailReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -352,13 +395,16 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputAdGroupPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfAdGroupPerformanceReportFilter(ArrayList<AdGroupPerformanceReportFilter> dataObjects)
@@ -368,7 +414,6 @@ class ReportingExampleHelper
             for (AdGroupPerformanceReportFilter dataObject : dataObjects)
             {
                 outputAdGroupPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -376,11 +421,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdGroupPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdGroupPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdGroupPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfAdGroupPerformanceReportRequest(ArrayList<AdGroupPerformanceReportRequest> dataObjects)
@@ -390,7 +441,6 @@ class ReportingExampleHelper
             for (AdGroupPerformanceReportRequest dataObject : dataObjects)
             {
                 outputAdGroupPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -398,9 +448,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupReportScope * * *");
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("* * * End OutputAdGroupReportScope * * *");
         }
     }
     static void outputArrayOfAdGroupReportScope(ArrayOfAdGroupReportScope dataObjects)
@@ -410,7 +462,6 @@ class ReportingExampleHelper
             for (AdGroupReportScope dataObject : dataObjects.getAdGroupReportScopes())
             {
                 outputAdGroupReportScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -418,6 +469,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
@@ -425,7 +477,9 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("AdType: %s", dataObject.getAdType()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputAdPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfAdPerformanceReportFilter(ArrayList<AdPerformanceReportFilter> dataObjects)
@@ -435,7 +489,6 @@ class ReportingExampleHelper
             for (AdPerformanceReportFilter dataObject : dataObjects)
             {
                 outputAdPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -443,11 +496,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAdPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAdPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAdPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfAdPerformanceReportRequest(ArrayList<AdPerformanceReportRequest> dataObjects)
@@ -457,7 +516,6 @@ class ReportingExampleHelper
             for (AdPerformanceReportRequest dataObject : dataObjects)
             {
                 outputAdPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -465,11 +523,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAgeGenderAudienceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputAgeGenderAudienceReportFilter * * *");
         }
     }
     static void outputArrayOfAgeGenderAudienceReportFilter(ArrayList<AgeGenderAudienceReportFilter> dataObjects)
@@ -479,7 +540,6 @@ class ReportingExampleHelper
             for (AgeGenderAudienceReportFilter dataObject : dataObjects)
             {
                 outputAgeGenderAudienceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -487,11 +547,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAgeGenderAudienceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAgeGenderAudienceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAgeGenderAudienceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAgeGenderAudienceReportRequest * * *");
         }
     }
     static void outputArrayOfAgeGenderAudienceReportRequest(ArrayList<AgeGenderAudienceReportRequest> dataObjects)
@@ -501,7 +567,6 @@ class ReportingExampleHelper
             for (AgeGenderAudienceReportRequest dataObject : dataObjects)
             {
                 outputAgeGenderAudienceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -509,11 +574,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAgeGenderDemographicReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputAgeGenderDemographicReportFilter * * *");
         }
     }
     static void outputArrayOfAgeGenderDemographicReportFilter(ArrayList<AgeGenderDemographicReportFilter> dataObjects)
@@ -523,7 +591,6 @@ class ReportingExampleHelper
             for (AgeGenderDemographicReportFilter dataObject : dataObjects)
             {
                 outputAgeGenderDemographicReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -531,11 +598,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAgeGenderDemographicReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAgeGenderDemographicReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAgeGenderDemographicReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAgeGenderDemographicReportRequest * * *");
         }
     }
     static void outputArrayOfAgeGenderDemographicReportRequest(ArrayList<AgeGenderDemographicReportRequest> dataObjects)
@@ -545,7 +618,6 @@ class ReportingExampleHelper
             for (AgeGenderDemographicReportRequest dataObject : dataObjects)
             {
                 outputAgeGenderDemographicReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -553,8 +625,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFaultDetail * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputApiFaultDetail * * *");
         }
     }
     static void outputArrayOfApiFaultDetail(ArrayList<ApiFaultDetail> dataObjects)
@@ -564,7 +640,6 @@ class ReportingExampleHelper
             for (ApiFaultDetail dataObject : dataObjects)
             {
                 outputApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -572,6 +647,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -581,6 +657,7 @@ class ReportingExampleHelper
             {
                 outputApiFaultDetail((ApiFaultDetail)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -590,7 +667,6 @@ class ReportingExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -598,9 +674,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAudiencePerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("* * * End OutputAudiencePerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfAudiencePerformanceReportFilter(ArrayList<AudiencePerformanceReportFilter> dataObjects)
@@ -610,7 +688,6 @@ class ReportingExampleHelper
             for (AudiencePerformanceReportFilter dataObject : dataObjects)
             {
                 outputAudiencePerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -618,11 +695,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAudiencePerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfAudiencePerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputAudiencePerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputAudiencePerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfAudiencePerformanceReportRequest(ArrayList<AudiencePerformanceReportRequest> dataObjects)
@@ -632,7 +715,6 @@ class ReportingExampleHelper
             for (AudiencePerformanceReportRequest dataObject : dataObjects)
             {
                 outputAudiencePerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -640,11 +722,13 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputBatchError * * *");
         }
     }
     static void outputArrayOfBatchError(ArrayOfBatchError dataObjects)
@@ -654,7 +738,6 @@ class ReportingExampleHelper
             for (BatchError dataObject : dataObjects.getBatchErrors())
             {
                 outputBatchError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -662,9 +745,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBudgetSummaryReportRequest * * *");
+            outputStatusMessage("Columns:");
             outputArrayOfBudgetSummaryReportColumn(dataObject.getColumns());
+            outputStatusMessage("Scope:");
             outputAccountThroughCampaignReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputBudgetSummaryReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputBudgetSummaryReportRequest * * *");
         }
     }
     static void outputArrayOfBudgetSummaryReportRequest(ArrayList<BudgetSummaryReportRequest> dataObjects)
@@ -674,7 +762,6 @@ class ReportingExampleHelper
             for (BudgetSummaryReportRequest dataObject : dataObjects)
             {
                 outputBudgetSummaryReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -682,10 +769,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBudgetSummaryReportTime * * *");
+            outputStatusMessage("CustomDateRangeEnd:");
             outputDate(dataObject.getCustomDateRangeEnd());
+            outputStatusMessage("CustomDateRangeStart:");
             outputDate(dataObject.getCustomDateRangeStart());
             outputStatusMessage(String.format("PredefinedTime: %s", dataObject.getPredefinedTime()));
             outputStatusMessage(String.format("ReportTimeZone: %s", dataObject.getReportTimeZone()));
+            outputStatusMessage("* * * End OutputBudgetSummaryReportTime * * *");
         }
     }
     static void outputArrayOfBudgetSummaryReportTime(ArrayList<BudgetSummaryReportTime> dataObjects)
@@ -695,7 +786,6 @@ class ReportingExampleHelper
             for (BudgetSummaryReportTime dataObject : dataObjects)
             {
                 outputBudgetSummaryReportTime(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -703,9 +793,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCallDetailReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("* * * End OutputCallDetailReportFilter * * *");
         }
     }
     static void outputArrayOfCallDetailReportFilter(ArrayList<CallDetailReportFilter> dataObjects)
@@ -715,7 +807,6 @@ class ReportingExampleHelper
             for (CallDetailReportFilter dataObject : dataObjects)
             {
                 outputCallDetailReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -723,11 +814,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCallDetailReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfCallDetailReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputCallDetailReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputCallDetailReportRequest * * *");
         }
     }
     static void outputArrayOfCallDetailReportRequest(ArrayList<CallDetailReportRequest> dataObjects)
@@ -737,7 +834,6 @@ class ReportingExampleHelper
             for (CallDetailReportRequest dataObject : dataObjects)
             {
                 outputCallDetailReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -745,11 +841,13 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputCampaignPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfCampaignPerformanceReportFilter(ArrayList<CampaignPerformanceReportFilter> dataObjects)
@@ -759,7 +857,6 @@ class ReportingExampleHelper
             for (CampaignPerformanceReportFilter dataObject : dataObjects)
             {
                 outputCampaignPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -767,11 +864,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfCampaignPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputCampaignPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughCampaignReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputCampaignPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfCampaignPerformanceReportRequest(ArrayList<CampaignPerformanceReportRequest> dataObjects)
@@ -781,7 +884,6 @@ class ReportingExampleHelper
             for (CampaignPerformanceReportRequest dataObject : dataObjects)
             {
                 outputCampaignPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -789,8 +891,10 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignReportScope * * *");
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
+            outputStatusMessage("* * * End OutputCampaignReportScope * * *");
         }
     }
     static void outputArrayOfCampaignReportScope(ArrayOfCampaignReportScope dataObjects)
@@ -800,7 +904,6 @@ class ReportingExampleHelper
             for (CampaignReportScope dataObject : dataObjects.getCampaignReportScopes())
             {
                 outputCampaignReportScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -808,13 +911,16 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputConversionPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("Keywords:");
             outputArrayOfstring(dataObject.getKeywords());
+            outputStatusMessage("* * * End OutputConversionPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfConversionPerformanceReportFilter(ArrayList<ConversionPerformanceReportFilter> dataObjects)
@@ -824,7 +930,6 @@ class ReportingExampleHelper
             for (ConversionPerformanceReportFilter dataObject : dataObjects)
             {
                 outputConversionPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -832,11 +937,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputConversionPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfConversionPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputConversionPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputConversionPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfConversionPerformanceReportRequest(ArrayList<ConversionPerformanceReportRequest> dataObjects)
@@ -846,7 +957,6 @@ class ReportingExampleHelper
             for (ConversionPerformanceReportRequest dataObject : dataObjects)
             {
                 outputConversionPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -854,9 +964,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDate * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("Month: %s", dataObject.getMonth()));
             outputStatusMessage(String.format("Year: %s", dataObject.getYear()));
+            outputStatusMessage("* * * End OutputDate * * *");
         }
     }
     static void outputArrayOfDate(ArrayList<Date> dataObjects)
@@ -866,7 +978,6 @@ class ReportingExampleHelper
             for (Date dataObject : dataObjects)
             {
                 outputDate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -874,13 +985,16 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDestinationUrlPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputDestinationUrlPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfDestinationUrlPerformanceReportFilter(ArrayList<DestinationUrlPerformanceReportFilter> dataObjects)
@@ -890,7 +1004,6 @@ class ReportingExampleHelper
             for (DestinationUrlPerformanceReportFilter dataObject : dataObjects)
             {
                 outputDestinationUrlPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -898,11 +1011,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDestinationUrlPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfDestinationUrlPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputDestinationUrlPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputDestinationUrlPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfDestinationUrlPerformanceReportRequest(ArrayList<DestinationUrlPerformanceReportRequest> dataObjects)
@@ -912,7 +1031,6 @@ class ReportingExampleHelper
             for (DestinationUrlPerformanceReportRequest dataObject : dataObjects)
             {
                 outputDestinationUrlPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -920,12 +1038,15 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSAAutoTargetPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("BidStrategyType: %s", dataObject.getBidStrategyType()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DynamicAdTargetStatus: %s", dataObject.getDynamicAdTargetStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputDSAAutoTargetPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfDSAAutoTargetPerformanceReportFilter(ArrayList<DSAAutoTargetPerformanceReportFilter> dataObjects)
@@ -935,7 +1056,6 @@ class ReportingExampleHelper
             for (DSAAutoTargetPerformanceReportFilter dataObject : dataObjects)
             {
                 outputDSAAutoTargetPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -943,11 +1063,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSAAutoTargetPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfDSAAutoTargetPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputDSAAutoTargetPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputDSAAutoTargetPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfDSAAutoTargetPerformanceReportRequest(ArrayList<DSAAutoTargetPerformanceReportRequest> dataObjects)
@@ -957,7 +1083,6 @@ class ReportingExampleHelper
             for (DSAAutoTargetPerformanceReportRequest dataObject : dataObjects)
             {
                 outputDSAAutoTargetPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -965,11 +1090,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSACategoryPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputDSACategoryPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfDSACategoryPerformanceReportFilter(ArrayList<DSACategoryPerformanceReportFilter> dataObjects)
@@ -979,7 +1107,6 @@ class ReportingExampleHelper
             for (DSACategoryPerformanceReportFilter dataObject : dataObjects)
             {
                 outputDSACategoryPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -987,11 +1114,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSACategoryPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfDSACategoryPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputDSACategoryPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputDSACategoryPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfDSACategoryPerformanceReportRequest(ArrayList<DSACategoryPerformanceReportRequest> dataObjects)
@@ -1001,7 +1134,6 @@ class ReportingExampleHelper
             for (DSACategoryPerformanceReportRequest dataObject : dataObjects)
             {
                 outputDSACategoryPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1009,13 +1141,18 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSASearchQueryPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("ExcludeZeroClicks: %s", dataObject.getExcludeZeroClicks()));
+            outputStatusMessage(String.format("FeedUrl: %s", dataObject.getFeedUrl()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("SearchQueries:");
             outputArrayOfstring(dataObject.getSearchQueries());
+            outputStatusMessage("* * * End OutputDSASearchQueryPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfDSASearchQueryPerformanceReportFilter(ArrayList<DSASearchQueryPerformanceReportFilter> dataObjects)
@@ -1025,7 +1162,6 @@ class ReportingExampleHelper
             for (DSASearchQueryPerformanceReportFilter dataObject : dataObjects)
             {
                 outputDSASearchQueryPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1033,11 +1169,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDSASearchQueryPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfDSASearchQueryPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputDSASearchQueryPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputDSASearchQueryPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfDSASearchQueryPerformanceReportRequest(ArrayList<DSASearchQueryPerformanceReportRequest> dataObjects)
@@ -1047,7 +1189,6 @@ class ReportingExampleHelper
             for (DSASearchQueryPerformanceReportRequest dataObject : dataObjects)
             {
                 outputDSASearchQueryPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1055,12 +1196,16 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGeographicPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("CountryCode:");
             outputArrayOfstring(dataObject.getCountryCode());
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputGeographicPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfGeographicPerformanceReportFilter(ArrayList<GeographicPerformanceReportFilter> dataObjects)
@@ -1070,7 +1215,6 @@ class ReportingExampleHelper
             for (GeographicPerformanceReportFilter dataObject : dataObjects)
             {
                 outputGeographicPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1078,11 +1222,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGeographicPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfGeographicPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputGeographicPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputGeographicPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfGeographicPerformanceReportRequest(ArrayList<GeographicPerformanceReportRequest> dataObjects)
@@ -1092,7 +1242,6 @@ class ReportingExampleHelper
             for (GeographicPerformanceReportRequest dataObject : dataObjects)
             {
                 outputGeographicPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1100,14 +1249,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGoalsAndFunnelsReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceOS: %s", dataObject.getDeviceOS()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("GoalIds:");
             outputArrayOflong(dataObject.getGoalIds());
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("* * * End OutputGoalsAndFunnelsReportFilter * * *");
         }
     }
     static void outputArrayOfGoalsAndFunnelsReportFilter(ArrayList<GoalsAndFunnelsReportFilter> dataObjects)
@@ -1117,7 +1269,6 @@ class ReportingExampleHelper
             for (GoalsAndFunnelsReportFilter dataObject : dataObjects)
             {
                 outputGoalsAndFunnelsReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1125,11 +1276,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGoalsAndFunnelsReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfGoalsAndFunnelsReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputGoalsAndFunnelsReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputGoalsAndFunnelsReportRequest * * *");
         }
     }
     static void outputArrayOfGoalsAndFunnelsReportRequest(ArrayList<GoalsAndFunnelsReportRequest> dataObjects)
@@ -1139,7 +1296,6 @@ class ReportingExampleHelper
             for (GoalsAndFunnelsReportRequest dataObject : dataObjects)
             {
                 outputGoalsAndFunnelsReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1147,9 +1303,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
+            outputStatusMessage("AdRelevance:");
             outputArrayOfint(dataObject.getAdRelevance());
             outputStatusMessage(String.format("AdType: %s", dataObject.getAdType()));
             outputStatusMessage(String.format("BidMatchType: %s", dataObject.getBidMatchType()));
@@ -1157,12 +1315,18 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeliveredMatchType: %s", dataObject.getDeliveredMatchType()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("ExpectedCtr:");
             outputArrayOfint(dataObject.getExpectedCtr());
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("Keywords:");
             outputArrayOfstring(dataObject.getKeywords());
+            outputStatusMessage("LandingPageExperience:");
             outputArrayOfint(dataObject.getLandingPageExperience());
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("QualityScore:");
             outputArrayOfint(dataObject.getQualityScore());
+            outputStatusMessage("* * * End OutputKeywordPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfKeywordPerformanceReportFilter(ArrayList<KeywordPerformanceReportFilter> dataObjects)
@@ -1172,7 +1336,6 @@ class ReportingExampleHelper
             for (KeywordPerformanceReportFilter dataObject : dataObjects)
             {
                 outputKeywordPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1180,13 +1343,20 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfKeywordPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputKeywordPerformanceReportFilter(dataObject.getFilter());
             outputStatusMessage(String.format("MaxRows: %s", dataObject.getMaxRows()));
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Sort:");
             outputArrayOfKeywordPerformanceReportSort(dataObject.getSort());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputKeywordPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfKeywordPerformanceReportRequest(ArrayList<KeywordPerformanceReportRequest> dataObjects)
@@ -1196,7 +1366,6 @@ class ReportingExampleHelper
             for (KeywordPerformanceReportRequest dataObject : dataObjects)
             {
                 outputKeywordPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1204,8 +1373,10 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeywordPerformanceReportSort * * *");
             outputStatusMessage(String.format("SortColumn: %s", dataObject.getSortColumn()));
             outputStatusMessage(String.format("SortOrder: %s", dataObject.getSortOrder()));
+            outputStatusMessage("* * * End OutputKeywordPerformanceReportSort * * *");
         }
     }
     static void outputArrayOfKeywordPerformanceReportSort(ArrayOfKeywordPerformanceReportSort dataObjects)
@@ -1215,7 +1386,6 @@ class ReportingExampleHelper
             for (KeywordPerformanceReportSort dataObject : dataObjects.getKeywordPerformanceReportSorts())
             {
                 outputKeywordPerformanceReportSort(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1223,10 +1393,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeKeywordConflictReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("* * * End OutputNegativeKeywordConflictReportFilter * * *");
         }
     }
     static void outputArrayOfNegativeKeywordConflictReportFilter(ArrayList<NegativeKeywordConflictReportFilter> dataObjects)
@@ -1236,7 +1408,6 @@ class ReportingExampleHelper
             for (NegativeKeywordConflictReportFilter dataObject : dataObjects)
             {
                 outputNegativeKeywordConflictReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1244,9 +1415,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeKeywordConflictReportRequest * * *");
+            outputStatusMessage("Columns:");
             outputArrayOfNegativeKeywordConflictReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputNegativeKeywordConflictReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("* * * End OutputNegativeKeywordConflictReportRequest * * *");
         }
     }
     static void outputArrayOfNegativeKeywordConflictReportRequest(ArrayList<NegativeKeywordConflictReportRequest> dataObjects)
@@ -1256,7 +1432,6 @@ class ReportingExampleHelper
             for (NegativeKeywordConflictReportRequest dataObject : dataObjects)
             {
                 outputNegativeKeywordConflictReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1264,10 +1439,12 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -1277,7 +1454,6 @@ class ReportingExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1285,12 +1461,15 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductDimensionPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputProductDimensionPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfProductDimensionPerformanceReportFilter(ArrayList<ProductDimensionPerformanceReportFilter> dataObjects)
@@ -1300,7 +1479,6 @@ class ReportingExampleHelper
             for (ProductDimensionPerformanceReportFilter dataObject : dataObjects)
             {
                 outputProductDimensionPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1308,11 +1486,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductDimensionPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProductDimensionPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputProductDimensionPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProductDimensionPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfProductDimensionPerformanceReportRequest(ArrayList<ProductDimensionPerformanceReportRequest> dataObjects)
@@ -1322,7 +1506,6 @@ class ReportingExampleHelper
             for (ProductDimensionPerformanceReportRequest dataObject : dataObjects)
             {
                 outputProductDimensionPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1330,10 +1513,15 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductMatchCountReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProductMatchCountReportColumn(dataObject.getColumns());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProductMatchCountReportRequest * * *");
         }
     }
     static void outputArrayOfProductMatchCountReportRequest(ArrayList<ProductMatchCountReportRequest> dataObjects)
@@ -1343,7 +1531,6 @@ class ReportingExampleHelper
             for (ProductMatchCountReportRequest dataObject : dataObjects)
             {
                 outputProductMatchCountReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1351,12 +1538,15 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductPartitionPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputProductPartitionPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfProductPartitionPerformanceReportFilter(ArrayList<ProductPartitionPerformanceReportFilter> dataObjects)
@@ -1366,7 +1556,6 @@ class ReportingExampleHelper
             for (ProductPartitionPerformanceReportFilter dataObject : dataObjects)
             {
                 outputProductPartitionPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1374,11 +1563,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductPartitionPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProductPartitionPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputProductPartitionPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProductPartitionPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfProductPartitionPerformanceReportRequest(ArrayList<ProductPartitionPerformanceReportRequest> dataObjects)
@@ -1388,7 +1583,6 @@ class ReportingExampleHelper
             for (ProductPartitionPerformanceReportRequest dataObject : dataObjects)
             {
                 outputProductPartitionPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1396,12 +1590,15 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductPartitionUnitPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputProductPartitionUnitPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfProductPartitionUnitPerformanceReportFilter(ArrayList<ProductPartitionUnitPerformanceReportFilter> dataObjects)
@@ -1411,7 +1608,6 @@ class ReportingExampleHelper
             for (ProductPartitionUnitPerformanceReportFilter dataObject : dataObjects)
             {
                 outputProductPartitionUnitPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1419,11 +1615,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductPartitionUnitPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProductPartitionUnitPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputProductPartitionUnitPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProductPartitionUnitPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfProductPartitionUnitPerformanceReportRequest(ArrayList<ProductPartitionUnitPerformanceReportRequest> dataObjects)
@@ -1433,7 +1635,6 @@ class ReportingExampleHelper
             for (ProductPartitionUnitPerformanceReportRequest dataObject : dataObjects)
             {
                 outputProductPartitionUnitPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1441,14 +1642,18 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductSearchQueryPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
             outputStatusMessage(String.format("AdType: %s", dataObject.getAdType()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
             outputStatusMessage(String.format("ExcludeZeroClicks: %s", dataObject.getExcludeZeroClicks()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("SearchQueries:");
             outputArrayOfstring(dataObject.getSearchQueries());
+            outputStatusMessage("* * * End OutputProductSearchQueryPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfProductSearchQueryPerformanceReportFilter(ArrayList<ProductSearchQueryPerformanceReportFilter> dataObjects)
@@ -1458,7 +1663,6 @@ class ReportingExampleHelper
             for (ProductSearchQueryPerformanceReportFilter dataObject : dataObjects)
             {
                 outputProductSearchQueryPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1466,11 +1670,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductSearchQueryPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProductSearchQueryPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputProductSearchQueryPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProductSearchQueryPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfProductSearchQueryPerformanceReportRequest(ArrayList<ProductSearchQueryPerformanceReportRequest> dataObjects)
@@ -1480,7 +1690,6 @@ class ReportingExampleHelper
             for (ProductSearchQueryPerformanceReportRequest dataObject : dataObjects)
             {
                 outputProductSearchQueryPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1488,11 +1697,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProfessionalDemographicsAudienceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputProfessionalDemographicsAudienceReportFilter * * *");
         }
     }
     static void outputArrayOfProfessionalDemographicsAudienceReportFilter(ArrayList<ProfessionalDemographicsAudienceReportFilter> dataObjects)
@@ -1502,7 +1714,6 @@ class ReportingExampleHelper
             for (ProfessionalDemographicsAudienceReportFilter dataObject : dataObjects)
             {
                 outputProfessionalDemographicsAudienceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1510,11 +1721,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProfessionalDemographicsAudienceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfProfessionalDemographicsAudienceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputProfessionalDemographicsAudienceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputProfessionalDemographicsAudienceReportRequest * * *");
         }
     }
     static void outputArrayOfProfessionalDemographicsAudienceReportRequest(ArrayList<ProfessionalDemographicsAudienceReportRequest> dataObjects)
@@ -1524,7 +1741,6 @@ class ReportingExampleHelper
             for (ProfessionalDemographicsAudienceReportRequest dataObject : dataObjects)
             {
                 outputProfessionalDemographicsAudienceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1532,11 +1748,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPublisherUsagePerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputPublisherUsagePerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfPublisherUsagePerformanceReportFilter(ArrayList<PublisherUsagePerformanceReportFilter> dataObjects)
@@ -1546,7 +1765,6 @@ class ReportingExampleHelper
             for (PublisherUsagePerformanceReportFilter dataObject : dataObjects)
             {
                 outputPublisherUsagePerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1554,11 +1772,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPublisherUsagePerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfPublisherUsagePerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputPublisherUsagePerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputPublisherUsagePerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfPublisherUsagePerformanceReportRequest(ArrayList<PublisherUsagePerformanceReportRequest> dataObjects)
@@ -1568,7 +1792,6 @@ class ReportingExampleHelper
             for (PublisherUsagePerformanceReportRequest dataObject : dataObjects)
             {
                 outputPublisherUsagePerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1576,6 +1799,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputReportRequest * * *");
             outputStatusMessage(String.format("ExcludeColumnHeaders: %s", dataObject.getExcludeColumnHeaders()));
             outputStatusMessage(String.format("ExcludeReportFooter: %s", dataObject.getExcludeReportFooter()));
             outputStatusMessage(String.format("ExcludeReportHeader: %s", dataObject.getExcludeReportHeader()));
@@ -1715,6 +1939,7 @@ class ReportingExampleHelper
             {
                 outputUserLocationPerformanceReportRequest((UserLocationPerformanceReportRequest)dataObject);
             }
+            outputStatusMessage("* * * End OutputReportRequest * * *");
         }
     }
     static void outputArrayOfReportRequest(ArrayList<ReportRequest> dataObjects)
@@ -1724,7 +1949,6 @@ class ReportingExampleHelper
             for (ReportRequest dataObject : dataObjects)
             {
                 outputReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1732,8 +1956,10 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputReportRequestStatus * * *");
             outputStatusMessage(String.format("ReportDownloadUrl: %s", dataObject.getReportDownloadUrl()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputReportRequestStatus * * *");
         }
     }
     static void outputArrayOfReportRequestStatus(ArrayList<ReportRequestStatus> dataObjects)
@@ -1743,7 +1969,6 @@ class ReportingExampleHelper
             for (ReportRequestStatus dataObject : dataObjects)
             {
                 outputReportRequestStatus(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1751,10 +1976,14 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputReportTime * * *");
+            outputStatusMessage("CustomDateRangeEnd:");
             outputDate(dataObject.getCustomDateRangeEnd());
+            outputStatusMessage("CustomDateRangeStart:");
             outputDate(dataObject.getCustomDateRangeStart());
             outputStatusMessage(String.format("PredefinedTime: %s", dataObject.getPredefinedTime()));
             outputStatusMessage(String.format("ReportTimeZone: %s", dataObject.getReportTimeZone()));
+            outputStatusMessage("* * * End OutputReportTime * * *");
         }
     }
     static void outputArrayOfReportTime(ArrayList<ReportTime> dataObjects)
@@ -1764,7 +1993,6 @@ class ReportingExampleHelper
             for (ReportTime dataObject : dataObjects)
             {
                 outputReportTime(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1772,9 +2000,11 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchCampaignChangeHistoryReportFilter * * *");
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("HowChanged: %s", dataObject.getHowChanged()));
             outputStatusMessage(String.format("ItemChanged: %s", dataObject.getItemChanged()));
+            outputStatusMessage("* * * End OutputSearchCampaignChangeHistoryReportFilter * * *");
         }
     }
     static void outputArrayOfSearchCampaignChangeHistoryReportFilter(ArrayList<SearchCampaignChangeHistoryReportFilter> dataObjects)
@@ -1784,7 +2014,6 @@ class ReportingExampleHelper
             for (SearchCampaignChangeHistoryReportFilter dataObject : dataObjects)
             {
                 outputSearchCampaignChangeHistoryReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1792,10 +2021,16 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchCampaignChangeHistoryReportRequest * * *");
+            outputStatusMessage("Columns:");
             outputArrayOfSearchCampaignChangeHistoryReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputSearchCampaignChangeHistoryReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputSearchCampaignChangeHistoryReportRequest * * *");
         }
     }
     static void outputArrayOfSearchCampaignChangeHistoryReportRequest(ArrayList<SearchCampaignChangeHistoryReportRequest> dataObjects)
@@ -1805,7 +2040,6 @@ class ReportingExampleHelper
             for (SearchCampaignChangeHistoryReportRequest dataObject : dataObjects)
             {
                 outputSearchCampaignChangeHistoryReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1813,6 +2047,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchQueryPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
             outputStatusMessage(String.format("AdStatus: %s", dataObject.getAdStatus()));
@@ -1821,8 +2056,11 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("DeliveredMatchType: %s", dataObject.getDeliveredMatchType()));
             outputStatusMessage(String.format("ExcludeZeroClicks: %s", dataObject.getExcludeZeroClicks()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("SearchQueries:");
             outputArrayOfstring(dataObject.getSearchQueries());
+            outputStatusMessage("* * * End OutputSearchQueryPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfSearchQueryPerformanceReportFilter(ArrayList<SearchQueryPerformanceReportFilter> dataObjects)
@@ -1832,7 +2070,6 @@ class ReportingExampleHelper
             for (SearchQueryPerformanceReportFilter dataObject : dataObjects)
             {
                 outputSearchQueryPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1840,11 +2077,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSearchQueryPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfSearchQueryPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputSearchQueryPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputSearchQueryPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfSearchQueryPerformanceReportRequest(ArrayList<SearchQueryPerformanceReportRequest> dataObjects)
@@ -1854,7 +2097,6 @@ class ReportingExampleHelper
             for (SearchQueryPerformanceReportRequest dataObject : dataObjects)
             {
                 outputSearchQueryPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1862,6 +2104,7 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputShareOfVoiceReportFilter * * *");
             outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
             outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
@@ -1871,8 +2114,11 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("DeliveredMatchType: %s", dataObject.getDeliveredMatchType()));
             outputStatusMessage(String.format("DeviceType: %s", dataObject.getDeviceType()));
             outputStatusMessage(String.format("KeywordStatus: %s", dataObject.getKeywordStatus()));
+            outputStatusMessage("Keywords:");
             outputArrayOfstring(dataObject.getKeywords());
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputShareOfVoiceReportFilter * * *");
         }
     }
     static void outputArrayOfShareOfVoiceReportFilter(ArrayList<ShareOfVoiceReportFilter> dataObjects)
@@ -1882,7 +2128,6 @@ class ReportingExampleHelper
             for (ShareOfVoiceReportFilter dataObject : dataObjects)
             {
                 outputShareOfVoiceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1890,11 +2135,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputShareOfVoiceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfShareOfVoiceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputShareOfVoiceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputShareOfVoiceReportRequest * * *");
         }
     }
     static void outputArrayOfShareOfVoiceReportRequest(ArrayList<ShareOfVoiceReportRequest> dataObjects)
@@ -1904,7 +2155,6 @@ class ReportingExampleHelper
             for (ShareOfVoiceReportRequest dataObject : dataObjects)
             {
                 outputShareOfVoiceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1912,9 +2162,13 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUserLocationPerformanceReportFilter * * *");
             outputStatusMessage(String.format("AdDistribution: %s", dataObject.getAdDistribution()));
+            outputStatusMessage("CountryCode:");
             outputArrayOfstring(dataObject.getCountryCode());
+            outputStatusMessage("LanguageCode:");
             outputArrayOfstring(dataObject.getLanguageCode());
+            outputStatusMessage("* * * End OutputUserLocationPerformanceReportFilter * * *");
         }
     }
     static void outputArrayOfUserLocationPerformanceReportFilter(ArrayList<UserLocationPerformanceReportFilter> dataObjects)
@@ -1924,7 +2178,6 @@ class ReportingExampleHelper
             for (UserLocationPerformanceReportFilter dataObject : dataObjects)
             {
                 outputUserLocationPerformanceReportFilter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1932,11 +2185,17 @@ class ReportingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUserLocationPerformanceReportRequest * * *");
             outputStatusMessage(String.format("Aggregation: %s", dataObject.getAggregation()));
+            outputStatusMessage("Columns:");
             outputArrayOfUserLocationPerformanceReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
             outputUserLocationPerformanceReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
             outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("Time:");
             outputReportTime(dataObject.getTime());
+            outputStatusMessage("* * * End OutputUserLocationPerformanceReportRequest * * *");
         }
     }
     static void outputArrayOfUserLocationPerformanceReportRequest(ArrayList<UserLocationPerformanceReportRequest> dataObjects)
@@ -1946,7 +2205,6 @@ class ReportingExampleHelper
             for (UserLocationPerformanceReportRequest dataObject : dataObjects)
             {
                 outputUserLocationPerformanceReportRequest(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2951,7 +3209,7 @@ class ReportingExampleHelper
         {
             for (java.lang.String item : items.getStrings())
             {
-                outputStatusMessage(String.format("Value of the string: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -2961,7 +3219,7 @@ class ReportingExampleHelper
         {
             for (java.lang.Long item : items.getLongs())
             {
-                outputStatusMessage(String.format("Value of the long: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -2971,7 +3229,7 @@ class ReportingExampleHelper
         {
             for (java.lang.Integer item : items.getInts())
             {
-                outputStatusMessage(String.format("Value of the int: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }

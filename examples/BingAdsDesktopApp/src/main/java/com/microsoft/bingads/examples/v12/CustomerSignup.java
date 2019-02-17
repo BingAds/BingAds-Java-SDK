@@ -9,18 +9,26 @@ public class CustomerSignup extends ExampleBase {
    	 
     	try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
             	         
             CustomerManagementExampleHelper.CustomerManagementService = new ServiceClient<ICustomerManagementService>(
                     authorizationData, 
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
             
-            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null, true);
+            outputStatusMessage("-----\nGetUser:");
+            GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(
+                    null, 
+                    true);
             User user = getUserResponse.getUser();
+            outputStatusMessage("User:");
+            CustomerManagementExampleHelper.outputUser(user);
+            outputStatusMessage("CustomerRoles:");
+            CustomerManagementExampleHelper.outputArrayOfCustomerRole(getUserResponse.getCustomerRoles());
                             
             // Only a user with the aggregator role (33) can sign up new customers. 
             // If the user does not have the aggregator role, then do not continue.
+            
             ArrayOfint roleIds = new ArrayOfint();
             for(CustomerRole customerRole : getUserResponse.getCustomerRoles().getCustomerRoles()){
                 roleIds.getInts().add(customerRole.getRoleId());
@@ -33,54 +41,38 @@ public class CustomerSignup extends ExampleBase {
 
             Customer customer = new Customer();
 
-            // The list of key and value strings for forward compatibility. This element can be used
-            // to avoid otherwise breaking changes when new elements are added in future releases.
-            // There are currently no forward compatibility changes for the Customer object.
-            customer.setForwardCompatibilityMap(null);
-
             // The primary business segment of the customer, for example, automotive, food, or entertainment.
             customer.setIndustry(Industry.OTHER);
 
-            // The primary country where the customer operates. This country will be the 
-            // default country for ad groups in the customer�s campaigns.
+            // The primary country where the customer operates. 
             customer.setMarketCountry("US");
 
-            // The primary language that the customer uses. This language will be the 
-            // default language for ad groups in the customer�s campaigns.
+            // The primary language that the customer uses. 
             customer.setMarketLanguage(LanguageType.ENGLISH);
 
-            // The name of the customer. This element can contain a maximum of 100 characters.
+            // The name of the customer.
             customer.setName("Child Customer " + System.currentTimeMillis());
-            
-            
+                        
             AdvertiserAccount account = new AdvertiserAccount();
 
             // The location where your business is legally registered. 
             // The business address is used to determine your tax requirements.
-            // BusinessAddress will be required in a future version of the Bing Ads API.
-            // Please start using it.
             Address businessAddress = new Address();
-            businessAddress.setBusinessName("Microsoft Corporation");
+            businessAddress.setBusinessName("Contoso");
             businessAddress.setCity("Redmond");
             businessAddress.setLine1("One Microsoft Way");
             businessAddress.setPostalCode("98052");
             businessAddress.setStateOrProvince("WA");
             account.setBusinessAddress(businessAddress);
 
-            // The type of currency that is used to settle the account. The service uses the currency information for billing purposes.
+            // The type of currency that is used to settle the account. 
+            // The service uses the currency information for billing purposes.
             account.setCurrencyCode(CurrencyCode.USD);
 
-    	    // Optionally you can set up each account with auto tagging.
-            // The AutoTag key and value pair is an account level setting that determines whether to append or replace 
-            // the supported UTM tracking codes within the final URL of ads delivered. The default value is '0', and
-            // Bing Ads will not append any UTM tracking codes to your ad or keyword final URL.
-            account.setAutoTagType(AutoTagType.INACTIVE);
-
-            // The name of the account. The name can contain a maximum of 100 characters and must be unique within the customer.
+            // The name of the account. 
             account.setName("Child Account " + System.currentTimeMillis());
 
-            // The identifier of the customer that owns the account. In the Bing Ads API operations 
-            // that require a customer identifier, this is the identifier that you set the CustomerId SOAP header to.
+            // The identifier of the customer that owns the account. 
             account.setParentCustomerId((long)user.getCustomerId());
 
             // The TaxInformation (VAT identifier) is optional. If specified, The VAT identifier must be valid 
@@ -88,19 +80,17 @@ public class CustomerSignup extends ExampleBase {
             // number or exemption certificate, taxes might apply based on your business location.
             account.setTaxInformation(null);
 
-            // The default time-zone value to use for campaigns in this account.
-            // If not specified, the time zone will be set to PacificTimeUSCanadaTijuana by default.
-            // TimeZone will be required in a future version of the Bing Ads API.
-            // Please start using it.
+            // The default time-zone for campaigns in this account.
             account.setTimeZone(TimeZoneType.PACIFIC_TIME_US_CANADA_TIJUANA);
             
             // Signup a new customer and account for the reseller. 
+            outputStatusMessage("-----\nSignupCustomer:");
             SignupCustomerResponse signupCustomerResponse = CustomerManagementExampleHelper.signupCustomer(
                 customer,
                 account,
                 user.getCustomerId());
 
-            outputStatusMessage(String.format("New Customer and Account:\n"));
+            outputStatusMessage("New Customer and Account:");
 
             // This is the identifier that you will use to set the CustomerId 
             // element in most of the Bing Ads API service operations.
@@ -116,15 +106,13 @@ public class CustomerSignup extends ExampleBase {
 
             // The read-only system generated account number that is used to identify the account in the Bing Ads web application. 
             // The account number has the form xxxxxxxx, where xxxxxxxx is a series of any eight alphanumeric characters.
-            outputStatusMessage(String.format("\tAccountNumber: %s\n", signupCustomerResponse.getAccountNumber()));
-            
-            outputStatusMessage("Program execution completed\n"); 
-        
+            outputStatusMessage(String.format("\tAccountNumber: %s\n", signupCustomerResponse.getAccountNumber()));        
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
 }

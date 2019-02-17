@@ -23,11 +23,15 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
 
     public ExampleBase(){}
     
-    protected static AuthorizationData getAuthorizationData(
-            java.lang.Long customerId, 
-            java.lang.Long accountId) throws IOException, RemoteException, AdApiFaultDetail_Exception, ApiFault_Exception {
+    protected static AuthorizationData getAuthorizationData() throws IOException, RemoteException, AdApiFaultDetail_Exception, ApiFault_Exception {
                 
         authenticateWithOAuth();
+        
+        // If the customer and account IDs are not set, 
+        // we'll find one that the user can access below. 
+        
+        java.lang.Long customerId = null;
+        java.lang.Long accountId = null;
                 
         if(customerId != null && accountId != null){
             authorizationData.setCustomerId(customerId);
@@ -41,7 +45,9 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                     API_ENVIRONMENT,
                     ICustomerManagementService.class);
 
-                GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(null, true);
+                GetUserResponse getUserResponse = CustomerManagementExampleHelper.getUser(
+                        null, 
+                        true);
                 User user = getUserResponse.getUser();
 
                 // Search for the accounts that the user can access.
@@ -68,10 +74,12 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 authorizationData.setCustomerId(accounts.getAdvertiserAccounts().get(0).getParentCustomerId());
                 authorizationData.setAccountId(accounts.getAdvertiserAccounts().get(0).getId());
             }
-                catch (Exception ex) {
-                String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-                String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-                ex.printStackTrace();
+            catch (Exception ex) 
+            {
+                String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+                outputStatusMessage(faultXml);
+                String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+                outputStatusMessage(message);
             }
         }
         

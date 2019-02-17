@@ -13,9 +13,8 @@ import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthTokens;
-import com.microsoft.bingads.examples.v12.BingAdsExceptionHelper;
+import com.microsoft.bingads.examples.v12.ExampleExceptionHelper;
 import java.net.URL;
-import java.util.Objects;
 
 public class ExampleBase {
 
@@ -41,7 +40,9 @@ public class ExampleBase {
         // Uncomment to view and troubleshoot the SOAP trace
         //System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
         
-        OAuthDesktopMobileAuthCodeGrant oAuthDesktopMobileAuthCodeGrant = new OAuthDesktopMobileAuthCodeGrant(ClientId, API_ENVIRONMENT);
+        OAuthDesktopMobileAuthCodeGrant oAuthDesktopMobileAuthCodeGrant = new OAuthDesktopMobileAuthCodeGrant(
+                ClientId, 
+                API_ENVIRONMENT);
         oAuthDesktopMobileAuthCodeGrant.setState(ClientState);
 
         authorizationData = new AuthorizationData();
@@ -59,23 +60,25 @@ public class ExampleBase {
             else
             {
                 requestUserConsent();
-            }
-            
+            }           
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
     protected static void requestUserConsent() throws Exception, IOException
     {
-        System.out.printf("You need to provide consent for the application to access your Bing Ads accounts. " +
-              "Copy and paste this authorization endpoint into a web browser and sign in with a Microsoft account " +
-              "with access to a Bing Ads account: \n\n%s" +
-              "\n\nAfter you have granted consent in the web browser for the application to access your Bing Ads accounts, " +
-              "please enter the response URI that includes the authorization 'code' parameter: \n\n", 
-              ((OAuthDesktopMobileAuthCodeGrant)(authorizationData.getAuthentication())).getAuthorizationEndpoint());
+        // You must request user consent at least once through a web browser control. 
+        System.out.printf(
+            "Open a new web browser and navigate to \n\n%s\n\n" +
+            "Grant consent in the web browser for the application to access " +
+            "your advertising accounts, and then enter the response URI that includes " +
+            "the authorization 'code' parameter: \n", 
+            ((OAuthDesktopMobileAuthCodeGrant)(authorizationData.getAuthentication())).getAuthorizationEndpoint()
+        );
         
         Scanner scanner = new Scanner(System.in);
         java.lang.String responseUri = scanner.nextLine();

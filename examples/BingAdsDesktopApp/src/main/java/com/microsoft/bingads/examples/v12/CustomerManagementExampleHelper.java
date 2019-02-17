@@ -303,11 +303,13 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountInfo * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Number: %s", dataObject.getNumber()));
             outputStatusMessage(String.format("AccountLifeCycleStatus: %s", dataObject.getAccountLifeCycleStatus()));
             outputStatusMessage(String.format("PauseReason: %s", dataObject.getPauseReason()));
+            outputStatusMessage("* * * End OutputAccountInfo * * *");
         }
     }
     static void outputArrayOfAccountInfo(ArrayOfAccountInfo dataObjects)
@@ -317,7 +319,6 @@ class CustomerManagementExampleHelper
             for (AccountInfo dataObject : dataObjects.getAccountInfos())
             {
                 outputAccountInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -325,6 +326,7 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountInfoWithCustomerData * * *");
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
             outputStatusMessage(String.format("CustomerName: %s", dataObject.getCustomerName()));
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
@@ -332,6 +334,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("AccountNumber: %s", dataObject.getAccountNumber()));
             outputStatusMessage(String.format("AccountLifeCycleStatus: %s", dataObject.getAccountLifeCycleStatus()));
             outputStatusMessage(String.format("PauseReason: %s", dataObject.getPauseReason()));
+            outputStatusMessage("* * * End OutputAccountInfoWithCustomerData * * *");
         }
     }
     static void outputArrayOfAccountInfoWithCustomerData(ArrayOfAccountInfoWithCustomerData dataObjects)
@@ -341,7 +344,6 @@ class CustomerManagementExampleHelper
             for (AccountInfoWithCustomerData dataObject : dataObjects.getAccountInfoWithCustomerDatas())
             {
                 outputAccountInfoWithCustomerData(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -349,10 +351,12 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -362,7 +366,6 @@ class CustomerManagementExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -370,7 +373,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -380,7 +386,6 @@ class CustomerManagementExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -388,6 +393,7 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAddress * * *");
             outputStatusMessage(String.format("City: %s", dataObject.getCity()));
             outputStatusMessage(String.format("CountryCode: %s", dataObject.getCountryCode()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
@@ -399,6 +405,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("StateOrProvince: %s", dataObject.getStateOrProvince()));
             outputStatusMessage(String.format("TimeStamp: %s", dataObject.getTimeStamp()));
             outputStatusMessage(String.format("BusinessName: %s", dataObject.getBusinessName()));
+            outputStatusMessage("* * * End OutputAddress * * *");
         }
     }
     static void outputArrayOfAddress(ArrayOfAddress dataObjects)
@@ -408,7 +415,6 @@ class CustomerManagementExampleHelper
             for (Address dataObject : dataObjects.getAddresses())
             {
                 outputAddress(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -416,6 +422,7 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdvertiserAccount * * *");
             outputStatusMessage(String.format("BillToCustomerId: %s", dataObject.getBillToCustomerId()));
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("AccountFinancialStatus: %s", dataObject.getAccountFinancialStatus()));
@@ -433,15 +440,20 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("TimeStamp: %s", dataObject.getTimeStamp()));
             outputStatusMessage(String.format("TimeZone: %s", dataObject.getTimeZone()));
             outputStatusMessage(String.format("PauseReason: %s", dataObject.getPauseReason()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
+            outputStatusMessage("LinkedAgencies:");
             outputArrayOfCustomerInfo(dataObject.getLinkedAgencies());
             outputStatusMessage(String.format("SalesHouseCustomerId: %s", dataObject.getSalesHouseCustomerId()));
+            outputStatusMessage("TaxInformation:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getTaxInformation());
             outputStatusMessage(String.format("BackUpPaymentInstrumentId: %s", dataObject.getBackUpPaymentInstrumentId()));
             outputStatusMessage(String.format("BillingThresholdAmount: %s", dataObject.getBillingThresholdAmount()));
+            outputStatusMessage("BusinessAddress:");
             outputAddress(dataObject.getBusinessAddress());
             outputStatusMessage(String.format("AutoTagType: %s", dataObject.getAutoTagType()));
             outputStatusMessage(String.format("SoldToPaymentInstrumentId: %s", dataObject.getSoldToPaymentInstrumentId()));
+            outputStatusMessage("* * * End OutputAdvertiserAccount * * *");
         }
     }
     static void outputArrayOfAdvertiserAccount(ArrayOfAdvertiserAccount dataObjects)
@@ -451,7 +463,6 @@ class CustomerManagementExampleHelper
             for (AdvertiserAccount dataObject : dataObjects.getAdvertiserAccounts())
             {
                 outputAdvertiserAccount(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -459,7 +470,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFault * * *");
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputApiFault * * *");
         }
     }
     static void outputArrayOfApiFault(ArrayList<ApiFault> dataObjects)
@@ -469,7 +483,6 @@ class CustomerManagementExampleHelper
             for (ApiFault dataObject : dataObjects)
             {
                 outputApiFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -477,6 +490,7 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -486,6 +500,7 @@ class CustomerManagementExampleHelper
             {
                 outputApiFault((ApiFault)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -495,7 +510,6 @@ class CustomerManagementExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -503,6 +517,7 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputClientLink * * *");
             outputStatusMessage(String.format("ClientAccountId: %s", dataObject.getClientAccountId()));
             outputStatusMessage(String.format("ClientAccountNumber: %s", dataObject.getClientAccountNumber()));
             outputStatusMessage(String.format("ManagingCustomerId: %s", dataObject.getManagingCustomerId()));
@@ -519,7 +534,9 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("LastModifiedDateTime: %s", dataObject.getLastModifiedDateTime()));
             outputStatusMessage(String.format("LastModifiedByUserId: %s", dataObject.getLastModifiedByUserId()));
             outputStatusMessage(String.format("Timestamp: %s", dataObject.getTimestamp()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
+            outputStatusMessage("* * * End OutputClientLink * * *");
         }
     }
     static void outputArrayOfClientLink(ArrayOfClientLink dataObjects)
@@ -529,7 +546,6 @@ class CustomerManagementExampleHelper
             for (ClientLink dataObject : dataObjects.getClientLinks())
             {
                 outputClientLink(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -537,6 +553,8 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputContactInfo * * *");
+            outputStatusMessage("Address:");
             outputAddress(dataObject.getAddress());
             outputStatusMessage(String.format("ContactByPhone: %s", dataObject.getContactByPhone()));
             outputStatusMessage(String.format("ContactByPostalMail: %s", dataObject.getContactByPostalMail()));
@@ -548,6 +566,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("Mobile: %s", dataObject.getMobile()));
             outputStatusMessage(String.format("Phone1: %s", dataObject.getPhone1()));
             outputStatusMessage(String.format("Phone2: %s", dataObject.getPhone2()));
+            outputStatusMessage("* * * End OutputContactInfo * * *");
         }
     }
     static void outputArrayOfContactInfo(ArrayList<ContactInfo> dataObjects)
@@ -557,7 +576,6 @@ class CustomerManagementExampleHelper
             for (ContactInfo dataObject : dataObjects)
             {
                 outputContactInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -565,12 +583,14 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomer * * *");
             outputStatusMessage(String.format("CustomerFinancialStatus: %s", dataObject.getCustomerFinancialStatus()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Industry: %s", dataObject.getIndustry()));
             outputStatusMessage(String.format("LastModifiedByUserId: %s", dataObject.getLastModifiedByUserId()));
             outputStatusMessage(String.format("LastModifiedTime: %s", dataObject.getLastModifiedTime()));
             outputStatusMessage(String.format("MarketCountry: %s", dataObject.getMarketCountry()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("MarketLanguage: %s", dataObject.getMarketLanguage()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
@@ -578,7 +598,9 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("CustomerLifeCycleStatus: %s", dataObject.getCustomerLifeCycleStatus()));
             outputStatusMessage(String.format("TimeStamp: %s", dataObject.getTimeStamp()));
             outputStatusMessage(String.format("Number: %s", dataObject.getNumber()));
+            outputStatusMessage("CustomerAddress:");
             outputAddress(dataObject.getCustomerAddress());
+            outputStatusMessage("* * * End OutputCustomer * * *");
         }
     }
     static void outputArrayOfCustomer(ArrayOfCustomer dataObjects)
@@ -588,7 +610,6 @@ class CustomerManagementExampleHelper
             for (Customer dataObject : dataObjects.getCustomers())
             {
                 outputCustomer(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -596,8 +617,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomerInfo * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage("* * * End OutputCustomerInfo * * *");
         }
     }
     static void outputArrayOfCustomerInfo(ArrayOfCustomerInfo dataObjects)
@@ -607,7 +630,6 @@ class CustomerManagementExampleHelper
             for (CustomerInfo dataObject : dataObjects.getCustomerInfos())
             {
                 outputCustomerInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -615,10 +637,14 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomerRole * * *");
             outputStatusMessage(String.format("RoleId: %s", dataObject.getRoleId()));
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
+            outputStatusMessage("AccountIds:");
             outputArrayOflong(dataObject.getAccountIds());
+            outputStatusMessage("LinkedAccountIds:");
             outputArrayOflong(dataObject.getLinkedAccountIds());
+            outputStatusMessage("* * * End OutputCustomerRole * * *");
         }
     }
     static void outputArrayOfCustomerRole(ArrayOfCustomerRole dataObjects)
@@ -628,7 +654,6 @@ class CustomerManagementExampleHelper
             for (CustomerRole dataObject : dataObjects.getCustomerRoles())
             {
                 outputCustomerRole(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -636,8 +661,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDateRange * * *");
             outputStatusMessage(String.format("MinDate: %s", dataObject.getMinDate()));
             outputStatusMessage(String.format("MaxDate: %s", dataObject.getMaxDate()));
+            outputStatusMessage("* * * End OutputDateRange * * *");
         }
     }
     static void outputArrayOfDateRange(ArrayList<DateRange> dataObjects)
@@ -647,7 +674,6 @@ class CustomerManagementExampleHelper
             for (DateRange dataObject : dataObjects)
             {
                 outputDateRange(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -655,8 +681,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeyValuePairOfstringstring * * *");
             outputStatusMessage(String.format("Key: %s", dataObject.getKey()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputKeyValuePairOfstringstring * * *");
         }
     }
     static void outputArrayOfKeyValuePairOfstringstring(ArrayOfKeyValuePairOfstringstring dataObjects)
@@ -666,7 +694,6 @@ class CustomerManagementExampleHelper
             for (KeyValuePairOfstringstring dataObject : dataObjects.getKeyValuePairOfstringstrings())
             {
                 outputKeyValuePairOfstringstring(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -674,9 +701,11 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -686,7 +715,6 @@ class CustomerManagementExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -694,8 +722,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOrderBy * * *");
             outputStatusMessage(String.format("Field: %s", dataObject.getField()));
             outputStatusMessage(String.format("Order: %s", dataObject.getOrder()));
+            outputStatusMessage("* * * End OutputOrderBy * * *");
         }
     }
     static void outputArrayOfOrderBy(ArrayOfOrderBy dataObjects)
@@ -705,7 +735,6 @@ class CustomerManagementExampleHelper
             for (OrderBy dataObject : dataObjects.getOrderBies())
             {
                 outputOrderBy(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -713,8 +742,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPaging * * *");
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Size: %s", dataObject.getSize()));
+            outputStatusMessage("* * * End OutputPaging * * *");
         }
     }
     static void outputArrayOfPaging(ArrayList<Paging> dataObjects)
@@ -724,7 +755,6 @@ class CustomerManagementExampleHelper
             for (Paging dataObject : dataObjects)
             {
                 outputPaging(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -732,9 +762,11 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPersonName * * *");
             outputStatusMessage(String.format("FirstName: %s", dataObject.getFirstName()));
             outputStatusMessage(String.format("LastName: %s", dataObject.getLastName()));
             outputStatusMessage(String.format("MiddleInitial: %s", dataObject.getMiddleInitial()));
+            outputStatusMessage("* * * End OutputPersonName * * *");
         }
     }
     static void outputArrayOfPersonName(ArrayList<PersonName> dataObjects)
@@ -744,7 +776,6 @@ class CustomerManagementExampleHelper
             for (PersonName dataObject : dataObjects)
             {
                 outputPersonName(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -752,9 +783,11 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPredicate * * *");
             outputStatusMessage(String.format("Field: %s", dataObject.getField()));
             outputStatusMessage(String.format("Operator: %s", dataObject.getOperator()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputPredicate * * *");
         }
     }
     static void outputArrayOfPredicate(ArrayOfPredicate dataObjects)
@@ -764,7 +797,6 @@ class CustomerManagementExampleHelper
             for (Predicate dataObject : dataObjects.getPredicates())
             {
                 outputPredicate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -772,6 +804,8 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUser * * *");
+            outputStatusMessage("ContactInfo:");
             outputContactInfo(dataObject.getContactInfo());
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
@@ -779,6 +813,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("LastModifiedByUserId: %s", dataObject.getLastModifiedByUserId()));
             outputStatusMessage(String.format("LastModifiedTime: %s", dataObject.getLastModifiedTime()));
             outputStatusMessage(String.format("Lcid: %s", dataObject.getLcid()));
+            outputStatusMessage("Name:");
             outputPersonName(dataObject.getName());
             outputStatusMessage(String.format("Password: %s", dataObject.getPassword()));
             outputStatusMessage(String.format("SecretAnswer: %s", dataObject.getSecretAnswer()));
@@ -786,7 +821,9 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("UserLifeCycleStatus: %s", dataObject.getUserLifeCycleStatus()));
             outputStatusMessage(String.format("TimeStamp: %s", dataObject.getTimeStamp()));
             outputStatusMessage(String.format("UserName: %s", dataObject.getUserName()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
+            outputStatusMessage("* * * End OutputUser * * *");
         }
     }
     static void outputArrayOfUser(ArrayList<User> dataObjects)
@@ -796,7 +833,6 @@ class CustomerManagementExampleHelper
             for (User dataObject : dataObjects)
             {
                 outputUser(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -804,8 +840,10 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUserInfo * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("UserName: %s", dataObject.getUserName()));
+            outputStatusMessage("* * * End OutputUserInfo * * *");
         }
     }
     static void outputArrayOfUserInfo(ArrayOfUserInfo dataObjects)
@@ -815,7 +853,6 @@ class CustomerManagementExampleHelper
             for (UserInfo dataObject : dataObjects.getUserInfos())
             {
                 outputUserInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -823,15 +860,18 @@ class CustomerManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUserInvitation * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("FirstName: %s", dataObject.getFirstName()));
             outputStatusMessage(String.format("LastName: %s", dataObject.getLastName()));
             outputStatusMessage(String.format("Email: %s", dataObject.getEmail()));
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
             outputStatusMessage(String.format("RoleId: %s", dataObject.getRoleId()));
+            outputStatusMessage("AccountIds:");
             outputArrayOflong(dataObject.getAccountIds());
             outputStatusMessage(String.format("ExpirationDate: %s", dataObject.getExpirationDate()));
             outputStatusMessage(String.format("Lcid: %s", dataObject.getLcid()));
+            outputStatusMessage("* * * End OutputUserInvitation * * *");
         }
     }
     static void outputArrayOfUserInvitation(ArrayOfUserInvitation dataObjects)
@@ -841,7 +881,6 @@ class CustomerManagementExampleHelper
             for (UserInvitation dataObject : dataObjects.getUserInvitations())
             {
                 outputUserInvitation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1198,7 +1237,7 @@ class CustomerManagementExampleHelper
         {
             for (java.lang.String item : items.getStrings())
             {
-                outputStatusMessage(String.format("Value of the string: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -1208,7 +1247,7 @@ class CustomerManagementExampleHelper
         {
             for (java.lang.Long item : items.getLongs())
             {
-                outputStatusMessage(String.format("Value of the long: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }

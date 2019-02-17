@@ -52,7 +52,7 @@ public class ReportRequests extends ExampleBase {
 
         try
         {            
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
             
             ReportingServiceManager = new ReportingServiceManager(authorizationData, API_ENVIRONMENT);
             ReportingServiceManager.setStatusPollIntervalInMilliseconds(5000);
@@ -101,15 +101,13 @@ public class ReportRequests extends ExampleBase {
             // Option D - Download the reportRequest in memory with ReportingServiceManager.downloadReportAsync
             // The downloadReportAsync helper function downloads the reportRequest and summarizes results.
             outputStatusMessage("Awaiting downloadReportAsync . . .");
-            downloadReportAsync(reportingDownloadParameters);            
-            
-            outputStatusMessage("Program execution completed\n"); 
-
+            downloadReportAsync(reportingDownloadParameters);   
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
                     
@@ -223,7 +221,9 @@ public class ReportRequests extends ExampleBase {
         // Although in this case you will not work directly with the file, under the covers a request is 
         // submitted to the Reporting service and the reportRequest file is downloaded to a local directory. 
 
-        Report reportContainer = ReportingServiceManager.downloadReportAsync(reportingDownloadParameters, null).get(); 
+        Report reportContainer = ReportingServiceManager.downloadReportAsync(
+                reportingDownloadParameters, 
+                null).get(); 
 
         // Otherwise if you already have a reportRequest file that was downloaded via the API, 
         // you can get a Report object via the ReportFileReader. 
@@ -286,7 +286,7 @@ public class ReportRequests extends ExampleBase {
         // If you are using a cloud service such as Microsoft Azure you'll want to ensure you do not
         // exceed the file or directory limits. 
 
-        ReportingServiceManager.cleanupTempFiles();
+        //ReportingServiceManager.cleanupTempFiles();
     }
         
     private static java.lang.String enumCaseToPascalCase(java.lang.String text) {

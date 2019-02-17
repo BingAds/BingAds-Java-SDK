@@ -88,10 +88,12 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -101,7 +103,6 @@ class BulkExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -109,7 +110,10 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -119,7 +123,6 @@ class BulkExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -127,8 +130,12 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFaultDetail * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputApiFaultDetail * * *");
         }
     }
     static void outputArrayOfApiFaultDetail(ArrayList<ApiFaultDetail> dataObjects)
@@ -138,7 +145,6 @@ class BulkExampleHelper
             for (ApiFaultDetail dataObject : dataObjects)
             {
                 outputApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -146,6 +152,7 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -155,6 +162,7 @@ class BulkExampleHelper
             {
                 outputApiFaultDetail((ApiFaultDetail)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -164,7 +172,6 @@ class BulkExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -172,10 +179,12 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("FieldPath: %s", dataObject.getFieldPath()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
@@ -184,6 +193,7 @@ class BulkExampleHelper
             {
                 outputEditorialError((EditorialError)dataObject);
             }
+            outputStatusMessage("* * * End OutputBatchError * * *");
         }
     }
     static void outputArrayOfBatchError(ArrayOfBatchError dataObjects)
@@ -193,7 +203,6 @@ class BulkExampleHelper
             for (BatchError dataObject : dataObjects.getBatchErrors())
             {
                 outputBatchError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -201,8 +210,10 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignScope * * *");
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
             outputStatusMessage(String.format("ParentAccountId: %s", dataObject.getParentAccountId()));
+            outputStatusMessage("* * * End OutputCampaignScope * * *");
         }
     }
     static void outputArrayOfCampaignScope(ArrayOfCampaignScope dataObjects)
@@ -212,7 +223,6 @@ class BulkExampleHelper
             for (CampaignScope dataObject : dataObjects.getCampaignScopes())
             {
                 outputCampaignScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -220,9 +230,11 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDate * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("Month: %s", dataObject.getMonth()));
             outputStatusMessage(String.format("Year: %s", dataObject.getYear()));
+            outputStatusMessage("* * * End OutputDate * * *");
         }
     }
     static void outputArrayOfDate(ArrayList<Date> dataObjects)
@@ -232,7 +244,6 @@ class BulkExampleHelper
             for (Date dataObject : dataObjects)
             {
                 outputDate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -240,11 +251,13 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialError * * *");
             outputStatusMessage(String.format("Appealable: %s", dataObject.getAppealable()));
             outputStatusMessage(String.format("DisapprovedText: %s", dataObject.getDisapprovedText()));
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
             outputStatusMessage(String.format("PublisherCountry: %s", dataObject.getPublisherCountry()));
             outputStatusMessage(String.format("ReasonCode: %s", dataObject.getReasonCode()));
+            outputStatusMessage("* * * End OutputEditorialError * * *");
         }
     }
     static void outputArrayOfEditorialError(ArrayList<EditorialError> dataObjects)
@@ -254,7 +267,6 @@ class BulkExampleHelper
             for (EditorialError dataObject : dataObjects)
             {
                 outputEditorialError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -262,8 +274,10 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeyValuePairOfstringstring * * *");
             outputStatusMessage(String.format("Key: %s", dataObject.getKey()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputKeyValuePairOfstringstring * * *");
         }
     }
     static void outputArrayOfKeyValuePairOfstringstring(ArrayOfKeyValuePairOfstringstring dataObjects)
@@ -273,7 +287,6 @@ class BulkExampleHelper
             for (KeyValuePairOfstringstring dataObject : dataObjects.getKeyValuePairOfstringstrings())
             {
                 outputKeyValuePairOfstringstring(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -281,10 +294,12 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -294,7 +309,6 @@ class BulkExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -302,9 +316,13 @@ class BulkExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPerformanceStatsDateRange * * *");
+            outputStatusMessage("CustomDateRangeEnd:");
             outputDate(dataObject.getCustomDateRangeEnd());
+            outputStatusMessage("CustomDateRangeStart:");
             outputDate(dataObject.getCustomDateRangeStart());
             outputStatusMessage(String.format("PredefinedTime: %s", dataObject.getPredefinedTime()));
+            outputStatusMessage("* * * End OutputPerformanceStatsDateRange * * *");
         }
     }
     static void outputArrayOfPerformanceStatsDateRange(ArrayList<PerformanceStatsDateRange> dataObjects)
@@ -314,7 +332,6 @@ class BulkExampleHelper
             for (PerformanceStatsDateRange dataObject : dataObjects)
             {
                 outputPerformanceStatsDateRange(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }

@@ -39,16 +39,18 @@ public class BulkExampleBase extends ExampleBase {
     // The maximum amount of time (in milliseconds) that you want to wait for the bulk download or upload.
     static int TimeoutInMilliseconds = 36000000;
     
+    static long actionAdExtensionIdKey = -10; 
     static long appAdExtensionIdKey = -11; 
     static long callAdExtensionIdKey = -12; 
     static long calloutAdExtensionIdKey = -13; 
     static long imageAdExtensionIdKey = -14; 
     static long locationAdExtensionIdKey = -15; 
-    static long reviewAdExtensionIdKey = -16; 
-    static long sitelinkAdExtensionIdKey = -17; 
-    static long structuredSnippetAdExtensionIdKey = -18; 
-    static long negativeKeywordListIdKey = -19; 
-    static long budgetIdKey = -20;
+    static long priceAdExtensionIdKey = -16; 
+    static long reviewAdExtensionIdKey = -17; 
+    static long sitelinkAdExtensionIdKey = -18; 
+    static long structuredSnippetAdExtensionIdKey = -19; 
+    static long negativeKeywordListIdKey = -20; 
+    static long budgetIdKey = -21;
     static long campaignIdKey = -111; 
     static long adGroupIdKey = -1111; 
     static long negativeKeywordIdKey = -11111; 
@@ -82,7 +84,7 @@ public class BulkExampleBase extends ExampleBase {
         
     static void outputBulkBudgets(Iterable<BulkBudget> bulkEntities){
         for (BulkBudget entity : bulkEntities){
-            outputStatusMessage("\nBulkBudget: \n");
+            outputStatusMessage("BulkBudget:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -102,14 +104,13 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
         for (BulkCampaign entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaign: \n");
+            outputStatusMessage("BulkCampaign:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
             outputBulkQualityScoreData(entity.getQualityScoreData());
 
             // Output the Campaign Management Campaign Object
@@ -123,7 +124,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkAdGroups(Iterable<BulkAdGroup> bulkEntities){
         for (BulkAdGroup entity : bulkEntities){
-            outputStatusMessage("\nBulkAdGroup: \n");
+            outputStatusMessage("BulkAdGroup:");
             outputStatusMessage(String.format("CampaignId: %s", entity.getCampaignId()));
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
@@ -132,7 +133,6 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
             outputBulkQualityScoreData(entity.getQualityScoreData());
 
             // Output the Campaign Management AdGroup Object
@@ -146,7 +146,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkTextAds(Iterable<BulkTextAd> bulkEntities){
         for (BulkTextAd entity : bulkEntities){
-            outputStatusMessage("\nBulkTextAd: \n");
+            outputStatusMessage("BulkTextAd:");
             outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
@@ -155,10 +155,8 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
-
             // Output the Campaign Management TextAd Object
-            CampaignManagementExampleHelper.outputTextAd(entity.getTextAd());
+            CampaignManagementExampleHelper.outputAd(entity.getTextAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -168,7 +166,7 @@ public class BulkExampleBase extends ExampleBase {
     
     static void outputBulkExpandedTextAds(Iterable<BulkExpandedTextAd> bulkEntities){
         for (BulkExpandedTextAd entity : bulkEntities){
-            outputStatusMessage("\nBulkExpandedTextAd: \n");
+            outputStatusMessage("BulkExpandedTextAd:");
             outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
@@ -177,10 +175,8 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
-
             // Output the Campaign Management ExpandedTextAd Object
-            CampaignManagementExampleHelper.outputExpandedTextAd(entity.getExpandedTextAd());
+            CampaignManagementExampleHelper.outputAd(entity.getExpandedTextAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -190,7 +186,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkKeywords(Iterable<BulkKeyword> bulkEntities){
         for (BulkKeyword entity : bulkEntities){
-            outputStatusMessage("\nBulkKeyword: \n");
+            outputStatusMessage("BulkKeyword:");
             outputStatusMessage(String.format("AdGroupId: {0}", entity.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: {0}", entity.getAdGroupName()));
             outputStatusMessage(String.format("CampaignName: {0}", entity.getCampaignName()));
@@ -199,7 +195,6 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
             outputBulkQualityScoreData(entity.getQualityScoreData());
             outputBulkBidSuggestions(entity.getBidSuggestions());
 
@@ -214,7 +209,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkProductAds(Iterable<BulkProductAd> bulkEntities){
         for (BulkProductAd entity : bulkEntities){
-            outputStatusMessage("\nBulkProductAd: \n");
+            outputStatusMessage("BulkProductAd:");
             outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
             outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
@@ -223,10 +218,8 @@ public class BulkExampleBase extends ExampleBase {
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
 
-            outputBulkPerformanceData(entity.getPerformanceData());
-
             // Output the Campaign Management ProductAd Object
-            CampaignManagementExampleHelper.outputProductAd(entity.getProductAd());
+            CampaignManagementExampleHelper.outputAd(entity.getProductAd());
 
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
@@ -236,7 +229,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignProductScopes(Iterable<BulkCampaignProductScope> bulkEntities){
         for (BulkCampaignProductScope entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignProductScope: \n");
+            outputStatusMessage("BulkCampaignProductScope:");
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -254,7 +247,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkAdGroupProductPartitions(Iterable<BulkAdGroupProductPartition> bulkEntities){
         for (BulkAdGroupProductPartition entity : bulkEntities){
-            outputStatusMessage("\nBulkAdGroupProductPartition: \n");
+            outputStatusMessage("BulkAdGroupProductPartition:");
             outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
             outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
             outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
@@ -281,10 +274,51 @@ public class BulkExampleBase extends ExampleBase {
             }
         }
     }
+    
+    static void outputBulkActionAdExtensions(Iterable<BulkActionAdExtension> bulkEntities){
+        for (BulkActionAdExtension entity : bulkEntities){
+            outputStatusMessage("BulkActionAdExtension:");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+
+            // Output the Campaign Management ActionAdExtension Object
+            CampaignManagementExampleHelper.outputAdExtension(entity.getActionAdExtension());
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+
+    static void outputBulkCampaignActionAdExtensions(Iterable<BulkCampaignActionAdExtension> bulkEntities){
+        for (BulkCampaignActionAdExtension entity : bulkEntities){
+            outputStatusMessage("BulkCampaignActionAdExtension:");
+            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
+                outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
+                outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
+            }
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage(String.format("EditorialStatus: %s", entity.getEditorialStatus()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
 
     static void outputBulkAppAdExtensions(Iterable<BulkAppAdExtension> bulkEntities){
         for (BulkAppAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkAppAdExtension: \n");
+            outputStatusMessage("BulkAppAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -292,7 +326,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management AppAdExtension Object
-            CampaignManagementExampleHelper.outputAppAdExtension(entity.getAppAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getAppAdExtension());
 
             if (entity.hasErrors())
             {
@@ -303,7 +337,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignAppAdExtensions(Iterable<BulkCampaignAppAdExtension> bulkEntities){
         for (BulkCampaignAppAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignAppAdExtension: \n");
+            outputStatusMessage("BulkCampaignAppAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -325,7 +359,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCallAdExtensions(Iterable<BulkCallAdExtension> bulkEntities){
         for (BulkCallAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCallAdExtension: \n");
+            outputStatusMessage("BulkCallAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -333,7 +367,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management CallAdExtension Object
-            CampaignManagementExampleHelper.outputCallAdExtension(entity.getCallAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getCallAdExtension());
 
             if (entity.hasErrors())
             {
@@ -344,7 +378,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignCallAdExtensions(Iterable<BulkCampaignCallAdExtension> bulkEntities){
         for (BulkCampaignCallAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignCallAdExtension: \n");
+            outputStatusMessage("BulkCampaignCallAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -366,7 +400,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCalloutAdExtensions(Iterable<BulkCalloutAdExtension> bulkEntities){
         for (BulkCalloutAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCalloutAdExtension: \n");
+            outputStatusMessage("BulkCalloutAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -374,7 +408,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management CalloutAdExtension Object
-            CampaignManagementExampleHelper.outputCalloutAdExtension(entity.getCalloutAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getCalloutAdExtension());
 
             if (entity.hasErrors())
             {
@@ -385,7 +419,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignCalloutAdExtensions(Iterable<BulkCampaignCalloutAdExtension> bulkEntities){
         for (BulkCampaignCalloutAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignCalloutAdExtension: \n");
+            outputStatusMessage("BulkCampaignCalloutAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -407,7 +441,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkLocationAdExtensions(Iterable<BulkLocationAdExtension> bulkEntities){
         for (BulkLocationAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkLocationAdExtension: \n");
+            outputStatusMessage("BulkLocationAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -415,7 +449,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management LocationAdExtension Object
-            CampaignManagementExampleHelper.outputLocationAdExtension(entity.getLocationAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getLocationAdExtension());
 
             if (entity.hasErrors())
             {
@@ -426,7 +460,48 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignLocationAdExtensions(Iterable<BulkCampaignLocationAdExtension> bulkEntities){
         for (BulkCampaignLocationAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignLocationAdExtension: \n");
+            outputStatusMessage("BulkCampaignLocationAdExtension:");
+            if(entity.getAdExtensionIdToEntityIdAssociation() != null){
+                outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
+                outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
+            }
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage(String.format("EditorialStatus: %s", entity.getEditorialStatus()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkPriceAdExtensions(Iterable<BulkPriceAdExtension> bulkEntities){
+        for (BulkPriceAdExtension entity : bulkEntities){
+            outputStatusMessage("BulkPriceAdExtension:");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
+            }
+
+            // Output the Campaign Management PriceAdExtension Object
+            CampaignManagementExampleHelper.outputAdExtension(entity.getPriceAdExtension());
+
+            if (entity.hasErrors())
+            {
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+
+    static void outputBulkCampaignPriceAdExtensions(Iterable<BulkCampaignPriceAdExtension> bulkEntities){
+        for (BulkCampaignPriceAdExtension entity : bulkEntities){
+            outputStatusMessage("BulkCampaignPriceAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -448,7 +523,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkReviewAdExtensions(Iterable<BulkReviewAdExtension> bulkEntities){
         for (BulkReviewAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkReviewAdExtension: \n");
+            outputStatusMessage("BulkReviewAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -456,7 +531,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management ReviewAdExtension Object
-            CampaignManagementExampleHelper.outputReviewAdExtension(entity.getReviewAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getReviewAdExtension());
 
             if (entity.hasErrors())
             {
@@ -467,7 +542,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkCampaignReviewAdExtensions(Iterable<BulkCampaignReviewAdExtension> bulkEntities){
         for (BulkCampaignReviewAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignReviewAdExtension: \n");
+            outputStatusMessage("BulkCampaignReviewAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -489,20 +564,20 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkSitelinkAdExtensions(Iterable<BulkSitelinkAdExtension> bulkEntities){
         for (BulkSitelinkAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkSitelinkAdExtension: \n");
+            outputStatusMessage("BulkSitelinkAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             if(entity.getLastModifiedTime() != null){
                 outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
             }
 
             // Output the Campaign Management SitelinkAdExtension Object
-            CampaignManagementExampleHelper.outputSitelinkAdExtension(entity.getSitelinkAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getSitelinkAdExtension());
         }
     }
     
     static void outputBulkCampaignSitelinkAdExtensions(Iterable<BulkCampaignSitelinkAdExtension> bulkEntities){
         for (BulkCampaignSitelinkAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignSitelinkAdExtension: \n");
+            outputStatusMessage("BulkCampaignSitelinkAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -524,20 +599,20 @@ public class BulkExampleBase extends ExampleBase {
     
     static void outputBulkStructuredSnippetAdExtensions(Iterable<BulkStructuredSnippetAdExtension> bulkEntities){
         for (BulkStructuredSnippetAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkStructuredSnippetAdExtension: \n");
+            outputStatusMessage("BulkStructuredSnippetAdExtension:");
             outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
             if(entity.getLastModifiedTime() != null){
                 outputStatusMessage(String.format("LastModifiedTime: %s",entity.getLastModifiedTime().getTime()));
             }
 
             // Output the Campaign Management StructuredSnippetAdExtension Object
-            CampaignManagementExampleHelper.outputStructuredSnippetAdExtension(entity.getStructuredSnippetAdExtension());
+            CampaignManagementExampleHelper.outputAdExtension(entity.getStructuredSnippetAdExtension());
         }
     }
     
     static void outputBulkCampaignStructuredSnippetAdExtensions(Iterable<BulkCampaignStructuredSnippetAdExtension> bulkEntities){
         for (BulkCampaignStructuredSnippetAdExtension entity : bulkEntities){
-            outputStatusMessage("\nBulkCampaignStructuredSnippetAdExtension: \n");
+            outputStatusMessage("BulkCampaignStructuredSnippetAdExtension:");
             if(entity.getAdExtensionIdToEntityIdAssociation() != null){
                 outputStatusMessage(String.format("AdExtensionId: %s", entity.getAdExtensionIdToEntityIdAssociation().getAdExtensionId()));
                 outputStatusMessage(String.format("EntityId: %s", entity.getAdExtensionIdToEntityIdAssociation().getEntityId()));
@@ -559,7 +634,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkRemarketingLists(Iterable<BulkRemarketingList> bulkEntities){
         for (BulkRemarketingList entity : bulkEntities){
-            outputStatusMessage("\nBulkRemarketingList: \n");
+            outputStatusMessage("BulkRemarketingList:");
             outputStatusMessage(String.format("Status: %s", entity.getStatus()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
@@ -567,7 +642,7 @@ public class BulkExampleBase extends ExampleBase {
             }
 
             // Output the Campaign Management RemarketingList Object
-            CampaignManagementExampleHelper.outputRemarketingList(entity.getRemarketingList());
+            CampaignManagementExampleHelper.outputAudience(entity.getRemarketingList());
 
             if (entity.hasErrors())
             {
@@ -578,7 +653,7 @@ public class BulkExampleBase extends ExampleBase {
 
     static void outputBulkAdGroupRemarketingListAssociations(Iterable<BulkAdGroupRemarketingListAssociation> bulkEntities){
         for (BulkAdGroupRemarketingListAssociation entity : bulkEntities){
-            outputStatusMessage("\nBulkAdGroupRemarketingList: \n");
+            outputStatusMessage("BulkAdGroupRemarketingList:");
             outputStatusMessage(String.format("Campaign Name: %s", entity.getCampaignName()));
             outputStatusMessage(String.format("Ad Group Name: %s", entity.getAdGroupName()));
             outputStatusMessage(String.format("ClientId: %s",entity.getClientId()));
@@ -593,22 +668,6 @@ public class BulkExampleBase extends ExampleBase {
             {
                 outputBulkErrors(entity.getErrors());
             }
-        }
-    }
-
-    static void outputBulkPerformanceData(PerformanceData performanceData){
-        if (performanceData != null)
-        {
-            outputStatusMessage("PerformanceData: ");
-            outputStatusMessage(String.format("AverageCostPerClick: %s", performanceData.getAverageCostPerClick()));
-            outputStatusMessage(String.format("AverageCostPerThousandImpressions: %s", performanceData.getAverageCostPerThousandImpressions()));
-            outputStatusMessage(String.format("AveragePosition: %s", performanceData.getAveragePosition()));
-            outputStatusMessage(String.format("Clicks: %s", performanceData.getClicks()));
-            outputStatusMessage(String.format("ClickThroughRate: %s", performanceData.getClickThroughRate()));
-            outputStatusMessage(String.format("Conversions: %s", performanceData.getConversions()));
-            outputStatusMessage(String.format("CostPerConversion: %s", performanceData.getCostPerConversion()));
-            outputStatusMessage(String.format("Impressions: %s", performanceData.getImpressions()));
-            outputStatusMessage(String.format("Spend: %s", performanceData.getSpend()));
         }
     }
 
@@ -639,10 +698,10 @@ public class BulkExampleBase extends ExampleBase {
             outputStatusMessage(String.format("Error: %s", error.getError()));
             outputStatusMessage(String.format("Number: %s", error.getNumber()));
             if(error.getEditorialReasonCode() != null){
-                    outputStatusMessage(String.format("EditorialTerm: %s", error.getEditorialTerm()));
-                    outputStatusMessage(String.format("EditorialReasonCode: %s", error.getEditorialReasonCode()));
-                    outputStatusMessage(String.format("EditorialLocation: %s", error.getEditorialLocation()));
-                    outputStatusMessage(String.format("PublisherCountries: %s", error.getPublisherCountries()));
+                outputStatusMessage(String.format("EditorialTerm: %s", error.getEditorialTerm()));
+                outputStatusMessage(String.format("EditorialReasonCode: %s", error.getEditorialReasonCode()));
+                outputStatusMessage(String.format("EditorialLocation: %s", error.getEditorialLocation()));
+                outputStatusMessage(String.format("PublisherCountries: %s", error.getPublisherCountries()));
             }
         }
     }
@@ -652,9 +711,7 @@ public class BulkExampleBase extends ExampleBase {
         BulkCampaign bulkCampaign = new BulkCampaign();
         
         // 'Parent Id' column header in the Bulk file
-        // This is not required for upload because the parent account identifier is set 
-        // with the CustomerAccountId header element in the Bulk upload service request.
-        //bulkCampaign.setAccountId(OptionalAccountIdHere);
+        bulkCampaign.setAccountId(0L);        
         // 'Client Id' column header in the Bulk file
         bulkCampaign.setClientId("ClientIdGoesHere");
         
@@ -674,8 +731,6 @@ public class BulkExampleBase extends ExampleBase {
         campaign.setCampaignType(campaignTypes);
         // 'Budget' column header in the Bulk file
         campaign.setDailyBudget(50D);
-        // 'Description' column header in the Bulk file
-        campaign.setDescription("Red shoes line.");
         // 'Id' column header in the Bulk file
         campaign.setId(campaignIdKey);
         // 'Language' column header in the Bulk file
@@ -742,7 +797,7 @@ public class BulkExampleBase extends ExampleBase {
         targetSetting.setDetails(targetSettingDetails);
         settings.getSettings().add(targetSetting);
         adGroup.setSettings(settings);
-        // 'Search Bid' column header in the Bulk file
+        // 'Cpc Bid' column header in the Bulk file
         Bid bid = new Bid();
         bid.setAmount(10D);
         adGroup.setCpcBid(bid);

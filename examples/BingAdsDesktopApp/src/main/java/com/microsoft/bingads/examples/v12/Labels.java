@@ -1,13 +1,12 @@
 package com.microsoft.bingads.examples.v12;
 
 import java.util.Random;
-
 import java.rmi.RemoteException;
+import java.util.Calendar;
+import java.util.List;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
-import java.util.Calendar;
-import java.util.List;
 
 public class Labels extends ExampleBase {
 
@@ -20,24 +19,42 @@ public class Labels extends ExampleBase {
    	
         try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                 authorizationData, 
                 API_ENVIRONMENT,
                 ICampaignManagementService.class);
 
-            // Specify a campaign, ad group, keyword, and ad.
+            // Add an ad group in a campaign. Later we will create labels for them. 
+            // Although not included in this example you can also create labels for ads and keywords. 
 
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Red shoes line.");
-            campaign.setDailyBudget(50.0);
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
+            campaign.setDailyBudget(50.00);
+            campaign.setDescription("Red shoes line.");
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaigns.getCampaigns().add(campaign);
 
+            outputStatusMessage("-----\nAddCampaigns:");
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);            
+            ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+            ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+            outputStatusMessage("CampaignIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
+
+            // Add an ad group within the campaign.
+            
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
             AdGroup adGroup = new AdGroup();
             adGroup.setName("Women's Red Shoe Sale");
@@ -50,29 +67,21 @@ public class Labels extends ExampleBase {
             Bid CpcBid = new Bid();
             CpcBid.setAmount(0.09);
             adGroup.setCpcBid(CpcBid);
-            adGroup.setLanguage("English");
             adGroups.getAdGroups().add(adGroup);
 
-            ArrayOfKeyword keywords = new ArrayOfKeyword();
-            Keyword keyword = new Keyword();
-            keyword.setBid(new Bid());
-            keyword.getBid().setAmount(0.47);
-            keyword.setParam2("10% Off");
-            keyword.setMatchType(MatchType.PHRASE);
-            keyword.setText("Brand-A Shoes");
-            keywords.getKeywords().add(keyword);
+            outputStatusMessage("-----\nAddAdGroups:");
+            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(
+                    campaignIds.getLongs().get(0), 
+                    adGroups, 
+                    false);
+            ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
+            ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
+            outputStatusMessage("CampaignIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors); 
 
-            ArrayOfAd ads = new ArrayOfAd();
-            ExpandedTextAd expandedTextAd = new ExpandedTextAd();
-            expandedTextAd.setTitlePart1("Contoso");
-            expandedTextAd.setTitlePart2("Fast & Easy Setup");
-            expandedTextAd.setText("Find New Customers & Increase Sales! Start Advertising on Contoso Today.");
-            expandedTextAd.setPath1("seattle");
-            expandedTextAd.setPath2("shoe sale");
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-            expandedTextAd.setFinalUrls(finalUrls);
-            ads.getAds().add(expandedTextAd);
+            // Add labels and associate them with the campaign and ad group.
             
             Random random = new Random();
             ArrayOfLabel labels = new ArrayOfLabel();
@@ -86,178 +95,111 @@ public class Labels extends ExampleBase {
                 label.setName("Label Name " + color + " " + System.currentTimeMillis());
                 labels.getLabels().add(label);
             }
-
-            // Add the campaign, ad group, keyword, ad, and labels.
-                    
-            AddLabelsResponse addLabelsResponse = CampaignManagementExampleHelper.addLabels(labels);
-            ArrayOfNullableOflong nullableLabelIds = addLabelsResponse.getLabelIds();
-            ArrayOfBatchError labelErrors = addLabelsResponse.getPartialErrors();
-            outputStatusMessage("New Label Ids:");
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableLabelIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(labelErrors);
-
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
-                    authorizationData.getAccountId(), 
-                    campaigns,
-                    false);
-            ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
-            ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
-            outputStatusMessage("New Campaign Ids:");
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
-
-            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups, null);
-            ArrayOfNullableOflong nullableAdGroupIds = addAdGroupsResponse.getAdGroupIds();
-            ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
-            outputStatusMessage("New Ad Group Ids:");
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableAdGroupIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors);
-
-            AddKeywordsResponse addKeywordsResponse = CampaignManagementExampleHelper.addKeywords(nullableAdGroupIds.getLongs().get(0), keywords, null);
-            ArrayOfNullableOflong nullableKeywordIds = addKeywordsResponse.getKeywordIds();
-            ArrayOfBatchError keywordErrors = addKeywordsResponse.getPartialErrors();
-            outputStatusMessage("New Keyword Ids:");
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableKeywordIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(keywordErrors);
-
-            AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(nullableAdGroupIds.getLongs().get(0), ads);
-            ArrayOfNullableOflong nullableAdIds = addAdsResponse.getAdIds();
-            ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
-            outputStatusMessage("New Ad Ids:");
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableAdIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(adErrors);
             
-            ArrayOflong labelIds = getNonNullableIds(nullableLabelIds);
-
-            outputStatusMessage("\nGet all the labels that we added above...");
+            outputStatusMessage("-----\nAddLabels:");
+            AddLabelsResponse addLabelsResponse = CampaignManagementExampleHelper.addLabels(labels);
+            ArrayOfNullableOflong labelIds = addLabelsResponse.getLabelIds();
+            ArrayOfBatchError labelErrors = addLabelsResponse.getPartialErrors();
+            outputStatusMessage("LabelIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(labelIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(labelErrors);
+            
+            ArrayOflong getLabelIds = getNonNullableIds(labelIds);
 
             Paging paging = new Paging();
             paging.setIndex(0);
             paging.setSize(MAX_GET_LABELS_BY_IDS);
 
+            outputStatusMessage("-----\nGetLabelsByIds:");
             GetLabelsByIdsResponse getLabelsByIdsResponse = CampaignManagementExampleHelper.getLabelsByIds(
-                labelIds,
-                paging
-            );
+                getLabelIds,
+                paging);
+            outputStatusMessage("Labels:");
             CampaignManagementExampleHelper.outputArrayOfLabel(getLabelsByIdsResponse.getLabels());
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(labelErrors);
 
-            outputStatusMessage("\nUpdate the label color and then retrieve the labels again to confirm the changes....");
-
-            ArrayOfLabel updateLabels = new ArrayOfLabel();
-            for (Label label : getLabelsByIdsResponse.getLabels().getLabels())
-            {
-                java.lang.String color = String.format("#%06x", random.nextInt(0x100000));
-                label.setColorCode(color);
-                updateLabels.getLabels().add(label);
-            }
-            UpdateLabelsResponse updateLabelsResponse = CampaignManagementExampleHelper.updateLabels(updateLabels);
-
-            getLabelsByIdsResponse = CampaignManagementExampleHelper.getLabelsByIds(
-                labelIds,
-                paging
-            );
-            CampaignManagementExampleHelper.outputArrayOfLabel(getLabelsByIdsResponse.getLabels());
-
-            ArrayOfLabelAssociation campaignLabelAssociations = createExampleLabelAssociationsByEntityId(nullableCampaignIds.getLongs().get(0), labelIds);
-            outputStatusMessage("\nAssociating all of the labels with a campaign...");
+            ArrayOfLabelAssociation campaignLabelAssociations = createExampleLabelAssociationsByEntityId(
+                    campaignIds.getLongs().get(0), 
+                    getLabelIds);
+            outputStatusMessage("-----\nAssociating all of the labels with a campaign...");
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(campaignLabelAssociations);
-            SetLabelAssociationsResponse setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(EntityType.CAMPAIGN, campaignLabelAssociations);
+            SetLabelAssociationsResponse setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(
+                    EntityType.CAMPAIGN, 
+                    campaignLabelAssociations);
 
-            ArrayOfLabelAssociation adGroupLabelAssociations = createExampleLabelAssociationsByEntityId(nullableAdGroupIds.getLongs().get(0), labelIds);
-            outputStatusMessage("\nAssociating all of the labels with an ad group...");
+            ArrayOfLabelAssociation adGroupLabelAssociations = createExampleLabelAssociationsByEntityId(
+                    adGroupIds.getLongs().get(0), 
+                    getLabelIds);
+            outputStatusMessage("-----\nAssociating all of the labels with an ad group...");
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(adGroupLabelAssociations);
-            setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(EntityType.AD_GROUP, adGroupLabelAssociations);
+            setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(
+                    EntityType.AD_GROUP, 
+                    adGroupLabelAssociations);
 
-            ArrayOfLabelAssociation keywordLabelAssociations = createExampleLabelAssociationsByEntityId(nullableKeywordIds.getLongs().get(0), labelIds);
-            outputStatusMessage("\nAssociating all of the labels with a keyword...");
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(keywordLabelAssociations);
-            setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(EntityType.KEYWORD, keywordLabelAssociations);
-
-            ArrayOfLabelAssociation adLabelAssociations = createExampleLabelAssociationsByEntityId(nullableAdIds.getLongs().get(0), labelIds);
-            outputStatusMessage("\nAssociating all of the labels with an ad...");
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(adLabelAssociations);
-            setLabelAssociationsResponse = CampaignManagementExampleHelper.setLabelAssociations(EntityType.AD, adLabelAssociations);
-
-
-            outputStatusMessage("\nUse paging to get all campaign label associations...");
+            outputStatusMessage("-----\nUse paging to get all campaign label associations...");
             ArrayOfLabelAssociation getLabelAssociationsByLabelIds = getLabelAssociationsByLabelIdsHelper(
                 EntityType.CAMPAIGN,
-                labelIds);
+                getLabelIds);
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByLabelIds);
 
-            outputStatusMessage("\nUse paging to get all ad group label associations...");
+            outputStatusMessage("-----\nUse paging to get all ad group label associations...");
             getLabelAssociationsByLabelIds = getLabelAssociationsByLabelIdsHelper(
                 EntityType.AD_GROUP,
-                labelIds);
+                getLabelIds);
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByLabelIds);
 
-            outputStatusMessage("\nUse paging to get all keyword label associations...");
-            getLabelAssociationsByLabelIds = getLabelAssociationsByLabelIdsHelper(
-                EntityType.KEYWORD,
-                labelIds);
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByLabelIds);
-
-            outputStatusMessage("\nUse paging to get all ad label associations...");
-            getLabelAssociationsByLabelIds = getLabelAssociationsByLabelIdsHelper(
-                EntityType.AD,
-                labelIds);
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByLabelIds);
-
-            outputStatusMessage("\nGet all label associations for all specified campaigns...");
+            outputStatusMessage("-----\nGet label associations for the campaigns...");
             ArrayOfLabelAssociation getLabelAssociationsByEntityIds = getLabelAssociationsByEntityIdsHelper(
                 EntityType.CAMPAIGN,
-                getNonNullableIds(nullableCampaignIds)
-            );
+                getNonNullableIds(campaignIds));
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByEntityIds);
 
-            outputStatusMessage("\nGet all label associations for all specified ad groups...");
+            outputStatusMessage("-----\nGet label associations for the ad groups...");
             getLabelAssociationsByEntityIds = getLabelAssociationsByEntityIdsHelper(
                 EntityType.AD_GROUP,
-                getNonNullableIds(nullableAdGroupIds)
-            );
+                getNonNullableIds(adGroupIds));
             CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByEntityIds);
 
-            outputStatusMessage("\nGet all label associations for all specified keywords...");
-            getLabelAssociationsByEntityIds = getLabelAssociationsByEntityIdsHelper(
-                EntityType.KEYWORD,
-                getNonNullableIds(nullableKeywordIds)
-            );
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByEntityIds);
+            outputStatusMessage("-----\nDelete all label associations that we set above...");
 
-            outputStatusMessage("\nGet all label associations for all specified ads...");
-            getLabelAssociationsByEntityIds = getLabelAssociationsByEntityIdsHelper(
-                EntityType.AD,
-                getNonNullableIds(nullableAdIds)
-            );
-            CampaignManagementExampleHelper.outputArrayOfLabelAssociation(getLabelAssociationsByEntityIds);
-
-            outputStatusMessage("\nDelete all label associations that we set above....");
-
-            // This is not necessary if you are deleting the corresponding campaign(s), as the 
+            // Deleting the associations is not necessary if you are deleting the corresponding campaign(s), as the 
             // contained ad groups, keywords, ads, and associations would also be deleted.
 
-            DeleteLabelAssociationsResponse deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(EntityType.CAMPAIGN, campaignLabelAssociations);
-            deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(EntityType.AD_GROUP, adGroupLabelAssociations);
-            deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(EntityType.KEYWORD, keywordLabelAssociations);
-            deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(EntityType.AD, adLabelAssociations);
-
-            outputStatusMessage("\nDelete all labels that we added above....");
+            DeleteLabelAssociationsResponse deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(
+                    EntityType.CAMPAIGN, 
+                    campaignLabelAssociations);
+            deleteLabelAssociationsResponse = CampaignManagementExampleHelper.deleteLabelAssociations(
+                    EntityType.AD_GROUP, 
+                    adGroupLabelAssociations);
 
             // Deleting the campaign(s) removes the corresponding label associations but not remove the labels.
 
-            DeleteLabelsResponse deleteLabelsResponse = CampaignManagementExampleHelper.deleteLabels(labelIds);
+            outputStatusMessage("-----\nDeleteLabels:");
+            DeleteLabelsResponse deleteLabelsResponse = CampaignManagementExampleHelper.deleteLabels(
+                    getLabelIds);
+            
+            for (java.lang.Long id : getLabelIds.getLongs())
+            {
+                outputStatusMessage(String.format("Deleted Label Id %s", id));
+            }
 
-            outputStatusMessage("\nDelete the campaign, ad group, keyword, and ad that were added above....");
+            // Delete the campaign and everything it contains e.g., ad groups and ads.
 
-            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), getNonNullableIds(nullableCampaignIds));
-
-            outputStatusMessage("Program execution completed\n"); 
-
+            outputStatusMessage("-----\nDeleteCampaigns:");
+            ArrayOflong deleteCampaignIds = new ArrayOflong();
+            deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+            CampaignManagementExampleHelper.deleteCampaigns(
+                    authorizationData.getAccountId(), 
+                    deleteCampaignIds);
+            outputStatusMessage(String.format("Deleted CampaignId %d", deleteCampaignIds.getLongs().get(0))); 
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
     

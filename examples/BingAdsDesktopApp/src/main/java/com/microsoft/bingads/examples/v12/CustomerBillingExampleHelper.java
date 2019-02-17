@@ -90,10 +90,12 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -103,7 +105,6 @@ class CustomerBillingExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -111,7 +112,10 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -121,7 +125,6 @@ class CustomerBillingExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -129,7 +132,10 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiBatchFault * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("* * * End OutputApiBatchFault * * *");
         }
     }
     static void outputArrayOfApiBatchFault(ArrayList<ApiBatchFault> dataObjects)
@@ -139,7 +145,6 @@ class CustomerBillingExampleHelper
             for (ApiBatchFault dataObject : dataObjects)
             {
                 outputApiBatchFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -147,11 +152,14 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFault * * *");
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
             if(dataObject instanceof ApiBatchFault)
             {
                 outputApiBatchFault((ApiBatchFault)dataObject);
             }
+            outputStatusMessage("* * * End OutputApiFault * * *");
         }
     }
     static void outputArrayOfApiFault(ArrayList<ApiFault> dataObjects)
@@ -161,7 +169,6 @@ class CustomerBillingExampleHelper
             for (ApiFault dataObject : dataObjects)
             {
                 outputApiFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -169,6 +176,7 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -178,6 +186,7 @@ class CustomerBillingExampleHelper
             {
                 outputApiFault((ApiFault)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -187,7 +196,6 @@ class CustomerBillingExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -195,10 +203,12 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputBatchError * * *");
         }
     }
     static void outputArrayOfBatchError(ArrayOfBatchError dataObjects)
@@ -208,7 +218,6 @@ class CustomerBillingExampleHelper
             for (BatchError dataObject : dataObjects.getBatchErrors())
             {
                 outputBatchError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -216,9 +225,11 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBillingDocument * * *");
             outputStatusMessage(String.format("Data: %s", dataObject.getData()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            outputStatusMessage("* * * End OutputBillingDocument * * *");
         }
     }
     static void outputArrayOfBillingDocument(ArrayOfBillingDocument dataObjects)
@@ -228,7 +239,6 @@ class CustomerBillingExampleHelper
             for (BillingDocument dataObject : dataObjects.getBillingDocuments())
             {
                 outputBillingDocument(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -236,6 +246,7 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBillingDocumentInfo * * *");
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
             outputStatusMessage(String.format("AccountName: %s", dataObject.getAccountName()));
             outputStatusMessage(String.format("AccountNumber: %s", dataObject.getAccountNumber()));
@@ -244,6 +255,7 @@ class CustomerBillingExampleHelper
             outputStatusMessage(String.format("DocumentDate: %s", dataObject.getDocumentDate()));
             outputStatusMessage(String.format("DocumentId: %s", dataObject.getDocumentId()));
             outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
+            outputStatusMessage("* * * End OutputBillingDocumentInfo * * *");
         }
     }
     static void outputArrayOfBillingDocumentInfo(ArrayOfBillingDocumentInfo dataObjects)
@@ -253,7 +265,6 @@ class CustomerBillingExampleHelper
             for (BillingDocumentInfo dataObject : dataObjects.getBillingDocumentInfos())
             {
                 outputBillingDocumentInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -261,6 +272,7 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputInsertionOrder * * *");
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
             outputStatusMessage(String.format("BalanceAmount: %s", dataObject.getBalanceAmount()));
             outputStatusMessage(String.format("BookingCountryCode: %s", dataObject.getBookingCountryCode()));
@@ -276,7 +288,9 @@ class CustomerBillingExampleHelper
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
             outputStatusMessage(String.format("PurchaseOrder: %s", dataObject.getPurchaseOrder()));
+            outputStatusMessage("PendingChanges:");
             outputInsertionOrderPendingChanges(dataObject.getPendingChanges());
+            outputStatusMessage("* * * End OutputInsertionOrder * * *");
         }
     }
     static void outputArrayOfInsertionOrder(ArrayOfInsertionOrder dataObjects)
@@ -286,7 +300,6 @@ class CustomerBillingExampleHelper
             for (InsertionOrder dataObject : dataObjects.getInsertionOrders())
             {
                 outputInsertionOrder(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -294,6 +307,7 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputInsertionOrderPendingChanges * * *");
             outputStatusMessage(String.format("Comment: %s", dataObject.getComment()));
             outputStatusMessage(String.format("EndDate: %s", dataObject.getEndDate()));
             outputStatusMessage(String.format("RequestedByUserId: %s", dataObject.getRequestedByUserId()));
@@ -305,6 +319,7 @@ class CustomerBillingExampleHelper
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("PurchaseOrder: %s", dataObject.getPurchaseOrder()));
             outputStatusMessage(String.format("ChangeStatus: %s", dataObject.getChangeStatus()));
+            outputStatusMessage("* * * End OutputInsertionOrderPendingChanges * * *");
         }
     }
     static void outputArrayOfInsertionOrderPendingChanges(ArrayList<InsertionOrderPendingChanges> dataObjects)
@@ -314,7 +329,6 @@ class CustomerBillingExampleHelper
             for (InsertionOrderPendingChanges dataObject : dataObjects)
             {
                 outputInsertionOrderPendingChanges(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -322,9 +336,11 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -334,7 +350,6 @@ class CustomerBillingExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -342,8 +357,10 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOrderBy * * *");
             outputStatusMessage(String.format("Field: %s", dataObject.getField()));
             outputStatusMessage(String.format("Order: %s", dataObject.getOrder()));
+            outputStatusMessage("* * * End OutputOrderBy * * *");
         }
     }
     static void outputArrayOfOrderBy(ArrayOfOrderBy dataObjects)
@@ -353,7 +370,6 @@ class CustomerBillingExampleHelper
             for (OrderBy dataObject : dataObjects.getOrderBies())
             {
                 outputOrderBy(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -361,8 +377,10 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPaging * * *");
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Size: %s", dataObject.getSize()));
+            outputStatusMessage("* * * End OutputPaging * * *");
         }
     }
     static void outputArrayOfPaging(ArrayList<Paging> dataObjects)
@@ -372,7 +390,6 @@ class CustomerBillingExampleHelper
             for (Paging dataObject : dataObjects)
             {
                 outputPaging(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -380,9 +397,11 @@ class CustomerBillingExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPredicate * * *");
             outputStatusMessage(String.format("Field: %s", dataObject.getField()));
             outputStatusMessage(String.format("Operator: %s", dataObject.getOperator()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputPredicate * * *");
         }
     }
     static void outputArrayOfPredicate(ArrayOfPredicate dataObjects)
@@ -392,7 +411,6 @@ class CustomerBillingExampleHelper
             for (Predicate dataObject : dataObjects.getPredicates())
             {
                 outputPredicate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
