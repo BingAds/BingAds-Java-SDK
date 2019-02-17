@@ -4,48 +4,58 @@ import java.util.ArrayList;
 
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Calendar;
 
-public class AudienceCampaigns extends ExampleBase {
+public class ProfileCriteria extends ExampleBase {
 
     public static void main(java.lang.String[] args) {
    	
-        // You'll need to add media before you can run this example. 
-        // For details, see ImageMedia.java
-        
-        java.lang.Long LANDSCAPE_IMAGE_MEDIA_ID = 0L;
-        java.lang.Long LANDSCAPE_LOGO_MEDIA_ID = 0L;
-        java.lang.Long SQUARE_IMAGE_MEDIA_ID = 0L;
-        java.lang.Long SQUARE_LOGO_MEDIA_ID = 0L;
-        
         try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                 authorizationData, 
                 API_ENVIRONMENT,
                 ICampaignManagementService.class);
 
-            // Setup an Audience campaign with one ad group and a responsive ad.
-            
+            // Create an Audience campaign with one ad group.
+                        
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
+            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             // CampaignType must be set for Audience campaigns
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.AUDIENCE);
             campaign.setCampaignType(campaignTypes);
-            // Languages must be set for Audience campaigns
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring languages = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
+            campaign.setDailyBudget(50.00);
+            campaign.setDescription("Red shoes line.");
+            ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
             campaign.setName("Women's Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Red shoes line.");
-            campaign.setDailyBudget(50.0);
-            campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaigns.getCampaigns().add(campaign);
 
+            outputStatusMessage("-----\nAddCampaigns:");
+            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
+                    authorizationData.getAccountId(), 
+                    campaigns,
+                    false);            
+            ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
+            ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+            outputStatusMessage("CampaignIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
+
+            // Add an ad group within the campaign.
+            
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
             AdGroup adGroup = new AdGroup();
             adGroup.setName("Women's Red Shoe Sale");
@@ -58,94 +68,44 @@ public class AudienceCampaigns extends ExampleBase {
             Bid CpcBid = new Bid();
             CpcBid.setAmount(0.09);
             adGroup.setCpcBid(CpcBid);
-            // Language cannot be set for ad groups in Audience campaigns
-            adGroup.setLanguage(null);
             // Network cannot be set for ad groups in Audience campaigns
             adGroup.setNetwork(null);
-            // By including the corresponding TargetSettingDetail, 
-            // this example sets the "target and bid" option for 
-            // CompanyName, Industry, and JobFunction. We will only deliver ads to 
-            // people who meet at least one of your criteria.
+            // Sets the "target and bid" option for CompanyName, Industry, and JobFunction. 
+            // Microsoft will only deliver ads to people who meet at least one of your criteria.
             // By default the "bid only" option is set for Audience, Age, and Gender.
-            // We will deliver ads to all audiences, ages, and genders, if they meet
+            // Microsoft will deliver ads to all audiences, ages, and genders, if they meet
             // your company name, industry, or job function criteria. 
-            ArrayOfSetting adGroupSettings = new ArrayOfSetting();
-            TargetSetting adGroupTargetSetting = new TargetSetting();            
-            ArrayOfTargetSettingDetail adGroupTargetSettingDetails = new ArrayOfTargetSettingDetail();
-            
+            ArrayOfSetting settings = new ArrayOfSetting();
+            TargetSetting targetSetting = new TargetSetting();
+            ArrayOfTargetSettingDetail targetSettingDetails = new ArrayOfTargetSettingDetail();
             TargetSettingDetail adGroupCompanyNameTargetSettingDetail = new TargetSettingDetail();
             adGroupCompanyNameTargetSettingDetail.setCriterionTypeGroup(CriterionTypeGroup.COMPANY_NAME);
             adGroupCompanyNameTargetSettingDetail.setTargetAndBid(Boolean.TRUE);
-            adGroupTargetSettingDetails.getTargetSettingDetails().add(adGroupCompanyNameTargetSettingDetail);
-            
+            targetSettingDetails.getTargetSettingDetails().add(adGroupCompanyNameTargetSettingDetail);
             TargetSettingDetail adGroupIndustryTargetSettingDetail = new TargetSettingDetail();
             adGroupIndustryTargetSettingDetail.setCriterionTypeGroup(CriterionTypeGroup.INDUSTRY);
             adGroupIndustryTargetSettingDetail.setTargetAndBid(Boolean.TRUE);
-            adGroupTargetSettingDetails.getTargetSettingDetails().add(adGroupIndustryTargetSettingDetail);
-            
+            targetSettingDetails.getTargetSettingDetails().add(adGroupIndustryTargetSettingDetail);
             TargetSettingDetail adGroupJobFunctionTargetSettingDetail = new TargetSettingDetail();
             adGroupJobFunctionTargetSettingDetail.setCriterionTypeGroup(CriterionTypeGroup.JOB_FUNCTION);
             adGroupJobFunctionTargetSettingDetail.setTargetAndBid(Boolean.TRUE);
-            adGroupTargetSettingDetails.getTargetSettingDetails().add(adGroupJobFunctionTargetSettingDetail);
-            
-            adGroupTargetSetting.setDetails(adGroupTargetSettingDetails);
-            adGroupSettings.getSettings().add(adGroupTargetSetting);
-            adGroup.setSettings(adGroupSettings);
+            targetSettingDetails.getTargetSettingDetails().add(adGroupJobFunctionTargetSettingDetail);
+            targetSetting.setDetails(targetSettingDetails);
+            settings.getSettings().add(targetSetting);
+            adGroup.setSettings(settings);
             adGroups.getAdGroups().add(adGroup);
-
-            ArrayOfAd ads = new ArrayOfAd();
-            ResponsiveAd responsiveAd = new ResponsiveAd();
-            // Not applicable for responsive ads
-            responsiveAd.setAdFormatPreference(null);
-            responsiveAd.setBusinessName("Contoso");
-            responsiveAd.setCallToAction(CallToAction.ADD_TO_CART);
-            // Not applicable for responsive ads
-            responsiveAd.setDevicePreference(null);
-            responsiveAd.setEditorialStatus(null);
-            responsiveAd.setFinalAppUrls(null);            
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-            finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-            responsiveAd.setFinalMobileUrls(finalMobileUrls);
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-            responsiveAd.setFinalUrls(finalUrls);
-            responsiveAd.setForwardCompatibilityMap(null);
-            responsiveAd.setHeadline("Fast & Easy Setup");
-            responsiveAd.setId(null);
-            responsiveAd.setLandscapeImageMediaId(LANDSCAPE_IMAGE_MEDIA_ID);
-            responsiveAd.setLandscapeLogoMediaId(LANDSCAPE_LOGO_MEDIA_ID);
-            responsiveAd.setLongHeadline("Find New Customers & Increase Sales!");
-            responsiveAd.setSquareImageMediaId(SQUARE_IMAGE_MEDIA_ID);
-            responsiveAd.setSquareLogoMediaId(SQUARE_LOGO_MEDIA_ID);
-            responsiveAd.setStatus(null);
-            responsiveAd.setText("Find New Customers & Increase Sales! Start Advertising on Contoso Today.");
-            responsiveAd.setTrackingUrlTemplate(null);
-            responsiveAd.setType(null);
-            responsiveAd.setUrlCustomParameters(null);
-            ads.getAds().add(responsiveAd);
-
-            // Add the campaign, ad group, and ad
-
-            AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
-                    authorizationData.getAccountId(), 
-                    campaigns,
+            
+            outputStatusMessage("-----\nAddAdGroups:");
+            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(
+                    campaignIds.getLongs().get(0), 
+                    adGroups, 
                     false);
-            ArrayOfNullableOflong nullableCampaignIds = addCampaignsResponse.getCampaignIds();
-            ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(nullableCampaignIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
-
-            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(nullableCampaignIds.getLongs().get(0), adGroups, false);
             ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
             ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
+            outputStatusMessage("AdGroupIds:");
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
+            outputStatusMessage("PartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors);
-
-            AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(adGroupIds.getLongs().get(0), ads);
-            ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
-            ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(adErrors);
 
             // Whether or not the "target and bid" option has been set for a given
             // criterion type group, you can set bid adjustments for specific criteria.
@@ -199,36 +159,34 @@ public class AudienceCampaigns extends ExampleBase {
             adGroupNegativeAgeCriterion.setCriterion(ageCriterion);
             adGroupCriterions.getAdGroupCriterions().add(adGroupNegativeAgeCriterion);
             
-            outputStatusMessage("Adding Ad Group Criteria . . . \n");
+            outputStatusMessage("-----\nAddAdGroupCriterions:");
             CampaignManagementExampleHelper.outputArrayOfAdGroupCriterion(adGroupCriterions);
             ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
             criterionType.add(AdGroupCriterionType.TARGETS);     
-            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse =
-                CampaignManagementExampleHelper.addAdGroupCriterions(
+            AddAdGroupCriterionsResponse addAdGroupCriterionsResponse = CampaignManagementExampleHelper.addAdGroupCriterions(
                     adGroupCriterions, 
                     criterionType);
             ArrayOfNullableOflong adGroupCriterionIds = addAdGroupCriterionsResponse.getAdGroupCriterionIds();
-            outputStatusMessage("New Ad Group Criterion Ids:\n");
+            outputStatusMessage("AdGroupCriterionIds:");
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupCriterionIds);
-            outputStatusMessage("\nAddAdGroupCriterions Errors:\n");
+            outputStatusMessage("NestedPartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(addAdGroupCriterionsResponse.getNestedPartialErrors());
 
-            // Delete the campaign, ad group, criteria, and ad that were previously added. 
-            // You should remove this line if you want to view the added entities in the 
-            // Bing Ads web application or another tool.
+            // Delete the campaign and everything it contains e.g., ad groups and ads.
 
-            ArrayOflong campaignIds = new com.microsoft.bingads.v12.campaignmanagement.ArrayOflong();
-            campaignIds.getLongs().add(nullableCampaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), campaignIds);
-            outputStatusMessage(String.format("Deleted CampaignId %d\n", nullableCampaignIds.getLongs().get(0)));
-            
-            outputStatusMessage("Program execution completed\n"); 
-
+            outputStatusMessage("-----\nDeleteCampaigns:");
+            ArrayOflong deleteCampaignIds = new ArrayOflong();
+            deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
+            CampaignManagementExampleHelper.deleteCampaigns(
+                    authorizationData.getAccountId(), 
+                    deleteCampaignIds);
+            outputStatusMessage(String.format("Deleted CampaignId %d", deleteCampaignIds.getLongs().get(0))); 
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
  }

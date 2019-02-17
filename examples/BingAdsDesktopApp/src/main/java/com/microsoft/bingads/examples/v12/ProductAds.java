@@ -9,13 +9,9 @@ import java.util.Map;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
 
-// This example uses the Bing Ads Java SDK to create a
-// Bing Shopping campaign.
+// How to apply product conditions for Bing Shopping Campaigns.
 
-// To run this example, you must have a Bing Merchant
-// Center store.
-
-public class ShoppingCampaigns extends ExampleBase {
+public class ProductAds extends ExampleBase {
         
     private static ArrayOfAdGroupCriterionAction _partitionActions = new ArrayOfAdGroupCriterionAction();
     private static long _referenceId = -1;
@@ -27,95 +23,124 @@ public class ShoppingCampaigns extends ExampleBase {
    	 
         try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
                         API_ENVIRONMENT,
                         ICampaignManagementService.class);
 
-            // Get the user's list of Bing Merchant Center (BMC) stores.
+            // Get a list of all Bing Merchant Center stores associated with your CustomerId.
 
+            outputStatusMessage("-----\nGetBMCStoresByCustomerId:");
             final ArrayOfBMCStore stores = CampaignManagementExampleHelper.getBMCStoresByCustomerId().getBMCStores();
 
             if (stores == null)
             {
-                outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
+                outputStatusMessage(String.format("You do not have any BMC stores registered for CustomerId %d.", authorizationData.getCustomerId()));
                 return;
             }
+            
+            outputStatusMessage("BMCStores:");
+            CampaignManagementExampleHelper.outputArrayOfBMCStore(stores);
 
-            // Create a Bing Shopping campaign using the ID of the first store in the list.
+            // Create a Shopping campaign with product conditions.
 
             Campaign campaign = new Campaign();
-            campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
-            campaign.setDescription("Bing Shopping Campaign Example.");
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
-            campaign.setDailyBudget(50.00);
-            campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.SHOPPING);
+            campaign.setCampaignType(campaignTypes);
+            campaign.setDailyBudget(50.00);
+            campaign.setDescription("Red shoes line.");
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());            
             ArrayOfSetting settings = new ArrayOfSetting();
             ShoppingSetting shoppingSetting = new ShoppingSetting();
             shoppingSetting.setPriority(0);
             shoppingSetting.setSalesCountryCode("US");
             shoppingSetting.setStoreId(stores.getBMCStores().get(0).getId());
             settings.getSettings().add(shoppingSetting);
-            campaign.setSettings(settings);
-            campaign.setCampaignType(campaignTypes);
+            campaign.setSettings(settings);            
+            campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             campaigns.getCampaigns().add(campaign);
 
+            outputStatusMessage("-----\nAddCampaigns:");
             AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
                     authorizationData.getAccountId(), 
                     campaigns,
-                    false);
+                    false);            
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+            outputStatusMessage("CampaignIds:");
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
+            outputStatusMessage("PartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
+            
+            // Optionally, you can create a ProductScope criterion that will be associated with your Bing Shopping campaign. 
+            // You'll also be able to add more specific product conditions for each ad group.
 
+            ArrayList<CampaignCriterionType> criterionType = new ArrayList<CampaignCriterionType>();
+            criterionType.add(CampaignCriterionType.PRODUCT_SCOPE);
+
+            BiddableCampaignCriterion campaignCriterion = new BiddableCampaignCriterion();
+            campaignCriterion.setCampaignId(campaignIds.getLongs().get(0));
+            ProductScope criterion = new ProductScope();
+            ArrayOfProductCondition conditions = new ArrayOfProductCondition();
+            ProductCondition condition1 = new ProductCondition();
+            condition1.setAttribute("New");
+            condition1.setOperand("Condition");
+            conditions.getProductConditions().add(condition1);
+            ProductCondition condition2 = new ProductCondition();
+            condition2.setAttribute("MerchantDefinedCustomLabel");
+            condition2.setOperand("CustomLabel0");
+            conditions.getProductConditions().add(condition2);
+            criterion.setConditions(conditions);
+            campaignCriterion.setCriterion(criterion);
+            ArrayOfCampaignCriterion campaignCriterions = new ArrayOfCampaignCriterion();
+            campaignCriterions.getCampaignCriterions().add(campaignCriterion);
+
+            outputStatusMessage("-----\nAddCampaignCriterions:");
+            AddCampaignCriterionsResponse addCriterionResponse = CampaignManagementExampleHelper.addCampaignCriterions(
+                    campaignCriterions, 
+                    criterionType);
+            outputStatusMessage("CampaignCriterionIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(addCriterionResponse.getCampaignCriterionIds());
+            outputStatusMessage("NestedPartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(addCriterionResponse.getNestedPartialErrors());
+
+            // Create the ad group that will have the product partitions.
+            
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
             AdGroup adGroup = new AdGroup();
-            adGroup.setName("Product Categories");
+            adGroup.setName("Women's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
             adGroup.getEndDate().setMonth(12);
             adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
-            adGroup.setLanguage("English");
+            Bid CpcBid = new Bid();
+            CpcBid.setAmount(0.09);
+            adGroup.setCpcBid(CpcBid);
             adGroups.getAdGroups().add(adGroup);
 
-            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(campaignIds.getLongs().get(0), adGroups, false);
+            outputStatusMessage("-----\nAddAdGroups:");
+            AddAdGroupsResponse addAdGroupsResponse = CampaignManagementExampleHelper.addAdGroups(
+                    campaignIds.getLongs().get(0), 
+                    adGroups, 
+                    false);
             ArrayOfNullableOflong adGroupIds = addAdGroupsResponse.getAdGroupIds();
             ArrayOfBatchError adGroupErrors = addAdGroupsResponse.getPartialErrors();
+            outputStatusMessage("AdGroupIds:");
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(adGroupIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors);
-
-            /*
-             * Create a product ad. You must add at least one product ad to the ad group. 
-             * The product ad identifier can be used for reporting analytics.
-             * Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
-             * as "special offer" links, helping to increase customer engagement. For details
-             * on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
-             */
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(adGroupErrors); 
             
-            ArrayOfAd ads = new ArrayOfAd();
-            ProductAd productAd = new ProductAd();
-            ads.getAds().add(productAd);
-
-            AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(adGroupIds.getLongs().get(0), ads);
-            ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
-            ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adIds);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(adErrors);
-
-            // Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
-            // your product catalog. 
-
-            AddCampaignCriterionsResponse addCriterionResponse = addCampaignCriterion(campaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.outputArrayOfNullableOflong(addCriterionResponse.getCampaignCriterionIds());
-            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(addCriterionResponse.getNestedPartialErrors());
+            // Create an update the ad group product partitions.
 
             addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
             ApplyProductPartitionActionsResponse applyPartitionActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
@@ -124,54 +149,45 @@ public class ShoppingCampaigns extends ExampleBase {
             long electronicsCriterionId = applyPartitionActionsResponse.getAdGroupCriterionIds().getLongs().get(8);
             updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
 
-            // Delete the campaign from the account.
+            // Create a product ad. You must add at least one product ad to the ad group. 
+            // The product ad identifier can be used for reporting analytics.
+            // Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
+            // as "special offer" links, helping to increase customer engagement. For details
+            // on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
 
+            ArrayOfAd ads = new ArrayOfAd();
+            ProductAd productAd = new ProductAd();
+            ads.getAds().add(productAd);
+            
+            outputStatusMessage("-----\nAddAds:");
+            AddAdsResponse addAdsResponse = CampaignManagementExampleHelper.addAds(
+                    adGroupIds.getLongs().get(0), 
+                    ads);
+            ArrayOfNullableOflong adIds = addAdsResponse.getAdIds();
+            ArrayOfBatchError adErrors = addAdsResponse.getPartialErrors();
+            outputStatusMessage("AdIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(adIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(adErrors);
+
+            // Delete the campaign and everything it contains e.g., ad groups and ads.
+
+            outputStatusMessage("-----\nDeleteCampaigns:");
             ArrayOflong deleteCampaignIds = new ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), deleteCampaignIds);
-            outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
-
-            outputStatusMessage("Program execution completed\n"); 
-
+            CampaignManagementExampleHelper.deleteCampaigns(
+                    authorizationData.getAccountId(), 
+                    deleteCampaignIds);
+            outputStatusMessage(String.format("Deleted CampaignId %d", deleteCampaignIds.getLongs().get(0))); 
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
     
-    // Add criterion to the campaign. The criterion is used to limit the campaign to a subset of 
-    // your product catalog. For example, you can limit the catalog by brand, category, or product
-    // type. The campaign may be associated with only one ProductScope, and the ProductScope
-    // may contain a list of up to 7 ProductConditions. Each ad group may also specify 
-    // more specific product conditions.
-
-    static AddCampaignCriterionsResponse addCampaignCriterion(final long CAMPAIGN_ID) throws RemoteException, Exception
-    {
-        ArrayList<CampaignCriterionType> criterionType = new ArrayList<CampaignCriterionType>();
-        criterionType.add(CampaignCriterionType.PRODUCT_SCOPE);
-
-        BiddableCampaignCriterion campaignCriterion = new BiddableCampaignCriterion();
-        campaignCriterion.setCampaignId(CAMPAIGN_ID);
-        ProductScope criterion = new ProductScope();
-        ArrayOfProductCondition conditions = new ArrayOfProductCondition();
-        ProductCondition condition1 = new ProductCondition();
-        condition1.setAttribute("New");
-        condition1.setOperand("Condition");
-        conditions.getProductConditions().add(condition1);
-        ProductCondition condition2 = new ProductCondition();
-        condition2.setAttribute("MerchantDefinedCustomLabel");
-        condition2.setOperand("CustomLabel0");
-        conditions.getProductConditions().add(condition2);
-        criterion.setConditions(conditions);
-        campaignCriterion.setCriterion(criterion);
-        ArrayOfCampaignCriterion campaignCriterions = new ArrayOfCampaignCriterion();
-        campaignCriterions.getCampaignCriterions().add(campaignCriterion);
-
-        return CampaignManagementExampleHelper.addCampaignCriterions(campaignCriterions, criterionType);
-    }
-
     // Add a criterion to the ad group and then update it. 
 
     static void addAndUpdateAdGroupCriterion(long adGroupId) throws RemoteException, Exception
@@ -190,20 +206,23 @@ public class ShoppingCampaigns extends ExampleBase {
                         getFixedBid(0.35), 
                         false);
 
-        outputStatusMessage("Applying a biddable criterion as the root...\n");
-
-        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(_partitionActions);
+        outputStatusMessage("-----\nApplyProductPartitionActions:");
+        outputStatusMessage("Applying a biddable criterion as the root...");
+        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(
+                _partitionActions);
         CampaignManagementExampleHelper.outputArrayOfNullableOflong(applyPartitionActionsResponse.getAdGroupCriterionIds());
         CampaignManagementExampleHelper.outputArrayOfBatchError(applyPartitionActionsResponse.getPartialErrors());
 
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
+        
+        outputStatusMessage("-----\nGetAdGroupCriterionsByIds:");
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
             criterionType).getAdGroupCriterions();
 
-        outputStatusMessage("Printing the ad group's product partition; contains only the tree root node\n");
+        outputStatusMessage("Printing the ad group's product partition; contains only the tree root node");
         printProductPartitions(adGroupCriterions);
 
         // Update the bid of the root node that we just added.
@@ -217,17 +236,20 @@ public class ShoppingCampaigns extends ExampleBase {
 
         addPartitionAction(updatedRoot, ItemAction.UPDATE);
 
-        outputStatusMessage("Updating the bid for the tree root node...\n");
-
-        applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(_partitionActions);
+        outputStatusMessage("-----\nApplyProductPartitionActions:");
+        outputStatusMessage("Updating the bid for the tree root node...");
+        applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(
+                _partitionActions);
 
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
+        
+        outputStatusMessage("-----\nGetAdGroupCriterionsByIds:");
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
             criterionType).getAdGroupCriterions();
 
-        outputStatusMessage("Updated the bid for the tree root node\n");
+        outputStatusMessage("Updated the bid for the tree root node");
         printProductPartitions(adGroupCriterions);
     }
 
@@ -239,6 +261,7 @@ public class ShoppingCampaigns extends ExampleBase {
 
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
+        outputStatusMessage("-----\nGetAdGroupCriterionsByIds:");
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
@@ -361,15 +384,18 @@ public class ShoppingCampaigns extends ExampleBase {
                         getFixedBid(0.35), 
                         false);
 
-        outputStatusMessage("Applying product partitions to the ad group...\n");
-        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(_partitionActions);
+        outputStatusMessage("-----\nApplyProductPartitionActions:");
+        outputStatusMessage("Applying product partitions to the ad group...");
+        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(
+                _partitionActions);
 
+        outputStatusMessage("-----\nGetAdGroupCriterionsByIds:");
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
             criterionType).getAdGroupCriterions();
 
-        outputStatusMessage("The product partition group tree now has 9 nodes\n");
+        outputStatusMessage("The product partition group tree now has 9 nodes");
         printProductPartitions(adGroupCriterions);
 
         return applyPartitionActionsResponse;
@@ -437,17 +463,20 @@ public class ShoppingCampaigns extends ExampleBase {
                         getFixedBid(0.35), 
                         false);
 
-        outputStatusMessage("Updating the electronics partition...\n");
-        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(_partitionActions);
+        outputStatusMessage("-----\nApplyProductPartitionActions:");
+        outputStatusMessage("Updating the electronics partition...");
+        ApplyProductPartitionActionsResponse applyPartitionActionsResponse = CampaignManagementExampleHelper.applyProductPartitionActions(
+                _partitionActions);
 
         ArrayList<AdGroupCriterionType> criterionType = new ArrayList<AdGroupCriterionType>();
         criterionType.add(AdGroupCriterionType.PRODUCT_PARTITION);
+        outputStatusMessage("-----\nGetAdGroupCriterionsByIds:");
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
             criterionType).getAdGroupCriterions();
 
-        outputStatusMessage("The product partition group tree now has 12 nodes\n");
+        outputStatusMessage("The product partition group tree now has 12 nodes");
         printProductPartitions(adGroupCriterions);
     }     
 

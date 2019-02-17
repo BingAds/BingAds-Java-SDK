@@ -106,6 +106,15 @@ class CampaignManagementExampleHelper
 
         return CampaignManagementService.getService().addConversionGoals(request);
     }
+    static AddExperimentsResponse addExperiments(
+        ArrayOfExperiment experiments) throws RemoteException, Exception
+    {
+        AddExperimentsRequest request = new AddExperimentsRequest();
+
+        request.setExperiments(experiments);
+
+        return CampaignManagementService.getService().addExperiments(request);
+    }
     static AddKeywordsResponse addKeywords(
         java.lang.Long adGroupId,
         ArrayOfKeyword keywords,
@@ -310,6 +319,15 @@ class CampaignManagementExampleHelper
         request.setCampaignIds(campaignIds);
 
         return CampaignManagementService.getService().deleteCampaigns(request);
+    }
+    static DeleteExperimentsResponse deleteExperiments(
+        ArrayOflong experimentIds) throws RemoteException, Exception
+    {
+        DeleteExperimentsRequest request = new DeleteExperimentsRequest();
+
+        request.setExperimentIds(experimentIds);
+
+        return CampaignManagementService.getService().deleteExperiments(request);
     }
     static DeleteKeywordsResponse deleteKeywords(
         java.lang.Long adGroupId,
@@ -599,25 +617,29 @@ class CampaignManagementExampleHelper
     }
     static GetCampaignsByAccountIdResponse getCampaignsByAccountId(
         java.lang.Long accountId,
-        ArrayList<CampaignType> campaignType) throws RemoteException, Exception
+        ArrayList<CampaignType> campaignType,
+        ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetCampaignsByAccountIdRequest request = new GetCampaignsByAccountIdRequest();
 
         request.setAccountId(accountId);
         request.setCampaignType(campaignType);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getCampaignsByAccountId(request);
     }
     static GetCampaignsByIdsResponse getCampaignsByIds(
         java.lang.Long accountId,
         ArrayOflong campaignIds,
-        ArrayList<CampaignType> campaignType) throws RemoteException, Exception
+        ArrayList<CampaignType> campaignType,
+        ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
 
         request.setAccountId(accountId);
         request.setCampaignIds(campaignIds);
         request.setCampaignType(campaignType);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getCampaignsByIds(request);
     }
@@ -655,6 +677,17 @@ class CampaignManagementExampleHelper
         request.setEntityType(entityType);
 
         return CampaignManagementService.getService().getEditorialReasonsByIds(request);
+    }
+    static GetExperimentsByIdsResponse getExperimentsByIds(
+        ArrayOflong experimentIds,
+        Paging pageInfo) throws RemoteException, Exception
+    {
+        GetExperimentsByIdsRequest request = new GetExperimentsByIdsRequest();
+
+        request.setExperimentIds(experimentIds);
+        request.setPageInfo(pageInfo);
+
+        return CampaignManagementService.getService().getExperimentsByIds(request);
     }
     static GetGeoLocationsFileUrlResponse getGeoLocationsFileUrl(
         java.lang.String version,
@@ -754,11 +787,13 @@ class CampaignManagementExampleHelper
         return CampaignManagementService.getService().getMediaAssociations(request);
     }
     static GetMediaMetaDataByAccountIdResponse getMediaMetaDataByAccountId(
-        ArrayList<MediaEnabledEntityFilter> mediaEnabledEntities) throws RemoteException, Exception
+        ArrayList<MediaEnabledEntityFilter> mediaEnabledEntities,
+        Paging pageInfo) throws RemoteException, Exception
     {
         GetMediaMetaDataByAccountIdRequest request = new GetMediaMetaDataByAccountIdRequest();
 
         request.setMediaEnabledEntities(mediaEnabledEntities);
+        request.setPageInfo(pageInfo);
 
         return CampaignManagementService.getService().getMediaMetaDataByAccountId(request);
     }
@@ -1024,6 +1059,15 @@ class CampaignManagementExampleHelper
 
         return CampaignManagementService.getService().updateConversionGoals(request);
     }
+    static UpdateExperimentsResponse updateExperiments(
+        ArrayOfExperiment experiments) throws RemoteException, Exception
+    {
+        UpdateExperimentsRequest request = new UpdateExperimentsRequest();
+
+        request.setExperiments(experiments);
+
+        return CampaignManagementService.getService().updateExperiments(request);
+    }
     static UpdateKeywordsResponse updateKeywords(
         java.lang.Long adGroupId,
         ArrayOfKeyword keywords,
@@ -1068,8 +1112,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountMigrationStatusesInfo * * *");
             outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
+            outputStatusMessage("MigrationStatusInfos:");
             outputArrayOfMigrationStatusInfo(dataObject.getMigrationStatusInfos());
+            outputStatusMessage("* * * End OutputAccountMigrationStatusesInfo * * *");
         }
     }
     static void outputArrayOfAccountMigrationStatusesInfo(ArrayOfAccountMigrationStatusesInfo dataObjects)
@@ -1079,7 +1126,6 @@ class CampaignManagementExampleHelper
             for (AccountMigrationStatusesInfo dataObject : dataObjects.getAccountMigrationStatusesInfos())
             {
                 outputAccountMigrationStatusesInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1087,8 +1133,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAccountProperty * * *");
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputAccountProperty * * *");
         }
     }
     static void outputArrayOfAccountProperty(ArrayOfAccountProperty dataObjects)
@@ -1098,7 +1146,33 @@ class CampaignManagementExampleHelper
             for (AccountProperty dataObject : dataObjects.getAccountProperties())
             {
                 outputAccountProperty(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputActionAdExtension(ActionAdExtension dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputActionAdExtension * * *");
+            outputStatusMessage(String.format("ActionType: %s", dataObject.getActionType()));
+            outputStatusMessage("FinalMobileUrls:");
+            outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
+            outputArrayOfstring(dataObject.getFinalUrls());
+            outputStatusMessage(String.format("Language: %s", dataObject.getLanguage()));
+            outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
+            outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputActionAdExtension * * *");
+        }
+    }
+    static void outputArrayOfActionAdExtension(ArrayList<ActionAdExtension> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ActionAdExtension dataObject : dataObjects)
+            {
+                outputActionAdExtension(dataObject);
             }
         }
     }
@@ -1106,17 +1180,23 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAd * * *");
             outputStatusMessage(String.format("AdFormatPreference: %s", dataObject.getAdFormatPreference()));
             outputStatusMessage(String.format("DevicePreference: %s", dataObject.getDevicePreference()));
             outputStatusMessage(String.format("EditorialStatus: %s", dataObject.getEditorialStatus()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
             if(dataObject instanceof AppInstallAd)
             {
@@ -1138,10 +1218,15 @@ class CampaignManagementExampleHelper
             {
                 outputResponsiveAd((ResponsiveAd)dataObject);
             }
+            if(dataObject instanceof ResponsiveSearchAd)
+            {
+                outputResponsiveSearchAd((ResponsiveSearchAd)dataObject);
+            }
             if(dataObject instanceof TextAd)
             {
                 outputTextAd((TextAd)dataObject);
             }
+            outputStatusMessage("* * * End OutputAd * * *");
         }
     }
     static void outputArrayOfAd(ArrayOfAd dataObjects)
@@ -1151,7 +1236,6 @@ class CampaignManagementExampleHelper
             for (Ad dataObject : dataObjects.getAds())
             {
                 outputAd(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1159,10 +1243,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Detail: %s", dataObject.getDetail()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputAdApiError * * *");
         }
     }
     static void outputArrayOfAdApiError(ArrayOfAdApiError dataObjects)
@@ -1172,7 +1258,6 @@ class CampaignManagementExampleHelper
             for (AdApiError dataObject : dataObjects.getAdApiErrors())
             {
                 outputAdApiError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1180,7 +1265,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdApiFaultDetail * * *");
+            outputStatusMessage("Errors:");
             outputArrayOfAdApiError(dataObject.getErrors());
+            outputStatusMessage("* * * End OutputAdApiFaultDetail * * *");
         }
     }
     static void outputArrayOfAdApiFaultDetail(ArrayList<AdApiFaultDetail> dataObjects)
@@ -1190,7 +1278,6 @@ class CampaignManagementExampleHelper
             for (AdApiFaultDetail dataObject : dataObjects)
             {
                 outputAdApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1198,6 +1285,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAddress * * *");
             outputStatusMessage(String.format("CityName: %s", dataObject.getCityName()));
             outputStatusMessage(String.format("CountryCode: %s", dataObject.getCountryCode()));
             outputStatusMessage(String.format("PostalCode: %s", dataObject.getPostalCode()));
@@ -1205,6 +1293,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("ProvinceName: %s", dataObject.getProvinceName()));
             outputStatusMessage(String.format("StreetAddress: %s", dataObject.getStreetAddress()));
             outputStatusMessage(String.format("StreetAddress2: %s", dataObject.getStreetAddress2()));
+            outputStatusMessage("* * * End OutputAddress * * *");
         }
     }
     static void outputArrayOfAddress(ArrayList<Address> dataObjects)
@@ -1214,7 +1303,6 @@ class CampaignManagementExampleHelper
             for (Address dataObject : dataObjects)
             {
                 outputAddress(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1222,13 +1310,20 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtension * * *");
             outputStatusMessage(String.format("DevicePreference: %s", dataObject.getDevicePreference()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
+            outputStatusMessage("Scheduling:");
             outputSchedule(dataObject.getScheduling());
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             outputStatusMessage(String.format("Version: %s", dataObject.getVersion()));
+            if(dataObject instanceof ActionAdExtension)
+            {
+                outputActionAdExtension((ActionAdExtension)dataObject);
+            }
             if(dataObject instanceof AppAdExtension)
             {
                 outputAppAdExtension((AppAdExtension)dataObject);
@@ -1265,6 +1360,7 @@ class CampaignManagementExampleHelper
             {
                 outputStructuredSnippetAdExtension((StructuredSnippetAdExtension)dataObject);
             }
+            outputStatusMessage("* * * End OutputAdExtension * * *");
         }
     }
     static void outputArrayOfAdExtension(ArrayOfAdExtension dataObjects)
@@ -1274,7 +1370,6 @@ class CampaignManagementExampleHelper
             for (AdExtension dataObject : dataObjects.getAdExtensions())
             {
                 outputAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1282,10 +1377,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionAssociation * * *");
+            outputStatusMessage("AdExtension:");
             outputAdExtension(dataObject.getAdExtension());
             outputStatusMessage(String.format("AssociationType: %s", dataObject.getAssociationType()));
             outputStatusMessage(String.format("EditorialStatus: %s", dataObject.getEditorialStatus()));
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
+            outputStatusMessage("* * * End OutputAdExtensionAssociation * * *");
         }
     }
     static void outputArrayOfAdExtensionAssociation(ArrayOfAdExtensionAssociation dataObjects)
@@ -1295,7 +1393,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionAssociation dataObject : dataObjects.getAdExtensionAssociations())
             {
                 outputAdExtensionAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1303,7 +1400,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionAssociationCollection * * *");
+            outputStatusMessage("AdExtensionAssociations:");
             outputArrayOfAdExtensionAssociation(dataObject.getAdExtensionAssociations());
+            outputStatusMessage("* * * End OutputAdExtensionAssociationCollection * * *");
         }
     }
     static void outputArrayOfAdExtensionAssociationCollection(ArrayOfAdExtensionAssociationCollection dataObjects)
@@ -1313,7 +1413,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionAssociationCollection dataObject : dataObjects.getAdExtensionAssociationCollections())
             {
                 outputAdExtensionAssociationCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1321,10 +1420,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionEditorialReason * * *");
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
+            outputStatusMessage("PublisherCountries:");
             outputArrayOfstring(dataObject.getPublisherCountries());
             outputStatusMessage(String.format("ReasonCode: %s", dataObject.getReasonCode()));
             outputStatusMessage(String.format("Term: %s", dataObject.getTerm()));
+            outputStatusMessage("* * * End OutputAdExtensionEditorialReason * * *");
         }
     }
     static void outputArrayOfAdExtensionEditorialReason(ArrayOfAdExtensionEditorialReason dataObjects)
@@ -1334,7 +1436,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionEditorialReason dataObject : dataObjects.getAdExtensionEditorialReasons())
             {
                 outputAdExtensionEditorialReason(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1342,8 +1443,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionEditorialReasonCollection * * *");
             outputStatusMessage(String.format("AdExtensionId: %s", dataObject.getAdExtensionId()));
+            outputStatusMessage("Reasons:");
             outputArrayOfAdExtensionEditorialReason(dataObject.getReasons());
+            outputStatusMessage("* * * End OutputAdExtensionEditorialReasonCollection * * *");
         }
     }
     static void outputArrayOfAdExtensionEditorialReasonCollection(ArrayOfAdExtensionEditorialReasonCollection dataObjects)
@@ -1353,7 +1457,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionEditorialReasonCollection dataObject : dataObjects.getAdExtensionEditorialReasonCollections())
             {
                 outputAdExtensionEditorialReasonCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1361,8 +1464,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionIdentity * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Version: %s", dataObject.getVersion()));
+            outputStatusMessage("* * * End OutputAdExtensionIdentity * * *");
         }
     }
     static void outputArrayOfAdExtensionIdentity(ArrayOfAdExtensionIdentity dataObjects)
@@ -1372,7 +1477,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionIdentity dataObject : dataObjects.getAdExtensionIdentities())
             {
                 outputAdExtensionIdentity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1380,8 +1484,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdExtensionIdToEntityIdAssociation * * *");
             outputStatusMessage(String.format("AdExtensionId: %s", dataObject.getAdExtensionId()));
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
+            outputStatusMessage("* * * End OutputAdExtensionIdToEntityIdAssociation * * *");
         }
     }
     static void outputArrayOfAdExtensionIdToEntityIdAssociation(ArrayOfAdExtensionIdToEntityIdAssociation dataObjects)
@@ -1391,7 +1497,6 @@ class CampaignManagementExampleHelper
             for (AdExtensionIdToEntityIdAssociation dataObject : dataObjects.getAdExtensionIdToEntityIdAssociations())
             {
                 outputAdExtensionIdToEntityIdAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1399,22 +1504,32 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroup * * *");
+            outputStatusMessage("AdRotation:");
             outputAdRotation(dataObject.getAdRotation());
             outputStatusMessage(String.format("AudienceAdsBidAdjustment: %s", dataObject.getAudienceAdsBidAdjustment()));
+            outputStatusMessage("BiddingScheme:");
             outputBiddingScheme(dataObject.getBiddingScheme());
+            outputStatusMessage("CpcBid:");
             outputBid(dataObject.getCpcBid());
+            outputStatusMessage("EndDate:");
             outputDate(dataObject.getEndDate());
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Language: %s", dataObject.getLanguage()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Network: %s", dataObject.getNetwork()));
             outputStatusMessage(String.format("PrivacyStatus: %s", dataObject.getPrivacyStatus()));
+            outputStatusMessage("Settings:");
             outputArrayOfSetting(dataObject.getSettings());
+            outputStatusMessage("StartDate:");
             outputDate(dataObject.getStartDate());
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputAdGroup * * *");
         }
     }
     static void outputArrayOfAdGroup(ArrayOfAdGroup dataObjects)
@@ -1424,7 +1539,6 @@ class CampaignManagementExampleHelper
             for (AdGroup dataObject : dataObjects.getAdGroups())
             {
                 outputAdGroup(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1432,7 +1546,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupCriterion * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("Criterion:");
             outputCriterion(dataObject.getCriterion());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
@@ -1445,6 +1561,7 @@ class CampaignManagementExampleHelper
             {
                 outputNegativeAdGroupCriterion((NegativeAdGroupCriterion)dataObject);
             }
+            outputStatusMessage("* * * End OutputAdGroupCriterion * * *");
         }
     }
     static void outputArrayOfAdGroupCriterion(ArrayOfAdGroupCriterion dataObjects)
@@ -1454,7 +1571,6 @@ class CampaignManagementExampleHelper
             for (AdGroupCriterion dataObject : dataObjects.getAdGroupCriterions())
             {
                 outputAdGroupCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1462,8 +1578,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupCriterionAction * * *");
             outputStatusMessage(String.format("Action: %s", dataObject.getAction()));
+            outputStatusMessage("AdGroupCriterion:");
             outputAdGroupCriterion(dataObject.getAdGroupCriterion());
+            outputStatusMessage("* * * End OutputAdGroupCriterionAction * * *");
         }
     }
     static void outputArrayOfAdGroupCriterionAction(ArrayOfAdGroupCriterionAction dataObjects)
@@ -1473,7 +1592,6 @@ class CampaignManagementExampleHelper
             for (AdGroupCriterionAction dataObject : dataObjects.getAdGroupCriterionActions())
             {
                 outputAdGroupCriterionAction(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1481,8 +1599,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdGroupNegativeSites * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
+            outputStatusMessage("NegativeSites:");
             outputArrayOfstring(dataObject.getNegativeSites());
+            outputStatusMessage("* * * End OutputAdGroupNegativeSites * * *");
         }
     }
     static void outputArrayOfAdGroupNegativeSites(ArrayOfAdGroupNegativeSites dataObjects)
@@ -1492,7 +1613,6 @@ class CampaignManagementExampleHelper
             for (AdGroupNegativeSites dataObject : dataObjects.getAdGroupNegativeSites())
             {
                 outputAdGroupNegativeSites(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1500,9 +1620,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAdRotation * * *");
             outputStatusMessage(String.format("EndDate: %s", dataObject.getEndDate()));
             outputStatusMessage(String.format("StartDate: %s", dataObject.getStartDate()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            outputStatusMessage("* * * End OutputAdRotation * * *");
         }
     }
     static void outputArrayOfAdRotation(ArrayList<AdRotation> dataObjects)
@@ -1512,7 +1634,6 @@ class CampaignManagementExampleHelper
             for (AdRotation dataObject : dataObjects)
             {
                 outputAdRotation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1520,7 +1641,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAgeCriterion * * *");
             outputStatusMessage(String.format("AgeRange: %s", dataObject.getAgeRange()));
+            outputStatusMessage("* * * End OutputAgeCriterion * * *");
         }
     }
     static void outputArrayOfAgeCriterion(ArrayList<AgeCriterion> dataObjects)
@@ -1530,7 +1653,6 @@ class CampaignManagementExampleHelper
             for (AgeCriterion dataObject : dataObjects)
             {
                 outputAgeCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1538,8 +1660,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApiFaultDetail * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputApiFaultDetail * * *");
         }
     }
     static void outputArrayOfApiFaultDetail(ArrayList<ApiFaultDetail> dataObjects)
@@ -1549,7 +1675,6 @@ class CampaignManagementExampleHelper
             for (ApiFaultDetail dataObject : dataObjects)
             {
                 outputApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1557,15 +1682,21 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAppAdExtension * * *");
             outputStatusMessage(String.format("AppPlatform: %s", dataObject.getAppPlatform()));
             outputStatusMessage(String.format("AppStoreId: %s", dataObject.getAppStoreId()));
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
             outputStatusMessage(String.format("DisplayText: %s", dataObject.getDisplayText()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputAppAdExtension * * *");
         }
     }
     static void outputArrayOfAppAdExtension(ArrayList<AppAdExtension> dataObjects)
@@ -1575,7 +1706,6 @@ class CampaignManagementExampleHelper
             for (AppAdExtension dataObject : dataObjects)
             {
                 outputAppAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1583,10 +1713,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAppInstallAd * * *");
             outputStatusMessage(String.format("AppPlatform: %s", dataObject.getAppPlatform()));
             outputStatusMessage(String.format("AppStoreId: %s", dataObject.getAppStoreId()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
             outputStatusMessage(String.format("Title: %s", dataObject.getTitle()));
+            outputStatusMessage("* * * End OutputAppInstallAd * * *");
         }
     }
     static void outputArrayOfAppInstallAd(ArrayList<AppInstallAd> dataObjects)
@@ -1596,7 +1728,6 @@ class CampaignManagementExampleHelper
             for (AppInstallAd dataObject : dataObjects)
             {
                 outputAppInstallAd(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1604,8 +1735,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAppInstallGoal * * *");
             outputStatusMessage(String.format("AppPlatform: %s", dataObject.getAppPlatform()));
             outputStatusMessage(String.format("AppStoreId: %s", dataObject.getAppStoreId()));
+            outputStatusMessage("* * * End OutputAppInstallGoal * * *");
         }
     }
     static void outputArrayOfAppInstallGoal(ArrayList<AppInstallGoal> dataObjects)
@@ -1615,7 +1748,6 @@ class CampaignManagementExampleHelper
             for (AppInstallGoal dataObject : dataObjects)
             {
                 outputAppInstallGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1623,6 +1755,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputApplicationFault * * *");
             outputStatusMessage(String.format("TrackingId: %s", dataObject.getTrackingId()));
             if(dataObject instanceof AdApiFaultDetail)
             {
@@ -1636,6 +1769,7 @@ class CampaignManagementExampleHelper
             {
                 outputEditorialApiFaultDetail((EditorialApiFaultDetail)dataObject);
             }
+            outputStatusMessage("* * * End OutputApplicationFault * * *");
         }
     }
     static void outputArrayOfApplicationFault(ArrayList<ApplicationFault> dataObjects)
@@ -1645,7 +1779,6 @@ class CampaignManagementExampleHelper
             for (ApplicationFault dataObject : dataObjects)
             {
                 outputApplicationFault(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1653,8 +1786,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAppUrl * * *");
             outputStatusMessage(String.format("OsType: %s", dataObject.getOsType()));
             outputStatusMessage(String.format("Url: %s", dataObject.getUrl()));
+            outputStatusMessage("* * * End OutputAppUrl * * *");
         }
     }
     static void outputArrayOfAppUrl(ArrayOfAppUrl dataObjects)
@@ -1664,7 +1799,58 @@ class CampaignManagementExampleHelper
             for (AppUrl dataObject : dataObjects.getAppUrls())
             {
                 outputAppUrl(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputAsset(Asset dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputAsset * * *");
+            outputStatusMessage(String.format("Id: %s", dataObject.getId()));
+            outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            if(dataObject instanceof ImageAsset)
+            {
+                outputImageAsset((ImageAsset)dataObject);
+            }
+            if(dataObject instanceof TextAsset)
+            {
+                outputTextAsset((TextAsset)dataObject);
+            }
+            outputStatusMessage("* * * End OutputAsset * * *");
+        }
+    }
+    static void outputArrayOfAsset(ArrayList<Asset> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Asset dataObject : dataObjects)
+            {
+                outputAsset(dataObject);
+            }
+        }
+    }
+    static void outputAssetLink(AssetLink dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputAssetLink * * *");
+            outputStatusMessage("Asset:");
+            outputAsset(dataObject.getAsset());
+            outputStatusMessage(String.format("AssetPerformanceLabel: %s", dataObject.getAssetPerformanceLabel()));
+            outputStatusMessage(String.format("EditorialStatus: %s", dataObject.getEditorialStatus()));
+            outputStatusMessage(String.format("PinnedField: %s", dataObject.getPinnedField()));
+            outputStatusMessage("* * * End OutputAssetLink * * *");
+        }
+    }
+    static void outputArrayOfAssetLink(ArrayOfAssetLink dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AssetLink dataObject : dataObjects.getAssetLinks())
+            {
+                outputAssetLink(dataObject);
             }
         }
     }
@@ -1672,8 +1858,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAudience * * *");
             outputStatusMessage(String.format("AudienceNetworkSize: %s", dataObject.getAudienceNetworkSize()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MembershipDuration: %s", dataObject.getMembershipDuration()));
@@ -1681,6 +1869,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("ParentId: %s", dataObject.getParentId()));
             outputStatusMessage(String.format("Scope: %s", dataObject.getScope()));
             outputStatusMessage(String.format("SearchSize: %s", dataObject.getSearchSize()));
+            outputStatusMessage("SupportedCampaignTypes:");
             outputArrayOfstring(dataObject.getSupportedCampaignTypes());
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof CustomAudience)
@@ -1703,6 +1892,7 @@ class CampaignManagementExampleHelper
             {
                 outputSimilarRemarketingList((SimilarRemarketingList)dataObject);
             }
+            outputStatusMessage("* * * End OutputAudience * * *");
         }
     }
     static void outputArrayOfAudience(ArrayOfAudience dataObjects)
@@ -1712,7 +1902,6 @@ class CampaignManagementExampleHelper
             for (Audience dataObject : dataObjects.getAudiences())
             {
                 outputAudience(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1720,8 +1909,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputAudienceCriterion * * *");
             outputStatusMessage(String.format("AudienceId: %s", dataObject.getAudienceId()));
             outputStatusMessage(String.format("AudienceType: %s", dataObject.getAudienceType()));
+            outputStatusMessage("* * * End OutputAudienceCriterion * * *");
         }
     }
     static void outputArrayOfAudienceCriterion(ArrayList<AudienceCriterion> dataObjects)
@@ -1731,7 +1922,6 @@ class CampaignManagementExampleHelper
             for (AudienceCriterion dataObject : dataObjects)
             {
                 outputAudienceCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1739,10 +1929,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("FieldPath: %s", dataObject.getFieldPath()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
@@ -1751,6 +1943,7 @@ class CampaignManagementExampleHelper
             {
                 outputEditorialError((EditorialError)dataObject);
             }
+            outputStatusMessage("* * * End OutputBatchError * * *");
         }
     }
     static void outputArrayOfBatchError(ArrayOfBatchError dataObjects)
@@ -1760,7 +1953,6 @@ class CampaignManagementExampleHelper
             for (BatchError dataObject : dataObjects.getBatchErrors())
             {
                 outputBatchError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1768,11 +1960,14 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBatchErrorCollection * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("FieldPath: %s", dataObject.getFieldPath()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
@@ -1781,6 +1976,7 @@ class CampaignManagementExampleHelper
             {
                 outputEditorialErrorCollection((EditorialErrorCollection)dataObject);
             }
+            outputStatusMessage("* * * End OutputBatchErrorCollection * * *");
         }
     }
     static void outputArrayOfBatchErrorCollection(ArrayOfBatchErrorCollection dataObjects)
@@ -1790,7 +1986,6 @@ class CampaignManagementExampleHelper
             for (BatchErrorCollection dataObject : dataObjects.getBatchErrorCollections())
             {
                 outputBatchErrorCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1798,7 +1993,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBid * * *");
             outputStatusMessage(String.format("Amount: %s", dataObject.getAmount()));
+            outputStatusMessage("* * * End OutputBid * * *");
         }
     }
     static void outputArrayOfBid(ArrayList<Bid> dataObjects)
@@ -1808,7 +2005,6 @@ class CampaignManagementExampleHelper
             for (Bid dataObject : dataObjects)
             {
                 outputBid(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1816,14 +2012,21 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBiddableAdGroupCriterion * * *");
+            outputStatusMessage("CriterionBid:");
             outputCriterionBid(dataObject.getCriterionBid());
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
             outputStatusMessage(String.format("EditorialStatus: %s", dataObject.getEditorialStatus()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputBiddableAdGroupCriterion * * *");
         }
     }
     static void outputArrayOfBiddableAdGroupCriterion(ArrayList<BiddableAdGroupCriterion> dataObjects)
@@ -1833,7 +2036,6 @@ class CampaignManagementExampleHelper
             for (BiddableAdGroupCriterion dataObject : dataObjects)
             {
                 outputBiddableAdGroupCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1841,7 +2043,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBiddableCampaignCriterion * * *");
+            outputStatusMessage("CriterionBid:");
             outputCriterionBid(dataObject.getCriterionBid());
+            outputStatusMessage("* * * End OutputBiddableCampaignCriterion * * *");
         }
     }
     static void outputArrayOfBiddableCampaignCriterion(ArrayList<BiddableCampaignCriterion> dataObjects)
@@ -1851,7 +2056,6 @@ class CampaignManagementExampleHelper
             for (BiddableCampaignCriterion dataObject : dataObjects)
             {
                 outputBiddableCampaignCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1859,6 +2063,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBiddingScheme * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof EnhancedCpcBiddingScheme)
             {
@@ -1884,6 +2089,7 @@ class CampaignManagementExampleHelper
             {
                 outputTargetCpaBiddingScheme((TargetCpaBiddingScheme)dataObject);
             }
+            outputStatusMessage("* * * End OutputBiddingScheme * * *");
         }
     }
     static void outputArrayOfBiddingScheme(ArrayList<BiddingScheme> dataObjects)
@@ -1893,7 +2099,6 @@ class CampaignManagementExampleHelper
             for (BiddingScheme dataObject : dataObjects)
             {
                 outputBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1901,7 +2106,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBidMultiplier * * *");
             outputStatusMessage(String.format("Multiplier: %s", dataObject.getMultiplier()));
+            outputStatusMessage("* * * End OutputBidMultiplier * * *");
         }
     }
     static void outputArrayOfBidMultiplier(ArrayList<BidMultiplier> dataObjects)
@@ -1911,7 +2118,6 @@ class CampaignManagementExampleHelper
             for (BidMultiplier dataObject : dataObjects)
             {
                 outputBidMultiplier(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1919,12 +2125,14 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBMCStore * * *");
             outputStatusMessage(String.format("HasCatalog: %s", dataObject.getHasCatalog()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("IsActive: %s", dataObject.getIsActive()));
             outputStatusMessage(String.format("IsProductAdsEnabled: %s", dataObject.getIsProductAdsEnabled()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("SubType: %s", dataObject.getSubType()));
+            outputStatusMessage("* * * End OutputBMCStore * * *");
         }
     }
     static void outputArrayOfBMCStore(ArrayOfBMCStore dataObjects)
@@ -1934,7 +2142,6 @@ class CampaignManagementExampleHelper
             for (BMCStore dataObject : dataObjects.getBMCStores())
             {
                 outputBMCStore(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1942,11 +2149,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputBudget * * *");
             outputStatusMessage(String.format("Amount: %s", dataObject.getAmount()));
             outputStatusMessage(String.format("AssociationCount: %s", dataObject.getAssociationCount()));
             outputStatusMessage(String.format("BudgetType: %s", dataObject.getBudgetType()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage("* * * End OutputBudget * * *");
         }
     }
     static void outputArrayOfBudget(ArrayOfBudget dataObjects)
@@ -1956,7 +2165,6 @@ class CampaignManagementExampleHelper
             for (Budget dataObject : dataObjects.getBudgets())
             {
                 outputBudget(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1964,11 +2172,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCallAdExtension * * *");
             outputStatusMessage(String.format("CountryCode: %s", dataObject.getCountryCode()));
             outputStatusMessage(String.format("IsCallOnly: %s", dataObject.getIsCallOnly()));
             outputStatusMessage(String.format("IsCallTrackingEnabled: %s", dataObject.getIsCallTrackingEnabled()));
             outputStatusMessage(String.format("PhoneNumber: %s", dataObject.getPhoneNumber()));
             outputStatusMessage(String.format("RequireTollFreeTrackingNumber: %s", dataObject.getRequireTollFreeTrackingNumber()));
+            outputStatusMessage("* * * End OutputCallAdExtension * * *");
         }
     }
     static void outputArrayOfCallAdExtension(ArrayList<CallAdExtension> dataObjects)
@@ -1978,7 +2188,6 @@ class CampaignManagementExampleHelper
             for (CallAdExtension dataObject : dataObjects)
             {
                 outputCallAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -1986,7 +2195,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCalloutAdExtension * * *");
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputCalloutAdExtension * * *");
         }
     }
     static void outputArrayOfCalloutAdExtension(ArrayList<CalloutAdExtension> dataObjects)
@@ -1996,7 +2207,6 @@ class CampaignManagementExampleHelper
             for (CalloutAdExtension dataObject : dataObjects)
             {
                 outputCalloutAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2004,11 +2214,15 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaign * * *");
             outputStatusMessage(String.format("AudienceAdsBidAdjustment: %s", dataObject.getAudienceAdsBidAdjustment()));
+            outputStatusMessage("BiddingScheme:");
             outputBiddingScheme(dataObject.getBiddingScheme());
             outputStatusMessage(String.format("BudgetType: %s", dataObject.getBudgetType()));
             outputStatusMessage(String.format("DailyBudget: %s", dataObject.getDailyBudget()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
+            outputStatusMessage(String.format("ExperimentId: %s", dataObject.getExperimentId()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
@@ -2016,11 +2230,15 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("SubType: %s", dataObject.getSubType()));
             outputStatusMessage(String.format("TimeZone: %s", dataObject.getTimeZone()));
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
             outputStatusMessage(String.format("CampaignType: %s", dataObject.getCampaignType()));
+            outputStatusMessage("Settings:");
             outputArrayOfSetting(dataObject.getSettings());
             outputStatusMessage(String.format("BudgetId: %s", dataObject.getBudgetId()));
+            outputStatusMessage("Languages:");
             outputArrayOfstring(dataObject.getLanguages());
+            outputStatusMessage("* * * End OutputCampaign * * *");
         }
     }
     static void outputArrayOfCampaign(ArrayOfCampaign dataObjects)
@@ -2030,7 +2248,6 @@ class CampaignManagementExampleHelper
             for (Campaign dataObject : dataObjects.getCampaigns())
             {
                 outputCampaign(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2038,8 +2255,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignCriterion * * *");
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
+            outputStatusMessage("Criterion:");
             outputCriterion(dataObject.getCriterion());
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
@@ -2052,6 +2272,7 @@ class CampaignManagementExampleHelper
             {
                 outputNegativeCampaignCriterion((NegativeCampaignCriterion)dataObject);
             }
+            outputStatusMessage("* * * End OutputCampaignCriterion * * *");
         }
     }
     static void outputArrayOfCampaignCriterion(ArrayOfCampaignCriterion dataObjects)
@@ -2061,7 +2282,6 @@ class CampaignManagementExampleHelper
             for (CampaignCriterion dataObject : dataObjects.getCampaignCriterions())
             {
                 outputCampaignCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2069,8 +2289,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCampaignNegativeSites * * *");
             outputStatusMessage(String.format("CampaignId: %s", dataObject.getCampaignId()));
+            outputStatusMessage("NegativeSites:");
             outputArrayOfstring(dataObject.getNegativeSites());
+            outputStatusMessage("* * * End OutputCampaignNegativeSites * * *");
         }
     }
     static void outputArrayOfCampaignNegativeSites(ArrayOfCampaignNegativeSites dataObjects)
@@ -2080,7 +2303,6 @@ class CampaignManagementExampleHelper
             for (CampaignNegativeSites dataObject : dataObjects.getCampaignNegativeSites())
             {
                 outputCampaignNegativeSites(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2088,10 +2310,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputConversionGoal * * *");
             outputStatusMessage(String.format("ConversionWindowInMinutes: %s", dataObject.getConversionWindowInMinutes()));
             outputStatusMessage(String.format("CountType: %s", dataObject.getCountType()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage("Revenue:");
             outputConversionGoalRevenue(dataObject.getRevenue());
             outputStatusMessage(String.format("Scope: %s", dataObject.getScope()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
@@ -2126,6 +2350,7 @@ class CampaignManagementExampleHelper
             {
                 outputUrlGoal((UrlGoal)dataObject);
             }
+            outputStatusMessage("* * * End OutputConversionGoal * * *");
         }
     }
     static void outputArrayOfConversionGoal(ArrayOfConversionGoal dataObjects)
@@ -2135,7 +2360,6 @@ class CampaignManagementExampleHelper
             for (ConversionGoal dataObject : dataObjects.getConversionGoals())
             {
                 outputConversionGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2143,9 +2367,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputConversionGoalRevenue * * *");
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputConversionGoalRevenue * * *");
         }
     }
     static void outputArrayOfConversionGoalRevenue(ArrayList<ConversionGoalRevenue> dataObjects)
@@ -2155,7 +2381,6 @@ class CampaignManagementExampleHelper
             for (ConversionGoalRevenue dataObject : dataObjects)
             {
                 outputConversionGoalRevenue(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2163,9 +2388,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCoOpSetting * * *");
             outputStatusMessage(String.format("BidBoostValue: %s", dataObject.getBidBoostValue()));
             outputStatusMessage(String.format("BidMaxValue: %s", dataObject.getBidMaxValue()));
             outputStatusMessage(String.format("BidOption: %s", dataObject.getBidOption()));
+            outputStatusMessage("* * * End OutputCoOpSetting * * *");
         }
     }
     static void outputArrayOfCoOpSetting(ArrayList<CoOpSetting> dataObjects)
@@ -2175,7 +2402,6 @@ class CampaignManagementExampleHelper
             for (CoOpSetting dataObject : dataObjects)
             {
                 outputCoOpSetting(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2183,6 +2409,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCriterion * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof AgeCriterion)
             {
@@ -2232,6 +2459,7 @@ class CampaignManagementExampleHelper
             {
                 outputWebpage((Webpage)dataObject);
             }
+            outputStatusMessage("* * * End OutputCriterion * * *");
         }
     }
     static void outputArrayOfCriterion(ArrayList<Criterion> dataObjects)
@@ -2241,7 +2469,6 @@ class CampaignManagementExampleHelper
             for (Criterion dataObject : dataObjects)
             {
                 outputCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2249,6 +2476,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCriterionBid * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof BidMultiplier)
             {
@@ -2258,6 +2486,7 @@ class CampaignManagementExampleHelper
             {
                 outputFixedBid((FixedBid)dataObject);
             }
+            outputStatusMessage("* * * End OutputCriterionBid * * *");
         }
     }
     static void outputArrayOfCriterionBid(ArrayList<CriterionBid> dataObjects)
@@ -2267,7 +2496,6 @@ class CampaignManagementExampleHelper
             for (CriterionBid dataObject : dataObjects)
             {
                 outputCriterionBid(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2275,6 +2503,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomAudience * * *");
+            outputStatusMessage("* * * End OutputCustomAudience * * *");
         }
     }
     static void outputArrayOfCustomAudience(ArrayList<CustomAudience> dataObjects)
@@ -2284,7 +2514,6 @@ class CampaignManagementExampleHelper
             for (CustomAudience dataObject : dataObjects)
             {
                 outputCustomAudience(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2292,6 +2521,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomEventsRule * * *");
             outputStatusMessage(String.format("Action: %s", dataObject.getAction()));
             outputStatusMessage(String.format("ActionOperator: %s", dataObject.getActionOperator()));
             outputStatusMessage(String.format("Category: %s", dataObject.getCategory()));
@@ -2300,6 +2530,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("LabelOperator: %s", dataObject.getLabelOperator()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
             outputStatusMessage(String.format("ValueOperator: %s", dataObject.getValueOperator()));
+            outputStatusMessage("* * * End OutputCustomEventsRule * * *");
         }
     }
     static void outputArrayOfCustomEventsRule(ArrayList<CustomEventsRule> dataObjects)
@@ -2309,7 +2540,6 @@ class CampaignManagementExampleHelper
             for (CustomEventsRule dataObject : dataObjects)
             {
                 outputCustomEventsRule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2317,8 +2547,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomParameter * * *");
             outputStatusMessage(String.format("Key: %s", dataObject.getKey()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputCustomParameter * * *");
         }
     }
     static void outputArrayOfCustomParameter(ArrayOfCustomParameter dataObjects)
@@ -2328,7 +2560,6 @@ class CampaignManagementExampleHelper
             for (CustomParameter dataObject : dataObjects.getCustomParameters())
             {
                 outputCustomParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2336,7 +2567,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputCustomParameters * * *");
+            outputStatusMessage("Parameters:");
             outputArrayOfCustomParameter(dataObject.getParameters());
+            outputStatusMessage("* * * End OutputCustomParameters * * *");
         }
     }
     static void outputArrayOfCustomParameters(ArrayList<CustomParameters> dataObjects)
@@ -2346,7 +2580,6 @@ class CampaignManagementExampleHelper
             for (CustomParameters dataObject : dataObjects)
             {
                 outputCustomParameters(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2354,9 +2587,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDate * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("Month: %s", dataObject.getMonth()));
             outputStatusMessage(String.format("Year: %s", dataObject.getYear()));
+            outputStatusMessage("* * * End OutputDate * * *");
         }
     }
     static void outputArrayOfDate(ArrayList<Date> dataObjects)
@@ -2366,7 +2601,6 @@ class CampaignManagementExampleHelper
             for (Date dataObject : dataObjects)
             {
                 outputDate(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2374,11 +2608,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDayTime * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("EndHour: %s", dataObject.getEndHour()));
             outputStatusMessage(String.format("EndMinute: %s", dataObject.getEndMinute()));
             outputStatusMessage(String.format("StartHour: %s", dataObject.getStartHour()));
             outputStatusMessage(String.format("StartMinute: %s", dataObject.getStartMinute()));
+            outputStatusMessage("* * * End OutputDayTime * * *");
         }
     }
     static void outputArrayOfDayTime(ArrayOfDayTime dataObjects)
@@ -2388,7 +2624,6 @@ class CampaignManagementExampleHelper
             for (DayTime dataObject : dataObjects.getDayTimes())
             {
                 outputDayTime(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2396,11 +2631,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDayTimeCriterion * * *");
             outputStatusMessage(String.format("Day: %s", dataObject.getDay()));
             outputStatusMessage(String.format("FromHour: %s", dataObject.getFromHour()));
             outputStatusMessage(String.format("FromMinute: %s", dataObject.getFromMinute()));
             outputStatusMessage(String.format("ToHour: %s", dataObject.getToHour()));
             outputStatusMessage(String.format("ToMinute: %s", dataObject.getToMinute()));
+            outputStatusMessage("* * * End OutputDayTimeCriterion * * *");
         }
     }
     static void outputArrayOfDayTimeCriterion(ArrayList<DayTimeCriterion> dataObjects)
@@ -2410,7 +2647,6 @@ class CampaignManagementExampleHelper
             for (DayTimeCriterion dataObject : dataObjects)
             {
                 outputDayTimeCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2418,8 +2654,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDeviceCriterion * * *");
             outputStatusMessage(String.format("DeviceName: %s", dataObject.getDeviceName()));
             outputStatusMessage(String.format("OSName: %s", dataObject.getOSName()));
+            outputStatusMessage("* * * End OutputDeviceCriterion * * *");
         }
     }
     static void outputArrayOfDeviceCriterion(ArrayList<DeviceCriterion> dataObjects)
@@ -2429,7 +2667,6 @@ class CampaignManagementExampleHelper
             for (DeviceCriterion dataObject : dataObjects)
             {
                 outputDeviceCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2437,7 +2674,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDurationGoal * * *");
             outputStatusMessage(String.format("MinimumDurationInSeconds: %s", dataObject.getMinimumDurationInSeconds()));
+            outputStatusMessage("* * * End OutputDurationGoal * * *");
         }
     }
     static void outputArrayOfDurationGoal(ArrayList<DurationGoal> dataObjects)
@@ -2447,7 +2686,6 @@ class CampaignManagementExampleHelper
             for (DurationGoal dataObject : dataObjects)
             {
                 outputDurationGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2455,9 +2693,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDynamicSearchAd * * *");
             outputStatusMessage(String.format("Path1: %s", dataObject.getPath1()));
             outputStatusMessage(String.format("Path2: %s", dataObject.getPath2()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputDynamicSearchAd * * *");
         }
     }
     static void outputArrayOfDynamicSearchAd(ArrayList<DynamicSearchAd> dataObjects)
@@ -2467,7 +2707,6 @@ class CampaignManagementExampleHelper
             for (DynamicSearchAd dataObject : dataObjects)
             {
                 outputDynamicSearchAd(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2475,10 +2714,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputDynamicSearchAdsSetting * * *");
             outputStatusMessage(String.format("DomainName: %s", dataObject.getDomainName()));
             outputStatusMessage(String.format("Language: %s", dataObject.getLanguage()));
+            outputStatusMessage("PageFeedIds:");
             outputArrayOflong(dataObject.getPageFeedIds());
             outputStatusMessage(String.format("Source: %s", dataObject.getSource()));
+            outputStatusMessage("* * * End OutputDynamicSearchAdsSetting * * *");
         }
     }
     static void outputArrayOfDynamicSearchAdsSetting(ArrayList<DynamicSearchAdsSetting> dataObjects)
@@ -2488,7 +2730,6 @@ class CampaignManagementExampleHelper
             for (DynamicSearchAdsSetting dataObject : dataObjects)
             {
                 outputDynamicSearchAdsSetting(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2496,9 +2737,14 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialApiFaultDetail * * *");
+            outputStatusMessage("BatchErrors:");
             outputArrayOfBatchError(dataObject.getBatchErrors());
+            outputStatusMessage("EditorialErrors:");
             outputArrayOfEditorialError(dataObject.getEditorialErrors());
+            outputStatusMessage("OperationErrors:");
             outputArrayOfOperationError(dataObject.getOperationErrors());
+            outputStatusMessage("* * * End OutputEditorialApiFaultDetail * * *");
         }
     }
     static void outputArrayOfEditorialApiFaultDetail(ArrayList<EditorialApiFaultDetail> dataObjects)
@@ -2508,7 +2754,6 @@ class CampaignManagementExampleHelper
             for (EditorialApiFaultDetail dataObject : dataObjects)
             {
                 outputEditorialApiFaultDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2516,11 +2761,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialError * * *");
             outputStatusMessage(String.format("Appealable: %s", dataObject.getAppealable()));
             outputStatusMessage(String.format("DisapprovedText: %s", dataObject.getDisapprovedText()));
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
             outputStatusMessage(String.format("PublisherCountry: %s", dataObject.getPublisherCountry()));
             outputStatusMessage(String.format("ReasonCode: %s", dataObject.getReasonCode()));
+            outputStatusMessage("* * * End OutputEditorialError * * *");
         }
     }
     static void outputArrayOfEditorialError(ArrayOfEditorialError dataObjects)
@@ -2530,7 +2777,6 @@ class CampaignManagementExampleHelper
             for (EditorialError dataObject : dataObjects.getEditorialErrors())
             {
                 outputEditorialError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2538,11 +2784,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialErrorCollection * * *");
             outputStatusMessage(String.format("Appealable: %s", dataObject.getAppealable()));
             outputStatusMessage(String.format("DisapprovedText: %s", dataObject.getDisapprovedText()));
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
             outputStatusMessage(String.format("PublisherCountry: %s", dataObject.getPublisherCountry()));
             outputStatusMessage(String.format("ReasonCode: %s", dataObject.getReasonCode()));
+            outputStatusMessage("* * * End OutputEditorialErrorCollection * * *");
         }
     }
     static void outputArrayOfEditorialErrorCollection(ArrayList<EditorialErrorCollection> dataObjects)
@@ -2552,7 +2800,6 @@ class CampaignManagementExampleHelper
             for (EditorialErrorCollection dataObject : dataObjects)
             {
                 outputEditorialErrorCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2560,10 +2807,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialReason * * *");
             outputStatusMessage(String.format("Location: %s", dataObject.getLocation()));
+            outputStatusMessage("PublisherCountries:");
             outputArrayOfstring(dataObject.getPublisherCountries());
             outputStatusMessage(String.format("ReasonCode: %s", dataObject.getReasonCode()));
             outputStatusMessage(String.format("Term: %s", dataObject.getTerm()));
+            outputStatusMessage("* * * End OutputEditorialReason * * *");
         }
     }
     static void outputArrayOfEditorialReason(ArrayOfEditorialReason dataObjects)
@@ -2573,7 +2823,6 @@ class CampaignManagementExampleHelper
             for (EditorialReason dataObject : dataObjects.getEditorialReasons())
             {
                 outputEditorialReason(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2581,10 +2830,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEditorialReasonCollection * * *");
             outputStatusMessage(String.format("AdGroupId: %s", dataObject.getAdGroupId()));
             outputStatusMessage(String.format("AdOrKeywordId: %s", dataObject.getAdOrKeywordId()));
             outputStatusMessage(String.format("AppealStatus: %s", dataObject.getAppealStatus()));
+            outputStatusMessage("Reasons:");
             outputArrayOfEditorialReason(dataObject.getReasons());
+            outputStatusMessage("* * * End OutputEditorialReasonCollection * * *");
         }
     }
     static void outputArrayOfEditorialReasonCollection(ArrayOfEditorialReasonCollection dataObjects)
@@ -2594,7 +2846,6 @@ class CampaignManagementExampleHelper
             for (EditorialReasonCollection dataObject : dataObjects.getEditorialReasonCollections())
             {
                 outputEditorialReasonCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2602,6 +2853,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEnhancedCpcBiddingScheme * * *");
+            outputStatusMessage("* * * End OutputEnhancedCpcBiddingScheme * * *");
         }
     }
     static void outputArrayOfEnhancedCpcBiddingScheme(ArrayList<EnhancedCpcBiddingScheme> dataObjects)
@@ -2611,7 +2864,6 @@ class CampaignManagementExampleHelper
             for (EnhancedCpcBiddingScheme dataObject : dataObjects)
             {
                 outputEnhancedCpcBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2619,8 +2871,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEntityIdToParentIdAssociation * * *");
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
             outputStatusMessage(String.format("ParentId: %s", dataObject.getParentId()));
+            outputStatusMessage("* * * End OutputEntityIdToParentIdAssociation * * *");
         }
     }
     static void outputArrayOfEntityIdToParentIdAssociation(ArrayOfEntityIdToParentIdAssociation dataObjects)
@@ -2630,7 +2884,6 @@ class CampaignManagementExampleHelper
             for (EntityIdToParentIdAssociation dataObject : dataObjects.getEntityIdToParentIdAssociations())
             {
                 outputEntityIdToParentIdAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2638,9 +2891,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEntityNegativeKeyword * * *");
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
             outputStatusMessage(String.format("EntityType: %s", dataObject.getEntityType()));
+            outputStatusMessage("NegativeKeywords:");
             outputArrayOfNegativeKeyword(dataObject.getNegativeKeywords());
+            outputStatusMessage("* * * End OutputEntityNegativeKeyword * * *");
         }
     }
     static void outputArrayOfEntityNegativeKeyword(ArrayOfEntityNegativeKeyword dataObjects)
@@ -2650,7 +2906,6 @@ class CampaignManagementExampleHelper
             for (EntityNegativeKeyword dataObject : dataObjects.getEntityNegativeKeywords())
             {
                 outputEntityNegativeKeyword(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2658,6 +2913,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputEventGoal * * *");
             outputStatusMessage(String.format("ActionExpression: %s", dataObject.getActionExpression()));
             outputStatusMessage(String.format("ActionOperator: %s", dataObject.getActionOperator()));
             outputStatusMessage(String.format("CategoryExpression: %s", dataObject.getCategoryExpression()));
@@ -2666,6 +2922,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("LabelOperator: %s", dataObject.getLabelOperator()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
             outputStatusMessage(String.format("ValueOperator: %s", dataObject.getValueOperator()));
+            outputStatusMessage("* * * End OutputEventGoal * * *");
         }
     }
     static void outputArrayOfEventGoal(ArrayList<EventGoal> dataObjects)
@@ -2675,7 +2932,6 @@ class CampaignManagementExampleHelper
             for (EventGoal dataObject : dataObjects)
             {
                 outputEventGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2683,6 +2939,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputExpandedTextAd * * *");
             outputStatusMessage(String.format("Domain: %s", dataObject.getDomain()));
             outputStatusMessage(String.format("Path1: %s", dataObject.getPath1()));
             outputStatusMessage(String.format("Path2: %s", dataObject.getPath2()));
@@ -2691,6 +2948,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("TitlePart1: %s", dataObject.getTitlePart1()));
             outputStatusMessage(String.format("TitlePart2: %s", dataObject.getTitlePart2()));
             outputStatusMessage(String.format("TitlePart3: %s", dataObject.getTitlePart3()));
+            outputStatusMessage("* * * End OutputExpandedTextAd * * *");
         }
     }
     static void outputArrayOfExpandedTextAd(ArrayList<ExpandedTextAd> dataObjects)
@@ -2700,7 +2958,35 @@ class CampaignManagementExampleHelper
             for (ExpandedTextAd dataObject : dataObjects)
             {
                 outputExpandedTextAd(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputExperiment(Experiment dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputExperiment * * *");
+            outputStatusMessage(String.format("BaseCampaignId: %s", dataObject.getBaseCampaignId()));
+            outputStatusMessage("EndDate:");
+            outputDate(dataObject.getEndDate());
+            outputStatusMessage(String.format("ExperimentCampaignId: %s", dataObject.getExperimentCampaignId()));
+            outputStatusMessage(String.format("ExperimentStatus: %s", dataObject.getExperimentStatus()));
+            outputStatusMessage(String.format("ExperimentType: %s", dataObject.getExperimentType()));
+            outputStatusMessage(String.format("Id: %s", dataObject.getId()));
+            outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage("StartDate:");
+            outputDate(dataObject.getStartDate());
+            outputStatusMessage(String.format("TrafficSplitPercent: %s", dataObject.getTrafficSplitPercent()));
+            outputStatusMessage("* * * End OutputExperiment * * *");
+        }
+    }
+    static void outputArrayOfExperiment(ArrayOfExperiment dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Experiment dataObject : dataObjects.getExperiments())
+            {
+                outputExperiment(dataObject);
             }
         }
     }
@@ -2708,7 +2994,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputFixedBid * * *");
             outputStatusMessage(String.format("Amount: %s", dataObject.getAmount()));
+            outputStatusMessage("* * * End OutputFixedBid * * *");
         }
     }
     static void outputArrayOfFixedBid(ArrayList<FixedBid> dataObjects)
@@ -2718,7 +3006,6 @@ class CampaignManagementExampleHelper
             for (FixedBid dataObject : dataObjects)
             {
                 outputFixedBid(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2726,7 +3013,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGenderCriterion * * *");
             outputStatusMessage(String.format("GenderType: %s", dataObject.getGenderType()));
+            outputStatusMessage("* * * End OutputGenderCriterion * * *");
         }
     }
     static void outputArrayOfGenderCriterion(ArrayList<GenderCriterion> dataObjects)
@@ -2736,7 +3025,6 @@ class CampaignManagementExampleHelper
             for (GenderCriterion dataObject : dataObjects)
             {
                 outputGenderCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2744,8 +3032,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputGeoPoint * * *");
             outputStatusMessage(String.format("LatitudeInMicroDegrees: %s", dataObject.getLatitudeInMicroDegrees()));
             outputStatusMessage(String.format("LongitudeInMicroDegrees: %s", dataObject.getLongitudeInMicroDegrees()));
+            outputStatusMessage("* * * End OutputGeoPoint * * *");
         }
     }
     static void outputArrayOfGeoPoint(ArrayList<GeoPoint> dataObjects)
@@ -2755,7 +3045,6 @@ class CampaignManagementExampleHelper
             for (GeoPoint dataObject : dataObjects)
             {
                 outputGeoPoint(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2763,7 +3052,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputIdCollection * * *");
+            outputStatusMessage("Ids:");
             outputArrayOfNullableOflong(dataObject.getIds());
+            outputStatusMessage("* * * End OutputIdCollection * * *");
         }
     }
     static void outputArrayOfIdCollection(ArrayOfIdCollection dataObjects)
@@ -2773,7 +3065,6 @@ class CampaignManagementExampleHelper
             for (IdCollection dataObject : dataObjects.getIdCollections())
             {
                 outputIdCollection(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2781,7 +3072,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputImage * * *");
             outputStatusMessage(String.format("Data: %s", dataObject.getData()));
+            outputStatusMessage("* * * End OutputImage * * *");
         }
     }
     static void outputArrayOfImage(ArrayList<Image> dataObjects)
@@ -2791,7 +3084,6 @@ class CampaignManagementExampleHelper
             for (Image dataObject : dataObjects)
             {
                 outputImage(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2799,15 +3091,22 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputImageAdExtension * * *");
             outputStatusMessage(String.format("AlternativeText: %s", dataObject.getAlternativeText()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
+            outputStatusMessage("ImageMediaIds:");
             outputArrayOflong(dataObject.getImageMediaIds());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputImageAdExtension * * *");
         }
     }
     static void outputArrayOfImageAdExtension(ArrayList<ImageAdExtension> dataObjects)
@@ -2817,7 +3116,29 @@ class CampaignManagementExampleHelper
             for (ImageAdExtension dataObject : dataObjects)
             {
                 outputImageAdExtension(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputImageAsset(ImageAsset dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputImageAsset * * *");
+            outputStatusMessage(String.format("CropHeight: %s", dataObject.getCropHeight()));
+            outputStatusMessage(String.format("CropWidth: %s", dataObject.getCropWidth()));
+            outputStatusMessage(String.format("CropX: %s", dataObject.getCropX()));
+            outputStatusMessage(String.format("CropY: %s", dataObject.getCropY()));
+            outputStatusMessage(String.format("SubType: %s", dataObject.getSubType()));
+            outputStatusMessage("* * * End OutputImageAsset * * *");
+        }
+    }
+    static void outputArrayOfImageAsset(ArrayList<ImageAsset> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ImageAsset dataObject : dataObjects)
+            {
+                outputImageAsset(dataObject);
             }
         }
     }
@@ -2825,8 +3146,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputImageMediaRepresentation * * *");
             outputStatusMessage(String.format("Height: %s", dataObject.getHeight()));
             outputStatusMessage(String.format("Width: %s", dataObject.getWidth()));
+            outputStatusMessage("* * * End OutputImageMediaRepresentation * * *");
         }
     }
     static void outputArrayOfImageMediaRepresentation(ArrayList<ImageMediaRepresentation> dataObjects)
@@ -2836,7 +3159,6 @@ class CampaignManagementExampleHelper
             for (ImageMediaRepresentation dataObject : dataObjects)
             {
                 outputImageMediaRepresentation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2844,7 +3166,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputInheritFromParentBiddingScheme * * *");
             outputStatusMessage(String.format("InheritedBidStrategyType: %s", dataObject.getInheritedBidStrategyType()));
+            outputStatusMessage("* * * End OutputInheritFromParentBiddingScheme * * *");
         }
     }
     static void outputArrayOfInheritFromParentBiddingScheme(ArrayList<InheritFromParentBiddingScheme> dataObjects)
@@ -2854,7 +3178,6 @@ class CampaignManagementExampleHelper
             for (InheritFromParentBiddingScheme dataObject : dataObjects)
             {
                 outputInheritFromParentBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2862,6 +3185,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputInMarketAudience * * *");
+            outputStatusMessage("* * * End OutputInMarketAudience * * *");
         }
     }
     static void outputArrayOfInMarketAudience(ArrayList<InMarketAudience> dataObjects)
@@ -2871,7 +3196,6 @@ class CampaignManagementExampleHelper
             for (InMarketAudience dataObject : dataObjects)
             {
                 outputInMarketAudience(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2879,6 +3203,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputInStoreTransactionGoal * * *");
+            outputStatusMessage("* * * End OutputInStoreTransactionGoal * * *");
         }
     }
     static void outputArrayOfInStoreTransactionGoal(ArrayList<InStoreTransactionGoal> dataObjects)
@@ -2888,7 +3214,6 @@ class CampaignManagementExampleHelper
             for (InStoreTransactionGoal dataObject : dataObjects)
             {
                 outputInStoreTransactionGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2896,8 +3221,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeyValuePairOfstringstring * * *");
             outputStatusMessage(String.format("Key: %s", dataObject.getKey()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputKeyValuePairOfstringstring * * *");
         }
     }
     static void outputArrayOfKeyValuePairOfstringstring(ArrayOfKeyValuePairOfstringstring dataObjects)
@@ -2907,7 +3234,6 @@ class CampaignManagementExampleHelper
             for (KeyValuePairOfstringstring dataObject : dataObjects.getKeyValuePairOfstringstrings())
             {
                 outputKeyValuePairOfstringstring(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2915,13 +3241,20 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputKeyword * * *");
+            outputStatusMessage("Bid:");
             outputBid(dataObject.getBid());
+            outputStatusMessage("BiddingScheme:");
             outputBiddingScheme(dataObject.getBiddingScheme());
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
             outputStatusMessage(String.format("EditorialStatus: %s", dataObject.getEditorialStatus()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
@@ -2931,7 +3264,9 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputKeyword * * *");
         }
     }
     static void outputArrayOfKeyword(ArrayOfKeyword dataObjects)
@@ -2941,7 +3276,6 @@ class CampaignManagementExampleHelper
             for (Keyword dataObject : dataObjects.getKeywords())
             {
                 outputKeyword(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2949,10 +3283,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLabel * * *");
             outputStatusMessage(String.format("ColorCode: %s", dataObject.getColorCode()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage("* * * End OutputLabel * * *");
         }
     }
     static void outputArrayOfLabel(ArrayOfLabel dataObjects)
@@ -2962,7 +3298,6 @@ class CampaignManagementExampleHelper
             for (Label dataObject : dataObjects.getLabels())
             {
                 outputLabel(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2970,8 +3305,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLabelAssociation * * *");
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
             outputStatusMessage(String.format("LabelId: %s", dataObject.getLabelId()));
+            outputStatusMessage("* * * End OutputLabelAssociation * * *");
         }
     }
     static void outputArrayOfLabelAssociation(ArrayOfLabelAssociation dataObjects)
@@ -2981,7 +3318,6 @@ class CampaignManagementExampleHelper
             for (LabelAssociation dataObject : dataObjects.getLabelAssociations())
             {
                 outputLabelAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -2989,11 +3325,15 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLocationAdExtension * * *");
+            outputStatusMessage("Address:");
             outputAddress(dataObject.getAddress());
             outputStatusMessage(String.format("CompanyName: %s", dataObject.getCompanyName()));
             outputStatusMessage(String.format("GeoCodeStatus: %s", dataObject.getGeoCodeStatus()));
+            outputStatusMessage("GeoPoint:");
             outputGeoPoint(dataObject.getGeoPoint());
             outputStatusMessage(String.format("PhoneNumber: %s", dataObject.getPhoneNumber()));
+            outputStatusMessage("* * * End OutputLocationAdExtension * * *");
         }
     }
     static void outputArrayOfLocationAdExtension(ArrayList<LocationAdExtension> dataObjects)
@@ -3003,7 +3343,6 @@ class CampaignManagementExampleHelper
             for (LocationAdExtension dataObject : dataObjects)
             {
                 outputLocationAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3011,10 +3350,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLocationCriterion * * *");
             outputStatusMessage(String.format("DisplayName: %s", dataObject.getDisplayName()));
+            outputStatusMessage("EnclosedLocationIds:");
             outputArrayOflong(dataObject.getEnclosedLocationIds());
             outputStatusMessage(String.format("LocationId: %s", dataObject.getLocationId()));
             outputStatusMessage(String.format("LocationType: %s", dataObject.getLocationType()));
+            outputStatusMessage("* * * End OutputLocationCriterion * * *");
         }
     }
     static void outputArrayOfLocationCriterion(ArrayList<LocationCriterion> dataObjects)
@@ -3024,7 +3366,6 @@ class CampaignManagementExampleHelper
             for (LocationCriterion dataObject : dataObjects)
             {
                 outputLocationCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3032,7 +3373,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputLocationIntentCriterion * * *");
             outputStatusMessage(String.format("IntentOption: %s", dataObject.getIntentOption()));
+            outputStatusMessage("* * * End OutputLocationIntentCriterion * * *");
         }
     }
     static void outputArrayOfLocationIntentCriterion(ArrayList<LocationIntentCriterion> dataObjects)
@@ -3042,7 +3385,6 @@ class CampaignManagementExampleHelper
             for (LocationIntentCriterion dataObject : dataObjects)
             {
                 outputLocationIntentCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3050,6 +3392,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputManualCpcBiddingScheme * * *");
+            outputStatusMessage("* * * End OutputManualCpcBiddingScheme * * *");
         }
     }
     static void outputArrayOfManualCpcBiddingScheme(ArrayList<ManualCpcBiddingScheme> dataObjects)
@@ -3059,7 +3403,6 @@ class CampaignManagementExampleHelper
             for (ManualCpcBiddingScheme dataObject : dataObjects)
             {
                 outputManualCpcBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3067,7 +3410,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMaxClicksBiddingScheme * * *");
+            outputStatusMessage("MaxCpc:");
             outputBid(dataObject.getMaxCpc());
+            outputStatusMessage("* * * End OutputMaxClicksBiddingScheme * * *");
         }
     }
     static void outputArrayOfMaxClicksBiddingScheme(ArrayList<MaxClicksBiddingScheme> dataObjects)
@@ -3077,7 +3423,6 @@ class CampaignManagementExampleHelper
             for (MaxClicksBiddingScheme dataObject : dataObjects)
             {
                 outputMaxClicksBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3085,7 +3430,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMaxConversionsBiddingScheme * * *");
+            outputStatusMessage("MaxCpc:");
             outputBid(dataObject.getMaxCpc());
+            outputStatusMessage("* * * End OutputMaxConversionsBiddingScheme * * *");
         }
     }
     static void outputArrayOfMaxConversionsBiddingScheme(ArrayList<MaxConversionsBiddingScheme> dataObjects)
@@ -3095,7 +3443,6 @@ class CampaignManagementExampleHelper
             for (MaxConversionsBiddingScheme dataObject : dataObjects)
             {
                 outputMaxConversionsBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3103,6 +3450,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMedia * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MediaType: %s", dataObject.getMediaType()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
@@ -3110,6 +3458,7 @@ class CampaignManagementExampleHelper
             {
                 outputImage((Image)dataObject);
             }
+            outputStatusMessage("* * * End OutputMedia * * *");
         }
     }
     static void outputArrayOfMedia(ArrayOfMedia dataObjects)
@@ -3119,7 +3468,6 @@ class CampaignManagementExampleHelper
             for (Media dataObject : dataObjects.getMedias())
             {
                 outputMedia(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3127,9 +3475,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMediaAssociation * * *");
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
             outputStatusMessage(String.format("MediaEnabledEntity: %s", dataObject.getMediaEnabledEntity()));
             outputStatusMessage(String.format("MediaId: %s", dataObject.getMediaId()));
+            outputStatusMessage("* * * End OutputMediaAssociation * * *");
         }
     }
     static void outputArrayOfMediaAssociation(ArrayOfMediaAssociation dataObjects)
@@ -3139,7 +3489,6 @@ class CampaignManagementExampleHelper
             for (MediaAssociation dataObject : dataObjects.getMediaAssociations())
             {
                 outputMediaAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3147,10 +3496,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMediaMetaData * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MediaType: %s", dataObject.getMediaType()));
+            outputStatusMessage("Representations:");
             outputArrayOfMediaRepresentation(dataObject.getRepresentations());
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            outputStatusMessage("* * * End OutputMediaMetaData * * *");
         }
     }
     static void outputArrayOfMediaMetaData(ArrayOfMediaMetaData dataObjects)
@@ -3160,7 +3512,6 @@ class CampaignManagementExampleHelper
             for (MediaMetaData dataObject : dataObjects.getMediaMetaDatas())
             {
                 outputMediaMetaData(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3168,6 +3519,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMediaRepresentation * * *");
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             outputStatusMessage(String.format("Url: %s", dataObject.getUrl()));
@@ -3175,6 +3527,7 @@ class CampaignManagementExampleHelper
             {
                 outputImageMediaRepresentation((ImageMediaRepresentation)dataObject);
             }
+            outputStatusMessage("* * * End OutputMediaRepresentation * * *");
         }
     }
     static void outputArrayOfMediaRepresentation(ArrayOfMediaRepresentation dataObjects)
@@ -3184,7 +3537,6 @@ class CampaignManagementExampleHelper
             for (MediaRepresentation dataObject : dataObjects.getMediaRepresentations())
             {
                 outputMediaRepresentation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3192,9 +3544,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputMigrationStatusInfo * * *");
             outputStatusMessage(String.format("MigrationType: %s", dataObject.getMigrationType()));
             outputStatusMessage(String.format("StartTimeInUtc: %s", dataObject.getStartTimeInUtc()));
             outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputMigrationStatusInfo * * *");
         }
     }
     static void outputArrayOfMigrationStatusInfo(ArrayOfMigrationStatusInfo dataObjects)
@@ -3204,7 +3558,6 @@ class CampaignManagementExampleHelper
             for (MigrationStatusInfo dataObject : dataObjects.getMigrationStatusInfos())
             {
                 outputMigrationStatusInfo(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3212,6 +3565,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeAdGroupCriterion * * *");
+            outputStatusMessage("* * * End OutputNegativeAdGroupCriterion * * *");
         }
     }
     static void outputArrayOfNegativeAdGroupCriterion(ArrayList<NegativeAdGroupCriterion> dataObjects)
@@ -3221,7 +3576,6 @@ class CampaignManagementExampleHelper
             for (NegativeAdGroupCriterion dataObject : dataObjects)
             {
                 outputNegativeAdGroupCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3229,6 +3583,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeCampaignCriterion * * *");
+            outputStatusMessage("* * * End OutputNegativeCampaignCriterion * * *");
         }
     }
     static void outputArrayOfNegativeCampaignCriterion(ArrayList<NegativeCampaignCriterion> dataObjects)
@@ -3238,7 +3594,6 @@ class CampaignManagementExampleHelper
             for (NegativeCampaignCriterion dataObject : dataObjects)
             {
                 outputNegativeCampaignCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3246,9 +3601,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeKeyword * * *");
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("MatchType: %s", dataObject.getMatchType()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputNegativeKeyword * * *");
         }
     }
     static void outputArrayOfNegativeKeyword(ArrayOfNegativeKeyword dataObjects)
@@ -3258,7 +3615,6 @@ class CampaignManagementExampleHelper
             for (NegativeKeyword dataObject : dataObjects.getNegativeKeywords())
             {
                 outputNegativeKeyword(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3266,6 +3622,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputNegativeKeywordList * * *");
+            outputStatusMessage("* * * End OutputNegativeKeywordList * * *");
         }
     }
     static void outputArrayOfNegativeKeywordList(ArrayList<NegativeKeywordList> dataObjects)
@@ -3275,7 +3633,6 @@ class CampaignManagementExampleHelper
             for (NegativeKeywordList dataObject : dataObjects)
             {
                 outputNegativeKeywordList(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3283,11 +3640,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOfflineConversion * * *");
             outputStatusMessage(String.format("ConversionCurrencyCode: %s", dataObject.getConversionCurrencyCode()));
             outputStatusMessage(String.format("ConversionName: %s", dataObject.getConversionName()));
             outputStatusMessage(String.format("ConversionTime: %s", dataObject.getConversionTime()));
             outputStatusMessage(String.format("ConversionValue: %s", dataObject.getConversionValue()));
             outputStatusMessage(String.format("MicrosoftClickId: %s", dataObject.getMicrosoftClickId()));
+            outputStatusMessage("* * * End OutputOfflineConversion * * *");
         }
     }
     static void outputArrayOfOfflineConversion(ArrayOfOfflineConversion dataObjects)
@@ -3297,7 +3656,6 @@ class CampaignManagementExampleHelper
             for (OfflineConversion dataObject : dataObjects.getOfflineConversions())
             {
                 outputOfflineConversion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3305,6 +3663,8 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOfflineConversionGoal * * *");
+            outputStatusMessage("* * * End OutputOfflineConversionGoal * * *");
         }
     }
     static void outputArrayOfOfflineConversionGoal(ArrayList<OfflineConversionGoal> dataObjects)
@@ -3314,7 +3674,6 @@ class CampaignManagementExampleHelper
             for (OfflineConversionGoal dataObject : dataObjects)
             {
                 outputOfflineConversionGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3322,10 +3681,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputOperationError * * *");
             outputStatusMessage(String.format("Code: %s", dataObject.getCode()));
             outputStatusMessage(String.format("Details: %s", dataObject.getDetails()));
             outputStatusMessage(String.format("ErrorCode: %s", dataObject.getErrorCode()));
             outputStatusMessage(String.format("Message: %s", dataObject.getMessage()));
+            outputStatusMessage("* * * End OutputOperationError * * *");
         }
     }
     static void outputArrayOfOperationError(ArrayOfOperationError dataObjects)
@@ -3335,7 +3696,6 @@ class CampaignManagementExampleHelper
             for (OperationError dataObject : dataObjects.getOperationErrors())
             {
                 outputOperationError(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3343,7 +3703,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPagesViewedPerVisitGoal * * *");
             outputStatusMessage(String.format("MinimumPagesViewed: %s", dataObject.getMinimumPagesViewed()));
+            outputStatusMessage("* * * End OutputPagesViewedPerVisitGoal * * *");
         }
     }
     static void outputArrayOfPagesViewedPerVisitGoal(ArrayList<PagesViewedPerVisitGoal> dataObjects)
@@ -3353,7 +3715,6 @@ class CampaignManagementExampleHelper
             for (PagesViewedPerVisitGoal dataObject : dataObjects)
             {
                 outputPagesViewedPerVisitGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3361,7 +3722,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPageVisitorsRule * * *");
+            outputStatusMessage("RuleItemGroups:");
             outputArrayOfRuleItemGroup(dataObject.getRuleItemGroups());
+            outputStatusMessage("* * * End OutputPageVisitorsRule * * *");
         }
     }
     static void outputArrayOfPageVisitorsRule(ArrayList<PageVisitorsRule> dataObjects)
@@ -3371,7 +3735,6 @@ class CampaignManagementExampleHelper
             for (PageVisitorsRule dataObject : dataObjects)
             {
                 outputPageVisitorsRule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3379,8 +3742,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPageVisitorsWhoDidNotVisitAnotherPageRule * * *");
+            outputStatusMessage("ExcludeRuleItemGroups:");
             outputArrayOfRuleItemGroup(dataObject.getExcludeRuleItemGroups());
+            outputStatusMessage("IncludeRuleItemGroups:");
             outputArrayOfRuleItemGroup(dataObject.getIncludeRuleItemGroups());
+            outputStatusMessage("* * * End OutputPageVisitorsWhoDidNotVisitAnotherPageRule * * *");
         }
     }
     static void outputArrayOfPageVisitorsWhoDidNotVisitAnotherPageRule(ArrayList<PageVisitorsWhoDidNotVisitAnotherPageRule> dataObjects)
@@ -3390,7 +3757,6 @@ class CampaignManagementExampleHelper
             for (PageVisitorsWhoDidNotVisitAnotherPageRule dataObject : dataObjects)
             {
                 outputPageVisitorsWhoDidNotVisitAnotherPageRule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3398,8 +3764,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPageVisitorsWhoVisitedAnotherPageRule * * *");
+            outputStatusMessage("AnotherRuleItemGroups:");
             outputArrayOfRuleItemGroup(dataObject.getAnotherRuleItemGroups());
+            outputStatusMessage("RuleItemGroups:");
             outputArrayOfRuleItemGroup(dataObject.getRuleItemGroups());
+            outputStatusMessage("* * * End OutputPageVisitorsWhoVisitedAnotherPageRule * * *");
         }
     }
     static void outputArrayOfPageVisitorsWhoVisitedAnotherPageRule(ArrayList<PageVisitorsWhoVisitedAnotherPageRule> dataObjects)
@@ -3409,7 +3779,6 @@ class CampaignManagementExampleHelper
             for (PageVisitorsWhoVisitedAnotherPageRule dataObject : dataObjects)
             {
                 outputPageVisitorsWhoVisitedAnotherPageRule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3417,8 +3786,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPaging * * *");
             outputStatusMessage(String.format("Index: %s", dataObject.getIndex()));
             outputStatusMessage(String.format("Size: %s", dataObject.getSize()));
+            outputStatusMessage("* * * End OutputPaging * * *");
         }
     }
     static void outputArrayOfPaging(ArrayList<Paging> dataObjects)
@@ -3428,7 +3799,6 @@ class CampaignManagementExampleHelper
             for (Paging dataObject : dataObjects)
             {
                 outputPaging(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3436,11 +3806,15 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPriceAdExtension * * *");
             outputStatusMessage(String.format("Language: %s", dataObject.getLanguage()));
             outputStatusMessage(String.format("PriceExtensionType: %s", dataObject.getPriceExtensionType()));
+            outputStatusMessage("TableRows:");
             outputArrayOfPriceTableRow(dataObject.getTableRows());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputPriceAdExtension * * *");
         }
     }
     static void outputArrayOfPriceAdExtension(ArrayList<PriceAdExtension> dataObjects)
@@ -3450,7 +3824,6 @@ class CampaignManagementExampleHelper
             for (PriceAdExtension dataObject : dataObjects)
             {
                 outputPriceAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3458,9 +3831,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputPriceTableRow * * *");
             outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
             outputStatusMessage(String.format("Header: %s", dataObject.getHeader()));
             outputStatusMessage(String.format("Price: %s", dataObject.getPrice()));
@@ -3468,6 +3844,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("PriceUnit: %s", dataObject.getPriceUnit()));
             outputStatusMessage(String.format("TermsAndConditions: %s", dataObject.getTermsAndConditions()));
             outputStatusMessage(String.format("TermsAndConditionsUrl: %s", dataObject.getTermsAndConditionsUrl()));
+            outputStatusMessage("* * * End OutputPriceTableRow * * *");
         }
     }
     static void outputArrayOfPriceTableRow(ArrayOfPriceTableRow dataObjects)
@@ -3477,7 +3854,6 @@ class CampaignManagementExampleHelper
             for (PriceTableRow dataObject : dataObjects.getPriceTableRows())
             {
                 outputPriceTableRow(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3485,7 +3861,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductAd * * *");
             outputStatusMessage(String.format("PromotionalText: %s", dataObject.getPromotionalText()));
+            outputStatusMessage("* * * End OutputProductAd * * *");
         }
     }
     static void outputArrayOfProductAd(ArrayList<ProductAd> dataObjects)
@@ -3495,7 +3873,6 @@ class CampaignManagementExampleHelper
             for (ProductAd dataObject : dataObjects)
             {
                 outputProductAd(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3503,8 +3880,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductAudience * * *");
             outputStatusMessage(String.format("ProductAudienceType: %s", dataObject.getProductAudienceType()));
             outputStatusMessage(String.format("TagId: %s", dataObject.getTagId()));
+            outputStatusMessage("* * * End OutputProductAudience * * *");
         }
     }
     static void outputArrayOfProductAudience(ArrayList<ProductAudience> dataObjects)
@@ -3514,7 +3893,6 @@ class CampaignManagementExampleHelper
             for (ProductAudience dataObject : dataObjects)
             {
                 outputProductAudience(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3522,8 +3900,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductCondition * * *");
             outputStatusMessage(String.format("Attribute: %s", dataObject.getAttribute()));
             outputStatusMessage(String.format("Operand: %s", dataObject.getOperand()));
+            outputStatusMessage("* * * End OutputProductCondition * * *");
         }
     }
     static void outputArrayOfProductCondition(ArrayOfProductCondition dataObjects)
@@ -3533,7 +3913,6 @@ class CampaignManagementExampleHelper
             for (ProductCondition dataObject : dataObjects.getProductConditions())
             {
                 outputProductCondition(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3541,9 +3920,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductPartition * * *");
+            outputStatusMessage("Condition:");
             outputProductCondition(dataObject.getCondition());
             outputStatusMessage(String.format("ParentCriterionId: %s", dataObject.getParentCriterionId()));
             outputStatusMessage(String.format("PartitionType: %s", dataObject.getPartitionType()));
+            outputStatusMessage("* * * End OutputProductPartition * * *");
         }
     }
     static void outputArrayOfProductPartition(ArrayList<ProductPartition> dataObjects)
@@ -3553,7 +3935,6 @@ class CampaignManagementExampleHelper
             for (ProductPartition dataObject : dataObjects)
             {
                 outputProductPartition(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3561,7 +3942,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProductScope * * *");
+            outputStatusMessage("Conditions:");
             outputArrayOfProductCondition(dataObject.getConditions());
+            outputStatusMessage("* * * End OutputProductScope * * *");
         }
     }
     static void outputArrayOfProductScope(ArrayList<ProductScope> dataObjects)
@@ -3571,7 +3955,6 @@ class CampaignManagementExampleHelper
             for (ProductScope dataObject : dataObjects)
             {
                 outputProductScope(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3579,8 +3962,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputProfileCriterion * * *");
             outputStatusMessage(String.format("ProfileId: %s", dataObject.getProfileId()));
             outputStatusMessage(String.format("ProfileType: %s", dataObject.getProfileType()));
+            outputStatusMessage("* * * End OutputProfileCriterion * * *");
         }
     }
     static void outputArrayOfProfileCriterion(ArrayList<ProfileCriterion> dataObjects)
@@ -3590,7 +3975,6 @@ class CampaignManagementExampleHelper
             for (ProfileCriterion dataObject : dataObjects)
             {
                 outputProfileCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3598,11 +3982,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputRadiusCriterion * * *");
             outputStatusMessage(String.format("LatitudeDegrees: %s", dataObject.getLatitudeDegrees()));
             outputStatusMessage(String.format("LongitudeDegrees: %s", dataObject.getLongitudeDegrees()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("Radius: %s", dataObject.getRadius()));
             outputStatusMessage(String.format("RadiusUnit: %s", dataObject.getRadiusUnit()));
+            outputStatusMessage("* * * End OutputRadiusCriterion * * *");
         }
     }
     static void outputArrayOfRadiusCriterion(ArrayList<RadiusCriterion> dataObjects)
@@ -3612,7 +3998,6 @@ class CampaignManagementExampleHelper
             for (RadiusCriterion dataObject : dataObjects)
             {
                 outputRadiusCriterion(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3620,8 +4005,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputRemarketingList * * *");
+            outputStatusMessage("Rule:");
             outputRemarketingRule(dataObject.getRule());
             outputStatusMessage(String.format("TagId: %s", dataObject.getTagId()));
+            outputStatusMessage("* * * End OutputRemarketingList * * *");
         }
     }
     static void outputArrayOfRemarketingList(ArrayList<RemarketingList> dataObjects)
@@ -3631,7 +4019,6 @@ class CampaignManagementExampleHelper
             for (RemarketingList dataObject : dataObjects)
             {
                 outputRemarketingList(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3639,6 +4026,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputRemarketingRule * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof CustomEventsRule)
             {
@@ -3656,6 +4044,7 @@ class CampaignManagementExampleHelper
             {
                 outputPageVisitorsWhoVisitedAnotherPageRule((PageVisitorsWhoVisitedAnotherPageRule)dataObject);
             }
+            outputStatusMessage("* * * End OutputRemarketingRule * * *");
         }
     }
     static void outputArrayOfRemarketingRule(ArrayList<RemarketingRule> dataObjects)
@@ -3665,7 +4054,6 @@ class CampaignManagementExampleHelper
             for (RemarketingRule dataObject : dataObjects)
             {
                 outputRemarketingRule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3673,15 +4061,19 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputResponsiveAd * * *");
             outputStatusMessage(String.format("BusinessName: %s", dataObject.getBusinessName()));
             outputStatusMessage(String.format("CallToAction: %s", dataObject.getCallToAction()));
             outputStatusMessage(String.format("Headline: %s", dataObject.getHeadline()));
+            outputStatusMessage("Images:");
+            outputArrayOfAssetLink(dataObject.getImages());
             outputStatusMessage(String.format("LandscapeImageMediaId: %s", dataObject.getLandscapeImageMediaId()));
             outputStatusMessage(String.format("LandscapeLogoMediaId: %s", dataObject.getLandscapeLogoMediaId()));
             outputStatusMessage(String.format("LongHeadline: %s", dataObject.getLongHeadline()));
             outputStatusMessage(String.format("SquareImageMediaId: %s", dataObject.getSquareImageMediaId()));
             outputStatusMessage(String.format("SquareLogoMediaId: %s", dataObject.getSquareLogoMediaId()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputResponsiveAd * * *");
         }
     }
     static void outputArrayOfResponsiveAd(ArrayList<ResponsiveAd> dataObjects)
@@ -3691,7 +4083,31 @@ class CampaignManagementExampleHelper
             for (ResponsiveAd dataObject : dataObjects)
             {
                 outputResponsiveAd(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputResponsiveSearchAd(ResponsiveSearchAd dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputResponsiveSearchAd * * *");
+            outputStatusMessage("Descriptions:");
+            outputArrayOfAssetLink(dataObject.getDescriptions());
+            outputStatusMessage(String.format("Domain: %s", dataObject.getDomain()));
+            outputStatusMessage("Headlines:");
+            outputArrayOfAssetLink(dataObject.getHeadlines());
+            outputStatusMessage(String.format("Path1: %s", dataObject.getPath1()));
+            outputStatusMessage(String.format("Path2: %s", dataObject.getPath2()));
+            outputStatusMessage("* * * End OutputResponsiveSearchAd * * *");
+        }
+    }
+    static void outputArrayOfResponsiveSearchAd(ArrayList<ResponsiveSearchAd> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ResponsiveSearchAd dataObject : dataObjects)
+            {
+                outputResponsiveSearchAd(dataObject);
             }
         }
     }
@@ -3699,10 +4115,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputReviewAdExtension * * *");
             outputStatusMessage(String.format("IsExact: %s", dataObject.getIsExact()));
             outputStatusMessage(String.format("Source: %s", dataObject.getSource()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
             outputStatusMessage(String.format("Url: %s", dataObject.getUrl()));
+            outputStatusMessage("* * * End OutputReviewAdExtension * * *");
         }
     }
     static void outputArrayOfReviewAdExtension(ArrayList<ReviewAdExtension> dataObjects)
@@ -3712,7 +4130,6 @@ class CampaignManagementExampleHelper
             for (ReviewAdExtension dataObject : dataObjects)
             {
                 outputReviewAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3720,11 +4137,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputRuleItem * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof StringRuleItem)
             {
                 outputStringRuleItem((StringRuleItem)dataObject);
             }
+            outputStatusMessage("* * * End OutputRuleItem * * *");
         }
     }
     static void outputArrayOfRuleItem(ArrayOfRuleItem dataObjects)
@@ -3734,7 +4153,6 @@ class CampaignManagementExampleHelper
             for (RuleItem dataObject : dataObjects.getRuleItems())
             {
                 outputRuleItem(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3742,7 +4160,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputRuleItemGroup * * *");
+            outputStatusMessage("Items:");
             outputArrayOfRuleItem(dataObject.getItems());
+            outputStatusMessage("* * * End OutputRuleItemGroup * * *");
         }
     }
     static void outputArrayOfRuleItemGroup(ArrayOfRuleItemGroup dataObjects)
@@ -3752,7 +4173,6 @@ class CampaignManagementExampleHelper
             for (RuleItemGroup dataObject : dataObjects.getRuleItemGroups())
             {
                 outputRuleItemGroup(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3760,10 +4180,15 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSchedule * * *");
+            outputStatusMessage("DayTimeRanges:");
             outputArrayOfDayTime(dataObject.getDayTimeRanges());
+            outputStatusMessage("EndDate:");
             outputDate(dataObject.getEndDate());
+            outputStatusMessage("StartDate:");
             outputDate(dataObject.getStartDate());
             outputStatusMessage(String.format("UseSearcherTimeZone: %s", dataObject.getUseSearcherTimeZone()));
+            outputStatusMessage("* * * End OutputSchedule * * *");
         }
     }
     static void outputArrayOfSchedule(ArrayList<Schedule> dataObjects)
@@ -3773,7 +4198,6 @@ class CampaignManagementExampleHelper
             for (Schedule dataObject : dataObjects)
             {
                 outputSchedule(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3781,6 +4205,7 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSetting * * *");
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof CoOpSetting)
             {
@@ -3798,6 +4223,7 @@ class CampaignManagementExampleHelper
             {
                 outputTargetSetting((TargetSetting)dataObject);
             }
+            outputStatusMessage("* * * End OutputSetting * * *");
         }
     }
     static void outputArrayOfSetting(ArrayOfSetting dataObjects)
@@ -3807,7 +4233,6 @@ class CampaignManagementExampleHelper
             for (Setting dataObject : dataObjects.getSettings())
             {
                 outputSetting(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3815,7 +4240,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSharedEntity * * *");
             outputStatusMessage(String.format("AssociationCount: %s", dataObject.getAssociationCount()));
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
@@ -3824,6 +4251,7 @@ class CampaignManagementExampleHelper
             {
                 outputSharedList((SharedList)dataObject);
             }
+            outputStatusMessage("* * * End OutputSharedEntity * * *");
         }
     }
     static void outputArrayOfSharedEntity(ArrayOfSharedEntity dataObjects)
@@ -3833,7 +4261,6 @@ class CampaignManagementExampleHelper
             for (SharedEntity dataObject : dataObjects.getSharedEntities())
             {
                 outputSharedEntity(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3841,10 +4268,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSharedEntityAssociation * * *");
             outputStatusMessage(String.format("EntityId: %s", dataObject.getEntityId()));
             outputStatusMessage(String.format("EntityType: %s", dataObject.getEntityType()));
             outputStatusMessage(String.format("SharedEntityId: %s", dataObject.getSharedEntityId()));
             outputStatusMessage(String.format("SharedEntityType: %s", dataObject.getSharedEntityType()));
+            outputStatusMessage("* * * End OutputSharedEntityAssociation * * *");
         }
     }
     static void outputArrayOfSharedEntityAssociation(ArrayOfSharedEntityAssociation dataObjects)
@@ -3854,7 +4283,6 @@ class CampaignManagementExampleHelper
             for (SharedEntityAssociation dataObject : dataObjects.getSharedEntityAssociations())
             {
                 outputSharedEntityAssociation(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3862,11 +4290,13 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSharedList * * *");
             outputStatusMessage(String.format("ItemCount: %s", dataObject.getItemCount()));
             if(dataObject instanceof NegativeKeywordList)
             {
                 outputNegativeKeywordList((NegativeKeywordList)dataObject);
             }
+            outputStatusMessage("* * * End OutputSharedList * * *");
         }
     }
     static void outputArrayOfSharedList(ArrayList<SharedList> dataObjects)
@@ -3876,7 +4306,6 @@ class CampaignManagementExampleHelper
             for (SharedList dataObject : dataObjects)
             {
                 outputSharedList(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3884,12 +4313,15 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSharedListItem * * *");
+            outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
             if(dataObject instanceof NegativeKeyword)
             {
                 outputNegativeKeyword((NegativeKeyword)dataObject);
             }
+            outputStatusMessage("* * * End OutputSharedListItem * * *");
         }
     }
     static void outputArrayOfSharedListItem(ArrayOfSharedListItem dataObjects)
@@ -3899,7 +4331,6 @@ class CampaignManagementExampleHelper
             for (SharedListItem dataObject : dataObjects.getSharedListItems())
             {
                 outputSharedListItem(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3907,10 +4338,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputShoppingSetting * * *");
             outputStatusMessage(String.format("LocalInventoryAdsEnabled: %s", dataObject.getLocalInventoryAdsEnabled()));
             outputStatusMessage(String.format("Priority: %s", dataObject.getPriority()));
             outputStatusMessage(String.format("SalesCountryCode: %s", dataObject.getSalesCountryCode()));
             outputStatusMessage(String.format("StoreId: %s", dataObject.getStoreId()));
+            outputStatusMessage("* * * End OutputShoppingSetting * * *");
         }
     }
     static void outputArrayOfShoppingSetting(ArrayList<ShoppingSetting> dataObjects)
@@ -3920,7 +4353,6 @@ class CampaignManagementExampleHelper
             for (ShoppingSetting dataObject : dataObjects)
             {
                 outputShoppingSetting(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3928,7 +4360,9 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSimilarRemarketingList * * *");
             outputStatusMessage(String.format("SourceId: %s", dataObject.getSourceId()));
+            outputStatusMessage("* * * End OutputSimilarRemarketingList * * *");
         }
     }
     static void outputArrayOfSimilarRemarketingList(ArrayList<SimilarRemarketingList> dataObjects)
@@ -3938,7 +4372,6 @@ class CampaignManagementExampleHelper
             for (SimilarRemarketingList dataObject : dataObjects)
             {
                 outputSimilarRemarketingList(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3946,15 +4379,21 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputSitelinkAdExtension * * *");
             outputStatusMessage(String.format("Description1: %s", dataObject.getDescription1()));
             outputStatusMessage(String.format("Description2: %s", dataObject.getDescription2()));
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
             outputStatusMessage(String.format("DisplayText: %s", dataObject.getDisplayText()));
+            outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
+            outputStatusMessage("FinalMobileUrls:");
             outputArrayOfstring(dataObject.getFinalMobileUrls());
+            outputStatusMessage("FinalUrls:");
             outputArrayOfstring(dataObject.getFinalUrls());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
+            outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
+            outputStatusMessage("* * * End OutputSitelinkAdExtension * * *");
         }
     }
     static void outputArrayOfSitelinkAdExtension(ArrayList<SitelinkAdExtension> dataObjects)
@@ -3964,7 +4403,6 @@ class CampaignManagementExampleHelper
             for (SitelinkAdExtension dataObject : dataObjects)
             {
                 outputSitelinkAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3972,9 +4410,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputStringRuleItem * * *");
             outputStatusMessage(String.format("Operand: %s", dataObject.getOperand()));
             outputStatusMessage(String.format("Operator: %s", dataObject.getOperator()));
             outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputStringRuleItem * * *");
         }
     }
     static void outputArrayOfStringRuleItem(ArrayList<StringRuleItem> dataObjects)
@@ -3984,7 +4424,6 @@ class CampaignManagementExampleHelper
             for (StringRuleItem dataObject : dataObjects)
             {
                 outputStringRuleItem(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -3992,8 +4431,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputStructuredSnippetAdExtension * * *");
             outputStatusMessage(String.format("Header: %s", dataObject.getHeader()));
+            outputStatusMessage("Values:");
             outputArrayOfstring(dataObject.getValues());
+            outputStatusMessage("* * * End OutputStructuredSnippetAdExtension * * *");
         }
     }
     static void outputArrayOfStructuredSnippetAdExtension(ArrayList<StructuredSnippetAdExtension> dataObjects)
@@ -4003,7 +4445,6 @@ class CampaignManagementExampleHelper
             for (StructuredSnippetAdExtension dataObject : dataObjects)
             {
                 outputStructuredSnippetAdExtension(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4011,8 +4452,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputTargetCpaBiddingScheme * * *");
+            outputStatusMessage("MaxCpc:");
             outputBid(dataObject.getMaxCpc());
             outputStatusMessage(String.format("TargetCpa: %s", dataObject.getTargetCpa()));
+            outputStatusMessage("* * * End OutputTargetCpaBiddingScheme * * *");
         }
     }
     static void outputArrayOfTargetCpaBiddingScheme(ArrayList<TargetCpaBiddingScheme> dataObjects)
@@ -4022,7 +4466,6 @@ class CampaignManagementExampleHelper
             for (TargetCpaBiddingScheme dataObject : dataObjects)
             {
                 outputTargetCpaBiddingScheme(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4030,7 +4473,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputTargetSetting * * *");
+            outputStatusMessage("Details:");
             outputArrayOfTargetSettingDetail(dataObject.getDetails());
+            outputStatusMessage("* * * End OutputTargetSetting * * *");
         }
     }
     static void outputArrayOfTargetSetting(ArrayList<TargetSetting> dataObjects)
@@ -4040,7 +4486,6 @@ class CampaignManagementExampleHelper
             for (TargetSetting dataObject : dataObjects)
             {
                 outputTargetSetting(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4048,8 +4493,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputTargetSettingDetail * * *");
             outputStatusMessage(String.format("CriterionTypeGroup: %s", dataObject.getCriterionTypeGroup()));
             outputStatusMessage(String.format("TargetAndBid: %s", dataObject.getTargetAndBid()));
+            outputStatusMessage("* * * End OutputTargetSettingDetail * * *");
         }
     }
     static void outputArrayOfTargetSettingDetail(ArrayOfTargetSettingDetail dataObjects)
@@ -4059,7 +4506,6 @@ class CampaignManagementExampleHelper
             for (TargetSettingDetail dataObject : dataObjects.getTargetSettingDetails())
             {
                 outputTargetSettingDetail(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4067,10 +4513,12 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputTextAd * * *");
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
             outputStatusMessage(String.format("DisplayUrl: %s", dataObject.getDisplayUrl()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
             outputStatusMessage(String.format("Title: %s", dataObject.getTitle()));
+            outputStatusMessage("* * * End OutputTextAd * * *");
         }
     }
     static void outputArrayOfTextAd(ArrayList<TextAd> dataObjects)
@@ -4080,7 +4528,25 @@ class CampaignManagementExampleHelper
             for (TextAd dataObject : dataObjects)
             {
                 outputTextAd(dataObject);
-                outputStatusMessage("\n");
+            }
+        }
+    }
+    static void outputTextAsset(TextAsset dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputTextAsset * * *");
+            outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage("* * * End OutputTextAsset * * *");
+        }
+    }
+    static void outputArrayOfTextAsset(ArrayList<TextAsset> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (TextAsset dataObject : dataObjects)
+            {
+                outputTextAsset(dataObject);
             }
         }
     }
@@ -4088,12 +4554,14 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUetTag * * *");
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage(String.format("TrackingNoScript: %s", dataObject.getTrackingNoScript()));
             outputStatusMessage(String.format("TrackingScript: %s", dataObject.getTrackingScript()));
             outputStatusMessage(String.format("TrackingStatus: %s", dataObject.getTrackingStatus()));
+            outputStatusMessage("* * * End OutputUetTag * * *");
         }
     }
     static void outputArrayOfUetTag(ArrayOfUetTag dataObjects)
@@ -4103,7 +4571,6 @@ class CampaignManagementExampleHelper
             for (UetTag dataObject : dataObjects.getUetTags())
             {
                 outputUetTag(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4111,8 +4578,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputUrlGoal * * *");
             outputStatusMessage(String.format("UrlExpression: %s", dataObject.getUrlExpression()));
             outputStatusMessage(String.format("UrlOperator: %s", dataObject.getUrlOperator()));
+            outputStatusMessage("* * * End OutputUrlGoal * * *");
         }
     }
     static void outputArrayOfUrlGoal(ArrayList<UrlGoal> dataObjects)
@@ -4122,7 +4591,6 @@ class CampaignManagementExampleHelper
             for (UrlGoal dataObject : dataObjects)
             {
                 outputUrlGoal(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4130,7 +4598,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputWebpage * * *");
+            outputStatusMessage("Parameter:");
             outputWebpageParameter(dataObject.getParameter());
+            outputStatusMessage("* * * End OutputWebpage * * *");
         }
     }
     static void outputArrayOfWebpage(ArrayList<Webpage> dataObjects)
@@ -4140,7 +4611,6 @@ class CampaignManagementExampleHelper
             for (Webpage dataObject : dataObjects)
             {
                 outputWebpage(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4148,8 +4618,10 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputWebpageCondition * * *");
             outputStatusMessage(String.format("Argument: %s", dataObject.getArgument()));
             outputStatusMessage(String.format("Operand: %s", dataObject.getOperand()));
+            outputStatusMessage("* * * End OutputWebpageCondition * * *");
         }
     }
     static void outputArrayOfWebpageCondition(ArrayOfWebpageCondition dataObjects)
@@ -4159,7 +4631,6 @@ class CampaignManagementExampleHelper
             for (WebpageCondition dataObject : dataObjects.getWebpageConditions())
             {
                 outputWebpageCondition(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4167,8 +4638,11 @@ class CampaignManagementExampleHelper
     {
         if (null != dataObject)
         {
+            outputStatusMessage("* * * Begin OutputWebpageParameter * * *");
+            outputStatusMessage("Conditions:");
             outputArrayOfWebpageCondition(dataObject.getConditions());
             outputStatusMessage(String.format("CriterionName: %s", dataObject.getCriterionName()));
+            outputStatusMessage("* * * End OutputWebpageParameter * * *");
         }
     }
     static void outputArrayOfWebpageParameter(ArrayList<WebpageParameter> dataObjects)
@@ -4178,7 +4652,6 @@ class CampaignManagementExampleHelper
             for (WebpageParameter dataObject : dataObjects)
             {
                 outputWebpageParameter(dataObject);
-                outputStatusMessage("\n");
             }
         }
     }
@@ -4377,6 +4850,24 @@ class CampaignManagementExampleHelper
             for (BidOption valueSet : valueSets)
             {
                 outputBidOption(valueSet);
+            }
+        }
+    }
+    static void outputCampaignAdditionalField(CampaignAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (CampaignAdditionalField value : CampaignAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfCampaignAdditionalField(ArrayList<CampaignAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (CampaignAdditionalField valueSet : valueSets)
+            {
+                outputCampaignAdditionalField(valueSet);
             }
         }
     }
@@ -4665,6 +5156,24 @@ class CampaignManagementExampleHelper
             for (BusinessGeoCodeStatus valueSet : valueSets)
             {
                 outputBusinessGeoCodeStatus(valueSet);
+            }
+        }
+    }
+    static void outputActionAdExtensionActionType(ActionAdExtensionActionType valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ActionAdExtensionActionType value : ActionAdExtensionActionType.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfActionAdExtensionActionType(ArrayList<ActionAdExtensionActionType> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ActionAdExtensionActionType valueSet : valueSets)
+            {
+                outputActionAdExtensionActionType(valueSet);
             }
         }
     }
@@ -5291,7 +5800,7 @@ class CampaignManagementExampleHelper
         {
             for (java.lang.String item : items.getStrings())
             {
-                outputStatusMessage(String.format("Value of the string: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -5301,7 +5810,7 @@ class CampaignManagementExampleHelper
         {
             for (java.lang.Long item : items.getLongs())
             {
-                outputStatusMessage(String.format("Value of the long: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }
@@ -5311,7 +5820,7 @@ class CampaignManagementExampleHelper
         {
             for (java.lang.Long item : items.getLongs())
             {
-                outputStatusMessage(String.format("Value of the nullable long: %s", item));
+                outputStatusMessage(String.format("%s", item));
             }
         }
     }

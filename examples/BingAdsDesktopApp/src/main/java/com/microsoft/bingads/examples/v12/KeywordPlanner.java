@@ -13,19 +13,24 @@ public class KeywordPlanner extends ExampleBase {
    	 
     	try
         {
-            authorizationData = getAuthorizationData(null,null); 
+            authorizationData = getAuthorizationData(); 
 	         
             AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
                     authorizationData, 
                     API_ENVIRONMENT,
                     IAdInsightService.class);
             	         
+            // Use the GetKeywordIdeaCategories operation to get a list of valid category identifiers.
+            // A category identifier will be used in the CategorySearchParameter below.
+            
+            outputStatusMessage("-----\nGetKeywordIdeaCategories:");
             GetKeywordIdeaCategoriesResponse getKeywordIdeaCategoriesResponse = AdInsightExampleHelper.getKeywordIdeaCategories();
             if(getKeywordIdeaCategoriesResponse == null){
-                outputStatusMessage(String.format("This example requires keyword categories.\n\n"));
+                outputStatusMessage(String.format("This example requires keyword categories."));
                 return;
             }
             java.lang.Long categoryId = (long)(getKeywordIdeaCategoriesResponse.getKeywordIdeaCategories().getKeywordIdeaCategories().get(0).getCategoryId());
+            outputStatusMessage(String.format("CategoryId %s will be used in the CategorySearchParameter below", categoryId));
 
             // You must specify the attributes that you want in each returned KeywordIdea.
 
@@ -53,13 +58,13 @@ public class KeywordPlanner extends ExampleBase {
             Calendar calendar = Calendar.getInstance();
             DateRangeSearchParameter dateRangeSearchParameter = new DateRangeSearchParameter();
             DayMonthAndYear endDate = new DayMonthAndYear();
-            endDate.setDay(31);
-            endDate.setMonth(12);
-            endDate.setYear(calendar.get(Calendar.YEAR) - 1);
+            endDate.setDay(30);
+            endDate.setMonth(9);
+            endDate.setYear(2018);
             DayMonthAndYear startDate = new DayMonthAndYear();
             startDate.setDay(1);
-            startDate.setMonth(1);
-            startDate.setYear(calendar.get(Calendar.YEAR) - 1);
+            startDate.setMonth(9);
+            startDate.setYear(2018);
             dateRangeSearchParameter.setEndDate(endDate);
             dateRangeSearchParameter.setStartDate(startDate);            
             searchParameters.getSearchParameters().add(dateRangeSearchParameter);
@@ -207,6 +212,7 @@ public class KeywordPlanner extends ExampleBase {
 
             // If ExpandIdeas is false, the QuerySearchParameter is required.
 
+            outputStatusMessage("-----\nGetKeywordIdeas:");
             GetKeywordIdeasResponse getKeywordIdeasResponse = AdInsightExampleHelper.getKeywordIdeas(
                 true,
                 ideaAttributes,
@@ -215,10 +221,10 @@ public class KeywordPlanner extends ExampleBase {
             ArrayOfKeywordIdea keywordIdeas = getKeywordIdeasResponse.getKeywordIdeas();
             if(keywordIdeas == null || keywordIdeas.getKeywordIdeas().size() < 1)
             {
-                outputStatusMessage("No keyword ideas are available for the specified search parameters.\n");
+                outputStatusMessage("No keyword ideas are available for the search parameters.");
                 return;
             }
-
+            outputStatusMessage("KeywordIdeas:");
             AdInsightExampleHelper.outputArrayOfKeywordIdea(keywordIdeas);
 
             // Let's get traffic estimates for each returned keyword idea.
@@ -322,15 +328,17 @@ public class KeywordPlanner extends ExampleBase {
             
             campaigns.getCampaignEstimators().add(campaignEstimator);
             
-            GetKeywordTrafficEstimatesResponse getKeywordTrafficEstimatesResponse = AdInsightExampleHelper.getKeywordTrafficEstimates(campaigns);
-
-            AdInsightExampleHelper.outputArrayOfCampaignEstimate(getKeywordTrafficEstimatesResponse.getCampaignEstimates());
-        
+            outputStatusMessage("-----\nGetKeywordTrafficEstimates:");
+            GetKeywordTrafficEstimatesResponse getKeywordTrafficEstimatesResponse = AdInsightExampleHelper.getKeywordTrafficEstimates(
+                    campaigns);
+            outputStatusMessage("CampaignEstimates:");
+            AdInsightExampleHelper.outputArrayOfCampaignEstimate(getKeywordTrafficEstimatesResponse.getCampaignEstimates());        
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
 }

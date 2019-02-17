@@ -1,15 +1,14 @@
 package com.microsoft.bingads.examples.v12;
 
+import com.microsoft.bingads.v12.bulk.entities.*;
+import com.microsoft.bingads.v12.bulk.*;
+import com.microsoft.bingads.v12.campaignmanagement.*;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-
-import com.microsoft.bingads.*;
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
 
 public class BulkAdExtensions extends BulkExampleBase {
 	        
@@ -18,39 +17,41 @@ public class BulkAdExtensions extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
                         
             Calendar calendar = Calendar.getInstance();
             
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
-            // Prepare the bulk entities that you want to upload. Each bulk entity contains the corresponding campaign management object, 
-            // and additional elements needed to read from and write to a bulk file. 
+            // Add a new campaign and associate it with ad extensions. 
 			
             BulkCampaign bulkCampaign = new BulkCampaign();
-            // ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
-            // is not used or stored by the server; it is simply copied from the uploaded record to the corresponding result record. 
-            // Note: This bulk file Client Id is not related to an application Client Id for OAuth. 
             bulkCampaign.setClientId("YourClientIdGoesHere");
             Campaign campaign = new Campaign();
-            // When using the Campaign Management service, the Id cannot be set. In the context of a BulkCampaign, the Id is optional  
-            // and may be used as a negative reference key during bulk upload. For example the same negative reference key for the campaign Id  
-            // will be used when adding new ad groups to this new campaign, or when associating ad extensions with the campaign. 
-            campaign.setId(campaignIdKey);
-            campaign.setName("Summer Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Summer shoes line.");
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
+            campaign.setId(campaignIdKey);
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-            campaign.setStatus(CampaignStatus.PAUSED);
-
-            // Used with FinalUrls shown in the sitelinks that we will add below.
-            campaign.setTrackingUrlTemplate("http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
-
             bulkCampaign.setCampaign(campaign);
-
-            // Prepare extensions for upload
+            
+            BulkActionAdExtension bulkActionAdExtension = new BulkActionAdExtension();
+            ActionAdExtension actionAdExtension = new ActionAdExtension();
+            actionAdExtension.setActionType(ActionAdExtensionActionType.ACT_NOW);
+            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
+            finalUrls.getStrings().add("https://contoso.com");
+            actionAdExtension.setFinalUrls(finalUrls);
+            actionAdExtension.setId(actionAdExtensionIdKey);
+            actionAdExtension.setLanguage("English");
+            actionAdExtension.setStatus(AdExtensionStatus.ACTIVE);
+            bulkActionAdExtension.setActionAdExtension(actionAdExtension);
 
             BulkAppAdExtension bulkAppAdExtension = new BulkAppAdExtension();
             bulkAppAdExtension.setAccountId(authorizationData.getAccountId());
@@ -68,7 +69,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             callAdExtension.setCountryCode("US");
             callAdExtension.setPhoneNumber("2065550100");
             callAdExtension.setIsCallOnly(false);
-            // For this example assume the call center is open Monday - Friday from 9am - 9pm
+            // Include the call extension Monday - Friday from 9am - 9pm
             // in the account's time zone.
             Schedule callScheduling = new Schedule();
             ArrayOfDayTime callDayTimeRanges = new ArrayOfDayTime();
@@ -137,7 +138,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             address.setCountryCode("US");
             address.setPostalCode("98608");
             locationAdExtension.setAddress(address);
-            // For this example assume you want to drive traffic every Saturday morning
+            // Include the location extension every Saturday morning
             // in the search user's time zone.
             Schedule locationScheduling = new Schedule();
             ArrayOfDayTime locationDayTimeRanges = new ArrayOfDayTime();
@@ -157,6 +158,42 @@ public class BulkAdExtensions extends BulkExampleBase {
             locationAdExtension.setScheduling(locationScheduling);
             locationAdExtension.setId(locationAdExtensionIdKey);
             bulkLocationAdExtension.setLocationAdExtension(locationAdExtension);
+            
+            BulkPriceAdExtension bulkPriceAdExtension = new BulkPriceAdExtension();
+            PriceAdExtension priceAdExtension = new PriceAdExtension();
+            priceAdExtension.setId(priceAdExtensionIdKey);
+            priceAdExtension.setLanguage("English");
+            priceAdExtension.setPriceExtensionType(PriceExtensionType.EVENTS);
+            ArrayOfPriceTableRow tableRows = new ArrayOfPriceTableRow();
+            PriceTableRow tableRowA = new PriceTableRow();
+            tableRowA.setCurrencyCode("USD");
+            tableRowA.setDescription("Come to the event");
+            tableRowA.setFinalUrls(finalUrls);
+            tableRowA.setHeader("New Event");
+            tableRowA.setPrice(9.99D);
+            tableRowA.setPriceQualifier(PriceQualifier.FROM);
+            tableRowA.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowA);
+            PriceTableRow tableRowB = new PriceTableRow();
+            tableRowB.setCurrencyCode("USD");
+            tableRowB.setDescription("Come to the next event");
+            tableRowB.setFinalUrls(finalUrls);
+            tableRowB.setHeader("Next Event");
+            tableRowB.setPrice(9.99D);
+            tableRowB.setPriceQualifier(PriceQualifier.FROM);
+            tableRowB.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowB);
+            PriceTableRow tableRowC = new PriceTableRow();
+            tableRowC.setCurrencyCode("USD");
+            tableRowC.setDescription("Come to the final event");
+            tableRowC.setFinalUrls(finalUrls);
+            tableRowC.setHeader("Final Event");
+            tableRowC.setPrice(9.99D);
+            tableRowC.setPriceQualifier(PriceQualifier.FROM);
+            tableRowC.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowC);
+            priceAdExtension.setTableRows(tableRows);
+            bulkPriceAdExtension.setPriceAdExtension(priceAdExtension);
 
             BulkReviewAdExtension bulkReviewAdExtension = new BulkReviewAdExtension();
             bulkReviewAdExtension.setAccountId(authorizationData.getAccountId());
@@ -169,6 +206,16 @@ public class BulkAdExtensions extends BulkExampleBase {
             reviewAdExtension.setId(reviewAdExtensionIdKey);
             bulkReviewAdExtension.setReviewAdExtension(reviewAdExtension);
             
+            BulkSitelinkAdExtension bulkSitelinkAdExtension = new BulkSitelinkAdExtension();
+            bulkSitelinkAdExtension.setAccountId(authorizationData.getAccountId());
+            SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
+            sitelinkAdExtension.setDescription1("Simple & Transparent.");
+            sitelinkAdExtension.setDescription2("No Upfront Cost.");
+            sitelinkAdExtension.setDisplayText("Women's Shoe Sale");
+            sitelinkAdExtension.setFinalUrls(finalUrls);
+            sitelinkAdExtension.setId(sitelinkAdExtensionIdKey);
+            bulkSitelinkAdExtension.setSitelinkAdExtension(sitelinkAdExtension);
+            
             BulkStructuredSnippetAdExtension bulkStructuredSnippetAdExtension = new BulkStructuredSnippetAdExtension();
             bulkStructuredSnippetAdExtension.setAccountId(authorizationData.getAccountId());
             StructuredSnippetAdExtension structuredSnippetAdExtension = new StructuredSnippetAdExtension();
@@ -180,10 +227,15 @@ public class BulkAdExtensions extends BulkExampleBase {
             structuredSnippetAdExtension.setValues(values);
             structuredSnippetAdExtension.setId(structuredSnippetAdExtensionIdKey);
             bulkStructuredSnippetAdExtension.setStructuredSnippetAdExtension(structuredSnippetAdExtension);
-			
-            
+	           
             // Prepare ad extension associations for upload
 
+            BulkCampaignActionAdExtension bulkCampaignActionAdExtension = new BulkCampaignActionAdExtension();
+            AdExtensionIdToEntityIdAssociation actionAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
+            actionAdExtensionIdToEntityIdAssociation.setAdExtensionId(actionAdExtensionIdKey);
+            actionAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
+            bulkCampaignActionAdExtension.setAdExtensionIdToEntityIdAssociation(actionAdExtensionIdToEntityIdAssociation);
+            
             BulkCampaignAppAdExtension bulkCampaignAppAdExtension = new BulkCampaignAppAdExtension();
             AdExtensionIdToEntityIdAssociation appAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
             appAdExtensionIdToEntityIdAssociation.setAdExtensionId(appAdExtensionIdKey);
@@ -207,12 +259,24 @@ public class BulkAdExtensions extends BulkExampleBase {
             locationAdExtensionIdToEntityIdAssociation.setAdExtensionId(locationAdExtensionIdKey);
             locationAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
             bulkCampaignLocationAdExtension.setAdExtensionIdToEntityIdAssociation(locationAdExtensionIdToEntityIdAssociation);
+            
+            BulkCampaignPriceAdExtension bulkCampaignPriceAdExtension = new BulkCampaignPriceAdExtension();
+            AdExtensionIdToEntityIdAssociation priceAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
+            priceAdExtensionIdToEntityIdAssociation.setAdExtensionId(priceAdExtensionIdKey);
+            priceAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
+            bulkCampaignPriceAdExtension.setAdExtensionIdToEntityIdAssociation(priceAdExtensionIdToEntityIdAssociation);
 
             BulkCampaignReviewAdExtension bulkCampaignReviewAdExtension = new BulkCampaignReviewAdExtension();
             AdExtensionIdToEntityIdAssociation reviewAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
             reviewAdExtensionIdToEntityIdAssociation.setAdExtensionId(reviewAdExtensionIdKey);
             reviewAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
             bulkCampaignReviewAdExtension.setAdExtensionIdToEntityIdAssociation(reviewAdExtensionIdToEntityIdAssociation);
+            
+            BulkCampaignSitelinkAdExtension bulkCampaignSitelinkAdExtension = new BulkCampaignSitelinkAdExtension();
+            AdExtensionIdToEntityIdAssociation siteLinkAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
+            siteLinkAdExtensionIdToEntityIdAssociation.setAdExtensionId(sitelinkAdExtensionIdKey);
+            siteLinkAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
+            bulkCampaignSitelinkAdExtension.setAdExtensionIdToEntityIdAssociation(siteLinkAdExtensionIdToEntityIdAssociation);
 
             BulkCampaignStructuredSnippetAdExtension bulkCampaignStructuredSnippetAdExtension = new BulkCampaignStructuredSnippetAdExtension();
             AdExtensionIdToEntityIdAssociation structuredSnippetAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
@@ -220,13 +284,12 @@ public class BulkAdExtensions extends BulkExampleBase {
             structuredSnippetAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
             bulkCampaignStructuredSnippetAdExtension.setAdExtensionIdToEntityIdAssociation(structuredSnippetAdExtensionIdToEntityIdAssociation);
 
-
             // Upload the entities created above.
-            // Dependent entities such as BulkCampaignCallAdExtension must be written after any dependencies,  
-            // for example the BulkCampaign and BulkCallAdExtension. 
 			
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
             uploadEntities.add(bulkCampaign);
+            uploadEntities.add(bulkActionAdExtension);
+            uploadEntities.add(bulkCampaignActionAdExtension);
             uploadEntities.add(bulkAppAdExtension);
             uploadEntities.add(bulkCampaignAppAdExtension);
             uploadEntities.add(bulkCallAdExtension);
@@ -235,24 +298,31 @@ public class BulkAdExtensions extends BulkExampleBase {
             uploadEntities.add(bulkCampaignCalloutAdExtension);
             uploadEntities.add(bulkLocationAdExtension);
             uploadEntities.add(bulkCampaignLocationAdExtension);
+            uploadEntities.add(bulkPriceAdExtension);
+            uploadEntities.add(bulkCampaignPriceAdExtension);
             uploadEntities.add(bulkReviewAdExtension);
             uploadEntities.add(bulkCampaignReviewAdExtension);
             uploadEntities.add(bulkStructuredSnippetAdExtension);
             uploadEntities.add(bulkCampaignStructuredSnippetAdExtension);
-            uploadEntities.addAll(getSampleBulkSitelinkAdExtensions(authorizationData.getAccountId()));
+            uploadEntities.add(bulkSitelinkAdExtension);
+            uploadEntities.add(bulkCampaignSitelinkAdExtension);
 
-            outputStatusMessage("\nAdding campaign, ad extensions, and associations . . .\n");
+            outputStatusMessage("-----\nAdding campaign, ad extensions, and associations...");
             
             // Upload and write the output
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
+            
+            outputStatusMessage("Upload results:");
 
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
+            List<BulkActionAdExtension> actionAdExtensionResults = new ArrayList<BulkActionAdExtension>();
             List<BulkAppAdExtension> appAdExtensionResults = new ArrayList<BulkAppAdExtension>();
             List<BulkCallAdExtension> callAdExtensionResults = new ArrayList<BulkCallAdExtension>();
             List<BulkCalloutAdExtension> calloutAdExtensionResults = new ArrayList<BulkCalloutAdExtension>();
             List<BulkLocationAdExtension> locationAdExtensionResults = new ArrayList<BulkLocationAdExtension>();
+            List<BulkPriceAdExtension> priceAdExtensionResults = new ArrayList<BulkPriceAdExtension>();
             List<BulkReviewAdExtension> reviewAdExtensionResults = new ArrayList<BulkReviewAdExtension>();
             List<BulkSitelinkAdExtension> sitelinkAdExtensionResults = new ArrayList<BulkSitelinkAdExtension>();
             List<BulkStructuredSnippetAdExtension> structuredSnippetAdExtensionResults = new ArrayList<BulkStructuredSnippetAdExtension>();
@@ -261,6 +331,13 @@ public class BulkAdExtensions extends BulkExampleBase {
                 if (entity instanceof BulkCampaign) {
                     campaignResults.add((BulkCampaign) entity);
                     outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
+                }
+                else if (entity instanceof BulkActionAdExtension) {
+                    actionAdExtensionResults.add((BulkActionAdExtension) entity);
+                    outputBulkActionAdExtensions(Arrays.asList((BulkActionAdExtension) entity) );
+                }
+                else if (entity instanceof BulkCampaignActionAdExtension) {
+                    outputBulkCampaignActionAdExtensions(Arrays.asList((BulkCampaignActionAdExtension) entity) );
                 }
                 else if (entity instanceof BulkAppAdExtension) {
                     appAdExtensionResults.add((BulkAppAdExtension) entity);
@@ -290,6 +367,13 @@ public class BulkAdExtensions extends BulkExampleBase {
                 else if (entity instanceof BulkCampaignLocationAdExtension) {
                     outputBulkCampaignLocationAdExtensions(Arrays.asList((BulkCampaignLocationAdExtension) entity) );
                 }
+                else if (entity instanceof BulkPriceAdExtension) {
+                    priceAdExtensionResults.add((BulkPriceAdExtension) entity);
+                    outputBulkPriceAdExtensions(Arrays.asList((BulkPriceAdExtension) entity) );
+                }
+                else if (entity instanceof BulkCampaignPriceAdExtension) {
+                    outputBulkCampaignPriceAdExtensions(Arrays.asList((BulkCampaignPriceAdExtension) entity) );
+                }
                 else if (entity instanceof BulkReviewAdExtension) {
                     reviewAdExtensionResults.add((BulkReviewAdExtension) entity);
                     outputBulkReviewAdExtensions(Arrays.asList((BulkReviewAdExtension) entity) );
@@ -315,47 +399,8 @@ public class BulkAdExtensions extends BulkExampleBase {
 
             downloadEntities.close();
             Reader.close();
-            
-            // Use only the location extension results and remove scheduling.
-
-            uploadEntities = new ArrayList<BulkEntity>();
-
-            for (BulkLocationAdExtension locationAdExtensionResult : locationAdExtensionResults)
-            {
-                if (locationAdExtensionResult.getLocationAdExtension().getId() > 0)
-                {
-                    // If you set the Scheduling element null, any existing scheduling set for the ad extension will remain unchanged. 
-                    // If you set this to any non-null Schedule object, you are effectively replacing existing scheduling 
-                    // for the ad extension. In this example, we will remove any existing scheduling by setting this element  
-                    // to an empty Schedule object. 
-                    // The "delete_value" keyword will be written to the corresponding columns in the bulk file.
-                    locationAdExtensionResult.getLocationAdExtension().setScheduling(new Schedule());
-                    uploadEntities.add(locationAdExtensionResult);
-                }
-            }
-	        
-            outputStatusMessage("\nRemoving scheduling from location ad extensions . . .\n");
-
-            // Upload and write the output
-
-            Reader = writeEntitiesAndUploadFile(uploadEntities);
-            downloadEntities = Reader.getEntities();
-            for (BulkEntity entity : downloadEntities) {
-                if (entity instanceof BulkLocationAdExtension) {
-                    outputBulkLocationAdExtensions(Arrays.asList((BulkLocationAdExtension) entity) );
-                }
-            }
-            downloadEntities.close();
-            Reader.close();
-                       
-            //Delete the campaign and ad extensions that were previously added. 
-            //You should remove this region if you want to view the added entities in the 
-            //Bing Ads web application or another tool.
-
-            //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted. 
-
-            //When you delete a BulkCampaign or BulkCallAdExtension, dependent entities such as BulkCampaignCallAdExtension 
-            //are deleted without being specified explicitly.  
+                
+            // Delete the campaign and ad extensions that were previously added. 
             
             uploadEntities = new ArrayList<BulkEntity>();
             
@@ -364,13 +409,19 @@ public class BulkAdExtensions extends BulkExampleBase {
             	uploadEntities.add(campaignResult);
             }
             
+            for (BulkActionAdExtension actionAdExtensionResult : actionAdExtensionResults){
+            	actionAdExtensionResult.getActionAdExtension().setStatus(AdExtensionStatus.DELETED);
+            	uploadEntities.add(actionAdExtensionResult);
+            }
+            
             for (BulkAppAdExtension appAdExtensionResult : appAdExtensionResults){
-            	appAdExtensionResult.getAppAdExtension().setStatus(AdExtensionStatus.DELETED);
-            	//By default the sample does not successfully create any app ad extensions,
-                //because you need to provide details such as the AppStoreId.
-                //You can uncomment the following line if you added an app ad extension above.
-                //uploadEntities.Add(appAdExtensionResult); 
-            	//uploadEntities.add(appAdExtensionResult);
+                //By default the sample does not successfully create any app ad extensions,
+                //because you need to provide details above such as the AppStoreId.
+                if (appAdExtensionResult.getAppAdExtension().getId() > 0)
+                {
+                    appAdExtensionResult.getAppAdExtension().setStatus(AdExtensionStatus.DELETED);
+                    uploadEntities.add(appAdExtensionResult);
+                }
             }
             
             for (BulkCallAdExtension callAdExtensionResult : callAdExtensionResults){
@@ -386,6 +437,11 @@ public class BulkAdExtensions extends BulkExampleBase {
             for (BulkLocationAdExtension locationAdExtensionResult : locationAdExtensionResults){
             	locationAdExtensionResult.getLocationAdExtension().setStatus(AdExtensionStatus.DELETED);
             	uploadEntities.add(locationAdExtensionResult);
+            }
+            
+            for (BulkPriceAdExtension priceAdExtensionResult : priceAdExtensionResults){
+            	priceAdExtensionResult.getPriceAdExtension().setStatus(AdExtensionStatus.DELETED);
+            	uploadEntities.add(priceAdExtensionResult);
             }
             
             for (BulkReviewAdExtension reviewAdExtensionResult : reviewAdExtensionResults){
@@ -413,6 +469,10 @@ public class BulkAdExtensions extends BulkExampleBase {
                     campaignResults.add((BulkCampaign) entity);
                     outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
                 }
+                else if (entity instanceof BulkActionAdExtension) {
+                    actionAdExtensionResults.add((BulkActionAdExtension) entity);
+                    outputBulkActionAdExtensions(Arrays.asList((BulkActionAdExtension) entity) );
+                }
                 else if (entity instanceof BulkAppAdExtension) {
                     appAdExtensionResults.add((BulkAppAdExtension) entity);
                     outputBulkAppAdExtensions(Arrays.asList((BulkAppAdExtension) entity) );
@@ -429,6 +489,10 @@ public class BulkAdExtensions extends BulkExampleBase {
                     locationAdExtensionResults.add((BulkLocationAdExtension) entity);
                     outputBulkLocationAdExtensions(Arrays.asList((BulkLocationAdExtension) entity) );
                 }
+                else if (entity instanceof BulkPriceAdExtension) {
+                    priceAdExtensionResults.add((BulkPriceAdExtension) entity);
+                    outputBulkPriceAdExtensions(Arrays.asList((BulkPriceAdExtension) entity) );
+                }
                 else if (entity instanceof BulkReviewAdExtension) {
                     reviewAdExtensionResults.add((BulkReviewAdExtension) entity);
                     outputBulkReviewAdExtensions(Arrays.asList((BulkReviewAdExtension) entity) );
@@ -442,16 +506,15 @@ public class BulkAdExtensions extends BulkExampleBase {
                     outputBulkSitelinkAdExtensions(Arrays.asList((BulkSitelinkAdExtension) entity) );
                 }
             }
-            downloadEntities.close();
-            Reader.close();
             
-            outputStatusMessage("Program execution completed\n"); 
-        
+            downloadEntities.close();
+            Reader.close();  
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -459,73 +522,9 @@ public class BulkAdExtensions extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-
-        System.exit(0);
-    }
-    
-    // Gets example BulkSitelinkAdExtension and BulkCampaignSitelinkAdExtension objects. 
-    private static ArrayList<BulkEntity> getSampleBulkSitelinkAdExtensions(java.lang.Long accountId) {
-        ArrayList<BulkEntity> entities = new ArrayList<BulkEntity>();
-        
-        for(int i=0; i < 2; i++){
-            BulkSitelinkAdExtension bulkSitelinkAdExtension = new BulkSitelinkAdExtension();
-            bulkSitelinkAdExtension.setAccountId(accountId);
-            SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
-            sitelinkAdExtension.setId(sitelinkAdExtensionIdKey);
-            sitelinkAdExtension.setDescription1("Simple & Transparent.");
-            sitelinkAdExtension.setDescription2("No Upfront Cost.");
-            sitelinkAdExtension.setDisplayText("Women's Shoe Sale " + (i+1));
-
-            // With FinalUrls you can separate the tracking template, custom parameters, and 
-            // landing page URLs. 
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-            sitelinkAdExtension.setFinalUrls(finalUrls);
-
-            // Final Mobile URLs can also be used if you want to direct the user to a different page 
-            // for mobile devices.
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-            finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-            sitelinkAdExtension.setFinalMobileUrls(finalMobileUrls);
-
-            // You could use a tracking template which would override the campaign level
-            // tracking template. Tracking templates defined for lower level entities 
-            // override those set for higher level entities.
-            // In this example we are using the campaign level tracking template.
-            sitelinkAdExtension.setTrackingUrlTemplate(null);
-
-            // Set custom parameters that are specific to this ad extension, 
-            // and can be used by the ad extension, ad group, campaign, or account level tracking template. 
-            // In this example we are using the campaign level tracking template.
-            CustomParameters urlCustomParameters = new CustomParameters();
-            CustomParameter customParameter1 = new CustomParameter();
-            customParameter1.setKey("promoCode");
-            customParameter1.setValue("PROMO" + (i+1));
-            ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
-            customParameters.getCustomParameters().add(customParameter1);
-            CustomParameter customParameter2 = new CustomParameter();
-            customParameter2.setKey("season");
-            customParameter2.setValue("summer");
-            customParameters.getCustomParameters().add(customParameter2);
-            urlCustomParameters.setParameters(customParameters);
-            sitelinkAdExtension.setUrlCustomParameters(urlCustomParameters);
-
-            bulkSitelinkAdExtension.setSitelinkAdExtension(sitelinkAdExtension);
-            entities.add(bulkSitelinkAdExtension);
-        }
-
-        BulkCampaignSitelinkAdExtension bulkCampaignSitelinkAdExtension = new BulkCampaignSitelinkAdExtension();
-        AdExtensionIdToEntityIdAssociation siteLinkAdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation();
-        siteLinkAdExtensionIdToEntityIdAssociation.setAdExtensionId(sitelinkAdExtensionIdKey);
-        siteLinkAdExtensionIdToEntityIdAssociation.setEntityId(campaignIdKey);
-        bulkCampaignSitelinkAdExtension.setAdExtensionIdToEntityIdAssociation(siteLinkAdExtensionIdToEntityIdAssociation);
-        
-        entities.add(bulkCampaignSitelinkAdExtension);
-        
-        return entities;
-    }
+    }    
 }

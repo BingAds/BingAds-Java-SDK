@@ -1,5 +1,10 @@
 package com.microsoft.bingads.examples.v12;
 
+import com.microsoft.bingads.*;
+import com.microsoft.bingads.v12.bulk.entities.*;
+import com.microsoft.bingads.v12.bulk.*;
+import com.microsoft.bingads.v12.campaignmanagement.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,12 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import com.microsoft.bingads.*;
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
-
-public class BulkShoppingCampaigns extends BulkExampleBase {
+public class BulkProductAds extends BulkExampleBase {
 	        
     private static ArrayList<BulkAdGroupProductPartition> _partitionActions = new ArrayList<BulkAdGroupProductPartition>();
     private static long _referenceId = -1;
@@ -25,73 +25,63 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
         BulkEntityIterable downloadEntities = null;
 
         try {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
-            // You will need to use the Campaign Management service to get the Bing Merchant Center Store Id. This will be used
-            // when creating a new Bing Shopping Campaign.
-            // For other operations such as adding product conditions, you can manage Bing Shopping Campaigns solely with the Bulk Service. 
+            // The Bing Merchant Center Store Id cannot be retrieved via the Bulk service, 
+            // so we'll use the Campaign Management service i.e., the GetBMCStoresByCustomerId service operation below.
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                 authorizationData, 
                 API_ENVIRONMENT,
                 ICampaignManagementService.class);
 
-            // Get the user's list of Bing Merchant Center (BMC) stores.
+            // Get a list of all Bing Merchant Center stores associated with your CustomerId.
 
+            outputStatusMessage("-----\nGetBMCStoresByCustomerId:");
             final ArrayOfBMCStore stores = CampaignManagementExampleHelper.getBMCStoresByCustomerId().getBMCStores();
 
             if (stores == null)
             {
-                    outputStatusMessage(String.format("Customer %d does not have any regeistered BMC stores.\n\n", authorizationData.getCustomerId()));
-                    return;
+                outputStatusMessage(String.format("You do not have any BMC stores registered for CustomerId %d.", authorizationData.getCustomerId()));
+                return;
             }
 
-
-            BulkServiceManager = new BulkServiceManager(authorizationData, API_ENVIRONMENT);
+            BulkServiceManager = new BulkServiceManager(
+                    authorizationData, 
+                    API_ENVIRONMENT);
+            
             BulkServiceManager.setStatusPollIntervalInMilliseconds(5000);
 
             List<BulkEntity> uploadEntities = new ArrayList<BulkEntity>();
 
-            /* Add a new Bing Shopping campaign that will be associated with a ProductScope criterion.
-             *  - Set the CampaignType element of the Campaign to Shopping.
-             *  - Create a ShoppingSetting instance and set its Priority (0, 1, or 2), SalesCountryCode, and StoreId elements. 
-             *    Add this shopping setting to the Settings list of the Campaign.
-             */
-
+            // Create a Shopping campaign with product conditions.
+            
             BulkCampaign bulkCampaign = new BulkCampaign();
-            // ClientId may be used to associate records in the bulk upload file with records in the results file. The value of this field  
-            // is not used or stored by the server; it is simply copied from the uploaded record to the corresponding result record. 
-            // Note: This bulk file Client Id is not related to an application Client Id for OAuth. 
-            bulkCampaign.setClientId("YourClientIdGoesHere");
             Campaign campaign = new Campaign();
-            // When using the Campaign Management service, the Id cannot be set. In the context of a BulkCampaign, the Id is optional 
-            // and may be used as a negative reference key during bulk upload. For example the same negative value set for the campaign Id 
-            // will be used when associating this new campaign with a new campaign product scope in the BulkCampaignProductScope object below. 
-            campaign.setId(campaignIdKey);
-            campaign.setName("Bing Shopping Campaign " + System.currentTimeMillis());
-            campaign.setDescription("Bing Shopping Campaign Example.");
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
-            campaign.setDailyBudget(50.00);
-            campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.SHOPPING);
+            campaign.setCampaignType(campaignTypes);
+            campaign.setDailyBudget(50.00);
+            campaign.setId(campaignIdKey);
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());            
             ArrayOfSetting settings = new ArrayOfSetting();
             ShoppingSetting shoppingSetting = new ShoppingSetting();
             shoppingSetting.setPriority(0);
             shoppingSetting.setSalesCountryCode("US");
             shoppingSetting.setStoreId(stores.getBMCStores().get(0).getId());
             settings.getSettings().add(shoppingSetting);
-            campaign.setSettings(settings);
-            campaign.setCampaignType(campaignTypes);
-            ArrayOfCampaign campaigns = new ArrayOfCampaign();
-            campaigns.getCampaigns().add(campaign);
+            campaign.setSettings(settings);            
+            campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             bulkCampaign.setCampaign(campaign);
-
-            /* Optionally, you can create a ProductScope criterion that will be associated with your Bing Shopping campaign. 
-             * Use the product scope criterion to include a subset of your product catalog, for example a specific brand, 
-             * category, or product type. A campaign can only be associated with one ProductScope, which contains a list 
-             * of up to 7 ProductCondition. You'll also be able to specify more specific product conditions for each ad group.
-             */
+            
+            uploadEntities.add(bulkCampaign);
+            
+            // Optionally, you can create a ProductScope criterion that will be associated with your Bing Shopping campaign. 
+            // You'll also be able to add more specific product conditions for each ad group.
 
             BulkCampaignProductScope bulkCampaignProductScope = new BulkCampaignProductScope();
             ArrayList<CampaignCriterionType> criterionType = new ArrayList<CampaignCriterionType>();
@@ -110,47 +100,48 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             conditions.getProductConditions().add(condition2);
             criterion.setConditions(conditions);
             campaignCriterion.setCriterion(criterion);
-
             bulkCampaignProductScope.setBiddableCampaignCriterion(campaignCriterion);
+            
+            uploadEntities.add(bulkCampaignProductScope);
 
-            // Specify one or more ad groups.
+            // Create the ad group that will have the product partitions.
 
             BulkAdGroup bulkAdGroup = new BulkAdGroup();
             bulkAdGroup.setCampaignId(campaignIdKey);
             AdGroup adGroup = new AdGroup();
-            adGroup.setName("Product Categories");
+            adGroup.setName("Women's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
             adGroup.getEndDate().setMonth(12);
             adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
-            adGroup.setLanguage("English");
             bulkAdGroup.setAdGroup(adGroup);
+            
+            uploadEntities.add(bulkAdGroup);
 
-            /*
-             * Create a product ad. You must add at least one product ad to the ad group. 
-             * The product ad identifier can be used for reporting analytics.
-             * Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
-             * as "special offer" links, helping to increase customer engagement. For details
-             * on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
-             */
+            // Create a product ad. You must add at least one product ad to the ad group. 
+            // The product ad identifier can be used for reporting analytics.
+            // Use Merchant Promotions if you want tags to appear at the bottom of your product ad 
+            // as "special offer" links, helping to increase customer engagement. For details
+            // on Merchant Promotions see https://help.bingads.microsoft.com/#apex/3/en/56805/0.
 
             BulkProductAd bulkProductAd = new BulkProductAd();
             bulkProductAd.setAdGroupId(adGroupIdKey);
             ProductAd productAd = new ProductAd();
             bulkProductAd.setAd(productAd);
-
-            uploadEntities.add(bulkCampaign);
-            uploadEntities.add(bulkCampaignProductScope);
-            uploadEntities.add(bulkAdGroup);
+            
             uploadEntities.add(bulkProductAd);
-
-            Reader = writeEntitiesAndUploadFile(uploadEntities);
 
             // Upload and write the output
 
+            outputStatusMessage("-----\nAdding the campaign, product scope, ad group, and ad...");
+
+            Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
+
+            outputStatusMessage("Upload results:");
+            
             List<BulkCampaign> campaignResults = new ArrayList<BulkCampaign>();
             List<BulkAdGroup> adGroupResults = new ArrayList<BulkAdGroup>();
             List<BulkProductAd> productAdResults = new ArrayList<BulkProductAd>();
@@ -180,7 +171,7 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
             java.lang.Long adGroupId = adGroupResults.get(0).getAdGroup().getId();
 
-            // Add a biddable criterion as the root.
+            // Bid all products
 
             ProductCondition rootCondition = new ProductCondition();
             rootCondition.setAttribute(null);
@@ -196,19 +187,16 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 "root");
 
 
-            outputStatusMessage("Applying only the root as a Unit with a bid . . . \n");
+            outputStatusMessage("-----\nApplying only the root as a Unit with a bid...");
             ArrayList<BulkAdGroupProductPartition> bulkApplyProductPartitionActionsResults = 
                 applyBulkProductPartitionActions(_partitionActions);
 
             ArrayList<BulkAdGroupProductPartition> productPartitions = getBulkAdGroupProductPartitionTree(adGroupId);
 
-            outputStatusMessage("The ad group's product partition only has a tree root node: \n");
+            outputStatusMessage("The ad group's product partition only has a tree root node:");
             outputProductPartitions(productPartitions);
 
-
-            /*
-             * Let's update the bid of the root Unit we just added.
-             */
+            // Let's update the bid of the root Unit we just added.
 
             _partitionActions.clear();
 
@@ -218,29 +206,21 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
 
             _partitionActions.add(updatedRoot);
 
-            outputStatusMessage("Updating the bid for the tree root node . . . \n");
+            outputStatusMessage("-----\nUpdating the bid for the tree root node...");
             applyBulkProductPartitionActions(_partitionActions);
 
             productPartitions = getBulkAdGroupProductPartitionTree(adGroupId);
 
-            outputStatusMessage("Updated the bid for the tree root node: \n");
+            outputStatusMessage("Updated the bid for the tree root node:");
             outputProductPartitions(productPartitions);
 
-
-            /*
-             * Now we will overwrite any existing tree root, and build a product partition group tree structure in multiple steps. 
-             * You could build the entire tree in a single call since there are less than 20,000 nodes; however, 
-             * we will build it in steps to demonstrate how to use the results from bulk upload to update the tree. 
-             * 
-             * For a list of validation rules, see the Productt Ads technical guide:
-             * https://docs.microsoft.com/en-us/bingads/guides/product-ads.
-             */
+            // Initialize and overwrite any existing tree root, and build a product partition group tree structure in multiple steps. 
+            // You could build the entire tree in a single call since there are less than 20,000 nodes; however, 
+            // we will build it in steps to demonstrate how to use the results from bulk upload to update the tree. 
 
             _partitionActions.clear();
 
-            /*
-             * Check whether a root node exists already.
-             */
+            // Check whether a root node exists already.
 
             BulkAdGroupProductPartition existingRoot = getNodeByClientId(bulkApplyProductPartitionActionsResults, "root");
 
@@ -260,12 +240,10 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 false,
                 "root");
 
-            /*
-             * The direct children of any node must have the same Operand. 
-             * For this example we will use CategoryL1 nodes as children of the root. 
-             * For a list of valid CategoryL1 through CategoryL5 values, see the Bing Category Taxonomy:
-             * http://go.microsoft.com/fwlink?LinkId=507666
-             */
+            // The direct children of any node must have the same Operand. 
+            // For this example we will use CategoryL1 nodes as children of the root. 
+            // For a list of valid CategoryL1 through CategoryL5 values, see the Bing Category Taxonomy:
+            // http://go.microsoft.com/fwlink?LinkId=507666
 
             ProductCondition animalsSubdivisionCondition = new ProductCondition();
             animalsSubdivisionCondition.setAttribute("Animals & Pet Supplies");
@@ -280,11 +258,9 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                          false,
                          "animalsSubdivision");
 
-            /*
-             * If you use a CategoryL2 node, it must be a descendant (child or later) of a CategoryL1 node. 
-             * In other words you cannot have a CategoryL2 node as parent of a CategoryL1 node. 
-             * For this example we will a CategoryL2 node as child of the CategoryL1 Animals & Pet Supplies node. 
-             */
+            // If you use a CategoryL2 node, it must be a descendant (child or later) of a CategoryL1 node. 
+            // In other words you cannot have a CategoryL2 node as parent of a CategoryL1 node. 
+            // For this example we will a CategoryL2 node as child of the CategoryL1 Animals & Pet Supplies node.
 
             ProductCondition petSuppliesSubdivisionCondition = new ProductCondition();
             petSuppliesSubdivisionCondition.setAttribute("Pet Supplies");
@@ -312,10 +288,8 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 false,
                 "brandA");
 
-            /*
-             * If you won't bid on Brand B, set the helper method's bid to 'null' and isNegative to true. 
-             * The helper method will create a NegativeAdGroupCriterion and apply the condition.
-             */
+            // If you won't bid on Brand B, set the helper method's bidAmount to '0' and isNegative to true. 
+             // The helper method will create a NegativeAdGroupCriterion and apply the condition.
 
             ProductCondition brandBCondition = new ProductCondition();
             brandBCondition.setAttribute("Brand B");
@@ -382,59 +356,50 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 false,
                 "otherCategoryL1");
 
-            outputStatusMessage("Applying product partitions to the ad group . . . \n");
+            outputStatusMessage("-----\nApplying product partitions to the ad group...");
             bulkApplyProductPartitionActionsResults =
             applyBulkProductPartitionActions(_partitionActions);
 
             productPartitions = getBulkAdGroupProductPartitionTree(adGroupId);
 
-            /*
-             * The product partition group tree now has 9 nodes. 
+            // The product partition group tree now has 9 nodes. 
 
-               All other (Root Node)
-                |
-                +-- Animals & Pet Supplies (CategoryL1)
-                |    |
-                |    +-- Pet Supplies (CategoryL2)
-                |    |    |
-                |    |    +-- Brand A
-                |    |    |    
-                |    |    +-- Brand B
-                |    |    |    
-                |    |    +-- All other (Brand)
-                |    |         
-                |    +-- All other (CategoryL2)
-                |        
-                +-- Electronics (CategoryL1)
-                |   
-                +-- All other (CategoryL1)
+            //All other (Root Node)
+            // |
+            // +-- Animals & Pet Supplies (CategoryL1)
+            // |    |
+            // |    +-- Pet Supplies (CategoryL2)
+            // |    |    |
+            // |    |    +-- Brand A
+            // |    |    |    
+            // |    |    +-- Brand B
+            // |    |    |    
+            // |    |    +-- All other (Brand)
+            // |    |         
+            // |    +-- All other (CategoryL2)
+            // |        
+            // +-- Electronics (CategoryL1)
+            // |   
+            // +-- All other (CategoryL1)
 
-             */
-
-            outputStatusMessage("The product partition group tree now has 9 nodes: \n");
+            outputStatusMessage("The product partition group tree now has 9 nodes:");
             outputProductPartitions(productPartitions);
 
-            /*
-             * Let's replace the Electronics (CategoryL1) node created above with an Electronics (CategoryL1) node that 
-             * has children i.e. Brand C (Brand), Brand D (Brand), and All other (Brand) as follows: 
+            // Let's replace the Electronics (CategoryL1) node created above with an Electronics (CategoryL1) node that 
+            // has children i.e. Brand C (Brand), Brand D (Brand), and All other (Brand) as follows: 
 
-                Electronics (CategoryL1)
-                |
-                +-- Brand C (Brand)
-                |
-                +-- Brand D (Brand)
-                |
-                +-- All other (Brand)
-
-             */
-
+            //Electronics (CategoryL1)
+            //|
+            //+-- Brand C (Brand)
+            //|
+            //+-- Brand D (Brand)
+            //|
+            //+-- All other (Brand)
 
             _partitionActions.clear();
 
-            /*
-             * To replace a node we must know its Id and its ParentCriterionId. In this case the parent of the node 
-             * we are replacing is All other (Root Node). The node that we are replacing is Electronics (CategoryL1). 
-             */
+            // To replace a node we must know its Id and its ParentCriterionId. In this case the parent of the node 
+            // we are replacing is All other (Root Node). The node that we are replacing is Electronics (CategoryL1). 
 
             long rootId = getNodeByClientId(bulkApplyProductPartitionActionsResults,"root").getAdGroupCriterion().getId();
             electronics.getAdGroupCriterion().setId(getNodeByClientId(bulkApplyProductPartitionActionsResults, "electronics").getAdGroupCriterion().getId());
@@ -499,88 +464,73 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 false,
                 "otherElectronicBrands");
 
-            outputStatusMessage(
-                "Updating the product partition group to refine Electronics (CategoryL1) with 3 child nodes . . . \n"
-            );
+            outputStatusMessage("-----\nUpdating the product partition group to refine Electronics (CategoryL1) with 3 child nodes...");
             bulkApplyProductPartitionActionsResults = 
             applyBulkProductPartitionActions(_partitionActions);
 
             productPartitions = getBulkAdGroupProductPartitionTree(adGroupId);
 
-            /*
-             * The product partition group tree now has 12 nodes, including the children of Electronics (CategoryL1):
+            // The product partition group tree now has 12 nodes, including the children of Electronics (CategoryL1):
 
-               All other (Root Node)
-                |
-                +-- Animals & Pet Supplies (CategoryL1)
-                |    |
-                |    +-- Pet Supplies (CategoryL2)
-                |    |    |
-                |    |    +-- Brand A
-                |    |    |    
-                |    |    +-- Brand B
-                |    |    |    
-                |    |    +-- All other (Brand)
-                |    |         
-                |    +-- All other (CategoryL2)
-                |        
-                +-- Electronics (CategoryL1)
-                |    |
-                |    +-- Brand C (Brand)
-                |    |
-                |    +-- Brand D (Brand)
-                |    |
-                |    +-- All other (Brand)
-                |   
-                +-- All other (CategoryL1)
+            //All other (Root Node)
+            // |
+            // +-- Animals & Pet Supplies (CategoryL1)
+            // |    |
+            // |    +-- Pet Supplies (CategoryL2)
+            // |    |    |
+            // |    |    +-- Brand A
+            // |    |    |    
+            // |    |    +-- Brand B
+            // |    |    |    
+            // |    |    +-- All other (Brand)
+            // |    |         
+            // |    +-- All other (CategoryL2)
+            // |        
+            // +-- Electronics (CategoryL1)
+            // |    |
+            // |    +-- Brand C (Brand)
+            // |    |
+            // |    +-- Brand D (Brand)
+            // |    |
+            // |    +-- All other (Brand)
+            // |   
+            // +-- All other (CategoryL1)
 
-             */
-
-            outputStatusMessage(
-                "The product partition group tree now has 12 nodes, including the children of Electronics (CategoryL1): \n"
-            );
+            outputStatusMessage("The product partition group tree now has 12 nodes, including the children of Electronics (CategoryL1):");
             outputProductPartitions(productPartitions);
 
-
-            //Delete the campaign, ad group, criterion, and ad that were previously added. 
-            //You should remove this region if you want to view the added entities in the 
-            //Bing Ads web application or another tool.
-
-            //You must set the Id field to the corresponding entity identifier, and the Status field to Deleted.
-
-            //When you delete a BulkCampaign, the dependent entities such as BulkAdGroup and BulkAdGroupProductPartition 
-            //are deleted without being specified explicitly. 
+            // Delete the campaign and everything it contains e.g., ad groups and ads.   
 
             uploadEntities = new ArrayList<BulkEntity>();
-
+            
             for (BulkCampaign campaignResult : campaignResults){
                 campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
                 uploadEntities.add(campaignResult);
             }
 
             // Upload and write the output
+            
+            outputStatusMessage("-----\nDeleting the campaign and everything it contains e.g., ad groups and ads...");
 
-            outputStatusMessage("\nDeleting the campaign, product conditions, ad group, product partitions, and product ad... \n");
-
-                Reader = writeEntitiesAndUploadFile(uploadEntities);
-                downloadEntities = Reader.getEntities();
+            Reader = writeEntitiesAndUploadFile(uploadEntities);
+            downloadEntities = Reader.getEntities();
+            
+            outputStatusMessage("Upload results:");
 
             for (BulkEntity entity : downloadEntities) {
                 if (entity instanceof BulkCampaign) {
-                        campaignResults.add((BulkCampaign) entity);
-                        outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
+                    outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
                 }
             }
+            
             downloadEntities.close();
             Reader.close();
-
-            outputStatusMessage("Program execution completed\n"); 
-		
         }
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         } 
         finally {
             if (downloadEntities != null){
@@ -588,12 +538,10 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                     downloadEntities.close();
                 } 
                 catch (IOException ex) {
-                    ex.printStackTrace();
+                    outputStatusMessage(ex.getMessage());
                 }
             }
         }
-	
-        System.exit(0);
     }
     
     // Uploads a list of BulkAdGroupProductPartition objects that must represent
@@ -610,20 +558,20 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
             entities.add(partitionAction);
         }
 
-    	Reader = writeEntitiesAndUploadFile(entities);
-
         // Upload and write the output
-
+        
+    	Reader = writeEntitiesAndUploadFile(entities);      
         BulkEntityIterable downloadEntities = Reader.getEntities();
         
         ArrayList<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
+        
+        outputStatusMessage("Upload results:");
+        
         for (BulkEntity entity : downloadEntities) {
-                if (entity instanceof BulkAdGroupProductPartition) {
-                        bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition)entity);
-
-                        // Add this output line if you want to view details of each BulkAdGroupProductPartition.
-                        //outputBulkAdGroupProductPartitions(bulkAdGroupProductPartitionResults);
-                }
+            if (entity instanceof BulkAdGroupProductPartition) {
+                bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition)entity);
+                outputBulkAdGroupProductPartitions(bulkAdGroupProductPartitionResults);
+            }
         }
 
         downloadEntities.close();
@@ -652,9 +600,9 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
         BulkEntityIterable bulkEntities = Reader.getEntities();
         List<BulkAdGroupProductPartition> bulkAdGroupProductPartitionResults = new ArrayList<BulkAdGroupProductPartition>();
         for (BulkEntity entity : bulkEntities) {
-                if (entity instanceof BulkAdGroupProductPartition) {
-                        bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition) entity);
-                }
+            if (entity instanceof BulkAdGroupProductPartition) {
+                bulkAdGroupProductPartitionResults.add((BulkAdGroupProductPartition) entity);
+            }
         }
 
         bulkEntities.close();
@@ -846,5 +794,4 @@ public class BulkShoppingCampaigns extends BulkExampleBase {
                 outputProductPartitionTree(childNode, childBranches, treeLevel + 1);
         }
     }
-    	
 }

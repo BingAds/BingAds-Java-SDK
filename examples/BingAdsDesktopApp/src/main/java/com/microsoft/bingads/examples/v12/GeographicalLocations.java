@@ -33,40 +33,44 @@ public class GeographicalLocations extends ExampleBase {
    	
         try
         {
-            authorizationData = getAuthorizationData(null,null); 
+            authorizationData = getAuthorizationData(); 
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
                         API_ENVIRONMENT,
                         ICampaignManagementService.class);
             
-            GetGeoLocationsFileUrlResponse getGeoLocationsFileUrlResponse = CampaignManagementExampleHelper.getGeoLocationsFileUrl(VERSION, LANGUAGE_LOCALE);
+            outputStatusMessage("-----\nGetGeoLocationsFileUrl:");
+            GetGeoLocationsFileUrlResponse getGeoLocationsFileUrlResponse = CampaignManagementExampleHelper.getGeoLocationsFileUrl(
+                    VERSION, 
+                    LANGUAGE_LOCALE);
 
             // Going forward you should track the date and time of the previous download,  
-            // and compare it with the last modified time provided by the service.
+            // and compare it with the last modified time provided by the service.            
             Calendar previousSyncTimeUtc = Calendar.getInstance();
             previousSyncTimeUtc.setTimeZone(TimeZone.getTimeZone("GMT"));
-            previousSyncTimeUtc.set(2018, 4, 26, 0, 0, 0);
+            previousSyncTimeUtc.set(2018, 4, 31, 19, 25, 36); // 2018-05-31T19:25:36Z
 
             java.lang.String fileUrl = getGeoLocationsFileUrlResponse.getFileUrl();
             Calendar fileUrlExpiryTimeUtc = getGeoLocationsFileUrlResponse.getFileUrlExpiryTimeUtc();
             Calendar lastModifiedTimeUtc = getGeoLocationsFileUrlResponse.getLastModifiedTimeUtc();
 
-            outputStatusMessage(String.format("FileUrl: %s\n", fileUrl));
-            outputStatusMessage(String.format("FileUrlExpiryTimeUtc: %s\n", fileUrlExpiryTimeUtc.getTime().toString()));
-            outputStatusMessage(String.format("LastModifiedTimeUtc: %s\n", lastModifiedTimeUtc.getTime().toString()));
+            outputStatusMessage(String.format("PreviousSyncTimeUtc: %s", previousSyncTimeUtc.getTime().toString()));
+            outputStatusMessage(String.format("FileUrl: %s", fileUrl));
+            outputStatusMessage(String.format("FileUrlExpiryTimeUtc: %s", fileUrlExpiryTimeUtc.getTime().toString()));
+            outputStatusMessage(String.format("LastModifiedTimeUtc: %s", lastModifiedTimeUtc.getTime().toString()));
 
             // Download the file if it was modified since the previous download.
-            if (lastModifiedTimeUtc.compareTo(previousSyncTimeUtc) < 0)
+            if (lastModifiedTimeUtc.compareTo(previousSyncTimeUtc) > 0)
             {
                 downloadFile(fileUrl, LOCAL_FILE);
-            }
-            
+            }            
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }    
     
@@ -84,7 +88,7 @@ public class GeographicalLocations extends ExampleBase {
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) 
             {
-                outputStatusMessage(String.format("Downloaded the geographical locations to %s.\n", localFile));
+                outputStatusMessage(String.format("Downloaded the geographical locations to %s.", localFile));
                 reader = new BufferedInputStream(connection.getInputStream());
                 writer = new BufferedOutputStream(new FileOutputStream(localFile));
 
@@ -99,8 +103,8 @@ public class GeographicalLocations extends ExampleBase {
             } 
             else
             {
-                outputStatusMessage(String.format("HTTP Response Code: %s\n", connection.getResponseCode()));  
-                outputStatusMessage(String.format("HTTP Response Message: %s\n", connection.getResponseMessage()));  
+                outputStatusMessage(String.format("HTTP Response Code: %s", connection.getResponseCode()));  
+                outputStatusMessage(String.format("HTTP Response Message: %s", connection.getResponseMessage()));  
             } 
         } 
         catch (IOException ex) {

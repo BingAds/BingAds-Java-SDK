@@ -1,19 +1,30 @@
 package com.microsoft.bingads.examples.v12;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.util.Base64;
 
 public class AdExtensions extends ExampleBase {
 
     public static void main(java.lang.String[] args) {
-   	 
+        
+   	// To run this example you'll need to provide your own image.  
+        // For required aspect ratios and recommended dimensions please see 
+        // Image remarks at https://go.microsoft.com/fwlink/?linkid=872754.
+
+        java.lang.String MEDIA_FILE_PATH = "c:\\dev\\media\\";
+        java.lang.String IMAGE_AD_EXTENSION_MEDIA_FILE_NAME = "imageadextension300x200.png";
+        
         try
         {
-            //authenticateWithOAuth();
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     authorizationData,
@@ -22,34 +33,61 @@ public class AdExtensions extends ExampleBase {
                         
             Calendar calendar = Calendar.getInstance();
                                       
-            // Specify one or more campaigns.
+            // Add a campaign to associate with ad extensions. 
 
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
-            campaign.setName("Summer Shoes " + System.currentTimeMillis());
-            campaign.setDescription("Summer shoes line.");
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
+            campaign.setDescription("Red shoes line.");
+            ArrayOfstring languages = new ArrayOfstring();
+            languages.getStrings().add("All");
+            campaign.setLanguages(languages);
+            campaign.setName("Women's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
-
-            // Used with FinalUrls shown in the sitelinks that we will add below.
-            campaign.setTrackingUrlTemplate(
-                        "http://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}");
-
             campaigns.getCampaigns().add(campaign);
 
+            outputStatusMessage("-----\nAddCampaigns:");
             AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
                     authorizationData.getAccountId(), 
                     campaigns,
-                    false);
+                    false);            
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
+            outputStatusMessage("CampaignIds:");
             CampaignManagementExampleHelper.outputArrayOfNullableOflong(campaignIds);
+            outputStatusMessage("PartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
+            
+            // Create media for the image ad extension that we'll add later. 
+            
+            Image imageAdExtensionMedia = getImageMedia(
+                "Image15x10",
+                MEDIA_FILE_PATH + IMAGE_AD_EXTENSION_MEDIA_FILE_NAME);
 
-            // Specify the extensions.
+            ArrayOfMedia addMedia = new ArrayOfMedia();
+            addMedia.getMedias().add(imageAdExtensionMedia);
+            CampaignManagementExampleHelper.outputArrayOfMedia(addMedia);
+
+            outputStatusMessage("-----\nAddMedia:");
+            ArrayOflong mediaIds = CampaignManagementExampleHelper.addMedia(
+                authorizationData.getAccountId(),
+                addMedia).getMediaIds();
+            outputStatusMessage("MediaIds:");
+            CampaignManagementExampleHelper.outputArrayOflong(mediaIds);
+
+            // Add the extensions to the account's library.
 
             ArrayOfAdExtension adExtensions = new ArrayOfAdExtension();
+            
+            ActionAdExtension actionAdExtension = new ActionAdExtension();
+            actionAdExtension.setActionType(ActionAdExtensionActionType.ACT_NOW);
+            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
+            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            actionAdExtension.setFinalUrls(finalUrls);
+            actionAdExtension.setLanguage("English");
+            actionAdExtension.setStatus(AdExtensionStatus.ACTIVE);
+            adExtensions.getAdExtensions().add(actionAdExtension);
 
             AppAdExtension appAdExtension = new AppAdExtension();
             appAdExtension.setAppPlatform("Windows");
@@ -63,7 +101,7 @@ public class AdExtensions extends ExampleBase {
             callAdExtension.setCountryCode("US");
             callAdExtension.setPhoneNumber("2065550100");
             callAdExtension.setIsCallOnly(false);
-            // For this example assume the call center is open Monday - Friday from 9am - 9pm
+            // Include the call extension Monday - Friday from 9am - 9pm
             // in the account's time zone.
             Schedule callScheduling = new Schedule();
             ArrayOfDayTime callDayTimeRanges = new ArrayOfDayTime();
@@ -127,7 +165,7 @@ public class AdExtensions extends ExampleBase {
             address.setCountryCode("US");
             address.setPostalCode("98608");
             locationAdExtension.setAddress(address);
-            // For this example assume you want to drive traffic every Saturday morning
+            // Include the location extension every Saturday morning
             // in the search user's time zone.
             Schedule locationScheduling = new Schedule();
             ArrayOfDayTime locationDayTimeRanges = new ArrayOfDayTime();
@@ -146,6 +184,40 @@ public class AdExtensions extends ExampleBase {
             locationScheduling.setStartDate(null);
             locationAdExtension.setScheduling(locationScheduling);
             adExtensions.getAdExtensions().add(locationAdExtension);
+            
+            PriceAdExtension priceAdExtension = new PriceAdExtension();
+            priceAdExtension.setLanguage("English");
+            priceAdExtension.setPriceExtensionType(PriceExtensionType.EVENTS);
+            ArrayOfPriceTableRow tableRows = new ArrayOfPriceTableRow();
+            PriceTableRow tableRowA = new PriceTableRow();
+            tableRowA.setCurrencyCode("USD");
+            tableRowA.setDescription("Come to the event");
+            tableRowA.setFinalUrls(finalUrls);
+            tableRowA.setHeader("New Event");
+            tableRowA.setPrice(9.99D);
+            tableRowA.setPriceQualifier(PriceQualifier.FROM);
+            tableRowA.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowA);
+            PriceTableRow tableRowB = new PriceTableRow();
+            tableRowB.setCurrencyCode("USD");
+            tableRowB.setDescription("Come to the next event");
+            tableRowB.setFinalUrls(finalUrls);
+            tableRowB.setHeader("Next Event");
+            tableRowB.setPrice(9.99D);
+            tableRowB.setPriceQualifier(PriceQualifier.FROM);
+            tableRowB.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowB);
+            PriceTableRow tableRowC = new PriceTableRow();
+            tableRowC.setCurrencyCode("USD");
+            tableRowC.setDescription("Come to the final event");
+            tableRowC.setFinalUrls(finalUrls);
+            tableRowC.setHeader("Final Event");
+            tableRowC.setPrice(9.99D);
+            tableRowC.setPriceQualifier(PriceQualifier.FROM);
+            tableRowC.setPriceUnit(PriceUnit.PER_DAY);
+            tableRows.getPriceTableRows().add(tableRowC);
+            priceAdExtension.setTableRows(tableRows);
+            adExtensions.getAdExtensions().add(priceAdExtension);
 
             ReviewAdExtension reviewAdExtension = new ReviewAdExtension();
             reviewAdExtension.setIsExact(true);
@@ -154,6 +226,13 @@ public class AdExtensions extends ExampleBase {
             // The Url of the third-party review. This is not your business Url.
             reviewAdExtension.setUrl("http://review.contoso.com"); 
             adExtensions.getAdExtensions().add(reviewAdExtension);
+            
+            SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
+            sitelinkAdExtension.setDescription1("Simple & Transparent.");
+            sitelinkAdExtension.setDescription2("No Upfront Cost.");
+            sitelinkAdExtension.setDisplayText("Women's Shoe Sale");
+            sitelinkAdExtension.setFinalUrls(finalUrls);
+            adExtensions.getAdExtensions().add(sitelinkAdExtension);
                         
             StructuredSnippetAdExtension structuredSnippetAdExtension = new StructuredSnippetAdExtension();
             structuredSnippetAdExtension.setHeader("Brands");
@@ -162,22 +241,17 @@ public class AdExtensions extends ExampleBase {
             values.getStrings().add("Xbox");
             values.getStrings().add("Skype");
             structuredSnippetAdExtension.setValues(values);
-            adExtensions.getAdExtensions().add(structuredSnippetAdExtension);
+            adExtensions.getAdExtensions().add(structuredSnippetAdExtension);            
             
-            // We are using a helper function to get sample sitelink ad extensions.
-            adExtensions.getAdExtensions().addAll(getSampleSitelinkAdExtensions());
-            
-            // Add all extensions to the account's ad extension library
+            outputStatusMessage("-----\nAddAdExtensions:");
             AddAdExtensionsResponse addAdExtensionsResponse = CampaignManagementExampleHelper.addAdExtensions(
                 authorizationData.getAccountId(),
-                adExtensions
-                );
-
-            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(addAdExtensionsResponse.getNestedPartialErrors());
+                adExtensions);
+            outputStatusMessage("AdExtensionIdentities:");
             ArrayOfAdExtensionIdentity adExtensionIdentities = addAdExtensionsResponse.getAdExtensionIdentities();
-                    
-            outputStatusMessage("Added ad extensions.\n");
-
+            outputStatusMessage("NestedPartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchErrorCollection(addAdExtensionsResponse.getNestedPartialErrors());
+            
             // DeleteAdExtensionsAssociations, SetAdExtensionsAssociations, and GetAdExtensionsEditorialReasons 
             // operations each require a list of type AdExtensionIdToEntityIdAssociation.
             ArrayOfAdExtensionIdToEntityIdAssociation adExtensionIdToEntityIdAssociations = new ArrayOfAdExtensionIdToEntityIdAssociation();
@@ -197,66 +271,55 @@ public class AdExtensions extends ExampleBase {
                 adExtensionIds.getLongs().add(adExtensionIdentity.getId());
             }
 
-            // Associate the specified ad extensions with the respective campaigns or ad groups. 
-            CampaignManagementExampleHelper.setAdExtensionsAssociations(
+            // Associate the ad extensions with the campaign. 
+            
+            outputStatusMessage("-----\nSetAdExtensionsAssociations:");
+            SetAdExtensionsAssociationsResponse setAdExtensionsAssociationsResponse = CampaignManagementExampleHelper.setAdExtensionsAssociations(
                 authorizationData.getAccountId(), 
                 adExtensionIdToEntityIdAssociations, 
-                AssociationType.CAMPAIGN
-                );
-
-            outputStatusMessage("Set ad extension associations.\n");
-
-            // Get editorial rejection reasons for the respective ad extension and entity associations.
+                AssociationType.CAMPAIGN);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(setAdExtensionsAssociationsResponse.getPartialErrors());
+            
+            // Get editorial rejection reasons for the ad extension and entity associations.
+            
+            outputStatusMessage("-----\nGetAdExtensionsEditorialReasons:");
             GetAdExtensionsEditorialReasonsResponse getAdExtensionsEditorialReasonsResponse = CampaignManagementExampleHelper.getAdExtensionsEditorialReasons(
                 authorizationData.getAccountId(), 
                 adExtensionIdToEntityIdAssociations, 
-                AssociationType.CAMPAIGN
-                );
-            
+                AssociationType.CAMPAIGN);
+            outputStatusMessage("EditorialReasons:");
             ArrayOfAdExtensionEditorialReasonCollection adExtensionEditorialReasonCollection = getAdExtensionsEditorialReasonsResponse.getEditorialReasons();
-
-            ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
-            
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.APP_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.CALL_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.CALLOUT_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.REVIEW_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.SITELINK_AD_EXTENSION);
-            adExtensionsTypeFilter.add(AdExtensionsTypeFilter.STRUCTURED_SNIPPET_AD_EXTENSION);
-                        
-            // Get the specified ad extensions from the account's ad extension library.
-            GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
-                authorizationData.getAccountId(),
-                adExtensionIds, 
-                adExtensionsTypeFilter
-            );
-            adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
-            
-            outputStatusMessage("List of ad extensions that were added above:\n");
-            CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
             CampaignManagementExampleHelper.outputArrayOfAdExtensionEditorialReasonCollection(adExtensionEditorialReasonCollection);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());            
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsEditorialReasonsResponse.getPartialErrors());
             
             // Get only the location extensions and remove scheduling.
 
-            adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
+            ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
 
-            getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
+            // In this example partial errors will be returned for indices where the ad extensions 
+            // are not location ad extensions.
+            // This is an example, and ideally you would only send the required ad extension IDs.
+            
+            outputStatusMessage("-----\nGetAdExtensionsByIds:");
+            GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter
-            );
+                adExtensionsTypeFilter);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
-            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());
+            outputStatusMessage("AdExtensions:");
+            CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());     
 
             ArrayOfAdExtension updateExtensions = new ArrayOfAdExtension();
             ArrayOflong updateExtensionIds = new ArrayOflong();
 
             for (AdExtension extension : adExtensions.getAdExtensions())
             {
-                // GetAdExtensionsByIds will return a nil element if the request filters / conditions were not met.
+                // GetAdExtensionsByIds will return a nil element if the request conditions were not met.
                 if(extension != null && extension.getId() != null)
                 {
                     // Remove read-only elements that would otherwise cause the update operation to fail.
@@ -267,132 +330,100 @@ public class AdExtensions extends ExampleBase {
                     // for the ad extension. In this example, we will remove any existing scheduling by setting this element  
                     // to an empty Schedule object.
                     updateExtension.setScheduling(new Schedule());
-
                     updateExtensions.getAdExtensions().add(updateExtension);
                     updateExtensionIds.getLongs().add((long)updateExtension.getId());
                 }
             }
 
-            outputStatusMessage("Removing scheduling from the location ad extensions..\n");
-            CampaignManagementExampleHelper.updateAdExtensions(authorizationData.getAccountId(), updateExtensions);
+            outputStatusMessage("-----\nUpdateAdExtensions:"); 
+            CampaignManagementExampleHelper.updateAdExtensions(
+                    authorizationData.getAccountId(), 
+                    updateExtensions);
+            outputStatusMessage("Removed scheduling from the location ad extensions.");
 
             // Get only the location extension to output the result.
+            
+            outputStatusMessage("-----\nGetAdExtensionsByIds:");
             getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
-                updateExtensionIds,
-                adExtensionsTypeFilter
-            );
+                adExtensionIds,
+                adExtensionsTypeFilter);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
-            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());
-
-            outputStatusMessage("List of ad extensions that were updated above:\n");
+            outputStatusMessage("AdExtensions:");
             CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
-            CampaignManagementExampleHelper.outputArrayOfAdExtensionEditorialReasonCollection(adExtensionEditorialReasonCollection);
-            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());   
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(getAdExtensionsByIdsResponse.getPartialErrors());  
 
-
-            // Remove the specified associations from the respective campaigns or ad groups. 
-            // The extensions are still available in the account's extensions library. 
+            // Delete the ad extension associations, ad extensions, and campaign, that were previously added.  
+            // At this point the ad extensions are still available in the account's ad extensions library. 
+            
+            outputStatusMessage("-----\nDeleteAdExtensionsAssociations:");
             CampaignManagementExampleHelper.deleteAdExtensionsAssociations(
                 authorizationData.getAccountId(),
                 adExtensionIdToEntityIdAssociations,
-                AssociationType.CAMPAIGN
-                );
+                AssociationType.CAMPAIGN);
+            outputStatusMessage("Deleted ad extension associations.");
 
-            outputStatusMessage("Deleted ad extension associations.\n");
+            // Delete the ad extensions from the account’s ad extension library.
 
-            // Deletes the ad extensions from the account's ad extension library.
+            outputStatusMessage("-----\nDeleteAdExtensions:");
             CampaignManagementExampleHelper.deleteAdExtensions(
                 authorizationData.getAccountId(),
-                adExtensionIds
-                );
+                adExtensionIds);
+            outputStatusMessage("Deleted ad extensions.");
+            
+            // Delete the account's media that was used for the image ad extension.
+            
+            outputStatusMessage("-----\nDeleteMedia:");
+            CampaignManagementExampleHelper.deleteMedia(
+                    authorizationData.getAccountId(), 
+                    mediaIds);
 
-            outputStatusMessage("Deleted ad extensions.\n");
+            for (java.lang.Long id : mediaIds.getLongs())
+            {
+                outputStatusMessage(String.format("Deleted Media Id %s", id));
+            }
 
-            // Delete the campaign from the account.
+            // Delete the campaign and everything it contains e.g., ad groups and ads.
 
+            outputStatusMessage("-----\nDeleteCampaigns:");
             ArrayOflong deleteCampaignIds = new ArrayOflong();
             deleteCampaignIds.getLongs().add(campaignIds.getLongs().get(0));
-            CampaignManagementExampleHelper.deleteCampaigns(authorizationData.getAccountId(), deleteCampaignIds);
-            outputStatusMessage(String.format("Deleted CampaignId %d\n", campaignIds.getLongs().get(0)));
-        
+            CampaignManagementExampleHelper.deleteCampaigns(
+                    authorizationData.getAccountId(), 
+                    deleteCampaignIds);
+            outputStatusMessage(String.format("Deleted CampaignId %d", deleteCampaignIds.getLongs().get(0)));        
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
+    }        
+    
+    // Get image media that can be managed with the Campaign Management API.
+
+    static Image getImageMedia(
+        java.lang.String mediaType, 
+        java.lang.String imageFileName) throws UnsupportedEncodingException, IOException
+    {
+        Image image = new Image();
+        image.setData(getBmpBase64String(imageFileName));
+        image.setMediaType(mediaType);
+        image.setType("Image");
+
+        return image;
     }
-        
-    private static ArrayList<SitelinkAdExtension> getSampleSitelinkAdExtensions(){
-        ArrayList<SitelinkAdExtension> sitelinkAdExtensions = new ArrayList<SitelinkAdExtension>();
-        
-        // Define the first SitelinkAdExtension
-        
-        SitelinkAdExtension sitelinkAdExtensionA = new SitelinkAdExtension();
-        sitelinkAdExtensionA.setDescription1("Simple & Transparent.");
-        sitelinkAdExtensionA.setDescription2("No Upfront Cost.");
-        sitelinkAdExtensionA.setDisplayText("Women's Shoe Sale 1");
 
-        // With FinalUrls you can separate the tracking template, custom parameters, and 
-        // landing page URLs. 
-        com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-        finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
-        sitelinkAdExtensionA.setFinalUrls(finalUrls);
+    // Get the image media as base64 string.
 
-        // Final Mobile URLs can also be used if you want to direct the user to a different page 
-        // for mobile devices.
-        com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalMobileUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
-        finalMobileUrls.getStrings().add("http://mobile.contoso.com/womenshoesale");
-        sitelinkAdExtensionA.setFinalMobileUrls(finalMobileUrls);
-
-        // You could use a tracking template which would override the campaign level
-        // tracking template. Tracking templates defined for lower level entities 
-        // override those set for higher level entities.
-        // In this example we are using the campaign level tracking template.
-        sitelinkAdExtensionA.setTrackingUrlTemplate(null);
-
-        // Set custom parameters that are specific to this ad extension, 
-        // and can be used by the ad extension, ad group, campaign, or account level tracking template. 
-        // In this example we are using the campaign level tracking template.
-        CustomParameters urlCustomParameters = new CustomParameters();
-        CustomParameter customParameter1 = new CustomParameter();
-        customParameter1.setKey("promoCode");
-        customParameter1.setValue("PROMO1");
-        ArrayOfCustomParameter customParameters = new ArrayOfCustomParameter();
-        customParameters.getCustomParameters().add(customParameter1);
-        CustomParameter customParameter2 = new CustomParameter();
-        customParameter2.setKey("season");
-        customParameter2.setValue("summer");
-        customParameters.getCustomParameters().add(customParameter2);
-        urlCustomParameters.setParameters(customParameters);
-        sitelinkAdExtensionA.setUrlCustomParameters(urlCustomParameters);
-
-        sitelinkAdExtensions.add(sitelinkAdExtensionA);
-        
-        // Define the second SitelinkAdExtension
-        
-        SitelinkAdExtension sitelinkAdExtensionB = new SitelinkAdExtension();
-        sitelinkAdExtensionB.setDescription1("Do Amazing Things With Contoso.");
-        sitelinkAdExtensionB.setDescription2("Read Our Case Studies.");
-        sitelinkAdExtensionB.setDisplayText("Women's Shoe Sale 2");
-        sitelinkAdExtensionB.setFinalUrls(finalUrls);
-        sitelinkAdExtensionB.setFinalMobileUrls(finalMobileUrls);
-        CustomParameters urlCustomParameters2 = new CustomParameters();
-        CustomParameter customParameter3 = new CustomParameter();
-        customParameter3.setKey("promoCode");
-        customParameter3.setValue("PROMO2");
-        ArrayOfCustomParameter customParameters2 = new ArrayOfCustomParameter();
-        customParameters2.getCustomParameters().add(customParameter3);
-        CustomParameter customParameter4 = new CustomParameter();
-        customParameter4.setKey("season");
-        customParameter4.setValue("summer");
-        customParameters2.getCustomParameters().add(customParameter4);
-        urlCustomParameters2.setParameters(customParameters2);
-        sitelinkAdExtensionB.setUrlCustomParameters(urlCustomParameters2);
-
-        sitelinkAdExtensions.add(sitelinkAdExtensionB);
-        
-        return sitelinkAdExtensions;
+    static java.lang.String getBmpBase64String(
+        java.lang.String imageFileName) throws UnsupportedEncodingException, IOException
+    {
+        File fi = new File(imageFileName);
+        byte[] imageBytes = Files.readAllBytes(fi.toPath());
+        java.lang.String base64String = new java.lang.String(Base64.getEncoder().encode(imageBytes), "UTF-8");
+        return base64String;
     }
 }

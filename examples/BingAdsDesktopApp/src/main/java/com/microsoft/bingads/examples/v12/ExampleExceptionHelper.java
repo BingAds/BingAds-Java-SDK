@@ -14,7 +14,7 @@ import javax.xml.namespace.QName;
 
 // For more details see https://docs.microsoft.com/en-us/bingads/guides/handle-service-errors-exceptions
 
-public class BingAdsExceptionHelper {
+public class ExampleExceptionHelper {
     
     public static String getBingAdsExceptionFaultXml(Exception exception, PrintStream stream) {
         try {

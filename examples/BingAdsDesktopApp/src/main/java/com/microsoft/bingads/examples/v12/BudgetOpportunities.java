@@ -1,10 +1,10 @@
 package com.microsoft.bingads.examples.v12;
 
-import java.util.ArrayList;
-
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v12.campaignmanagement.*;
 import com.microsoft.bingads.v12.adinsight.*;
+
+import java.util.ArrayList;
 
 public class BudgetOpportunities extends ExampleBase {
 
@@ -15,7 +15,7 @@ public class BudgetOpportunities extends ExampleBase {
    	 
     	try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 	         
             AdInsightExampleHelper.AdInsightService = new ServiceClient<IAdInsightService>(
                     authorizationData, 
@@ -27,11 +27,25 @@ public class BudgetOpportunities extends ExampleBase {
                     API_ENVIRONMENT,
                     ICampaignManagementService.class);
 	         
-            // Get the budget opportunities for each campaign in the current authenticated account.
+            // Get the budget opportunities for each campaign in the current account.
 
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
+            campaignTypes.add(CampaignType.AUDIENCE);
+            campaignTypes.add(CampaignType.DYNAMIC_SEARCH_ADS);
+            campaignTypes.add(CampaignType.SHOPPING);
             campaignTypes.add(CampaignType.SEARCH);
-            ArrayOfCampaign campaigns = CampaignManagementExampleHelper.getCampaignsByAccountId(authorizationData.getAccountId(), campaignTypes).getCampaigns();
+            
+            ArrayList<CampaignAdditionalField> campaignAdditionalFields = new ArrayList<CampaignAdditionalField>();
+            campaignAdditionalFields.add(CampaignAdditionalField.EXPERIMENT_ID);
+                        
+            outputStatusMessage("-----\nGetCampaignsByAccountId:");
+            GetCampaignsByAccountIdResponse getCampaignsByAccountIdResponse = CampaignManagementExampleHelper.getCampaignsByAccountId(
+                authorizationData.getAccountId(),
+                campaignTypes,
+                campaignAdditionalFields);
+            ArrayOfCampaign campaigns = getCampaignsByAccountIdResponse.getCampaigns();
+            outputStatusMessage("Campaigns:");
+            CampaignManagementExampleHelper.outputArrayOfCampaign(campaigns);  
             
             ArrayOfBudgetOpportunity opportunities = null;
             
@@ -39,15 +53,19 @@ public class BudgetOpportunities extends ExampleBase {
             {
                 if (campaign.getId() != null)
                 {
-                    opportunities = AdInsightExampleHelper.getBudgetOpportunities((long)campaign.getId()).getOpportunities();
+                    outputStatusMessage("-----\nGetBudgetOpportunities:");
+                    opportunities = AdInsightExampleHelper.getBudgetOpportunities(
+                            (long)campaign.getId()).getOpportunities();
+                    outputStatusMessage("Opportunities:");
                     AdInsightExampleHelper.outputArrayOfBudgetOpportunity(opportunities);
                 }
-            }
-        
-        } catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            }        
+        } 
+        catch (Exception ex) {
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
 }

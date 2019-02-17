@@ -14,14 +14,16 @@ public class OfflineConversions extends ExampleBase {
    	 
         try
         {
-            authorizationData = getAuthorizationData(null,null);
+            authorizationData = getAuthorizationData();
 	         
             CampaignManagementExampleHelper.CampaignManagementService = new ServiceClient<ICampaignManagementService>(
                     	authorizationData, 
                         API_ENVIRONMENT,
                         ICampaignManagementService.class);
 
-            java.lang.String offlineConversionGoalName = "My Offline Conversion Goal " + System.currentTimeMillis();
+            // A conversion goal cannot be deleted, so even if this is a test
+            // please choose an appropriate name accordingly. 
+            java.lang.String offlineConversionGoalName = "My Offline Conversion Goal";
             
             ArrayOfConversionGoal conversionGoals = new ArrayOfConversionGoal();
             
@@ -44,24 +46,38 @@ public class OfflineConversions extends ExampleBase {
             offlineConversionGoal.setTagId(null);
             conversionGoals.getConversionGoals().add(offlineConversionGoal);
             
-            outputStatusMessage("Add conversion goal...\n");
-            AddConversionGoalsResponse addConversionGoalsResponse = CampaignManagementExampleHelper.addConversionGoals(conversionGoals);
+            outputStatusMessage("-----\nAddConversionGoals:");
+            AddConversionGoalsResponse addConversionGoalsResponse = CampaignManagementExampleHelper.addConversionGoals(
+                    conversionGoals);
+            ArrayOfNullableOflong conversionGoalIds = addConversionGoalsResponse.getConversionGoalIds();
+            ArrayOfBatchError goalErrors = addConversionGoalsResponse.getPartialErrors();
+            outputStatusMessage("ConversionGoalIds:");
+            CampaignManagementExampleHelper.outputArrayOfNullableOflong(conversionGoalIds);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(goalErrors);
 
-            ArrayOflong conversionGoalIds = new ArrayOflong();
-            for (java.lang.Long goalId : addConversionGoalsResponse.getConversionGoalIds().getLongs())
+            ArrayOflong goalIds = new ArrayOflong();
+            for (java.lang.Long goalId : conversionGoalIds.getLongs())
             {
                 if (goalId != null)
                 {
-                    conversionGoalIds.getLongs().add((long)goalId);
+                    goalIds.getLongs().add((long)goalId);
                 }
             }
             
             ArrayList<ConversionGoalType> conversionGoalTypes = new ArrayList<ConversionGoalType>();
             conversionGoalTypes.add(ConversionGoalType.OFFLINE_CONVERSION);
-            ArrayOfConversionGoal getConversionGoals = 
-                CampaignManagementExampleHelper.getConversionGoalsByIds(conversionGoalIds, conversionGoalTypes).getConversionGoals();
-
+            
+            outputStatusMessage("-----\nGetConversionGoalsByIds:");
+            GetConversionGoalsByIdsResponse getConversionGoalsByIdsResponse = CampaignManagementExampleHelper.getConversionGoalsByIds(
+                    goalIds, 
+                    conversionGoalTypes);
+            ArrayOfConversionGoal getConversionGoals = getConversionGoalsByIdsResponse.getConversionGoals();
+            goalErrors = getConversionGoalsByIdsResponse.getPartialErrors();
+            outputStatusMessage("ConversionGoals:");
             CampaignManagementExampleHelper.outputArrayOfConversionGoal(getConversionGoals);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(goalErrors);
             
             // Every time you create a new OfflineConversionGoal via either the Bing Ads web application or Campaign Management API, 
             // the MSCLKIDAutoTaggingEnabled value of the corresponding AccountProperty is set to 'true' automatically.
@@ -70,10 +86,14 @@ public class OfflineConversions extends ExampleBase {
             ArrayOfAccountPropertyName accountPropertyNames = new ArrayOfAccountPropertyName();
             accountPropertyNames.getAccountPropertyNames().add(AccountPropertyName.MSCLKID_AUTO_TAGGING_ENABLED);
 
-            outputStatusMessage("Get account properties...\n");
-            GetAccountPropertiesResponse getAccountPropertiesResponse = CampaignManagementExampleHelper.getAccountProperties(accountPropertyNames);
+            outputStatusMessage("-----\nGetAccountProperties:");
+            GetAccountPropertiesResponse getAccountPropertiesResponse = CampaignManagementExampleHelper.getAccountProperties(
+                    accountPropertyNames);
+            outputStatusMessage("AccountProperties:");
             CampaignManagementExampleHelper.outputArrayOfAccountProperty(getAccountPropertiesResponse.getAccountProperties());
-
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(getAccountPropertiesResponse.getPartialErrors());
+            
             ArrayOfOfflineConversion offlineConversions = new ArrayOfOfflineConversion();
             OfflineConversion offlineConversion = new OfflineConversion();             
             // If you do not specify an offline conversion currency code, 
@@ -100,17 +120,17 @@ public class OfflineConversions extends ExampleBase {
             // This example would not succeed in production because we created the goal very recently i.e., 
             // please see above call to AddConversionGoalsAsync. 
 
-            outputStatusMessage("Apply the offline conversion...\n");
-            ApplyOfflineConversionsResponse applyOfflineConversionsResponse = CampaignManagementExampleHelper.applyOfflineConversions(offlineConversions);
-            CampaignManagementExampleHelper.outputArrayOfOfflineConversion(offlineConversions);
-
-            outputStatusMessage("Program execution completed\n"); 
-
+            outputStatusMessage("-----\nApplyOfflineConversions:");
+            ApplyOfflineConversionsResponse applyOfflineConversionsResponse = CampaignManagementExampleHelper.applyOfflineConversions(
+                    offlineConversions);
+            outputStatusMessage("PartialErrors:");
+            CampaignManagementExampleHelper.outputArrayOfBatchError(applyOfflineConversionsResponse.getPartialErrors());
         } 
         catch (Exception ex) {
-            String faultXml = BingAdsExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
-            String message = BingAdsExceptionHelper.handleBingAdsSDKException(ex, System.out);
-            ex.printStackTrace();
+            String faultXml = ExampleExceptionHelper.getBingAdsExceptionFaultXml(ex, System.out);
+            outputStatusMessage(faultXml);
+            String message = ExampleExceptionHelper.handleBingAdsSDKException(ex, System.out);
+            outputStatusMessage(message);
         }
     }
  }
