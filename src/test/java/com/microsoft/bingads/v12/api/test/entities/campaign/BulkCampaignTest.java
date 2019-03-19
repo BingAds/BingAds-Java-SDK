@@ -14,7 +14,9 @@ public abstract class BulkCampaignTest extends BulkEntityTest<BulkCampaign> {
 
     @Override
     protected void onEntityCreation(BulkCampaign entity) {
-        entity.setCampaign(new Campaign());
+        Campaign c = new Campaign();
+        c.setId(100L);
+        entity.setCampaign(c);
     }
 
     @Override

@@ -14,7 +14,9 @@ public abstract class BulkKeywordTest extends BulkEntityTest<BulkKeyword> {
 
     @Override
     protected void onEntityCreation(BulkKeyword entity) {
-        entity.setKeyword(new Keyword());
+        Keyword e = new Keyword();
+        e.setId(100L);
+        entity.setKeyword(e);
     }
 
     @Override

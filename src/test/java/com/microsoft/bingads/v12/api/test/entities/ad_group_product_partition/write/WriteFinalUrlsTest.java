@@ -43,6 +43,7 @@ public class WriteFinalUrlsTest extends BulkAdGroupProductPartitionTest {
 
                         BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();
 
+                        adGroupCriterion.setId(100L);
                         adGroupCriterion.setCriterion(criterion);
 
                         c.setAdGroupCriterion(adGroupCriterion);

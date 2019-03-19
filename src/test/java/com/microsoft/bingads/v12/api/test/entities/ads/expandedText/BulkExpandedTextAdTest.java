@@ -7,13 +7,16 @@ import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v12.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v12.bulk.entities.BulkExpandedTextAd;
+import com.microsoft.bingads.v12.campaignmanagement.Ad;
 import com.microsoft.bingads.v12.campaignmanagement.ExpandedTextAd;
 
 public abstract class BulkExpandedTextAdTest extends BulkEntityTest<BulkExpandedTextAd> {
 
     @Override
     protected void onEntityCreation(BulkExpandedTextAd entity) {
-        entity.setExpandedTextAd(new ExpandedTextAd());
+        ExpandedTextAd e = new ExpandedTextAd();
+        e.setId(100L);
+        entity.setExpandedTextAd(e);
     }
 
     @Override

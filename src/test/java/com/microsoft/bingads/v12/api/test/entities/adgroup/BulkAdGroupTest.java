@@ -14,7 +14,9 @@ public abstract class BulkAdGroupTest extends BulkEntityTest<BulkAdGroup> {
 
     @Override
     protected void onEntityCreation(BulkAdGroup entity) {
-        entity.setAdGroup(new AdGroup());
+        AdGroup adGroup = new AdGroup();
+        adGroup.setId(100L);
+        entity.setAdGroup(adGroup);
     }
 
     @Override

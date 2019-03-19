@@ -13,7 +13,9 @@ public abstract class BulkAppAdExtensionTest extends BulkEntityTest<BulkAppAdExt
 
     @Override
     protected void onEntityCreation(BulkAppAdExtension entity) {
-        entity.setAppAdExtension(new AppAdExtension());
+        AppAdExtension e = new AppAdExtension();
+        e.setId(100L);
+        entity.setAppAdExtension(e);
     }
 
     @Override

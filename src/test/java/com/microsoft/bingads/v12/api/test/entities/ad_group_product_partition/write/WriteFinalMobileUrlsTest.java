@@ -42,7 +42,7 @@ public class WriteFinalMobileUrlsTest extends BulkAdGroupProductPartitionTest {
                         ProductPartition criterion = new ProductPartition();
 
                         BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();
-
+                        adGroupCriterion.setId(100L);
                         adGroupCriterion.setCriterion(criterion);
 
                         c.setAdGroupCriterion(adGroupCriterion);

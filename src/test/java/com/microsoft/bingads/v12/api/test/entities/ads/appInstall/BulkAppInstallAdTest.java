@@ -13,7 +13,9 @@ public abstract class BulkAppInstallAdTest extends BulkEntityTest<BulkAppInstall
 
     @Override
     protected void onEntityCreation(BulkAppInstallAd entity) {
-        entity.setAppInstallAd(new AppInstallAd());
+        AppInstallAd ad = new AppInstallAd();
+        ad.setId(100L);
+        entity.setAppInstallAd(ad);
     }
 
     @Override

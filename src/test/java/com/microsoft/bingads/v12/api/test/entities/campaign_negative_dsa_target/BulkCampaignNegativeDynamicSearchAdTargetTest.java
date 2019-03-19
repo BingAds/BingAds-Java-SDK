@@ -28,6 +28,7 @@ public abstract class BulkCampaignNegativeDynamicSearchAdTargetTest extends Bulk
 
         NegativeCampaignCriterion negativeCampaignCriterion = new NegativeCampaignCriterion();
         negativeCampaignCriterion.setCriterion(webpage);
+        negativeCampaignCriterion.setId(100L);
         negativeCampaignCriterion.setType("NegativeCampaignCriterion");
 
         entity.setNegativeCampaignCriterion(negativeCampaignCriterion);

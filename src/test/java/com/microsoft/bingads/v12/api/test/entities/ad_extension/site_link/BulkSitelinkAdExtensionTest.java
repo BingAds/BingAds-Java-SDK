@@ -13,7 +13,9 @@ public abstract class BulkSitelinkAdExtensionTest extends BulkEntityTest<BulkSit
 
     @Override
     protected void onEntityCreation(BulkSitelinkAdExtension entity) {
-        entity.setSitelinkAdExtension(new SitelinkAdExtension());
+		SitelinkAdExtension e = new SitelinkAdExtension();
+		e.setId(100L);
+        entity.setSitelinkAdExtension(e);
     }
 
     @Override

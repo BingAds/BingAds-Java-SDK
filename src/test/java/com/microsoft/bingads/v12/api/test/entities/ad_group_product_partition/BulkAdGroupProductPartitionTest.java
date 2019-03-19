@@ -12,7 +12,7 @@ public abstract class BulkAdGroupProductPartitionTest extends BulkEntityTest<Bul
 
     @Override
     protected void onEntityCreation(BulkAdGroupProductPartition entity) {
-
+        int i =0;
     }
 
     @Override

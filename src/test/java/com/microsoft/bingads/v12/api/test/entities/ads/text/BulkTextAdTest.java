@@ -13,7 +13,9 @@ public abstract class BulkTextAdTest extends BulkEntityTest<BulkTextAd> {
 
     @Override
     protected void onEntityCreation(BulkTextAd entity) {
-        entity.setTextAd(new TextAd());
+        TextAd e = new TextAd();
+        e.setId(100L);
+        entity.setTextAd(e);
     }
 
     @Override

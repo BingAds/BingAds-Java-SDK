@@ -27,8 +27,8 @@ public abstract class BulkAdGroupDynamicSearchAdTargetTest extends BulkEntityTes
         webpage.setType("Webpage");
 
         BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
+        biddableAdGroupCriterion.setId(100L);
         biddableAdGroupCriterion.setCriterion(webpage);
-
         entity.setBiddableAdGroupCriterion(biddableAdGroupCriterion);
     }
 

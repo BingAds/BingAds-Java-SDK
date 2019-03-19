@@ -13,7 +13,9 @@ public abstract class BulkActionAdExtensionTest extends BulkEntityTest<BulkActio
 
     @Override
     protected void onEntityCreation(BulkActionAdExtension entity) {
-        entity.setActionAdExtension(new ActionAdExtension());
+        ActionAdExtension e =  new ActionAdExtension();
+        e.setId(100L);
+        entity.setActionAdExtension(e);
     }
 
     @Override

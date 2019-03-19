@@ -37,7 +37,7 @@ public class BulkImageAdExtensionWriteFromRowValuesMediaIdTest extends BulkImage
 		
 		return Arrays.asList(new Object[][] {
 			{null, null},
-			{"delete_value", new ArrayOflong()},
+			{null, new ArrayOflong()},
 			{"123;456", array},
 		});
     }

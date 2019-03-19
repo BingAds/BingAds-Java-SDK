@@ -40,7 +40,7 @@ public class WriteTrackingTemplateTest extends BulkAdGroupProductPartitionTest {
                         BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();
 
                         adGroupCriterion.setCriterion(criterion);
-
+                        adGroupCriterion.setId(100L);
                         c.setAdGroupCriterion(adGroupCriterion);
 
                         adGroupCriterion.setTrackingUrlTemplate(v);
