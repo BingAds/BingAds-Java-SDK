@@ -302,7 +302,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 new Function<BulkCampaign, String>() {
                     @Override
                     public String apply(BulkCampaign c) {
-                        return StringExtensions.writeCampaignLanguages(";", c.getCampaign().getLanguages());
+                        return StringExtensions.writeCampaignLanguages(";", c.getCampaign().getLanguages(), c.getCampaign().getId());
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -573,7 +573,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 new Function<BulkCampaign, String>() {
                     @Override
                     public String apply(BulkCampaign c) {
-                        return StringExtensions.toOptionalBulkString(c.getCampaign().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getCampaign().getTrackingUrlTemplate(), c.getCampaign().getId());
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -588,7 +588,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 new Function<BulkCampaign, String>() {
                     @Override
                     public String apply(BulkCampaign c) {
-                        return StringExtensions.toCustomParaBulkString(c.getCampaign().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getCampaign().getUrlCustomParameters(), c.getCampaign().getId());
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -619,15 +619,15 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
                             if (c.getCampaign().getBiddingScheme() instanceof MaxClicksBiddingScheme) {
                                 Bid maxCpc = ((MaxClicksBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
                             }
                             else if (c.getCampaign().getBiddingScheme() instanceof MaxConversionsBiddingScheme) {
                                 Bid maxCpc = ((MaxConversionsBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
                             }
                             else if (c.getCampaign().getBiddingScheme() instanceof TargetCpaBiddingScheme) {
                                 Bid maxCpc = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc));
+                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
                                 Double targetCpa = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getTargetCpa();
                                 if (targetCpa != null) {
                                 	values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());

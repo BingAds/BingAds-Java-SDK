@@ -64,8 +64,6 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
 
     private PerformanceData performanceData;
 
-    private boolean isExpired;
-
     private static final List<BulkMapping<BulkAdGroup>> MAPPINGS;
 
     static {
@@ -90,28 +88,18 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        if (c.getIsExpired()) {
-                            return "Expired";
-                        }
-
                         return c.getAdGroup().getStatus() != null ? c.getAdGroup().getStatus().value() : null;
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
                     @Override
                     public void accept(String v, BulkAdGroup c) {
-                        if (v.equals("Expired")) {
-                            c.getAdGroup().setStatus(AdGroupStatus.EXPIRED);
-
-                            c.setIsExpired(true);
-                        } else {
-                            c.getAdGroup().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupStatus>() {
-                                @Override
-                                public AdGroupStatus apply(String value) {
-                                    return AdGroupStatus.fromValue(value);
-                                }
-                            }));
-                        }
+                        c.getAdGroup().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupStatus>() {
+                            @Override
+                            public AdGroupStatus apply(String value) {
+                                return AdGroupStatus.fromValue(value);
+                            }
+                        }));
                     }
                 }
         ));
@@ -243,7 +231,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        return StringExtensions.toAdGroupBidBulkString(c.getAdGroup().getCpcBid());
+                        return StringExtensions.toAdGroupBidBulkString(c.getAdGroup().getCpcBid(), c.getAdGroup().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
@@ -258,7 +246,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        return StringExtensions.toOptionalBulkString(c.getAdGroup().getLanguage());
+                        return StringExtensions.toOptionalBulkString(c.getAdGroup().getLanguage(), c.getAdGroup().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
@@ -288,7 +276,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        return StringExtensions.toOptionalBulkString(c.getAdGroup().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getAdGroup().getTrackingUrlTemplate(), c.getAdGroup().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
@@ -303,7 +291,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 new Function<BulkAdGroup, String>() {
                     @Override
                     public String apply(BulkAdGroup c) {
-                        return StringExtensions.toCustomParaBulkString(c.getAdGroup().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getAdGroup().getUrlCustomParameters(), c.getAdGroup().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdGroup>() {
@@ -616,17 +604,4 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         return performanceData;
     }
 
-    /**
-     * Gets whether the AdGroup is expired.
-     */
-    public boolean getIsExpired() {
-        return isExpired;
-    }
-
-    /**
-     * Sets whether the AdGroup is expired.
-     */
-    private void setIsExpired(boolean isExpired) {
-        this.isExpired = isExpired;
-    }
 }

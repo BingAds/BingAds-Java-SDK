@@ -180,7 +180,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
                         if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getTrackingUrlTemplate());
+                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getTrackingUrlTemplate(), c.getBiddableAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -201,7 +201,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) {
                         if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters());
+                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters(), c.getBiddableAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -254,7 +254,7 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                     public String apply(BulkAdGroupDynamicSearchAdTarget c) { 
                     	if (c.getBiddableAdGroupCriterion().getCriterion() instanceof Webpage) {    
                     		WebpageParameter webpageParameter = ((Webpage) c.getBiddableAdGroupCriterion().getCriterion()).getParameter();
-                    		return StringExtensions.toCriterionNameBulkString(webpageParameter);
+                    		return StringExtensions.toCriterionNameBulkString(webpageParameter, c.getBiddableAdGroupCriterion().getId());
                     	} 
                     	return null;
                     }

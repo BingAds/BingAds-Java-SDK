@@ -95,6 +95,7 @@ public class CsvHeaders {
 
             // Action ad extension
             StringTable.ActionType,
+            StringTable.ActionText,
 
             // Site link ad extensions
             StringTable.SiteLinkExtensionOrder,

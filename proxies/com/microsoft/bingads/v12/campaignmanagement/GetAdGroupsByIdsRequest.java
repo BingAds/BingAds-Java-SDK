@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v12.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -20,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AdGroupIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v12}AdGroupAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "campaignId",
-    "adGroupIds"
+    "adGroupIds",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAdGroupsByIdsRequest")
 public class GetAdGroupsByIdsRequest {
@@ -40,6 +44,9 @@ public class GetAdGroupsByIdsRequest {
     protected Long campaignId;
     @XmlElement(name = "AdGroupIds", nillable = true)
     protected ArrayOflong adGroupIds;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Collection<AdGroupAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the campaignId property.
@@ -87,6 +94,30 @@ public class GetAdGroupsByIdsRequest {
      */
     public void setAdGroupIds(ArrayOflong value) {
         this.adGroupIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdGroupAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AdGroupAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

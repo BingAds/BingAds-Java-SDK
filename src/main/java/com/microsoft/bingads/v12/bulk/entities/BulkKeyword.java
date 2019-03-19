@@ -173,7 +173,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                    	return StringExtensions.toOptionalBulkString(c.getKeyword().getDestinationUrl());
+                    	return StringExtensions.toOptionalBulkString(c.getKeyword().getDestinationUrl(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -229,7 +229,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toKeywordBidBulkString(c.getKeyword().getBid());
+                        return StringExtensions.toKeywordBidBulkString(c.getKeyword().getBid(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -244,7 +244,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam1());
+                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam1(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -259,7 +259,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam2());
+                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam2(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -274,7 +274,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam3());
+                        return StringExtensions.toOptionalBulkString(c.getKeyword().getParam3(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -289,7 +289,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.writeUrls("; ", c.getKeyword().getFinalUrls());
+                        return StringExtensions.writeUrls("; ", c.getKeyword().getFinalUrls(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -312,7 +312,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.writeUrls("; ", c.getKeyword().getFinalMobileUrls());
+                        return StringExtensions.writeUrls("; ", c.getKeyword().getFinalMobileUrls(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -335,7 +335,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toOptionalBulkString(c.getKeyword().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getKeyword().getTrackingUrlTemplate(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {
@@ -350,7 +350,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                 new Function<BulkKeyword, String>() {
                     @Override
                     public String apply(BulkKeyword c) {
-                        return StringExtensions.toCustomParaBulkString(c.getKeyword().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getKeyword().getUrlCustomParameters(), c.getKeyword().getId());
                     }
                 },
                 new BiConsumer<String, BulkKeyword>() {

@@ -177,7 +177,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                 new Function<BulkAd, String>() {
                     @Override
                     public String apply(BulkAd c) {
-                        return StringExtensions.writeUrls("; ", c.getAd().getFinalUrls());
+                        return StringExtensions.writeUrls("; ", c.getAd().getFinalUrls(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkAd>() {
@@ -199,7 +199,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                 new Function<BulkAd, String>() {
                     @Override
                     public String apply(BulkAd c) {
-                        return StringExtensions.writeUrls("; ", c.getAd().getFinalMobileUrls());
+                        return StringExtensions.writeUrls("; ", c.getAd().getFinalMobileUrls(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkAd>() {
@@ -221,7 +221,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                 new Function<BulkAd, String>() {
                     @Override
                     public String apply(BulkAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getTrackingUrlTemplate(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkAd>() {
@@ -236,7 +236,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                 new Function<BulkAd, String>() {
                     @Override
                     public String apply(BulkAd c) {
-                        return StringExtensions.toCustomParaBulkString(c.getAd().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getAd().getUrlCustomParameters(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkAd>() {

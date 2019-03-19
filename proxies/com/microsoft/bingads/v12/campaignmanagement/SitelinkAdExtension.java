@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="DisplayText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalAppUrls" type="{https://bingads.microsoft.com/CampaignManagement/v12}ArrayOfAppUrl" minOccurs="0"/>
  *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v12}CustomParameters" minOccurs="0"/>
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
     "displayText",
     "finalAppUrls",
     "finalMobileUrls",
+    "finalUrlSuffix",
     "finalUrls",
     "trackingUrlTemplate",
     "urlCustomParameters"
@@ -62,6 +64,8 @@ public class SitelinkAdExtension
     protected ArrayOfAppUrl finalAppUrls;
     @XmlElement(name = "FinalMobileUrls", nillable = true)
     protected ArrayOfstring finalMobileUrls;
+    @XmlElement(name = "FinalUrlSuffix", nillable = true)
+    protected String finalUrlSuffix;
     @XmlElement(name = "FinalUrls", nillable = true)
     protected ArrayOfstring finalUrls;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
@@ -211,6 +215,30 @@ public class SitelinkAdExtension
      */
     public void setFinalMobileUrls(ArrayOfstring value) {
         this.finalMobileUrls = value;
+    }
+
+    /**
+     * Gets the value of the finalUrlSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    /**
+     * Sets the value of the finalUrlSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFinalUrlSuffix(String value) {
+        this.finalUrlSuffix = value;
     }
 
     /**

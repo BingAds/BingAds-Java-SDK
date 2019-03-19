@@ -84,6 +84,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CustomerName"/>
  *     &lt;enumeration value="ClickSharePercent"/>
  *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
+ *     &lt;enumeration value="CampaignType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -232,7 +234,11 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("ClickSharePercent")
     CLICK_SHARE_PERCENT("ClickSharePercent"),
     @XmlEnumValue("AbsoluteTopImpressionSharePercent")
-    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent");
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent"),
+    @XmlEnumValue("FinalUrlSuffix")
+    FINAL_URL_SUFFIX("FinalUrlSuffix"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

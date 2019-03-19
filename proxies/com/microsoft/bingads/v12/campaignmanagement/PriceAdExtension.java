@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v12}AdExtension">
  *       &lt;sequence>
+ *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="PriceExtensionType" type="{https://bingads.microsoft.com/CampaignManagement/v12}PriceExtensionType"/>
  *         &lt;element name="TableRows" type="{https://bingads.microsoft.com/CampaignManagement/v12}ArrayOfPriceTableRow" minOccurs="0"/>
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PriceAdExtension", propOrder = {
+    "finalUrlSuffix",
     "language",
     "priceExtensionType",
     "tableRows",
@@ -43,6 +45,8 @@ public class PriceAdExtension
     extends AdExtension
 {
 
+    @XmlElement(name = "FinalUrlSuffix", nillable = true)
+    protected String finalUrlSuffix;
     @XmlElement(name = "Language", nillable = true)
     protected String language;
     @XmlElement(name = "PriceExtensionType", required = true)
@@ -54,6 +58,30 @@ public class PriceAdExtension
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
+
+    /**
+     * Gets the value of the finalUrlSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    /**
+     * Sets the value of the finalUrlSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFinalUrlSuffix(String value) {
+        this.finalUrlSuffix = value;
+    }
 
     /**
      * Gets the value of the language property.

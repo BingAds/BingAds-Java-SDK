@@ -29,7 +29,7 @@ import com.microsoft.bingads.InternalException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "12.0.3";
+    private static final String VERSION = "12.0.4";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -79,6 +79,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
                     setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/BulkService.svc");
                 }
             });
+			//End of v12
         }
     };
 

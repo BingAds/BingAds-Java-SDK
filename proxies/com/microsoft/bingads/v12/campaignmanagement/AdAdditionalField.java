@@ -7,7 +7,8 @@ public enum AdAdditionalField {
 
     TITLE_PART3("TitlePart3"),
     TEXT_PART2("TextPart2"),
-    IMAGES("Images");
+    IMAGES("Images"),
+    FINAL_URL_SUFFIX("FinalUrlSuffix");
         
     private final String value;
 

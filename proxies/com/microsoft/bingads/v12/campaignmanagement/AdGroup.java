@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v12}BiddingScheme" minOccurs="0"/>
  *         &lt;element name="CpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v12}Bid" minOccurs="0"/>
  *         &lt;element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v12}Date" minOccurs="0"/>
+ *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "biddingScheme",
     "cpcBid",
     "endDate",
+    "finalUrlSuffix",
     "forwardCompatibilityMap",
     "id",
     "language",
@@ -73,6 +75,8 @@ public class AdGroup {
     protected Bid cpcBid;
     @XmlElement(name = "EndDate", nillable = true)
     protected Date endDate;
+    @XmlElement(name = "FinalUrlSuffix", nillable = true)
+    protected String finalUrlSuffix;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Id", nillable = true)
@@ -217,6 +221,30 @@ public class AdGroup {
      */
     public void setEndDate(Date value) {
         this.endDate = value;
+    }
+
+    /**
+     * Gets the value of the finalUrlSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    /**
+     * Sets the value of the finalUrlSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFinalUrlSuffix(String value) {
+        this.finalUrlSuffix = value;
     }
 
     /**

@@ -5,7 +5,8 @@ package com.microsoft.bingads.v12.campaignmanagement;
  */
 public enum CampaignAdditionalField {
 
-    EXPERIMENT_ID("ExperimentId");
+    EXPERIMENT_ID("ExperimentId"),
+    FINAL_URL_SUFFIX("FinalUrlSuffix");
         
     private final String value;
 

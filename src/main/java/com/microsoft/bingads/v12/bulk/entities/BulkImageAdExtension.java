@@ -58,7 +58,7 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
                 new Function<BulkImageAdExtension, String>() {
                     @Override
                     public String apply(BulkImageAdExtension c) {
-                        return StringExtensions.toOptionalBulkString(c.getImageAdExtension().getDestinationUrl());
+                        return StringExtensions.toOptionalBulkString(c.getImageAdExtension().getDestinationUrl(), c.getImageAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkImageAdExtension>() {

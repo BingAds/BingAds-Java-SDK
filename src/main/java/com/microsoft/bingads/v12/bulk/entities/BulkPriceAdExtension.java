@@ -97,7 +97,7 @@ public class BulkPriceAdExtension extends BulkAdExtension<PriceAdExtension> {
                 new Function<BulkPriceAdExtension, String>() {
                     @Override
                     public String apply(BulkPriceAdExtension c) {
-                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getTrackingUrlTemplate(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkPriceAdExtension>() {
@@ -112,7 +112,7 @@ public class BulkPriceAdExtension extends BulkAdExtension<PriceAdExtension> {
                 new Function<BulkPriceAdExtension, String>() {
                     @Override
                     public String apply(BulkPriceAdExtension c) {
-                        return StringExtensions.toCustomParaBulkString(c.getAdExtension().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getAdExtension().getUrlCustomParameters(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkPriceAdExtension>() {
@@ -135,7 +135,7 @@ public class BulkPriceAdExtension extends BulkAdExtension<PriceAdExtension> {
                         if (priceAdExtension == null || priceAdExtension.getTableRows() == null) {
                             return;
                         }	                        
-                        PriceTableRowHelper.addRowValuesFromPriceTableRows(priceAdExtension.getTableRows(), v);
+                        PriceTableRowHelper.addRowValuesFromPriceTableRows(priceAdExtension.getTableRows(), v, priceAdExtension.getId());
                     }
                 },
                 new BiConsumer<RowValues, BulkPriceAdExtension>() {

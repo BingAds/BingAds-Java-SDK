@@ -46,7 +46,7 @@ public class BulkResponsiveSearchAd extends BulkAd<ResponsiveSearchAd> {
                 new Function<BulkResponsiveSearchAd, String>() {
                     @Override
                     public String apply(BulkResponsiveSearchAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getPath1());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath1(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkResponsiveSearchAd>() {
@@ -60,7 +60,7 @@ public class BulkResponsiveSearchAd extends BulkAd<ResponsiveSearchAd> {
                 new Function<BulkResponsiveSearchAd, String>() {
                     @Override
                     public String apply(BulkResponsiveSearchAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getPath2());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath2(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkResponsiveSearchAd>() {
@@ -74,7 +74,7 @@ public class BulkResponsiveSearchAd extends BulkAd<ResponsiveSearchAd> {
                 new Function<BulkResponsiveSearchAd, String>() {
                     @Override
                     public String apply(BulkResponsiveSearchAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getDomain());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getDomain(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkResponsiveSearchAd>() {

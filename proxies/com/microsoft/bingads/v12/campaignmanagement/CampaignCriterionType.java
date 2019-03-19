@@ -15,9 +15,15 @@ public enum CampaignCriterionType {
     RADIUS("Radius"),
     DEVICE("Device"),
     LOCATION_INTENT("LocationIntent"),
+    AUDIENCE("Audience"),
+    CUSTOM_AUDIENCE("CustomAudience"),
+    IN_MARKET_AUDIENCE("InMarketAudience"),
+    REMARKETING_LIST("RemarketingList"),
     COMPANY_NAME("CompanyName"),
     JOB_FUNCTION("JobFunction"),
-    INDUSTRY("Industry");
+    INDUSTRY("Industry"),
+    PRODUCT_AUDIENCE("ProductAudience"),
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList");
         
     private final String value;
 

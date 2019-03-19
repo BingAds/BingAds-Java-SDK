@@ -76,7 +76,7 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getTitlePart3());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getTitlePart3(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
@@ -106,7 +106,7 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getTextPart2());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getTextPart2(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
@@ -121,7 +121,7 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getPath1());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath1(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
@@ -137,7 +137,7 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getPath2());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getPath2(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {
@@ -154,7 +154,7 @@ public class BulkExpandedTextAd extends BulkAd<ExpandedTextAd> {
                 new Function<BulkExpandedTextAd, String>() {
                     @Override
                     public String apply(BulkExpandedTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getDomain());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getDomain(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkExpandedTextAd>() {

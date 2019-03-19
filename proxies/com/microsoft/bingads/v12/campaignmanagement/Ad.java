@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v12}AdEditorialStatus" minOccurs="0"/>
  *         &lt;element name="FinalAppUrls" type="{https://bingads.microsoft.com/CampaignManagement/v12}ArrayOfAppUrl" minOccurs="0"/>
  *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -46,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
     "editorialStatus",
     "finalAppUrls",
     "finalMobileUrls",
+    "finalUrlSuffix",
     "finalUrls",
     "forwardCompatibilityMap",
     "id",
@@ -76,6 +78,8 @@ public class Ad {
     protected ArrayOfAppUrl finalAppUrls;
     @XmlElement(name = "FinalMobileUrls", nillable = true)
     protected ArrayOfstring finalMobileUrls;
+    @XmlElement(name = "FinalUrlSuffix", nillable = true)
+    protected String finalUrlSuffix;
     @XmlElement(name = "FinalUrls", nillable = true)
     protected ArrayOfstring finalUrls;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
@@ -211,6 +215,30 @@ public class Ad {
      */
     public void setFinalMobileUrls(ArrayOfstring value) {
         this.finalMobileUrls = value;
+    }
+
+    /**
+     * Gets the value of the finalUrlSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    /**
+     * Sets the value of the finalUrlSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFinalUrlSuffix(String value) {
+        this.finalUrlSuffix = value;
     }
 
     /**

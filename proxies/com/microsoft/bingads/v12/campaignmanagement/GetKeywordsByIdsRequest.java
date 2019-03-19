@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v12.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -20,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="KeywordIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v12}KeywordAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "adGroupId",
-    "keywordIds"
+    "keywordIds",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetKeywordsByIdsRequest")
 public class GetKeywordsByIdsRequest {
@@ -40,6 +44,9 @@ public class GetKeywordsByIdsRequest {
     protected Long adGroupId;
     @XmlElement(name = "KeywordIds", nillable = true)
     protected ArrayOflong keywordIds;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter13 .class)
+    protected Collection<KeywordAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the adGroupId property.
@@ -87,6 +94,30 @@ public class GetKeywordsByIdsRequest {
      */
     public void setKeywordIds(ArrayOflong value) {
         this.keywordIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<KeywordAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<KeywordAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

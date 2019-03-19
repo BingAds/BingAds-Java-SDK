@@ -91,7 +91,7 @@ public class BulkTextAd extends BulkAd<TextAd> {
                 new Function<BulkTextAd, String>() {
                     @Override
                     public String apply(BulkTextAd c) {
-                        return StringExtensions.toOptionalBulkString(c.getAd().getDestinationUrl());
+                        return StringExtensions.toOptionalBulkString(c.getAd().getDestinationUrl(), c.getAd().getId());
                     }
                 },
                 new BiConsumer<String, BulkTextAd>() {

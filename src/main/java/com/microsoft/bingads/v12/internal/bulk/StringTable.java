@@ -396,6 +396,7 @@ public class StringTable {
     public static final String CampaignActionAdExtension = "Campaign Action Ad Extension";
     public static final String AdGroupActionAdExtension = "Ad Group Action Ad Extension";
     public static final String ActionType = "Action Type";
+    public static final String ActionText= "Action Text";
     
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";

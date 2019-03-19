@@ -15,14 +15,14 @@ class PriceTableRowHelper {
 
     public static final int MaxNumberOfPriceTableRows = 8;
 
-    public static void addRowValuesFromPriceTableRows(ArrayOfPriceTableRow arrayOfPriceTableRow, RowValues rowValues) {
+    public static void addRowValuesFromPriceTableRows(ArrayOfPriceTableRow arrayOfPriceTableRow, RowValues rowValues, Long id) {
         List<PriceTableRow> priceTableRows = arrayOfPriceTableRow.getPriceTableRows();
         for (int i = 1; i <= priceTableRows.size(); i++) {
             rowValues.put(StringTable.CurrencyCodeColumnPrefix + i, priceTableRows.get(i - 1).getCurrencyCode());
             rowValues.put(StringTable.PriceDescriptionColumnPrefix + i, priceTableRows.get(i - 1).getDescription());
             rowValues.put(StringTable.HeaderColumnPrefix + i, priceTableRows.get(i - 1).getHeader());
-            rowValues.put(StringTable.FinalMobileUrlColumnPrefix + i, StringExtensions.writeUrls("; ", priceTableRows.get(i - 1).getFinalMobileUrls()));
-            rowValues.put(StringTable.FinalUrlColumnPrefix + i, StringExtensions.writeUrls("; ", priceTableRows.get(i - 1).getFinalUrls()));
+            rowValues.put(StringTable.FinalMobileUrlColumnPrefix + i, StringExtensions.writeUrls("; ", priceTableRows.get(i - 1).getFinalMobileUrls(), id));
+            rowValues.put(StringTable.FinalUrlColumnPrefix + i, StringExtensions.writeUrls("; ", priceTableRows.get(i - 1).getFinalUrls(), id));
             rowValues.put(StringTable.PriceColumnPrefix + i, StringExtensions.toBulkString(priceTableRows.get(i - 1).getPrice()));
             rowValues.put(StringTable.PriceQualifierColumnPrefix + i, priceTableRows.get(i - 1).getPriceQualifier().value());
             rowValues.put(StringTable.PriceUnitColumnPrefix + i, priceTableRows.get(i - 1).getPriceUnit().value());

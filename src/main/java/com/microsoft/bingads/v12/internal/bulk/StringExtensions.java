@@ -94,25 +94,25 @@ public class StringExtensions {
 	private static final Pattern stringOperatorPattern = Pattern.compile("^(Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
 	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
 	
-    public static String toKeywordBidBulkString(Bid bid) {
+    public static String toKeywordBidBulkString(Bid bid, Long id) {
         if (bid == null) {
             return null;
         }
 
-        if (bid.getAmount() == null) {
-            return StringTable.DeleteValue;
+        if (bid.getAmount() == null)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
         }
 
         return StringExtensions.toBulkString(bid.getAmount());
     }
 
-    public static String toBidBulkString(Bid bid) {
+    public static String toBidBulkString(Bid bid, Long id) {
         if (bid == null) {
             return null;
         }
 
-        if (bid.getAmount() == null) {
-            return StringTable.DeleteValue;
+        if (bid.getAmount() == null)  {
+            return id != null && id > 0 ? StringTable.DeleteValue : null;
         }
 
         return StringExtensions.toBulkString(bid.getAmount());
@@ -326,9 +326,9 @@ public class StringExtensions {
         return String.format(DATE_OUTPUT_FORMAT, c.getMonth(), c.getDay(), c.getYear());
     }
     
-    public static String toScheduleDateBulkString(Date c) {
-    	if (c == null || (c.getMonth() == 0 && c.getDay() == 0 && c.getYear() == 0)) {
-            return StringTable.DeleteValue;
+    public static String toScheduleDateBulkString(Date c, Long id) {
+    	if (c == null || (c.getMonth() == 0 && c.getDay() == 0 && c.getYear() == 0))  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
         }
 
         return String.format(DATE_OUTPUT_FORMAT, c.getMonth(), c.getDay(), c.getYear());
@@ -387,12 +387,12 @@ public class StringExtensions {
         return factory.apply(parse.apply(v));
     }
 
-    public static String toOptionalBulkString(String value) {
+    public static String toOptionalBulkString(String value, Long id) {
         if (value == null) {
             return null;
         }
 
-        if (value.isEmpty()) {
+        if (value.isEmpty() && id != null && id > 0) {
             return StringTable.DeleteValue;
         }
 
@@ -449,15 +449,15 @@ public class StringExtensions {
         return StringExtensions.toBulkString(c.getType().value());
     }
 
-    public static String toAdGroupBidBulkString(Bid bid) {
+    public static String toAdGroupBidBulkString(Bid bid, Long id) {
         if (bid == null || bid.getAmount() == null) {
             return null;
         }
 
-        if (bid.getAmount() == 0.0) {
-            return StringTable.DeleteValue;
+        if (bid.getAmount() == 0.0)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
         }
-
+        
         return bid.getAmount().toString();
     }
     
@@ -469,13 +469,13 @@ public class StringExtensions {
         return v.toString();
     }
     
-    public static String toAdGroupFixedBidBulkString(FixedBid bid) {
+    public static String toAdGroupFixedBidBulkString(FixedBid bid, Long id) {
         if (bid == null || bid.getAmount() == null) {
             return null;
         }
 
         if (bid.getAmount() == 0.0) {
-            return StringTable.DeleteValue;
+            return id != null && id > 0? StringTable.DeleteValue : null;
         }
 
         return bid.getAmount().toString();
@@ -704,13 +704,13 @@ public class StringExtensions {
         return new File(fullFileName + newExtension);
     }
     
-    public static String writeUrls(String separator, ArrayOfstring strings) {
+    public static String writeUrls(String separator, ArrayOfstring strings, Long id) {
         if (strings == null) {
             return null;
         }
         
         if (strings.getStrings().size() == 0) {
-        	return StringTable.DeleteValue;
+        	return id != null && id > 0? StringTable.DeleteValue : null;
         }
         
         StringBuilder result = new StringBuilder("");
@@ -741,13 +741,13 @@ public class StringExtensions {
     	return urlArray; 	
     }
 
-    public static String writeCampaignLanguages(String separator, ArrayOfstring strings) {
+    public static String writeCampaignLanguages(String separator, ArrayOfstring strings, Long id) {
         if (strings == null) {
             return null;
         }
         
-        if (strings.getStrings().size() == 0) {
-        	return StringTable.DeleteValue;
+        if (strings.getStrings().size() == 0)  {
+            return null;
         }
         
         StringBuilder result = new StringBuilder("");
@@ -778,15 +778,15 @@ public class StringExtensions {
     	return languageArray; 	
     }
     
-    public static String toCustomParaBulkString(CustomParameters parameters) {
+    public static String toCustomParaBulkString(CustomParameters parameters, Long id) {
     	if (parameters == null) {
     		return null;
     	}
     	
     	ArrayOfCustomParameter customParaArray = parameters.getParameters();
-    	if (customParaArray == null || customParaArray.getCustomParameters().size() == 0) {
-    		return StringTable.DeleteValue;
-    	}
+    	if (customParaArray == null || customParaArray.getCustomParameters().size() == 0)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
+        }
     	
     	String result = "";
     	
@@ -946,7 +946,7 @@ public class StringExtensions {
         }
         
         if (ids.getLongs().size() == 0) {
-        	return StringTable.DeleteValue;
+            return null;
         }
         
         StringBuilder result = new StringBuilder("");
@@ -994,15 +994,15 @@ public class StringExtensions {
         return result.toString();
     }
     
-    public static String toDayTimeRangesBulkString(ArrayOfDayTime arrayOfDayTime) {
-    	if (arrayOfDayTime == null) {
-    		return StringTable.DeleteValue;
-    	}
+    public static String toDayTimeRangesBulkString(ArrayOfDayTime arrayOfDayTime, Long id) {
+    	if (arrayOfDayTime == null)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
+        }
     	
     	List<DayTime> dayTimeRanges = arrayOfDayTime.getDayTimes();
-    	if (dayTimeRanges == null || dayTimeRanges.size() == 0) {
-    		return StringTable.DeleteValue;
-    	}
+    	if (dayTimeRanges == null || dayTimeRanges.size() == 0)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
+        }
     	
     	String result = "";
     	
@@ -1056,9 +1056,9 @@ public class StringExtensions {
     }    
     
     public static String toUseSearcherTimeZoneBulkString(Boolean useSearcherTimeZone) {
-    	if (useSearcherTimeZone == null) {
-    		return StringTable.DeleteValue;
-    	}
+    	if (useSearcherTimeZone == null)  {
+            return "false";
+        }
     	return useSearcherTimeZone ? "true": "false";
     }
     
@@ -1075,13 +1075,13 @@ public class StringExtensions {
     	}
     }
     
-    public static String toCriterionNameBulkString(WebpageParameter webpageParameter) {
+    public static String toCriterionNameBulkString(WebpageParameter webpageParameter, Long id) {
     	if (webpageParameter == null || webpageParameter.getCriterionName() == null) {
 			return null;
 		}
-		if (webpageParameter.getCriterionName().isEmpty()) {
-			return StringTable.DeleteValue;
-		}                    			
+		if (webpageParameter.getCriterionName().isEmpty())  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
+        }
 		return webpageParameter.getCriterionName();
     }
     
@@ -1375,7 +1375,7 @@ public class StringExtensions {
     		throw new IllegalArgumentException(String.format("Invalid String Rule Item perator: ", operator));
     	}
     }
-  
+    
     public static String toBulkString(TargetSetting targetSetting) {
         if (targetSetting == null) {
             return null;
@@ -1419,7 +1419,9 @@ public class StringExtensions {
     public static String writeArrayOfstring(ArrayOfstring arrayOfString, String separator) {
         if (arrayOfString == null) return null;
         
-        if (arrayOfString.getStrings().size() == 0) return StringTable.DeleteValue;
+        if (arrayOfString.getStrings().size() == 0) {
+            return null;
+        }
         
         return String.join(separator, arrayOfString.getStrings());
     }
@@ -1439,14 +1441,6 @@ public class StringExtensions {
                 )
                 .collect(Collectors.toList()));
         return ret;
-    }
-
-    public static String writeProductAudienceType(Collection<ProductAudienceType> productAudienceType, String separator) {
-        if (productAudienceType == null) return null;
-        
-        if (productAudienceType.size() == 0) return StringTable.DeleteValue;
-        
-        return String.join(separator, productAudienceType.stream().map(p -> p.value()).collect(Collectors.toList()));
     }
 
     public static Collection<ProductAudienceType> parseProductAudienceType(String value) {

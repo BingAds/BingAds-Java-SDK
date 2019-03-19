@@ -59,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdStatus"/>
  *     &lt;enumeration value="CustomerId"/>
  *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -157,7 +158,9 @@ public enum DestinationUrlPerformanceReportColumn {
     @XmlEnumValue("CustomerId")
     CUSTOMER_ID("CustomerId"),
     @XmlEnumValue("CustomerName")
-    CUSTOMER_NAME("CustomerName");
+    CUSTOMER_NAME("CustomerName"),
+    @XmlEnumValue("FinalUrlSuffix")
+    FINAL_URL_SUFFIX("FinalUrlSuffix");
     private final String value;
 
     DestinationUrlPerformanceReportColumn(String v) {

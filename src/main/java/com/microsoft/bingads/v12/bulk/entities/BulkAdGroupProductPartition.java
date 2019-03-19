@@ -314,7 +314,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                             if (bid == null) {
                                 return null;
                             } else {
-                                return StringExtensions.toAdGroupFixedBidBulkString(((FixedBid) bid));
+                                return StringExtensions.toAdGroupFixedBidBulkString(((FixedBid) bid), c.getAdGroupCriterion().getId());
                             }
                         } else {
                             return null;
@@ -338,7 +338,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupProductPartition c) {
                         if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getDestinationUrl());
+                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getDestinationUrl(), c.getAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -360,7 +360,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupProductPartition c) {
                         if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.writeUrls("; ", ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getFinalUrls());
+                            return StringExtensions.writeUrls("; ", ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getFinalUrls(), c.getAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -389,7 +389,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupProductPartition c) {
                         if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.writeUrls("; ", ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getFinalMobileUrls());
+                            return StringExtensions.writeUrls("; ", ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getFinalMobileUrls(), c.getAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -418,7 +418,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupProductPartition c) {
                         if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getTrackingUrlTemplate());
+                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getTrackingUrlTemplate(), c.getAdGroupCriterion().getId());
                         } else {
                             return null;
                         }
@@ -439,7 +439,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     @Override
                     public String apply(BulkAdGroupProductPartition c) {
                         if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getUrlCustomParameters());
+                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getUrlCustomParameters(), c.getAdGroupCriterion().getId());
                         } else {
                             return null;
                         }

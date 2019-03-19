@@ -163,7 +163,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         	return null;
                         }
                         
-                        return StringExtensions.toDayTimeRangesBulkString(t.getAdExtension().getScheduling().getDayTimeRanges());
+                        return StringExtensions.toDayTimeRangesBulkString(t.getAdExtension().getScheduling().getDayTimeRanges(), t.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdExtension>() {
@@ -185,7 +185,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         if (t.getAdExtension().getScheduling() == null) {
                         	return null;
                         }                        
-                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getStartDate());
+                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getStartDate(), t.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdExtension>() {
@@ -210,7 +210,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         if (t.getAdExtension().getScheduling() == null) {
                         	return null;
                         }                       
-                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getEndDate());
+                        return StringExtensions.toScheduleDateBulkString(t.getAdExtension().getScheduling().getEndDate(), t.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdExtension>() {

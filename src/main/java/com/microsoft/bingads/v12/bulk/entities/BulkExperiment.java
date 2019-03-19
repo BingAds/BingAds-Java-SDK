@@ -60,12 +60,12 @@ public class BulkExperiment extends SingleRecordBulkEntity {
         m.add(new SimpleBulkMapping<BulkExperiment, String>(StringTable.Status, new Function<BulkExperiment, String>() {
             @Override
             public String apply(BulkExperiment t) {
-                return StringExtensions.toOptionalBulkString(t.getExperiment().getExperimentStatus());
+                return t.getExperiment().getExperimentStatus();
             }
         }, new BiConsumer<String, BulkExperiment>() {
             @Override
             public void accept(String v, BulkExperiment c) {
-                c.getExperiment().setExperimentStatus(StringExtensions.getValueOrEmptyString(v));
+                c.getExperiment().setExperimentStatus(v);
             }
         }));
 

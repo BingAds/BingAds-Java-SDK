@@ -51,6 +51,8 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
     }
 
     private static final List<BulkMapping<BulkActionAdExtension>> MAPPINGS;
+    
+    private String actionText;
 
     static {
         List<BulkMapping<BulkActionAdExtension>> m = new ArrayList<BulkMapping<BulkActionAdExtension>>();
@@ -80,7 +82,7 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                 new Function<BulkActionAdExtension, String>() {
                     @Override
                     public String apply(BulkActionAdExtension c) {
-                        return StringExtensions.writeUrls("; ", c.getActionAdExtension().getFinalUrls());
+                        return StringExtensions.writeUrls("; ", c.getActionAdExtension().getFinalUrls(), c.getActionAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkActionAdExtension>() {
@@ -102,7 +104,7 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                 new Function<BulkActionAdExtension, String>() {
                     @Override
                     public String apply(BulkActionAdExtension c) {
-                        return StringExtensions.writeUrls("; ", c.getActionAdExtension().getFinalMobileUrls());
+                        return StringExtensions.writeUrls("; ", c.getActionAdExtension().getFinalMobileUrls(), c.getActionAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkActionAdExtension>() {
@@ -124,7 +126,7 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                 new Function<BulkActionAdExtension, String>() {
                     @Override
                     public String apply(BulkActionAdExtension t) {
-                        return StringExtensions.toOptionalBulkString(t.getActionAdExtension().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(t.getActionAdExtension().getTrackingUrlTemplate(), t.getActionAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkActionAdExtension>() {
@@ -154,7 +156,7 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                 new Function<BulkActionAdExtension, String>() {
                     @Override
                     public String apply(BulkActionAdExtension c) {
-                        return StringExtensions.toCustomParaBulkString(c.getActionAdExtension().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getActionAdExtension().getUrlCustomParameters(), c.getActionAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkActionAdExtension>() {
@@ -165,6 +167,21 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                         } catch (Exception e) {
                                 e.printStackTrace();
                         }
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkActionAdExtension, String>(StringTable.ActionText,
+                new Function<BulkActionAdExtension, String>() {
+                    @Override
+                    public String apply(BulkActionAdExtension t) {
+                        return t.getActionText();
+                    }
+                },
+                new BiConsumer<String, BulkActionAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkActionAdExtension c) {
+                        c.setActionText(v);
                     }
                 }
         ));
@@ -192,4 +209,13 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
         super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
+
+    public String getActionText() {
+        return actionText;
+    }
+
+    public void setActionText(String actionText) {
+        this.actionText = actionText;
+    }
+    
 }

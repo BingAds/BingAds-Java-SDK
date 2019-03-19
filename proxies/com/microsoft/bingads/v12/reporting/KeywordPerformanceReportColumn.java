@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Mainline1Bid"/>
  *     &lt;enumeration value="MainlineBid"/>
  *     &lt;enumeration value="FirstPageBid"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -205,7 +206,9 @@ public enum KeywordPerformanceReportColumn {
     @XmlEnumValue("MainlineBid")
     MAINLINE_BID("MainlineBid"),
     @XmlEnumValue("FirstPageBid")
-    FIRST_PAGE_BID("FirstPageBid");
+    FIRST_PAGE_BID("FirstPageBid"),
+    @XmlEnumValue("FinalUrlSuffix")
+    FINAL_URL_SUFFIX("FinalUrlSuffix");
     private final String value;
 
     KeywordPerformanceReportColumn(String v) {

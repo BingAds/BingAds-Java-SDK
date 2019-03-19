@@ -217,14 +217,14 @@ public abstract class BulkOperation<TStatus> {
     }
 
     /**
-     * Gets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     * Gets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
      */
     public int getStatusPollIntervalInMilliseconds() {
         return statusPollIntervalInMilliseconds;
     }
 
     /**
-     * Sets the time interval in milliseconds between two status polling attempts. The default value is 1000 (1 second).
+     * Sets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
      */
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;

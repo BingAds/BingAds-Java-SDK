@@ -176,7 +176,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                     public String apply(BulkAdGroupNegativeDynamicSearchAdTarget c) {
                     	if (c.getNegativeAdGroupCriterion().getCriterion() instanceof Webpage) {    
                     		WebpageParameter webpageParameter = ((Webpage) c.getNegativeAdGroupCriterion().getCriterion()).getParameter();
-                    		return StringExtensions.toCriterionNameBulkString(webpageParameter);
+                    		return StringExtensions.toCriterionNameBulkString(webpageParameter, c.getNegativeAdGroupCriterion().getId());
                     	} 
                     	return null; 
                     }

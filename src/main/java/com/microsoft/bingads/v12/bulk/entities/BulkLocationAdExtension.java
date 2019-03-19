@@ -74,7 +74,7 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
                 new Function<BulkLocationAdExtension, String>() {
                     @Override
                     public String apply(BulkLocationAdExtension c) {
-                        return StringExtensions.toOptionalBulkString(c.getLocationAdExtension().getPhoneNumber());
+                        return StringExtensions.toOptionalBulkString(c.getLocationAdExtension().getPhoneNumber(), c.getLocationAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkLocationAdExtension>() {
@@ -138,7 +138,7 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
                         return getAddressPart(c, new Function<Address, String>() {
                             @Override
                             public String apply(Address x) {
-                                return StringExtensions.toOptionalBulkString(x.getStreetAddress2());
+                                return StringExtensions.toOptionalBulkString(x.getStreetAddress2(), c.getAdExtension().getId());
                             }
                         });
                     }

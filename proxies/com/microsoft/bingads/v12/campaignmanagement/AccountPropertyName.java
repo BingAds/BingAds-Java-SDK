@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TrackingUrlTemplate"/>
  *     &lt;enumeration value="MSCLKIDAutoTaggingEnabled"/>
  *     &lt;enumeration value="AdClickParallelTracking"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +35,9 @@ public enum AccountPropertyName {
     @XmlEnumValue("MSCLKIDAutoTaggingEnabled")
     MSCLKID_AUTO_TAGGING_ENABLED("MSCLKIDAutoTaggingEnabled"),
     @XmlEnumValue("AdClickParallelTracking")
-    AD_CLICK_PARALLEL_TRACKING("AdClickParallelTracking");
+    AD_CLICK_PARALLEL_TRACKING("AdClickParallelTracking"),
+    @XmlEnumValue("FinalUrlSuffix")
+    FINAL_URL_SUFFIX("FinalUrlSuffix");
     private final String value;
 
     AccountPropertyName(String v) {

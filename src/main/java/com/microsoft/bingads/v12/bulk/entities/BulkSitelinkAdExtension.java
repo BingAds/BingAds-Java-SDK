@@ -57,7 +57,7 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 new Function<BulkSitelinkAdExtension, String>() {
                     @Override
                     public String apply(BulkSitelinkAdExtension c) {
-                        return StringExtensions.toOptionalBulkString(c.getSitelinkAdExtension().getDestinationUrl());
+                        return StringExtensions.toOptionalBulkString(c.getSitelinkAdExtension().getDestinationUrl(), c.getSitelinkAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkSitelinkAdExtension>() {
@@ -121,7 +121,7 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 new Function<BulkSitelinkAdExtension, String>() {
                     @Override
                     public String apply(BulkSitelinkAdExtension c) {
-                        return StringExtensions.writeUrls("; ", c.getAdExtension().getFinalUrls());
+                        return StringExtensions.writeUrls("; ", c.getAdExtension().getFinalUrls(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkSitelinkAdExtension>() {
@@ -143,7 +143,7 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 new Function<BulkSitelinkAdExtension, String>() {
                     @Override
                     public String apply(BulkSitelinkAdExtension c) {
-                        return StringExtensions.writeUrls("; ", c.getAdExtension().getFinalMobileUrls());
+                        return StringExtensions.writeUrls("; ", c.getAdExtension().getFinalMobileUrls(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkSitelinkAdExtension>() {
@@ -165,7 +165,7 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 new Function<BulkSitelinkAdExtension, String>() {
                     @Override
                     public String apply(BulkSitelinkAdExtension c) {
-                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getTrackingUrlTemplate());
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getTrackingUrlTemplate(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkSitelinkAdExtension>() {
@@ -180,7 +180,7 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 new Function<BulkSitelinkAdExtension, String>() {
                     @Override
                     public String apply(BulkSitelinkAdExtension c) {
-                        return StringExtensions.toCustomParaBulkString(c.getAdExtension().getUrlCustomParameters());
+                        return StringExtensions.toCustomParaBulkString(c.getAdExtension().getUrlCustomParameters(), c.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkSitelinkAdExtension>() {
