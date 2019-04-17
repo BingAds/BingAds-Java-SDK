@@ -12,3 +12,13 @@ com.microsoft.bingads.v12.internal.bulk
 com.microsoft.bingads.v12.internal.bulk.entities
 com.microsoft.bingads.v12.internal.reporting
 com.microsoft.bingads.v12.reporting
+com.microsoft.bingads.v13.adinsight
+com.microsoft.bingads.v13.bulk
+com.microsoft.bingads.v13.bulk.entities
+com.microsoft.bingads.v13.campaignmanagement
+com.microsoft.bingads.v13.customerbilling
+com.microsoft.bingads.v13.customermanagement
+com.microsoft.bingads.v13.internal.bulk
+com.microsoft.bingads.v13.internal.bulk.entities
+com.microsoft.bingads.v13.internal.reporting
+com.microsoft.bingads.v13.reporting
