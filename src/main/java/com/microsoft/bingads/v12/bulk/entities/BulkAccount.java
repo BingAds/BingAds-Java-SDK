@@ -49,6 +49,8 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private Boolean MSCLKIDAutoTaggingEnabled;
 
     private String trackingUrlTemplate;
+    
+    private String finalUrlSuffix;
 
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
@@ -155,8 +157,22 @@ public class BulkAccount extends SingleRecordBulkEntity {
                     }
                 }
         ));
-
-
+        
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount c) {
+                        return StringExtensions.toOptionalBulkString(c.getFinalUrlSuffix(), c.getId());
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -246,6 +262,13 @@ public class BulkAccount extends SingleRecordBulkEntity {
         this.trackingUrlTemplate = trackingTemplate;
     }
 
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    public void setFinalUrlSuffix(String finalUrlSuffix) {
+        this.finalUrlSuffix = finalUrlSuffix;
+    }
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {

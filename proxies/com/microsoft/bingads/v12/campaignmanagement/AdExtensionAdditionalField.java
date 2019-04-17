@@ -5,7 +5,8 @@ package com.microsoft.bingads.v12.campaignmanagement;
  */
 public enum AdExtensionAdditionalField {
 
-    FINAL_URL_SUFFIX("FinalUrlSuffix");
+    FINAL_URL_SUFFIX("FinalUrlSuffix"),
+    ACTION_TYPES_PHASE2("ActionTypesPhase2");
         
     private final String value;
 

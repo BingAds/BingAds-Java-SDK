@@ -379,6 +379,21 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkKeyword, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkKeyword, String>() {
+                    @Override
+                    public String apply(BulkKeyword c) {
+                        return StringExtensions.toOptionalBulkString(c.getKeyword().getFinalUrlSuffix(), c.getKeyword().getId());
+                    }
+                },
+                new BiConsumer<String, BulkKeyword>() {
+                    @Override
+                    public void accept(String v, BulkKeyword c) {
+                        c.getKeyword().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

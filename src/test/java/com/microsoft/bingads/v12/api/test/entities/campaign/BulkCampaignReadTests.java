@@ -12,6 +12,7 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDSASettingsTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDailyBudgetTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesExperimentIdTest;
+import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesFinalUrlSuffixTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesIdTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceNotSetTest;
 import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceTest;
@@ -53,6 +54,7 @@ import com.microsoft.bingads.v12.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesBidStrategyTypeTest.class,
         BulkCampaignReadFromRowValuesDSASettingsTest.class,
         BulkCampaignReadFromRowValuesExperimentIdTest.class,
+        BulkCampaignReadFromRowValuesFinalUrlSuffixTest.class,
 })
 public class BulkCampaignReadTests {
 

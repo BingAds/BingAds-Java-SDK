@@ -80,6 +80,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Watch"/>
  *     &lt;enumeration value="WatchMore"/>
  *     &lt;enumeration value="WatchNow"/>
+ *     &lt;enumeration value="Directions"/>
+ *     &lt;enumeration value="FindStore"/>
+ *     &lt;enumeration value="SwitchNow"/>
+ *     &lt;enumeration value="VisitStore"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -220,7 +224,15 @@ public enum ActionAdExtensionActionType {
     @XmlEnumValue("WatchMore")
     WATCH_MORE("WatchMore"),
     @XmlEnumValue("WatchNow")
-    WATCH_NOW("WatchNow");
+    WATCH_NOW("WatchNow"),
+    @XmlEnumValue("Directions")
+    DIRECTIONS("Directions"),
+    @XmlEnumValue("FindStore")
+    FIND_STORE("FindStore"),
+    @XmlEnumValue("SwitchNow")
+    SWITCH_NOW("SwitchNow"),
+    @XmlEnumValue("VisitStore")
+    VISIT_STORE("VisitStore");
     private final String value;
 
     ActionAdExtensionActionType(String v) {

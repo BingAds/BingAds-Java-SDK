@@ -10,7 +10,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAccountWriteToRowValuesIdTest.class,
     BulkAccountWriteToRowValuesSyncTimeTest.class,
     BulkAccountWriteToRowValuesTrackingTemplateTest.class,
-    BulkAccountWriteToRowValuesMSCLKIDAutoTaggingEnabledTest.class})
+    BulkAccountWriteToRowValuesMSCLKIDAutoTaggingEnabledTest.class,
+    BulkAccountWriteToRowValuesFinalUrlSuffixTest.class})
 public class BulkAccountWriteTests {
 
 }

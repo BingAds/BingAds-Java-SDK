@@ -12,7 +12,7 @@ public abstract class BulkAccountTest extends BulkEntityTest<BulkAccount> {
 
     @Override
     protected void onEntityCreation(BulkAccount entity) {
-        
+        entity.setId(100L);
     }
 
     @Override

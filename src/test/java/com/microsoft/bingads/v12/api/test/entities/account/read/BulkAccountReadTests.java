@@ -9,7 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAccountReadFromRowValuesIdTest.class,
     BulkAccountReadFromRowValuesSyncTimeTest.class,
     BulkAccountReadFromRowValuesMSCLKIDAutoTaggingEnabledTest.class,
-    BulkAccountReadFromRowValuesTrackingTemplateTest.class})
+    BulkAccountReadFromRowValuesTrackingTemplateTest.class,
+    BulkAccountReadFromRowValuesFinalUrlSuffixTest.class})
 public class BulkAccountReadTests {
 
 }

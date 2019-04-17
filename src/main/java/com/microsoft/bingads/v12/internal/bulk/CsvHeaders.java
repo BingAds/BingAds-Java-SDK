@@ -341,6 +341,8 @@ public class CsvHeaders {
             
             // Account
             StringTable.MSCLKIDAutoTaggingEnabled,
+            
+            StringTable.FinalUrlSuffix, 
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -824,6 +824,21 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return StringExtensions.toOptionalBulkString(c.getCampaign().getFinalUrlSuffix(), c.getCampaign().getId());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
     }

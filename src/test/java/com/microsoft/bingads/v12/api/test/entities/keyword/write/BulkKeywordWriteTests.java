@@ -15,7 +15,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkKeywordWriteToRowValuesParam3Test.class,
     BulkKeywordWriteToRowValuesStatusTest.class,
     BulkKeywordWriteToRowValuesTextTest.class,
-    BulkKeywordWriteToRowValuesBidStrategyTypeTest.class})
+    BulkKeywordWriteToRowValuesBidStrategyTypeTest.class,
+    BulkKeywordWriteToRowValuesFinalUrlSuffixTest.class})
 public class BulkKeywordWriteTests {
 
 }

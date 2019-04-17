@@ -118,6 +118,8 @@ public class StringTable {
     
     public static final String AdFormatPreference = "Ad Format Preference";
     
+    public static final String FinalUrlSuffix = "Final Url Suffix";
+    
     // entity types
     public static final String SemanticVersion = "Format Version";
     public static final String LocationTarget = "Location Target";
