@@ -1,10 +1,10 @@
-package com.microsoft.bingads.examples.v12;
+package com.microsoft.bingads.examples.v13;
 
 import java.rmi.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
+import com.microsoft.bingads.v13.campaignmanagement.*;
 
 class CampaignManagementExampleHelper
 {
@@ -86,14 +86,12 @@ class CampaignManagementExampleHelper
     }
     static AddCampaignsResponse addCampaigns(
         java.lang.Long accountId,
-        ArrayOfCampaign campaigns,
-        java.lang.Boolean includeDynamicSearchAdsSource) throws RemoteException, Exception
+        ArrayOfCampaign campaigns) throws RemoteException, Exception
     {
         AddCampaignsRequest request = new AddCampaignsRequest();
 
         request.setAccountId(accountId);
         request.setCampaigns(campaigns);
-        request.setIncludeDynamicSearchAdsSource(includeDynamicSearchAdsSource);
 
         return CampaignManagementService.getService().addCampaigns(request);
     }
@@ -446,8 +444,7 @@ class CampaignManagementExampleHelper
         java.lang.Long accountId,
         ArrayList<AdExtensionsTypeFilter> adExtensionType,
         AssociationType associationType,
-        ArrayOflong entityIds,
-        ArrayList<AdExtensionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOflong entityIds) throws RemoteException, Exception
     {
         GetAdExtensionsAssociationsRequest request = new GetAdExtensionsAssociationsRequest();
 
@@ -455,22 +452,19 @@ class CampaignManagementExampleHelper
         request.setAdExtensionType(adExtensionType);
         request.setAssociationType(associationType);
         request.setEntityIds(entityIds);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdExtensionsAssociations(request);
     }
     static GetAdExtensionsByIdsResponse getAdExtensionsByIds(
         java.lang.Long accountId,
         ArrayOflong adExtensionIds,
-        ArrayList<AdExtensionsTypeFilter> adExtensionType,
-        ArrayList<AdExtensionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayList<AdExtensionsTypeFilter> adExtensionType) throws RemoteException, Exception
     {
         GetAdExtensionsByIdsRequest request = new GetAdExtensionsByIdsRequest();
 
         request.setAccountId(accountId);
         request.setAdExtensionIds(adExtensionIds);
         request.setAdExtensionType(adExtensionType);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdExtensionsByIds(request);
     }
@@ -490,82 +484,70 @@ class CampaignManagementExampleHelper
     static GetAdGroupCriterionsByIdsResponse getAdGroupCriterionsByIds(
         ArrayOflong adGroupCriterionIds,
         java.lang.Long adGroupId,
-        ArrayList<AdGroupCriterionType> criterionType,
-        ArrayList<AdGroupCriterionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayList<AdGroupCriterionType> criterionType) throws RemoteException, Exception
     {
         GetAdGroupCriterionsByIdsRequest request = new GetAdGroupCriterionsByIdsRequest();
 
         request.setAdGroupCriterionIds(adGroupCriterionIds);
         request.setAdGroupId(adGroupId);
         request.setCriterionType(criterionType);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdGroupCriterionsByIds(request);
     }
     static GetAdGroupsByCampaignIdResponse getAdGroupsByCampaignId(
-        java.lang.Long campaignId,
-        ArrayList<AdGroupAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        java.lang.Long campaignId) throws RemoteException, Exception
     {
         GetAdGroupsByCampaignIdRequest request = new GetAdGroupsByCampaignIdRequest();
 
         request.setCampaignId(campaignId);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdGroupsByCampaignId(request);
     }
     static GetAdGroupsByIdsResponse getAdGroupsByIds(
         java.lang.Long campaignId,
-        ArrayOflong adGroupIds,
-        ArrayList<AdGroupAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOflong adGroupIds) throws RemoteException, Exception
     {
         GetAdGroupsByIdsRequest request = new GetAdGroupsByIdsRequest();
 
         request.setCampaignId(campaignId);
         request.setAdGroupIds(adGroupIds);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdGroupsByIds(request);
     }
     static GetAdsByAdGroupIdResponse getAdsByAdGroupId(
         java.lang.Long adGroupId,
-        ArrayOfAdType adTypes,
-        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOfAdType adTypes) throws RemoteException, Exception
     {
         GetAdsByAdGroupIdRequest request = new GetAdsByAdGroupIdRequest();
 
         request.setAdGroupId(adGroupId);
         request.setAdTypes(adTypes);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByAdGroupId(request);
     }
     static GetAdsByEditorialStatusResponse getAdsByEditorialStatus(
         java.lang.Long adGroupId,
         AdEditorialStatus editorialStatus,
-        ArrayOfAdType adTypes,
-        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOfAdType adTypes) throws RemoteException, Exception
     {
         GetAdsByEditorialStatusRequest request = new GetAdsByEditorialStatusRequest();
 
         request.setAdGroupId(adGroupId);
         request.setEditorialStatus(editorialStatus);
         request.setAdTypes(adTypes);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByEditorialStatus(request);
     }
     static GetAdsByIdsResponse getAdsByIds(
         java.lang.Long adGroupId,
         ArrayOflong adIds,
-        ArrayOfAdType adTypes,
-        ArrayList<AdAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOfAdType adTypes) throws RemoteException, Exception
     {
         GetAdsByIdsRequest request = new GetAdsByIdsRequest();
 
         request.setAdGroupId(adGroupId);
         request.setAdIds(adIds);
         request.setAdTypes(adTypes);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdsByIds(request);
     }
@@ -627,29 +609,25 @@ class CampaignManagementExampleHelper
     }
     static GetCampaignsByAccountIdResponse getCampaignsByAccountId(
         java.lang.Long accountId,
-        ArrayList<CampaignType> campaignType,
-        ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayList<CampaignType> campaignType) throws RemoteException, Exception
     {
         GetCampaignsByAccountIdRequest request = new GetCampaignsByAccountIdRequest();
 
         request.setAccountId(accountId);
         request.setCampaignType(campaignType);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getCampaignsByAccountId(request);
     }
     static GetCampaignsByIdsResponse getCampaignsByIds(
         java.lang.Long accountId,
         ArrayOflong campaignIds,
-        ArrayList<CampaignType> campaignType,
-        ArrayList<CampaignAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayList<CampaignType> campaignType) throws RemoteException, Exception
     {
         GetCampaignsByIdsRequest request = new GetCampaignsByIdsRequest();
 
         request.setAccountId(accountId);
         request.setCampaignIds(campaignIds);
         request.setCampaignType(campaignType);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getCampaignsByIds(request);
     }
@@ -711,39 +689,33 @@ class CampaignManagementExampleHelper
         return CampaignManagementService.getService().getGeoLocationsFileUrl(request);
     }
     static GetKeywordsByAdGroupIdResponse getKeywordsByAdGroupId(
-        java.lang.Long adGroupId,
-        ArrayList<KeywordAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        java.lang.Long adGroupId) throws RemoteException, Exception
     {
         GetKeywordsByAdGroupIdRequest request = new GetKeywordsByAdGroupIdRequest();
 
         request.setAdGroupId(adGroupId);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getKeywordsByAdGroupId(request);
     }
     static GetKeywordsByEditorialStatusResponse getKeywordsByEditorialStatus(
         java.lang.Long adGroupId,
-        KeywordEditorialStatus editorialStatus,
-        ArrayList<KeywordAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        KeywordEditorialStatus editorialStatus) throws RemoteException, Exception
     {
         GetKeywordsByEditorialStatusRequest request = new GetKeywordsByEditorialStatusRequest();
 
         request.setAdGroupId(adGroupId);
         request.setEditorialStatus(editorialStatus);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getKeywordsByEditorialStatus(request);
     }
     static GetKeywordsByIdsResponse getKeywordsByIds(
         java.lang.Long adGroupId,
-        ArrayOflong keywordIds,
-        ArrayList<KeywordAdditionalField> returnAdditionalFields) throws RemoteException, Exception
+        ArrayOflong keywordIds) throws RemoteException, Exception
     {
         GetKeywordsByIdsRequest request = new GetKeywordsByIdsRequest();
 
         request.setAdGroupId(adGroupId);
         request.setKeywordIds(keywordIds);
-        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getKeywordsByIds(request);
     }
@@ -1055,14 +1027,12 @@ class CampaignManagementExampleHelper
     }
     static UpdateCampaignsResponse updateCampaigns(
         java.lang.Long accountId,
-        ArrayOfCampaign campaigns,
-        java.lang.Boolean includeDynamicSearchAdsSource) throws RemoteException, Exception
+        ArrayOfCampaign campaigns) throws RemoteException, Exception
     {
         UpdateCampaignsRequest request = new UpdateCampaignsRequest();
 
         request.setAccountId(accountId);
         request.setCampaigns(campaigns);
-        request.setIncludeDynamicSearchAdsSource(includeDynamicSearchAdsSource);
 
         return CampaignManagementService.getService().updateCampaigns(request);
     }
@@ -1880,6 +1850,8 @@ class CampaignManagementExampleHelper
         {
             outputStatusMessage("* * * Begin OutputAudience * * *");
             outputStatusMessage(String.format("AudienceNetworkSize: %s", dataObject.getAudienceNetworkSize()));
+            outputStatusMessage("CustomerShare:");
+            outputCustomerShare(dataObject.getCustomerShare());
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage("ForwardCompatibilityMap:");
             outputArrayOfKeyValuePairOfstringstring(dataObject.getForwardCompatibilityMap());
@@ -2106,9 +2078,17 @@ class CampaignManagementExampleHelper
             {
                 outputMaxConversionsBiddingScheme((MaxConversionsBiddingScheme)dataObject);
             }
+            if(dataObject instanceof MaxRoasBiddingScheme)
+            {
+                outputMaxRoasBiddingScheme((MaxRoasBiddingScheme)dataObject);
+            }
             if(dataObject instanceof TargetCpaBiddingScheme)
             {
                 outputTargetCpaBiddingScheme((TargetCpaBiddingScheme)dataObject);
+            }
+            if(dataObject instanceof TargetRoasBiddingScheme)
+            {
+                outputTargetRoasBiddingScheme((TargetRoasBiddingScheme)dataObject);
             }
             outputStatusMessage("* * * End OutputBiddingScheme * * *");
         }
@@ -2241,7 +2221,6 @@ class CampaignManagementExampleHelper
             outputBiddingScheme(dataObject.getBiddingScheme());
             outputStatusMessage(String.format("BudgetType: %s", dataObject.getBudgetType()));
             outputStatusMessage(String.format("DailyBudget: %s", dataObject.getDailyBudget()));
-            outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("ExperimentId: %s", dataObject.getExperimentId()));
             outputStatusMessage(String.format("FinalUrlSuffix: %s", dataObject.getFinalUrlSuffix()));
             outputStatusMessage("ForwardCompatibilityMap:");
@@ -2335,6 +2314,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage("* * * Begin OutputConversionGoal * * *");
             outputStatusMessage(String.format("ConversionWindowInMinutes: %s", dataObject.getConversionWindowInMinutes()));
             outputStatusMessage(String.format("CountType: %s", dataObject.getCountType()));
+            outputStatusMessage(String.format("ExcludeFromBidding: %s", dataObject.getExcludeFromBidding()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
             outputStatusMessage("Revenue:");
@@ -2539,6 +2519,69 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputCustomerAccountShare(CustomerAccountShare dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCustomerAccountShare * * *");
+            outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
+            outputStatusMessage("Associations:");
+            outputArrayOfCustomerAccountShareAssociation(dataObject.getAssociations());
+            outputStatusMessage(String.format("CustomerId: %s", dataObject.getCustomerId()));
+            outputStatusMessage("* * * End OutputCustomerAccountShare * * *");
+        }
+    }
+    static void outputArrayOfCustomerAccountShare(ArrayOfCustomerAccountShare dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (CustomerAccountShare dataObject : dataObjects.getCustomerAccountShares())
+            {
+                outputCustomerAccountShare(dataObject);
+            }
+        }
+    }
+    static void outputCustomerAccountShareAssociation(CustomerAccountShareAssociation dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCustomerAccountShareAssociation * * *");
+            outputStatusMessage(String.format("AssociationCount: %s", dataObject.getAssociationCount()));
+            outputStatusMessage(String.format("UsageType: %s", dataObject.getUsageType()));
+            outputStatusMessage("* * * End OutputCustomerAccountShareAssociation * * *");
+        }
+    }
+    static void outputArrayOfCustomerAccountShareAssociation(ArrayOfCustomerAccountShareAssociation dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (CustomerAccountShareAssociation dataObject : dataObjects.getCustomerAccountShareAssociations())
+            {
+                outputCustomerAccountShareAssociation(dataObject);
+            }
+        }
+    }
+    static void outputCustomerShare(CustomerShare dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCustomerShare * * *");
+            outputStatusMessage("CustomerAccountShares:");
+            outputArrayOfCustomerAccountShare(dataObject.getCustomerAccountShares());
+            outputStatusMessage(String.format("OwnerCustomerId: %s", dataObject.getOwnerCustomerId()));
+            outputStatusMessage("* * * End OutputCustomerShare * * *");
+        }
+    }
+    static void outputArrayOfCustomerShare(ArrayList<CustomerShare> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (CustomerShare dataObject : dataObjects)
+            {
+                outputCustomerShare(dataObject);
+            }
+        }
+    }
     static void outputCustomEventsRule(CustomEventsRule dataObject)
     {
         if (null != dataObject)
@@ -2719,6 +2762,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("Path1: %s", dataObject.getPath1()));
             outputStatusMessage(String.format("Path2: %s", dataObject.getPath2()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
+            outputStatusMessage(String.format("TextPart2: %s", dataObject.getTextPart2()));
             outputStatusMessage("* * * End OutputDynamicSearchAd * * *");
         }
     }
@@ -3470,6 +3514,26 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputMaxRoasBiddingScheme(MaxRoasBiddingScheme dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputMaxRoasBiddingScheme * * *");
+            outputStatusMessage("MaxCpc:");
+            outputBid(dataObject.getMaxCpc());
+            outputStatusMessage("* * * End OutputMaxRoasBiddingScheme * * *");
+        }
+    }
+    static void outputArrayOfMaxRoasBiddingScheme(ArrayList<MaxRoasBiddingScheme> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (MaxRoasBiddingScheme dataObject : dataObjects)
+            {
+                outputMaxRoasBiddingScheme(dataObject);
+            }
+        }
+    }
     static void outputMedia(Media dataObject)
     {
         if (null != dataObject)
@@ -4089,14 +4153,16 @@ class CampaignManagementExampleHelper
             outputStatusMessage("* * * Begin OutputResponsiveAd * * *");
             outputStatusMessage(String.format("BusinessName: %s", dataObject.getBusinessName()));
             outputStatusMessage(String.format("CallToAction: %s", dataObject.getCallToAction()));
+            outputStatusMessage("Descriptions:");
+            outputArrayOfAssetLink(dataObject.getDescriptions());
             outputStatusMessage(String.format("Headline: %s", dataObject.getHeadline()));
+            outputStatusMessage("Headlines:");
+            outputArrayOfAssetLink(dataObject.getHeadlines());
             outputStatusMessage("Images:");
             outputArrayOfAssetLink(dataObject.getImages());
-            outputStatusMessage(String.format("LandscapeImageMediaId: %s", dataObject.getLandscapeImageMediaId()));
-            outputStatusMessage(String.format("LandscapeLogoMediaId: %s", dataObject.getLandscapeLogoMediaId()));
-            outputStatusMessage(String.format("LongHeadline: %s", dataObject.getLongHeadline()));
-            outputStatusMessage(String.format("SquareImageMediaId: %s", dataObject.getSquareImageMediaId()));
-            outputStatusMessage(String.format("SquareLogoMediaId: %s", dataObject.getSquareLogoMediaId()));
+            outputStatusMessage("LongHeadline:");
+            outputAssetLink(dataObject.getLongHeadline());
+            outputStatusMessage(String.format("LongHeadlineString: %s", dataObject.getLongHeadlineString()));
             outputStatusMessage(String.format("Text: %s", dataObject.getText()));
             outputStatusMessage("* * * End OutputResponsiveAd * * *");
         }
@@ -4495,6 +4561,27 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputTargetRoasBiddingScheme(TargetRoasBiddingScheme dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputTargetRoasBiddingScheme * * *");
+            outputStatusMessage("MaxCpc:");
+            outputBid(dataObject.getMaxCpc());
+            outputStatusMessage(String.format("TargetRoas: %s", dataObject.getTargetRoas()));
+            outputStatusMessage("* * * End OutputTargetRoasBiddingScheme * * *");
+        }
+    }
+    static void outputArrayOfTargetRoasBiddingScheme(ArrayList<TargetRoasBiddingScheme> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (TargetRoasBiddingScheme dataObject : dataObjects)
+            {
+                outputTargetRoasBiddingScheme(dataObject);
+            }
+        }
+    }
     static void outputTargetSetting(TargetSetting dataObject)
     {
         if (null != dataObject)
@@ -4581,6 +4668,8 @@ class CampaignManagementExampleHelper
         if (null != dataObject)
         {
             outputStatusMessage("* * * Begin OutputUetTag * * *");
+            outputStatusMessage("CustomerShare:");
+            outputCustomerShare(dataObject.getCustomerShare());
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("Id: %s", dataObject.getId()));
             outputStatusMessage(String.format("Name: %s", dataObject.getName()));
@@ -4879,24 +4968,6 @@ class CampaignManagementExampleHelper
             }
         }
     }
-    static void outputCampaignAdditionalField(CampaignAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (CampaignAdditionalField value : CampaignAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfCampaignAdditionalField(ArrayList<CampaignAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (CampaignAdditionalField valueSet : valueSets)
-            {
-                outputCampaignAdditionalField(valueSet);
-            }
-        }
-    }
     static void outputAdRotationType(AdRotationType valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -4969,42 +5040,6 @@ class CampaignManagementExampleHelper
             }
         }
     }
-    static void outputAdGroupAdditionalField(AdGroupAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (AdGroupAdditionalField value : AdGroupAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfAdGroupAdditionalField(ArrayList<AdGroupAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (AdGroupAdditionalField valueSet : valueSets)
-            {
-                outputAdGroupAdditionalField(valueSet);
-            }
-        }
-    }
-    static void outputAdAdditionalField(AdAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (AdAdditionalField value : AdAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfAdAdditionalField(ArrayList<AdAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (AdAdditionalField valueSet : valueSets)
-            {
-                outputAdAdditionalField(valueSet);
-            }
-        }
-    }
     static void outputKeywordEditorialStatus(KeywordEditorialStatus valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -5056,24 +5091,6 @@ class CampaignManagementExampleHelper
             for (KeywordStatus valueSet : valueSets)
             {
                 outputKeywordStatus(valueSet);
-            }
-        }
-    }
-    static void outputKeywordAdditionalField(KeywordAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (KeywordAdditionalField value : KeywordAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfKeywordAdditionalField(ArrayList<KeywordAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (KeywordAdditionalField valueSet : valueSets)
-            {
-                outputKeywordAdditionalField(valueSet);
             }
         }
     }
@@ -5311,24 +5328,6 @@ class CampaignManagementExampleHelper
             }
         }
     }
-    static void outputAdExtensionAdditionalField(AdExtensionAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (AdExtensionAdditionalField value : AdExtensionAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfAdExtensionAdditionalField(ArrayList<AdExtensionAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (AdExtensionAdditionalField valueSet : valueSets)
-            {
-                outputAdExtensionAdditionalField(valueSet);
-            }
-        }
-    }
     static void outputAssociationType(AssociationType valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -5398,24 +5397,6 @@ class CampaignManagementExampleHelper
             for (AdGroupCriterionType valueSet : valueSets)
             {
                 outputAdGroupCriterionType(valueSet);
-            }
-        }
-    }
-    static void outputAdGroupCriterionAdditionalField(AdGroupCriterionAdditionalField valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (AdGroupCriterionAdditionalField value : AdGroupCriterionAdditionalField.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfAdGroupCriterionAdditionalField(ArrayList<AdGroupCriterionAdditionalField> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (AdGroupCriterionAdditionalField valueSet : valueSets)
-            {
-                outputAdGroupCriterionAdditionalField(valueSet);
             }
         }
     }
