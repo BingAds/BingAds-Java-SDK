@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v12;
+package com.microsoft.bingads.examples.v13;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import com.microsoft.bingads.v12.bulk.*;
-import com.microsoft.bingads.v12.bulk.entities.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
+import com.microsoft.bingads.v13.bulk.*;
+import com.microsoft.bingads.v13.bulk.entities.*;
+import com.microsoft.bingads.v13.campaignmanagement.*;
 
 public class BulkExampleBase extends ExampleBase {
 

@@ -1,4 +1,4 @@
-package com.microsoft.bingads.examples.v12;
+package com.microsoft.bingads.examples.v13;
 
 import java.rmi.*;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
+import com.microsoft.bingads.v13.campaignmanagement.*;
 
 // How to apply product conditions for Bing Shopping Campaigns.
 
@@ -52,7 +52,6 @@ public class ProductAds extends ExampleBase {
             campaignTypes.add(CampaignType.SHOPPING);
             campaign.setCampaignType(campaignTypes);
             campaign.setDailyBudget(50.00);
-            campaign.setDescription("Red shoes line.");
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
@@ -71,8 +70,7 @@ public class ProductAds extends ExampleBase {
             outputStatusMessage("-----\nAddCampaigns:");
             AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
                     authorizationData.getAccountId(), 
-                    campaigns,
-                    false);            
+                    campaigns);            
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             outputStatusMessage("CampaignIds:");
@@ -119,7 +117,7 @@ public class ProductAds extends ExampleBase {
             adGroup.setName("Women's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
-            adGroup.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
+            adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
             adGroup.getEndDate().setMonth(12);
             adGroup.getEndDate().setYear(calendar.get(Calendar.YEAR));
@@ -220,8 +218,7 @@ public class ProductAds extends ExampleBase {
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
-            criterionType,
-            null).getAdGroupCriterions();
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("Printing the ad group's product partition; contains only the tree root node");
         printProductPartitions(adGroupCriterions);
@@ -248,8 +245,7 @@ public class ProductAds extends ExampleBase {
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
-            criterionType,
-            null).getAdGroupCriterions();
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("Updated the bid for the tree root node");
         printProductPartitions(adGroupCriterions);
@@ -267,8 +263,7 @@ public class ProductAds extends ExampleBase {
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
-            criterionType,
-            null).getAdGroupCriterions();
+            criterionType).getAdGroupCriterions();
 
         AdGroupCriterion existingRoot = getRootNode(adGroupCriterions);
 
@@ -396,8 +391,7 @@ public class ProductAds extends ExampleBase {
         adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
-            criterionType,
-            null).getAdGroupCriterions();
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("The product partition group tree now has 9 nodes");
         printProductPartitions(adGroupCriterions);
@@ -478,8 +472,7 @@ public class ProductAds extends ExampleBase {
         ArrayOfAdGroupCriterion adGroupCriterions = CampaignManagementExampleHelper.getAdGroupCriterionsByIds(
             null,
             adGroupId, 
-            criterionType,
-            null).getAdGroupCriterions();
+            criterionType).getAdGroupCriterions();
 
         outputStatusMessage("The product partition group tree now has 12 nodes");
         printProductPartitions(adGroupCriterions);

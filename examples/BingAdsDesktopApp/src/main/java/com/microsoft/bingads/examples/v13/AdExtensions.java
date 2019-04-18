@@ -1,7 +1,7 @@
-package com.microsoft.bingads.examples.v12;
+package com.microsoft.bingads.examples.v13;
 
 import com.microsoft.bingads.*;
-import com.microsoft.bingads.v12.campaignmanagement.*;
+import com.microsoft.bingads.v13.campaignmanagement.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,7 +39,6 @@ public class AdExtensions extends ExampleBase {
             Campaign campaign = new Campaign();
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
-            campaign.setDescription("Red shoes line.");
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
@@ -49,9 +48,9 @@ public class AdExtensions extends ExampleBase {
 
             outputStatusMessage("-----\nAddCampaigns:");
             AddCampaignsResponse addCampaignsResponse = CampaignManagementExampleHelper.addCampaigns(
-                    authorizationData.getAccountId(), 
-                    campaigns,
-                    false);            
+                authorizationData.getAccountId(), 
+                campaigns
+            );            
             ArrayOfNullableOflong campaignIds = addCampaignsResponse.getCampaignIds();
             ArrayOfBatchError campaignErrors = addCampaignsResponse.getPartialErrors();
             outputStatusMessage("CampaignIds:");
@@ -82,7 +81,7 @@ public class AdExtensions extends ExampleBase {
             
             ActionAdExtension actionAdExtension = new ActionAdExtension();
             actionAdExtension.setActionType(ActionAdExtensionActionType.ACT_NOW);
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
             actionAdExtension.setFinalUrls(finalUrls);
             actionAdExtension.setLanguage("English");
@@ -141,7 +140,7 @@ public class AdExtensions extends ExampleBase {
             callFriday.setEndMinute(Minute.ZERO);
             callDayTimeRanges.getDayTimes().add(callFriday);
             callScheduling.setDayTimeRanges(callDayTimeRanges);
-            callScheduling.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
+            callScheduling.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());
             callScheduling.getEndDate().setDay(31);
             callScheduling.getEndDate().setMonth(12);
             callScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -156,8 +155,8 @@ public class AdExtensions extends ExampleBase {
             LocationAdExtension locationAdExtension = new LocationAdExtension();
             locationAdExtension.setPhoneNumber("206-555-0100");
             locationAdExtension.setCompanyName("Contoso Shoes");
-            com.microsoft.bingads.v12.campaignmanagement.Address address = 
-                    new com.microsoft.bingads.v12.campaignmanagement.Address();
+            com.microsoft.bingads.v13.campaignmanagement.Address address = 
+                    new com.microsoft.bingads.v13.campaignmanagement.Address();
             address.setStreetAddress("1234 Washington Place");
             address.setStreetAddress2("Suite 1210");
             address.setCityName("Woodinville");
@@ -177,7 +176,7 @@ public class AdExtensions extends ExampleBase {
             locationDayTime.setEndMinute(Minute.ZERO);
             locationDayTimeRanges.getDayTimes().add(locationDayTime);
             locationScheduling.setDayTimeRanges(locationDayTimeRanges);
-            locationScheduling.setEndDate(new com.microsoft.bingads.v12.campaignmanagement.Date());
+            locationScheduling.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());
             locationScheduling.getEndDate().setDay(31);
             locationScheduling.getEndDate().setMonth(12);
             locationScheduling.getEndDate().setYear(calendar.get(Calendar.YEAR) + 1);
@@ -236,7 +235,7 @@ public class AdExtensions extends ExampleBase {
                         
             StructuredSnippetAdExtension structuredSnippetAdExtension = new StructuredSnippetAdExtension();
             structuredSnippetAdExtension.setHeader("Brands");
-            com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v12.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring values = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             values.getStrings().add("Windows");
             values.getStrings().add("Xbox");
             values.getStrings().add("Skype");
@@ -307,8 +306,7 @@ public class AdExtensions extends ExampleBase {
             GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter,
-                null);
+                adExtensionsTypeFilter);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
             outputStatusMessage("AdExtensions:");
             CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
@@ -348,8 +346,7 @@ public class AdExtensions extends ExampleBase {
             getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter,
-                null);
+                adExtensionsTypeFilter);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
             outputStatusMessage("AdExtensions:");
             CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
