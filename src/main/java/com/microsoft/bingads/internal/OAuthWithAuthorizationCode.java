@@ -22,8 +22,6 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
 
     private static final String CODE = "code";
     
-    private static final String STATE = "state";
-
     private OAuthService oauthService;
 
     private String clientId;
@@ -32,10 +30,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
 
     private URL redirectionUri;
     
-    /**
-     * An opaque value used by the client to maintain state between the request and callback
-     * */
-    private String state;
+    private boolean requireLiveConnect;
+    
 
     private NewOAuthTokensReceivedListener newTokensListener;
 
@@ -51,16 +47,8 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         return redirectionUri;
     }
     
-    public String getState() {
-    	return state;
-    }
-    
-    public void setState(String state) {
-    	this.state = state;
-    }
-
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env) {
-        this(clientId, clientSecret, redirectionUri, env);
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env, boolean requireLiveConnect) {
+        this(clientId, clientSecret, redirectionUri, env, requireLiveConnect);
 
         if (refreshToken == null) {
             throw new NullPointerException("refreshToken must not be null");
@@ -69,9 +57,9 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         oAuthTokens = new OAuthTokens(null, 0, refreshToken);
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
 
-        this(clientId, clientSecret, redirectionUri, env);
+        this(clientId, clientSecret, redirectionUri, env, requireLiveConnect);
         if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
         	throw new NullPointerException("OAuth tokens must not be null");     	
         } 
@@ -79,20 +67,22 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         oAuthTokens = new OAuthTokens(null, 0, oauthTokens.getRefreshToken());
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, boolean requireLiveConnect) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = new UriOAuthService(environment);
+        this.requireLiveConnect = requireLiveConnect;
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env, boolean requireLiveConnect) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = oauthService;
+        this.requireLiveConnect = requireLiveConnect;
     }
 
     /**
@@ -102,7 +92,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return UriOAuthService.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.state), this.getEnvironment());
+        return OAuthEndpointHelper.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.getState()), this.getEnvironment(), this.requireLiveConnect);
     }
 
     /**
@@ -127,7 +117,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 AUTHORIZATION_CODE,
                 CODE,
                 code
-        ));
+        ), this.requireLiveConnect);
 
         raiseNewTokensEventIfNeeded();
 
@@ -144,11 +134,11 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         this.oAuthTokens = this.oauthService.getAccessTokens(new OAuthRequestParameters(
                 clientId,
                 clientSecret,
-                redirectionUri,
+                null,
                 REFRESH_TOKEN,
                 REFRESH_TOKEN,
                 refreshToken
-        ));
+        ), this.requireLiveConnect);
 
         raiseNewTokensEventIfNeeded();
 
@@ -192,4 +182,6 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     public void setNewTokensListener(NewOAuthTokensReceivedListener newTokensListener) {
         this.newTokensListener = newTokensListener;
     }
+    
+
 }

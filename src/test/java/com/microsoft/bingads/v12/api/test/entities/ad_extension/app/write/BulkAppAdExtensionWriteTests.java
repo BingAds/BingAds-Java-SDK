@@ -14,7 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkAppAdExtensionWriteFromRowValuesAppPlatformTest.class,
                 BulkAppAdExtensionWriteFromRowValuesAppStoreIdTest.class,
                 BulkAppAdExtensionWriteFromRowValuesDisplayTextTest.class,
-                BulkAppAdExtensionWriteFromRowValuesDevicePreferenceTest.class
+                BulkAppAdExtensionWriteFromRowValuesDevicePreferenceTest.class,
+                BulkAppAdExtensionWriteToRowValuesFusTest.class
         }
 )
 public class BulkAppAdExtensionWriteTests {

@@ -30,7 +30,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl() {
         try {
-            OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
+            OAuthAuthorization auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
 
             URL authorizationUrl = auth.getAuthorizationEndpoint();
 
@@ -43,13 +43,15 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
             assertEquals(expectedUrl, authorizationUrl);
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
     
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl_WithState() {
         try {
-            OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
+            OAuthAuthorization auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
             
             auth.setState("state_test");
 
@@ -65,13 +67,15 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
             assertEquals(expectedUrl, authorizationUrl);
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
     
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl_WithEmptyState() {
         try {
-            OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
+            OAuthAuthorization auth = OAuthTest.CreateWebAuth("test_id", "test_secret");
             
             auth.setState("");
 
@@ -86,6 +90,8 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
             assertEquals(expectedUrl, authorizationUrl);
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 
@@ -102,7 +108,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(eq(expectedRequestParameters))).andReturn(expectedTokenInfo);
+            expect(oauthService.getAccessTokens(eq(expectedRequestParameters), eq(true))).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 
@@ -114,6 +120,8 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
 
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 
@@ -123,11 +131,11 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
             expect(oauthService.getAccessTokens(new OAuthRequestParameters(
                     "test_id",
                     "test_secret",
-                    new URL("https://test.com/login"),
+                    null,
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ))).andReturn(expectedTokenInfo);
+            ), true)).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 
@@ -139,6 +147,8 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
 
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 }

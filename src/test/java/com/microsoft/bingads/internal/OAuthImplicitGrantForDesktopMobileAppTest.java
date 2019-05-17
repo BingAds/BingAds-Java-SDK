@@ -95,6 +95,6 @@ public class OAuthImplicitGrantForDesktopMobileAppTest {
     }
 
     private static OAuthDesktopMobileImplicitGrant CreateAuth(String clientId) {
-        return new OAuthDesktopMobileImplicitGrant(clientId, ApiEnvironment.PRODUCTION);
+        return new OAuthDesktopMobileImplicitGrant(clientId, null,  ApiEnvironment.PRODUCTION, true);
     }
 }

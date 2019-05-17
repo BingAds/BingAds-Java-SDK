@@ -1,7 +1,7 @@
 package com.microsoft.bingads;
 
+import com.microsoft.bingads.internal.OAuthEndpointHelper;
 import com.microsoft.bingads.internal.OAuthImplicitGrant;
-import com.microsoft.bingads.internal.UriOAuthService;
 
 /**
  * Represents an OAuth authorization object implementing the implicit grant flow for use in a desktop or mobile application.  
@@ -34,8 +34,9 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileImplicitGrant(String clientId, ApiEnvironment env) {
-        super(clientId, UriOAuthService.endpointUrls.get(env).getDesktopRedirectUrl(), null, env);
+        this(clientId, null, env, false);
     }
+
 
     /**
      * Creates new instance of the class that can be used in the
@@ -65,6 +66,10 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        super(clientId, UriOAuthService.endpointUrls.get(env).getDesktopRedirectUrl(), oauthTokens, env);
-    }   
+        this(clientId, oauthTokens, env, false);
+    }
+
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env,  requireLiveConnect).getDesktopRedirectUrl(), oauthTokens, env, requireLiveConnect);
+    }
 }

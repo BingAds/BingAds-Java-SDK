@@ -195,6 +195,22 @@ public class BulkSitelinkAdExtension extends BulkAdExtension<SitelinkAdExtension
                 }
         ));
         
+
+        m.add(new SimpleBulkMapping<BulkSitelinkAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkSitelinkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkSitelinkAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkSitelinkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkSitelinkAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

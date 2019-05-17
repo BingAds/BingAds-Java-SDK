@@ -10,10 +10,13 @@ public class OAuthEndpoints {
     
     private String authorizationEndpointUrl;
     
-    public OAuthEndpoints(String desktopRedirectUrl, String tokenRequestUrl, String authorizationEndpointUrl) {
+    private String scope;
+    
+    public OAuthEndpoints(String desktopRedirectUrl, String tokenRequestUrl, String authorizationEndpointUrl, String scope) {
         this.desktopRedirectUrl = desktopRedirectUrl;
         this.tokenRequestUrl = tokenRequestUrl;
         this.authorizationEndpointUrl = authorizationEndpointUrl;
+        this.scope = scope;
     }
 
     public URL getDesktopRedirectUrl() {
@@ -31,5 +34,9 @@ public class OAuthEndpoints {
 
     public String getAuthorizationEndpointUrl() {
         return authorizationEndpointUrl;
-    }    
+    }
+    
+    public String getScope() {
+        return this.scope;
+    }
 }

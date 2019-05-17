@@ -1,11 +1,8 @@
 package com.microsoft.bingads;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
+import com.microsoft.bingads.internal.OAuthEndpointHelper;
 import com.microsoft.bingads.internal.OAuthService;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import com.microsoft.bingads.internal.UriOAuthService;
 
 /**
  * Represents an OAuth authorization object implementing the authorization code grant flow for use in a desktop or mobile application. 
@@ -32,6 +29,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
         this(clientId, refreshToken, ApiEnvironment.PRODUCTION);
     }
     
+    
     /**
      * Creates new instance of the class with the specified clientId and refreshToken.
      *
@@ -50,7 +48,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env) {
-        super(clientId, null, UriOAuthService.endpointUrls.get(env).getDesktopRedirectUrl(), refreshToken, env);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), refreshToken, env, false);
     }
 
     /**
@@ -80,11 +78,11 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+
     public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env) {
-        super(clientId, null, UriOAuthService.endpointUrls.get(env).getDesktopRedirectUrl(), env);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), env, false);
     }
     
-
     /**
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object.
@@ -114,10 +112,23 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        super(clientId, null, UriOAuthService.endpointUrls.get(env).getDesktopRedirectUrl(), oauthTokens, env);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), oauthTokens, env, false);
     }
 
-    OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env) {
-        super(clientId, null, oAuthService.getRedirectUrl(), oAuthService, env);
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, null, oAuthService.getRedirectUrl(requireLiveConnect), oAuthService, env, requireLiveConnect);
     }
+    
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), refreshToken, env, requireLiveConnect);
+    }
+    
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), oauthTokens, env, requireLiveConnect);
+    }
+
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), env, requireLiveConnect);
+    }
+
 }

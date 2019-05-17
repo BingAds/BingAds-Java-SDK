@@ -34,11 +34,11 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
 
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl() {
-        OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id");
-
-        URL authorizationUrl = auth.getAuthorizationEndpoint();
+        
 
         try {
+            OAuthAuthorization auth = OAuthTest.CreateDesktopAuth("test_id");
+            URL authorizationUrl = auth.getAuthorizationEndpoint();
             URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
                     + "scope=bingads.manage&"
                     + "response_type=code&"
@@ -48,18 +48,20 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
             assertEquals(expectedUrl, authorizationUrl);
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl_WithState() {
-        OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id");
-        
-        auth.setState("state_test");
-
-        URL authorizationUrl = auth.getAuthorizationEndpoint();
 
         try {
+            OAuthAuthorization auth = OAuthTest.CreateDesktopAuth("test_id");
+            
+            auth.setState("state_test");
+            
+            URL authorizationUrl = auth.getAuthorizationEndpoint();
             URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
                     + "scope=bingads.manage&"
                     + "response_type=code&"
@@ -70,18 +72,20 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
             assertEquals(expectedUrl, authorizationUrl);
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
     @Test
     public void GetAuthorizationUrl_ReturnsCorrectUrl_WithEmptyState() {
-        OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id");
-        
-        auth.setState("");
-
-        URL authorizationUrl = auth.getAuthorizationEndpoint();
 
         try {
+            OAuthAuthorization auth = OAuthTest.CreateDesktopAuth("test_id");
+            
+            auth.setState("");
+
+            URL authorizationUrl = auth.getAuthorizationEndpoint();
             URL expectedUrl = new URL("https://login.live.com/oauth20_authorize.srf?"
                     + "scope=bingads.manage&"
                     + "response_type=code&"
@@ -89,8 +93,8 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     + "client_id=test_id"
             );
             assertEquals(expectedUrl, authorizationUrl);
-        } catch (MalformedURLException e) {
-            fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("GetAuthorizationUrl_ReturnsCorrectUrl_WithEmptyState");
         }
     }
     
@@ -106,8 +110,8 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(expectedRequestParameters)).andReturn(expectedTokenInfo);
-            expect(oauthService.getRedirectUrl()).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
+            expect(oauthService.getAccessTokens(expectedRequestParameters, true)).andReturn(expectedTokenInfo);
+            expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
             
             OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
@@ -117,6 +121,8 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
 
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 
@@ -126,13 +132,13 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
             expect(oauthService.getAccessTokens(new OAuthRequestParameters(
                     "test_id",
                     null,
-                    new URL("https://login.live.com/oauth20_desktop.srf"),
+                    null,
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ))).andReturn(expectedTokenInfo);
+            ), true)).andReturn(expectedTokenInfo);
 
-            expect(oauthService.getRedirectUrl()).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
+            expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
             
             OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
@@ -143,6 +149,8 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
 
         } catch (MalformedURLException e) {
             fail("Malformed Test URL");
+        } catch (Exception e) {
+            fail("Failed create OAuthAuthorization");
         }
     }
 }

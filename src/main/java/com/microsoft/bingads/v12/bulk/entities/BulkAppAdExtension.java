@@ -15,6 +15,7 @@ import com.microsoft.bingads.v12.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v12.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v12.internal.bulk.RowValues;
 import com.microsoft.bingads.v12.internal.bulk.SimpleBulkMapping;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v12.internal.bulk.StringTable;
 
 /**
@@ -111,6 +112,21 @@ public class BulkAppAdExtension extends BulkAdExtension<AppAdExtension> {
                     @Override
                     public void accept(String v, BulkAppAdExtension c) {
                         c.getAppAdExtension().setDisplayText(v);
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAppAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAppAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAppAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAppAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAppAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
                     }
                 }
         ));

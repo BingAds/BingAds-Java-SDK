@@ -13,6 +13,7 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkActionAdExtensionReadFromRowValuesTrackingTemplateTest.class,
                 BulkActionAdExtensionReadFromRowValuesCustomParameterTest.class,
                 BulkActionAdExtensionReadFromRowValuesLanguageTest.class,
+                BulkActionAdExtensionReadFromRowValuesFusTest.class
         }
 )
 public class BulkActionAdExtensionReadTests {

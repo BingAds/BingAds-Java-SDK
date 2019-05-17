@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAppInstallAdWriteToRowValuesTextTest.class,
     BulkAppInstallAdWriteToRowValuesTitleTest.class,
     BulkAppInstallAdWriteToRowValuesFinalUrlsTest.class,
+    BulkAppInstallAdWriteToRowValuesFusTest.class,
     BulkAppInstallAdWriteToRowValuesTrackingTemplateTest.class})
 public class BulkAppInstallAdWriteTests {
 

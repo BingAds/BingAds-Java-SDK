@@ -14,7 +14,9 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkSitelinkAdExtensionWriteToRowValuesFinalMobileUrlsTest.class,
     BulkSitelinkAdExtensionWriteToRowValuesFinalUrlsTest.class,
     BulkSitelinkAdExtensionWriteToRowValuesTrackingTemplateTest.class,
-    BulkSitelinkAdExtensionWriteToRowValuesUrlCustomParameters.class})
+    BulkSitelinkAdExtensionWriteToRowValuesUrlCustomParameters.class,
+    BulkSitelinkAdExtensionWriteToRowValuesFusTest.class,
+    })
 public class BulkSitelinkAdExtensionWriteTests {
 
 }

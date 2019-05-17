@@ -13,7 +13,9 @@ public abstract class BulkImageAdExtensionTest extends BulkEntityTest<BulkImageA
 
     @Override
     protected void onEntityCreation(BulkImageAdExtension entity) {
-        entity.setImageAdExtension(new ImageAdExtension());
+        ImageAdExtension e = new ImageAdExtension();
+        e.setId(100L);
+        entity.setImageAdExtension(e);
     }
 
     @Override

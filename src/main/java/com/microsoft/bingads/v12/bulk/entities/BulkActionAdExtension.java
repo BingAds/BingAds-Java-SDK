@@ -185,6 +185,21 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkActionAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkActionAdExtension, String>() {
+                    @Override
+                    public String apply(BulkActionAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkActionAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkActionAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

@@ -260,12 +260,25 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                 	c.getAd().setAdFormatPreference(StringExtensions.getValueOrEmptyString(v));
                 }
         }, true));
+        
+        m.add(new SimpleBulkMapping<BulkAd, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAd, String>() {
+                    @Override
+                    public String apply(BulkAd c) {
+                        return StringExtensions.toOptionalBulkString(c.getAd().getFinalUrlSuffix(), c.getAd().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAd>() {
+                    @Override
+                    public void accept(String v, BulkAd c) {
+                        c.getAd().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
-    ;
-    
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.<BulkAd>convertToValues(this, values, MAPPINGS);

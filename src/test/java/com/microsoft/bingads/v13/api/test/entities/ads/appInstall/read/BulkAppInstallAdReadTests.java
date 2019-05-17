@@ -11,6 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAppInstallAdReadFromRowValuesTextTest.class,
     BulkAppInstallAdReadFromRowValuesTitleTest.class,
     BulkAppInstallAdReadFromRowValuesFinalUrlsTest.class,
+    BulkAppInstallAdReadFromRowValuesFusTest.class,
     BulkAppInstallAdReadFromRowValuesTrackingTemplateTest.class})
 public class BulkAppInstallAdReadTests {
 

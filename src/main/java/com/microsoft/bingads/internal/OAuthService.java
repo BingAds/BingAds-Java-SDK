@@ -6,7 +6,7 @@ import com.microsoft.bingads.OAuthTokens;
 
 public interface OAuthService {
 
-    OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters);
+    OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, boolean requireLiveConnect);
     
-    URL getRedirectUrl();
+    URL getRedirectUrl(boolean requireLiveConnect);
 }

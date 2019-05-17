@@ -17,6 +17,7 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkAdGroupImageAdExtensionReadFromRowValuesAdGroupNameTest.class,
                 BulkAdGroupImageAdExtensionReadFromRowValuesCampaignNameTest.class,
                 BulkCampaignImageAdExtensionReadFromRowValuesCampaignNameTest.class,
+                BulkImageAdExtensionReadFromRowValuesFusTest.class,
         }
 )
 public class BulkImageAdExtensionReadTests {

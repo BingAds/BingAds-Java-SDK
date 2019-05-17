@@ -109,6 +109,22 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
                 }
         ));
         
+
+        m.add(new SimpleBulkMapping<BulkImageAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkImageAdExtension, String>() {
+                    @Override
+                    public String apply(BulkImageAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkImageAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkImageAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

@@ -15,7 +15,11 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
     }
     
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken, ApiEnvironment env) {
-        super(clientId, clientSecret, redirectionUrl, refreshToken, env);
+        this(clientId, clientSecret, redirectionUrl, refreshToken, env, false);
+    }
+
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, clientSecret, redirectionUrl, refreshToken, env, requireLiveConnect);
     }
 
     /**
@@ -51,7 +55,11 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, ApiEnvironment env) {
-        super(clientId, clientSecret, redirectionUrl, env);
+        this(clientId, clientSecret, redirectionUrl, env, false);
+    }
+    
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, ApiEnvironment env, boolean requireLiveConnects) {
+        super(clientId, clientSecret, redirectionUrl, env, requireLiveConnects);
     }
 
     /**
@@ -88,8 +96,13 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, OAuthTokens oauthTokens, ApiEnvironment env) {
-    	super(clientId, clientSecret, redirectionUrl, oauthTokens, env);        
+    	this(clientId, clientSecret, redirectionUrl, oauthTokens, env, false);        
     }
+
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, clientSecret, redirectionUrl, oauthTokens, env, requireLiveConnect);        
+    }
+    
     
     /**
      * Creates new instance of the class with a specified OAuthService object.
@@ -105,8 +118,8 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
-    OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService) {
-        this(clientId, clientSecret, redirectionUri, oAuthService, ApiEnvironment.PRODUCTION);
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService, boolean requireLiveConnect) {
+        this(clientId, clientSecret, redirectionUri, oAuthService, ApiEnvironment.PRODUCTION, requireLiveConnect);
     }
     
     /**
@@ -124,7 +137,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
-    OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService, ApiEnvironment env) {
-        super(clientId, clientSecret, redirectionUri, oAuthService, env);
+    public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService, ApiEnvironment env, boolean requireLiveConnect) {
+        super(clientId, clientSecret, redirectionUri, oAuthService, env, requireLiveConnect);
     }
 }

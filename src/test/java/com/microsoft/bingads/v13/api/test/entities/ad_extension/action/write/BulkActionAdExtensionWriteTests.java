@@ -13,6 +13,7 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkActionAdExtensionWriteToValuesLanguageTest.class,
                 BulkActionAdExtensionWriteToValuesTrackingTemplateTest.class,
                 BulkActionAdExtensionWriteToValuesUrlCustomParameters.class,
+                BulkActionAdExtensionWriteToRowValuesFusTest.class
         }
 )
 public class BulkActionAdExtensionWriteTests {

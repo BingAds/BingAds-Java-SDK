@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v12.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
@@ -111,6 +112,21 @@ public class BulkAppAdExtension extends BulkAdExtension<AppAdExtension> {
                     @Override
                     public void accept(String v, BulkAppAdExtension c) {
                         c.getAppAdExtension().setDisplayText(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAppAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAppAdExtension, String>() {
+                    @Override
+                    public String apply(BulkAppAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAppAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkAppAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
                     }
                 }
         ));

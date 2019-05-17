@@ -4,11 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -33,34 +31,9 @@ import com.microsoft.bingads.OAuthTokens;
  */
 public class UriOAuthService implements OAuthService {
 
-    private static final String UTF_8 = "UTF-8";
-
-    private static final String CLIENT_ID = "client_id";
-    private static final String CLIENT_SECRET = "client_secret";
-    private static final String GRANT_TYPE = "grant_type";
-    private static final String REDIRECT_URI = "redirect_uri";
-    private static final String RESPONSE_TYPE = "response_type";
-    private static final String STATE = "state";
-    private static final String SCOPE = "scope";
-    
-    public static final Map<ApiEnvironment, OAuthEndpoints> endpointUrls = new HashMap();
-
     private enum HttpMethods {
         POST
     }
-
-    static {
-        endpointUrls.put(ApiEnvironment.PRODUCTION, new OAuthEndpoints("https://login.live.com/oauth20_desktop.srf",
-                "https://login.live.com/oauth20_token.srf",
-                "https://login.live.com/oauth20_authorize.srf?scope=bingads.manage&%s"
-                ));
-
-        endpointUrls.put(ApiEnvironment.SANDBOX, new OAuthEndpoints(
-                "https://login.live-int.com/oauth20_desktop.srf", 
-                "https://login.live-int.com/oauth20_token.srf",
-                "https://login.live-int.com/oauth20_authorize.srf?&scope=bingads.manage&prompt=login&%s"));
-    }
-    
 
     private final WebServiceCaller webServiceCaller;
     private ObjectMapper mapper;
@@ -86,11 +59,11 @@ public class UriOAuthService implements OAuthService {
      * @return OAuth tokens
      */
     @Override
-    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters) {
+    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, boolean requireLiveConnect) {
         try {
-            List<NameValuePair> paramsList = generateParamsList(oAuthParameters);
+            List<NameValuePair> paramsList = generateParamsList(oAuthParameters, requireLiveConnect);
 
-            HttpResponse httpResponse = webServiceCaller.post(new URL(endpointUrls.get(environment).getTokenRequestUrl()), paramsList);
+            HttpResponse httpResponse = webServiceCaller.post(new URL(OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getTokenRequestUrl()), paramsList);
 
             InputStream stream = httpResponse.getEntity().getContent();            
             
@@ -116,69 +89,26 @@ public class UriOAuthService implements OAuthService {
         }
     }
 
-    /**
-     * Creates a URL for authorizing a user
-     *
-     * @param parameters OAuth parameters for ensemble authorization endpoint
-     *
-     * @return a {@link URL} which points to the authorization endpoint with all
-     * required parameters
-     *
-     * @throws MalformedURLException
-     * @throws UnsupportedEncodingException
-     */
-    public static URL getAuthorizationEndpoint(OAuthUrlParameters parameters, ApiEnvironment env) {
-        Map<String, String> paramsMap = new HashMap<String, String>();
-        paramsMap.put(CLIENT_ID, parameters.getClientId());
-        paramsMap.put(RESPONSE_TYPE, parameters.getResponseType());
-        paramsMap.put(REDIRECT_URI, parameters.getRedirectionUri().toString());
-        
-        if (parameters.getState() != null && !parameters.getState().isEmpty()) {
-        	paramsMap.put(STATE, parameters.getState());
-        }        
-        
-        try {
-            return new URL(String.format(
-                    endpointUrls.get(env).getAuthorizationEndpointUrl(),
-                    mapToQueryString(paramsMap)
-            ));
-        } catch (MalformedURLException e) {
-            throw new IllegalArgumentException(e);
-        } catch (UnsupportedEncodingException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    private static List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams) throws UnsupportedEncodingException {
+    private static List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect) throws UnsupportedEncodingException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair(CLIENT_ID, requestParams.getClientId()));
+        params.add(new BasicNameValuePair(OAuthEndpointHelper.CLIENT_ID, requestParams.getClientId()));
 
         if (requestParams.getClientSecret() != null && !requestParams.getClientSecret().isEmpty()) {
-            params.add(new BasicNameValuePair(CLIENT_SECRET, requestParams.getClientSecret()));
+            params.add(new BasicNameValuePair(OAuthEndpointHelper.CLIENT_SECRET, requestParams.getClientSecret()));
         }
 
-        params.add(new BasicNameValuePair(GRANT_TYPE, requestParams.getGrantType()));
+        params.add(new BasicNameValuePair(OAuthEndpointHelper.GRANT_TYPE, requestParams.getGrantType()));
         params.add(new BasicNameValuePair(requestParams.getGrantParamName(), requestParams.getGrantValue()));
-        params.add(new BasicNameValuePair(REDIRECT_URI, requestParams.getRedirectionUri().toString()));
-        params.add(new BasicNameValuePair(SCOPE, "bingads.manage"));
+        if (requestParams.getRedirectionUri() != null) {
+            params.add(new BasicNameValuePair(OAuthEndpointHelper.REDIRECT_URI, requestParams.getRedirectionUri().toString()));
+        }
+        params.add(new BasicNameValuePair(OAuthEndpointHelper.SCOPE, requireLiveConnect? "bingads.manage" : "https://ads.microsoft.com/ads.manage offline_access"));
 
         return params;
     }
 
-    private static String mapToQueryString(Map<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder sb = new StringBuilder();
-        for (Entry<String, String> e : params.entrySet()) {
-            if (sb.length() > 0) {
-                sb.append('&');
-            }
-            
-            sb.append(URLEncoder.encode(e.getKey(), UTF_8)).append('=').append(URLEncoder.encode(e.getValue(), UTF_8));
-        }
-        return sb.toString();
-    }
-
     @Override
-    public URL getRedirectUrl() {
-        return endpointUrls.get(environment).getDesktopRedirectUrl();
+    public URL getRedirectUrl(boolean requireLiveConnect) {
+        return OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getDesktopRedirectUrl();
     }
 }

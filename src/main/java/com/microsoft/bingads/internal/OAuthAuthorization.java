@@ -42,6 +42,20 @@ abstract class OAuthAuthorization extends Authentication {
     protected OAuthTokens oAuthTokens;
     
     protected ApiEnvironment environment;
+    
+    /**
+     * An opaque value used by the client to maintain state between the request and callback
+     * */
+    private String state;
+    
+
+    public void setState( String state) {
+        this.state = state;
+    }
+    
+    public String getState() {
+        return this.state;
+    }
 
     /**
      * Gets information about OAuth access tokens received from the Microsoft Account authorization service.

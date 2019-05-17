@@ -7,13 +7,16 @@ import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v13.api.test.entities.BulkEntityTest;
 import com.microsoft.bingads.v13.bulk.entities.BulkImageAdExtension;
+import com.microsoft.bingads.v13.campaignmanagement.AppAdExtension;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAdExtension;
 
 public abstract class BulkImageAdExtensionTest extends BulkEntityTest<BulkImageAdExtension> {
 
     @Override
     protected void onEntityCreation(BulkImageAdExtension entity) {
-        entity.setImageAdExtension(new ImageAdExtension());
+        ImageAdExtension e = new ImageAdExtension();
+        e.setId(100L);
+        entity.setImageAdExtension(e);
     }
 
     @Override

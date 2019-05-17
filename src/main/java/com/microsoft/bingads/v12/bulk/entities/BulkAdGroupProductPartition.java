@@ -458,6 +458,29 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkAdGroupProductPartition, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAdGroupProductPartition, String>() {
+                    @Override
+                    public String apply(BulkAdGroupProductPartition c) {
+                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            return StringExtensions.toOptionalBulkString(
+                                    ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getFinalUrlSuffix(),
+                                    c.getAdGroupCriterion().getId());
+                        } else {
+                            return null;
+                        }
+                    }
+                },
+                new BiConsumer<String, BulkAdGroupProductPartition>() {
+                    @Override
+                    public void accept(String v, BulkAdGroupProductPartition c) {
+                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((BiddableAdGroupCriterion)c.getAdGroupCriterion()).setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                        }
+                    }
+                }
+        ));
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

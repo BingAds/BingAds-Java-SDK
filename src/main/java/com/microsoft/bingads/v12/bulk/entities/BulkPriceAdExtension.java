@@ -150,6 +150,21 @@ public class BulkPriceAdExtension extends BulkAdExtension<PriceAdExtension> {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkPriceAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkPriceAdExtension, String>() {
+                    @Override
+                    public String apply(BulkPriceAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkPriceAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkPriceAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
