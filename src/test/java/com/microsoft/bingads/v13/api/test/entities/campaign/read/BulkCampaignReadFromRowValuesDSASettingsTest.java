@@ -16,6 +16,7 @@ import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v13.api.test.entities.ObjectComparer;
 import com.microsoft.bingads.v13.api.test.entities.campaign.BulkCampaignTest;
 import com.microsoft.bingads.v13.bulk.entities.BulkCampaign;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
@@ -33,6 +34,9 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
     public String source;
 
     @Parameterized.Parameter(value = 4)
+    public String pageFeedIds;
+
+    @Parameterized.Parameter(value = 5)
     public List<Setting> expectedResult;
 
     @Parameterized.Parameters
@@ -42,17 +46,23 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         setting1.setLanguage("English");
         setting1.setSource(DynamicSearchAdsSource.ALL);
         setting1.setType("DynamicSearchAdsSetting");
-
+        ArrayOflong pids = new ArrayOflong();
+        pids.getLongs().addAll(Arrays.asList(1L, 2L, 3L, 4L));
+        setting1.setPageFeedIds(pids);
+        
         DynamicSearchAdsSetting setting2 = new DynamicSearchAdsSetting();
         setting2.setDomainName("baidu.com");
         setting2.setLanguage("Chinese");
         setting2.setSource(DynamicSearchAdsSource.SYSTEM_INDEX);
         setting2.setType("DynamicSearchAdsSetting");
+        ArrayOflong pids2 = new ArrayOflong();
+        pids2.getLongs().addAll(Arrays.asList(101L, 102L, 103L, 104L));
+        setting2.setPageFeedIds(pids2);
 
         return Arrays.asList(
                 new Object[][]{
-                        {"DynamicSearchAds", "bing.com", "English", "All", Collections.singletonList(setting1)},
-                        {"DynamicSearchAds", "baidu.com", "Chinese", "SystemIndex", Collections.singletonList(setting2)},
+                        {"DynamicSearchAds", "bing.com", "English", "All", "1;2;3;4", Collections.singletonList(setting1)},
+                        {"DynamicSearchAds", "baidu.com", "Chinese", "SystemIndex", "101;102;103;104", Collections.singletonList(setting2)},
                 }
         );
     }
@@ -65,6 +75,7 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         values.put("Website", website);
         values.put("Domain Language", domainLanguage);
         values.put("Source", source);
+        values.put("Page Feed Ids", pageFeedIds);
 
         testReadProperty(
                 values,
@@ -76,8 +87,6 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
                             return null;
                         }
                         
-                        //List<Setting> settings = getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == settingClass).collect(Collectors.toList());
-
                         return c.getCampaign().getSettings().getSettings().stream().filter(s -> s.getClass() == DynamicSearchAdsSetting.class).collect(Collectors.toList());
                     }
                 },

@@ -55,6 +55,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="BidStrategyType"/>
  *     &lt;enumeration value="KeywordLabels"/>
  *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
+ *     &lt;enumeration value="TopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="TopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     &lt;enumeration value="TopImpressionSharePercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="TopImpressionRatePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -145,7 +153,23 @@ public enum ShareOfVoiceReportColumn {
     @XmlEnumValue("KeywordLabels")
     KEYWORD_LABELS("KeywordLabels"),
     @XmlEnumValue("ExactMatchImpressionSharePercent")
-    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent");
+    EXACT_MATCH_IMPRESSION_SHARE_PERCENT("ExactMatchImpressionSharePercent"),
+    @XmlEnumValue("TopImpressionShareLostToRankPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("TopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("TopImpressionShareLostToBudgetPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("TopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToRankPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("AbsoluteTopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToBudgetPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("AbsoluteTopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionSharePercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent"),
+    @XmlEnumValue("TopImpressionSharePercent")
+    TOP_IMPRESSION_SHARE_PERCENT("TopImpressionSharePercent"),
+    @XmlEnumValue("AbsoluteTopImpressionRatePercent")
+    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
+    @XmlEnumValue("TopImpressionRatePercent")
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
     private final String value;
 
     ShareOfVoiceReportColumn(String v) {

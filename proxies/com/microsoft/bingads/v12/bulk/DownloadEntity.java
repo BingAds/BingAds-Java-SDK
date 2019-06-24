@@ -123,6 +123,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CampaignNegativeRemarketingListAssociations"/>
  *     &lt;enumeration value="CampaignSimilarRemarketingListAssociations"/>
  *     &lt;enumeration value="CampaignNegativeSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="Feeds"/>
+ *     &lt;enumeration value="FeedItems"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -349,7 +351,11 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignSimilarRemarketingListAssociations")
     CAMPAIGN_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("CampaignSimilarRemarketingListAssociations"),
     @XmlEnumValue("CampaignNegativeSimilarRemarketingListAssociations")
-    CAMPAIGN_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeSimilarRemarketingListAssociations");
+    CAMPAIGN_NEGATIVE_SIMILAR_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeSimilarRemarketingListAssociations"),
+    @XmlEnumValue("Feeds")
+    FEEDS("Feeds"),
+    @XmlEnumValue("FeedItems")
+    FEED_ITEMS("FeedItems");
     private final String value;
 
     DownloadEntity(String v) {

@@ -72,6 +72,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AssistedClicks"/>
  *     &lt;enumeration value="ClickSharePercent"/>
  *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     &lt;enumeration value="AssistedConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -196,7 +197,9 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("ClickSharePercent")
     CLICK_SHARE_PERCENT("ClickSharePercent"),
     @XmlEnumValue("AbsoluteTopImpressionSharePercent")
-    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent");
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent"),
+    @XmlEnumValue("AssistedConversions")
+    ASSISTED_CONVERSIONS("AssistedConversions");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

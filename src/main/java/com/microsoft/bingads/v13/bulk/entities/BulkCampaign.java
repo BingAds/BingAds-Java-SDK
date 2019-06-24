@@ -1,6 +1,7 @@
 package com.microsoft.bingads.v13.bulk.entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,7 @@ import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
@@ -838,6 +840,57 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.PageFeedIds,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+                        DynamicSearchAdsSetting dsaSetting = (DynamicSearchAdsSetting)setting;
+                        if (dsaSetting.getPageFeedIds() == null 
+                                || dsaSetting.getPageFeedIds().getLongs() == null 
+                                ||dsaSetting.getPageFeedIds().getLongs().size() == 0)
+                        {
+                            return null;
+                        }
+                        
+                        
+
+                        return StringExtensions.toIdListBulkString(";", dsaSetting.getPageFeedIds());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+                        
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, true);
+
+                        if (setting == null || v == null) {
+                            return;
+                        }
+                        
+                        ArrayOflong ids = new ArrayOflong();
+                        List<Long> idArray = StringExtensions.parseIdList(v);
+                        
+                        if (idArray == null) {
+                            ids = null;
+                        } else {
+                            ids.getLongs().addAll(idArray);
+                        }
+
+                        ((DynamicSearchAdsSetting)setting).setPageFeedIds(ids);
+                    }
+                }
+        ));
+        
         
         MAPPINGS = Collections.unmodifiableList(m);
     }

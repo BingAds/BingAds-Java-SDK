@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Yearly"/>
  *     &lt;enumeration value="HourOfDay"/>
  *     &lt;enumeration value="DayOfWeek"/>
+ *     &lt;enumeration value="WeeklyStartingMonday"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -46,7 +47,9 @@ public enum ReportAggregation {
     @XmlEnumValue("HourOfDay")
     HOUR_OF_DAY("HourOfDay"),
     @XmlEnumValue("DayOfWeek")
-    DAY_OF_WEEK("DayOfWeek");
+    DAY_OF_WEEK("DayOfWeek"),
+    @XmlEnumValue("WeeklyStartingMonday")
+    WEEKLY_STARTING_MONDAY("WeeklyStartingMonday");
     private final String value;
 
     ReportAggregation(String v) {

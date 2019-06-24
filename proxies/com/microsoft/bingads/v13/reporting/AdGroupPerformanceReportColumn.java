@@ -73,6 +73,13 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
  *     &lt;enumeration value="FinalUrlSuffix"/>
  *     &lt;enumeration value="CampaignType"/>
+ *     &lt;enumeration value="TopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="TopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="TopImpressionSharePercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="TopImpressionRatePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -199,7 +206,21 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("FinalUrlSuffix")
     FINAL_URL_SUFFIX("FinalUrlSuffix"),
     @XmlEnumValue("CampaignType")
-    CAMPAIGN_TYPE("CampaignType");
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("TopImpressionShareLostToRankPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("TopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("TopImpressionShareLostToBudgetPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("TopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToRankPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("AbsoluteTopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToBudgetPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("AbsoluteTopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("TopImpressionSharePercent")
+    TOP_IMPRESSION_SHARE_PERCENT("TopImpressionSharePercent"),
+    @XmlEnumValue("AbsoluteTopImpressionRatePercent")
+    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
+    @XmlEnumValue("TopImpressionRatePercent")
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

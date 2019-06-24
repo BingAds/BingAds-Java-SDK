@@ -18,6 +18,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFinalUrlSuffixTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesNameTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPriorityOtherSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPriorityShoppingSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesSourceDSASettingTest;
@@ -52,7 +53,8 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest.class,
         BulkCampaignWriteToRowValuesSourceDSASettingTest.class,
         BulkCampaignWriteToRowValuesExperimentIdTest.class,
-        BulkCampaignWriteToRowValuesFinalUrlSuffixTest.class
+        BulkCampaignWriteToRowValuesFinalUrlSuffixTest.class,
+        BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest.class
 })
 public class BulkCampaignWriteTests {
 

@@ -89,7 +89,7 @@ public class UriOAuthService implements OAuthService {
         }
     }
 
-    private static List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect) throws UnsupportedEncodingException {
+    private List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect) throws UnsupportedEncodingException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(OAuthEndpointHelper.CLIENT_ID, requestParams.getClientId()));
 
@@ -102,7 +102,8 @@ public class UriOAuthService implements OAuthService {
         if (requestParams.getRedirectionUri() != null) {
             params.add(new BasicNameValuePair(OAuthEndpointHelper.REDIRECT_URI, requestParams.getRedirectionUri().toString()));
         }
-        params.add(new BasicNameValuePair(OAuthEndpointHelper.SCOPE, requireLiveConnect? "bingads.manage" : "https://ads.microsoft.com/ads.manage offline_access"));
+        params.add(new BasicNameValuePair(OAuthEndpointHelper.SCOPE, 
+                OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getScope()));
 
         return params;
     }

@@ -248,6 +248,7 @@ public class ObjectFactory {
     private final static QName _AdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtension");
     private final static QName _CampaignCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterionStatus");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
+    private final static QName _CompanySize_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V13", "CompanySize");
     private final static QName _ProductAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProductAudience");
     private final static QName _Label_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Label");
     private final static QName _AdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdType");
@@ -5876,6 +5877,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System", name = "ArrayOfNullableOflong")
     public JAXBElement<ArrayOfNullableOflong> createArrayOfNullableOflong(ArrayOfNullableOflong value) {
         return new JAXBElement<ArrayOfNullableOflong>(_ArrayOfNullableOflong_QNAME, ArrayOfNullableOflong.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CompanySize }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V13", name = "CompanySize")
+    public JAXBElement<CompanySize> createCompanySize(CompanySize value) {
+        return new JAXBElement<CompanySize>(_CompanySize_QNAME, CompanySize.class, null, value);
     }
 
     /**

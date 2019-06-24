@@ -89,6 +89,12 @@ public class StringTable {
 
     public static final String Target = "Target";
 
+    public static final String Feed = "Feed";
+    public static final String FeedItem = "Feed Item";
+    public static final String FeedName = "Feed Name";
+    public static final String CustomAttributes = "Custom Attributes";
+
+    
     public static final String PhysicalIntent = "Physical Intent";
 
     public static final String Bid = "Bid";
@@ -493,6 +499,7 @@ public class StringTable {
     public static final String CampaignNegativeDynamicSearchAdTarget = "Campaign Negative Dynamic Search Ad Target";
     public static final String AdGroupNegativeDynamicSearchAdTarget = "Ad Group Negative Dynamic Search Ad Target";
     public static final String AdGroupDynamicSearchAdTarget = "Ad Group Dynamic Search Ad Target";
+    public static final String PageFeedIds = "Page Feed Ids";
         
     public static final String DomainLanguage = "Domain Language";
     public static final String DynamicAdTargetConditionColumnPrefix = "Dynamic Ad Target Condition ";

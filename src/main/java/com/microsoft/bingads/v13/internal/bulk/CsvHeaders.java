@@ -68,7 +68,6 @@ public class CsvHeaders {
 
             // location target
             StringTable.Target,
-            StringTable.PhysicalIntent,
             StringTable.TargetAll,
             StringTable.BidAdjustment,
             StringTable.RadiusTargetId,
@@ -327,6 +326,8 @@ public class CsvHeaders {
             StringTable.DynamicAdTargetValue1,
             StringTable.DynamicAdTargetValue2,
             StringTable.DynamicAdTargetValue3,
+            StringTable.PageFeedIds,
+
             
             // Labels
             StringTable.ColorCode,
@@ -343,6 +344,11 @@ public class CsvHeaders {
             StringTable.MSCLKIDAutoTaggingEnabled,
 
             StringTable.FinalUrlSuffix,
+            
+            // Feeds
+            StringTable.CustomAttributes,
+            StringTable.FeedName,
+            StringTable.PhysicalIntent,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

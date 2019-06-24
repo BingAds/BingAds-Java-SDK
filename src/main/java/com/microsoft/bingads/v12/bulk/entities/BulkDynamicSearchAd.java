@@ -66,7 +66,7 @@ public class BulkDynamicSearchAd extends BulkAd<DynamicSearchAd> {
                 new BiConsumer<String, BulkDynamicSearchAd>() {
                     @Override
                     public void accept(String v, BulkDynamicSearchAd c) {
-                        c.getAd().setPath1(v);;
+                        c.getAd().setPath1(v);
                     }
                 },
                 true
@@ -82,12 +82,27 @@ public class BulkDynamicSearchAd extends BulkAd<DynamicSearchAd> {
                 new BiConsumer<String, BulkDynamicSearchAd>() {
                     @Override
                     public void accept(String v, BulkDynamicSearchAd c) {
-                        c.getAd().setPath2(v);;
+                        c.getAd().setPath2(v);
                     }
                 },
                 true
         ));       
-        
+
+        m.add(new SimpleBulkMapping<BulkDynamicSearchAd, String>(StringTable.TextPart2,
+                new Function<BulkDynamicSearchAd, String>() {
+                    @Override
+                    public String apply(BulkDynamicSearchAd c) {
+                        return c.getAd().getTextPart2();
+                    }
+                },
+                new BiConsumer<String, BulkDynamicSearchAd>() {
+                    @Override
+                    public void accept(String v, BulkDynamicSearchAd c) {
+                        c.getAd().setTextPart2(v);
+                    }
+                },
+                true
+        ));
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

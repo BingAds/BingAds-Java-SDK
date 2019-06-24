@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetLinkedAccountsAndCustomersInfoRequest")
 public class GetLinkedAccountsAndCustomersInfoRequest {
 
-    @XmlElement(name = "CustomerId")
+    @XmlElement(name = "CustomerId", nillable = true)
     protected Long customerId;
     @XmlElement(name = "OnlyParentAccounts")
     protected Boolean onlyParentAccounts;

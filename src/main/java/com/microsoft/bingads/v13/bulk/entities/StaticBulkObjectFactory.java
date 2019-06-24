@@ -808,7 +808,20 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
         
+        m.put(StringTable.Feed, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkFeed();
+            }
+        }));
 
+        m.put(StringTable.FeedItem, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkFeedItem();
+            }
+        }));
+        
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 
         Map<String, Supplier<BulkObject>> addl = new HashMap<String, Supplier<BulkObject>>();

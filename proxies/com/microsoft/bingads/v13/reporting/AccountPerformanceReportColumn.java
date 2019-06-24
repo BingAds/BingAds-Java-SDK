@@ -61,6 +61,13 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CustomerName"/>
  *     &lt;enumeration value="ClickSharePercent"/>
  *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     &lt;enumeration value="TopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="TopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToRankPercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionShareLostToBudgetPercent"/>
+ *     &lt;enumeration value="TopImpressionSharePercent"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="TopImpressionRatePercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -163,7 +170,21 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("ClickSharePercent")
     CLICK_SHARE_PERCENT("ClickSharePercent"),
     @XmlEnumValue("AbsoluteTopImpressionSharePercent")
-    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent");
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent"),
+    @XmlEnumValue("TopImpressionShareLostToRankPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("TopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("TopImpressionShareLostToBudgetPercent")
+    TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("TopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToRankPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_RANK_PERCENT("AbsoluteTopImpressionShareLostToRankPercent"),
+    @XmlEnumValue("AbsoluteTopImpressionShareLostToBudgetPercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_LOST_TO_BUDGET_PERCENT("AbsoluteTopImpressionShareLostToBudgetPercent"),
+    @XmlEnumValue("TopImpressionSharePercent")
+    TOP_IMPRESSION_SHARE_PERCENT("TopImpressionSharePercent"),
+    @XmlEnumValue("AbsoluteTopImpressionRatePercent")
+    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
+    @XmlEnumValue("TopImpressionRatePercent")
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

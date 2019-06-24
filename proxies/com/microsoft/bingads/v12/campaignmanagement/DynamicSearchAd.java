@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Path1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Path2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TextPart2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DynamicSearchAd", propOrder = {
     "path1",
     "path2",
-    "text"
+    "text",
+    "textPart2"
 })
 public class DynamicSearchAd
     extends Ad
@@ -44,6 +46,8 @@ public class DynamicSearchAd
     protected String path2;
     @XmlElement(name = "Text", nillable = true)
     protected String text;
+    @XmlElement(name = "TextPart2", nillable = true)
+    protected String textPart2;
 
     /**
      * Gets the value of the path1 property.
@@ -115,6 +119,30 @@ public class DynamicSearchAd
      */
     public void setText(String value) {
         this.text = value;
+    }
+
+    /**
+     * Gets the value of the textPart2 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTextPart2() {
+        return textPart2;
+    }
+
+    /**
+     * Sets the value of the textPart2 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTextPart2(String value) {
+        this.textPart2 = value;
     }
 
 }

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v13.bulk.entities.BulkFeed.FeedCustomAttribute;
 import com.microsoft.bingads.v13.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v13.bulk.entities.Status;
 import com.microsoft.bingads.v13.campaignmanagement.ActionAdExtensionActionType;
@@ -924,23 +925,23 @@ public class StringExtensions {
         return parameter;
     }
         
-    public static List<Long> parseImageMediaIds(String v) {
-    	if (StringExtensions.isNullOrEmpty(v))
-    		return null;
-    	
-    	List<Long> idArray = new ArrayList<Long>();
-    	
-    	String[] ids = v.split(";");
-    	
-    	for(String tmp : ids) {
-    		if (!StringExtensions.isNullOrEmpty(tmp) && ! ";".equals(tmp))
-    			idArray.add(Long.parseLong(tmp));
-    	}	
-    	
-    	return idArray;
+    public static List<Long> parseIdList(String v) {
+        if (StringExtensions.isNullOrEmpty(v))
+            return null;
+        
+        List<Long> idArray = new ArrayList<Long>();
+        
+        String[] ids = v.split(";");
+        
+        for(String tmp : ids) {
+            if (!StringExtensions.isNullOrEmpty(tmp) && ! ";".equals(tmp))
+                idArray.add(Long.parseLong(tmp));
+        }   
+        
+        return idArray;
     }
     
-    public static String writeMediaIds(String separator, ArrayOflong ids) {
+    public static String toIdListBulkString(String separator, ArrayOflong ids) {
         if (ids == null) {
             return null;
         }
@@ -1669,6 +1670,33 @@ public class StringExtensions {
         }
 
         return type.value();
+    }
+    
+    public static String ToFeedCustomAttributesBulkString(List<FeedCustomAttribute> customAttributes) {
+        if (customAttributes == null || customAttributes.size() == 0) {
+            return null;
+        }
+        
+        try {
+            return new ObjectMapper().writeValueAsString(customAttributes);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<FeedCustomAttribute> parseFeedCustomAttributes(String strCustomAttributes) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(strCustomAttributes,
+                    mapper.getTypeFactory().constructCollectionType(
+                            List.class,
+                            FeedCustomAttribute.class)
+                    );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

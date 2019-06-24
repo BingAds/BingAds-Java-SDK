@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="LastSixMonths"/>
  *     &lt;enumeration value="ThisYear"/>
  *     &lt;enumeration value="LastYear"/>
+ *     &lt;enumeration value="ThisWeekStartingMonday"/>
+ *     &lt;enumeration value="LastWeekStartingMonday"/>
+ *     &lt;enumeration value="LastFourWeeksStartingMonday"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -64,7 +67,13 @@ public enum ReportTimePeriod {
     @XmlEnumValue("ThisYear")
     THIS_YEAR("ThisYear"),
     @XmlEnumValue("LastYear")
-    LAST_YEAR("LastYear");
+    LAST_YEAR("LastYear"),
+    @XmlEnumValue("ThisWeekStartingMonday")
+    THIS_WEEK_STARTING_MONDAY("ThisWeekStartingMonday"),
+    @XmlEnumValue("LastWeekStartingMonday")
+    LAST_WEEK_STARTING_MONDAY("LastWeekStartingMonday"),
+    @XmlEnumValue("LastFourWeeksStartingMonday")
+    LAST_FOUR_WEEKS_STARTING_MONDAY("LastFourWeeksStartingMonday");
     private final String value;
 
     ReportTimePeriod(String v) {

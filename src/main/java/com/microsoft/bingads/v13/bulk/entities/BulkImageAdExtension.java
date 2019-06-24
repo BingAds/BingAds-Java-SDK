@@ -89,14 +89,14 @@ public class BulkImageAdExtension extends BulkAdExtension<ImageAdExtension> {
                 new Function<BulkImageAdExtension, String>() {
                     @Override
                     public String apply(BulkImageAdExtension c) {
-                        return StringExtensions.writeMediaIds(";", c.getImageAdExtension().getImageMediaIds());
+                        return StringExtensions.toIdListBulkString(";", c.getImageAdExtension().getImageMediaIds());
                     }
                 },
                 new BiConsumer<String, BulkImageAdExtension>() {
                     @Override
                     public void accept(String v, BulkImageAdExtension c) {
                     	ArrayOflong ids = new ArrayOflong();
-                    	List<Long> idArray = StringExtensions.parseImageMediaIds(v);
+                    	List<Long> idArray = StringExtensions.parseIdList(v);
                     	
                     	if (idArray == null) {
                     		ids = null;

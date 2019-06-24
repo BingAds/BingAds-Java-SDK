@@ -8,7 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({BulkDynamicSearchAdWriteToRowValuesPath1Test.class,
 	BulkDynamicSearchAdWriteToRowValuesPath2Test.class,
-    BulkDynamicSearchAdWriteToRowValuesTextTest.class})
+    BulkDynamicSearchAdWriteToRowValuesTextTest.class,
+    BulkDynamicSearchAdWriteToRowValuesTextPart2Test.class,})
 public class BulkDynamicSearchAdWriteTests {
 
 }
