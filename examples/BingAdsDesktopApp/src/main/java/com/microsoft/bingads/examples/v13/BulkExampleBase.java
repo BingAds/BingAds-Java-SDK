@@ -51,6 +51,7 @@ public class BulkExampleBase extends ExampleBase {
     static long structuredSnippetAdExtensionIdKey = -19; 
     static long negativeKeywordListIdKey = -20; 
     static long budgetIdKey = -21;
+    static long feedIdKey = -22;
     static long campaignIdKey = -111; 
     static long adGroupIdKey = -1111; 
     static long negativeKeywordIdKey = -11111; 
@@ -101,6 +102,62 @@ public class BulkExampleBase extends ExampleBase {
         }
     }
 
+    static void outputBulkFeeds(Iterable<BulkFeed> bulkEntities){
+        for (BulkFeed entity : bulkEntities){
+            outputStatusMessage("BulkFeed:");
+            outputStatusMessage(String.format("AccountId: %s", entity.getAccountId()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage("CustomAttributes:");
+            for (BulkFeed.FeedCustomAttribute customAttribute : entity.getCustomAttributes())
+            {
+                outputStatusMessage("FeedCustomAttribute:");
+                outputStatusMessage(String.format("FeedAttributeType: %s", customAttribute.getFeedAttributeType()));
+                outputStatusMessage(String.format("IsPartOfKey: %s", customAttribute.getIsPartOfKey()));
+                outputStatusMessage(String.format("Name: %s", customAttribute.getName()));
+            }
+            outputStatusMessage(String.format("Id: %s", entity.getId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("Name: %s", entity.getName()));
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+            outputStatusMessage(String.format("SubType: %s", entity.getSubType()));
+
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkFeedItems(Iterable<BulkFeedItem> bulkEntities){
+        for (BulkFeedItem entity : bulkEntities){
+            outputStatusMessage("BulkFeedItem:");
+            outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
+            outputStatusMessage(String.format("AudienceId: %s", entity.getAudienceId()));
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            outputStatusMessage(String.format("CustomAttributes: %s", entity.getCustomAttributes()));
+            outputStatusMessage("DayTimeRanges:");
+            CampaignManagementExampleHelper.outputArrayOfDayTime(entity.getDayTimeRanges());
+            outputStatusMessage(String.format("DevicePreference: %s", entity.getDevicePreference()));
+            outputStatusMessage(String.format("EndDate: %s", entity.getEndDate()));
+            outputStatusMessage(String.format("FeedId: %s", entity.getFeedId()));
+            outputStatusMessage(String.format("Id: %s", entity.getId()));
+            outputStatusMessage(String.format("IntentOption: %s", entity.getIntentOption()));
+            outputStatusMessage(String.format("Keyword: %s", entity.getKeyword()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            outputStatusMessage(String.format("LocationId: %s", entity.getLocationId()));
+            outputStatusMessage(String.format("MatchType: %s", entity.getMatchType()));
+            outputStatusMessage(String.format("StartDate: %s", entity.getStartDate()));
+            outputStatusMessage(String.format("Status: %s", entity.getStatus()));
+
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
 
     static void outputBulkCampaigns(Iterable<BulkCampaign> bulkEntities){
         for (BulkCampaign entity : bulkEntities){
@@ -163,7 +220,27 @@ public class BulkExampleBase extends ExampleBase {
         }
     }
     
-    static void outputBulkExpandedTextAds(Iterable<BulkExpandedTextAd> bulkEntities){
+    static void outputBulkDynamicSearchAds(Iterable<BulkDynamicSearchAd> bulkEntities){
+        for (BulkDynamicSearchAd entity : bulkEntities){
+            outputStatusMessage("BulkDynamicSearchAd:");
+            outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
+            outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+
+            // Output the Campaign Management DynamicSearchAd Object
+            CampaignManagementExampleHelper.outputAd(entity.getDynamicSearchAd());
+
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+        static void outputBulkExpandedTextAds(Iterable<BulkExpandedTextAd> bulkEntities){
         for (BulkExpandedTextAd entity : bulkEntities){
             outputStatusMessage("BulkExpandedTextAd:");
             outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
@@ -186,10 +263,10 @@ public class BulkExampleBase extends ExampleBase {
     static void outputBulkKeywords(Iterable<BulkKeyword> bulkEntities){
         for (BulkKeyword entity : bulkEntities){
             outputStatusMessage("BulkKeyword:");
-            outputStatusMessage(String.format("AdGroupId: {0}", entity.getAdGroupId()));
-            outputStatusMessage(String.format("AdGroupName: {0}", entity.getAdGroupName()));
-            outputStatusMessage(String.format("CampaignName: {0}", entity.getCampaignName()));
-            outputStatusMessage(String.format("ClientId: {0}", entity.getClientId()));
+            outputStatusMessage(String.format("AdGroupId: %s", entity.getAdGroupId()));
+            outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
             if(entity.getLastModifiedTime() != null){
                 outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
             }
@@ -268,6 +345,44 @@ public class BulkExampleBase extends ExampleBase {
                 CampaignManagementExampleHelper.outputNegativeAdGroupCriterion((NegativeAdGroupCriterion)entity.getAdGroupCriterion());
             }
 
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkAdGroupDynamicSearchAdTargets(Iterable<BulkAdGroupDynamicSearchAdTarget> bulkEntities){
+        for (BulkAdGroupDynamicSearchAdTarget entity : bulkEntities){
+            outputStatusMessage("BulkAdGroupDynamicSearchAdTarget:");
+            outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            
+            // Output the Campaign Management BiddableAdGroupCriterion Object
+            CampaignManagementExampleHelper.outputAdGroupCriterion(entity.getBiddableAdGroupCriterion());
+            
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
+    
+    static void outputBulkAdGroupNegativeDynamicSearchAdTargets(Iterable<BulkAdGroupNegativeDynamicSearchAdTarget> bulkEntities){
+        for (BulkAdGroupNegativeDynamicSearchAdTarget entity : bulkEntities){
+            outputStatusMessage("BulkAdGroupNegativeDynamicSearchAdTarget:");
+            outputStatusMessage(String.format("AdGroupName: %s", entity.getAdGroupName()));
+            outputStatusMessage(String.format("CampaignName: %s", entity.getCampaignName()));
+            outputStatusMessage(String.format("ClientId: %s", entity.getClientId()));
+            if(entity.getLastModifiedTime() != null){
+                outputStatusMessage(String.format("LastModifiedTime: %s", entity.getLastModifiedTime().getTime()));
+            }
+            
+            // Output the Campaign Management NegativeAdGroupCriterion Object
+            CampaignManagementExampleHelper.outputAdGroupCriterion(entity.getNegativeAdGroupCriterion());
+            
             if(entity.hasErrors()){
                 outputBulkErrors(entity.getErrors());
             }
@@ -686,9 +801,9 @@ public class BulkExampleBase extends ExampleBase {
         {
             outputStatusMessage("QualityScoreData: ");
             outputStatusMessage("BidSuggestions: ");
-            outputStatusMessage(String.format("BestPosition: {0}", bidSuggestions.getBestPosition()));
-            outputStatusMessage(String.format("MainLine: {0}", bidSuggestions.getMainLine()));
-            outputStatusMessage(String.format("FirstPage: {0}", bidSuggestions.getFirstPage()));
+            outputStatusMessage(String.format("BestPosition: %s", bidSuggestions.getBestPosition()));
+            outputStatusMessage(String.format("MainLine: %s", bidSuggestions.getMainLine()));
+            outputStatusMessage(String.format("FirstPage: %s", bidSuggestions.getFirstPage()));
         }
     }
 

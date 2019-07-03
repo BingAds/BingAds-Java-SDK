@@ -29,6 +29,64 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             
             List<BulkEntity> uploadEntities = new ArrayList<>();
             
+            // Setup an ad customizer feed that can be referenced later in the ad copy. 
+            
+            BulkFeed bulkFeed = new BulkFeed();
+            List<BulkFeed.FeedCustomAttribute> customAttributes = new ArrayList<BulkFeed.FeedCustomAttribute>();
+            BulkFeed.FeedCustomAttribute attribute1 = new BulkFeed.FeedCustomAttribute();
+            attribute1.setFeedAttributeType("String");
+            attribute1.setName("Product");
+            customAttributes.add(attribute1);
+            BulkFeed.FeedCustomAttribute attribute2 = new BulkFeed.FeedCustomAttribute();
+            attribute2.setFeedAttributeType("String");
+            attribute2.setName("Materials_Lightweight");
+            customAttributes.add(attribute2);
+            BulkFeed.FeedCustomAttribute attribute3 = new BulkFeed.FeedCustomAttribute();
+            attribute3.setFeedAttributeType("String");
+            attribute3.setName("Description_Lightweight");
+            customAttributes.add(attribute3);
+            BulkFeed.FeedCustomAttribute attribute4 = new BulkFeed.FeedCustomAttribute();
+            attribute4.setFeedAttributeType("Int64");
+            attribute4.setName("Finishes");
+            customAttributes.add(attribute4);
+            BulkFeed.FeedCustomAttribute attribute5 = new BulkFeed.FeedCustomAttribute();
+            attribute5.setFeedAttributeType("Price");
+            attribute5.setName("StartPrice");
+            customAttributes.add(attribute5);
+            bulkFeed.setCustomAttributes(customAttributes);
+            bulkFeed.setId(feedIdKey);
+            bulkFeed.setName("My AdCustomizerFeed " + System.currentTimeMillis());
+            bulkFeed.setStatus(Status.ACTIVE);
+            bulkFeed.setSubType("AdCustomizerFeed");
+                        
+            uploadEntities.add(bulkFeed);
+            
+            
+            BulkFeedItem bulkFeedItem = new BulkFeedItem();
+            bulkFeedItem.setClientId("YourClientIdGoesHere");
+            bulkFeedItem.setFeedId(feedIdKey);
+            bulkFeedItem.setCustomAttributes("{\"Product\":\"Contoso 900\","
+                    + "\"Materials_Lightweight\":\"titanium or acetate\","
+                    + "\"Description_Lightweight\":\"Stylish, lightweight shades\","
+                    + "\"Finishes\":8,"
+                    + "\"StartPrice\":\"$24.99\"}");
+            ArrayOfDayTime dayTimeRanges = new ArrayOfDayTime();
+            DayTime monday = new DayTime();
+            monday.setDay(Day.MONDAY);
+            monday.setStartHour(9);
+            monday.setStartMinute(Minute.ZERO);
+            monday.setEndHour(21);
+            monday.setEndMinute(Minute.ZERO);
+            dayTimeRanges.getDayTimes().add(monday);
+            bulkFeedItem.setDayTimeRanges(dayTimeRanges);
+            bulkFeedItem.setIntentOption(IntentOption.PEOPLE_IN);
+            bulkFeedItem.setKeyword("lightweight sunglasses");
+            bulkFeedItem.setLocationId(190L);
+            bulkFeedItem.setMatchType(MatchType.BROAD);
+            bulkFeedItem.setStatus(Status.ACTIVE);  
+            
+            uploadEntities.add(bulkFeedItem);
+            
             // Add a search campaign.
             
             BulkCampaign bulkCampaign = new BulkCampaign();
@@ -39,7 +97,7 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Summer Sunglasses " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             bulkCampaign.setCampaign(campaign);
 
@@ -51,7 +109,7 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             bulkAdGroup.setCampaignId(campaignIdKey);
             AdGroup adGroup = new AdGroup();
             adGroup.setId(adGroupIdKey);
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setName("Sunglasses Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());
@@ -74,7 +132,7 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             keyword.getBid().setAmount(0.47);
             keyword.setParam2("10% Off");
             keyword.setMatchType(MatchType.PHRASE);
-            keyword.setText("Brand-A Shoes");
+            keyword.setText("Brand-A Sunglasses");
             bulkKeyword.setKeyword(keyword);
             
             uploadEntities.add(bulkKeyword);
@@ -83,32 +141,40 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             bulkExpandedTextAd.setAdGroupId(adGroupIdKey);
             ExpandedTextAd expandedTextAd = new ExpandedTextAd();
             ArrayOfstring finalUrls = new ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            finalUrls.getStrings().add("https://www.contoso.com");
             expandedTextAd.setFinalUrls(finalUrls);
-            expandedTextAd.setTitlePart1("Contoso");
-            expandedTextAd.setTitlePart2("Quick & Easy Setup");
-            expandedTextAd.setTitlePart3("Seemless Integration");
-            expandedTextAd.setText("Find New Customers & Increase Sales!");
-            expandedTextAd.setTextPart2("Start Advertising on Contoso Today.");
-            expandedTextAd.setPath1("seattle");
-            expandedTextAd.setPath2("shoe sale");            
+            expandedTextAd.setTitlePart1("The latest {=Sunglasses.Product}s");
+            expandedTextAd.setTitlePart2("In {=Sunglasses.Materials_Lightweight}");
+            expandedTextAd.setTitlePart3(null);
+            expandedTextAd.setText("{=Sunglasses.Description_Lightweight} in {=Sunglasses.Finishes} finishes.");
+            expandedTextAd.setTextPart2("Starting at only {=Sunglasses.StartPrice}!");
+            expandedTextAd.setPath1("deals");
+            expandedTextAd.setPath2(null);            
             bulkExpandedTextAd.setExpandedTextAd(expandedTextAd);
             
             uploadEntities.add(bulkExpandedTextAd);
             
             // Upload and write the output
 
-            outputStatusMessage("-----\nAdding campaign, ad group, keyword, and ad...");
+            outputStatusMessage("-----\nAdding the ad customizer feed, campaign, ad group, keyword, and ad...");
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
             
             outputStatusMessage("Upload results:");
 
+            List<BulkFeed> feedResults = new ArrayList<>();
             List<BulkCampaign> campaignResults = new ArrayList<>();
 
             for (BulkEntity entity : downloadEntities) {
-                if (entity instanceof BulkCampaign) {
+                if (entity instanceof BulkFeed) {
+                        feedResults.add((BulkFeed) entity);
+                        outputBulkFeeds(Arrays.asList((BulkFeed) entity) );
+                }
+                else if (entity instanceof BulkFeedItem) {
+                        outputBulkFeedItems(Arrays.asList((BulkFeedItem) entity) );
+                }
+                else if (entity instanceof BulkCampaign) {
                         campaignResults.add((BulkCampaign) entity);
                         outputBulkCampaigns(Arrays.asList((BulkCampaign) entity) );
                 }
@@ -125,9 +191,14 @@ public class BulkExpandedTextAds extends BulkExampleBase {
             downloadEntities.close();
             Reader.close();
             
-            // Delete the campaign and everything it contains e.g., ad groups and ads.   
+            // Delete the feed and campaign and everything it contains e.g., ad groups and ads. 
 
             uploadEntities = new ArrayList<>();
+            
+            for (BulkFeed feedResult : feedResults){
+                feedResult.setStatus(Status.DELETED);
+                uploadEntities.add(feedResult);
+            }
             
             for (BulkCampaign campaignResult : campaignResults){
                 campaignResult.getCampaign().setStatus(CampaignStatus.DELETED);
@@ -136,7 +207,7 @@ public class BulkExpandedTextAds extends BulkExampleBase {
 
             // Upload and write the output
             
-            outputStatusMessage("-----\nDeleting the campaign and everything it contains e.g., ad groups and ads...");
+            outputStatusMessage("-----\nDeleting the feed and campaign and everything it contains e.g., ad groups and ads...");
 
             Reader = writeEntitiesAndUploadFile(uploadEntities);
             downloadEntities = Reader.getEntities();
