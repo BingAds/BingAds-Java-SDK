@@ -38,7 +38,8 @@ public class ExampleBase {
     protected static void authenticateWithOAuth() 
     {
         // Uncomment to view and troubleshoot the SOAP trace
-        //System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
+    	//System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
+    	//System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dump", "true");
         
         OAuthDesktopMobileAuthCodeGrant oAuthDesktopMobileAuthCodeGrant = new OAuthDesktopMobileAuthCodeGrant(
                 ClientId, 

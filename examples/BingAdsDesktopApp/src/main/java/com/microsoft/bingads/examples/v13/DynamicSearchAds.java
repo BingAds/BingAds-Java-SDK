@@ -45,7 +45,8 @@ public class DynamicSearchAds extends ExampleBase {
             campaignTypes.add(CampaignType.DYNAMIC_SEARCH_ADS);
             campaign.setCampaignType(campaignTypes);
             campaign.setDailyBudget(50.00);
-            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
+                    new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
             campaign.setName("Women's Shoes " + System.currentTimeMillis());
@@ -167,7 +168,8 @@ public class DynamicSearchAds extends ExampleBase {
             
             ArrayOfAd ads = new ArrayOfAd();
             DynamicSearchAd dynamicSearchAd  = new DynamicSearchAd();
-            dynamicSearchAd.setText("Find New Customers & Increase Sales! Start Advertising on Contoso Today.");
+            dynamicSearchAd.setText("Find New Customers & Increase Sales!");
+            dynamicSearchAd.setTextPart2("Start Advertising on Contoso Today.");
             dynamicSearchAd.setPath1("seattle");
             dynamicSearchAd.setPath2("shoe sale");
             // You cannot set FinalUrls. The Final URL will be a dynamically selected landing page.
