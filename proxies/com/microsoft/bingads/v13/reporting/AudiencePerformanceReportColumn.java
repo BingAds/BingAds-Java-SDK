@@ -43,6 +43,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CampaignStatus"/>
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="AudienceType"/>
+ *     &lt;enumeration value="BaseCampaignId"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="AllReturnOnAdSpend"/>
+ *     &lt;enumeration value="AllRevenuePerConversion"/>
+ *     &lt;enumeration value="AssociationId"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -109,7 +117,23 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("AdGroupStatus")
     AD_GROUP_STATUS("AdGroupStatus"),
     @XmlEnumValue("AudienceType")
-    AUDIENCE_TYPE("AudienceType");
+    AUDIENCE_TYPE("AudienceType"),
+    @XmlEnumValue("BaseCampaignId")
+    BASE_CAMPAIGN_ID("BaseCampaignId"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllRevenue")
+    ALL_REVENUE("AllRevenue"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion"),
+    @XmlEnumValue("AllReturnOnAdSpend")
+    ALL_RETURN_ON_AD_SPEND("AllReturnOnAdSpend"),
+    @XmlEnumValue("AllRevenuePerConversion")
+    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion"),
+    @XmlEnumValue("AssociationId")
+    ASSOCIATION_ID("AssociationId");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

@@ -108,6 +108,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfPriceTableRow_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfPriceTableRow");
     private final static QName _ArrayOfArrayOfMediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfArrayOfMediaAssociation");
     private final static QName _EntityIdToParentIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityIdToParentIdAssociation");
+    private final static QName _Company_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Company");
     private final static QName _EditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EditorialReasonCollection");
     private final static QName _ArrayOfEntityIdToParentIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfEntityIdToParentIdAssociation");
     private final static QName _Day_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Day");
@@ -221,6 +222,7 @@ public class ObjectFactory {
     private final static QName _WebpageParameter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "WebpageParameter");
     private final static QName _CustomerAccountShare_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountShare");
     private final static QName _ArrayOfMediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfMediaRepresentation");
+    private final static QName _ArrayOfCompany_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCompany");
     private final static QName _ArrayOfAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAd");
     private final static QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
     private final static QName _SharedList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SharedList");
@@ -248,7 +250,6 @@ public class ObjectFactory {
     private final static QName _AdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtension");
     private final static QName _CampaignCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterionStatus");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
-    private final static QName _CompanySize_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V13", "CompanySize");
     private final static QName _ProductAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProductAudience");
     private final static QName _Label_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Label");
     private final static QName _AdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdType");
@@ -929,6 +930,22 @@ public class ObjectFactory {
      */
     public NegativeKeywordList createNegativeKeywordList() {
         return new NegativeKeywordList();
+    }
+
+    /**
+     * Create an instance of {@link SearchCompaniesResponse }
+     * 
+     */
+    public SearchCompaniesResponse createSearchCompaniesResponse() {
+        return new SearchCompaniesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCompany }
+     * 
+     */
+    public ArrayOfCompany createArrayOfCompany() {
+        return new ArrayOfCompany();
     }
 
     /**
@@ -3388,6 +3405,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Company }
+     * 
+     */
+    public Company createCompany() {
+        return new Company();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfPriceTableRow }
      * 
      */
@@ -3633,6 +3658,14 @@ public class ObjectFactory {
      */
     public GetLabelsByIdsRequest createGetLabelsByIdsRequest() {
         return new GetLabelsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link SearchCompaniesRequest }
+     * 
+     */
+    public SearchCompaniesRequest createSearchCompaniesRequest() {
+        return new SearchCompaniesRequest();
     }
 
     /**
@@ -4612,6 +4645,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityIdToParentIdAssociation")
     public JAXBElement<EntityIdToParentIdAssociation> createEntityIdToParentIdAssociation(EntityIdToParentIdAssociation value) {
         return new JAXBElement<EntityIdToParentIdAssociation>(_EntityIdToParentIdAssociation_QNAME, EntityIdToParentIdAssociation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Company }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "Company")
+    public JAXBElement<Company> createCompany(Company value) {
+        return new JAXBElement<Company>(_Company_QNAME, Company.class, null, value);
     }
 
     /**
@@ -5635,6 +5677,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCompany }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCompany")
+    public JAXBElement<ArrayOfCompany> createArrayOfCompany(ArrayOfCompany value) {
+        return new JAXBElement<ArrayOfCompany>(_ArrayOfCompany_QNAME, ArrayOfCompany.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAd }{@code >}}
      * 
      */
@@ -5877,15 +5928,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System", name = "ArrayOfNullableOflong")
     public JAXBElement<ArrayOfNullableOflong> createArrayOfNullableOflong(ArrayOfNullableOflong value) {
         return new JAXBElement<ArrayOfNullableOflong>(_ArrayOfNullableOflong_QNAME, ArrayOfNullableOflong.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CompanySize }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.AdCenter.Advertiser.CampaignManagement.Api.DataContracts.V13", name = "CompanySize")
-    public JAXBElement<CompanySize> createCompanySize(CompanySize value) {
-        return new JAXBElement<CompanySize>(_CompanySize_QNAME, CompanySize.class, null, value);
     }
 
     /**

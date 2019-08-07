@@ -455,6 +455,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAccountPilotFeaturesRequest }
+     * 
+     */
+    public GetAccountPilotFeaturesRequest createGetAccountPilotFeaturesRequest() {
+        return new GetAccountPilotFeaturesRequest();
+    }
+
+    /**
      * Create an instance of {@link MapCustomerIdToExternalCustomerIdResponse }
      * 
      */
@@ -548,6 +556,22 @@ public class ObjectFactory {
      */
     public SearchAccountsRequest createSearchAccountsRequest() {
         return new SearchAccountsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAccountPilotFeaturesResponse }
+     * 
+     */
+    public GetAccountPilotFeaturesResponse createGetAccountPilotFeaturesResponse() {
+        return new GetAccountPilotFeaturesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
     }
 
     /**
@@ -660,14 +684,6 @@ public class ObjectFactory {
      */
     public GetCustomerPilotFeaturesResponse createGetCustomerPilotFeaturesResponse() {
         return new GetCustomerPilotFeaturesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfint }
-     * 
-     */
-    public ArrayOfint createArrayOfint() {
-        return new ArrayOfint();
     }
 
     /**

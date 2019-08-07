@@ -55,6 +55,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AssistedImpressions"/>
  *     &lt;enumeration value="AssistedClicks"/>
  *     &lt;enumeration value="AssistedConversions"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="AllRevenuePerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -145,7 +150,17 @@ public enum ProductSearchQueryPerformanceReportColumn {
     @XmlEnumValue("AssistedClicks")
     ASSISTED_CLICKS("AssistedClicks"),
     @XmlEnumValue("AssistedConversions")
-    ASSISTED_CONVERSIONS("AssistedConversions");
+    ASSISTED_CONVERSIONS("AssistedConversions"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllRevenue")
+    ALL_REVENUE("AllRevenue"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion"),
+    @XmlEnumValue("AllRevenuePerConversion")
+    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion");
     private final String value;
 
     ProductSearchQueryPerformanceReportColumn(String v) {

@@ -35,6 +35,10 @@ public class BulkDownloadCouldNotBeCompletedException extends RuntimeException {
     
     @Override
     public String toString() {
+        if (errors == null) {
+            return String.format("%s Download status is %s", super.toString(), status);
+        }
+        
     	StringBuilder errorsInfo = new StringBuilder();
     	
     	for(OperationError error : errors) {

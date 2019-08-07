@@ -56,8 +56,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.GetAccountsInfoResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAccountsInfo", action = "GetAccountsInfo")
     @WebResult(name = "GetAccountsInfoResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -220,8 +220,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.GetCustomerResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetCustomer", action = "GetCustomer")
     @WebResult(name = "GetCustomerResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -261,8 +261,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.UpdateCustomerResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateCustomer", action = "UpdateCustomer")
     @WebResult(name = "UpdateCustomerResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -302,8 +302,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.SignupCustomerResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SignupCustomer", action = "SignupCustomer")
     @WebResult(name = "SignupCustomerResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -425,8 +425,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.DeleteAccountResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteAccount", action = "DeleteAccount")
     @WebResult(name = "DeleteAccountResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -548,8 +548,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.UpdateUserRolesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateUserRoles", action = "UpdateUserRoles")
     @WebResult(name = "UpdateUserRolesResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -630,8 +630,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.GetCurrentUserResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetCurrentUser", action = "GetCurrentUser")
     @WebResult(name = "GetCurrentUserResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -671,8 +671,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.DeleteUserResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DeleteUser", action = "DeleteUser")
     @WebResult(name = "DeleteUserResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -794,8 +794,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.GetPilotFeaturesCountriesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetPilotFeaturesCountries", action = "GetPilotFeaturesCountries")
     @WebResult(name = "GetPilotFeaturesCountriesResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -917,8 +917,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.UpgradeCustomerToAgencyResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpgradeCustomerToAgency", action = "UpgradeCustomerToAgency")
     @WebResult(name = "UpgradeCustomerToAgencyResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1122,8 +1122,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.SearchCustomersResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SearchCustomers", action = "SearchCustomers")
     @WebResult(name = "SearchCustomersResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1163,8 +1163,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.AddClientLinksResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddClientLinks", action = "AddClientLinks")
     @WebResult(name = "AddClientLinksResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1204,8 +1204,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.UpdateClientLinksResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateClientLinks", action = "UpdateClientLinks")
     @WebResult(name = "UpdateClientLinksResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1286,8 +1286,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.SearchAccountsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SearchAccounts", action = "SearchAccounts")
     @WebResult(name = "SearchAccountsResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1327,8 +1327,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.SendUserInvitationResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SendUserInvitation", action = "SendUserInvitation")
     @WebResult(name = "SendUserInvitationResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1368,8 +1368,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.SearchUserInvitationsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SearchUserInvitations", action = "SearchUserInvitations")
     @WebResult(name = "SearchUserInvitationsResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")
@@ -1409,8 +1409,8 @@ public interface ICustomerManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v12.customermanagement.ValidateAddressResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "ValidateAddress", action = "ValidateAddress")
     @WebResult(name = "ValidateAddressResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v12", partName = "parameters")

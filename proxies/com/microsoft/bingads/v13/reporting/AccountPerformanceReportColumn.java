@@ -68,6 +68,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TopImpressionSharePercent"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="TopImpressionRatePercent"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="AllReturnOnAdSpend"/>
+ *     &lt;enumeration value="AllRevenuePerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -184,7 +190,19 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("TopImpressionRatePercent")
-    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllRevenue")
+    ALL_REVENUE("AllRevenue"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion"),
+    @XmlEnumValue("AllReturnOnAdSpend")
+    ALL_RETURN_ON_AD_SPEND("AllReturnOnAdSpend"),
+    @XmlEnumValue("AllRevenuePerConversion")
+    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

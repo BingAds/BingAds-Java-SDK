@@ -768,6 +768,47 @@ public interface ICustomerManagementService {
      * 
      * @param parameters
      * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.customermanagement.GetAccountPilotFeaturesResponse>
+     */
+    @WebMethod(operationName = "GetAccountPilotFeatures", action = "GetAccountPilotFeatures")
+    public Response<GetAccountPilotFeaturesResponse> getAccountPilotFeaturesAsync(
+        @WebParam(name = "GetAccountPilotFeaturesRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetAccountPilotFeaturesRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAccountPilotFeatures", action = "GetAccountPilotFeatures")
+    public Future<?> getAccountPilotFeaturesAsync(
+        @WebParam(name = "GetAccountPilotFeaturesRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetAccountPilotFeaturesRequest parameters,
+        @WebParam(name = "GetAccountPilotFeaturesResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAccountPilotFeaturesResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customermanagement.GetAccountPilotFeaturesResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "GetAccountPilotFeatures", action = "GetAccountPilotFeatures")
+    @WebResult(name = "GetAccountPilotFeaturesResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+    public GetAccountPilotFeaturesResponse getAccountPilotFeatures(
+        @WebParam(name = "GetAccountPilotFeaturesRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetAccountPilotFeaturesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.customermanagement.GetPilotFeaturesCountriesResponse>
      */
     @WebMethod(operationName = "GetPilotFeaturesCountries", action = "GetPilotFeaturesCountries")

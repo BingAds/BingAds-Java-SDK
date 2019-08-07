@@ -56,6 +56,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdDescription"/>
  *     &lt;enumeration value="AdDescription2"/>
  *     &lt;enumeration value="AdLabels"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -148,7 +151,13 @@ public enum AdDynamicTextPerformanceReportColumn {
     @XmlEnumValue("AdDescription2")
     AD_DESCRIPTION_2("AdDescription2"),
     @XmlEnumValue("AdLabels")
-    AD_LABELS("AdLabels");
+    AD_LABELS("AdLabels"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion");
     private final String value;
 
     AdDynamicTextPerformanceReportColumn(String v) {

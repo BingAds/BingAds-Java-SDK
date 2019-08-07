@@ -63,6 +63,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TopImpressionSharePercent"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="TopImpressionRatePercent"/>
+ *     &lt;enumeration value="BaseCampaignId"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -169,7 +173,15 @@ public enum ShareOfVoiceReportColumn {
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("TopImpressionRatePercent")
-    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent"),
+    @XmlEnumValue("BaseCampaignId")
+    BASE_CAMPAIGN_ID("BaseCampaignId"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion");
     private final String value;
 
     ShareOfVoiceReportColumn(String v) {

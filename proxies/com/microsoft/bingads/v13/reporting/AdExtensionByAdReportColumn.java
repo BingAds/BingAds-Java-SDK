@@ -56,6 +56,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TitlePart1"/>
  *     &lt;enumeration value="TitlePart2"/>
  *     &lt;enumeration value="TitlePart3"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="AllReturnOnAdSpend"/>
+ *     &lt;enumeration value="AllRevenuePerConversion"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -148,7 +154,19 @@ public enum AdExtensionByAdReportColumn {
     @XmlEnumValue("TitlePart2")
     TITLE_PART_2("TitlePart2"),
     @XmlEnumValue("TitlePart3")
-    TITLE_PART_3("TitlePart3");
+    TITLE_PART_3("TitlePart3"),
+    @XmlEnumValue("AllConversions")
+    ALL_CONVERSIONS("AllConversions"),
+    @XmlEnumValue("AllRevenue")
+    ALL_REVENUE("AllRevenue"),
+    @XmlEnumValue("AllConversionRate")
+    ALL_CONVERSION_RATE("AllConversionRate"),
+    @XmlEnumValue("AllCostPerConversion")
+    ALL_COST_PER_CONVERSION("AllCostPerConversion"),
+    @XmlEnumValue("AllReturnOnAdSpend")
+    ALL_RETURN_ON_AD_SPEND("AllReturnOnAdSpend"),
+    @XmlEnumValue("AllRevenuePerConversion")
+    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion");
     private final String value;
 
     AdExtensionByAdReportColumn(String v) {
