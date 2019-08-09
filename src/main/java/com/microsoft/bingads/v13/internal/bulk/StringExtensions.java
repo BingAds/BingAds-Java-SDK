@@ -1487,7 +1487,7 @@ public class StringExtensions {
 
         // The Asset Id
         @JsonProperty
-        public long id;
+        public Long id;
 
         // The Asset Text
         @JsonProperty
@@ -1603,7 +1603,7 @@ public class StringExtensions {
         List<AssetLink> assetLinks = arrayOfAssetLink
                 .getAssetLinks()
                 .stream()
-                .filter(s -> "TextAsset".equals(s.getAsset().getType()))
+                .filter(link -> link.getAsset() instanceof TextAsset)
                 .collect(Collectors.toList());
         if (assetLinks.size() == 0) {
             return null;
