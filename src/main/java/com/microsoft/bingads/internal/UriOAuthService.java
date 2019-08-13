@@ -1,29 +1,21 @@
 package com.microsoft.bingads.internal;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microsoft.bingads.*;
+import com.microsoft.bingads.internal.utilities.FileUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.apache.cxf.helpers.IOUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.InternalException;
-import com.microsoft.bingads.OAuthErrorDetails;
-import com.microsoft.bingads.OAuthTokenRequestException;
-import com.microsoft.bingads.OAuthTokens;
 
 /**
  * Provides method for getting OAuth tokens from the live.com authorization
@@ -69,7 +61,7 @@ public class UriOAuthService implements OAuthService {
             
             if (httpResponse.getStatusLine().getStatusCode() == 200){
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                IOUtils.copy(stream,  baos);
+                FileUtils.copy(stream,  baos);
                 byte[] bytes = baos.toByteArray();
                 OAuthTokensContract oauthResponse = mapper.readValue(bytes, OAuthTokensContract.class);
                 JsonNode root = mapper.readTree(bytes);

@@ -165,11 +165,6 @@
 			<version>2.3.2</version> 
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-frontend-jaxws</artifactId>
-		  <version>3.3.2</version>
-		</dependency>
-		<dependency>
 		  <groupId>com.sun.activation</groupId>
 		  <artifactId>javax.activation</artifactId>
 		  <version>1.2.0</version>
@@ -179,11 +174,6 @@
 		  <artifactId>saaj-impl</artifactId>
 		 <version>1.5.1</version>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>                
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
@@ -197,7 +187,6 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>3.3.2</cxf.version>
         <http.version>4.5.3</http.version>
     </properties>
     <artifactId>microsoft.bingads</artifactId>
