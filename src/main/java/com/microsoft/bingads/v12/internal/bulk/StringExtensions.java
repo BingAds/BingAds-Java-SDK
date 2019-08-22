@@ -1452,7 +1452,7 @@ public class StringExtensions {
     private static class ImageAssetLinkContract
     {
         // The Asset Id
-        public long id;
+        public Long id;
 
         // The Asset SubType
         public String subType;
@@ -1486,7 +1486,7 @@ public class StringExtensions {
 
         // The Asset Id
         @JsonProperty
-        public long id;
+        public Long id;
 
         // The Asset Text
         @JsonProperty
@@ -1519,7 +1519,7 @@ public class StringExtensions {
         List<AssetLink> assetLinks = arrayOfAssetLink
                 .getAssetLinks()
                 .stream()
-                .filter(s -> "ImageAsset".equals(s.getAsset().getType()))
+                .filter(link -> link.getAsset() instanceof ImageAsset)
                 .collect(Collectors.toList());
         if (assetLinks.size() == 0) {
             return null;
@@ -1602,7 +1602,7 @@ public class StringExtensions {
         List<AssetLink> assetLinks = arrayOfAssetLink
                 .getAssetLinks()
                 .stream()
-                .filter(s -> "TextAsset".equals(s.getAsset().getType()))
+                .filter(link -> link.getAsset() instanceof TextAsset)
                 .collect(Collectors.toList());
         if (assetLinks.size() == 0) {
             return null;

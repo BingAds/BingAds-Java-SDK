@@ -4,16 +4,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.apache.cxf.helpers.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -30,6 +30,8 @@ import com.microsoft.bingads.OAuthTokens;
  * server using {@link OAuthRequestParameters}.
  */
 public class UriOAuthService implements OAuthService {
+	
+    private static Logger logger = Logger.getLogger(UriOAuthService.class.getName());
 
     private enum HttpMethods {
         POST
@@ -69,7 +71,13 @@ public class UriOAuthService implements OAuthService {
             
             if (httpResponse.getStatusLine().getStatusCode() == 200){
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                IOUtils.copy(stream,  baos);
+                int nRead = -1;
+                byte[] data = new byte[2048];
+                while ((nRead = stream.read(data, 0, data.length)) != -1) {
+                	baos.write(data, 0, nRead);
+            	}
+             
+                baos.flush();
                 byte[] bytes = baos.toByteArray();
                 OAuthTokensContract oauthResponse = mapper.readValue(bytes, OAuthTokensContract.class);
                 JsonNode root = mapper.readTree(bytes);
@@ -82,7 +90,13 @@ public class UriOAuthService implements OAuthService {
                 
                 throw new OAuthTokenRequestException(ErrorMessages.OAuthError, errorDetails);
             }           
-        } catch (IOException e) {
+        } catch (SocketTimeoutException e) {
+            logger.log(Level.WARNING, "Socket connection timed out when get access token, please retry later.", e);
+            throw new InternalException(e);
+    	} catch (ConnectTimeoutException e) {
+            logger.log(Level.WARNING, "Connect timed outwhen get access token, please retry later.", e);
+            throw new InternalException(e);
+    	} catch (IOException e) {
             throw new InternalException(e);
         } finally {
         	webServiceCaller.shutDown();

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
-import java.util.logging.Level;
 
 import javax.xml.ws.Response;
 

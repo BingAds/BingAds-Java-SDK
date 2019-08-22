@@ -35,6 +35,10 @@ public class BulkUploadCouldNotBeCompletedException extends RuntimeException {
     
     @Override
     public String toString() {
+        if (errors == null) {
+            return String.format("%s Upload status is %s", super.toString(), status);
+        }
+        
     	StringBuilder errorsInfo = new StringBuilder();
     	
     	for(OperationError error : errors) {
