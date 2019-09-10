@@ -237,7 +237,7 @@ public class StringExtensions {
         }
     }
     
-    public static Double parseAdGroupFixedBid(String v) {
+    public static Double parseAdGroupBidAmount(String v) {
         if (v == null || v.isEmpty()) {
             return null;
         }
@@ -840,6 +840,10 @@ public class StringExtensions {
     public static CustomParameters parseCustomParameters(String s) throws Exception {
     	if (StringExtensions.isNullOrEmpty(s))
     		return null;
+
+        if (s.equalsIgnoreCase(StringTable.DeleteValue)) {
+            return null;
+        }
     	
     	String[] parameters = s.split(customParameterSplitter);
     	

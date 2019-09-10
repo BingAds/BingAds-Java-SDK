@@ -20,11 +20,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AlternativeText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="DestinationUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="DisplayText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalAppUrls" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAppUrl" minOccurs="0"/>
  *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="ImageMediaIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *       &lt;/sequence>
@@ -40,11 +42,13 @@ import javax.xml.bind.annotation.XmlType;
     "alternativeText",
     "description",
     "destinationUrl",
+    "displayText",
     "finalAppUrls",
     "finalMobileUrls",
     "finalUrlSuffix",
     "finalUrls",
     "imageMediaIds",
+    "images",
     "trackingUrlTemplate",
     "urlCustomParameters"
 })
@@ -58,6 +62,8 @@ public class ImageAdExtension
     protected String description;
     @XmlElement(name = "DestinationUrl", nillable = true)
     protected String destinationUrl;
+    @XmlElement(name = "DisplayText", nillable = true)
+    protected String displayText;
     @XmlElement(name = "FinalAppUrls", nillable = true)
     protected ArrayOfAppUrl finalAppUrls;
     @XmlElement(name = "FinalMobileUrls", nillable = true)
@@ -68,6 +74,8 @@ public class ImageAdExtension
     protected ArrayOfstring finalUrls;
     @XmlElement(name = "ImageMediaIds", nillable = true)
     protected ArrayOflong imageMediaIds;
+    @XmlElement(name = "Images", nillable = true)
+    protected ArrayOfAssetLink images;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
@@ -143,6 +151,30 @@ public class ImageAdExtension
      */
     public void setDestinationUrl(String value) {
         this.destinationUrl = value;
+    }
+
+    /**
+     * Gets the value of the displayText property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDisplayText() {
+        return displayText;
+    }
+
+    /**
+     * Sets the value of the displayText property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDisplayText(String value) {
+        this.displayText = value;
     }
 
     /**
@@ -263,6 +295,30 @@ public class ImageAdExtension
      */
     public void setImageMediaIds(ArrayOflong value) {
         this.imageMediaIds = value;
+    }
+
+    /**
+     * Gets the value of the images property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getImages() {
+        return images;
+    }
+
+    /**
+     * Sets the value of the images property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setImages(ArrayOfAssetLink value) {
+        this.images = value;
     }
 
     /**

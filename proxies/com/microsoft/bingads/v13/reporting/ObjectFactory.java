@@ -90,6 +90,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfAdGroupPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAdGroupPerformanceReportColumn");
     private final static QName _ArrayOfProductMatchCountReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfProductMatchCountReportColumn");
     private final static QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
+    private final static QName _ProductNegativeKeywordConflictReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductNegativeKeywordConflictReportRequest");
     private final static QName _ReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ReportRequest");
     private final static QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
@@ -184,6 +185,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfUserLocationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfUserLocationPerformanceReportColumn");
     private final static QName _DSAAutoTargetPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "DSAAutoTargetPerformanceReportColumn");
     private final static QName _ArrayOfCampaignPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfCampaignPerformanceReportColumn");
+    private final static QName _ProductNegativeKeywordConflictReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductNegativeKeywordConflictReportFilter");
     private final static QName _ProductMatchCountReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductMatchCountReportColumn");
     private final static QName _DeveloperToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "DeveloperToken");
     private final static QName _ProfessionalDemographicsAudienceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProfessionalDemographicsAudienceReportRequest");
@@ -196,11 +198,13 @@ public class ObjectFactory {
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _CampaignPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CampaignPerformanceReportColumn");
     private final static QName _UserLocationPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "UserLocationPerformanceReportFilter");
+    private final static QName _ArrayOfProductNegativeKeywordConflictReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfProductNegativeKeywordConflictReportColumn");
     private final static QName _AccountReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AccountReportScope");
     private final static QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
     private final static QName _ArrayOfAdExtensionByKeywordReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAdExtensionByKeywordReportColumn");
     private final static QName _AdStatusReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdStatusReportFilter");
     private final static QName _ShareOfVoiceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ShareOfVoiceReportColumn");
+    private final static QName _ProductNegativeKeywordConflictReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductNegativeKeywordConflictReportColumn");
     private final static QName _ReportRequestStatus_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ReportRequestStatus");
     private final static QName _LanguageReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "LanguageReportFilter");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
@@ -623,6 +627,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfProductNegativeKeywordConflictReportColumn }
+     * 
+     */
+    public ArrayOfProductNegativeKeywordConflictReportColumn createArrayOfProductNegativeKeywordConflictReportColumn() {
+        return new ArrayOfProductNegativeKeywordConflictReportColumn();
+    }
+
+    /**
      * Create an instance of {@link PollGenerateReportRequest }
      * 
      */
@@ -727,6 +739,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductNegativeKeywordConflictReportFilter }
+     * 
+     */
+    public ProductNegativeKeywordConflictReportFilter createProductNegativeKeywordConflictReportFilter() {
+        return new ProductNegativeKeywordConflictReportFilter();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfCampaignPerformanceReportColumn }
      * 
      */
@@ -764,6 +784,14 @@ public class ObjectFactory {
      */
     public ProfessionalDemographicsAudienceReportRequest createProfessionalDemographicsAudienceReportRequest() {
         return new ProfessionalDemographicsAudienceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ProductNegativeKeywordConflictReportRequest }
+     * 
+     */
+    public ProductNegativeKeywordConflictReportRequest createProductNegativeKeywordConflictReportRequest() {
+        return new ProductNegativeKeywordConflictReportRequest();
     }
 
     /**
@@ -1913,6 +1941,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductNegativeKeywordConflictReportRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ProductNegativeKeywordConflictReportRequest")
+    public JAXBElement<ProductNegativeKeywordConflictReportRequest> createProductNegativeKeywordConflictReportRequest(ProductNegativeKeywordConflictReportRequest value) {
+        return new JAXBElement<ProductNegativeKeywordConflictReportRequest>(_ProductNegativeKeywordConflictReportRequest_QNAME, ProductNegativeKeywordConflictReportRequest.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReportRequest }{@code >}}
      * 
      */
@@ -2768,6 +2805,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductNegativeKeywordConflictReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ProductNegativeKeywordConflictReportFilter")
+    public JAXBElement<ProductNegativeKeywordConflictReportFilter> createProductNegativeKeywordConflictReportFilter(ProductNegativeKeywordConflictReportFilter value) {
+        return new JAXBElement<ProductNegativeKeywordConflictReportFilter>(_ProductNegativeKeywordConflictReportFilter_QNAME, ProductNegativeKeywordConflictReportFilter.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ProductMatchCountReportColumn }{@code >}}
      * 
      */
@@ -2877,6 +2923,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfProductNegativeKeywordConflictReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfProductNegativeKeywordConflictReportColumn")
+    public JAXBElement<ArrayOfProductNegativeKeywordConflictReportColumn> createArrayOfProductNegativeKeywordConflictReportColumn(ArrayOfProductNegativeKeywordConflictReportColumn value) {
+        return new JAXBElement<ArrayOfProductNegativeKeywordConflictReportColumn>(_ArrayOfProductNegativeKeywordConflictReportColumn_QNAME, ArrayOfProductNegativeKeywordConflictReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AccountReportScope }{@code >}}
      * 
      */
@@ -2920,6 +2975,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ShareOfVoiceReportColumn")
     public JAXBElement<ShareOfVoiceReportColumn> createShareOfVoiceReportColumn(ShareOfVoiceReportColumn value) {
         return new JAXBElement<ShareOfVoiceReportColumn>(_ShareOfVoiceReportColumn_QNAME, ShareOfVoiceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductNegativeKeywordConflictReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ProductNegativeKeywordConflictReportColumn")
+    public JAXBElement<ProductNegativeKeywordConflictReportColumn> createProductNegativeKeywordConflictReportColumn(ProductNegativeKeywordConflictReportColumn value) {
+        return new JAXBElement<ProductNegativeKeywordConflictReportColumn>(_ProductNegativeKeywordConflictReportColumn_QNAME, ProductNegativeKeywordConflictReportColumn.class, null, value);
     }
 
     /**

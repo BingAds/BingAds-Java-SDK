@@ -60,6 +60,7 @@ import javax.xml.bind.annotation.XmlType;
     AdDynamicTextPerformanceReportRequest.class,
     KeywordPerformanceReportRequest.class,
     ProfessionalDemographicsAudienceReportRequest.class,
+    ProductNegativeKeywordConflictReportRequest.class,
     DSASearchQueryPerformanceReportRequest.class,
     AdExtensionByKeywordReportRequest.class,
     DestinationUrlPerformanceReportRequest.class,

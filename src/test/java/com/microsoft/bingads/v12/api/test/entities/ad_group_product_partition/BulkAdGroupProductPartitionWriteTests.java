@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 
 import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteAdGroupNameTest;
 import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteCampaignNameTest;
+import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteCriterionBidAdjustmentTest;
 import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteCriterionBidTest;
 import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteFusTest;
 import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.write.WriteIdTest;
@@ -27,6 +28,7 @@ import com.microsoft.bingads.v12.api.test.entities.ad_group_product_partition.wr
         WriteProductConditionTest.class,
         WriteProductValueTest.class,
         WriteCriterionBidTest.class,
+        WriteCriterionBidAdjustmentTest.class,
         WriteFusTest.class
 })
 public class BulkAdGroupProductPartitionWriteTests {

@@ -13,6 +13,7 @@ import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
+import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
 import com.microsoft.bingads.v13.campaignmanagement.BiddableAdGroupCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
@@ -21,6 +22,7 @@ import com.microsoft.bingads.v13.campaignmanagement.ProductCondition;
 import com.microsoft.bingads.v13.campaignmanagement.ProductPartition;
 import com.microsoft.bingads.v13.campaignmanagement.ProductPartitionType;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
+import com.microsoft.bingads.v13.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
@@ -53,62 +55,99 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
     private String adGroupName;
 
     private static final List<BulkMapping<BulkAdGroupProductPartition>> MAPPINGS;
+    
+	private static void biddingToCsv(BulkAdGroupProductPartition c, RowValues v) {
+		if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+			v.put(StringTable.IsExcluded, "False");
+
+			CriterionBid bid = ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid();
+
+			if (bid instanceof FixedBid) {
+				v.put(StringTable.Bid, StringExtensions.toAdGroupFixedBidBulkString(((FixedBid) bid),
+						c.getAdGroupCriterion().getId()));
+			} else if (bid instanceof BidMultiplier) {
+				v.put(StringTable.BidAdjustment,
+						StringExtensions.toCriterionBidMultiplierBulkString(((BidMultiplier) bid).getMultiplier()));
+			}
+
+		} else {
+			v.put(StringTable.IsExcluded, "True");
+		}
+	}
+
+    private static void csvToBidding(RowValues v, BulkAdGroupProductPartition c) {
+        String exclude = v.tryGet(StringTable.IsExcluded);
+        boolean isExcluded;
+        if ("yes".equalsIgnoreCase(exclude) || "true".equalsIgnoreCase(exclude)) {
+            isExcluded = true;
+        } else if ("no".equalsIgnoreCase(exclude) || "false".equalsIgnoreCase(exclude)) {
+            isExcluded = false;
+        } else {
+            throw new IllegalStateException(String.format(
+                    "%s can only be set to TRUE or FALSE in %s ",
+                    StringTable.IsExcluded,
+                    BulkAdGroupProductPartition.class.getSimpleName()
+            ));
+        }
+        
+        if (isExcluded) {
+            ProductPartition productPartition = new ProductPartition();
+            productPartition.setCondition(new ProductCondition());
+            productPartition.setType(ProductPartition.class.getSimpleName());
+
+            NegativeAdGroupCriterion negativeAdGroupCriterion = new NegativeAdGroupCriterion();
+            negativeAdGroupCriterion.setCriterion(productPartition);
+            negativeAdGroupCriterion.setType(NegativeAdGroupCriterion.class.getSimpleName());
+
+            c.setAdGroupCriterion(negativeAdGroupCriterion);
+        } else {
+            ProductPartition productPartition = new ProductPartition();
+            productPartition.setCondition(new ProductCondition());
+            productPartition.setType(ProductPartition.class.getSimpleName());
+
+            BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
+            biddableAdGroupCriterion.setCriterion(productPartition);
+            biddableAdGroupCriterion.setType(BiddableAdGroupCriterion.class.getSimpleName());
+            
+            String bidStr = v.tryGet(StringTable.Bid);
+        	Double bidAmount = StringExtensions.parseAdGroupBidAmount(bidStr);
+        	if (bidAmount != null) {
+        		FixedBid fixedBid = new FixedBid();
+        		fixedBid.setType(FixedBid.class.getSimpleName());
+        		fixedBid.setAmount(bidAmount);
+        		biddableAdGroupCriterion.setCriterionBid(fixedBid);
+        	} else {
+        		String bidAdjustmentStr = v.tryGet(StringTable.BidAdjustment);
+        		bidAmount = StringExtensions.parseAdGroupBidAmount(bidAdjustmentStr);
+        		if (bidAmount != null) {
+            		BidMultiplier bidMultiplier = new BidMultiplier();
+            		bidMultiplier.setType(BidMultiplier.class.getSimpleName());
+            		bidMultiplier.setMultiplier(bidAmount);
+            		biddableAdGroupCriterion.setCriterionBid(bidMultiplier);
+        		} else {
+            		FixedBid fixedBid = new FixedBid();
+            		fixedBid.setType(FixedBid.class.getSimpleName());
+            		biddableAdGroupCriterion.setCriterionBid(fixedBid);
+        		}
+        	}
+            c.setAdGroupCriterion(biddableAdGroupCriterion);
+        }
+	}
 
     static {
         List<BulkMapping<BulkAdGroupProductPartition>> m = new ArrayList<BulkMapping<BulkAdGroupProductPartition>>();
-
-        m.add(new SimpleBulkMapping<BulkAdGroupProductPartition, String>(StringTable.IsExcluded,
-                new Function<BulkAdGroupProductPartition, String>() {
+        
+        m.add(new ComplexBulkMapping<BulkAdGroupProductPartition>(
+                new BiConsumer<BulkAdGroupProductPartition, RowValues>() {
                     @Override
-                    public String apply(BulkAdGroupProductPartition c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return "False";
-                        } else {
-                            return "True";
-                        }
+                    public void accept(BulkAdGroupProductPartition c, RowValues v) {
+                        biddingToCsv(c, v);
                     }
                 },
-                new BiConsumer<String, BulkAdGroupProductPartition>() {
+                new BiConsumer<RowValues, BulkAdGroupProductPartition>() {
                     @Override
-                    public void accept(String v, BulkAdGroupProductPartition c) {
-                        v = v.toLowerCase();
-                        boolean isExcluded;
-                        if ("yes".equals(v) || "true".equals(v)) {
-                            isExcluded = true;
-                        } else if ("no".equals(v) || "false".equals(v)) {
-                            isExcluded = false;
-                        } else {
-                            throw new IllegalStateException(String.format(
-                                    "%s can only be set to TRUE or FALSE in %s ",
-                                    StringTable.IsExcluded,
-                                    BulkAdGroupProductPartition.class.getSimpleName()
-                            ));
-                        }
-                        if (isExcluded) {
-                            ProductPartition productPartition = new ProductPartition();
-                            productPartition.setCondition(new ProductCondition());
-                            productPartition.setType(ProductPartition.class.getSimpleName());
-
-                            NegativeAdGroupCriterion negativeAdGroupCriterion = new NegativeAdGroupCriterion();
-                            negativeAdGroupCriterion.setCriterion(productPartition);
-                            negativeAdGroupCriterion.setType(NegativeAdGroupCriterion.class.getSimpleName());
-
-                            c.setAdGroupCriterion(negativeAdGroupCriterion);
-                        } else {
-                            ProductPartition productPartition = new ProductPartition();
-                            productPartition.setCondition(new ProductCondition());
-                            productPartition.setType(ProductPartition.class.getSimpleName());
-
-                            FixedBid fixedBid = new FixedBid();
-                            fixedBid.setType(FixedBid.class.getSimpleName());
-
-                            BiddableAdGroupCriterion biddableAdGroupCriterion = new BiddableAdGroupCriterion();
-                            biddableAdGroupCriterion.setCriterion(productPartition);
-                            biddableAdGroupCriterion.setCriterionBid(fixedBid);
-                            biddableAdGroupCriterion.setType(BiddableAdGroupCriterion.class.getSimpleName());
-
-                            c.setAdGroupCriterion(biddableAdGroupCriterion);
-                        }
+                    public void accept(RowValues v, BulkAdGroupProductPartition c) {
+                        csvToBidding(v, c);
                     }
                 }
         ));
@@ -302,35 +341,6 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkAdGroupProductPartition, String>(StringTable.Bid,
-                new Function<BulkAdGroupProductPartition, String>() {
-                    @Override
-                    public String apply(BulkAdGroupProductPartition c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid();
-
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions.toAdGroupFixedBidBulkString(((FixedBid) bid), c.getAdGroupCriterion().getId());
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupProductPartition>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupProductPartition c) {
-                        if (c.getAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((FixedBid) ((BiddableAdGroupCriterion) c.getAdGroupCriterion()).getCriterionBid()).setAmount(
-                                    StringExtensions.parseAdGroupFixedBid(v)
-                            );
-                        }
-                    }
-                }
-        ));
-
         m.add(new SimpleBulkMapping<BulkAdGroupProductPartition, String>(StringTable.DestinationUrl,
                 new Function<BulkAdGroupProductPartition, String>() {
                     @Override
@@ -488,7 +498,7 @@ public class BulkAdGroupProductPartition extends SingleRecordBulkEntity {
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
-    @Override
+	@Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getAdGroupCriterion(), AdGroupCriterion.class.getSimpleName());
 

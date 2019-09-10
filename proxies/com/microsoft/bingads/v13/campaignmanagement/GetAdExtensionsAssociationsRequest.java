@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AdExtensionType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdExtensionsTypeFilter" minOccurs="0"/>
  *         &lt;element name="AssociationType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssociationType" minOccurs="0"/>
  *         &lt;element name="EntityIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdExtensionAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "accountId",
     "adExtensionType",
     "associationType",
-    "entityIds"
+    "entityIds",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAdExtensionsAssociationsRequest")
 public class GetAdExtensionsAssociationsRequest {
@@ -53,6 +55,9 @@ public class GetAdExtensionsAssociationsRequest {
     protected AssociationType associationType;
     @XmlElement(name = "EntityIds", nillable = true)
     protected ArrayOflong entityIds;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    protected Collection<AdExtensionAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the accountId property.
@@ -148,6 +153,30 @@ public class GetAdExtensionsAssociationsRequest {
      */
     public void setEntityIds(ArrayOflong value) {
         this.entityIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdExtensionAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AdExtensionAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

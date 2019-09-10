@@ -41,7 +41,7 @@ public class ProfileCriterion
     @XmlElement(name = "ProfileId")
     protected Long profileId;
     @XmlElement(name = "ProfileType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<ProfileType> profileType;
 
     /**
