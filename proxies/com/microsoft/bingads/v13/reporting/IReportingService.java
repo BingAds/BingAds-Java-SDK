@@ -97,8 +97,8 @@ public interface IReportingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.reporting.PollGenerateReportResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "PollGenerateReport", action = "PollGenerateReport")
     @WebResult(name = "PollGenerateReportResponse", targetNamespace = "https://bingads.microsoft.com/Reporting/v13", partName = "parameters")

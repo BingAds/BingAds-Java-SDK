@@ -47,6 +47,7 @@ public class StringTable {
     public static final String BaseCampaignId = "Base Campaign Id";
     public static final String ExperimentCampaignId = "Experiment Campaign Id";
     public static final String ExperimentId = "Experiment Id";
+    public static final String ExperimentType = "Experiment Type";
     		
     public static final String AdGroup = "Ad Group";
     public static final String Keyword = "Keyword";

@@ -12,7 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkExperimentWriteToRowValuesExperimentCampaignIdTest.class,
     BulkExperimentWriteToRowValuesTrafficSplitPercentageTest.class,
     BulkExperimentWriteToRowValuesStartDateTests.class,
-    BulkExperimentWriteToRowValuesEndDateTests.class})
+    BulkExperimentWriteToRowValuesEndDateTests.class,
+    BulkExperimentWriteToRowValuesTypeTest.class})
 public class BulkExperimentWriteTests {
 
 }

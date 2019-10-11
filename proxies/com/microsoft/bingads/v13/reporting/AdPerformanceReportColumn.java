@@ -82,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllReturnOnAdSpend"/>
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="FinalUrlSuffix"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -226,7 +227,9 @@ public enum AdPerformanceReportColumn {
     @XmlEnumValue("AllRevenuePerConversion")
     ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion"),
     @XmlEnumValue("FinalUrlSuffix")
-    FINAL_URL_SUFFIX("FinalUrlSuffix");
+    FINAL_URL_SUFFIX("FinalUrlSuffix"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     AdPerformanceReportColumn(String v) {

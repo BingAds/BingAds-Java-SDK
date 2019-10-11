@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="AssociationId"/>
  *     &lt;enumeration value="AssociationLevel"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -136,7 +137,9 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("AssociationId")
     ASSOCIATION_ID("AssociationId"),
     @XmlEnumValue("AssociationLevel")
-    ASSOCIATION_LEVEL("AssociationLevel");
+    ASSOCIATION_LEVEL("AssociationLevel"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

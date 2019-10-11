@@ -165,6 +165,18 @@ public class BulkExperiment extends SingleRecordBulkEntity {
                         }
                     }
                 }));
+        
+        m.add(new SimpleBulkMapping<BulkExperiment, String>(StringTable.ExperimentType, new Function<BulkExperiment, String>() {
+            @Override
+            public String apply(BulkExperiment t) {
+                return t.getExperiment().getExperimentType();
+            }
+        }, new BiConsumer<String, BulkExperiment>() {
+            @Override
+            public void accept(String v, BulkExperiment c) {
+                c.getExperiment().setExperimentType(v);
+            }
+        }));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

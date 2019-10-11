@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupStatus"/>
  *     &lt;enumeration value="KeywordStatus"/>
  *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -88,7 +89,9 @@ public enum GoalsAndFunnelsReportColumn {
     @XmlEnumValue("KeywordStatus")
     KEYWORD_STATUS("KeywordStatus"),
     @XmlEnumValue("GoalType")
-    GOAL_TYPE("GoalType");
+    GOAL_TYPE("GoalType"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     GoalsAndFunnelsReportColumn(String v) {

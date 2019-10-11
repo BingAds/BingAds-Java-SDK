@@ -67,6 +67,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllCostPerConversion"/>
  *     &lt;enumeration value="AllReturnOnAdSpend"/>
  *     &lt;enumeration value="AllRevenuePerConversion"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -181,7 +182,9 @@ public enum GeographicPerformanceReportColumn {
     @XmlEnumValue("AllReturnOnAdSpend")
     ALL_RETURN_ON_AD_SPEND("AllReturnOnAdSpend"),
     @XmlEnumValue("AllRevenuePerConversion")
-    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion");
+    ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     GeographicPerformanceReportColumn(String v) {

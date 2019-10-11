@@ -12,7 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkExperimentReadFromRowValuesStartDateTest.class,
     BulkExperimentReadFromRowValuesEndDateTest.class,
     BulkExperimentReadFromRowValuesStatusTest.class,
-    BulkExperimentReadFromRowValuesTrafficSplitPercentTest.class})
+    BulkExperimentReadFromRowValuesTrafficSplitPercentTest.class,
+    BulkExperimentReadFromRowValuesTypeTest.class})
 public class BulkExperimentReadTests {
 
 }

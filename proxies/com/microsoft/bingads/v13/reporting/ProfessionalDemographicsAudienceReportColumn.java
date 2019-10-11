@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AveragePosition"/>
  *     &lt;enumeration value="AllConversions"/>
  *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -97,7 +98,9 @@ public enum ProfessionalDemographicsAudienceReportColumn {
     @XmlEnumValue("AllConversions")
     ALL_CONVERSIONS("AllConversions"),
     @XmlEnumValue("AllRevenue")
-    ALL_REVENUE("AllRevenue");
+    ALL_REVENUE("AllRevenue"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     ProfessionalDemographicsAudienceReportColumn(String v) {

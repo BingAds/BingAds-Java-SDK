@@ -67,6 +67,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllConversions"/>
  *     &lt;enumeration value="AllConversionRate"/>
  *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -181,7 +182,9 @@ public enum ShareOfVoiceReportColumn {
     @XmlEnumValue("AllConversionRate")
     ALL_CONVERSION_RATE("AllConversionRate"),
     @XmlEnumValue("AllCostPerConversion")
-    ALL_COST_PER_CONVERSION("AllCostPerConversion");
+    ALL_COST_PER_CONVERSION("AllCostPerConversion"),
+    @XmlEnumValue("ViewThroughConversions")
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
     private final String value;
 
     ShareOfVoiceReportColumn(String v) {

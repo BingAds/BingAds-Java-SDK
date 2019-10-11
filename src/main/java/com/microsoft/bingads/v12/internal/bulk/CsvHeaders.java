@@ -185,6 +185,7 @@ public class CsvHeaders {
             StringTable.BaseCampaignId,
             StringTable.ExperimentCampaignId,
             StringTable.ExperimentId,
+            StringTable.ExperimentType,
 
             // CoOp
             StringTable.BidOption,
