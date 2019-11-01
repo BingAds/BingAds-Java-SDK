@@ -13,13 +13,13 @@ import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthTokens;
-import com.microsoft.bingads.examples.v12.ExampleExceptionHelper;
+import com.microsoft.bingads.examples.v13.ExampleExceptionHelper;
 import java.net.URL;
 
 public class ExampleBase {
 
     protected static java.lang.String DeveloperToken = "BBD37VB98";
-    protected static java.lang.String ClientId = "ClientIdGoesHere";
+    protected static java.lang.String ClientId = "db41b09d-6e50-4f4a-90ac-5a99caefb52f";
     protected static java.lang.String ClientState = "ClientStateGoesHere";
     protected static java.lang.String RefreshTokenPath = "refresh.txt";
     
