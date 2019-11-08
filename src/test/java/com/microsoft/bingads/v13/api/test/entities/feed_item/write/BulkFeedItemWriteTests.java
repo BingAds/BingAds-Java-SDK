@@ -21,6 +21,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	BulkFeedItemWriteToRowValuesStartDateTest.class,
 	BulkFeedItemWriteToRowValuesStatusTest.class,
 	BulkFeedItemWriteToRowValuesTargetTest.class,
+	BulkFeedItemWriteToRowValuesCampaignIdTest.class,
+    BulkFeedItemWriteToRowValuesAdGroupIdTest.class
 	})
 public class BulkFeedItemWriteTests {
 

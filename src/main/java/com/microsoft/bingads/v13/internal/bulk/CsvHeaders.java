@@ -343,6 +343,8 @@ public class CsvHeaders {
             
             // Account
             StringTable.MSCLKIDAutoTaggingEnabled,
+            StringTable.IncludeViewThroughConversions,
+            StringTable.ProfileExpansionEnabled,            
 
             StringTable.FinalUrlSuffix,
             
@@ -350,6 +352,8 @@ public class CsvHeaders {
             StringTable.CustomAttributes,
             StringTable.FeedName,
             StringTable.PhysicalIntent,
+            StringTable.TargetAdGroupId,
+            StringTable.TargetCampaignId,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -7,7 +7,9 @@ public enum DeliveredMatchTypeReportFilter {
 
     EXACT("Exact"),
     PHRASE("Phrase"),
-    BROAD("Broad");
+    BROAD("Broad"),
+    EXACT_CLOSE_VARIANT("ExactCloseVariant"),
+    PHRASE_CLOSE_VARIANT("PhraseCloseVariant");
         
     private final String value;
 

@@ -47,6 +47,10 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private Calendar syncTime;
     
     private Boolean MSCLKIDAutoTaggingEnabled;
+    
+    private Boolean includeViewThroughConversions;
+    
+    private Boolean profileExpansionEnabled;
 
     private String trackingUrlTemplate;
     
@@ -173,6 +177,38 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 }
         ));
         
+
+        m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.IncludeViewThroughConversions,
+                new Function<BulkAccount, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkAccount t) {
+                        return t.getIncludeViewThroughConversions();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setIncludeViewThroughConversions(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
+
+        m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.ProfileExpansionEnabled,
+                new Function<BulkAccount, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkAccount t) {
+                        return t.getProfileExpansionEnabled();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setProfileExpansionEnabled(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -252,6 +288,22 @@ public class BulkAccount extends SingleRecordBulkEntity {
 
     public void setMSCLKIDAutoTaggingEnabled(Boolean msclkAutoTagEnabled) {
         this.MSCLKIDAutoTaggingEnabled = msclkAutoTagEnabled;
+    }
+    
+    public Boolean getIncludeViewThroughConversions() {
+        return includeViewThroughConversions;
+    }
+
+    public void setIncludeViewThroughConversions(Boolean includeViewThroughConversions) {
+        this.includeViewThroughConversions = includeViewThroughConversions;
+    }
+
+    public Boolean getProfileExpansionEnabled() {
+        return profileExpansionEnabled;
+    }
+
+    public void setProfileExpansionEnabled(Boolean profileExpansionEnabled) {
+        this.profileExpansionEnabled = profileExpansionEnabled;
     }
 
     public String getTrackingUrlTemplate() {

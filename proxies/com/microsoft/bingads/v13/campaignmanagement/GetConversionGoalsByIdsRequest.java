@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       &lt;sequence>
  *         &lt;element name="ConversionGoalIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="ConversionGoalTypes" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalType" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "conversionGoalIds",
-    "conversionGoalTypes"
+    "conversionGoalTypes",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetConversionGoalsByIdsRequest")
 public class GetConversionGoalsByIdsRequest {
@@ -43,6 +45,9 @@ public class GetConversionGoalsByIdsRequest {
     @XmlElement(name = "ConversionGoalTypes", type = String.class)
     @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<ConversionGoalType> conversionGoalTypes;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter12 .class)
+    protected Collection<ConversionGoalAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the conversionGoalIds property.
@@ -90,6 +95,30 @@ public class GetConversionGoalsByIdsRequest {
      */
     public void setConversionGoalTypes(Collection<ConversionGoalType> value) {
         this.conversionGoalTypes = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<ConversionGoalAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<ConversionGoalAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

@@ -29,7 +29,7 @@ import com.microsoft.bingads.InternalException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "12.13.6";
+    private static final String VERSION = "13.0.1";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -41,45 +41,6 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
-            put(com.microsoft.bingads.v12.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v12/CustomerBillingService.svc");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v12/CustomerBillingService.svc");
-                }
-            });
-
-            put(com.microsoft.bingads.v12.customermanagement.ICustomerManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v12/CustomerManagementService.svc");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v12/CustomerManagementService.svc");
-                }
-            });
-
-            put(com.microsoft.bingads.v12.reporting.IReportingService.class, new ServiceInfo() {
-                {
-                	setProductionUrl("https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v12/ReportingService.svc");
-                    setSandboxUrl("https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v12/ReportingService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v12.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc");
-                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/CampaignManagementService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v12.adinsight.IAdInsightService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/v12/AdInsightService.svc");
-                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v12/AdInsightService.svc");
-                }
-            });
-            put(com.microsoft.bingads.v12.bulk.IBulkService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/BulkService.svc");
-                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v12/BulkService.svc");
-                }
-            });
-			//End of v12
 
             put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
                 {

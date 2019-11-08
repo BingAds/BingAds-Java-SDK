@@ -70,7 +70,7 @@ public class BulkFeedItemWriteToRowValuesAdScheduleTest extends BulkFeedItemTest
             }
         });
         
-        datum = null;
+        datum = "delete_value";
         propertyValue = new ArrayOfDayTime();
             
         this.testWriteProperty("Ad Schedule", this.datum, this.propertyValue, new BiConsumer<BulkFeedItem, ArrayOfDayTime>() {

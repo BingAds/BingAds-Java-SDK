@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="TagId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="TrackingStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalTrackingStatus" minOccurs="0"/>
  *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalType" minOccurs="0"/>
+ *         &lt;element name="ViewThroughConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -52,7 +53,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "status",
     "tagId",
     "trackingStatus",
-    "type"
+    "type",
+    "viewThroughConversionWindowInMinutes"
 })
 @XmlSeeAlso({
     UrlGoal.class,
@@ -92,6 +94,8 @@ public class ConversionGoal {
     @XmlElement(name = "Type", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<ConversionGoalType> type;
+    @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
+    protected Integer viewThroughConversionWindowInMinutes;
 
     /**
      * Gets the value of the conversionWindowInMinutes property.
@@ -355,6 +359,30 @@ public class ConversionGoal {
      */
     public void setType(Collection<ConversionGoalType> value) {
         this.type = value;
+    }
+
+    /**
+     * Gets the value of the viewThroughConversionWindowInMinutes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getViewThroughConversionWindowInMinutes() {
+        return viewThroughConversionWindowInMinutes;
+    }
+
+    /**
+     * Sets the value of the viewThroughConversionWindowInMinutes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setViewThroughConversionWindowInMinutes(Integer value) {
+        this.viewThroughConversionWindowInMinutes = value;
     }
 
 }

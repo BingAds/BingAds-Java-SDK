@@ -94,7 +94,8 @@ public class StringTable {
     public static final String FeedItem = "Feed Item";
     public static final String FeedName = "Feed Name";
     public static final String CustomAttributes = "Custom Attributes";
-
+    public static final String TargetAdGroupId = "Target Ad Group Id";
+    public static final String TargetCampaignId = "Target Campaign Id";
     
     public static final String PhysicalIntent = "Physical Intent";
 
@@ -567,6 +568,8 @@ public class StringTable {
     
     // Account
     public static final String MSCLKIDAutoTaggingEnabled = "MSCLKID Auto Tagging Enabled";
+    public static final String IncludeViewThroughConversions = "Include View Through Conversions";
+    public static final String ProfileExpansionEnabled = "Profile Expansion Enabled";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

@@ -50,6 +50,10 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
     private Long audienceId;
 
     private Long locationId;
+
+    private String adGroupId;
+
+    private String campaignId;
     
     private Long devicePreference;
 	
@@ -367,6 +371,37 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkFeedItem, String>(StringTable.TargetAdGroupId,
+                new Function<BulkFeedItem, String>() {
+                    @Override
+                    public String apply(BulkFeedItem c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdGroupId(), c.getId());
+                    }
+                },
+                new BiConsumer<String, BulkFeedItem>() {
+                    @Override
+                    public void accept(String v, BulkFeedItem c) {
+                        c.setAdGroupId(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkFeedItem, String>(StringTable.TargetCampaignId,
+                new Function<BulkFeedItem, String>() {
+                    @Override
+                    public String apply(BulkFeedItem c) {
+                        return StringExtensions.toOptionalBulkString(c.getCampaignId(), c.getId());
+                    }
+                },
+                new BiConsumer<String, BulkFeedItem>() {
+                    @Override
+                    public void accept(String v, BulkFeedItem c) {
+                        c.setCampaignId(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
+
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -415,6 +450,22 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
+    }
+    
+    public String getAdGroupId() {
+        return adGroupId;
+    }
+
+    public void setAdGroupId(String adGroupId) {
+        this.adGroupId = adGroupId;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
     }
 
     public Long getDevicePreference() {

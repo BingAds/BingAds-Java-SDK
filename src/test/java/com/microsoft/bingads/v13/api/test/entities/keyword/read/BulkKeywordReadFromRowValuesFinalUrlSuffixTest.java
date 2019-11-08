@@ -8,8 +8,8 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v12.api.test.entities.keyword.BulkKeywordTest;
-import com.microsoft.bingads.v12.bulk.entities.BulkKeyword;
+import com.microsoft.bingads.v13.api.test.entities.keyword.BulkKeywordTest;
+import com.microsoft.bingads.v13.bulk.entities.BulkKeyword;
 
 public class BulkKeywordReadFromRowValuesFinalUrlSuffixTest extends BulkKeywordTest {
 

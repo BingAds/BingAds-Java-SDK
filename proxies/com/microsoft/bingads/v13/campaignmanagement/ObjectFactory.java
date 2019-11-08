@@ -72,6 +72,7 @@ public class ObjectFactory {
     private final static QName _StringOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "StringOperator");
     private final static QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedListItem");
     private final static QName _AdExtensionEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionEditorialReasonCollection");
+    private final static QName _ConversionGoalAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionGoalAdditionalField");
     private final static QName _AudienceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceType");
     private final static QName _CustomerAccountShareAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountShareAssociation");
     private final static QName _EntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityType");
@@ -4321,6 +4322,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdExtensionEditorialReasonCollection")
     public JAXBElement<AdExtensionEditorialReasonCollection> createAdExtensionEditorialReasonCollection(AdExtensionEditorialReasonCollection value) {
         return new JAXBElement<AdExtensionEditorialReasonCollection>(_AdExtensionEditorialReasonCollection_QNAME, AdExtensionEditorialReasonCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ConversionGoalAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalAdditionalField")
+    @XmlJavaTypeAdapter(Adapter12 .class)
+    public JAXBElement<Collection<ConversionGoalAdditionalField>> createConversionGoalAdditionalField(Collection<ConversionGoalAdditionalField> value) {
+        return new JAXBElement<Collection<ConversionGoalAdditionalField>>(_ConversionGoalAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

@@ -22,6 +22,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkFeedItemReadFromRowValuesStartDateTest.class,
     BulkFeedItemReadFromRowValuesStatusTest.class,
     BulkFeedItemReadFromRowValuesTargetTest.class,
+    BulkFeedItemReadFromRowValuesAdGroupId.class,
+    BulkFeedItemReadFromRowValuesCampaignId.class
     })
 public class BulkFeedItemReadTests {
 

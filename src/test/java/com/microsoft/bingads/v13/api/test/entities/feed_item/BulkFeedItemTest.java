@@ -13,6 +13,7 @@ public abstract class BulkFeedItemTest extends BulkEntityTest<BulkFeedItem> {
 
     @Override
     protected void onEntityCreation(BulkFeedItem entity) {
+        entity.setId(100L);
     }
 
     @Override
