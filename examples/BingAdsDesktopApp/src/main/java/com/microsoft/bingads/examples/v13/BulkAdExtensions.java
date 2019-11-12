@@ -35,7 +35,8 @@ public class BulkAdExtensions extends BulkExampleBase {
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
             campaign.setId(campaignIdKey);
-            ArrayOfstring languages = new ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
+                    new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
             campaign.setName("Women's Shoes " + System.currentTimeMillis());
@@ -45,7 +46,8 @@ public class BulkAdExtensions extends BulkExampleBase {
             BulkActionAdExtension bulkActionAdExtension = new BulkActionAdExtension();
             ActionAdExtension actionAdExtension = new ActionAdExtension();
             actionAdExtension.setActionType(ActionAdExtensionActionType.ACT_NOW);
-            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = 
+                    new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             finalUrls.getStrings().add("https://contoso.com");
             actionAdExtension.setFinalUrls(finalUrls);
             actionAdExtension.setId(actionAdExtensionIdKey);
@@ -202,7 +204,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             reviewAdExtension.setSource("Review Source Name");
             reviewAdExtension.setText("Review Text");
             // The Url of the third-party review. This is not your business Url.
-            reviewAdExtension.setUrl("http://review.contoso.com"); 
+            reviewAdExtension.setUrl("https://review.contoso.com"); 
             reviewAdExtension.setId(reviewAdExtensionIdKey);
             bulkReviewAdExtension.setReviewAdExtension(reviewAdExtension);
             

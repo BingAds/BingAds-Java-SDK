@@ -64,7 +64,8 @@ public class BulkProductAds extends BulkExampleBase {
             campaign.setCampaignType(campaignTypes);
             campaign.setDailyBudget(50.00);
             campaign.setId(campaignIdKey);
-            ArrayOfstring languages = new ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
+                    new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
             campaign.setName("Women's Shoes " + System.currentTimeMillis());            
@@ -80,7 +81,7 @@ public class BulkProductAds extends BulkExampleBase {
             
             uploadEntities.add(bulkCampaign);
             
-            // Optionally, you can create a ProductScope criterion that will be associated with your Bing Shopping campaign. 
+            // Optionally, you can create a ProductScope criterion that will be associated with your Microsoft Shopping campaign. 
             // You'll also be able to add more specific product conditions for each ad group.
 
             BulkCampaignProductScope bulkCampaignProductScope = new BulkCampaignProductScope();
@@ -243,7 +244,7 @@ public class BulkProductAds extends BulkExampleBase {
             // The direct children of any node must have the same Operand. 
             // For this example we will use CategoryL1 nodes as children of the root. 
             // For a list of valid CategoryL1 through CategoryL5 values, see the Bing Category Taxonomy:
-            // http://go.microsoft.com/fwlink?LinkId=507666
+            // https://go.microsoft.com/fwlink?LinkId=507666
 
             ProductCondition animalsSubdivisionCondition = new ProductCondition();
             animalsSubdivisionCondition.setAttribute("Animals & Pet Supplies");

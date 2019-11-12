@@ -113,7 +113,7 @@ public class ResponsiveAds extends ExampleBase {
             responsiveAd.setBusinessName("Contoso");
             responsiveAd.setCallToAction(CallToAction.ADD_TO_CART);  
             ArrayOfstring finalUrls = new ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            finalUrls.getStrings().add("https://www.contoso.com/womenshoesale");
             responsiveAd.setFinalUrls(finalUrls);
             responsiveAd.setHeadline("Fast & Easy Setup");
             // You are only required to provide a landscape image asset. 

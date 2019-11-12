@@ -1448,6 +1448,51 @@ class ReportingExampleHelper
             }
         }
     }
+    static void outputProductNegativeKeywordConflictReportFilter(ProductNegativeKeywordConflictReportFilter dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputProductNegativeKeywordConflictReportFilter * * *");
+            outputStatusMessage(String.format("AccountStatus: %s", dataObject.getAccountStatus()));
+            outputStatusMessage(String.format("AdGroupStatus: %s", dataObject.getAdGroupStatus()));
+            outputStatusMessage(String.format("CampaignStatus: %s", dataObject.getCampaignStatus()));
+            outputStatusMessage("* * * End OutputProductNegativeKeywordConflictReportFilter * * *");
+        }
+    }
+    static void outputArrayOfProductNegativeKeywordConflictReportFilter(ArrayList<ProductNegativeKeywordConflictReportFilter> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProductNegativeKeywordConflictReportFilter dataObject : dataObjects)
+            {
+                outputProductNegativeKeywordConflictReportFilter(dataObject);
+            }
+        }
+    }
+    static void outputProductNegativeKeywordConflictReportRequest(ProductNegativeKeywordConflictReportRequest dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputProductNegativeKeywordConflictReportRequest * * *");
+            outputStatusMessage("Columns:");
+            outputArrayOfProductNegativeKeywordConflictReportColumn(dataObject.getColumns());
+            outputStatusMessage("Filter:");
+            outputProductNegativeKeywordConflictReportFilter(dataObject.getFilter());
+            outputStatusMessage("Scope:");
+            outputAccountThroughAdGroupReportScope(dataObject.getScope());
+            outputStatusMessage("* * * End OutputProductNegativeKeywordConflictReportRequest * * *");
+        }
+    }
+    static void outputArrayOfProductNegativeKeywordConflictReportRequest(ArrayList<ProductNegativeKeywordConflictReportRequest> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (ProductNegativeKeywordConflictReportRequest dataObject : dataObjects)
+            {
+                outputProductNegativeKeywordConflictReportRequest(dataObject);
+            }
+        }
+    }
     static void outputProductPartitionPerformanceReportFilter(ProductPartitionPerformanceReportFilter dataObject)
     {
         if (null != dataObject)
@@ -1806,6 +1851,10 @@ class ReportingExampleHelper
             if(dataObject instanceof ProductMatchCountReportRequest)
             {
                 outputProductMatchCountReportRequest((ProductMatchCountReportRequest)dataObject);
+            }
+            if(dataObject instanceof ProductNegativeKeywordConflictReportRequest)
+            {
+                outputProductNegativeKeywordConflictReportRequest((ProductNegativeKeywordConflictReportRequest)dataObject);
             }
             if(dataObject instanceof ProductPartitionPerformanceReportRequest)
             {
@@ -2952,6 +3001,24 @@ class ReportingExampleHelper
             for (ProductMatchCountReportColumn valueSet : valueSets.getProductMatchCountReportColumns())
             {
                 outputProductMatchCountReportColumn(valueSet);
+            }
+        }
+    }
+    static void outputProductNegativeKeywordConflictReportColumn(ProductNegativeKeywordConflictReportColumn valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ProductNegativeKeywordConflictReportColumn value : ProductNegativeKeywordConflictReportColumn.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfProductNegativeKeywordConflictReportColumn(ArrayOfProductNegativeKeywordConflictReportColumn valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ProductNegativeKeywordConflictReportColumn valueSet : valueSets.getProductNegativeKeywordConflictReportColumns())
+            {
+                outputProductNegativeKeywordConflictReportColumn(valueSet);
             }
         }
     }

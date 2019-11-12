@@ -106,7 +106,7 @@ public class ExpandedTextAds extends ExampleBase {
             expandedTextAd.setPath1("seattle");
             expandedTextAd.setPath2("shoe sale");
             com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            finalUrls.getStrings().add("https://www.contoso.com/womenshoesale");
             expandedTextAd.setFinalUrls(finalUrls);
             ads.getAds().add(expandedTextAd);
 

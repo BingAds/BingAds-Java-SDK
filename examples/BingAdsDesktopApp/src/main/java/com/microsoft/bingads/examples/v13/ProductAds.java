@@ -9,7 +9,7 @@ import java.util.Map;
 import com.microsoft.bingads.*;
 import com.microsoft.bingads.v13.campaignmanagement.*;
 
-// How to apply product conditions for Bing Shopping Campaigns.
+// How to apply product conditions for Microsoft Shopping Campaigns.
 
 public class ProductAds extends ExampleBase {
         
@@ -78,7 +78,7 @@ public class ProductAds extends ExampleBase {
             outputStatusMessage("PartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
             
-            // Optionally, you can create a ProductScope criterion that will be associated with your Bing Shopping campaign. 
+            // Optionally, you can create a ProductScope criterion that will be associated with your Microsoft Shopping campaign. 
             // You'll also be able to add more specific product conditions for each ad group.
 
             ArrayList<CampaignCriterionType> criterionType = new ArrayList<CampaignCriterionType>();

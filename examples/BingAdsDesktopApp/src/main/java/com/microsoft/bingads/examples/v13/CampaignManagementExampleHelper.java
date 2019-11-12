@@ -444,7 +444,8 @@ class CampaignManagementExampleHelper
         java.lang.Long accountId,
         ArrayList<AdExtensionsTypeFilter> adExtensionType,
         AssociationType associationType,
-        ArrayOflong entityIds) throws RemoteException, Exception
+        ArrayOflong entityIds,
+        ArrayList<AdExtensionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAdExtensionsAssociationsRequest request = new GetAdExtensionsAssociationsRequest();
 
@@ -452,19 +453,22 @@ class CampaignManagementExampleHelper
         request.setAdExtensionType(adExtensionType);
         request.setAssociationType(associationType);
         request.setEntityIds(entityIds);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdExtensionsAssociations(request);
     }
     static GetAdExtensionsByIdsResponse getAdExtensionsByIds(
         java.lang.Long accountId,
         ArrayOflong adExtensionIds,
-        ArrayList<AdExtensionsTypeFilter> adExtensionType) throws RemoteException, Exception
+        ArrayList<AdExtensionsTypeFilter> adExtensionType,
+        ArrayList<AdExtensionAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAdExtensionsByIdsRequest request = new GetAdExtensionsByIdsRequest();
 
         request.setAccountId(accountId);
         request.setAdExtensionIds(adExtensionIds);
         request.setAdExtensionType(adExtensionType);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getAdExtensionsByIds(request);
     }
@@ -633,23 +637,27 @@ class CampaignManagementExampleHelper
     }
     static GetConversionGoalsByIdsResponse getConversionGoalsByIds(
         ArrayOflong conversionGoalIds,
-        ArrayList<ConversionGoalType> conversionGoalTypes) throws RemoteException, Exception
+        ArrayList<ConversionGoalType> conversionGoalTypes,
+        ArrayList<ConversionGoalAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetConversionGoalsByIdsRequest request = new GetConversionGoalsByIdsRequest();
 
         request.setConversionGoalIds(conversionGoalIds);
         request.setConversionGoalTypes(conversionGoalTypes);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getConversionGoalsByIds(request);
     }
     static GetConversionGoalsByTagIdsResponse getConversionGoalsByTagIds(
         ArrayOflong tagIds,
-        ArrayList<ConversionGoalType> conversionGoalTypes) throws RemoteException, Exception
+        ArrayList<ConversionGoalType> conversionGoalTypes,
+        ArrayList<ConversionGoalAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetConversionGoalsByTagIdsRequest request = new GetConversionGoalsByTagIdsRequest();
 
         request.setTagIds(tagIds);
         request.setConversionGoalTypes(conversionGoalTypes);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CampaignManagementService.getService().getConversionGoalsByTagIds(request);
     }
@@ -883,6 +891,17 @@ class CampaignManagementExampleHelper
         request.setTagIds(tagIds);
 
         return CampaignManagementService.getService().getUetTagsByIds(request);
+    }
+    static SearchCompaniesResponse searchCompanies(
+        java.lang.String companyNameFilter,
+        java.lang.String languageLocale) throws RemoteException, Exception
+    {
+        SearchCompaniesRequest request = new SearchCompaniesRequest();
+
+        request.setCompanyNameFilter(companyNameFilter);
+        request.setLanguageLocale(languageLocale);
+
+        return CampaignManagementService.getService().searchCompanies(request);
     }
     static SetAccountPropertiesResponse setAccountProperties(
         ArrayOfAccountProperty accountProperties) throws RemoteException, Exception
@@ -2307,6 +2326,28 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputCompany(Company dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCompany * * *");
+            outputStatusMessage(String.format("LogoUrl: %s", dataObject.getLogoUrl()));
+            outputStatusMessage(String.format("Name: %s", dataObject.getName()));
+            outputStatusMessage(String.format("ProfileId: %s", dataObject.getProfileId()));
+            outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputCompany * * *");
+        }
+    }
+    static void outputArrayOfCompany(ArrayOfCompany dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Company dataObject : dataObjects.getCompanies())
+            {
+                outputCompany(dataObject);
+            }
+        }
+    }
     static void outputConversionGoal(ConversionGoal dataObject)
     {
         if (null != dataObject)
@@ -2324,6 +2365,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("TagId: %s", dataObject.getTagId()));
             outputStatusMessage(String.format("TrackingStatus: %s", dataObject.getTrackingStatus()));
             outputStatusMessage(String.format("Type: %s", dataObject.getType()));
+            outputStatusMessage(String.format("ViewThroughConversionWindowInMinutes: %s", dataObject.getViewThroughConversionWindowInMinutes()));
             if(dataObject instanceof AppInstallGoal)
             {
                 outputAppInstallGoal((AppInstallGoal)dataObject);
@@ -3161,6 +3203,7 @@ class CampaignManagementExampleHelper
             outputStatusMessage(String.format("AlternativeText: %s", dataObject.getAlternativeText()));
             outputStatusMessage(String.format("Description: %s", dataObject.getDescription()));
             outputStatusMessage(String.format("DestinationUrl: %s", dataObject.getDestinationUrl()));
+            outputStatusMessage(String.format("DisplayText: %s", dataObject.getDisplayText()));
             outputStatusMessage("FinalAppUrls:");
             outputArrayOfAppUrl(dataObject.getFinalAppUrls());
             outputStatusMessage("FinalMobileUrls:");
@@ -3170,6 +3213,8 @@ class CampaignManagementExampleHelper
             outputArrayOfstring(dataObject.getFinalUrls());
             outputStatusMessage("ImageMediaIds:");
             outputArrayOflong(dataObject.getImageMediaIds());
+            outputStatusMessage("Images:");
+            outputArrayOfAssetLink(dataObject.getImages());
             outputStatusMessage(String.format("TrackingUrlTemplate: %s", dataObject.getTrackingUrlTemplate()));
             outputStatusMessage("UrlCustomParameters:");
             outputCustomParameters(dataObject.getUrlCustomParameters());
@@ -5328,6 +5373,24 @@ class CampaignManagementExampleHelper
             }
         }
     }
+    static void outputAdExtensionAdditionalField(AdExtensionAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AdExtensionAdditionalField value : AdExtensionAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAdExtensionAdditionalField(ArrayList<AdExtensionAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AdExtensionAdditionalField valueSet : valueSets)
+            {
+                outputAdExtensionAdditionalField(valueSet);
+            }
+        }
+    }
     static void outputAssociationType(AssociationType valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -5757,6 +5820,24 @@ class CampaignManagementExampleHelper
             for (ConversionGoalType valueSet : valueSets)
             {
                 outputConversionGoalType(valueSet);
+            }
+        }
+    }
+    static void outputConversionGoalAdditionalField(ConversionGoalAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (ConversionGoalAdditionalField value : ConversionGoalAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfConversionGoalAdditionalField(ArrayList<ConversionGoalAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (ConversionGoalAdditionalField valueSet : valueSets)
+            {
+                outputConversionGoalAdditionalField(valueSet);
             }
         }
     }
