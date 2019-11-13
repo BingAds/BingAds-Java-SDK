@@ -135,7 +135,7 @@ public class ResponsiveSearchAds extends ExampleBase {
             responsiveSearchAd.setPath1("seattle");
             responsiveSearchAd.setPath2("shoe sale");
             com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            finalUrls.getStrings().add("https://www.contoso.com/womenshoesale");
             responsiveSearchAd.setFinalUrls(finalUrls);
             ads.getAds().add(responsiveSearchAd);
 

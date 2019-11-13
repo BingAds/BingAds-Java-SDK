@@ -207,10 +207,14 @@ public class ConversionGoals extends ExampleBase {
             conversionGoalTypes.add(ConversionGoalType.PAGES_VIEWED_PER_VISIT);
             conversionGoalTypes.add(ConversionGoalType.URL);
             
+            ArrayList<ConversionGoalAdditionalField> returnAdditionalFields = new ArrayList<ConversionGoalAdditionalField>();
+            returnAdditionalFields.add(ConversionGoalAdditionalField.VIEW_THROUGH_CONVERSION_WINDOW_IN_MINUTES);
+            
             outputStatusMessage("-----\nGetConversionGoalsByIds:");
             GetConversionGoalsByIdsResponse getConversionGoalsByIdsResponse = CampaignManagementExampleHelper.getConversionGoalsByIds(
                     conversionGoalIds, 
-                    conversionGoalTypes);
+                    conversionGoalTypes,
+                    returnAdditionalFields);
             ArrayOfConversionGoal getConversionGoals = getConversionGoalsByIdsResponse.getConversionGoals();
             conversionGoalErrors = getConversionGoalsByIdsResponse.getPartialErrors();
             outputStatusMessage("ConversionGoals:");
@@ -303,7 +307,8 @@ public class ConversionGoals extends ExampleBase {
             outputStatusMessage("-----\nGetConversionGoalsByIds:");
             getConversionGoalsByIdsResponse = CampaignManagementExampleHelper.getConversionGoalsByIds(
                     conversionGoalIds, 
-                    conversionGoalTypes);
+                    conversionGoalTypes,
+                    returnAdditionalFields);
             getConversionGoals = getConversionGoalsByIdsResponse.getConversionGoals();
             conversionGoalErrors = getConversionGoalsByIdsResponse.getPartialErrors();
             outputStatusMessage("ConversionGoals:");

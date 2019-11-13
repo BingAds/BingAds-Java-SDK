@@ -93,6 +93,15 @@ class CustomerManagementExampleHelper
 
         return CustomerManagementService.getService().getAccount(request);
     }
+    static GetAccountPilotFeaturesResponse getAccountPilotFeatures(
+        java.lang.Long accountId) throws RemoteException, Exception
+    {
+        GetAccountPilotFeaturesRequest request = new GetAccountPilotFeaturesRequest();
+
+        request.setAccountId(accountId);
+
+        return CustomerManagementService.getService().getAccountPilotFeatures(request);
+    }
     static GetAccountsInfoResponse getAccountsInfo(
         java.lang.Long customerId,
         java.lang.Boolean onlyParentAccounts) throws RemoteException, Exception

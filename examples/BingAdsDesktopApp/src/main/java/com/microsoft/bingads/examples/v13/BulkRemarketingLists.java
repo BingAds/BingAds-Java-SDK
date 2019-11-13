@@ -81,7 +81,8 @@ public class BulkRemarketingLists extends BulkExampleBase {
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             campaign.setDailyBudget(50.00);
             campaign.setId(campaignIdKey);
-            ArrayOfstring languages = new ArrayOfstring();
+            com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
+                    new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
             campaign.setName("Women's Shoes " + System.currentTimeMillis());

@@ -68,10 +68,14 @@ public class OfflineConversions extends ExampleBase {
             ArrayList<ConversionGoalType> conversionGoalTypes = new ArrayList<ConversionGoalType>();
             conversionGoalTypes.add(ConversionGoalType.OFFLINE_CONVERSION);
             
+            ArrayList<ConversionGoalAdditionalField> returnAdditionalFields = new ArrayList<ConversionGoalAdditionalField>();
+            returnAdditionalFields.add(ConversionGoalAdditionalField.VIEW_THROUGH_CONVERSION_WINDOW_IN_MINUTES);
+            
             outputStatusMessage("-----\nGetConversionGoalsByIds:");
             GetConversionGoalsByIdsResponse getConversionGoalsByIdsResponse = CampaignManagementExampleHelper.getConversionGoalsByIds(
                     goalIds, 
-                    conversionGoalTypes);
+                    conversionGoalTypes,
+                    returnAdditionalFields);
             ArrayOfConversionGoal getConversionGoals = getConversionGoalsByIdsResponse.getConversionGoals();
             goalErrors = getConversionGoalsByIdsResponse.getPartialErrors();
             outputStatusMessage("ConversionGoals:");

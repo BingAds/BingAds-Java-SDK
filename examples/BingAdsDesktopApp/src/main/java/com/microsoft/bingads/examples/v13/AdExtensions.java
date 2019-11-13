@@ -82,7 +82,7 @@ public class AdExtensions extends ExampleBase {
             ActionAdExtension actionAdExtension = new ActionAdExtension();
             actionAdExtension.setActionType(ActionAdExtensionActionType.ACT_NOW);
             com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring finalUrls = new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
-            finalUrls.getStrings().add("http://www.contoso.com/womenshoesale");
+            finalUrls.getStrings().add("https://www.contoso.com/womenshoesale");
             actionAdExtension.setFinalUrls(finalUrls);
             actionAdExtension.setLanguage("English");
             actionAdExtension.setStatus(AdExtensionStatus.ACTIVE);
@@ -223,7 +223,7 @@ public class AdExtensions extends ExampleBase {
             reviewAdExtension.setSource("Review Source Name");
             reviewAdExtension.setText("Review Text");
             // The Url of the third-party review. This is not your business Url.
-            reviewAdExtension.setUrl("http://review.contoso.com"); 
+            reviewAdExtension.setUrl("https://review.contoso.com"); 
             adExtensions.getAdExtensions().add(reviewAdExtension);
             
             SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
@@ -297,6 +297,10 @@ public class AdExtensions extends ExampleBase {
 
             ArrayList<AdExtensionsTypeFilter> adExtensionsTypeFilter = new ArrayList<AdExtensionsTypeFilter>();
             adExtensionsTypeFilter.add(AdExtensionsTypeFilter.LOCATION_AD_EXTENSION);
+            
+            ArrayList<AdExtensionAdditionalField> returnAdditionalFields = new ArrayList<AdExtensionAdditionalField>();
+            returnAdditionalFields.add(AdExtensionAdditionalField.DISPLAY_TEXT);
+            returnAdditionalFields.add(AdExtensionAdditionalField.IMAGES);
 
             // In this example partial errors will be returned for indices where the ad extensions 
             // are not location ad extensions.
@@ -306,7 +310,8 @@ public class AdExtensions extends ExampleBase {
             GetAdExtensionsByIdsResponse getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter);
+                adExtensionsTypeFilter,
+                returnAdditionalFields);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
             outputStatusMessage("AdExtensions:");
             CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
@@ -346,7 +351,8 @@ public class AdExtensions extends ExampleBase {
             getAdExtensionsByIdsResponse = CampaignManagementExampleHelper.getAdExtensionsByIds(
                 authorizationData.getAccountId(),
                 adExtensionIds,
-                adExtensionsTypeFilter);
+                adExtensionsTypeFilter,
+                returnAdditionalFields);
             adExtensions = getAdExtensionsByIdsResponse.getAdExtensions();
             outputStatusMessage("AdExtensions:");
             CampaignManagementExampleHelper.outputArrayOfAdExtension(adExtensions);
