@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 import com.microsoft.bingads.v13.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.TryResult;
 import com.microsoft.bingads.v13.internal.bulk.entities.BulkNegativeSiteIdentifier;
 import com.microsoft.bingads.v13.internal.bulk.entities.MultiRecordBulkEntity;
@@ -85,7 +85,7 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
     protected abstract void validatePropertiesNotNull();
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
+    public void write(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         validatePropertiesNotNull();
 
         TIdentifier deleteRow = createIdentifier();
@@ -98,7 +98,7 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
         }
 
         for (TNegativeSite site : convertApiToBulkNegativeSites()) {
-            site.writeToStream(rowWriter, excludeReadonlyData);
+            site.write(rowWriter, excludeReadonlyData);
         }
     }
 
@@ -113,7 +113,7 @@ abstract class BulkNegativeSites<TNegativeSite extends BulkNegativeSite<TIdentif
     protected abstract void reconstructApiObjects();
 
     @Override
-    public void readRelatedDataFromStream(BulkStreamReader reader) {
+    public void readRelatedData(BulkRecordReader reader) {
         boolean hasMoreRows = true;
 
         while (hasMoreRows) {

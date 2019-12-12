@@ -109,6 +109,6 @@ public class BulkCampaignNegativeSitesWriteTest extends BulkCampaignNegativeSite
         rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite1, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
         rowWriter.writeObjectRow(and(anyObject(BulkCampaignNegativeSite.class), cmp(bulkCampaignNegativeSite2, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
         replayAll();
-        CampaignNegativeSites.writeToStream(rowWriter, false);
+        CampaignNegativeSites.write(rowWriter, false);
     }
 }

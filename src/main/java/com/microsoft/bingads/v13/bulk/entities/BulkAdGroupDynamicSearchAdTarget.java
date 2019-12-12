@@ -269,6 +269,30 @@ public class BulkAdGroupDynamicSearchAdTarget extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+
+        m.add(new SimpleBulkMapping<BulkAdGroupDynamicSearchAdTarget, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAdGroupDynamicSearchAdTarget, String>() {
+                    @Override
+                    public String apply(BulkAdGroupDynamicSearchAdTarget c) {
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            return StringExtensions.toOptionalBulkString(
+                                    ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getFinalUrlSuffix(),
+                                    c.getBiddableAdGroupCriterion().getId());
+                        } else {
+                            return null;
+                        }
+                    }
+                },
+                new BiConsumer<String, BulkAdGroupDynamicSearchAdTarget>() {
+                    @Override
+                    public void accept(String v, BulkAdGroupDynamicSearchAdTarget c) {
+                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
+                            ((BiddableAdGroupCriterion)c.getBiddableAdGroupCriterion()).setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                        }
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

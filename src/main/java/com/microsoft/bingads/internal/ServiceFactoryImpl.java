@@ -29,7 +29,7 @@ import com.microsoft.bingads.InternalException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.1";
+    private static final String VERSION = "13.0.2";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -217,8 +217,15 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
     private <T> void addUserAgent(T port) {
         Map<String, List> headers = new HashMap<String, List>();
+        
+        String userAgent = "BingAdsSDKJava " + VERSION;
 
-        headers.put("User-Agent", Arrays.asList("BingAdsSDKJava " + VERSION + " " + System.getProperty("java.version")));
+        String javaVersion = System.getProperty("java.version");
+        if (javaVersion.matches("\\d+[\\d|\\.|\\_]*\\d+")) {
+            // matches to 1.8.0_222, 11.0.2 and so on
+            userAgent += " " + javaVersion;
+        }
+        headers.put("User-Agent", Arrays.asList(userAgent));
 
         ((BindingProvider) port).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, headers);
     }

@@ -8,6 +8,7 @@ import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.Bul
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteConditionsTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteCriterionBidTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteCriterionNameTest;
+import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteFusTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteIdTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteParentIdTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.BulkAdGroupDynamicSearchAdTargetWriteStatusTest;
@@ -25,7 +26,8 @@ import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.write.Bul
         BulkAdGroupDynamicSearchAdTargetWriteCriterionNameTest.class,
         BulkAdGroupDynamicSearchAdTargetWriteCriterionBidTest.class,
         BulkAdGroupDynamicSearchAdTargetWriteTrackingTemplateTest.class,
-        BulkAdGroupDynamicSearchAdTargetWriteUrlCustomParameters.class
+        BulkAdGroupDynamicSearchAdTargetWriteUrlCustomParameters.class,
+        BulkAdGroupDynamicSearchAdTargetWriteFusTest.class
 })
 public class BulkAdGroupDynamicSearchAdTargetWriteTests {
 }

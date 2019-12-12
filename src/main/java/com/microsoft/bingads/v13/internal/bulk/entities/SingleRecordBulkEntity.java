@@ -7,7 +7,7 @@ import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.TryResult;
@@ -140,12 +140,12 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
     public abstract void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData);
 
     @Override
-    public void readRelatedDataFromStream(BulkStreamReader reader) {
+    public void readRelatedData(BulkRecordReader reader) {
         this.readAdditionalData(reader);
         this.readErrors(reader);
     }
 
-    public void readAdditionalData(BulkStreamReader reader) {
+    public void readAdditionalData(BulkRecordReader reader) {
     }
 
     /**
@@ -155,7 +155,7 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
      *
      * No checks are made for the error type. It's assumed that an entity row can only be followed by errors of the same type
      */
-    private void readErrors(BulkStreamReader reader) {
+    private void readErrors(BulkRecordReader reader) {
         List<BulkError> errors = new ArrayList<BulkError>();
 
         TryResult<BulkError> errorResult = reader.tryRead(BulkError.class);
@@ -185,7 +185,7 @@ public abstract class SingleRecordBulkEntity extends BulkEntity {
      * @throws IOException
      */
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
+    public void write(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         rowWriter.writeObjectRow(this, excludeReadonlyData);
 
         if (!excludeReadonlyData) {

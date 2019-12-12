@@ -92,7 +92,7 @@ public class BulkFileWriter implements Closeable {
             metadataWritten = true;
         }
 
-        entity.writeToStream(this.bulkObjectWriter, excludeReadonlyData);
+        entity.write(this.bulkObjectWriter, excludeReadonlyData);
     }
 
     /**

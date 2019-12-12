@@ -5,15 +5,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkEntityReadable;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkStreamReader;
 
 /**
  * Provides a method to read bulk entities from a bulk file and make them accessible as an Iterable.
  */
-public class BulkFileReader implements Closeable {
+public class BulkFileReader implements Closeable, BulkEntityReadable {
 
-    private BulkStreamReader bulkStreamReader;
+    private BulkRecordReader bulkRecordReader;
     private String bulkFilePath;
     private ResultFileType fileType;
 
@@ -64,8 +65,8 @@ public class BulkFileReader implements Closeable {
      * @param reader the bulk stream reader instance
      * @param fileType the type of bulk file download which is being read
      */
-     public BulkFileReader(BulkStreamReader reader, ResultFileType fileType) {
-        this.bulkStreamReader = reader;
+     public BulkFileReader(BulkRecordReader reader, ResultFileType fileType) {
+        this.bulkRecordReader = reader;
         this.fileType = fileType;
     }
 
@@ -75,12 +76,12 @@ public class BulkFileReader implements Closeable {
      * @return an iterator over Entities
      */
     public BulkEntityIterable getEntities() {
-        return new BulkEntityIterable(this.bulkStreamReader, isForFullDownload());
+        return new BulkEntityIterable(this.bulkRecordReader, isForFullDownload());
     }
 
     @Override
     public void close() throws IOException {
-        this.bulkStreamReader.close();
+        this.bulkRecordReader.close();
     }
 
     /**

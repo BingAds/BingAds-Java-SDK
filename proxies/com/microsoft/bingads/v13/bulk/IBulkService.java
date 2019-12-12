@@ -56,8 +56,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.bulk.DownloadCampaignsByAccountIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DownloadCampaignsByAccountIds", action = "DownloadCampaignsByAccountIds")
     @WebResult(name = "DownloadCampaignsByAccountIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.bulk.DownloadCampaignsByCampaignIdsResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "DownloadCampaignsByCampaignIds", action = "DownloadCampaignsByCampaignIds")
     @WebResult(name = "DownloadCampaignsByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -138,8 +138,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.bulk.GetBulkDownloadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkDownloadStatus", action = "GetBulkDownloadStatus")
     @WebResult(name = "GetBulkDownloadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -179,8 +179,8 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.bulk.GetBulkUploadUrlResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkUploadUrl", action = "GetBulkUploadUrl")
     @WebResult(name = "GetBulkUploadUrlResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -220,14 +220,55 @@ public interface IBulkService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.bulk.GetBulkUploadStatusResponse
-     * @throws ApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBulkUploadStatus", action = "GetBulkUploadStatus")
     @WebResult(name = "GetBulkUploadStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
     public GetBulkUploadStatusResponse getBulkUploadStatus(
         @WebParam(name = "GetBulkUploadStatusRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         GetBulkUploadStatusRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.bulk.UploadEntityRecordsResponse>
+     */
+    @WebMethod(operationName = "UploadEntityRecords", action = "UploadEntityRecords")
+    public Response<UploadEntityRecordsResponse> uploadEntityRecordsAsync(
+        @WebParam(name = "UploadEntityRecordsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UploadEntityRecordsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UploadEntityRecords", action = "UploadEntityRecords")
+    public Future<?> uploadEntityRecordsAsync(
+        @WebParam(name = "UploadEntityRecordsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UploadEntityRecordsRequest parameters,
+        @WebParam(name = "UploadEntityRecordsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UploadEntityRecordsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.bulk.UploadEntityRecordsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UploadEntityRecords", action = "UploadEntityRecords")
+    @WebResult(name = "UploadEntityRecordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UploadEntityRecordsResponse uploadEntityRecords(
+        @WebParam(name = "UploadEntityRecordsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UploadEntityRecordsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

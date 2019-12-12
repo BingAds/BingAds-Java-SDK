@@ -43,7 +43,7 @@ import com.microsoft.bingads.v13.bulk.GetBulkDownloadStatusResponse;
 import com.microsoft.bingads.v13.bulk.ResultFileType;
 import com.microsoft.bingads.v13.bulk.SubmitDownloadParameters;
 import com.microsoft.bingads.v13.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v13.internal.bulk.BulkFileReaderFactory;
+import com.microsoft.bingads.v13.internal.bulk.BulkEntityReaderFactory;
 
 //import com.microsoft.bingads.v13.bulk.GetDetailedBulkDownloadStatusRequest;
 //import com.microsoft.bingads.v13.bulk.GetDetailedBulkDownloadStatusResponse;
@@ -327,8 +327,8 @@ public class BulkServiceTest extends FakeApiTest {
         File expectedResultFile = new File(new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK"), "req456");
         
         expect(zipExtractor.extractFirstEntryToFile(expectedZipFile, expectedResultFile, true, false)).andReturn(new File("file path"));
-        
-        BulkFileReaderFactory factory = createMock(BulkFileReaderFactory.class);
+
+        BulkEntityReaderFactory factory = createMock(BulkEntityReaderFactory.class);
         
         BulkFileReader expectedReader = createMock(BulkFileReader.class);
         
@@ -339,13 +339,13 @@ public class BulkServiceTest extends FakeApiTest {
         expect(factory.createBulkFileReader(new File("file path"), ResultFileType.PARTIAL_DOWNLOAD, DownloadFileType.TSV, false)).andReturn(expectedReader);
         
         replay(zipExtractor, expectedReader, factory);
-
+        
         BulkServiceManager bulkServiceManager = new BulkServiceManager(authorizationData);
         
         bulkServiceManager.setHttpFileService(httpFileService);
         bulkServiceManager.setZipExtractor(zipExtractor);
-        bulkServiceManager.setBulkFileReaderFactory(factory);
-
+        bulkServiceManager.setBulkEntityReaderFactory(factory);
+        
         Iterable<BulkEntity> resultEntities = bulkServiceManager.downloadEntitiesAsync(parameters, null).get();                
         
         verify(zipExtractor);

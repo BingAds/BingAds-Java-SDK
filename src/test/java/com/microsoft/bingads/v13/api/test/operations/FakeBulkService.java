@@ -15,6 +15,8 @@ import javax.xml.ws.Response;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.v13.bulk.AdApiFaultDetail_Exception;
+import com.microsoft.bingads.v13.bulk.ApiFaultDetail_Exception;
 import com.microsoft.bingads.v13.bulk.DownloadCampaignsByAccountIdsRequest;
 import com.microsoft.bingads.v13.bulk.DownloadCampaignsByAccountIdsResponse;
 import com.microsoft.bingads.v13.bulk.DownloadCampaignsByCampaignIdsRequest;
@@ -26,6 +28,8 @@ import com.microsoft.bingads.v13.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v13.bulk.GetBulkUploadUrlRequest;
 import com.microsoft.bingads.v13.bulk.GetBulkUploadUrlResponse;
 import com.microsoft.bingads.v13.bulk.IBulkService;
+import com.microsoft.bingads.v13.bulk.UploadEntityRecordsRequest;
+import com.microsoft.bingads.v13.bulk.UploadEntityRecordsResponse;
 
 public class FakeBulkService implements IBulkService, BindingProvider {
 
@@ -296,5 +300,24 @@ public class FakeBulkService implements IBulkService, BindingProvider {
     @Override
     public <T extends EndpointReference> T getEndpointReference(Class<T> clazz) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
+
+    @Override
+    public Response<UploadEntityRecordsResponse> uploadEntityRecordsAsync(UploadEntityRecordsRequest parameters) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Future<?> uploadEntityRecordsAsync(UploadEntityRecordsRequest parameters, AsyncHandler<UploadEntityRecordsResponse> asyncHandler) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public UploadEntityRecordsResponse uploadEntityRecords(UploadEntityRecordsRequest parameters) throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
 }

@@ -4,7 +4,7 @@ import java.io.Closeable;
 
 import com.microsoft.bingads.internal.functionalinterfaces.Predicate;
 
-public interface BulkStreamReader extends Closeable {
+public interface BulkRecordReader extends Closeable {
 
     /**
      * Reads a single bulk object from the file

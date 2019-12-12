@@ -3,7 +3,7 @@ package com.microsoft.bingads.v13.internal.bulk.entities;
 import com.microsoft.bingads.v13.bulk.entities.BulkError;
 import com.microsoft.bingads.v13.internal.bulk.BulkObject;
 import com.microsoft.bingads.v13.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.TryResult;
 import java.io.IOException;
 
@@ -17,12 +17,12 @@ public abstract class BulkEntityIdentifier extends BulkObject {
     public abstract MultiRecordBulkEntity createEntityWithThisIdentifier();
 
     @Override
-    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
+    public void write(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         rowWriter.writeObjectRow(this);
     }
 
     @Override
-    public void readRelatedDataFromStream(BulkStreamReader reader) {
+    public void readRelatedData(BulkRecordReader reader) {
         // If this is a delete all row, just skip any error rows after this delete row
         if (isDeleteRow()) {
             boolean hasMoreErrors = true;

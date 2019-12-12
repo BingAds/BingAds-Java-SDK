@@ -201,6 +201,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UploadEntityRecordsResponse }
+     * 
+     */
+    public UploadEntityRecordsResponse createUploadEntityRecordsResponse() {
+        return new UploadEntityRecordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfstring }
+     * 
+     */
+    public ArrayOfstring createArrayOfstring() {
+        return new ArrayOfstring();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfOperationError }
      * 
      */
@@ -222,6 +238,14 @@ public class ObjectFactory {
      */
     public EditorialError createEditorialError() {
         return new EditorialError();
+    }
+
+    /**
+     * Create an instance of {@link UploadEntityRecordsRequest }
+     * 
+     */
+    public UploadEntityRecordsRequest createUploadEntityRecordsRequest() {
+        return new UploadEntityRecordsRequest();
     }
 
     /**
@@ -366,14 +390,6 @@ public class ObjectFactory {
      */
     public ApiFaultDetail createApiFaultDetail() {
         return new ApiFaultDetail();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfstring }
-     * 
-     */
-    public ArrayOfstring createArrayOfstring() {
-        return new ArrayOfstring();
     }
 
     /**

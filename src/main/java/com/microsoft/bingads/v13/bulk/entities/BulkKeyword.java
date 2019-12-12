@@ -20,7 +20,7 @@ import com.microsoft.bingads.v13.campaignmanagement.KeywordStatus;
 import com.microsoft.bingads.v13.campaignmanagement.MatchType;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.BulkObjectWriter;
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
@@ -455,7 +455,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
     }
 
     @Override
-    public void readAdditionalData(BulkStreamReader reader) {
+    public void readAdditionalData(BulkRecordReader reader) {
         TryResult<BulkKeywordBidSuggestion> nextBidSuggestionResult = reader.tryRead(BulkKeywordBidSuggestion.class);
 
         while (nextBidSuggestionResult.isSuccessful()) {

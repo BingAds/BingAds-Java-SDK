@@ -108,6 +108,6 @@ public class BulkAdGroupNegativeSitesWriteTest extends BulkAdGroupNegativeSitesT
         rowWriter.writeObjectRow(and(anyObject(BulkAdGroupNegativeSite.class), cmp(bulkAdGroupNegativeSite1, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
         rowWriter.writeObjectRow(and(anyObject(BulkAdGroupNegativeSite.class), cmp(bulkAdGroupNegativeSite2, BULK_NEGATIVE_SITE_COMPARATOR, LogicalOperator.EQUAL)), eq(false));
         replayAll();
-        adGroupNegativeSites.writeToStream(rowWriter, false);
+        adGroupNegativeSites.write(rowWriter, false);
     }
 }

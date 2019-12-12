@@ -22,7 +22,7 @@ public abstract class BulkObject {
      *
      * @param reader
      */
-    public void readRelatedDataFromStream(BulkStreamReader reader) {
+    public void readRelatedData(BulkRecordReader reader) {
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class BulkObject {
      * @param rowWriter
      * @throws IOException
      */
-    public void writeToStream(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
+    public void write(BulkObjectWriter rowWriter, boolean excludeReadonlyData) throws IOException {
         throw new UnsupportedOperationException();
     }
 

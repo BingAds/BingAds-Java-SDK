@@ -13,11 +13,11 @@ import com.microsoft.bingads.v13.internal.bulk.entities.MultiRecordBulkEntity;
  */
 public class EntityIterator implements Iterator<BulkEntity> {
 
-    private BulkStreamReader reader;
+    private BulkRecordReader reader;
     private Iterator<BulkEntity> nextBatch = null;
     private boolean isForFullDownload;
 
-    public EntityIterator(BulkStreamReader reader, boolean isForFullDownload) {
+    public EntityIterator(BulkRecordReader reader, boolean isForFullDownload) {
         this.reader = reader;
         this.isForFullDownload = isForFullDownload;
     }
@@ -64,7 +64,7 @@ public class EntityIterator implements Iterator<BulkEntity> {
             MultiRecordBulkEntity multirecordEntity = nextObject.encloseInMultilineEntity();
 
             // Read related data for the multiline object (will read other child objects belonging to the same parent)
-            multirecordEntity.readRelatedDataFromStream(this.reader);
+            multirecordEntity.readRelatedData(this.reader);
 
             if (this.isForFullDownload) {
                 List<BulkEntity> entities = new ArrayList<BulkEntity>();

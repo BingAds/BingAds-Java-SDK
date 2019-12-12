@@ -78,7 +78,7 @@ public class ReadEntitiesFromFilesTest extends EasyMockSupport {
             replay(values);
 
             expectedEntity.readFromRowValues(anyObject(RowValues.class));
-            expectedEntity.readRelatedDataFromStream(anyObject(BulkStreamReader.class));
+            expectedEntity.readRelatedData(anyObject(BulkRecordReader.class));
             expect(expectedEntity.canEncloseInMultilineEntity()).andReturn(false);
             replay(expectedEntity);
 

@@ -1,6 +1,7 @@
 package com.microsoft.bingads.v13.internal.bulk;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import com.googlecode.jcsv.CSVStrategy;
@@ -39,6 +41,11 @@ class SimpleBulkObjectReader implements BulkObjectReader {
     public SimpleBulkObjectReader(InputStream inputStream, char delimiter) throws FileNotFoundException, UnsupportedEncodingException {
         this(new BufferedReader(new InputStreamReader(inputStream, "UTF-8")), new StaticBulkObjectFactory(), delimiter);
     }
+    
+    public SimpleBulkObjectReader(List<String> csvRows) throws UnsupportedEncodingException {
+        this(new BufferedReader(new InputStreamReader(new ByteArrayInputStream(String.join("\r\n", csvRows).getBytes("UTF-8")), "UTF-8")), 
+                new StaticBulkObjectFactory(), ',');
+    }
 
     /**
      * For unit testing
@@ -47,7 +54,7 @@ class SimpleBulkObjectReader implements BulkObjectReader {
      * @param factory
      * @throws FileNotFoundException
      */
-    public SimpleBulkObjectReader(Reader reader, BulkObjectFactory factory, char delimiter) throws FileNotFoundException {
+    public SimpleBulkObjectReader(Reader reader, BulkObjectFactory factory, char delimiter) {
         this(buildCSVReader(reader, delimiter), factory);
     }
 
@@ -58,7 +65,7 @@ class SimpleBulkObjectReader implements BulkObjectReader {
      * @param factory
      * @throws FileNotFoundException
      */
-    public SimpleBulkObjectReader(CSVReader<String[]> csvReader, BulkObjectFactory factory) throws FileNotFoundException {
+    public SimpleBulkObjectReader(CSVReader<String[]> csvReader, BulkObjectFactory factory) {
         this.csvReader = csvReader;
         this.objectIterator = csvReader.iterator();
         this.bulkObjectFactory = factory;

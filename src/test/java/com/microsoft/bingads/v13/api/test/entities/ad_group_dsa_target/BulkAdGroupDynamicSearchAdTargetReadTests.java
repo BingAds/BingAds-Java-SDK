@@ -8,6 +8,7 @@ import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.Bulk
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadConditionsTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadCriterionBidTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadCriterionNameTest;
+import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadFusTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadIdTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadParentIdTest;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.BulkAdGroupDynamicSearchAdTargetReadStatusTest;
@@ -25,7 +26,8 @@ import com.microsoft.bingads.v13.api.test.entities.ad_group_dsa_target.read.Bulk
         BulkAdGroupDynamicSearchAdTargetReadCampaignNameTest.class,
         BulkAdGroupDynamicSearchAdTargetReadCriterionBidTest.class,
         BulkAdGroupDynamicSearchAdTargetReadTrackingTemplateTest.class,
-        BulkAdGroupDynamicSearchAdTargetReadUrlCustomParametersTest.class
+        BulkAdGroupDynamicSearchAdTargetReadUrlCustomParametersTest.class,
+        BulkAdGroupDynamicSearchAdTargetReadFusTest.class
 })
 public class BulkAdGroupDynamicSearchAdTargetReadTests {
 }

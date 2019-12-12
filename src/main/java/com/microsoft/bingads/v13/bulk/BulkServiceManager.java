@@ -1,14 +1,18 @@
 package com.microsoft.bingads.v13.bulk;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
@@ -34,50 +38,55 @@ import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import com.microsoft.bingads.v13.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v13.internal.bulk.BulkFileReaderFactory;
-import com.microsoft.bingads.v13.internal.bulk.CSVBulkFileReaderFactory;
+import com.microsoft.bingads.v13.internal.bulk.BulkEntityReadable;
+import com.microsoft.bingads.v13.internal.bulk.BulkEntityReaderFactory;
+import com.microsoft.bingads.v13.internal.bulk.BulkObjectWriter;
 import com.microsoft.bingads.v13.internal.bulk.Config;
+import com.microsoft.bingads.v13.internal.bulk.CsvBulkEntityReaderFactory;
+import com.microsoft.bingads.v13.internal.bulk.SimpleBulkObjectWriter;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
 
 /**
- * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides methods for submitting upload or download operations.
+ * Provides high level methods for uploading and downloading entities using the Bulk API functionality. Also provides
+ * methods for submitting upload or download operations.
  *
  * <p>
- * Example: {@link BulkServiceManager#downloadFileAsync} will submit the download request to the bulk service,
- * poll until the status is completed (or returns an error), and downloads the file locally.
- * If instead you want to manage the low level details you would first call {@link BulkServiceManager#submitDownloadAsync},
- * wait for the results file to be prepared using either {@link BulkOperation#getStatusAsync}
- * or {@link BulkOperation#trackAsync}, and then download the file with the
- * {@link BulkOperation#downloadResultFileAsync} method.
+ * Example: {@link BulkServiceManager#downloadFileAsync} will submit the download request to the bulk service, poll
+ * until the status is completed (or returns an error), and downloads the file locally. If instead you want to manage
+ * the low level details you would first call {@link BulkServiceManager#submitDownloadAsync}, wait for the results file
+ * to be prepared using either {@link BulkOperation#getStatusAsync} or {@link BulkOperation#trackAsync}, and then
+ * download the file with the {@link BulkOperation#downloadResultFileAsync} method.
  * </p>
  *
  */
 public class BulkServiceManager {
 
+    private static final int SYNC_THRESHOLD = 1000;
     private static final String FORMAT_VERSION = StringTable.FORMAT_VERSION;
     private AuthorizationData authorizationData;
     private HttpFileService httpFileService;
     private ZipExtractor zipExtractor;
-    private BulkFileReaderFactory bulkFileReaderFactory;
+    private BulkEntityReaderFactory bulkEntityReaderFactory;
     private ApiEnvironment apiEnvironment;
 
     /**
-     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk
+     * service for status.
      */
     private int statusPollIntervalInMilliseconds;
-    
+
     /**
      * The timeout in milliseconds of HttpClient upload operation.
      */
     private int uploadHttpTimeoutInMilliseconds;
-    
+
     /**
      * The timeout in milliseconds of HttpClient download operation.
      */
     private int downloadHttpTimeoutInMilliseconds;
 
-	private final ServiceClient<IBulkService> serviceClient;
+    private final ServiceClient<IBulkService> serviceClient;
 
     private File workingDirectory;
 
@@ -89,18 +98,17 @@ public class BulkServiceManager {
     public BulkServiceManager(AuthorizationData authorizationData) {
         this(authorizationData, null);
     }
-    
+
     public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CSVBulkFileReaderFactory(), apiEnvironment);
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment);
     }
 
-    private BulkServiceManager(AuthorizationData authorizationData,
-            HttpFileService httpFileService, ZipExtractor zipExtractor,
-            BulkFileReaderFactory bulkFileReaderFactory, ApiEnvironment apiEnvironment) {
+    private BulkServiceManager(AuthorizationData authorizationData, HttpFileService httpFileService, ZipExtractor zipExtractor,
+            BulkEntityReaderFactory factory, ApiEnvironment apiEnvironment) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
-        this.bulkFileReaderFactory = bulkFileReaderFactory;
+        this.bulkEntityReaderFactory = factory;
         this.apiEnvironment = apiEnvironment;
 
         serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class);
@@ -108,9 +116,9 @@ public class BulkServiceManager {
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
         statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
-        
+
         uploadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
-        
+
         downloadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
     }
 
@@ -124,8 +132,10 @@ public class BulkServiceManager {
     /**
      * Downloads the specified Bulk entities.
      *
-     * @param parameters Determines the download entities and file path. If a file path is not specified in the download parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at run time.
-     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     * @param parameters Determines the download entities and file path. If a file path is not specified in the download
+     *                   parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at
+     *                   run time.
+     * @param callback   a callback to call with an {@link Iterable} of {@link BulkEntity} objects
      *
      * @return a Future indicating whether the operation has been completed
      */
@@ -136,13 +146,16 @@ public class BulkServiceManager {
     /**
      * Downloads the specified Bulk entities.
      *
-     * @param parameters Determines the download entities and file path. If a file path is not specified in the download parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at run time.
-     * @param progress an object which is updated with the progress of a bulk operation
-     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     * @param parameters Determines the download entities and file path. If a file path is not specified in the download
+     *                   parameters, the enumerable of {@link BulkEntity} is read from a temporary file path designated at
+     *                   run time.
+     * @param progress   an object which is updated with the progress of a bulk operation
+     * @param callback   a callback to call with an {@link Iterable} of {@link BulkEntity} objects
      *
      * @return a Future indicating whether the operation has been completed
      */
-    public Future<BulkEntityIterable> downloadEntitiesAsync(DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    public Future<BulkEntityIterable> downloadEntitiesAsync(DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<BulkEntityIterable> callback) {
         this.validateSubmitDownloadParameters(parameters.getSubmitDownloadParameters());
 
         this.validateUserData();
@@ -154,25 +167,156 @@ public class BulkServiceManager {
      * Uploads the specified Bulk entities.
      *
      * @param parameters determines the upload entities parameters
-     * @param progress an object which is updated with the progress of bulk operation
-     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     * @param progress   an object which is updated with the progress of bulk operation
+     * @param callback   a callback to call with an {@link Iterable} of {@link BulkEntity} objects
      *
      * @return a Future indicating whether the operation has been completed
      */
-    public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<BulkEntityIterable> callback) {
         validateEntityUploadParameters(parameters);
 
         validateUserData();
 
-        return uploadEntitiesAsyncImpl(createFileUploadParameters(parameters), progress, callback);
+        if (needToTryUploadEntityRecordsSyncFirst(parameters)) {
+            return uploadEntityRecordsImpl(parameters, progress, callback);
+        } else {
+            return uploadEntitiesAsyncImpl(createFileUploadParameters(parameters), progress, callback);
+        }
     }
 
-     /**
+    private Future<BulkEntityIterable> uploadEntityRecordsImpl(EntityUploadParameters parameters, Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<BulkEntityIterable> callback) {
+
+        final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
+        try {
+            UploadEntityRecordsRequest request = createUploadEntityRecordsRequest(parameters);
+
+            final IBulkService service = serviceClient.getService();
+
+            service.uploadEntityRecordsAsync(request, new AsyncHandler<UploadEntityRecordsResponse>() {
+                @Override
+                public void handleResponse(Response<UploadEntityRecordsResponse> res) {
+                    try {
+                        UploadEntityRecordsResponse result = res.get();
+                        if (needToFallBacktoAsync(result)) {
+                            BulkUploadOperation operation = new BulkUploadOperation(result.getRequestId(), authorizationData, service, ServiceUtils.GetTrackingId(res), apiEnvironment);
+                            operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
+                            operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                            operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
+                                @Override
+                                public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
+                                    downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
+                                            operation, new ParentCallback<File>(resultFuture) {
+                                                @Override
+                                                public void onSuccess(File localFile) {
+                                                    try {
+                                                        resultFuture.setResult(bulkEntityReaderFactory
+                                                                .createBulkFileReader(localFile, 
+                                                                        ResultFileType.UPLOAD, 
+                                                                        DownloadFileType.CSV, 
+                                                                        parameters.getAutoDeleteTempFile()).getEntities());
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+                                }
+                            });
+                            
+                        } else {
+                            resultFuture.setResult(parseBulkUpsertResult(result.getEntityRecords()));
+                        }
+                    } catch (Exception ex) {
+                        Throwable cause = ex.getCause();
+                        String errorCode = "";
+                        try {
+                            errorCode = ((ApiFaultDetail_Exception) cause).getFaultInfo().getOperationErrors().getOperationErrors().get(0).getErrorCode();
+                        } finally {
+                            if ("OperationNotSupported".equalsIgnoreCase(errorCode)) {
+                                uploadFileAsyncImpl(createFileUploadParameters(parameters), progress, new ParentCallback<File>(resultFuture) {
+                                    @Override
+                                    public void onSuccess(File resultFile) throws IOException {
+                                        resultFuture.setResult(bulkEntityReaderFactory
+                                                .createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, parameters.getAutoDeleteTempFile())
+                                                .getEntities());
+                                    }
+                                });
+                            } else {
+                                resultFuture.setException(ex);
+                            }
+                        }
+                    }
+                }
+
+                private boolean needToFallBacktoAsync(UploadEntityRecordsResponse result) {
+                    return result != null 
+                            && result.getRequestId() != null
+                            && result.getRequestId().length() > 0
+                            && "InProgress".equals(result.getRequestStatus());
+                }
+            });
+        } catch (IOException e) {
+            resultFuture.setException(e);
+        }
+
+        return resultFuture;
+    }
+
+    private BulkEntityIterable parseBulkUpsertResult(ArrayOfstring resultRows) throws IOException {
+        return bulkEntityReaderFactory.createBulkRowsReader(resultRows.getStrings()).getEntities();
+    }
+
+    private UploadEntityRecordsRequest createUploadEntityRecordsRequest(EntityUploadParameters parameters) throws IOException {
+        List<String> entitiesPayload = writeUploadEntitiesAsPayload(parameters);
+        UploadEntityRecordsRequest request = new UploadEntityRecordsRequest();
+        ArrayOfstring payload = new ArrayOfstring();
+        payload.getStrings().addAll(entitiesPayload);
+        request.setEntityRecords(payload);
+        request.setResponseMode(parameters.getResponseMode());
+        request.setAccountId(authorizationData.getAccountId());
+        return request;
+    }
+
+    private List<String> writeUploadEntitiesAsPayload(EntityUploadParameters parameters) throws IOException {
+        List<String> entitiesPayload = new ArrayList<String>();
+
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        BulkObjectWriter writer = new SimpleBulkObjectWriter(os, DownloadFileType.CSV);
+        writeContent(entitiesPayload, os, () -> {writer.writeHeaders();});
+        writeContent(entitiesPayload, os, () -> writer.writeFormatVersion());
+
+        for (BulkEntity entity : parameters.getEntities()) {
+            writeContent(entitiesPayload, os, () -> entity.write(writer, false));
+        }
+        return entitiesPayload;
+    }
+
+    private void writeContent(List<String> entitiesPayload, ByteArrayOutputStream os, WriteAction action) throws IOException, UnsupportedEncodingException {
+        os.reset();
+        action.execute();
+        
+        String[] arr = (new String(os.toByteArray(), "UTF-8")).split("(\\r\\n|\\n|\\r)");
+        
+        for (String s : arr) {
+            entitiesPayload.add(s);
+        }
+    }
+
+    private boolean needToTryUploadEntityRecordsSyncFirst(EntityUploadParameters parameters) {
+        int count = 0;
+        for (BulkEntity entity : parameters.getEntities()) {
+            count++;
+        }
+        return count <= SYNC_THRESHOLD;
+    }
+
+    /**
      * Uploads the specified Bulk entities.
-      *
+     *
      * @param parameters determines the upload entities parameters
-     * @param callback a callback to call with an {@link Iterable} of {@link BulkEntity} objects
-      *
+     * @param callback   a callback to call with an {@link Iterable} of {@link BulkEntity} objects
+     *
      * @return a Future indicating whether the operation has been completed
      */
     public Future<BulkEntityIterable> uploadEntitiesAsync(EntityUploadParameters parameters, AsyncCallback<BulkEntityIterable> callback) {
@@ -183,11 +327,11 @@ public class BulkServiceManager {
      * Uploads the specified Bulk file.
      *
      * @param parameters determines the file upload parameters
-     * @param callback a callback which is called with the file path when the file is downloaded and available
+     * @param callback   a callback which is called with the file path when the file is downloaded and available
      *
      * @return a Future indicating whether the operation has been completed
      */
-    public Future<File> uploadFileAsync(final FileUploadParameters parameters, AsyncCallback<File> callback) {        
+    public Future<File> uploadFileAsync(final FileUploadParameters parameters, AsyncCallback<File> callback) {
         return uploadFileAsync(parameters, null, callback);
     }
 
@@ -195,12 +339,13 @@ public class BulkServiceManager {
      * Uploads the specified Bulk file.
      *
      * @param parameters determines the file upload parameters
-     * @param progress an object which is updated with the progress of bulk operation
-     * @param callback a callback which is called with the file path when the file is downloaded and available
+     * @param progress   an object which is updated with the progress of bulk operation
+     * @param callback   a callback which is called with the file path when the file is downloaded and available
      *
      * @return a Future indicating whether the operation has been completed
      */
-    public Future<File> uploadFileAsync(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
+    public Future<File> uploadFileAsync(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<File> callback) {
         validateSubmitUploadParameters(parameters.getSubmitUploadParameters());
 
         validateUserData();
@@ -221,7 +366,7 @@ public class BulkServiceManager {
             throw new IllegalArgumentException("parameters.getEntities() must not be empty");
         }
     }
-    
+
     private void validateSubmitUploadParameters(SubmitUploadParameters parameters) {
         if (parameters == null) {
             throw new NullPointerException("parameters must not be null");
@@ -232,22 +377,25 @@ public class BulkServiceManager {
         }
     }
 
-    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(final FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    private Future<BulkEntityIterable> uploadEntitiesAsyncImpl(final FileUploadParameters parameters, Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<BulkEntityIterable> callback) {
         final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
         uploadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File resultFile) throws IOException {
-                resultFuture.setResult(bulkFileReaderFactory.createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, parameters.getAutoDeleteTempFile()).getEntities());
+                resultFuture.setResult(bulkEntityReaderFactory
+                        .createBulkFileReader(resultFile, ResultFileType.UPLOAD, DownloadFileType.CSV, parameters.getAutoDeleteTempFile()).getEntities());
             }
         });
 
         return resultFuture;
     }
 
-    private Future<File> uploadFileAsyncImpl(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
+    private Future<File> uploadFileAsyncImpl(final FileUploadParameters parameters, final Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<File> callback) {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
-        
+
         workingDirectory.mkdirs();
 
         submitUploadAsync(parameters, new ParentCallback<BulkUploadOperation>(resultFuture) {
@@ -256,12 +404,13 @@ public class BulkServiceManager {
                 operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                     @Override
                     public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
-                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(resultFuture) {
-                            @Override
-                            public void onSuccess(File localFile) {
-                                resultFuture.setResult(localFile);
-                            }
-                        });
+                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
+                                operation, new ParentCallback<File>(resultFuture) {
+                                    @Override
+                                    public void onSuccess(File localFile) {
+                                        resultFuture.setResult(localFile);
+                                    }
+                                });
                     }
                 });
             }
@@ -276,14 +425,16 @@ public class BulkServiceManager {
         }
     }
 
-    private Future<BulkEntityIterable> downloadEntitiesAsyncImpl(final DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress, AsyncCallback<BulkEntityIterable> callback) {
+    private Future<BulkEntityIterable> downloadEntitiesAsyncImpl(final DownloadParameters parameters, Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<BulkEntityIterable> callback) {
         final ResultFuture<BulkEntityIterable> resultFuture = new ResultFuture<BulkEntityIterable>(callback);
 
         this.downloadFileAsyncImpl(parameters, progress, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File result) throws IOException {
                 ResultFileType resultFileType = parameters.getLastSyncTimeInUTC() != null ? ResultFileType.PARTIAL_DOWNLOAD : ResultFileType.FULL_DOWNLOAD;
-                BulkFileReader reader = bulkFileReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType(), parameters.getAutoDeleteTempFile());
+                BulkEntityReadable reader = bulkEntityReaderFactory.createBulkFileReader(result, resultFileType, parameters.getFileType(),
+                        parameters.getAutoDeleteTempFile());
                 resultFuture.setResult(reader.getEntities());
             }
         });
@@ -295,7 +446,7 @@ public class BulkServiceManager {
      * Downloads the specified Bulk entities to a local file.
      *
      * @param parameters Determines the download entities and file path.
-     * @param callback a callback which is called with the file path when the file is downloaded and available
+     * @param callback   a callback which is called with the file path when the file is downloaded and available
      *
      * @return a {@link Future} that will indicate completion of the operation
      */
@@ -307,8 +458,8 @@ public class BulkServiceManager {
      * Downloads the specified Bulk entities to a local file.
      *
      * @param parameters Determines the download entities and file path.
-     * @param progress An object which is updated with the progress of a bulk operation
-     * @param callback a callback which is called with the file path when the file is downloaded and available
+     * @param progress   An object which is updated with the progress of a bulk operation
+     * @param callback   a callback which is called with the file path when the file is downloaded and available
      *
      * @return a {@link Future} that will indicate completion of the operation
      */
@@ -320,11 +471,12 @@ public class BulkServiceManager {
         return downloadFileAsyncImpl(parameters, progress, callback);
     }
 
-    private Future<File> downloadFileAsyncImpl(final DownloadParameters parameters, final Progress<BulkOperationProgressInfo> progress, AsyncCallback<File> callback) {
+    private Future<File> downloadFileAsyncImpl(final DownloadParameters parameters, final Progress<BulkOperationProgressInfo> progress,
+            AsyncCallback<File> callback) {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
-        
+
         workingDirectory.mkdirs();
-        
+
         // TODO: handle cancellations
         this.submitDownloadAsync(parameters.getSubmitDownloadParameters(), new ParentCallback<BulkDownloadOperation>(resultFuture) {
             @Override
@@ -332,12 +484,13 @@ public class BulkServiceManager {
                 operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<DownloadStatus>>(resultFuture) {
                     @Override
                     public void onSuccess(BulkOperationStatus<DownloadStatus> status) throws IOException, URISyntaxException {
-                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(), operation, new ParentCallback<File>(resultFuture) {
-                            @Override
-                            public void onSuccess(File localFile) {
-                                resultFuture.setResult(localFile);
-                            }
-                        });
+                        downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
+                                operation, new ParentCallback<File>(resultFuture) {
+                                    @Override
+                                    public void onSuccess(File localFile) {
+                                        resultFuture.setResult(localFile);
+                                    }
+                                });
                     }
                 });
             }
@@ -346,7 +499,8 @@ public class BulkServiceManager {
         return resultFuture;
     }
 
-    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation, AsyncCallback<File> callback) throws IOException, URISyntaxException {
+    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation,
+            AsyncCallback<File> callback) throws IOException, URISyntaxException {
         operation.setHttpFileService(this.httpFileService);
         operation.setZipExtractor(this.zipExtractor);
 
@@ -355,9 +509,10 @@ public class BulkServiceManager {
         File effectiveResultFileDirectory = resultFileDirectory;
 
         if (effectiveResultFileDirectory == null) {
+            workingDirectory.mkdirs();
             effectiveResultFileDirectory = workingDirectory;
         }
-        
+
         operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
             @Override
             public void onSuccess(File file) {
@@ -376,14 +531,13 @@ public class BulkServiceManager {
      * Submits a download request to the Bing Ads bulk service with the specified parameters.
      *
      * <p>
-     * The {@link DownloadParameters#getResultFileDirectory } and {@link DownloadParameters#getResultFileName
-     * } properties are ignored by this method.
-     * When the file is ready for download, specify the result file path and name as parameters of the
-     * {@link BulkOperation#downloadResultFileAsync} method.
+     * The {@link DownloadParameters#getResultFileDirectory } and {@link DownloadParameters#getResultFileName } properties
+     * are ignored by this method. When the file is ready for download, specify the result file path and name as parameters
+     * of the {@link BulkOperation#downloadResultFileAsync} method.
      * </p>
      *
-     * @param parameters Describes the type of entities and data scope that you want to download.     
-     * @param callback a callback will be called when the {@link BulkDownloadOperation} has been created
+     * @param parameters Describes the type of entities and data scope that you want to download.
+     * @param callback   a callback will be called when the {@link BulkDownloadOperation} has been created
      *
      * @return a {@link Future} that will indicate completion of the operation
      */
@@ -411,10 +565,11 @@ public class BulkServiceManager {
 
                         String trackingId = ServiceUtils.GetTrackingId(res);
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId, apiEnvironment);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId,
+                                apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                        
+
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
@@ -438,10 +593,11 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, ServiceUtils.GetTrackingId(res), apiEnvironment);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData,
+                                ServiceUtils.GetTrackingId(res), apiEnvironment);
 
                         operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                        
+
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
@@ -461,14 +617,13 @@ public class BulkServiceManager {
      * Submits an upload request to the Bing Ads bulk service with the specified parameters.
      *
      * <p>
-     * The {@link FileUploadParameters#getResultFileDirectory} and {@link FileUploadParameters#getResultFileName
-     * } properties are ignored by this method.
-     * When the file is ready for download, specify the result file path and name as parameters of the
-     * {@link BulkOperation#downloadResultFileAsync} method.
+     * The {@link FileUploadParameters#getResultFileDirectory} and {@link FileUploadParameters#getResultFileName }
+     * properties are ignored by this method. When the file is ready for download, specify the result file path and name as
+     * parameters of the {@link BulkOperation#downloadResultFileAsync} method.
      * </p>
      *
      * @param parameters Describes the upload response mode and file name.
-     * @param callback a callback will be called when the {@link BulkDownloadOperation} has been created
+     * @param callback   a callback will be called when the {@link BulkDownloadOperation} has been created
      *
      * @return a {@link Future} that will indicate completion of the operation
      */
@@ -485,7 +640,7 @@ public class BulkServiceManager {
             @Override
             public void handleResponse(Response<GetBulkUploadUrlResponse> res) {
                 try {
-                    GetBulkUploadUrlResponse response = res.get();                   
+                    GetBulkUploadUrlResponse response = res.get();
 
                     String trackingId = ServiceUtils.GetTrackingId(res);
 
@@ -493,12 +648,12 @@ public class BulkServiceManager {
 
                     File effectiveUploadPath = parameters.getUploadFilePath();
 
-                    if (parameters.getRenameUploadFileToMatchRequestId())
-                    {
+                    if (parameters.getRenameUploadFileToMatchRequestId()) {
                         effectiveUploadPath = renameUploadFileToMatchRequestId(effectiveUploadPath, response.getRequestId());
                     }
 
-                    boolean shouldCompress = parameters.getCompressUploadFile() && !StringExtensions.getFileExtension(effectiveUploadPath.toString()).equals(".zip");
+                    boolean shouldCompress = parameters.getCompressUploadFile()
+                            && !StringExtensions.getFileExtension(effectiveUploadPath.toString()).equals(".zip");
 
                     File compressedFilePath = null;
 
@@ -523,7 +678,8 @@ public class BulkServiceManager {
                         }
                     };
 
-                    MessageHandler.getInstance().handleDirectMessage("Bulk Upload... requestId: " + response.getRequestId() + "; UploadFilePath:" + parameters.getUploadFilePath() + "; uploadUrl: " + uploadUrl);
+                    MessageHandler.getInstance().handleDirectMessage("Bulk Upload... requestId: " + response.getRequestId() + "; UploadFilePath:"
+                            + parameters.getUploadFilePath() + "; uploadUrl: " + uploadUrl);
 
                     httpFileService.uploadFile(new URI(uploadUrl), effectiveUploadPath, addHeaders, uploadHttpTimeoutInMilliseconds);
 
@@ -532,13 +688,13 @@ public class BulkServiceManager {
                     }
 
                     if (parameters.getAutoDeleteTempFile()) {
-                    	parameters.getUploadFilePath().delete();
+                        parameters.getUploadFilePath().delete();
                     }
 
                     BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId, apiEnvironment);
 
                     operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                    
+
                     operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                     resultFuture.setResult(operation);
@@ -556,7 +712,7 @@ public class BulkServiceManager {
             private File renameUploadFileToMatchRequestId(File uploadFilePath, String requestId) {
                 uploadFilePath.renameTo(uploadFilePath);
                 Path path = uploadFilePath.toPath();
-                File newFile = path.resolveSibling("upload_"+requestId+".csv").toFile();
+                File newFile = path.resolveSibling("upload_" + requestId + ".csv").toFile();
                 if (uploadFilePath.renameTo(newFile)) {
                     return newFile;
                 }
@@ -578,14 +734,15 @@ public class BulkServiceManager {
     }
 
     /**
-     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another instance.
+     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another
+     * instance.
      */
     public void cleanupTempFiles() {
-    	for(File file : workingDirectory.listFiles()) {
-    		file.delete();
-    	}
+        for (File file : workingDirectory.listFiles()) {
+            file.delete();
+        }
     }
-    
+
     private DownloadCampaignsByCampaignIdsRequest generateCampaignsByCampaignIdsRequest(SubmitDownloadParameters parameters) {
         DownloadCampaignsByCampaignIdsRequest request = new DownloadCampaignsByCampaignIdsRequest();
 
@@ -630,7 +787,7 @@ public class BulkServiceManager {
 
     private FileUploadParameters createFileUploadParameters(EntityUploadParameters parameters) {
         workingDirectory.mkdirs();
-        
+
         File tempFilePath = new File(getWorkingDirectory(), UUID.randomUUID() + ".csv");
 
         BulkFileWriter writer = null;
@@ -654,7 +811,7 @@ public class BulkServiceManager {
         }
 
         FileUploadParameters fileUploadParameters = new FileUploadParameters();
-        
+
         fileUploadParameters.setUploadFilePath(tempFilePath);
         fileUploadParameters.setResponseMode(parameters.getResponseMode());
         fileUploadParameters.setResultFileDirectory(parameters.getResultFileDirectory());
@@ -696,15 +853,15 @@ public class BulkServiceManager {
     /**
      * Reserved for internal use.
      */
-    public BulkFileReaderFactory getBulkFileReaderFactory() {
-        return bulkFileReaderFactory;
+    public BulkEntityReaderFactory getBulkEntityReaderFactory() {
+        return bulkEntityReaderFactory;
     }
 
     /**
      * Reserved for internal use.
      */
-    public void setBulkFileReaderFactory(BulkFileReaderFactory bulkFileReaderFactory) {
-        this.bulkFileReaderFactory = bulkFileReaderFactory;
+    public void setBulkEntityReaderFactory(BulkEntityReaderFactory bulkEntityReaderFactory) {
+        this.bulkEntityReaderFactory = bulkEntityReaderFactory;
     }
 
     /**
@@ -734,32 +891,36 @@ public class BulkServiceManager {
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
-    
+
     /**
      * Gets the timeout of HttpClient upload operation. The default value is 100000(100s).
      */
     public int getUploadHttpTimeoutInMilliseconds() {
-		return uploadHttpTimeoutInMilliseconds;
-	}
-    
+        return uploadHttpTimeoutInMilliseconds;
+    }
+
     /**
      * Sets the timeout of HttpClient upload operation. The default value is 100000(100s).
      */
-	public void setUploadHttpTimeoutInMilliseconds(int uploadHttpTimeoutInMilliseconds) {
-		this.uploadHttpTimeoutInMilliseconds = uploadHttpTimeoutInMilliseconds;
-	}
+    public void setUploadHttpTimeoutInMilliseconds(int uploadHttpTimeoutInMilliseconds) {
+        this.uploadHttpTimeoutInMilliseconds = uploadHttpTimeoutInMilliseconds;
+    }
 
-	/**
+    /**
      * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
      */
-	public int getDownloadHttpTimeoutInMilliseconds() {
-		return downloadHttpTimeoutInMilliseconds;
-	}
+    public int getDownloadHttpTimeoutInMilliseconds() {
+        return downloadHttpTimeoutInMilliseconds;
+    }
 
-	/**
+    /**
      * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
      */
-	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
-	}
+    public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
+        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+    }
+}
+
+interface WriteAction {
+    void execute() throws IOException;
 }

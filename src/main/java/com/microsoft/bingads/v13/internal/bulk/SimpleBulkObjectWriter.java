@@ -49,16 +49,19 @@ public class SimpleBulkObjectWriter implements BulkObjectWriter {
         this.writeFormatVersion();
     }
 
-    private void writeFormatVersion() throws IOException {
+    @Override
+    public  void writeFormatVersion() throws IOException {
         RowValues versionRow = new RowValues();
         
         versionRow.put(StringTable.Type, StringTable.SemanticVersion);
         versionRow.put(StringTable.Name, StringTable.FORMAT_VERSION); //TODO: move to BulkServiceManager
                 
         csvWriter.write(versionRow.getColumns());
+        this.csvWriter.flush();
     }
 
-    private void writeHeaders() throws IOException {
+    @Override
+    public void writeHeaders() throws IOException {
         writer.write(0xFEFF);
 
         this.csvWriter.write(CsvHeaders.Headers);

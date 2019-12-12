@@ -34,7 +34,7 @@ public class BulkStreamReaderTest extends EasyMockSupport {
         expect(reader.readNextBulkObject()).andReturn(null);
         replay(reader);
 
-        BulkStreamReader streamReader = new SimpleBulkStreamReader(reader);
+        BulkRecordReader streamReader = new SimpleBulkRecordReader(reader);
 
         BulkObject bulkObject = streamReader.read();
         

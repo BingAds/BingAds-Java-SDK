@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import com.microsoft.bingads.v13.bulk.entities.BulkEntity;
-import com.microsoft.bingads.v13.internal.bulk.BulkStreamReader;
+import com.microsoft.bingads.v13.internal.bulk.BulkRecordReader;
 import com.microsoft.bingads.v13.internal.bulk.EntityIterator;
 
 /**
@@ -13,8 +13,7 @@ import com.microsoft.bingads.v13.internal.bulk.EntityIterator;
  */
 public class BulkEntityIterable implements Iterable<BulkEntity>, Closeable {
 
-    private final BulkStreamReader reader;
-    private final boolean isForFullDownload;
+    private final BulkRecordReader reader;
     
     private final EntityIterator entityIterator;
 
@@ -24,9 +23,8 @@ public class BulkEntityIterable implements Iterable<BulkEntity>, Closeable {
      * @param reader the bulk stream reader instance
      * @param isForFullDownload is the reader for full download
      */
-    public BulkEntityIterable(BulkStreamReader reader, boolean isForFullDownload) {
+    public BulkEntityIterable(BulkRecordReader reader, boolean isForFullDownload) {
         this.reader = reader;
-        this.isForFullDownload = isForFullDownload;
         entityIterator = new EntityIterator(reader, isForFullDownload);
     }
 
