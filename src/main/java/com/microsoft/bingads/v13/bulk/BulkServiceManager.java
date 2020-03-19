@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.Response;
@@ -228,12 +227,9 @@ public class BulkServiceManager {
                             resultFuture.setResult(parseBulkUpsertResult(result.getEntityRecords()));
                         }
                     } catch (Exception ex) {
-                        Throwable cause = ex.getCause();
-                        String errorCode = "";
+                        boolean failed = true;
                         try {
-                            errorCode = ((ApiFaultDetail_Exception) cause).getFaultInfo().getOperationErrors().getOperationErrors().get(0).getErrorCode();
-                        } finally {
-                            if ("OperationNotSupported".equalsIgnoreCase(errorCode)) {
+                            if ("OperationNotSupported".equalsIgnoreCase(extractCauseErrorCode(ex.getCause()))) {
                                 uploadFileAsyncImpl(createFileUploadParameters(parameters), progress, new ParentCallback<File>(resultFuture) {
                                     @Override
                                     public void onSuccess(File resultFile) throws IOException {
@@ -242,7 +238,10 @@ public class BulkServiceManager {
                                                 .getEntities());
                                     }
                                 });
-                            } else {
+                                failed = false;
+                            }
+                        } finally {
+                            if (failed) {
                                 resultFuture.setException(ex);
                             }
                         }
@@ -261,6 +260,19 @@ public class BulkServiceManager {
         }
 
         return resultFuture;
+    }
+
+
+    private String extractCauseErrorCode(Throwable cause) {
+        if (!(cause instanceof ApiFaultDetail_Exception)) {
+            return null;
+        }
+
+        return ((ApiFaultDetail_Exception) cause)
+                .getFaultInfo()
+                .getOperationErrors()
+                .getOperationErrors().get(0)
+                .getErrorCode();
     }
 
     private BulkEntityIterable parseBulkUpsertResult(ArrayOfstring resultRows) throws IOException {
