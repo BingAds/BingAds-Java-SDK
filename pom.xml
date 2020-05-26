@@ -23,7 +23,7 @@
             <id>BingAds</id>
             <name>Bing Ads SDK Team</name>
             <organization>Microsoft</organization>
-            <organizationUrl>http://bingads.microsoft.com</organizationUrl>
+            <organizationUrl>https://ads.microsoft.com</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
