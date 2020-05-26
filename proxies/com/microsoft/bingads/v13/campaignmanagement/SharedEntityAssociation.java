@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="EntityId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="EntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="SharedEntityCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="SharedEntityId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="SharedEntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SharedEntityAssociation", propOrder = {
     "entityId",
     "entityType",
+    "sharedEntityCustomerId",
     "sharedEntityId",
     "sharedEntityType"
 })
@@ -42,6 +44,8 @@ public class SharedEntityAssociation {
     protected long entityId;
     @XmlElement(name = "EntityType", nillable = true)
     protected String entityType;
+    @XmlElement(name = "SharedEntityCustomerId", nillable = true)
+    protected Long sharedEntityCustomerId;
     @XmlElement(name = "SharedEntityId")
     protected long sharedEntityId;
     @XmlElement(name = "SharedEntityType", nillable = true)
@@ -85,6 +89,30 @@ public class SharedEntityAssociation {
      */
     public void setEntityType(String value) {
         this.entityType = value;
+    }
+
+    /**
+     * Gets the value of the sharedEntityCustomerId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSharedEntityCustomerId() {
+        return sharedEntityCustomerId;
+    }
+
+    /**
+     * Sets the value of the sharedEntityCustomerId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSharedEntityCustomerId(Long value) {
+        this.sharedEntityCustomerId = value;
     }
 
     /**

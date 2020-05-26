@@ -6,7 +6,9 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum AdExtensionAdditionalField {
 
     IMAGES("Images"),
-    DISPLAY_TEXT("DisplayText");
+    DISPLAY_TEXT("DisplayText"),
+    LAYOUTS("Layouts"),
+    ACTION_TYPES_PHASE3("ActionTypesPhase3");
         
     private final String value;
 

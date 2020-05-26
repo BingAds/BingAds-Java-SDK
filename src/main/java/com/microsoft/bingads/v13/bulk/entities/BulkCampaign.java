@@ -1,7 +1,6 @@
 package com.microsoft.bingads.v13.bulk.entities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -26,10 +25,12 @@ import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
@@ -633,6 +634,18 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                 if (targetCpa != null) {
                                 	values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());
                                 }
+                            } else if (c.getCampaign().getBiddingScheme() instanceof MaxConversionValueBiddingScheme) {
+                                Double targetRoas = ((MaxConversionValueBiddingScheme)c.getCampaign().getBiddingScheme()).getTargetRoas();
+                                if (targetRoas != null) {
+                                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoas.toString()));
+                                }
+                            } else if (c.getCampaign().getBiddingScheme() instanceof TargetRoasBiddingScheme) {
+                                TargetRoasBiddingScheme targetRoasBiddingScheme = (TargetRoasBiddingScheme)c.getCampaign().getBiddingScheme();
+                                if (targetRoasBiddingScheme != null)
+                                {
+                                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetRoasBiddingScheme.getMaxCpc(), c.getCampaign().getId()));
+                                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoasBiddingScheme.getTargetRoas()));
+                                }
                             }
                         
                         } catch (Exception e) {
@@ -654,21 +667,28 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
                             String maxCpcRowValue = values.get(StringTable.BidStrategyMaxCpc);
                             String targetCpaRowValue = values.get(StringTable.BidStrategyTargetCpa);
+                            String targetRoas = values.get(StringTable.BidStrategyTargetRoas);
+
 
                             Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
                             Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
+                            Double targetRosValue = StringExtensions.nullOrDouble(targetRoas);
 
                             if (biddingScheme instanceof MaxClicksBiddingScheme) {
                                 ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                             }
                             else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
                                 ((MaxConversionsBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                            }
-                            else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+                            } else if (biddingScheme instanceof TargetCpaBiddingScheme) {
                                 ((TargetCpaBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                                 ((TargetCpaBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
+                            } else if (biddingScheme instanceof MaxConversionValueBiddingScheme) {
+                                ((MaxConversionValueBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
+                            } else if (biddingScheme instanceof TargetRoasBiddingScheme) {
+                                ((TargetRoasBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                                ((TargetRoasBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
                             }
-
+                            
                             c.getCampaign().setBiddingScheme(biddingScheme);
                         } catch (Exception e) {
                                 e.printStackTrace();
@@ -891,6 +911,25 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
         
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.AdScheduleUseSearcherTimeZone,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign t) {
+                        if (t.getCampaign().getAdScheduleUseSearcherTimeZone()== null) {
+                            return null;
+                        }
+
+                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getCampaign().getAdScheduleUseSearcherTimeZone(), t.getCampaign().getId());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setAdScheduleUseSearcherTimeZone(StringExtensions.parseUseSearcherTimeZone(v));       
+                    }
+                }
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
     }

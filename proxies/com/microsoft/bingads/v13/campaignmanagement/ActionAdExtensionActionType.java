@@ -84,6 +84,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FindStore"/>
  *     &lt;enumeration value="SwitchNow"/>
  *     &lt;enumeration value="VisitStore"/>
+ *     &lt;enumeration value="RenewNow"/>
+ *     &lt;enumeration value="Reorder"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -232,7 +234,11 @@ public enum ActionAdExtensionActionType {
     @XmlEnumValue("SwitchNow")
     SWITCH_NOW("SwitchNow"),
     @XmlEnumValue("VisitStore")
-    VISIT_STORE("VisitStore");
+    VISIT_STORE("VisitStore"),
+    @XmlEnumValue("RenewNow")
+    RENEW_NOW("RenewNow"),
+    @XmlEnumValue("Reorder")
+    REORDER("Reorder");
     private final String value;
 
     ActionAdExtensionActionType(String v) {

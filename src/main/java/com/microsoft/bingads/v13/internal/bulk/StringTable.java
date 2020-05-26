@@ -293,6 +293,9 @@ public class StringTable {
     public static final String CampaignType = "Campaign Type";
     public static final String CampaignPriority = "Priority";
     public static final String LocalInventoryAdsEnabled = "LocalInventoryAdsEnabled";
+    
+    // SPA
+    public static final String CampaignNegativeStoreCriterion = "Campaign Negative Store Criterion";
 
     // CoOp
     public static final String BidOption = "Bid Option";
@@ -408,11 +411,28 @@ public class StringTable {
     public static final String ActionType = "Action Type";
     public static final String ActionText= "Action Text";
     
+    //Promotion AdExtension
+    public static final String PromotionAdExtension = "Promotion Ad Extension";
+    public static final String AccountPromotionAdExtension = "Account Promotion Ad Extension";
+    public static final String CampaignPromotionAdExtension = "Campaign Promotion Ad Extension";
+    public static final String AdGroupPromotionAdExtension = "Ad Group Promotion Ad Extension";
+    public static final String PromotionTarget = "Promotion Target";
+    public static final String DiscountModifier = "Discount Modifier";
+    public static final String PercentOff = "Percent Off";
+    public static final String MoneyAmountOff = "Money Amount Off";
+    public static final String PromotionCode = "Promotion Code";
+    public static final String OrdersOverAmount = "Orders Over Amount";
+    public static final String Occasion = "Occasion";
+    public static final String PromotionStart = "Promotion Start";
+    public static final String PromotionEnd = "Promotion End";
+    public static final String CurrencyCode = "Currency Code";
+    
     // AutoBidding
     public static final String BidStrategyType = "Bid Strategy Type";
     public static final String BidStrategyMaxCpc = "Bid Strategy MaxCpc";
     public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";
     public static final String InheritedBidStrategyType = "Inherited Bid Strategy Type";
+    public static final String BidStrategyTargetRoas = "Bid Strategy TargetRoas";
 
     // Audience
     public static final String RemarketingList = "Remarketing List";
@@ -480,7 +500,10 @@ public class StringTable {
     
     // Ad Extension Schedule
     public static final String AdSchedule = "Ad Schedule";
+    
+    // Use Searcher Time Zone
     public static final String UseSearcherTimeZone = "Use Searcher Time Zone";
+    public static final String AdScheduleUseSearcherTimeZone = "Ad Schedule Use Searcher Time Zone";
 
     // Responsive Ad
     public static final String ResponsiveAd = "Responsive Ad";

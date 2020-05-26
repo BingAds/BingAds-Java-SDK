@@ -153,7 +153,7 @@ public class BulkExperiment extends SingleRecordBulkEntity {
                 new Function<BulkExperiment, String>() {
                     @Override
                     public String apply(BulkExperiment c) {
-                        return StringExtensions.toDateBulkString(c.getExperiment().getEndDate());
+                        return StringExtensions.toScheduleDateBulkString(c.getExperiment().getEndDate(), c.getExperiment().getId());
                     }
                 }, new BiConsumer<String, BulkExperiment>() {
                     @Override

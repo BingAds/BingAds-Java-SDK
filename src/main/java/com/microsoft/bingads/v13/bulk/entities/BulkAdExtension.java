@@ -236,7 +236,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         	return null;
                         }
 
-                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getAdExtension().getScheduling().getUseSearcherTimeZone());
+                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getAdExtension().getScheduling().getUseSearcherTimeZone(), t.getAdExtension().getId());
                     }
                 },
                 new BiConsumer<String, BulkAdExtension>() {

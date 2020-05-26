@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    NegativeSite.class,
     NegativeKeyword.class
 })
 public class SharedListItem {

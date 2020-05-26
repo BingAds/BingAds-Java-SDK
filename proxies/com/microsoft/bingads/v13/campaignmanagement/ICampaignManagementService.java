@@ -2408,6 +2408,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetSharedEntitiesResponse>
+     */
+    @WebMethod(operationName = "GetSharedEntities", action = "GetSharedEntities")
+    public Response<GetSharedEntitiesResponse> getSharedEntitiesAsync(
+        @WebParam(name = "GetSharedEntitiesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSharedEntitiesRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetSharedEntities", action = "GetSharedEntities")
+    public Future<?> getSharedEntitiesAsync(
+        @WebParam(name = "GetSharedEntitiesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSharedEntitiesRequest parameters,
+        @WebParam(name = "GetSharedEntitiesResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetSharedEntitiesResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetSharedEntitiesResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetSharedEntities", action = "GetSharedEntities")
+    @WebResult(name = "GetSharedEntitiesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetSharedEntitiesResponse getSharedEntities(
+        @WebParam(name = "GetSharedEntitiesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSharedEntitiesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddSharedEntityResponse>
      */
     @WebMethod(operationName = "AddSharedEntity", action = "AddSharedEntity")
@@ -4287,6 +4328,211 @@ public interface ICampaignManagementService {
     public SearchCompaniesResponse searchCompanies(
         @WebParam(name = "SearchCompaniesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         SearchCompaniesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetFileImportUploadUrlResponse>
+     */
+    @WebMethod(operationName = "GetFileImportUploadUrl", action = "GetFileImportUploadUrl")
+    public Response<GetFileImportUploadUrlResponse> getFileImportUploadUrlAsync(
+        @WebParam(name = "GetFileImportUploadUrlRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetFileImportUploadUrlRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetFileImportUploadUrl", action = "GetFileImportUploadUrl")
+    public Future<?> getFileImportUploadUrlAsync(
+        @WebParam(name = "GetFileImportUploadUrlRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetFileImportUploadUrlRequest parameters,
+        @WebParam(name = "GetFileImportUploadUrlResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetFileImportUploadUrlResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetFileImportUploadUrlResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetFileImportUploadUrl", action = "GetFileImportUploadUrl")
+    @WebResult(name = "GetFileImportUploadUrlResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetFileImportUploadUrlResponse getFileImportUploadUrl(
+        @WebParam(name = "GetFileImportUploadUrlRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetFileImportUploadUrlRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddImportJobsResponse>
+     */
+    @WebMethod(operationName = "AddImportJobs", action = "AddImportJobs")
+    public Response<AddImportJobsResponse> addImportJobsAsync(
+        @WebParam(name = "AddImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddImportJobsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddImportJobs", action = "AddImportJobs")
+    public Future<?> addImportJobsAsync(
+        @WebParam(name = "AddImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddImportJobsRequest parameters,
+        @WebParam(name = "AddImportJobsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddImportJobsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddImportJobsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddImportJobs", action = "AddImportJobs")
+    @WebResult(name = "AddImportJobsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddImportJobsResponse addImportJobs(
+        @WebParam(name = "AddImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddImportJobsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetImportResultsResponse>
+     */
+    @WebMethod(operationName = "GetImportResults", action = "GetImportResults")
+    public Response<GetImportResultsResponse> getImportResultsAsync(
+        @WebParam(name = "GetImportResultsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportResultsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetImportResults", action = "GetImportResults")
+    public Future<?> getImportResultsAsync(
+        @WebParam(name = "GetImportResultsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportResultsRequest parameters,
+        @WebParam(name = "GetImportResultsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetImportResultsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetImportResultsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetImportResults", action = "GetImportResults")
+    @WebResult(name = "GetImportResultsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetImportResultsResponse getImportResults(
+        @WebParam(name = "GetImportResultsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportResultsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetImportJobsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetImportJobsByIds", action = "GetImportJobsByIds")
+    public Response<GetImportJobsByIdsResponse> getImportJobsByIdsAsync(
+        @WebParam(name = "GetImportJobsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportJobsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetImportJobsByIds", action = "GetImportJobsByIds")
+    public Future<?> getImportJobsByIdsAsync(
+        @WebParam(name = "GetImportJobsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportJobsByIdsRequest parameters,
+        @WebParam(name = "GetImportJobsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetImportJobsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetImportJobsByIdsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetImportJobsByIds", action = "GetImportJobsByIds")
+    @WebResult(name = "GetImportJobsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetImportJobsByIdsResponse getImportJobsByIds(
+        @WebParam(name = "GetImportJobsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetImportJobsByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteImportJobsResponse>
+     */
+    @WebMethod(operationName = "DeleteImportJobs", action = "DeleteImportJobs")
+    public Response<DeleteImportJobsResponse> deleteImportJobsAsync(
+        @WebParam(name = "DeleteImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteImportJobsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteImportJobs", action = "DeleteImportJobs")
+    public Future<?> deleteImportJobsAsync(
+        @WebParam(name = "DeleteImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteImportJobsRequest parameters,
+        @WebParam(name = "DeleteImportJobsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteImportJobsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteImportJobsResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteImportJobs", action = "DeleteImportJobs")
+    @WebResult(name = "DeleteImportJobsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteImportJobsResponse deleteImportJobs(
+        @WebParam(name = "DeleteImportJobsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteImportJobsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

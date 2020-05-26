@@ -58,6 +58,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllReturnOnAdSpend"/>
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="ViewThroughConversions"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="GoalType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -154,7 +156,11 @@ public enum DSACategoryPerformanceReportColumn {
     @XmlEnumValue("AllRevenuePerConversion")
     ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion"),
     @XmlEnumValue("ViewThroughConversions")
-    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions"),
+    @XmlEnumValue("Goal")
+    GOAL("Goal"),
+    @XmlEnumValue("GoalType")
+    GOAL_TYPE("GoalType");
     private final String value;
 
     DSACategoryPerformanceReportColumn(String v) {

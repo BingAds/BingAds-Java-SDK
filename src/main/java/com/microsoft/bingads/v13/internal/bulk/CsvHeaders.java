@@ -90,7 +90,10 @@ public class CsvHeaders {
             // AdExtensions common
             StringTable.Version,
             StringTable.AdSchedule,
+
+            // Use Searcher Time Zone
             StringTable.UseSearcherTimeZone,
+            StringTable.AdScheduleUseSearcherTimeZone,
 
             // Action ad extension
             StringTable.ActionType,
@@ -276,6 +279,7 @@ public class CsvHeaders {
             StringTable.BidStrategyType,
             StringTable.BidStrategyMaxCpc,
             StringTable.BidStrategyTargetCpa,
+            StringTable.BidStrategyTargetRoas,
             StringTable.InheritedBidStrategyType,
             
             // Native Preference
@@ -299,6 +303,18 @@ public class CsvHeaders {
             // Structured Snippet Ad Extension
             StringTable.StructuredSnippetHeader,
             StringTable.StructuredSnippetValues,
+            
+            // Promotion Ad Extension
+            StringTable.PromotionTarget,
+            StringTable.DiscountModifier,
+            StringTable.PercentOff,
+            StringTable.MoneyAmountOff,
+            StringTable.PromotionCode,
+            StringTable.OrdersOverAmount,
+            StringTable.Occasion,
+            StringTable.PromotionStart,
+            StringTable.PromotionEnd,
+            StringTable.CurrencyCode,
             
             // Expanded Text Ad
             StringTable.TitlePart1,

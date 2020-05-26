@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesFinalUrlSuffixTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadAdScheduleUseSearcherTimeZone;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAccountIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesBidStrategyTypeTest;
@@ -13,6 +13,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDSASettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDailyBudgetTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesExperimentIdTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesFinalUrlSuffixTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceNotSetTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesKeywordRelevanceTest;
@@ -51,6 +52,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesDSASettingsTest.class,
         BulkCampaignReadFromRowValuesExperimentIdTest.class,
         BulkCampaignReadFromRowValuesFinalUrlSuffixTest.class,
+        BulkCampaignReadAdScheduleUseSearcherTimeZone.class
 })
 public class BulkCampaignReadTests {
 

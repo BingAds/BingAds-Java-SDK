@@ -37,14 +37,14 @@ import com.microsoft.bingads.v13.internal.bulk.StringTable;
 public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
 
     /**
-     * Gets the app ad extension.
+     * Gets the action ad extension.
      */
     public ActionAdExtension getActionAdExtension() {
         return getAdExtension();
     }
 
     /**
-     * Sets the app ad extension.
+     * Sets the action ad extension.
      */
     public void setActionAdExtension(ActionAdExtension actionAdExtension) {
         setAdExtension(actionAdExtension);

@@ -88,6 +88,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllReturnOnAdSpend"/>
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="ViewThroughConversions"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="AudienceImpressionSharePercent"/>
+ *     &lt;enumeration value="AudienceImpressionLostToRankPercent"/>
+ *     &lt;enumeration value="AudienceImpressionLostToBudgetPercent"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -244,7 +249,17 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("AllRevenuePerConversion")
     ALL_REVENUE_PER_CONVERSION("AllRevenuePerConversion"),
     @XmlEnumValue("ViewThroughConversions")
-    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions"),
+    @XmlEnumValue("Goal")
+    GOAL("Goal"),
+    @XmlEnumValue("GoalType")
+    GOAL_TYPE("GoalType"),
+    @XmlEnumValue("AudienceImpressionSharePercent")
+    AUDIENCE_IMPRESSION_SHARE_PERCENT("AudienceImpressionSharePercent"),
+    @XmlEnumValue("AudienceImpressionLostToRankPercent")
+    AUDIENCE_IMPRESSION_LOST_TO_RANK_PERCENT("AudienceImpressionLostToRankPercent"),
+    @XmlEnumValue("AudienceImpressionLostToBudgetPercent")
+    AUDIENCE_IMPRESSION_LOST_TO_BUDGET_PERCENT("AudienceImpressionLostToBudgetPercent");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

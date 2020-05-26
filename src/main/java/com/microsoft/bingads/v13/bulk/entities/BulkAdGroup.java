@@ -395,6 +395,25 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.AdScheduleUseSearcherTimeZone,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup t) {
+                        if (t.getAdGroup().getAdScheduleUseSearcherTimeZone()== null) {
+                            return null;
+                        }
+
+                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getAdGroup().getAdScheduleUseSearcherTimeZone(), t.getAdGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setAdScheduleUseSearcherTimeZone(StringExtensions.parseUseSearcherTimeZone(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
     

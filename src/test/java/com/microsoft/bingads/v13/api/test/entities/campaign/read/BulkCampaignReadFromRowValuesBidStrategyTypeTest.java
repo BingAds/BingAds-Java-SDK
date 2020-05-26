@@ -19,8 +19,10 @@ import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignReadFromRowValuesBidStrategyTypeTest extends BulkCampaignTest {
@@ -132,5 +134,39 @@ public class BulkCampaignReadFromRowValuesBidStrategyTypeTest extends BulkCampai
                 return new BulkCampaign();
             }
     	}, new ObjectComparer<BiddingScheme>());
+    	
+
+        datum = "MaxConversionValue";
+        expectedResult = new MaxConversionValueBiddingScheme();
+        expectedResult.setType("MaxConversionValue");
+        
+        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkCampaign, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkCampaign c) {
+                return c.getCampaign().getBiddingScheme();
+            }
+        }, new Supplier<BulkCampaign>() {
+            @Override
+            public BulkCampaign get() {
+                return new BulkCampaign();
+            }
+        }, new ObjectComparer<BiddingScheme>());
+        
+
+        datum = "TargetRoas";
+        expectedResult = new TargetRoasBiddingScheme();
+        expectedResult.setType("TargetRoas");
+        
+        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkCampaign, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkCampaign c) {
+                return c.getCampaign().getBiddingScheme();
+            }
+        }, new Supplier<BulkCampaign>() {
+            @Override
+            public BulkCampaign get() {
+                return new BulkCampaign();
+            }
+        }, new ObjectComparer<BiddingScheme>());
     }
 }

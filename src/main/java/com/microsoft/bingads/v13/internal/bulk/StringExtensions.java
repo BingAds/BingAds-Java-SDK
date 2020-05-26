@@ -56,6 +56,7 @@ import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingSche
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MatchType;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Minute;
 import com.microsoft.bingads.v13.campaignmanagement.NumberOperator;
@@ -69,6 +70,7 @@ import com.microsoft.bingads.v13.campaignmanagement.RuleItemGroup;
 import com.microsoft.bingads.v13.campaignmanagement.StringOperator;
 import com.microsoft.bingads.v13.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.TextAsset;
@@ -546,12 +548,12 @@ public class StringExtensions {
         return (int) Math.round(decimalDegrees * 1000000);
     }
 
-    public static String toBooleanBulkString(Boolean isCallOnly) {
-        if (isCallOnly == null) {
+    public static String toBooleanBulkString(Boolean value) {
+        if (value == null) {
             return null;
         }
 
-        if (isCallOnly) {
+        if (value) {
             return "True";
         } else {
             return "False";
@@ -894,7 +896,13 @@ public class StringExtensions {
     	} else if (s.equals("MaxClicks")) {
     		biddingScheme = new MaxClicksBiddingScheme();
     		biddingScheme.setType("MaxClicks");
-    	} else {
+    	} else if (s.equals("TargetRoas")) {
+            biddingScheme = new TargetRoasBiddingScheme();
+            biddingScheme.setType("TargetRoas");
+        } else if (s.equals("MaxConversionValue")) {
+            biddingScheme = new MaxConversionValueBiddingScheme();
+            biddingScheme.setType("MaxConversionValue");
+        } else {
     		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
     	}
     	
@@ -917,7 +925,11 @@ public class StringExtensions {
     		return "TargetCpa";
     	} else if (biddingScheme instanceof MaxClicksBiddingScheme) {
     		return "MaxClicks";
-    	} else {
+    	} else if (biddingScheme instanceof MaxConversionValueBiddingScheme  ) {
+            return "MaxConversionValue";
+        } else if (biddingScheme instanceof TargetRoasBiddingScheme  ) {
+            return "TargetRoas";
+        } else {
     		throw new IllegalArgumentException("Unknown bidding scheme");
     	}
     }
@@ -1058,28 +1070,28 @@ public class StringExtensions {
     	result.getDayTimes().addAll(dayTimeArray);
     	
     	return result;
-    }    
-    
-    public static String toUseSearcherTimeZoneBulkString(Boolean useSearcherTimeZone) {
-    	if (useSearcherTimeZone == null)  {
-            return "false";
+    }
+
+    public static String toUseSearcherTimeZoneBulkString(Boolean useSearcherTimeZone, Long id) {
+        if (useSearcherTimeZone == null)  {
+            return id != null && id > 0? StringTable.DeleteValue : null;
         }
-    	return useSearcherTimeZone ? "true": "false";
+        return useSearcherTimeZone ? "true": "false";
     }
     
     public static Boolean parseUseSearcherTimeZone(String s) {
-    	if(StringExtensions.isNullOrEmpty(s)) {
-    		return null;
-    	}
-    	if (s.toLowerCase().equals("true")) {
-    		return true;
-    	} else if (s.toLowerCase().equals("false")) {
-    		return false;
-    	} else {
-    		throw new IllegalArgumentException(String.format("Unknown value for Use Searcher Time Zone : %s", s));
-    	}
+        if(StringExtensions.isNullOrEmpty(s) || StringTable.DeleteValue.equals(s)) {
+            return null;
+        }
+        if (s.toLowerCase().equals("true")) {
+            return true;
+        } else if (s.toLowerCase().equals("false")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException(String.format("Unknown value for Use Searcher Time Zone : %s", s));
+        }
     }
-    
+        
     public static String toCriterionNameBulkString(WebpageParameter webpageParameter, Long id) {
     	if (webpageParameter == null || webpageParameter.getCriterionName() == null) {
 			return null;

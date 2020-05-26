@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteAdScheduleUseSearcherTimeZone;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAccountIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAudienceAdsBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBidStrategyTypeTest;
@@ -54,7 +55,8 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesSourceDSASettingTest.class,
         BulkCampaignWriteToRowValuesExperimentIdTest.class,
         BulkCampaignWriteToRowValuesFinalUrlSuffixTest.class,
-        BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest.class
+        BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest.class,
+        BulkCampaignWriteAdScheduleUseSearcherTimeZone.class
 })
 public class BulkCampaignWriteTests {
 

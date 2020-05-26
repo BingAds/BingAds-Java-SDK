@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupStatus" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -61,7 +62,8 @@ import javax.xml.bind.annotation.XmlType;
     "startDate",
     "status",
     "trackingUrlTemplate",
-    "urlCustomParameters"
+    "urlCustomParameters",
+    "adScheduleUseSearcherTimeZone"
 })
 public class AdGroup {
 
@@ -102,6 +104,8 @@ public class AdGroup {
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
+    @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
+    protected Boolean adScheduleUseSearcherTimeZone;
 
     /**
      * Gets the value of the adRotation property.
@@ -509,6 +513,30 @@ public class AdGroup {
      */
     public void setUrlCustomParameters(CustomParameters value) {
         this.urlCustomParameters = value;
+    }
+
+    /**
+     * Gets the value of the adScheduleUseSearcherTimeZone property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getAdScheduleUseSearcherTimeZone() {
+        return adScheduleUseSearcherTimeZone;
+    }
+
+    /**
+     * Sets the value of the adScheduleUseSearcherTimeZone property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAdScheduleUseSearcherTimeZone(Boolean value) {
+        this.adScheduleUseSearcherTimeZone = value;
     }
 
 }

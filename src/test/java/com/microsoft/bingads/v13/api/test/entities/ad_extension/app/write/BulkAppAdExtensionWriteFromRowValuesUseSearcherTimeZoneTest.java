@@ -22,7 +22,7 @@ public class BulkAppAdExtensionWriteFromRowValuesUseSearcherTimeZoneTest extends
         return Arrays.asList(new Object[][]{
                 {"true", true},
                 {"false", false},
-                {"false", null}
+                {"delete_value", null}
         });
     }
 

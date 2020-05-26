@@ -14,8 +14,10 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.BulkCampaignTest;
 import com.microsoft.bingads.v13.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 
 @RunWith(Parameterized.class)
 public class BulkCampaignWriteToRowValuesBidStrategyTypeTest extends BulkCampaignTest {
@@ -32,7 +34,9 @@ public class BulkCampaignWriteToRowValuesBidStrategyTypeTest extends BulkCampaig
         return Arrays.asList(new Object[][]{
             {"MaxConversions", new MaxConversionsBiddingScheme()},
             {"TargetCpa", new TargetCpaBiddingScheme()},
-            {"MaxClicks", new MaxClicksBiddingScheme()}
+            {"MaxClicks", new MaxClicksBiddingScheme()},
+            {"MaxConversionValue", new MaxConversionValueBiddingScheme()},
+            {"TargetRoas", new TargetRoasBiddingScheme()}
         });
     }
 

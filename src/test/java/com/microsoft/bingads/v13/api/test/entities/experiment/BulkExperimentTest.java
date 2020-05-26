@@ -14,7 +14,9 @@ public abstract class BulkExperimentTest extends BulkEntityTest<BulkExperiment> 
 
     @Override
     protected void onEntityCreation(BulkExperiment entity) {
-        entity.setExperiment(new Experiment());
+        Experiment e = new Experiment();
+        e.setId(100L);
+        entity.setExperiment(e);
     }
 
     @Override

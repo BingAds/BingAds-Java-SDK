@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     ProfileCriterion.class,
     ProductPartition.class,
     GenderCriterion.class,
+    StoreCriterion.class,
     LocationCriterion.class,
     AgeCriterion.class,
     Webpage.class

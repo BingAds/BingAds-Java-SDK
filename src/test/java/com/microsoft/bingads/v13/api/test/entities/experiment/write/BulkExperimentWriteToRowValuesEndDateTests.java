@@ -26,9 +26,15 @@ public class BulkExperimentWriteToRowValuesEndDateTests extends BulkExperimentTe
         date.setDay(17);
         date.setMonth(6);
         date.setYear(1987);
+        
+        Date date_empty = new Date();
+        date_empty.setDay(0);
+        date_empty.setMonth(0);
+        date_empty.setYear(0);
         return Arrays.asList(new Object[][]{
             {"6/17/1987", date},
-            {null, null}
+            {"delete_value", null},
+            {"delete_value", date_empty}
         });
     }
 

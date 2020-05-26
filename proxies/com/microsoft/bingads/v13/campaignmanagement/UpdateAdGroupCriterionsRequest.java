@@ -41,7 +41,7 @@ public class UpdateAdGroupCriterionsRequest {
     @XmlElement(name = "AdGroupCriterions", nillable = true)
     protected ArrayOfAdGroupCriterion adGroupCriterions;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<AdGroupCriterionType> criterionType;
 
     /**

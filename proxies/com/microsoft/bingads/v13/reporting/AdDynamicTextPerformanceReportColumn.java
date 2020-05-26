@@ -60,6 +60,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllConversionRate"/>
  *     &lt;enumeration value="AllCostPerConversion"/>
  *     &lt;enumeration value="ViewThroughConversions"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="GoalType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -160,7 +162,11 @@ public enum AdDynamicTextPerformanceReportColumn {
     @XmlEnumValue("AllCostPerConversion")
     ALL_COST_PER_CONVERSION("AllCostPerConversion"),
     @XmlEnumValue("ViewThroughConversions")
-    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions"),
+    @XmlEnumValue("Goal")
+    GOAL("Goal"),
+    @XmlEnumValue("GoalType")
+    GOAL_TYPE("GoalType");
     private final String value;
 
     AdDynamicTextPerformanceReportColumn(String v) {

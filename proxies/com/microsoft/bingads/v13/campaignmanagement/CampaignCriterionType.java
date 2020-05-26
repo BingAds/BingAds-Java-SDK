@@ -23,7 +23,9 @@ public enum CampaignCriterionType {
     JOB_FUNCTION("JobFunction"),
     INDUSTRY("Industry"),
     PRODUCT_AUDIENCE("ProductAudience"),
-    SIMILAR_REMARKETING_LIST("SimilarRemarketingList");
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
+    STORE("Store"),
+    COMBINED_LIST("CombinedList");
         
     private final String value;
 

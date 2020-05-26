@@ -26,7 +26,8 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkAdGroupReadFromRowValuesCoOpBidOptionTest.class,
         BulkAdGroupReadFromRowValuesCoOpBidBoostValueTest.class,
         BulkAdGroupReadFromRowValuesCoOpMaximumBidTest.class,
-		BulkAdGroupReadFromRowValuesFinalUrlSuffixTest.class
+		BulkAdGroupReadFromRowValuesFinalUrlSuffixTest.class,
+		BulkAdGroupReadAdScheduleUseSearcherTimeZone.class
 })
 public class BulkAdGroupReadTests {
 

@@ -231,7 +231,10 @@ public class BulkServiceManager {
                         Throwable cause = ex.getCause();
                         String errorCode = "";
                         try {
-                            errorCode = ((ApiFaultDetail_Exception) cause).getFaultInfo().getOperationErrors().getOperationErrors().get(0).getErrorCode();
+                            if (cause instanceof ApiFaultDetail_Exception)
+                            {
+                                errorCode = ((ApiFaultDetail_Exception) cause).getFaultInfo().getOperationErrors().getOperationErrors().get(0).getErrorCode();
+                            }
                         } finally {
                             if ("OperationNotSupported".equalsIgnoreCase(errorCode)) {
                                 uploadFileAsyncImpl(createFileUploadParameters(parameters), progress, new ParentCallback<File>(resultFuture) {

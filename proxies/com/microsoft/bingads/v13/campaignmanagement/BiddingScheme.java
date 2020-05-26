@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
     TargetCpaBiddingScheme.class,
     MaxConversionsBiddingScheme.class,
     MaxRoasBiddingScheme.class,
+    MaxConversionValueBiddingScheme.class,
     ManualCpcBiddingScheme.class,
     InheritFromParentBiddingScheme.class,
     MaxClicksBiddingScheme.class,

@@ -121,6 +121,16 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CampaignNegativeSimilarRemarketingListAssociations"/>
  *     &lt;enumeration value="Feeds"/>
  *     &lt;enumeration value="FeedItems"/>
+ *     &lt;enumeration value="CampaignNegativeStoreCriterions"/>
+ *     &lt;enumeration value="PromotionAdExtensions"/>
+ *     &lt;enumeration value="AccountPromotionAdExtensions"/>
+ *     &lt;enumeration value="CampaignPromotionAdExtensions"/>
+ *     &lt;enumeration value="AdGroupPromotionAdExtensions"/>
+ *     &lt;enumeration value="CombinedLists"/>
+ *     &lt;enumeration value="AdGroupCombinedListAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeCombinedListAssociations"/>
+ *     &lt;enumeration value="CampaignCombinedListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCombinedListAssociations"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -343,7 +353,27 @@ public enum DownloadEntity {
     @XmlEnumValue("Feeds")
     FEEDS("Feeds"),
     @XmlEnumValue("FeedItems")
-    FEED_ITEMS("FeedItems");
+    FEED_ITEMS("FeedItems"),
+    @XmlEnumValue("CampaignNegativeStoreCriterions")
+    CAMPAIGN_NEGATIVE_STORE_CRITERIONS("CampaignNegativeStoreCriterions"),
+    @XmlEnumValue("PromotionAdExtensions")
+    PROMOTION_AD_EXTENSIONS("PromotionAdExtensions"),
+    @XmlEnumValue("AccountPromotionAdExtensions")
+    ACCOUNT_PROMOTION_AD_EXTENSIONS("AccountPromotionAdExtensions"),
+    @XmlEnumValue("CampaignPromotionAdExtensions")
+    CAMPAIGN_PROMOTION_AD_EXTENSIONS("CampaignPromotionAdExtensions"),
+    @XmlEnumValue("AdGroupPromotionAdExtensions")
+    AD_GROUP_PROMOTION_AD_EXTENSIONS("AdGroupPromotionAdExtensions"),
+    @XmlEnumValue("CombinedLists")
+    COMBINED_LISTS("CombinedLists"),
+    @XmlEnumValue("AdGroupCombinedListAssociations")
+    AD_GROUP_COMBINED_LIST_ASSOCIATIONS("AdGroupCombinedListAssociations"),
+    @XmlEnumValue("AdGroupNegativeCombinedListAssociations")
+    AD_GROUP_NEGATIVE_COMBINED_LIST_ASSOCIATIONS("AdGroupNegativeCombinedListAssociations"),
+    @XmlEnumValue("CampaignCombinedListAssociations")
+    CAMPAIGN_COMBINED_LIST_ASSOCIATIONS("CampaignCombinedListAssociations"),
+    @XmlEnumValue("CampaignNegativeCombinedListAssociations")
+    CAMPAIGN_NEGATIVE_COMBINED_LIST_ASSOCIATIONS("CampaignNegativeCombinedListAssociations");
     private final String value;
 
     DownloadEntity(String v) {

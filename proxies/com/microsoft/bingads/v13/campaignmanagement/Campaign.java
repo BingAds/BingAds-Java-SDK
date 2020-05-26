@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSetting" minOccurs="0"/>
  *         &lt;element name="BudgetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Languages" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -65,7 +66,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "campaignType",
     "settings",
     "budgetId",
-    "languages"
+    "languages",
+    "adScheduleUseSearcherTimeZone"
 })
 public class Campaign {
 
@@ -100,7 +102,7 @@ public class Campaign {
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<CampaignType> campaignType;
     @XmlElement(name = "Settings", nillable = true)
     protected ArrayOfSetting settings;
@@ -108,6 +110,8 @@ public class Campaign {
     protected Long budgetId;
     @XmlElement(name = "Languages", nillable = true)
     protected ArrayOfstring languages;
+    @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
+    protected Boolean adScheduleUseSearcherTimeZone;
 
     /**
      * Gets the value of the audienceAdsBidAdjustment property.
@@ -539,6 +543,30 @@ public class Campaign {
      */
     public void setLanguages(ArrayOfstring value) {
         this.languages = value;
+    }
+
+    /**
+     * Gets the value of the adScheduleUseSearcherTimeZone property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getAdScheduleUseSearcherTimeZone() {
+        return adScheduleUseSearcherTimeZone;
+    }
+
+    /**
+     * Sets the value of the adScheduleUseSearcherTimeZone property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAdScheduleUseSearcherTimeZone(Boolean value) {
+        this.adScheduleUseSearcherTimeZone = value;
     }
 
 }

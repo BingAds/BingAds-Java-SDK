@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -21,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="EntityIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="EntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="SharedEntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="SharedEntityScope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "entityIds",
     "entityType",
-    "sharedEntityType"
+    "sharedEntityType",
+    "sharedEntityScope"
 })
 @XmlRootElement(name = "GetSharedEntityAssociationsByEntityIdsRequest")
 public class GetSharedEntityAssociationsByEntityIdsRequest {
@@ -44,6 +47,9 @@ public class GetSharedEntityAssociationsByEntityIdsRequest {
     protected String entityType;
     @XmlElement(name = "SharedEntityType", nillable = true)
     protected String sharedEntityType;
+    @XmlElement(name = "SharedEntityScope", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected EntityScope sharedEntityScope;
 
     /**
      * Gets the value of the entityIds property.
@@ -115,6 +121,30 @@ public class GetSharedEntityAssociationsByEntityIdsRequest {
      */
     public void setSharedEntityType(String value) {
         this.sharedEntityType = value;
+    }
+
+    /**
+     * Gets the value of the sharedEntityScope property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EntityScope }
+     *     
+     */
+    public EntityScope getSharedEntityScope() {
+        return sharedEntityScope;
+    }
+
+    /**
+     * Sets the value of the sharedEntityScope property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EntityScope }
+     *     
+     */
+    public void setSharedEntityScope(EntityScope value) {
+        this.sharedEntityScope = value;
     }
 
 }

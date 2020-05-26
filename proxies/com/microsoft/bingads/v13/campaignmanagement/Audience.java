@@ -58,6 +58,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 @XmlSeeAlso({
     ProductAudience.class,
+    CombinedList.class,
     SimilarRemarketingList.class,
     RemarketingList.class,
     CustomAudience.class,
@@ -89,7 +90,7 @@ public class Audience {
     @XmlElement(name = "SupportedCampaignTypes", nillable = true)
     protected ArrayOfstring supportedCampaignTypes;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected Collection<AudienceType> type;
 
     /**

@@ -89,6 +89,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="CostPerConversion"/>
  *     &lt;enumeration value="ViewThroughConversions"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="GoalType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -247,7 +249,11 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("CostPerConversion")
     COST_PER_CONVERSION("CostPerConversion"),
     @XmlEnumValue("ViewThroughConversions")
-    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions");
+    VIEW_THROUGH_CONVERSIONS("ViewThroughConversions"),
+    @XmlEnumValue("Goal")
+    GOAL("Goal"),
+    @XmlEnumValue("GoalType")
+    GOAL_TYPE("GoalType");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

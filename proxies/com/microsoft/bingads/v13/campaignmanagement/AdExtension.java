@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     ImageAdExtension.class,
     LocationAdExtension.class,
     StructuredSnippetAdExtension.class,
+    PromotionAdExtension.class,
     PriceAdExtension.class,
     CalloutAdExtension.class,
     ReviewAdExtension.class,

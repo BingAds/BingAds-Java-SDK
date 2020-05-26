@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
     "itemCount"
 })
 @XmlSeeAlso({
-    NegativeKeywordList.class
+    NegativeKeywordList.class,
+    PlacementExclusionList.class
 })
 public class SharedList
     extends SharedEntity

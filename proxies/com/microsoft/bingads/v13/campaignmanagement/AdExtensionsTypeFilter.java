@@ -14,7 +14,8 @@ public enum AdExtensionsTypeFilter {
     SITELINK_AD_EXTENSION("SitelinkAdExtension"),
     STRUCTURED_SNIPPET_AD_EXTENSION("StructuredSnippetAdExtension"),
     PRICE_AD_EXTENSION("PriceAdExtension"),
-    ACTION_AD_EXTENSION("ActionAdExtension");
+    ACTION_AD_EXTENSION("ActionAdExtension"),
+    PROMOTION_AD_EXTENSION("PromotionAdExtension");
         
     private final String value;
 

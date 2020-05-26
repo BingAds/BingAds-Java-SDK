@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="ImageMediaIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
+ *         &lt;element name="Layouts" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *       &lt;/sequence>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "finalUrls",
     "imageMediaIds",
     "images",
+    "layouts",
     "trackingUrlTemplate",
     "urlCustomParameters"
 })
@@ -76,6 +78,8 @@ public class ImageAdExtension
     protected ArrayOflong imageMediaIds;
     @XmlElement(name = "Images", nillable = true)
     protected ArrayOfAssetLink images;
+    @XmlElement(name = "Layouts", nillable = true)
+    protected ArrayOfstring layouts;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
@@ -319,6 +323,30 @@ public class ImageAdExtension
      */
     public void setImages(ArrayOfAssetLink value) {
         this.images = value;
+    }
+
+    /**
+     * Gets the value of the layouts property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getLayouts() {
+        return layouts;
+    }
+
+    /**
+     * Sets the value of the layouts property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setLayouts(ArrayOfstring value) {
+        this.layouts = value;
     }
 
     /**
