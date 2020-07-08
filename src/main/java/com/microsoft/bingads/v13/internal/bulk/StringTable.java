@@ -433,6 +433,8 @@ public class StringTable {
     public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";
     public static final String InheritedBidStrategyType = "Inherited Bid Strategy Type";
     public static final String BidStrategyTargetRoas = "Bid Strategy TargetRoas";
+    public static final String BidStrategyTargetAdPosition = "Bid Strategy TargetAdPosition";
+    public static final String BidStrategyTargetImpressionShare = "Bid Strategy TargetImpressionShare";
 
     // Audience
     public static final String RemarketingList = "Remarketing List";
@@ -465,6 +467,11 @@ public class StringTable {
     public static final String SupportedCampaignTypes = "Supported Campaign Types";
     public static final String ProductAudienceType = "Product Audience Type";
     public static final String AudienceSearchSize = "Audience Search Size";
+    public static final String CombinedList = "Combined List";
+    public static final String AdGroupCombinedListAssociation = "Ad Group Combined List Association";
+    public static final String AdGroupNegativeCombinedListAssociation = "Ad Group Negative Combined List Association";
+    public static final String CampaignCombinedListAssociation = "Campaign Combined List Association";
+    public static final String CampaignNegativeCombinedListAssociation = "Campaign Negative Combined List Association";
     public static final String Description = "Description";
     public static final String MembershipDuration = "Membership Duration";
     public static final String Scope = "Scope";
@@ -473,6 +480,14 @@ public class StringTable {
     public static final String AudienceId = "Audience Id";
     public static final String TargetSetting = "Target Setting";
     public static final String RemarketingRule = "Remarketing Rule";
+    public static final String CombinationRule = "Combination Rule";        
+    public static final String CustomerList = "Customer List";
+    public static final String CustomerListItem = "Customer List Item";
+    public static final String AdGroupCustomerListAssociation = "Ad Group Customer List Association";
+    public static final String AdGroupNegativeCustomerListAssociation = "Ad Group Negative Customer List Association";
+    public static final String CampaignCustomerListAssociation = "Campaign Customer List Association";
+    public static final String CampaignNegativeCustomerListAssociation = "Campaign Negative Customer List Association";
+
     
     // Structured Snippet Ad Extension
     public static final String AccountStructuredSnippetAdExtension = "Account Structured Snippet Ad Extension";

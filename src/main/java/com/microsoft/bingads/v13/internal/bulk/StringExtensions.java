@@ -30,6 +30,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v13.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v13.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItem;
@@ -41,6 +42,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AssetLinkEditorialStatus;
 import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.BusinessGeoCodeStatus;
+import com.microsoft.bingads.v13.campaignmanagement.CombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionTypeGroup;
 import com.microsoft.bingads.v13.campaignmanagement.CustomEventsRule;
@@ -53,6 +55,7 @@ import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.LogicalOperator;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MatchType;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
@@ -70,6 +73,7 @@ import com.microsoft.bingads.v13.campaignmanagement.RuleItemGroup;
 import com.microsoft.bingads.v13.campaignmanagement.StringOperator;
 import com.microsoft.bingads.v13.campaignmanagement.StringRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetImpressionShareBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
@@ -96,7 +100,8 @@ public class StringExtensions {
     private static final Pattern operandPattern = Pattern.compile("^(Category|Action|Label|Value) ([^()]*)$");
 	private static final Pattern stringOperatorPattern = Pattern.compile("^(Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
 	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
-	
+    private static final Pattern logicalOperatorPattern = Pattern.compile("^(And|Or|Not)\\((.*?)\\)$");
+
     public static String toKeywordBidBulkString(Bid bid, Long id) {
         if (bid == null) {
             return null;
@@ -568,14 +573,6 @@ public class StringExtensions {
         return status.value();
     }
 
-//    public static String toAdGroupRemarketingListAssociationStatusBulkString(AdGroupRemarketingListAssociationStatus status) {
-//        if (status == null) {
-//            return null;
-//        }
-//
-//        return status.value();
-//    }
-    
     public static String toStatusBulkString(Status status) {
         if (status == null) {
             return null;
@@ -902,6 +899,9 @@ public class StringExtensions {
         } else if (s.equals("MaxConversionValue")) {
             biddingScheme = new MaxConversionValueBiddingScheme();
             biddingScheme.setType("MaxConversionValue");
+        } else if (s.equals("TargetImpressionShare")) {
+            biddingScheme = new TargetImpressionShareBiddingScheme();
+            biddingScheme.setType("TargetImpressionShare");
         } else {
     		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
     	}
@@ -929,6 +929,8 @@ public class StringExtensions {
             return "MaxConversionValue";
         } else if (biddingScheme instanceof TargetRoasBiddingScheme  ) {
             return "TargetRoas";
+        } else if (biddingScheme instanceof TargetImpressionShareBiddingScheme  ) {
+            return "TargetImpressionShare";
         } else {
     		throw new IllegalArgumentException("Unknown bidding scheme");
     	}
@@ -1108,7 +1110,76 @@ public class StringExtensions {
     	}   	
     	return s;
     }
+
+    public static String writeCombinationRulesBulkString(ArrayOfCombinationRule combinationRules) {
+
+        if (combinationRules == null || combinationRules.getCombinationRules() == null|| combinationRules.getCombinationRules().size() == 0)
+        {
+            return null;
+        }
+        
+        return String.join("&", 
+                combinationRules.getCombinationRules().stream()
+                .map( rule -> 
+                    String.format("%s(%s)", rule.getOperator().value(),
+                            String.join(",", 
+                                    rule.getAudienceIds().getLongs()
+                                    .stream()
+                                    .map(l -> Long.toString(l))
+                                    .collect(Collectors.toList()))))
+                .collect(Collectors.toList()));
+    }
+
+    public static ArrayOfCombinationRule parseCombinationRules(String v) {
+        if (v == null) {
+            return null;
+        }
+        
+        ArrayOfCombinationRule result = new ArrayOfCombinationRule();
+        result.getCombinationRules().addAll(
+                Arrays.stream(v.split("&"))
+                .filter(s -> s != null && !s.isEmpty())
+                .map(s -> parseCombinationRule(s))
+                .filter((r -> r != null))
+                .collect(Collectors.toList()));
+        return result;
+    }
     
+    private static CombinationRule parseCombinationRule(String ruleItemStr) {
+        
+        if (ruleItemStr == null) {
+            return null;
+        }
+        ruleItemStr = ruleItemStr.trim();
+        
+        Matcher m = logicalOperatorPattern.matcher(ruleItemStr);
+        if (!m.matches()) {
+            throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
+        }
+        CombinationRule rule = new CombinationRule();
+        rule.setOperator(parseLogicalOperator(m.group(1)));
+        rule.setAudienceIds(parseAudienceIds(m.group(2)));
+        
+        return rule;
+    }
+
+    private static ArrayOflong parseAudienceIds(String strAudienceIds) {
+        if (strAudienceIds == null || strAudienceIds.isEmpty()) {
+            return null;
+        }
+        ArrayOflong ret = new ArrayOflong();
+        ret.getLongs().addAll(Arrays.stream(strAudienceIds.split(",")).map(s -> Long.parseLong(s.trim())).collect(Collectors.toList()));
+        return ret;
+    }
+
+    private static LogicalOperator parseLogicalOperator(String strOperator) {
+        if (strOperator == null || strOperator.isEmpty()) {
+            return null;
+        }
+        
+        return LogicalOperator.fromValue(strOperator);
+    }
+
     public static String toRemarketingRuleBulkString(RemarketingRule remarketingRule) {
     	if (remarketingRule == null) {
     		return null;
@@ -1714,5 +1785,4 @@ public class StringExtensions {
         }
         return null;
     }
-
 }

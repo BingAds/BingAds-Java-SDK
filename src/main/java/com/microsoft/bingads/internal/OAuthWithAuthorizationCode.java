@@ -1,6 +1,7 @@
 package com.microsoft.bingads.internal;
 
 import java.net.URL;
+import java.util.Dictionary;
 import java.util.Map;
 
 import com.microsoft.bingads.ApiEnvironment;
@@ -27,7 +28,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     private String clientId;
 
     private String clientSecret;
-
+    
     private URL redirectionUri;
     
     private boolean requireLiveConnect;
@@ -42,7 +43,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     public String getClientSecret() {
         return clientSecret;
     }
-
+    
     public URL getRedirectionUri() {
         return redirectionUri;
     }
@@ -92,7 +93,11 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return OAuthEndpointHelper.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.getState()), this.getEnvironment(), this.requireLiveConnect);
+        return OAuthEndpointHelper.getAuthorizationEndpoint(
+                new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.getState()),
+                this.getEnvironment(),
+                this.requireLiveConnect,
+                this.getTenant());
     }
 
     /**
@@ -102,11 +107,23 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
      * @return OAuth tokens
      */
     public OAuthTokens requestAccessAndRefreshTokens(URL responseUrl) {
+        return requestAccessAndRefreshTokens(responseUrl, null);
+    }
+    
+
+    /**
+     * Retrieves OAuth tokens from authorization server using the authorization code provided by user.
+     *
+     * @param responseUrl Authorization response redirect Uri containing the authorization code. See: {{@link "http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-4.1.2"}}
+     * @param additionalParams Additional parameters in format of Key/Value. Such as "code_verifier" can leverage this parameter
+     * @return OAuth tokens
+     */
+    public OAuthTokens requestAccessAndRefreshTokens(URL responseUrl, Map<String, String> additionalParams) {
         Map<String, String> queryParts;
         queryParts = URLExtensions.parseQuery(responseUrl);
         
         if(!queryParts.containsKey(CODE)) {
-        	throw new IllegalArgumentException(ErrorMessages.UriDoesntContainCode);
+            throw new IllegalArgumentException(ErrorMessages.UriDoesntContainCode);
         }      
         String code = queryParts.get(CODE);
 
@@ -117,7 +134,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 AUTHORIZATION_CODE,
                 CODE,
                 code
-        ), this.requireLiveConnect);
+        ), this.requireLiveConnect, this.getTenant(), additionalParams);
 
         raiseNewTokensEventIfNeeded();
 
@@ -138,7 +155,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 REFRESH_TOKEN,
                 REFRESH_TOKEN,
                 refreshToken
-        ), this.requireLiveConnect);
+        ), this.requireLiveConnect, this.getTenant(), null);
 
         raiseNewTokensEventIfNeeded();
 

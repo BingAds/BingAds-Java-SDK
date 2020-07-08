@@ -34,17 +34,16 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
     private static final String TOKEN = "token";
     
     private final String clientId;
-    
+
     private final URL redirectionUri;
     
     private final boolean requireLiveConnect;
     
-
     protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
         super(env);
         
         this.clientId = clientId;
-        
+
         this.redirectionUri = redirectionUri;
         
         this.oAuthTokens = oauthTokens;
@@ -59,7 +58,11 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
      */
     @Override
     public URL getAuthorizationEndpoint() {
-        return OAuthEndpointHelper.getAuthorizationEndpoint(new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.getState()), this.getEnvironment(), this.requireLiveConnect);
+        return OAuthEndpointHelper.getAuthorizationEndpoint(
+                new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.getState()),
+                this.getEnvironment(),
+                this.requireLiveConnect,
+                this.getTenant());
     }
 
     /**

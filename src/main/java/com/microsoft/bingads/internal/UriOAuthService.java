@@ -1,5 +1,6 @@
 package com.microsoft.bingads.internal;
 
+import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +9,8 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +22,7 @@ import org.apache.http.message.BasicNameValuePair;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ibm.wsdl.util.StringUtils;
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.OAuthErrorDetails;
@@ -61,11 +65,16 @@ public class UriOAuthService implements OAuthService {
      * @return OAuth tokens
      */
     @Override
-    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, boolean requireLiveConnect) {
+    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, boolean requireLiveConnect, String tenant, Map<String, String> additionalParams) {
         try {
-            List<NameValuePair> paramsList = generateParamsList(oAuthParameters, requireLiveConnect);
+            List<NameValuePair> paramsList = generateParamsList(oAuthParameters, requireLiveConnect, additionalParams);
+            
+            String tokenRequestUrl = OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getTokenRequestUrl();
+            if (tokenRequestUrl.startsWith("https://login.microsoftonline.com/common")) {
+                tokenRequestUrl = tokenRequestUrl.replaceAll("common", tenant);
+            }
 
-            HttpResponse httpResponse = webServiceCaller.post(new URL(OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getTokenRequestUrl()), paramsList);
+            HttpResponse httpResponse = webServiceCaller.post(new URL(tokenRequestUrl), paramsList);
 
             InputStream stream = httpResponse.getEntity().getContent();            
             
@@ -103,7 +112,7 @@ public class UriOAuthService implements OAuthService {
         }
     }
 
-    private List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect) throws UnsupportedEncodingException {
+    private List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect, Map<String, String> additionalParams) throws UnsupportedEncodingException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(OAuthEndpointHelper.CLIENT_ID, requestParams.getClientId()));
 
@@ -118,6 +127,19 @@ public class UriOAuthService implements OAuthService {
         }
         params.add(new BasicNameValuePair(OAuthEndpointHelper.SCOPE, 
                 OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getScope()));
+        
+        if (additionalParams != null) {
+            additionalParams.forEach(new BiConsumer<String, String> () {
+                @Override
+                public void accept(String key, String value) {
+                    if (key != null && value != null) {
+                        params.add(new BasicNameValuePair(key, value));
+                    }
+                }
+            });
+
+        }
+            
 
         return params;
     }

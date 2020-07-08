@@ -281,6 +281,8 @@ public class CsvHeaders {
             StringTable.BidStrategyTargetCpa,
             StringTable.BidStrategyTargetRoas,
             StringTable.InheritedBidStrategyType,
+            StringTable.BidStrategyTargetAdPosition,
+            StringTable.BidStrategyTargetImpressionShare,
             
             // Native Preference
             StringTable.AdFormatPreference,
@@ -299,6 +301,7 @@ public class CsvHeaders {
             StringTable.AudienceNetworkSize,
             StringTable.SupportedCampaignTypes,
             StringTable.ProductAudienceType,
+            StringTable.CombinationRule,
 
             // Structured Snippet Ad Extension
             StringTable.StructuredSnippetHeader,

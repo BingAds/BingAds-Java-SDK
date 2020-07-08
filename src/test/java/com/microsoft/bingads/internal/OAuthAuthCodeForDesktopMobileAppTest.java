@@ -110,7 +110,7 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(expectedRequestParameters, true)).andReturn(expectedTokenInfo);
+            expect(oauthService.getAccessTokens(expectedRequestParameters, true, "common", null)).andReturn(expectedTokenInfo);
             expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
             
@@ -136,7 +136,7 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ), true)).andReturn(expectedTokenInfo);
+            ), true, "common", null)).andReturn(expectedTokenInfo);
 
             expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();

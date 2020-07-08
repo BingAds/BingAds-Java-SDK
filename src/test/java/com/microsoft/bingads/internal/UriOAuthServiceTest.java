@@ -94,7 +94,7 @@ public class UriOAuthServiceTest extends EasyMockSupport {
                     "authorization_code",
                     "code",
                     "123"
-            ), true);
+            ), true, "common", null);
 
             assertEquals("AbC", tokens.getAccessToken());
             assertEquals("Xyz", tokens.getRefreshToken());

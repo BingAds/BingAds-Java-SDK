@@ -1,12 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -38,9 +37,9 @@ public class CombinationRule {
 
     @XmlElement(name = "AudienceIds", required = true, nillable = true)
     protected ArrayOflong audienceIds;
-    @XmlElement(name = "Operator", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter14 .class)
-    protected Collection<LogicalOperator> operator;
+    @XmlElement(name = "Operator", required = true)
+    @XmlSchemaType(name = "string")
+    protected LogicalOperator operator;
 
     /**
      * Gets the value of the audienceIds property.
@@ -71,10 +70,10 @@ public class CombinationRule {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LogicalOperator }
      *     
      */
-    public Collection<LogicalOperator> getOperator() {
+    public LogicalOperator getOperator() {
         return operator;
     }
 
@@ -83,10 +82,10 @@ public class CombinationRule {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LogicalOperator }
      *     
      */
-    public void setOperator(Collection<LogicalOperator> value) {
+    public void setOperator(LogicalOperator value) {
         this.operator = value;
     }
 

@@ -5,16 +5,16 @@ import java.util.Collection;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter14
-    extends XmlAdapter<String, Collection<LogicalOperator>>
+    extends XmlAdapter<String, Collection<ConversionGoalAdditionalField>>
 {
 
 
-    public Collection<LogicalOperator> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.LogicalOperatorConverter.convertToList(value));
+    public Collection<ConversionGoalAdditionalField> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.ConversionGoalAdditionalFieldConverter.convertToList(value));
     }
 
-    public String marshal(Collection<LogicalOperator> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.LogicalOperatorConverter.convertToString(value));
+    public String marshal(Collection<ConversionGoalAdditionalField> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.ConversionGoalAdditionalFieldConverter.convertToString(value));
     }
 
 }

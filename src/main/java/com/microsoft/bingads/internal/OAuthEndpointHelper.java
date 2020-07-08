@@ -70,7 +70,7 @@ public class OAuthEndpointHelper {
      * @throws MalformedURLException
      * @throws UnsupportedEncodingException
      */
-    public static URL getAuthorizationEndpoint(OAuthUrlParameters parameters, ApiEnvironment env, boolean requireLiveConnect) {
+    public static URL getAuthorizationEndpoint(OAuthUrlParameters parameters, ApiEnvironment env, boolean requireLiveConnect, String tenant) {
         Map<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put(CLIENT_ID, parameters.getClientId());
         paramsMap.put(RESPONSE_TYPE, parameters.getResponseType());
@@ -81,8 +81,12 @@ public class OAuthEndpointHelper {
         }        
         
         try {
+            String authorizationEndpointUrl = getOauthEndpoint(env, requireLiveConnect).getAuthorizationEndpointUrl();
+            if (authorizationEndpointUrl.startsWith("https://login.microsoftonline.com/common/oauth2") && tenant != null) {
+                authorizationEndpointUrl = authorizationEndpointUrl.replace("common", tenant);
+            }
             return new URL(String.format(
-                    getOauthEndpoint(env, requireLiveConnect).getAuthorizationEndpointUrl(),
+                    authorizationEndpointUrl,
                     mapToQueryString(paramsMap)
             ));
         } catch (MalformedURLException e) {

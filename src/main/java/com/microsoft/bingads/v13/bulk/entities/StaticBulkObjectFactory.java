@@ -206,6 +206,72 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupAppAdExtension();
             }
         }));
+        m.put(StringTable.CombinedList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCombinedList();
+            }
+        }));
+        m.put(StringTable.CustomerList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCustomerList();
+            }
+        }));
+        m.put(StringTable.CustomerListItem, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCustomerListItem();
+            }
+        }));
+        m.put(StringTable.AdGroupCombinedListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupCombinedListAssociation();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeCombinedListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeCombinedListAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignCombinedListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignCombinedListAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeCombinedListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeCombinedListAssociation();
+            }
+        }));
+        m.put(StringTable.AdGroupCustomerListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupCustomerListAssociation();
+            }
+        }));
+        m.put(StringTable.AdGroupNegativeCustomerListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupNegativeCustomerListAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignCustomerListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignCustomerListAssociation();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeCustomerListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeCustomerListAssociation();
+            }
+        }));
         m.put(StringTable.CalloutAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

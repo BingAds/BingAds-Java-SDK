@@ -98,8 +98,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.customerbilling.GetBillingDocumentsResponse
-     * @throws ApiBatchFault_Exception
      * @throws ApiFault_Exception
+     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBillingDocuments", action = "GetBillingDocuments")

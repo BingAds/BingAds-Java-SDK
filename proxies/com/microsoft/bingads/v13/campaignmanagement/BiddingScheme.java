@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    TargetImpressionShareBiddingScheme.class,
     EnhancedCpcBiddingScheme.class,
     TargetCpaBiddingScheme.class,
     MaxConversionsBiddingScheme.class,

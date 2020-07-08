@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum CampaignAdditionalField {
 
     AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
-    MAX_CONVERSION_VALUE_BIDDING_SCHEME("MaxConversionValueBiddingScheme");
+    MAX_CONVERSION_VALUE_BIDDING_SCHEME("MaxConversionValueBiddingScheme"),
+    TARGET_IMPRESSION_SHARE_BIDDING_SCHEME("TargetImpressionShareBiddingScheme");
         
     private final String value;
 

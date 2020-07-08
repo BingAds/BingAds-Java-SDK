@@ -108,7 +108,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(eq(expectedRequestParameters), eq(true))).andReturn(expectedTokenInfo);
+            expect(oauthService.getAccessTokens(eq(expectedRequestParameters), eq(true), eq("common"), eq(null))).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 
@@ -135,7 +135,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ), true)).andReturn(expectedTokenInfo);
+            ), true, "common", null)).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 

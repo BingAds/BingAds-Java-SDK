@@ -10,7 +10,6 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.EntityScope;
 import com.microsoft.bingads.v13.campaignmanagement.RemarketingList;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -18,7 +17,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a remarketing list that can be read or written in a bulk file.
@@ -36,166 +34,14 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public class BulkRemarketingList extends SingleRecordBulkEntity {
+public class BulkRemarketingList extends BulkAudience<RemarketingList> {
 
-    private RemarketingList remarketingList;
-
-    private Status status;
 
     private static final List<BulkMapping<BulkRemarketingList>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkRemarketingList>> m = new ArrayList<BulkMapping<BulkRemarketingList>>();
 
-        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.Status,
-                new Function<BulkRemarketingList, String>() {
-                    @Override
-                    public String apply(BulkRemarketingList c) {
-                        return c.getStatus() != null ? c.getStatus().value() : null;
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
-                            @Override
-                            public Status apply(String value) {
-                                return Status.fromValue(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.Id,
-                new Function<BulkRemarketingList, Long>() {
-                    @Override
-                    public Long apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getId();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.ParentId,
-                new Function<BulkRemarketingList, Long>() {
-                    @Override
-                    public Long apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getParentId();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setParentId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.Audience,
-                new Function<BulkRemarketingList, String>() {
-                    @Override
-                    public String apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getName();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setName(v);
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.AudienceSearchSize,
-                new Function<BulkRemarketingList, Long>() {
-                    @Override
-                    public Long apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getSearchSize();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setSearchSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.Description,
-                new Function<BulkRemarketingList, String>() {
-                    @Override
-                    public String apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getDescription();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setDescription(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkRemarketingList, Integer>(StringTable.MembershipDuration,
-                new Function<BulkRemarketingList, Integer>() {
-                    @Override
-                    public Integer apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getMembershipDuration();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setMembershipDuration(StringExtensions.<Integer>parseOptional(v, new Function<String, Integer>() {
-                            @Override
-                            public Integer apply(String value) {
-                                return Integer.parseInt(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.Scope,
-                new Function<BulkRemarketingList, String>() {
-                    @Override
-                    public String apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getScope() != null ? c.getRemarketingList().getScope().value() : null;
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setScope(StringExtensions.parseOptional(v, new Function<String, EntityScope>() {
-                            @Override
-                            public EntityScope apply(String value) {
-                                return EntityScope.fromValue(value);
-                            }
-                        }));
-                    }
-                }
-        ));
         
         m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.TagId,
                 new Function<BulkRemarketingList, Long>() {
@@ -232,55 +78,20 @@ public class BulkRemarketingList extends SingleRecordBulkEntity {
                 }
         ));
 		
-        m.add(new SimpleBulkMapping<BulkRemarketingList, Long>(StringTable.AudienceNetworkSize,
-                new Function<BulkRemarketingList, Long>() {
-                    @Override
-                    public Long apply(BulkRemarketingList c) {
-                        return c.getRemarketingList().getAudienceNetworkSize();
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setAudienceNetworkSize(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkRemarketingList, String>(StringTable.SupportedCampaignTypes,
-                new Function<BulkRemarketingList, String>() {
-                    @Override
-                    public String apply(BulkRemarketingList c) {
-                        return StringExtensions.writeArrayOfstring(c.getRemarketingList().getSupportedCampaignTypes(), ";");
-                    }
-                },
-                new BiConsumer<String, BulkRemarketingList>() {
-                    @Override
-                    public void accept(String v, BulkRemarketingList c) {
-                        c.getRemarketingList().setSupportedCampaignTypes(StringExtensions.parseArrayOfString(v));
-                    }
-                }
-        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        this.setRemarketingList(new RemarketingList());
+        super.processMappingsFromRowValues(values);
        
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getRemarketingList(), "RemarketingList");
-        
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
@@ -288,41 +99,19 @@ public class BulkRemarketingList extends SingleRecordBulkEntity {
      * Gets the remarketing list.
      */
     public RemarketingList getRemarketingList() {
-        return this.remarketingList;
+        return this.getAudience();
     }
 
     /**
      * Sets the remarketing list.
      */
     public void setRemarketingList(RemarketingList remarketingList) {
-        this.remarketingList = remarketingList;
+        this.setAudience(remarketingList);
     }
 
-    /**
-     * Gets the status of the remarketing list.
-     *
-     * <p>
-     *     The value is Active if the remarketing list is available in the account's shared library.
-     *     The value is Deleted if the remarketing list is deleted from the library,
-     *     or should be deleted in a subsequent upload operation.
-     *     Corresponds to the 'Status' field in the bulk file.
-     * </p>
-     */
-    public Status getStatus() {
-        return status;
+    @Override
+    public RemarketingList createAudience() {
+        return new RemarketingList();
     }
 
-    /**
-     * Sets the status of the remarketing list.
-     *
-     * <p>
-     *     The value is Active if the remarketing list is available to be associated with an ad group.
-     *     The value is Deleted if the remarketing list is deleted, or should be deleted  
-     *     in a subsequent upload operation.
-     *     Corresponds to the 'Status' field in the bulk file.
-     * </p>
-     */
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

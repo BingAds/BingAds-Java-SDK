@@ -30,6 +30,7 @@ import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetImpressionShareBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
@@ -646,6 +647,14 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                     values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetRoasBiddingScheme.getMaxCpc(), c.getCampaign().getId()));
                                     values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoasBiddingScheme.getTargetRoas()));
                                 }
+                            } else if  (c.getCampaign().getBiddingScheme() instanceof TargetImpressionShareBiddingScheme) {
+                                TargetImpressionShareBiddingScheme targetImpressionShareBiddingScheme = (TargetImpressionShareBiddingScheme)c.getCampaign().getBiddingScheme();
+                                if (targetImpressionShareBiddingScheme != null)
+                                {
+                                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetImpressionShareBiddingScheme.getMaxCpc(), c.getCampaign().getId()));
+                                    values.put(StringTable.BidStrategyTargetAdPosition, StringExtensions.toOptionalBulkString(targetImpressionShareBiddingScheme.getTargetAdPosition(), c.getCampaign().getId()));
+                                    values.put(StringTable.BidStrategyTargetImpressionShare, StringExtensions.toBulkString(targetImpressionShareBiddingScheme.getTargetImpressionShare()));
+                                }
                             }
                         
                         } catch (Exception e) {
@@ -668,12 +677,16 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             String maxCpcRowValue = values.get(StringTable.BidStrategyMaxCpc);
                             String targetCpaRowValue = values.get(StringTable.BidStrategyTargetCpa);
                             String targetRoas = values.get(StringTable.BidStrategyTargetRoas);
+                            String targetAdPositionValue = values.get(StringTable.BidStrategyTargetAdPosition);
+                            String targetImpressionShareRowValue = values.get(StringTable.BidStrategyTargetImpressionShare);
 
 
                             Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
                             Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
                             Double targetRosValue = StringExtensions.nullOrDouble(targetRoas);
-
+                            Double targetImpressionShareValue = StringExtensions.nullOrDouble(targetImpressionShareRowValue);
+                            
+                            
                             if (biddingScheme instanceof MaxClicksBiddingScheme) {
                                 ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                             }
@@ -687,6 +700,11 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             } else if (biddingScheme instanceof TargetRoasBiddingScheme) {
                                 ((TargetRoasBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                                 ((TargetRoasBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
+                            } else if (biddingScheme instanceof TargetImpressionShareBiddingScheme) {
+                                ((TargetImpressionShareBiddingScheme)biddingScheme).setType("TargetImpressionShare");
+                                ((TargetImpressionShareBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetImpressionShare(targetImpressionShareValue);
+                                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetAdPosition(targetAdPositionValue);
                             }
                             
                             c.getCampaign().setBiddingScheme(biddingScheme);

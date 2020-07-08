@@ -131,6 +131,16 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupNegativeCombinedListAssociations"/>
  *     &lt;enumeration value="CampaignCombinedListAssociations"/>
  *     &lt;enumeration value="CampaignNegativeCombinedListAssociations"/>
+ *     &lt;enumeration value="Images"/>
+ *     &lt;enumeration value="CustomerLists"/>
+ *     &lt;enumeration value="AdGroupCustomerListAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeCustomerListAssociations"/>
+ *     &lt;enumeration value="CampaignCustomerListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCustomerListAssociations"/>
+ *     &lt;enumeration value="FilterLinkAdExtensions"/>
+ *     &lt;enumeration value="AccountFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="CampaignFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="AdGroupFilterLinkAdExtensions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -373,7 +383,27 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignCombinedListAssociations")
     CAMPAIGN_COMBINED_LIST_ASSOCIATIONS("CampaignCombinedListAssociations"),
     @XmlEnumValue("CampaignNegativeCombinedListAssociations")
-    CAMPAIGN_NEGATIVE_COMBINED_LIST_ASSOCIATIONS("CampaignNegativeCombinedListAssociations");
+    CAMPAIGN_NEGATIVE_COMBINED_LIST_ASSOCIATIONS("CampaignNegativeCombinedListAssociations"),
+    @XmlEnumValue("Images")
+    IMAGES("Images"),
+    @XmlEnumValue("CustomerLists")
+    CUSTOMER_LISTS("CustomerLists"),
+    @XmlEnumValue("AdGroupCustomerListAssociations")
+    AD_GROUP_CUSTOMER_LIST_ASSOCIATIONS("AdGroupCustomerListAssociations"),
+    @XmlEnumValue("AdGroupNegativeCustomerListAssociations")
+    AD_GROUP_NEGATIVE_CUSTOMER_LIST_ASSOCIATIONS("AdGroupNegativeCustomerListAssociations"),
+    @XmlEnumValue("CampaignCustomerListAssociations")
+    CAMPAIGN_CUSTOMER_LIST_ASSOCIATIONS("CampaignCustomerListAssociations"),
+    @XmlEnumValue("CampaignNegativeCustomerListAssociations")
+    CAMPAIGN_NEGATIVE_CUSTOMER_LIST_ASSOCIATIONS("CampaignNegativeCustomerListAssociations"),
+    @XmlEnumValue("FilterLinkAdExtensions")
+    FILTER_LINK_AD_EXTENSIONS("FilterLinkAdExtensions"),
+    @XmlEnumValue("AccountFilterLinkAdExtensions")
+    ACCOUNT_FILTER_LINK_AD_EXTENSIONS("AccountFilterLinkAdExtensions"),
+    @XmlEnumValue("CampaignFilterLinkAdExtensions")
+    CAMPAIGN_FILTER_LINK_AD_EXTENSIONS("CampaignFilterLinkAdExtensions"),
+    @XmlEnumValue("AdGroupFilterLinkAdExtensions")
+    AD_GROUP_FILTER_LINK_AD_EXTENSIONS("AdGroupFilterLinkAdExtensions");
     private final String value;
 
     DownloadEntity(String v) {

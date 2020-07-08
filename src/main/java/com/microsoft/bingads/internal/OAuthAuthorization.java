@@ -42,7 +42,17 @@ abstract class OAuthAuthorization extends Authentication {
     protected OAuthTokens oAuthTokens;
     
     protected ApiEnvironment environment;
+
+    private String tenant;
+
+    public void setTenant(String tenant) {
+        this.tenant = tenant;
+    }
     
+    public String getTenant() {
+        return this.tenant == null? "common" : this.tenant;
+    }
+        
     /**
      * An opaque value used by the client to maintain state between the request and callback
      * */
