@@ -140,9 +140,7 @@ public class ServiceClient<T> {
             }
         });
 
-        T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
-
-        return port;
+        return serviceFactory.createProxyFromService(service, environment, serviceInterface);
     }
 
     private void refreshOAuthTokensIfNeeded() {
