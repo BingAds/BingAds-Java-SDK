@@ -10,7 +10,13 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkOfflineConversionReadFromRowValueConversionNameTest.class,
         BulkOfflineConversionReadFromRowValueConversionTimeTest.class,
         BulkOfflineConversionReadFromRowValueConversionValueTest.class,
-        BulkOfflineConversionReadFromRowValueMicrosoftClickIdTest.class
+        BulkOfflineConversionReadFromRowValueMicrosoftClickIdTest.class,
+        BulkOfflineConversionReadFromRowValueAdjustmentValueTest.class,
+        BulkOfflineConversionReadFromRowValueAdjustmentTimeTest.class,
+        BulkOfflineConversionReadFromRowValueExternalAttributionCreditTest.class,
+        BulkOfflineConversionReadFromRowValueExternalAttributionModelTest.class,
+        BulkOfflineConversionReadFromRowValueAdjustmentTypeTest.class,
+        BulkOfflineConversionReadFromRowValueAdjustmentCurrencyCodeTest.class
 })
 public class BulkOfflineConversionReadTests {
 

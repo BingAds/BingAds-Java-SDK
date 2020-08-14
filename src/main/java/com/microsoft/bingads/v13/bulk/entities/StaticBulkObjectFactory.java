@@ -134,6 +134,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkImageAdExtension();
             }
         }));
+        m.put(StringTable.FilterLinkAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkFilterLinkAdExtension();
+            }
+        }));
         m.put(StringTable.AccountImageAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -146,10 +152,22 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignImageAdExtension();
             }
         }));
+        m.put(StringTable.CampaignFilterLinkAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignFilterLinkAdExtension();
+            }
+        }));
         m.put(StringTable.AdGroupImageAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAdGroupImageAdExtension();
+            }
+        }));
+        m.put(StringTable.AdGroupFilterLinkAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupFilterLinkAdExtension();
             }
         }));
         m.put(StringTable.LocationAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -162,6 +180,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAccountLocationAdExtension();
+            }
+        }));
+        m.put(StringTable.AccountFilterLinkAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountFilterLinkAdExtension();
             }
         }));
         m.put(StringTable.CampaignLocationAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
@@ -911,6 +935,14 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkFeedItem();
             }
         }));
+        
+        m.put(StringTable.Image, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkImage();
+            }
+        }));
+        
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

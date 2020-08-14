@@ -128,7 +128,18 @@ public class CsvHeaders {
             // Image ad extension
             StringTable.AltText,
             StringTable.MediaIds,
+            
+
+            // Editorial rejection reasons
             StringTable.PublisherCountries,
+            
+            StringTable.Layouts,
+            StringTable.DisplayText,
+            
+            // Filter link ad extension
+            StringTable.AdExtensionHeaderType,
+            StringTable.Texts,
+
 
             // Product target
             StringTable.BingMerchantCenterId,
@@ -271,6 +282,10 @@ public class CsvHeaders {
             StringTable.PriceUnit6,
             StringTable.PriceUnit7,
             StringTable.PriceUnit8,
+            
+            // Image
+            StringTable.Height,
+            StringTable.Width,
 
             // Callout Ad Extension
             StringTable.CalloutText,
@@ -359,6 +374,12 @@ public class CsvHeaders {
             StringTable.ConversionTime,
             StringTable.ConversionValue,
             StringTable.MicrosoftClickId,
+            StringTable.AdjustmentValue,
+            StringTable.AdjustmentTime,
+            StringTable.AdjustmentCurrencyCode,
+            StringTable.AdjustmentType,
+            StringTable.ExternalAttributionCredit,
+            StringTable.ExternalAttributionModel,
             
             // Account
             StringTable.MSCLKIDAutoTaggingEnabled,

@@ -17,7 +17,15 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkAdGroupImageAdExtensionReadFromRowValuesAdGroupNameTest.class,
                 BulkAdGroupImageAdExtensionReadFromRowValuesCampaignNameTest.class,
                 BulkCampaignImageAdExtensionReadFromRowValuesCampaignNameTest.class,
-                BulkImageAdExtensionReadFromRowValuesFusTest.class
+                BulkImageAdExtensionReadFromRowValuesFusTest.class,
+                BulkImageAdExtensionReadFromRowValuesDisplayTextTest.class,
+                BulkImageAdExtensionReadFromRowValuesFinalMobileUrlsTest.class,
+                BulkImageAdExtensionReadFromRowValuesCustomParametersTest.class,
+                BulkImageAdExtensionReadFromRowValuesFinalUrlsTest.class,
+                BulkImageAdExtensionReadFromRowValuesTrackingTemplateTest.class,
+                BulkImageAdExtensionReadFromRowValuesImagesTest.class,
+                BulkImageAdExtensionReadFromRowValuesLayoutsTest.class
+                
         }
 )
 public class BulkImageAdExtensionReadTests {

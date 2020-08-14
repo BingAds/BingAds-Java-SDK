@@ -24,6 +24,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="ConversionName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ConversionTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="ConversionValue" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="ExternalAttributionCredit" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="ExternalAttributionModel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="MicrosoftClickId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -39,6 +41,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "conversionName",
     "conversionTime",
     "conversionValue",
+    "externalAttributionCredit",
+    "externalAttributionModel",
     "microsoftClickId"
 })
 public class OfflineConversion {
@@ -53,6 +57,10 @@ public class OfflineConversion {
     protected Calendar conversionTime;
     @XmlElement(name = "ConversionValue", nillable = true)
     protected Double conversionValue;
+    @XmlElement(name = "ExternalAttributionCredit", nillable = true)
+    protected Double externalAttributionCredit;
+    @XmlElement(name = "ExternalAttributionModel", nillable = true)
+    protected String externalAttributionModel;
     @XmlElement(name = "MicrosoftClickId", nillable = true)
     protected String microsoftClickId;
 
@@ -150,6 +158,54 @@ public class OfflineConversion {
      */
     public void setConversionValue(Double value) {
         this.conversionValue = value;
+    }
+
+    /**
+     * Gets the value of the externalAttributionCredit property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public Double getExternalAttributionCredit() {
+        return externalAttributionCredit;
+    }
+
+    /**
+     * Sets the value of the externalAttributionCredit property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setExternalAttributionCredit(Double value) {
+        this.externalAttributionCredit = value;
+    }
+
+    /**
+     * Gets the value of the externalAttributionModel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExternalAttributionModel() {
+        return externalAttributionModel;
+    }
+
+    /**
+     * Sets the value of the externalAttributionModel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExternalAttributionModel(String value) {
+        this.externalAttributionModel = value;
     }
 
     /**

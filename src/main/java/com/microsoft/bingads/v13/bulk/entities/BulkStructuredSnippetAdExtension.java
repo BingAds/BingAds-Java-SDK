@@ -74,13 +74,13 @@ public class BulkStructuredSnippetAdExtension extends BulkAdExtension<Structured
                 new Function<BulkStructuredSnippetAdExtension, String>() {
                     @Override
                     public String apply(BulkStructuredSnippetAdExtension c) {
-                        return StringExtensions.writeStructuredSnippetValues(";", c.getStructuredSnippetAdExtension().getValues());
+                        return StringExtensions.WriteDelimitedStrings(";", c.getStructuredSnippetAdExtension().getValues());
                     }
                 },
                 new BiConsumer<String, BulkStructuredSnippetAdExtension>() {
                     @Override
                     public void accept(String v, BulkStructuredSnippetAdExtension c) {
-                    	c.getStructuredSnippetAdExtension().setValues(StringExtensions.parseStructuredSnippetValues(v));
+                    	c.getStructuredSnippetAdExtension().setValues(StringExtensions.ParseDelimitedStrings(v));
                     }
                 }
         ));

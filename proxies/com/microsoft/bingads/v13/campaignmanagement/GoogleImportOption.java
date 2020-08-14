@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="NewPausedCampaignsAndChildEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewPriceAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewProductFilters" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="NewPromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewStructuredSnippetAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -90,6 +91,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UpdatePageFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdatePriceAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateProductFilters" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="UpdatePromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateStatusForAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -141,6 +143,7 @@ import javax.xml.bind.annotation.XmlType;
     "newPausedCampaignsAndChildEntities",
     "newPriceAdExtensions",
     "newProductFilters",
+    "newPromotionAdExtensions",
     "newReviewAdExtensions",
     "newSitelinkAdExtensions",
     "newStructuredSnippetAdExtensions",
@@ -181,6 +184,7 @@ import javax.xml.bind.annotation.XmlType;
     "updatePageFeeds",
     "updatePriceAdExtensions",
     "updateProductFilters",
+    "updatePromotionAdExtensions",
     "updateReviewAdExtensions",
     "updateSitelinkAdExtensions",
     "updateStatusForAdGroups",
@@ -260,6 +264,8 @@ public class GoogleImportOption
     protected Boolean newPriceAdExtensions;
     @XmlElement(name = "NewProductFilters", nillable = true)
     protected Boolean newProductFilters;
+    @XmlElement(name = "NewPromotionAdExtensions", nillable = true)
+    protected Boolean newPromotionAdExtensions;
     @XmlElement(name = "NewReviewAdExtensions", nillable = true)
     protected Boolean newReviewAdExtensions;
     @XmlElement(name = "NewSitelinkAdExtensions", nillable = true)
@@ -340,6 +346,8 @@ public class GoogleImportOption
     protected Boolean updatePriceAdExtensions;
     @XmlElement(name = "UpdateProductFilters", nillable = true)
     protected Boolean updateProductFilters;
+    @XmlElement(name = "UpdatePromotionAdExtensions", nillable = true)
+    protected Boolean updatePromotionAdExtensions;
     @XmlElement(name = "UpdateReviewAdExtensions", nillable = true)
     protected Boolean updateReviewAdExtensions;
     @XmlElement(name = "UpdateSitelinkAdExtensions", nillable = true)
@@ -1147,6 +1155,30 @@ public class GoogleImportOption
      */
     public void setNewProductFilters(Boolean value) {
         this.newProductFilters = value;
+    }
+
+    /**
+     * Gets the value of the newPromotionAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewPromotionAdExtensions() {
+        return newPromotionAdExtensions;
+    }
+
+    /**
+     * Sets the value of the newPromotionAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewPromotionAdExtensions(Boolean value) {
+        this.newPromotionAdExtensions = value;
     }
 
     /**
@@ -2107,6 +2139,30 @@ public class GoogleImportOption
      */
     public void setUpdateProductFilters(Boolean value) {
         this.updateProductFilters = value;
+    }
+
+    /**
+     * Gets the value of the updatePromotionAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdatePromotionAdExtensions() {
+        return updatePromotionAdExtensions;
+    }
+
+    /**
+     * Sets the value of the updatePromotionAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdatePromotionAdExtensions(Boolean value) {
+        this.updatePromotionAdExtensions = value;
     }
 
     /**

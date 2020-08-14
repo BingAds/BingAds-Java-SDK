@@ -153,8 +153,22 @@ public class StringTable {
     public static final String AccountImageAdExtension = "Account Image Ad Extension";
     public static final String CampaignImageAdExtension = "Campaign Image Ad Extension";
     public static final String AdGroupImageAdExtension = "Ad Group Image Ad Extension";
+    public static final String Layouts = "Layouts";
+    public static final String DisplayText = "Display Text";
+    
+    // Filter Link ad extension
+    public static final String FilterLinkAdExtension = "Filter Link Ad Extension";
+    public static final String AccountFilterLinkAdExtension = "Account Filter Link Ad Extension";
+    public static final String CampaignFilterLinkAdExtension = "Campaign Filter Link Ad Extension";
+    public static final String AdGroupFilterLinkAdExtension = "Ad Group Filter Link Ad Extension";
+    public static final String AdExtensionHeaderType = "AdExtension Header Type";
+    public static final String Texts = "Texts";
 
-    // Site link ad extensions
+    // Sitelink Ad Extension
+    public static final String SitelinkAdExtension = "Sitelink Ad Extension";
+    public static final String AccountSitelinkAdExtension = "Account Sitelink Ad Extension";
+    public static final String CampaignSitelinkAdExtension = "Campaign Sitelink Ad Extension";
+    public static final String AdGroupSitelinkAdExtension = "Ad Group Sitelink Ad Extension";
     public static final String SiteLinkExtensionOrder = "Sitelink Extension Order";
     public static final String SiteLinkDisplayText = "Sitelink Extension Link Text";
     public static final String SiteLinkDestinationUrl = "Sitelink Extension Destination Url";
@@ -507,12 +521,6 @@ public class StringTable {
     public static final String Path2 = "Path 2";
     public static final String Domain = "Domain";
     
-    // Sitelink2 Ad Extension
-    public static final String SitelinkAdExtension = "Sitelink Ad Extension";
-    public static final String AccountSitelinkAdExtension = "Account Sitelink Ad Extension";
-    public static final String CampaignSitelinkAdExtension = "Campaign Sitelink Ad Extension";
-    public static final String AdGroupSitelinkAdExtension = "Ad Group Sitelink Ad Extension";
-    
     // Ad Extension Schedule
     public static final String AdSchedule = "Ad Schedule";
     
@@ -533,6 +541,11 @@ public class StringTable {
     
     // Responsive Search Ad
     public static final String ResponsiveSearchAd = "Responsive Search Ad";
+    
+    // Image
+    public static final String Image = "Image";
+    public static final String Height = "Height";
+    public static final String Width = "Width";
     
     // Dynamic Search Ad   
     public static final String DynamicSearchAd = "Dynamic Search Ad";
@@ -603,6 +616,13 @@ public class StringTable {
     public static final String ConversionTime = "Conversion Time";
     public static final String ConversionValue = "Conversion Value";
     public static final String MicrosoftClickId = "Microsoft Click Id";
+    public static final String AdjustmentValue = "Adjustment Value";
+    public static final String AdjustmentTime = "Adjustment Time";
+    public static final String AdjustmentCurrencyCode = "Adjustment Currency Code";
+    public static final String AdjustmentType = "Adjustment Type";
+    public static final String ExternalAttributionModel = "External Attribution Model";
+    public static final String ExternalAttributionCredit = "External Attribution Credit";
+
     
     // Account
     public static final String MSCLKIDAutoTaggingEnabled = "MSCLKID Auto Tagging Enabled";

@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ExcludeReportFooter" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ExcludeReportHeader" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="Format" type="{https://bingads.microsoft.com/Reporting/v13}ReportFormat" minOccurs="0"/>
+ *         &lt;element name="FormatVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ReportName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ReturnOnlyCompleteData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
     "excludeReportFooter",
     "excludeReportHeader",
     "format",
+    "formatVersion",
     "reportName",
     "returnOnlyCompleteData"
 })
@@ -88,6 +90,8 @@ public class ReportRequest {
     @XmlElement(name = "Format", nillable = true)
     @XmlSchemaType(name = "string")
     protected ReportFormat format;
+    @XmlElement(name = "FormatVersion", nillable = true)
+    protected String formatVersion;
     @XmlElement(name = "ReportName", nillable = true)
     protected String reportName;
     @XmlElement(name = "ReturnOnlyCompleteData", nillable = true)
@@ -187,6 +191,30 @@ public class ReportRequest {
      */
     public void setFormat(ReportFormat value) {
         this.format = value;
+    }
+
+    /**
+     * Gets the value of the formatVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFormatVersion() {
+        return formatVersion;
+    }
+
+    /**
+     * Sets the value of the formatVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFormatVersion(String value) {
+        this.formatVersion = value;
     }
 
     /**

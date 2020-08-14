@@ -159,6 +159,7 @@ public class ObjectFactory {
     private final static QName _AdExtensionHeaderType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionHeaderType");
     private final static QName _CampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignSize");
     private final static QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignStatus");
+    private final static QName _ArrayOfOfflineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfOfflineConversionAdjustment");
     private final static QName _ArrayOfRuleItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfRuleItem");
     private final static QName _AssetLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetLink");
     private final static QName _ArrayOfAdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdType");
@@ -201,6 +202,7 @@ public class ObjectFactory {
     private final static QName _FileImportOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FileImportOption");
     private final static QName _AdGroupPrivacyStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupPrivacyStatus");
     private final static QName _PriceUnit_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PriceUnit");
+    private final static QName _OfflineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OfflineConversionAdjustment");
     private final static QName _AccountProperty_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountProperty");
     private final static QName _CoOpSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CoOpSetting");
     private final static QName _CriterionBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CriterionBid");
@@ -1782,6 +1784,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfOfflineConversionAdjustment }
+     * 
+     */
+    public ArrayOfOfflineConversionAdjustment createArrayOfOfflineConversionAdjustment() {
+        return new ArrayOfOfflineConversionAdjustment();
+    }
+
+    /**
      * Create an instance of {@link AppealEditorialRejectionsRequest }
      * 
      */
@@ -1931,6 +1941,14 @@ public class ObjectFactory {
      */
     public ArrayOfImportEntityStatistics createArrayOfImportEntityStatistics() {
         return new ArrayOfImportEntityStatistics();
+    }
+
+    /**
+     * Create an instance of {@link ApplyOfflineConversionAdjustmentsRequest }
+     * 
+     */
+    public ApplyOfflineConversionAdjustmentsRequest createApplyOfflineConversionAdjustmentsRequest() {
+        return new ApplyOfflineConversionAdjustmentsRequest();
     }
 
     /**
@@ -2782,6 +2800,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ApplyOfflineConversionAdjustmentsResponse }
+     * 
+     */
+    public ApplyOfflineConversionAdjustmentsResponse createApplyOfflineConversionAdjustmentsResponse() {
+        return new ApplyOfflineConversionAdjustmentsResponse();
+    }
+
+    /**
      * Create an instance of {@link CampaignNegativeSites }
      * 
      */
@@ -3291,6 +3317,14 @@ public class ObjectFactory {
      */
     public GetSharedEntityAssociationsBySharedEntityIdsRequest createGetSharedEntityAssociationsBySharedEntityIdsRequest() {
         return new GetSharedEntityAssociationsBySharedEntityIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link OfflineConversionAdjustment }
+     * 
+     */
+    public OfflineConversionAdjustment createOfflineConversionAdjustment() {
+        return new OfflineConversionAdjustment();
     }
 
     /**
@@ -5439,6 +5473,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOfflineConversionAdjustment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfOfflineConversionAdjustment")
+    public JAXBElement<ArrayOfOfflineConversionAdjustment> createArrayOfOfflineConversionAdjustment(ArrayOfOfflineConversionAdjustment value) {
+        return new JAXBElement<ArrayOfOfflineConversionAdjustment>(_ArrayOfOfflineConversionAdjustment_QNAME, ArrayOfOfflineConversionAdjustment.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRuleItem }{@code >}}
      * 
      */
@@ -5817,6 +5860,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PriceUnit")
     public JAXBElement<PriceUnit> createPriceUnit(PriceUnit value) {
         return new JAXBElement<PriceUnit>(_PriceUnit_QNAME, PriceUnit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OfflineConversionAdjustment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "OfflineConversionAdjustment")
+    public JAXBElement<OfflineConversionAdjustment> createOfflineConversionAdjustment(OfflineConversionAdjustment value) {
+        return new JAXBElement<OfflineConversionAdjustment>(_OfflineConversionAdjustment_QNAME, OfflineConversionAdjustment.class, null, value);
     }
 
     /**

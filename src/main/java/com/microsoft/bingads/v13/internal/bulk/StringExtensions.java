@@ -980,7 +980,7 @@ public class StringExtensions {
         return result.toString();
     }
     
-    public static ArrayOfstring parseStructuredSnippetValues(String v) {
+    public static ArrayOfstring ParseDelimitedStrings(String v) {
     	if (StringExtensions.isNullOrEmpty(v))
     		return null;
     	
@@ -996,7 +996,7 @@ public class StringExtensions {
     	return valueArray;
     }
     
-    public static String writeStructuredSnippetValues(String separator, ArrayOfstring values) {
+    public static String WriteDelimitedStrings(String separator, ArrayOfstring values) {
     	if (values == null || values.getStrings().size() == 0) {
             return null;
         }

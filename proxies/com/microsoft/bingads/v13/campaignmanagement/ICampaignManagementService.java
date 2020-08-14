@@ -753,8 +753,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.AddAdsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAds", action = "AddAds")
     @WebResult(name = "AddAdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -958,8 +958,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateAdsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAds", action = "UpdateAds")
     @WebResult(name = "UpdateAdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -999,8 +999,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.AddKeywordsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddKeywords", action = "AddKeywords")
     @WebResult(name = "AddKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -1204,8 +1204,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateKeywordsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateKeywords", action = "UpdateKeywords")
     @WebResult(name = "UpdateKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -1532,8 +1532,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateAdExtensionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAdExtensions", action = "UpdateAdExtensions")
     @WebResult(name = "UpdateAdExtensionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -1655,8 +1655,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.SetAdExtensionsAssociationsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SetAdExtensionsAssociations", action = "SetAdExtensionsAssociations")
     @WebResult(name = "SetAdExtensionsAssociationsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -2065,8 +2065,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.AddAdGroupCriterionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "AddAdGroupCriterions", action = "AddAdGroupCriterions")
     @WebResult(name = "AddAdGroupCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -2106,8 +2106,8 @@ public interface ICampaignManagementService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateAdGroupCriterionsResponse
-     * @throws EditorialApiFaultDetail_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws EditorialApiFaultDetail_Exception
      */
     @WebMethod(operationName = "UpdateAdGroupCriterions", action = "UpdateAdGroupCriterions")
     @WebResult(name = "UpdateAdGroupCriterionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
@@ -3754,6 +3754,47 @@ public interface ICampaignManagementService {
     public ApplyOfflineConversionsResponse applyOfflineConversions(
         @WebParam(name = "ApplyOfflineConversionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         ApplyOfflineConversionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.ApplyOfflineConversionAdjustmentsResponse>
+     */
+    @WebMethod(operationName = "ApplyOfflineConversionAdjustments", action = "ApplyOfflineConversionAdjustments")
+    public Response<ApplyOfflineConversionAdjustmentsResponse> applyOfflineConversionAdjustmentsAsync(
+        @WebParam(name = "ApplyOfflineConversionAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyOfflineConversionAdjustmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "ApplyOfflineConversionAdjustments", action = "ApplyOfflineConversionAdjustments")
+    public Future<?> applyOfflineConversionAdjustmentsAsync(
+        @WebParam(name = "ApplyOfflineConversionAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyOfflineConversionAdjustmentsRequest parameters,
+        @WebParam(name = "ApplyOfflineConversionAdjustmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<ApplyOfflineConversionAdjustmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.ApplyOfflineConversionAdjustmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "ApplyOfflineConversionAdjustments", action = "ApplyOfflineConversionAdjustments")
+    @WebResult(name = "ApplyOfflineConversionAdjustmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public ApplyOfflineConversionAdjustmentsResponse applyOfflineConversionAdjustments(
+        @WebParam(name = "ApplyOfflineConversionAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyOfflineConversionAdjustmentsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

@@ -12,6 +12,13 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkImageAdExtensionWriteFromRowValuesMediaIdTest.class,
     BulkImageAdExtensionWriteFromRowValuesStatusTest.class,
     BulkImageAdExtensionWriteToRowValuesFusTest.class,
+    BulkImageAdExtensionWriteToRowValuesFinalUrlsTest.class,
+    BulkImageAdExtensionWriteToRowValuesTrackingTemplateTest.class,
+    BulkImageAdExtensionWriteToRowValuesUrlCustomParameters.class,
+    BulkImageAdExtensionWriteToRowValuesDisplayTextTest.class,
+    BulkImageAdExtensionWriteFromRowValuesImageTest.class,
+    BulkImageAdExtensionWriteToRowValuesLayoutsTest.class,
+    BulkImageAdExtensionWriteToRowValuesFinalMobileUrlsTest.class
     })
 public class BulkImageAdExtensionWriteTests {
 

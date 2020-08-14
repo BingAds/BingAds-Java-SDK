@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="ImportType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="PageInfo" type="{https://bingads.microsoft.com/CampaignManagement/v13}Paging" minOccurs="0"/>
+ *         &lt;element name="ImportJobIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "importType",
-    "pageInfo"
+    "pageInfo",
+    "importJobIds"
 })
 @XmlRootElement(name = "GetImportResultsRequest")
 public class GetImportResultsRequest {
@@ -40,6 +42,8 @@ public class GetImportResultsRequest {
     protected String importType;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
+    @XmlElement(name = "ImportJobIds", nillable = true)
+    protected ArrayOflong importJobIds;
 
     /**
      * Gets the value of the importType property.
@@ -87,6 +91,30 @@ public class GetImportResultsRequest {
      */
     public void setPageInfo(Paging value) {
         this.pageInfo = value;
+    }
+
+    /**
+     * Gets the value of the importJobIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getImportJobIds() {
+        return importJobIds;
+    }
+
+    /**
+     * Sets the value of the importJobIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setImportJobIds(ArrayOflong value) {
+        this.importJobIds = value;
     }
 
 }

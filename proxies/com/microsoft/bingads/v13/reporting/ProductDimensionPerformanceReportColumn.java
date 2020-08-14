@@ -91,6 +91,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ViewThroughConversions"/>
  *     &lt;enumeration value="Goal"/>
  *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="ProductBought"/>
+ *     &lt;enumeration value="QuantityBought"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -253,7 +255,11 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("Goal")
     GOAL("Goal"),
     @XmlEnumValue("GoalType")
-    GOAL_TYPE("GoalType");
+    GOAL_TYPE("GoalType"),
+    @XmlEnumValue("ProductBought")
+    PRODUCT_BOUGHT("ProductBought"),
+    @XmlEnumValue("QuantityBought")
+    QUANTITY_BOUGHT("QuantityBought");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

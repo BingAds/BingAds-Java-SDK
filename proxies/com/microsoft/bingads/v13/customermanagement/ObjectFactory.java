@@ -839,6 +839,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UserInvitation }
+     * 
+     */
+    public UserInvitation createUserInvitation() {
+        return new UserInvitation();
+    }
+
+    /**
      * Create an instance of {@link GetAccountsInfoRequest }
      * 
      */
@@ -892,14 +900,6 @@ public class ObjectFactory {
      */
     public SendUserInvitationRequest createSendUserInvitationRequest() {
         return new SendUserInvitationRequest();
-    }
-
-    /**
-     * Create an instance of {@link UserInvitation }
-     * 
-     */
-    public UserInvitation createUserInvitation() {
-        return new UserInvitation();
     }
 
     /**

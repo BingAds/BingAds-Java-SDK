@@ -25,7 +25,7 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  *
  * <p>
  * Properties of this class and of classes that it is derived from, correspond to fields of the Budget record in a bulk file.
- * For more information, see Account at
+ * For more information, see Budget at
  * <a href="https://go.microsoft.com/fwlink/?linkid=846127">https://go.microsoft.com/fwlink/?linkid=846127</a>.
  * </p>
  *
