@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;simpleType name="BMCStoreSubType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="CoOp"/>
+ *     &lt;enumeration value="GlobalStore"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -25,7 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 public enum BMCStoreSubType {
 
     @XmlEnumValue("CoOp")
-    CO_OP("CoOp");
+    CO_OP("CoOp"),
+    @XmlEnumValue("GlobalStore")
+    GLOBAL_STORE("GlobalStore");
     private final String value;
 
     BMCStoreSubType(String v) {

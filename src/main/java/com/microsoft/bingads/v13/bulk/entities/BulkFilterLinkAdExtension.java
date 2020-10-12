@@ -188,6 +188,21 @@ public class BulkFilterLinkAdExtension extends BulkAdExtension<FilterLinkAdExten
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkFilterLinkAdExtension, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkFilterLinkAdExtension, String>() {
+                    @Override
+                    public String apply(BulkFilterLinkAdExtension c) {
+                        return StringExtensions.toOptionalBulkString(c.getAdExtension().getFinalUrlSuffix(), c.getAdExtension().getId());
+                    }
+                },
+                new BiConsumer<String, BulkFilterLinkAdExtension>() {
+                    @Override
+                    public void accept(String v, BulkFilterLinkAdExtension c) {
+                        c.getAdExtension().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                }
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
     }

@@ -51,6 +51,7 @@ public class StringTable {
     		
     public static final String AdGroup = "Ad Group";
     public static final String Keyword = "Keyword";
+    public static final String AdGroupType = "Ad Group Type";
 
     public static final String TextAd = "Text Ad";
     public static final String ProductAd = "Product Ad";

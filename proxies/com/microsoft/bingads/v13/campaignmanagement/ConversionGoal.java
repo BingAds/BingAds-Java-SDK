@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="ConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="CountType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCountType" minOccurs="0"/>
  *         &lt;element name="ExcludeFromBidding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="GoalCategory" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCategory" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Revenue" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalRevenue" minOccurs="0"/>
@@ -46,6 +47,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "conversionWindowInMinutes",
     "countType",
     "excludeFromBidding",
+    "goalCategory",
     "id",
     "name",
     "revenue",
@@ -74,6 +76,9 @@ public class ConversionGoal {
     protected ConversionGoalCountType countType;
     @XmlElement(name = "ExcludeFromBidding", nillable = true)
     protected Boolean excludeFromBidding;
+    @XmlElement(name = "GoalCategory", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected ConversionGoalCategory goalCategory;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Name", nillable = true)
@@ -92,7 +97,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;
@@ -167,6 +172,30 @@ public class ConversionGoal {
      */
     public void setExcludeFromBidding(Boolean value) {
         this.excludeFromBidding = value;
+    }
+
+    /**
+     * Gets the value of the goalCategory property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ConversionGoalCategory }
+     *     
+     */
+    public ConversionGoalCategory getGoalCategory() {
+        return goalCategory;
+    }
+
+    /**
+     * Sets the value of the goalCategory property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ConversionGoalCategory }
+     *     
+     */
+    public void setGoalCategory(ConversionGoalCategory value) {
+        this.goalCategory = value;
     }
 
     /**

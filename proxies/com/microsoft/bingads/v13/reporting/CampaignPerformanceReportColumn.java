@@ -100,6 +100,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AudienceImpressionSharePercent"/>
  *     &lt;enumeration value="AudienceImpressionLostToRankPercent"/>
  *     &lt;enumeration value="AudienceImpressionLostToBudgetPercent"/>
+ *     &lt;enumeration value="RelativeCtr"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -280,7 +281,9 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("AudienceImpressionLostToRankPercent")
     AUDIENCE_IMPRESSION_LOST_TO_RANK_PERCENT("AudienceImpressionLostToRankPercent"),
     @XmlEnumValue("AudienceImpressionLostToBudgetPercent")
-    AUDIENCE_IMPRESSION_LOST_TO_BUDGET_PERCENT("AudienceImpressionLostToBudgetPercent");
+    AUDIENCE_IMPRESSION_LOST_TO_BUDGET_PERCENT("AudienceImpressionLostToBudgetPercent"),
+    @XmlEnumValue("RelativeCtr")
+    RELATIVE_CTR("RelativeCtr");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

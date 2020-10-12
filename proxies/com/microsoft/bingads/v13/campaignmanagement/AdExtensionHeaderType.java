@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="What"/>
  *     &lt;enumeration value="Who"/>
  *     &lt;enumeration value="Why"/>
+ *     &lt;enumeration value="Deals"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -130,7 +131,9 @@ public enum AdExtensionHeaderType {
     @XmlEnumValue("Who")
     WHO("Who"),
     @XmlEnumValue("Why")
-    WHY("Why");
+    WHY("Why"),
+    @XmlEnumValue("Deals")
+    DEALS("Deals");
     private final String value;
 
     AdExtensionHeaderType(String v) {

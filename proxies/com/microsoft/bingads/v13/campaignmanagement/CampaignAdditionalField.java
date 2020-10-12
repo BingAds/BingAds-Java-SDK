@@ -7,7 +7,8 @@ public enum CampaignAdditionalField {
 
     AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
     MAX_CONVERSION_VALUE_BIDDING_SCHEME("MaxConversionValueBiddingScheme"),
-    TARGET_IMPRESSION_SHARE_BIDDING_SCHEME("TargetImpressionShareBiddingScheme");
+    TARGET_IMPRESSION_SHARE_BIDDING_SCHEME("TargetImpressionShareBiddingScheme"),
+    TARGET_SETTING("TargetSetting");
         
     private final String value;
 

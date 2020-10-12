@@ -41,7 +41,7 @@ public class AudienceCriterion
     @XmlElement(name = "AudienceId", nillable = true)
     protected Long audienceId;
     @XmlElement(name = "AudienceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Collection<AudienceType> audienceType;
 
     /**

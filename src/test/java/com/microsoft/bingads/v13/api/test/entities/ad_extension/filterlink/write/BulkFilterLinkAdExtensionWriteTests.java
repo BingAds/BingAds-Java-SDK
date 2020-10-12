@@ -11,7 +11,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkFilterLinkAdExtensionWriteToRowValuesFinalUrlsTest.class,
     BulkFilterLinkAdExtensionWriteToRowValuesTrackingTemplateTest.class,
     BulkFilterLinkAdExtensionWriteToRowValuesFinalMobileUrlsTest.class,
-    BulkFilterLinkAdExtensionWriteFromRowValuesAdExtensionHeaderTypeTest.class
+    BulkFilterLinkAdExtensionWriteFromRowValuesAdExtensionHeaderTypeTest.class,
+    BulkFilterLinkAdExtensionWriteToRowValuesFusTest.class
     })
 public class BulkFilterLinkAdExtensionWriteTests {
 

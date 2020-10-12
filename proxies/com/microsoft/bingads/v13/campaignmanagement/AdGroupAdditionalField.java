@@ -5,7 +5,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum AdGroupAdditionalField {
 
-    AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone");
+    AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
+    AD_GROUP_TYPE("AdGroupType");
         
     private final String value;
 

@@ -41,6 +41,7 @@ public class CsvHeaders {
             StringTable.ContentBid,
             StringTable.Language,
             StringTable.PrivacyStatus,
+            StringTable.AdGroupType,
 
             // Ads
             StringTable.Title,

@@ -106,15 +106,14 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         Setting setting = null;
         switch (campaignType) {
         case SEARCH:
+        case DYNAMIC_SEARCH_ADS:
+            setting = new DynamicSearchAdsSetting();
+            setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
             break;
         case SHOPPING:
         case AUDIENCE:
             setting = new ShoppingSetting();
             setting.setType(ShoppingSetting.class.getSimpleName());
-            break;
-        case DYNAMIC_SEARCH_ADS:
-            setting = new DynamicSearchAdsSetting();
-            setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
             break;
         }
         if (setting != null) {
@@ -938,7 +937,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                             return null;
                         }
 
-                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getCampaign().getAdScheduleUseSearcherTimeZone(), t.getCampaign().getId());
+                        return StringExtensions.toUseSearcherTimeZoneBulkString(t.getCampaign().getAdScheduleUseSearcherTimeZone(), null);
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {

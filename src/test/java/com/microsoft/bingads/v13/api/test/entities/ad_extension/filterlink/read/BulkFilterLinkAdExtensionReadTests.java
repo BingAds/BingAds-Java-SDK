@@ -12,6 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
                 BulkFilterLinkAdExtensionReadFromRowValuesFinalUrlsTest.class,
                 BulkFilterLinkAdExtensionReadFromRowValuesTrackingTemplateTest.class,
                 BulkFilterLinkAdExtensionReadFromRowValuesTextsTest.class,
+                BulkFilterLinkAdExtensionReadFromRowValuesFusTest.class
                 
         }
 )

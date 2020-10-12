@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum ConversionGoalAdditionalField {
 
     VIEW_THROUGH_CONVERSION_WINDOW_IN_MINUTES("ViewThroughConversionWindowInMinutes"),
-    IS_EXTERNALLY_ATTRIBUTED("IsExternallyAttributed");
+    IS_EXTERNALLY_ATTRIBUTED("IsExternallyAttributed"),
+    GOAL_CATEGORY("GoalCategory");
         
     private final String value;
 

@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ImportType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="PageInfo" type="{https://bingads.microsoft.com/CampaignManagement/v13}Paging" minOccurs="0"/>
  *         &lt;element name="ImportJobIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "importType",
     "pageInfo",
-    "importJobIds"
+    "importJobIds",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetImportResultsRequest")
 public class GetImportResultsRequest {
@@ -44,6 +48,9 @@ public class GetImportResultsRequest {
     protected Paging pageInfo;
     @XmlElement(name = "ImportJobIds", nillable = true)
     protected ArrayOflong importJobIds;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter15 .class)
+    protected Collection<ImportAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the importType property.
@@ -115,6 +122,30 @@ public class GetImportResultsRequest {
      */
     public void setImportJobIds(ArrayOflong value) {
         this.importJobIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<ImportAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<ImportAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

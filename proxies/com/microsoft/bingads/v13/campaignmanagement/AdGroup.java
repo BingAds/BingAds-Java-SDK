@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -63,7 +64,8 @@ import javax.xml.bind.annotation.XmlType;
     "status",
     "trackingUrlTemplate",
     "urlCustomParameters",
-    "adScheduleUseSearcherTimeZone"
+    "adScheduleUseSearcherTimeZone",
+    "adGroupType"
 })
 public class AdGroup {
 
@@ -106,6 +108,8 @@ public class AdGroup {
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
     protected Boolean adScheduleUseSearcherTimeZone;
+    @XmlElement(name = "AdGroupType", nillable = true)
+    protected String adGroupType;
 
     /**
      * Gets the value of the adRotation property.
@@ -537,6 +541,30 @@ public class AdGroup {
      */
     public void setAdScheduleUseSearcherTimeZone(Boolean value) {
         this.adScheduleUseSearcherTimeZone = value;
+    }
+
+    /**
+     * Gets the value of the adGroupType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdGroupType() {
+        return adGroupType;
+    }
+
+    /**
+     * Sets the value of the adGroupType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdGroupType(String value) {
+        this.adGroupType = value;
     }
 
 }
