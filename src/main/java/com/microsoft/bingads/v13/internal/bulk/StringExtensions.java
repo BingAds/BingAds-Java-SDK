@@ -100,7 +100,7 @@ public class StringExtensions {
     private static final Pattern operandPattern = Pattern.compile("^(Category|Action|Label|Value) ([^()]*)$");
 	private static final Pattern stringOperatorPattern = Pattern.compile("^(Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
 	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
-    private static final Pattern logicalOperatorPattern = Pattern.compile("^(And|Or|Not)\\((.*?)\\)$");
+    private static final Pattern logicalOperatorPattern = Pattern.compile("^(And|Or|Not)\\((.*?)\\)$", Pattern.CASE_INSENSITIVE);
 
     public static String toKeywordBidBulkString(Bid bid, Long id) {
         if (bid == null) {
@@ -1177,7 +1177,16 @@ public class StringExtensions {
             return null;
         }
         
-        return LogicalOperator.fromValue(strOperator);
+        switch(strOperator.toLowerCase()) {
+        case "or":
+            return LogicalOperator.OR;
+        case "and":
+            return LogicalOperator.AND;
+        case "not":
+            return LogicalOperator.NOT;
+        }
+        
+        return null;
     }
 
     public static String toRemarketingRuleBulkString(RemarketingRule remarketingRule) {
