@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="BusinessAddress" type="{https://bingads.microsoft.com/Customer/v13/Entities}Address" minOccurs="0"/>
  *         &lt;element name="AutoTagType" type="{https://bingads.microsoft.com/Customer/v13/Entities}AutoTagType" minOccurs="0"/>
  *         &lt;element name="SoldToPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="TaxCertificate" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountTaxCertificate" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -82,7 +83,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "billingThresholdAmount",
     "businessAddress",
     "autoTagType",
-    "soldToPaymentInstrumentId"
+    "soldToPaymentInstrumentId",
+    "taxCertificate"
 })
 public class AdvertiserAccount {
 
@@ -148,6 +150,8 @@ public class AdvertiserAccount {
     protected AutoTagType autoTagType;
     @XmlElement(name = "SoldToPaymentInstrumentId", nillable = true)
     protected Long soldToPaymentInstrumentId;
+    @XmlElement(name = "TaxCertificate", nillable = true)
+    protected AccountTaxCertificate taxCertificate;
 
     /**
      * Gets the value of the billToCustomerId property.
@@ -769,6 +773,30 @@ public class AdvertiserAccount {
      */
     public void setSoldToPaymentInstrumentId(Long value) {
         this.soldToPaymentInstrumentId = value;
+    }
+
+    /**
+     * Gets the value of the taxCertificate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AccountTaxCertificate }
+     *     
+     */
+    public AccountTaxCertificate getTaxCertificate() {
+        return taxCertificate;
+    }
+
+    /**
+     * Sets the value of the taxCertificate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AccountTaxCertificate }
+     *     
+     */
+    public void setTaxCertificate(AccountTaxCertificate value) {
+        this.taxCertificate = value;
     }
 
 }

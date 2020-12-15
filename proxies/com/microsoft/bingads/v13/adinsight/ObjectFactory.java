@@ -136,6 +136,7 @@ public class ObjectFactory {
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _SearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SearchParameter");
     private final static QName _SearchVolumeSearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SearchVolumeSearchParameter");
+    private final static QName _AuctionInsightKpiAdditionalField_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AuctionInsightKpiAdditionalField");
     private final static QName _KeywordEstimatedPosition_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordEstimatedPosition");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _CampaignEstimate_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignEstimate");
@@ -2537,7 +2538,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "BidOpportunityType")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     public JAXBElement<Collection<BidOpportunityType>> createBidOpportunityType(Collection<BidOpportunityType> value) {
         return new JAXBElement<Collection<BidOpportunityType>>(_BidOpportunityType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -2711,6 +2712,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SearchVolumeSearchParameter")
     public JAXBElement<SearchVolumeSearchParameter> createSearchVolumeSearchParameter(SearchVolumeSearchParameter value) {
         return new JAXBElement<SearchVolumeSearchParameter>(_SearchVolumeSearchParameter_QNAME, SearchVolumeSearchParameter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AuctionInsightKpiAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "AuctionInsightKpiAdditionalField")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<AuctionInsightKpiAdditionalField>> createAuctionInsightKpiAdditionalField(Collection<AuctionInsightKpiAdditionalField> value) {
+        return new JAXBElement<Collection<AuctionInsightKpiAdditionalField>>(_AuctionInsightKpiAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -3169,7 +3180,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "KeywordOpportunityType")
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     public JAXBElement<Collection<KeywordOpportunityType>> createKeywordOpportunityType(Collection<KeywordOpportunityType> value) {
         return new JAXBElement<Collection<KeywordOpportunityType>>(_KeywordOpportunityType_QNAME, ((Class) Collection.class), null, value);
     }

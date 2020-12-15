@@ -45,7 +45,7 @@ public class GetKeywordOpportunitiesRequest {
     @XmlElement(name = "CampaignId", nillable = true)
     protected Long campaignId;
     @XmlElement(name = "OpportunityType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<KeywordOpportunityType> opportunityType;
 
     /**

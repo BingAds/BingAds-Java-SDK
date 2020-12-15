@@ -11,6 +11,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.AdType;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.CallToAction;
 import com.microsoft.bingads.v13.campaignmanagement.ResponsiveAd;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
@@ -136,6 +137,29 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                     @Override
                     public void accept(String v, BulkResponsiveAd c) {
                         c.getAd().setText(v);
+                    }
+                }
+        ));
+        
+
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.ImpressionTrackingUrls,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.writeUrls("; ", c.getAd().getImpressionTrackingUrls(), c.getAd().getId());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        ArrayOfstring urls = new ArrayOfstring();
+                        List<String> urlArray = StringExtensions.parseUrls(v);
+                        if(urlArray == null) {
+                            urls = null;
+                        } else {
+                            urls.getStrings().addAll(urlArray);
+                        }
+                        c.getAd().setImpressionTrackingUrls(urls);
                     }
                 }
         ));

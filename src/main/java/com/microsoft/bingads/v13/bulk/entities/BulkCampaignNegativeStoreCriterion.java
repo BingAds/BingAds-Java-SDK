@@ -117,7 +117,7 @@ public class BulkCampaignNegativeStoreCriterion extends SingleRecordBulkEntity {
         ));
         
 
-        m.add(new SimpleBulkMapping<BulkCampaignNegativeStoreCriterion, Long>(StringTable.BingMerchantCenterId,
+        m.add(new SimpleBulkMapping<BulkCampaignNegativeStoreCriterion, Long>(StringTable.MerchantCenterId,
                 new Function<BulkCampaignNegativeStoreCriterion, Long>() {
                     @Override
                     public Long apply(BulkCampaignNegativeStoreCriterion c) {

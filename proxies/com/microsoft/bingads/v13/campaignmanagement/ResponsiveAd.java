@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Headline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Headlines" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         &lt;element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
+ *         &lt;element name="ImpressionTrackingUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="LongHeadline" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetLink" minOccurs="0"/>
  *         &lt;element name="LongHeadlineString" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
     "headline",
     "headlines",
     "images",
+    "impressionTrackingUrls",
     "longHeadline",
     "longHeadlineString",
     "text"
@@ -64,6 +66,8 @@ public class ResponsiveAd
     protected ArrayOfAssetLink headlines;
     @XmlElement(name = "Images", nillable = true)
     protected ArrayOfAssetLink images;
+    @XmlElement(name = "ImpressionTrackingUrls", nillable = true)
+    protected ArrayOfstring impressionTrackingUrls;
     @XmlElement(name = "LongHeadline", nillable = true)
     protected AssetLink longHeadline;
     @XmlElement(name = "LongHeadlineString", nillable = true)
@@ -213,6 +217,30 @@ public class ResponsiveAd
      */
     public void setImages(ArrayOfAssetLink value) {
         this.images = value;
+    }
+
+    /**
+     * Gets the value of the impressionTrackingUrls property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getImpressionTrackingUrls() {
+        return impressionTrackingUrls;
+    }
+
+    /**
+     * Sets the value of the impressionTrackingUrls property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setImpressionTrackingUrls(ArrayOfstring value) {
+        this.impressionTrackingUrls = value;
     }
 
     /**

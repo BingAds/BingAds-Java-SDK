@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AdjustmentForCampaignBudgets" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="AssociatedStoreId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="AssociatedUetTagId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="AutoDeviceBidOptimization" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="DeleteRemovedEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="EnableAutoCurrencyConversion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -115,6 +116,7 @@ import javax.xml.bind.annotation.XmlType;
     "adjustmentForCampaignBudgets",
     "associatedStoreId",
     "associatedUetTagId",
+    "autoDeviceBidOptimization",
     "deleteRemovedEntities",
     "enableAutoCurrencyConversion",
     "enableParentLocationMapping",
@@ -208,6 +210,8 @@ public class GoogleImportOption
     protected Long associatedStoreId;
     @XmlElement(name = "AssociatedUetTagId", nillable = true)
     protected Long associatedUetTagId;
+    @XmlElement(name = "AutoDeviceBidOptimization", nillable = true)
+    protected Boolean autoDeviceBidOptimization;
     @XmlElement(name = "DeleteRemovedEntities", nillable = true)
     protected Boolean deleteRemovedEntities;
     @XmlElement(name = "EnableAutoCurrencyConversion", nillable = true)
@@ -483,6 +487,30 @@ public class GoogleImportOption
      */
     public void setAssociatedUetTagId(Long value) {
         this.associatedUetTagId = value;
+    }
+
+    /**
+     * Gets the value of the autoDeviceBidOptimization property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getAutoDeviceBidOptimization() {
+        return autoDeviceBidOptimization;
+    }
+
+    /**
+     * Sets the value of the autoDeviceBidOptimization property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAutoDeviceBidOptimization(Boolean value) {
+        this.autoDeviceBidOptimization = value;
     }
 
     /**

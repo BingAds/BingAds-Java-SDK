@@ -198,6 +198,14 @@ public class StringTable {
     public static final String CampaignCallAdExtension = "Campaign Call Ad Extension";
     public static final String IsCallTrackingEnabled = "Call Tracking Enabled";
     public static final String RequireTollFreeTrackingNumber = "Toll Free";
+    
+    // Flyer Ad Extension
+    public static final String FlyerAdExtension = "Flyer Ad Extension";
+    public static final String AccountFlyerAdExtension = "Account Flyer Ad Extension";
+    public static final String CampaignFlyerAdExtension = "Campaign Flyer Ad Extension";
+    public static final String AdGroupFlyerAdExtension = "Ad Group Flyer Ad Extension";
+    public static final String FlyerName = "Flyer Name";
+    public static final String MediaUrls = "Media Urls";
 
     // Editorial rejection reasons
     public static final String PublisherCountries = "Publisher Countries";
@@ -230,8 +238,7 @@ public class StringTable {
     public static final String ProductValue6 = "Product Value 6";
     public static final String ProductValue7 = "Product Value 7";
     public static final String ProductValue8 = "Product Value 8";
-    public static final String BingMerchantCenterId = "Store Id";
-    public static final String BingMerchantCenterName = "Store Name";
+    public static final String MerchantCenterId = "Store Id";
 
     // App Ad Extension
     public static final String AppAdExtension = "App Ad Extension";
@@ -539,6 +546,7 @@ public class StringTable {
     public static final String LongHeadline = "Long Headline";
     public static final String SquareImageMediaId = "Square Image Media Id";
     public static final String SquareLogoMediaId = "Square Logo Media Id";
+    public static final String ImpressionTrackingUrls = "Impression Tracking Urls";
     
     // Responsive Search Ad
     public static final String ResponsiveSearchAd = "Responsive Search Ad";

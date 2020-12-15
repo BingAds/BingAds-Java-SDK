@@ -33,7 +33,7 @@ public class BulkCombinedListWriteToRowValuesCombinationRuleTest extends BulkCom
         // These data are hard-coded into the class, but they could be
         // generated or loaded in any way you like.
         return Arrays.asList(new Object[][]{
-            {"And(1,2,3)", "And(1,2,3)"},
+            {"And(4)&Or(1,2,3)&Not(5)", "AND(4)&Or(1,2,3)&not(5)"},
             {null, ""},
             {null, null}
         });

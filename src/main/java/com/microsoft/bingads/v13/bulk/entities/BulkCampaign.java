@@ -390,7 +390,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
 
-        m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.BingMerchantCenterId,
+        m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.MerchantCenterId,
                 new Function<BulkCampaign, Long>() {
                     @Override
                     public Long apply(BulkCampaign c) {

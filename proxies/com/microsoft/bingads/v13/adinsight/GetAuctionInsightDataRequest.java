@@ -1,12 +1,14 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
+import java.util.Collection;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -22,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="EntityType" type="{https://bingads.microsoft.com/AdInsight/v13}EntityType" minOccurs="0"/>
  *         &lt;element name="EntityIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="SearchParameters" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfSearchParameter" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/AdInsight/v13}AuctionInsightKpiAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +37,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "entityType",
     "entityIds",
-    "searchParameters"
+    "searchParameters",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAuctionInsightDataRequest")
 public class GetAuctionInsightDataRequest {
@@ -46,6 +50,9 @@ public class GetAuctionInsightDataRequest {
     protected ArrayOflong entityIds;
     @XmlElement(name = "SearchParameters", nillable = true)
     protected ArrayOfSearchParameter searchParameters;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Collection<AuctionInsightKpiAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the entityType property.
@@ -117,6 +124,30 @@ public class GetAuctionInsightDataRequest {
      */
     public void setSearchParameters(ArrayOfSearchParameter value) {
         this.searchParameters = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AuctionInsightKpiAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AuctionInsightKpiAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.microsoft.bingads.internal;
 
-import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +21,6 @@ import org.apache.http.message.BasicNameValuePair;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.wsdl.util.StringUtils;
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.OAuthErrorDetails;

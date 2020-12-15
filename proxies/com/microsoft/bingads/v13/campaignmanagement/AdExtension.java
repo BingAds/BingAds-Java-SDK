@@ -49,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
     CallAdExtension.class,
     ImageAdExtension.class,
     FilterLinkAdExtension.class,
+    FlyerAdExtension.class,
     LocationAdExtension.class,
     StructuredSnippetAdExtension.class,
     PromotionAdExtension.class,

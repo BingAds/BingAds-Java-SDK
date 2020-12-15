@@ -3,6 +3,7 @@ package com.microsoft.bingads.v13.customermanagement;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Collection;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -35,6 +36,8 @@ public class ObjectFactory {
     private final static QName _ContactInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ContactInfo");
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
     private final static QName _UserInvitation_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "UserInvitation");
+    private final static QName _ArrayOfKeyValuePairOfstringbase64Binary_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringbase64Binary");
+    private final static QName _AccountTaxCertificate_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AccountTaxCertificate");
     private final static QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private final static QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Customer/v13", "AuthenticationToken");
     private final static QName _ClientLink_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ClientLink");
@@ -61,6 +64,7 @@ public class ObjectFactory {
     private final static QName _CustomerInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CustomerInfo");
     private final static QName _ClientLinkStatus_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ClientLinkStatus");
     private final static QName _ApiFault_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "ApiFault");
+    private final static QName _AccountAdditionalField_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AccountAdditionalField");
     private final static QName _PaymentMethodType_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "PaymentMethodType");
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _ArrayOfArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "ArrayOfArrayOfOperationError");
@@ -84,6 +88,7 @@ public class ObjectFactory {
     private final static QName _AdvertiserAccount_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AdvertiserAccount");
     private final static QName _Password_QNAME = new QName("https://bingads.microsoft.com/Customer/v13", "Password");
     private final static QName _AccountInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AccountInfo");
+    private final static QName _KeyValuePairOfstringbase64Binary_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringbase64Binary");
     private final static QName _ServiceLevel_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ServiceLevel");
     private final static QName _AccountInfoWithCustomerData_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AccountInfoWithCustomerData");
     private final static QName _User_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "User");
@@ -113,6 +118,7 @@ public class ObjectFactory {
     private final static QName _PersonName_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "PersonName");
     private final static QName _PilotFeature_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "PilotFeature");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
+    private final static QName _TaxCertificateStatus_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "TaxCertificateStatus");
     private final static QName _SortOrder_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "SortOrder");
     private final static QName _CustomerFinancialStatus_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CustomerFinancialStatus");
     private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
@@ -1039,6 +1045,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AccountTaxCertificate }
+     * 
+     */
+    public AccountTaxCertificate createAccountTaxCertificate() {
+        return new AccountTaxCertificate();
+    }
+
+    /**
      * Create an instance of {@link CustomerInfo }
      * 
      */
@@ -1100,6 +1114,22 @@ public class ObjectFactory {
      */
     public PilotFeature createPilotFeature() {
         return new PilotFeature();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeyValuePairOfstringbase64Binary }
+     * 
+     */
+    public ArrayOfKeyValuePairOfstringbase64Binary createArrayOfKeyValuePairOfstringbase64Binary() {
+        return new ArrayOfKeyValuePairOfstringbase64Binary();
+    }
+
+    /**
+     * Create an instance of {@link KeyValuePairOfstringbase64Binary }
+     * 
+     */
+    public KeyValuePairOfstringbase64Binary createKeyValuePairOfstringbase64Binary() {
+        return new KeyValuePairOfstringbase64Binary();
     }
 
     /**
@@ -1252,6 +1282,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "UserInvitation")
     public JAXBElement<UserInvitation> createUserInvitation(UserInvitation value) {
         return new JAXBElement<UserInvitation>(_UserInvitation_QNAME, UserInvitation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOfstringbase64Binary }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "ArrayOfKeyValuePairOfstringbase64Binary")
+    public JAXBElement<ArrayOfKeyValuePairOfstringbase64Binary> createArrayOfKeyValuePairOfstringbase64Binary(ArrayOfKeyValuePairOfstringbase64Binary value) {
+        return new JAXBElement<ArrayOfKeyValuePairOfstringbase64Binary>(_ArrayOfKeyValuePairOfstringbase64Binary_QNAME, ArrayOfKeyValuePairOfstringbase64Binary.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountTaxCertificate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "AccountTaxCertificate")
+    public JAXBElement<AccountTaxCertificate> createAccountTaxCertificate(AccountTaxCertificate value) {
+        return new JAXBElement<AccountTaxCertificate>(_AccountTaxCertificate_QNAME, AccountTaxCertificate.class, null, value);
     }
 
     /**
@@ -1490,6 +1538,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AccountAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "AccountAdditionalField")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<AccountAdditionalField>> createAccountAdditionalField(Collection<AccountAdditionalField> value) {
+        return new JAXBElement<Collection<AccountAdditionalField>>(_AccountAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PaymentMethodType }{@code >}}
      * 
      */
@@ -1694,6 +1752,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "AccountInfo")
     public JAXBElement<AccountInfo> createAccountInfo(AccountInfo value) {
         return new JAXBElement<AccountInfo>(_AccountInfo_QNAME, AccountInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValuePairOfstringbase64Binary }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOfstringbase64Binary")
+    public JAXBElement<KeyValuePairOfstringbase64Binary> createKeyValuePairOfstringbase64Binary(KeyValuePairOfstringbase64Binary value) {
+        return new JAXBElement<KeyValuePairOfstringbase64Binary>(_KeyValuePairOfstringbase64Binary_QNAME, KeyValuePairOfstringbase64Binary.class, null, value);
     }
 
     /**
@@ -1955,6 +2022,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "anyURI")
     public JAXBElement<String> createAnyURI(String value) {
         return new JAXBElement<String>(_AnyURI_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TaxCertificateStatus }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "TaxCertificateStatus")
+    public JAXBElement<TaxCertificateStatus> createTaxCertificateStatus(TaxCertificateStatus value) {
+        return new JAXBElement<TaxCertificateStatus>(_TaxCertificateStatus_QNAME, TaxCertificateStatus.class, null, value);
     }
 
     /**

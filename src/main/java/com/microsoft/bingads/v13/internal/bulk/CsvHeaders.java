@@ -129,7 +129,10 @@ public class CsvHeaders {
             // Image ad extension
             StringTable.AltText,
             StringTable.MediaIds,
-            
+
+            // Flyer ad extension
+            StringTable.FlyerName,
+            StringTable.MediaUrls,
 
             // Editorial rejection reasons
             StringTable.PublisherCountries,
@@ -143,8 +146,7 @@ public class CsvHeaders {
 
 
             // Product target
-            StringTable.BingMerchantCenterId,
-            StringTable.BingMerchantCenterName,
+            StringTable.MerchantCenterId,
             StringTable.ProductCondition1,
             StringTable.ProductValue1,
             StringTable.ProductCondition2,
@@ -353,6 +355,7 @@ public class CsvHeaders {
             StringTable.LongHeadline,
             StringTable.SquareImageMediaId,
             StringTable.SquareLogoMediaId,
+            StringTable.ImpressionTrackingUrls,
             
             // Dynamic Search Ad
             StringTable.DomainLanguage,

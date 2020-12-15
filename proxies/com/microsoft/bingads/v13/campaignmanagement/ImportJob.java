@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="ImportOption" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportOption" minOccurs="0"/>
  *         &lt;element name="LastRunTimeInUTC" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="NotificationEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="NotificationType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -50,6 +51,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "importOption",
     "lastRunTimeInUTC",
     "name",
+    "notificationEmail",
     "notificationType",
     "status",
     "type"
@@ -80,6 +82,8 @@ public class ImportJob {
     protected Calendar lastRunTimeInUTC;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "NotificationEmail", nillable = true)
+    protected String notificationEmail;
     @XmlElement(name = "NotificationType", nillable = true)
     protected String notificationType;
     @XmlElement(name = "Status", nillable = true)
@@ -277,6 +281,30 @@ public class ImportJob {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the notificationEmail property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNotificationEmail() {
+        return notificationEmail;
+    }
+
+    /**
+     * Sets the value of the notificationEmail property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNotificationEmail(String value) {
+        this.notificationEmail = value;
     }
 
     /**

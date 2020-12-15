@@ -141,6 +141,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountFilterLinkAdExtensions"/>
  *     &lt;enumeration value="CampaignFilterLinkAdExtensions"/>
  *     &lt;enumeration value="AdGroupFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="FlyerAdExtensions"/>
+ *     &lt;enumeration value="AccountFlyerAdExtensions"/>
+ *     &lt;enumeration value="CampaignFlyerAdExtensions"/>
+ *     &lt;enumeration value="AdGroupFlyerAdExtensions"/>
+ *     &lt;enumeration value="PortfolioBidStrategies"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -403,7 +408,17 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignFilterLinkAdExtensions")
     CAMPAIGN_FILTER_LINK_AD_EXTENSIONS("CampaignFilterLinkAdExtensions"),
     @XmlEnumValue("AdGroupFilterLinkAdExtensions")
-    AD_GROUP_FILTER_LINK_AD_EXTENSIONS("AdGroupFilterLinkAdExtensions");
+    AD_GROUP_FILTER_LINK_AD_EXTENSIONS("AdGroupFilterLinkAdExtensions"),
+    @XmlEnumValue("FlyerAdExtensions")
+    FLYER_AD_EXTENSIONS("FlyerAdExtensions"),
+    @XmlEnumValue("AccountFlyerAdExtensions")
+    ACCOUNT_FLYER_AD_EXTENSIONS("AccountFlyerAdExtensions"),
+    @XmlEnumValue("CampaignFlyerAdExtensions")
+    CAMPAIGN_FLYER_AD_EXTENSIONS("CampaignFlyerAdExtensions"),
+    @XmlEnumValue("AdGroupFlyerAdExtensions")
+    AD_GROUP_FLYER_AD_EXTENSIONS("AdGroupFlyerAdExtensions"),
+    @XmlEnumValue("PortfolioBidStrategies")
+    PORTFOLIO_BID_STRATEGIES("PortfolioBidStrategies");
     private final String value;
 
     DownloadEntity(String v) {

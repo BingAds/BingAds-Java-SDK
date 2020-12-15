@@ -20,7 +20,7 @@ public class BulkCombinedListReadFromRowValuesCombinationRuleTest extends BulkCo
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-            {"Or(1,2,3)", "Or(1,2,3)"},
+            {"AND(4)&Or(1,2,3)&not(5)", "And(4)&Or(1,2,3)&Not(5)"},
             {"", null},
             {null, null}
         });

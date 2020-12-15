@@ -45,7 +45,7 @@ public class GetBidOpportunitiesRequest {
     @XmlElement(name = "CampaignId", nillable = true)
     protected Long campaignId;
     @XmlElement(name = "OpportunityType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     protected Collection<BidOpportunityType> opportunityType;
 
     /**

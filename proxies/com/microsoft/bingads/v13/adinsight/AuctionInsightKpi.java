@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AboveRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="TopOfPageRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="OutrankingShare" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="AbsoluteTopOfPageRate" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,7 +41,8 @@ import javax.xml.bind.annotation.XmlType;
     "averagePosition",
     "aboveRate",
     "topOfPageRate",
-    "outrankingShare"
+    "outrankingShare",
+    "absoluteTopOfPageRate"
 })
 public class AuctionInsightKpi {
 
@@ -58,6 +60,8 @@ public class AuctionInsightKpi {
     protected Double topOfPageRate;
     @XmlElement(name = "OutrankingShare")
     protected Double outrankingShare;
+    @XmlElement(name = "AbsoluteTopOfPageRate")
+    protected Double absoluteTopOfPageRate;
 
     /**
      * Gets the value of the segments property.
@@ -225,6 +229,30 @@ public class AuctionInsightKpi {
      */
     public void setOutrankingShare(Double value) {
         this.outrankingShare = value;
+    }
+
+    /**
+     * Gets the value of the absoluteTopOfPageRate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public Double getAbsoluteTopOfPageRate() {
+        return absoluteTopOfPageRate;
+    }
+
+    /**
+     * Sets the value of the absoluteTopOfPageRate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setAbsoluteTopOfPageRate(Double value) {
+        this.absoluteTopOfPageRate = value;
     }
 
 }

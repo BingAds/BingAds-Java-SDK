@@ -46,7 +46,7 @@ public class GetConversionGoalsByIdsRequest {
     @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<ConversionGoalType> conversionGoalTypes;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<ConversionGoalAdditionalField> returnAdditionalFields;
 
     /**

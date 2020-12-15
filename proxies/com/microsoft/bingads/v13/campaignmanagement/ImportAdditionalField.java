@@ -5,7 +5,9 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum ImportAdditionalField {
 
-    NONE("None");
+    NONE("None"),
+    NOTIFICATION_EMAIL("NotificationEmail"),
+    AUTO_DEVICE_BID_OPTIMIZATION("AutoDeviceBidOptimization");
         
     private final String value;
 
