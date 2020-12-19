@@ -99,8 +99,8 @@ public interface ICustomerBillingService {
      * @return
      *     returns com.microsoft.bingads.v13.customerbilling.GetBillingDocumentsResponse
      * @throws ApiBatchFault_Exception
-     * @throws ApiFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocuments", action = "GetBillingDocuments")
     @WebResult(name = "GetBillingDocumentsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
@@ -181,8 +181,8 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.customerbilling.UpdateInsertionOrderResponse
-     * @throws ApiFault_Exception
      * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
      */
     @WebMethod(operationName = "UpdateInsertionOrder", action = "UpdateInsertionOrder")
     @WebResult(name = "UpdateInsertionOrderResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")

@@ -160,7 +160,6 @@ public class ObjectFactory {
     private final static QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaAssociation");
     private final static QName _TextAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TextAd");
     private final static QName _BidMultiplier_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BidMultiplier");
-    private final static QName _BidStrategy_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BidStrategy");
     private final static QName _AdExtensionHeaderType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionHeaderType");
     private final static QName _CampaignSize_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignSize");
     private final static QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignStatus");
@@ -285,7 +284,6 @@ public class ObjectFactory {
     private final static QName _AdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtension");
     private final static QName _CampaignCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterionStatus");
     private final static QName _ArrayOfNullableOflong_QNAME = new QName("http://schemas.datacontract.org/2004/07/System", "ArrayOfNullableOflong");
-    private final static QName _ArrayOfBidStrategy_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBidStrategy");
     private final static QName _ProductAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProductAudience");
     private final static QName _CombinationRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CombinationRule");
     private final static QName _Label_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Label");
@@ -1156,14 +1154,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfBidStrategy }
-     * 
-     */
-    public ArrayOfBidStrategy createArrayOfBidStrategy() {
-        return new ArrayOfBidStrategy();
-    }
-
-    /**
      * Create an instance of {@link ManualCpvBiddingScheme }
      * 
      */
@@ -1369,14 +1359,6 @@ public class ObjectFactory {
      */
     public AddAdGroupCriterionsRequest createAddAdGroupCriterionsRequest() {
         return new AddAdGroupCriterionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetBidStrategiesByIdsRequest }
-     * 
-     */
-    public GetBidStrategiesByIdsRequest createGetBidStrategiesByIdsRequest() {
-        return new GetBidStrategiesByIdsRequest();
     }
 
     /**
@@ -1628,14 +1610,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddBidStrategiesRequest }
-     * 
-     */
-    public AddBidStrategiesRequest createAddBidStrategiesRequest() {
-        return new AddBidStrategiesRequest();
-    }
-
-    /**
      * Create an instance of {@link Address }
      * 
      */
@@ -1884,14 +1858,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BidStrategy }
-     * 
-     */
-    public BidStrategy createBidStrategy() {
-        return new BidStrategy();
-    }
-
-    /**
      * Create an instance of {@link GetCampaignSizesByAccountIdRequest }
      * 
      */
@@ -1921,14 +1887,6 @@ public class ObjectFactory {
      */
     public ArrayOfImportJob createArrayOfImportJob() {
         return new ArrayOfImportJob();
-    }
-
-    /**
-     * Create an instance of {@link DeleteBidStrategiesRequest }
-     * 
-     */
-    public DeleteBidStrategiesRequest createDeleteBidStrategiesRequest() {
-        return new DeleteBidStrategiesRequest();
     }
 
     /**
@@ -2084,14 +2042,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteBidStrategiesResponse }
-     * 
-     */
-    public DeleteBidStrategiesResponse createDeleteBidStrategiesResponse() {
-        return new DeleteBidStrategiesResponse();
-    }
-
-    /**
      * Create an instance of {@link AddAdGroupCriterionsResponse }
      * 
      */
@@ -2121,14 +2071,6 @@ public class ObjectFactory {
      */
     public GetBSCCountriesResponse createGetBSCCountriesResponse() {
         return new GetBSCCountriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetBidStrategiesByIdsResponse }
-     * 
-     */
-    public GetBidStrategiesByIdsResponse createGetBidStrategiesByIdsResponse() {
-        return new GetBidStrategiesByIdsResponse();
     }
 
     /**
@@ -3316,14 +3258,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCampaignIdsByBidStrategyIdsRequest }
-     * 
-     */
-    public GetCampaignIdsByBidStrategyIdsRequest createGetCampaignIdsByBidStrategyIdsRequest() {
-        return new GetCampaignIdsByBidStrategyIdsRequest();
-    }
-
-    /**
      * Create an instance of {@link AddSharedEntityRequest }
      * 
      */
@@ -3436,14 +3370,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddBidStrategiesResponse }
-     * 
-     */
-    public AddBidStrategiesResponse createAddBidStrategiesResponse() {
-        return new AddBidStrategiesResponse();
-    }
-
-    /**
      * Create an instance of {@link OfflineConversionAdjustment }
      * 
      */
@@ -3473,14 +3399,6 @@ public class ObjectFactory {
      */
     public UpdateAdGroupCriterionsRequest createUpdateAdGroupCriterionsRequest() {
         return new UpdateAdGroupCriterionsRequest();
-    }
-
-    /**
-     * Create an instance of {@link UpdateBidStrategiesResponse }
-     * 
-     */
-    public UpdateBidStrategiesResponse createUpdateBidStrategiesResponse() {
-        return new UpdateBidStrategiesResponse();
     }
 
     /**
@@ -3753,14 +3671,6 @@ public class ObjectFactory {
      */
     public DeleteCampaignCriterionsResponse createDeleteCampaignCriterionsResponse() {
         return new DeleteCampaignCriterionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateBidStrategiesRequest }
-     * 
-     */
-    public UpdateBidStrategiesRequest createUpdateBidStrategiesRequest() {
-        return new UpdateBidStrategiesRequest();
     }
 
     /**
@@ -4073,14 +3983,6 @@ public class ObjectFactory {
      */
     public AddExperimentsResponse createAddExperimentsResponse() {
         return new AddExperimentsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCampaignIdsByBidStrategyIdsResponse }
-     * 
-     */
-    public GetCampaignIdsByBidStrategyIdsResponse createGetCampaignIdsByBidStrategyIdsResponse() {
-        return new GetCampaignIdsByBidStrategyIdsResponse();
     }
 
     /**
@@ -5647,15 +5549,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BidStrategy }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BidStrategy")
-    public JAXBElement<BidStrategy> createBidStrategy(BidStrategy value) {
-        return new JAXBElement<BidStrategy>(_BidStrategy_QNAME, BidStrategy.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdExtensionHeaderType }{@code >}}
      * 
      */
@@ -6775,15 +6668,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System", name = "ArrayOfNullableOflong")
     public JAXBElement<ArrayOfNullableOflong> createArrayOfNullableOflong(ArrayOfNullableOflong value) {
         return new JAXBElement<ArrayOfNullableOflong>(_ArrayOfNullableOflong_QNAME, ArrayOfNullableOflong.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBidStrategy }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBidStrategy")
-    public JAXBElement<ArrayOfBidStrategy> createArrayOfBidStrategy(ArrayOfBidStrategy value) {
-        return new JAXBElement<ArrayOfBidStrategy>(_ArrayOfBidStrategy_QNAME, ArrayOfBidStrategy.class, null, value);
     }
 
     /**

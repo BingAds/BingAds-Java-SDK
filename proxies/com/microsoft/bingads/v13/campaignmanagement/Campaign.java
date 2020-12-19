@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="BudgetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Languages" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="BidStrategyId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -68,8 +67,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "settings",
     "budgetId",
     "languages",
-    "adScheduleUseSearcherTimeZone",
-    "bidStrategyId"
+    "adScheduleUseSearcherTimeZone"
 })
 public class Campaign {
 
@@ -114,8 +112,6 @@ public class Campaign {
     protected ArrayOfstring languages;
     @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
     protected Boolean adScheduleUseSearcherTimeZone;
-    @XmlElement(name = "BidStrategyId", nillable = true)
-    protected Long bidStrategyId;
 
     /**
      * Gets the value of the audienceAdsBidAdjustment property.
@@ -571,30 +567,6 @@ public class Campaign {
      */
     public void setAdScheduleUseSearcherTimeZone(Boolean value) {
         this.adScheduleUseSearcherTimeZone = value;
-    }
-
-    /**
-     * Gets the value of the bidStrategyId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getBidStrategyId() {
-        return bidStrategyId;
-    }
-
-    /**
-     * Sets the value of the bidStrategyId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setBidStrategyId(Long value) {
-        this.bidStrategyId = value;
     }
 
 }
