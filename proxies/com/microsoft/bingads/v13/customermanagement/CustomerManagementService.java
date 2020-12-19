@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "CustomerManagementService", targetNamespace = "https://bingads.microsoft.com/Customer/v13", wsdlLocation = "https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc?wsdl")
+@WebServiceClient(name = "CustomerManagementService", targetNamespace = "https://bingads.microsoft.com/Customer/v13", wsdlLocation = "https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc?wsdl")
 public class CustomerManagementService
     extends Service
 {
@@ -30,7 +30,7 @@ public class CustomerManagementService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc?wsdl");
+            url = new URL("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
