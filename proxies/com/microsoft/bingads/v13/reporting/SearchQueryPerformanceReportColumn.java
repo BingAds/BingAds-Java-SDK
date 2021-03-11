@@ -69,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="GoalType"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="TopImpressionRatePercent"/>
+ *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -187,7 +188,9 @@ public enum SearchQueryPerformanceReportColumn {
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("TopImpressionRatePercent")
-    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent"),
+    @XmlEnumValue("AverageCpm")
+    AVERAGE_CPM("AverageCpm");
     private final String value;
 
     SearchQueryPerformanceReportColumn(String v) {

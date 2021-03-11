@@ -29,5 +29,4 @@ public class BulkAdGroupCompanyNameCriterion extends BulkAdGroupProfileCriterion
         criterion.setProfileType(Collections.singleton(ProfileType.COMPANY_NAME));
     }
     
-    
 }

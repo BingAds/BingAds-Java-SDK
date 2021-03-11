@@ -129,6 +129,8 @@ public class StringTable {
 
     public static final String FinalUrlSuffix = "Final Url Suffix";
     
+    public static final String FeedId = "Feed Id";
+    
     // entity types
     public static final String SemanticVersion = "Format Version";
     public static final String LocationTarget = "Location Target";
@@ -450,6 +452,9 @@ public class StringTable {
     public static final String CurrencyCode = "Currency Code";
     
     // AutoBidding
+    public static final String BidStrategy = "Bid Strategy";
+    public static final String BidStrategyId = "Bid Strategy Id";
+    public static final String BidStrategyName = "Bid Strategy Name";
     public static final String BidStrategyType = "Bid Strategy Type";
     public static final String BidStrategyMaxCpc = "Bid Strategy MaxCpc";
     public static final String BidStrategyTargetCpa = "Bid Strategy TargetCpa";

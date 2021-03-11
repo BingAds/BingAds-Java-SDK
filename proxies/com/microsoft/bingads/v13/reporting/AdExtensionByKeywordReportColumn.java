@@ -61,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllRevenuePerConversion"/>
  *     &lt;enumeration value="Goal"/>
  *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -163,7 +164,9 @@ public enum AdExtensionByKeywordReportColumn {
     @XmlEnumValue("Goal")
     GOAL("Goal"),
     @XmlEnumValue("GoalType")
-    GOAL_TYPE("GoalType");
+    GOAL_TYPE("GoalType"),
+    @XmlEnumValue("AverageCpm")
+    AVERAGE_CPM("AverageCpm");
     private final String value;
 
     AdExtensionByKeywordReportColumn(String v) {

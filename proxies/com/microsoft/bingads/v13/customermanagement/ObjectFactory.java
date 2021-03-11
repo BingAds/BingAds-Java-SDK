@@ -485,6 +485,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetUserMFAStatusRequest }
+     * 
+     */
+    public GetUserMFAStatusRequest createGetUserMFAStatusRequest() {
+        return new GetUserMFAStatusRequest();
+    }
+
+    /**
      * Create an instance of {@link AddAccountRequest }
      * 
      */
@@ -522,6 +530,14 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link GetUserMFAStatusResponse }
+     * 
+     */
+    public GetUserMFAStatusResponse createGetUserMFAStatusResponse() {
+        return new GetUserMFAStatusResponse();
     }
 
     /**

@@ -21,7 +21,20 @@ public enum LanguageReportFilter {
     HEBREW("Hebrew"),
     KOREAN("Korean"),
     RUSSIAN("Russian"),
-    TRADITIONAL_CHINESE("TraditionalChinese");
+    TRADITIONAL_CHINESE("TraditionalChinese"),
+    GREEK("Greek"),
+    POLISH("Polish"),
+    CZECH("Czech"),
+    ROMANIAN("Romanian"),
+    HUNGARIAN("Hungarian"),
+    SLOVAK("Slovak"),
+    BULGARIAN("Bulgarian"),
+    CROATIAN("Croatian"),
+    LITHUANIAN("Lithuanian"),
+    SLOVENIAN("Slovenian"),
+    ESTONIAN("Estonian"),
+    LATVIAN("Latvian"),
+    MALTESE("Maltese");
         
     private final String value;
 

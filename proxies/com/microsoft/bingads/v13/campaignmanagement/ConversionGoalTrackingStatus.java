@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="NoRecentConversions"/>
  *     &lt;enumeration value="RecordingConversions"/>
  *     &lt;enumeration value="TagInactive"/>
+ *     &lt;enumeration value="InactiveDueToTagUnavailable"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +35,9 @@ public enum ConversionGoalTrackingStatus {
     @XmlEnumValue("RecordingConversions")
     RECORDING_CONVERSIONS("RecordingConversions"),
     @XmlEnumValue("TagInactive")
-    TAG_INACTIVE("TagInactive");
+    TAG_INACTIVE("TagInactive"),
+    @XmlEnumValue("InactiveDueToTagUnavailable")
+    INACTIVE_DUE_TO_TAG_UNAVAILABLE("InactiveDueToTagUnavailable");
     private final String value;
 
     ConversionGoalTrackingStatus(String v) {

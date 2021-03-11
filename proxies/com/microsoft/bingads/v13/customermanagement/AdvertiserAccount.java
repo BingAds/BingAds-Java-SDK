@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="AutoTagType" type="{https://bingads.microsoft.com/Customer/v13/Entities}AutoTagType" minOccurs="0"/>
  *         &lt;element name="SoldToPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="TaxCertificate" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountTaxCertificate" minOccurs="0"/>
+ *         &lt;element name="AccountMode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -84,7 +85,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "businessAddress",
     "autoTagType",
     "soldToPaymentInstrumentId",
-    "taxCertificate"
+    "taxCertificate",
+    "accountMode"
 })
 public class AdvertiserAccount {
 
@@ -152,6 +154,8 @@ public class AdvertiserAccount {
     protected Long soldToPaymentInstrumentId;
     @XmlElement(name = "TaxCertificate", nillable = true)
     protected AccountTaxCertificate taxCertificate;
+    @XmlElement(name = "AccountMode", nillable = true)
+    protected String accountMode;
 
     /**
      * Gets the value of the billToCustomerId property.
@@ -797,6 +801,30 @@ public class AdvertiserAccount {
      */
     public void setTaxCertificate(AccountTaxCertificate value) {
         this.taxCertificate = value;
+    }
+
+    /**
+     * Gets the value of the accountMode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAccountMode() {
+        return accountMode;
+    }
+
+    /**
+     * Sets the value of the accountMode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountMode(String value) {
+        this.accountMode = value;
     }
 
 }

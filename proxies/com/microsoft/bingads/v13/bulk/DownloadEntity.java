@@ -145,7 +145,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountFlyerAdExtensions"/>
  *     &lt;enumeration value="CampaignFlyerAdExtensions"/>
  *     &lt;enumeration value="AdGroupFlyerAdExtensions"/>
- *     &lt;enumeration value="PortfolioBidStrategies"/>
+ *     &lt;enumeration value="BidStrategies"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -417,8 +417,8 @@ public enum DownloadEntity {
     CAMPAIGN_FLYER_AD_EXTENSIONS("CampaignFlyerAdExtensions"),
     @XmlEnumValue("AdGroupFlyerAdExtensions")
     AD_GROUP_FLYER_AD_EXTENSIONS("AdGroupFlyerAdExtensions"),
-    @XmlEnumValue("PortfolioBidStrategies")
-    PORTFOLIO_BID_STRATEGIES("PortfolioBidStrategies");
+    @XmlEnumValue("BidStrategies")
+    BID_STRATEGIES("BidStrategies");
     private final String value;
 
     DownloadEntity(String v) {

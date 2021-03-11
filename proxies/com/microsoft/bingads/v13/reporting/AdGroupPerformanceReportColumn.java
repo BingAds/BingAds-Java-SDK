@@ -95,6 +95,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AudienceImpressionLostToBudgetPercent"/>
  *     &lt;enumeration value="RelativeCtr"/>
  *     &lt;enumeration value="AdGroupType"/>
+ *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -265,7 +266,9 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("RelativeCtr")
     RELATIVE_CTR("RelativeCtr"),
     @XmlEnumValue("AdGroupType")
-    AD_GROUP_TYPE("AdGroupType");
+    AD_GROUP_TYPE("AdGroupType"),
+    @XmlEnumValue("AverageCpm")
+    AVERAGE_CPM("AverageCpm");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

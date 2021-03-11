@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="CampaignCriterionIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="CriterionType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignCriterionType" minOccurs="0"/>
+ *         &lt;element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}CriterionAdditionalField" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "campaignCriterionIds",
     "campaignId",
-    "criterionType"
+    "criterionType",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetCampaignCriterionsByIdsRequest")
 public class GetCampaignCriterionsByIdsRequest {
@@ -47,6 +49,9 @@ public class GetCampaignCriterionsByIdsRequest {
     @XmlElement(name = "CriterionType", type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     protected Collection<CampaignCriterionType> criterionType;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter4 .class)
+    protected Collection<CriterionAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the campaignCriterionIds property.
@@ -118,6 +123,30 @@ public class GetCampaignCriterionsByIdsRequest {
      */
     public void setCriterionType(Collection<CampaignCriterionType> value) {
         this.criterionType = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CriterionAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<CriterionAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

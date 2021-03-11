@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="ActiveAdGroupsOnly" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdGroupIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong"/>
  *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       &lt;/sequence>
@@ -29,15 +30,42 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampaignAdGroupIds", propOrder = {
+    "activeAdGroupsOnly",
     "adGroupIds",
     "campaignId"
 })
 public class CampaignAdGroupIds {
 
+    @XmlElement(name = "ActiveAdGroupsOnly", nillable = true)
+    protected Boolean activeAdGroupsOnly;
     @XmlElement(name = "AdGroupIds", required = true, nillable = true)
     protected ArrayOflong adGroupIds;
     @XmlElement(name = "CampaignId")
     protected long campaignId;
+
+    /**
+     * Gets the value of the activeAdGroupsOnly property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getActiveAdGroupsOnly() {
+        return activeAdGroupsOnly;
+    }
+
+    /**
+     * Sets the value of the activeAdGroupsOnly property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setActiveAdGroupsOnly(Boolean value) {
+        this.activeAdGroupsOnly = value;
+    }
 
     /**
      * Gets the value of the adGroupIds property.

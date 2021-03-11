@@ -465,6 +465,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupStructuredSnippetAdExtension();
             }
         }));
+        m.put(StringTable.PromotionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkPromotionAdExtension();
+            }
+        }));
         m.put(StringTable.AccountPromotionAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -706,6 +712,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkBudget();
+            }
+        }));
+        m.put(StringTable.BidStrategy, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkBidStrategy();
             }
         }));
         m.put(StringTable.AdGroupAgeCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {

@@ -94,6 +94,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ProductBought"/>
  *     &lt;enumeration value="QuantityBought"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -262,7 +263,9 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("QuantityBought")
     QUANTITY_BOUGHT("QuantityBought"),
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
-    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent");
+    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
+    @XmlEnumValue("AverageCpm")
+    AVERAGE_CPM("AverageCpm");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

@@ -1,7 +1,6 @@
 package com.microsoft.bingads.internal;
 
 import java.net.URL;
-import java.util.Dictionary;
 import java.util.Map;
 
 import com.microsoft.bingads.ApiEnvironment;

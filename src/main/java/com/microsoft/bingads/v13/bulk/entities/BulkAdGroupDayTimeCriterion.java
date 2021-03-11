@@ -10,10 +10,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionStatus;
-import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
-import com.microsoft.bingads.v13.campaignmanagement.BiddableAdGroupCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.Day;
 import com.microsoft.bingads.v13.campaignmanagement.DayTimeCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.Minute;
@@ -23,7 +20,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a daytime criterion that is assigned to an ad group. Each daytime criterion can be read or written in a bulk file.
@@ -38,138 +34,12 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
+public class BulkAdGroupDayTimeCriterion extends BulkAdGroupBiddableCriterion {
 	
-	private BiddableAdGroupCriterion biddableAdGroupCriterion;
-	
-	private String campaignName;
-	
-	private String adGroupName;
-
 	private static final List<BulkMapping<BulkAdGroupDayTimeCriterion>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkAdGroupDayTimeCriterion>> m = new ArrayList<BulkMapping<BulkAdGroupDayTimeCriterion>>();
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, String>(StringTable.Status,
-                new Function<BulkAdGroupDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupDayTimeCriterion c) {
-                        AdGroupCriterionStatus status = c.getBiddableAdGroupCriterion().getStatus();
-
-                        return status == null ? null : status.value();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
-                            @Override
-                            public AdGroupCriterionStatus apply(String s) {
-                                return AdGroupCriterionStatus.fromValue(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, Long>(StringTable.Id,
-                new Function<BulkAdGroupDayTimeCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getBiddableAdGroupCriterion().getId();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getBiddableAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String s) {
-                                return Long.parseLong(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, Long>(StringTable.ParentId,
-                new Function<BulkAdGroupDayTimeCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getBiddableAdGroupCriterion().getAdGroupId();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.getBiddableAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, String>(StringTable.Campaign,
-                new Function<BulkAdGroupDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getCampaignName();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.setCampaignName(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, String>(StringTable.AdGroup,
-                new Function<BulkAdGroupDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupDayTimeCriterion c) {
-                        return c.getAdGroupName();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        c.setAdGroupName(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, String>(StringTable.BidAdjustment,
-                new Function<BulkAdGroupDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupDayTimeCriterion c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid();
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions.toCriterionBidMultiplierBulkString(((BidMultiplier) bid).getMultiplier());
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupDayTimeCriterion c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BidMultiplier) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).setMultiplier(
-                                    StringExtensions.nullOrDouble(v)
-                            );
-                        }
-                    }
-                }
-        ));
         
         m.add(new SimpleBulkMapping<BulkAdGroupDayTimeCriterion, String>(StringTable.Target,
                 new Function<BulkAdGroupDayTimeCriterion, String>() {
@@ -301,73 +171,19 @@ public class BulkAdGroupDayTimeCriterion extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();  
-        
-        BidMultiplier bidMultiplier = new BidMultiplier();       
-        bidMultiplier.setType(BidMultiplier.class.getSimpleName());
-        
-        DayTimeCriterion daytimeCriterion = new DayTimeCriterion();
-        
-    	adGroupCriterion.setCriterion(daytimeCriterion);
-    	adGroupCriterion.getCriterion().setType(DayTimeCriterion.class.getSimpleName());
-    	adGroupCriterion.setCriterionBid(bidMultiplier);
-    	adGroupCriterion.setType("BiddableAdGroupCriterion");
-    	
-    	setBiddableAdGroupCriterion(adGroupCriterion);  
-    	
+    	super.processMappingsFromRowValues(values);
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
+    }
+    
+    @Override
+    protected Criterion createCriterion() {
+        return new DayTimeCriterion();
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getBiddableAdGroupCriterion(), BiddableAdGroupCriterion.class.getSimpleName());
-        
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
-    /**
-     * Gets an Ad Group Criterion.
-     */
-    public BiddableAdGroupCriterion getBiddableAdGroupCriterion() {
-        return biddableAdGroupCriterion;
-    }
-
-    /**
-     * Sets an Ad Group Criterion
-     */
-    public void setBiddableAdGroupCriterion(BiddableAdGroupCriterion biddableAdGroupCriterion) {
-        this.biddableAdGroupCriterion = biddableAdGroupCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    /**
-     * Sets the name of the ad group.
-     * Corresponds to the 'Ad Group' field in the bulk file.
-     */
-    public void setAdGroupName(String adGroupName) {
-        this.adGroupName = adGroupName;
-    }
-    
-    /**
-     * Gets the name of the ad group.
-     * Corresponds to the 'Ad Group' field in the bulk file.
-     */
-    public String getAdGroupName() {
-        return adGroupName;
-    }
-
-    /**
-     * Sets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
-    }
 }

@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *         &lt;element name="CriterionCashback" type="{https://bingads.microsoft.com/CampaignManagement/v13}CriterionCashback" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -45,7 +46,8 @@ import javax.xml.bind.annotation.XmlType;
     "finalUrlSuffix",
     "finalUrls",
     "trackingUrlTemplate",
-    "urlCustomParameters"
+    "urlCustomParameters",
+    "criterionCashback"
 })
 public class BiddableAdGroupCriterion
     extends AdGroupCriterion
@@ -70,6 +72,8 @@ public class BiddableAdGroupCriterion
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
+    @XmlElement(name = "CriterionCashback", nillable = true)
+    protected CriterionCashback criterionCashback;
 
     /**
      * Gets the value of the criterionBid property.
@@ -285,6 +289,30 @@ public class BiddableAdGroupCriterion
      */
     public void setUrlCustomParameters(CustomParameters value) {
         this.urlCustomParameters = value;
+    }
+
+    /**
+     * Gets the value of the criterionCashback property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CriterionCashback }
+     *     
+     */
+    public CriterionCashback getCriterionCashback() {
+        return criterionCashback;
+    }
+
+    /**
+     * Sets the value of the criterionCashback property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CriterionCashback }
+     *     
+     */
+    public void setCriterionCashback(CriterionCashback value) {
+        this.criterionCashback = value;
     }
 
 }

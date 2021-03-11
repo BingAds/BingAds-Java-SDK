@@ -10,10 +10,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
-import com.microsoft.bingads.v13.campaignmanagement.BiddableCampaignCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionStatus;
-import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.Day;
 import com.microsoft.bingads.v13.campaignmanagement.DayTimeCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.Minute;
@@ -23,7 +20,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a daytime criterion that is assigned to a campaign. Each daytime criterion can be read or written in a bulk file.
@@ -38,116 +34,12 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
+public class BulkCampaignDayTimeCriterion extends BulkCampaignBiddableCriterion {
 	
-	private BiddableCampaignCriterion biddableCampaignCriterion;
-	
-	private String campaignName;
-
 	private static final List<BulkMapping<BulkCampaignDayTimeCriterion>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkCampaignDayTimeCriterion>> m = new ArrayList<BulkMapping<BulkCampaignDayTimeCriterion>>();
-        
-        m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, String>(StringTable.Status,
-                new Function<BulkCampaignDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignDayTimeCriterion c) {
-                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
-                    	
-                        return status == null ? null : status.value();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
-                            @Override
-                            public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, Long>(StringTable.Id,
-                new Function<BulkCampaignDayTimeCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getBiddableCampaignCriterion().getId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String s) {
-                                return Long.parseLong(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, Long>(StringTable.ParentId,
-                new Function<BulkCampaignDayTimeCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getBiddableCampaignCriterion().getCampaignId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(Long.parseLong(v));
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, String>(StringTable.Campaign,
-                new Function<BulkCampaignDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignDayTimeCriterion c) {
-                        return c.getCampaignName();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        c.setCampaignName(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, String>(StringTable.BidAdjustment,
-                new Function<BulkCampaignDayTimeCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignDayTimeCriterion c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions.toCriterionBidMultiplierBulkString(((BidMultiplier) bid).getMultiplier());
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkCampaignDayTimeCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignDayTimeCriterion c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
-                                    StringExtensions.nullOrDouble(v)
-                            );
-                        }
-                    }
-                }
-        ));
         
         m.add(new SimpleBulkMapping<BulkCampaignDayTimeCriterion, String>(StringTable.Target,
                 new Function<BulkCampaignDayTimeCriterion, String>() {
@@ -279,57 +171,18 @@ public class BulkCampaignDayTimeCriterion extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        BiddableCampaignCriterion campaignCriterion = new BiddableCampaignCriterion();  
-        
-        BidMultiplier bidMultiplier = new BidMultiplier();       
-        bidMultiplier.setType(BidMultiplier.class.getSimpleName());
-        
-        DayTimeCriterion daytimeCriterion = new DayTimeCriterion();
-        
-    	campaignCriterion.setCriterion(daytimeCriterion);
-    	campaignCriterion.getCriterion().setType(DayTimeCriterion.class.getSimpleName());
-    	campaignCriterion.setCriterionBid(bidMultiplier);
-    	campaignCriterion.setType("BiddableCampaignCriterion");
-    	
-    	setBiddableCampaignCriterion(campaignCriterion);  
-    	
+    	super.processMappingsFromRowValues(values);
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
+    }
+    
+    @Override
+    protected Criterion createCriterion() {
+        return new DayTimeCriterion();
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
-        
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }
-
-    /**
-     * Gets a Campaign Criterion.
-     */
-    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
-        return biddableCampaignCriterion;
-    }
-
-    /**
-     * Sets a Campaign Criterion
-     */
-    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
-        this.biddableCampaignCriterion = biddableCampaignCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    /**
-     * Sets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
     }
 }

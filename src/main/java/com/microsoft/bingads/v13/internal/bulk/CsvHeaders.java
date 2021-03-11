@@ -31,6 +31,7 @@ public class CsvHeaders {
             StringTable.BudgetName,
             StringTable.Budget,
             StringTable.BudgetType,
+            StringTable.FeedId,
 
             // Ad Group
             StringTable.StartDate,
@@ -294,6 +295,8 @@ public class CsvHeaders {
             StringTable.CalloutText,
             
             // AutoBidding
+            StringTable.BidStrategyId,
+            StringTable.BidStrategyName,
             StringTable.BidStrategyType,
             StringTable.BidStrategyMaxCpc,
             StringTable.BidStrategyTargetCpa,

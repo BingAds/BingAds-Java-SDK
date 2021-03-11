@@ -90,7 +90,7 @@ public class Audience {
     @XmlElement(name = "SupportedCampaignTypes", nillable = true)
     protected ArrayOfstring supportedCampaignTypes;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<AudienceType> type;
 
     /**

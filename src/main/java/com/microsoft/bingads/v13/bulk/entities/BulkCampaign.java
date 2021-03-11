@@ -16,22 +16,16 @@ import com.microsoft.bingads.v13.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
-import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.BudgetLimitType;
 import com.microsoft.bingads.v13.campaignmanagement.Campaign;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignStatus;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
+import com.microsoft.bingads.v13.campaignmanagement.DynamicFeedSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
-import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
-import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
-import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
-import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
-import com.microsoft.bingads.v13.campaignmanagement.TargetImpressionShareBiddingScheme;
-import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
@@ -66,7 +60,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private QualityScoreData qualityScoreData;
     
     private String budgetName;
-
+    private String BidStrategyName;
     private static final List<BulkMapping<BulkCampaign>> MAPPINGS;
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
@@ -103,29 +97,38 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private void addCampaignSettings(CampaignType campaignType) {
 
         ArrayOfSetting arrayOfSettings = new ArrayOfSetting();
+        List<Setting> settings = new ArrayList<Setting>();
         Setting setting = null;
         switch (campaignType) {
         case SEARCH:
         case DYNAMIC_SEARCH_ADS:
             setting = new DynamicSearchAdsSetting();
             setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
+            settings.add(setting);
             break;
-        case SHOPPING:
         case AUDIENCE:
             setting = new ShoppingSetting();
             setting.setType(ShoppingSetting.class.getSimpleName());
+            settings.add(setting);
+
+            setting = new DynamicFeedSetting();
+            setting.setType(DynamicFeedSetting.class.getSimpleName());
+            settings.add(setting);
+            break;
+        case SHOPPING:
+            setting = new ShoppingSetting();
+            setting.setType(ShoppingSetting.class.getSimpleName());
+            settings.add(setting);
             break;
         }
-        if (setting != null) {
-            arrayOfSettings.getSettings().add(setting);
-        }
+        arrayOfSettings.getSettings().addAll(settings);
 
         setting = new TargetSetting();
         setting.setType(TargetSetting.class.getSimpleName());
         arrayOfSettings.getSettings().add(setting);
         campaign.setSettings(arrayOfSettings);
     }
-
+    
     static {
 
         //Consumers to describe getting and setting Daily and Monthly budget fields based on the budget type and budget columns
@@ -373,6 +376,71 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BidStrategyId,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getCampaign().getBidStrategyId() != null ? c.getCampaign().getBidStrategyId().toString() : null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setBidStrategyId(StringExtensions.nullOrLong(v));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BidStrategyName,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getBidStrategyName();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.setBidStrategyName(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.FeedId,
+                new Function<BulkCampaign, Long>() {
+                    @Override
+                    public Long apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DynamicFeedSetting.class, false);
+                        return setting == null? null : ((DynamicFeedSetting)setting).getFeedId();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DynamicFeedSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((DynamicFeedSetting)setting).setFeedId(StringExtensions.parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String s) {
+                                return Long.parseLong(s);
+                            }
+                        }));
+                    }
+                }
+        ));
+
         m.add(new ComplexBulkMapping<BulkCampaign>(BulkCampaign.budgetToCsv, BulkCampaign.csvToBudget));
 
         m.add(new SimpleBulkMapping<BulkCampaign, Integer>(StringTable.BidAdjustment,
@@ -610,105 +678,15 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     @Override
                     public void accept(BulkCampaign c, RowValues values) {
                         // BiddingScheme to Csv
-                        try {
-                            BiddingScheme biddingScheme = c.getCampaign().getBiddingScheme();
-
-                            if (biddingScheme == null) {
-                                return;
-                            }
-
-                            values.put(StringTable.BidStrategyType, StringExtensions.toBiddingSchemeBulkString(biddingScheme));
-
-                            if (c.getCampaign().getBiddingScheme() instanceof MaxClicksBiddingScheme) {
-                                Bid maxCpc = ((MaxClicksBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
-                            }
-                            else if (c.getCampaign().getBiddingScheme() instanceof MaxConversionsBiddingScheme) {
-                                Bid maxCpc = ((MaxConversionsBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
-                            }
-                            else if (c.getCampaign().getBiddingScheme() instanceof TargetCpaBiddingScheme) {
-                                Bid maxCpc = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getMaxCpc();
-                                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, c.getCampaign().getId()));
-                                Double targetCpa = ((TargetCpaBiddingScheme)c.getCampaign().getBiddingScheme()).getTargetCpa();
-                                if (targetCpa != null) {
-                                	values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());
-                                }
-                            } else if (c.getCampaign().getBiddingScheme() instanceof MaxConversionValueBiddingScheme) {
-                                Double targetRoas = ((MaxConversionValueBiddingScheme)c.getCampaign().getBiddingScheme()).getTargetRoas();
-                                if (targetRoas != null) {
-                                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoas.toString()));
-                                }
-                            } else if (c.getCampaign().getBiddingScheme() instanceof TargetRoasBiddingScheme) {
-                                TargetRoasBiddingScheme targetRoasBiddingScheme = (TargetRoasBiddingScheme)c.getCampaign().getBiddingScheme();
-                                if (targetRoasBiddingScheme != null)
-                                {
-                                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetRoasBiddingScheme.getMaxCpc(), c.getCampaign().getId()));
-                                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoasBiddingScheme.getTargetRoas()));
-                                }
-                            } else if  (c.getCampaign().getBiddingScheme() instanceof TargetImpressionShareBiddingScheme) {
-                                TargetImpressionShareBiddingScheme targetImpressionShareBiddingScheme = (TargetImpressionShareBiddingScheme)c.getCampaign().getBiddingScheme();
-                                if (targetImpressionShareBiddingScheme != null)
-                                {
-                                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetImpressionShareBiddingScheme.getMaxCpc(), c.getCampaign().getId()));
-                                    values.put(StringTable.BidStrategyTargetAdPosition, StringExtensions.toOptionalBulkString(targetImpressionShareBiddingScheme.getTargetAdPosition(), c.getCampaign().getId()));
-                                    values.put(StringTable.BidStrategyTargetImpressionShare, StringExtensions.toBulkString(targetImpressionShareBiddingScheme.getTargetImpressionShare()));
-                                }
-                            }
-                        
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                        }
+                        StringExtensions.writeBiddingScheme(c.getCampaign().getBiddingScheme(), c.getCampaign().getId(), values);
                     }
                 },
                 new BiConsumer<RowValues, BulkCampaign>() {
                     @Override
                     public void accept(RowValues values, BulkCampaign c) {
-                        // Csv to BiddingScheme
-                        try {
-                            String bidStrategyTypeRowValue = values.get(StringTable.BidStrategyType);
-                            BiddingScheme biddingScheme = StringExtensions.parseBiddingScheme(bidStrategyTypeRowValue);
-
-                            if (biddingScheme == null) {
-                                return;
-                            }
-
-                            String maxCpcRowValue = values.get(StringTable.BidStrategyMaxCpc);
-                            String targetCpaRowValue = values.get(StringTable.BidStrategyTargetCpa);
-                            String targetRoas = values.get(StringTable.BidStrategyTargetRoas);
-                            String targetAdPositionValue = values.get(StringTable.BidStrategyTargetAdPosition);
-                            String targetImpressionShareRowValue = values.get(StringTable.BidStrategyTargetImpressionShare);
-
-
-                            Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
-                            Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
-                            Double targetRosValue = StringExtensions.nullOrDouble(targetRoas);
-                            Double targetImpressionShareValue = StringExtensions.nullOrDouble(targetImpressionShareRowValue);
-                            
-                            
-                            if (biddingScheme instanceof MaxClicksBiddingScheme) {
-                                ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                            }
-                            else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
-                                ((MaxConversionsBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                            } else if (biddingScheme instanceof TargetCpaBiddingScheme) {
-                                ((TargetCpaBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                                ((TargetCpaBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
-                            } else if (biddingScheme instanceof MaxConversionValueBiddingScheme) {
-                                ((MaxConversionValueBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
-                            } else if (biddingScheme instanceof TargetRoasBiddingScheme) {
-                                ((TargetRoasBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                                ((TargetRoasBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
-                            } else if (biddingScheme instanceof TargetImpressionShareBiddingScheme) {
-                                ((TargetImpressionShareBiddingScheme)biddingScheme).setType("TargetImpressionShare");
-                                ((TargetImpressionShareBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
-                                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetImpressionShare(targetImpressionShareValue);
-                                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetAdPosition(targetAdPositionValue);
-                            }
-                            
+                        BiddingScheme biddingScheme = StringExtensions.readBiddingScheme(values);
+                        if (biddingScheme != null) {
                             c.getCampaign().setBiddingScheme(biddingScheme);
-                        } catch (Exception e) {
-                                e.printStackTrace();
                         }
                     }
                 }
@@ -1009,7 +987,21 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 		this.budgetName = budgetName;
 	}
 
-	@Override
+    /**
+     * Gets the Bid Strategy name for the campaign
+     * */
+	public String getBidStrategyName() {
+        return BidStrategyName;
+    }
+
+    /**
+     * Sets the Bid Strategy name for the campaign
+     * */
+    public void setBidStrategyName(String bidStrategyName) {
+        BidStrategyName = bidStrategyName;
+    }
+
+    @Override
     public void processMappingsFromRowValues(RowValues values) {
         this.setCampaign(new Campaign());
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
@@ -1031,4 +1023,6 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     public static boolean isDailyBudget(BudgetLimitType budgetType) {
         return BudgetLimitType.DAILY_BUDGET_ACCELERATED.equals(budgetType) || BudgetLimitType.DAILY_BUDGET_STANDARD.equals(budgetType);
     }
+    
+    
 }

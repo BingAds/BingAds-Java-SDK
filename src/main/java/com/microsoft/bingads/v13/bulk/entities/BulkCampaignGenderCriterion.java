@@ -10,10 +10,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
-import com.microsoft.bingads.v13.campaignmanagement.BiddableCampaignCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionStatus;
-import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.GenderCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.GenderType;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
@@ -22,7 +19,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a gender criterion that is assigned to a campaign. Each gender criterion can be read or written in a bulk file.
@@ -37,116 +33,13 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public class BulkCampaignGenderCriterion extends SingleRecordBulkEntity {
+public class BulkCampaignGenderCriterion extends BulkCampaignBiddableCriterion {
 	
-	private BiddableCampaignCriterion biddableCampaignCriterion;
-	
-	private String campaignName;
-
 	private static final List<BulkMapping<BulkCampaignGenderCriterion>> MAPPINGS;
 
     static {
         List<BulkMapping<BulkCampaignGenderCriterion>> m = new ArrayList<BulkMapping<BulkCampaignGenderCriterion>>();
         
-        m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, String>(StringTable.Status,
-                new Function<BulkCampaignGenderCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignGenderCriterion c) {
-                    	CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
-                    	
-                        return status == null ? null : status.value();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignGenderCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignGenderCriterion c) {
-                        c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
-                            @Override
-                            public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, Long>(StringTable.Id,
-                new Function<BulkCampaignGenderCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignGenderCriterion c) {
-                        return c.getBiddableCampaignCriterion().getId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignGenderCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignGenderCriterion c) {
-                        c.getBiddableCampaignCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String s) {
-                                return Long.parseLong(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, Long>(StringTable.ParentId,
-                new Function<BulkCampaignGenderCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignGenderCriterion c) {
-                        return c.getBiddableCampaignCriterion().getCampaignId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignGenderCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignGenderCriterion c) {
-                        c.getBiddableCampaignCriterion().setCampaignId(StringExtensions.nullOrLong(v));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, String>(StringTable.Campaign,
-                new Function<BulkCampaignGenderCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignGenderCriterion c) {
-                        return c.getCampaignName();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignGenderCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignGenderCriterion c) {
-                        c.setCampaignName(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, String>(StringTable.BidAdjustment,
-                new Function<BulkCampaignGenderCriterion, String>() {
-                    @Override
-                    public String apply(BulkCampaignGenderCriterion c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid();
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions.toCriterionBidMultiplierBulkString(((BidMultiplier) bid).getMultiplier());
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkCampaignGenderCriterion>() {
-                    @Override
-                    public void accept(String v, BulkCampaignGenderCriterion c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionBid()).setMultiplier(
-                                    StringExtensions.nullOrDouble(v)
-                            );
-                        }
-                    }
-                }
-        ));
         
         m.add(new SimpleBulkMapping<BulkCampaignGenderCriterion, String>(StringTable.Target,
                 new Function<BulkCampaignGenderCriterion, String>() {
@@ -180,57 +73,17 @@ public class BulkCampaignGenderCriterion extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        BiddableCampaignCriterion campaignCriterion = new BiddableCampaignCriterion();  
-        
-        BidMultiplier bidMultiplier = new BidMultiplier();       
-        bidMultiplier.setType(BidMultiplier.class.getSimpleName());
-        
-        GenderCriterion genderCriterion = new GenderCriterion();
-        
-    	campaignCriterion.setCriterion(genderCriterion);
-    	campaignCriterion.getCriterion().setType(GenderCriterion.class.getSimpleName());
-    	campaignCriterion.setCriterionBid(bidMultiplier);
-    	campaignCriterion.setType("BiddableCampaignCriterion");
-    	
-    	setBiddableCampaignCriterion(campaignCriterion);  
-    	
-    	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
+        super.processMappingsFromRowValues(values);
+        MappingHelpers.convertToEntity(values, MAPPINGS, this);   
     }
 
     @Override
+    protected Criterion createCriterion() {
+        return new GenderCriterion();
+    }
+    @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getBiddableCampaignCriterion(), BiddableCampaignCriterion.class.getSimpleName());
-        
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }
-
-    /**
-     * Gets a Campaign Criterion.
-     */
-    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
-        return biddableCampaignCriterion;
-    }
-
-    /**
-     * Sets a Campaign Criterion
-     */
-    public void setBiddableCampaignCriterion(BiddableCampaignCriterion biddableCampaignCriterion) {
-        this.biddableCampaignCriterion = biddableCampaignCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    /**
-     * Sets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
     }
 }

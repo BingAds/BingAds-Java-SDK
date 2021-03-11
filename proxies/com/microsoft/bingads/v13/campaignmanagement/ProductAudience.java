@@ -39,7 +39,7 @@ public class ProductAudience
 {
 
     @XmlElement(name = "ProductAudienceType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<ProductAudienceType> productAudienceType;
     @XmlElement(name = "TagId", nillable = true)
     protected Long tagId;

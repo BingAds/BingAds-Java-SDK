@@ -6,8 +6,8 @@ import java.util.List;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
-import com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.AudienceCriterion;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.NegativeCampaignCriterion;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -15,7 +15,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Base class for all Campaign Audience Association subclasses that can be read or written in a bulk file.
@@ -26,11 +25,7 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkCampaignNegativeRemarketingListAssociation
  * @see BulkCampaignNegativeSimilarRemarketingListAssociation
  */
-public class BulkCampaignNegativeAudienceAssociation extends SingleRecordBulkEntity {
-
-    private NegativeCampaignCriterion negativeCampaignCriterion;
-
-    private String campaignName;
+public class BulkCampaignNegativeAudienceAssociation extends BulkCampaignNegativeCriterion {
 
     private String audienceName;
 
@@ -38,84 +33,6 @@ public class BulkCampaignNegativeAudienceAssociation extends SingleRecordBulkEnt
 
     static {
         List<BulkMapping<BulkCampaignNegativeAudienceAssociation>> m = new ArrayList<BulkMapping<BulkCampaignNegativeAudienceAssociation>>();
-
-        m.add(new SimpleBulkMapping<BulkCampaignNegativeAudienceAssociation, String>(StringTable.Status,
-                new Function<BulkCampaignNegativeAudienceAssociation, String>() {
-                    @Override
-                    public String apply(BulkCampaignNegativeAudienceAssociation c) {
-                        CampaignCriterionStatus status = c.getNegativeCampaignCriterion().getStatus();
-
-                        return status == null ? null : status.value();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignNegativeAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignNegativeAudienceAssociation c) {
-                        c.getNegativeCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
-                            @Override
-                            public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignNegativeAudienceAssociation, Long>(StringTable.Id,
-                new Function<BulkCampaignNegativeAudienceAssociation, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignNegativeAudienceAssociation c) {
-                        return c.getNegativeCampaignCriterion().getId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignNegativeAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignNegativeAudienceAssociation c) {
-                        c.getNegativeCampaignCriterion().setId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkCampaignNegativeAudienceAssociation, Long>(StringTable.ParentId,
-                new Function<BulkCampaignNegativeAudienceAssociation, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignNegativeAudienceAssociation c) {
-                        return c.getNegativeCampaignCriterion().getCampaignId();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignNegativeAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignNegativeAudienceAssociation c) {
-                        c.getNegativeCampaignCriterion().setCampaignId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-
-        m.add(new SimpleBulkMapping<BulkCampaignNegativeAudienceAssociation, String>(StringTable.Campaign,
-                new Function<BulkCampaignNegativeAudienceAssociation, String>() {
-                    @Override
-                    public String apply(BulkCampaignNegativeAudienceAssociation c) {
-                        return c.getCampaignName();
-                    }
-                },
-                new BiConsumer<String, BulkCampaignNegativeAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignNegativeAudienceAssociation c) {
-                        c.setCampaignName(v);
-                    }
-                }
-        ));
 
         m.add(new SimpleBulkMapping<BulkCampaignNegativeAudienceAssociation, String>(StringTable.Audience,
                 new Function<BulkCampaignNegativeAudienceAssociation, String>() {
@@ -171,55 +88,21 @@ public class BulkCampaignNegativeAudienceAssociation extends SingleRecordBulkEnt
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        NegativeCampaignCriterion campaignCriterion = new NegativeCampaignCriterion();
-        campaignCriterion.setType(NegativeCampaignCriterion.class.getSimpleName());
-
-        AudienceCriterion audienceCriterion = new AudienceCriterion();
-        audienceCriterion.setType(AudienceCriterion.class.getSimpleName());
-
-        campaignCriterion.setCriterion(audienceCriterion);
-
-        this.setNegativeCampaignCriterion(campaignCriterion);
-
+        super.processMappingsFromRowValues(values);
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getNegativeCampaignCriterion(), BulkCampaignNegativeAudienceAssociation.class.getSimpleName());
-
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
-
-    /**
-     * Gets an Campaign Criterion.
-     */
-    public NegativeCampaignCriterion getNegativeCampaignCriterion() {
-        return this.negativeCampaignCriterion;
+    
+    @Override
+    protected Criterion createCriterion() {
+        return new AudienceCriterion();
     }
 
-    /**
-     * Sets an Campaign Criterion.
-     */
-    public void setNegativeCampaignCriterion(NegativeCampaignCriterion campaignCriterion) {
-        this.negativeCampaignCriterion = campaignCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public String getCampaignName() {
-        return this.campaignName;
-    }
-
-    /**
-     * Sets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
-    }
 
     /**
      * Gets the name of the  audience.

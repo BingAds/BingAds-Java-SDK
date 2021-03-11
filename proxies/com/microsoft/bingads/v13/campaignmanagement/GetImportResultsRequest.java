@@ -49,7 +49,7 @@ public class GetImportResultsRequest {
     @XmlElement(name = "ImportJobIds", nillable = true)
     protected ArrayOflong importJobIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<ImportAdditionalField> returnAdditionalFields;
 
     /**

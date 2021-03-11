@@ -83,6 +83,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Goal"/>
  *     &lt;enumeration value="GoalType"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="AverageCpm"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -229,7 +230,9 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("GoalType")
     GOAL_TYPE("GoalType"),
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
-    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent");
+    ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
+    @XmlEnumValue("AverageCpm")
+    AVERAGE_CPM("AverageCpm");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

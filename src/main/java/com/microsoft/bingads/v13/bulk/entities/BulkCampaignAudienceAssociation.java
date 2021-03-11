@@ -7,17 +7,14 @@ import java.util.List;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v13.campaignmanagement.AudienceCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
 import com.microsoft.bingads.v13.campaignmanagement.BiddableCampaignCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionStatus;
-import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Base class for all Campaign Audience Association subclasses that can be read
@@ -29,11 +26,7 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkCampaignRemarketingListAssociation
  * @see BulkCampaignSimilarRemarketingListAssociation
  */
-public class BulkCampaignAudienceAssociation extends SingleRecordBulkEntity {
-
-    private BiddableCampaignCriterion biddableCampaignCriterion;
-
-    private String campaignName;
+public class BulkCampaignAudienceAssociation extends BulkCampaignBiddableCriterion {
 
     private String audienceName;
 
@@ -41,78 +34,6 @@ public class BulkCampaignAudienceAssociation extends SingleRecordBulkEntity {
 
     static {
         List<BulkMapping<BulkCampaignAudienceAssociation>> m = new ArrayList<BulkMapping<BulkCampaignAudienceAssociation>>();
-
-        m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, String>(StringTable.Status,
-                new Function<BulkCampaignAudienceAssociation, String>() {
-                    @Override
-                    public String apply(BulkCampaignAudienceAssociation c) {
-                        CampaignCriterionStatus status = c.getBiddableCampaignCriterion().getStatus();
-
-                        return status == null ? null : status.value();
-                    }
-                }, new BiConsumer<String, BulkCampaignAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignAudienceAssociation c) {
-                        c.getBiddableCampaignCriterion().setStatus(
-                                StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
-                                    @Override
-                                    public CampaignCriterionStatus apply(String s) {
-                                        return CampaignCriterionStatus.fromValue(s);
-                                    }
-                                }));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, Long>(StringTable.Id,
-                new Function<BulkCampaignAudienceAssociation, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignAudienceAssociation c) {
-                        return c.getBiddableCampaignCriterion().getId();
-                    }
-                }, new BiConsumer<String, BulkCampaignAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignAudienceAssociation c) {
-                        c.getBiddableCampaignCriterion()
-                                .setId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                                    @Override
-                                    public Long apply(String value) {
-                                        return Long.parseLong(value);
-                                    }
-                                }));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, Long>(StringTable.ParentId,
-                new Function<BulkCampaignAudienceAssociation, Long>() {
-                    @Override
-                    public Long apply(BulkCampaignAudienceAssociation c) {
-                        return c.getBiddableCampaignCriterion().getCampaignId();
-                    }
-                }, new BiConsumer<String, BulkCampaignAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignAudienceAssociation c) {
-                        c.getBiddableCampaignCriterion()
-                                .setCampaignId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                                    @Override
-                                    public Long apply(String value) {
-                                        return Long.parseLong(value);
-                                    }
-                                }));
-                    }
-                }));
-
-        m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, String>(StringTable.Campaign,
-                new Function<BulkCampaignAudienceAssociation, String>() {
-                    @Override
-                    public String apply(BulkCampaignAudienceAssociation c) {
-                        return c.getCampaignName();
-                    }
-                }, new BiConsumer<String, BulkCampaignAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignAudienceAssociation c) {
-                        c.setCampaignName(v);
-                    }
-                }));
 
         m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, String>(StringTable.Audience,
                 new Function<BulkCampaignAudienceAssociation, String>() {
@@ -127,32 +48,6 @@ public class BulkCampaignAudienceAssociation extends SingleRecordBulkEntity {
                     }
                 }));
 
-        m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, String>(StringTable.BidAdjustment,
-                new Function<BulkCampaignAudienceAssociation, String>() {
-                    @Override
-                    public String apply(BulkCampaignAudienceAssociation c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            CriterionBid bid = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion())
-                                    .getCriterionBid();
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions
-                                        .toCriterionBidMultiplierBulkString(((BidMultiplier) bid).getMultiplier());
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                }, new BiConsumer<String, BulkCampaignAudienceAssociation>() {
-                    @Override
-                    public void accept(String v, BulkCampaignAudienceAssociation c) {
-                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((BidMultiplier) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion())
-                                    .getCriterionBid()).setMultiplier(StringExtensions.nullOrDouble(v));
-                        }
-                    }
-                }));
 
         m.add(new SimpleBulkMapping<BulkCampaignAudienceAssociation, Long>(StringTable.AudienceId,
                 new Function<BulkCampaignAudienceAssociation, Long>() {
@@ -194,58 +89,19 @@ public class BulkCampaignAudienceAssociation extends SingleRecordBulkEntity {
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-        BiddableCampaignCriterion campaignCriterion = new BiddableCampaignCriterion();
-        campaignCriterion.setType(BiddableCampaignCriterion.class.getSimpleName());
-
-        BidMultiplier bidMultiplier = new BidMultiplier();
-        bidMultiplier.setType(BidMultiplier.class.getSimpleName());
-
-        AudienceCriterion audienceCriterion = new AudienceCriterion();
-        audienceCriterion.setType(AudienceCriterion.class.getSimpleName());
-
-        campaignCriterion.setCriterion(audienceCriterion);
-        campaignCriterion.setCriterionBid(bidMultiplier);
-
-        this.setBiddableCampaignCriterion(campaignCriterion);
-
+        super.processMappingsFromRowValues(values);
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
+    }
+    
+    @Override
+    protected Criterion createCriterion() {
+        return new AudienceCriterion();
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getBiddableCampaignCriterion(), "CampaignAudienceAssociation");
-
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
-    }
-
-    /**
-     * Gets an Campaign Criterion.
-     */
-    public BiddableCampaignCriterion getBiddableCampaignCriterion() {
-        return this.biddableCampaignCriterion;
-    }
-
-    /**
-     * Sets an Campaign Criterion.
-     */
-    public void setBiddableCampaignCriterion(BiddableCampaignCriterion campaignCriterion) {
-        this.biddableCampaignCriterion = campaignCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign. Corresponds to the 'Campaign' field in the
-     * bulk file.
-     */
-    public String getCampaignName() {
-        return this.campaignName;
-    }
-
-    /**
-     * Sets the name of the campaign. Corresponds to the 'Campaign' field in the
-     * bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
     }
 
     /**

@@ -7,7 +7,8 @@ public enum ConversionGoalAdditionalField {
 
     VIEW_THROUGH_CONVERSION_WINDOW_IN_MINUTES("ViewThroughConversionWindowInMinutes"),
     IS_EXTERNALLY_ATTRIBUTED("IsExternallyAttributed"),
-    GOAL_CATEGORY("GoalCategory");
+    GOAL_CATEGORY("GoalCategory"),
+    INACTIVE_DUE_TO_TAG_UNAVAILABLE("InactiveDueToTagUnavailable");
         
     private final String value;
 

@@ -48,7 +48,7 @@ public class GetAdExtensionsAssociationsRequest {
     @XmlElement(name = "AccountId")
     protected Long accountId;
     @XmlElement(name = "AdExtensionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected Collection<AdExtensionsTypeFilter> adExtensionType;
     @XmlElement(name = "AssociationType")
     @XmlSchemaType(name = "string")
@@ -56,7 +56,7 @@ public class GetAdExtensionsAssociationsRequest {
     @XmlElement(name = "EntityIds", nillable = true)
     protected ArrayOflong entityIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected Collection<AdExtensionAdditionalField> returnAdditionalFields;
 
     /**

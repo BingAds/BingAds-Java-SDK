@@ -57,6 +57,8 @@ import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.LogicalOperator;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.ManualCpmBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.ManualCpvBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MatchType;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
@@ -887,7 +889,13 @@ public class StringExtensions {
     	} else if (s.equals("ManualCpc")) {
     		biddingScheme = new ManualCpcBiddingScheme();
     		biddingScheme.setType("ManualCpc");
-    	} else if (s.equals("TargetCpa")) {
+    	} else if (s.equals("ManualCpv")) {
+            biddingScheme = new ManualCpvBiddingScheme();
+            biddingScheme.setType("ManualCpv");
+        } else if (s.equals("ManualCpm")) {
+            biddingScheme = new ManualCpmBiddingScheme();
+            biddingScheme.setType("ManualCpm");
+        } else if (s.equals("TargetCpa")) {
     		biddingScheme = new TargetCpaBiddingScheme();
     		biddingScheme.setType("TargetCpa");
     	} else if (s.equals("MaxClicks")) {
@@ -1790,6 +1798,106 @@ public class StringExtensions {
                             FeedCustomAttribute.class)
                     );
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void writeBiddingScheme(BiddingScheme biddingScheme, Long entityId, RowValues values) {
+        try {
+
+            if (biddingScheme == null) {
+                return;
+            }
+
+            values.put(StringTable.BidStrategyType, StringExtensions.toBiddingSchemeBulkString(biddingScheme));
+
+            if (biddingScheme instanceof MaxClicksBiddingScheme) {
+                Bid maxCpc = ((MaxClicksBiddingScheme)biddingScheme).getMaxCpc();
+                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, entityId));
+            }
+            else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
+                Bid maxCpc = ((MaxConversionsBiddingScheme)biddingScheme).getMaxCpc();
+                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, entityId));
+            }
+            else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+                Bid maxCpc = ((TargetCpaBiddingScheme)biddingScheme).getMaxCpc();
+                values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, entityId));
+                Double targetCpa = ((TargetCpaBiddingScheme)biddingScheme).getTargetCpa();
+                if (targetCpa != null) {
+                    values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());
+                }
+            } else if (biddingScheme instanceof MaxConversionValueBiddingScheme) {
+                Double targetRoas = ((MaxConversionValueBiddingScheme)biddingScheme).getTargetRoas();
+                if (targetRoas != null) {
+                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoas.toString()));
+                }
+            } else if (biddingScheme instanceof TargetRoasBiddingScheme) {
+                TargetRoasBiddingScheme targetRoasBiddingScheme = (TargetRoasBiddingScheme)biddingScheme;
+                if (targetRoasBiddingScheme != null)
+                {
+                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetRoasBiddingScheme.getMaxCpc(), entityId));
+                    values.put(StringTable.BidStrategyTargetRoas, StringExtensions.toBulkString(targetRoasBiddingScheme.getTargetRoas()));
+                }
+            } else if  (biddingScheme instanceof TargetImpressionShareBiddingScheme) {
+                TargetImpressionShareBiddingScheme targetImpressionShareBiddingScheme = (TargetImpressionShareBiddingScheme)biddingScheme;
+                if (targetImpressionShareBiddingScheme != null)
+                {
+                    values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(targetImpressionShareBiddingScheme.getMaxCpc(), entityId));
+                    values.put(StringTable.BidStrategyTargetAdPosition, StringExtensions.toOptionalBulkString(targetImpressionShareBiddingScheme.getTargetAdPosition(), entityId));
+                    values.put(StringTable.BidStrategyTargetImpressionShare, StringExtensions.toBulkString(targetImpressionShareBiddingScheme.getTargetImpressionShare()));
+                }
+            }
+        
+        } catch (Exception e) {
+                e.printStackTrace();
+        }        
+    }
+
+    public static BiddingScheme readBiddingScheme(RowValues values) {
+        try {
+            String bidStrategyTypeRowValue = values.get(StringTable.BidStrategyType);
+            BiddingScheme biddingScheme = parseBiddingScheme(bidStrategyTypeRowValue);
+
+            if (biddingScheme == null) {
+                return null;
+            }
+
+            String maxCpcRowValue = values.get(StringTable.BidStrategyMaxCpc);
+            String targetCpaRowValue = values.get(StringTable.BidStrategyTargetCpa);
+            String targetRoas = values.get(StringTable.BidStrategyTargetRoas);
+            String targetAdPositionValue = values.get(StringTable.BidStrategyTargetAdPosition);
+            String targetImpressionShareRowValue = values.get(StringTable.BidStrategyTargetImpressionShare);
+
+
+            Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
+            Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
+            Double targetRosValue = StringExtensions.nullOrDouble(targetRoas);
+            Double targetImpressionShareValue = StringExtensions.nullOrDouble(targetImpressionShareRowValue);
+            
+            
+            if (biddingScheme instanceof MaxClicksBiddingScheme) {
+                ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+            }
+            else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
+                ((MaxConversionsBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+            } else if (biddingScheme instanceof TargetCpaBiddingScheme) {
+                ((TargetCpaBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                ((TargetCpaBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
+            } else if (biddingScheme instanceof MaxConversionValueBiddingScheme) {
+                ((MaxConversionValueBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
+            } else if (biddingScheme instanceof TargetRoasBiddingScheme) {
+                ((TargetRoasBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                ((TargetRoasBiddingScheme)biddingScheme).setTargetRoas(targetRosValue);
+            } else if (biddingScheme instanceof TargetImpressionShareBiddingScheme) {
+                ((TargetImpressionShareBiddingScheme)biddingScheme).setType("TargetImpressionShare");
+                ((TargetImpressionShareBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetImpressionShare(targetImpressionShareValue);
+                ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetAdPosition(targetAdPositionValue);
+            }
+            return biddingScheme;
+            
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

@@ -11,7 +11,6 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.Audience;
 import com.microsoft.bingads.v13.campaignmanagement.ProductAudience;
 import com.microsoft.bingads.v13.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;

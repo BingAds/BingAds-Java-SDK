@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteAdScheduleUseSearcherTimeZone;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAccountIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesAudienceAdsBidAdjustmentTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBidStrategyIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBidStrategyTypeTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesBudgetTypeTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesCampaignTypeTest;
@@ -16,6 +17,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDomainLanguageDSASettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesExperimentIdTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFeedIdAudienceSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFinalUrlSuffixTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesNameTest;
@@ -56,7 +58,10 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesExperimentIdTest.class,
         BulkCampaignWriteToRowValuesFinalUrlSuffixTest.class,
         BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest.class,
-        BulkCampaignWriteAdScheduleUseSearcherTimeZone.class
+        BulkCampaignWriteAdScheduleUseSearcherTimeZone.class,
+        BulkCampaignWriteToRowValuesBidStrategyIdTest.class,
+        BulkCampaignWriteToRowValuesBidStrategyIdTest.class,
+        BulkCampaignWriteToRowValuesFeedIdAudienceSettingTest.class,
 })
 public class BulkCampaignWriteTests {
 

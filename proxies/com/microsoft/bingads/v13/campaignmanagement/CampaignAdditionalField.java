@@ -10,7 +10,8 @@ public enum CampaignAdditionalField {
     TARGET_IMPRESSION_SHARE_BIDDING_SCHEME("TargetImpressionShareBiddingScheme"),
     TARGET_SETTING("TargetSetting"),
     BID_STRATEGY_ID("BidStrategyId"),
-    CPV_CPM_BIDDING_SCHEME("CpvCpmBiddingScheme");
+    CPV_CPM_BIDDING_SCHEME("CpvCpmBiddingScheme"),
+    DYNAMIC_FEED_SETTING("DynamicFeedSetting");
         
     private final String value;
 

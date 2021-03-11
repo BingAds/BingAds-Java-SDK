@@ -10,7 +10,6 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.SharedEntityAssociation;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -47,7 +46,6 @@ public class BulkCampaignNegativeKeywordList extends SingleRecordBulkEntity {
     static {
         List<BulkMapping<BulkCampaignNegativeKeywordList>> m = new ArrayList<BulkMapping<BulkCampaignNegativeKeywordList>>();
 
-        AdExtensionStatus a;
         m.add(new SimpleBulkMapping<BulkCampaignNegativeKeywordList, String>(StringTable.Status,
                 new Function<BulkCampaignNegativeKeywordList, String>() {
                     @Override

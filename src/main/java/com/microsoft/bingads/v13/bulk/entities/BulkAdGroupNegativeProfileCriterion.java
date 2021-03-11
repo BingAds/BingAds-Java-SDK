@@ -10,8 +10,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
-import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionStatus;
-import com.microsoft.bingads.v13.campaignmanagement.NegativeAdGroupCriterion;
+import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.ProfileCriterion;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -19,7 +18,6 @@ import com.microsoft.bingads.v13.internal.bulk.RowValues;
 import com.microsoft.bingads.v13.internal.bulk.SimpleBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
-import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
  * Represents a negative profile criterion that is assigned to an ad group. Each negative profile criterion can be read or written in a bulk file.
@@ -34,13 +32,7 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileReader
  * @see BulkFileWriter
  */
-public abstract class BulkAdGroupNegativeProfileCriterion extends SingleRecordBulkEntity {
-	
-	private NegativeAdGroupCriterion negativeAdGroupCriterion;
-	
-	private String campaignName;
-	
-	private String adGroupName;
+public abstract class BulkAdGroupNegativeProfileCriterion extends BulkAdGroupNegativeCriterion {
 	
 	private String profileName;
 
@@ -48,98 +40,6 @@ public abstract class BulkAdGroupNegativeProfileCriterion extends SingleRecordBu
 
     static {
         List<BulkMapping<BulkAdGroupNegativeProfileCriterion>> m = new ArrayList<BulkMapping<BulkAdGroupNegativeProfileCriterion>>();
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, String>(StringTable.Status,
-                new Function<BulkAdGroupNegativeProfileCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupNegativeProfileCriterion c) {
-                        AdGroupCriterionStatus status = c.getNegativeAdGroupCriterion().getStatus();
-
-                        return status == null ? null : status.value();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.getNegativeAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
-                            @Override
-                            public AdGroupCriterionStatus apply(String s) {
-                                return AdGroupCriterionStatus.fromValue(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, Long>(StringTable.Id,
-                new Function<BulkAdGroupNegativeProfileCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkAdGroupNegativeProfileCriterion c) {
-                        return c.getNegativeAdGroupCriterion().getId();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.getNegativeAdGroupCriterion().setId(StringExtensions.parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String s) {
-                                return Long.parseLong(s);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, Long>(StringTable.ParentId,
-                new Function<BulkAdGroupNegativeProfileCriterion, Long>() {
-                    @Override
-                    public Long apply(BulkAdGroupNegativeProfileCriterion c) {
-                        return c.getNegativeAdGroupCriterion().getAdGroupId();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.getNegativeAdGroupCriterion().setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
-                            @Override
-                            public Long apply(String value) {
-                                return Long.parseLong(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-
-        m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, String>(StringTable.Campaign,
-                new Function<BulkAdGroupNegativeProfileCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupNegativeProfileCriterion c) {
-                        return c.getCampaignName();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.setCampaignName(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, String>(StringTable.AdGroup,
-                new Function<BulkAdGroupNegativeProfileCriterion, String>() {
-                    @Override
-                    public String apply(BulkAdGroupNegativeProfileCriterion c) {
-                        return c.getAdGroupName();
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupNegativeProfileCriterion>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupNegativeProfileCriterion c) {
-                        c.setAdGroupName(v);
-                    }
-                }
-        ));
         
 
         m.add(new SimpleBulkMapping<BulkAdGroupNegativeProfileCriterion, String>(StringTable.Profile,
@@ -189,74 +89,25 @@ public abstract class BulkAdGroupNegativeProfileCriterion extends SingleRecordBu
 
     @Override
     public void processMappingsFromRowValues(RowValues values) {
-    	NegativeAdGroupCriterion adGroupCriterion = new NegativeAdGroupCriterion();  
-                
-        ProfileCriterion criterion = new ProfileCriterion();
-        
-    	adGroupCriterion.setCriterion(criterion);
-    	adGroupCriterion.getCriterion().setType(ProfileCriterion.class.getSimpleName());
-    	adGroupCriterion.setType("NegativeAdGroupCriterion");
-    	setProfileType(criterion);
-    	
-    	setNegativeAdGroupCriterion(adGroupCriterion);  
-    	
+    	super.processMappingsFromRowValues(values);    	
     	MappingHelpers.convertToEntity(values, MAPPINGS, this);   
+    }
+    
+    @Override
+    protected Criterion createCriterion() {
+        ProfileCriterion criterion = new ProfileCriterion();
+        setProfileType(criterion);
+        return criterion;
     }
 
     public abstract void setProfileType(ProfileCriterion criterion);
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
-        validatePropertyNotNull(getNegativeAdGroupCriterion(), NegativeAdGroupCriterion.class.getSimpleName());
-        
+        super.processMappingsToRowValues(values, excludeReadonlyData);
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
-    /**
-     * Gets an Ad Group Criterion.
-     */
-    public NegativeAdGroupCriterion getNegativeAdGroupCriterion() {
-        return negativeAdGroupCriterion;
-    }
-
-    /**
-     * Sets an Ad Group Criterion
-     */
-    public void setNegativeAdGroupCriterion(NegativeAdGroupCriterion negativeAdGroupCriterion) {
-        this.negativeAdGroupCriterion = negativeAdGroupCriterion;
-    }
-
-    /**
-     * Gets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    /**
-     * Sets the name of the ad group.
-     * Corresponds to the 'Ad Group' field in the bulk file.
-     */
-    public void setAdGroupName(String adGroupName) {
-        this.adGroupName = adGroupName;
-    }
-    
-    /**
-     * Gets the name of the ad group.
-     * Corresponds to the 'Ad Group' field in the bulk file.
-     */
-    public String getAdGroupName() {
-        return adGroupName;
-    }
-
-    /**
-     * Sets the name of the campaign.
-     * Corresponds to the 'Campaign' field in the bulk file.
-     */
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
-    }
     
     public String getProfileName() {
         return profileName;
