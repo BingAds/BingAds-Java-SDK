@@ -56,9 +56,9 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.customerbilling.GetBillingDocumentsInfoResponse
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocumentsInfo", action = "GetBillingDocumentsInfo")
     @WebResult(name = "GetBillingDocumentsInfoResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
@@ -98,9 +98,9 @@ public interface ICustomerBillingService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.customerbilling.GetBillingDocumentsResponse
-     * @throws ApiBatchFault_Exception
      * @throws AdApiFaultDetail_Exception
      * @throws ApiFault_Exception
+     * @throws ApiBatchFault_Exception
      */
     @WebMethod(operationName = "GetBillingDocuments", action = "GetBillingDocuments")
     @WebResult(name = "GetBillingDocumentsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
@@ -271,6 +271,129 @@ public interface ICustomerBillingService {
     public GetAccountMonthlySpendResponse getAccountMonthlySpend(
         @WebParam(name = "GetAccountMonthlySpendRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
         GetAccountMonthlySpendRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.DispatchCouponsResponse>
+     */
+    @WebMethod(operationName = "DispatchCoupons", action = "DispatchCoupons")
+    public Response<DispatchCouponsResponse> dispatchCouponsAsync(
+        @WebParam(name = "DispatchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DispatchCouponsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DispatchCoupons", action = "DispatchCoupons")
+    public Future<?> dispatchCouponsAsync(
+        @WebParam(name = "DispatchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DispatchCouponsRequest parameters,
+        @WebParam(name = "DispatchCouponsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DispatchCouponsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.DispatchCouponsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "DispatchCoupons", action = "DispatchCoupons")
+    @WebResult(name = "DispatchCouponsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public DispatchCouponsResponse dispatchCoupons(
+        @WebParam(name = "DispatchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DispatchCouponsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.RedeemCouponResponse>
+     */
+    @WebMethod(operationName = "RedeemCoupon", action = "RedeemCoupon")
+    public Response<RedeemCouponResponse> redeemCouponAsync(
+        @WebParam(name = "RedeemCouponRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        RedeemCouponRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "RedeemCoupon", action = "RedeemCoupon")
+    public Future<?> redeemCouponAsync(
+        @WebParam(name = "RedeemCouponRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        RedeemCouponRequest parameters,
+        @WebParam(name = "RedeemCouponResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<RedeemCouponResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.RedeemCouponResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "RedeemCoupon", action = "RedeemCoupon")
+    @WebResult(name = "RedeemCouponResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public RedeemCouponResponse redeemCoupon(
+        @WebParam(name = "RedeemCouponRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        RedeemCouponRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.SearchCouponsResponse>
+     */
+    @WebMethod(operationName = "SearchCoupons", action = "SearchCoupons")
+    public Response<SearchCouponsResponse> searchCouponsAsync(
+        @WebParam(name = "SearchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        SearchCouponsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "SearchCoupons", action = "SearchCoupons")
+    public Future<?> searchCouponsAsync(
+        @WebParam(name = "SearchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        SearchCouponsRequest parameters,
+        @WebParam(name = "SearchCouponsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<SearchCouponsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.SearchCouponsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "SearchCoupons", action = "SearchCoupons")
+    @WebResult(name = "SearchCouponsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public SearchCouponsResponse searchCoupons(
+        @WebParam(name = "SearchCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        SearchCouponsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 

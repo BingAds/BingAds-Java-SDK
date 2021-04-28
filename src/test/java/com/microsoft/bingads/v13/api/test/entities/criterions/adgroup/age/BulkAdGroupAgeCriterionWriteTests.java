@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteAdGroupNameTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteIdTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteParentIdTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.BulkAdGroupAgeCriterionWriteStatusTest;
@@ -19,7 +20,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.age.write.
         BulkAdGroupAgeCriterionWriteAdGroupNameTest.class,
         BulkAdGroupAgeCriterionWriteCampaignNameTest.class,
         BulkAdGroupAgeCriterionWriteTargetTest.class,
-        BulkAdGroupAgeCriterionWriteBidAdjustmentTest.class
+        BulkAdGroupAgeCriterionWriteBidAdjustmentTest.class,
+        BulkAdGroupAgeCriterionWriteCashbackAdjustmentTest.class
 })
 public class BulkAdGroupAgeCriterionWriteTests {
 }

@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     ImageAsset.class,
-    TextAsset.class
+    TextAsset.class,
+    VideoAsset.class
 })
 public class Asset {
 

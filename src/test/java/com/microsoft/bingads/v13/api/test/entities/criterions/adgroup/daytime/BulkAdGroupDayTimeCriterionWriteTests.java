@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteAdGroupNameTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteFromHourTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteFromMinuteTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.write.BulkAdGroupDayTimeCriterionWriteIdTest;
@@ -27,7 +28,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.daytime.wr
         BulkAdGroupDayTimeCriterionWriteFromHourTest.class,
         BulkAdGroupDayTimeCriterionWriteToHourTest.class,
         BulkAdGroupDayTimeCriterionWriteFromMinuteTest.class,
-        BulkAdGroupDayTimeCriterionWriteToMinuteTest.class
+        BulkAdGroupDayTimeCriterionWriteToMinuteTest.class,
+        BulkAdGroupDayTimeCriterionWriteCashbackAdjustmentTest.class
 })
 public class BulkAdGroupDayTimeCriterionWriteTests {
 }

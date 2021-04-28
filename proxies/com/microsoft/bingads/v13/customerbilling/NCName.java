@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NCName", propOrder = {
+@XmlType(name = "NCName", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "value"
 })
 public class NCName {

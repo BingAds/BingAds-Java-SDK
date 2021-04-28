@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Account" type="{https://bingads.microsoft.com/Customer/v13/Entities}AdvertiserAccount" minOccurs="0"/>
  *         &lt;element name="ParentCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="UserInvitation" type="{https://bingads.microsoft.com/Customer/v13/Entities}UserInvitation" minOccurs="0"/>
+ *         &lt;element name="UserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "customer",
     "account",
     "parentCustomerId",
-    "userInvitation"
+    "userInvitation",
+    "userId"
 })
 @XmlRootElement(name = "SignupCustomerRequest")
 public class SignupCustomerRequest {
@@ -48,6 +50,8 @@ public class SignupCustomerRequest {
     protected Long parentCustomerId;
     @XmlElement(name = "UserInvitation", nillable = true)
     protected UserInvitation userInvitation;
+    @XmlElement(name = "UserId", nillable = true)
+    protected Long userId;
 
     /**
      * Gets the value of the customer property.
@@ -143,6 +147,30 @@ public class SignupCustomerRequest {
      */
     public void setUserInvitation(UserInvitation value) {
         this.userInvitation = value;
+    }
+
+    /**
+     * Gets the value of the userId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getUserId() {
+        return userId;
+    }
+
+    /**
+     * Sets the value of the userId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setUserId(Long value) {
+        this.userId = value;
     }
 
 }

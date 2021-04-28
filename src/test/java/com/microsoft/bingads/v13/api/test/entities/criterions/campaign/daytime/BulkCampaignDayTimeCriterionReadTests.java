@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadFromHourTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadFromMinuteTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.read.BulkCampaignDayTimeCriterionReadIdTest;
@@ -26,7 +27,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.daytime.r
         BulkCampaignDayTimeCriterionReadFromHourTest.class,
         BulkCampaignDayTimeCriterionReadToHourTest.class,
         BulkCampaignDayTimeCriterionReadFromMinuteTest.class,
-        BulkCampaignDayTimeCriterionReadToMinuteTest.class
+        BulkCampaignDayTimeCriterionReadToMinuteTest.class,
+        BulkCampaignDayTimeCriterionReadCashbackAdjustmentTest.class
 })
 public class BulkCampaignDayTimeCriterionReadTests {
 }

@@ -63,6 +63,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="RaiseProductGroupBidsToMinimum" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="SearchAndDsaMixedCampaignAsSearchCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="SearchAndReplaceForCampaignNames" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
+ *         &lt;element name="SearchAndReplaceForCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
  *         &lt;element name="SearchAndReplaceForTrackingTemplates" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
  *         &lt;element name="SearchAndReplaceForUrls" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
  *         &lt;element name="SuffixForCampaignNames" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -157,6 +158,7 @@ import javax.xml.bind.annotation.XmlType;
     "raiseProductGroupBidsToMinimum",
     "searchAndDsaMixedCampaignAsSearchCampaign",
     "searchAndReplaceForCampaignNames",
+    "searchAndReplaceForCustomParameters",
     "searchAndReplaceForTrackingTemplates",
     "searchAndReplaceForUrls",
     "suffixForCampaignNames",
@@ -292,6 +294,8 @@ public class GoogleImportOption
     protected Boolean searchAndDsaMixedCampaignAsSearchCampaign;
     @XmlElement(name = "SearchAndReplaceForCampaignNames", nillable = true)
     protected ImportSearchAndReplaceForStringProperty searchAndReplaceForCampaignNames;
+    @XmlElement(name = "SearchAndReplaceForCustomParameters", nillable = true)
+    protected ImportSearchAndReplaceForStringProperty searchAndReplaceForCustomParameters;
     @XmlElement(name = "SearchAndReplaceForTrackingTemplates", nillable = true)
     protected ImportSearchAndReplaceForStringProperty searchAndReplaceForTrackingTemplates;
     @XmlElement(name = "SearchAndReplaceForUrls", nillable = true)
@@ -1471,6 +1475,30 @@ public class GoogleImportOption
      */
     public void setSearchAndReplaceForCampaignNames(ImportSearchAndReplaceForStringProperty value) {
         this.searchAndReplaceForCampaignNames = value;
+    }
+
+    /**
+     * Gets the value of the searchAndReplaceForCustomParameters property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImportSearchAndReplaceForStringProperty }
+     *     
+     */
+    public ImportSearchAndReplaceForStringProperty getSearchAndReplaceForCustomParameters() {
+        return searchAndReplaceForCustomParameters;
+    }
+
+    /**
+     * Sets the value of the searchAndReplaceForCustomParameters property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImportSearchAndReplaceForStringProperty }
+     *     
+     */
+    public void setSearchAndReplaceForCustomParameters(ImportSearchAndReplaceForStringProperty value) {
+        this.searchAndReplaceForCustomParameters = value;
     }
 
     /**

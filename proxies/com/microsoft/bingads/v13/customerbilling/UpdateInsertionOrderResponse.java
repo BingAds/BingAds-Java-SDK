@@ -34,10 +34,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "lastModifiedTime"
 })
-@XmlRootElement(name = "UpdateInsertionOrderResponse", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "UpdateInsertionOrderResponse")
 public class UpdateInsertionOrderResponse {
 
-    @XmlElement(name = "LastModifiedTime", namespace = "https://bingads.microsoft.com/Billing/v13", type = String.class)
+    @XmlElement(name = "LastModifiedTime", type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar lastModifiedTime;

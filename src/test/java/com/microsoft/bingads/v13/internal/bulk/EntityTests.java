@@ -9,6 +9,7 @@ import com.microsoft.bingads.v13.api.test.entities.ad_extension.call.BulkCallAdE
 import com.microsoft.bingads.v13.api.test.entities.ad_extension.image.BulkImageAdExtensionTests;
 import com.microsoft.bingads.v13.api.test.entities.ad_extension.location.BulkLocationAdExtensionTests;
 import com.microsoft.bingads.v13.api.test.entities.ad_extension.site_link.BulkSitelinkAdExtensionTests;
+import com.microsoft.bingads.v13.api.test.entities.ad_extension.video.BulkVideoAdExtensionTests;
 import com.microsoft.bingads.v13.api.test.entities.ad_group_product_partition.BulkAdGroupProductPartitionTests;
 import com.microsoft.bingads.v13.api.test.entities.adgroup.BulkAdGroupTests;
 import com.microsoft.bingads.v13.api.test.entities.ads.product.BulkProductAdTests;
@@ -44,6 +45,7 @@ import com.microsoft.bingads.v13.api.test.entities.unknown.UnknownBulkEntityTest
         BulkCallAdExtensionTests.class,
         BulkImageAdExtensionTests.class,
         BulkLocationAdExtensionTests.class,
+        BulkVideoAdExtensionTests.class,
         BulkAdGroupNegativeSiteTests.class,
         BulkAdGroupNegativeSiteTests.class,
         BulkAdGroupNegativeSitesTests.class,

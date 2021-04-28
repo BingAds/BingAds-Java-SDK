@@ -38,16 +38,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "startDate",
     "endDate"
 })
-@XmlRootElement(name = "GetBillingDocumentsInfoRequest", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "GetBillingDocumentsInfoRequest")
 public class GetBillingDocumentsInfoRequest {
 
-    @XmlElement(name = "AccountIds", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "AccountIds", nillable = true)
     protected ArrayOflong accountIds;
-    @XmlElement(name = "StartDate", namespace = "https://bingads.microsoft.com/Billing/v13", type = String.class)
+    @XmlElement(name = "StartDate", type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar startDate;
-    @XmlElement(name = "EndDate", namespace = "https://bingads.microsoft.com/Billing/v13", type = String.class, nillable = true)
+    @XmlElement(name = "EndDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar endDate;

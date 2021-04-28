@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CpvBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *         &lt;element name="CpmBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -65,7 +67,9 @@ import javax.xml.bind.annotation.XmlType;
     "trackingUrlTemplate",
     "urlCustomParameters",
     "adScheduleUseSearcherTimeZone",
-    "adGroupType"
+    "adGroupType",
+    "cpvBid",
+    "cpmBid"
 })
 public class AdGroup {
 
@@ -110,6 +114,10 @@ public class AdGroup {
     protected Boolean adScheduleUseSearcherTimeZone;
     @XmlElement(name = "AdGroupType", nillable = true)
     protected String adGroupType;
+    @XmlElement(name = "CpvBid", nillable = true)
+    protected Bid cpvBid;
+    @XmlElement(name = "CpmBid", nillable = true)
+    protected Bid cpmBid;
 
     /**
      * Gets the value of the adRotation property.
@@ -565,6 +573,54 @@ public class AdGroup {
      */
     public void setAdGroupType(String value) {
         this.adGroupType = value;
+    }
+
+    /**
+     * Gets the value of the cpvBid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Bid }
+     *     
+     */
+    public Bid getCpvBid() {
+        return cpvBid;
+    }
+
+    /**
+     * Sets the value of the cpvBid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Bid }
+     *     
+     */
+    public void setCpvBid(Bid value) {
+        this.cpvBid = value;
+    }
+
+    /**
+     * Gets the value of the cpmBid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Bid }
+     *     
+     */
+    public Bid getCpmBid() {
+        return cpmBid;
+    }
+
+    /**
+     * Sets the value of the cpmBid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Bid }
+     *     
+     */
+    public void setCpmBid(Bid value) {
+        this.cpmBid = value;
     }
 
 }

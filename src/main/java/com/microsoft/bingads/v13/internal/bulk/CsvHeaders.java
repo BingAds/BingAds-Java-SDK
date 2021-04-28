@@ -43,6 +43,8 @@ public class CsvHeaders {
             StringTable.Language,
             StringTable.PrivacyStatus,
             StringTable.AdGroupType,
+            StringTable.CpvBid,
+            StringTable.CpmBid,
 
             // Ads
             StringTable.Title,
@@ -72,6 +74,7 @@ public class CsvHeaders {
             StringTable.Target,
             StringTable.TargetAll,
             StringTable.BidAdjustment,
+            StringTable.CashbackAdjustment,
             StringTable.RadiusTargetId,
             StringTable.Name,
             StringTable.OsNames,
@@ -130,6 +133,11 @@ public class CsvHeaders {
             // Image ad extension
             StringTable.AltText,
             StringTable.MediaIds,
+            
+            // Video ad extension
+            StringTable.ThumbnailUrl,
+            StringTable.ThumbnailId,
+            StringTable.VideoId,
 
             // Flyer ad extension
             StringTable.FlyerName,

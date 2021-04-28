@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "insertionOrder"
 })
-@XmlRootElement(name = "UpdateInsertionOrderRequest", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "UpdateInsertionOrderRequest")
 public class UpdateInsertionOrderRequest {
 
-    @XmlElement(name = "InsertionOrder", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "InsertionOrder", nillable = true)
     protected InsertionOrder insertionOrder;
 
     /**

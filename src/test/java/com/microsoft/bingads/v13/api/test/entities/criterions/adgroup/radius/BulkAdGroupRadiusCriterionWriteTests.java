@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteAdGroupNameTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteIdTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteLatitudeTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.write.BulkAdGroupRadiusCriterionWriteLongitudeTest;
@@ -27,7 +28,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.radius.wri
         BulkAdGroupRadiusCriterionWriteLatitudeTest.class,
         BulkAdGroupRadiusCriterionWriteLongitudeTest.class,
         BulkAdGroupRadiusCriterionWriteRadiusTest.class,
-        BulkAdGroupRadiusCriterionWriteRadiusUnitTest.class
+        BulkAdGroupRadiusCriterionWriteRadiusUnitTest.class,
+        BulkAdGroupRadiusCriterionWriteCashbackAdjustmentTest.class
 })
 public class BulkAdGroupRadiusCriterionWriteTests {
 }

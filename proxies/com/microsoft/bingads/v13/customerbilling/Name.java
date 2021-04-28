@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Name", propOrder = {
+@XmlType(name = "Name", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "value"
 })
 public class Name {

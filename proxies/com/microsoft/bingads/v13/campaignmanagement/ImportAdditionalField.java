@@ -8,7 +8,8 @@ public enum ImportAdditionalField {
     NONE("None"),
     NOTIFICATION_EMAIL("NotificationEmail"),
     AUTO_DEVICE_BID_OPTIMIZATION("AutoDeviceBidOptimization"),
-    ACTIVE_AD_GROUPS_ONLY("ActiveAdGroupsOnly");
+    ACTIVE_AD_GROUPS_ONLY("ActiveAdGroupsOnly"),
+    SEARCH_AND_REPLACE_FOR_CUSTOM_PARAMETERS("SearchAndReplaceForCustomParameters");
         
     private final String value;
 

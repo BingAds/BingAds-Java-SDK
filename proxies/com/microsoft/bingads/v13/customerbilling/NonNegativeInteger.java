@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "nonNegativeInteger", propOrder = {
+@XmlType(name = "nonNegativeInteger", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "value"
 })
 public class NonNegativeInteger {

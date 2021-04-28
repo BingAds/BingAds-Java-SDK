@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "billingDocuments"
 })
-@XmlRootElement(name = "GetBillingDocumentsResponse", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "GetBillingDocumentsResponse")
 public class GetBillingDocumentsResponse {
 
-    @XmlElement(name = "BillingDocuments", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "BillingDocuments", nillable = true)
     protected ArrayOfBillingDocument billingDocuments;
 
     /**

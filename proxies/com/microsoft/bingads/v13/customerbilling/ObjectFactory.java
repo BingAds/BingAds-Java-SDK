@@ -33,6 +33,7 @@ public class ObjectFactory {
     private final static QName _Password_QNAME = new QName("https://bingads.microsoft.com/Billing/v13", "Password");
     private final static QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private final static QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "OperationError");
+    private final static QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
@@ -70,6 +71,7 @@ public class ObjectFactory {
     private final static QName _AdApiError_QNAME = new QName("https://adapi.microsoft.com", "AdApiError");
     private final static QName _BillingDocument_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "BillingDocument");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
+    private final static QName _ArrayOfCoupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfCoupon");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private final static QName _ArrayOfBillingDocumentInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfBillingDocumentInfo");
@@ -79,9 +81,11 @@ public class ObjectFactory {
     private final static QName _PredicateOperator_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "PredicateOperator");
     private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
     private final static QName _OrderBy_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "OrderBy");
+    private final static QName _Coupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Coupon");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _SortOrder_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "SortOrder");
     private final static QName _ArrayOfInsertionOrder_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfInsertionOrder");
+    private final static QName _CouponRedemption_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponRedemption");
     private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
     private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _TrackingId_QNAME = new QName("https://bingads.microsoft.com/Billing/v13", "TrackingId");
@@ -198,38 +202,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBillingDocumentsInfoRequest }
-     * 
-     */
-    public GetBillingDocumentsInfoRequest createGetBillingDocumentsInfoRequest() {
-        return new GetBillingDocumentsInfoRequest();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOflong }
-     * 
-     */
-    public ArrayOflong createArrayOflong() {
-        return new ArrayOflong();
-    }
-
-    /**
-     * Create an instance of {@link GetBillingDocumentsInfoResponse }
-     * 
-     */
-    public GetBillingDocumentsInfoResponse createGetBillingDocumentsInfoResponse() {
-        return new GetBillingDocumentsInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfBillingDocumentInfo }
-     * 
-     */
-    public ArrayOfBillingDocumentInfo createArrayOfBillingDocumentInfo() {
-        return new ArrayOfBillingDocumentInfo();
-    }
-
-    /**
      * Create an instance of {@link UpdateInsertionOrderRequest }
      * 
      */
@@ -270,19 +242,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddInsertionOrderRequest }
+     * Create an instance of {@link RedeemCouponResponse }
      * 
      */
-    public AddInsertionOrderRequest createAddInsertionOrderRequest() {
-        return new AddInsertionOrderRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetBillingDocumentsRequest }
-     * 
-     */
-    public GetBillingDocumentsRequest createGetBillingDocumentsRequest() {
-        return new GetBillingDocumentsRequest();
+    public RedeemCouponResponse createRedeemCouponResponse() {
+        return new RedeemCouponResponse();
     }
 
     /**
@@ -302,11 +266,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchInsertionOrdersRequest }
+     * Create an instance of {@link ApiBatchFault }
      * 
      */
-    public SearchInsertionOrdersRequest createSearchInsertionOrdersRequest() {
-        return new SearchInsertionOrdersRequest();
+    public ApiBatchFault createApiBatchFault() {
+        return new ApiBatchFault();
+    }
+
+    /**
+     * Create an instance of {@link RedeemCouponRequest }
+     * 
+     */
+    public RedeemCouponRequest createRedeemCouponRequest() {
+        return new RedeemCouponRequest();
+    }
+
+    /**
+     * Create an instance of {@link SearchCouponsRequest }
+     * 
+     */
+    public SearchCouponsRequest createSearchCouponsRequest() {
+        return new SearchCouponsRequest();
     }
 
     /**
@@ -334,14 +314,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ApiBatchFault }
-     * 
-     */
-    public ApiBatchFault createApiBatchFault() {
-        return new ApiBatchFault();
-    }
-
-    /**
      * Create an instance of {@link SearchInsertionOrdersResponse }
      * 
      */
@@ -355,6 +327,110 @@ public class ObjectFactory {
      */
     public ArrayOfInsertionOrder createArrayOfInsertionOrder() {
         return new ArrayOfInsertionOrder();
+    }
+
+    /**
+     * Create an instance of {@link GetBillingDocumentsInfoRequest }
+     * 
+     */
+    public GetBillingDocumentsInfoRequest createGetBillingDocumentsInfoRequest() {
+        return new GetBillingDocumentsInfoRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOflong }
+     * 
+     */
+    public ArrayOflong createArrayOflong() {
+        return new ArrayOflong();
+    }
+
+    /**
+     * Create an instance of {@link SearchCouponsResponse }
+     * 
+     */
+    public SearchCouponsResponse createSearchCouponsResponse() {
+        return new SearchCouponsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCoupon }
+     * 
+     */
+    public ArrayOfCoupon createArrayOfCoupon() {
+        return new ArrayOfCoupon();
+    }
+
+    /**
+     * Create an instance of {@link GetBillingDocumentsInfoResponse }
+     * 
+     */
+    public GetBillingDocumentsInfoResponse createGetBillingDocumentsInfoResponse() {
+        return new GetBillingDocumentsInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBillingDocumentInfo }
+     * 
+     */
+    public ArrayOfBillingDocumentInfo createArrayOfBillingDocumentInfo() {
+        return new ArrayOfBillingDocumentInfo();
+    }
+
+    /**
+     * Create an instance of {@link DispatchCouponsRequest }
+     * 
+     */
+    public DispatchCouponsRequest createDispatchCouponsRequest() {
+        return new DispatchCouponsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfstring }
+     * 
+     */
+    public ArrayOfstring createArrayOfstring() {
+        return new ArrayOfstring();
+    }
+
+    /**
+     * Create an instance of {@link DispatchCouponsResponse }
+     * 
+     */
+    public DispatchCouponsResponse createDispatchCouponsResponse() {
+        return new DispatchCouponsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBatchError }
+     * 
+     */
+    public ArrayOfBatchError createArrayOfBatchError() {
+        return new ArrayOfBatchError();
+    }
+
+    /**
+     * Create an instance of {@link AddInsertionOrderRequest }
+     * 
+     */
+    public AddInsertionOrderRequest createAddInsertionOrderRequest() {
+        return new AddInsertionOrderRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBillingDocumentsRequest }
+     * 
+     */
+    public GetBillingDocumentsRequest createGetBillingDocumentsRequest() {
+        return new GetBillingDocumentsRequest();
+    }
+
+    /**
+     * Create an instance of {@link SearchInsertionOrdersRequest }
+     * 
+     */
+    public SearchInsertionOrdersRequest createSearchInsertionOrdersRequest() {
+        return new SearchInsertionOrdersRequest();
     }
 
     /**
@@ -382,11 +458,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Coupon }
+     * 
+     */
+    public Coupon createCoupon() {
+        return new Coupon();
+    }
+
+    /**
      * Create an instance of {@link BillingDocument }
      * 
      */
     public BillingDocument createBillingDocument() {
         return new BillingDocument();
+    }
+
+    /**
+     * Create an instance of {@link CouponRedemption }
+     * 
+     */
+    public CouponRedemption createCouponRedemption() {
+        return new CouponRedemption();
     }
 
     /**
@@ -435,14 +527,6 @@ public class ObjectFactory {
      */
     public Guid createGuid() {
         return new Guid();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfBatchError }
-     * 
-     */
-    public ArrayOfBatchError createArrayOfBatchError() {
-        return new ArrayOfBatchError();
     }
 
     /**
@@ -553,6 +637,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Exception", name = "OperationError")
     public JAXBElement<OperationError> createOperationError(OperationError value) {
         return new JAXBElement<OperationError>(_OperationError_QNAME, OperationError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfstring }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfstring")
+    public JAXBElement<ArrayOfstring> createArrayOfstring(ArrayOfstring value) {
+        return new JAXBElement<ArrayOfstring>(_ArrayOfstring_QNAME, ArrayOfstring.class, null, value);
     }
 
     /**
@@ -890,6 +983,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCoupon }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfCoupon")
+    public JAXBElement<ArrayOfCoupon> createArrayOfCoupon(ArrayOfCoupon value) {
+        return new JAXBElement<ArrayOfCoupon>(_ArrayOfCoupon_QNAME, ArrayOfCoupon.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Guid }{@code >}}
      * 
      */
@@ -971,6 +1073,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Coupon }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "Coupon")
+    public JAXBElement<Coupon> createCoupon(Coupon value) {
+        return new JAXBElement<Coupon>(_Coupon_QNAME, Coupon.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -995,6 +1106,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfInsertionOrder")
     public JAXBElement<ArrayOfInsertionOrder> createArrayOfInsertionOrder(ArrayOfInsertionOrder value) {
         return new JAXBElement<ArrayOfInsertionOrder>(_ArrayOfInsertionOrder_QNAME, ArrayOfInsertionOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CouponRedemption }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "CouponRedemption")
+    public JAXBElement<CouponRedemption> createCouponRedemption(CouponRedemption value) {
+        return new JAXBElement<CouponRedemption>(_CouponRedemption_QNAME, CouponRedemption.class, null, value);
     }
 
     /**

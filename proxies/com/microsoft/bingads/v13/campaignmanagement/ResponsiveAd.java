@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="LongHeadline" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetLink" minOccurs="0"/>
  *         &lt;element name="LongHeadlineString" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Videos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "impressionTrackingUrls",
     "longHeadline",
     "longHeadlineString",
-    "text"
+    "text",
+    "videos"
 })
 public class ResponsiveAd
     extends Ad
@@ -74,6 +76,8 @@ public class ResponsiveAd
     protected String longHeadlineString;
     @XmlElement(name = "Text", nillable = true)
     protected String text;
+    @XmlElement(name = "Videos", nillable = true)
+    protected ArrayOfAssetLink videos;
 
     /**
      * Gets the value of the businessName property.
@@ -313,6 +317,30 @@ public class ResponsiveAd
      */
     public void setText(String value) {
         this.text = value;
+    }
+
+    /**
+     * Gets the value of the videos property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getVideos() {
+        return videos;
+    }
+
+    /**
+     * Sets the value of the videos property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setVideos(ArrayOfAssetLink value) {
+        this.videos = value;
     }
 
 }

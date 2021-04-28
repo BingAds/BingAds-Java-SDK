@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
-  <bindings schemaLocation="https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/CampaignManagementService.svc?xsd=xsd1">
+  <bindings schemaLocation="https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/CampaignManagementService.svc?xsd=xsd1">
     <bindings node="//xs:simpleType[@name='CampaignType']">
       <javaType name="java.util.Collection&lt;CampaignType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToString" />
     </bindings>
@@ -9,6 +9,9 @@
     </bindings>
     <bindings node="//xs:simpleType[@name='AdGroupAdditionalField']">
       <javaType name="java.util.Collection&lt;AdGroupAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.AdGroupAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.AdGroupAdditionalFieldConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='AdAdditionalField']">
+      <javaType name="java.util.Collection&lt;AdAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.AdAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.AdAdditionalFieldConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='AdExtensionsTypeFilter']">
       <javaType name="java.util.Collection&lt;AdExtensionsTypeFilter&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.AdExtensionsTypeFilterConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.AdExtensionsTypeFilterConverter.convertToString" />
@@ -22,11 +25,17 @@
     <bindings node="//xs:simpleType[@name='AdGroupCriterionType']">
       <javaType name="java.util.Collection&lt;AdGroupCriterionType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionTypeConverter.convertToString" />
     </bindings>
+    <bindings node="//xs:simpleType[@name='CriterionAdditionalField']">
+      <javaType name="java.util.Collection&lt;CriterionAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.CriterionAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.CriterionAdditionalFieldConverter.convertToString" />
+    </bindings>
     <bindings node="//xs:simpleType[@name='AudienceType']">
       <javaType name="java.util.Collection&lt;AudienceType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.AudienceTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.AudienceTypeConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='ProfileType']">
       <javaType name="java.util.Collection&lt;ProfileType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.ProfileTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.ProfileTypeConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='BMCStoreAdditionalField']">
+      <javaType name="java.util.Collection&lt;BMCStoreAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.BMCStoreAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.BMCStoreAdditionalFieldConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='CampaignCriterionType']">
       <javaType name="java.util.Collection&lt;CampaignCriterionType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionTypeConverter.convertToString" />
@@ -39,6 +48,9 @@
     </bindings>
     <bindings node="//xs:simpleType[@name='ConversionGoalAdditionalField']">
       <javaType name="java.util.Collection&lt;ConversionGoalAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.ConversionGoalAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.ConversionGoalAdditionalFieldConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='ImportAdditionalField']">
+      <javaType name="java.util.Collection&lt;ImportAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.ImportAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.ImportAdditionalFieldConverter.convertToString" />
     </bindings>
   </bindings>
 </bindings>

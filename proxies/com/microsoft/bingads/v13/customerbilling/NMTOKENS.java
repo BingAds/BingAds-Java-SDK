@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NMTOKENS", propOrder = {
+@XmlType(name = "NMTOKENS", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "values"
 })
 public class NMTOKENS {

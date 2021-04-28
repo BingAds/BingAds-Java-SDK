@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadAdGroupNameTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadIdTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadOsNamesTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.read.BulkAdGroupDeviceCriterionReadParentIdTest;
@@ -21,7 +22,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.adgroup.device.rea
         BulkAdGroupDeviceCriterionReadAdGroupNameTest.class,
         BulkAdGroupDeviceCriterionReadCampaignNameTest.class,
         BulkAdGroupDeviceCriterionReadBidAdjustmentTest.class,
-        BulkAdGroupDeviceCriterionReadOsNamesTest.class
+        BulkAdGroupDeviceCriterionReadOsNamesTest.class,
+        BulkAdGroupDeviceCriterionReadCashbackAdjustmentTest.class
 })
 public class BulkAdGroupDeviceCriterionReadTests {
 }

@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "IDREFS", propOrder = {
+@XmlType(name = "IDREFS", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "values"
 })
 public class IDREFS {

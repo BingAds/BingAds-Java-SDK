@@ -35,14 +35,14 @@ import javax.xml.bind.annotation.XmlType;
     "ordering",
     "pageInfo"
 })
-@XmlRootElement(name = "SearchInsertionOrdersRequest", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "SearchInsertionOrdersRequest")
 public class SearchInsertionOrdersRequest {
 
-    @XmlElement(name = "Predicates", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "Predicates", nillable = true)
     protected ArrayOfPredicate predicates;
-    @XmlElement(name = "Ordering", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "Ordering", nillable = true)
     protected ArrayOfOrderBy ordering;
-    @XmlElement(name = "PageInfo", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
 
     /**

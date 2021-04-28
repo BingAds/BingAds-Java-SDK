@@ -106,6 +106,7 @@ public class StringTable {
     public static final String ProfileId = "Profile Id";
 
     public static final String BidAdjustment = "Bid Adjustment";
+    public static final String CashbackAdjustment = "Cashback Percent";
     public static final String SubType = "Sub Type";
 
     public static final String OsNames = "OS Names";
@@ -131,6 +132,9 @@ public class StringTable {
     
     public static final String FeedId = "Feed Id";
     
+    public static final String CpvBid = "Cpv Bid";
+    public static final String CpmBid = "Cpm Bid";
+
     // entity types
     public static final String SemanticVersion = "Format Version";
     public static final String LocationTarget = "Location Target";
@@ -434,6 +438,15 @@ public class StringTable {
     public static final String AdGroupActionAdExtension = "Ad Group Action Ad Extension";
     public static final String ActionType = "Action Type";
     public static final String ActionText= "Action Text";
+    
+    // Video Ad Extension
+    public static final String VideoAdExtension = "Video Ad Extension";
+    public static final String ThumbnailUrl = "Thumbnail Url";
+    public static final String ThumbnailId = "Thumbnail Id";
+    public static final String VideoId = "Video Id";
+    public static final String AccountVideoAdExtension = "Account Video Ad Extension";
+    public static final String CampaignVideoAdExtension = "Campaign Video Ad Extension";
+    public static final String AdGroupVideoAdExtension = "Ad Group Video Ad Extension";
     
     //Promotion AdExtension
     public static final String PromotionAdExtension = "Promotion Ad Extension";

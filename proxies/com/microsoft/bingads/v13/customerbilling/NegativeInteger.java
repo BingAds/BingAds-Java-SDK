@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "negativeInteger", propOrder = {
+@XmlType(name = "negativeInteger", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "value"
 })
 public class NegativeInteger {

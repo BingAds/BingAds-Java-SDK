@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="SourceUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ThumbnailUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,7 +50,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "modifiedDateTimeInUTC",
     "sourceUrl",
     "status",
-    "thumbnailUrl"
+    "thumbnailUrl",
+    "url"
 })
 public class Video {
 
@@ -77,6 +79,8 @@ public class Video {
     protected String status;
     @XmlElement(name = "ThumbnailUrl", nillable = true)
     protected String thumbnailUrl;
+    @XmlElement(name = "Url", nillable = true)
+    protected String url;
 
     /**
      * Gets the value of the aspectRatio property.
@@ -316,6 +320,30 @@ public class Video {
      */
     public void setThumbnailUrl(String value) {
         this.thumbnailUrl = value;
+    }
+
+    /**
+     * Gets the value of the url property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * Sets the value of the url property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrl(String value) {
+        this.url = value;
     }
 
 }

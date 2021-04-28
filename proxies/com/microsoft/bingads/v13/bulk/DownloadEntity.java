@@ -146,6 +146,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="CampaignFlyerAdExtensions"/>
  *     &lt;enumeration value="AdGroupFlyerAdExtensions"/>
  *     &lt;enumeration value="BidStrategies"/>
+ *     &lt;enumeration value="VideoAdExtensions"/>
+ *     &lt;enumeration value="AccountVideoAdExtensions"/>
+ *     &lt;enumeration value="CampaignVideoAdExtensions"/>
+ *     &lt;enumeration value="AdGroupVideoAdExtensions"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -418,7 +422,15 @@ public enum DownloadEntity {
     @XmlEnumValue("AdGroupFlyerAdExtensions")
     AD_GROUP_FLYER_AD_EXTENSIONS("AdGroupFlyerAdExtensions"),
     @XmlEnumValue("BidStrategies")
-    BID_STRATEGIES("BidStrategies");
+    BID_STRATEGIES("BidStrategies"),
+    @XmlEnumValue("VideoAdExtensions")
+    VIDEO_AD_EXTENSIONS("VideoAdExtensions"),
+    @XmlEnumValue("AccountVideoAdExtensions")
+    ACCOUNT_VIDEO_AD_EXTENSIONS("AccountVideoAdExtensions"),
+    @XmlEnumValue("CampaignVideoAdExtensions")
+    CAMPAIGN_VIDEO_AD_EXTENSIONS("CampaignVideoAdExtensions"),
+    @XmlEnumValue("AdGroupVideoAdExtensions")
+    AD_GROUP_VIDEO_AD_EXTENSIONS("AdGroupVideoAdExtensions");
     private final String value;
 
     DownloadEntity(String v) {

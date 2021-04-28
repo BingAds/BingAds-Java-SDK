@@ -34,12 +34,12 @@ import javax.xml.bind.annotation.XmlType;
     "billingDocumentsInfo",
     "type"
 })
-@XmlRootElement(name = "GetBillingDocumentsRequest", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "GetBillingDocumentsRequest")
 public class GetBillingDocumentsRequest {
 
-    @XmlElement(name = "BillingDocumentsInfo", namespace = "https://bingads.microsoft.com/Billing/v13", nillable = true)
+    @XmlElement(name = "BillingDocumentsInfo", nillable = true)
     protected ArrayOfBillingDocumentInfo billingDocumentsInfo;
-    @XmlElement(name = "Type", namespace = "https://bingads.microsoft.com/Billing/v13")
+    @XmlElement(name = "Type")
     @XmlSchemaType(name = "string")
     protected DataType type;
 

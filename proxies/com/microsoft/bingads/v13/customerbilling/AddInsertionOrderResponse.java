@@ -36,12 +36,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "insertionOrderId",
     "createTime"
 })
-@XmlRootElement(name = "AddInsertionOrderResponse", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "AddInsertionOrderResponse")
 public class AddInsertionOrderResponse {
 
-    @XmlElement(name = "InsertionOrderId", namespace = "https://bingads.microsoft.com/Billing/v13")
+    @XmlElement(name = "InsertionOrderId")
     protected Long insertionOrderId;
-    @XmlElement(name = "CreateTime", namespace = "https://bingads.microsoft.com/Billing/v13", type = String.class)
+    @XmlElement(name = "CreateTime", type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar createTime;

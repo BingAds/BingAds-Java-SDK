@@ -36,12 +36,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "accountId",
     "monthYear"
 })
-@XmlRootElement(name = "GetAccountMonthlySpendRequest", namespace = "https://bingads.microsoft.com/Billing/v13")
+@XmlRootElement(name = "GetAccountMonthlySpendRequest")
 public class GetAccountMonthlySpendRequest {
 
-    @XmlElement(name = "AccountId", namespace = "https://bingads.microsoft.com/Billing/v13")
+    @XmlElement(name = "AccountId")
     protected Long accountId;
-    @XmlElement(name = "MonthYear", namespace = "https://bingads.microsoft.com/Billing/v13", type = String.class)
+    @XmlElement(name = "MonthYear", type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar monthYear;

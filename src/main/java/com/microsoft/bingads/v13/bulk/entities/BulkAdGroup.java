@@ -428,6 +428,39 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.CpvBid,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        return StringExtensions.toAdGroupBidBulkString(c.getAdGroup().getCpvBid(), c.getAdGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setCpvBid(StringExtensions.parseAdGroupBid(v));
+                    }
+                }
+        ));
+
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.CpmBid,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        return StringExtensions.toAdGroupBidBulkString(c.getAdGroup().getCpmBid(), c.getAdGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setCpmBid(StringExtensions.parseAdGroupBid(v));
+                    }
+                }
+        ));
+
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
     

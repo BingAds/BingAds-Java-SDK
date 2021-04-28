@@ -44,6 +44,7 @@ public class ObjectFactory {
     private final static QName _InMarketAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "InMarketAudience");
     private final static QName _PageVisitorsWhoVisitedAnotherPageRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PageVisitorsWhoVisitedAnotherPageRule");
     private final static QName _MediaMetaData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaMetaData");
+    private final static QName _VideoAsset_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VideoAsset");
     private final static QName _NegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeKeyword");
     private final static QName _EventGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EventGoal");
     private final static QName _CampaignAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignAdditionalField");
@@ -385,6 +386,7 @@ public class ObjectFactory {
     private final static QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionStatus");
     private final static QName _UrlGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UrlGoal");
     private final static QName _EditorialError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EditorialError");
+    private final static QName _VideoAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VideoAdExtension");
     private final static QName _DayTimeCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DayTimeCriterion");
     private final static QName _ImportOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImportOption");
     private final static QName _TargetImpressionShareBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetImpressionShareBiddingScheme");
@@ -2634,6 +2636,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VideoAdExtension }
+     * 
+     */
+    public VideoAdExtension createVideoAdExtension() {
+        return new VideoAdExtension();
+    }
+
+    /**
      * Create an instance of {@link AddCampaignCriterionsRequest }
      * 
      */
@@ -3119,6 +3129,14 @@ public class ObjectFactory {
      */
     public PagesViewedPerVisitGoal createPagesViewedPerVisitGoal() {
         return new PagesViewedPerVisitGoal();
+    }
+
+    /**
+     * Create an instance of {@link UpdateImportJobsRequest }
+     * 
+     */
+    public UpdateImportJobsRequest createUpdateImportJobsRequest() {
+        return new UpdateImportJobsRequest();
     }
 
     /**
@@ -3663,6 +3681,14 @@ public class ObjectFactory {
      */
     public GetAdsByIdsRequest createGetAdsByIdsRequest() {
         return new GetAdsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateImportJobsResponse }
+     * 
+     */
+    public UpdateImportJobsResponse createUpdateImportJobsResponse() {
+        return new UpdateImportJobsResponse();
     }
 
     /**
@@ -4378,6 +4404,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VideoAsset }
+     * 
+     */
+    public VideoAsset createVideoAsset() {
+        return new VideoAsset();
+    }
+
+    /**
      * Create an instance of {@link AddConversionGoalsResponse }
      * 
      */
@@ -4704,6 +4738,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "MediaMetaData")
     public JAXBElement<MediaMetaData> createMediaMetaData(MediaMetaData value) {
         return new JAXBElement<MediaMetaData>(_MediaMetaData_QNAME, MediaMetaData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VideoAsset }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "VideoAsset")
+    public JAXBElement<VideoAsset> createVideoAsset(VideoAsset value) {
+        return new JAXBElement<VideoAsset>(_VideoAsset_QNAME, VideoAsset.class, null, value);
     }
 
     /**
@@ -7790,6 +7833,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EditorialError")
     public JAXBElement<EditorialError> createEditorialError(EditorialError value) {
         return new JAXBElement<EditorialError>(_EditorialError_QNAME, EditorialError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VideoAdExtension }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "VideoAdExtension")
+    public JAXBElement<VideoAdExtension> createVideoAdExtension(VideoAdExtension value) {
+        return new JAXBElement<VideoAdExtension>(_VideoAdExtension_QNAME, VideoAdExtension.class, null, value);
     }
 
     /**

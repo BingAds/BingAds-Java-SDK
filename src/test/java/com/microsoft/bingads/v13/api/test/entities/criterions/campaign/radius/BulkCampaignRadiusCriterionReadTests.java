@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadCampaignNameTest;
+import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadCashbackAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadIdTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadLatitudeTest;
 import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.read.BulkCampaignRadiusCriterionReadLongitudeTest;
@@ -26,7 +27,8 @@ import com.microsoft.bingads.v13.api.test.entities.criterions.campaign.radius.re
         BulkCampaignRadiusCriterionReadLatitudeTest.class,
         BulkCampaignRadiusCriterionReadLongitudeTest.class,
         BulkCampaignRadiusCriterionReadRadiusTest.class,
-        BulkCampaignRadiusCriterionReadRadiusUnitTest.class
+        BulkCampaignRadiusCriterionReadRadiusUnitTest.class,
+        BulkCampaignRadiusCriterionReadCashbackAdjustmentTest.class
 })
 public class BulkCampaignRadiusCriterionReadTests {
 }

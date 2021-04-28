@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NMTOKEN", propOrder = {
+@XmlType(name = "NMTOKEN", namespace = "http://www.w3.org/2001/XMLSchema", propOrder = {
     "value"
 })
 public class NMTOKEN {

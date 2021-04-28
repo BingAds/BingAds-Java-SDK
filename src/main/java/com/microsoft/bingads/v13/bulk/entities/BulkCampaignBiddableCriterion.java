@@ -13,8 +13,10 @@ import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.BidMultiplier;
 import com.microsoft.bingads.v13.campaignmanagement.BiddableCampaignCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignCriterionStatus;
+import com.microsoft.bingads.v13.campaignmanagement.CashbackAdjustment;
 import com.microsoft.bingads.v13.campaignmanagement.Criterion;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
+import com.microsoft.bingads.v13.campaignmanagement.CriterionCashback;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
@@ -142,6 +144,34 @@ public abstract class BulkCampaignBiddableCriterion extends SingleRecordBulkEnti
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkCampaignBiddableCriterion, String>(StringTable.CashbackAdjustment,
+                new Function<BulkCampaignBiddableCriterion, String>() {
+                    @Override
+                    public String apply(BulkCampaignBiddableCriterion c) {
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            CriterionCashback cashback = ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback();
+                            if (cashback == null) {
+                                return null;
+                            } else {
+                                return StringExtensions.toCriterionBidMultiplierBulkString(((CashbackAdjustment) cashback).getCashbackPercent());
+                            }
+                        } else {
+                            return null;
+                        }
+                    }
+                },
+                new BiConsumer<String, BulkCampaignBiddableCriterion>() {
+                    @Override
+                    public void accept(String v, BulkCampaignBiddableCriterion c) {
+                        if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
+                            ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).setCashbackPercent(
+                                    StringExtensions.nullOrDouble(v)
+                            );
+                        }
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -151,10 +181,13 @@ public abstract class BulkCampaignBiddableCriterion extends SingleRecordBulkEnti
         
         BidMultiplier bidMultiplier = new BidMultiplier();       
         bidMultiplier.setType(BidMultiplier.class.getSimpleName());
+        CashbackAdjustment cashback = new CashbackAdjustment();       
+        cashback.setType(CashbackAdjustment.class.getSimpleName());
         Criterion criterion = createCriterion();
         campaignCriterion.setCriterion(criterion);
         campaignCriterion.getCriterion().setType(criterion.getClass().getSimpleName());
         campaignCriterion.setCriterionBid(bidMultiplier);
+        campaignCriterion.setCriterionCashback(cashback);
         campaignCriterion.setType("BiddableCampaignCriterion");
     	
     	setBiddableCampaignCriterion(campaignCriterion);  
