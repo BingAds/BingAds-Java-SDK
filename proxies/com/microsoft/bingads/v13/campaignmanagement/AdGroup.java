@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v13}Network" minOccurs="0"/>
  *         &lt;element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupPrivacyStatus" minOccurs="0"/>
@@ -58,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
     "forwardCompatibilityMap",
     "id",
     "language",
+    "multimediaAdsBidAdjustment",
     "name",
     "network",
     "privacyStatus",
@@ -91,6 +93,8 @@ public class AdGroup {
     protected Long id;
     @XmlElement(name = "Language", nillable = true)
     protected String language;
+    @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
+    protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Network", nillable = true)
@@ -333,6 +337,30 @@ public class AdGroup {
      */
     public void setLanguage(String value) {
         this.language = value;
+    }
+
+    /**
+     * Gets the value of the multimediaAdsBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMultimediaAdsBidAdjustment() {
+        return multimediaAdsBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the multimediaAdsBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMultimediaAdsBidAdjustment(Integer value) {
+        this.multimediaAdsBidAdjustment = value;
     }
 
     /**

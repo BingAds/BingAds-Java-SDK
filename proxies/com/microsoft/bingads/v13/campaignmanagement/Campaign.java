@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignStatus" minOccurs="0"/>
  *         &lt;element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -58,6 +59,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "finalUrlSuffix",
     "forwardCompatibilityMap",
     "id",
+    "multimediaAdsBidAdjustment",
     "name",
     "status",
     "subType",
@@ -90,6 +92,8 @@ public class Campaign {
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
+    protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Status", nillable = true)
@@ -307,6 +311,30 @@ public class Campaign {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the multimediaAdsBidAdjustment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMultimediaAdsBidAdjustment() {
+        return multimediaAdsBidAdjustment;
+    }
+
+    /**
+     * Sets the value of the multimediaAdsBidAdjustment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMultimediaAdsBidAdjustment(Integer value) {
+        this.multimediaAdsBidAdjustment = value;
     }
 
     /**

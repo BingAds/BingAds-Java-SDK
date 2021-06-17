@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum AdAdditionalField {
 
     IMPRESSION_TRACKING_URLS("ImpressionTrackingUrls"),
-    VIDEOS("Videos");
+    VIDEOS("Videos"),
+    LONG_HEADLINES("LongHeadlines");
         
     private final String value;
 

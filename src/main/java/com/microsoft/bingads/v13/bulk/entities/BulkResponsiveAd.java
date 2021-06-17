@@ -13,6 +13,7 @@ import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.AdType;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.CallToAction;
+import com.microsoft.bingads.v13.campaignmanagement.LanguageName;
 import com.microsoft.bingads.v13.campaignmanagement.ResponsiveAd;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -79,6 +80,41 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.CallToActionLanguage,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return c.getAd().getCallToActionLanguage() != null ? c.getAd().getCallToActionLanguage().value() : null;
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        c.getAd().setCallToActionLanguage(StringExtensions.parseOptional(v, new Function<String, LanguageName>() {
+                            @Override
+                            public LanguageName apply(String value) {
+                                return LanguageName.fromValue(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Descriptions,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.toTextAssetLinksBulkString(c.getAd().getDescriptions());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        c.getAd().setDescriptions(StringExtensions.parseTextAssetLinks(v));
+                    }
+                }
+        ));
+        
         m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Headline,
                 new Function<BulkResponsiveAd, String>() {
                     @Override
@@ -94,7 +130,21 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                 }
         ));
         
-
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Headlines,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.toTextAssetLinksBulkString(c.getAd().getHeadlines());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        c.getAd().setHeadlines(StringExtensions.parseTextAssetLinks(v));
+                    }
+                }
+        ));
+        
         m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Images,
                 new Function<BulkResponsiveAd, String>() {
                     @Override
@@ -122,6 +172,21 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                     @Override
                     public void accept(String v, BulkResponsiveAd c) {
                         c.getAd().setLongHeadlineString(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.LongHeadlines,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.toTextAssetLinksBulkString(c.getAd().getLongHeadlines());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                    	c.getAd().setLongHeadlines(StringExtensions.parseTextAssetLinks(v));
                     }
                 }
         ));
@@ -164,6 +229,21 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.Videos,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+                        return StringExtensions.toVideoAssetLinksBulkString(c.getAd().getVideos());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                        c.getAd().setVideos(StringExtensions.parseVideoAssetLinks(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

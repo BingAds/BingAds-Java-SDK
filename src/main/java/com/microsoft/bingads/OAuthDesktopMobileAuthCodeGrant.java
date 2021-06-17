@@ -48,7 +48,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), refreshToken, env, false);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), refreshToken, env, OAuthScope.MSADS_MANAGE);
     }
 
     /**
@@ -80,7 +80,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      */
 
     public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), env, false);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), env, OAuthScope.MSADS_MANAGE);
     }
     
     /**
@@ -112,23 +112,23 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, false).getDesktopRedirectUrl(), oauthTokens, env, false);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), oauthTokens, env, OAuthScope.MSADS_MANAGE);
     }
 
-    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env, boolean requireLiveConnect) {
-        super(clientId, null, oAuthService.getRedirectUrl(requireLiveConnect), oAuthService, env, requireLiveConnect);
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env, OAuthScope oAuthScope) {
+        super(clientId, null, oAuthService.getRedirectUrl(oAuthScope), oAuthService, env, oAuthScope);
     }
     
-    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, boolean requireLiveConnect) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), refreshToken, env, requireLiveConnect);
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), refreshToken, env, oAuthScope);
     }
     
-    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), oauthTokens, env, requireLiveConnect);
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope);
     }
 
-    public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, boolean requireLiveConnect) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, requireLiveConnect).getDesktopRedirectUrl(), env, requireLiveConnect);
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, OAuthScope oAuthScope) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), env, oAuthScope);
     }
 
 }

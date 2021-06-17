@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.NewOAuthTokensReceivedListener;
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.ServiceClient;
 
@@ -30,7 +31,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     
     private URL redirectionUri;
     
-    private boolean requireLiveConnect;
+    private OAuthScope oAuthScope;
     
 
     private NewOAuthTokensReceivedListener newTokensListener;
@@ -43,12 +44,12 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         return clientSecret;
     }
     
-    public URL getRedirectionUri() {
-        return redirectionUri;
+    public OAuthScope getOAuthScope() {
+        return oAuthScope;
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env, boolean requireLiveConnect) {
-        this(clientId, clientSecret, redirectionUri, env, requireLiveConnect);
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope) {
+        this(clientId, clientSecret, redirectionUri, env, oAuthScope);
 
         if (refreshToken == null) {
             throw new NullPointerException("refreshToken must not be null");
@@ -57,9 +58,9 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         oAuthTokens = new OAuthTokens(null, 0, refreshToken);
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
 
-        this(clientId, clientSecret, redirectionUri, env, requireLiveConnect);
+        this(clientId, clientSecret, redirectionUri, env, oAuthScope);
         if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
         	throw new NullPointerException("OAuth tokens must not be null");     	
         } 
@@ -67,22 +68,22 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         oAuthTokens = new OAuthTokens(null, 0, oauthTokens.getRefreshToken());
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, boolean requireLiveConnect) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, OAuthScope oAuthScope) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = new UriOAuthService(environment);
-        this.requireLiveConnect = requireLiveConnect;
+        this.oAuthScope = oAuthScope;
     }
     
-    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env, boolean requireLiveConnect) {
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env, OAuthScope oAuthScope) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = oauthService;
-        this.requireLiveConnect = requireLiveConnect;
+        this.oAuthScope = oAuthScope;
     }
 
     /**
@@ -95,7 +96,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         return OAuthEndpointHelper.getAuthorizationEndpoint(
                 new OAuthUrlParameters(this.clientId, CODE, this.redirectionUri, this.getState()),
                 this.getEnvironment(),
-                this.requireLiveConnect,
+                this.oAuthScope,
                 this.getTenant());
     }
 
@@ -133,7 +134,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 AUTHORIZATION_CODE,
                 CODE,
                 code
-        ), this.requireLiveConnect, this.getTenant(), additionalParams);
+        ), this.oAuthScope, this.getTenant(), additionalParams);
 
         raiseNewTokensEventIfNeeded();
 
@@ -154,7 +155,7 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
                 REFRESH_TOKEN,
                 REFRESH_TOKEN,
                 refreshToken
-        ), this.requireLiveConnect, this.getTenant(), null);
+        ), this.oAuthScope, this.getTenant(), null);
 
         raiseNewTokensEventIfNeeded();
 

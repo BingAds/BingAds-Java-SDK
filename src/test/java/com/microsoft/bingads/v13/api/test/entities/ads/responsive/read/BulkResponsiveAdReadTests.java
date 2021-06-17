@@ -8,10 +8,16 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({BulkResponsiveAdReadFromRowValuesBusinessNameTest.class,
     BulkResponsiveAdReadFromRowValuesCallToActionTest.class,
+    BulkResponsiveAdReadFromRowValuesCallToActionLanguageTest.class,
+    BulkResponsiveAdReadFromRowValuesDescriptionsTest.class,
     BulkResponsiveAdReadFromRowValuesHeadlineTest.class,
+    BulkResponsiveAdReadFromRowValuesHeadlinesTest.class,
     BulkResponsiveAdReadFromRowValuesTextTest.class,
     BulkResponsiveAdReadFromRowValuesLongHeadlineTest.class,
-    BulkResponsiveAdReadFromRowValuesImagesTest.class})
+    BulkResponsiveAdReadFromRowValuesImagesTest.class,
+    BulkResponsiveAdReadFromRowValuesVideosTest.class,
+    BulkResponsiveAdReadFromRowValuesLongHeadlinesTest.class,
+    })
 public class BulkResponsiveAdReadTests {
 
 }

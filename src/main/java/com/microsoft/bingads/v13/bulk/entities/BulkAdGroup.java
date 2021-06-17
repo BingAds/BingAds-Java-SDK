@@ -460,6 +460,21 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkAdGroup, Integer>(StringTable.MultiMediaAdBidAdjustment,
+                new Function<BulkAdGroup, Integer>() {
+                    @Override
+                    public Integer apply(BulkAdGroup c) {
+                        return c.getAdGroup().getMultimediaAdsBidAdjustment();
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setMultimediaAdsBidAdjustment(StringExtensions.parseOptionalInteger(v));
+                    }
+                }
+        ));
+
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

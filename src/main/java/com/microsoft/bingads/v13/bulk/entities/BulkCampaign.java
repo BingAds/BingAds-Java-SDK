@@ -926,6 +926,21 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkCampaign, Integer>(StringTable.MultiMediaAdBidAdjustment,
+                new Function<BulkCampaign, Integer>() {
+                    @Override
+                    public Integer apply(BulkCampaign c) {
+                        return c.getCampaign().getMultimediaAdsBidAdjustment();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setMultimediaAdsBidAdjustment(StringExtensions.parseOptionalInteger(v));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 

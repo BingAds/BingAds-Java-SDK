@@ -18,6 +18,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Name"/>
  *     &lt;enumeration value="Number"/>
  *     &lt;enumeration value="LifeCycleStatus"/>
+ *     &lt;enumeration value="CouponClassName"/>
+ *     &lt;enumeration value="CouponStartDate"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +36,11 @@ public enum OrderByField {
     @XmlEnumValue("Number")
     NUMBER("Number"),
     @XmlEnumValue("LifeCycleStatus")
-    LIFE_CYCLE_STATUS("LifeCycleStatus");
+    LIFE_CYCLE_STATUS("LifeCycleStatus"),
+    @XmlEnumValue("CouponClassName")
+    COUPON_CLASS_NAME("CouponClassName"),
+    @XmlEnumValue("CouponStartDate")
+    COUPON_START_DATE("CouponStartDate");
     private final String value;
 
     OrderByField(String v) {

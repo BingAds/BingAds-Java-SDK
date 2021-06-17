@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.OAuthErrorDetails;
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTokenRequestException;
 import com.microsoft.bingads.OAuthTokens;
 
@@ -63,11 +64,11 @@ public class UriOAuthService implements OAuthService {
      * @return OAuth tokens
      */
     @Override
-    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, boolean requireLiveConnect, String tenant, Map<String, String> additionalParams) {
+    public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, OAuthScope oAuthScope, String tenant, Map<String, String> additionalParams) {
         try {
-            List<NameValuePair> paramsList = generateParamsList(oAuthParameters, requireLiveConnect, additionalParams);
+            List<NameValuePair> paramsList = generateParamsList(oAuthParameters, oAuthScope, additionalParams);
             
-            String tokenRequestUrl = OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getTokenRequestUrl();
+            String tokenRequestUrl = OAuthEndpointHelper.getOauthEndpoint(environment, oAuthScope).getTokenRequestUrl();
             if (tokenRequestUrl.startsWith("https://login.microsoftonline.com/common")) {
                 tokenRequestUrl = tokenRequestUrl.replaceAll("common", tenant);
             }
@@ -110,7 +111,7 @@ public class UriOAuthService implements OAuthService {
         }
     }
 
-    private List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, boolean requireLiveConnect, Map<String, String> additionalParams) throws UnsupportedEncodingException {
+    private List<NameValuePair> generateParamsList(OAuthRequestParameters requestParams, OAuthScope oAuthScope, Map<String, String> additionalParams) throws UnsupportedEncodingException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(OAuthEndpointHelper.CLIENT_ID, requestParams.getClientId()));
 
@@ -124,7 +125,7 @@ public class UriOAuthService implements OAuthService {
             params.add(new BasicNameValuePair(OAuthEndpointHelper.REDIRECT_URI, requestParams.getRedirectionUri().toString()));
         }
         params.add(new BasicNameValuePair(OAuthEndpointHelper.SCOPE, 
-                OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getScope()));
+                OAuthEndpointHelper.getOauthEndpoint(environment, oAuthScope).getScope()));
         
         if (additionalParams != null) {
             additionalParams.forEach(new BiConsumer<String, String> () {
@@ -143,7 +144,7 @@ public class UriOAuthService implements OAuthService {
     }
 
     @Override
-    public URL getRedirectUrl(boolean requireLiveConnect) {
-        return OAuthEndpointHelper.getOauthEndpoint(environment, requireLiveConnect).getDesktopRedirectUrl();
+    public URL getRedirectUrl(OAuthScope oAuthScope) {
+        return OAuthEndpointHelper.getOauthEndpoint(environment, oAuthScope).getDesktopRedirectUrl();
     }
 }

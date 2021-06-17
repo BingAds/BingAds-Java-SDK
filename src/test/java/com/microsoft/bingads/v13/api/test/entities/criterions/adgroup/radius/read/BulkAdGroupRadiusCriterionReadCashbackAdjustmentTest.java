@@ -42,7 +42,8 @@ public class BulkAdGroupRadiusCriterionReadCashbackAdjustmentTest extends BulkAd
                 new Function<BulkAdGroupRadiusCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupRadiusCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).getCashbackPercent();
+                    	CashbackAdjustment cashback = (CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback();
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

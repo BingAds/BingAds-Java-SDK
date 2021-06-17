@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTokens;
 
 /**
@@ -37,9 +38,9 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
 
     private final URL redirectionUri;
     
-    private final boolean requireLiveConnect;
+    private final OAuthScope oAuthScope;
     
-    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
+    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
         super(env);
         
         this.clientId = clientId;
@@ -48,7 +49,7 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
         
         this.oAuthTokens = oauthTokens;
         
-        this.requireLiveConnect = requireLiveConnect;
+        this.oAuthScope = oAuthScope;
     }
     
     /**
@@ -61,7 +62,7 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
         return OAuthEndpointHelper.getAuthorizationEndpoint(
                 new OAuthUrlParameters(this.clientId, TOKEN, this.redirectionUri, this.getState()),
                 this.getEnvironment(),
-                this.requireLiveConnect,
+                this.oAuthScope,
                 this.getTenant());
     }
 

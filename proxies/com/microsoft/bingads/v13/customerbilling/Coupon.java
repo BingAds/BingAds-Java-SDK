@@ -93,7 +93,7 @@ public class Coupon {
     protected Calendar endDate;
     @XmlElement(name = "SendToEmail", nillable = true)
     protected String sendToEmail;
-    @XmlElement(name = "SendToDate", type = String.class)
+    @XmlElement(name = "SendToDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar sendToDate;

@@ -150,6 +150,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AccountVideoAdExtensions"/>
  *     &lt;enumeration value="CampaignVideoAdExtensions"/>
  *     &lt;enumeration value="AdGroupVideoAdExtensions"/>
+ *     &lt;enumeration value="Videos"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -430,7 +431,9 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignVideoAdExtensions")
     CAMPAIGN_VIDEO_AD_EXTENSIONS("CampaignVideoAdExtensions"),
     @XmlEnumValue("AdGroupVideoAdExtensions")
-    AD_GROUP_VIDEO_AD_EXTENSIONS("AdGroupVideoAdExtensions");
+    AD_GROUP_VIDEO_AD_EXTENSIONS("AdGroupVideoAdExtensions"),
+    @XmlEnumValue("Videos")
+    VIDEOS("Videos");
     private final String value;
 
     DownloadEntity(String v) {

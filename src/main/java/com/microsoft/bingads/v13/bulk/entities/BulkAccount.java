@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import com.microsoft.bingads.internal.UncheckedParseException;
@@ -55,6 +56,12 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private String trackingUrlTemplate;
     
     private String finalUrlSuffix;
+    
+    private Boolean adClickParallelTracking;
+    
+    private Map<String, Boolean> autoApplyRecommendations;
+    
+    private Boolean allowImageAutoRetrieve;
 
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
@@ -209,6 +216,51 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.AdClickParallelTracking,
+                new Function<BulkAccount, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkAccount t) {
+                        return t.getAdClickParallelTracking();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setAdClickParallelTracking(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.AutoApplyRecommendations,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount t) {
+                        return StringExtensions.writeAutoApplyRecommendations(";", t.getAutoApplyRecommendations());
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setAutoApplyRecommendations(StringExtensions.parseAutoApplyRecommendations(v, ";"));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.AllowImageAutoRetrieve,
+                new Function<BulkAccount, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkAccount t) {
+                        return t.getAllowImageAutoRetrieve();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setAllowImageAutoRetrieve(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -322,6 +374,30 @@ public class BulkAccount extends SingleRecordBulkEntity {
         this.finalUrlSuffix = finalUrlSuffix;
     }
 
+    public Boolean getAdClickParallelTracking() {
+        return adClickParallelTracking;
+    }
+
+    public void setAdClickParallelTracking(Boolean adClickParallelTracking) {
+        this.adClickParallelTracking = adClickParallelTracking;
+    }
+    
+    public Map<String, Boolean> getAutoApplyRecommendations() {
+        return autoApplyRecommendations;
+    }
+
+    public void setAutoApplyRecommendations(Map<String, Boolean> autoApplyRecommendations) {
+        this.autoApplyRecommendations = autoApplyRecommendations;
+    }
+    
+    public Boolean getAllowImageAutoRetrieve() {
+        return allowImageAutoRetrieve;
+    }
+
+    public void setAllowImageAutoRetrieve(Boolean allowImageAutoRetrieve) {
+        this.allowImageAutoRetrieve = allowImageAutoRetrieve;
+    }
+    
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         MappingHelpers.<BulkAccount>convertToEntity(values, MAPPINGS, this);

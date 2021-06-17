@@ -12,6 +12,7 @@ import org.junit.runners.JUnit4;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTokens;
 
 @RunWith(JUnit4.class)
@@ -95,6 +96,6 @@ public class OAuthImplicitGrantForDesktopMobileAppTest {
     }
 
     private static OAuthDesktopMobileImplicitGrant CreateAuth(String clientId) {
-        return new OAuthDesktopMobileImplicitGrant(clientId, null,  ApiEnvironment.PRODUCTION, true);
+        return new OAuthDesktopMobileImplicitGrant(clientId, null,  ApiEnvironment.PRODUCTION, OAuthScope.BINGADS_MANAGE);
     }
 }

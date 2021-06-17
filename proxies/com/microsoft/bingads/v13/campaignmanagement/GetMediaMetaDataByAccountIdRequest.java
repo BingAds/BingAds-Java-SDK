@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetMediaMetaDataByAccountIdRequest {
 
     @XmlElement(name = "MediaEnabledEntities", type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<MediaEnabledEntityFilter> mediaEnabledEntities;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;

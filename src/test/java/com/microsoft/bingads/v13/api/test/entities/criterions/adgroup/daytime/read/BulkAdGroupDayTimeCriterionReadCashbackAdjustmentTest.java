@@ -42,7 +42,8 @@ public class BulkAdGroupDayTimeCriterionReadCashbackAdjustmentTest extends BulkA
                 new Function<BulkAdGroupDayTimeCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupDayTimeCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).getCashbackPercent();
+                    	CashbackAdjustment cashback = (CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback();
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

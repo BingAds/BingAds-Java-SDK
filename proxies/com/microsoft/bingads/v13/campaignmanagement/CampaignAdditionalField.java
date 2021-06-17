@@ -11,7 +11,10 @@ public enum CampaignAdditionalField {
     TARGET_SETTING("TargetSetting"),
     BID_STRATEGY_ID("BidStrategyId"),
     CPV_CPM_BIDDING_SCHEME("CpvCpmBiddingScheme"),
-    DYNAMIC_FEED_SETTING("DynamicFeedSetting");
+    DYNAMIC_FEED_SETTING("DynamicFeedSetting"),
+    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment"),
+    VERIFIED_TRACKING_SETTING("VerifiedTrackingSetting"),
+    DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting");
         
     private final String value;
 

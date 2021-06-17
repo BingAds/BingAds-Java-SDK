@@ -86,6 +86,15 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="VisitStore"/>
  *     &lt;enumeration value="RenewNow"/>
  *     &lt;enumeration value="Reorder"/>
+ *     &lt;enumeration value="BuildNow"/>
+ *     &lt;enumeration value="Dealers"/>
+ *     &lt;enumeration value="GetDemo"/>
+ *     &lt;enumeration value="GetNow"/>
+ *     &lt;enumeration value="GoToDemo"/>
+ *     &lt;enumeration value="SeeDemo"/>
+ *     &lt;enumeration value="SeeModels"/>
+ *     &lt;enumeration value="SeeOffers"/>
+ *     &lt;enumeration value="ViewDemo"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -238,7 +247,25 @@ public enum ActionAdExtensionActionType {
     @XmlEnumValue("RenewNow")
     RENEW_NOW("RenewNow"),
     @XmlEnumValue("Reorder")
-    REORDER("Reorder");
+    REORDER("Reorder"),
+    @XmlEnumValue("BuildNow")
+    BUILD_NOW("BuildNow"),
+    @XmlEnumValue("Dealers")
+    DEALERS("Dealers"),
+    @XmlEnumValue("GetDemo")
+    GET_DEMO("GetDemo"),
+    @XmlEnumValue("GetNow")
+    GET_NOW("GetNow"),
+    @XmlEnumValue("GoToDemo")
+    GO_TO_DEMO("GoToDemo"),
+    @XmlEnumValue("SeeDemo")
+    SEE_DEMO("SeeDemo"),
+    @XmlEnumValue("SeeModels")
+    SEE_MODELS("SeeModels"),
+    @XmlEnumValue("SeeOffers")
+    SEE_OFFERS("SeeOffers"),
+    @XmlEnumValue("ViewDemo")
+    VIEW_DEMO("ViewDemo");
     private final String value;
 
     ActionAdExtensionActionType(String v) {

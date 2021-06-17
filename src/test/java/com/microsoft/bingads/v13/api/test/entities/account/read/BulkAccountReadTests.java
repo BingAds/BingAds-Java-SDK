@@ -12,6 +12,9 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAccountReadFromRowValuesTrackingTemplateTest.class,
     BulkAccountReadFromRowValuesFinalUrlSuffixTest.class,
     BulkAccountIncludeViewThroughConversionsTest.class,
+    BulkAccountReadFromRowValuesAdClickParallelTrackingTest.class,
+    BulkAccountReadFromRowValuesAutoApplyRecommendationsTest.class,
+    BulkAccountReadFromRowValuesAllowImageAutoRetrieveTest.class,
     BulkAccountProfileExpansionEnabledTest.class})
 public class BulkAccountReadTests {
 

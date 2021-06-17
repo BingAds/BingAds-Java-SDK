@@ -51,7 +51,7 @@ public class GetAdsByEditorialStatusRequest {
     @XmlElement(name = "AdTypes", nillable = true)
     protected ArrayOfAdType adTypes;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<AdAdditionalField> returnAdditionalFields;
 
     /**

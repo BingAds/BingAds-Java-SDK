@@ -186,9 +186,13 @@ public abstract class BulkAdGroupBiddableCriterion extends SingleRecordBulkEntit
                     @Override
                     public void accept(String v, BulkAdGroupBiddableCriterion c) {
                         if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).setCashbackPercent(
-                                    StringExtensions.nullOrDouble(v)
-                            );
+                        	Double cashbackPercent = StringExtensions.nullOrDouble(v);
+                        	if (cashbackPercent == null) {
+                        		((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).setCriterionCashback(null);
+                        	}
+                        	else {
+                        		((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).setCashbackPercent(cashbackPercent);
+                        	}
                         }
                     }
                 }

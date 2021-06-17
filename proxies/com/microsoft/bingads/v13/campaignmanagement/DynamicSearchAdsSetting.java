@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
  *       &lt;sequence>
  *         &lt;element name="DomainName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="DynamicDescriptionEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="PageFeedIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="Source" type="{https://bingads.microsoft.com/CampaignManagement/v13}DynamicSearchAdsSource" minOccurs="0"/>
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DynamicSearchAdsSetting", propOrder = {
     "domainName",
+    "dynamicDescriptionEnabled",
     "language",
     "pageFeedIds",
     "source"
@@ -43,6 +45,8 @@ public class DynamicSearchAdsSetting
 
     @XmlElement(name = "DomainName", nillable = true)
     protected String domainName;
+    @XmlElement(name = "DynamicDescriptionEnabled", nillable = true)
+    protected Boolean dynamicDescriptionEnabled;
     @XmlElement(name = "Language", nillable = true)
     protected String language;
     @XmlElement(name = "PageFeedIds", nillable = true)
@@ -73,6 +77,30 @@ public class DynamicSearchAdsSetting
      */
     public void setDomainName(String value) {
         this.domainName = value;
+    }
+
+    /**
+     * Gets the value of the dynamicDescriptionEnabled property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getDynamicDescriptionEnabled() {
+        return dynamicDescriptionEnabled;
+    }
+
+    /**
+     * Sets the value of the dynamicDescriptionEnabled property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDynamicDescriptionEnabled(Boolean value) {
+        this.dynamicDescriptionEnabled = value;
     }
 
     /**

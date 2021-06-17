@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AccountNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="AccountLifeCycleStatus" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountLifeCycleStatus" minOccurs="0"/>
  *         &lt;element name="PauseReason" type="{http://www.w3.org/2001/XMLSchema}unsignedByte" minOccurs="0"/>
+ *         &lt;element name="AccountMode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,7 +42,8 @@ import javax.xml.bind.annotation.XmlType;
     "accountName",
     "accountNumber",
     "accountLifeCycleStatus",
-    "pauseReason"
+    "pauseReason",
+    "accountMode"
 })
 public class AccountInfoWithCustomerData {
 
@@ -61,6 +63,8 @@ public class AccountInfoWithCustomerData {
     @XmlElement(name = "PauseReason", nillable = true)
     @XmlSchemaType(name = "unsignedByte")
     protected Short pauseReason;
+    @XmlElement(name = "AccountMode", nillable = true)
+    protected String accountMode;
 
     /**
      * Gets the value of the customerId property.
@@ -228,6 +232,30 @@ public class AccountInfoWithCustomerData {
      */
     public void setPauseReason(Short value) {
         this.pauseReason = value;
+    }
+
+    /**
+     * Gets the value of the accountMode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAccountMode() {
+        return accountMode;
+    }
+
+    /**
+     * Sets the value of the accountMode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountMode(String value) {
+        this.accountMode = value;
     }
 
 }

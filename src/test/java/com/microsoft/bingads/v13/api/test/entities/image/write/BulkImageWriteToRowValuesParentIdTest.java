@@ -29,10 +29,10 @@ public class BulkImageWriteToRowValuesParentIdTest extends BulkImageTest {
 
     @Test
     public void testWrite() {
-        this.<Long>testWriteProperty("Id", this.datum, this.propertyValue, new BiConsumer<BulkImage, Long>() {
+        this.<Long>testWriteProperty("Parent Id", this.datum, this.propertyValue, new BiConsumer<BulkImage, Long>() {
             @Override
             public void accept(BulkImage c, Long v) {
-                c.setId(v);;
+                c.setAccountId(v);;
             }
         });
     }

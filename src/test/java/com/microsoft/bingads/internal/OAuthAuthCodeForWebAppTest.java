@@ -14,6 +14,7 @@ import org.easymock.Mock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTest;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
@@ -108,7 +109,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(eq(expectedRequestParameters), eq(true), eq("common"), eq(null))).andReturn(expectedTokenInfo);
+            expect(oauthService.getAccessTokens(eq(expectedRequestParameters), eq(OAuthScope.BINGADS_MANAGE), eq("common"), eq(null))).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 
@@ -135,7 +136,7 @@ public class OAuthAuthCodeForWebAppTest extends EasyMockSupport {
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ), true, "common", null)).andReturn(expectedTokenInfo);
+            ), OAuthScope.BINGADS_MANAGE, "common", null)).andReturn(expectedTokenInfo);
 
             OAuthWebAuthCodeGrant auth = OAuthTest.CreateWebAuth("test_id", "test_secret", oauthService);
 

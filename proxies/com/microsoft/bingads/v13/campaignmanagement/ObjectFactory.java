@@ -108,6 +108,7 @@ public class ObjectFactory {
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ApplicationToken");
     private final static QName _EntityNegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityNegativeKeyword");
+    private final static QName _NormalForm_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NormalForm");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
     private final static QName _AdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterion");
     private final static QName _ArrayOfAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdGroupCriterion");
@@ -172,6 +173,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfRuleItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfRuleItem");
     private final static QName _AssetLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetLink");
     private final static QName _ArrayOfAdType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdType");
+    private final static QName _LanguageName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LanguageName");
     private final static QName _ConversionGoalRevenue_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionGoalRevenue");
     private final static QName _AdExtensionAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionAdditionalField");
     private final static QName _AdExtensionAssociationCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionAssociationCollection");
@@ -313,6 +315,7 @@ public class ObjectFactory {
     private final static QName _EnhancedCpcBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EnhancedCpcBiddingScheme");
     private final static QName _ValueOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ValueOperator");
     private final static QName _AppealStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppealStatus");
+    private final static QName _AudienceAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceAdditionalField");
     private final static QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OperationError");
     private final static QName _ArrayOfMediaMetaData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfMediaMetaData");
     private final static QName _NegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeKeywordList");
@@ -4654,7 +4657,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdExtensionsTypeFilter")
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     public JAXBElement<Collection<AdExtensionsTypeFilter>> createAdExtensionsTypeFilter(Collection<AdExtensionsTypeFilter> value) {
         return new JAXBElement<Collection<AdExtensionsTypeFilter>>(_AdExtensionsTypeFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -5008,7 +5011,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdGroupCriterionType")
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     public JAXBElement<Collection<AdGroupCriterionType>> createAdGroupCriterionType(Collection<AdGroupCriterionType> value) {
         return new JAXBElement<Collection<AdGroupCriterionType>>(_AdGroupCriterionType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -5027,7 +5030,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImportAdditionalField")
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     public JAXBElement<Collection<ImportAdditionalField>> createImportAdditionalField(Collection<ImportAdditionalField> value) {
         return new JAXBElement<Collection<ImportAdditionalField>>(_ImportAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -5082,7 +5085,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalAdditionalField")
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     public JAXBElement<Collection<ConversionGoalAdditionalField>> createConversionGoalAdditionalField(Collection<ConversionGoalAdditionalField> value) {
         return new JAXBElement<Collection<ConversionGoalAdditionalField>>(_ConversionGoalAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -5092,7 +5095,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceType")
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     public JAXBElement<Collection<AudienceType>> createAudienceType(Collection<AudienceType> value) {
         return new JAXBElement<Collection<AudienceType>>(_AudienceType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -5320,6 +5323,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityNegativeKeyword")
     public JAXBElement<EntityNegativeKeyword> createEntityNegativeKeyword(EntityNegativeKeyword value) {
         return new JAXBElement<EntityNegativeKeyword>(_EntityNegativeKeyword_QNAME, EntityNegativeKeyword.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NormalForm }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NormalForm")
+    public JAXBElement<NormalForm> createNormalForm(NormalForm value) {
+        return new JAXBElement<NormalForm>(_NormalForm_QNAME, NormalForm.class, null, value);
     }
 
     /**
@@ -5900,6 +5912,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LanguageName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "LanguageName")
+    public JAXBElement<LanguageName> createLanguageName(LanguageName value) {
+        return new JAXBElement<LanguageName>(_LanguageName_QNAME, LanguageName.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ConversionGoalRevenue }{@code >}}
      * 
      */
@@ -5913,7 +5934,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdExtensionAdditionalField")
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     public JAXBElement<Collection<AdExtensionAdditionalField>> createAdExtensionAdditionalField(Collection<AdExtensionAdditionalField> value) {
         return new JAXBElement<Collection<AdExtensionAdditionalField>>(_AdExtensionAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -6167,7 +6188,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalType")
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     public JAXBElement<Collection<ConversionGoalType>> createConversionGoalType(Collection<ConversionGoalType> value) {
         return new JAXBElement<Collection<ConversionGoalType>>(_ConversionGoalType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -6393,7 +6414,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ProductAudienceType")
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     public JAXBElement<Collection<ProductAudienceType>> createProductAudienceType(Collection<ProductAudienceType> value) {
         return new JAXBElement<Collection<ProductAudienceType>>(_ProductAudienceType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -6872,7 +6893,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "MediaEnabledEntityFilter")
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     public JAXBElement<Collection<MediaEnabledEntityFilter>> createMediaEnabledEntityFilter(Collection<MediaEnabledEntityFilter> value) {
         return new JAXBElement<Collection<MediaEnabledEntityFilter>>(_MediaEnabledEntityFilter_QNAME, ((Class) Collection.class), null, value);
     }
@@ -7175,6 +7196,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceAdditionalField")
+    @XmlJavaTypeAdapter(Adapter8 .class)
+    public JAXBElement<Collection<AudienceAdditionalField>> createAudienceAdditionalField(Collection<AudienceAdditionalField> value) {
+        return new JAXBElement<Collection<AudienceAdditionalField>>(_AudienceAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OperationError }{@code >}}
      * 
      */
@@ -7234,7 +7265,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ProfileType")
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     public JAXBElement<Collection<ProfileType>> createProfileType(Collection<ProfileType> value) {
         return new JAXBElement<Collection<ProfileType>>(_ProfileType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -7776,7 +7807,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdAdditionalField")
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     public JAXBElement<Collection<AdAdditionalField>> createAdAdditionalField(Collection<AdAdditionalField> value) {
         return new JAXBElement<Collection<AdAdditionalField>>(_AdAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }

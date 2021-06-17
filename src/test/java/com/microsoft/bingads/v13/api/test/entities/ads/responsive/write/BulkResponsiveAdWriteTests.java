@@ -8,9 +8,15 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({BulkResponsiveAdWriteFromRowValuesBusinessNameTest.class,
     BulkResponsiveAdWriteFromRowValuesTextTest.class,
     BulkResponsiveAdWriteFromRowValuesCallToActionTest.class,
+    BulkResponsiveAdWriteFromRowValuesCallToActionLanguageTest.class,
+    BulkResponsiveAdWriteFromRowValuesDescriptionsTest.class,
     BulkResponsiveAdWriteFromRowValuesHeadlineTest.class,
+    BulkResponsiveAdWriteFromRowValuesHeadlinesTest.class,
     BulkResponsiveAdWriteFromRowValuesLongHeadlineTest.class,
-    BulkResponsiveAdWriteFromRowValuesImageTest.class})
+    BulkResponsiveAdWriteFromRowValuesImageTest.class,
+    BulkResponsiveAdWriteFromRowValuesVideoTest.class,
+    BulkResponsiveAdWriteFromRowValuesLongHeadlinesTest.class,
+    })
 public class BulkResponsiveAdWriteTests {
 
 }

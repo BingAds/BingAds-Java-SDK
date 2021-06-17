@@ -42,7 +42,8 @@ public class BulkCampaignDeviceCriterionReadCashbackAdjustmentTest extends BulkC
                 new Function<BulkCampaignDeviceCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignDeviceCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).getCashbackPercent();
+                        CashbackAdjustment cashback = ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback());
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

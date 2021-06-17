@@ -42,7 +42,8 @@ public class BulkAdGroupGenderCriterionReadCashbackAdjustmentTest extends BulkAd
                 new Function<BulkAdGroupGenderCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupGenderCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).getCashbackPercent();
+                    	CashbackAdjustment cashback = (CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback();
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

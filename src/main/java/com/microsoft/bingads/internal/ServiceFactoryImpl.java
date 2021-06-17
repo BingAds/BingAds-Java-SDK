@@ -29,7 +29,7 @@ import com.microsoft.bingads.InternalException;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.9";
+    private static final String VERSION = "13.0.10";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     

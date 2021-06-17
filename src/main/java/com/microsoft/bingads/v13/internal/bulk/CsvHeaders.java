@@ -24,6 +24,7 @@ public class CsvHeaders {
             StringTable.SyncTime,
             StringTable.ClientId,
             StringTable.LastModifiedTime,
+            StringTable.MultiMediaAdBidAdjustment,
 
             // campaign
             StringTable.TimeZone,
@@ -298,6 +299,11 @@ public class CsvHeaders {
             // Image
             StringTable.Height,
             StringTable.Width,
+            
+            // Video
+            StringTable.SourceUrl,
+            StringTable.AspectRatio,
+            StringTable.DurationInMillionSeconds,
 
             // Callout Ad Extension
             StringTable.CalloutText,
@@ -359,14 +365,19 @@ public class CsvHeaders {
 
             // Responsive Ad
             StringTable.CallToAction,
+            StringTable.CallToActionLanguage,
+            StringTable.Descriptions,
             StringTable.Headline,
+            StringTable.Headlines,
             StringTable.Images,
             StringTable.LandscapeImageMediaId,
             StringTable.LandscapeLogoMediaId,
             StringTable.LongHeadline,
+            StringTable.LongHeadlines,
             StringTable.SquareImageMediaId,
             StringTable.SquareLogoMediaId,
             StringTable.ImpressionTrackingUrls,
+            StringTable.Videos,
             
             // Dynamic Search Ad
             StringTable.DomainLanguage,
@@ -400,6 +411,9 @@ public class CsvHeaders {
             StringTable.MSCLKIDAutoTaggingEnabled,
             StringTable.IncludeViewThroughConversions,
             StringTable.ProfileExpansionEnabled,            
+            StringTable.AdClickParallelTracking,
+            StringTable.AutoApplyRecommendations,
+            StringTable.AllowImageAutoRetrieve,
 
             StringTable.FinalUrlSuffix,
             
