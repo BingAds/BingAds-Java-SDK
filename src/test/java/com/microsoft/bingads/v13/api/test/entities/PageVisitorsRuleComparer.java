@@ -9,6 +9,8 @@ public class PageVisitorsRuleComparer implements EqualityComparerWithDescription
         if (x == null || y == null) {
         	return x == y;
         }  
+        if (x.getNormalForm() != y.getNormalForm())
+        	return false;
         return RuleItemGroupsComparer.equals(x.getRuleItemGroups().getRuleItemGroups(), y.getRuleItemGroups().getRuleItemGroups());
     }
 

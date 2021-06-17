@@ -164,9 +164,13 @@ public abstract class BulkCampaignBiddableCriterion extends SingleRecordBulkEnti
                     @Override
                     public void accept(String v, BulkCampaignBiddableCriterion c) {
                         if (c.getBiddableCampaignCriterion() instanceof BiddableCampaignCriterion) {
-                            ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).setCashbackPercent(
-                                    StringExtensions.nullOrDouble(v)
-                            );
+                        	Double cashbackPercent = StringExtensions.nullOrDouble(v);
+                        	if (cashbackPercent == null) {
+                        		((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).setCriterionCashback(null);
+                        	}
+                        	else {
+                        		((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).setCashbackPercent(cashbackPercent);
+                        	}
                         }
                     }
                 }

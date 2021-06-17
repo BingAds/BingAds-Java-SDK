@@ -42,7 +42,8 @@ public class BulkCampaignRadiusCriterionReadCashbackAdjustmentTest extends BulkC
                 new Function<BulkCampaignRadiusCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignRadiusCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).getCashbackPercent();
+                        CashbackAdjustment cashback = ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback());
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

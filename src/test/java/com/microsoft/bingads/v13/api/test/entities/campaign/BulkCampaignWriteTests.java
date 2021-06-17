@@ -20,6 +20,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFeedIdAudienceSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFinalUrlSuffixTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesIdTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesMultiMediaAdBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesNameTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPageFeedIdsDSASettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesPriorityOtherSettingTest;
@@ -62,6 +63,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesBidStrategyIdTest.class,
         BulkCampaignWriteToRowValuesBidStrategyIdTest.class,
         BulkCampaignWriteToRowValuesFeedIdAudienceSettingTest.class,
+        BulkCampaignWriteToRowValuesMultiMediaAdBidAdjustmentTest.class,
 })
 public class BulkCampaignWriteTests {
 

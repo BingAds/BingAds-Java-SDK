@@ -13,6 +13,9 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAccountWriteToRowValuesMSCLKIDAutoTaggingEnabledTest.class,
     BulkAccountWriteToRowValuesFinalUrlSuffixTest.class,
     BulkAccountIncludeViewThroughConversionsTest.class,
+    BulkAccountWriteToRowValuesAdClickParallelTrackingTest.class,
+    BulkAccountWriteToRowValuesAutoApplyRecommendationsTest.class,
+    BulkAccountWriteToRowValuesAllowImageAutoRetrieveTest.class,
     BulkAccountProfileExpansionEnabledTest.class})
 public class BulkAccountWriteTests {
 

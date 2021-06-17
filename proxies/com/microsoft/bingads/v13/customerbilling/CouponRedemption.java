@@ -67,7 +67,7 @@ public class CouponRedemption {
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar expirationDate;
-    @XmlElement(name = "ActivationDate", type = String.class)
+    @XmlElement(name = "ActivationDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar activationDate;

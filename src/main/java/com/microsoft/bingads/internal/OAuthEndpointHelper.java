@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.OAuthScope;
 
 public class OAuthEndpointHelper {
     public static final String UTF_8 = "UTF-8";
@@ -20,9 +21,16 @@ public class OAuthEndpointHelper {
     public static final String SCOPE = "scope";
     public static final String CLIENT_SECRET = "client_secret";
 
-    public static final Map<OAuthEndpointType, OAuthEndpoints> endpointUrls = new HashMap();
+    public static final Map<OAuthEndpointType, OAuthEndpoints> endpointUrls = new HashMap<OAuthEndpointType, OAuthEndpoints>();
 
     static {
+        endpointUrls.put(OAuthEndpointType.ProductionMSIdentityV2_MSScope, new OAuthEndpoints(
+                "https://login.microsoftonline.com/common/oauth2/nativeclient",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://ads.microsoft.com/msads.manage offline_access&%s",
+                "https://ads.microsoft.com/msads.manage offline_access"
+                ));
+
         endpointUrls.put(OAuthEndpointType.ProductionMSIdentityV2, new OAuthEndpoints(
                 "https://login.microsoftonline.com/common/oauth2/nativeclient",
                 "https://login.microsoftonline.com/common/oauth2/v2.0/token",
@@ -37,26 +45,25 @@ public class OAuthEndpointHelper {
                 "bingads.manage"
                 ));
 
-        endpointUrls.put(OAuthEndpointType.SandboxLiveConnect, new OAuthEndpoints(
-                "https://login.live-int.com/oauth20_desktop.srf", 
-                "https://login.live-int.com/oauth20_token.srf",
-                "https://login.live-int.com/oauth20_authorize.srf?&scope=bingads.manage&prompt=login&%s",
-                "bingads.manage"
+        endpointUrls.put(OAuthEndpointType.Sandbox, new OAuthEndpoints(
+                "https://login.windows-ppe.net/common/oauth2/nativeclient",
+                "https://login.windows-ppe.net/consumers/oauth2/v2.0/token",
+                "https://login.windows-ppe.net/consumers/oauth2/v2.0/authorize?scope=https://api.ads.microsoft.com/msads.manage offline_access&%s",
+                "https://api.ads.microsoft.com/msads.manage offline_access"
                 ));
     }
     
-    public static OAuthEndpoints getOauthEndpoint(ApiEnvironment env, boolean requireLiveConnect) {
-        switch(env) {
-        case SANDBOX:
-            return endpointUrls.get(OAuthEndpointType.SandboxLiveConnect);
-        case PRODUCTION:
-            if (requireLiveConnect) {
-                return endpointUrls.get(OAuthEndpointType.ProductionLiveConnect);
-            } else {
-                return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2);
-            }
-        }
-        return null;
+    public static OAuthEndpoints getOauthEndpoint(ApiEnvironment env, OAuthScope oAuthScope) {
+    	if (ApiEnvironment.SANDBOX == env)
+    		return endpointUrls.get(OAuthEndpointType.Sandbox);
+    	
+    	switch (oAuthScope) {
+    	case ADS_MANAGE : return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2);
+    	case BINGADS_MANAGE : return endpointUrls.get(OAuthEndpointType.ProductionLiveConnect);
+    	case MSADS_MANAGE: return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2_MSScope);
+    	}
+    	
+    	return null;
     }
     
     /**
@@ -70,7 +77,7 @@ public class OAuthEndpointHelper {
      * @throws MalformedURLException
      * @throws UnsupportedEncodingException
      */
-    public static URL getAuthorizationEndpoint(OAuthUrlParameters parameters, ApiEnvironment env, boolean requireLiveConnect, String tenant) {
+    public static URL getAuthorizationEndpoint(OAuthUrlParameters parameters, ApiEnvironment env, OAuthScope oAuthScope, String tenant) {
         Map<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put(CLIENT_ID, parameters.getClientId());
         paramsMap.put(RESPONSE_TYPE, parameters.getResponseType());
@@ -81,7 +88,7 @@ public class OAuthEndpointHelper {
         }        
         
         try {
-            String authorizationEndpointUrl = getOauthEndpoint(env, requireLiveConnect).getAuthorizationEndpointUrl();
+            String authorizationEndpointUrl = getOauthEndpoint(env, oAuthScope).getAuthorizationEndpointUrl();
             if (authorizationEndpointUrl.startsWith("https://login.microsoftonline.com/common/oauth2") && tenant != null) {
                 authorizationEndpointUrl = authorizationEndpointUrl.replace("common", tenant);
             }

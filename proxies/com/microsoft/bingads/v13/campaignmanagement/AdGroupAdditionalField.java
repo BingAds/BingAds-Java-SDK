@@ -8,7 +8,8 @@ public enum AdGroupAdditionalField {
     AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
     AD_GROUP_TYPE("AdGroupType"),
     CPV_BID("CpvBid"),
-    CPM_BID("CpmBid");
+    CPM_BID("CpmBid"),
+    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment");
         
     private final String value;
 

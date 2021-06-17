@@ -12,6 +12,7 @@ import com.microsoft.bingads.v13.bulk.entities.BulkRemarketingList;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v13.campaignmanagement.CustomEventsRule;
+import com.microsoft.bingads.v13.campaignmanagement.NormalForm;
 import com.microsoft.bingads.v13.campaignmanagement.NumberOperator;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
@@ -75,9 +76,14 @@ public abstract class BulkRemarketingListTest extends BulkEntityTest<BulkRemarke
     }
     
     protected static Object generatePageVisitRuleTestData(String ruleType, int groupCount, int itemCount) {
+    	return generatePageVisitRuleTestData(ruleType, groupCount, itemCount, NormalForm.DISJUNCTIVE);
+    }
+   
+    protected static Object generatePageVisitRuleTestData(String ruleType, int groupCount, int itemCount, NormalForm nf) {
     	if (ruleType.equals("PageVisitors")) {
     		PageVisitorsRule pvRule = new PageVisitorsRule();
             pvRule.setType("PageVisitors");
+            pvRule.setNormalForm(nf);
             pvRule.setRuleItemGroups(generateRuleItemGroup(ruleType, groupCount, itemCount));
             return pvRule; 
     	} else if (ruleType.equals("PageVisitorsWhoVisitedAnotherPage")) {

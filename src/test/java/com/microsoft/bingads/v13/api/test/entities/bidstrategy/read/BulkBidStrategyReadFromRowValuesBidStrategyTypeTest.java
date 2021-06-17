@@ -18,10 +18,14 @@ import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.ManualCpmBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.ManualCpvBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetCpaBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.TargetImpressionShareBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 
 @RunWith(Parameterized.class)
@@ -103,6 +107,38 @@ public class BulkBidStrategyReadFromRowValuesBidStrategyTypeTest extends BulkBid
             }
         }, new ObjectComparer<BiddingScheme>());
         
+        datum = "ManualCpv";
+    	expectedResult = new ManualCpvBiddingScheme();
+    	expectedResult.setType("ManualCpv");
+    	
+    	this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkBidStrategy, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkBidStrategy c) {
+                return c.getBidStrategy().getBiddingScheme();
+            }
+        }, new Supplier<BulkBidStrategy>() {
+            @Override
+            public BulkBidStrategy get() {
+                return new BulkBidStrategy();
+            }
+        }, new ObjectComparer<BiddingScheme>());
+        
+        datum = "ManualCpm";
+    	expectedResult = new ManualCpmBiddingScheme();
+    	expectedResult.setType("ManualCpm");
+    	
+    	this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkBidStrategy, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkBidStrategy c) {
+                return c.getBidStrategy().getBiddingScheme();
+            }
+        }, new Supplier<BulkBidStrategy>() {
+            @Override
+            public BulkBidStrategy get() {
+                return new BulkBidStrategy();
+            }
+        }, new ObjectComparer<BiddingScheme>());
+        
         datum = "TargetCpa";
     	expectedResult = new TargetCpaBiddingScheme();
     	expectedResult.setType("TargetCpa");
@@ -168,5 +204,38 @@ public class BulkBidStrategyReadFromRowValuesBidStrategyTypeTest extends BulkBid
                 return new BulkBidStrategy();
             }
         }, new ObjectComparer<BiddingScheme>());
+
+        datum = "TargetImpressionShare";
+        expectedResult = new TargetImpressionShareBiddingScheme();
+        expectedResult.setType("TargetImpressionShare");
+        
+        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkBidStrategy, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkBidStrategy c) {
+                return c.getBidStrategy().getBiddingScheme();
+            }
+        }, new Supplier<BulkBidStrategy>() {
+            @Override
+            public BulkBidStrategy get() {
+                return new BulkBidStrategy();
+            }
+        }, new ObjectComparer<BiddingScheme>());
+
+        datum = "MaxRoas";
+        expectedResult = new MaxRoasBiddingScheme();
+        expectedResult.setType("MaxRoas");
+        
+        this.<BiddingScheme>testReadProperty("Bid Strategy Type", this.datum, this.expectedResult, new Function<BulkBidStrategy, BiddingScheme>() {
+            @Override
+            public BiddingScheme apply(BulkBidStrategy c) {
+                return c.getBidStrategy().getBiddingScheme();
+            }
+        }, new Supplier<BulkBidStrategy>() {
+            @Override
+            public BulkBidStrategy get() {
+                return new BulkBidStrategy();
+            }
+        }, new ObjectComparer<BiddingScheme>());
+
     }
 }

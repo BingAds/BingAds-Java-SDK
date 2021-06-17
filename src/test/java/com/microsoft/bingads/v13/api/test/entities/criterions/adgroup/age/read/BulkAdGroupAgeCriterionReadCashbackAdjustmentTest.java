@@ -42,7 +42,8 @@ public class BulkAdGroupAgeCriterionReadCashbackAdjustmentTest extends BulkAdGro
                 new Function<BulkAdGroupAgeCriterion, Double>() {
                     @Override
                     public Double apply(BulkAdGroupAgeCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback()).getCashbackPercent();
+                    	CashbackAdjustment cashback = (CashbackAdjustment) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionCashback();
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

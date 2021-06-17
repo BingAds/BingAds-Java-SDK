@@ -1003,6 +1003,13 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
         
+        m.put(StringTable.Video, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkVideo();
+            }
+        }));
+        
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

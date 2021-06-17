@@ -21,7 +21,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FinalUrlSuffix"/>
  *     &lt;enumeration value="IncludeViewThroughConversions"/>
  *     &lt;enumeration value="ProfileExpansionEnabled"/>
- *     &lt;enumeration value="AllowCrawlImagesFromLandingPage"/>
+ *     &lt;enumeration value="AllowImageAutoRetrieve"/>
+ *     &lt;enumeration value="AutoApplyRecommendations"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -45,8 +46,10 @@ public enum AccountPropertyName {
     INCLUDE_VIEW_THROUGH_CONVERSIONS("IncludeViewThroughConversions"),
     @XmlEnumValue("ProfileExpansionEnabled")
     PROFILE_EXPANSION_ENABLED("ProfileExpansionEnabled"),
-    @XmlEnumValue("AllowCrawlImagesFromLandingPage")
-    ALLOW_CRAWL_IMAGES_FROM_LANDING_PAGE("AllowCrawlImagesFromLandingPage");
+    @XmlEnumValue("AllowImageAutoRetrieve")
+    ALLOW_IMAGE_AUTO_RETRIEVE("AllowImageAutoRetrieve"),
+    @XmlEnumValue("AutoApplyRecommendations")
+    AUTO_APPLY_RECOMMENDATIONS("AutoApplyRecommendations");
     private final String value;
 
     AccountPropertyName(String v) {

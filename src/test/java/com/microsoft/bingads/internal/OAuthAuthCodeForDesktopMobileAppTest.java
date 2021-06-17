@@ -16,6 +16,7 @@ import org.junit.runners.Parameterized.Parameter;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
+import com.microsoft.bingads.OAuthScope;
 import com.microsoft.bingads.OAuthTest;
 import com.microsoft.bingads.OAuthTokens;
 
@@ -110,8 +111,8 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "123"
             );
 
-            expect(oauthService.getAccessTokens(expectedRequestParameters, true, "common", null)).andReturn(expectedTokenInfo);
-            expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
+            expect(oauthService.getAccessTokens(expectedRequestParameters, OAuthScope.BINGADS_MANAGE, "common", null)).andReturn(expectedTokenInfo);
+            expect(oauthService.getRedirectUrl(OAuthScope.BINGADS_MANAGE)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
             
             OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);
@@ -136,9 +137,9 @@ public class OAuthAuthCodeForDesktopMobileAppTest extends EasyMockSupport {
                     "refresh_token",
                     "refresh_token",
                     "xxx"
-            ), true, "common", null)).andReturn(expectedTokenInfo);
+            ), OAuthScope.BINGADS_MANAGE, "common", null)).andReturn(expectedTokenInfo);
 
-            expect(oauthService.getRedirectUrl(true)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
+            expect(oauthService.getRedirectUrl(OAuthScope.BINGADS_MANAGE)).andReturn(new URL("https://login.live.com/oauth20_desktop.srf"));
             replayAll();
             
             OAuthDesktopMobileAuthCodeGrant auth = OAuthTest.CreateDesktopAuth("test_id", oauthService);

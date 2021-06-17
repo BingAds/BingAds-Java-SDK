@@ -34,7 +34,7 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileImplicitGrant(String clientId, ApiEnvironment env) {
-        this(clientId, null, env, false);
+        this(clientId, null, env, OAuthScope.MSADS_MANAGE);
     }
 
 
@@ -66,10 +66,10 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        this(clientId, oauthTokens, env, false);
+        this(clientId, oauthTokens, env, OAuthScope.MSADS_MANAGE);
     }
 
-    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean requireLiveConnect) {
-        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env,  requireLiveConnect).getDesktopRedirectUrl(), oauthTokens, env, requireLiveConnect);
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
+        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env,  oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope);
     }
 }

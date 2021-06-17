@@ -42,7 +42,8 @@ public class BulkCampaignAgeCriterionReadCashbackAdjustmentTest extends BulkCamp
                 new Function<BulkCampaignAgeCriterion, Double>() {
                     @Override
                     public Double apply(BulkCampaignAgeCriterion c) {
-                        return ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback()).getCashbackPercent();
+                        CashbackAdjustment cashback = ((CashbackAdjustment) ((BiddableCampaignCriterion) c.getBiddableCampaignCriterion()).getCriterionCashback());
+                        return cashback == null ? null : cashback.getCashbackPercent();
                     }
                 }
         );

@@ -26,7 +26,8 @@ public class BulkPromotionAdExtensionReadFromRowValuesPromotionStartTest extends
         date.setMonth(11);
         date.setYear(2013);
         return Arrays.asList(new Object[][]{
-                {"11/12/2013", date}
+                {"11/12/2013", date},
+                {"delete_value", null}
         });
     }
 

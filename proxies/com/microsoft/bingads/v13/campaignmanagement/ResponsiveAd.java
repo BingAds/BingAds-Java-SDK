@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CallToAction" type="{https://bingads.microsoft.com/CampaignManagement/v13}CallToAction" minOccurs="0"/>
+ *         &lt;element name="CallToActionLanguage" type="{https://bingads.microsoft.com/CampaignManagement/v13}LanguageName" minOccurs="0"/>
  *         &lt;element name="Descriptions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         &lt;element name="Headline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Headlines" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
@@ -27,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ImpressionTrackingUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         &lt;element name="LongHeadline" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetLink" minOccurs="0"/>
  *         &lt;element name="LongHeadlineString" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="LongHeadlines" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         &lt;element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Videos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *       &lt;/sequence>
@@ -41,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ResponsiveAd", propOrder = {
     "businessName",
     "callToAction",
+    "callToActionLanguage",
     "descriptions",
     "headline",
     "headlines",
@@ -48,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     "impressionTrackingUrls",
     "longHeadline",
     "longHeadlineString",
+    "longHeadlines",
     "text",
     "videos"
 })
@@ -60,6 +64,9 @@ public class ResponsiveAd
     @XmlElement(name = "CallToAction", nillable = true)
     @XmlSchemaType(name = "string")
     protected CallToAction callToAction;
+    @XmlElement(name = "CallToActionLanguage", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected LanguageName callToActionLanguage;
     @XmlElement(name = "Descriptions", nillable = true)
     protected ArrayOfAssetLink descriptions;
     @XmlElement(name = "Headline", nillable = true)
@@ -74,6 +81,8 @@ public class ResponsiveAd
     protected AssetLink longHeadline;
     @XmlElement(name = "LongHeadlineString", nillable = true)
     protected String longHeadlineString;
+    @XmlElement(name = "LongHeadlines", nillable = true)
+    protected ArrayOfAssetLink longHeadlines;
     @XmlElement(name = "Text", nillable = true)
     protected String text;
     @XmlElement(name = "Videos", nillable = true)
@@ -125,6 +134,30 @@ public class ResponsiveAd
      */
     public void setCallToAction(CallToAction value) {
         this.callToAction = value;
+    }
+
+    /**
+     * Gets the value of the callToActionLanguage property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link LanguageName }
+     *     
+     */
+    public LanguageName getCallToActionLanguage() {
+        return callToActionLanguage;
+    }
+
+    /**
+     * Sets the value of the callToActionLanguage property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LanguageName }
+     *     
+     */
+    public void setCallToActionLanguage(LanguageName value) {
+        this.callToActionLanguage = value;
     }
 
     /**
@@ -293,6 +326,30 @@ public class ResponsiveAd
      */
     public void setLongHeadlineString(String value) {
         this.longHeadlineString = value;
+    }
+
+    /**
+     * Gets the value of the longHeadlines property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getLongHeadlines() {
+        return longHeadlines;
+    }
+
+    /**
+     * Sets the value of the longHeadlines property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setLongHeadlines(ArrayOfAssetLink value) {
+        this.longHeadlines = value;
     }
 
     /**

@@ -108,6 +108,7 @@ public class StringTable {
     public static final String BidAdjustment = "Bid Adjustment";
     public static final String CashbackAdjustment = "Cashback Percent";
     public static final String SubType = "Sub Type";
+    public static final String MultiMediaAdBidAdjustment = "MultiMediaAdBidAdjustment";
 
     public static final String OsNames = "OS Names";
 
@@ -557,14 +558,19 @@ public class StringTable {
     // Responsive Ad
     public static final String ResponsiveAd = "Responsive Ad";
     public static final String CallToAction = "Call To Action";
+    public static final String CallToActionLanguage = "Call To Action Language";
+    public static final String Descriptions = "Descriptions";
     public static final String Headline = "Headline";
+    public static final String Headlines = "Headlines";
     public static final String Images = "Images";
     public static final String LandscapeImageMediaId = "Landscape Image Media Id";
     public static final String LandscapeLogoMediaId = "Landscape Logo Media Id";
     public static final String LongHeadline = "Long Headline";
+    public static final String LongHeadlines = "Long Headlines";
     public static final String SquareImageMediaId = "Square Image Media Id";
     public static final String SquareLogoMediaId = "Square Logo Media Id";
     public static final String ImpressionTrackingUrls = "Impression Tracking Urls";
+    public static final String Videos = "Videos";
     
     // Responsive Search Ad
     public static final String ResponsiveSearchAd = "Responsive Search Ad";
@@ -573,6 +579,12 @@ public class StringTable {
     public static final String Image = "Image";
     public static final String Height = "Height";
     public static final String Width = "Width";
+    
+    // Video
+    public static final String Video = "Video";
+    public static final String SourceUrl = "Source Url";
+    public static final String AspectRatio = "Aspect Ratio";
+    public static final String DurationInMillionSeconds = "Duration In Milliseconds";
     
     // Dynamic Search Ad   
     public static final String DynamicSearchAd = "Dynamic Search Ad";
@@ -655,6 +667,9 @@ public class StringTable {
     public static final String MSCLKIDAutoTaggingEnabled = "MSCLKID Auto Tagging Enabled";
     public static final String IncludeViewThroughConversions = "Include View Through Conversions";
     public static final String ProfileExpansionEnabled = "Profile Expansion Enabled";
+    public static final String AdClickParallelTracking = "Ad Click Parallel Tracking";
+    public static final String AutoApplyRecommendations = "Auto Apply Recommendations";
+    public static final String AllowImageAutoRetrieve = "Allow Image Auto Retrieve";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

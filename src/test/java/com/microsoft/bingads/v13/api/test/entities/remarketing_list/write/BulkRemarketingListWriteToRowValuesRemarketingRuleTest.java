@@ -12,6 +12,7 @@ import org.junit.runners.Parameterized.Parameters;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.v13.api.test.entities.remarketing_list.BulkRemarketingListTest;
 import com.microsoft.bingads.v13.bulk.entities.BulkRemarketingList;
+import com.microsoft.bingads.v13.campaignmanagement.NormalForm;
 import com.microsoft.bingads.v13.campaignmanagement.RemarketingRule;
 
 @RunWith(Parameterized.class)
@@ -49,6 +50,19 @@ public class BulkRemarketingListWriteToRowValuesRemarketingRuleTest extends Bulk
             		+ "(Url NotEquals Test Value) and (ReferrerUrl DoesNotContain Test Value) and "
             		+ "(Url DoesNotBeginWith Test Value) and (ReferrerUrl DoesNotEndWith Test Value))", 
                 	generatePageVisitRuleTestData("PageVisitors", 1, 8) },
+            {"PageVisitors((Url Equals Test Value) or (ReferrerUrl Contains Test Value))", 
+                   	generatePageVisitRuleTestData("PageVisitors", 1, 2, NormalForm.CONJUNCTIVE) },
+            {"PageVisitors((Url Equals Test Value)) and "
+              		+ "((Url Equals Test Value))", 
+                   	generatePageVisitRuleTestData("PageVisitors", 2, 1, NormalForm.CONJUNCTIVE) },
+            {"PageVisitors((Url Equals Test Value) or (ReferrerUrl Contains Test Value)) and "
+               		+ "((Url Equals Test Value) or (ReferrerUrl Contains Test Value))", 
+                   	generatePageVisitRuleTestData("PageVisitors", 2, 2, NormalForm.CONJUNCTIVE) },
+            {"PageVisitors((Url Equals Test Value) or (ReferrerUrl Contains Test Value) or "
+               		+ "(Url BeginsWith Test Value) or (ReferrerUrl EndsWith Test Value) or "
+               		+ "(Url NotEquals Test Value) or (ReferrerUrl DoesNotContain Test Value) or "
+               		+ "(Url DoesNotBeginWith Test Value) or (ReferrerUrl DoesNotEndWith Test Value))", 
+                   	generatePageVisitRuleTestData("PageVisitors", 1, 8, NormalForm.CONJUNCTIVE) },
             {"PageVisitorsWhoVisitedAnotherPage(((Url Equals Test Value) and (ReferrerUrl Contains Test Value))) and "
             		+ "(((Url Equals Test Value) and (ReferrerUrl Contains Test Value)))", 
                     generatePageVisitRuleTestData("PageVisitorsWhoVisitedAnotherPage", 1, 2) },

@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -63,7 +65,9 @@ import com.microsoft.bingads.v13.campaignmanagement.MatchType;
 import com.microsoft.bingads.v13.campaignmanagement.MaxClicksBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionValueBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.MaxConversionsBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.MaxRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Minute;
+import com.microsoft.bingads.v13.campaignmanagement.NormalForm;
 import com.microsoft.bingads.v13.campaignmanagement.NumberOperator;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
@@ -80,6 +84,7 @@ import com.microsoft.bingads.v13.campaignmanagement.TargetRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.TextAsset;
+import com.microsoft.bingads.v13.campaignmanagement.VideoAsset;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageParameter;
 
 public class StringExtensions {
@@ -206,7 +211,7 @@ public class StringExtensions {
     }
     
     public static Date parseDate(String headerValue) throws ParseException {
-        if (headerValue == null || headerValue.length() == 0) {
+        if (headerValue == null || headerValue.length() == 0 || StringTable.DeleteValue.equalsIgnoreCase(headerValue)) {
             return null;
         }
 
@@ -910,6 +915,9 @@ public class StringExtensions {
         } else if (s.equals("TargetImpressionShare")) {
             biddingScheme = new TargetImpressionShareBiddingScheme();
             biddingScheme.setType("TargetImpressionShare");
+        } else if (s.equals("MaxRoas")) {
+            biddingScheme = new MaxRoasBiddingScheme();
+            biddingScheme.setType("MaxRoas");
         } else {
     		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
     	}
@@ -929,16 +937,22 @@ public class StringExtensions {
     		return "MaxConversions";
     	} else if (biddingScheme instanceof ManualCpcBiddingScheme) {
     		return "ManualCpc";
+        } else if (biddingScheme instanceof ManualCpvBiddingScheme  ) {
+            return "ManualCpv";
+        } else if (biddingScheme instanceof ManualCpmBiddingScheme  ) {
+            return "ManualCpm";
     	} else if (biddingScheme instanceof TargetCpaBiddingScheme) {
     		return "TargetCpa";
     	} else if (biddingScheme instanceof MaxClicksBiddingScheme) {
     		return "MaxClicks";
-    	} else if (biddingScheme instanceof MaxConversionValueBiddingScheme  ) {
-            return "MaxConversionValue";
         } else if (biddingScheme instanceof TargetRoasBiddingScheme  ) {
             return "TargetRoas";
+    	} else if (biddingScheme instanceof MaxConversionValueBiddingScheme  ) {
+            return "MaxConversionValue";
         } else if (biddingScheme instanceof TargetImpressionShareBiddingScheme  ) {
             return "TargetImpressionShare";
+        } else if (biddingScheme instanceof MaxRoasBiddingScheme  ) {
+            return "MaxRoas";
         } else {
     		throw new IllegalArgumentException("Unknown bidding scheme");
     	}
@@ -1017,6 +1031,33 @@ public class StringExtensions {
         }
 
         result.append(values.getStrings().get(length - 1));
+
+        return result.toString();
+    }
+    
+	public static Map<String, Boolean> parseAutoApplyRecommendations(String v, String deliminator) {
+		if (StringExtensions.isNullOrEmpty(v) || v.equals(StringTable.DeleteValue))
+			return null;
+
+		return Arrays.stream(v.split(deliminator))
+				.map(s -> s.trim())
+				.filter(s -> s.length() > 0 && !";".equals(s))
+				.collect(Collectors.toMap(
+						p -> p.substring(0, p.indexOf('=')),
+						p -> Boolean.valueOf(p.substring(p.indexOf('=') + 1, p.length())))
+						);
+	}
+    
+    public static String writeAutoApplyRecommendations(String separator, Map<String, Boolean> values) {
+    	if (values == null || values.size() == 0) {
+            return null;
+        }
+                
+        StringBuilder result = new StringBuilder("");
+
+        for (Entry<String, Boolean> entry : values.entrySet()) {
+        	result.append(entry.getKey() + '=' + entry.getValue() + separator);
+        }
 
         return result.toString();
     }
@@ -1204,7 +1245,8 @@ public class StringExtensions {
     	if (remarketingRule instanceof CustomEventsRule) {
     		return String.format("CustomEvents%s", getCustomEventsRule((CustomEventsRule)remarketingRule));
     	} else if (remarketingRule instanceof PageVisitorsRule) {
-    		return String.format("PageVisitors%s", getRuleItemGroups(((PageVisitorsRule)remarketingRule).getRuleItemGroups().getRuleItemGroups()));
+    		PageVisitorsRule pageVisitorRule = ((PageVisitorsRule)remarketingRule);
+    		return String.format("PageVisitors%s", getRuleItemGroups(pageVisitorRule.getRuleItemGroups().getRuleItemGroups(), pageVisitorRule.getNormalForm()));
     	} else if (remarketingRule instanceof PageVisitorsWhoVisitedAnotherPageRule) {
     		return String.format("PageVisitorsWhoVisitedAnotherPage(%s) and (%s)", getRuleItemGroups(
     				((PageVisitorsWhoVisitedAnotherPageRule)remarketingRule).getRuleItemGroups().getRuleItemGroups()),
@@ -1250,20 +1292,32 @@ public class StringExtensions {
     }
      
     private static String getRuleItemGroups(List<RuleItemGroup> ruleItemGroups) {
+    	return getRuleItemGroups(ruleItemGroups, NormalForm.DISJUNCTIVE);
+    }
+    
+    private static String getRuleItemGroups(List<RuleItemGroup> ruleItemGroups, NormalForm nf) {
+    	switch (nf) {
+    	case CONJUNCTIVE: return getRuleItemGroups(ruleItemGroups, " and ", " or ");
+    	case DISJUNCTIVE:
+    		default: return getRuleItemGroups(ruleItemGroups, " or ", " and ");
+    	}
+    }
+    
+    private static String getRuleItemGroups(List<RuleItemGroup> ruleItemGroups, String outerOperator, String innerOperator) {
     	if (ruleItemGroups == null || ruleItemGroups.size() == 0) {
     		return null;
     	}
     	StringBuffer str = new StringBuffer();
     	int index = 0;
     	for(; index < ruleItemGroups.size() - 1; index++) {
-    		str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems())));
-    		str.append(" or ");
+    		str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems(), innerOperator)));
+    		str.append(outerOperator);
     	}
-    	str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems())));
+    	str.append(String.format(("(%s)"), getRuleItems(ruleItemGroups.get(index).getItems().getRuleItems(), innerOperator)));
     	return str.toString();
     }
     
-    private static String getRuleItems(List<RuleItem> ruleItems) {
+    private static String getRuleItems(List<RuleItem> ruleItems, String innerOperator) {
     	if (ruleItems == null || ruleItems.size() == 0) {
     		return null;
     	}
@@ -1271,7 +1325,7 @@ public class StringExtensions {
     	int index = 0;
     	for(; index < ruleItems.size() - 1; index++) {
     		str.append(getRuleItem(ruleItems.get(index)));
-    		str.append(" and ");
+    		str.append(innerOperator);
     	}
     	str.append(getRuleItem(ruleItems.get(index)));
     	return str.toString();
@@ -1310,9 +1364,75 @@ public class StringExtensions {
     	if (StringExtensions.isNullOrEmpty(ruleStr)) {
     		return null;
     	}
+    	return parseRuleItemGroupsForPageVisitorsRule(ruleStr);
+    }
+    
+    private static PageVisitorsRule parseRuleItemGroupsForPageVisitorsRule(String ruleStr) {
+    	final String patternDNF = "\\)\\) or \\(\\(";
+    	final String patternCNF = "\\)\\) and \\(\\(";
+    	final String patternAnd = "\\) and \\(";
+    	final String patternOr = "\\) or \\(";
+    	
     	PageVisitorsRule rule = new PageVisitorsRule();
     	rule.setType("PageVisitors");
-    	rule.setRuleItemGroups(parseRuleItemGroups(ruleStr));
+    	rule.setNormalForm(NormalForm.DISJUNCTIVE);
+    	ArrayOfRuleItemGroup ruleItemGroups = new ArrayOfRuleItemGroup();
+    	rule.setRuleItemGroups(ruleItemGroups);
+
+    	String [] expressionGroups = ruleStr.split(patternDNF);
+    	// can not split with DNF, try CNF
+    	if (expressionGroups.length == 1) {
+    		expressionGroups = ruleStr.split(patternCNF);
+    		
+    		// fail to split with CNF neither, only ONE expression group
+    		// try to split with inner pattern
+    		if (expressionGroups.length == 1) {
+    			String [] tmpExpressions = ruleStr.split(patternOr);
+    			
+    			// fail to split with inner or pattern, try to split with inner and pattern
+    			if (tmpExpressions.length == 1) {
+    				tmpExpressions = ruleStr.split(patternAnd);
+					// all fail, seems only ONE expression, try to parse rule item to validate format, default to DNF
+    				if (tmpExpressions.length == 1) {
+    					parseRuleItem(ruleStr);
+    				}
+    				// succeed to split with inner and pattern, this is DNF
+    				else {
+    					rule.setNormalForm(NormalForm.DISJUNCTIVE);
+    				}
+    			}
+    			// succeed to split with inner or pattern, this is CNF
+    			else {
+    				rule.setNormalForm(NormalForm.CONJUNCTIVE);
+    			}
+    		}
+    		// succeed to split with outer and, it is CNF
+    		else {
+    			rule.setNormalForm(NormalForm.CONJUNCTIVE);
+    		}
+    	}
+    	
+    	String pattern = NormalForm.CONJUNCTIVE == rule.getNormalForm() ? patternOr : patternAnd;
+    	
+    	for (String expressionGroup : expressionGroups) {
+    		expressionGroup = expressionGroup.trim();
+    		
+    		if (expressionGroup.startsWith("("))
+    			expressionGroup = expressionGroup.substring(1).trim();
+    		if (expressionGroup.endsWith(")"))
+    			expressionGroup = expressionGroup.substring(0, expressionGroup.length() - 1).trim();
+    			
+    		String [] expressions = expressionGroup.split(pattern);    		
+        	RuleItemGroup ruleItemGroup = new RuleItemGroup();
+        	ruleItemGroup.setItems(new ArrayOfRuleItem());
+        	ruleItemGroups.getRuleItemGroups().add(ruleItemGroup);
+
+        	for (String ruleItemStr: expressions) {
+        		RuleItem ruleItem = parseRuleItem(ruleItemStr);
+        		ruleItemGroup.getItems().getRuleItems().add(ruleItem);
+        	}
+    	}
+    	
     	return rule;
     }
     
@@ -1613,7 +1733,31 @@ public class StringExtensions {
         @JsonProperty
         public String name;
     }
+    
+    private static class VideoAssetLinkContract
+    {
+        // The Asset Id
+        public Long id;
 
+        // The Asset SubType
+        public String subType;
+
+        // The Asset ThumbnailImage
+        public ImageAsset thumbnailImage;
+
+        // The AssetLink PinnedField
+        public String pinnedField;
+
+        // The AssetLink EditorialStatus
+        public String editorialStatus;
+
+        // The AssetLink AssetPerformanceLabel is reserved for future use.
+        public String assetPerformanceLabel;
+
+        // The Asset Name is reserved for future use.
+        public String name;
+    }
+    
     public static String toImageAssetLinksBulkString(ArrayOfAssetLink arrayOfAssetLink)
     {
         if (arrayOfAssetLink == null 
@@ -1756,6 +1900,82 @@ public class StringExtensions {
                 asset.setName(contract.name);
                 asset.setText(contract.text);
                 asset.setType("TextAsset");
+                assetLink.setAsset(asset);
+                assetLinks.getAssetLinks().add(assetLink);
+            }
+            return assetLinks;
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static String toVideoAssetLinksBulkString(ArrayOfAssetLink arrayOfAssetLink)
+    {
+        if (arrayOfAssetLink == null 
+                || arrayOfAssetLink.getAssetLinks() == null 
+                || arrayOfAssetLink.getAssetLinks().size() == 0) {
+            return null;
+        }
+        List<AssetLink> assetLinks = arrayOfAssetLink
+                .getAssetLinks()
+                .stream()
+                .filter(link -> link.getAsset() instanceof VideoAsset)
+                .collect(Collectors.toList());
+        if (assetLinks.size() == 0) {
+            return null;
+        }
+        
+        List<VideoAssetLinkContract> videoAssetLinkContracts = new ArrayList<VideoAssetLinkContract>(assetLinks.size());
+        
+        for (AssetLink assetLink : assetLinks) {
+            VideoAsset asset = (VideoAsset)assetLink.getAsset();
+            VideoAssetLinkContract contract = new VideoAssetLinkContract();
+            contract.assetPerformanceLabel = assetLink.getAssetPerformanceLabel();
+            contract.id = asset.getId();
+            contract.editorialStatus = assetLink.getEditorialStatus() == null? null : assetLink.getEditorialStatus().value();
+            contract.name = asset.getName();
+            contract.pinnedField = assetLink.getPinnedField();
+            contract.subType = asset.getSubType();
+            contract.thumbnailImage = asset.getThumbnailImage();            
+            videoAssetLinkContracts.add(contract);
+        }
+        try {
+            return new ObjectMapper().writeValueAsString(videoAssetLinkContracts);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+
+    public static ArrayOfAssetLink parseVideoAssetLinks(String value)
+    {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+        
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
+            
+            List<VideoAssetLinkContract> videoAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, VideoAssetLinkContract.class));
+            for (VideoAssetLinkContract contract : videoAssetLinkContracts) {
+                AssetLink assetLink = new AssetLink();
+                if (contract.editorialStatus != null) {
+                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                }
+                assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
+                assetLink.setPinnedField(contract.pinnedField);
+                
+                VideoAsset asset = new VideoAsset();
+                asset.setId(contract.id);
+                asset.setName(contract.name);
+                asset.setThumbnailImage(contract.thumbnailImage);
+                asset.setSubType(contract.subType);
+                asset.setType("VideoAsset");
                 assetLink.setAsset(asset);
                 assetLinks.getAssetLinks().add(assetLink);
             }
