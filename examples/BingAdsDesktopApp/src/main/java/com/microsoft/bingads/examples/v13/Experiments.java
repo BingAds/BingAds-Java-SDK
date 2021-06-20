@@ -30,7 +30,8 @@ public class Experiments extends ExampleBase {
             outputStatusMessage("-----\nGetCampaignsByAccountId:");
             GetCampaignsByAccountIdResponse getCampaignsByAccountIdResponse = CampaignManagementExampleHelper.getCampaignsByAccountId(
                 authorizationData.getAccountId(),
-                campaignTypes);
+                campaignTypes,
+                null);
             ArrayOfCampaign campaigns = getCampaignsByAccountIdResponse.getCampaigns();
             outputStatusMessage("Campaigns:");
             CampaignManagementExampleHelper.outputArrayOfCampaign(campaigns);  

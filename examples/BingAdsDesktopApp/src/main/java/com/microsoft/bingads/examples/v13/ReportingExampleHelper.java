@@ -1758,6 +1758,7 @@ class ReportingExampleHelper
             outputStatusMessage(String.format("ExcludeReportFooter: %s", dataObject.getExcludeReportFooter()));
             outputStatusMessage(String.format("ExcludeReportHeader: %s", dataObject.getExcludeReportHeader()));
             outputStatusMessage(String.format("Format: %s", dataObject.getFormat()));
+            outputStatusMessage(String.format("FormatVersion: %s", dataObject.getFormatVersion()));
             outputStatusMessage(String.format("ReportName: %s", dataObject.getReportName()));
             outputStatusMessage(String.format("ReturnOnlyCompleteData: %s", dataObject.getReturnOnlyCompleteData()));
             if(dataObject instanceof AccountPerformanceReportRequest)

@@ -18,6 +18,19 @@ class CustomerBillingExampleHelper
 
         return CustomerBillingService.getService().addInsertionOrder(request);
     }
+    static DispatchCouponsResponse dispatchCoupons(
+        ArrayOfstring sendToEmails,
+        java.lang.Long customerId,
+        java.lang.String couponClassName) throws RemoteException, Exception
+    {
+        DispatchCouponsRequest request = new DispatchCouponsRequest();
+
+        request.setSendToEmails(sendToEmails);
+        request.setCustomerId(customerId);
+        request.setCouponClassName(couponClassName);
+
+        return CustomerBillingService.getService().dispatchCoupons(request);
+    }
     static GetAccountMonthlySpendResponse getAccountMonthlySpend(
         java.lang.Long accountId,
         Calendar monthYear) throws RemoteException, Exception
@@ -52,6 +65,30 @@ class CustomerBillingExampleHelper
         request.setEndDate(endDate);
 
         return CustomerBillingService.getService().getBillingDocumentsInfo(request);
+    }
+    static RedeemCouponResponse redeemCoupon(
+        java.lang.Long accountId,
+        java.lang.String couponCode) throws RemoteException, Exception
+    {
+        RedeemCouponRequest request = new RedeemCouponRequest();
+
+        request.setAccountId(accountId);
+        request.setCouponCode(couponCode);
+
+        return CustomerBillingService.getService().redeemCoupon(request);
+    }
+    static SearchCouponsResponse searchCoupons(
+        ArrayOfPredicate predicates,
+        ArrayOfOrderBy ordering,
+        Paging pageInfo) throws RemoteException, Exception
+    {
+        SearchCouponsRequest request = new SearchCouponsRequest();
+
+        request.setPredicates(predicates);
+        request.setOrdering(ordering);
+        request.setPageInfo(pageInfo);
+
+        return CustomerBillingService.getService().searchCoupons(request);
     }
     static SearchInsertionOrdersResponse searchInsertionOrders(
         ArrayOfPredicate predicates,
@@ -254,6 +291,66 @@ class CustomerBillingExampleHelper
             for (BillingDocumentInfo dataObject : dataObjects.getBillingDocumentInfos())
             {
                 outputBillingDocumentInfo(dataObject);
+            }
+        }
+    }
+    static void outputCoupon(Coupon dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCoupon * * *");
+            outputStatusMessage(String.format("CouponCode: %s", dataObject.getCouponCode()));
+            outputStatusMessage(String.format("ClassName: %s", dataObject.getClassName()));
+            outputStatusMessage(String.format("CouponType: %s", dataObject.getCouponType()));
+            outputStatusMessage(String.format("Amount: %s", dataObject.getAmount()));
+            outputStatusMessage(String.format("SpendThreshold: %s", dataObject.getSpendThreshold()));
+            outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
+            outputStatusMessage(String.format("PercentOff: %s", dataObject.getPercentOff()));
+            outputStatusMessage(String.format("ActiveDuration: %s", dataObject.getActiveDuration()));
+            outputStatusMessage(String.format("ExpirationDate: %s", dataObject.getExpirationDate()));
+            outputStatusMessage(String.format("StartDate: %s", dataObject.getStartDate()));
+            outputStatusMessage(String.format("EndDate: %s", dataObject.getEndDate()));
+            outputStatusMessage(String.format("SendToEmail: %s", dataObject.getSendToEmail()));
+            outputStatusMessage(String.format("SendToDate: %s", dataObject.getSendToDate()));
+            outputStatusMessage(String.format("IsRedeemed: %s", dataObject.getIsRedeemed()));
+            outputStatusMessage("RedemptionInfo:");
+            outputCouponRedemption(dataObject.getRedemptionInfo());
+            outputStatusMessage("* * * End OutputCoupon * * *");
+        }
+    }
+    static void outputArrayOfCoupon(ArrayOfCoupon dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (Coupon dataObject : dataObjects.getCoupons())
+            {
+                outputCoupon(dataObject);
+            }
+        }
+    }
+    static void outputCouponRedemption(CouponRedemption dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputCouponRedemption * * *");
+            outputStatusMessage(String.format("AccountId: %s", dataObject.getAccountId()));
+            outputStatusMessage(String.format("AccountNumber: %s", dataObject.getAccountNumber()));
+            outputStatusMessage(String.format("SpendToThreshold: %s", dataObject.getSpendToThreshold()));
+            outputStatusMessage(String.format("Balance: %s", dataObject.getBalance()));
+            outputStatusMessage(String.format("CurrencyCode: %s", dataObject.getCurrencyCode()));
+            outputStatusMessage(String.format("RedemptionDate: %s", dataObject.getRedemptionDate()));
+            outputStatusMessage(String.format("ExpirationDate: %s", dataObject.getExpirationDate()));
+            outputStatusMessage(String.format("ActivationDate: %s", dataObject.getActivationDate()));
+            outputStatusMessage("* * * End OutputCouponRedemption * * *");
+        }
+    }
+    static void outputArrayOfCouponRedemption(ArrayList<CouponRedemption> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (CouponRedemption dataObject : dataObjects)
+            {
+                outputCouponRedemption(dataObject);
             }
         }
     }

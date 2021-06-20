@@ -87,7 +87,9 @@ public class CustomerSignup extends ExampleBase {
             SignupCustomerResponse signupCustomerResponse = CustomerManagementExampleHelper.signupCustomer(
                 customer,
                 account,
-                user.getCustomerId());
+                user.getCustomerId(),
+                null,
+                null);
 
             outputStatusMessage("New Customer and Account:");
 

@@ -67,7 +67,8 @@ public class ExampleBase extends com.microsoft.bingads.examples.ExampleBase {
                 searchAccountsRequest.setPredicates(predicates);
                 searchAccountsRequest.setPageInfo(paging);
 
-                ArrayOfAdvertiserAccount accounts = CustomerManagementExampleHelper.searchAccounts(predicates, null, paging).getAccounts();
+                ArrayOfAdvertiserAccount accounts = CustomerManagementExampleHelper.searchAccounts(
+                    predicates, null, paging, null).getAccounts();
 
                 authorizationData.setCustomerId(accounts.getAdvertiserAccounts().get(0).getParentCustomerId());
                 authorizationData.setAccountId(accounts.getAdvertiserAccounts().get(0).getId());

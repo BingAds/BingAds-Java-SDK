@@ -19,7 +19,7 @@ import java.net.URL;
 public class ExampleBase {
 
     protected static java.lang.String DeveloperToken = "BBD37VB98";
-    protected static java.lang.String ClientId = "db41b09d-6e50-4f4a-90ac-5a99caefb52f";
+    protected static java.lang.String ClientId = "4c0b021c-00c3-4508-838f-d3127e8167ff";
     protected static java.lang.String ClientState = "ClientStateGoesHere";
     protected static java.lang.String RefreshTokenPath = "refresh.txt";
     

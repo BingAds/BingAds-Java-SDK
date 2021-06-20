@@ -34,25 +34,25 @@ public class DynamicSearchAds extends ExampleBase {
                             API_ENVIRONMENT,
                             ICampaignManagementService.class);
         
-            // To get started with dynamic search ads, first you'll need to add a new Campaign 
-            // with its type set to DynamicSearchAds. When you create the campaign, you'll need to 
-            // include a DynamicSearchAdsSetting that specifies the target website domain and language.
+            // To get started with dynamic search ads, first you'll need to add a new Search campaign 
+            // Include a DynamicSearchAdsSetting that specifies the target website domain and language.
 
             ArrayOfCampaign campaigns = new ArrayOfCampaign();
             Campaign campaign = new Campaign();
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             List<CampaignType> campaignTypes = new ArrayList<CampaignType>();
-            campaignTypes.add(CampaignType.DYNAMIC_SEARCH_ADS);
+            campaignTypes.add(CampaignType.SEARCH);
             campaign.setCampaignType(campaignTypes);
             campaign.setDailyBudget(50.00);
             com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
                     new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             DynamicSearchAdsSetting dynamicSearchAdsSetting = new DynamicSearchAdsSetting();
             dynamicSearchAdsSetting.setDomainName("contoso.com");
             dynamicSearchAdsSetting.setLanguage("English");
+            dynamicSearchAdsSetting.setSource(DynamicSearchAdsSource.ALL);
             ArrayOfSetting arrayOfSetting = new ArrayOfSetting();
             arrayOfSetting.getSettings().add(dynamicSearchAdsSetting);
             campaign.setSettings(arrayOfSetting);
@@ -70,11 +70,12 @@ public class DynamicSearchAds extends ExampleBase {
             outputStatusMessage("PartialErrors:");
             CampaignManagementExampleHelper.outputArrayOfBatchError(campaignErrors);
 
-            // Create a new ad group within the dynamic search ads campaign. 
+            // Create a new ad group with type set to "SearchDynamic"
             
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
             AdGroup adGroup = new AdGroup();
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setAdGroupType("SearchDynamic");
+            adGroup.setName("Everyone's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());

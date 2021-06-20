@@ -25,7 +25,7 @@ public class NegativeKeywords extends ExampleBase {
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaigns.getCampaigns().add(campaign);
 
@@ -106,7 +106,8 @@ public class NegativeKeywords extends ExampleBase {
             outputStatusMessage("-----\nAddSharedEntity:");
             AddSharedEntityResponse addSharedEntityResponse = CampaignManagementExampleHelper.addSharedEntity(
                     negativeKeywordList, 
-                    sharedListItems);
+                    sharedListItems,
+                    null);
             long sharedEntityId = addSharedEntityResponse.getSharedEntityId();
             ArrayOflong listItemIds = addSharedEntityResponse.getListItemIds();
             outputStatusMessage(String.format(
@@ -129,7 +130,8 @@ public class NegativeKeywords extends ExampleBase {
 
             outputStatusMessage("-----\nSetSharedEntityAssociations:");
             ArrayOfBatchError partialErrors = CampaignManagementExampleHelper.setSharedEntityAssociations(
-                associations).getPartialErrors();
+                associations,
+                null).getPartialErrors();
             outputStatusMessage(String.format(
                 "Associated CampaignId %d with Negative Keyword List Id %d.", 
                 nullableCampaignIds.getLongs().get(0), sharedEntityId)
@@ -153,7 +155,8 @@ public class NegativeKeywords extends ExampleBase {
             negativeKeywordList.setId(sharedEntityId);
             sharedEntities.getSharedEntities().add(negativeKeywordList);
             partialErrors = CampaignManagementExampleHelper.deleteSharedEntities(
-                    sharedEntities).getPartialErrors();
+                    sharedEntities,
+                    null).getPartialErrors();
             outputStatusMessage(String.format("Deleted Negative Keyword List Id %d", sharedEntityId));		 
         } 
         catch (Exception ex) {
