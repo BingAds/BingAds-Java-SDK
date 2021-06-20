@@ -30,7 +30,7 @@ public class ExpandedTextAds extends ExampleBase {
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaigns.getCampaigns().add(campaign);
 
@@ -49,7 +49,7 @@ public class ExpandedTextAds extends ExampleBase {
             
             ArrayOfAdGroup adGroups = new ArrayOfAdGroup();
             AdGroup adGroup = new AdGroup();
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setName("Everyone's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());

@@ -52,7 +52,8 @@ public class SearchUserAccounts extends ExampleBase {
             ArrayOfAdvertiserAccount accounts = CustomerManagementExampleHelper.searchAccounts(
                     predicates, 
                     null, 
-                    paging).getAccounts();
+                    paging,
+                    null).getAccounts();
             outputStatusMessage("Accounts:");
             CustomerManagementExampleHelper.outputArrayOfAdvertiserAccount(accounts);
             

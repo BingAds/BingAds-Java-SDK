@@ -75,21 +75,25 @@ class CustomerManagementExampleHelper
     }
     static FindAccountsOrCustomersInfoResponse findAccountsOrCustomersInfo(
         java.lang.String filter,
-        java.lang.Integer topN) throws RemoteException, Exception
+        java.lang.Integer topN,
+        ArrayList<AccountAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         FindAccountsOrCustomersInfoRequest request = new FindAccountsOrCustomersInfoRequest();
 
         request.setFilter(filter);
         request.setTopN(topN);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CustomerManagementService.getService().findAccountsOrCustomersInfo(request);
     }
     static GetAccountResponse getAccount(
-        java.lang.Long accountId) throws RemoteException, Exception
+        java.lang.Long accountId,
+        ArrayList<AccountAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAccountRequest request = new GetAccountRequest();
 
         request.setAccountId(accountId);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CustomerManagementService.getService().getAccount(request);
     }
@@ -162,6 +166,13 @@ class CustomerManagementExampleHelper
 
         return CustomerManagementService.getService().getUser(request);
     }
+    static GetUserMFAStatusResponse getUserMFAStatus() throws RemoteException, Exception
+    {
+        GetUserMFAStatusRequest request = new GetUserMFAStatusRequest();
+
+
+        return CustomerManagementService.getService().getUserMFAStatus(request);
+    }
     static GetUsersInfoResponse getUsersInfo(
         java.lang.Long customerId,
         UserLifeCycleStatus statusFilter) throws RemoteException, Exception
@@ -176,13 +187,15 @@ class CustomerManagementExampleHelper
     static SearchAccountsResponse searchAccounts(
         ArrayOfPredicate predicates,
         ArrayOfOrderBy ordering,
-        Paging pageInfo) throws RemoteException, Exception
+        Paging pageInfo,
+        ArrayList<AccountAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         SearchAccountsRequest request = new SearchAccountsRequest();
 
         request.setPredicates(predicates);
         request.setOrdering(ordering);
         request.setPageInfo(pageInfo);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return CustomerManagementService.getService().searchAccounts(request);
     }
@@ -235,13 +248,17 @@ class CustomerManagementExampleHelper
     static SignupCustomerResponse signupCustomer(
         Customer customer,
         AdvertiserAccount account,
-        java.lang.Long parentCustomerId) throws RemoteException, Exception
+        java.lang.Long parentCustomerId,
+        UserInvitation userInvitation,
+        java.lang.Long userId) throws RemoteException, Exception
     {
         SignupCustomerRequest request = new SignupCustomerRequest();
 
         request.setCustomer(customer);
         request.setAccount(account);
         request.setParentCustomerId(parentCustomerId);
+        request.setUserInvitation(userInvitation);
+        request.setUserId(userId);
 
         return CustomerManagementService.getService().signupCustomer(request);
     }
@@ -348,6 +365,7 @@ class CustomerManagementExampleHelper
             outputStatusMessage(String.format("AccountNumber: %s", dataObject.getAccountNumber()));
             outputStatusMessage(String.format("AccountLifeCycleStatus: %s", dataObject.getAccountLifeCycleStatus()));
             outputStatusMessage(String.format("PauseReason: %s", dataObject.getPauseReason()));
+            outputStatusMessage(String.format("AccountMode: %s", dataObject.getAccountMode()));
             outputStatusMessage("* * * End OutputAccountInfoWithCustomerData * * *");
         }
     }
@@ -358,6 +376,28 @@ class CustomerManagementExampleHelper
             for (AccountInfoWithCustomerData dataObject : dataObjects.getAccountInfoWithCustomerDatas())
             {
                 outputAccountInfoWithCustomerData(dataObject);
+            }
+        }
+    }
+    static void outputAccountTaxCertificate(AccountTaxCertificate dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputAccountTaxCertificate * * *");
+            outputStatusMessage(String.format("TaxCertificateBlobContainerName: %s", dataObject.getTaxCertificateBlobContainerName()));
+            outputStatusMessage("TaxCertificates:");
+            outputArrayOfKeyValuePairOfstringbase64Binary(dataObject.getTaxCertificates());
+            outputStatusMessage(String.format("Status: %s", dataObject.getStatus()));
+            outputStatusMessage("* * * End OutputAccountTaxCertificate * * *");
+        }
+    }
+    static void outputArrayOfAccountTaxCertificate(ArrayList<AccountTaxCertificate> dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (AccountTaxCertificate dataObject : dataObjects)
+            {
+                outputAccountTaxCertificate(dataObject);
             }
         }
     }
@@ -467,6 +507,9 @@ class CustomerManagementExampleHelper
             outputAddress(dataObject.getBusinessAddress());
             outputStatusMessage(String.format("AutoTagType: %s", dataObject.getAutoTagType()));
             outputStatusMessage(String.format("SoldToPaymentInstrumentId: %s", dataObject.getSoldToPaymentInstrumentId()));
+            outputStatusMessage("TaxCertificate:");
+            outputAccountTaxCertificate(dataObject.getTaxCertificate());
+            outputStatusMessage(String.format("AccountMode: %s", dataObject.getAccountMode()));
             outputStatusMessage("* * * End OutputAdvertiserAccount * * *");
         }
     }
@@ -693,6 +736,26 @@ class CustomerManagementExampleHelper
             for (DateRange dataObject : dataObjects)
             {
                 outputDateRange(dataObject);
+            }
+        }
+    }
+    static void outputKeyValuePairOfstringbase64Binary(KeyValuePairOfstringbase64Binary dataObject)
+    {
+        if (null != dataObject)
+        {
+            outputStatusMessage("* * * Begin OutputKeyValuePairOfstringbase64Binary * * *");
+            outputStatusMessage(String.format("Key: %s", dataObject.getKey()));
+            outputStatusMessage(String.format("Value: %s", dataObject.getValue()));
+            outputStatusMessage("* * * End OutputKeyValuePairOfstringbase64Binary * * *");
+        }
+    }
+    static void outputArrayOfKeyValuePairOfstringbase64Binary(ArrayOfKeyValuePairOfstringbase64Binary dataObjects)
+    {
+        if (null != dataObjects)
+        {
+            for (KeyValuePairOfstringbase64Binary dataObject : dataObjects.getKeyValuePairOfstringbase64Binaries())
+            {
+                outputKeyValuePairOfstringbase64Binary(dataObject);
             }
         }
     }
@@ -1029,6 +1092,24 @@ class CustomerManagementExampleHelper
             }
         }
     }
+    static void outputTaxCertificateStatus(TaxCertificateStatus valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (TaxCertificateStatus value : TaxCertificateStatus.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfTaxCertificateStatus(ArrayList<TaxCertificateStatus> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (TaxCertificateStatus valueSet : valueSets)
+            {
+                outputTaxCertificateStatus(valueSet);
+            }
+        }
+    }
     static void outputCustomerFinancialStatus(CustomerFinancialStatus valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -1101,24 +1182,6 @@ class CustomerManagementExampleHelper
             }
         }
     }
-    static void outputEmailFormat(EmailFormat valueSet)
-    {
-        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
-        for (EmailFormat value : EmailFormat.values())
-        {
-            outputStatusMessage(value.toString());
-        }
-    }
-    static void outputArrayOfEmailFormat(ArrayList<EmailFormat> valueSets)
-    {
-        if (null != valueSets)
-        {
-            for (EmailFormat valueSet : valueSets)
-            {
-                outputEmailFormat(valueSet);
-            }
-        }
-    }
     static void outputLCID(LCID valueSet)
     {
         outputStatusMessage(String.format("Values in %s", valueSet.toString()));
@@ -1134,6 +1197,42 @@ class CustomerManagementExampleHelper
             for (LCID valueSet : valueSets)
             {
                 outputLCID(valueSet);
+            }
+        }
+    }
+    static void outputAccountAdditionalField(AccountAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AccountAdditionalField value : AccountAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAccountAdditionalField(ArrayList<AccountAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AccountAdditionalField valueSet : valueSets)
+            {
+                outputAccountAdditionalField(valueSet);
+            }
+        }
+    }
+    static void outputEmailFormat(EmailFormat valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (EmailFormat value : EmailFormat.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfEmailFormat(ArrayList<EmailFormat> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (EmailFormat valueSet : valueSets)
+            {
+                outputEmailFormat(valueSet);
             }
         }
     }

@@ -74,9 +74,8 @@ public class BulkDynamicSearchAds extends BulkExampleBase {
             
             uploadEntities.add(bulkFeedItem);
             
-            // To get started with dynamic search ads, first you'll need to add a new Campaign 
-            // with its type set to DynamicSearchAds. When you create the campaign, you'll need to 
-            // include a DynamicSearchAdsSetting that specifies the target website domain and language.
+            // To get started with dynamic search ads, first you'll need to add a new Search campaign 
+            // Include a DynamicSearchAdsSetting that specifies the target website domain and language.
             // Page feeds can be associated at the campaign level via 'Source' and 'Page Feed Ids'.
             
             BulkCampaign bulkCampaign = new BulkCampaign();
@@ -84,14 +83,14 @@ public class BulkDynamicSearchAds extends BulkExampleBase {
             campaign.setId(campaignIdKey);
             campaign.setBudgetType(BudgetLimitType.DAILY_BUDGET_STANDARD);
             List<CampaignType> campaignTypes = new ArrayList<CampaignType>();
-            campaignTypes.add(CampaignType.DYNAMIC_SEARCH_ADS);
+            campaignTypes.add(CampaignType.SEARCH);
             campaign.setCampaignType(campaignTypes);
             campaign.setDailyBudget(50.00);
             com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring languages = 
                     new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             // Set the target website domain and language.
             // Be sure to set the Source to AdvertiserSuppliedUrls or All, 
             // otherwise the PageFeedIds will be ignored. 
@@ -111,13 +110,14 @@ public class BulkDynamicSearchAds extends BulkExampleBase {
 
             uploadEntities.add(bulkCampaign);
             
-            // Create a new ad group within the dynamic search ads campaign. 
+            // Create a new ad group with type set to "SearchDynamic"
 
             BulkAdGroup bulkAdGroup = new BulkAdGroup();
             bulkAdGroup.setCampaignId(campaignIdKey);
             AdGroup adGroup = new AdGroup();
             adGroup.setId(adGroupIdKey);
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setAdGroupType("SearchDynamic");
+            adGroup.setName("Everyone's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());

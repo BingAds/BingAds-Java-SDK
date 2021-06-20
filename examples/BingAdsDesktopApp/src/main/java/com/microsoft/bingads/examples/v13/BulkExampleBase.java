@@ -850,7 +850,7 @@ public class BulkExampleBase extends ExampleBase {
         // 'Language' column header in the Bulk file
         campaign.setLanguages(null);
         // 'Name' column header in the Bulk file
-        campaign.setName("Women's Shoes " + System.currentTimeMillis());
+        campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
         // 'Bid Adjustment' column header in the Bulk file
         campaign.setAudienceAdsBidAdjustment(null);
         // 'Status' column header in the Bulk file
@@ -897,7 +897,7 @@ public class BulkExampleBase extends ExampleBase {
         // 'Language' column header in the Bulk file
         adGroup.setLanguage("English");
         // 'Ad Group' column header in the Bulk file
-        adGroup.setName("Women's Red Shoe Sale");
+        adGroup.setName("Everyone's Red Shoe Sale");
         // 'Network Distribution' column header in the Bulk file
         adGroup.setNetwork(Network.OWNED_AND_OPERATED_AND_SYNDICATED_SEARCH);
         // 'Target Setting' column header in the Bulk file

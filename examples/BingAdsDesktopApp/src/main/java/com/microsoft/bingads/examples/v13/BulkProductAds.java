@@ -38,7 +38,7 @@ public class BulkProductAds extends BulkExampleBase {
             // Get a list of all Bing Merchant Center stores associated with your CustomerId.
 
             outputStatusMessage("-----\nGetBMCStoresByCustomerId:");
-            final ArrayOfBMCStore stores = CampaignManagementExampleHelper.getBMCStoresByCustomerId().getBMCStores();
+            final ArrayOfBMCStore stores = CampaignManagementExampleHelper.getBMCStoresByCustomerId(null).getBMCStores();
 
             if (stores == null)
             {
@@ -68,7 +68,7 @@ public class BulkProductAds extends BulkExampleBase {
                     new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());            
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());            
             ArrayOfSetting settings = new ArrayOfSetting();
             ShoppingSetting shoppingSetting = new ShoppingSetting();
             shoppingSetting.setPriority(0);
@@ -110,7 +110,7 @@ public class BulkProductAds extends BulkExampleBase {
             BulkAdGroup bulkAdGroup = new BulkAdGroup();
             bulkAdGroup.setCampaignId(campaignIdKey);
             AdGroup adGroup = new AdGroup();
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setName("Everyone's Red Shoe Sale");
             adGroup.setStartDate(null);
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());

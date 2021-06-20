@@ -51,7 +51,7 @@ public class BulkBudgets extends BulkExampleBase {
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             bulkCampaign.setCampaign(campaign);
 

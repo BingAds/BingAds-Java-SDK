@@ -39,7 +39,7 @@ public class BulkAdExtensions extends BulkExampleBase {
                     new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             bulkCampaign.setCampaign(campaign);
             
@@ -213,7 +213,7 @@ public class BulkAdExtensions extends BulkExampleBase {
             SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
             sitelinkAdExtension.setDescription1("Simple & Transparent.");
             sitelinkAdExtension.setDescription2("No Upfront Cost.");
-            sitelinkAdExtension.setDisplayText("Women's Shoe Sale");
+            sitelinkAdExtension.setDisplayText("Everyone's Shoe Sale");
             sitelinkAdExtension.setFinalUrls(finalUrls);
             sitelinkAdExtension.setId(sitelinkAdExtensionIdKey);
             bulkSitelinkAdExtension.setSitelinkAdExtension(sitelinkAdExtension);

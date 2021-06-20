@@ -42,7 +42,7 @@ public class AdExtensions extends ExampleBase {
             ArrayOfstring languages = new ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             campaigns.getCampaigns().add(campaign);
 
@@ -229,7 +229,7 @@ public class AdExtensions extends ExampleBase {
             SitelinkAdExtension sitelinkAdExtension = new SitelinkAdExtension();
             sitelinkAdExtension.setDescription1("Simple & Transparent.");
             sitelinkAdExtension.setDescription2("No Upfront Cost.");
-            sitelinkAdExtension.setDisplayText("Women's Shoe Sale");
+            sitelinkAdExtension.setDisplayText("Everyone's Shoe Sale");
             sitelinkAdExtension.setFinalUrls(finalUrls);
             adExtensions.getAdExtensions().add(sitelinkAdExtension);
                         

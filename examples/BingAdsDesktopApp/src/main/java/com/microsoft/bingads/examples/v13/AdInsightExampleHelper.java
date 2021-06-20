@@ -12,13 +12,15 @@ class AdInsightExampleHelper
     static GetAuctionInsightDataResponse getAuctionInsightData(
         EntityType entityType,
         ArrayOflong entityIds,
-        ArrayOfSearchParameter searchParameters) throws RemoteException, Exception
+        ArrayOfSearchParameter searchParameters,
+        ArrayList<AuctionInsightKpiAdditionalField> returnAdditionalFields) throws RemoteException, Exception
     {
         GetAuctionInsightDataRequest request = new GetAuctionInsightDataRequest();
 
         request.setEntityType(entityType);
         request.setEntityIds(entityIds);
         request.setSearchParameters(searchParameters);
+        request.setReturnAdditionalFields(returnAdditionalFields);
 
         return AdInsightService.getService().getAuctionInsightData(request);
     }
@@ -538,6 +540,7 @@ class AdInsightExampleHelper
             outputStatusMessage(String.format("AboveRate: %s", dataObject.getAboveRate()));
             outputStatusMessage(String.format("TopOfPageRate: %s", dataObject.getTopOfPageRate()));
             outputStatusMessage(String.format("OutrankingShare: %s", dataObject.getOutrankingShare()));
+            outputStatusMessage(String.format("AbsoluteTopOfPageRate: %s", dataObject.getAbsoluteTopOfPageRate()));
             outputStatusMessage("* * * End OutputAuctionInsightKpi * * *");
         }
     }
@@ -2295,6 +2298,24 @@ class AdInsightExampleHelper
             for (AuctionSegment valueSet : valueSets.getAuctionSegments())
             {
                 outputAuctionSegment(valueSet);
+            }
+        }
+    }
+    static void outputAuctionInsightKpiAdditionalField(AuctionInsightKpiAdditionalField valueSet)
+    {
+        outputStatusMessage(String.format("Values in %s", valueSet.toString()));
+        for (AuctionInsightKpiAdditionalField value : AuctionInsightKpiAdditionalField.values())
+        {
+            outputStatusMessage(value.toString());
+        }
+    }
+    static void outputArrayOfAuctionInsightKpiAdditionalField(ArrayList<AuctionInsightKpiAdditionalField> valueSets)
+    {
+        if (null != valueSets)
+        {
+            for (AuctionInsightKpiAdditionalField valueSet : valueSets)
+            {
+                outputAuctionInsightKpiAdditionalField(valueSet);
             }
         }
     }

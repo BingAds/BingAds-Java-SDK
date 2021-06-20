@@ -31,14 +31,14 @@ public class BudgetOpportunities extends ExampleBase {
 
             ArrayList<CampaignType> campaignTypes = new ArrayList<CampaignType>();
             campaignTypes.add(CampaignType.AUDIENCE);
-            campaignTypes.add(CampaignType.DYNAMIC_SEARCH_ADS);
             campaignTypes.add(CampaignType.SHOPPING);
             campaignTypes.add(CampaignType.SEARCH);
                                     
             outputStatusMessage("-----\nGetCampaignsByAccountId:");
             GetCampaignsByAccountIdResponse getCampaignsByAccountIdResponse = CampaignManagementExampleHelper.getCampaignsByAccountId(
                 authorizationData.getAccountId(),
-                campaignTypes
+                campaignTypes,
+                null
             );
             ArrayOfCampaign campaigns = getCampaignsByAccountIdResponse.getCampaigns();
             outputStatusMessage("Campaigns:");

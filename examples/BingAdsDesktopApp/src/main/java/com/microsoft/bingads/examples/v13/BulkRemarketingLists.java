@@ -85,7 +85,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
                     new com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring();
             languages.getStrings().add("All");
             campaign.setLanguages(languages);
-            campaign.setName("Women's Shoes " + System.currentTimeMillis());
+            campaign.setName("Everyone's Shoes " + System.currentTimeMillis());
             campaign.setTimeZone("PacificTimeUSCanadaTijuana");
             bulkCampaign.setCampaign(campaign);
 
@@ -98,7 +98,7 @@ public class BulkRemarketingLists extends BulkExampleBase {
             CpcBid.setAmount(0.09);
             adGroup.setCpcBid(CpcBid);
             adGroup.setId(adGroupIdKey);
-            adGroup.setName("Women's Red Shoe Sale");
+            adGroup.setName("Everyone's Red Shoe Sale");
             Calendar calendar = Calendar.getInstance();
             adGroup.setEndDate(new com.microsoft.bingads.v13.campaignmanagement.Date());
             adGroup.getEndDate().setDay(31);
