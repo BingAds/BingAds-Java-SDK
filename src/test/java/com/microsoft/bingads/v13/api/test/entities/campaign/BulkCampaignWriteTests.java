@@ -14,8 +14,11 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesCountryCodeOtherSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesCountryCodeShoppingSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDailyBudgetTest;
+//import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDetailsVerifiedTrackingSettingTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDisclaimerAdsEnabledDisclaimerSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDomainLanguageDSASettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesDynamicDescriptionEnabledDSASettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesExperimentIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFeedIdAudienceSettingTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWriteToRowValuesFinalUrlSuffixTest;
@@ -44,6 +47,8 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesTimeZoneTest.class,
         BulkCampaignWriteToRowValuesAudienceAdsBidAdjustmentTest.class,
         BulkCampaignWriteToRowValuesCampaignTypeTest.class,
+        //BulkCampaignWriteToRowValuesDetailsVerifiedTrackingSettingTest.class,
+        BulkCampaignWriteToRowValuesDisclaimerAdsEnabledDisclaimerSettingTest.class,
         BulkCampaignWriteToRowValuesStoreIdShoppingSettingTest.class,
         BulkCampaignWriteToRowValuesStoreIdOtherSettingTest.class,
         BulkCampaignWriteToRowValuesPriorityShoppingSettingTest.class,
@@ -55,6 +60,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.BulkCampaignWr
         BulkCampaignWriteToRowValuesWebsiteOtherSettingTest.class,
         BulkCampaignWriteToRowValuesDomainLanguageDSASettingTest.class,
         BulkCampaignWriteToRowValuesDomainLanguageOtherSettingTest.class,
+        BulkCampaignWriteToRowValuesDynamicDescriptionEnabledDSASettingTest.class,
         BulkCampaignWriteToRowValuesSourceDSASettingTest.class,
         BulkCampaignWriteToRowValuesExperimentIdTest.class,
         BulkCampaignWriteToRowValuesFinalUrlSuffixTest.class,

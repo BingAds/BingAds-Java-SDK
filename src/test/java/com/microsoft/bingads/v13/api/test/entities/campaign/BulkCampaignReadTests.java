@@ -14,6 +14,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesCampaignTypeTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDSASettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDailyBudgetTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDisclaimerSettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesDynamicFeedSettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesExperimentIdTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesFinalUrlSuffixTest;
@@ -31,6 +32,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesSettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesStatusTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesTimeZoneTest;
+//import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -53,6 +55,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesCampaignTypeTest.class,
         BulkCampaignReadFromRowValuesSettingsTest.class,
         BulkCampaignReadFromRowValuesBidStrategyTypeTest.class,
+        BulkCampaignReadFromRowValuesDisclaimerSettingsTest.class,
         BulkCampaignReadFromRowValuesDSASettingsTest.class,
         BulkCampaignReadFromRowValuesExperimentIdTest.class,
         BulkCampaignReadFromRowValuesFinalUrlSuffixTest.class,
@@ -61,6 +64,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesBidStrategyNameTest.class,
         BulkCampaignReadFromRowValuesDynamicFeedSettingsTest.class,
         BulkCampaignReadFromRowValuesMultiMediaAdBidAdjustmentTest.class,
+        //BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest.class,
 })
 public class BulkCampaignReadTests {
 

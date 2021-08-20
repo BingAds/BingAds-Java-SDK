@@ -35,8 +35,11 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
 
     @Parameterized.Parameter(value = 4)
     public String pageFeedIds;
-
+    
     @Parameterized.Parameter(value = 5)
+    public String dynamicDescriptionEnabled;
+
+    @Parameterized.Parameter(value = 6)
     public List<Setting> expectedResult;
 
     @Parameterized.Parameters
@@ -49,6 +52,7 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         ArrayOflong pids = new ArrayOflong();
         pids.getLongs().addAll(Arrays.asList(1L, 2L, 3L, 4L));
         setting1.setPageFeedIds(pids);
+        setting1.setDynamicDescriptionEnabled(true);
         
         DynamicSearchAdsSetting setting2 = new DynamicSearchAdsSetting();
         setting2.setDomainName("baidu.com");
@@ -58,11 +62,12 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         ArrayOflong pids2 = new ArrayOflong();
         pids2.getLongs().addAll(Arrays.asList(101L, 102L, 103L, 104L));
         setting2.setPageFeedIds(pids2);
+        setting2.setDynamicDescriptionEnabled(false);
 
         return Arrays.asList(
                 new Object[][]{
-                        {"DynamicSearchAds", "bing.com", "English", "All", "1;2;3;4", Collections.singletonList(setting1)},
-                        {"DynamicSearchAds", "baidu.com", "Chinese", "SystemIndex", "101;102;103;104", Collections.singletonList(setting2)},
+                        {"DynamicSearchAds", "bing.com", "English", "All", "1;2;3;4", "true", Collections.singletonList(setting1)},
+                        {"DynamicSearchAds", "baidu.com", "Chinese", "SystemIndex", "101;102;103;104", "false", Collections.singletonList(setting2)},
                 }
         );
     }
@@ -76,6 +81,7 @@ public class BulkCampaignReadFromRowValuesDSASettingsTest extends BulkCampaignTe
         values.put("Domain Language", domainLanguage);
         values.put("Source", source);
         values.put("Page Feed Ids", pageFeedIds);
+        values.put("Dynamic Description Enabled", dynamicDescriptionEnabled);
 
         testReadProperty(
                 values,

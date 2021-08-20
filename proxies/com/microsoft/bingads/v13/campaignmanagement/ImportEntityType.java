@@ -16,6 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="Unknown"/>
  *     &lt;enumeration value="Campaign"/>
+ *     &lt;enumeration value="AdGroup"/>
+ *     &lt;enumeration value="Ad"/>
+ *     &lt;enumeration value="Keyword"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -28,7 +31,13 @@ public enum ImportEntityType {
     @XmlEnumValue("Unknown")
     UNKNOWN("Unknown"),
     @XmlEnumValue("Campaign")
-    CAMPAIGN("Campaign");
+    CAMPAIGN("Campaign"),
+    @XmlEnumValue("AdGroup")
+    AD_GROUP("AdGroup"),
+    @XmlEnumValue("Ad")
+    AD("Ad"),
+    @XmlEnumValue("Keyword")
+    KEYWORD("Keyword");
     private final String value;
 
     ImportEntityType(String v) {

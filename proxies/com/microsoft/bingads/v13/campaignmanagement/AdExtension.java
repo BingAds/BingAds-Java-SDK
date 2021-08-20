@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
     FlyerAdExtension.class,
     LocationAdExtension.class,
     StructuredSnippetAdExtension.class,
+    DisclaimerAdExtension.class,
     PromotionAdExtension.class,
     PriceAdExtension.class,
     CalloutAdExtension.class,

@@ -31,6 +31,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v13.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v13.campaignmanagement.AdStatus;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCustomParameter;
@@ -38,6 +39,7 @@ import com.microsoft.bingads.v13.campaignmanagement.ArrayOfDayTime;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.AssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.AssetLinkEditorialStatus;
@@ -57,6 +59,7 @@ import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
+import com.microsoft.bingads.v13.campaignmanagement.KeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.LogicalOperator;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpmBiddingScheme;
@@ -174,6 +177,59 @@ public class StringExtensions {
 
         return value.toString();
     }
+ 
+    public static String toVerifiedTrackingSettingBulkString(ArrayOfArrayOfKeyValuePairOfstringstring verifiedTrackingSetting)
+    {
+    	StringBuilder sb = new StringBuilder(256);
+    	sb.append('[');
+    	for (ArrayOfKeyValuePairOfstringstring settingArr : verifiedTrackingSetting.getArrayOfKeyValuePairOfstringstrings()) {
+        	sb.append('[');
+    		for (KeyValuePairOfstringstring kv : settingArr.getKeyValuePairOfstringstrings()) {
+    			sb.append("{\"key\":\"")
+    			  .append(kv.getKey())
+    			  .append("\",\"value\":\"")
+    			  .append(kv.getValue())
+    			  .append("\"},");
+    		}
+    		if (settingArr.getKeyValuePairOfstringstrings().size() > 0) {
+    			sb.deleteCharAt(sb.length() - 1);
+    		}
+    		sb.append("],");
+    	}
+		if (verifiedTrackingSetting.getArrayOfKeyValuePairOfstringstrings().size() > 0) {
+			sb.deleteCharAt(sb.length() - 1);
+		}
+		sb.append(']');
+    	return sb.toString();
+    }
+    
+    public static ArrayOfArrayOfKeyValuePairOfstringstring parseVerifiedTrackingSetting(String value)
+    {
+        if (value == null || value.isEmpty()) {
+        	return null;
+        }
+        
+        try {
+        	ObjectMapper mapper = new ObjectMapper();
+        	KeyValuePairOfstringstring[][] twoDimKvArr = mapper.readValue(value, KeyValuePairOfstringstring[][].class);
+        	ArrayOfArrayOfKeyValuePairOfstringstring result = new ArrayOfArrayOfKeyValuePairOfstringstring();
+
+        	for (KeyValuePairOfstringstring[] kvArr: twoDimKvArr) {
+        		ArrayOfKeyValuePairOfstringstring setting = new ArrayOfKeyValuePairOfstringstring();
+        		for (KeyValuePairOfstringstring kv : kvArr) {
+        			setting.getKeyValuePairOfstringstrings().add(kv);
+        		}
+
+        		result.getArrayOfKeyValuePairOfstringstrings().add(setting);
+        	}
+        	return result;
+
+        } catch (IOException e) {
+        	// TODO Auto-generated catch block
+        	e.printStackTrace();
+        }
+        return null;
+    	}
 
     /**
      * Catches NumberFormatException and returns a null value instead

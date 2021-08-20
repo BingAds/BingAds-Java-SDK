@@ -133,6 +133,10 @@ public class StringTable {
     
     public static final String FeedId = "Feed Id";
     
+    public static final String DynamicDescriptionEnabled = "Dynamic Description Enabled";
+    
+    public static final String VerifiedTrackingData = "Verified Tracking Setting";
+    
     public static final String CpvBid = "Cpv Bid";
     public static final String CpmBid = "Cpm Bid";
 
@@ -465,6 +469,16 @@ public class StringTable {
     public static final String PromotionEnd = "Promotion End";
     public static final String CurrencyCode = "Currency Code";
     
+    //DisclaimerAdExtension
+    public static final String DisclaimerAdExtension = "Disclaimer Ad Extension";
+    public static final String DisclaimerAdsEnabled = "Disclaimer Ads Enabled";
+    public static final String DisclaimerName = "Disclaimer Name";
+    public static final String DisclaimerTitle = "Disclaimer Title";
+    public static final String CampaignDisclaimerAdExtension = "Campaign Disclaimer Ad Extension";
+    public static final String DisclaimerLayout= "Disclaimer Layout";
+    public static final String DisclaimerPopupText = "Disclaimer Popup Text";
+    public static final String DisclaimerLineText = "Disclaimer Line Text";
+    
     // AutoBidding
     public static final String BidStrategy = "Bid Strategy";
     public static final String BidStrategyId = "Bid Strategy Id";
@@ -670,6 +684,7 @@ public class StringTable {
     public static final String AdClickParallelTracking = "Ad Click Parallel Tracking";
     public static final String AutoApplyRecommendations = "Auto Apply Recommendations";
     public static final String AllowImageAutoRetrieve = "Allow Image Auto Retrieve";
+
     
     static {
         Map<String, String> m = new HashMap<String, String>();

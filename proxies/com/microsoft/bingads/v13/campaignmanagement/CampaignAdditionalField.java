@@ -14,7 +14,8 @@ public enum CampaignAdditionalField {
     DYNAMIC_FEED_SETTING("DynamicFeedSetting"),
     MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment"),
     VERIFIED_TRACKING_SETTING("VerifiedTrackingSetting"),
-    DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting");
+    DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting"),
+    DISCLAIMER_SETTING("DisclaimerSetting");
         
     private final String value;
 
