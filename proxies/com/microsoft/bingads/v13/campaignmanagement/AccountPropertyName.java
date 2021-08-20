@@ -23,6 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ProfileExpansionEnabled"/>
  *     &lt;enumeration value="AllowImageAutoRetrieve"/>
  *     &lt;enumeration value="AutoApplyRecommendations"/>
+ *     &lt;enumeration value="IncludeAutoBiddingViewThroughConversions"/>
+ *     &lt;enumeration value="AutoBiddingViewThroughConversionsValueAttributionWeight"/>
+ *     &lt;enumeration value="LoopBackWindowForViewThroughConversions"/>
+ *     &lt;enumeration value="BusinessAttributes"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -49,7 +53,15 @@ public enum AccountPropertyName {
     @XmlEnumValue("AllowImageAutoRetrieve")
     ALLOW_IMAGE_AUTO_RETRIEVE("AllowImageAutoRetrieve"),
     @XmlEnumValue("AutoApplyRecommendations")
-    AUTO_APPLY_RECOMMENDATIONS("AutoApplyRecommendations");
+    AUTO_APPLY_RECOMMENDATIONS("AutoApplyRecommendations"),
+    @XmlEnumValue("IncludeAutoBiddingViewThroughConversions")
+    INCLUDE_AUTO_BIDDING_VIEW_THROUGH_CONVERSIONS("IncludeAutoBiddingViewThroughConversions"),
+    @XmlEnumValue("AutoBiddingViewThroughConversionsValueAttributionWeight")
+    AUTO_BIDDING_VIEW_THROUGH_CONVERSIONS_VALUE_ATTRIBUTION_WEIGHT("AutoBiddingViewThroughConversionsValueAttributionWeight"),
+    @XmlEnumValue("LoopBackWindowForViewThroughConversions")
+    LOOP_BACK_WINDOW_FOR_VIEW_THROUGH_CONVERSIONS("LoopBackWindowForViewThroughConversions"),
+    @XmlEnumValue("BusinessAttributes")
+    BUSINESS_ATTRIBUTES("BusinessAttributes");
     private final String value;
 
     AccountPropertyName(String v) {

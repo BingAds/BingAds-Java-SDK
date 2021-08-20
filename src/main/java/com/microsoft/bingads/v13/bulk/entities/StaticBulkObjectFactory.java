@@ -254,6 +254,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignCallAdExtension();
             }
         }));
+        m.put(StringTable.DisclaimerAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkDisclaimerAdExtension();
+            }
+        }));
+        m.put(StringTable.CampaignDisclaimerAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignDisclaimerAdExtension();
+            }
+        }));
         m.put(StringTable.AppAdExtension, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

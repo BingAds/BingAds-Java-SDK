@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ImportType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="SourceEntityIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="ImportEntityType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportEntityType" minOccurs="0"/>
+ *         &lt;element name="SourceParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "importType",
     "sourceEntityIds",
-    "importEntityType"
+    "importEntityType",
+    "sourceParentId"
 })
 @XmlRootElement(name = "GetImportEntityIdsMappingRequest")
 public class GetImportEntityIdsMappingRequest {
@@ -46,6 +48,8 @@ public class GetImportEntityIdsMappingRequest {
     @XmlElement(name = "ImportEntityType")
     @XmlSchemaType(name = "string")
     protected ImportEntityType importEntityType;
+    @XmlElement(name = "SourceParentId", nillable = true)
+    protected Long sourceParentId;
 
     /**
      * Gets the value of the importType property.
@@ -117,6 +121,30 @@ public class GetImportEntityIdsMappingRequest {
      */
     public void setImportEntityType(ImportEntityType value) {
         this.importEntityType = value;
+    }
+
+    /**
+     * Gets the value of the sourceParentId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSourceParentId() {
+        return sourceParentId;
+    }
+
+    /**
+     * Sets the value of the sourceParentId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSourceParentId(Long value) {
+        this.sourceParentId = value;
     }
 
 }

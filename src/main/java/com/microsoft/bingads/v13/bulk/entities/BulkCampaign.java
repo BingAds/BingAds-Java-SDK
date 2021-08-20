@@ -12,6 +12,7 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
@@ -21,6 +22,7 @@ import com.microsoft.bingads.v13.campaignmanagement.BudgetLimitType;
 import com.microsoft.bingads.v13.campaignmanagement.Campaign;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignStatus;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
+import com.microsoft.bingads.v13.campaignmanagement.DisclaimerSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicFeedSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
@@ -28,6 +30,7 @@ import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
+import com.microsoft.bingads.v13.campaignmanagement.VerifiedTrackingSetting;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -105,6 +108,10 @@ public class BulkCampaign extends SingleRecordBulkEntity {
             setting = new DynamicSearchAdsSetting();
             setting.setType(DynamicSearchAdsSetting.class.getSimpleName());
             settings.add(setting);
+            
+            setting = new DisclaimerSetting();
+            setting.setType(DisclaimerSetting.class.getSimpleName());
+            settings.add(setting);
             break;
         case AUDIENCE:
             setting = new ShoppingSetting();
@@ -113,6 +120,10 @@ public class BulkCampaign extends SingleRecordBulkEntity {
 
             setting = new DynamicFeedSetting();
             setting.setType(DynamicFeedSetting.class.getSimpleName());
+            settings.add(setting);
+            
+            setting = new VerifiedTrackingSetting();
+            setting.setType(VerifiedTrackingSetting.class.getSimpleName());
             settings.add(setting);
             break;
         case SHOPPING:
@@ -126,6 +137,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         setting = new TargetSetting();
         setting.setType(TargetSetting.class.getSimpleName());
         arrayOfSettings.getSettings().add(setting);
+        
         campaign.setSettings(arrayOfSettings);
     }
     
@@ -440,7 +452,85 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        /*
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.VerifiedTrackingData,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
 
+                        Setting setting = c.getCampaignSetting(VerifiedTrackingSetting.class, false);
+                        return setting == null? null : StringExtensions.toVerifiedTrackingSettingBulkString(((VerifiedTrackingSetting)setting).getDetails());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(VerifiedTrackingSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((VerifiedTrackingSetting)setting).setDetails(StringExtensions.parseOptional(v, new Function<String, ArrayOfArrayOfKeyValuePairOfstringstring>() {
+                            @Override
+                            public ArrayOfArrayOfKeyValuePairOfstringstring apply(String s) {
+                            	return StringExtensions.parseVerifiedTrackingSetting(s);
+                            }
+                        }));
+                    }
+                }
+        ));
+        */
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.DisclaimerAdsEnabled,
+                new Function<BulkCampaign, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DisclaimerSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+
+                        return ((DisclaimerSetting)setting).getDisclaimerAdsEnabled();
+
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DisclaimerSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((DisclaimerSetting)setting).setDisclaimerAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                            @Override
+                            public Boolean apply(String value) {
+                                return Boolean.parseBoolean(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+        
         m.add(new ComplexBulkMapping<BulkCampaign>(BulkCampaign.budgetToCsv, BulkCampaign.csvToBudget));
 
         m.add(new SimpleBulkMapping<BulkCampaign, Integer>(StringTable.BidAdjustment,
@@ -725,6 +815,47 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         ((DynamicSearchAdsSetting)setting).setDomainName(v);
 		            }
 		        }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.DynamicDescriptionEnabled,
+                new Function<BulkCampaign, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+
+                        return ((DynamicSearchAdsSetting)setting).getDynamicDescriptionEnabled();
+
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(DynamicSearchAdsSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((DynamicSearchAdsSetting)setting).setDynamicDescriptionEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                            @Override
+                            public Boolean apply(String value) {
+                                return Boolean.parseBoolean(value);
+                            }
+                        }));
+                    }
+                }
         ));
         
         m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.DomainLanguage,

@@ -33,6 +33,8 @@ public class CsvHeaders {
             StringTable.Budget,
             StringTable.BudgetType,
             StringTable.FeedId,
+            StringTable.DynamicDescriptionEnabled,
+            StringTable.VerifiedTrackingData,
 
             // Ad Group
             StringTable.StartDate,
@@ -353,6 +355,14 @@ public class CsvHeaders {
             StringTable.PromotionStart,
             StringTable.PromotionEnd,
             StringTable.CurrencyCode,
+            
+            // Disclaimer Ad Extension
+            StringTable.DisclaimerAdsEnabled,
+            StringTable.DisclaimerName,
+            StringTable.DisclaimerTitle,
+            StringTable.DisclaimerLayout,
+            StringTable.DisclaimerPopupText,
+            StringTable.DisclaimerLineText,
             
             // Expanded Text Ad
             StringTable.TitlePart1,
