@@ -453,6 +453,41 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.VerifiedTrackingData,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(VerifiedTrackingSetting.class, false);
+                        return setting == null? null : StringExtensions.toVerifiedTrackingSettingBulkString(((VerifiedTrackingSetting)setting).getDetails());
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(VerifiedTrackingSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((VerifiedTrackingSetting)setting).setDetails(StringExtensions.parseOptional(v, new Function<String, ArrayOfArrayOfKeyValuePairOfstringstring>() {
+                            @Override
+                            public ArrayOfArrayOfKeyValuePairOfstringstring apply(String s) {
+                            	return StringExtensions.parseVerifiedTrackingSetting(s);
+                            }
+                        }));
+                    }
+                }
+        ));
+        
         m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.DisclaimerAdsEnabled,
                 new Function<BulkCampaign, Boolean>() {
                     @Override

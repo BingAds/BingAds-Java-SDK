@@ -51,6 +51,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ViewThroughConversions"/>
  *     &lt;enumeration value="Goal"/>
  *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -133,7 +136,13 @@ public enum ConversionPerformanceReportColumn {
     @XmlEnumValue("Goal")
     GOAL("Goal"),
     @XmlEnumValue("GoalType")
-    GOAL_TYPE("GoalType");
+    GOAL_TYPE("GoalType"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("AllConversionsQualified")
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("ViewThroughConversionsQualified")
+    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified");
     private final String value;
 
     ConversionPerformanceReportColumn(String v) {

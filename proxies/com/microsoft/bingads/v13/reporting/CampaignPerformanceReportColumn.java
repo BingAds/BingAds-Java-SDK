@@ -102,6 +102,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AudienceImpressionLostToBudgetPercent"/>
  *     &lt;enumeration value="RelativeCtr"/>
  *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="LowQualityConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -286,7 +290,15 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("RelativeCtr")
     RELATIVE_CTR("RelativeCtr"),
     @XmlEnumValue("AverageCpm")
-    AVERAGE_CPM("AverageCpm");
+    AVERAGE_CPM("AverageCpm"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("LowQualityConversionsQualified")
+    LOW_QUALITY_CONVERSIONS_QUALIFIED("LowQualityConversionsQualified"),
+    @XmlEnumValue("AllConversionsQualified")
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("ViewThroughConversionsQualified")
+    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

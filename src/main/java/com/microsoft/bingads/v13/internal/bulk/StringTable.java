@@ -684,6 +684,7 @@ public class StringTable {
     public static final String AdClickParallelTracking = "Ad Click Parallel Tracking";
     public static final String AutoApplyRecommendations = "Auto Apply Recommendations";
     public static final String AllowImageAutoRetrieve = "Allow Image Auto Retrieve";
+    public static final String BusinessAttributes = "Business Attributes";
 
     
     static {

@@ -44,6 +44,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="GoalType"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="TopImpressionRatePercent"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -112,7 +115,13 @@ public enum ProfessionalDemographicsAudienceReportColumn {
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("TopImpressionRatePercent")
-    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent");
+    TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("AllConversionsQualified")
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("ViewThroughConversionsQualified")
+    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified");
     private final String value;
 
     ProfessionalDemographicsAudienceReportColumn(String v) {

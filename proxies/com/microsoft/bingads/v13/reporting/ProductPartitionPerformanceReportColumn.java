@@ -84,6 +84,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="GoalType"/>
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="AssistedConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -232,7 +236,15 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("AverageCpm")
-    AVERAGE_CPM("AverageCpm");
+    AVERAGE_CPM("AverageCpm"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("AssistedConversionsQualified")
+    ASSISTED_CONVERSIONS_QUALIFIED("AssistedConversionsQualified"),
+    @XmlEnumValue("AllConversionsQualified")
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("ViewThroughConversionsQualified")
+    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

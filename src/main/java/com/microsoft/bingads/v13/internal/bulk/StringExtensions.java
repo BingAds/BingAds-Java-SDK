@@ -1103,6 +1103,18 @@ public class StringExtensions {
 						p -> Boolean.valueOf(p.substring(p.indexOf('=') + 1, p.length())))
 						);
 	}
+	
+	public static List<String> parseBusinessAttributes(String v, String deliminator) {
+		if (StringExtensions.isNullOrEmpty(v) || v.equals(StringTable.DeleteValue))
+			return null;
+		
+		String[] strs = v.split(deliminator);
+		List<String> result = new ArrayList<String>();
+		for (String str : strs) {
+			result.add(str);
+		}
+		return result;
+	}
     
     public static String writeAutoApplyRecommendations(String separator, Map<String, Boolean> values) {
     	if (values == null || values.size() == 0) {
@@ -1116,6 +1128,21 @@ public class StringExtensions {
         }
 
         return result.toString();
+    }
+    
+    public static String writeBusinessAttributes(String separator, List<String> values) {
+    	if (values == null || values.size() == 0) {
+    		return null;
+    	}
+    	
+    	StringBuilder result = new StringBuilder("");
+    	for (int i = 0; i < values.size(); i++)	{
+    		result.append(values.get(i));
+    		if (i != values.size() - 1) {
+    			result.append(separator);
+    		}
+    	}
+    	return result.toString();
     }
     
     public static String toDayTimeRangesBulkString(ArrayOfDayTime arrayOfDayTime, Long id) {

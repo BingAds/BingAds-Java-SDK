@@ -15,6 +15,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkAccountIncludeViewThroughConversionsTest.class,
     BulkAccountWriteToRowValuesAdClickParallelTrackingTest.class,
     BulkAccountWriteToRowValuesAutoApplyRecommendationsTest.class,
+	BulkAccountWriteToRowValuesBusinessAttributesTest.class,
     BulkAccountWriteToRowValuesAllowImageAutoRetrieveTest.class,
     BulkAccountProfileExpansionEnabledTest.class})
 public class BulkAccountWriteTests {
