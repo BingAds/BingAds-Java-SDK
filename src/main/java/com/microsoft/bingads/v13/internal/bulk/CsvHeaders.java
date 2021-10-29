@@ -424,6 +424,7 @@ public class CsvHeaders {
             StringTable.AdClickParallelTracking,
             StringTable.AutoApplyRecommendations,
             StringTable.AllowImageAutoRetrieve,
+            StringTable.BusinessAttributes,
 
             StringTable.FinalUrlSuffix,
             

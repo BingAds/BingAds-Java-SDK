@@ -62,6 +62,8 @@ public class BulkAccount extends SingleRecordBulkEntity {
     private Map<String, Boolean> autoApplyRecommendations;
     
     private Boolean allowImageAutoRetrieve;
+    
+    private List<String> businessAttributes;
 
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
@@ -246,6 +248,21 @@ public class BulkAccount extends SingleRecordBulkEntity {
                 }
         ));
         
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.BusinessAttributes,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount t) {
+                        return StringExtensions.writeBusinessAttributes(";", t.getBusinessAttributes());
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String v, BulkAccount c) {
+                        c.setBusinessAttributes(StringExtensions.parseBusinessAttributes(v, ";"));
+                    }
+                }
+        ));
+        
         m.add(new SimpleBulkMapping<BulkAccount, Boolean>(StringTable.AllowImageAutoRetrieve,
                 new Function<BulkAccount, Boolean>() {
                     @Override
@@ -388,6 +405,14 @@ public class BulkAccount extends SingleRecordBulkEntity {
 
     public void setAutoApplyRecommendations(Map<String, Boolean> autoApplyRecommendations) {
         this.autoApplyRecommendations = autoApplyRecommendations;
+    }
+    
+    public List<String> getBusinessAttributes() {
+    	return businessAttributes;
+    }
+    
+    public void setBusinessAttributes(List<String> businessAttributes) {
+    	this.businessAttributes = businessAttributes;
     }
     
     public Boolean getAllowImageAutoRetrieve() {

@@ -32,7 +32,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesSettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesStatusTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesTimeZoneTest;
-//import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest;
+import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -64,7 +64,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesBidStrategyNameTest.class,
         BulkCampaignReadFromRowValuesDynamicFeedSettingsTest.class,
         BulkCampaignReadFromRowValuesMultiMediaAdBidAdjustmentTest.class,
-        //BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest.class,
+        BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest.class,
 })
 public class BulkCampaignReadTests {
 

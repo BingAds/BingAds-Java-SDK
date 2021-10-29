@@ -69,6 +69,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
  *     &lt;enumeration value="TopImpressionRatePercent"/>
  *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -187,7 +189,11 @@ public enum DSASearchQueryPerformanceReportColumn {
     @XmlEnumValue("TopImpressionRatePercent")
     TOP_IMPRESSION_RATE_PERCENT("TopImpressionRatePercent"),
     @XmlEnumValue("AverageCpm")
-    AVERAGE_CPM("AverageCpm");
+    AVERAGE_CPM("AverageCpm"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("AllConversionsQualified")
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified");
     private final String value;
 
     DSASearchQueryPerformanceReportColumn(String v) {

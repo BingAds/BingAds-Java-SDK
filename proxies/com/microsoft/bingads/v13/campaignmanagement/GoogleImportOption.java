@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ImportOption">
  *       &lt;sequence>
  *         &lt;element name="AccountUrlOptions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="AdScheduleUseSearcherTimezone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdjustmentForBids" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="AdjustmentForCampaignBudgets" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="AssociatedStoreId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -56,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="NewSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewStructuredSnippetAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewUrlOptions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="PauseAIMAdGroupIfAllAudienceCriterionNotImported" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="PauseCampaignsWithoutSupportedLocations" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="PauseNewCampaigns" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="RaiseBidsToMinimum" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -113,6 +115,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GoogleImportOption", propOrder = {
     "accountUrlOptions",
+    "adScheduleUseSearcherTimezone",
     "adjustmentForBids",
     "adjustmentForCampaignBudgets",
     "associatedStoreId",
@@ -151,6 +154,7 @@ import javax.xml.bind.annotation.XmlType;
     "newSitelinkAdExtensions",
     "newStructuredSnippetAdExtensions",
     "newUrlOptions",
+    "pauseAIMAdGroupIfAllAudienceCriterionNotImported",
     "pauseCampaignsWithoutSupportedLocations",
     "pauseNewCampaigns",
     "raiseBidsToMinimum",
@@ -204,6 +208,8 @@ public class GoogleImportOption
 
     @XmlElement(name = "AccountUrlOptions", nillable = true)
     protected Boolean accountUrlOptions;
+    @XmlElement(name = "AdScheduleUseSearcherTimezone", nillable = true)
+    protected Boolean adScheduleUseSearcherTimezone;
     @XmlElement(name = "AdjustmentForBids", nillable = true)
     protected Double adjustmentForBids;
     @XmlElement(name = "AdjustmentForCampaignBudgets", nillable = true)
@@ -280,6 +286,8 @@ public class GoogleImportOption
     protected Boolean newStructuredSnippetAdExtensions;
     @XmlElement(name = "NewUrlOptions", nillable = true)
     protected Boolean newUrlOptions;
+    @XmlElement(name = "PauseAIMAdGroupIfAllAudienceCriterionNotImported", nillable = true)
+    protected Boolean pauseAIMAdGroupIfAllAudienceCriterionNotImported;
     @XmlElement(name = "PauseCampaignsWithoutSupportedLocations", nillable = true)
     protected Boolean pauseCampaignsWithoutSupportedLocations;
     @XmlElement(name = "PauseNewCampaigns", nillable = true)
@@ -395,6 +403,30 @@ public class GoogleImportOption
      */
     public void setAccountUrlOptions(Boolean value) {
         this.accountUrlOptions = value;
+    }
+
+    /**
+     * Gets the value of the adScheduleUseSearcherTimezone property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getAdScheduleUseSearcherTimezone() {
+        return adScheduleUseSearcherTimezone;
+    }
+
+    /**
+     * Sets the value of the adScheduleUseSearcherTimezone property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAdScheduleUseSearcherTimezone(Boolean value) {
+        this.adScheduleUseSearcherTimezone = value;
     }
 
     /**
@@ -1307,6 +1339,30 @@ public class GoogleImportOption
      */
     public void setNewUrlOptions(Boolean value) {
         this.newUrlOptions = value;
+    }
+
+    /**
+     * Gets the value of the pauseAIMAdGroupIfAllAudienceCriterionNotImported property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getPauseAIMAdGroupIfAllAudienceCriterionNotImported() {
+        return pauseAIMAdGroupIfAllAudienceCriterionNotImported;
+    }
+
+    /**
+     * Sets the value of the pauseAIMAdGroupIfAllAudienceCriterionNotImported property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setPauseAIMAdGroupIfAllAudienceCriterionNotImported(Boolean value) {
+        this.pauseAIMAdGroupIfAllAudienceCriterionNotImported = value;
     }
 
     /**
