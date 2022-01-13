@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -20,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Version" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="LanguageLocale" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CompressionType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CompressionType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "version",
-    "languageLocale"
+    "languageLocale",
+    "compressionType"
 })
 @XmlRootElement(name = "GetGeoLocationsFileUrlRequest")
 public class GetGeoLocationsFileUrlRequest {
@@ -40,6 +43,9 @@ public class GetGeoLocationsFileUrlRequest {
     protected String version;
     @XmlElement(name = "LanguageLocale", nillable = true)
     protected String languageLocale;
+    @XmlElement(name = "CompressionType", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected CompressionType compressionType;
 
     /**
      * Gets the value of the version property.
@@ -87,6 +93,30 @@ public class GetGeoLocationsFileUrlRequest {
      */
     public void setLanguageLocale(String value) {
         this.languageLocale = value;
+    }
+
+    /**
+     * Gets the value of the compressionType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CompressionType }
+     *     
+     */
+    public CompressionType getCompressionType() {
+        return compressionType;
+    }
+
+    /**
+     * Sets the value of the compressionType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CompressionType }
+     *     
+     */
+    public void setCompressionType(CompressionType value) {
+        this.compressionType = value;
     }
 
 }

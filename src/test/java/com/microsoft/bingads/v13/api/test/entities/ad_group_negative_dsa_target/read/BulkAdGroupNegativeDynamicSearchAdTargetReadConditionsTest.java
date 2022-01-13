@@ -25,6 +25,10 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetReadConditionsTest extends 
 
     @Parameterized.Parameter(value = 3)
     public String[] values;
+    
+
+    @Parameterized.Parameter(value = 4)
+    public String[] operators;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -47,6 +51,10 @@ public class BulkAdGroupNegativeDynamicSearchAdTargetReadConditionsTest extends 
 
         for (int i = 1; i <= values.length; i++) {
             rowValues.put("Dynamic Ad Target Value " + i, values[i - 1]);
+        }
+        
+        for (int i = 1; i <= values.length; i++) {
+            rowValues.put("Dynamic Ad Target Condition Operator " + i, operators[i - 1]);
         }
 
         testReadProperty(

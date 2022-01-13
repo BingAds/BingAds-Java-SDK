@@ -72,6 +72,7 @@ import com.microsoft.bingads.v13.campaignmanagement.MaxRoasBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Minute;
 import com.microsoft.bingads.v13.campaignmanagement.NormalForm;
 import com.microsoft.bingads.v13.campaignmanagement.NumberOperator;
+import com.microsoft.bingads.v13.campaignmanagement.NumberRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoVisitedAnotherPageRule;
@@ -106,7 +107,9 @@ public class StringExtensions {
     private static final Pattern targetSettingDetailsPattern = Pattern.compile("^(Age|Audience|CompanyName|Gender|Industry|JobFunction)$");
  
     //Remarketing rule pattern
-    private static final Pattern pageRulePattern = Pattern.compile("^(Url|ReferrerUrl|None) (Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
+    private static final Pattern stringPageRulePattern = Pattern.compile("^(Url|ReferrerUrl|EcommPageType|EcommCategory|EcommProdId|Action|None) (Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
+    private static final Pattern numberPageRulePattern = Pattern.compile("^(EcommTotalValue) (Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo|NotEquals) ([^()]*)$");
+
     private static final Pattern operandPattern = Pattern.compile("^(Category|Action|Label|Value) ([^()]*)$");
 	private static final Pattern stringOperatorPattern = Pattern.compile("^(Equals|Contains|BeginsWith|EndsWith|NotEquals|DoesNotContain|DoesNotBeginWith|DoesNotEndWith) ([^()]*)$");
 	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
@@ -1623,9 +1626,9 @@ public class StringExtensions {
     	return ruleItemGroup;
     }
     
-    private static StringRuleItem parseRuleItem(String ruleItemStr) {
+    private static RuleItem parseRuleItem(String ruleItemStr) {
     	ruleItemStr = ruleItemStr.replaceAll("\\(", "").replaceAll("\\)", "");   	
-		Matcher match = pageRulePattern.matcher(ruleItemStr);
+		Matcher match = stringPageRulePattern.matcher(ruleItemStr);
 		if (match.find()) {
 			StringRuleItem ruleItem = new StringRuleItem();
 			ruleItem.setType("String");
@@ -1633,10 +1636,20 @@ public class StringExtensions {
 			ruleItem.setOperator(parseStringOperator(match.group(2)));
 			ruleItem.setValue(match.group(3));
 			return ruleItem;
-		} else {   				
-			throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
+		} else {
+		    match = numberPageRulePattern.matcher(ruleItemStr);
+	        if (match.find()) {
+	            NumberRuleItem ruleItem = new NumberRuleItem();
+	            ruleItem.setType("Number");
+	            ruleItem.setOperand(match.group(1));
+	            ruleItem.setOperator(parseNumberOperator(match.group(2)));
+	            ruleItem.setValue(match.group(3));
+	            return ruleItem;
+	        } else {   				
+	            throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
+	        }
 		}
-    }
+    }                   
     
     private static NumberOperator parseNumberOperator(String operator) {
     	if (operator == null) {
@@ -1653,6 +1666,8 @@ public class StringExtensions {
     		return NumberOperator.GREATER_THAN_EQUAL_TO;
     	} else if (operator.equals("lessthanequalto")) {
     		return NumberOperator.LESS_THAN_EQUAL_TO;
+    	} else if (operator.equals("notequals")) {
+    	    return NumberOperator.NOT_EQUALS;
     	} else {
     		throw new IllegalArgumentException(String.format("Invalid Number Rule Item operator: ", operator));
     	}

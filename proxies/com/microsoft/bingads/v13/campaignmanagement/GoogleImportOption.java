@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="NewDemographicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewDeviceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="NewImageAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewKeywordUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewKeywordsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="NewLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -86,6 +87,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UpdateDemographicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateDeviceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="UpdateImageAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateKeywordUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -136,6 +138,7 @@ import javax.xml.bind.annotation.XmlType;
     "newDemographicTargets",
     "newDeviceTargets",
     "newEntities",
+    "newImageAdExtensions",
     "newKeywordUrls",
     "newKeywordsForExistingAdGroups",
     "newLabels",
@@ -183,6 +186,7 @@ import javax.xml.bind.annotation.XmlType;
     "updateDemographicTargets",
     "updateDeviceTargets",
     "updateEntities",
+    "updateImageAdExtensions",
     "updateKeywordUrls",
     "updateLabels",
     "updateLocationAdExtensions",
@@ -250,6 +254,8 @@ public class GoogleImportOption
     protected Boolean newDeviceTargets;
     @XmlElement(name = "NewEntities", nillable = true)
     protected Boolean newEntities;
+    @XmlElement(name = "NewImageAdExtensions", nillable = true)
+    protected Boolean newImageAdExtensions;
     @XmlElement(name = "NewKeywordUrls", nillable = true)
     protected Boolean newKeywordUrls;
     @XmlElement(name = "NewKeywordsForExistingAdGroups", nillable = true)
@@ -344,6 +350,8 @@ public class GoogleImportOption
     protected Boolean updateDeviceTargets;
     @XmlElement(name = "UpdateEntities", nillable = true)
     protected Boolean updateEntities;
+    @XmlElement(name = "UpdateImageAdExtensions", nillable = true)
+    protected Boolean updateImageAdExtensions;
     @XmlElement(name = "UpdateKeywordUrls", nillable = true)
     protected Boolean updateKeywordUrls;
     @XmlElement(name = "UpdateLabels", nillable = true)
@@ -907,6 +915,30 @@ public class GoogleImportOption
      */
     public void setNewEntities(Boolean value) {
         this.newEntities = value;
+    }
+
+    /**
+     * Gets the value of the newImageAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewImageAdExtensions() {
+        return newImageAdExtensions;
+    }
+
+    /**
+     * Sets the value of the newImageAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewImageAdExtensions(Boolean value) {
+        this.newImageAdExtensions = value;
     }
 
     /**
@@ -2035,6 +2067,30 @@ public class GoogleImportOption
      */
     public void setUpdateEntities(Boolean value) {
         this.updateEntities = value;
+    }
+
+    /**
+     * Gets the value of the updateImageAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateImageAdExtensions() {
+        return updateImageAdExtensions;
+    }
+
+    /**
+     * Sets the value of the updateImageAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateImageAdExtensions(Boolean value) {
+        this.updateImageAdExtensions = value;
     }
 
     /**

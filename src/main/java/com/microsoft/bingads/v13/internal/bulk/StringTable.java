@@ -616,6 +616,10 @@ public class StringTable {
     public static final String DynamicAdTargetValue1 = "Dynamic Ad Target Value 1";
     public static final String DynamicAdTargetValue2 = "Dynamic Ad Target Value 2";
     public static final String DynamicAdTargetValue3 = "Dynamic Ad Target Value 3";
+    public static final String DynamicAdTargetConditionOperatorPrefix = "Dynamic Ad Target Condition Operator ";
+    public static final String DynamicAdTargetConditionOperator1 = "Dynamic Ad Target Condition Operator 1";
+    public static final String DynamicAdTargetConditionOperator2 = "Dynamic Ad Target Condition Operator 2";
+    public static final String DynamicAdTargetConditionOperator3 = "Dynamic Ad Target Condition Operator 3";
     
     // AdGroup Criterion
     public static final String AdGroupAgeCriterion = "Ad Group Age Criterion";

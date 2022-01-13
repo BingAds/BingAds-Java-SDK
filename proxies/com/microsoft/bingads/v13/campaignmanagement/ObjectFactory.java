@@ -64,6 +64,7 @@ public class ObjectFactory {
     private final static QName _BiddableCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableCampaignCriterion");
     private final static QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntityAssociation");
     private final static QName _ArrayOfAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdExtension");
+    private final static QName _WebpageConditionOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "WebpageConditionOperator");
     private final static QName _MigrationStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MigrationStatus");
     private final static QName _ArrayOfAdGroupNegativeSites_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdGroupNegativeSites");
     private final static QName _FilterLinkAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FilterLinkAdExtension");
@@ -127,6 +128,7 @@ public class ObjectFactory {
     private final static QName _EntityIdToParentIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityIdToParentIdAssociation");
     private final static QName _Company_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Company");
     private final static QName _EditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EditorialReasonCollection");
+    private final static QName _CompressionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CompressionType");
     private final static QName _ArrayOfEntityIdToParentIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfEntityIdToParentIdAssociation");
     private final static QName _Day_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Day");
     private final static QName _ArrayOfAdExtensionIdentity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdExtensionIdentity");
@@ -234,6 +236,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfOfflineConversion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfOfflineConversion");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountId");
     private final static QName _MediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaRepresentation");
+    private final static QName _NumberRuleItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NumberRuleItem");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _Criterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Criterion");
     private final static QName _KeywordStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "KeywordStatus");
@@ -1488,6 +1491,14 @@ public class ObjectFactory {
      */
     public MediaRepresentation createMediaRepresentation() {
         return new MediaRepresentation();
+    }
+
+    /**
+     * Create an instance of {@link NumberRuleItem }
+     * 
+     */
+    public NumberRuleItem createNumberRuleItem() {
+        return new NumberRuleItem();
     }
 
     /**
@@ -4962,6 +4973,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebpageConditionOperator }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "WebpageConditionOperator")
+    public JAXBElement<WebpageConditionOperator> createWebpageConditionOperator(WebpageConditionOperator value) {
+        return new JAXBElement<WebpageConditionOperator>(_WebpageConditionOperator_QNAME, WebpageConditionOperator.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MigrationStatus }{@code >}}
      * 
      */
@@ -5530,6 +5550,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EditorialReasonCollection")
     public JAXBElement<EditorialReasonCollection> createEditorialReasonCollection(EditorialReasonCollection value) {
         return new JAXBElement<EditorialReasonCollection>(_EditorialReasonCollection_QNAME, EditorialReasonCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CompressionType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CompressionType")
+    public JAXBElement<CompressionType> createCompressionType(CompressionType value) {
+        return new JAXBElement<CompressionType>(_CompressionType_QNAME, CompressionType.class, null, value);
     }
 
     /**
@@ -6498,6 +6527,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "MediaRepresentation")
     public JAXBElement<MediaRepresentation> createMediaRepresentation(MediaRepresentation value) {
         return new JAXBElement<MediaRepresentation>(_MediaRepresentation_QNAME, MediaRepresentation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NumberRuleItem }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NumberRuleItem")
+    public JAXBElement<NumberRuleItem> createNumberRuleItem(NumberRuleItem value) {
+        return new JAXBElement<NumberRuleItem>(_NumberRuleItem_QNAME, NumberRuleItem.class, null, value);
     }
 
     /**

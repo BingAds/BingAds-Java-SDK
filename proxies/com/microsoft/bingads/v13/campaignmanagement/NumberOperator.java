@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="LessThan"/>
  *     &lt;enumeration value="GreaterThanEqualTo"/>
  *     &lt;enumeration value="LessThanEqualTo"/>
+ *     &lt;enumeration value="NotEquals"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -40,7 +41,9 @@ public enum NumberOperator {
     @XmlEnumValue("GreaterThanEqualTo")
     GREATER_THAN_EQUAL_TO("GreaterThanEqualTo"),
     @XmlEnumValue("LessThanEqualTo")
-    LESS_THAN_EQUAL_TO("LessThanEqualTo");
+    LESS_THAN_EQUAL_TO("LessThanEqualTo"),
+    @XmlEnumValue("NotEquals")
+    NOT_EQUALS("NotEquals");
     private final String value;
 
     NumberOperator(String v) {

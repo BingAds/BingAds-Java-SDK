@@ -94,6 +94,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Buy"/>
  *     &lt;enumeration value="OpenLink"/>
  *     &lt;enumeration value="RegisterNow"/>
+ *     &lt;enumeration value="Automated"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -262,7 +263,9 @@ public enum CallToAction {
     @XmlEnumValue("OpenLink")
     OPEN_LINK("OpenLink"),
     @XmlEnumValue("RegisterNow")
-    REGISTER_NOW("RegisterNow");
+    REGISTER_NOW("RegisterNow"),
+    @XmlEnumValue("Automated")
+    AUTOMATED("Automated");
     private final String value;
 
     CallToAction(String v) {

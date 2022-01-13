@@ -1,0 +1,1219 @@
+pkgpath="com\microsoft\bingads\v13\campaignmanagement"
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for CampaignType.
+ */
+public enum CampaignType {
+
+    SEARCH("Search"),
+    SHOPPING("Shopping"),
+    DYNAMIC_SEARCH_ADS("DynamicSearchAds"),
+    AUDIENCE("Audience");
+        
+    private final String value;
+
+    CampaignType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static CampaignType fromValue(String v) {
+        for (CampaignType c : CampaignType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class CampaignTypeConverter {
+
+    public static Collection<CampaignType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<CampaignType> result = new ArrayList<CampaignType>();
+
+        for (String value : values) {
+            result.add(CampaignType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<CampaignType> enums) {
+        String result = "";
+
+        for (CampaignType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for CampaignAdditionalField.
+ */
+public enum CampaignAdditionalField {
+
+    AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
+    MAX_CONVERSION_VALUE_BIDDING_SCHEME("MaxConversionValueBiddingScheme"),
+    TARGET_IMPRESSION_SHARE_BIDDING_SCHEME("TargetImpressionShareBiddingScheme"),
+    TARGET_SETTING("TargetSetting"),
+    BID_STRATEGY_ID("BidStrategyId"),
+    CPV_CPM_BIDDING_SCHEME("CpvCpmBiddingScheme"),
+    DYNAMIC_FEED_SETTING("DynamicFeedSetting"),
+    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment"),
+    VERIFIED_TRACKING_SETTING("VerifiedTrackingSetting"),
+    DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting"),
+    DISCLAIMER_SETTING("DisclaimerSetting");
+        
+    private final String value;
+
+    CampaignAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static CampaignAdditionalField fromValue(String v) {
+        for (CampaignAdditionalField c : CampaignAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class CampaignAdditionalFieldConverter {
+
+    public static Collection<CampaignAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<CampaignAdditionalField> result = new ArrayList<CampaignAdditionalField>();
+
+        for (String value : values) {
+            result.add(CampaignAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<CampaignAdditionalField> enums) {
+        String result = "";
+
+        for (CampaignAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AdGroupAdditionalField.
+ */
+public enum AdGroupAdditionalField {
+
+    AD_SCHEDULE_USE_SEARCHER_TIME_ZONE("AdScheduleUseSearcherTimeZone"),
+    AD_GROUP_TYPE("AdGroupType"),
+    CPV_BID("CpvBid"),
+    CPM_BID("CpmBid"),
+    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment");
+        
+    private final String value;
+
+    AdGroupAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdGroupAdditionalField fromValue(String v) {
+        for (AdGroupAdditionalField c : AdGroupAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AdGroupAdditionalFieldConverter {
+
+    public static Collection<AdGroupAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AdGroupAdditionalField> result = new ArrayList<AdGroupAdditionalField>();
+
+        for (String value : values) {
+            result.add(AdGroupAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AdGroupAdditionalField> enums) {
+        String result = "";
+
+        for (AdGroupAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AdAdditionalField.
+ */
+public enum AdAdditionalField {
+
+    IMPRESSION_TRACKING_URLS("ImpressionTrackingUrls"),
+    VIDEOS("Videos"),
+    LONG_HEADLINES("LongHeadlines");
+        
+    private final String value;
+
+    AdAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdAdditionalField fromValue(String v) {
+        for (AdAdditionalField c : AdAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AdAdditionalFieldConverter {
+
+    public static Collection<AdAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AdAdditionalField> result = new ArrayList<AdAdditionalField>();
+
+        for (String value : values) {
+            result.add(AdAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AdAdditionalField> enums) {
+        String result = "";
+
+        for (AdAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AdExtensionsTypeFilter.
+ */
+public enum AdExtensionsTypeFilter {
+
+    LOCATION_AD_EXTENSION("LocationAdExtension"),
+    CALL_AD_EXTENSION("CallAdExtension"),
+    IMAGE_AD_EXTENSION("ImageAdExtension"),
+    APP_AD_EXTENSION("AppAdExtension"),
+    REVIEW_AD_EXTENSION("ReviewAdExtension"),
+    CALLOUT_AD_EXTENSION("CalloutAdExtension"),
+    SITELINK_AD_EXTENSION("SitelinkAdExtension"),
+    STRUCTURED_SNIPPET_AD_EXTENSION("StructuredSnippetAdExtension"),
+    PRICE_AD_EXTENSION("PriceAdExtension"),
+    ACTION_AD_EXTENSION("ActionAdExtension"),
+    PROMOTION_AD_EXTENSION("PromotionAdExtension"),
+    FILTER_LINK_AD_EXTENSION("FilterLinkAdExtension"),
+    FLYER_AD_EXTENSION("FlyerAdExtension"),
+    VIDEO_AD_EXTENSION("VideoAdExtension"),
+    DISCLAIMER_AD_EXTENSION("DisclaimerAdExtension");
+        
+    private final String value;
+
+    AdExtensionsTypeFilter(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdExtensionsTypeFilter fromValue(String v) {
+        for (AdExtensionsTypeFilter c : AdExtensionsTypeFilter.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AdExtensionsTypeFilterConverter {
+
+    public static Collection<AdExtensionsTypeFilter> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AdExtensionsTypeFilter> result = new ArrayList<AdExtensionsTypeFilter>();
+
+        for (String value : values) {
+            result.add(AdExtensionsTypeFilter.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AdExtensionsTypeFilter> enums) {
+        String result = "";
+
+        for (AdExtensionsTypeFilter entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AdExtensionAdditionalField.
+ */
+public enum AdExtensionAdditionalField {
+
+    IMAGES("Images"),
+    DISPLAY_TEXT("DisplayText"),
+    LAYOUTS("Layouts"),
+    ACTION_TYPES_PHASE3("ActionTypesPhase3"),
+    ACTION_TYPES_PHASE4("ActionTypesPhase4");
+        
+    private final String value;
+
+    AdExtensionAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdExtensionAdditionalField fromValue(String v) {
+        for (AdExtensionAdditionalField c : AdExtensionAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AdExtensionAdditionalFieldConverter {
+
+    public static Collection<AdExtensionAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AdExtensionAdditionalField> result = new ArrayList<AdExtensionAdditionalField>();
+
+        for (String value : values) {
+            result.add(AdExtensionAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AdExtensionAdditionalField> enums) {
+        String result = "";
+
+        for (AdExtensionAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for MediaEnabledEntityFilter.
+ */
+public enum MediaEnabledEntityFilter {
+
+    IMAGE_AD_EXTENSION("ImageAdExtension"),
+    RESPONSIVE_AD("ResponsiveAd");
+        
+    private final String value;
+
+    MediaEnabledEntityFilter(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static MediaEnabledEntityFilter fromValue(String v) {
+        for (MediaEnabledEntityFilter c : MediaEnabledEntityFilter.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class MediaEnabledEntityFilterConverter {
+
+    public static Collection<MediaEnabledEntityFilter> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<MediaEnabledEntityFilter> result = new ArrayList<MediaEnabledEntityFilter>();
+
+        for (String value : values) {
+            result.add(MediaEnabledEntityFilter.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<MediaEnabledEntityFilter> enums) {
+        String result = "";
+
+        for (MediaEnabledEntityFilter entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AdGroupCriterionType.
+ */
+public enum AdGroupCriterionType {
+
+    PRODUCT_PARTITION("ProductPartition"),
+    WEBPAGE("Webpage"),
+    TARGETS("Targets"),
+    AGE("Age"),
+    GENDER("Gender"),
+    DAY_TIME("DayTime"),
+    DEVICE("Device"),
+    LOCATION("Location"),
+    LOCATION_INTENT("LocationIntent"),
+    RADIUS("Radius"),
+    AUDIENCE("Audience"),
+    CUSTOM_AUDIENCE("CustomAudience"),
+    IN_MARKET_AUDIENCE("InMarketAudience"),
+    REMARKETING_LIST("RemarketingList"),
+    COMPANY_NAME("CompanyName"),
+    JOB_FUNCTION("JobFunction"),
+    INDUSTRY("Industry"),
+    PRODUCT_AUDIENCE("ProductAudience"),
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
+    COMBINED_LIST("CombinedList");
+        
+    private final String value;
+
+    AdGroupCriterionType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AdGroupCriterionType fromValue(String v) {
+        for (AdGroupCriterionType c : AdGroupCriterionType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AdGroupCriterionTypeConverter {
+
+    public static Collection<AdGroupCriterionType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AdGroupCriterionType> result = new ArrayList<AdGroupCriterionType>();
+
+        for (String value : values) {
+            result.add(AdGroupCriterionType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AdGroupCriterionType> enums) {
+        String result = "";
+
+        for (AdGroupCriterionType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for CriterionAdditionalField.
+ */
+public enum CriterionAdditionalField {
+
+    CRITERION_CASHBACK("CriterionCashback");
+        
+    private final String value;
+
+    CriterionAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static CriterionAdditionalField fromValue(String v) {
+        for (CriterionAdditionalField c : CriterionAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class CriterionAdditionalFieldConverter {
+
+    public static Collection<CriterionAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<CriterionAdditionalField> result = new ArrayList<CriterionAdditionalField>();
+
+        for (String value : values) {
+            result.add(CriterionAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<CriterionAdditionalField> enums) {
+        String result = "";
+
+        for (CriterionAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AudienceType.
+ */
+public enum AudienceType {
+
+    REMARKETING_LIST("RemarketingList"),
+    CUSTOM("Custom"),
+    IN_MARKET("InMarket"),
+    PRODUCT("Product"),
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
+    COMBINED_LIST("CombinedList");
+        
+    private final String value;
+
+    AudienceType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AudienceType fromValue(String v) {
+        for (AudienceType c : AudienceType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AudienceTypeConverter {
+
+    public static Collection<AudienceType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AudienceType> result = new ArrayList<AudienceType>();
+
+        for (String value : values) {
+            result.add(AudienceType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AudienceType> enums) {
+        String result = "";
+
+        for (AudienceType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for ProfileType.
+ */
+public enum ProfileType {
+
+    COMPANY_NAME("CompanyName"),
+    JOB_FUNCTION("JobFunction"),
+    INDUSTRY("Industry");
+        
+    private final String value;
+
+    ProfileType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ProfileType fromValue(String v) {
+        for (ProfileType c : ProfileType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class ProfileTypeConverter {
+
+    public static Collection<ProfileType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<ProfileType> result = new ArrayList<ProfileType>();
+
+        for (String value : values) {
+            result.add(ProfileType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<ProfileType> enums) {
+        String result = "";
+
+        for (ProfileType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for BMCStoreAdditionalField.
+ */
+public enum BMCStoreAdditionalField {
+
+    GLOBAL_STORE("GlobalStore");
+        
+    private final String value;
+
+    BMCStoreAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static BMCStoreAdditionalField fromValue(String v) {
+        for (BMCStoreAdditionalField c : BMCStoreAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class BMCStoreAdditionalFieldConverter {
+
+    public static Collection<BMCStoreAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<BMCStoreAdditionalField> result = new ArrayList<BMCStoreAdditionalField>();
+
+        for (String value : values) {
+            result.add(BMCStoreAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<BMCStoreAdditionalField> enums) {
+        String result = "";
+
+        for (BMCStoreAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for CampaignCriterionType.
+ */
+public enum CampaignCriterionType {
+
+    PRODUCT_SCOPE("ProductScope"),
+    WEBPAGE("Webpage"),
+    TARGETS("Targets"),
+    AGE("Age"),
+    DAY_TIME("DayTime"),
+    GENDER("Gender"),
+    LOCATION("Location"),
+    RADIUS("Radius"),
+    DEVICE("Device"),
+    LOCATION_INTENT("LocationIntent"),
+    AUDIENCE("Audience"),
+    CUSTOM_AUDIENCE("CustomAudience"),
+    IN_MARKET_AUDIENCE("InMarketAudience"),
+    REMARKETING_LIST("RemarketingList"),
+    COMPANY_NAME("CompanyName"),
+    JOB_FUNCTION("JobFunction"),
+    INDUSTRY("Industry"),
+    PRODUCT_AUDIENCE("ProductAudience"),
+    SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
+    STORE("Store"),
+    COMBINED_LIST("CombinedList");
+        
+    private final String value;
+
+    CampaignCriterionType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static CampaignCriterionType fromValue(String v) {
+        for (CampaignCriterionType c : CampaignCriterionType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class CampaignCriterionTypeConverter {
+
+    public static Collection<CampaignCriterionType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<CampaignCriterionType> result = new ArrayList<CampaignCriterionType>();
+
+        for (String value : values) {
+            result.add(CampaignCriterionType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<CampaignCriterionType> enums) {
+        String result = "";
+
+        for (CampaignCriterionType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for ProductAudienceType.
+ */
+public enum ProductAudienceType {
+
+    GENERAL_VISITORS("GeneralVisitors"),
+    PRODUCT_SEARCHERS("ProductSearchers"),
+    PRODUCT_VIEWERS("ProductViewers"),
+    SHOPPING_CART_ABANDONERS("ShoppingCartAbandoners"),
+    PAST_BUYERS("PastBuyers");
+        
+    private final String value;
+
+    ProductAudienceType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ProductAudienceType fromValue(String v) {
+        for (ProductAudienceType c : ProductAudienceType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class ProductAudienceTypeConverter {
+
+    public static Collection<ProductAudienceType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<ProductAudienceType> result = new ArrayList<ProductAudienceType>();
+
+        for (String value : values) {
+            result.add(ProductAudienceType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<ProductAudienceType> enums) {
+        String result = "";
+
+        for (ProductAudienceType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for AudienceAdditionalField.
+ */
+public enum AudienceAdditionalField {
+
+    NORMAL_FORM("NormalForm");
+        
+    private final String value;
+
+    AudienceAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static AudienceAdditionalField fromValue(String v) {
+        for (AudienceAdditionalField c : AudienceAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class AudienceAdditionalFieldConverter {
+
+    public static Collection<AudienceAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<AudienceAdditionalField> result = new ArrayList<AudienceAdditionalField>();
+
+        for (String value : values) {
+            result.add(AudienceAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<AudienceAdditionalField> enums) {
+        String result = "";
+
+        for (AudienceAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for ConversionGoalType.
+ */
+public enum ConversionGoalType {
+
+    URL("Url"),
+    DURATION("Duration"),
+    PAGES_VIEWED_PER_VISIT("PagesViewedPerVisit"),
+    EVENT("Event"),
+    APP_INSTALL("AppInstall"),
+    OFFLINE_CONVERSION("OfflineConversion"),
+    IN_STORE_TRANSACTION("InStoreTransaction");
+        
+    private final String value;
+
+    ConversionGoalType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ConversionGoalType fromValue(String v) {
+        for (ConversionGoalType c : ConversionGoalType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class ConversionGoalTypeConverter {
+
+    public static Collection<ConversionGoalType> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<ConversionGoalType> result = new ArrayList<ConversionGoalType>();
+
+        for (String value : values) {
+            result.add(ConversionGoalType.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<ConversionGoalType> enums) {
+        String result = "";
+
+        for (ConversionGoalType entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for ConversionGoalAdditionalField.
+ */
+public enum ConversionGoalAdditionalField {
+
+    VIEW_THROUGH_CONVERSION_WINDOW_IN_MINUTES("ViewThroughConversionWindowInMinutes"),
+    IS_EXTERNALLY_ATTRIBUTED("IsExternallyAttributed"),
+    GOAL_CATEGORY("GoalCategory"),
+    INACTIVE_DUE_TO_TAG_UNAVAILABLE("InactiveDueToTagUnavailable");
+        
+    private final String value;
+
+    ConversionGoalAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ConversionGoalAdditionalField fromValue(String v) {
+        for (ConversionGoalAdditionalField c : ConversionGoalAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class ConversionGoalAdditionalFieldConverter {
+
+    public static Collection<ConversionGoalAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<ConversionGoalAdditionalField> result = new ArrayList<ConversionGoalAdditionalField>();
+
+        for (String value : values) {
+            result.add(ConversionGoalAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<ConversionGoalAdditionalField> enums) {
+        String result = "";
+
+        for (ConversionGoalAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+/**
+ * Enum class for ImportAdditionalField.
+ */
+public enum ImportAdditionalField {
+
+    NONE("None"),
+    NOTIFICATION_EMAIL("NotificationEmail"),
+    AUTO_DEVICE_BID_OPTIMIZATION("AutoDeviceBidOptimization"),
+    ACTIVE_AD_GROUPS_ONLY("ActiveAdGroupsOnly"),
+    SEARCH_AND_REPLACE_FOR_CUSTOM_PARAMETERS("SearchAndReplaceForCustomParameters");
+        
+    private final String value;
+
+    ImportAdditionalField(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ImportAdditionalField fromValue(String v) {
+        for (ImportAdditionalField c : ImportAdditionalField.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+}
+package com.microsoft.bingads.v13.campaignmanagement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Reserved for internal use.
+ */
+public class ImportAdditionalFieldConverter {
+
+    public static Collection<ImportAdditionalField> convertToList(String enums) {
+        String[] values = enums.split(" ");
+
+        Collection<ImportAdditionalField> result = new ArrayList<ImportAdditionalField>();
+
+        for (String value : values) {
+            result.add(ImportAdditionalField.fromValue(value));
+        }
+
+        return result;
+    }
+
+    public static String convertToString(Collection<ImportAdditionalField> enums) {
+        String result = "";
+
+        for (ImportAdditionalField entity : enums) {
+            result += (entity.value() + " ");
+        }
+
+        result = result.substring(0, result.length() - 1);
+
+        return result;
+    }
+}
+Press any key to continue . . . 

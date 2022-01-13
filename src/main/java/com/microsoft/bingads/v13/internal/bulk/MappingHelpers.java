@@ -41,7 +41,7 @@ public class MappingHelpers {
     public static <T> void convertToValues(T entity, RowValues values, List<BulkMapping<T>> mappings) {
         for (BulkMapping<T> mapping : mappings) {
             try {                
-            mapping.convertToCsv(entity, values);
+                mapping.convertToCsv(entity, values);
             } catch (NullPointerException ex) {
                 throw createEntityWriteException(mapping, ex, entity.getClass());
             } catch (IllegalArgumentException ex) {

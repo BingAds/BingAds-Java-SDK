@@ -29,6 +29,9 @@ public class BulkCampaignNegativeDynamicSearchAdTargetWriteConditionsTest extend
 
     @Parameter(value = 3)
     public String[] values;
+    
+    @Parameter(value = 4)
+    public String[] operators;
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -49,6 +52,10 @@ public class BulkCampaignNegativeDynamicSearchAdTargetWriteConditionsTest extend
 
         for (int i = 1; i <= values.length; i++) {
             rowValues.put("Dynamic Ad Target Value " + i, values[i - 1]);
+        }
+        
+        for (int i = 1; i <= values.length; i++) {
+            rowValues.put("Dynamic Ad Target Condition Operator " + i, operators[i - 1]);
         }
 
         for (Entry<String, String> entry : rowValues.entrySet()) {

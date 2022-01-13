@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    NumberRuleItem.class,
     StringRuleItem.class
 })
 public class RuleItem {

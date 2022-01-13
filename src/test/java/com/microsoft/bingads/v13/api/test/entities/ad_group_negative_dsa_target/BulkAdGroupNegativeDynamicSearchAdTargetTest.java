@@ -13,12 +13,14 @@ import com.microsoft.bingads.v13.campaignmanagement.NegativeAdGroupCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.Webpage;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageCondition;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageConditionOperand;
+import com.microsoft.bingads.v13.campaignmanagement.WebpageConditionOperator;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageParameter;
 
 public abstract class BulkAdGroupNegativeDynamicSearchAdTargetTest extends BulkEntityTest<BulkAdGroupNegativeDynamicSearchAdTarget> {
 
     private static final String[] CONDITION = {"Category", "PageContent", "PageTitle", "Url"};
     private static final String VALUE_PREFIX = "Test Value ";
+    private static final String[] OPERATOR = {"Equals", "Contains"};
 
     @Override
     protected void onEntityCreation(BulkAdGroupNegativeDynamicSearchAdTarget entity) {
@@ -101,6 +103,7 @@ public abstract class BulkAdGroupNegativeDynamicSearchAdTargetTest extends BulkE
         	WebpageCondition webPageCondition = new WebpageCondition();
         	webPageCondition.setArgument(VALUE_PREFIX + i);
         	webPageCondition.setOperand(WebpageConditionOperand.fromValue(CONDITION[i%4]));
+            webPageCondition.setOperator(WebpageConditionOperator.fromValue(OPERATOR[i%2]));
         	webPageConditions.add(webPageCondition);
         }
 
@@ -121,7 +124,7 @@ public abstract class BulkAdGroupNegativeDynamicSearchAdTargetTest extends BulkE
         String[] inputs = new String[length];
 
         for (int i = 1; i <= inputs.length; i++) {
-            inputs[i - 1] = prefix[i%4];
+            inputs[i - 1] = prefix[i%prefix.length];
         }
 
         return inputs;
@@ -131,7 +134,8 @@ public abstract class BulkAdGroupNegativeDynamicSearchAdTargetTest extends BulkE
         ArrayOfWebpageCondition webpageConditions = generateWebpageConditionArray(lengthWebpageCondition);
         String[] conditions = generateInputArray(lengthConditions, CONDITION);
         String[] values = generateInputArray(lengthValues, VALUE_PREFIX);
+        String[] operators = generateInputArray(lengthValues, OPERATOR);
 
-        return new Object[]{null, webpageConditions, conditions, values};
+        return new Object[]{null, webpageConditions, conditions, values, operators};
     }
 }

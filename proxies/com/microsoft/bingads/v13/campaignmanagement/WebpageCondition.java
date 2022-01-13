@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Argument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Operand" type="{https://bingads.microsoft.com/CampaignManagement/v13}WebpageConditionOperand" minOccurs="0"/>
+ *         &lt;element name="Operator" type="{https://bingads.microsoft.com/CampaignManagement/v13}WebpageConditionOperator" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "WebpageCondition", propOrder = {
     "argument",
-    "operand"
+    "operand",
+    "operator"
 })
 public class WebpageCondition {
 
@@ -40,6 +42,9 @@ public class WebpageCondition {
     @XmlElement(name = "Operand")
     @XmlSchemaType(name = "string")
     protected WebpageConditionOperand operand;
+    @XmlElement(name = "Operator", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected WebpageConditionOperator operator;
 
     /**
      * Gets the value of the argument property.
@@ -87,6 +92,30 @@ public class WebpageCondition {
      */
     public void setOperand(WebpageConditionOperand value) {
         this.operand = value;
+    }
+
+    /**
+     * Gets the value of the operator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link WebpageConditionOperator }
+     *     
+     */
+    public WebpageConditionOperator getOperator() {
+        return operator;
+    }
+
+    /**
+     * Sets the value of the operator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link WebpageConditionOperator }
+     *     
+     */
+    public void setOperator(WebpageConditionOperator value) {
+        this.operator = value;
     }
 
 }

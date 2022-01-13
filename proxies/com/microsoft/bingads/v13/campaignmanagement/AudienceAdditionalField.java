@@ -5,7 +5,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum AudienceAdditionalField {
 
-    NORMAL_FORM("NormalForm");
+    NORMAL_FORM("NormalForm"),
+    NUMBER_RULE_ITEM("NumberRuleItem");
         
     private final String value;
 

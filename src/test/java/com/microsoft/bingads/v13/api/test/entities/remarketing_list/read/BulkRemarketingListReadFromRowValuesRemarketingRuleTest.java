@@ -37,6 +37,8 @@ public class BulkRemarketingListReadFromRowValuesRemarketingRuleTest extends Bul
         return Arrays.asList(new Object[][]{
             {"PageVisitors((Url Equals Test Value) and (ReferrerUrl Contains Test Value))", 
             	generatePageVisitRuleTestData("PageVisitors", 1, 2) },
+            {"PageVisitors((EcommTotalValue Equals 123.45))", 
+                    generatePageVisitRuleTestData("PageVisitors", 1, 1) },
             {"PageVisitors((Url Equals Test Value))", 
                 	generatePageVisitRuleTestData("PageVisitors", 1, 1) },
             {"PageVisitors((Url Equals Test Value)) or "
