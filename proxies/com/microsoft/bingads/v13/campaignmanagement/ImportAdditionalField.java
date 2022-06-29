@@ -12,7 +12,8 @@ public enum ImportAdditionalField {
     SEARCH_AND_REPLACE_FOR_CUSTOM_PARAMETERS("SearchAndReplaceForCustomParameters"),
     AD_SCHEDULE_USE_SEARCHER_TIMEZONE("AdScheduleUseSearcherTimezone"),
     NEW_IMAGE_AD_EXTENSIONS("NewImageAdExtensions"),
-    UPDATE_IMAGE_AD_EXTENSIONS("UpdateImageAdExtensions");
+    UPDATE_IMAGE_AD_EXTENSIONS("UpdateImageAdExtensions"),
+    SEARCH_AND_REPLACE_FOR_FINAL_U_R_L_SUFFIX("SearchAndReplaceForFinalURLSuffix");
         
     private final String value;
 

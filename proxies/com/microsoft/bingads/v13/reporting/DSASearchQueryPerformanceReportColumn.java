@@ -71,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AverageCpm"/>
  *     &lt;enumeration value="ConversionsQualified"/>
  *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="Description"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -193,7 +194,9 @@ public enum DSASearchQueryPerformanceReportColumn {
     @XmlEnumValue("ConversionsQualified")
     CONVERSIONS_QUALIFIED("ConversionsQualified"),
     @XmlEnumValue("AllConversionsQualified")
-    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified");
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("Description")
+    DESCRIPTION("Description");
     private final String value;
 
     DSASearchQueryPerformanceReportColumn(String v) {

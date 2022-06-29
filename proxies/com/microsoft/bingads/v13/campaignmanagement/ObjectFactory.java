@@ -88,6 +88,7 @@ public class ObjectFactory {
     private final static QName _CustomerAccountShareAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountShareAssociation");
     private final static QName _EntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityType");
     private final static QName _BidOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BidOption");
+    private final static QName _AttributionModelType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AttributionModelType");
     private final static QName _MigrationStatusInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MigrationStatusInfo");
     private final static QName _ArrayOfIdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfIdCollection");
     private final static QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntity");
@@ -203,6 +204,7 @@ public class ObjectFactory {
     private final static QName _Image_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Image");
     private final static QName _TargetCpaBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetCpaBiddingScheme");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
+    private final static QName _CampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignConversionGoal");
     private final static QName _Address_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Address");
     private final static QName _CombinedList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CombinedList");
     private final static QName _ArrayOfAccountMigrationStatusesInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAccountMigrationStatusesInfo");
@@ -211,6 +213,7 @@ public class ObjectFactory {
     private final static QName _PlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementExclusionList");
     private final static QName _EditorialErrorCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EditorialErrorCollection");
     private final static QName _ArrayOfAdExtensionIdToEntityIdAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdExtensionIdToEntityIdAssociation");
+    private final static QName _ArrayOfCampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignConversionGoal");
     private final static QName _AdExtensionEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionEditorialReason");
     private final static QName _Schedule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Schedule");
     private final static QName _GoogleImportOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GoogleImportOption");
@@ -1558,6 +1561,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddCampaignConversionGoalsResponse }
+     * 
+     */
+    public AddCampaignConversionGoalsResponse createAddCampaignConversionGoalsResponse() {
+        return new AddCampaignConversionGoalsResponse();
+    }
+
+    /**
      * Create an instance of {@link CriterionBid }
      * 
      */
@@ -1699,6 +1710,14 @@ public class ObjectFactory {
      */
     public CombinedList createCombinedList() {
         return new CombinedList();
+    }
+
+    /**
+     * Create an instance of {@link CampaignConversionGoal }
+     * 
+     */
+    public CampaignConversionGoal createCampaignConversionGoal() {
+        return new CampaignConversionGoal();
     }
 
     /**
@@ -2043,6 +2062,14 @@ public class ObjectFactory {
      */
     public DeleteAdExtensionsRequest createDeleteAdExtensionsRequest() {
         return new DeleteAdExtensionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCampaignConversionGoalsResponse }
+     * 
+     */
+    public DeleteCampaignConversionGoalsResponse createDeleteCampaignConversionGoalsResponse() {
+        return new DeleteCampaignConversionGoalsResponse();
     }
 
     /**
@@ -3614,6 +3641,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfCampaignConversionGoal }
+     * 
+     */
+    public ArrayOfCampaignConversionGoal createArrayOfCampaignConversionGoal() {
+        return new ArrayOfCampaignConversionGoal();
+    }
+
+    /**
      * Create an instance of {@link UpdateAdGroupCriterionsRequest }
      * 
      */
@@ -3643,6 +3678,14 @@ public class ObjectFactory {
      */
     public GetAccountPropertiesResponse createGetAccountPropertiesResponse() {
         return new GetAccountPropertiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddCampaignConversionGoalsRequest }
+     * 
+     */
+    public AddCampaignConversionGoalsRequest createAddCampaignConversionGoalsRequest() {
+        return new AddCampaignConversionGoalsRequest();
     }
 
     /**
@@ -3747,6 +3790,14 @@ public class ObjectFactory {
      */
     public GetNegativeSitesByCampaignIdsResponse createGetNegativeSitesByCampaignIdsResponse() {
         return new GetNegativeSitesByCampaignIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCampaignConversionGoalsRequest }
+     * 
+     */
+    public DeleteCampaignConversionGoalsRequest createDeleteCampaignConversionGoalsRequest() {
+        return new DeleteCampaignConversionGoalsRequest();
     }
 
     /**
@@ -5193,6 +5244,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AttributionModelType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AttributionModelType")
+    public JAXBElement<AttributionModelType> createAttributionModelType(AttributionModelType value) {
+        return new JAXBElement<AttributionModelType>(_AttributionModelType_QNAME, AttributionModelType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MigrationStatusInfo }{@code >}}
      * 
      */
@@ -6231,6 +6291,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignConversionGoal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignConversionGoal")
+    public JAXBElement<CampaignConversionGoal> createCampaignConversionGoal(CampaignConversionGoal value) {
+        return new JAXBElement<CampaignConversionGoal>(_CampaignConversionGoal_QNAME, CampaignConversionGoal.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Address }{@code >}}
      * 
      */
@@ -6301,6 +6370,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdExtensionIdToEntityIdAssociation")
     public JAXBElement<ArrayOfAdExtensionIdToEntityIdAssociation> createArrayOfAdExtensionIdToEntityIdAssociation(ArrayOfAdExtensionIdToEntityIdAssociation value) {
         return new JAXBElement<ArrayOfAdExtensionIdToEntityIdAssociation>(_ArrayOfAdExtensionIdToEntityIdAssociation_QNAME, ArrayOfAdExtensionIdToEntityIdAssociation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignConversionGoal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCampaignConversionGoal")
+    public JAXBElement<ArrayOfCampaignConversionGoal> createArrayOfCampaignConversionGoal(ArrayOfCampaignConversionGoal value) {
+        return new JAXBElement<ArrayOfCampaignConversionGoal>(_ArrayOfCampaignConversionGoal_QNAME, ArrayOfCampaignConversionGoal.class, null, value);
     }
 
     /**

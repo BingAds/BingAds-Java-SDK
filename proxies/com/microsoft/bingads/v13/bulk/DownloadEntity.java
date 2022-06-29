@@ -153,6 +153,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Videos"/>
  *     &lt;enumeration value="DisclaimerAdExtensions"/>
  *     &lt;enumeration value="CampaignDisclaimerAdExtensions"/>
+ *     &lt;enumeration value="AdcustomizerAttribute"/>
+ *     &lt;enumeration value="CampaignAdcustomizerAttribute"/>
+ *     &lt;enumeration value="AdGroupAdcustomizerAttribute"/>
+ *     &lt;enumeration value="KeywordAdcustomizerAttribute"/>
+ *     &lt;enumeration value="CampaignConversionGoal"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -439,7 +444,17 @@ public enum DownloadEntity {
     @XmlEnumValue("DisclaimerAdExtensions")
     DISCLAIMER_AD_EXTENSIONS("DisclaimerAdExtensions"),
     @XmlEnumValue("CampaignDisclaimerAdExtensions")
-    CAMPAIGN_DISCLAIMER_AD_EXTENSIONS("CampaignDisclaimerAdExtensions");
+    CAMPAIGN_DISCLAIMER_AD_EXTENSIONS("CampaignDisclaimerAdExtensions"),
+    @XmlEnumValue("AdcustomizerAttribute")
+    ADCUSTOMIZER_ATTRIBUTE("AdcustomizerAttribute"),
+    @XmlEnumValue("CampaignAdcustomizerAttribute")
+    CAMPAIGN_ADCUSTOMIZER_ATTRIBUTE("CampaignAdcustomizerAttribute"),
+    @XmlEnumValue("AdGroupAdcustomizerAttribute")
+    AD_GROUP_ADCUSTOMIZER_ATTRIBUTE("AdGroupAdcustomizerAttribute"),
+    @XmlEnumValue("KeywordAdcustomizerAttribute")
+    KEYWORD_ADCUSTOMIZER_ATTRIBUTE("KeywordAdcustomizerAttribute"),
+    @XmlEnumValue("CampaignConversionGoal")
+    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal");
     private final String value;
 
     DownloadEntity(String v) {

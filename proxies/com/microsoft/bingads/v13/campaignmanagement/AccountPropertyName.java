@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AutoBiddingViewThroughConversionsValueAttributionWeight"/>
  *     &lt;enumeration value="LoopBackWindowForViewThroughConversions"/>
  *     &lt;enumeration value="BusinessAttributes"/>
+ *     &lt;enumeration value="EnableMMAUnderDSAAdgroups"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -61,7 +62,9 @@ public enum AccountPropertyName {
     @XmlEnumValue("LoopBackWindowForViewThroughConversions")
     LOOP_BACK_WINDOW_FOR_VIEW_THROUGH_CONVERSIONS("LoopBackWindowForViewThroughConversions"),
     @XmlEnumValue("BusinessAttributes")
-    BUSINESS_ATTRIBUTES("BusinessAttributes");
+    BUSINESS_ATTRIBUTES("BusinessAttributes"),
+    @XmlEnumValue("EnableMMAUnderDSAAdgroups")
+    ENABLE_MMA_UNDER_DSA_ADGROUPS("EnableMMAUnderDSAAdgroups");
     private final String value;
 
     AccountPropertyName(String v) {

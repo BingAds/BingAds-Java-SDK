@@ -44,6 +44,8 @@ public class BulkFeed extends SingleRecordBulkEntity {
 	
 	private String subType;
 	
+	private String schedule;
+	
 	private List<FeedCustomAttribute> customAttributes;
 
     private static final List<BulkMapping<BulkFeed>> MAPPINGS;
@@ -150,6 +152,21 @@ public class BulkFeed extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkFeed, String>(StringTable.Schedule,
+                new Function<BulkFeed, String>() {
+                    @Override
+                    public String apply(BulkFeed t) {
+                        return t.getSchedule();
+                    }
+                },
+                new BiConsumer<String, BulkFeed>() {
+                    @Override
+                    public void accept(String v, BulkFeed c) {
+                        c.setSchedule(v);
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
@@ -216,7 +233,16 @@ public class BulkFeed extends SingleRecordBulkEntity {
     public void setCustomAttributes(List<FeedCustomAttribute> customAttributes) {
         this.customAttributes = customAttributes;
     }
+    
+    public String getSchedule()
+    {
+    	return schedule;
+    }
 
+    public void setSchedule(String schedule)
+    {
+    	this.schedule = schedule;
+    }
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         MappingHelpers.<BulkFeed>convertToEntity(values, MAPPINGS, this);

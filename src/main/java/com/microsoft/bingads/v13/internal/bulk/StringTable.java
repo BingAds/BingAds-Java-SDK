@@ -97,6 +97,7 @@ public class StringTable {
     public static final String CustomAttributes = "Custom Attributes";
     public static final String TargetAdGroupId = "Target Ad Group Id";
     public static final String TargetCampaignId = "Target Campaign Id";
+    public static final String Schedule = "Schedule";
     
     public static final String PhysicalIntent = "Physical Intent";
 
@@ -690,6 +691,18 @@ public class StringTable {
     public static final String AllowImageAutoRetrieve = "Allow Image Auto Retrieve";
     public static final String BusinessAttributes = "Business Attributes";
 
+    
+    //AdCustomizerAttribute
+    public static final String AdCustomizerAttribute = "Adcustomizer Attribute";
+    public static final String AdcustomizerCampaign = "Campaign Adcustomizer Attribute";
+    public static final String AdcustomizerAdGroup = "Adgroup Adcustomizer Attribute";
+    public static final String AdcustomizerKeyword = "Keyword Adcustomizer Attribute";
+    public static final String AdCustomizerDataType = "AdCustomizer DataType";
+    public static final String AdCustomizerAttributeValue = "AdCustomizer AttributeValue";
+    
+    // Campaign Conversion Goal
+    public static final String CampaignConversionGoal = "Campaign Conversion Goal";
+    public static final String GoalId = "Goal Id";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

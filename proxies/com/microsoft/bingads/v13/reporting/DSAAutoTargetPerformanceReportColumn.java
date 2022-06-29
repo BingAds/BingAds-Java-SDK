@@ -68,6 +68,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ConversionsQualified"/>
  *     &lt;enumeration value="AllConversionsQualified"/>
  *     &lt;enumeration value="ViewThroughConversionsQualified"/>
+ *     &lt;enumeration value="AdId"/>
+ *     &lt;enumeration value="ViewThroughRevenue"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -184,7 +186,11 @@ public enum DSAAutoTargetPerformanceReportColumn {
     @XmlEnumValue("AllConversionsQualified")
     ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
     @XmlEnumValue("ViewThroughConversionsQualified")
-    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified");
+    VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified"),
+    @XmlEnumValue("AdId")
+    AD_ID("AdId"),
+    @XmlEnumValue("ViewThroughRevenue")
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
     private final String value;
 
     DSAAutoTargetPerformanceReportColumn(String v) {

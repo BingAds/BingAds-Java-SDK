@@ -56,8 +56,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetBidOpportunitiesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidOpportunities", action = "GetBidOpportunities")
     @WebResult(name = "GetBidOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -97,8 +97,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetBudgetOpportunitiesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBudgetOpportunities", action = "GetBudgetOpportunities")
     @WebResult(name = "GetBudgetOpportunitiesResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -220,8 +220,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetEstimatedPositionByKeywordIdsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetEstimatedPositionByKeywordIds", action = "GetEstimatedPositionByKeywordIds")
     @WebResult(name = "GetEstimatedPositionByKeywordIdsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -343,8 +343,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetBidLandscapeByAdGroupIdsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetBidLandscapeByAdGroupIds", action = "GetBidLandscapeByAdGroupIds")
     @WebResult(name = "GetBidLandscapeByAdGroupIdsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -425,8 +425,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetHistoricalKeywordPerformanceResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetHistoricalKeywordPerformance", action = "GetHistoricalKeywordPerformance")
     @WebResult(name = "GetHistoricalKeywordPerformanceResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -589,8 +589,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetKeywordLocationsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordLocations", action = "GetKeywordLocations")
     @WebResult(name = "GetKeywordLocationsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -671,8 +671,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.SuggestKeywordsFromExistingKeywordsResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "SuggestKeywordsFromExistingKeywords", action = "SuggestKeywordsFromExistingKeywords")
     @WebResult(name = "SuggestKeywordsFromExistingKeywordsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -712,8 +712,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetAuctionInsightDataResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetAuctionInsightData", action = "GetAuctionInsightData")
     @WebResult(name = "GetAuctionInsightDataResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -753,8 +753,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetDomainCategoriesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetDomainCategories", action = "GetDomainCategories")
     @WebResult(name = "GetDomainCategoriesResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -794,8 +794,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.PutMetricDataResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "PutMetricData", action = "PutMetricData")
     @WebResult(name = "PutMetricDataResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -835,8 +835,8 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetKeywordIdeaCategoriesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordIdeaCategories", action = "GetKeywordIdeaCategories")
     @WebResult(name = "GetKeywordIdeaCategoriesResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
@@ -917,14 +917,137 @@ public interface IAdInsightService {
      * @param parameters
      * @return
      *     returns com.microsoft.bingads.v13.adinsight.GetKeywordTrafficEstimatesResponse
-     * @throws AdApiFaultDetail_Exception
      * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
      */
     @WebMethod(operationName = "GetKeywordTrafficEstimates", action = "GetKeywordTrafficEstimates")
     @WebResult(name = "GetKeywordTrafficEstimatesResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
     public GetKeywordTrafficEstimatesResponse getKeywordTrafficEstimates(
         @WebParam(name = "GetKeywordTrafficEstimatesRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
         GetKeywordTrafficEstimatesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetAutoApplyOptInStatusResponse>
+     */
+    @WebMethod(operationName = "GetAutoApplyOptInStatus", action = "GetAutoApplyOptInStatus")
+    public Response<GetAutoApplyOptInStatusResponse> getAutoApplyOptInStatusAsync(
+        @WebParam(name = "GetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAutoApplyOptInStatusRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAutoApplyOptInStatus", action = "GetAutoApplyOptInStatus")
+    public Future<?> getAutoApplyOptInStatusAsync(
+        @WebParam(name = "GetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAutoApplyOptInStatusRequest parameters,
+        @WebParam(name = "GetAutoApplyOptInStatusResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAutoApplyOptInStatusResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.GetAutoApplyOptInStatusResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetAutoApplyOptInStatus", action = "GetAutoApplyOptInStatus")
+    @WebResult(name = "GetAutoApplyOptInStatusResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public GetAutoApplyOptInStatusResponse getAutoApplyOptInStatus(
+        @WebParam(name = "GetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAutoApplyOptInStatusRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.adinsight.SetAutoApplyOptInStatusResponse>
+     */
+    @WebMethod(operationName = "SetAutoApplyOptInStatus", action = "SetAutoApplyOptInStatus")
+    public Response<SetAutoApplyOptInStatusResponse> setAutoApplyOptInStatusAsync(
+        @WebParam(name = "SetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        SetAutoApplyOptInStatusRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "SetAutoApplyOptInStatus", action = "SetAutoApplyOptInStatus")
+    public Future<?> setAutoApplyOptInStatusAsync(
+        @WebParam(name = "SetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        SetAutoApplyOptInStatusRequest parameters,
+        @WebParam(name = "SetAutoApplyOptInStatusResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<SetAutoApplyOptInStatusResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.SetAutoApplyOptInStatusResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "SetAutoApplyOptInStatus", action = "SetAutoApplyOptInStatus")
+    @WebResult(name = "SetAutoApplyOptInStatusResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public SetAutoApplyOptInStatusResponse setAutoApplyOptInStatus(
+        @WebParam(name = "SetAutoApplyOptInStatusRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        SetAutoApplyOptInStatusRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetPerformanceInsightsDetailDataByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetPerformanceInsightsDetailDataByAccountId", action = "GetPerformanceInsightsDetailDataByAccountId")
+    public Response<GetPerformanceInsightsDetailDataByAccountIdResponse> getPerformanceInsightsDetailDataByAccountIdAsync(
+        @WebParam(name = "GetPerformanceInsightsDetailDataByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetPerformanceInsightsDetailDataByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetPerformanceInsightsDetailDataByAccountId", action = "GetPerformanceInsightsDetailDataByAccountId")
+    public Future<?> getPerformanceInsightsDetailDataByAccountIdAsync(
+        @WebParam(name = "GetPerformanceInsightsDetailDataByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetPerformanceInsightsDetailDataByAccountIdRequest parameters,
+        @WebParam(name = "GetPerformanceInsightsDetailDataByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetPerformanceInsightsDetailDataByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.GetPerformanceInsightsDetailDataByAccountIdResponse
+     * @throws ApiFaultDetail_Exception
+     * @throws AdApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetPerformanceInsightsDetailDataByAccountId", action = "GetPerformanceInsightsDetailDataByAccountId")
+    @WebResult(name = "GetPerformanceInsightsDetailDataByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public GetPerformanceInsightsDetailDataByAccountIdResponse getPerformanceInsightsDetailDataByAccountId(
+        @WebParam(name = "GetPerformanceInsightsDetailDataByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetPerformanceInsightsDetailDataByAccountIdRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

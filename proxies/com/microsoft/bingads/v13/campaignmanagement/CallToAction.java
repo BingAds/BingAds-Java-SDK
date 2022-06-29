@@ -94,6 +94,15 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Buy"/>
  *     &lt;enumeration value="OpenLink"/>
  *     &lt;enumeration value="RegisterNow"/>
+ *     &lt;enumeration value="BuildNow"/>
+ *     &lt;enumeration value="Dealers"/>
+ *     &lt;enumeration value="GetDemo"/>
+ *     &lt;enumeration value="GetNow"/>
+ *     &lt;enumeration value="GoToDemo"/>
+ *     &lt;enumeration value="SeeDemo"/>
+ *     &lt;enumeration value="SeeModels"/>
+ *     &lt;enumeration value="SeeOffers"/>
+ *     &lt;enumeration value="ViewDemo"/>
  *     &lt;enumeration value="Automated"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -264,6 +273,24 @@ public enum CallToAction {
     OPEN_LINK("OpenLink"),
     @XmlEnumValue("RegisterNow")
     REGISTER_NOW("RegisterNow"),
+    @XmlEnumValue("BuildNow")
+    BUILD_NOW("BuildNow"),
+    @XmlEnumValue("Dealers")
+    DEALERS("Dealers"),
+    @XmlEnumValue("GetDemo")
+    GET_DEMO("GetDemo"),
+    @XmlEnumValue("GetNow")
+    GET_NOW("GetNow"),
+    @XmlEnumValue("GoToDemo")
+    GO_TO_DEMO("GoToDemo"),
+    @XmlEnumValue("SeeDemo")
+    SEE_DEMO("SeeDemo"),
+    @XmlEnumValue("SeeModels")
+    SEE_MODELS("SeeModels"),
+    @XmlEnumValue("SeeOffers")
+    SEE_OFFERS("SeeOffers"),
+    @XmlEnumValue("ViewDemo")
+    VIEW_DEMO("ViewDemo"),
     @XmlEnumValue("Automated")
     AUTOMATED("Automated");
     private final String value;

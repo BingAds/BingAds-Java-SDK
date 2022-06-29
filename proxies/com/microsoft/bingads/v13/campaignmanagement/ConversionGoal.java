@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="AttributionModelType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AttributionModelType" minOccurs="0"/>
  *         &lt;element name="ConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="CountType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCountType" minOccurs="0"/>
  *         &lt;element name="ExcludeFromBidding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -44,6 +45,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConversionGoal", propOrder = {
+    "attributionModelType",
     "conversionWindowInMinutes",
     "countType",
     "excludeFromBidding",
@@ -69,6 +71,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class ConversionGoal {
 
+    @XmlElement(name = "AttributionModelType", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AttributionModelType attributionModelType;
     @XmlElement(name = "ConversionWindowInMinutes", nillable = true)
     protected Integer conversionWindowInMinutes;
     @XmlElement(name = "CountType", nillable = true)
@@ -101,6 +106,30 @@ public class ConversionGoal {
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;
+
+    /**
+     * Gets the value of the attributionModelType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AttributionModelType }
+     *     
+     */
+    public AttributionModelType getAttributionModelType() {
+        return attributionModelType;
+    }
+
+    /**
+     * Sets the value of the attributionModelType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AttributionModelType }
+     *     
+     */
+    public void setAttributionModelType(AttributionModelType value) {
+        this.attributionModelType = value;
+    }
 
     /**
      * Gets the value of the conversionWindowInMinutes property.
