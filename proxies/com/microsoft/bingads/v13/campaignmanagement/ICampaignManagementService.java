@@ -5028,4 +5028,86 @@ public interface ICampaignManagementService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddCampaignConversionGoalsResponse>
+     */
+    @WebMethod(operationName = "AddCampaignConversionGoals", action = "AddCampaignConversionGoals")
+    public Response<AddCampaignConversionGoalsResponse> addCampaignConversionGoalsAsync(
+        @WebParam(name = "AddCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddCampaignConversionGoalsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddCampaignConversionGoals", action = "AddCampaignConversionGoals")
+    public Future<?> addCampaignConversionGoalsAsync(
+        @WebParam(name = "AddCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddCampaignConversionGoalsRequest parameters,
+        @WebParam(name = "AddCampaignConversionGoalsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddCampaignConversionGoalsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddCampaignConversionGoalsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddCampaignConversionGoals", action = "AddCampaignConversionGoals")
+    @WebResult(name = "AddCampaignConversionGoalsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddCampaignConversionGoalsResponse addCampaignConversionGoals(
+        @WebParam(name = "AddCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddCampaignConversionGoalsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteCampaignConversionGoalsResponse>
+     */
+    @WebMethod(operationName = "DeleteCampaignConversionGoals", action = "DeleteCampaignConversionGoals")
+    public Response<DeleteCampaignConversionGoalsResponse> deleteCampaignConversionGoalsAsync(
+        @WebParam(name = "DeleteCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteCampaignConversionGoalsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteCampaignConversionGoals", action = "DeleteCampaignConversionGoals")
+    public Future<?> deleteCampaignConversionGoalsAsync(
+        @WebParam(name = "DeleteCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteCampaignConversionGoalsRequest parameters,
+        @WebParam(name = "DeleteCampaignConversionGoalsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteCampaignConversionGoalsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteCampaignConversionGoalsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteCampaignConversionGoals", action = "DeleteCampaignConversionGoals")
+    @WebResult(name = "DeleteCampaignConversionGoalsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteCampaignConversionGoalsResponse deleteCampaignConversionGoals(
+        @WebParam(name = "DeleteCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteCampaignConversionGoalsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

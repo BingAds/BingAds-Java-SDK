@@ -79,6 +79,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *     &lt;enumeration value="Neighborhood"/>
  *     &lt;enumeration value="QueryIntentNeighborhood"/>
+ *     &lt;enumeration value="ViewThroughRevenue"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -217,7 +218,9 @@ public enum UserLocationPerformanceReportColumn {
     @XmlEnumValue("Neighborhood")
     NEIGHBORHOOD("Neighborhood"),
     @XmlEnumValue("QueryIntentNeighborhood")
-    QUERY_INTENT_NEIGHBORHOOD("QueryIntentNeighborhood");
+    QUERY_INTENT_NEIGHBORHOOD("QueryIntentNeighborhood"),
+    @XmlEnumValue("ViewThroughRevenue")
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
     private final String value;
 
     UserLocationPerformanceReportColumn(String v) {

@@ -437,6 +437,14 @@ public class CsvHeaders {
             StringTable.PhysicalIntent,
             StringTable.TargetAdGroupId,
             StringTable.TargetCampaignId,
+            StringTable.Schedule,
+            
+            // Campaign Conversion Goal
+            StringTable.GoalId,
+            
+            //RSA AdCustomizer
+            StringTable.AdCustomizerDataType,
+            StringTable.AdCustomizerAttributeValue,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

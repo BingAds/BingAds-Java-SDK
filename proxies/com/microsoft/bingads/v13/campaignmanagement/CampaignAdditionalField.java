@@ -15,7 +15,8 @@ public enum CampaignAdditionalField {
     MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment"),
     VERIFIED_TRACKING_SETTING("VerifiedTrackingSetting"),
     DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting"),
-    DISCLAIMER_SETTING("DisclaimerSetting");
+    DISCLAIMER_SETTING("DisclaimerSetting"),
+    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal");
         
     private final String value;
 

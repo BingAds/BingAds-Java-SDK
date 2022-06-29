@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="ExperimentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         &lt;element name="GoalIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -58,6 +59,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "experimentId",
     "finalUrlSuffix",
     "forwardCompatibilityMap",
+    "goalIds",
     "id",
     "multimediaAdsBidAdjustment",
     "name",
@@ -90,6 +92,8 @@ public class Campaign {
     protected String finalUrlSuffix;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
+    @XmlElement(name = "GoalIds", nillable = true)
+    protected ArrayOflong goalIds;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
@@ -287,6 +291,30 @@ public class Campaign {
      */
     public void setForwardCompatibilityMap(ArrayOfKeyValuePairOfstringstring value) {
         this.forwardCompatibilityMap = value;
+    }
+
+    /**
+     * Gets the value of the goalIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getGoalIds() {
+        return goalIds;
+    }
+
+    /**
+     * Sets the value of the goalIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setGoalIds(ArrayOflong value) {
+        this.goalIds = value;
     }
 
     /**

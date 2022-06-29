@@ -1022,6 +1022,38 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
         
+        m.put(StringTable.AdCustomizerAttribute, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdCustomizerAttribute();
+            }
+        }));
+        m.put(StringTable.AdcustomizerCampaign, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignAdCustomizerAttribute();
+            }
+        }));
+        m.put(StringTable.AdcustomizerAdGroup, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupAdCustomizerAttribute();
+            }
+        }));
+        m.put(StringTable.AdcustomizerKeyword, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkKeywordAdCustomizerAttribute();
+            }
+        }));
+
+        m.put(StringTable.CampaignConversionGoal, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignConversionGoal();
+            }
+        }));
+        
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

@@ -77,6 +77,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AllConversionsQualified"/>
  *     &lt;enumeration value="ViewThroughConversionsQualified"/>
  *     &lt;enumeration value="Neighborhood"/>
+ *     &lt;enumeration value="ViewThroughRevenue"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -211,7 +212,9 @@ public enum GeographicPerformanceReportColumn {
     @XmlEnumValue("ViewThroughConversionsQualified")
     VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified"),
     @XmlEnumValue("Neighborhood")
-    NEIGHBORHOOD("Neighborhood");
+    NEIGHBORHOOD("Neighborhood"),
+    @XmlEnumValue("ViewThroughRevenue")
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
     private final String value;
 
     GeographicPerformanceReportColumn(String v) {

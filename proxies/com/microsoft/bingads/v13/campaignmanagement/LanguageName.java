@@ -49,6 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="Macedonian"/>
  *     &lt;enumeration value="Icelandic"/>
  *     &lt;enumeration value="Japanese"/>
+ *     &lt;enumeration value="Hebrew"/>
+ *     &lt;enumeration value="Russian"/>
  *     &lt;enumeration value="All"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -129,6 +131,10 @@ public enum LanguageName {
     ICELANDIC("Icelandic"),
     @XmlEnumValue("Japanese")
     JAPANESE("Japanese"),
+    @XmlEnumValue("Hebrew")
+    HEBREW("Hebrew"),
+    @XmlEnumValue("Russian")
+    RUSSIAN("Russian"),
     @XmlEnumValue("All")
     ALL("All");
     private final String value;

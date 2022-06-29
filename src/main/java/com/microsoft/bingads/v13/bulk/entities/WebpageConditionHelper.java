@@ -16,9 +16,15 @@ class WebpageConditionHelper {
     public static void addRowValuesFromConditions(ArrayOfWebpageCondition arrayOfWebpageCondition, RowValues rowValues) {
         List<WebpageCondition> conditions = arrayOfWebpageCondition.getWebpageConditions();
         for (int i = 1; i <= conditions.size(); i++) {
-            rowValues.put(StringTable.DynamicAdTargetConditionColumnPrefix + i, conditions.get(i - 1).getOperand().value());
             rowValues.put(StringTable.DynamicAdTargetValueColumnPrefix + i, conditions.get(i - 1).getArgument());
-            rowValues.put(StringTable.DynamicAdTargetConditionOperatorPrefix + i, conditions.get(i - 1).getOperator().value());
+            if (conditions.get(i - 1).getOperand() != null)
+            {
+			    rowValues.put(StringTable.DynamicAdTargetConditionColumnPrefix + i, conditions.get(i - 1).getOperand().value());
+			}
+            if (conditions.get(i - 1).getOperator() != null)
+            {
+                rowValues.put(StringTable.DynamicAdTargetConditionOperatorPrefix + i, conditions.get(i - 1).getOperator().value());
+            }
         }
     }
 

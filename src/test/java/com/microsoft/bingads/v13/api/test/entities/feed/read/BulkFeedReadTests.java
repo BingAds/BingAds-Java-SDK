@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkFeedReadFromRowValuesIdTest.class,
     BulkFeedReadFromRowValuesStatusTest.class,
     BulkFeedReadFromRowValuesParentIdTest.class,
+    BulkFeedReadFromRowValuesScheduleTest.class,
     BulkFeedReadFromRowValuesCustomAttributesTest.class})
 public class BulkFeedReadTests {
 
