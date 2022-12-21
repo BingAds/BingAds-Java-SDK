@@ -40,9 +40,11 @@ import javax.xml.bind.annotation.XmlType;
     MaxRoasBiddingScheme.class,
     MaxConversionValueBiddingScheme.class,
     ManualCpcBiddingScheme.class,
+    CommissionBiddingScheme.class,
     InheritFromParentBiddingScheme.class,
     MaxClicksBiddingScheme.class,
     TargetRoasBiddingScheme.class,
+    PercentCpcBiddingScheme.class,
     ManualCpmBiddingScheme.class
 })
 public class BiddingScheme {

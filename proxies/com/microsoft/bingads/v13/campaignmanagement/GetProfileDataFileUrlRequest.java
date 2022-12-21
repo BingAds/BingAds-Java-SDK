@@ -41,7 +41,7 @@ public class GetProfileDataFileUrlRequest {
     @XmlElement(name = "LanguageLocale", nillable = true)
     protected String languageLocale;
     @XmlElement(name = "ProfileType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<ProfileType> profileType;
 
     /**

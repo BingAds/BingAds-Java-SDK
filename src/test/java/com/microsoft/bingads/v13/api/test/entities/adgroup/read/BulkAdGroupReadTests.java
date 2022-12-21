@@ -31,6 +31,10 @@ import org.junit.runners.Suite.SuiteClasses;
 		BulkAdGroupReadFromRowValuesCpvBidTest.class,
 		BulkAdGroupReadFromRowValuesCpmBidTest.class,
 		BulkAdGroupReadFromRowValuesMultiMediaAdBidAdjustmentTest.class,
+		BulkAdGroupReadFromRowValuesCommitionRateTest.class,
+		BulkAdGroupReadFromRowValuesPercentCpcBidTest.class,
+		BulkAdgroupReadFromRowValuesUseOptimizedTargetingTest.class,
+		BulkAdgroupReadFromRowValuesHotelAdGroupTypeTest.class
 })
 public class BulkAdGroupReadTests {
 

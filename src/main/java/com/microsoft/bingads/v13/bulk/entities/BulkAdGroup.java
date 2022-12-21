@@ -20,8 +20,11 @@ import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.BidOption;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.CoOpSetting;
+import com.microsoft.bingads.v13.campaignmanagement.HotelSetting;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.Network;
+import com.microsoft.bingads.v13.campaignmanagement.RateAmount;
+import com.microsoft.bingads.v13.campaignmanagement.RateBid;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
@@ -475,6 +478,111 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.UseOptimizedTargeting,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        return StringExtensions.toBooleanBulkString(c.getAdGroup().getUseOptimizedTargeting());
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        c.getAdGroup().setUseOptimizedTargeting(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                            @Override
+                            public Boolean apply(String value) {
+                                return Boolean.parseBoolean(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.HotelAdGroupType,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        HotelSetting hotelSetting = (HotelSetting)c.getSetting(HotelSetting.class);
+                        return StringExtensions.toBulkString(hotelSetting);
+                     }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+
+                        HotelSetting hotelSetting = StringExtensions.parseHotelSetting(v);
+                        if (hotelSetting != null) {
+                            c.addAdGroupSetting(hotelSetting);
+                        }
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.CommissionRate,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        RateBid rateBid = c.getAdGroup().getCommissionRate();
+                        if (rateBid != null) {
+                            RateAmount rateAmount = rateBid.getRateAmount();
+                            if (rateAmount != null) {
+                                return StringExtensions.toBulkString(rateAmount.getAmount());
+                            }
+                        }
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        
+                        Double d = StringExtensions.nullOrDouble(v);
+                        if (d != null) {
+                            RateAmount rateAmount = new RateAmount();
+                            rateAmount.setAmount(d);
+                            
+                            RateBid rateBid = new RateBid();
+                            rateBid.setType("RateBid");
+                            rateBid.setRateAmount(rateAmount);
+                            
+                            c.getAdGroup().setCommissionRate(rateBid);
+                        }
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.PercentCpcBid,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        RateBid rateBid = c.getAdGroup().getPercentCpcBid();
+                        if (rateBid != null) {
+                            RateAmount rateAmount = rateBid.getRateAmount();
+                            if (rateAmount != null) {
+                                return StringExtensions.toBulkString(rateAmount.getAmount());
+                            }
+                        }
+                        return null;
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        
+                        Double d = StringExtensions.nullOrDouble(v);
+                        if (d != null) {
+                            RateAmount rateAmount = new RateAmount();
+                            rateAmount.setAmount(d);
+                            
+                            RateBid rateBid = new RateBid();
+                            rateBid.setType("RateBid");
+                            rateBid.setRateAmount(rateAmount);
+                            
+                            c.getAdGroup().setPercentCpcBid(rateBid);
+                        }
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

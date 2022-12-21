@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlType;
     DynamicSearchAdsSetting.class,
     ShoppingSetting.class,
     VerifiedTrackingSetting.class,
-    CoOpSetting.class
+    CoOpSetting.class,
+    ResponsiveSearchAdsSetting.class,
+    HotelSetting.class
 })
 public class Setting {
 

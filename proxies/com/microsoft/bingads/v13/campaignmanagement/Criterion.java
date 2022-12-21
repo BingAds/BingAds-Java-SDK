@@ -33,10 +33,16 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     DayTimeCriterion.class,
+    HotelAdvanceBookingWindowCriterion.class,
     AudienceCriterion.class,
+    HotelDateSelectionTypeCriterion.class,
+    HotelCheckInDayCriterion.class,
     DeviceCriterion.class,
     LocationIntentCriterion.class,
     RadiusCriterion.class,
+    HotelCheckInDateCriterion.class,
+    HotelLengthOfStayCriterion.class,
+    HotelGroup.class,
     ProductScope.class,
     ProfileCriterion.class,
     ProductPartition.class,

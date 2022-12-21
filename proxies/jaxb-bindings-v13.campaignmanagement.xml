@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bindings xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
-  <bindings schemaLocation="https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/CampaignManagementService.svc?xsd=xsd1">
+  <bindings schemaLocation="https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/CampaignManagementService.svc?xsd=xsd1">
     <bindings node="//xs:simpleType[@name='CampaignType']">
       <javaType name="java.util.Collection&lt;CampaignType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToString" />
+    </bindings>
+    <bindings node="//xs:simpleType[@name='HotelAdGroupType']">
+      <javaType name="java.util.Collection&lt;HotelAdGroupType&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupTypeConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupTypeConverter.convertToString" />
     </bindings>
     <bindings node="//xs:simpleType[@name='CampaignAdditionalField']">
       <javaType name="java.util.Collection&lt;CampaignAdditionalField&gt;" parseMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignAdditionalFieldConverter.convertToList" printMethod="com.microsoft.bingads.v13.campaignmanagement.CampaignAdditionalFieldConverter.convertToString" />

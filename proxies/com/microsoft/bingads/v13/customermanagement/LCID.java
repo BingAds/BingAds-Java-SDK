@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="FrenchFrance"/>
  *     &lt;enumeration value="HebrewIsrael"/>
  *     &lt;enumeration value="ItalianItaly"/>
+ *     &lt;enumeration value="JapaneseJapan"/>
  *     &lt;enumeration value="KoreanKorea"/>
  *     &lt;enumeration value="DutchNetherlands"/>
  *     &lt;enumeration value="NorwegianNorway"/>
@@ -123,6 +124,8 @@ public enum LCID {
     HEBREW_ISRAEL("HebrewIsrael"),
     @XmlEnumValue("ItalianItaly")
     ITALIAN_ITALY("ItalianItaly"),
+    @XmlEnumValue("JapaneseJapan")
+    JAPANESE_JAPAN("JapaneseJapan"),
     @XmlEnumValue("KoreanKorea")
     KOREAN_KOREA("KoreanKorea"),
     @XmlEnumValue("DutchNetherlands")

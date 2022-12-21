@@ -9,7 +9,11 @@ public enum AdGroupAdditionalField {
     AD_GROUP_TYPE("AdGroupType"),
     CPV_BID("CpvBid"),
     CPM_BID("CpmBid"),
-    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment");
+    MULTIMEDIA_ADS_BID_ADJUSTMENT("MultimediaAdsBidAdjustment"),
+    COMMISSION_RATE("CommissionRate"),
+    PERCENT_CPC_BID("PercentCpcBid"),
+    MCPA_BID("McpaBid"),
+    USE_OPTIMIZED_TARGETING("UseOptimizedTargeting");
         
     private final String value;
 

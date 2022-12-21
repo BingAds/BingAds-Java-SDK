@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="DynamicSearch"/>
  *     &lt;enumeration value="ResponsiveAd"/>
  *     &lt;enumeration value="ResponsiveSearch"/>
+ *     &lt;enumeration value="Hotel"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -46,7 +47,9 @@ public enum AdType {
     @XmlEnumValue("ResponsiveAd")
     RESPONSIVE_AD("ResponsiveAd"),
     @XmlEnumValue("ResponsiveSearch")
-    RESPONSIVE_SEARCH("ResponsiveSearch");
+    RESPONSIVE_SEARCH("ResponsiveSearch"),
+    @XmlEnumValue("Hotel")
+    HOTEL("Hotel");
     private final String value;
 
     AdType(String v) {

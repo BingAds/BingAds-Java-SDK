@@ -37,6 +37,7 @@ public class ObjectFactory {
     private final static QName _CompetitionSearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CompetitionSearchParameter");
     private final static QName _BroadMatchKeywordOpportunity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "BroadMatchKeywordOpportunity");
     private final static QName _Criterion_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Criterion");
+    private final static QName _TextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "TextAssetSuggestions");
     private final static QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CustomerAccountId");
     private final static QName _Opportunity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Opportunity");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
@@ -56,7 +57,9 @@ public class ObjectFactory {
     private final static QName _AdGroupBidLandscapeInput_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AdGroupBidLandscapeInput");
     private final static QName _PerformanceInsightsMessageParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "PerformanceInsightsMessageParameter");
     private final static QName _ArrayOfAdGroupEstimator_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfAdGroupEstimator");
+    private final static QName _ArrayOfTextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfTextAssetSuggestions");
     private final static QName _HistoricalSearchCountPeriodic_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "HistoricalSearchCountPeriodic");
+    private final static QName _ResponsiveSearchAdsRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ResponsiveSearchAdsRecommendation");
     private final static QName _ArrayOfEntityDetail_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfEntityDetail");
     private final static QName _IdeaTextSearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "IdeaTextSearchParameter");
     private final static QName _ArrayOfKeywordSearchCount_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordSearchCount");
@@ -68,12 +71,14 @@ public class ObjectFactory {
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private final static QName _ArrayOfKeywordDemographic_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordDemographic");
     private final static QName _UrlSearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "UrlSearchParameter");
+    private final static QName _RecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RecommendationInfo");
     private final static QName _KeywordLocationResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordLocationResult");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
     private final static QName _ArrayOfKeywordCategoryResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordCategoryResult");
     private final static QName _AuctionInsightKpi_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AuctionInsightKpi");
     private final static QName _ArrayOfKeywordIdea_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordIdea");
+    private final static QName _RSARecommendationInfo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V13.Entity", "RSARecommendationInfo");
     private final static QName _LanguageCriterion_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "LanguageCriterion");
     private final static QName _KeywordOpportunity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordOpportunity");
     private final static QName _AuctionInsightResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AuctionInsightResult");
@@ -113,6 +118,7 @@ public class ObjectFactory {
     private final static QName _EntityParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "EntityParameter");
     private final static QName _ArrayOfBudgetPoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfBudgetPoint");
     private final static QName _KeywordAndConfidence_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordAndConfidence");
+    private final static QName _SuggestedResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SuggestedResponsiveSearchAd");
     private final static QName _TrackingId_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "TrackingId");
     private final static QName _PerformanceInsightsMessageTemplateId_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "PerformanceInsightsMessageTemplateId");
     private final static QName _KeywordCategoryResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordCategoryResult");
@@ -204,6 +210,8 @@ public class ObjectFactory {
     private final static QName _LocationSearchParameter_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "LocationSearchParameter");
     private final static QName _KeywordDemographicResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordDemographicResult");
     private final static QName _ArrayOfKeywordSuggestion_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordSuggestion");
+    private final static QName _ArrayOfRecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRecommendationInfo");
+    private final static QName _ArrayOfRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRecommendation");
     private final static QName _DayMonthAndYear_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DayMonthAndYear");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _ArrayOfEstimatedBidAndTraffic_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfEstimatedBidAndTraffic");
@@ -219,6 +227,7 @@ public class ObjectFactory {
     private final static QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private final static QName _KeywordOpportunityType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordOpportunityType");
     private final static QName _KeywordHistoricalPerformance_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordHistoricalPerformance");
+    private final static QName _Recommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Recommendation");
     private final static QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private final static QName _BidLandscapePoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "BidLandscapePoint");
     private final static QName _KeywordCategory_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordCategory");
@@ -529,6 +538,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SuggestedResponsiveSearchAd }
+     * 
+     */
+    public SuggestedResponsiveSearchAd createSuggestedResponsiveSearchAd() {
+        return new SuggestedResponsiveSearchAd();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfBudgetPoint }
      * 
      */
@@ -801,6 +818,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetRecommendationsResponse }
+     * 
+     */
+    public GetRecommendationsResponse createGetRecommendationsResponse() {
+        return new GetRecommendationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRecommendation }
+     * 
+     */
+    public ArrayOfRecommendation createArrayOfRecommendation() {
+        return new ArrayOfRecommendation();
+    }
+
+    /**
      * Create an instance of {@link NetworkCriterion }
      * 
      */
@@ -822,6 +855,14 @@ public class ObjectFactory {
      */
     public ArrayOfKeyword createArrayOfKeyword() {
         return new ArrayOfKeyword();
+    }
+
+    /**
+     * Create an instance of {@link ResponsiveSearchAdsRecommendation }
+     * 
+     */
+    public ResponsiveSearchAdsRecommendation createResponsiveSearchAdsRecommendation() {
+        return new ResponsiveSearchAdsRecommendation();
     }
 
     /**
@@ -862,6 +903,14 @@ public class ObjectFactory {
      */
     public PerformanceInsightsMessageParameter createPerformanceInsightsMessageParameter() {
         return new PerformanceInsightsMessageParameter();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTextAssetSuggestions }
+     * 
+     */
+    public ArrayOfTextAssetSuggestions createArrayOfTextAssetSuggestions() {
+        return new ArrayOfTextAssetSuggestions();
     }
 
     /**
@@ -945,6 +994,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetTextAssetSuggestionsByFinalUrlsResponse }
+     * 
+     */
+    public GetTextAssetSuggestionsByFinalUrlsResponse createGetTextAssetSuggestionsByFinalUrlsResponse() {
+        return new GetTextAssetSuggestionsByFinalUrlsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBatchError }
+     * 
+     */
+    public ArrayOfBatchError createArrayOfBatchError() {
+        return new ArrayOfBatchError();
+    }
+
+    /**
      * Create an instance of {@link GetEstimatedPositionByKeywordsRequest }
      * 
      */
@@ -974,6 +1039,14 @@ public class ObjectFactory {
      */
     public UrlSearchParameter createUrlSearchParameter() {
         return new UrlSearchParameter();
+    }
+
+    /**
+     * Create an instance of {@link RecommendationInfo }
+     * 
+     */
+    public RecommendationInfo createRecommendationInfo() {
+        return new RecommendationInfo();
     }
 
     /**
@@ -1017,6 +1090,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TagRecommendationsRequest }
+     * 
+     */
+    public TagRecommendationsRequest createTagRecommendationsRequest() {
+        return new TagRecommendationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRecommendationInfo }
+     * 
+     */
+    public ArrayOfRecommendationInfo createArrayOfRecommendationInfo() {
+        return new ArrayOfRecommendationInfo();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfAuctionInsightEntry }
      * 
      */
@@ -1054,6 +1143,14 @@ public class ObjectFactory {
      */
     public QuerySearchParameter createQuerySearchParameter() {
         return new QuerySearchParameter();
+    }
+
+    /**
+     * Create an instance of {@link TextAssetSuggestions }
+     * 
+     */
+    public TextAssetSuggestions createTextAssetSuggestions() {
+        return new TextAssetSuggestions();
     }
 
     /**
@@ -1158,6 +1255,14 @@ public class ObjectFactory {
      */
     public GetBidLandscapeByAdGroupIdsResponse createGetBidLandscapeByAdGroupIdsResponse() {
         return new GetBidLandscapeByAdGroupIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link TagRecommendationsResponse }
+     * 
+     */
+    public TagRecommendationsResponse createTagRecommendationsResponse() {
+        return new TagRecommendationsResponse();
     }
 
     /**
@@ -1281,6 +1386,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetTextAssetSuggestionsByFinalUrlsRequest }
+     * 
+     */
+    public GetTextAssetSuggestionsByFinalUrlsRequest createGetTextAssetSuggestionsByFinalUrlsRequest() {
+        return new GetTextAssetSuggestionsByFinalUrlsRequest();
+    }
+
+    /**
      * Create an instance of {@link KeywordCategory }
      * 
      */
@@ -1294,6 +1407,14 @@ public class ObjectFactory {
      */
     public GetKeywordIdeaCategoriesRequest createGetKeywordIdeaCategoriesRequest() {
         return new GetKeywordIdeaCategoriesRequest();
+    }
+
+    /**
+     * Create an instance of {@link Recommendation }
+     * 
+     */
+    public Recommendation createRecommendation() {
+        return new Recommendation();
     }
 
     /**
@@ -1641,11 +1762,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfBatchError }
+     * Create an instance of {@link GetRecommendationsRequest }
      * 
      */
-    public ArrayOfBatchError createArrayOfBatchError() {
-        return new ArrayOfBatchError();
+    public GetRecommendationsRequest createGetRecommendationsRequest() {
+        return new GetRecommendationsRequest();
     }
 
     /**
@@ -1913,6 +2034,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RSARecommendationInfo }
+     * 
+     */
+    public RSARecommendationInfo createRSARecommendationInfo() {
+        return new RSARecommendationInfo();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link QuerySearchParameter }{@code >}}
      * 
      */
@@ -1991,6 +2120,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Criterion")
     public JAXBElement<Criterion> createCriterion(Criterion value) {
         return new JAXBElement<Criterion>(_Criterion_QNAME, Criterion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TextAssetSuggestions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "TextAssetSuggestions")
+    public JAXBElement<TextAssetSuggestions> createTextAssetSuggestions(TextAssetSuggestions value) {
+        return new JAXBElement<TextAssetSuggestions>(_TextAssetSuggestions_QNAME, TextAssetSuggestions.class, null, value);
     }
 
     /**
@@ -2165,12 +2303,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTextAssetSuggestions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfTextAssetSuggestions")
+    public JAXBElement<ArrayOfTextAssetSuggestions> createArrayOfTextAssetSuggestions(ArrayOfTextAssetSuggestions value) {
+        return new JAXBElement<ArrayOfTextAssetSuggestions>(_ArrayOfTextAssetSuggestions_QNAME, ArrayOfTextAssetSuggestions.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HistoricalSearchCountPeriodic }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "HistoricalSearchCountPeriodic")
     public JAXBElement<HistoricalSearchCountPeriodic> createHistoricalSearchCountPeriodic(HistoricalSearchCountPeriodic value) {
         return new JAXBElement<HistoricalSearchCountPeriodic>(_HistoricalSearchCountPeriodic_QNAME, HistoricalSearchCountPeriodic.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdsRecommendation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ResponsiveSearchAdsRecommendation")
+    public JAXBElement<ResponsiveSearchAdsRecommendation> createResponsiveSearchAdsRecommendation(ResponsiveSearchAdsRecommendation value) {
+        return new JAXBElement<ResponsiveSearchAdsRecommendation>(_ResponsiveSearchAdsRecommendation_QNAME, ResponsiveSearchAdsRecommendation.class, null, value);
     }
 
     /**
@@ -2273,6 +2429,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RecommendationInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RecommendationInfo")
+    public JAXBElement<RecommendationInfo> createRecommendationInfo(RecommendationInfo value) {
+        return new JAXBElement<RecommendationInfo>(_RecommendationInfo_QNAME, RecommendationInfo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link KeywordLocationResult }{@code >}}
      * 
      */
@@ -2324,6 +2489,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfKeywordIdea")
     public JAXBElement<ArrayOfKeywordIdea> createArrayOfKeywordIdea(ArrayOfKeywordIdea value) {
         return new JAXBElement<ArrayOfKeywordIdea>(_ArrayOfKeywordIdea_QNAME, ArrayOfKeywordIdea.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RSARecommendationInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V13.Entity", name = "RSARecommendationInfo")
+    public JAXBElement<RSARecommendationInfo> createRSARecommendationInfo(RSARecommendationInfo value) {
+        return new JAXBElement<RSARecommendationInfo>(_RSARecommendationInfo_QNAME, RSARecommendationInfo.class, null, value);
     }
 
     /**
@@ -2675,6 +2849,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "KeywordAndConfidence")
     public JAXBElement<KeywordAndConfidence> createKeywordAndConfidence(KeywordAndConfidence value) {
         return new JAXBElement<KeywordAndConfidence>(_KeywordAndConfidence_QNAME, KeywordAndConfidence.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SuggestedResponsiveSearchAd }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SuggestedResponsiveSearchAd")
+    public JAXBElement<SuggestedResponsiveSearchAd> createSuggestedResponsiveSearchAd(SuggestedResponsiveSearchAd value) {
+        return new JAXBElement<SuggestedResponsiveSearchAd>(_SuggestedResponsiveSearchAd_QNAME, SuggestedResponsiveSearchAd.class, null, value);
     }
 
     /**
@@ -3500,6 +3683,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRecommendationInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfRecommendationInfo")
+    public JAXBElement<ArrayOfRecommendationInfo> createArrayOfRecommendationInfo(ArrayOfRecommendationInfo value) {
+        return new JAXBElement<ArrayOfRecommendationInfo>(_ArrayOfRecommendationInfo_QNAME, ArrayOfRecommendationInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRecommendation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfRecommendation")
+    public JAXBElement<ArrayOfRecommendation> createArrayOfRecommendation(ArrayOfRecommendation value) {
+        return new JAXBElement<ArrayOfRecommendation>(_ArrayOfRecommendation_QNAME, ArrayOfRecommendation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DayMonthAndYear }{@code >}}
      * 
      */
@@ -3633,6 +3834,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "KeywordHistoricalPerformance")
     public JAXBElement<KeywordHistoricalPerformance> createKeywordHistoricalPerformance(KeywordHistoricalPerformance value) {
         return new JAXBElement<KeywordHistoricalPerformance>(_KeywordHistoricalPerformance_QNAME, KeywordHistoricalPerformance.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Recommendation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Recommendation")
+    public JAXBElement<Recommendation> createRecommendation(Recommendation value) {
+        return new JAXBElement<Recommendation>(_Recommendation_QNAME, Recommendation.class, null, value);
     }
 
     /**

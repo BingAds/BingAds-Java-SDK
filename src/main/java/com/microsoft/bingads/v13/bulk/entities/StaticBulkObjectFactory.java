@@ -1053,7 +1053,55 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignConversionGoal();
             }
         }));
+
+        m.put(StringTable.OnlineConversionAdjustment, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkOnlineConversionAdjustment();
+            }
+        }));
         
+        m.put(StringTable.HotelListingGroupType, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelListingGroup();
+            }
+        }));
+
+        m.put(StringTable.AdGroupHotelDateSelectionTypeCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelDateSelectionTypeCriterion();
+            }
+        }));
+        
+        m.put(StringTable.AdGroupLengthOfStayCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelLengthOfStayCriterion();
+            }
+        }));
+
+        m.put(StringTable.AdGroupAdvanceBookingWindowCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelAdvanceBookingWindowCriterion();
+            }
+        }));
+
+        m.put(StringTable.AdGroupCheckInDayCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelCheckInDayCriterion();
+            }
+        }));
+        
+        m.put(StringTable.AdGroupCheckInDateCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupHotelCheckInDateCriterion();
+            }
+        }));
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

@@ -36,10 +36,10 @@ import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfDayTime;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItemGroup;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOflong;
-import com.microsoft.bingads.v13.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.AssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.AssetLinkEditorialStatus;
@@ -47,6 +47,7 @@ import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.BusinessGeoCodeStatus;
 import com.microsoft.bingads.v13.campaignmanagement.CombinationRule;
+import com.microsoft.bingads.v13.campaignmanagement.CommissionBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionTypeGroup;
 import com.microsoft.bingads.v13.campaignmanagement.CustomEventsRule;
@@ -57,6 +58,8 @@ import com.microsoft.bingads.v13.campaignmanagement.Day;
 import com.microsoft.bingads.v13.campaignmanagement.DayTime;
 import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupType;
+import com.microsoft.bingads.v13.campaignmanagement.HotelSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.KeyValuePairOfstringstring;
@@ -76,6 +79,7 @@ import com.microsoft.bingads.v13.campaignmanagement.NumberRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoDidNotVisitAnotherPageRule;
 import com.microsoft.bingads.v13.campaignmanagement.PageVisitorsWhoVisitedAnotherPageRule;
+import com.microsoft.bingads.v13.campaignmanagement.PercentCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ProductAudienceType;
 import com.microsoft.bingads.v13.campaignmanagement.RemarketingRule;
 import com.microsoft.bingads.v13.campaignmanagement.RuleItem;
@@ -977,6 +981,12 @@ public class StringExtensions {
         } else if (s.equals("MaxRoas")) {
             biddingScheme = new MaxRoasBiddingScheme();
             biddingScheme.setType("MaxRoas");
+        } else if (s.equals("PercentCpc")) {
+            biddingScheme = new PercentCpcBiddingScheme();
+            biddingScheme.setType("PercentCpc");
+        } else if (s.equals("Commission")) {
+            biddingScheme = new CommissionBiddingScheme();
+            biddingScheme.setType("Commission");
         } else {
     		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
     	}
@@ -1012,6 +1022,10 @@ public class StringExtensions {
             return "TargetImpressionShare";
         } else if (biddingScheme instanceof MaxRoasBiddingScheme  ) {
             return "MaxRoas";
+        } else if (biddingScheme instanceof PercentCpcBiddingScheme  ) {
+            return "PercentCpc";
+        } else if (biddingScheme instanceof CommissionBiddingScheme  ) {
+            return "Commission";
         } else {
     		throw new IllegalArgumentException("Unknown bidding scheme");
     	}
@@ -1699,6 +1713,41 @@ public class StringExtensions {
     	}
     }
     
+    public static String toBulkString(HotelSetting hotelSetting) {
+        if (hotelSetting == null) {
+            return null;
+        }
+        
+        Collection<HotelAdGroupType> hotelAdGroupTypes = hotelSetting.getHotelAdGroupType();
+        
+        if (hotelAdGroupTypes == null ||hotelAdGroupTypes.isEmpty()) {
+            return null;
+        }        
+        
+        return String.join(",", 
+                hotelAdGroupTypes.stream()
+                .map(e -> e.value())
+                .toArray(CharSequence[]::new));
+    }
+    
+    public static HotelSetting parseHotelSetting(String value) {        
+        if (value != null) {
+            String[] values = value.trim().replace('|', ',').split(",");
+            if (values != null && values.length > 0) {
+                List<HotelAdGroupType> hotelAdGroupTypes = Arrays.stream(values).filter(v -> v.isEmpty() == false).map(v -> HotelAdGroupType.fromValue(v))
+                        .collect(Collectors.toList());
+                if (hotelAdGroupTypes.isEmpty() == false) {
+                    HotelSetting setting = new HotelSetting();
+                    setting.setHotelAdGroupType(hotelAdGroupTypes);
+                    setting.setType("HotelSetting");
+                    return setting;
+                }
+            }
+        }
+        
+        return null;
+    }
+    
     public static String toBulkString(TargetSetting targetSetting) {
         if (targetSetting == null) {
             return null;
@@ -2137,6 +2186,10 @@ public class StringExtensions {
             else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
                 Bid maxCpc = ((MaxConversionsBiddingScheme)biddingScheme).getMaxCpc();
                 values.put(StringTable.BidStrategyMaxCpc, StringExtensions.toBidBulkString(maxCpc, entityId));
+                Double targetCpa = ((MaxConversionsBiddingScheme)biddingScheme).getTargetCpa();
+                if (targetCpa != null) {
+                    values.put(StringTable.BidStrategyTargetCpa, targetCpa.toString());
+                }
             }
             else if (biddingScheme instanceof TargetCpaBiddingScheme) {
                 Bid maxCpc = ((TargetCpaBiddingScheme)biddingScheme).getMaxCpc();
@@ -2165,6 +2218,18 @@ public class StringExtensions {
                     values.put(StringTable.BidStrategyTargetAdPosition, StringExtensions.toOptionalBulkString(targetImpressionShareBiddingScheme.getTargetAdPosition(), entityId));
                     values.put(StringTable.BidStrategyTargetImpressionShare, StringExtensions.toBulkString(targetImpressionShareBiddingScheme.getTargetImpressionShare()));
                 }
+            } else if (biddingScheme instanceof PercentCpcBiddingScheme) {
+                PercentCpcBiddingScheme percentCpcBiddingScheme = (PercentCpcBiddingScheme) biddingScheme;
+                if (percentCpcBiddingScheme != null) {
+                    Double maxPercentCpc = percentCpcBiddingScheme.getMaxPercentCpc();
+                    values.put(StringTable.BidStrategyPercentMaxCpc, StringExtensions.toBulkString(maxPercentCpc));
+                }
+            } else if (biddingScheme instanceof CommissionBiddingScheme) {
+                CommissionBiddingScheme commissionBiddingScheme = (CommissionBiddingScheme) biddingScheme;
+                if (commissionBiddingScheme != null) {
+                    Double commissionRate = commissionBiddingScheme.getCommissionRate();
+                    values.put(StringTable.BidStrategyCommissionRate, StringExtensions.toBulkString(commissionRate));
+                }
             }
         
         } catch (Exception e) {
@@ -2186,19 +2251,23 @@ public class StringExtensions {
             String targetRoas = values.get(StringTable.BidStrategyTargetRoas);
             String targetAdPositionValue = values.get(StringTable.BidStrategyTargetAdPosition);
             String targetImpressionShareRowValue = values.get(StringTable.BidStrategyTargetImpressionShare);
+            String commissionRate= values.get(StringTable.BidStrategyCommissionRate);
+            String maxPercentCpc = values.get(StringTable.BidStrategyPercentMaxCpc);
 
 
             Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
             Double targetCpaValue = StringExtensions.nullOrDouble(targetCpaRowValue);
             Double targetRosValue = StringExtensions.nullOrDouble(targetRoas);
             Double targetImpressionShareValue = StringExtensions.nullOrDouble(targetImpressionShareRowValue);
-            
+            Double commissionRateValue = StringExtensions.nullOrDouble(commissionRate);
+            Double maxPercentCpcValue = StringExtensions.nullOrDouble(maxPercentCpc);
             
             if (biddingScheme instanceof MaxClicksBiddingScheme) {
                 ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
             }
             else if (biddingScheme instanceof MaxConversionsBiddingScheme) {
                 ((MaxConversionsBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
+                ((MaxConversionsBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
             } else if (biddingScheme instanceof TargetCpaBiddingScheme) {
                 ((TargetCpaBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                 ((TargetCpaBiddingScheme)biddingScheme).setTargetCpa(targetCpaValue);
@@ -2212,6 +2281,10 @@ public class StringExtensions {
                 ((TargetImpressionShareBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
                 ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetImpressionShare(targetImpressionShareValue);
                 ((TargetImpressionShareBiddingScheme)biddingScheme).setTargetAdPosition(targetAdPositionValue);
+            } else if (biddingScheme instanceof CommissionBiddingScheme) {
+                ((CommissionBiddingScheme)biddingScheme).setCommissionRate(commissionRateValue);
+            } else if (biddingScheme instanceof PercentCpcBiddingScheme) {
+                ((PercentCpcBiddingScheme)biddingScheme).setMaxPercentCpc(maxPercentCpcValue);
             }
             return biddingScheme;
             

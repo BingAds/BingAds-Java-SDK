@@ -13,7 +13,8 @@ public enum ImportAdditionalField {
     AD_SCHEDULE_USE_SEARCHER_TIMEZONE("AdScheduleUseSearcherTimezone"),
     NEW_IMAGE_AD_EXTENSIONS("NewImageAdExtensions"),
     UPDATE_IMAGE_AD_EXTENSIONS("UpdateImageAdExtensions"),
-    SEARCH_AND_REPLACE_FOR_FINAL_U_R_L_SUFFIX("SearchAndReplaceForFinalURLSuffix");
+    SEARCH_AND_REPLACE_FOR_FINAL_U_R_L_SUFFIX("SearchAndReplaceForFinalURLSuffix"),
+    RENAME_CAMPAIGN_NAME_WITH_SUFFIX("RenameCampaignNameWithSuffix");
         
     private final String value;
 

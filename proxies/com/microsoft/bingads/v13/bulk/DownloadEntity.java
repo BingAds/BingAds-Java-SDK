@@ -158,6 +158,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AdGroupAdcustomizerAttribute"/>
  *     &lt;enumeration value="KeywordAdcustomizerAttribute"/>
  *     &lt;enumeration value="CampaignConversionGoal"/>
+ *     &lt;enumeration value="AdGroupHotelListingGroups"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -454,7 +455,9 @@ public enum DownloadEntity {
     @XmlEnumValue("KeywordAdcustomizerAttribute")
     KEYWORD_ADCUSTOMIZER_ATTRIBUTE("KeywordAdcustomizerAttribute"),
     @XmlEnumValue("CampaignConversionGoal")
-    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal");
+    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal"),
+    @XmlEnumValue("AdGroupHotelListingGroups")
+    AD_GROUP_HOTEL_LISTING_GROUPS("AdGroupHotelListingGroups");
     private final String value;
 
     DownloadEntity(String v) {

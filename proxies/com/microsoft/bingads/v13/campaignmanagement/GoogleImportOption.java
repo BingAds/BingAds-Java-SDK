@@ -64,6 +64,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="RaiseBidsToMinimum" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="RaiseCampaignBudgetsToMinimum" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="RaiseProductGroupBidsToMinimum" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="RenameCampaignNameWithSuffix" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="SearchAndDsaMixedCampaignAsSearchCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="SearchAndReplaceForCampaignNames" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
  *         &lt;element name="SearchAndReplaceForCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImportSearchAndReplaceForStringProperty" minOccurs="0"/>
@@ -164,6 +165,7 @@ import javax.xml.bind.annotation.XmlType;
     "raiseBidsToMinimum",
     "raiseCampaignBudgetsToMinimum",
     "raiseProductGroupBidsToMinimum",
+    "renameCampaignNameWithSuffix",
     "searchAndDsaMixedCampaignAsSearchCampaign",
     "searchAndReplaceForCampaignNames",
     "searchAndReplaceForCustomParameters",
@@ -306,6 +308,8 @@ public class GoogleImportOption
     protected Boolean raiseCampaignBudgetsToMinimum;
     @XmlElement(name = "RaiseProductGroupBidsToMinimum", nillable = true)
     protected Boolean raiseProductGroupBidsToMinimum;
+    @XmlElement(name = "RenameCampaignNameWithSuffix", nillable = true)
+    protected Boolean renameCampaignNameWithSuffix;
     @XmlElement(name = "SearchAndDsaMixedCampaignAsSearchCampaign", nillable = true)
     protected Boolean searchAndDsaMixedCampaignAsSearchCampaign;
     @XmlElement(name = "SearchAndReplaceForCampaignNames", nillable = true)
@@ -1519,6 +1523,30 @@ public class GoogleImportOption
      */
     public void setRaiseProductGroupBidsToMinimum(Boolean value) {
         this.raiseProductGroupBidsToMinimum = value;
+    }
+
+    /**
+     * Gets the value of the renameCampaignNameWithSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getRenameCampaignNameWithSuffix() {
+        return renameCampaignNameWithSuffix;
+    }
+
+    /**
+     * Sets the value of the renameCampaignNameWithSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setRenameCampaignNameWithSuffix(Boolean value) {
+        this.renameCampaignNameWithSuffix = value;
     }
 
     /**
