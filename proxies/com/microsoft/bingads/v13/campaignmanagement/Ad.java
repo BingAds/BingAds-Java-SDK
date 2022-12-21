@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     "urlCustomParameters"
 })
 @XmlSeeAlso({
+    HotelAd.class,
     DynamicSearchAd.class,
     ProductAd.class,
     ResponsiveAd.class,

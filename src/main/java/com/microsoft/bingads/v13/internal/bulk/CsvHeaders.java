@@ -25,6 +25,7 @@ public class CsvHeaders {
             StringTable.ClientId,
             StringTable.LastModifiedTime,
             StringTable.MultiMediaAdBidAdjustment,
+            StringTable.UseOptimizedTargeting,
 
             // campaign
             StringTable.TimeZone,
@@ -48,6 +49,12 @@ public class CsvHeaders {
             StringTable.AdGroupType,
             StringTable.CpvBid,
             StringTable.CpmBid,
+            StringTable.HotelAdGroupType,
+            StringTable.CommissionRate,
+            StringTable.PercentCpcBid,
+            
+            // OnlineConversionAdjustment
+            StringTable.TransactionId,
 
             // Ads
             StringTable.Title,
@@ -320,6 +327,8 @@ public class CsvHeaders {
             StringTable.InheritedBidStrategyType,
             StringTable.BidStrategyTargetAdPosition,
             StringTable.BidStrategyTargetImpressionShare,
+            StringTable.BidStrategyCommissionRate,
+            StringTable.BidStrategyPercentMaxCpc,
             
             // Native Preference
             StringTable.AdFormatPreference,
@@ -442,9 +451,15 @@ public class CsvHeaders {
             // Campaign Conversion Goal
             StringTable.GoalId,
             
-            //RSA AdCustomizer
+            // RSA AdCustomizer
             StringTable.AdCustomizerDataType,
             StringTable.AdCustomizerAttributeValue,
+            
+            // Hotel Ad
+            StringTable.MinTargetValue,
+            StringTable.MaxTargetValue,
+            StringTable.HotelAttribute,
+            StringTable.HotelAttributeValue
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     FixedBid.class,
+    RateBid.class,
     BidMultiplier.class
 })
 public class CriterionBid {

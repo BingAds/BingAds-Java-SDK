@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="AdRotation" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRotation" minOccurs="0"/>
  *         &lt;element name="AudienceAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
+ *         &lt;element name="CommissionRate" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
  *         &lt;element name="CpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
  *         &lt;element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -30,12 +31,14 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v13}Network" minOccurs="0"/>
+ *         &lt;element name="PercentCpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
  *         &lt;element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupPrivacyStatus" minOccurs="0"/>
  *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSetting" minOccurs="0"/>
  *         &lt;element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupStatus" minOccurs="0"/>
  *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *         &lt;element name="UseOptimizedTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CpvBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
@@ -53,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
     "adRotation",
     "audienceAdsBidAdjustment",
     "biddingScheme",
+    "commissionRate",
     "cpcBid",
     "endDate",
     "finalUrlSuffix",
@@ -62,12 +66,14 @@ import javax.xml.bind.annotation.XmlType;
     "multimediaAdsBidAdjustment",
     "name",
     "network",
+    "percentCpcBid",
     "privacyStatus",
     "settings",
     "startDate",
     "status",
     "trackingUrlTemplate",
     "urlCustomParameters",
+    "useOptimizedTargeting",
     "adScheduleUseSearcherTimeZone",
     "adGroupType",
     "cpvBid",
@@ -81,6 +87,8 @@ public class AdGroup {
     protected Integer audienceAdsBidAdjustment;
     @XmlElement(name = "BiddingScheme", nillable = true)
     protected BiddingScheme biddingScheme;
+    @XmlElement(name = "CommissionRate", nillable = true)
+    protected RateBid commissionRate;
     @XmlElement(name = "CpcBid", nillable = true)
     protected Bid cpcBid;
     @XmlElement(name = "EndDate", nillable = true)
@@ -100,6 +108,8 @@ public class AdGroup {
     @XmlElement(name = "Network", nillable = true)
     @XmlSchemaType(name = "string")
     protected Network network;
+    @XmlElement(name = "PercentCpcBid", nillable = true)
+    protected RateBid percentCpcBid;
     @XmlElement(name = "PrivacyStatus", nillable = true)
     @XmlSchemaType(name = "string")
     protected AdGroupPrivacyStatus privacyStatus;
@@ -114,6 +124,8 @@ public class AdGroup {
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
+    @XmlElement(name = "UseOptimizedTargeting", nillable = true)
+    protected Boolean useOptimizedTargeting;
     @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
     protected Boolean adScheduleUseSearcherTimeZone;
     @XmlElement(name = "AdGroupType", nillable = true)
@@ -193,6 +205,30 @@ public class AdGroup {
      */
     public void setBiddingScheme(BiddingScheme value) {
         this.biddingScheme = value;
+    }
+
+    /**
+     * Gets the value of the commissionRate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RateBid }
+     *     
+     */
+    public RateBid getCommissionRate() {
+        return commissionRate;
+    }
+
+    /**
+     * Sets the value of the commissionRate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RateBid }
+     *     
+     */
+    public void setCommissionRate(RateBid value) {
+        this.commissionRate = value;
     }
 
     /**
@@ -412,6 +448,30 @@ public class AdGroup {
     }
 
     /**
+     * Gets the value of the percentCpcBid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RateBid }
+     *     
+     */
+    public RateBid getPercentCpcBid() {
+        return percentCpcBid;
+    }
+
+    /**
+     * Sets the value of the percentCpcBid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RateBid }
+     *     
+     */
+    public void setPercentCpcBid(RateBid value) {
+        this.percentCpcBid = value;
+    }
+
+    /**
      * Gets the value of the privacyStatus property.
      * 
      * @return
@@ -553,6 +613,30 @@ public class AdGroup {
      */
     public void setUrlCustomParameters(CustomParameters value) {
         this.urlCustomParameters = value;
+    }
+
+    /**
+     * Gets the value of the useOptimizedTargeting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUseOptimizedTargeting() {
+        return useOptimizedTargeting;
+    }
+
+    /**
+     * Sets the value of the useOptimizedTargeting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUseOptimizedTargeting(Boolean value) {
+        this.useOptimizedTargeting = value;
     }
 
     /**

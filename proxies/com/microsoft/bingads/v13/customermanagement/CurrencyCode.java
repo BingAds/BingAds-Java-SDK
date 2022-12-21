@@ -105,6 +105,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="YUN"/>
  *     &lt;enumeration value="ZAR"/>
  *     &lt;enumeration value="ZWD"/>
+ *     &lt;enumeration value="NGN"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -205,7 +206,8 @@ public enum CurrencyCode {
     VND,
     YUN,
     ZAR,
-    ZWD;
+    ZWD,
+    NGN;
 
     public String value() {
         return name();

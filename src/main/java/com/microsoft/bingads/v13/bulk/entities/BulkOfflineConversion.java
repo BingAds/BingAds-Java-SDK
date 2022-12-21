@@ -26,7 +26,7 @@ import com.microsoft.bingads.v13.internal.bulk.StringTable;
 import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 
 /**
- * Represents a label that can be read or written in a bulk file.
+ * Represents an OfflineConversion that can be read or written in a bulk file.
  *
  * <p>
  *     For more information, see Label at

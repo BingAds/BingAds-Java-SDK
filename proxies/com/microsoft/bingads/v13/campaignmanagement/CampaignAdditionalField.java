@@ -16,7 +16,9 @@ public enum CampaignAdditionalField {
     VERIFIED_TRACKING_SETTING("VerifiedTrackingSetting"),
     DYNAMIC_DESCRIPTION_SETTING("DynamicDescriptionSetting"),
     DISCLAIMER_SETTING("DisclaimerSetting"),
-    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal");
+    CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal"),
+    TARGET_CPA_IN_MAX_CONVERSION("TargetCpaInMaxConversion"),
+    RESPONSIVE_SEARCH_ADS_SETTING("ResponsiveSearchAdsSetting");
         
     private final String value;
 

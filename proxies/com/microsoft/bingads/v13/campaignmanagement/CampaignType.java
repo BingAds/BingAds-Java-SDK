@@ -8,7 +8,8 @@ public enum CampaignType {
     SEARCH("Search"),
     SHOPPING("Shopping"),
     DYNAMIC_SEARCH_ADS("DynamicSearchAds"),
-    AUDIENCE("Audience");
+    AUDIENCE("Audience"),
+    HOTEL("Hotel");
         
     private final String value;
 

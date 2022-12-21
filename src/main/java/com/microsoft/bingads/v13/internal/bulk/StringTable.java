@@ -491,6 +491,8 @@ public class StringTable {
     public static final String BidStrategyTargetRoas = "Bid Strategy TargetRoas";
     public static final String BidStrategyTargetAdPosition = "Bid Strategy TargetAdPosition";
     public static final String BidStrategyTargetImpressionShare = "Bid Strategy TargetImpressionShare";
+    public static final String BidStrategyPercentMaxCpc = "Bid Strategy PercentMaxCpc";
+    public static final String BidStrategyCommissionRate = "Bid Strategy CommissionRate";
 
     // Audience
     public static final String RemarketingList = "Remarketing List";
@@ -703,6 +705,32 @@ public class StringTable {
     // Campaign Conversion Goal
     public static final String CampaignConversionGoal = "Campaign Conversion Goal";
     public static final String GoalId = "Goal Id";
+    
+
+    public static final String HotelAdGroupType = "Hotel Ad Group Type";
+    public static final String CommissionRate = "Commission Rate";
+    public static final String PercentCpcBid = "Percent Cpc Bid";
+    public static final String UseOptimizedTargeting = "Use Optimized Targeting";
+    
+
+    // Online Conversion
+    public static final String OnlineConversionAdjustment = "Online Conversion Adjustment";
+    public static final String TransactionId = "Transaction Id";
+    
+    // Hotel Ad
+
+    public static final String HotelListingGroupType = "Ad Group Hotel Listing Group";
+    public static final String HotelAttribute = "Hotel Attribute";
+    public static final String HotelAttributeValue = "Hotel Attribute Value";
+
+    public static final String AdGroupAdvanceBookingWindowCriterion = "Ad Group Advance Booking Window Criterion";
+    public static final String AdGroupCheckInDayCriterion = "Ad Group Check In Day Criterion";
+    public static final String AdGroupLengthOfStayCriterion = "Ad Group Length of Stay Criterion";
+    public static final String AdGroupHotelDateSelectionTypeCriterion = "Ad Group Hotel Date Selection Type Criterion";
+    public static final String AdGroupCheckInDateCriterion = "Ad Group Check In Date Criterion";
+    
+    public static final String MinTargetValue = "Min Target Value";
+    public static final String MaxTargetValue = "Max Target Value";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

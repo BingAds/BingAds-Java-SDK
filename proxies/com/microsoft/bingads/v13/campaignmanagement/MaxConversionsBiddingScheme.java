@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme">
  *       &lt;sequence>
  *         &lt;element name="MaxCpc" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *         &lt;element name="TargetCpa" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -28,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MaxConversionsBiddingScheme", propOrder = {
-    "maxCpc"
+    "maxCpc",
+    "targetCpa"
 })
 public class MaxConversionsBiddingScheme
     extends BiddingScheme
@@ -36,6 +38,8 @@ public class MaxConversionsBiddingScheme
 
     @XmlElement(name = "MaxCpc", nillable = true)
     protected Bid maxCpc;
+    @XmlElement(name = "TargetCpa", nillable = true)
+    protected Double targetCpa;
 
     /**
      * Gets the value of the maxCpc property.
@@ -59,6 +63,30 @@ public class MaxConversionsBiddingScheme
      */
     public void setMaxCpc(Bid value) {
         this.maxCpc = value;
+    }
+
+    /**
+     * Gets the value of the targetCpa property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public Double getTargetCpa() {
+        return targetCpa;
+    }
+
+    /**
+     * Sets the value of the targetCpa property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setTargetCpa(Double value) {
+        this.targetCpa = value;
     }
 
 }

@@ -45,7 +45,7 @@ public class GetImportJobsByIdsRequest {
     @XmlElement(name = "ImportType", nillable = true)
     protected String importType;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     protected Collection<ImportAdditionalField> returnAdditionalFields;
 
     /**

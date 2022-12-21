@@ -72,6 +72,7 @@ public class ObjectFactory {
     private final static QName _ProfessionalDemographicsAudienceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProfessionalDemographicsAudienceReportColumn");
     private final static QName _ArrayOfAccountPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAccountPerformanceReportColumn");
     private final static QName _ArrayOfProfessionalDemographicsAudienceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfProfessionalDemographicsAudienceReportColumn");
+    private final static QName _HotelGroupPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelGroupPerformanceReportFilter");
     private final static QName _SearchCampaignChangeHistoryReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "SearchCampaignChangeHistoryReportColumn");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private final static QName _BudgetSummaryReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "BudgetSummaryReportColumn");
@@ -84,6 +85,7 @@ public class ObjectFactory {
     private final static QName _AdPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdPerformanceReportFilter");
     private final static QName _UserLocationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "UserLocationPerformanceReportColumn");
     private final static QName _ProductDimensionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductDimensionPerformanceReportColumn");
+    private final static QName _HotelDimensionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelDimensionPerformanceReportColumn");
     private final static QName _ProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionUnitPerformanceReportColumn");
     private final static QName _ShareOfVoiceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ShareOfVoiceReportFilter");
     private final static QName _AccountThroughAdGroupReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AccountThroughAdGroupReportScope");
@@ -108,6 +110,7 @@ public class ObjectFactory {
     private final static QName _AccountPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AccountPerformanceReportRequest");
     private final static QName _ProductDimensionPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductDimensionPerformanceReportFilter");
     private final static QName _CallDetailReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CallDetailReportColumn");
+    private final static QName _ArrayOfHotelGroupPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfHotelGroupPerformanceReportColumn");
     private final static QName _ArrayOfConversionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfConversionPerformanceReportColumn");
     private final static QName _ReportFormat_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ReportFormat");
     private final static QName _AdPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdPerformanceReportColumn");
@@ -123,6 +126,7 @@ public class ObjectFactory {
     private final static QName _ConversionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ConversionPerformanceReportColumn");
     private final static QName _ProductSearchQueryPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductSearchQueryPerformanceReportFilter");
     private final static QName _AccountStatusReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AccountStatusReportFilter");
+    private final static QName _HotelGroupPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelGroupPerformanceReportColumn");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _SearchCampaignChangeHistoryReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "SearchCampaignChangeHistoryReportRequest");
     private final static QName _ArrayOfSearchQueryPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfSearchQueryPerformanceReportColumn");
@@ -159,6 +163,7 @@ public class ObjectFactory {
     private final static QName _AdDynamicTextPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdDynamicTextPerformanceReportFilter");
     private final static QName _AdExtensionByKeywordReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdExtensionByKeywordReportColumn");
     private final static QName _ArrayOfAdPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAdPerformanceReportColumn");
+    private final static QName _HotelDimensionPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelDimensionPerformanceReportRequest");
     private final static QName _ChangeTypeReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ChangeTypeReportFilter");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
     private final static QName _CampaignPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CampaignPerformanceReportRequest");
@@ -195,6 +200,7 @@ public class ObjectFactory {
     private final static QName _ProductSearchQueryPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductSearchQueryPerformanceReportColumn");
     private final static QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "OperationError");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
+    private final static QName _ArrayOfHotelDimensionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfHotelDimensionPerformanceReportColumn");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
     private final static QName _CampaignPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CampaignPerformanceReportColumn");
     private final static QName _UserLocationPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "UserLocationPerformanceReportFilter");
@@ -215,6 +221,8 @@ public class ObjectFactory {
     private final static QName _AdExtensionDetailReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AdExtensionDetailReportRequest");
     private final static QName _DeviceOSReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "DeviceOSReportFilter");
     private final static QName _AccountThroughCampaignReportScope_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AccountThroughCampaignReportScope");
+    private final static QName _HotelDimensionPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelDimensionPerformanceReportFilter");
+    private final static QName _HotelGroupPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "HotelGroupPerformanceReportRequest");
     private final static QName _TrackingId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TrackingId");
     private final static QName _ProductPartitionUnitPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionUnitPerformanceReportRequest");
     private final static QName _GoalsAndFunnelsReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "GoalsAndFunnelsReportRequest");
@@ -491,6 +499,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelGroupPerformanceReportRequest }
+     * 
+     */
+    public HotelGroupPerformanceReportRequest createHotelGroupPerformanceReportRequest() {
+        return new HotelGroupPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link HotelDimensionPerformanceReportFilter }
+     * 
+     */
+    public HotelDimensionPerformanceReportFilter createHotelDimensionPerformanceReportFilter() {
+        return new HotelDimensionPerformanceReportFilter();
+    }
+
+    /**
      * Create an instance of {@link AccountThroughCampaignReportScope }
      * 
      */
@@ -552,6 +576,14 @@ public class ObjectFactory {
      */
     public AdExtensionDetailReportRequest createAdExtensionDetailReportRequest() {
         return new AdExtensionDetailReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfHotelGroupPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfHotelGroupPerformanceReportColumn createArrayOfHotelGroupPerformanceReportColumn() {
+        return new ArrayOfHotelGroupPerformanceReportColumn();
     }
 
     /**
@@ -624,6 +656,14 @@ public class ObjectFactory {
      */
     public ArrayOfAdExtensionByAdReportColumn createArrayOfAdExtensionByAdReportColumn() {
         return new ArrayOfAdExtensionByAdReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfHotelDimensionPerformanceReportColumn }
+     * 
+     */
+    public ArrayOfHotelDimensionPerformanceReportColumn createArrayOfHotelDimensionPerformanceReportColumn() {
+        return new ArrayOfHotelDimensionPerformanceReportColumn();
     }
 
     /**
@@ -891,6 +931,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelGroupPerformanceReportFilter }
+     * 
+     */
+    public HotelGroupPerformanceReportFilter createHotelGroupPerformanceReportFilter() {
+        return new HotelGroupPerformanceReportFilter();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfProfessionalDemographicsAudienceReportColumn }
      * 
      */
@@ -1040,6 +1088,14 @@ public class ObjectFactory {
      */
     public ProductDimensionPerformanceReportRequest createProductDimensionPerformanceReportRequest() {
         return new ProductDimensionPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link HotelDimensionPerformanceReportRequest }
+     * 
+     */
+    public HotelDimensionPerformanceReportRequest createHotelDimensionPerformanceReportRequest() {
+        return new HotelDimensionPerformanceReportRequest();
     }
 
     /**
@@ -1779,6 +1835,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelGroupPerformanceReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelGroupPerformanceReportFilter")
+    public JAXBElement<HotelGroupPerformanceReportFilter> createHotelGroupPerformanceReportFilter(HotelGroupPerformanceReportFilter value) {
+        return new JAXBElement<HotelGroupPerformanceReportFilter>(_HotelGroupPerformanceReportFilter_QNAME, HotelGroupPerformanceReportFilter.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SearchCampaignChangeHistoryReportColumn }{@code >}}
      * 
      */
@@ -1884,6 +1949,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ProductDimensionPerformanceReportColumn")
     public JAXBElement<ProductDimensionPerformanceReportColumn> createProductDimensionPerformanceReportColumn(ProductDimensionPerformanceReportColumn value) {
         return new JAXBElement<ProductDimensionPerformanceReportColumn>(_ProductDimensionPerformanceReportColumn_QNAME, ProductDimensionPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelDimensionPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelDimensionPerformanceReportColumn")
+    public JAXBElement<HotelDimensionPerformanceReportColumn> createHotelDimensionPerformanceReportColumn(HotelDimensionPerformanceReportColumn value) {
+        return new JAXBElement<HotelDimensionPerformanceReportColumn>(_HotelDimensionPerformanceReportColumn_QNAME, HotelDimensionPerformanceReportColumn.class, null, value);
     }
 
     /**
@@ -2105,6 +2179,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfHotelGroupPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfHotelGroupPerformanceReportColumn")
+    public JAXBElement<ArrayOfHotelGroupPerformanceReportColumn> createArrayOfHotelGroupPerformanceReportColumn(ArrayOfHotelGroupPerformanceReportColumn value) {
+        return new JAXBElement<ArrayOfHotelGroupPerformanceReportColumn>(_ArrayOfHotelGroupPerformanceReportColumn_QNAME, ArrayOfHotelGroupPerformanceReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfConversionPerformanceReportColumn }{@code >}}
      * 
      */
@@ -2241,6 +2324,15 @@ public class ObjectFactory {
     @XmlJavaTypeAdapter(Adapter2 .class)
     public JAXBElement<Collection<AccountStatusReportFilter>> createAccountStatusReportFilter(Collection<AccountStatusReportFilter> value) {
         return new JAXBElement<Collection<AccountStatusReportFilter>>(_AccountStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelGroupPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelGroupPerformanceReportColumn")
+    public JAXBElement<HotelGroupPerformanceReportColumn> createHotelGroupPerformanceReportColumn(HotelGroupPerformanceReportColumn value) {
+        return new JAXBElement<HotelGroupPerformanceReportColumn>(_HotelGroupPerformanceReportColumn_QNAME, HotelGroupPerformanceReportColumn.class, null, value);
     }
 
     /**
@@ -2566,6 +2658,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfAdPerformanceReportColumn")
     public JAXBElement<ArrayOfAdPerformanceReportColumn> createArrayOfAdPerformanceReportColumn(ArrayOfAdPerformanceReportColumn value) {
         return new JAXBElement<ArrayOfAdPerformanceReportColumn>(_ArrayOfAdPerformanceReportColumn_QNAME, ArrayOfAdPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelDimensionPerformanceReportRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelDimensionPerformanceReportRequest")
+    public JAXBElement<HotelDimensionPerformanceReportRequest> createHotelDimensionPerformanceReportRequest(HotelDimensionPerformanceReportRequest value) {
+        return new JAXBElement<HotelDimensionPerformanceReportRequest>(_HotelDimensionPerformanceReportRequest_QNAME, HotelDimensionPerformanceReportRequest.class, null, value);
     }
 
     /**
@@ -2896,6 +2997,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfHotelDimensionPerformanceReportColumn }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfHotelDimensionPerformanceReportColumn")
+    public JAXBElement<ArrayOfHotelDimensionPerformanceReportColumn> createArrayOfHotelDimensionPerformanceReportColumn(ArrayOfHotelDimensionPerformanceReportColumn value) {
+        return new JAXBElement<ArrayOfHotelDimensionPerformanceReportColumn>(_ArrayOfHotelDimensionPerformanceReportColumn_QNAME, ArrayOfHotelDimensionPerformanceReportColumn.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Char }{@code >}}
      * 
      */
@@ -3076,6 +3186,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AccountThroughCampaignReportScope")
     public JAXBElement<AccountThroughCampaignReportScope> createAccountThroughCampaignReportScope(AccountThroughCampaignReportScope value) {
         return new JAXBElement<AccountThroughCampaignReportScope>(_AccountThroughCampaignReportScope_QNAME, AccountThroughCampaignReportScope.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelDimensionPerformanceReportFilter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelDimensionPerformanceReportFilter")
+    public JAXBElement<HotelDimensionPerformanceReportFilter> createHotelDimensionPerformanceReportFilter(HotelDimensionPerformanceReportFilter value) {
+        return new JAXBElement<HotelDimensionPerformanceReportFilter>(_HotelDimensionPerformanceReportFilter_QNAME, HotelDimensionPerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelGroupPerformanceReportRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "HotelGroupPerformanceReportRequest")
+    public JAXBElement<HotelGroupPerformanceReportRequest> createHotelGroupPerformanceReportRequest(HotelGroupPerformanceReportRequest value) {
+        return new JAXBElement<HotelGroupPerformanceReportRequest>(_HotelGroupPerformanceReportRequest_QNAME, HotelGroupPerformanceReportRequest.class, null, value);
     }
 
     /**

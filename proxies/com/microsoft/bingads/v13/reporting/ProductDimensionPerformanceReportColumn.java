@@ -103,6 +103,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="GTIN"/>
  *     &lt;enumeration value="MPN"/>
  *     &lt;enumeration value="ViewThroughRevenue"/>
+ *     &lt;enumeration value="GoalId"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -287,7 +288,9 @@ public enum ProductDimensionPerformanceReportColumn {
     GTIN("GTIN"),
     MPN("MPN"),
     @XmlEnumValue("ViewThroughRevenue")
-    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
+    @XmlEnumValue("GoalId")
+    GOAL_ID("GoalId");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

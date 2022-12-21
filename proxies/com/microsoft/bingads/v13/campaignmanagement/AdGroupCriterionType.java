@@ -24,7 +24,13 @@ public enum AdGroupCriterionType {
     INDUSTRY("Industry"),
     PRODUCT_AUDIENCE("ProductAudience"),
     SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
-    COMBINED_LIST("CombinedList");
+    COMBINED_LIST("CombinedList"),
+    HOTEL_GROUP("HotelGroup"),
+    HOTEL_ADVANCE_BOOKING_WINDOW("HotelAdvanceBookingWindow"),
+    HOTEL_CHECK_IN_DAY("HotelCheckInDay"),
+    HOTEL_LENGTH_OF_STAY("HotelLengthOfStay"),
+    HOTEL_DATE_SELECTION_TYPE("HotelDateSelectionType"),
+    HOTEL_CHECK_IN_DATE("HotelCheckInDate");
         
     private final String value;
 
