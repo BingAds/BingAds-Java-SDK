@@ -18,14 +18,14 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/BingAds/BingAds-Java-SDK</url>
+        <url>https://github.com/wruoting/BingAds-Java-SDK</url>
     </scm>
     
     <developers>
         <developer>
-            <id>BingAds</id>
-            <name>Bing Ads SDK Team</name>
-            <organization>Microsoft</organization>
+            <id>RWangBingAds</id>
+            <name>RWang</name>
+            <organization>CarGurus</organization>
             <organizationUrl>https://ads.microsoft.com</organizationUrl>
             <roles>
                 <role>developer</role>
@@ -127,12 +127,13 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>        
+    </profiles>
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+        <repository>
+            <id>github</id>
+            <name>GitHub Wruoting Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/wruoting/BingAds-Java-SDK</url>
+        </repository>
     </distributionManagement>
     <dependencies>
         <dependency>
