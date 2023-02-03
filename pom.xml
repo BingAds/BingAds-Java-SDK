@@ -1,10 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.microsoft.bingads</groupId>
-    <version>13.0.15</version>
-    <name>Bing Ads Java SDK</name>
-    <description>The Bing Ads Java SDK is a library improving developer experience when working with the Bing Ads services by providing high-level access to features such as Bulk API, OAuth Authorization and SOAP API.</description>
-    <url>https://github.com/BingAds/BingAds-Java-SDK</url>
+    <groupId>com.cargurus.ata.bingads</groupId>
+    <version>1.0.0</version>
+    <name>Bing Ads Java SDK-CG Fork</name>
+    <description>
+        The Bing Ads Java SDK is a library improving developer experience when working with the Bing Ads services by providing high-level access to features such as Bulk API, OAuth Authorization and SOAP API.
+        Forked to fix issues
+    </description>
+    <url>https://github.com/wruoting/BingAds-Java-SDK</url>
     
     <licenses>
         <license>
@@ -151,7 +154,7 @@
         <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
-            <version>3.2</version>
+            <version>5.0.0</version>
             <scope>test</scope>
         </dependency>
 		<dependency> 
