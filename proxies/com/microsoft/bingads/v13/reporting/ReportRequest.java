@@ -5,15 +5,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ReportRequest complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ReportRequest">
  *   &lt;complexContent>
@@ -31,81 +30,44 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReportRequest", propOrder = {
-    "excludeColumnHeaders",
-    "excludeReportFooter",
-    "excludeReportHeader",
-    "format",
-    "formatVersion",
-    "reportName",
-    "returnOnlyCompleteData"
-})
-@XmlSeeAlso({
-    SearchCampaignChangeHistoryReportRequest.class,
-    UserLocationPerformanceReportRequest.class,
-    DSACategoryPerformanceReportRequest.class,
-    ConversionPerformanceReportRequest.class,
-    NegativeKeywordConflictReportRequest.class,
-    AgeGenderAudienceReportRequest.class,
-    GoalsAndFunnelsReportRequest.class,
-    HotelGroupPerformanceReportRequest.class,
-    ProductPartitionUnitPerformanceReportRequest.class,
-    DSAAutoTargetPerformanceReportRequest.class,
-    AdExtensionDetailReportRequest.class,
-    ProductMatchCountReportRequest.class,
-    AccountPerformanceReportRequest.class,
-    AdExtensionByAdReportRequest.class,
-    ProductSearchQueryPerformanceReportRequest.class,
-    AdDynamicTextPerformanceReportRequest.class,
-    KeywordPerformanceReportRequest.class,
-    ProfessionalDemographicsAudienceReportRequest.class,
-    ProductNegativeKeywordConflictReportRequest.class,
-    DSASearchQueryPerformanceReportRequest.class,
-    AdExtensionByKeywordReportRequest.class,
-    DestinationUrlPerformanceReportRequest.class,
-    ShareOfVoiceReportRequest.class,
-    PublisherUsagePerformanceReportRequest.class,
-    CallDetailReportRequest.class,
-    CampaignPerformanceReportRequest.class,
-    ProductDimensionPerformanceReportRequest.class,
-    HotelDimensionPerformanceReportRequest.class,
-    GeographicPerformanceReportRequest.class,
-    ProductPartitionPerformanceReportRequest.class,
-    SearchQueryPerformanceReportRequest.class,
-    AdPerformanceReportRequest.class,
-    BudgetSummaryReportRequest.class,
-    AudiencePerformanceReportRequest.class,
-    AdGroupPerformanceReportRequest.class
-})
+        "excludeColumnHeaders",
+        "excludeReportFooter",
+        "excludeReportHeader",
+        "format",
+        "formatVersion",
+        "reportName",
+        "returnOnlyCompleteData"
+}, namespace = "http://www.w3.org/2001/XMLSchema-instance")
 public class ReportRequest {
 
-    @XmlElement(name = "ExcludeColumnHeaders", nillable = true)
+    @XmlElement(name = "ExcludeColumnHeaders", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected Boolean excludeColumnHeaders;
-    @XmlElement(name = "ExcludeReportFooter", nillable = true)
+    @XmlElement(name = "ExcludeReportFooter", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected Boolean excludeReportFooter;
-    @XmlElement(name = "ExcludeReportHeader", nillable = true)
+    @XmlElement(name = "ExcludeReportHeader", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected Boolean excludeReportHeader;
-    @XmlElement(name = "Format", nillable = true)
+    @XmlElement(name = "Format", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     @XmlSchemaType(name = "string")
     protected ReportFormat format;
-    @XmlElement(name = "FormatVersion", nillable = true)
+    @XmlElement(name = "FormatVersion", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected String formatVersion;
-    @XmlElement(name = "ReportName", nillable = true)
+    @XmlElement(name = "ReportName", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected String reportName;
-    @XmlElement(name = "ReturnOnlyCompleteData", nillable = true)
+    @XmlElement(name = "ReturnOnlyCompleteData", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected Boolean returnOnlyCompleteData;
 
     /**
      * Gets the value of the excludeColumnHeaders property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getExcludeColumnHeaders() {
         return excludeColumnHeaders;
@@ -113,11 +75,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the excludeColumnHeaders property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setExcludeColumnHeaders(Boolean value) {
         this.excludeColumnHeaders = value;
@@ -125,11 +87,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the excludeReportFooter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getExcludeReportFooter() {
         return excludeReportFooter;
@@ -137,11 +99,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the excludeReportFooter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setExcludeReportFooter(Boolean value) {
         this.excludeReportFooter = value;
@@ -149,11 +111,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the excludeReportHeader property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getExcludeReportHeader() {
         return excludeReportHeader;
@@ -161,11 +123,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the excludeReportHeader property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setExcludeReportHeader(Boolean value) {
         this.excludeReportHeader = value;
@@ -173,11 +135,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the format property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportFormat }
-     *     
+     *
      */
     public ReportFormat getFormat() {
         return format;
@@ -185,11 +147,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the format property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportFormat }
-     *     
+     *
      */
     public void setFormat(ReportFormat value) {
         this.format = value;
@@ -197,11 +159,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the formatVersion property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFormatVersion() {
         return formatVersion;
@@ -209,11 +171,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the formatVersion property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFormatVersion(String value) {
         this.formatVersion = value;
@@ -221,11 +183,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the reportName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getReportName() {
         return reportName;
@@ -233,11 +195,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the reportName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setReportName(String value) {
         this.reportName = value;
@@ -245,11 +207,11 @@ public class ReportRequest {
 
     /**
      * Gets the value of the returnOnlyCompleteData property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getReturnOnlyCompleteData() {
         return returnOnlyCompleteData;
@@ -257,11 +219,11 @@ public class ReportRequest {
 
     /**
      * Sets the value of the returnOnlyCompleteData property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setReturnOnlyCompleteData(Boolean value) {
         this.returnOnlyCompleteData = value;

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CampaignPerformanceReportRequest complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CampaignPerformanceReportRequest">
  *   &lt;complexContent>
@@ -28,40 +28,41 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampaignPerformanceReportRequest", propOrder = {
-    "aggregation",
-    "columns",
-    "filter",
-    "scope",
-    "time"
+        "aggregation",
+        "columns",
+        "filter",
+        "scope",
+        "time"
 })
+@XmlRootElement(namespace = "http://www.w3.org/2001/XMLSchema-instance")
 public class CampaignPerformanceReportRequest
-    extends ReportRequest
+        extends ReportRequest
 {
 
-    @XmlElement(name = "Aggregation", required = true)
+    @XmlElement(name = "Aggregation", required = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     @XmlSchemaType(name = "string")
     protected ReportAggregation aggregation;
-    @XmlElement(name = "Columns", required = true, nillable = true)
+    @XmlElement(name = "Columns", required = true, nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected ArrayOfCampaignPerformanceReportColumn columns;
-    @XmlElement(name = "Filter", nillable = true)
+    @XmlElement(name = "Filter", nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected CampaignPerformanceReportFilter filter;
-    @XmlElement(name = "Scope", required = true, nillable = true)
+    @XmlElement(name = "Scope", required = true, nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected AccountThroughCampaignReportScope scope;
-    @XmlElement(name = "Time", required = true, nillable = true)
+    @XmlElement(name = "Time", required = true, nillable = true, namespace = "https://bingads.microsoft.com/Reporting/v13")
     protected ReportTime time;
 
     /**
      * Gets the value of the aggregation property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportAggregation }
-     *     
+     *
      */
     public ReportAggregation getAggregation() {
         return aggregation;
@@ -69,11 +70,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Sets the value of the aggregation property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportAggregation }
-     *     
+     *
      */
     public void setAggregation(ReportAggregation value) {
         this.aggregation = value;
@@ -81,11 +82,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Gets the value of the columns property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ArrayOfCampaignPerformanceReportColumn }
-     *     
+     *
      */
     public ArrayOfCampaignPerformanceReportColumn getColumns() {
         return columns;
@@ -93,11 +94,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Sets the value of the columns property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ArrayOfCampaignPerformanceReportColumn }
-     *     
+     *
      */
     public void setColumns(ArrayOfCampaignPerformanceReportColumn value) {
         this.columns = value;
@@ -105,11 +106,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Gets the value of the filter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CampaignPerformanceReportFilter }
-     *     
+     *
      */
     public CampaignPerformanceReportFilter getFilter() {
         return filter;
@@ -117,11 +118,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Sets the value of the filter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CampaignPerformanceReportFilter }
-     *     
+     *
      */
     public void setFilter(CampaignPerformanceReportFilter value) {
         this.filter = value;
@@ -129,11 +130,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Gets the value of the scope property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link AccountThroughCampaignReportScope }
-     *     
+     *
      */
     public AccountThroughCampaignReportScope getScope() {
         return scope;
@@ -141,11 +142,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Sets the value of the scope property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link AccountThroughCampaignReportScope }
-     *     
+     *
      */
     public void setScope(AccountThroughCampaignReportScope value) {
         this.scope = value;
@@ -153,11 +154,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Gets the value of the time property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportTime }
-     *     
+     *
      */
     public ReportTime getTime() {
         return time;
@@ -165,11 +166,11 @@ public class CampaignPerformanceReportRequest
 
     /**
      * Sets the value of the time property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportTime }
-     *     
+     *
      */
     public void setTime(ReportTime value) {
         this.time = value;
