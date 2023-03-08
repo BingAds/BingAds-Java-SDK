@@ -36,6 +36,7 @@ import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfDayTime;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfFrequencyCapSettings;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItem;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfRuleItemGroup;
@@ -58,6 +59,7 @@ import com.microsoft.bingads.v13.campaignmanagement.Day;
 import com.microsoft.bingads.v13.campaignmanagement.DayTime;
 import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
+import com.microsoft.bingads.v13.campaignmanagement.FrequencyCapSettings;
 import com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupType;
 import com.microsoft.bingads.v13.campaignmanagement.HotelSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
@@ -537,6 +539,59 @@ public class StringExtensions {
         }
         
         return bid.getAmount().toString();
+    }
+    
+    public static String toAdGroupFrequencyCapSettingsBulkString(ArrayOfFrequencyCapSettings settings, Long id)
+    {
+    	if (settings == null || settings.getFrequencyCapSettings() == null) {
+    		return null;
+    	}
+    	
+    	if (settings.getFrequencyCapSettings().size() == 0) {
+    		return id != null && id > 0 ? StringTable.DeleteValue : null;
+    	}
+    	
+    	StringBuilder sb = new StringBuilder(256);
+    	sb.append('[');
+    	for (FrequencyCapSettings setting : settings.getFrequencyCapSettings()) {
+    		sb.append("{\"capValue\":")
+    		  .append(setting.getCapValue())
+    		  .append(",\"frequencyCapUnit\":\"")
+    		  .append(setting.getFrequencyCapUnit())
+    		  .append("\",\"timeGranularity\":\"")
+    		  .append(setting.getTimeGranularity().toString())
+    		  .append("\"},");
+    	}
+    	if (settings.getFrequencyCapSettings().size() > 0) {
+    		sb.deleteCharAt(sb.length() - 1);
+    	}
+    	sb.append("]");
+    	return sb.toString();
+    }
+    
+    public static ArrayOfFrequencyCapSettings parseFrequencyCapSettings(String value)
+    {
+        if (value == null || value.isEmpty()) {
+        	return null;
+        }
+        
+        if (value == StringTable.DeleteValue) {
+        	return new ArrayOfFrequencyCapSettings();
+        }
+        
+        try {
+        	ObjectMapper mapper = new ObjectMapper();
+        	ArrayOfFrequencyCapSettings result = new ArrayOfFrequencyCapSettings();
+        	FrequencyCapSettings[] settings = mapper.readValue(value, FrequencyCapSettings[].class);
+        	for (FrequencyCapSettings setting : settings) {
+        		result.getFrequencyCapSettings().add(setting);
+        	}
+        	return result;
+
+        } catch (IOException e) {
+        	e.printStackTrace();
+        }
+        return null;
     }
     
     public static String toCriterionBidMultiplierBulkString(Double v) {

@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
     DynamicFeedSetting.class,
     DynamicSearchAdsSetting.class,
     ShoppingSetting.class,
+    PerformanceMaxSetting.class,
     VerifiedTrackingSetting.class,
     CoOpSetting.class,
     ResponsiveSearchAdsSetting.class,

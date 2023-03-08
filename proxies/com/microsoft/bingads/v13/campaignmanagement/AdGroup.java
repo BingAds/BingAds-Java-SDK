@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         &lt;element name="FrequencyCapSettings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfFrequencyCapSettings" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -61,6 +62,7 @@ import javax.xml.bind.annotation.XmlType;
     "endDate",
     "finalUrlSuffix",
     "forwardCompatibilityMap",
+    "frequencyCapSettings",
     "id",
     "language",
     "multimediaAdsBidAdjustment",
@@ -97,6 +99,8 @@ public class AdGroup {
     protected String finalUrlSuffix;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
+    @XmlElement(name = "FrequencyCapSettings", nillable = true)
+    protected ArrayOfFrequencyCapSettings frequencyCapSettings;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Language", nillable = true)
@@ -325,6 +329,30 @@ public class AdGroup {
      */
     public void setForwardCompatibilityMap(ArrayOfKeyValuePairOfstringstring value) {
         this.forwardCompatibilityMap = value;
+    }
+
+    /**
+     * Gets the value of the frequencyCapSettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfFrequencyCapSettings }
+     *     
+     */
+    public ArrayOfFrequencyCapSettings getFrequencyCapSettings() {
+        return frequencyCapSettings;
+    }
+
+    /**
+     * Sets the value of the frequencyCapSettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfFrequencyCapSettings }
+     *     
+     */
+    public void setFrequencyCapSettings(ArrayOfFrequencyCapSettings value) {
+        this.frequencyCapSettings = value;
     }
 
     /**

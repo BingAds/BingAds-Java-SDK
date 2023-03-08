@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "BulkService", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", wsdlLocation = "https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/BulkService.svc?wsdl")
+@WebServiceClient(name = "BulkService", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", wsdlLocation = "https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/BulkService.svc?wsdl")
 public class BulkService
     extends Service
 {
@@ -30,7 +30,7 @@ public class BulkService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/BulkService.svc?wsdl");
+            url = new URL("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/BulkService.svc?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

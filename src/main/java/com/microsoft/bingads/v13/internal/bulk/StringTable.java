@@ -140,6 +140,7 @@ public class StringTable {
     
     public static final String CpvBid = "Cpv Bid";
     public static final String CpmBid = "Cpm Bid";
+    public static final String FrequencyCapSettings = "Frequency Cap Settings";
 
     // entity types
     public static final String SemanticVersion = "Format Version";

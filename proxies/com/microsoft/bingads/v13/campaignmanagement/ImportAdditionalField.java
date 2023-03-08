@@ -14,7 +14,8 @@ public enum ImportAdditionalField {
     NEW_IMAGE_AD_EXTENSIONS("NewImageAdExtensions"),
     UPDATE_IMAGE_AD_EXTENSIONS("UpdateImageAdExtensions"),
     SEARCH_AND_REPLACE_FOR_FINAL_U_R_L_SUFFIX("SearchAndReplaceForFinalURLSuffix"),
-    RENAME_CAMPAIGN_NAME_WITH_SUFFIX("RenameCampaignNameWithSuffix");
+    RENAME_CAMPAIGN_NAME_WITH_SUFFIX("RenameCampaignNameWithSuffix"),
+    UPDATE_AD_URLS("UpdateAdUrls");
         
     private final String value;
 
