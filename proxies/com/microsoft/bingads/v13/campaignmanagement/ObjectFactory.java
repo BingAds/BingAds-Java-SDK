@@ -159,6 +159,7 @@ public class ObjectFactory {
     private final static QName _PriceTableRow_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PriceTableRow");
     private final static QName _CampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterion");
     private final static QName _PriceAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PriceAdExtension");
+    private final static QName _ArrayOfFrequencyCapSettings_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfFrequencyCapSettings");
     private final static QName _ArrayOfTargetSettingDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfTargetSettingDetail");
     private final static QName _CustomerAccountShare_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountShare");
     private final static QName _ImportJob_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImportJob");
@@ -189,8 +190,10 @@ public class ObjectFactory {
     private final static QName _AppealStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppealStatus");
     private final static QName _DisclaimerAdExtension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DisclaimerAdExtension");
     private final static QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BatchError");
+    private final static QName _PerformanceMaxSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PerformanceMaxSetting");
     private final static QName _ProfileType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileType");
     private final static QName _AdRotationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRotationType");
+    private final static QName _FrequencyCapTimeGranularity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapTimeGranularity");
     private final static QName _CustomParameters_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomParameters");
     private final static QName _ArrayOfAccountPropertyName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAccountPropertyName");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
@@ -331,6 +334,7 @@ public class ObjectFactory {
     private final static QName _AccountProperty_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountProperty");
     private final static QName _CriterionBid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CriterionBid");
     private final static QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
+    private final static QName _FrequencyCapSettings_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapSettings");
     private final static QName _AudienceCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceCriterion");
     private final static QName _Bid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Bid");
     private final static QName _ProductAudienceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProductAudienceType");
@@ -1609,6 +1613,14 @@ public class ObjectFactory {
      */
     public AddAdGroupsResponse createAddAdGroupsResponse() {
         return new AddAdGroupsResponse();
+    }
+
+    /**
+     * Create an instance of {@link FrequencyCapSettings }
+     * 
+     */
+    public FrequencyCapSettings createFrequencyCapSettings() {
+        return new FrequencyCapSettings();
     }
 
     /**
@@ -3172,6 +3184,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PerformanceMaxSetting }
+     * 
+     */
+    public PerformanceMaxSetting createPerformanceMaxSetting() {
+        return new PerformanceMaxSetting();
+    }
+
+    /**
      * Create an instance of {@link DisclaimerAdExtension }
      * 
      */
@@ -3481,6 +3501,14 @@ public class ObjectFactory {
      */
     public ArrayOfTargetSettingDetail createArrayOfTargetSettingDetail() {
         return new ArrayOfTargetSettingDetail();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfFrequencyCapSettings }
+     * 
+     */
+    public ArrayOfFrequencyCapSettings createArrayOfFrequencyCapSettings() {
+        return new ArrayOfFrequencyCapSettings();
     }
 
     /**
@@ -6060,6 +6088,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFrequencyCapSettings }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfFrequencyCapSettings")
+    public JAXBElement<ArrayOfFrequencyCapSettings> createArrayOfFrequencyCapSettings(ArrayOfFrequencyCapSettings value) {
+        return new JAXBElement<ArrayOfFrequencyCapSettings>(_ArrayOfFrequencyCapSettings_QNAME, ArrayOfFrequencyCapSettings.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTargetSettingDetail }{@code >}}
      * 
      */
@@ -6330,6 +6367,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PerformanceMaxSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PerformanceMaxSetting")
+    public JAXBElement<PerformanceMaxSetting> createPerformanceMaxSetting(PerformanceMaxSetting value) {
+        return new JAXBElement<PerformanceMaxSetting>(_PerformanceMaxSetting_QNAME, PerformanceMaxSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ProfileType }{@code >}{@code >}}
      * 
      */
@@ -6346,6 +6392,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRotationType")
     public JAXBElement<AdRotationType> createAdRotationType(AdRotationType value) {
         return new JAXBElement<AdRotationType>(_AdRotationType_QNAME, AdRotationType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapTimeGranularity")
+    public JAXBElement<FrequencyCapTimeGranularity> createFrequencyCapTimeGranularity(FrequencyCapTimeGranularity value) {
+        return new JAXBElement<FrequencyCapTimeGranularity>(_FrequencyCapTimeGranularity_QNAME, FrequencyCapTimeGranularity.class, null, value);
     }
 
     /**
@@ -7614,6 +7669,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "ArrayOfAdApiError")
     public JAXBElement<ArrayOfAdApiError> createArrayOfAdApiError(ArrayOfAdApiError value) {
         return new JAXBElement<ArrayOfAdApiError>(_ArrayOfAdApiError_QNAME, ArrayOfAdApiError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapSettings }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapSettings")
+    public JAXBElement<FrequencyCapSettings> createFrequencyCapSettings(FrequencyCapSettings value) {
+        return new JAXBElement<FrequencyCapSettings>(_FrequencyCapSettings_QNAME, FrequencyCapSettings.class, null, value);
     }
 
     /**

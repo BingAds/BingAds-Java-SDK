@@ -49,6 +49,7 @@ public class CsvHeaders {
             StringTable.AdGroupType,
             StringTable.CpvBid,
             StringTable.CpmBid,
+            StringTable.FrequencyCapSettings,
             StringTable.HotelAdGroupType,
             StringTable.CommissionRate,
             StringTable.PercentCpcBid,
