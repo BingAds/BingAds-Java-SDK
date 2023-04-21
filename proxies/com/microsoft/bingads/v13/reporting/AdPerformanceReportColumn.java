@@ -254,6 +254,8 @@ public enum AdPerformanceReportColumn {
     GOAL("Goal"),
     @XmlEnumValue("GoalType")
     GOAL_TYPE("GoalType"),
+    @XmlEnumValue("GoalId")
+    GOAL_ID("GoalId"),
     @XmlEnumValue("AbsoluteTopImpressionRatePercent")
     ABSOLUTE_TOP_IMPRESSION_RATE_PERCENT("AbsoluteTopImpressionRatePercent"),
     @XmlEnumValue("TopImpressionRatePercent")
