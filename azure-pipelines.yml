@@ -7,9 +7,17 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+       echo $(PUB_KEY) |  base64 -d > public.key
+       echo $(SIGN_KEY) |  base64 -d > private.key
+       gpg --import public.key
+       gpg --batch --import private.key
+       gpg --list-public-keys
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -19,4 +27,9 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'package gpg:sign'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: target
+    artifact: 'maven_artifacts'
+    publishLocation: 'pipeline'
