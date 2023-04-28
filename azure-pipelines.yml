@@ -14,7 +14,7 @@ steps:
   inputs:
     script: |
        echo $(PUB_KEY) |  base64 -d > public.key
-       echo $(SIGN_KEY) |  base64 -d > private.key
+       echo $(SEC_KEY) |  base64 -d > private.key
        gpg --import public.key
        gpg --batch --import private.key
        gpg --list-public-keys
