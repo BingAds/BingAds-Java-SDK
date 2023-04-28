@@ -28,7 +28,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package gpg:sign'
-    options: '-Dgpg.passphrase=$(gpgPassPhrase)'
+    options: '-Dgpg.passphrase=$(PASS_PHRASE)'
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: target
