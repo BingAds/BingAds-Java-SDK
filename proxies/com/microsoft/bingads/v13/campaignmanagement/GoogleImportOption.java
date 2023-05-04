@@ -77,6 +77,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UpdateAdCustomizerFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateAdGroupNetwork" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateAdSchedules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="UpdateAdUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="UpdateBiddingStrategies" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -178,6 +179,7 @@ import javax.xml.bind.annotation.XmlType;
     "updateAdCustomizerFeeds",
     "updateAdGroupNetwork",
     "updateAdSchedules",
+    "updateAdUrls",
     "updateAppAdExtensions",
     "updateAudienceTargets",
     "updateBiddingStrategies",
@@ -334,6 +336,8 @@ public class GoogleImportOption
     protected Boolean updateAdGroupNetwork;
     @XmlElement(name = "UpdateAdSchedules", nillable = true)
     protected Boolean updateAdSchedules;
+    @XmlElement(name = "UpdateAdUrls", nillable = true)
+    protected Boolean updateAdUrls;
     @XmlElement(name = "UpdateAppAdExtensions", nillable = true)
     protected Boolean updateAppAdExtensions;
     @XmlElement(name = "UpdateAudienceTargets", nillable = true)
@@ -1835,6 +1839,30 @@ public class GoogleImportOption
      */
     public void setUpdateAdSchedules(Boolean value) {
         this.updateAdSchedules = value;
+    }
+
+    /**
+     * Gets the value of the updateAdUrls property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAdUrls() {
+        return updateAdUrls;
+    }
+
+    /**
+     * Sets the value of the updateAdUrls property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAdUrls(Boolean value) {
+        this.updateAdUrls = value;
     }
 
     /**

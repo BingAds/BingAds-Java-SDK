@@ -13,7 +13,8 @@ public enum AdGroupAdditionalField {
     COMMISSION_RATE("CommissionRate"),
     PERCENT_CPC_BID("PercentCpcBid"),
     MCPA_BID("McpaBid"),
-    USE_OPTIMIZED_TARGETING("UseOptimizedTargeting");
+    USE_OPTIMIZED_TARGETING("UseOptimizedTargeting"),
+    FREQUENCY_CAP_SETTINGS("FrequencyCapSettings");
         
     private final String value;
 
