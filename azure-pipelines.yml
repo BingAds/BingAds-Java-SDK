@@ -29,6 +29,11 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package gpg:sign'
     options: '-Dgpg.passphrase=$(PASS_PHRASE)'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Pipeline.Workspace)/s'
+    Contents: '**/.artifactignore'
+    TargetFolder: 'target'
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: target
