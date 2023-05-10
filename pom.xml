@@ -29,13 +29,12 @@
             </roles>
         </developer>
     </developers>
-    
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>add-source</id>
@@ -54,77 +53,52 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <locale>en_US</locale>
+                     <additionalparam>-Xdoclint:-html</additionalparam>
+                     <additionalOptions>-Xdoclint:-html</additionalOptions>
+                     <additionalJOption>-Xdoclint:-html</additionalJOption>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>central-deploy</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
-                        <configuration>
-                            <locale>en_US</locale>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>        
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -154,31 +128,31 @@
             <version>3.2</version>
             <scope>test</scope>
         </dependency>
-		<dependency> 
-			<groupId>jakarta.jws</groupId> 
-			<artifactId>jakarta.jws-api</artifactId> 
-			<version>2.1.0</version> 
-		</dependency> 
-		<dependency> 
-			<groupId>jakarta.xml.ws</groupId> 
-			<artifactId>jakarta.xml.ws-api</artifactId> 
-			<version>2.3.3</version> 
-		</dependency>
-		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-frontend-jaxws</artifactId>
-		  <version>3.4.2</version>
-		</dependency>
-		<dependency>
-		  <groupId>com.sun.activation</groupId>
-		  <artifactId>javax.activation</artifactId>
-		  <version>1.2.0</version>
-		</dependency>
-		<dependency>
-		  <groupId>com.sun.xml.messaging.saaj</groupId>
-		  <artifactId>saaj-impl</artifactId>
-		 <version>1.5.2</version>
-		</dependency>
+        <dependency> 
+            <groupId>jakarta.jws</groupId> 
+            <artifactId>jakarta.jws-api</artifactId> 
+            <version>2.1.0</version> 
+        </dependency> 
+        <dependency> 
+            <groupId>jakarta.xml.ws</groupId> 
+            <artifactId>jakarta.xml.ws-api</artifactId> 
+            <version>2.3.3</version> 
+        </dependency>
+        <dependency>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-rt-frontend-jaxws</artifactId>
+          <version>3.4.2</version>
+        </dependency>
+        <dependency>
+          <groupId>com.sun.activation</groupId>
+          <artifactId>javax.activation</artifactId>
+          <version>1.2.0</version>
+        </dependency>
+        <dependency>
+          <groupId>com.sun.xml.messaging.saaj</groupId>
+          <artifactId>saaj-impl</artifactId>
+         <version>1.5.2</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>

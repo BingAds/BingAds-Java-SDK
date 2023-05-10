@@ -27,7 +27,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package gpg:sign'
+    goals: 'package source:jar javadoc:jar gpg:sign'
     options: '-Dgpg.passphrase=$(PASS_PHRASE)'
 - task: CopyFiles@2
   inputs:
