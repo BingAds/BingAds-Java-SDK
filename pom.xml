@@ -78,9 +78,9 @@
                 <version>3.5.0</version>
                 <configuration>
                     <locale>en_US</locale>
-                     <additionalparam>-Xdoclint:-html</additionalparam>
-                     <additionalOptions>-Xdoclint:-html</additionalOptions>
-                     <additionalJOption>-Xdoclint:-html</additionalJOption>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:-html</additionalOption>
+                    </additionalOptions>
                 </configuration>
             </plugin>
             <plugin>
