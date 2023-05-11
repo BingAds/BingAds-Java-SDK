@@ -97,6 +97,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>net.ju-n.maven.plugins</groupId>
+                <version>1.4</version>
+                <artifactId>checksum-maven-plugin</artifactId>
+                <configuration>
+                    <fileSets>
+                        <fileSet>
+                          <directory>${project.build.directory}</directory>
+                          <includes>
+                            <include>**/*.jar</include>
+                            <include>**/*.asc</include>
+                            <include>**/*.pom</include>
+                          </includes>
+                        </fileSet>
+                    </fileSets>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <distributionManagement>
