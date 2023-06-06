@@ -26,6 +26,6 @@ public enum AttributeType {
                 return c;
             }
         }
-        throw new IllegalArgumentException(v);
+        return UNKNOW;
     }
 }

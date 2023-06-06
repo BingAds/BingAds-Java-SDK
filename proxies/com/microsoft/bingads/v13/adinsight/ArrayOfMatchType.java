@@ -3,11 +3,11 @@ package com.microsoft.bingads.v13.adinsight;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -15,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="ArrayOfMatchType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="MatchType" type="{https://bingads.microsoft.com/AdInsight/v13}MatchType" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="ArrayOfMatchType">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="MatchType" type="{https://bingads.microsoft.com/AdInsight/v13}MatchType" maxOccurs="unbounded" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -45,8 +45,8 @@ public class ArrayOfMatchType {
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the matchTypes property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the matchTypes property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -60,10 +60,12 @@ public class ArrayOfMatchType {
      * {@link MatchType }
      * 
      * 
+     * @return
+     *     The value of the matchTypes property.
      */
     public List<MatchType> getMatchTypes() {
         if (matchTypes == null) {
-            matchTypes = new ArrayList<MatchType>();
+            matchTypes = new ArrayList<>();
         }
         return this.matchTypes;
     }

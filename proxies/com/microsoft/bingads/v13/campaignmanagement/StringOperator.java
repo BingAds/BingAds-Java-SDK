@@ -1,31 +1,30 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for StringOperator.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="StringOperator">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="Equals"/>
- *     &lt;enumeration value="Contains"/>
- *     &lt;enumeration value="BeginsWith"/>
- *     &lt;enumeration value="EndsWith"/>
- *     &lt;enumeration value="NotEquals"/>
- *     &lt;enumeration value="DoesNotContain"/>
- *     &lt;enumeration value="DoesNotBeginWith"/>
- *     &lt;enumeration value="DoesNotEndWith"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="StringOperator">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="None"/>
+ *     <enumeration value="Equals"/>
+ *     <enumeration value="Contains"/>
+ *     <enumeration value="BeginsWith"/>
+ *     <enumeration value="EndsWith"/>
+ *     <enumeration value="NotEquals"/>
+ *     <enumeration value="DoesNotContain"/>
+ *     <enumeration value="DoesNotBeginWith"/>
+ *     <enumeration value="DoesNotEndWith"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "StringOperator")

@@ -1,28 +1,27 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AgeRange.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="AgeRange">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Unknown"/>
- *     &lt;enumeration value="EighteenToTwentyFour"/>
- *     &lt;enumeration value="TwentyFiveToThirtyFour"/>
- *     &lt;enumeration value="ThirtyFiveToFourtyNine"/>
- *     &lt;enumeration value="FiftyToSixtyFour"/>
- *     &lt;enumeration value="SixtyFiveAndAbove"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="AgeRange">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Unknown"/>
+ *     <enumeration value="EighteenToTwentyFour"/>
+ *     <enumeration value="TwentyFiveToThirtyFour"/>
+ *     <enumeration value="ThirtyFiveToFourtyNine"/>
+ *     <enumeration value="FiftyToSixtyFour"/>
+ *     <enumeration value="SixtyFiveAndAbove"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "AgeRange")

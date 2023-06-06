@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,20 +12,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="AuctionInsightResult">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Segments" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAuctionSegment" minOccurs="0"/>
- *         &lt;element name="Entries" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAuctionInsightEntry" minOccurs="0"/>
- *         &lt;element name="UsedImpressions" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="UsedKeywords" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="AuctionInsightResult">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="Segments" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAuctionSegment" minOccurs="0"/>
+ *         <element name="Entries" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAuctionInsightEntry" minOccurs="0"/>
+ *         <element name="UsedImpressions" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="UsedKeywords" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

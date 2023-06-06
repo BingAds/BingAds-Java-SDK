@@ -1,28 +1,27 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for OrderByField.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="OrderByField">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Id"/>
- *     &lt;enumeration value="Name"/>
- *     &lt;enumeration value="Number"/>
- *     &lt;enumeration value="LifeCycleStatus"/>
- *     &lt;enumeration value="CouponClassName"/>
- *     &lt;enumeration value="CouponStartDate"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="OrderByField">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Id"/>
+ *     <enumeration value="Name"/>
+ *     <enumeration value="Number"/>
+ *     <enumeration value="LifeCycleStatus"/>
+ *     <enumeration value="CouponClassName"/>
+ *     <enumeration value="CouponStartDate"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "OrderByField", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

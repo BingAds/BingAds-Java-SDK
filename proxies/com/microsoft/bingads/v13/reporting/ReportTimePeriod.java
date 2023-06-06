@@ -1,39 +1,38 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ReportTimePeriod.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ReportTimePeriod">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Today"/>
- *     &lt;enumeration value="Yesterday"/>
- *     &lt;enumeration value="LastSevenDays"/>
- *     &lt;enumeration value="ThisWeek"/>
- *     &lt;enumeration value="LastWeek"/>
- *     &lt;enumeration value="Last14Days"/>
- *     &lt;enumeration value="Last30Days"/>
- *     &lt;enumeration value="LastFourWeeks"/>
- *     &lt;enumeration value="ThisMonth"/>
- *     &lt;enumeration value="LastMonth"/>
- *     &lt;enumeration value="LastThreeMonths"/>
- *     &lt;enumeration value="LastSixMonths"/>
- *     &lt;enumeration value="ThisYear"/>
- *     &lt;enumeration value="LastYear"/>
- *     &lt;enumeration value="ThisWeekStartingMonday"/>
- *     &lt;enumeration value="LastWeekStartingMonday"/>
- *     &lt;enumeration value="LastFourWeeksStartingMonday"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ReportTimePeriod">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Today"/>
+ *     <enumeration value="Yesterday"/>
+ *     <enumeration value="LastSevenDays"/>
+ *     <enumeration value="ThisWeek"/>
+ *     <enumeration value="LastWeek"/>
+ *     <enumeration value="Last14Days"/>
+ *     <enumeration value="Last30Days"/>
+ *     <enumeration value="LastFourWeeks"/>
+ *     <enumeration value="ThisMonth"/>
+ *     <enumeration value="LastMonth"/>
+ *     <enumeration value="LastThreeMonths"/>
+ *     <enumeration value="LastSixMonths"/>
+ *     <enumeration value="ThisYear"/>
+ *     <enumeration value="LastYear"/>
+ *     <enumeration value="ThisWeekStartingMonday"/>
+ *     <enumeration value="LastWeekStartingMonday"/>
+ *     <enumeration value="LastFourWeeksStartingMonday"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ReportTimePeriod")

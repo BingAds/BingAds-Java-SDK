@@ -2,13 +2,13 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -16,28 +16,28 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="Audience">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="AudienceNetworkSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="CustomerShare" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomerShare" minOccurs="0"/>
- *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="MembershipDuration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
- *         &lt;element name="SearchSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="SupportedCampaignTypes" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
- *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}AudienceType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="Audience">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="AudienceNetworkSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CustomerShare" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomerShare" minOccurs="0"/>
+ *         <element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="MembershipDuration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ParentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
+ *         <element name="SearchSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="SupportedCampaignTypes" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         <element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}AudienceType" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -57,12 +57,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "type"
 })
 @XmlSeeAlso({
-    ProductAudience.class,
-    CombinedList.class,
-    SimilarRemarketingList.class,
     RemarketingList.class,
     CustomAudience.class,
-    InMarketAudience.class
+    InMarketAudience.class,
+    ProductAudience.class,
+    SimilarRemarketingList.class,
+    CombinedList.class,
+    CustomerList.class
 })
 public class Audience {
 

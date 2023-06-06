@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -12,13 +12,13 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;simpleType name="guid">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="guid">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  * 
  */

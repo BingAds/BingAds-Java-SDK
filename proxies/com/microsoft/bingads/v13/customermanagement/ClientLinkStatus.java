@@ -1,36 +1,35 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ClientLinkStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ClientLinkStatus">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="LinkPending"/>
- *     &lt;enumeration value="LinkCanceled"/>
- *     &lt;enumeration value="LinkExpired"/>
- *     &lt;enumeration value="LinkAccepted"/>
- *     &lt;enumeration value="LinkDeclined"/>
- *     &lt;enumeration value="LinkInProgress"/>
- *     &lt;enumeration value="Active"/>
- *     &lt;enumeration value="LinkFailed"/>
- *     &lt;enumeration value="UnlinkRequested"/>
- *     &lt;enumeration value="UnlinkPending"/>
- *     &lt;enumeration value="UnlinkCanceled"/>
- *     &lt;enumeration value="UnlinkInProgress"/>
- *     &lt;enumeration value="Inactive"/>
- *     &lt;enumeration value="UnlinkFailed"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ClientLinkStatus">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="LinkPending"/>
+ *     <enumeration value="LinkCanceled"/>
+ *     <enumeration value="LinkExpired"/>
+ *     <enumeration value="LinkAccepted"/>
+ *     <enumeration value="LinkDeclined"/>
+ *     <enumeration value="LinkInProgress"/>
+ *     <enumeration value="Active"/>
+ *     <enumeration value="LinkFailed"/>
+ *     <enumeration value="UnlinkRequested"/>
+ *     <enumeration value="UnlinkPending"/>
+ *     <enumeration value="UnlinkCanceled"/>
+ *     <enumeration value="UnlinkInProgress"/>
+ *     <enumeration value="Inactive"/>
+ *     <enumeration value="UnlinkFailed"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ClientLinkStatus", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

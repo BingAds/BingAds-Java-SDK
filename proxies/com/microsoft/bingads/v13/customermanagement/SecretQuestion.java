@@ -1,32 +1,31 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for SecretQuestion.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="SecretQuestion">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="FavoritePetsName"/>
- *     &lt;enumeration value="FavoriteMovie"/>
- *     &lt;enumeration value="Anniversary"/>
- *     &lt;enumeration value="FatherMiddleName"/>
- *     &lt;enumeration value="SpouseMiddleName"/>
- *     &lt;enumeration value="FirstChildMiddleName"/>
- *     &lt;enumeration value="HighSchoolName"/>
- *     &lt;enumeration value="FavoriteTeacherName"/>
- *     &lt;enumeration value="FavoriteSportsTeam"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="SecretQuestion">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="None"/>
+ *     <enumeration value="FavoritePetsName"/>
+ *     <enumeration value="FavoriteMovie"/>
+ *     <enumeration value="Anniversary"/>
+ *     <enumeration value="FatherMiddleName"/>
+ *     <enumeration value="SpouseMiddleName"/>
+ *     <enumeration value="FirstChildMiddleName"/>
+ *     <enumeration value="HighSchoolName"/>
+ *     <enumeration value="FavoriteTeacherName"/>
+ *     <enumeration value="FavoriteSportsTeam"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "SecretQuestion", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

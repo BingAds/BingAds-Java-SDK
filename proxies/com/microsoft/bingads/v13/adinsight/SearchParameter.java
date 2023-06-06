@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,37 +12,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="SearchParameter">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="SearchParameter">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SearchParameter")
 @XmlSeeAlso({
-    ImpressionShareSearchParameter.class,
-    CategorySearchParameter.class,
-    DeviceSearchParameter.class,
-    AuctionSegmentSearchParameter.class,
-    DateRangeSearchParameter.class,
-    IdeaTextSearchParameter.class,
-    UrlSearchParameter.class,
     QuerySearchParameter.class,
-    CompetitionSearchParameter.class,
-    ExcludeAccountKeywordsSearchParameter.class,
+    UrlSearchParameter.class,
+    CategorySearchParameter.class,
     SearchVolumeSearchParameter.class,
     SuggestedBidSearchParameter.class,
+    IdeaTextSearchParameter.class,
+    ExcludeAccountKeywordsSearchParameter.class,
+    ImpressionShareSearchParameter.class,
     LocationSearchParameter.class,
+    NetworkSearchParameter.class,
+    DeviceSearchParameter.class,
     LanguageSearchParameter.class,
-    NetworkSearchParameter.class
+    CompetitionSearchParameter.class,
+    DateRangeSearchParameter.class,
+    AuctionSegmentSearchParameter.class
 })
 public class SearchParameter {
 

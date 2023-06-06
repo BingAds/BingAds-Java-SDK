@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -13,13 +13,13 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;simpleType name="positiveInteger">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger">
- *     &lt;minInclusive value="1"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="positiveInteger">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger">
+ *     <minInclusive value="1"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  * 
  */

@@ -1,31 +1,30 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PaymentMethodType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="PaymentMethodType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="CreditCard"/>
- *     &lt;enumeration value="Invoice"/>
- *     &lt;enumeration value="Check"/>
- *     &lt;enumeration value="ElectronicFundsTransfer"/>
- *     &lt;enumeration value="PayPal"/>
- *     &lt;enumeration value="ELV"/>
- *     &lt;enumeration value="OfflinePaymentMethod"/>
- *     &lt;enumeration value="VBA"/>
- *     &lt;enumeration value="Boleto"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="PaymentMethodType">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="CreditCard"/>
+ *     <enumeration value="Invoice"/>
+ *     <enumeration value="Check"/>
+ *     <enumeration value="ElectronicFundsTransfer"/>
+ *     <enumeration value="PayPal"/>
+ *     <enumeration value="ELV"/>
+ *     <enumeration value="OfflinePaymentMethod"/>
+ *     <enumeration value="VBA"/>
+ *     <enumeration value="Boleto"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "PaymentMethodType", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

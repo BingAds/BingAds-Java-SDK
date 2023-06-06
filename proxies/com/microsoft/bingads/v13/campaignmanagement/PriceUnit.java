@@ -1,30 +1,29 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PriceUnit.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="PriceUnit">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Unknown"/>
- *     &lt;enumeration value="PerHour"/>
- *     &lt;enumeration value="PerDay"/>
- *     &lt;enumeration value="PerWeek"/>
- *     &lt;enumeration value="PerMonth"/>
- *     &lt;enumeration value="PerYear"/>
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="PerNight"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="PriceUnit">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Unknown"/>
+ *     <enumeration value="PerHour"/>
+ *     <enumeration value="PerDay"/>
+ *     <enumeration value="PerWeek"/>
+ *     <enumeration value="PerMonth"/>
+ *     <enumeration value="PerYear"/>
+ *     <enumeration value="None"/>
+ *     <enumeration value="PerNight"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "PriceUnit")
