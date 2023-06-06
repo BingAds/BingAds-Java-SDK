@@ -1,38 +1,37 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ConversionGoalCategory.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ConversionGoalCategory">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Unknown"/>
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="Purchase"/>
- *     &lt;enumeration value="AddToCart"/>
- *     &lt;enumeration value="BeginCheckout"/>
- *     &lt;enumeration value="Subscribe"/>
- *     &lt;enumeration value="SubmitLeadForm"/>
- *     &lt;enumeration value="BookAppointment"/>
- *     &lt;enumeration value="Signup"/>
- *     &lt;enumeration value="RequestQuote"/>
- *     &lt;enumeration value="GetDirections"/>
- *     &lt;enumeration value="OutboundClick"/>
- *     &lt;enumeration value="Contact"/>
- *     &lt;enumeration value="PageView"/>
- *     &lt;enumeration value="Download"/>
- *     &lt;enumeration value="Other"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ConversionGoalCategory">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Unknown"/>
+ *     <enumeration value="None"/>
+ *     <enumeration value="Purchase"/>
+ *     <enumeration value="AddToCart"/>
+ *     <enumeration value="BeginCheckout"/>
+ *     <enumeration value="Subscribe"/>
+ *     <enumeration value="SubmitLeadForm"/>
+ *     <enumeration value="BookAppointment"/>
+ *     <enumeration value="Signup"/>
+ *     <enumeration value="RequestQuote"/>
+ *     <enumeration value="GetDirections"/>
+ *     <enumeration value="OutboundClick"/>
+ *     <enumeration value="Contact"/>
+ *     <enumeration value="PageView"/>
+ *     <enumeration value="Download"/>
+ *     <enumeration value="Other"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ConversionGoalCategory")

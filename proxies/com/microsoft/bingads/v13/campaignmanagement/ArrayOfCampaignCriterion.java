@@ -3,10 +3,10 @@ package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,17 +14,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="ArrayOfCampaignCriterion">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="CampaignCriterion" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignCriterion" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="ArrayOfCampaignCriterion">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="CampaignCriterion" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignCriterion" maxOccurs="unbounded" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -43,8 +43,8 @@ public class ArrayOfCampaignCriterion {
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the campaignCriterions property.
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the campaignCriterions property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -58,10 +58,12 @@ public class ArrayOfCampaignCriterion {
      * {@link CampaignCriterion }
      * 
      * 
+     * @return
+     *     The value of the campaignCriterions property.
      */
     public List<CampaignCriterion> getCampaignCriterions() {
         if (campaignCriterions == null) {
-            campaignCriterions = new ArrayList<CampaignCriterion>();
+            campaignCriterions = new ArrayList<>();
         }
         return this.campaignCriterions;
     }

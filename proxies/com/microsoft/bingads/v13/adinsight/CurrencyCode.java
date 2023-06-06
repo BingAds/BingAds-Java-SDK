@@ -1,113 +1,112 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for CurrencyCode.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="CurrencyCode">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AED"/>
- *     &lt;enumeration value="ALL"/>
- *     &lt;enumeration value="AMD"/>
- *     &lt;enumeration value="ARS"/>
- *     &lt;enumeration value="AUD"/>
- *     &lt;enumeration value="AZM"/>
- *     &lt;enumeration value="BGL"/>
- *     &lt;enumeration value="BHD"/>
- *     &lt;enumeration value="BND"/>
- *     &lt;enumeration value="BOB"/>
- *     &lt;enumeration value="BRL"/>
- *     &lt;enumeration value="BYB"/>
- *     &lt;enumeration value="BZD"/>
- *     &lt;enumeration value="CAD"/>
- *     &lt;enumeration value="CHF"/>
- *     &lt;enumeration value="CLP"/>
- *     &lt;enumeration value="CNY"/>
- *     &lt;enumeration value="COP"/>
- *     &lt;enumeration value="CRC"/>
- *     &lt;enumeration value="CZK"/>
- *     &lt;enumeration value="DOP"/>
- *     &lt;enumeration value="DKK"/>
- *     &lt;enumeration value="DZD"/>
- *     &lt;enumeration value="EEK"/>
- *     &lt;enumeration value="EGP"/>
- *     &lt;enumeration value="EUR"/>
- *     &lt;enumeration value="GBP"/>
- *     &lt;enumeration value="GEL"/>
- *     &lt;enumeration value="GTQ"/>
- *     &lt;enumeration value="HKD"/>
- *     &lt;enumeration value="HNL"/>
- *     &lt;enumeration value="HRK"/>
- *     &lt;enumeration value="HUF"/>
- *     &lt;enumeration value="IDR"/>
- *     &lt;enumeration value="ILS"/>
- *     &lt;enumeration value="INR"/>
- *     &lt;enumeration value="IQD"/>
- *     &lt;enumeration value="IRR"/>
- *     &lt;enumeration value="ISK"/>
- *     &lt;enumeration value="JMD"/>
- *     &lt;enumeration value="JOD"/>
- *     &lt;enumeration value="JPY"/>
- *     &lt;enumeration value="KES"/>
- *     &lt;enumeration value="KGS"/>
- *     &lt;enumeration value="KRW"/>
- *     &lt;enumeration value="KWD"/>
- *     &lt;enumeration value="KZT"/>
- *     &lt;enumeration value="LBP"/>
- *     &lt;enumeration value="LTL"/>
- *     &lt;enumeration value="LVL"/>
- *     &lt;enumeration value="LYD"/>
- *     &lt;enumeration value="MAD"/>
- *     &lt;enumeration value="MKD"/>
- *     &lt;enumeration value="MOP"/>
- *     &lt;enumeration value="MNT"/>
- *     &lt;enumeration value="MVR"/>
- *     &lt;enumeration value="MXN"/>
- *     &lt;enumeration value="MYR"/>
- *     &lt;enumeration value="NIO"/>
- *     &lt;enumeration value="NOK"/>
- *     &lt;enumeration value="NZD"/>
- *     &lt;enumeration value="OMR"/>
- *     &lt;enumeration value="PAB"/>
- *     &lt;enumeration value="PEN"/>
- *     &lt;enumeration value="PHP"/>
- *     &lt;enumeration value="PKR"/>
- *     &lt;enumeration value="PLN"/>
- *     &lt;enumeration value="PYG"/>
- *     &lt;enumeration value="QAR"/>
- *     &lt;enumeration value="ROL"/>
- *     &lt;enumeration value="RUR"/>
- *     &lt;enumeration value="SAR"/>
- *     &lt;enumeration value="SEK"/>
- *     &lt;enumeration value="SGD"/>
- *     &lt;enumeration value="SIT"/>
- *     &lt;enumeration value="SKK"/>
- *     &lt;enumeration value="SYP"/>
- *     &lt;enumeration value="THB"/>
- *     &lt;enumeration value="TND"/>
- *     &lt;enumeration value="TRY"/>
- *     &lt;enumeration value="TTD"/>
- *     &lt;enumeration value="TWD"/>
- *     &lt;enumeration value="UAH"/>
- *     &lt;enumeration value="USD"/>
- *     &lt;enumeration value="UYU"/>
- *     &lt;enumeration value="UZS"/>
- *     &lt;enumeration value="VEF"/>
- *     &lt;enumeration value="YER"/>
- *     &lt;enumeration value="VND"/>
- *     &lt;enumeration value="YUN"/>
- *     &lt;enumeration value="ZAR"/>
- *     &lt;enumeration value="ZWD"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="CurrencyCode">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AED"/>
+ *     <enumeration value="ALL"/>
+ *     <enumeration value="AMD"/>
+ *     <enumeration value="ARS"/>
+ *     <enumeration value="AUD"/>
+ *     <enumeration value="AZM"/>
+ *     <enumeration value="BGL"/>
+ *     <enumeration value="BHD"/>
+ *     <enumeration value="BND"/>
+ *     <enumeration value="BOB"/>
+ *     <enumeration value="BRL"/>
+ *     <enumeration value="BYB"/>
+ *     <enumeration value="BZD"/>
+ *     <enumeration value="CAD"/>
+ *     <enumeration value="CHF"/>
+ *     <enumeration value="CLP"/>
+ *     <enumeration value="CNY"/>
+ *     <enumeration value="COP"/>
+ *     <enumeration value="CRC"/>
+ *     <enumeration value="CZK"/>
+ *     <enumeration value="DOP"/>
+ *     <enumeration value="DKK"/>
+ *     <enumeration value="DZD"/>
+ *     <enumeration value="EEK"/>
+ *     <enumeration value="EGP"/>
+ *     <enumeration value="EUR"/>
+ *     <enumeration value="GBP"/>
+ *     <enumeration value="GEL"/>
+ *     <enumeration value="GTQ"/>
+ *     <enumeration value="HKD"/>
+ *     <enumeration value="HNL"/>
+ *     <enumeration value="HRK"/>
+ *     <enumeration value="HUF"/>
+ *     <enumeration value="IDR"/>
+ *     <enumeration value="ILS"/>
+ *     <enumeration value="INR"/>
+ *     <enumeration value="IQD"/>
+ *     <enumeration value="IRR"/>
+ *     <enumeration value="ISK"/>
+ *     <enumeration value="JMD"/>
+ *     <enumeration value="JOD"/>
+ *     <enumeration value="JPY"/>
+ *     <enumeration value="KES"/>
+ *     <enumeration value="KGS"/>
+ *     <enumeration value="KRW"/>
+ *     <enumeration value="KWD"/>
+ *     <enumeration value="KZT"/>
+ *     <enumeration value="LBP"/>
+ *     <enumeration value="LTL"/>
+ *     <enumeration value="LVL"/>
+ *     <enumeration value="LYD"/>
+ *     <enumeration value="MAD"/>
+ *     <enumeration value="MKD"/>
+ *     <enumeration value="MOP"/>
+ *     <enumeration value="MNT"/>
+ *     <enumeration value="MVR"/>
+ *     <enumeration value="MXN"/>
+ *     <enumeration value="MYR"/>
+ *     <enumeration value="NIO"/>
+ *     <enumeration value="NOK"/>
+ *     <enumeration value="NZD"/>
+ *     <enumeration value="OMR"/>
+ *     <enumeration value="PAB"/>
+ *     <enumeration value="PEN"/>
+ *     <enumeration value="PHP"/>
+ *     <enumeration value="PKR"/>
+ *     <enumeration value="PLN"/>
+ *     <enumeration value="PYG"/>
+ *     <enumeration value="QAR"/>
+ *     <enumeration value="ROL"/>
+ *     <enumeration value="RUR"/>
+ *     <enumeration value="SAR"/>
+ *     <enumeration value="SEK"/>
+ *     <enumeration value="SGD"/>
+ *     <enumeration value="SIT"/>
+ *     <enumeration value="SKK"/>
+ *     <enumeration value="SYP"/>
+ *     <enumeration value="THB"/>
+ *     <enumeration value="TND"/>
+ *     <enumeration value="TRY"/>
+ *     <enumeration value="TTD"/>
+ *     <enumeration value="TWD"/>
+ *     <enumeration value="UAH"/>
+ *     <enumeration value="USD"/>
+ *     <enumeration value="UYU"/>
+ *     <enumeration value="UZS"/>
+ *     <enumeration value="VEF"/>
+ *     <enumeration value="YER"/>
+ *     <enumeration value="VND"/>
+ *     <enumeration value="YUN"/>
+ *     <enumeration value="ZAR"/>
+ *     <enumeration value="ZWD"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "CurrencyCode")

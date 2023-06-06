@@ -1,40 +1,39 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for LanguageType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="LanguageType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Danish"/>
- *     &lt;enumeration value="Dutch"/>
- *     &lt;enumeration value="English"/>
- *     &lt;enumeration value="Finnish"/>
- *     &lt;enumeration value="French"/>
- *     &lt;enumeration value="German"/>
- *     &lt;enumeration value="Italian"/>
- *     &lt;enumeration value="Japanese"/>
- *     &lt;enumeration value="Norwegian"/>
- *     &lt;enumeration value="Portuguese"/>
- *     &lt;enumeration value="Swedish"/>
- *     &lt;enumeration value="Spanish"/>
- *     &lt;enumeration value="Arabic"/>
- *     &lt;enumeration value="Hebrew"/>
- *     &lt;enumeration value="Korean"/>
- *     &lt;enumeration value="Russian"/>
- *     &lt;enumeration value="TraditionalChinese"/>
- *     &lt;enumeration value="SimplifiedChinese"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="LanguageType">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Danish"/>
+ *     <enumeration value="Dutch"/>
+ *     <enumeration value="English"/>
+ *     <enumeration value="Finnish"/>
+ *     <enumeration value="French"/>
+ *     <enumeration value="German"/>
+ *     <enumeration value="Italian"/>
+ *     <enumeration value="Japanese"/>
+ *     <enumeration value="Norwegian"/>
+ *     <enumeration value="Portuguese"/>
+ *     <enumeration value="Swedish"/>
+ *     <enumeration value="Spanish"/>
+ *     <enumeration value="Arabic"/>
+ *     <enumeration value="Hebrew"/>
+ *     <enumeration value="Korean"/>
+ *     <enumeration value="Russian"/>
+ *     <enumeration value="TraditionalChinese"/>
+ *     <enumeration value="SimplifiedChinese"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "LanguageType", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

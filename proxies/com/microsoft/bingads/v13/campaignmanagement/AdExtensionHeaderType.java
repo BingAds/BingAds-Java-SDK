@@ -1,63 +1,62 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AdExtensionHeaderType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="AdExtensionHeaderType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Unknown"/>
- *     &lt;enumeration value="Amenities"/>
- *     &lt;enumeration value="Brands"/>
- *     &lt;enumeration value="Classes"/>
- *     &lt;enumeration value="Courses"/>
- *     &lt;enumeration value="DailyRates"/>
- *     &lt;enumeration value="DegreePrograms"/>
- *     &lt;enumeration value="Departments"/>
- *     &lt;enumeration value="Destinations"/>
- *     &lt;enumeration value="FeaturedHotels"/>
- *     &lt;enumeration value="Goods"/>
- *     &lt;enumeration value="Grades"/>
- *     &lt;enumeration value="Highlights"/>
- *     &lt;enumeration value="InsuranceCoverage"/>
- *     &lt;enumeration value="Items"/>
- *     &lt;enumeration value="Languages"/>
- *     &lt;enumeration value="Locations"/>
- *     &lt;enumeration value="Models"/>
- *     &lt;enumeration value="Neighborhoods"/>
- *     &lt;enumeration value="Prices"/>
- *     &lt;enumeration value="Rates"/>
- *     &lt;enumeration value="Ratings"/>
- *     &lt;enumeration value="SchoolDistricts"/>
- *     &lt;enumeration value="Services"/>
- *     &lt;enumeration value="ServiceCatalog"/>
- *     &lt;enumeration value="Shows"/>
- *     &lt;enumeration value="Sizes"/>
- *     &lt;enumeration value="Styles"/>
- *     &lt;enumeration value="Tools"/>
- *     &lt;enumeration value="Topics"/>
- *     &lt;enumeration value="Types"/>
- *     &lt;enumeration value="Vacations"/>
- *     &lt;enumeration value="Vehicles"/>
- *     &lt;enumeration value="What"/>
- *     &lt;enumeration value="Who"/>
- *     &lt;enumeration value="Why"/>
- *     &lt;enumeration value="Deals"/>
- *     &lt;enumeration value="BestSellers"/>
- *     &lt;enumeration value="AgeGroups"/>
- *     &lt;enumeration value="Occasions"/>
- *     &lt;enumeration value="Flowers"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="AdExtensionHeaderType">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Unknown"/>
+ *     <enumeration value="Amenities"/>
+ *     <enumeration value="Brands"/>
+ *     <enumeration value="Classes"/>
+ *     <enumeration value="Courses"/>
+ *     <enumeration value="DailyRates"/>
+ *     <enumeration value="DegreePrograms"/>
+ *     <enumeration value="Departments"/>
+ *     <enumeration value="Destinations"/>
+ *     <enumeration value="FeaturedHotels"/>
+ *     <enumeration value="Goods"/>
+ *     <enumeration value="Grades"/>
+ *     <enumeration value="Highlights"/>
+ *     <enumeration value="InsuranceCoverage"/>
+ *     <enumeration value="Items"/>
+ *     <enumeration value="Languages"/>
+ *     <enumeration value="Locations"/>
+ *     <enumeration value="Models"/>
+ *     <enumeration value="Neighborhoods"/>
+ *     <enumeration value="Prices"/>
+ *     <enumeration value="Rates"/>
+ *     <enumeration value="Ratings"/>
+ *     <enumeration value="SchoolDistricts"/>
+ *     <enumeration value="Services"/>
+ *     <enumeration value="ServiceCatalog"/>
+ *     <enumeration value="Shows"/>
+ *     <enumeration value="Sizes"/>
+ *     <enumeration value="Styles"/>
+ *     <enumeration value="Tools"/>
+ *     <enumeration value="Topics"/>
+ *     <enumeration value="Types"/>
+ *     <enumeration value="Vacations"/>
+ *     <enumeration value="Vehicles"/>
+ *     <enumeration value="What"/>
+ *     <enumeration value="Who"/>
+ *     <enumeration value="Why"/>
+ *     <enumeration value="Deals"/>
+ *     <enumeration value="BestSellers"/>
+ *     <enumeration value="AgeGroups"/>
+ *     <enumeration value="Occasions"/>
+ *     <enumeration value="Flowers"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "AdExtensionHeaderType")

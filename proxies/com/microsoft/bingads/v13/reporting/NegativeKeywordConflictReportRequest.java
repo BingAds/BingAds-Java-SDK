@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,19 +12,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="NegativeKeywordConflictReportRequest">
- *   &lt;complexContent>
- *     &lt;extension base="{https://bingads.microsoft.com/Reporting/v13}ReportRequest">
- *       &lt;sequence>
- *         &lt;element name="Columns" type="{https://bingads.microsoft.com/Reporting/v13}ArrayOfNegativeKeywordConflictReportColumn"/>
- *         &lt;element name="Filter" type="{https://bingads.microsoft.com/Reporting/v13}NegativeKeywordConflictReportFilter" minOccurs="0"/>
- *         &lt;element name="Scope" type="{https://bingads.microsoft.com/Reporting/v13}AccountThroughAdGroupReportScope"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="NegativeKeywordConflictReportRequest">
+ *   <complexContent>
+ *     <extension base="{https://bingads.microsoft.com/Reporting/v13}ReportRequest">
+ *       <sequence>
+ *         <element name="Columns" type="{https://bingads.microsoft.com/Reporting/v13}ArrayOfNegativeKeywordConflictReportColumn"/>
+ *         <element name="Filter" type="{https://bingads.microsoft.com/Reporting/v13}NegativeKeywordConflictReportFilter" minOccurs="0"/>
+ *         <element name="Scope" type="{https://bingads.microsoft.com/Reporting/v13}AccountThroughAdGroupReportScope"/>
+ *       </sequence>
+ *     </extension>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

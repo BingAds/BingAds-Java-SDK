@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.reporting;
 
 import java.util.Collection;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter10
-    extends XmlAdapter<String, Collection<DynamicAdTargetStatusReportFilter>>
+    extends XmlAdapter<String, Collection<KeywordStatusReportFilter>>
 {
 
 
-    public Collection<DynamicAdTargetStatusReportFilter> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.reporting.DynamicAdTargetStatusReportFilterConverter.convertToList(value));
+    public Collection<KeywordStatusReportFilter> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.reporting.KeywordStatusReportFilterConverter.convertToList(value));
     }
 
-    public String marshal(Collection<DynamicAdTargetStatusReportFilter> value) {
-        return (com.microsoft.bingads.v13.reporting.DynamicAdTargetStatusReportFilterConverter.convertToString(value));
+    public String marshal(Collection<KeywordStatusReportFilter> value) {
+        return (com.microsoft.bingads.v13.reporting.KeywordStatusReportFilterConverter.convertToString(value));
     }
 
 }

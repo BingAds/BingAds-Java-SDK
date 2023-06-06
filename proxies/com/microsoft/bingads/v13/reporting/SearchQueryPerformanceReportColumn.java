@@ -1,80 +1,79 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for SearchQueryPerformanceReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="SearchQueryPerformanceReportColumn">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AccountName"/>
- *     &lt;enumeration value="AccountNumber"/>
- *     &lt;enumeration value="AccountId"/>
- *     &lt;enumeration value="TimePeriod"/>
- *     &lt;enumeration value="CampaignName"/>
- *     &lt;enumeration value="CampaignId"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="AdId"/>
- *     &lt;enumeration value="AdType"/>
- *     &lt;enumeration value="DestinationUrl"/>
- *     &lt;enumeration value="BidMatchType"/>
- *     &lt;enumeration value="DeliveredMatchType"/>
- *     &lt;enumeration value="CampaignStatus"/>
- *     &lt;enumeration value="AdStatus"/>
- *     &lt;enumeration value="Impressions"/>
- *     &lt;enumeration value="Clicks"/>
- *     &lt;enumeration value="Ctr"/>
- *     &lt;enumeration value="AverageCpc"/>
- *     &lt;enumeration value="Spend"/>
- *     &lt;enumeration value="AveragePosition"/>
- *     &lt;enumeration value="SearchQuery"/>
- *     &lt;enumeration value="Keyword"/>
- *     &lt;enumeration value="AdGroupCriterionId"/>
- *     &lt;enumeration value="Conversions"/>
- *     &lt;enumeration value="ConversionRate"/>
- *     &lt;enumeration value="CostPerConversion"/>
- *     &lt;enumeration value="Language"/>
- *     &lt;enumeration value="KeywordId"/>
- *     &lt;enumeration value="Network"/>
- *     &lt;enumeration value="TopVsOther"/>
- *     &lt;enumeration value="DeviceType"/>
- *     &lt;enumeration value="DeviceOS"/>
- *     &lt;enumeration value="Assists"/>
- *     &lt;enumeration value="Revenue"/>
- *     &lt;enumeration value="ReturnOnAdSpend"/>
- *     &lt;enumeration value="CostPerAssist"/>
- *     &lt;enumeration value="RevenuePerConversion"/>
- *     &lt;enumeration value="RevenuePerAssist"/>
- *     &lt;enumeration value="AccountStatus"/>
- *     &lt;enumeration value="AdGroupStatus"/>
- *     &lt;enumeration value="KeywordStatus"/>
- *     &lt;enumeration value="CampaignType"/>
- *     &lt;enumeration value="CustomerId"/>
- *     &lt;enumeration value="CustomerName"/>
- *     &lt;enumeration value="AllConversions"/>
- *     &lt;enumeration value="AllRevenue"/>
- *     &lt;enumeration value="AllConversionRate"/>
- *     &lt;enumeration value="AllCostPerConversion"/>
- *     &lt;enumeration value="AllReturnOnAdSpend"/>
- *     &lt;enumeration value="AllRevenuePerConversion"/>
- *     &lt;enumeration value="Goal"/>
- *     &lt;enumeration value="GoalType"/>
- *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
- *     &lt;enumeration value="TopImpressionRatePercent"/>
- *     &lt;enumeration value="AverageCpm"/>
- *     &lt;enumeration value="ConversionsQualified"/>
- *     &lt;enumeration value="AllConversionsQualified"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="SearchQueryPerformanceReportColumn">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AccountName"/>
+ *     <enumeration value="AccountNumber"/>
+ *     <enumeration value="AccountId"/>
+ *     <enumeration value="TimePeriod"/>
+ *     <enumeration value="CampaignName"/>
+ *     <enumeration value="CampaignId"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="AdId"/>
+ *     <enumeration value="AdType"/>
+ *     <enumeration value="DestinationUrl"/>
+ *     <enumeration value="BidMatchType"/>
+ *     <enumeration value="DeliveredMatchType"/>
+ *     <enumeration value="CampaignStatus"/>
+ *     <enumeration value="AdStatus"/>
+ *     <enumeration value="Impressions"/>
+ *     <enumeration value="Clicks"/>
+ *     <enumeration value="Ctr"/>
+ *     <enumeration value="AverageCpc"/>
+ *     <enumeration value="Spend"/>
+ *     <enumeration value="AveragePosition"/>
+ *     <enumeration value="SearchQuery"/>
+ *     <enumeration value="Keyword"/>
+ *     <enumeration value="AdGroupCriterionId"/>
+ *     <enumeration value="Conversions"/>
+ *     <enumeration value="ConversionRate"/>
+ *     <enumeration value="CostPerConversion"/>
+ *     <enumeration value="Language"/>
+ *     <enumeration value="KeywordId"/>
+ *     <enumeration value="Network"/>
+ *     <enumeration value="TopVsOther"/>
+ *     <enumeration value="DeviceType"/>
+ *     <enumeration value="DeviceOS"/>
+ *     <enumeration value="Assists"/>
+ *     <enumeration value="Revenue"/>
+ *     <enumeration value="ReturnOnAdSpend"/>
+ *     <enumeration value="CostPerAssist"/>
+ *     <enumeration value="RevenuePerConversion"/>
+ *     <enumeration value="RevenuePerAssist"/>
+ *     <enumeration value="AccountStatus"/>
+ *     <enumeration value="AdGroupStatus"/>
+ *     <enumeration value="KeywordStatus"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="CustomerId"/>
+ *     <enumeration value="CustomerName"/>
+ *     <enumeration value="AllConversions"/>
+ *     <enumeration value="AllRevenue"/>
+ *     <enumeration value="AllConversionRate"/>
+ *     <enumeration value="AllCostPerConversion"/>
+ *     <enumeration value="AllReturnOnAdSpend"/>
+ *     <enumeration value="AllRevenuePerConversion"/>
+ *     <enumeration value="Goal"/>
+ *     <enumeration value="GoalType"/>
+ *     <enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     <enumeration value="TopImpressionRatePercent"/>
+ *     <enumeration value="AverageCpm"/>
+ *     <enumeration value="ConversionsQualified"/>
+ *     <enumeration value="AllConversionsQualified"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "SearchQueryPerformanceReportColumn")
