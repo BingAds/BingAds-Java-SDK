@@ -24,8 +24,6 @@ public class BulkError extends BulkObject {
     private Integer number;
     
     private String fieldPath;
-    
-    private String editorialAppealStatus;
 
     private String editorialLocation;
 
@@ -88,21 +86,6 @@ public class BulkError extends BulkObject {
                     @Override
                     public void accept(String v, BulkError c) {
                         c.setFieldPath(v);
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkError, String>(StringTable.EditorialAppealStatus,
-                new Function<BulkError, String>() {
-                    @Override
-                    public String apply(BulkError c) {
-                        return c.getEditorialAppealStatus();
-                    }
-                },
-                new BiConsumer<String, BulkError>() {
-                    @Override
-                    public void accept(String v, BulkError c) {
-                        c.setEditorialAppealStatus(v);
                     }
                 }
         ));
@@ -200,10 +183,6 @@ public class BulkError extends BulkObject {
         return fieldPath;
     }
     
-    public String getEditorialAppealStatus() {
-    	return editorialAppealStatus;
-    }
-    
     public String getEditorialLocation() {
         return editorialLocation;
     }
@@ -230,10 +209,6 @@ public class BulkError extends BulkObject {
     
     private void setFieldPath(String path) {
         this.fieldPath = path;
-    }
-    
-    private void setEditorialAppealStatus(String editorialAppealStatus) {
-        this.editorialAppealStatus = editorialAppealStatus;
     }
 
     private void setEditorialLocation(String editorialLocation) {

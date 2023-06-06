@@ -1,36 +1,37 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AccountPropertyName.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="AccountPropertyName">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="None"/>
- *     <enumeration value="TrackingUrlTemplate"/>
- *     <enumeration value="MSCLKIDAutoTaggingEnabled"/>
- *     <enumeration value="AdClickParallelTracking"/>
- *     <enumeration value="FinalUrlSuffix"/>
- *     <enumeration value="IncludeViewThroughConversions"/>
- *     <enumeration value="ProfileExpansionEnabled"/>
- *     <enumeration value="AllowImageAutoRetrieve"/>
- *     <enumeration value="AutoApplyRecommendations"/>
- *     <enumeration value="IncludeAutoBiddingViewThroughConversions"/>
- *     <enumeration value="AutoBiddingViewThroughConversionsValueAttributionWeight"/>
- *     <enumeration value="LoopBackWindowForViewThroughConversions"/>
- *     <enumeration value="BusinessAttributes"/>
- *     <enumeration value="EnableMMAUnderDSAAdgroups"/>
- *     <enumeration value="OptOutFromMCM"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="AccountPropertyName">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="None"/>
+ *     &lt;enumeration value="TrackingUrlTemplate"/>
+ *     &lt;enumeration value="MSCLKIDAutoTaggingEnabled"/>
+ *     &lt;enumeration value="AdClickParallelTracking"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
+ *     &lt;enumeration value="IncludeViewThroughConversions"/>
+ *     &lt;enumeration value="ProfileExpansionEnabled"/>
+ *     &lt;enumeration value="AllowImageAutoRetrieve"/>
+ *     &lt;enumeration value="AutoApplyRecommendations"/>
+ *     &lt;enumeration value="IncludeAutoBiddingViewThroughConversions"/>
+ *     &lt;enumeration value="AutoBiddingViewThroughConversionsValueAttributionWeight"/>
+ *     &lt;enumeration value="LoopBackWindowForViewThroughConversions"/>
+ *     &lt;enumeration value="BusinessAttributes"/>
+ *     &lt;enumeration value="EnableMMAUnderDSAAdgroups"/>
+ *     &lt;enumeration value="OptOutFromMCM"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "AccountPropertyName")

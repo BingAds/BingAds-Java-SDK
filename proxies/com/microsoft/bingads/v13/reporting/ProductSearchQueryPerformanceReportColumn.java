@@ -1,74 +1,75 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ProductSearchQueryPerformanceReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="ProductSearchQueryPerformanceReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="TimePeriod"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="AccountNumber"/>
- *     <enumeration value="AccountName"/>
- *     <enumeration value="AdId"/>
- *     <enumeration value="AdGroupId"/>
- *     <enumeration value="AdGroupName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="DestinationUrl"/>
- *     <enumeration value="DeviceType"/>
- *     <enumeration value="DeviceOS"/>
- *     <enumeration value="Language"/>
- *     <enumeration value="SearchQuery"/>
- *     <enumeration value="Network"/>
- *     <enumeration value="MerchantProductId"/>
- *     <enumeration value="Title"/>
- *     <enumeration value="ClickTypeId"/>
- *     <enumeration value="TotalClicksOnAdElements"/>
- *     <enumeration value="ClickType"/>
- *     <enumeration value="AdGroupCriterionId"/>
- *     <enumeration value="ProductGroup"/>
- *     <enumeration value="PartitionType"/>
- *     <enumeration value="Impressions"/>
- *     <enumeration value="Clicks"/>
- *     <enumeration value="Ctr"/>
- *     <enumeration value="AverageCpc"/>
- *     <enumeration value="Spend"/>
- *     <enumeration value="Conversions"/>
- *     <enumeration value="ConversionRate"/>
- *     <enumeration value="Assists"/>
- *     <enumeration value="CostPerAssist"/>
- *     <enumeration value="Revenue"/>
- *     <enumeration value="CostPerConversion"/>
- *     <enumeration value="RevenuePerConversion"/>
- *     <enumeration value="RevenuePerAssist"/>
- *     <enumeration value="CustomerId"/>
- *     <enumeration value="CustomerName"/>
- *     <enumeration value="AssistedImpressions"/>
- *     <enumeration value="AssistedClicks"/>
- *     <enumeration value="AssistedConversions"/>
- *     <enumeration value="AllConversions"/>
- *     <enumeration value="AllRevenue"/>
- *     <enumeration value="AllConversionRate"/>
- *     <enumeration value="AllCostPerConversion"/>
- *     <enumeration value="AllRevenuePerConversion"/>
- *     <enumeration value="Goal"/>
- *     <enumeration value="GoalType"/>
- *     <enumeration value="AbsoluteTopImpressionRatePercent"/>
- *     <enumeration value="AverageCpm"/>
- *     <enumeration value="ConversionsQualified"/>
- *     <enumeration value="AssistedConversionsQualified"/>
- *     <enumeration value="AllConversionsQualified"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="ProductSearchQueryPerformanceReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="TimePeriod"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="AccountNumber"/>
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="AdId"/>
+ *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="AdGroupName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="DestinationUrl"/>
+ *     &lt;enumeration value="DeviceType"/>
+ *     &lt;enumeration value="DeviceOS"/>
+ *     &lt;enumeration value="Language"/>
+ *     &lt;enumeration value="SearchQuery"/>
+ *     &lt;enumeration value="Network"/>
+ *     &lt;enumeration value="MerchantProductId"/>
+ *     &lt;enumeration value="Title"/>
+ *     &lt;enumeration value="ClickTypeId"/>
+ *     &lt;enumeration value="TotalClicksOnAdElements"/>
+ *     &lt;enumeration value="ClickType"/>
+ *     &lt;enumeration value="AdGroupCriterionId"/>
+ *     &lt;enumeration value="ProductGroup"/>
+ *     &lt;enumeration value="PartitionType"/>
+ *     &lt;enumeration value="Impressions"/>
+ *     &lt;enumeration value="Clicks"/>
+ *     &lt;enumeration value="Ctr"/>
+ *     &lt;enumeration value="AverageCpc"/>
+ *     &lt;enumeration value="Spend"/>
+ *     &lt;enumeration value="Conversions"/>
+ *     &lt;enumeration value="ConversionRate"/>
+ *     &lt;enumeration value="Assists"/>
+ *     &lt;enumeration value="CostPerAssist"/>
+ *     &lt;enumeration value="Revenue"/>
+ *     &lt;enumeration value="CostPerConversion"/>
+ *     &lt;enumeration value="RevenuePerConversion"/>
+ *     &lt;enumeration value="RevenuePerAssist"/>
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="AssistedImpressions"/>
+ *     &lt;enumeration value="AssistedClicks"/>
+ *     &lt;enumeration value="AssistedConversions"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="AllConversionRate"/>
+ *     &lt;enumeration value="AllCostPerConversion"/>
+ *     &lt;enumeration value="AllRevenuePerConversion"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="ConversionsQualified"/>
+ *     &lt;enumeration value="AssistedConversionsQualified"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "ProductSearchQueryPerformanceReportColumn")

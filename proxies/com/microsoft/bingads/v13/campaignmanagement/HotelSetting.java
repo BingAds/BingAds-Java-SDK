@@ -2,11 +2,11 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -14,17 +14,17 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="HotelSetting">
- *   <complexContent>
- *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
- *       <sequence>
- *         <element name="HotelAdGroupType" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelAdGroupType" minOccurs="0"/>
- *       </sequence>
- *     </extension>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="HotelSetting">
+ *   &lt;complexContent>
+ *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
+ *       &lt;sequence>
+ *         &lt;element name="HotelAdGroupType" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelAdGroupType" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -37,7 +37,7 @@ public class HotelSetting
 {
 
     @XmlElement(name = "HotelAdGroupType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<HotelAdGroupType> hotelAdGroupType;
 
     /**

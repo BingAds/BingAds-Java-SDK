@@ -1,23 +1,24 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AttributionModelType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="AttributionModelType">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="LastClick"/>
- *     <enumeration value="LastTouch"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="AttributionModelType">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="LastClick"/>
+ *     &lt;enumeration value="LastTouch"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "AttributionModelType")

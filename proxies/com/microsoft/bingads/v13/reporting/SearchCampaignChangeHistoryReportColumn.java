@@ -1,42 +1,43 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for SearchCampaignChangeHistoryReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="SearchCampaignChangeHistoryReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="DateTime"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="AccountName"/>
- *     <enumeration value="AccountNumber"/>
- *     <enumeration value="ChangedBy"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="AdGroupName"/>
- *     <enumeration value="AdGroupId"/>
- *     <enumeration value="AdTitle"/>
- *     <enumeration value="AdDescription"/>
- *     <enumeration value="DisplayUrl"/>
- *     <enumeration value="Keyword"/>
- *     <enumeration value="ItemChanged"/>
- *     <enumeration value="AttributeChanged"/>
- *     <enumeration value="HowChanged"/>
- *     <enumeration value="OldValue"/>
- *     <enumeration value="NewValue"/>
- *     <enumeration value="EntityName"/>
- *     <enumeration value="EntityId"/>
- *     <enumeration value="Tool"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="SearchCampaignChangeHistoryReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="DateTime"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="AccountNumber"/>
+ *     &lt;enumeration value="ChangedBy"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="AdGroupName"/>
+ *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="AdTitle"/>
+ *     &lt;enumeration value="AdDescription"/>
+ *     &lt;enumeration value="DisplayUrl"/>
+ *     &lt;enumeration value="Keyword"/>
+ *     &lt;enumeration value="ItemChanged"/>
+ *     &lt;enumeration value="AttributeChanged"/>
+ *     &lt;enumeration value="HowChanged"/>
+ *     &lt;enumeration value="OldValue"/>
+ *     &lt;enumeration value="NewValue"/>
+ *     &lt;enumeration value="EntityName"/>
+ *     &lt;enumeration value="EntityId"/>
+ *     &lt;enumeration value="Tool"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "SearchCampaignChangeHistoryReportColumn")

@@ -1,27 +1,28 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for WebpageConditionOperand.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="WebpageConditionOperand">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Unknown"/>
- *     <enumeration value="Url"/>
- *     <enumeration value="Category"/>
- *     <enumeration value="PageTitle"/>
- *     <enumeration value="PageContent"/>
- *     <enumeration value="CustomLabel"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="WebpageConditionOperand">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
+ *     &lt;enumeration value="Url"/>
+ *     &lt;enumeration value="Category"/>
+ *     &lt;enumeration value="PageTitle"/>
+ *     &lt;enumeration value="PageContent"/>
+ *     &lt;enumeration value="CustomLabel"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "WebpageConditionOperand")

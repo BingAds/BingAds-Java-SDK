@@ -1,42 +1,43 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for Industry.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="Industry">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="NA"/>
- *     <enumeration value="AgencySalesHouse"/>
- *     <enumeration value="Automotive"/>
- *     <enumeration value="ConsumerPackagedGoods"/>
- *     <enumeration value="Education"/>
- *     <enumeration value="Entertainment"/>
- *     <enumeration value="FinancialServices"/>
- *     <enumeration value="FoodServices"/>
- *     <enumeration value="Gaming"/>
- *     <enumeration value="GovernmentNonprofitPolitical"/>
- *     <enumeration value="Healthcare"/>
- *     <enumeration value="Internal"/>
- *     <enumeration value="PublishingAndWebMedia"/>
- *     <enumeration value="RealEstate"/>
- *     <enumeration value="Retail"/>
- *     <enumeration value="Services"/>
- *     <enumeration value="Technology"/>
- *     <enumeration value="Telecommunications"/>
- *     <enumeration value="TravelHospitality"/>
- *     <enumeration value="Other"/>
- *     <enumeration value="Pharmaceuticals"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="Industry">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="NA"/>
+ *     &lt;enumeration value="AgencySalesHouse"/>
+ *     &lt;enumeration value="Automotive"/>
+ *     &lt;enumeration value="ConsumerPackagedGoods"/>
+ *     &lt;enumeration value="Education"/>
+ *     &lt;enumeration value="Entertainment"/>
+ *     &lt;enumeration value="FinancialServices"/>
+ *     &lt;enumeration value="FoodServices"/>
+ *     &lt;enumeration value="Gaming"/>
+ *     &lt;enumeration value="GovernmentNonprofitPolitical"/>
+ *     &lt;enumeration value="Healthcare"/>
+ *     &lt;enumeration value="Internal"/>
+ *     &lt;enumeration value="PublishingAndWebMedia"/>
+ *     &lt;enumeration value="RealEstate"/>
+ *     &lt;enumeration value="Retail"/>
+ *     &lt;enumeration value="Services"/>
+ *     &lt;enumeration value="Technology"/>
+ *     &lt;enumeration value="Telecommunications"/>
+ *     &lt;enumeration value="TravelHospitality"/>
+ *     &lt;enumeration value="Other"/>
+ *     &lt;enumeration value="Pharmaceuticals"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "Industry", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

@@ -1,26 +1,27 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ServiceLevel.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="ServiceLevel">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="SelfServe"/>
- *     <enumeration value="SelfServeTrusted"/>
- *     <enumeration value="Premium"/>
- *     <enumeration value="Internal"/>
- *     <enumeration value="Select"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="ServiceLevel">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="SelfServe"/>
+ *     &lt;enumeration value="SelfServeTrusted"/>
+ *     &lt;enumeration value="Premium"/>
+ *     &lt;enumeration value="Internal"/>
+ *     &lt;enumeration value="Select"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "ServiceLevel", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

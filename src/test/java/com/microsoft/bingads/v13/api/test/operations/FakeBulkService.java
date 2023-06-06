@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-import jakarta.xml.ws.AsyncHandler;
-import jakarta.xml.ws.Binding;
-import jakarta.xml.ws.BindingProvider;
-import jakarta.xml.ws.EndpointReference;
-import jakarta.xml.ws.Response;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Binding;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.EndpointReference;
+import javax.xml.ws.Response;
 
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;

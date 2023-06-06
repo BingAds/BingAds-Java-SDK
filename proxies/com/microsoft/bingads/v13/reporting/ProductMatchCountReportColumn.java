@@ -1,36 +1,37 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ProductMatchCountReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="ProductMatchCountReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="CustomerId"/>
- *     <enumeration value="CustomerName"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="AccountNumber"/>
- *     <enumeration value="AccountName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="AdGroupId"/>
- *     <enumeration value="AdGroupName"/>
- *     <enumeration value="ProductGroup"/>
- *     <enumeration value="PartitionType"/>
- *     <enumeration value="AdGroupCriterionId"/>
- *     <enumeration value="MatchedProductsAtCampaign"/>
- *     <enumeration value="MatchedProductsAtAdGroup"/>
- *     <enumeration value="MatchedProductsAtProductGroup"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="ProductMatchCountReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="AccountNumber"/>
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="AdGroupName"/>
+ *     &lt;enumeration value="ProductGroup"/>
+ *     &lt;enumeration value="PartitionType"/>
+ *     &lt;enumeration value="AdGroupCriterionId"/>
+ *     &lt;enumeration value="MatchedProductsAtCampaign"/>
+ *     &lt;enumeration value="MatchedProductsAtAdGroup"/>
+ *     &lt;enumeration value="MatchedProductsAtProductGroup"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "ProductMatchCountReportColumn")

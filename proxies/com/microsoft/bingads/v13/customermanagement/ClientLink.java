@@ -2,12 +2,12 @@
 package com.microsoft.bingads.v13.customermanagement;
 
 import java.util.Calendar;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -15,37 +15,37 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ClientLink">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ClientEntityId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="ClientEntityNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ClientEntityName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ManagingCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="ManagingCustomerNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ManagingCustomerName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Note" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="InviterEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="InviterName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="InviterPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="IsBillToClient" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         <element name="Status" type="{https://bingads.microsoft.com/Customer/v13/Entities}ClientLinkStatus" minOccurs="0"/>
- *         <element name="SuppressNotification" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="LastModifiedDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         <element name="LastModifiedByUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
- *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         <element name="CustomerLinkPermission" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ClientLink">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ClientEntityId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="ClientEntityNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ClientEntityName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ManagingCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="ManagingCustomerNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ManagingCustomerName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Note" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="InviterEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="InviterName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="InviterPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="IsBillToClient" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="Status" type="{https://bingads.microsoft.com/Customer/v13/Entities}ClientLinkStatus" minOccurs="0"/>
+ *         &lt;element name="SuppressNotification" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="LastModifiedDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="LastModifiedByUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
+ *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         &lt;element name="CustomerLinkPermission" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

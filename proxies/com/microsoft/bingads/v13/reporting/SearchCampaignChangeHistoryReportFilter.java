@@ -2,11 +2,11 @@
 package com.microsoft.bingads.v13.reporting;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -14,19 +14,19 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="SearchCampaignChangeHistoryReportFilter">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v13}AdDistributionReportFilter" minOccurs="0"/>
- *         <element name="HowChanged" type="{https://bingads.microsoft.com/Reporting/v13}ChangeTypeReportFilter" minOccurs="0"/>
- *         <element name="ItemChanged" type="{https://bingads.microsoft.com/Reporting/v13}ChangeEntityReportFilter" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="SearchCampaignChangeHistoryReportFilter">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v13}AdDistributionReportFilter" minOccurs="0"/>
+ *         &lt;element name="HowChanged" type="{https://bingads.microsoft.com/Reporting/v13}ChangeTypeReportFilter" minOccurs="0"/>
+ *         &lt;element name="ItemChanged" type="{https://bingads.microsoft.com/Reporting/v13}ChangeEntityReportFilter" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -39,13 +39,13 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class SearchCampaignChangeHistoryReportFilter {
 
     @XmlElement(name = "AdDistribution", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<ChangeEntityReportFilter> itemChanged;
 
     /**

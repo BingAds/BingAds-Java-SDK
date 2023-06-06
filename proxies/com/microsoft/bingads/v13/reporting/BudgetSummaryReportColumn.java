@@ -1,31 +1,32 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for BudgetSummaryReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="BudgetSummaryReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="AccountName"/>
- *     <enumeration value="AccountNumber"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="Date"/>
- *     <enumeration value="CurrencyCode"/>
- *     <enumeration value="MonthlyBudget"/>
- *     <enumeration value="DailySpend"/>
- *     <enumeration value="MonthToDateSpend"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="BudgetSummaryReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="AccountNumber"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="Date"/>
+ *     &lt;enumeration value="CurrencyCode"/>
+ *     &lt;enumeration value="MonthlyBudget"/>
+ *     &lt;enumeration value="DailySpend"/>
+ *     &lt;enumeration value="MonthToDateSpend"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "BudgetSummaryReportColumn")

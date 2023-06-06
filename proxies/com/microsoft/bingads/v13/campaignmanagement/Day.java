@@ -1,28 +1,29 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for Day.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="Day">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Sunday"/>
- *     <enumeration value="Monday"/>
- *     <enumeration value="Tuesday"/>
- *     <enumeration value="Wednesday"/>
- *     <enumeration value="Thursday"/>
- *     <enumeration value="Friday"/>
- *     <enumeration value="Saturday"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="Day">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Sunday"/>
+ *     &lt;enumeration value="Monday"/>
+ *     &lt;enumeration value="Tuesday"/>
+ *     &lt;enumeration value="Wednesday"/>
+ *     &lt;enumeration value="Thursday"/>
+ *     &lt;enumeration value="Friday"/>
+ *     &lt;enumeration value="Saturday"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "Day")

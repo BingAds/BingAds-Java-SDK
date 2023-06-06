@@ -1,38 +1,39 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PerformanceInsightsUrlId.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="PerformanceInsightsUrlId">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="RecRecommendationPage"/>
- *     <enumeration value="RecCompetitionPage"/>
- *     <enumeration value="SettingCreateOrder"/>
- *     <enumeration value="SettingRemoveHold"/>
- *     <enumeration value="SettingAddFunds"/>
- *     <enumeration value="ReportSearchTerm"/>
- *     <enumeration value="ReportPublisherWebsite"/>
- *     <enumeration value="ReportAuctionInsights"/>
- *     <enumeration value="HelpDocNetworkSetting"/>
- *     <enumeration value="HelpDocEditorial"/>
- *     <enumeration value="HelpDocWebsiteReport"/>
- *     <enumeration value="HelpDocWebsiteExclusion"/>
- *     <enumeration value="HelpDocCreateOrder"/>
- *     <enumeration value="HelpDocRemoveHold"/>
- *     <enumeration value="HelpDocAddFunds"/>
- *     <enumeration value="HelpDocRecommendation"/>
- *     <enumeration value="HelpDocAudienceNetwork"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="PerformanceInsightsUrlId">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="RecRecommendationPage"/>
+ *     &lt;enumeration value="RecCompetitionPage"/>
+ *     &lt;enumeration value="SettingCreateOrder"/>
+ *     &lt;enumeration value="SettingRemoveHold"/>
+ *     &lt;enumeration value="SettingAddFunds"/>
+ *     &lt;enumeration value="ReportSearchTerm"/>
+ *     &lt;enumeration value="ReportPublisherWebsite"/>
+ *     &lt;enumeration value="ReportAuctionInsights"/>
+ *     &lt;enumeration value="HelpDocNetworkSetting"/>
+ *     &lt;enumeration value="HelpDocEditorial"/>
+ *     &lt;enumeration value="HelpDocWebsiteReport"/>
+ *     &lt;enumeration value="HelpDocWebsiteExclusion"/>
+ *     &lt;enumeration value="HelpDocCreateOrder"/>
+ *     &lt;enumeration value="HelpDocRemoveHold"/>
+ *     &lt;enumeration value="HelpDocAddFunds"/>
+ *     &lt;enumeration value="HelpDocRecommendation"/>
+ *     &lt;enumeration value="HelpDocAudienceNetwork"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "PerformanceInsightsUrlId")

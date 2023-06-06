@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,20 +13,20 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="UrlParameter">
- *   <complexContent>
- *     <extension base="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsMessageParameter">
- *       <sequence>
- *         <element name="SuggestedText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="SuggestedUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="UrlCategory" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsUrlCategory" minOccurs="0"/>
- *         <element name="UrlId" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsUrlId" minOccurs="0"/>
- *       </sequence>
- *     </extension>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="UrlParameter">
+ *   &lt;complexContent>
+ *     &lt;extension base="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsMessageParameter">
+ *       &lt;sequence>
+ *         &lt;element name="SuggestedText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="SuggestedUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="UrlCategory" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsUrlCategory" minOccurs="0"/>
+ *         &lt;element name="UrlId" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsUrlId" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

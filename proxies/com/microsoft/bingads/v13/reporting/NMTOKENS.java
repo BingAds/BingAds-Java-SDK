@@ -3,11 +3,11 @@ package com.microsoft.bingads.v13.reporting;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -15,16 +15,16 @@ import jakarta.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <simpleType name="NMTOKENS">
- *   <restriction>
- *     <simpleType>
- *       <list itemType="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
- *     </simpleType>
- *     <minLength value="1"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <pre>
+ * &lt;simpleType name="NMTOKENS">
+ *   &lt;restriction>
+ *     &lt;simpleType>
+ *       &lt;list itemType="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
+ *     &lt;/simpleType>
+ *     &lt;minLength value="1"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  * 
  */
@@ -44,8 +44,8 @@ public class NMTOKENS {
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the values property.
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the values property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -59,12 +59,10 @@ public class NMTOKENS {
      * {@link NMTOKEN }
      * 
      * 
-     * @return
-     *     The value of the values property.
      */
     public List<NMTOKEN> getValues() {
         if (values == null) {
-            values = new ArrayList<>();
+            values = new ArrayList<NMTOKEN>();
         }
         return this.values;
     }

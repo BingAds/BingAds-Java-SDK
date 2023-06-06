@@ -1,30 +1,31 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AdType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="AdType">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Text"/>
- *     <enumeration value="Image"/>
- *     <enumeration value="Product"/>
- *     <enumeration value="AppInstall"/>
- *     <enumeration value="ExpandedText"/>
- *     <enumeration value="DynamicSearch"/>
- *     <enumeration value="ResponsiveAd"/>
- *     <enumeration value="ResponsiveSearch"/>
- *     <enumeration value="Hotel"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="AdType">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Text"/>
+ *     &lt;enumeration value="Image"/>
+ *     &lt;enumeration value="Product"/>
+ *     &lt;enumeration value="AppInstall"/>
+ *     &lt;enumeration value="ExpandedText"/>
+ *     &lt;enumeration value="DynamicSearch"/>
+ *     &lt;enumeration value="ResponsiveAd"/>
+ *     &lt;enumeration value="ResponsiveSearch"/>
+ *     &lt;enumeration value="Hotel"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "AdType")

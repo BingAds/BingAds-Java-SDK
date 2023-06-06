@@ -1,74 +1,75 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for LCID.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="LCID">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="ArabicSaudiArabia"/>
- *     <enumeration value="ArabicAlgeria"/>
- *     <enumeration value="ArabicBahrain"/>
- *     <enumeration value="ArabicEgypt"/>
- *     <enumeration value="ArabicIraq"/>
- *     <enumeration value="ArabicJordan"/>
- *     <enumeration value="ArabicKuwait"/>
- *     <enumeration value="ArabicLebanon"/>
- *     <enumeration value="ArabicLibya"/>
- *     <enumeration value="ArabicMorocco"/>
- *     <enumeration value="ArabicOman"/>
- *     <enumeration value="ArabicQatar"/>
- *     <enumeration value="ArabicTunisia"/>
- *     <enumeration value="ArabicUnitedArabEmirates"/>
- *     <enumeration value="ArabicYemen"/>
- *     <enumeration value="ChineseTaiwan"/>
- *     <enumeration value="DanishDenmark"/>
- *     <enumeration value="GermanGermany"/>
- *     <enumeration value="EnglishUS"/>
- *     <enumeration value="SpanishSpain"/>
- *     <enumeration value="FinnishFinland"/>
- *     <enumeration value="FrenchFrance"/>
- *     <enumeration value="HebrewIsrael"/>
- *     <enumeration value="ItalianItaly"/>
- *     <enumeration value="JapaneseJapan"/>
- *     <enumeration value="KoreanKorea"/>
- *     <enumeration value="DutchNetherlands"/>
- *     <enumeration value="NorwegianNorway"/>
- *     <enumeration value="PortugueseBrazil"/>
- *     <enumeration value="RussianRussia"/>
- *     <enumeration value="SwedishSweden"/>
- *     <enumeration value="EnglishThailand"/>
- *     <enumeration value="EnglishIndonesia"/>
- *     <enumeration value="EnglishVietnam"/>
- *     <enumeration value="GermanSwitzerland"/>
- *     <enumeration value="EnglishUK"/>
- *     <enumeration value="SpanishMexico"/>
- *     <enumeration value="ChineseHongKong"/>
- *     <enumeration value="GermanAustria"/>
- *     <enumeration value="EnglishAustralia"/>
- *     <enumeration value="FrenchCanada"/>
- *     <enumeration value="EnglishCanada"/>
- *     <enumeration value="EnglishNewZealand"/>
- *     <enumeration value="EnglishIreland"/>
- *     <enumeration value="SpanishVenezuela"/>
- *     <enumeration value="SpanishColombia"/>
- *     <enumeration value="SpanishPeru"/>
- *     <enumeration value="SpanishArgentina"/>
- *     <enumeration value="EnglishPhilippines"/>
- *     <enumeration value="SpanishChile"/>
- *     <enumeration value="EnglishIndia"/>
- *     <enumeration value="EnglishMalaysia"/>
- *     <enumeration value="EnglishSingapore"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="LCID">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="ArabicSaudiArabia"/>
+ *     &lt;enumeration value="ArabicAlgeria"/>
+ *     &lt;enumeration value="ArabicBahrain"/>
+ *     &lt;enumeration value="ArabicEgypt"/>
+ *     &lt;enumeration value="ArabicIraq"/>
+ *     &lt;enumeration value="ArabicJordan"/>
+ *     &lt;enumeration value="ArabicKuwait"/>
+ *     &lt;enumeration value="ArabicLebanon"/>
+ *     &lt;enumeration value="ArabicLibya"/>
+ *     &lt;enumeration value="ArabicMorocco"/>
+ *     &lt;enumeration value="ArabicOman"/>
+ *     &lt;enumeration value="ArabicQatar"/>
+ *     &lt;enumeration value="ArabicTunisia"/>
+ *     &lt;enumeration value="ArabicUnitedArabEmirates"/>
+ *     &lt;enumeration value="ArabicYemen"/>
+ *     &lt;enumeration value="ChineseTaiwan"/>
+ *     &lt;enumeration value="DanishDenmark"/>
+ *     &lt;enumeration value="GermanGermany"/>
+ *     &lt;enumeration value="EnglishUS"/>
+ *     &lt;enumeration value="SpanishSpain"/>
+ *     &lt;enumeration value="FinnishFinland"/>
+ *     &lt;enumeration value="FrenchFrance"/>
+ *     &lt;enumeration value="HebrewIsrael"/>
+ *     &lt;enumeration value="ItalianItaly"/>
+ *     &lt;enumeration value="JapaneseJapan"/>
+ *     &lt;enumeration value="KoreanKorea"/>
+ *     &lt;enumeration value="DutchNetherlands"/>
+ *     &lt;enumeration value="NorwegianNorway"/>
+ *     &lt;enumeration value="PortugueseBrazil"/>
+ *     &lt;enumeration value="RussianRussia"/>
+ *     &lt;enumeration value="SwedishSweden"/>
+ *     &lt;enumeration value="EnglishThailand"/>
+ *     &lt;enumeration value="EnglishIndonesia"/>
+ *     &lt;enumeration value="EnglishVietnam"/>
+ *     &lt;enumeration value="GermanSwitzerland"/>
+ *     &lt;enumeration value="EnglishUK"/>
+ *     &lt;enumeration value="SpanishMexico"/>
+ *     &lt;enumeration value="ChineseHongKong"/>
+ *     &lt;enumeration value="GermanAustria"/>
+ *     &lt;enumeration value="EnglishAustralia"/>
+ *     &lt;enumeration value="FrenchCanada"/>
+ *     &lt;enumeration value="EnglishCanada"/>
+ *     &lt;enumeration value="EnglishNewZealand"/>
+ *     &lt;enumeration value="EnglishIreland"/>
+ *     &lt;enumeration value="SpanishVenezuela"/>
+ *     &lt;enumeration value="SpanishColombia"/>
+ *     &lt;enumeration value="SpanishPeru"/>
+ *     &lt;enumeration value="SpanishArgentina"/>
+ *     &lt;enumeration value="EnglishPhilippines"/>
+ *     &lt;enumeration value="SpanishChile"/>
+ *     &lt;enumeration value="EnglishIndia"/>
+ *     &lt;enumeration value="EnglishMalaysia"/>
+ *     &lt;enumeration value="EnglishSingapore"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "LCID", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

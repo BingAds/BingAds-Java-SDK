@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,23 +13,23 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="PerformanceInsightsDetail">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="EntityId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="EntityType" type="{https://bingads.microsoft.com/AdInsight/v13}EntityType" minOccurs="0"/>
- *         <element name="KPIType" type="{https://bingads.microsoft.com/AdInsight/v13}KPIType" minOccurs="0"/>
- *         <element name="Date" type="{https://bingads.microsoft.com/AdInsight/v13}DayMonthAndYear" minOccurs="0"/>
- *         <element name="Description" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsMessage" minOccurs="0"/>
- *         <element name="RootCauses" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfPerformanceInsightsMessage" minOccurs="0"/>
- *         <element name="Actions" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfPerformanceInsightsMessage" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="PerformanceInsightsDetail">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="EntityId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="EntityType" type="{https://bingads.microsoft.com/AdInsight/v13}EntityType" minOccurs="0"/>
+ *         &lt;element name="KPIType" type="{https://bingads.microsoft.com/AdInsight/v13}KPIType" minOccurs="0"/>
+ *         &lt;element name="Date" type="{https://bingads.microsoft.com/AdInsight/v13}DayMonthAndYear" minOccurs="0"/>
+ *         &lt;element name="Description" type="{https://bingads.microsoft.com/AdInsight/v13}PerformanceInsightsMessage" minOccurs="0"/>
+ *         &lt;element name="RootCauses" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfPerformanceInsightsMessage" minOccurs="0"/>
+ *         &lt;element name="Actions" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfPerformanceInsightsMessage" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

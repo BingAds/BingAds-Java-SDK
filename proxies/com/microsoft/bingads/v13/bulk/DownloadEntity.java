@@ -1,171 +1,167 @@
 
 package com.microsoft.bingads.v13.bulk;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for DownloadEntity.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="DownloadEntity">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Campaigns"/>
- *     <enumeration value="AdGroups"/>
- *     <enumeration value="Ads"/>
- *     <enumeration value="Keywords"/>
- *     <enumeration value="CampaignNegativeKeywords"/>
- *     <enumeration value="AdGroupNegativeKeywords"/>
- *     <enumeration value="CampaignTargetCriterions"/>
- *     <enumeration value="AdGroupTargetCriterions"/>
- *     <enumeration value="CampaignNegativeSites"/>
- *     <enumeration value="AdGroupNegativeSites"/>
- *     <enumeration value="CampaignLocationAdExtensions"/>
- *     <enumeration value="CampaignCallAdExtensions"/>
- *     <enumeration value="LocationAdExtensions"/>
- *     <enumeration value="CallAdExtensions"/>
- *     <enumeration value="NegativeKeywordLists"/>
- *     <enumeration value="SharedNegativeKeywords"/>
- *     <enumeration value="CampaignNegativeKeywordListAssociations"/>
- *     <enumeration value="ImageAdExtensions"/>
- *     <enumeration value="CampaignImageAdExtensions"/>
- *     <enumeration value="AdGroupImageAdExtensions"/>
- *     <enumeration value="AppAdExtensions"/>
- *     <enumeration value="AdGroupAppAdExtensions"/>
- *     <enumeration value="CampaignAppAdExtensions"/>
- *     <enumeration value="PriceAdExtensions"/>
- *     <enumeration value="ReviewAdExtensions"/>
- *     <enumeration value="CampaignNegativeDynamicSearchAdTargets"/>
- *     <enumeration value="AdGroupProductPartitions"/>
- *     <enumeration value="CampaignProductScopes"/>
- *     <enumeration value="CampaignReviewAdExtensions"/>
- *     <enumeration value="AdGroupReviewAdExtensions"/>
- *     <enumeration value="CalloutAdExtensions"/>
- *     <enumeration value="CampaignCalloutAdExtensions"/>
- *     <enumeration value="AdGroupCalloutAdExtensions"/>
- *     <enumeration value="SitelinkAdExtensions"/>
- *     <enumeration value="CampaignSitelinkAdExtensions"/>
- *     <enumeration value="AdGroupSitelinkAdExtensions"/>
- *     <enumeration value="StructuredSnippetAdExtensions"/>
- *     <enumeration value="CampaignStructuredSnippetAdExtensions"/>
- *     <enumeration value="AdGroupStructuredSnippetAdExtensions"/>
- *     <enumeration value="RemarketingLists"/>
- *     <enumeration value="AdGroupRemarketingListAssociations"/>
- *     <enumeration value="Budgets"/>
- *     <enumeration value="TextAds"/>
- *     <enumeration value="ProductAds"/>
- *     <enumeration value="AppInstallAds"/>
- *     <enumeration value="ExpandedTextAds"/>
- *     <enumeration value="DynamicSearchAds"/>
- *     <enumeration value="AdGroupDynamicSearchAdTargets"/>
- *     <enumeration value="AdGroupNegativeDynamicSearchAdTargets"/>
- *     <enumeration value="CampaignPriceAdExtensions"/>
- *     <enumeration value="AdGroupPriceAdExtensions"/>
- *     <enumeration value="Labels"/>
- *     <enumeration value="CampaignLabels"/>
- *     <enumeration value="AdGroupLabels"/>
- *     <enumeration value="TextAdLabels"/>
- *     <enumeration value="KeywordLabels"/>
- *     <enumeration value="AdGroupNegativeRemarketingListAssociations"/>
- *     <enumeration value="CustomAudiences"/>
- *     <enumeration value="AdGroupCustomAudienceAssociations"/>
- *     <enumeration value="AdGroupNegativeCustomAudienceAssociations"/>
- *     <enumeration value="InMarketAudiences"/>
- *     <enumeration value="AdGroupInMarketAudienceAssociations"/>
- *     <enumeration value="AdGroupNegativeInMarketAudienceAssociations"/>
- *     <enumeration value="Audiences"/>
- *     <enumeration value="AdGroupAudienceAssociations"/>
- *     <enumeration value="AdGroupNegativeAudienceAssociations"/>
- *     <enumeration value="ProductAdLabels"/>
- *     <enumeration value="AppInstallAdLabels"/>
- *     <enumeration value="ExpandedTextAdLabels"/>
- *     <enumeration value="DynamicSearchAdLabels"/>
- *     <enumeration value="AccountLocationAdExtensions"/>
- *     <enumeration value="AccountImageAdExtensions"/>
- *     <enumeration value="AccountAppAdExtensions"/>
- *     <enumeration value="AccountPriceAdExtensions"/>
- *     <enumeration value="AccountReviewAdExtensions"/>
- *     <enumeration value="AccountCalloutAdExtensions"/>
- *     <enumeration value="AccountSitelinkAdExtensions"/>
- *     <enumeration value="AccountStructuredSnippetAdExtensions"/>
- *     <enumeration value="ResponsiveAds"/>
- *     <enumeration value="ResponsiveAdLabels"/>
- *     <enumeration value="ProductAudiences"/>
- *     <enumeration value="AdGroupProductAudienceAssociations"/>
- *     <enumeration value="AdGroupNegativeProductAudienceAssociations"/>
- *     <enumeration value="SimilarRemarketingLists"/>
- *     <enumeration value="AdGroupSimilarRemarketingListAssociations"/>
- *     <enumeration value="AdGroupNegativeSimilarRemarketingListAssociations"/>
- *     <enumeration value="Experiments"/>
- *     <enumeration value="ActionAdExtensions"/>
- *     <enumeration value="CampaignActionAdExtensions"/>
- *     <enumeration value="AdGroupActionAdExtensions"/>
- *     <enumeration value="AccountActionAdExtensions"/>
- *     <enumeration value="ResponsiveSearchAds"/>
- *     <enumeration value="ResponsiveSearchAdLabels"/>
- *     <enumeration value="CampaignAudienceAssociations"/>
- *     <enumeration value="CampaignNegativeAudienceAssociations"/>
- *     <enumeration value="CampaignCustomAudienceAssociations"/>
- *     <enumeration value="CampaignNegativeCustomAudienceAssociations"/>
- *     <enumeration value="CampaignInMarketAudienceAssociations"/>
- *     <enumeration value="CampaignNegativeInMarketAudienceAssociations"/>
- *     <enumeration value="CampaignProductAudienceAssociations"/>
- *     <enumeration value="CampaignNegativeProductAudienceAssociations"/>
- *     <enumeration value="CampaignRemarketingListAssociations"/>
- *     <enumeration value="CampaignNegativeRemarketingListAssociations"/>
- *     <enumeration value="CampaignSimilarRemarketingListAssociations"/>
- *     <enumeration value="CampaignNegativeSimilarRemarketingListAssociations"/>
- *     <enumeration value="Feeds"/>
- *     <enumeration value="FeedItems"/>
- *     <enumeration value="CampaignNegativeStoreCriterions"/>
- *     <enumeration value="PromotionAdExtensions"/>
- *     <enumeration value="AccountPromotionAdExtensions"/>
- *     <enumeration value="CampaignPromotionAdExtensions"/>
- *     <enumeration value="AdGroupPromotionAdExtensions"/>
- *     <enumeration value="CombinedLists"/>
- *     <enumeration value="AdGroupCombinedListAssociations"/>
- *     <enumeration value="AdGroupNegativeCombinedListAssociations"/>
- *     <enumeration value="CampaignCombinedListAssociations"/>
- *     <enumeration value="CampaignNegativeCombinedListAssociations"/>
- *     <enumeration value="Images"/>
- *     <enumeration value="CustomerLists"/>
- *     <enumeration value="AdGroupCustomerListAssociations"/>
- *     <enumeration value="AdGroupNegativeCustomerListAssociations"/>
- *     <enumeration value="CampaignCustomerListAssociations"/>
- *     <enumeration value="CampaignNegativeCustomerListAssociations"/>
- *     <enumeration value="FilterLinkAdExtensions"/>
- *     <enumeration value="AccountFilterLinkAdExtensions"/>
- *     <enumeration value="CampaignFilterLinkAdExtensions"/>
- *     <enumeration value="AdGroupFilterLinkAdExtensions"/>
- *     <enumeration value="FlyerAdExtensions"/>
- *     <enumeration value="AccountFlyerAdExtensions"/>
- *     <enumeration value="CampaignFlyerAdExtensions"/>
- *     <enumeration value="AdGroupFlyerAdExtensions"/>
- *     <enumeration value="BidStrategies"/>
- *     <enumeration value="VideoAdExtensions"/>
- *     <enumeration value="AccountVideoAdExtensions"/>
- *     <enumeration value="CampaignVideoAdExtensions"/>
- *     <enumeration value="AdGroupVideoAdExtensions"/>
- *     <enumeration value="Videos"/>
- *     <enumeration value="DisclaimerAdExtensions"/>
- *     <enumeration value="CampaignDisclaimerAdExtensions"/>
- *     <enumeration value="AdcustomizerAttribute"/>
- *     <enumeration value="CampaignAdcustomizerAttribute"/>
- *     <enumeration value="AdGroupAdcustomizerAttribute"/>
- *     <enumeration value="KeywordAdcustomizerAttribute"/>
- *     <enumeration value="CampaignConversionGoal"/>
- *     <enumeration value="AdGroupHotelListingGroups"/>
- *     <enumeration value="AssetGroups"/>
- *     <enumeration value="AudienceGroups"/>
- *     <enumeration value="CampaignNegativeWebpages"/>
- *     <enumeration value="AudienceGroupAssetGroupAssociations"/>
- *     <enumeration value="AssetGroupListingGroups"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="DownloadEntity">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Campaigns"/>
+ *     &lt;enumeration value="AdGroups"/>
+ *     &lt;enumeration value="Ads"/>
+ *     &lt;enumeration value="Keywords"/>
+ *     &lt;enumeration value="CampaignNegativeKeywords"/>
+ *     &lt;enumeration value="AdGroupNegativeKeywords"/>
+ *     &lt;enumeration value="CampaignTargetCriterions"/>
+ *     &lt;enumeration value="AdGroupTargetCriterions"/>
+ *     &lt;enumeration value="CampaignNegativeSites"/>
+ *     &lt;enumeration value="AdGroupNegativeSites"/>
+ *     &lt;enumeration value="CampaignLocationAdExtensions"/>
+ *     &lt;enumeration value="CampaignCallAdExtensions"/>
+ *     &lt;enumeration value="LocationAdExtensions"/>
+ *     &lt;enumeration value="CallAdExtensions"/>
+ *     &lt;enumeration value="NegativeKeywordLists"/>
+ *     &lt;enumeration value="SharedNegativeKeywords"/>
+ *     &lt;enumeration value="CampaignNegativeKeywordListAssociations"/>
+ *     &lt;enumeration value="ImageAdExtensions"/>
+ *     &lt;enumeration value="CampaignImageAdExtensions"/>
+ *     &lt;enumeration value="AdGroupImageAdExtensions"/>
+ *     &lt;enumeration value="AppAdExtensions"/>
+ *     &lt;enumeration value="AdGroupAppAdExtensions"/>
+ *     &lt;enumeration value="CampaignAppAdExtensions"/>
+ *     &lt;enumeration value="PriceAdExtensions"/>
+ *     &lt;enumeration value="ReviewAdExtensions"/>
+ *     &lt;enumeration value="CampaignNegativeDynamicSearchAdTargets"/>
+ *     &lt;enumeration value="AdGroupProductPartitions"/>
+ *     &lt;enumeration value="CampaignProductScopes"/>
+ *     &lt;enumeration value="CampaignReviewAdExtensions"/>
+ *     &lt;enumeration value="AdGroupReviewAdExtensions"/>
+ *     &lt;enumeration value="CalloutAdExtensions"/>
+ *     &lt;enumeration value="CampaignCalloutAdExtensions"/>
+ *     &lt;enumeration value="AdGroupCalloutAdExtensions"/>
+ *     &lt;enumeration value="SitelinkAdExtensions"/>
+ *     &lt;enumeration value="CampaignSitelinkAdExtensions"/>
+ *     &lt;enumeration value="AdGroupSitelinkAdExtensions"/>
+ *     &lt;enumeration value="StructuredSnippetAdExtensions"/>
+ *     &lt;enumeration value="CampaignStructuredSnippetAdExtensions"/>
+ *     &lt;enumeration value="AdGroupStructuredSnippetAdExtensions"/>
+ *     &lt;enumeration value="RemarketingLists"/>
+ *     &lt;enumeration value="AdGroupRemarketingListAssociations"/>
+ *     &lt;enumeration value="Budgets"/>
+ *     &lt;enumeration value="TextAds"/>
+ *     &lt;enumeration value="ProductAds"/>
+ *     &lt;enumeration value="AppInstallAds"/>
+ *     &lt;enumeration value="ExpandedTextAds"/>
+ *     &lt;enumeration value="DynamicSearchAds"/>
+ *     &lt;enumeration value="AdGroupDynamicSearchAdTargets"/>
+ *     &lt;enumeration value="AdGroupNegativeDynamicSearchAdTargets"/>
+ *     &lt;enumeration value="CampaignPriceAdExtensions"/>
+ *     &lt;enumeration value="AdGroupPriceAdExtensions"/>
+ *     &lt;enumeration value="Labels"/>
+ *     &lt;enumeration value="CampaignLabels"/>
+ *     &lt;enumeration value="AdGroupLabels"/>
+ *     &lt;enumeration value="TextAdLabels"/>
+ *     &lt;enumeration value="KeywordLabels"/>
+ *     &lt;enumeration value="AdGroupNegativeRemarketingListAssociations"/>
+ *     &lt;enumeration value="CustomAudiences"/>
+ *     &lt;enumeration value="AdGroupCustomAudienceAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeCustomAudienceAssociations"/>
+ *     &lt;enumeration value="InMarketAudiences"/>
+ *     &lt;enumeration value="AdGroupInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="Audiences"/>
+ *     &lt;enumeration value="AdGroupAudienceAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeAudienceAssociations"/>
+ *     &lt;enumeration value="ProductAdLabels"/>
+ *     &lt;enumeration value="AppInstallAdLabels"/>
+ *     &lt;enumeration value="ExpandedTextAdLabels"/>
+ *     &lt;enumeration value="DynamicSearchAdLabels"/>
+ *     &lt;enumeration value="AccountLocationAdExtensions"/>
+ *     &lt;enumeration value="AccountImageAdExtensions"/>
+ *     &lt;enumeration value="AccountAppAdExtensions"/>
+ *     &lt;enumeration value="AccountPriceAdExtensions"/>
+ *     &lt;enumeration value="AccountReviewAdExtensions"/>
+ *     &lt;enumeration value="AccountCalloutAdExtensions"/>
+ *     &lt;enumeration value="AccountSitelinkAdExtensions"/>
+ *     &lt;enumeration value="AccountStructuredSnippetAdExtensions"/>
+ *     &lt;enumeration value="ResponsiveAds"/>
+ *     &lt;enumeration value="ResponsiveAdLabels"/>
+ *     &lt;enumeration value="ProductAudiences"/>
+ *     &lt;enumeration value="AdGroupProductAudienceAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeProductAudienceAssociations"/>
+ *     &lt;enumeration value="SimilarRemarketingLists"/>
+ *     &lt;enumeration value="AdGroupSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="Experiments"/>
+ *     &lt;enumeration value="ActionAdExtensions"/>
+ *     &lt;enumeration value="CampaignActionAdExtensions"/>
+ *     &lt;enumeration value="AdGroupActionAdExtensions"/>
+ *     &lt;enumeration value="AccountActionAdExtensions"/>
+ *     &lt;enumeration value="ResponsiveSearchAds"/>
+ *     &lt;enumeration value="ResponsiveSearchAdLabels"/>
+ *     &lt;enumeration value="CampaignAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignCustomAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCustomAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeInMarketAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignProductAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeProductAudienceAssociations"/>
+ *     &lt;enumeration value="CampaignRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeSimilarRemarketingListAssociations"/>
+ *     &lt;enumeration value="Feeds"/>
+ *     &lt;enumeration value="FeedItems"/>
+ *     &lt;enumeration value="CampaignNegativeStoreCriterions"/>
+ *     &lt;enumeration value="PromotionAdExtensions"/>
+ *     &lt;enumeration value="AccountPromotionAdExtensions"/>
+ *     &lt;enumeration value="CampaignPromotionAdExtensions"/>
+ *     &lt;enumeration value="AdGroupPromotionAdExtensions"/>
+ *     &lt;enumeration value="CombinedLists"/>
+ *     &lt;enumeration value="AdGroupCombinedListAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeCombinedListAssociations"/>
+ *     &lt;enumeration value="CampaignCombinedListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCombinedListAssociations"/>
+ *     &lt;enumeration value="Images"/>
+ *     &lt;enumeration value="CustomerLists"/>
+ *     &lt;enumeration value="AdGroupCustomerListAssociations"/>
+ *     &lt;enumeration value="AdGroupNegativeCustomerListAssociations"/>
+ *     &lt;enumeration value="CampaignCustomerListAssociations"/>
+ *     &lt;enumeration value="CampaignNegativeCustomerListAssociations"/>
+ *     &lt;enumeration value="FilterLinkAdExtensions"/>
+ *     &lt;enumeration value="AccountFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="CampaignFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="AdGroupFilterLinkAdExtensions"/>
+ *     &lt;enumeration value="FlyerAdExtensions"/>
+ *     &lt;enumeration value="AccountFlyerAdExtensions"/>
+ *     &lt;enumeration value="CampaignFlyerAdExtensions"/>
+ *     &lt;enumeration value="AdGroupFlyerAdExtensions"/>
+ *     &lt;enumeration value="BidStrategies"/>
+ *     &lt;enumeration value="VideoAdExtensions"/>
+ *     &lt;enumeration value="AccountVideoAdExtensions"/>
+ *     &lt;enumeration value="CampaignVideoAdExtensions"/>
+ *     &lt;enumeration value="AdGroupVideoAdExtensions"/>
+ *     &lt;enumeration value="Videos"/>
+ *     &lt;enumeration value="DisclaimerAdExtensions"/>
+ *     &lt;enumeration value="CampaignDisclaimerAdExtensions"/>
+ *     &lt;enumeration value="AdcustomizerAttribute"/>
+ *     &lt;enumeration value="CampaignAdcustomizerAttribute"/>
+ *     &lt;enumeration value="AdGroupAdcustomizerAttribute"/>
+ *     &lt;enumeration value="KeywordAdcustomizerAttribute"/>
+ *     &lt;enumeration value="CampaignConversionGoal"/>
+ *     &lt;enumeration value="AdGroupHotelListingGroups"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "DownloadEntity")
@@ -461,17 +457,7 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignConversionGoal")
     CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal"),
     @XmlEnumValue("AdGroupHotelListingGroups")
-    AD_GROUP_HOTEL_LISTING_GROUPS("AdGroupHotelListingGroups"),
-    @XmlEnumValue("AssetGroups")
-    ASSET_GROUPS("AssetGroups"),
-    @XmlEnumValue("AudienceGroups")
-    AUDIENCE_GROUPS("AudienceGroups"),
-    @XmlEnumValue("CampaignNegativeWebpages")
-    CAMPAIGN_NEGATIVE_WEBPAGES("CampaignNegativeWebpages"),
-    @XmlEnumValue("AudienceGroupAssetGroupAssociations")
-    AUDIENCE_GROUP_ASSET_GROUP_ASSOCIATIONS("AudienceGroupAssetGroupAssociations"),
-    @XmlEnumValue("AssetGroupListingGroups")
-    ASSET_GROUP_LISTING_GROUPS("AssetGroupListingGroups");
+    AD_GROUP_HOTEL_LISTING_GROUPS("AdGroupHotelListingGroups");
     private final String value;
 
     DownloadEntity(String v) {

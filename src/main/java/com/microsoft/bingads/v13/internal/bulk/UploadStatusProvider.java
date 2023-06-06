@@ -3,8 +3,8 @@ package com.microsoft.bingads.v13.internal.bulk;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import jakarta.xml.ws.AsyncHandler;
-import jakarta.xml.ws.Response;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
 
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.ServiceClient;

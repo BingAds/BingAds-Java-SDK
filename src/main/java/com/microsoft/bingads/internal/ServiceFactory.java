@@ -1,7 +1,7 @@
 package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.ApiEnvironment;
-import jakarta.xml.ws.Service;
+import javax.xml.ws.Service;
 
 public interface ServiceFactory {
     

@@ -6,9 +6,9 @@ import static org.easymock.EasyMock.replay;
 import java.net.URL;
 import java.util.concurrent.Future;
 
-import jakarta.xml.ws.AsyncHandler;
-import jakarta.xml.ws.BindingProvider;
-import jakarta.xml.ws.Service;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Service;
 
 import org.easymock.EasyMockSupport;
 import org.junit.Test;

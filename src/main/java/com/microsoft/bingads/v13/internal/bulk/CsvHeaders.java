@@ -53,7 +53,6 @@ public class CsvHeaders {
             StringTable.HotelAdGroupType,
             StringTable.CommissionRate,
             StringTable.PercentCpcBid,
-            StringTable.FinalUrlExpansionOptOut,
             
             // OnlineConversionAdjustment
             StringTable.TransactionId,
@@ -461,19 +460,7 @@ public class CsvHeaders {
             StringTable.MinTargetValue,
             StringTable.MaxTargetValue,
             StringTable.HotelAttribute,
-            StringTable.HotelAttributeValue,
-            
-            //PMax
-            StringTable.Audiences,
-            StringTable.AssetGroup,
-            StringTable.AudienceGroup,
-            StringTable.AgeRanges,
-            StringTable.GenderTypes,
-            StringTable.ParentListingGroupId,
-            StringTable.AudienceGroupName,
-            StringTable.CampaignNegativeWebpage,
-            StringTable.AssetGroupListingGroup,
-            StringTable.AudienceGroupAssetGroupAssociation,
+            StringTable.HotelAttributeValue
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

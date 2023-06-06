@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,21 +13,21 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="CampaignPerformanceReportRequest">
- *   <complexContent>
- *     <extension base="{https://bingads.microsoft.com/Reporting/v13}ReportRequest">
- *       <sequence>
- *         <element name="Aggregation" type="{https://bingads.microsoft.com/Reporting/v13}ReportAggregation"/>
- *         <element name="Columns" type="{https://bingads.microsoft.com/Reporting/v13}ArrayOfCampaignPerformanceReportColumn"/>
- *         <element name="Filter" type="{https://bingads.microsoft.com/Reporting/v13}CampaignPerformanceReportFilter" minOccurs="0"/>
- *         <element name="Scope" type="{https://bingads.microsoft.com/Reporting/v13}AccountThroughCampaignReportScope"/>
- *         <element name="Time" type="{https://bingads.microsoft.com/Reporting/v13}ReportTime"/>
- *       </sequence>
- *     </extension>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="CampaignPerformanceReportRequest">
+ *   &lt;complexContent>
+ *     &lt;extension base="{https://bingads.microsoft.com/Reporting/v13}ReportRequest">
+ *       &lt;sequence>
+ *         &lt;element name="Aggregation" type="{https://bingads.microsoft.com/Reporting/v13}ReportAggregation"/>
+ *         &lt;element name="Columns" type="{https://bingads.microsoft.com/Reporting/v13}ArrayOfCampaignPerformanceReportColumn"/>
+ *         &lt;element name="Filter" type="{https://bingads.microsoft.com/Reporting/v13}CampaignPerformanceReportFilter" minOccurs="0"/>
+ *         &lt;element name="Scope" type="{https://bingads.microsoft.com/Reporting/v13}AccountThroughCampaignReportScope"/>
+ *         &lt;element name="Time" type="{https://bingads.microsoft.com/Reporting/v13}ReportTime"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

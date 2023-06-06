@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,17 +13,17 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="Criterion">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="Criterion">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -32,25 +32,25 @@ import jakarta.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
-    ProductPartition.class,
-    HotelGroup.class,
-    HotelAdvanceBookingWindowCriterion.class,
-    HotelCheckInDateCriterion.class,
-    HotelCheckInDayCriterion.class,
-    HotelDateSelectionTypeCriterion.class,
-    HotelLengthOfStayCriterion.class,
-    ProductScope.class,
-    Webpage.class,
-    AgeCriterion.class,
-    DeviceCriterion.class,
     DayTimeCriterion.class,
-    GenderCriterion.class,
-    RadiusCriterion.class,
-    LocationCriterion.class,
-    LocationIntentCriterion.class,
+    HotelAdvanceBookingWindowCriterion.class,
     AudienceCriterion.class,
+    HotelDateSelectionTypeCriterion.class,
+    HotelCheckInDayCriterion.class,
+    DeviceCriterion.class,
+    LocationIntentCriterion.class,
+    RadiusCriterion.class,
+    HotelCheckInDateCriterion.class,
+    HotelLengthOfStayCriterion.class,
+    HotelGroup.class,
+    ProductScope.class,
     ProfileCriterion.class,
-    StoreCriterion.class
+    ProductPartition.class,
+    GenderCriterion.class,
+    StoreCriterion.class,
+    LocationCriterion.class,
+    AgeCriterion.class,
+    Webpage.class
 })
 public class Criterion {
 

@@ -27,7 +27,6 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesLandingPageUserExperienceTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesMultiMediaAdBidAdjustmentTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesNameTest;
-import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesPerformanceMaxSettingsTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesQualityScoreNotSetTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesQualityScoreTest;
 import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignReadFromRowValuesSettingsTest;
@@ -66,7 +65,6 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.read.BulkCampaignRea
         BulkCampaignReadFromRowValuesDynamicFeedSettingsTest.class,
         BulkCampaignReadFromRowValuesMultiMediaAdBidAdjustmentTest.class,
         BulkCampaignReadFromRowValuesVerifiedTrackingSettingsTest.class,
-        BulkCampaignReadFromRowValuesPerformanceMaxSettingsTest.class,
 })
 public class BulkCampaignReadTests {
 

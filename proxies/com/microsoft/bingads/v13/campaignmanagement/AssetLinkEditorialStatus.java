@@ -1,26 +1,27 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AssetLinkEditorialStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="AssetLinkEditorialStatus">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Unknown"/>
- *     <enumeration value="Active"/>
- *     <enumeration value="Disapproved"/>
- *     <enumeration value="Inactive"/>
- *     <enumeration value="ActiveLimited"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="AssetLinkEditorialStatus">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
+ *     &lt;enumeration value="Active"/>
+ *     &lt;enumeration value="Disapproved"/>
+ *     &lt;enumeration value="Inactive"/>
+ *     &lt;enumeration value="ActiveLimited"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "AssetLinkEditorialStatus")

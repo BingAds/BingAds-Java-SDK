@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -31,7 +31,6 @@ import com.microsoft.bingads.v13.campaignmanagement.AdExtensionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.AdRotation;
 import com.microsoft.bingads.v13.campaignmanagement.AdRotationType;
 import com.microsoft.bingads.v13.campaignmanagement.AdStatus;
-import com.microsoft.bingads.v13.campaignmanagement.AgeRange;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
@@ -48,10 +47,8 @@ import com.microsoft.bingads.v13.campaignmanagement.AssetLinkEditorialStatus;
 import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.BusinessGeoCodeStatus;
-import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v13.campaignmanagement.CombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.CommissionBiddingScheme;
-import com.microsoft.bingads.v13.campaignmanagement.CostPerSaleBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
 import com.microsoft.bingads.v13.campaignmanagement.CriterionTypeGroup;
 import com.microsoft.bingads.v13.campaignmanagement.CustomEventsRule;
@@ -63,14 +60,12 @@ import com.microsoft.bingads.v13.campaignmanagement.DayTime;
 import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v13.campaignmanagement.FrequencyCapSettings;
-import com.microsoft.bingads.v13.campaignmanagement.GenderType;
 import com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupType;
 import com.microsoft.bingads.v13.campaignmanagement.HotelSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ImageAsset;
 import com.microsoft.bingads.v13.campaignmanagement.InheritFromParentBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.KeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.LogicalOperator;
-import com.microsoft.bingads.v13.campaignmanagement.ManualCpaBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpmBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.ManualCpvBiddingScheme;
@@ -500,8 +495,8 @@ public class StringExtensions {
         if (v.equals(MOBILE)) {
             return 30001L;
         }
-        
-        return null;
+
+        throw new UnsupportedOperationException(UNKNOWN_DEVICE_PREFERENCE);
     }
 
     public static String toDevicePreferenceBulkString(Long pref) {
@@ -724,7 +719,7 @@ public class StringExtensions {
             case 45:
                 return Minute.FORTY_FIVE;
             default:
-                return Minute.ZERO;
+                throw new IllegalArgumentException("Unknown minute");
         }
     }
 
@@ -988,7 +983,7 @@ public class StringExtensions {
 					param.setValue(unEscapeParameterText(match.group(2)));
 					customParametersArray.getCustomParameters().add(param);
     			} else {   				
-					return null;
+					throw new IllegalArgumentException(String.format("Bad format for CustomParameters: %s", s));
     			}
     		}	
     	}
@@ -1047,13 +1042,9 @@ public class StringExtensions {
         } else if (s.equals("Commission")) {
             biddingScheme = new CommissionBiddingScheme();
             biddingScheme.setType("Commission");
-        } else if (s.equals("ManualCpa")) {
-            biddingScheme = new ManualCpaBiddingScheme();
-            biddingScheme.setType("ManualCpa");
-        } else if (s.equals("CostPerSale")) {
-            biddingScheme = new CostPerSaleBiddingScheme();
-            biddingScheme.setType("CostPerSale");
-        }
+        } else {
+    		throw new IllegalArgumentException(String.format("Unknown value for Bid Strategy Type : %s", s));
+    	}
     	
     	return biddingScheme;
     }
@@ -1090,10 +1081,6 @@ public class StringExtensions {
             return "PercentCpc";
         } else if (biddingScheme instanceof CommissionBiddingScheme  ) {
             return "Commission";
-        } else if (biddingScheme instanceof ManualCpaBiddingScheme  ) {
-            return "ManualCpa";
-        } else if (biddingScheme instanceof CostPerSaleBiddingScheme  ) {
-            return "CostPerSale";
         } else {
     		throw new IllegalArgumentException("Unknown bidding scheme");
     	}
@@ -1104,74 +1091,6 @@ public class StringExtensions {
             return null;
         }
         return parameter;
-    }
-    
-    public static String toAgeRangeListBulkString(String separator, List<AgeRange> enumList)
-    {
-    	if (enumList == null || enumList.size() == 0) {
-    		return null;
-    	}
-    	
-    	StringBuilder result = new StringBuilder("");
-    	
-    	int length =  enumList.size();
-        for (Integer i = 0; i < length - 1; i++) {
-            result.append(enumList.get(i).value() + separator);
-        }
-
-        result.append(enumList.get(length - 1).value());
-        return result.toString();
-    }
-    
-    public static List<AgeRange> parseAgeRangeList(String v)
-    {
-    	if (StringExtensions.isNullOrEmpty(v))
-            return null;
-        
-        List<AgeRange> enumList = new ArrayList<AgeRange>();
-        
-        String[] enums = v.split(";");
-        
-        for(String e : enums) {
-            if (!StringExtensions.isNullOrEmpty(e) && ! ";".equals(e))
-            	enumList.add(AgeRange.fromValue(e));
-        }   
-        
-        return enumList;
-    }
-    
-    public static String toGenderTypeListBulkString(String separator, List<GenderType> enumList)
-    {
-    	if (enumList == null || enumList.size() == 0) {
-    		return null;
-    	}
-    	
-    	StringBuilder result = new StringBuilder("");
-    	
-    	int length =  enumList.size();
-        for (Integer i = 0; i < length - 1; i++) {
-            result.append(enumList.get(i).value() + separator);
-        }
-
-        result.append(enumList.get(length - 1).value());
-        return result.toString();
-    }
-    
-    public static List<GenderType> parseGenderTypeList(String v)
-    {
-    	if (StringExtensions.isNullOrEmpty(v))
-            return null;
-        
-        List<GenderType> enumList = new ArrayList<GenderType>();
-        
-        String[] enums = v.split(";");
-        
-        for(String e : enums) {
-            if (!StringExtensions.isNullOrEmpty(e) && ! ";".equals(e))
-            	enumList.add(GenderType.fromValue(e));
-        }   
-        
-        return enumList;
     }
         
     public static List<Long> parseIdList(String v) {
@@ -1188,23 +1107,6 @@ public class StringExtensions {
         }   
         
         return idArray;
-    }
-    
-    public static String toLongListBulkString(String separator, List<Long> ids)
-    {
-    	if (ids == null || ids.size() == 0) {
-    		return null;
-    	}
-    	
-    	StringBuilder result = new StringBuilder("");
-    	
-    	int length =  ids.size();
-        for (Integer i = 0; i < length - 1; i++) {
-            result.append(ids.get(i) + separator);
-        }
-
-        result.append(ids.get(length - 1));
-        return result.toString();
     }
     
     public static String toIdListBulkString(String separator, ArrayOflong ids) {
@@ -1365,7 +1267,7 @@ public class StringExtensions {
 					dayTime.setEndMinute(parseMinute(match.group(5)));
 					dayTimeArray.add(dayTime);
     			} else {   				
-					return null;
+					throw new IllegalArgumentException(String.format("Bad format for DateTimeRanges: %s", s));
     			}
     		}	
     	}
@@ -1392,7 +1294,7 @@ public class StringExtensions {
         } else if (s.toLowerCase().equals("false")) {
             return false;
         } else {
-        	return null;
+            throw new IllegalArgumentException(String.format("Unknown value for Use Searcher Time Zone : %s", s));
         }
     }
         
@@ -1456,7 +1358,7 @@ public class StringExtensions {
         
         Matcher m = logicalOperatorPattern.matcher(ruleItemStr);
         if (!m.matches()) {
-            return null;
+            throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
         }
         CombinationRule rule = new CombinationRule();
         rule.setOperator(parseLogicalOperator(m.group(1)));
@@ -1596,7 +1498,7 @@ public class StringExtensions {
     		return null;
     	int pos = s.indexOf('(');
     	if (pos == -1) {
-    		return null;
+    		throw new IllegalArgumentException(String.format("Invalid Remarketing Rule: %s", s));
     	}    	
     	String type = s.substring(0, pos);
     	String ruleStr = s.substring(pos + 1, s.length() - 1);    	
@@ -1609,7 +1511,7 @@ public class StringExtensions {
     	} else if (type.toLowerCase().equals("customevents")) {
     		return parseCustomeventsRule(ruleStr);
     	} else {
-    		return null;
+    		throw new IllegalArgumentException(String.format("Invalid Custom Remarketing Rule Type: %s", type));
     	}
     }
     
@@ -1738,7 +1640,7 @@ public class StringExtensions {
     					rule.setValueOperator(parseNumberOperator(numberOperator.group(1)));
     					rule.setValue(new BigDecimal(numberOperator.group(2)));
     				} else {   				
-    					return null;
+    					throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item Value Operator: %s", operatorStr));
     				}
     			} else {
     				Matcher stringOperator = stringOperatorPattern.matcher(operatorStr);
@@ -1753,14 +1655,14 @@ public class StringExtensions {
     						rule.setActionOperator(parseStringOperator(stringOperator.group(1)));
     						rule.setAction(stringOperator.group(2));
     					} else {
-    						return null;
+    						throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item Operand: %s", operand));
     					}
     				} else {   				
-    					return null;
+    					throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item String Operator: %s", operatorStr));
     				}
     			}	
     		} else {   				
-    			return null;
+    			throw new IllegalArgumentException(String.format("Invalid Custom Events Rule Item: %s", ruleItemStr));
     		}
     	}
     	return rule;
@@ -1812,8 +1714,8 @@ public class StringExtensions {
 	            ruleItem.setOperator(parseNumberOperator(match.group(2)));
 	            ruleItem.setValue(match.group(3));
 	            return ruleItem;
-	        } else {	            
-	            return null;
+	        } else {   				
+	            throw new IllegalArgumentException(String.format("Invalid Rule Item: %s", ruleItemStr));
 	        }
 		}
     }                   
@@ -1836,7 +1738,7 @@ public class StringExtensions {
     	} else if (operator.equals("notequals")) {
     	    return NumberOperator.NOT_EQUALS;
     	} else {
-    		return null;
+    		throw new IllegalArgumentException(String.format("Invalid Number Rule Item operator: ", operator));
     	}
     }
     
@@ -1862,7 +1764,7 @@ public class StringExtensions {
     	} else if (operator.equals("doesnotendwith")) {
     		return StringOperator.DOES_NOT_END_WITH;
     	} else {
-    		return null;
+    		throw new IllegalArgumentException(String.format("Invalid String Rule Item perator: ", operator));
     	}
     }
     
@@ -1887,7 +1789,7 @@ public class StringExtensions {
         if (value != null) {
             String[] values = value.trim().replace('|', ',').split(",");
             if (values != null && values.length > 0) {
-                List<HotelAdGroupType> hotelAdGroupTypes = Arrays.stream(values).filter(v -> v.isEmpty() == false).map(v -> HotelAdGroupType.fromValue(v.trim()))
+                List<HotelAdGroupType> hotelAdGroupTypes = Arrays.stream(values).filter(v -> v.isEmpty() == false).map(v -> HotelAdGroupType.fromValue(v))
                         .collect(Collectors.toList());
                 if (hotelAdGroupTypes.isEmpty() == false) {
                     HotelSetting setting = new HotelSetting();

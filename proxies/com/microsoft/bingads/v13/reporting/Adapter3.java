@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.reporting;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter3
-    extends XmlAdapter<String, Collection<AdDistributionReportFilter>>
+    extends XmlAdapter<String, Collection<BidMatchTypeReportFilter>>
 {
 
 
-    public Collection<AdDistributionReportFilter> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.reporting.AdDistributionReportFilterConverter.convertToList(value));
+    public Collection<BidMatchTypeReportFilter> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.reporting.BidMatchTypeReportFilterConverter.convertToList(value));
     }
 
-    public String marshal(Collection<AdDistributionReportFilter> value) {
-        return (com.microsoft.bingads.v13.reporting.AdDistributionReportFilterConverter.convertToString(value));
+    public String marshal(Collection<BidMatchTypeReportFilter> value) {
+        return (com.microsoft.bingads.v13.reporting.BidMatchTypeReportFilterConverter.convertToString(value));
     }
 
 }

@@ -2,7 +2,7 @@
 package com.microsoft.bingads.v13.reporting;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter2
     extends XmlAdapter<String, Collection<AccountStatusReportFilter>>

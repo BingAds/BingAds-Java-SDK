@@ -3,11 +3,11 @@ package com.microsoft.bingads.v13.reporting;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -15,17 +15,17 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ArrayOfAdExtensionByAdReportColumn">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="AdExtensionByAdReportColumn" type="{https://bingads.microsoft.com/Reporting/v13}AdExtensionByAdReportColumn" maxOccurs="unbounded" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ArrayOfAdExtensionByAdReportColumn">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="AdExtensionByAdReportColumn" type="{https://bingads.microsoft.com/Reporting/v13}AdExtensionByAdReportColumn" maxOccurs="unbounded" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -45,8 +45,8 @@ public class ArrayOfAdExtensionByAdReportColumn {
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the adExtensionByAdReportColumns property.
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the adExtensionByAdReportColumns property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -60,12 +60,10 @@ public class ArrayOfAdExtensionByAdReportColumn {
      * {@link AdExtensionByAdReportColumn }
      * 
      * 
-     * @return
-     *     The value of the adExtensionByAdReportColumns property.
      */
     public List<AdExtensionByAdReportColumn> getAdExtensionByAdReportColumns() {
         if (adExtensionByAdReportColumns == null) {
-            adExtensionByAdReportColumns = new ArrayList<>();
+            adExtensionByAdReportColumns = new ArrayList<AdExtensionByAdReportColumn>();
         }
         return this.adExtensionByAdReportColumns;
     }

@@ -3,10 +3,10 @@ package com.microsoft.bingads.v13.bulk;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,28 +14,28 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ArrayOfKeyValueOfstringstring">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="KeyValueOfstringstring" maxOccurs="unbounded" minOccurs="0">
- *           <complexType>
- *             <complexContent>
- *               <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 <sequence>
- *                   <element name="Key" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   <element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                 </sequence>
- *               </restriction>
- *             </complexContent>
- *           </complexType>
- *         </element>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ArrayOfKeyValueOfstringstring">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="KeyValueOfstringstring" maxOccurs="unbounded" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Key" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -54,8 +54,8 @@ public class ArrayOfKeyValueOfstringstring {
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the keyValueOfstringstrings property.
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the keyValueOfstringstrings property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -69,12 +69,10 @@ public class ArrayOfKeyValueOfstringstring {
      * {@link ArrayOfKeyValueOfstringstring.KeyValueOfstringstring }
      * 
      * 
-     * @return
-     *     The value of the keyValueOfstringstrings property.
      */
     public List<ArrayOfKeyValueOfstringstring.KeyValueOfstringstring> getKeyValueOfstringstrings() {
         if (keyValueOfstringstrings == null) {
-            keyValueOfstringstrings = new ArrayList<>();
+            keyValueOfstringstrings = new ArrayList<ArrayOfKeyValueOfstringstring.KeyValueOfstringstring>();
         }
         return this.keyValueOfstringstrings;
     }
@@ -85,18 +83,18 @@ public class ArrayOfKeyValueOfstringstring {
      * 
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
-     * <pre>{@code
-     * <complexType>
-     *   <complexContent>
-     *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       <sequence>
-     *         <element name="Key" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         <element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *       </sequence>
-     *     </restriction>
-     *   </complexContent>
-     * </complexType>
-     * }</pre>
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="Key" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
      * 
      * 
      */

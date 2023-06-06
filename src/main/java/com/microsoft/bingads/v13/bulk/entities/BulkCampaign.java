@@ -26,7 +26,6 @@ import com.microsoft.bingads.v13.campaignmanagement.DisclaimerSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicFeedSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
-import com.microsoft.bingads.v13.campaignmanagement.PerformanceMaxSetting;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
@@ -132,15 +131,6 @@ public class BulkCampaign extends SingleRecordBulkEntity {
             setting.setType(ShoppingSetting.class.getSimpleName());
             settings.add(setting);
             break;
-        case PERFORMANCE_MAX:
-        	setting = new PerformanceMaxSetting();
-        	setting.setType(PerformanceMaxSetting.class.getSimpleName());
-        	settings.add(setting);
-        	
-        	setting = new ShoppingSetting();
-            setting.setType(ShoppingSetting.class.getSimpleName());
-            settings.add(setting);
-        	break;
         }
         arrayOfSettings.getSettings().addAll(settings);
 
@@ -530,47 +520,6 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         }
 
                         ((DisclaimerSetting)setting).setDisclaimerAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
-                            @Override
-                            public Boolean apply(String value) {
-                                return Boolean.parseBoolean(value);
-                            }
-                        }));
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.FinalUrlExpansionOptOut,
-                new Function<BulkCampaign, Boolean>() {
-                    @Override
-                    public Boolean apply(BulkCampaign c) {
-                        if (c.getCampaign().getCampaignType() == null) {
-                            return null;
-                        }
-
-                        Setting setting = c.getCampaignSetting(PerformanceMaxSetting.class, false);
-
-                        if (setting == null) {
-                            return null;
-                        }
-
-                        return ((PerformanceMaxSetting)setting).getFinalUrlExpansionOptOut();
-
-                    }
-                },
-                new BiConsumer<String, BulkCampaign>() {
-                    @Override
-                    public void accept(String v, BulkCampaign c) {
-                        if (c.getCampaign().getCampaignType() == null) {
-                            return;
-                        }
-
-                        Setting setting = c.getCampaignSetting(PerformanceMaxSetting.class, true);
-
-                        if (setting == null) {
-                            return;
-                        }
-
-                        ((PerformanceMaxSetting)setting).setFinalUrlExpansionOptOut(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
                             @Override
                             public Boolean apply(String value) {
                                 return Boolean.parseBoolean(value);

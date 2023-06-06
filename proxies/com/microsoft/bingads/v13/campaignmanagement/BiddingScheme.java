@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,17 +13,17 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="BiddingScheme">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="BiddingScheme">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -32,22 +32,20 @@ import jakarta.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
-    MaxClicksBiddingScheme.class,
-    MaxConversionsBiddingScheme.class,
-    TargetCpaBiddingScheme.class,
-    ManualCpcBiddingScheme.class,
+    TargetImpressionShareBiddingScheme.class,
     EnhancedCpcBiddingScheme.class,
     ManualCpvBiddingScheme.class,
-    ManualCpmBiddingScheme.class,
-    InheritFromParentBiddingScheme.class,
-    TargetRoasBiddingScheme.class,
+    TargetCpaBiddingScheme.class,
+    MaxConversionsBiddingScheme.class,
     MaxRoasBiddingScheme.class,
     MaxConversionValueBiddingScheme.class,
-    TargetImpressionShareBiddingScheme.class,
-    PercentCpcBiddingScheme.class,
+    ManualCpcBiddingScheme.class,
     CommissionBiddingScheme.class,
-    ManualCpaBiddingScheme.class,
-    CostPerSaleBiddingScheme.class
+    InheritFromParentBiddingScheme.class,
+    MaxClicksBiddingScheme.class,
+    TargetRoasBiddingScheme.class,
+    PercentCpcBiddingScheme.class,
+    ManualCpmBiddingScheme.class
 })
 public class BiddingScheme {
 

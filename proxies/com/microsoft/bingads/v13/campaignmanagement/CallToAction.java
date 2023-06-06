@@ -1,111 +1,112 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for CallToAction.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="CallToAction">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Unknown"/>
- *     <enumeration value="ActNow"/>
- *     <enumeration value="ApplyNow"/>
- *     <enumeration value="BetNow"/>
- *     <enumeration value="BidNow"/>
- *     <enumeration value="BookACar"/>
- *     <enumeration value="BookHotel"/>
- *     <enumeration value="BookNow"/>
- *     <enumeration value="Browse"/>
- *     <enumeration value="BuyNow"/>
- *     <enumeration value="ChatNow"/>
- *     <enumeration value="Compare"/>
- *     <enumeration value="ContactUs"/>
- *     <enumeration value="Coupon"/>
- *     <enumeration value="Donate"/>
- *     <enumeration value="Download"/>
- *     <enumeration value="EmailNow"/>
- *     <enumeration value="EnrollNow"/>
- *     <enumeration value="Explore"/>
- *     <enumeration value="FileNow"/>
- *     <enumeration value="FindJob"/>
- *     <enumeration value="FreePlay"/>
- *     <enumeration value="FreeQuote"/>
- *     <enumeration value="FreeTrial"/>
- *     <enumeration value="GetDeals"/>
- *     <enumeration value="GetOffer"/>
- *     <enumeration value="GetQuote"/>
- *     <enumeration value="JoinNow"/>
- *     <enumeration value="LearnMore"/>
- *     <enumeration value="ListenNow"/>
- *     <enumeration value="LogIn"/>
- *     <enumeration value="Message"/>
- *     <enumeration value="NewCars"/>
- *     <enumeration value="OrderNow"/>
- *     <enumeration value="PlayGame"/>
- *     <enumeration value="PlayNow"/>
- *     <enumeration value="PostJob"/>
- *     <enumeration value="Register"/>
- *     <enumeration value="RentACar"/>
- *     <enumeration value="RentNow"/>
- *     <enumeration value="Reserve"/>
- *     <enumeration value="Sale"/>
- *     <enumeration value="SaveNow"/>
- *     <enumeration value="Schedule"/>
- *     <enumeration value="SeeMenu"/>
- *     <enumeration value="SeeMore"/>
- *     <enumeration value="SeeOffer"/>
- *     <enumeration value="SellNow"/>
- *     <enumeration value="ShopNow"/>
- *     <enumeration value="Showtimes"/>
- *     <enumeration value="SignIn"/>
- *     <enumeration value="SignUp"/>
- *     <enumeration value="StartFree"/>
- *     <enumeration value="StartNow"/>
- *     <enumeration value="Subscribe"/>
- *     <enumeration value="TestDrive"/>
- *     <enumeration value="TryNow"/>
- *     <enumeration value="UsedCars"/>
- *     <enumeration value="ViewCars"/>
- *     <enumeration value="ViewNow"/>
- *     <enumeration value="ViewPlans"/>
- *     <enumeration value="VisitSite"/>
- *     <enumeration value="VoteNow"/>
- *     <enumeration value="Watch"/>
- *     <enumeration value="WatchMore"/>
- *     <enumeration value="WatchNow"/>
- *     <enumeration value="Directions"/>
- *     <enumeration value="FindStore"/>
- *     <enumeration value="SwitchNow"/>
- *     <enumeration value="VisitStore"/>
- *     <enumeration value="RenewNow"/>
- *     <enumeration value="Reorder"/>
- *     <enumeration value="Default"/>
- *     <enumeration value="NoButton"/>
- *     <enumeration value="Install"/>
- *     <enumeration value="AddToCart"/>
- *     <enumeration value="BookTravel"/>
- *     <enumeration value="Buy"/>
- *     <enumeration value="OpenLink"/>
- *     <enumeration value="RegisterNow"/>
- *     <enumeration value="BuildNow"/>
- *     <enumeration value="Dealers"/>
- *     <enumeration value="GetDemo"/>
- *     <enumeration value="GetNow"/>
- *     <enumeration value="GoToDemo"/>
- *     <enumeration value="SeeDemo"/>
- *     <enumeration value="SeeModels"/>
- *     <enumeration value="SeeOffers"/>
- *     <enumeration value="ViewDemo"/>
- *     <enumeration value="Automated"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="CallToAction">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
+ *     &lt;enumeration value="ActNow"/>
+ *     &lt;enumeration value="ApplyNow"/>
+ *     &lt;enumeration value="BetNow"/>
+ *     &lt;enumeration value="BidNow"/>
+ *     &lt;enumeration value="BookACar"/>
+ *     &lt;enumeration value="BookHotel"/>
+ *     &lt;enumeration value="BookNow"/>
+ *     &lt;enumeration value="Browse"/>
+ *     &lt;enumeration value="BuyNow"/>
+ *     &lt;enumeration value="ChatNow"/>
+ *     &lt;enumeration value="Compare"/>
+ *     &lt;enumeration value="ContactUs"/>
+ *     &lt;enumeration value="Coupon"/>
+ *     &lt;enumeration value="Donate"/>
+ *     &lt;enumeration value="Download"/>
+ *     &lt;enumeration value="EmailNow"/>
+ *     &lt;enumeration value="EnrollNow"/>
+ *     &lt;enumeration value="Explore"/>
+ *     &lt;enumeration value="FileNow"/>
+ *     &lt;enumeration value="FindJob"/>
+ *     &lt;enumeration value="FreePlay"/>
+ *     &lt;enumeration value="FreeQuote"/>
+ *     &lt;enumeration value="FreeTrial"/>
+ *     &lt;enumeration value="GetDeals"/>
+ *     &lt;enumeration value="GetOffer"/>
+ *     &lt;enumeration value="GetQuote"/>
+ *     &lt;enumeration value="JoinNow"/>
+ *     &lt;enumeration value="LearnMore"/>
+ *     &lt;enumeration value="ListenNow"/>
+ *     &lt;enumeration value="LogIn"/>
+ *     &lt;enumeration value="Message"/>
+ *     &lt;enumeration value="NewCars"/>
+ *     &lt;enumeration value="OrderNow"/>
+ *     &lt;enumeration value="PlayGame"/>
+ *     &lt;enumeration value="PlayNow"/>
+ *     &lt;enumeration value="PostJob"/>
+ *     &lt;enumeration value="Register"/>
+ *     &lt;enumeration value="RentACar"/>
+ *     &lt;enumeration value="RentNow"/>
+ *     &lt;enumeration value="Reserve"/>
+ *     &lt;enumeration value="Sale"/>
+ *     &lt;enumeration value="SaveNow"/>
+ *     &lt;enumeration value="Schedule"/>
+ *     &lt;enumeration value="SeeMenu"/>
+ *     &lt;enumeration value="SeeMore"/>
+ *     &lt;enumeration value="SeeOffer"/>
+ *     &lt;enumeration value="SellNow"/>
+ *     &lt;enumeration value="ShopNow"/>
+ *     &lt;enumeration value="Showtimes"/>
+ *     &lt;enumeration value="SignIn"/>
+ *     &lt;enumeration value="SignUp"/>
+ *     &lt;enumeration value="StartFree"/>
+ *     &lt;enumeration value="StartNow"/>
+ *     &lt;enumeration value="Subscribe"/>
+ *     &lt;enumeration value="TestDrive"/>
+ *     &lt;enumeration value="TryNow"/>
+ *     &lt;enumeration value="UsedCars"/>
+ *     &lt;enumeration value="ViewCars"/>
+ *     &lt;enumeration value="ViewNow"/>
+ *     &lt;enumeration value="ViewPlans"/>
+ *     &lt;enumeration value="VisitSite"/>
+ *     &lt;enumeration value="VoteNow"/>
+ *     &lt;enumeration value="Watch"/>
+ *     &lt;enumeration value="WatchMore"/>
+ *     &lt;enumeration value="WatchNow"/>
+ *     &lt;enumeration value="Directions"/>
+ *     &lt;enumeration value="FindStore"/>
+ *     &lt;enumeration value="SwitchNow"/>
+ *     &lt;enumeration value="VisitStore"/>
+ *     &lt;enumeration value="RenewNow"/>
+ *     &lt;enumeration value="Reorder"/>
+ *     &lt;enumeration value="Default"/>
+ *     &lt;enumeration value="NoButton"/>
+ *     &lt;enumeration value="Install"/>
+ *     &lt;enumeration value="AddToCart"/>
+ *     &lt;enumeration value="BookTravel"/>
+ *     &lt;enumeration value="Buy"/>
+ *     &lt;enumeration value="OpenLink"/>
+ *     &lt;enumeration value="RegisterNow"/>
+ *     &lt;enumeration value="BuildNow"/>
+ *     &lt;enumeration value="Dealers"/>
+ *     &lt;enumeration value="GetDemo"/>
+ *     &lt;enumeration value="GetNow"/>
+ *     &lt;enumeration value="GoToDemo"/>
+ *     &lt;enumeration value="SeeDemo"/>
+ *     &lt;enumeration value="SeeModels"/>
+ *     &lt;enumeration value="SeeOffers"/>
+ *     &lt;enumeration value="ViewDemo"/>
+ *     &lt;enumeration value="Automated"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "CallToAction")

@@ -1,47 +1,48 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for GoalsAndFunnelsReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="GoalsAndFunnelsReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="AccountName"/>
- *     <enumeration value="AccountNumber"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="TimePeriod"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="AdGroupName"/>
- *     <enumeration value="AdGroupId"/>
- *     <enumeration value="Keyword"/>
- *     <enumeration value="KeywordId"/>
- *     <enumeration value="Goal"/>
- *     <enumeration value="AllConversions"/>
- *     <enumeration value="Assists"/>
- *     <enumeration value="AllRevenue"/>
- *     <enumeration value="GoalId"/>
- *     <enumeration value="DeviceType"/>
- *     <enumeration value="DeviceOS"/>
- *     <enumeration value="AccountStatus"/>
- *     <enumeration value="CampaignStatus"/>
- *     <enumeration value="AdGroupStatus"/>
- *     <enumeration value="KeywordStatus"/>
- *     <enumeration value="GoalType"/>
- *     <enumeration value="ViewThroughConversions"/>
- *     <enumeration value="AllConversionsQualified"/>
- *     <enumeration value="ViewThroughConversionsQualified"/>
- *     <enumeration value="ViewThroughRevenue"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="GoalsAndFunnelsReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="AccountNumber"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="TimePeriod"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="AdGroupName"/>
+ *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="Keyword"/>
+ *     &lt;enumeration value="KeywordId"/>
+ *     &lt;enumeration value="Goal"/>
+ *     &lt;enumeration value="AllConversions"/>
+ *     &lt;enumeration value="Assists"/>
+ *     &lt;enumeration value="AllRevenue"/>
+ *     &lt;enumeration value="GoalId"/>
+ *     &lt;enumeration value="DeviceType"/>
+ *     &lt;enumeration value="DeviceOS"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="KeywordStatus"/>
+ *     &lt;enumeration value="GoalType"/>
+ *     &lt;enumeration value="ViewThroughConversions"/>
+ *     &lt;enumeration value="AllConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughConversionsQualified"/>
+ *     &lt;enumeration value="ViewThroughRevenue"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "GoalsAndFunnelsReportColumn")

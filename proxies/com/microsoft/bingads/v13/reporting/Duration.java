@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -12,15 +12,15 @@ import jakarta.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <simpleType name="duration">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}duration">
- *     <pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
- *     <minInclusive value="-P10675199DT2H48M5.4775808S"/>
- *     <maxInclusive value="P10675199DT2H48M5.4775807S"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <pre>
+ * &lt;simpleType name="duration">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}duration">
+ *     &lt;pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+ *     &lt;minInclusive value="-P10675199DT2H48M5.4775808S"/>
+ *     &lt;maxInclusive value="P10675199DT2H48M5.4775807S"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  * 
  */

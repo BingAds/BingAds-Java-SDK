@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter16
-    extends XmlAdapter<String, Collection<ProductAudienceType>>
+    extends XmlAdapter<String, Collection<HotelAdGroupType>>
 {
 
 
-    public Collection<ProductAudienceType> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.ProductAudienceTypeConverter.convertToList(value));
+    public Collection<HotelAdGroupType> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupTypeConverter.convertToList(value));
     }
 
-    public String marshal(Collection<ProductAudienceType> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.ProductAudienceTypeConverter.convertToString(value));
+    public String marshal(Collection<HotelAdGroupType> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.HotelAdGroupTypeConverter.convertToString(value));
     }
 
 }

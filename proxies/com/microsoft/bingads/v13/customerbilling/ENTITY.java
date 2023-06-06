@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.customerbilling;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -13,12 +13,12 @@ import jakarta.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <simpleType name="ENTITY">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}NCName">
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <pre>
+ * &lt;simpleType name="ENTITY">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NCName">
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  * 
  */

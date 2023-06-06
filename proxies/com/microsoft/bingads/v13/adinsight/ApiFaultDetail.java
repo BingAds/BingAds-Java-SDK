@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,18 +12,18 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ApiFaultDetail">
- *   <complexContent>
- *     <extension base="{https://adapi.microsoft.com}ApplicationFault">
- *       <sequence>
- *         <element name="BatchErrors" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfBatchError" minOccurs="0"/>
- *         <element name="OperationErrors" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfOperationError" minOccurs="0"/>
- *       </sequence>
- *     </extension>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ApiFaultDetail">
+ *   &lt;complexContent>
+ *     &lt;extension base="{https://adapi.microsoft.com}ApplicationFault">
+ *       &lt;sequence>
+ *         &lt;element name="BatchErrors" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfBatchError" minOccurs="0"/>
+ *         &lt;element name="OperationErrors" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfOperationError" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

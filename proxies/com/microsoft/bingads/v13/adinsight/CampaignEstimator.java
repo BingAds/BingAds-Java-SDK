@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,21 +12,21 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="CampaignEstimator">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="AdGroupEstimators" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAdGroupEstimator" minOccurs="0"/>
- *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="Criteria" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfCriterion" minOccurs="0"/>
- *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         <element name="NegativeKeywords" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfNegativeKeyword" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="CampaignEstimator">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="AdGroupEstimators" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfAdGroupEstimator" minOccurs="0"/>
+ *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Criteria" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfCriterion" minOccurs="0"/>
+ *         &lt;element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="NegativeKeywords" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfNegativeKeyword" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

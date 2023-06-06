@@ -1,60 +1,61 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PromotionOccasion.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="PromotionOccasion">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="Unknown"/>
- *     <enumeration value="NewYears"/>
- *     <enumeration value="ValentinesDay"/>
- *     <enumeration value="Easter"/>
- *     <enumeration value="MothersDay"/>
- *     <enumeration value="FathersDay"/>
- *     <enumeration value="LaborDay"/>
- *     <enumeration value="BackToSchool"/>
- *     <enumeration value="Halloween"/>
- *     <enumeration value="BlackFriday"/>
- *     <enumeration value="CyberMonday"/>
- *     <enumeration value="Christmas"/>
- *     <enumeration value="BoxingDay"/>
- *     <enumeration value="None"/>
- *     <enumeration value="IndependenceDay"/>
- *     <enumeration value="NationalDay"/>
- *     <enumeration value="EndOfSeason"/>
- *     <enumeration value="WinterSale"/>
- *     <enumeration value="SummerSale"/>
- *     <enumeration value="FallSale"/>
- *     <enumeration value="SpringSale"/>
- *     <enumeration value="Ramadan"/>
- *     <enumeration value="EidAlFitr"/>
- *     <enumeration value="EidAlAdha"/>
- *     <enumeration value="SinglesDay"/>
- *     <enumeration value="WomensDay"/>
- *     <enumeration value="Holi"/>
- *     <enumeration value="ParentsDay"/>
- *     <enumeration value="StNicholasDay"/>
- *     <enumeration value="ChineseNewYear"/>
- *     <enumeration value="Carnival"/>
- *     <enumeration value="Epiphany"/>
- *     <enumeration value="RoshHashanah"/>
- *     <enumeration value="Passover"/>
- *     <enumeration value="Hanukkah"/>
- *     <enumeration value="Diwali"/>
- *     <enumeration value="Navratri"/>
- *     <enumeration value="Songkran"/>
- *     <enumeration value="YearEndGift"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="PromotionOccasion">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="Unknown"/>
+ *     &lt;enumeration value="NewYears"/>
+ *     &lt;enumeration value="ValentinesDay"/>
+ *     &lt;enumeration value="Easter"/>
+ *     &lt;enumeration value="MothersDay"/>
+ *     &lt;enumeration value="FathersDay"/>
+ *     &lt;enumeration value="LaborDay"/>
+ *     &lt;enumeration value="BackToSchool"/>
+ *     &lt;enumeration value="Halloween"/>
+ *     &lt;enumeration value="BlackFriday"/>
+ *     &lt;enumeration value="CyberMonday"/>
+ *     &lt;enumeration value="Christmas"/>
+ *     &lt;enumeration value="BoxingDay"/>
+ *     &lt;enumeration value="None"/>
+ *     &lt;enumeration value="IndependenceDay"/>
+ *     &lt;enumeration value="NationalDay"/>
+ *     &lt;enumeration value="EndOfSeason"/>
+ *     &lt;enumeration value="WinterSale"/>
+ *     &lt;enumeration value="SummerSale"/>
+ *     &lt;enumeration value="FallSale"/>
+ *     &lt;enumeration value="SpringSale"/>
+ *     &lt;enumeration value="Ramadan"/>
+ *     &lt;enumeration value="EidAlFitr"/>
+ *     &lt;enumeration value="EidAlAdha"/>
+ *     &lt;enumeration value="SinglesDay"/>
+ *     &lt;enumeration value="WomensDay"/>
+ *     &lt;enumeration value="Holi"/>
+ *     &lt;enumeration value="ParentsDay"/>
+ *     &lt;enumeration value="StNicholasDay"/>
+ *     &lt;enumeration value="ChineseNewYear"/>
+ *     &lt;enumeration value="Carnival"/>
+ *     &lt;enumeration value="Epiphany"/>
+ *     &lt;enumeration value="RoshHashanah"/>
+ *     &lt;enumeration value="Passover"/>
+ *     &lt;enumeration value="Hanukkah"/>
+ *     &lt;enumeration value="Diwali"/>
+ *     &lt;enumeration value="Navratri"/>
+ *     &lt;enumeration value="Songkran"/>
+ *     &lt;enumeration value="YearEndGift"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "PromotionOccasion")

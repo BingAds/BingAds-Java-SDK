@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import jakarta.xml.ws.Response;
+import javax.xml.ws.Response;
 
 import com.microsoft.bingads.internal.ServiceUtils;
 

@@ -36,8 +36,7 @@ public class BulkAdgroupReadFromRowValuesHotelAdGroupTypeTest extends BulkAdGrou
                 new Object[][]{
                         {"HotelAd", Collections.singletonList(HotelAdGroupType.HOTEL_AD)},
                         {"PropertyAd", Collections.singletonList(HotelAdGroupType.PROPERTY_AD)},
-                        {"HotelAd,PropertyAd", list},
-                        {"HotelAd, PropertyAd", list}
+                        {"HotelAd,PropertyAd", list}
                 }
         );
     }

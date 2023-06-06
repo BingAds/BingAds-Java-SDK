@@ -2,12 +2,12 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Calendar;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -15,25 +15,23 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="OfflineConversion">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="ConversionCurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ConversionName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ConversionTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         <element name="ConversionValue" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         <element name="ExternalAttributionCredit" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         <element name="ExternalAttributionModel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="HashedEmailAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="HashedPhoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="MicrosoftClickId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="OfflineConversion">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="ConversionCurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ConversionName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ConversionTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="ConversionValue" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="ExternalAttributionCredit" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="ExternalAttributionModel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="MicrosoftClickId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -45,8 +43,6 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "conversionValue",
     "externalAttributionCredit",
     "externalAttributionModel",
-    "hashedEmailAddress",
-    "hashedPhoneNumber",
     "microsoftClickId"
 })
 public class OfflineConversion {
@@ -65,10 +61,6 @@ public class OfflineConversion {
     protected Double externalAttributionCredit;
     @XmlElement(name = "ExternalAttributionModel", nillable = true)
     protected String externalAttributionModel;
-    @XmlElement(name = "HashedEmailAddress", nillable = true)
-    protected String hashedEmailAddress;
-    @XmlElement(name = "HashedPhoneNumber", nillable = true)
-    protected String hashedPhoneNumber;
     @XmlElement(name = "MicrosoftClickId", nillable = true)
     protected String microsoftClickId;
 
@@ -214,54 +206,6 @@ public class OfflineConversion {
      */
     public void setExternalAttributionModel(String value) {
         this.externalAttributionModel = value;
-    }
-
-    /**
-     * Gets the value of the hashedEmailAddress property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHashedEmailAddress() {
-        return hashedEmailAddress;
-    }
-
-    /**
-     * Sets the value of the hashedEmailAddress property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHashedEmailAddress(String value) {
-        this.hashedEmailAddress = value;
-    }
-
-    /**
-     * Gets the value of the hashedPhoneNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHashedPhoneNumber() {
-        return hashedPhoneNumber;
-    }
-
-    /**
-     * Sets the value of the hashedPhoneNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHashedPhoneNumber(String value) {
-        this.hashedPhoneNumber = value;
     }
 
     /**

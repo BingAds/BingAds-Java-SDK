@@ -1,25 +1,26 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for Network.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="Network">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="OwnedAndOperatedAndSyndicatedSearch"/>
- *     <enumeration value="OwnedAndOperatedOnly"/>
- *     <enumeration value="SyndicatedSearchOnly"/>
- *     <enumeration value="InHousePromotion"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="Network">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="OwnedAndOperatedAndSyndicatedSearch"/>
+ *     &lt;enumeration value="OwnedAndOperatedOnly"/>
+ *     &lt;enumeration value="SyndicatedSearchOnly"/>
+ *     &lt;enumeration value="InHousePromotion"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "Network")

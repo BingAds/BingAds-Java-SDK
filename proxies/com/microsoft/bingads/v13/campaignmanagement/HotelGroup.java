@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,19 +13,19 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="HotelGroup">
- *   <complexContent>
- *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Criterion">
- *       <sequence>
- *         <element name="Listing" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelListing" minOccurs="0"/>
- *         <element name="ListingType" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelListingType"/>
- *         <element name="ParentCriterionId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *       </sequence>
- *     </extension>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="HotelGroup">
+ *   &lt;complexContent>
+ *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Criterion">
+ *       &lt;sequence>
+ *         &lt;element name="Listing" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelListing" minOccurs="0"/>
+ *         &lt;element name="ListingType" type="{https://bingads.microsoft.com/CampaignManagement/v13}HotelListingType"/>
+ *         &lt;element name="ParentCriterionId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

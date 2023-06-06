@@ -141,7 +141,6 @@ public class StringTable {
     public static final String CpvBid = "Cpv Bid";
     public static final String CpmBid = "Cpm Bid";
     public static final String FrequencyCapSettings = "Frequency Cap Settings";
-    public static final String FinalUrlExpansionOptOut = "Url Expansion Opt Out";
 
     // entity types
     public static final String SemanticVersion = "Format Version";
@@ -733,18 +732,6 @@ public class StringTable {
     
     public static final String MinTargetValue = "Min Target Value";
     public static final String MaxTargetValue = "Max Target Value";
-    
-    //PMax
-    public static final String AssetGroup = "Asset Group";
-    public static final String AudienceGroup = "Audience Group";
-    public static final String CampaignNegativeWebpage = "Campaign Negative Webpage";
-    public static final String AssetGroupListingGroup = "Asset Group Listing Group";
-    public static final String AudienceGroupAssetGroupAssociation = "Audience Group Asset Group Association";
-    public static final String Audiences = "Audiences";
-    public static final String AudienceGroupName = "Audience Group Name";
-    public static final String AgeRanges = "Age Ranges";
-    public static final String GenderTypes = "Gender Types";
-    public static final String ParentListingGroupId = "Parent Listing Group Id";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

@@ -50,36 +50,6 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroup();
             }
         }));
-        m.put(StringTable.AssetGroup, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAssetGroup();
-            }
-        }));
-        m.put(StringTable.AudienceGroup, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAudienceGroup();
-            }
-        }));
-        m.put(StringTable.CampaignNegativeWebpage, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkCampaignNegativeWebpage();
-            }
-        }));
-        m.put(StringTable.AssetGroupListingGroup, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAssetGroupListingGroup();
-            }
-        }));
-        m.put(StringTable.AudienceGroupAssetGroupAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
-            @Override
-            public SingleRecordBulkEntity create() {
-                return new BulkAudienceGroupAssetGroupAssociation();
-            }
-        }));
         m.put(StringTable.ProductAd, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

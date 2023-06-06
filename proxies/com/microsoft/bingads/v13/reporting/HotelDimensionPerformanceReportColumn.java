@@ -1,83 +1,84 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for HotelDimensionPerformanceReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="HotelDimensionPerformanceReportColumn">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="TimePeriod"/>
- *     <enumeration value="CustomerId"/>
- *     <enumeration value="CustomerName"/>
- *     <enumeration value="AccountName"/>
- *     <enumeration value="AccountId"/>
- *     <enumeration value="CampaignName"/>
- *     <enumeration value="CampaignId"/>
- *     <enumeration value="AdGroupId"/>
- *     <enumeration value="AdGroupName"/>
- *     <enumeration value="AdId"/>
- *     <enumeration value="AccountStatus"/>
- *     <enumeration value="CampaignStatus"/>
- *     <enumeration value="AdGroupStatus"/>
- *     <enumeration value="SourceHotelId"/>
- *     <enumeration value="CampaignHotelId"/>
- *     <enumeration value="AdvertiserHotelId"/>
- *     <enumeration value="HotelName"/>
- *     <enumeration value="CountryName"/>
- *     <enumeration value="State"/>
- *     <enumeration value="City"/>
- *     <enumeration value="Brand"/>
- *     <enumeration value="Category"/>
- *     <enumeration value="StarRating"/>
- *     <enumeration value="CustomLabel0"/>
- *     <enumeration value="CustomLabel1"/>
- *     <enumeration value="CustomLabel2"/>
- *     <enumeration value="CustomLabel3"/>
- *     <enumeration value="CustomLabel4"/>
- *     <enumeration value="BidStrategyType"/>
- *     <enumeration value="DeviceType"/>
- *     <enumeration value="CurrencyCode"/>
- *     <enumeration value="CustomParameters"/>
- *     <enumeration value="FinalUrlSuffix"/>
- *     <enumeration value="Impressions"/>
- *     <enumeration value="Clicks"/>
- *     <enumeration value="Ctr"/>
- *     <enumeration value="Spend"/>
- *     <enumeration value="AverageCpc"/>
- *     <enumeration value="AverageCpm"/>
- *     <enumeration value="Conversions"/>
- *     <enumeration value="Revenue"/>
- *     <enumeration value="NetRevenue"/>
- *     <enumeration value="GrossReturnOnAdSpend"/>
- *     <enumeration value="NetReturnOnAdSpend"/>
- *     <enumeration value="CostPerAssist"/>
- *     <enumeration value="BookedLengthOfStay"/>
- *     <enumeration value="AvgBookedABW"/>
- *     <enumeration value="AvgBookedNights"/>
- *     <enumeration value="BookedABW"/>
- *     <enumeration value="CheckInDate"/>
- *     <enumeration value="DateType"/>
- *     <enumeration value="PartnerImpressions"/>
- *     <enumeration value="EligibleImpressions"/>
- *     <enumeration value="MissedImpressions"/>
- *     <enumeration value="ImpressionShare"/>
- *     <enumeration value="MissedImpressionsNoBid"/>
- *     <enumeration value="MissedImpressionsSpendingCapReached"/>
- *     <enumeration value="MissedImpressionsNoTax"/>
- *     <enumeration value="MissedImpressionsOther"/>
- *     <enumeration value="CheckInDateDayOfWeek"/>
- *     <enumeration value="LengthOfStay"/>
- *     <enumeration value="AdvancedBookingWindow"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="HotelDimensionPerformanceReportColumn">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="TimePeriod"/>
+ *     &lt;enumeration value="CustomerId"/>
+ *     &lt;enumeration value="CustomerName"/>
+ *     &lt;enumeration value="AccountName"/>
+ *     &lt;enumeration value="AccountId"/>
+ *     &lt;enumeration value="CampaignName"/>
+ *     &lt;enumeration value="CampaignId"/>
+ *     &lt;enumeration value="AdGroupId"/>
+ *     &lt;enumeration value="AdGroupName"/>
+ *     &lt;enumeration value="AdId"/>
+ *     &lt;enumeration value="AccountStatus"/>
+ *     &lt;enumeration value="CampaignStatus"/>
+ *     &lt;enumeration value="AdGroupStatus"/>
+ *     &lt;enumeration value="SourceHotelId"/>
+ *     &lt;enumeration value="CampaignHotelId"/>
+ *     &lt;enumeration value="AdvertiserHotelId"/>
+ *     &lt;enumeration value="HotelName"/>
+ *     &lt;enumeration value="CountryName"/>
+ *     &lt;enumeration value="State"/>
+ *     &lt;enumeration value="City"/>
+ *     &lt;enumeration value="Brand"/>
+ *     &lt;enumeration value="Category"/>
+ *     &lt;enumeration value="StarRating"/>
+ *     &lt;enumeration value="CustomLabel0"/>
+ *     &lt;enumeration value="CustomLabel1"/>
+ *     &lt;enumeration value="CustomLabel2"/>
+ *     &lt;enumeration value="CustomLabel3"/>
+ *     &lt;enumeration value="CustomLabel4"/>
+ *     &lt;enumeration value="BidStrategyType"/>
+ *     &lt;enumeration value="DeviceType"/>
+ *     &lt;enumeration value="CurrencyCode"/>
+ *     &lt;enumeration value="CustomParameters"/>
+ *     &lt;enumeration value="FinalUrlSuffix"/>
+ *     &lt;enumeration value="Impressions"/>
+ *     &lt;enumeration value="Clicks"/>
+ *     &lt;enumeration value="Ctr"/>
+ *     &lt;enumeration value="Spend"/>
+ *     &lt;enumeration value="AverageCpc"/>
+ *     &lt;enumeration value="AverageCpm"/>
+ *     &lt;enumeration value="Conversions"/>
+ *     &lt;enumeration value="Revenue"/>
+ *     &lt;enumeration value="NetRevenue"/>
+ *     &lt;enumeration value="GrossReturnOnAdSpend"/>
+ *     &lt;enumeration value="NetReturnOnAdSpend"/>
+ *     &lt;enumeration value="CostPerAssist"/>
+ *     &lt;enumeration value="BookedLengthOfStay"/>
+ *     &lt;enumeration value="AvgBookedABW"/>
+ *     &lt;enumeration value="AvgBookedNights"/>
+ *     &lt;enumeration value="BookedABW"/>
+ *     &lt;enumeration value="CheckInDate"/>
+ *     &lt;enumeration value="DateType"/>
+ *     &lt;enumeration value="PartnerImpressions"/>
+ *     &lt;enumeration value="EligibleImpressions"/>
+ *     &lt;enumeration value="MissedImpressions"/>
+ *     &lt;enumeration value="ImpressionShare"/>
+ *     &lt;enumeration value="MissedImpressionsNoBid"/>
+ *     &lt;enumeration value="MissedImpressionsSpendingCapReached"/>
+ *     &lt;enumeration value="MissedImpressionsNoTax"/>
+ *     &lt;enumeration value="MissedImpressionsOther"/>
+ *     &lt;enumeration value="CheckInDateDayOfWeek"/>
+ *     &lt;enumeration value="LengthOfStay"/>
+ *     &lt;enumeration value="AdvancedBookingWindow"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "HotelDimensionPerformanceReportColumn")

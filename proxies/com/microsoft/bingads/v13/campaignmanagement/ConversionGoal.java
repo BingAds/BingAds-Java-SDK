@@ -2,13 +2,13 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -16,31 +16,30 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ConversionGoal">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="AttributionModelType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AttributionModelType" minOccurs="0"/>
- *         <element name="ConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         <element name="CountType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCountType" minOccurs="0"/>
- *         <element name="ExcludeFromBidding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="GoalCategory" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCategory" minOccurs="0"/>
- *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="IsEnhancedConversionsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Revenue" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalRevenue" minOccurs="0"/>
- *         <element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
- *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalStatus" minOccurs="0"/>
- *         <element name="TagId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="TrackingStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalTrackingStatus" minOccurs="0"/>
- *         <element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalType" minOccurs="0"/>
- *         <element name="ViewThroughConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ConversionGoal">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="AttributionModelType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AttributionModelType" minOccurs="0"/>
+ *         &lt;element name="ConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="CountType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCountType" minOccurs="0"/>
+ *         &lt;element name="ExcludeFromBidding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="GoalCategory" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCategory" minOccurs="0"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Revenue" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalRevenue" minOccurs="0"/>
+ *         &lt;element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
+ *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalStatus" minOccurs="0"/>
+ *         &lt;element name="TagId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="TrackingStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalTrackingStatus" minOccurs="0"/>
+ *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalType" minOccurs="0"/>
+ *         &lt;element name="ViewThroughConversionWindowInMinutes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -52,7 +51,6 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "excludeFromBidding",
     "goalCategory",
     "id",
-    "isEnhancedConversionsEnabled",
     "name",
     "revenue",
     "scope",
@@ -65,11 +63,11 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlSeeAlso({
     UrlGoal.class,
     DurationGoal.class,
-    PagesViewedPerVisitGoal.class,
-    EventGoal.class,
     AppInstallGoal.class,
-    OfflineConversionGoal.class,
-    InStoreTransactionGoal.class
+    InStoreTransactionGoal.class,
+    EventGoal.class,
+    PagesViewedPerVisitGoal.class,
+    OfflineConversionGoal.class
 })
 public class ConversionGoal {
 
@@ -88,8 +86,6 @@ public class ConversionGoal {
     protected ConversionGoalCategory goalCategory;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
-    @XmlElement(name = "IsEnhancedConversionsEnabled", nillable = true)
-    protected Boolean isEnhancedConversionsEnabled;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Revenue", nillable = true)
@@ -106,7 +102,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;
@@ -253,30 +249,6 @@ public class ConversionGoal {
      */
     public void setId(Long value) {
         this.id = value;
-    }
-
-    /**
-     * Gets the value of the isEnhancedConversionsEnabled property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean getIsEnhancedConversionsEnabled() {
-        return isEnhancedConversionsEnabled;
-    }
-
-    /**
-     * Sets the value of the isEnhancedConversionsEnabled property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setIsEnhancedConversionsEnabled(Boolean value) {
-        this.isEnhancedConversionsEnabled = value;
     }
 
     /**

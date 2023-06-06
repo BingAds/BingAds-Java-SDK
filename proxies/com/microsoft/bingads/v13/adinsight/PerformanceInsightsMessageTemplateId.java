@@ -1,128 +1,129 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PerformanceInsightsMessageTemplateId.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="PerformanceInsightsMessageTemplateId">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="FluxImprIncreaseAcct"/>
- *     <enumeration value="FluxImprDecreaseAcct"/>
- *     <enumeration value="FluxImprIncreaseInfinityAcct"/>
- *     <enumeration value="FluxImprIncreaseAcctPrevDay"/>
- *     <enumeration value="FluxImprDecreaseAcctPrevDay"/>
- *     <enumeration value="FluxImprIncreaseInfinityAcctPrevDay"/>
- *     <enumeration value="FluxClickIncreaseAcct"/>
- *     <enumeration value="FluxClickDecreaseAcct"/>
- *     <enumeration value="FluxClickIncreaseInfinityAcct"/>
- *     <enumeration value="FluxClickIncreaseAcctPrevDay"/>
- *     <enumeration value="FluxClickDecreaseAcctPrevDay"/>
- *     <enumeration value="FluxClickIncreaseInfinityAcctPrevDay"/>
- *     <enumeration value="FluxCostIncreaseAcct"/>
- *     <enumeration value="FluxCostDecreaseAcct"/>
- *     <enumeration value="FluxCostIncreaseInfinityAcct"/>
- *     <enumeration value="FluxCostIncreaseAcctPrevDay"/>
- *     <enumeration value="FluxCostDecreaseAcctPrevDay"/>
- *     <enumeration value="FluxCostIncreaseInfinityAcctPrevDay"/>
- *     <enumeration value="FluxImprIncreaseCampaign"/>
- *     <enumeration value="FluxImprDecreaseCampaign"/>
- *     <enumeration value="FluxImprIncreaseInfinityCampaign"/>
- *     <enumeration value="FluxImprIncreaseCampaignPrevDay"/>
- *     <enumeration value="FluxImprDecreaseCampaignPrevDay"/>
- *     <enumeration value="FluxImprIncreaseInfinityCampaignPrevDay"/>
- *     <enumeration value="FluxClickIncreaseCampaign"/>
- *     <enumeration value="FluxClickDecreaseCampaign"/>
- *     <enumeration value="FluxClickIncreaseInfinityCampaign"/>
- *     <enumeration value="FluxClickIncreaseCampaignPrevDay"/>
- *     <enumeration value="FluxClickDecreaseCampaignPrevDay"/>
- *     <enumeration value="FluxClickIncreaseInfinityCampaignPrevDay"/>
- *     <enumeration value="FluxCostIncreaseCampaign"/>
- *     <enumeration value="FluxCostDecreaseCampaign"/>
- *     <enumeration value="FluxCostIncreaseInfinityCampaign"/>
- *     <enumeration value="FluxCostIncreaseCampaignPrevDay"/>
- *     <enumeration value="FluxCostDecreaseCampaignPrevDay"/>
- *     <enumeration value="FluxCostIncreaseInfinityCampaignPrevDay"/>
- *     <enumeration value="FluxConversionDecreaseAcct"/>
- *     <enumeration value="FluxConversionZeroAcct"/>
- *     <enumeration value="RCAudienceIncrease"/>
- *     <enumeration value="RCAudienceDecrease"/>
- *     <enumeration value="RCBidIncrease"/>
- *     <enumeration value="RCBidDecrease"/>
- *     <enumeration value="RCBudgetIncrease"/>
- *     <enumeration value="RCBudgetDecrease"/>
- *     <enumeration value="RCClickIncrease"/>
- *     <enumeration value="RCClickDecrease"/>
- *     <enumeration value="RCConversionGoalIssue"/>
- *     <enumeration value="RCDeviceTargetingBidChange"/>
- *     <enumeration value="RCEditorialApproval"/>
- *     <enumeration value="RCEditorialDisapproval"/>
- *     <enumeration value="RCEntityAdditionWithCount"/>
- *     <enumeration value="RCEntityDeletionWithCount"/>
- *     <enumeration value="RCEntityPauseWithCount"/>
- *     <enumeration value="RCEntityUnpauseWithCount"/>
- *     <enumeration value="RCMoreCompetitive"/>
- *     <enumeration value="RCNetworkLessRestrict"/>
- *     <enumeration value="RCNetworkMoreRestrict"/>
- *     <enumeration value="RCPaymentIssueInvoiceAccountPaused"/>
- *     <enumeration value="RCPaymentIssueInvoiceAccountOnHold"/>
- *     <enumeration value="RCPaymentIssuePrepayAccountPaused"/>
- *     <enumeration value="RCPaymentIssueThresholdAccountOnHold"/>
- *     <enumeration value="RCPaymentIssueYesterday"/>
- *     <enumeration value="RCSearchTermIncrease"/>
- *     <enumeration value="RCSearchTermIncreaseClick"/>
- *     <enumeration value="RCSearchTermDecrease"/>
- *     <enumeration value="RCSearchTermDecreaseClick"/>
- *     <enumeration value="RCSearchTermCompetitionIncrease"/>
- *     <enumeration value="RCSearchTermCompetitionIncreaseClick"/>
- *     <enumeration value="RCSearchTermCompetitionDecrease"/>
- *     <enumeration value="RCSearchTermCompetitionDecreaseClick"/>
- *     <enumeration value="RCSingleCampaignAddition"/>
- *     <enumeration value="RCSingleCampaignPause"/>
- *     <enumeration value="RCSingleCampaignUnpause"/>
- *     <enumeration value="RCSingleCampaignBudgetIncrease"/>
- *     <enumeration value="RCSingleCampaignBudgetDecrease"/>
- *     <enumeration value="RCSingleCampaignDeviceTargetingBidChange"/>
- *     <enumeration value="RCStrongerCompetitorAdQuality"/>
- *     <enumeration value="RCStrongerCompetitorBid"/>
- *     <enumeration value="RCSyndTrafficIncrease"/>
- *     <enumeration value="RCSyndTrafficDecrease"/>
- *     <enumeration value="ActAdsOppr"/>
- *     <enumeration value="ActAllAvailableOppr"/>
- *     <enumeration value="ActBMAdoptionOppr"/>
- *     <enumeration value="ActBMMKeywordOppr"/>
- *     <enumeration value="ActCampaignContextKeywordOppr"/>
- *     <enumeration value="ActCheckPublisherWebsite"/>
- *     <enumeration value="ActCompetitionAuctionInsight"/>
- *     <enumeration value="ActCompetitiveBudgetOppr"/>
- *     <enumeration value="ActCompetitiveKeywordOppr"/>
- *     <enumeration value="ActCompetitiveLocationTargetOppr"/>
- *     <enumeration value="ActCTRQualityBundle"/>
- *     <enumeration value="ActEditorialReviewProcess"/>
- *     <enumeration value="ActFixConversionGoalSettingOppr"/>
- *     <enumeration value="ActFixConversionTrackingOppr"/>
- *     <enumeration value="ActGeneralBudgetOppr"/>
- *     <enumeration value="ActNewConversionGoalOppr"/>
- *     <enumeration value="ActInvoiceAccountPaused"/>
- *     <enumeration value="ActInvoiceAccountOnHold"/>
- *     <enumeration value="ActPrepayAccountPaused"/>
- *     <enumeration value="ActReallocateBudgetOppr"/>
- *     <enumeration value="ActRepairKeywordsOppr"/>
- *     <enumeration value="ActRSAOppr"/>
- *     <enumeration value="ActSearchTerm"/>
- *     <enumeration value="ActSetupConversionTrackingOppr"/>
- *     <enumeration value="ActSiteLinkOppr"/>
- *     <enumeration value="ActThresholdAccountOnHold"/>
- *     <enumeration value="ActWebsiteExclusion"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="PerformanceInsightsMessageTemplateId">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="FluxImprIncreaseAcct"/>
+ *     &lt;enumeration value="FluxImprDecreaseAcct"/>
+ *     &lt;enumeration value="FluxImprIncreaseInfinityAcct"/>
+ *     &lt;enumeration value="FluxImprIncreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxImprDecreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxImprIncreaseInfinityAcctPrevDay"/>
+ *     &lt;enumeration value="FluxClickIncreaseAcct"/>
+ *     &lt;enumeration value="FluxClickDecreaseAcct"/>
+ *     &lt;enumeration value="FluxClickIncreaseInfinityAcct"/>
+ *     &lt;enumeration value="FluxClickIncreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxClickDecreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxClickIncreaseInfinityAcctPrevDay"/>
+ *     &lt;enumeration value="FluxCostIncreaseAcct"/>
+ *     &lt;enumeration value="FluxCostDecreaseAcct"/>
+ *     &lt;enumeration value="FluxCostIncreaseInfinityAcct"/>
+ *     &lt;enumeration value="FluxCostIncreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxCostDecreaseAcctPrevDay"/>
+ *     &lt;enumeration value="FluxCostIncreaseInfinityAcctPrevDay"/>
+ *     &lt;enumeration value="FluxImprIncreaseCampaign"/>
+ *     &lt;enumeration value="FluxImprDecreaseCampaign"/>
+ *     &lt;enumeration value="FluxImprIncreaseInfinityCampaign"/>
+ *     &lt;enumeration value="FluxImprIncreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxImprDecreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxImprIncreaseInfinityCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxClickIncreaseCampaign"/>
+ *     &lt;enumeration value="FluxClickDecreaseCampaign"/>
+ *     &lt;enumeration value="FluxClickIncreaseInfinityCampaign"/>
+ *     &lt;enumeration value="FluxClickIncreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxClickDecreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxClickIncreaseInfinityCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxCostIncreaseCampaign"/>
+ *     &lt;enumeration value="FluxCostDecreaseCampaign"/>
+ *     &lt;enumeration value="FluxCostIncreaseInfinityCampaign"/>
+ *     &lt;enumeration value="FluxCostIncreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxCostDecreaseCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxCostIncreaseInfinityCampaignPrevDay"/>
+ *     &lt;enumeration value="FluxConversionDecreaseAcct"/>
+ *     &lt;enumeration value="FluxConversionZeroAcct"/>
+ *     &lt;enumeration value="RCAudienceIncrease"/>
+ *     &lt;enumeration value="RCAudienceDecrease"/>
+ *     &lt;enumeration value="RCBidIncrease"/>
+ *     &lt;enumeration value="RCBidDecrease"/>
+ *     &lt;enumeration value="RCBudgetIncrease"/>
+ *     &lt;enumeration value="RCBudgetDecrease"/>
+ *     &lt;enumeration value="RCClickIncrease"/>
+ *     &lt;enumeration value="RCClickDecrease"/>
+ *     &lt;enumeration value="RCConversionGoalIssue"/>
+ *     &lt;enumeration value="RCDeviceTargetingBidChange"/>
+ *     &lt;enumeration value="RCEditorialApproval"/>
+ *     &lt;enumeration value="RCEditorialDisapproval"/>
+ *     &lt;enumeration value="RCEntityAdditionWithCount"/>
+ *     &lt;enumeration value="RCEntityDeletionWithCount"/>
+ *     &lt;enumeration value="RCEntityPauseWithCount"/>
+ *     &lt;enumeration value="RCEntityUnpauseWithCount"/>
+ *     &lt;enumeration value="RCMoreCompetitive"/>
+ *     &lt;enumeration value="RCNetworkLessRestrict"/>
+ *     &lt;enumeration value="RCNetworkMoreRestrict"/>
+ *     &lt;enumeration value="RCPaymentIssueInvoiceAccountPaused"/>
+ *     &lt;enumeration value="RCPaymentIssueInvoiceAccountOnHold"/>
+ *     &lt;enumeration value="RCPaymentIssuePrepayAccountPaused"/>
+ *     &lt;enumeration value="RCPaymentIssueThresholdAccountOnHold"/>
+ *     &lt;enumeration value="RCPaymentIssueYesterday"/>
+ *     &lt;enumeration value="RCSearchTermIncrease"/>
+ *     &lt;enumeration value="RCSearchTermIncreaseClick"/>
+ *     &lt;enumeration value="RCSearchTermDecrease"/>
+ *     &lt;enumeration value="RCSearchTermDecreaseClick"/>
+ *     &lt;enumeration value="RCSearchTermCompetitionIncrease"/>
+ *     &lt;enumeration value="RCSearchTermCompetitionIncreaseClick"/>
+ *     &lt;enumeration value="RCSearchTermCompetitionDecrease"/>
+ *     &lt;enumeration value="RCSearchTermCompetitionDecreaseClick"/>
+ *     &lt;enumeration value="RCSingleCampaignAddition"/>
+ *     &lt;enumeration value="RCSingleCampaignPause"/>
+ *     &lt;enumeration value="RCSingleCampaignUnpause"/>
+ *     &lt;enumeration value="RCSingleCampaignBudgetIncrease"/>
+ *     &lt;enumeration value="RCSingleCampaignBudgetDecrease"/>
+ *     &lt;enumeration value="RCSingleCampaignDeviceTargetingBidChange"/>
+ *     &lt;enumeration value="RCStrongerCompetitorAdQuality"/>
+ *     &lt;enumeration value="RCStrongerCompetitorBid"/>
+ *     &lt;enumeration value="RCSyndTrafficIncrease"/>
+ *     &lt;enumeration value="RCSyndTrafficDecrease"/>
+ *     &lt;enumeration value="ActAdsOppr"/>
+ *     &lt;enumeration value="ActAllAvailableOppr"/>
+ *     &lt;enumeration value="ActBMAdoptionOppr"/>
+ *     &lt;enumeration value="ActBMMKeywordOppr"/>
+ *     &lt;enumeration value="ActCampaignContextKeywordOppr"/>
+ *     &lt;enumeration value="ActCheckPublisherWebsite"/>
+ *     &lt;enumeration value="ActCompetitionAuctionInsight"/>
+ *     &lt;enumeration value="ActCompetitiveBudgetOppr"/>
+ *     &lt;enumeration value="ActCompetitiveKeywordOppr"/>
+ *     &lt;enumeration value="ActCompetitiveLocationTargetOppr"/>
+ *     &lt;enumeration value="ActCTRQualityBundle"/>
+ *     &lt;enumeration value="ActEditorialReviewProcess"/>
+ *     &lt;enumeration value="ActFixConversionGoalSettingOppr"/>
+ *     &lt;enumeration value="ActFixConversionTrackingOppr"/>
+ *     &lt;enumeration value="ActGeneralBudgetOppr"/>
+ *     &lt;enumeration value="ActNewConversionGoalOppr"/>
+ *     &lt;enumeration value="ActInvoiceAccountPaused"/>
+ *     &lt;enumeration value="ActInvoiceAccountOnHold"/>
+ *     &lt;enumeration value="ActPrepayAccountPaused"/>
+ *     &lt;enumeration value="ActReallocateBudgetOppr"/>
+ *     &lt;enumeration value="ActRepairKeywordsOppr"/>
+ *     &lt;enumeration value="ActRSAOppr"/>
+ *     &lt;enumeration value="ActSearchTerm"/>
+ *     &lt;enumeration value="ActSetupConversionTrackingOppr"/>
+ *     &lt;enumeration value="ActSiteLinkOppr"/>
+ *     &lt;enumeration value="ActThresholdAccountOnHold"/>
+ *     &lt;enumeration value="ActWebsiteExclusion"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "PerformanceInsightsMessageTemplateId")

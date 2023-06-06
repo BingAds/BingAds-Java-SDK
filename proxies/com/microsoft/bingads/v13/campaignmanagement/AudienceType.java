@@ -10,8 +10,7 @@ public enum AudienceType {
     IN_MARKET("InMarket"),
     PRODUCT("Product"),
     SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
-    COMBINED_LIST("CombinedList"),
-    CUSTOMER_LIST("CustomerList");
+    COMBINED_LIST("CombinedList");
         
     private final String value;
 

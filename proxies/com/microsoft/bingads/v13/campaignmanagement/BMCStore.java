@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,23 +13,22 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="BMCStore">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="HasCatalog" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="IsActive" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="IsProductAdsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="StoreUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="SubType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BMCStoreSubType" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="BMCStore">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="HasCatalog" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="IsActive" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="IsProductAdsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="SubType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BMCStoreSubType" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */
@@ -40,7 +39,6 @@ import jakarta.xml.bind.annotation.XmlType;
     "isActive",
     "isProductAdsEnabled",
     "name",
-    "storeUrl",
     "subType"
 })
 public class BMCStore {
@@ -55,8 +53,6 @@ public class BMCStore {
     protected Boolean isProductAdsEnabled;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
-    @XmlElement(name = "StoreUrl", nillable = true)
-    protected String storeUrl;
     @XmlElement(name = "SubType", nillable = true)
     @XmlSchemaType(name = "string")
     protected BMCStoreSubType subType;
@@ -179,30 +175,6 @@ public class BMCStore {
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the storeUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStoreUrl() {
-        return storeUrl;
-    }
-
-    /**
-     * Sets the value of the storeUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStoreUrl(String value) {
-        this.storeUrl = value;
     }
 
     /**

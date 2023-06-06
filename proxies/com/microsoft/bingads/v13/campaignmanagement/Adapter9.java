@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter9
-    extends XmlAdapter<String, Collection<MediaEnabledEntityFilter>>
+    extends XmlAdapter<String, Collection<AdExtensionsTypeFilter>>
 {
 
 
-    public Collection<MediaEnabledEntityFilter> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.MediaEnabledEntityFilterConverter.convertToList(value));
+    public Collection<AdExtensionsTypeFilter> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.AdExtensionsTypeFilterConverter.convertToList(value));
     }
 
-    public String marshal(Collection<MediaEnabledEntityFilter> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.MediaEnabledEntityFilterConverter.convertToString(value));
+    public String marshal(Collection<AdExtensionsTypeFilter> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.AdExtensionsTypeFilterConverter.convertToString(value));
     }
 
 }

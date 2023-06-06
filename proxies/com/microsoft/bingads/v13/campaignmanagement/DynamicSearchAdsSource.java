@@ -1,24 +1,25 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for DynamicSearchAdsSource.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="DynamicSearchAdsSource">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="All"/>
- *     <enumeration value="SystemIndex"/>
- *     <enumeration value="AdvertiserSuppliedUrls"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="DynamicSearchAdsSource">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="All"/>
+ *     &lt;enumeration value="SystemIndex"/>
+ *     &lt;enumeration value="AdvertiserSuppliedUrls"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "DynamicSearchAdsSource")

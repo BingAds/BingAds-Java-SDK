@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,27 +13,27 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <complexType name="ContactInfo">
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="Address" type="{https://bingads.microsoft.com/Customer/v13/Entities}Address" minOccurs="0"/>
- *         <element name="ContactByPhone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="ContactByPostalMail" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         <element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="EmailFormat" type="{https://bingads.microsoft.com/Customer/v13/Entities}EmailFormat" minOccurs="0"/>
- *         <element name="Fax" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="HomePhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="Mobile" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Phone1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Phone2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
+ * <pre>
+ * &lt;complexType name="ContactInfo">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Address" type="{https://bingads.microsoft.com/Customer/v13/Entities}Address" minOccurs="0"/>
+ *         &lt;element name="ContactByPhone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="ContactByPostalMail" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="EmailFormat" type="{https://bingads.microsoft.com/Customer/v13/Entities}EmailFormat" minOccurs="0"/>
+ *         &lt;element name="Fax" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="HomePhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="Mobile" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Phone1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Phone2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
  * 
  * 
  */

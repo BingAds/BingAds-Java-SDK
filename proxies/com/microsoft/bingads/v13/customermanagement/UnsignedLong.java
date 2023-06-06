@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -13,13 +13,13 @@ import jakarta.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>{@code
- * <simpleType name="unsignedLong">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger">
- *     <maxInclusive value="18446744073709551615"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <pre>
+ * &lt;simpleType name="unsignedLong">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger">
+ *     &lt;maxInclusive value="18446744073709551615"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  * 
  */

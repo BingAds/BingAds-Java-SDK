@@ -1,59 +1,60 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import jakarta.xml.bind.annotation.XmlEnum;
-import jakarta.xml.bind.annotation.XmlEnumValue;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for LanguageName.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <pre>{@code
- * <simpleType name="LanguageName">
- *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     <enumeration value="None"/>
- *     <enumeration value="Arabic"/>
- *     <enumeration value="Danish"/>
- *     <enumeration value="Dutch"/>
- *     <enumeration value="German"/>
- *     <enumeration value="English"/>
- *     <enumeration value="Finnish"/>
- *     <enumeration value="French"/>
- *     <enumeration value="Italian"/>
- *     <enumeration value="Norwegian"/>
- *     <enumeration value="Portuguese"/>
- *     <enumeration value="Spanish"/>
- *     <enumeration value="Swedish"/>
- *     <enumeration value="TraditionalChinese"/>
- *     <enumeration value="SimplifiedChinese"/>
- *     <enumeration value="Greek"/>
- *     <enumeration value="Polish"/>
- *     <enumeration value="Bulgarian"/>
- *     <enumeration value="Czech"/>
- *     <enumeration value="Estonian"/>
- *     <enumeration value="Croatian"/>
- *     <enumeration value="Hungarian"/>
- *     <enumeration value="Lithuanian"/>
- *     <enumeration value="Latvian"/>
- *     <enumeration value="Maltese"/>
- *     <enumeration value="Romanian"/>
- *     <enumeration value="Slovak"/>
- *     <enumeration value="Slovenian"/>
- *     <enumeration value="Turkish"/>
- *     <enumeration value="Serbian"/>
- *     <enumeration value="Bosnian"/>
- *     <enumeration value="Albanian"/>
- *     <enumeration value="Macedonian"/>
- *     <enumeration value="Icelandic"/>
- *     <enumeration value="Japanese"/>
- *     <enumeration value="Hebrew"/>
- *     <enumeration value="Russian"/>
- *     <enumeration value="All"/>
- *   </restriction>
- * </simpleType>
- * }</pre>
+ * <p>
+ * <pre>
+ * &lt;simpleType name="LanguageName">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="None"/>
+ *     &lt;enumeration value="Arabic"/>
+ *     &lt;enumeration value="Danish"/>
+ *     &lt;enumeration value="Dutch"/>
+ *     &lt;enumeration value="German"/>
+ *     &lt;enumeration value="English"/>
+ *     &lt;enumeration value="Finnish"/>
+ *     &lt;enumeration value="French"/>
+ *     &lt;enumeration value="Italian"/>
+ *     &lt;enumeration value="Norwegian"/>
+ *     &lt;enumeration value="Portuguese"/>
+ *     &lt;enumeration value="Spanish"/>
+ *     &lt;enumeration value="Swedish"/>
+ *     &lt;enumeration value="TraditionalChinese"/>
+ *     &lt;enumeration value="SimplifiedChinese"/>
+ *     &lt;enumeration value="Greek"/>
+ *     &lt;enumeration value="Polish"/>
+ *     &lt;enumeration value="Bulgarian"/>
+ *     &lt;enumeration value="Czech"/>
+ *     &lt;enumeration value="Estonian"/>
+ *     &lt;enumeration value="Croatian"/>
+ *     &lt;enumeration value="Hungarian"/>
+ *     &lt;enumeration value="Lithuanian"/>
+ *     &lt;enumeration value="Latvian"/>
+ *     &lt;enumeration value="Maltese"/>
+ *     &lt;enumeration value="Romanian"/>
+ *     &lt;enumeration value="Slovak"/>
+ *     &lt;enumeration value="Slovenian"/>
+ *     &lt;enumeration value="Turkish"/>
+ *     &lt;enumeration value="Serbian"/>
+ *     &lt;enumeration value="Bosnian"/>
+ *     &lt;enumeration value="Albanian"/>
+ *     &lt;enumeration value="Macedonian"/>
+ *     &lt;enumeration value="Icelandic"/>
+ *     &lt;enumeration value="Japanese"/>
+ *     &lt;enumeration value="Hebrew"/>
+ *     &lt;enumeration value="Russian"/>
+ *     &lt;enumeration value="All"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
+ * </pre>
  * 
  */
 @XmlType(name = "LanguageName")
