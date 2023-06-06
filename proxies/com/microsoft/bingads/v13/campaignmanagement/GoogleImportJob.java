@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,20 +12,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="GoogleImportJob">
- *   &lt;complexContent>
- *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ImportJob">
- *       &lt;sequence>
- *         &lt;element name="CampaignAdGroupIds" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfCampaignAdGroupIds" minOccurs="0"/>
- *         &lt;element name="CredentialId" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="GoogleAccountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="GoogleUserName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="GoogleImportJob">
+ *   <complexContent>
+ *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ImportJob">
+ *       <sequence>
+ *         <element name="CampaignAdGroupIds" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfCampaignAdGroupIds" minOccurs="0"/>
+ *         <element name="CredentialId" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="GoogleAccountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         <element name="GoogleUserName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       </sequence>
+ *     </extension>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

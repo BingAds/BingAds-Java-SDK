@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.adinsight;
 
 import java.util.Collection;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter4
-    extends XmlAdapter<String, Collection<KeywordOpportunityType>>
+    extends XmlAdapter<String, Collection<AuctionInsightKpiAdditionalField>>
 {
 
 
-    public Collection<KeywordOpportunityType> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.adinsight.KeywordOpportunityTypeConverter.convertToList(value));
+    public Collection<AuctionInsightKpiAdditionalField> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.adinsight.AuctionInsightKpiAdditionalFieldConverter.convertToList(value));
     }
 
-    public String marshal(Collection<KeywordOpportunityType> value) {
-        return (com.microsoft.bingads.v13.adinsight.KeywordOpportunityTypeConverter.convertToString(value));
+    public String marshal(Collection<AuctionInsightKpiAdditionalField> value) {
+        return (com.microsoft.bingads.v13.adinsight.AuctionInsightKpiAdditionalFieldConverter.convertToString(value));
     }
 
 }

@@ -2,11 +2,11 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,24 +14,24 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="EventGoal">
- *   &lt;complexContent>
- *     &lt;extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoal">
- *       &lt;sequence>
- *         &lt;element name="ActionExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ActionOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
- *         &lt;element name="CategoryExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="CategoryOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
- *         &lt;element name="LabelExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="LabelOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
- *         &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *         &lt;element name="ValueOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ValueOperator" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="EventGoal">
+ *   <complexContent>
+ *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoal">
+ *       <sequence>
+ *         <element name="ActionExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ActionOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
+ *         <element name="CategoryExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="CategoryOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
+ *         <element name="LabelExpression" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="LabelOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExpressionOperator" minOccurs="0"/>
+ *         <element name="Value" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="ValueOperator" type="{https://bingads.microsoft.com/CampaignManagement/v13}ValueOperator" minOccurs="0"/>
+ *       </sequence>
+ *     </extension>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

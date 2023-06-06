@@ -1,97 +1,96 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for TimeZoneType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="TimeZoneType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AbuDhabiMuscat"/>
- *     &lt;enumeration value="Adelaide"/>
- *     &lt;enumeration value="Alaska"/>
- *     &lt;enumeration value="AlmatyNovosibirsk"/>
- *     &lt;enumeration value="AmsterdamBerlinBernRomeStockholmVienna"/>
- *     &lt;enumeration value="Arizona"/>
- *     &lt;enumeration value="AstanaDhaka"/>
- *     &lt;enumeration value="AthensBuckarestIstanbul"/>
- *     &lt;enumeration value="AtlanticTimeCanada"/>
- *     &lt;enumeration value="AucklandWellington"/>
- *     &lt;enumeration value="Azores"/>
- *     &lt;enumeration value="Baghdad"/>
- *     &lt;enumeration value="BakuTbilisiYerevan"/>
- *     &lt;enumeration value="BangkokHanoiJakarta"/>
- *     &lt;enumeration value="BeijingChongqingHongKongUrumqi"/>
- *     &lt;enumeration value="BelgradeBratislavaBudapestLjubljanaPrague"/>
- *     &lt;enumeration value="BogotaLimaQuito"/>
- *     &lt;enumeration value="Brasilia"/>
- *     &lt;enumeration value="Brisbane"/>
- *     &lt;enumeration value="BrusselsCopenhagenMadridParis"/>
- *     &lt;enumeration value="Bucharest"/>
- *     &lt;enumeration value="BuenosAiresGeorgetown"/>
- *     &lt;enumeration value="Cairo"/>
- *     &lt;enumeration value="CanberraMelbourneSydney"/>
- *     &lt;enumeration value="CapeVerdeIsland"/>
- *     &lt;enumeration value="CaracasLaPaz"/>
- *     &lt;enumeration value="CasablancaMonrovia"/>
- *     &lt;enumeration value="CentralAmerica"/>
- *     &lt;enumeration value="CentralTimeUSCanada"/>
- *     &lt;enumeration value="ChennaiKolkataMumbaiNewDelhi"/>
- *     &lt;enumeration value="ChihuahuaLaPazMazatlan"/>
- *     &lt;enumeration value="Darwin"/>
- *     &lt;enumeration value="EasternTimeUSCanada"/>
- *     &lt;enumeration value="Ekaterinburg"/>
- *     &lt;enumeration value="FijiKamchatkaMarshallIsland"/>
- *     &lt;enumeration value="Greenland"/>
- *     &lt;enumeration value="GreenwichMeanTimeDublinEdinburghLisbonLondon"/>
- *     &lt;enumeration value="GuadalajaraMexicoCityMonterrey"/>
- *     &lt;enumeration value="GuamPortMoresby"/>
- *     &lt;enumeration value="HararePretoria"/>
- *     &lt;enumeration value="Hawaii"/>
- *     &lt;enumeration value="HelsinkiKyivRigaSofiaTallinnVilnius"/>
- *     &lt;enumeration value="Hobart"/>
- *     &lt;enumeration value="IndianaEast"/>
- *     &lt;enumeration value="InternationalDateLineWest"/>
- *     &lt;enumeration value="IrkutskUlaanBataar"/>
- *     &lt;enumeration value="IslamabadKarachiTashkent"/>
- *     &lt;enumeration value="Jerusalem"/>
- *     &lt;enumeration value="Kabul"/>
- *     &lt;enumeration value="Kathmandu"/>
- *     &lt;enumeration value="Krasnoyarsk"/>
- *     &lt;enumeration value="KualaLumpurSingapore"/>
- *     &lt;enumeration value="KuwaitRiyadh"/>
- *     &lt;enumeration value="SolomonIslandNewCaledonia"/>
- *     &lt;enumeration value="MidAtlantic"/>
- *     &lt;enumeration value="MidwayIslandAndSamoa"/>
- *     &lt;enumeration value="MoscowStPetersburgVolgograd"/>
- *     &lt;enumeration value="MountainTimeUSCanada"/>
- *     &lt;enumeration value="Nairobi"/>
- *     &lt;enumeration value="Newfoundland"/>
- *     &lt;enumeration value="Nukualofa"/>
- *     &lt;enumeration value="OsakaSapporoTokyo"/>
- *     &lt;enumeration value="PacificTimeUSCanadaTijuana"/>
- *     &lt;enumeration value="Perth"/>
- *     &lt;enumeration value="Rangoon"/>
- *     &lt;enumeration value="Santiago"/>
- *     &lt;enumeration value="SarajevoSkopjeWarsawZagreb"/>
- *     &lt;enumeration value="Saskatchewan"/>
- *     &lt;enumeration value="Seoul"/>
- *     &lt;enumeration value="SriJayawardenepura"/>
- *     &lt;enumeration value="Taipei"/>
- *     &lt;enumeration value="Tehran"/>
- *     &lt;enumeration value="Vladivostok"/>
- *     &lt;enumeration value="WestCentralAfrica"/>
- *     &lt;enumeration value="Yakutsk"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="TimeZoneType">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AbuDhabiMuscat"/>
+ *     <enumeration value="Adelaide"/>
+ *     <enumeration value="Alaska"/>
+ *     <enumeration value="AlmatyNovosibirsk"/>
+ *     <enumeration value="AmsterdamBerlinBernRomeStockholmVienna"/>
+ *     <enumeration value="Arizona"/>
+ *     <enumeration value="AstanaDhaka"/>
+ *     <enumeration value="AthensBuckarestIstanbul"/>
+ *     <enumeration value="AtlanticTimeCanada"/>
+ *     <enumeration value="AucklandWellington"/>
+ *     <enumeration value="Azores"/>
+ *     <enumeration value="Baghdad"/>
+ *     <enumeration value="BakuTbilisiYerevan"/>
+ *     <enumeration value="BangkokHanoiJakarta"/>
+ *     <enumeration value="BeijingChongqingHongKongUrumqi"/>
+ *     <enumeration value="BelgradeBratislavaBudapestLjubljanaPrague"/>
+ *     <enumeration value="BogotaLimaQuito"/>
+ *     <enumeration value="Brasilia"/>
+ *     <enumeration value="Brisbane"/>
+ *     <enumeration value="BrusselsCopenhagenMadridParis"/>
+ *     <enumeration value="Bucharest"/>
+ *     <enumeration value="BuenosAiresGeorgetown"/>
+ *     <enumeration value="Cairo"/>
+ *     <enumeration value="CanberraMelbourneSydney"/>
+ *     <enumeration value="CapeVerdeIsland"/>
+ *     <enumeration value="CaracasLaPaz"/>
+ *     <enumeration value="CasablancaMonrovia"/>
+ *     <enumeration value="CentralAmerica"/>
+ *     <enumeration value="CentralTimeUSCanada"/>
+ *     <enumeration value="ChennaiKolkataMumbaiNewDelhi"/>
+ *     <enumeration value="ChihuahuaLaPazMazatlan"/>
+ *     <enumeration value="Darwin"/>
+ *     <enumeration value="EasternTimeUSCanada"/>
+ *     <enumeration value="Ekaterinburg"/>
+ *     <enumeration value="FijiKamchatkaMarshallIsland"/>
+ *     <enumeration value="Greenland"/>
+ *     <enumeration value="GreenwichMeanTimeDublinEdinburghLisbonLondon"/>
+ *     <enumeration value="GuadalajaraMexicoCityMonterrey"/>
+ *     <enumeration value="GuamPortMoresby"/>
+ *     <enumeration value="HararePretoria"/>
+ *     <enumeration value="Hawaii"/>
+ *     <enumeration value="HelsinkiKyivRigaSofiaTallinnVilnius"/>
+ *     <enumeration value="Hobart"/>
+ *     <enumeration value="IndianaEast"/>
+ *     <enumeration value="InternationalDateLineWest"/>
+ *     <enumeration value="IrkutskUlaanBataar"/>
+ *     <enumeration value="IslamabadKarachiTashkent"/>
+ *     <enumeration value="Jerusalem"/>
+ *     <enumeration value="Kabul"/>
+ *     <enumeration value="Kathmandu"/>
+ *     <enumeration value="Krasnoyarsk"/>
+ *     <enumeration value="KualaLumpurSingapore"/>
+ *     <enumeration value="KuwaitRiyadh"/>
+ *     <enumeration value="SolomonIslandNewCaledonia"/>
+ *     <enumeration value="MidAtlantic"/>
+ *     <enumeration value="MidwayIslandAndSamoa"/>
+ *     <enumeration value="MoscowStPetersburgVolgograd"/>
+ *     <enumeration value="MountainTimeUSCanada"/>
+ *     <enumeration value="Nairobi"/>
+ *     <enumeration value="Newfoundland"/>
+ *     <enumeration value="Nukualofa"/>
+ *     <enumeration value="OsakaSapporoTokyo"/>
+ *     <enumeration value="PacificTimeUSCanadaTijuana"/>
+ *     <enumeration value="Perth"/>
+ *     <enumeration value="Rangoon"/>
+ *     <enumeration value="Santiago"/>
+ *     <enumeration value="SarajevoSkopjeWarsawZagreb"/>
+ *     <enumeration value="Saskatchewan"/>
+ *     <enumeration value="Seoul"/>
+ *     <enumeration value="SriJayawardenepura"/>
+ *     <enumeration value="Taipei"/>
+ *     <enumeration value="Tehran"/>
+ *     <enumeration value="Vladivostok"/>
+ *     <enumeration value="WestCentralAfrica"/>
+ *     <enumeration value="Yakutsk"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "TimeZoneType", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

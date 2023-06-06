@@ -8,8 +8,8 @@ import com.microsoft.bingads.internal.ServiceUtils;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import javax.xml.ws.AsyncHandler;
-import javax.xml.ws.Response;
+import jakarta.xml.ws.AsyncHandler;
+import jakarta.xml.ws.Response;
 
 public class ReportingStatusProvider{
 

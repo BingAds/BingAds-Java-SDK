@@ -1,56 +1,55 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ProfessionalDemographicsAudienceReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ProfessionalDemographicsAudienceReportColumn">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AccountName"/>
- *     &lt;enumeration value="AccountNumber"/>
- *     &lt;enumeration value="AccountId"/>
- *     &lt;enumeration value="TimePeriod"/>
- *     &lt;enumeration value="CampaignName"/>
- *     &lt;enumeration value="CampaignId"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="CompanyName"/>
- *     &lt;enumeration value="IndustryName"/>
- *     &lt;enumeration value="JobFunctionName"/>
- *     &lt;enumeration value="AdDistribution"/>
- *     &lt;enumeration value="Impressions"/>
- *     &lt;enumeration value="Clicks"/>
- *     &lt;enumeration value="Spend"/>
- *     &lt;enumeration value="Conversions"/>
- *     &lt;enumeration value="Language"/>
- *     &lt;enumeration value="Assists"/>
- *     &lt;enumeration value="Revenue"/>
- *     &lt;enumeration value="AccountStatus"/>
- *     &lt;enumeration value="CampaignStatus"/>
- *     &lt;enumeration value="AdGroupStatus"/>
- *     &lt;enumeration value="AveragePosition"/>
- *     &lt;enumeration value="AllConversions"/>
- *     &lt;enumeration value="AllRevenue"/>
- *     &lt;enumeration value="ViewThroughConversions"/>
- *     &lt;enumeration value="Goal"/>
- *     &lt;enumeration value="GoalType"/>
- *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
- *     &lt;enumeration value="TopImpressionRatePercent"/>
- *     &lt;enumeration value="ConversionsQualified"/>
- *     &lt;enumeration value="AllConversionsQualified"/>
- *     &lt;enumeration value="ViewThroughConversionsQualified"/>
- *     &lt;enumeration value="ViewThroughRevenue"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ProfessionalDemographicsAudienceReportColumn">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AccountName"/>
+ *     <enumeration value="AccountNumber"/>
+ *     <enumeration value="AccountId"/>
+ *     <enumeration value="TimePeriod"/>
+ *     <enumeration value="CampaignName"/>
+ *     <enumeration value="CampaignId"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="CompanyName"/>
+ *     <enumeration value="IndustryName"/>
+ *     <enumeration value="JobFunctionName"/>
+ *     <enumeration value="AdDistribution"/>
+ *     <enumeration value="Impressions"/>
+ *     <enumeration value="Clicks"/>
+ *     <enumeration value="Spend"/>
+ *     <enumeration value="Conversions"/>
+ *     <enumeration value="Language"/>
+ *     <enumeration value="Assists"/>
+ *     <enumeration value="Revenue"/>
+ *     <enumeration value="AccountStatus"/>
+ *     <enumeration value="CampaignStatus"/>
+ *     <enumeration value="AdGroupStatus"/>
+ *     <enumeration value="AveragePosition"/>
+ *     <enumeration value="AllConversions"/>
+ *     <enumeration value="AllRevenue"/>
+ *     <enumeration value="ViewThroughConversions"/>
+ *     <enumeration value="Goal"/>
+ *     <enumeration value="GoalType"/>
+ *     <enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     <enumeration value="TopImpressionRatePercent"/>
+ *     <enumeration value="ConversionsQualified"/>
+ *     <enumeration value="AllConversionsQualified"/>
+ *     <enumeration value="ViewThroughConversionsQualified"/>
+ *     <enumeration value="ViewThroughRevenue"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ProfessionalDemographicsAudienceReportColumn")

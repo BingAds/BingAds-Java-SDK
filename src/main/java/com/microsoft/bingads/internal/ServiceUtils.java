@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.xml.ws.Response;
+import jakarta.xml.ws.Response;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;

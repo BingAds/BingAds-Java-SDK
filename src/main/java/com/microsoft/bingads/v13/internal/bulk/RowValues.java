@@ -15,7 +15,7 @@ public class RowValues extends com.microsoft.bingads.internal.RowValues {
     
     public RowValues(Map<String, String> rowValues) {
         super(new String[CsvHeaders.getMappings().keySet().size()], CsvHeaders.getMappings());
-
+        
         for (String key : rowValues.keySet()) {
             this.put(key, rowValues.get(key));
         }

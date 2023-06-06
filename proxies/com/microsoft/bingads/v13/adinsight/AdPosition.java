@@ -1,38 +1,37 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AdPosition.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="AdPosition">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="All"/>
- *     &lt;enumeration value="MainLine1"/>
- *     &lt;enumeration value="MainLine2"/>
- *     &lt;enumeration value="MainLine3"/>
- *     &lt;enumeration value="MainLine4"/>
- *     &lt;enumeration value="FirstPage1"/>
- *     &lt;enumeration value="FirstPage2"/>
- *     &lt;enumeration value="FirstPage3"/>
- *     &lt;enumeration value="FirstPage4"/>
- *     &lt;enumeration value="FirstPage5"/>
- *     &lt;enumeration value="FirstPage6"/>
- *     &lt;enumeration value="FirstPage7"/>
- *     &lt;enumeration value="FirstPage8"/>
- *     &lt;enumeration value="FirstPage9"/>
- *     &lt;enumeration value="FirstPage10"/>
- *     &lt;enumeration value="Aggregate"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="AdPosition">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="All"/>
+ *     <enumeration value="MainLine1"/>
+ *     <enumeration value="MainLine2"/>
+ *     <enumeration value="MainLine3"/>
+ *     <enumeration value="MainLine4"/>
+ *     <enumeration value="FirstPage1"/>
+ *     <enumeration value="FirstPage2"/>
+ *     <enumeration value="FirstPage3"/>
+ *     <enumeration value="FirstPage4"/>
+ *     <enumeration value="FirstPage5"/>
+ *     <enumeration value="FirstPage6"/>
+ *     <enumeration value="FirstPage7"/>
+ *     <enumeration value="FirstPage8"/>
+ *     <enumeration value="FirstPage9"/>
+ *     <enumeration value="FirstPage10"/>
+ *     <enumeration value="Aggregate"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "AdPosition")

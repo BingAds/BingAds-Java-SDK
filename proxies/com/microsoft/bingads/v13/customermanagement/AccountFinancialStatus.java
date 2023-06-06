@@ -1,31 +1,30 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AccountFinancialStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="AccountFinancialStatus">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Proposed"/>
- *     &lt;enumeration value="PendingCreditCheck"/>
- *     &lt;enumeration value="ClearFinancialStatus"/>
- *     &lt;enumeration value="SoldToOnly"/>
- *     &lt;enumeration value="CreditWarning"/>
- *     &lt;enumeration value="Hold"/>
- *     &lt;enumeration value="WriteOff"/>
- *     &lt;enumeration value="TaxOnHold"/>
- *     &lt;enumeration value="UserHold"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="AccountFinancialStatus">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Proposed"/>
+ *     <enumeration value="PendingCreditCheck"/>
+ *     <enumeration value="ClearFinancialStatus"/>
+ *     <enumeration value="SoldToOnly"/>
+ *     <enumeration value="CreditWarning"/>
+ *     <enumeration value="Hold"/>
+ *     <enumeration value="WriteOff"/>
+ *     <enumeration value="TaxOnHold"/>
+ *     <enumeration value="UserHold"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "AccountFinancialStatus", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

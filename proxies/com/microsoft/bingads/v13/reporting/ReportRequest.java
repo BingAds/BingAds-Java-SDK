@@ -1,12 +1,12 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,23 +14,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="ReportRequest">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="ExcludeColumnHeaders" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="ExcludeReportFooter" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="ExcludeReportHeader" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="Format" type="{https://bingads.microsoft.com/Reporting/v13}ReportFormat" minOccurs="0"/>
- *         &lt;element name="FormatVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ReportName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ReturnOnlyCompleteData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="ReportRequest">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="ExcludeColumnHeaders" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ExcludeReportFooter" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ExcludeReportHeader" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="Format" type="{https://bingads.microsoft.com/Reporting/v13}ReportFormat" minOccurs="0"/>
+ *         <element name="FormatVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ReportName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ReturnOnlyCompleteData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -45,41 +45,41 @@ import javax.xml.bind.annotation.XmlType;
     "returnOnlyCompleteData"
 })
 @XmlSeeAlso({
-    SearchCampaignChangeHistoryReportRequest.class,
-    UserLocationPerformanceReportRequest.class,
-    DSACategoryPerformanceReportRequest.class,
-    ConversionPerformanceReportRequest.class,
-    NegativeKeywordConflictReportRequest.class,
-    AgeGenderAudienceReportRequest.class,
-    GoalsAndFunnelsReportRequest.class,
-    HotelGroupPerformanceReportRequest.class,
-    ProductPartitionUnitPerformanceReportRequest.class,
-    DSAAutoTargetPerformanceReportRequest.class,
-    AdExtensionDetailReportRequest.class,
-    ProductMatchCountReportRequest.class,
     AccountPerformanceReportRequest.class,
-    AdExtensionByAdReportRequest.class,
-    ProductSearchQueryPerformanceReportRequest.class,
-    AdDynamicTextPerformanceReportRequest.class,
-    KeywordPerformanceReportRequest.class,
-    ProfessionalDemographicsAudienceReportRequest.class,
-    ProductNegativeKeywordConflictReportRequest.class,
-    DSASearchQueryPerformanceReportRequest.class,
-    AdExtensionByKeywordReportRequest.class,
-    DestinationUrlPerformanceReportRequest.class,
-    ShareOfVoiceReportRequest.class,
-    PublisherUsagePerformanceReportRequest.class,
-    CallDetailReportRequest.class,
     CampaignPerformanceReportRequest.class,
-    ProductDimensionPerformanceReportRequest.class,
-    HotelDimensionPerformanceReportRequest.class,
-    GeographicPerformanceReportRequest.class,
-    ProductPartitionPerformanceReportRequest.class,
-    SearchQueryPerformanceReportRequest.class,
+    AdDynamicTextPerformanceReportRequest.class,
+    AdGroupPerformanceReportRequest.class,
     AdPerformanceReportRequest.class,
+    KeywordPerformanceReportRequest.class,
+    DestinationUrlPerformanceReportRequest.class,
     BudgetSummaryReportRequest.class,
+    AgeGenderAudienceReportRequest.class,
+    ProfessionalDemographicsAudienceReportRequest.class,
+    UserLocationPerformanceReportRequest.class,
+    PublisherUsagePerformanceReportRequest.class,
+    SearchQueryPerformanceReportRequest.class,
+    ConversionPerformanceReportRequest.class,
+    GoalsAndFunnelsReportRequest.class,
+    NegativeKeywordConflictReportRequest.class,
+    SearchCampaignChangeHistoryReportRequest.class,
+    AdExtensionByAdReportRequest.class,
+    AdExtensionByKeywordReportRequest.class,
     AudiencePerformanceReportRequest.class,
-    AdGroupPerformanceReportRequest.class
+    AdExtensionDetailReportRequest.class,
+    ShareOfVoiceReportRequest.class,
+    ProductDimensionPerformanceReportRequest.class,
+    ProductPartitionPerformanceReportRequest.class,
+    ProductPartitionUnitPerformanceReportRequest.class,
+    ProductSearchQueryPerformanceReportRequest.class,
+    ProductMatchCountReportRequest.class,
+    ProductNegativeKeywordConflictReportRequest.class,
+    CallDetailReportRequest.class,
+    GeographicPerformanceReportRequest.class,
+    DSASearchQueryPerformanceReportRequest.class,
+    DSAAutoTargetPerformanceReportRequest.class,
+    DSACategoryPerformanceReportRequest.class,
+    HotelDimensionPerformanceReportRequest.class,
+    HotelGroupPerformanceReportRequest.class
 })
 public class ReportRequest {
 

@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="BudgetOpportunity">
- *   &lt;complexContent>
- *     &lt;extension base="{https://bingads.microsoft.com/AdInsight/v13}Opportunity">
- *       &lt;sequence>
- *         &lt;element name="BudgetPoints" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfBudgetPoint" minOccurs="0"/>
- *         &lt;element name="BudgetType" type="{https://bingads.microsoft.com/AdInsight/v13}BudgetLimitType" minOccurs="0"/>
- *         &lt;element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="CurrentBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="IncreaseInClicks" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="IncreaseInImpressions" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="PercentageIncreaseInClicks" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="PercentageIncreaseInImpressions" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="RecommendedBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="BudgetOpportunity">
+ *   <complexContent>
+ *     <extension base="{https://bingads.microsoft.com/AdInsight/v13}Opportunity">
+ *       <sequence>
+ *         <element name="BudgetPoints" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfBudgetPoint" minOccurs="0"/>
+ *         <element name="BudgetType" type="{https://bingads.microsoft.com/AdInsight/v13}BudgetLimitType" minOccurs="0"/>
+ *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CurrentBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="IncreaseInClicks" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="IncreaseInImpressions" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="PercentageIncreaseInClicks" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="PercentageIncreaseInImpressions" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="RecommendedBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *       </sequence>
+ *     </extension>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

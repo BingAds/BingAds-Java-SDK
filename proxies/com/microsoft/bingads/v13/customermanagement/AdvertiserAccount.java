@@ -3,12 +3,12 @@ package com.microsoft.bingads.v13.customermanagement;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -16,44 +16,44 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="AdvertiserAccount">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="BillToCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="CurrencyCode" type="{https://bingads.microsoft.com/Customer/v13/Entities}CurrencyCode" minOccurs="0"/>
- *         &lt;element name="AccountFinancialStatus" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountFinancialStatus" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="Language" type="{https://bingads.microsoft.com/Customer/v13/Entities}LanguageType" minOccurs="0"/>
- *         &lt;element name="LastModifiedByUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="LastModifiedTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ParentCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="PaymentMethodId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="PaymentMethodType" type="{https://bingads.microsoft.com/Customer/v13/Entities}PaymentMethodType" minOccurs="0"/>
- *         &lt;element name="PrimaryUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="AccountLifeCycleStatus" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountLifeCycleStatus" minOccurs="0"/>
- *         &lt;element name="TimeStamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
- *         &lt;element name="TimeZone" type="{https://bingads.microsoft.com/Customer/v13/Entities}TimeZoneType" minOccurs="0"/>
- *         &lt;element name="PauseReason" type="{http://www.w3.org/2001/XMLSchema}unsignedByte" minOccurs="0"/>
- *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="LinkedAgencies" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfCustomerInfo" minOccurs="0"/>
- *         &lt;element name="SalesHouseCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="TaxInformation" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="BackUpPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="BillingThresholdAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *         &lt;element name="BusinessAddress" type="{https://bingads.microsoft.com/Customer/v13/Entities}Address" minOccurs="0"/>
- *         &lt;element name="AutoTagType" type="{https://bingads.microsoft.com/Customer/v13/Entities}AutoTagType" minOccurs="0"/>
- *         &lt;element name="SoldToPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="TaxCertificate" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountTaxCertificate" minOccurs="0"/>
- *         &lt;element name="AccountMode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="AdvertiserAccount">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="BillToCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CurrencyCode" type="{https://bingads.microsoft.com/Customer/v13/Entities}CurrencyCode" minOccurs="0"/>
+ *         <element name="AccountFinancialStatus" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountFinancialStatus" minOccurs="0"/>
+ *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Language" type="{https://bingads.microsoft.com/Customer/v13/Entities}LanguageType" minOccurs="0"/>
+ *         <element name="LastModifiedByUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="LastModifiedTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ParentCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="PaymentMethodId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="PaymentMethodType" type="{https://bingads.microsoft.com/Customer/v13/Entities}PaymentMethodType" minOccurs="0"/>
+ *         <element name="PrimaryUserId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="AccountLifeCycleStatus" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountLifeCycleStatus" minOccurs="0"/>
+ *         <element name="TimeStamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
+ *         <element name="TimeZone" type="{https://bingads.microsoft.com/Customer/v13/Entities}TimeZoneType" minOccurs="0"/>
+ *         <element name="PauseReason" type="{http://www.w3.org/2001/XMLSchema}unsignedByte" minOccurs="0"/>
+ *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         <element name="LinkedAgencies" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfCustomerInfo" minOccurs="0"/>
+ *         <element name="SalesHouseCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="TaxInformation" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         <element name="BackUpPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="BillingThresholdAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="BusinessAddress" type="{https://bingads.microsoft.com/Customer/v13/Entities}Address" minOccurs="0"/>
+ *         <element name="AutoTagType" type="{https://bingads.microsoft.com/Customer/v13/Entities}AutoTagType" minOccurs="0"/>
+ *         <element name="SoldToPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="TaxCertificate" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountTaxCertificate" minOccurs="0"/>
+ *         <element name="AccountMode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
