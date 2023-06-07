@@ -1,12 +1,12 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,29 +14,29 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="Ad">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="AdFormatPreference" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="DevicePreference" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdEditorialStatus" minOccurs="0"/>
- *         &lt;element name="FinalAppUrls" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAppUrl" minOccurs="0"/>
- *         &lt;element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
- *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
- *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdStatus" minOccurs="0"/>
- *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdType" minOccurs="0"/>
- *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="Ad">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="AdFormatPreference" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="DevicePreference" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdEditorialStatus" minOccurs="0"/>
+ *         <element name="FinalAppUrls" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAppUrl" minOccurs="0"/>
+ *         <element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         <element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdStatus" minOccurs="0"/>
+ *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Type" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdType" minOccurs="0"/>
+ *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -57,13 +57,13 @@ import javax.xml.bind.annotation.XmlType;
     "urlCustomParameters"
 })
 @XmlSeeAlso({
-    HotelAd.class,
-    DynamicSearchAd.class,
-    ProductAd.class,
-    ResponsiveAd.class,
     TextAd.class,
+    ProductAd.class,
+    HotelAd.class,
     AppInstallAd.class,
     ExpandedTextAd.class,
+    DynamicSearchAd.class,
+    ResponsiveAd.class,
     ResponsiveSearchAd.class
 })
 public class Ad {

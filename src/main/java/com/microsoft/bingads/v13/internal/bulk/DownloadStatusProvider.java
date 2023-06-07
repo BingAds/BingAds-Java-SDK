@@ -3,9 +3,6 @@ package com.microsoft.bingads.v13.internal.bulk;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import javax.xml.ws.AsyncHandler;
-import javax.xml.ws.Response;
-
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
@@ -16,6 +13,9 @@ import com.microsoft.bingads.v13.bulk.DownloadStatus;
 import com.microsoft.bingads.v13.bulk.GetBulkDownloadStatusRequest;
 import com.microsoft.bingads.v13.bulk.GetBulkDownloadStatusResponse;
 import com.microsoft.bingads.v13.bulk.IBulkService;
+
+import jakarta.xml.ws.AsyncHandler;
+import jakarta.xml.ws.Response;
 
 public class DownloadStatusProvider implements BulkOperationStatusProvider<DownloadStatus> {
 

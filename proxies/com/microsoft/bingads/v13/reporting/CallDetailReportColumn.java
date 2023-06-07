@@ -1,37 +1,36 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for CallDetailReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="CallDetailReportColumn">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AccountName"/>
- *     &lt;enumeration value="CampaignName"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="StartTime"/>
- *     &lt;enumeration value="EndTime"/>
- *     &lt;enumeration value="Duration"/>
- *     &lt;enumeration value="AreaCode"/>
- *     &lt;enumeration value="City"/>
- *     &lt;enumeration value="State"/>
- *     &lt;enumeration value="AccountId"/>
- *     &lt;enumeration value="CampaignId"/>
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="AccountStatus"/>
- *     &lt;enumeration value="CampaignStatus"/>
- *     &lt;enumeration value="AdGroupStatus"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="CallDetailReportColumn">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AccountName"/>
+ *     <enumeration value="CampaignName"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="StartTime"/>
+ *     <enumeration value="EndTime"/>
+ *     <enumeration value="Duration"/>
+ *     <enumeration value="AreaCode"/>
+ *     <enumeration value="City"/>
+ *     <enumeration value="State"/>
+ *     <enumeration value="AccountId"/>
+ *     <enumeration value="CampaignId"/>
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="AccountStatus"/>
+ *     <enumeration value="CampaignStatus"/>
+ *     <enumeration value="AdGroupStatus"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "CallDetailReportColumn")

@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,42 +13,43 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="AdGroup">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="AdRotation" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRotation" minOccurs="0"/>
- *         &lt;element name="AudienceAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
- *         &lt;element name="CommissionRate" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
- *         &lt;element name="CpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
- *         &lt;element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
- *         &lt;element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
- *         &lt;element name="FrequencyCapSettings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfFrequencyCapSettings" minOccurs="0"/>
- *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v13}Network" minOccurs="0"/>
- *         &lt;element name="PercentCpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
- *         &lt;element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupPrivacyStatus" minOccurs="0"/>
- *         &lt;element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSetting" minOccurs="0"/>
- *         &lt;element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
- *         &lt;element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupStatus" minOccurs="0"/>
- *         &lt;element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
- *         &lt;element name="UseOptimizedTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="CpvBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
- *         &lt;element name="CpmBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="AdGroup">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="AdRotation" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRotation" minOccurs="0"/>
+ *         <element name="AudienceAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
+ *         <element name="CommissionRate" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
+ *         <element name="CpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *         <element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
+ *         <element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
+ *         <element name="FrequencyCapSettings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfFrequencyCapSettings" minOccurs="0"/>
+ *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Network" type="{https://bingads.microsoft.com/CampaignManagement/v13}Network" minOccurs="0"/>
+ *         <element name="PercentCpcBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}RateBid" minOccurs="0"/>
+ *         <element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupPrivacyStatus" minOccurs="0"/>
+ *         <element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSetting" minOccurs="0"/>
+ *         <element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
+ *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdGroupStatus" minOccurs="0"/>
+ *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *         <element name="UseOptimizedTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="CpvBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *         <element name="CpmBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *         <element name="McpaBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */
@@ -79,7 +80,8 @@ import javax.xml.bind.annotation.XmlType;
     "adScheduleUseSearcherTimeZone",
     "adGroupType",
     "cpvBid",
-    "cpmBid"
+    "cpmBid",
+    "mcpaBid"
 })
 public class AdGroup {
 
@@ -138,6 +140,8 @@ public class AdGroup {
     protected Bid cpvBid;
     @XmlElement(name = "CpmBid", nillable = true)
     protected Bid cpmBid;
+    @XmlElement(name = "McpaBid", nillable = true)
+    protected Bid mcpaBid;
 
     /**
      * Gets the value of the adRotation property.
@@ -761,6 +765,30 @@ public class AdGroup {
      */
     public void setCpmBid(Bid value) {
         this.cpmBid = value;
+    }
+
+    /**
+     * Gets the value of the mcpaBid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Bid }
+     *     
+     */
+    public Bid getMcpaBid() {
+        return mcpaBid;
+    }
+
+    /**
+     * Sets the value of the mcpaBid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Bid }
+     *     
+     */
+    public void setMcpaBid(Bid value) {
+        this.mcpaBid = value;
     }
 
 }

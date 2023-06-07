@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,17 +13,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="NetworkCriterion">
- *   &lt;complexContent>
- *     &lt;extension base="{https://bingads.microsoft.com/AdInsight/v13}Criterion">
- *       &lt;sequence>
- *         &lt;element name="Network" type="{https://bingads.microsoft.com/AdInsight/v13}NetworkType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="NetworkCriterion">
+ *   <complexContent>
+ *     <extension base="{https://bingads.microsoft.com/AdInsight/v13}Criterion">
+ *       <sequence>
+ *         <element name="Network" type="{https://bingads.microsoft.com/AdInsight/v13}NetworkType" minOccurs="0"/>
+ *       </sequence>
+ *     </extension>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

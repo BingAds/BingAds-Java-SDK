@@ -1,10 +1,10 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -12,26 +12,26 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="KeywordDemographic">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Device" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="EighteenToTwentyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="TwentyFiveToThirtyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="ThirtyFiveToFourtyNine" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="FiftyToSixtyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="SixtyFiveAndAbove" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="AgeUnknown" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="Female" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="Male" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="GenderUnknown" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="KeywordDemographic">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="Device" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="EighteenToTwentyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="TwentyFiveToThirtyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="ThirtyFiveToFourtyNine" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="FiftyToSixtyFour" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="SixtyFiveAndAbove" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="AgeUnknown" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="Female" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="Male" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="GenderUnknown" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

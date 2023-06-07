@@ -1,41 +1,40 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ProductNegativeKeywordConflictReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ProductNegativeKeywordConflictReportColumn">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AccountName"/>
- *     &lt;enumeration value="AccountNumber"/>
- *     &lt;enumeration value="AccountId"/>
- *     &lt;enumeration value="AccountStatus"/>
- *     &lt;enumeration value="CampaignName"/>
- *     &lt;enumeration value="CampaignId"/>
- *     &lt;enumeration value="CampaignStatus"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="AdGroupStatus"/>
- *     &lt;enumeration value="MerchantProductId"/>
- *     &lt;enumeration value="Title"/>
- *     &lt;enumeration value="AdGroupCriterionId"/>
- *     &lt;enumeration value="ProductGroup"/>
- *     &lt;enumeration value="NegativeKeywordId"/>
- *     &lt;enumeration value="NegativeKeyword"/>
- *     &lt;enumeration value="NegativeKeywordListId"/>
- *     &lt;enumeration value="ConflictLevel"/>
- *     &lt;enumeration value="NegativeKeywordMatchType"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ProductNegativeKeywordConflictReportColumn">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AccountName"/>
+ *     <enumeration value="AccountNumber"/>
+ *     <enumeration value="AccountId"/>
+ *     <enumeration value="AccountStatus"/>
+ *     <enumeration value="CampaignName"/>
+ *     <enumeration value="CampaignId"/>
+ *     <enumeration value="CampaignStatus"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="AdGroupStatus"/>
+ *     <enumeration value="MerchantProductId"/>
+ *     <enumeration value="Title"/>
+ *     <enumeration value="AdGroupCriterionId"/>
+ *     <enumeration value="ProductGroup"/>
+ *     <enumeration value="NegativeKeywordId"/>
+ *     <enumeration value="NegativeKeyword"/>
+ *     <enumeration value="NegativeKeywordListId"/>
+ *     <enumeration value="ConflictLevel"/>
+ *     <enumeration value="NegativeKeywordMatchType"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ProductNegativeKeywordConflictReportColumn")

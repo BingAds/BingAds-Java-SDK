@@ -1,83 +1,82 @@
 
 package com.microsoft.bingads.v13.reporting;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ShareOfVoiceReportColumn.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ShareOfVoiceReportColumn">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AccountName"/>
- *     &lt;enumeration value="TimePeriod"/>
- *     &lt;enumeration value="CampaignName"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="Keyword"/>
- *     &lt;enumeration value="DeliveredMatchType"/>
- *     &lt;enumeration value="BidMatchType"/>
- *     &lt;enumeration value="Language"/>
- *     &lt;enumeration value="AccountNumber"/>
- *     &lt;enumeration value="AccountId"/>
- *     &lt;enumeration value="KeywordId"/>
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="CampaignId"/>
- *     &lt;enumeration value="Impressions"/>
- *     &lt;enumeration value="Clicks"/>
- *     &lt;enumeration value="Ctr"/>
- *     &lt;enumeration value="AverageCpc"/>
- *     &lt;enumeration value="Spend"/>
- *     &lt;enumeration value="AveragePosition"/>
- *     &lt;enumeration value="ImpressionSharePercent"/>
- *     &lt;enumeration value="ImpressionLostToBudgetPercent"/>
- *     &lt;enumeration value="ImpressionLostToRankAggPercent"/>
- *     &lt;enumeration value="CurrentMaxCpc"/>
- *     &lt;enumeration value="QualityScore"/>
- *     &lt;enumeration value="ExpectedCtr"/>
- *     &lt;enumeration value="AdRelevance"/>
- *     &lt;enumeration value="LandingPageExperience"/>
- *     &lt;enumeration value="Conversions"/>
- *     &lt;enumeration value="ConversionRate"/>
- *     &lt;enumeration value="CostPerConversion"/>
- *     &lt;enumeration value="AdDistribution"/>
- *     &lt;enumeration value="ClickSharePercent"/>
- *     &lt;enumeration value="DeviceType"/>
- *     &lt;enumeration value="Network"/>
- *     &lt;enumeration value="AccountStatus"/>
- *     &lt;enumeration value="CampaignStatus"/>
- *     &lt;enumeration value="AdGroupStatus"/>
- *     &lt;enumeration value="KeywordStatus"/>
- *     &lt;enumeration value="BidStrategyType"/>
- *     &lt;enumeration value="KeywordLabels"/>
- *     &lt;enumeration value="ExactMatchImpressionSharePercent"/>
- *     &lt;enumeration value="TopImpressionShareLostToRankPercent"/>
- *     &lt;enumeration value="TopImpressionShareLostToBudgetPercent"/>
- *     &lt;enumeration value="AbsoluteTopImpressionShareLostToRankPercent"/>
- *     &lt;enumeration value="AbsoluteTopImpressionShareLostToBudgetPercent"/>
- *     &lt;enumeration value="AbsoluteTopImpressionSharePercent"/>
- *     &lt;enumeration value="TopImpressionSharePercent"/>
- *     &lt;enumeration value="AbsoluteTopImpressionRatePercent"/>
- *     &lt;enumeration value="TopImpressionRatePercent"/>
- *     &lt;enumeration value="BaseCampaignId"/>
- *     &lt;enumeration value="AllConversions"/>
- *     &lt;enumeration value="AllConversionRate"/>
- *     &lt;enumeration value="AllCostPerConversion"/>
- *     &lt;enumeration value="ViewThroughConversions"/>
- *     &lt;enumeration value="Goal"/>
- *     &lt;enumeration value="GoalType"/>
- *     &lt;enumeration value="AverageCpm"/>
- *     &lt;enumeration value="ConversionsQualified"/>
- *     &lt;enumeration value="AllConversionsQualified"/>
- *     &lt;enumeration value="ViewThroughConversionsQualified"/>
- *     &lt;enumeration value="ViewThroughRevenue"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ShareOfVoiceReportColumn">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AccountName"/>
+ *     <enumeration value="TimePeriod"/>
+ *     <enumeration value="CampaignName"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="Keyword"/>
+ *     <enumeration value="DeliveredMatchType"/>
+ *     <enumeration value="BidMatchType"/>
+ *     <enumeration value="Language"/>
+ *     <enumeration value="AccountNumber"/>
+ *     <enumeration value="AccountId"/>
+ *     <enumeration value="KeywordId"/>
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="CampaignId"/>
+ *     <enumeration value="Impressions"/>
+ *     <enumeration value="Clicks"/>
+ *     <enumeration value="Ctr"/>
+ *     <enumeration value="AverageCpc"/>
+ *     <enumeration value="Spend"/>
+ *     <enumeration value="AveragePosition"/>
+ *     <enumeration value="ImpressionSharePercent"/>
+ *     <enumeration value="ImpressionLostToBudgetPercent"/>
+ *     <enumeration value="ImpressionLostToRankAggPercent"/>
+ *     <enumeration value="CurrentMaxCpc"/>
+ *     <enumeration value="QualityScore"/>
+ *     <enumeration value="ExpectedCtr"/>
+ *     <enumeration value="AdRelevance"/>
+ *     <enumeration value="LandingPageExperience"/>
+ *     <enumeration value="Conversions"/>
+ *     <enumeration value="ConversionRate"/>
+ *     <enumeration value="CostPerConversion"/>
+ *     <enumeration value="AdDistribution"/>
+ *     <enumeration value="ClickSharePercent"/>
+ *     <enumeration value="DeviceType"/>
+ *     <enumeration value="Network"/>
+ *     <enumeration value="AccountStatus"/>
+ *     <enumeration value="CampaignStatus"/>
+ *     <enumeration value="AdGroupStatus"/>
+ *     <enumeration value="KeywordStatus"/>
+ *     <enumeration value="BidStrategyType"/>
+ *     <enumeration value="KeywordLabels"/>
+ *     <enumeration value="ExactMatchImpressionSharePercent"/>
+ *     <enumeration value="TopImpressionShareLostToRankPercent"/>
+ *     <enumeration value="TopImpressionShareLostToBudgetPercent"/>
+ *     <enumeration value="AbsoluteTopImpressionShareLostToRankPercent"/>
+ *     <enumeration value="AbsoluteTopImpressionShareLostToBudgetPercent"/>
+ *     <enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     <enumeration value="TopImpressionSharePercent"/>
+ *     <enumeration value="AbsoluteTopImpressionRatePercent"/>
+ *     <enumeration value="TopImpressionRatePercent"/>
+ *     <enumeration value="BaseCampaignId"/>
+ *     <enumeration value="AllConversions"/>
+ *     <enumeration value="AllConversionRate"/>
+ *     <enumeration value="AllCostPerConversion"/>
+ *     <enumeration value="ViewThroughConversions"/>
+ *     <enumeration value="Goal"/>
+ *     <enumeration value="GoalType"/>
+ *     <enumeration value="AverageCpm"/>
+ *     <enumeration value="ConversionsQualified"/>
+ *     <enumeration value="AllConversionsQualified"/>
+ *     <enumeration value="ViewThroughConversionsQualified"/>
+ *     <enumeration value="ViewThroughRevenue"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ShareOfVoiceReportColumn")

@@ -1,5 +1,7 @@
 package com.microsoft.bingads.internal;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -17,19 +19,20 @@ import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.jws.WebService;
 import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Service;
-import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.spi.Provider;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
 
+import jakarta.jws.WebService;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.handler.MessageContext;
+import jakarta.xml.ws.spi.Provider;
+
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.15.1";
+    private static final String VERSION = "13.0.16";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -193,10 +196,8 @@ public class ServiceFactoryImpl implements ServiceFactory {
     private String getServiceUrlFromConfig(Class serviceInterface) {
         InputStream input = null;
         try {
-            input = this.getClass().getClassLoader().getResourceAsStream(ServiceUtils.getPropertyFile());
-            if (input == null) {
-                return null;
-            }
+            File file = new File(ServiceUtils.getPropertyFile());
+            input = new FileInputStream(file);
             Properties props = new Properties();
             props.load(input);
             return props.getProperty(serviceInterface.getCanonicalName() + ".url");

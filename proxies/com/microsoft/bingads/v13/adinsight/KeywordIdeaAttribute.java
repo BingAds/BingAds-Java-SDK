@@ -1,31 +1,30 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for KeywordIdeaAttribute.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="KeywordIdeaAttribute">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AdGroupId"/>
- *     &lt;enumeration value="AdGroupName"/>
- *     &lt;enumeration value="Keyword"/>
- *     &lt;enumeration value="Source"/>
- *     &lt;enumeration value="MonthlySearchCounts"/>
- *     &lt;enumeration value="SuggestedBid"/>
- *     &lt;enumeration value="Competition"/>
- *     &lt;enumeration value="Relevance"/>
- *     &lt;enumeration value="AdImpressionShare"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="KeywordIdeaAttribute">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="AdGroupName"/>
+ *     <enumeration value="Keyword"/>
+ *     <enumeration value="Source"/>
+ *     <enumeration value="MonthlySearchCounts"/>
+ *     <enumeration value="SuggestedBid"/>
+ *     <enumeration value="Competition"/>
+ *     <enumeration value="Relevance"/>
+ *     <enumeration value="AdImpressionShare"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "KeywordIdeaAttribute")

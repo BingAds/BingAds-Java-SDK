@@ -2,11 +2,11 @@
 package com.microsoft.bingads.v13.reporting;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -14,13 +14,13 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;simpleType name="nonPositiveInteger">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}integer">
- *     &lt;maxInclusive value="0"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="nonPositiveInteger">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}integer">
+ *     <maxInclusive value="0"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  * 
  */

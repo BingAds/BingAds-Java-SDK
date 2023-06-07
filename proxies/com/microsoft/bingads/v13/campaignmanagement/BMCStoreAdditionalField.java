@@ -5,7 +5,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum BMCStoreAdditionalField {
 
-    GLOBAL_STORE("GlobalStore");
+    GLOBAL_STORE("GlobalStore"),
+    STORE_URL("StoreUrl");
         
     private final String value;
 

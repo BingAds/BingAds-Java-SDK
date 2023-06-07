@@ -1,28 +1,27 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for AccountLifeCycleStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="AccountLifeCycleStatus">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Draft"/>
- *     &lt;enumeration value="Active"/>
- *     &lt;enumeration value="Inactive"/>
- *     &lt;enumeration value="Pause"/>
- *     &lt;enumeration value="Pending"/>
- *     &lt;enumeration value="Suspended"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="AccountLifeCycleStatus">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Draft"/>
+ *     <enumeration value="Active"/>
+ *     <enumeration value="Inactive"/>
+ *     <enumeration value="Pause"/>
+ *     <enumeration value="Pending"/>
+ *     <enumeration value="Suspended"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "AccountLifeCycleStatus", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

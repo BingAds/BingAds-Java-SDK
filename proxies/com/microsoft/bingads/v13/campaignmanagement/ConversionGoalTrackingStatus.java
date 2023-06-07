@@ -1,27 +1,26 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for ConversionGoalTrackingStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="ConversionGoalTrackingStatus">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="TagUnverified"/>
- *     &lt;enumeration value="NoRecentConversions"/>
- *     &lt;enumeration value="RecordingConversions"/>
- *     &lt;enumeration value="TagInactive"/>
- *     &lt;enumeration value="InactiveDueToTagUnavailable"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="ConversionGoalTrackingStatus">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="TagUnverified"/>
+ *     <enumeration value="NoRecentConversions"/>
+ *     <enumeration value="RecordingConversions"/>
+ *     <enumeration value="TagInactive"/>
+ *     <enumeration value="InactiveDueToTagUnavailable"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "ConversionGoalTrackingStatus")

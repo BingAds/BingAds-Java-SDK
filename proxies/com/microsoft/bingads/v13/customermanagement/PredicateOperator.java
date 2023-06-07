@@ -1,30 +1,29 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PredicateOperator.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="PredicateOperator">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Equals"/>
- *     &lt;enumeration value="NotEquals"/>
- *     &lt;enumeration value="Contains"/>
- *     &lt;enumeration value="In"/>
- *     &lt;enumeration value="GreaterThanEquals"/>
- *     &lt;enumeration value="LessThanEquals"/>
- *     &lt;enumeration value="StartsWith"/>
- *     &lt;enumeration value="NotContains"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="PredicateOperator">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Equals"/>
+ *     <enumeration value="NotEquals"/>
+ *     <enumeration value="Contains"/>
+ *     <enumeration value="In"/>
+ *     <enumeration value="GreaterThanEquals"/>
+ *     <enumeration value="LessThanEquals"/>
+ *     <enumeration value="StartsWith"/>
+ *     <enumeration value="NotContains"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "PredicateOperator", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

@@ -2,7 +2,7 @@ package com.microsoft.bingads.v13.api.test.operations;
 
 import static org.easymock.EasyMock.createMock;
 
-import javax.xml.ws.Service;
+import jakarta.xml.ws.Service;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.internal.ServiceFactory;

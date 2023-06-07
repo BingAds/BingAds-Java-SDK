@@ -2,19 +2,19 @@
 package com.microsoft.bingads.v13.campaignmanagement;
 
 import java.util.Collection;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter14
-    extends XmlAdapter<String, Collection<ProductAudienceType>>
+    extends XmlAdapter<String, Collection<BMCStoreAdditionalField>>
 {
 
 
-    public Collection<ProductAudienceType> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.ProductAudienceTypeConverter.convertToList(value));
+    public Collection<BMCStoreAdditionalField> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.BMCStoreAdditionalFieldConverter.convertToList(value));
     }
 
-    public String marshal(Collection<ProductAudienceType> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.ProductAudienceTypeConverter.convertToString(value));
+    public String marshal(Collection<BMCStoreAdditionalField> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.BMCStoreAdditionalFieldConverter.convertToString(value));
     }
 
 }

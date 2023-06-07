@@ -1,11 +1,11 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
@@ -13,27 +13,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
- * <pre>
- * &lt;complexType name="EstimatedBidAndTraffic">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="MinClicksPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="MaxClicksPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="AverageCPC" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="MinImpressionsPerWeek" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="MaxImpressionsPerWeek" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="CTR" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="MinTotalCostPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="MaxTotalCostPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *         &lt;element name="CurrencyCode" type="{https://bingads.microsoft.com/AdInsight/v13}CurrencyCode" minOccurs="0"/>
- *         &lt;element name="MatchType" type="{https://bingads.microsoft.com/AdInsight/v13}MatchType" minOccurs="0"/>
- *         &lt;element name="EstimatedMinBid" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * <pre>{@code
+ * <complexType name="EstimatedBidAndTraffic">
+ *   <complexContent>
+ *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       <sequence>
+ *         <element name="MinClicksPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="MaxClicksPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="AverageCPC" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="MinImpressionsPerWeek" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="MaxImpressionsPerWeek" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CTR" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="MinTotalCostPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="MaxTotalCostPerWeek" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="CurrencyCode" type="{https://bingads.microsoft.com/AdInsight/v13}CurrencyCode" minOccurs="0"/>
+ *         <element name="MatchType" type="{https://bingads.microsoft.com/AdInsight/v13}MatchType" minOccurs="0"/>
+ *         <element name="EstimatedMinBid" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *       </sequence>
+ *     </restriction>
+ *   </complexContent>
+ * </complexType>
+ * }</pre>
  * 
  * 
  */

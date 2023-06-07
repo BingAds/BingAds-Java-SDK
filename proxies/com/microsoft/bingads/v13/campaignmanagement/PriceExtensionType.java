@@ -1,32 +1,31 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PriceExtensionType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="PriceExtensionType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Unknown"/>
- *     &lt;enumeration value="Brands"/>
- *     &lt;enumeration value="Events"/>
- *     &lt;enumeration value="Locations"/>
- *     &lt;enumeration value="Neighborhoods"/>
- *     &lt;enumeration value="ProductCategories"/>
- *     &lt;enumeration value="ProductTiers"/>
- *     &lt;enumeration value="Services"/>
- *     &lt;enumeration value="ServiceCategories"/>
- *     &lt;enumeration value="ServiceTiers"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="PriceExtensionType">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Unknown"/>
+ *     <enumeration value="Brands"/>
+ *     <enumeration value="Events"/>
+ *     <enumeration value="Locations"/>
+ *     <enumeration value="Neighborhoods"/>
+ *     <enumeration value="ProductCategories"/>
+ *     <enumeration value="ProductTiers"/>
+ *     <enumeration value="Services"/>
+ *     <enumeration value="ServiceCategories"/>
+ *     <enumeration value="ServiceTiers"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "PriceExtensionType")

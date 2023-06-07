@@ -1,28 +1,27 @@
 
 package com.microsoft.bingads.v13.customermanagement;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for CustomerFinancialStatus.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="CustomerFinancialStatus">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="ProposalsOnly"/>
- *     &lt;enumeration value="PendingCreditCheck"/>
- *     &lt;enumeration value="ClearFinancialStatus"/>
- *     &lt;enumeration value="SoldToOnly"/>
- *     &lt;enumeration value="CreditHold"/>
- *     &lt;enumeration value="CreditWarning"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="CustomerFinancialStatus">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="ProposalsOnly"/>
+ *     <enumeration value="PendingCreditCheck"/>
+ *     <enumeration value="ClearFinancialStatus"/>
+ *     <enumeration value="SoldToOnly"/>
+ *     <enumeration value="CreditHold"/>
+ *     <enumeration value="CreditWarning"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "CustomerFinancialStatus", namespace = "https://bingads.microsoft.com/Customer/v13/Entities")

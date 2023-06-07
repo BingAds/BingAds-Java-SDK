@@ -1,0 +1,33 @@
+package com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesAssetGroupTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesCampaignTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesIsExcludedTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesParentIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesParentListingGroupIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesProductCondition1Test;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesProductValue1Test;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesStatusTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesSubTypeTest;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+	BulkAssetGroupListingGroupWriteToRowValuesAssetGroupTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesCampaignTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesIdTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesIsExcludedTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesParentIdTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesParentListingGroupIdTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesProductCondition1Test.class,
+	BulkAssetGroupListingGroupWriteToRowValuesProductValue1Test.class,
+	BulkAssetGroupListingGroupWriteToRowValuesStatusTest.class,
+	BulkAssetGroupListingGroupWriteToRowValuesSubTypeTest.class,
+})
+public class BulkAssetGroupListingGroupWriteTests {
+
+}

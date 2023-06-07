@@ -1,26 +1,25 @@
 
 package com.microsoft.bingads.v13.adinsight;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for PerformanceInsightsUrlCategory.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
- * <pre>
- * &lt;simpleType name="PerformanceInsightsUrlCategory">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Recommendation"/>
- *     &lt;enumeration value="Setting"/>
- *     &lt;enumeration value="Report"/>
- *     &lt;enumeration value="HelpDoc"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * <pre>{@code
+ * <simpleType name="PerformanceInsightsUrlCategory">
+ *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     <enumeration value="Recommendation"/>
+ *     <enumeration value="Setting"/>
+ *     <enumeration value="Report"/>
+ *     <enumeration value="HelpDoc"/>
+ *   </restriction>
+ * </simpleType>
+ * }</pre>
  * 
  */
 @XmlType(name = "PerformanceInsightsUrlCategory")
