@@ -32,7 +32,7 @@ import jakarta.xml.ws.spi.Provider;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.16";
+    private static final String VERSION = "13.0.16.1";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -197,13 +197,15 @@ public class ServiceFactoryImpl implements ServiceFactory {
         InputStream input = null;
         try {
             File file = new File(ServiceUtils.getPropertyFile());
+            if (!file.exists()) {
+                return null;
+            }
             input = new FileInputStream(file);
             Properties props = new Properties();
             props.load(input);
             return props.getProperty(serviceInterface.getCanonicalName() + ".url");
         } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.log(Level.SEVERE, "Failed to read propertyFile: " + ServiceUtils.getPropertyFile(), ex);
+            // Ignore. In this case we will load service Url from endpoints.
             return null;
         } finally {
             try {
