@@ -14,7 +14,12 @@
         <dependency>
             <groupId>com.microsoft.bingads</groupId>
             <artifactId>microsoft.bingads</artifactId>
-            <version>13.0.16</version>
+            <version>13.0.16.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.metro</groupId>
+            <artifactId>wssx-impl</artifactId>
+            <version>4.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
