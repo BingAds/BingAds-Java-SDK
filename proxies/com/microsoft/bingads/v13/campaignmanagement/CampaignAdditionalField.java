@@ -19,7 +19,9 @@ public enum CampaignAdditionalField {
     CAMPAIGN_CONVERSION_GOAL("CampaignConversionGoal"),
     TARGET_CPA_IN_MAX_CONVERSION("TargetCpaInMaxConversion"),
     RESPONSIVE_SEARCH_ADS_SETTING("ResponsiveSearchAdsSetting"),
-    COST_PER_SALE_BIDDING_SCHEME("CostPerSaleBiddingScheme");
+    COST_PER_SALE_BIDDING_SCHEME("CostPerSaleBiddingScheme"),
+    SHOPPING_SETTING_SHOPPABLE_ADS_ENABLED("ShoppingSettingShoppableAdsEnabled"),
+    SHOPPING_SETTING_FEED_LABEL("ShoppingSettingFeedLabel");
         
     private final String value;
 

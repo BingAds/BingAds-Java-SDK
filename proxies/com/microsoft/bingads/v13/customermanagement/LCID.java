@@ -47,6 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="EnglishThailand"/>
  *     <enumeration value="EnglishIndonesia"/>
  *     <enumeration value="EnglishVietnam"/>
+ *     <enumeration value="ChineseChina"/>
  *     <enumeration value="GermanSwitzerland"/>
  *     <enumeration value="EnglishUK"/>
  *     <enumeration value="SpanishMexico"/>
@@ -143,6 +144,8 @@ public enum LCID {
     ENGLISH_INDONESIA("EnglishIndonesia"),
     @XmlEnumValue("EnglishVietnam")
     ENGLISH_VIETNAM("EnglishVietnam"),
+    @XmlEnumValue("ChineseChina")
+    CHINESE_CHINA("ChineseChina"),
     @XmlEnumValue("GermanSwitzerland")
     GERMAN_SWITZERLAND("GermanSwitzerland"),
     @XmlEnumValue("EnglishUK")

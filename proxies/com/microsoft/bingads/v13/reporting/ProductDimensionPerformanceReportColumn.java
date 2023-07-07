@@ -103,6 +103,12 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MPN"/>
  *     <enumeration value="ViewThroughRevenue"/>
  *     <enumeration value="GoalId"/>
+ *     <enumeration value="Sales"/>
+ *     <enumeration value="CostPerSale"/>
+ *     <enumeration value="RevenuePerSale"/>
+ *     <enumeration value="Installs"/>
+ *     <enumeration value="CostPerInstall"/>
+ *     <enumeration value="RevenuePerInstall"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -289,7 +295,19 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("ViewThroughRevenue")
     VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("Sales")
+    SALES("Sales"),
+    @XmlEnumValue("CostPerSale")
+    COST_PER_SALE("CostPerSale"),
+    @XmlEnumValue("RevenuePerSale")
+    REVENUE_PER_SALE("RevenuePerSale"),
+    @XmlEnumValue("Installs")
+    INSTALLS("Installs"),
+    @XmlEnumValue("CostPerInstall")
+    COST_PER_INSTALL("CostPerInstall"),
+    @XmlEnumValue("RevenuePerInstall")
+    REVENUE_PER_INSTALL("RevenuePerInstall");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

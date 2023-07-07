@@ -267,6 +267,7 @@ public class ObjectFactory {
     private static final QName _ProfileCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileCriterion");
     private static final QName _ProfileType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileType");
     private static final QName _StoreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "StoreCriterion");
+    private static final QName _DealCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DealCriterion");
     private static final QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionStatus");
     private static final QName _BiddableAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableAdGroupCriterion");
     private static final QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionEditorialStatus");
@@ -330,6 +331,10 @@ public class ObjectFactory {
     private static final QName _AssetGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroup");
     private static final QName _AssetGroupEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroupEditorialStatus");
     private static final QName _AssetGroupStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroupStatus");
+    private static final QName _ArrayOfAssetGroupEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAssetGroupEditorialReasonCollection");
+    private static final QName _AssetGroupEditorialReasonCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroupEditorialReasonCollection");
+    private static final QName _ArrayOfAssetGroupEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAssetGroupEditorialReason");
+    private static final QName _AssetGroupEditorialReason_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroupEditorialReason");
     private static final QName _ArrayOfAudienceGroupAssetGroupAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAudienceGroupAssetGroupAssociation");
     private static final QName _AudienceGroupAssetGroupAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceGroupAssetGroupAssociation");
     private static final QName _ArrayOfAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAudience");
@@ -364,6 +369,10 @@ public class ObjectFactory {
     private static final QName _CombinationRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CombinationRule");
     private static final QName _LogicalOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LogicalOperator");
     private static final QName _CustomerList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerList");
+    private static final QName _CustomerListActionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListActionType");
+    private static final QName _ArrayOfCustomerListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCustomerListItem");
+    private static final QName _CustomerListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItem");
+    private static final QName _CustomerListItemSubType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItemSubType");
     private static final QName _AudienceAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceAdditionalField");
     private static final QName _ArrayOfUetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfUetTag");
     private static final QName _UetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTag");
@@ -3346,6 +3355,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DealCriterion }
+     * 
+     * @return
+     *     the new instance of {@link DealCriterion }
+     */
+    public DealCriterion createDealCriterion() {
+        return new DealCriterion();
+    }
+
+    /**
      * Create an instance of {@link BiddableAdGroupCriterion }
      * 
      * @return
@@ -4796,6 +4815,66 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAssetGroupsEditorialReasonsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetAssetGroupsEditorialReasonsRequest }
+     */
+    public GetAssetGroupsEditorialReasonsRequest createGetAssetGroupsEditorialReasonsRequest() {
+        return new GetAssetGroupsEditorialReasonsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAssetGroupsEditorialReasonsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetAssetGroupsEditorialReasonsResponse }
+     */
+    public GetAssetGroupsEditorialReasonsResponse createGetAssetGroupsEditorialReasonsResponse() {
+        return new GetAssetGroupsEditorialReasonsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAssetGroupEditorialReasonCollection }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAssetGroupEditorialReasonCollection }
+     */
+    public ArrayOfAssetGroupEditorialReasonCollection createArrayOfAssetGroupEditorialReasonCollection() {
+        return new ArrayOfAssetGroupEditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link AssetGroupEditorialReasonCollection }
+     * 
+     * @return
+     *     the new instance of {@link AssetGroupEditorialReasonCollection }
+     */
+    public AssetGroupEditorialReasonCollection createAssetGroupEditorialReasonCollection() {
+        return new AssetGroupEditorialReasonCollection();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAssetGroupEditorialReason }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAssetGroupEditorialReason }
+     */
+    public ArrayOfAssetGroupEditorialReason createArrayOfAssetGroupEditorialReason() {
+        return new ArrayOfAssetGroupEditorialReason();
+    }
+
+    /**
+     * Create an instance of {@link AssetGroupEditorialReason }
+     * 
+     * @return
+     *     the new instance of {@link AssetGroupEditorialReason }
+     */
+    public AssetGroupEditorialReason createAssetGroupEditorialReason() {
+        return new AssetGroupEditorialReason();
+    }
+
+    /**
      * Create an instance of {@link SetAudienceGroupAssetGroupAssociationsRequest }
      * 
      * @return
@@ -5176,6 +5255,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfCustomerListItem }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCustomerListItem }
+     */
+    public ArrayOfCustomerListItem createArrayOfCustomerListItem() {
+        return new ArrayOfCustomerListItem();
+    }
+
+    /**
+     * Create an instance of {@link CustomerListItem }
+     * 
+     * @return
+     *     the new instance of {@link CustomerListItem }
+     */
+    public CustomerListItem createCustomerListItem() {
+        return new CustomerListItem();
+    }
+
+    /**
      * Create an instance of {@link AddAudiencesResponse }
      * 
      * @return
@@ -5243,6 +5342,26 @@ public class ObjectFactory {
      */
     public GetAudiencesByIdsResponse createGetAudiencesByIdsResponse() {
         return new GetAudiencesByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ApplyCustomerListItemsRequest }
+     * 
+     * @return
+     *     the new instance of {@link ApplyCustomerListItemsRequest }
+     */
+    public ApplyCustomerListItemsRequest createApplyCustomerListItemsRequest() {
+        return new ApplyCustomerListItemsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ApplyCustomerListItemsResponse }
+     * 
+     * @return
+     *     the new instance of {@link ApplyCustomerListItemsResponse }
+     */
+    public ApplyCustomerListItemsResponse createApplyCustomerListItemsResponse() {
+        return new ApplyCustomerListItemsResponse();
     }
 
     /**
@@ -9685,6 +9804,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DealCriterion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DealCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DealCriterion")
+    public JAXBElement<DealCriterion> createDealCriterion(DealCriterion value) {
+        return new JAXBElement<>(_DealCriterion_QNAME, DealCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterionStatus }{@code >}
      * 
      * @param value
@@ -10506,6 +10638,58 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAssetGroupEditorialReasonCollection }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAssetGroupEditorialReasonCollection }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAssetGroupEditorialReasonCollection")
+    public JAXBElement<ArrayOfAssetGroupEditorialReasonCollection> createArrayOfAssetGroupEditorialReasonCollection(ArrayOfAssetGroupEditorialReasonCollection value) {
+        return new JAXBElement<>(_ArrayOfAssetGroupEditorialReasonCollection_QNAME, ArrayOfAssetGroupEditorialReasonCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AssetGroupEditorialReasonCollection }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AssetGroupEditorialReasonCollection }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AssetGroupEditorialReasonCollection")
+    public JAXBElement<AssetGroupEditorialReasonCollection> createAssetGroupEditorialReasonCollection(AssetGroupEditorialReasonCollection value) {
+        return new JAXBElement<>(_AssetGroupEditorialReasonCollection_QNAME, AssetGroupEditorialReasonCollection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAssetGroupEditorialReason }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAssetGroupEditorialReason }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAssetGroupEditorialReason")
+    public JAXBElement<ArrayOfAssetGroupEditorialReason> createArrayOfAssetGroupEditorialReason(ArrayOfAssetGroupEditorialReason value) {
+        return new JAXBElement<>(_ArrayOfAssetGroupEditorialReason_QNAME, ArrayOfAssetGroupEditorialReason.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AssetGroupEditorialReason }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AssetGroupEditorialReason }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AssetGroupEditorialReason")
+    public JAXBElement<AssetGroupEditorialReason> createAssetGroupEditorialReason(AssetGroupEditorialReason value) {
+        return new JAXBElement<>(_AssetGroupEditorialReason_QNAME, AssetGroupEditorialReason.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAudienceGroupAssetGroupAssociation }{@code >}
      * 
      * @param value
@@ -10946,6 +11130,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerList")
     public JAXBElement<CustomerList> createCustomerList(CustomerList value) {
         return new JAXBElement<>(_CustomerList_QNAME, CustomerList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListActionType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CustomerListActionType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListActionType")
+    public JAXBElement<CustomerListActionType> createCustomerListActionType(CustomerListActionType value) {
+        return new JAXBElement<>(_CustomerListActionType_QNAME, CustomerListActionType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCustomerListItem }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCustomerListItem }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCustomerListItem")
+    public JAXBElement<ArrayOfCustomerListItem> createArrayOfCustomerListItem(ArrayOfCustomerListItem value) {
+        return new JAXBElement<>(_ArrayOfCustomerListItem_QNAME, ArrayOfCustomerListItem.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListItem }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CustomerListItem }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListItem")
+    public JAXBElement<CustomerListItem> createCustomerListItem(CustomerListItem value) {
+        return new JAXBElement<>(_CustomerListItem_QNAME, CustomerListItem.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListItemSubType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CustomerListItemSubType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListItemSubType")
+    public JAXBElement<CustomerListItemSubType> createCustomerListItemSubType(CustomerListItemSubType value) {
+        return new JAXBElement<>(_CustomerListItemSubType_QNAME, CustomerListItemSubType.class, null, value);
     }
 
     /**

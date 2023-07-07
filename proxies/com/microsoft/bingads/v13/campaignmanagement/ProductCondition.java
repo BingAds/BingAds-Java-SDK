@@ -19,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="Attribute" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Operand" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Operator" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -30,7 +31,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductCondition", propOrder = {
     "attribute",
-    "operand"
+    "operand",
+    "operator"
 })
 public class ProductCondition {
 
@@ -38,6 +40,8 @@ public class ProductCondition {
     protected String attribute;
     @XmlElement(name = "Operand", nillable = true)
     protected String operand;
+    @XmlElement(name = "Operator", nillable = true)
+    protected String operator;
 
     /**
      * Gets the value of the attribute property.
@@ -85,6 +89,30 @@ public class ProductCondition {
      */
     public void setOperand(String value) {
         this.operand = value;
+    }
+
+    /**
+     * Gets the value of the operator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOperator() {
+        return operator;
+    }
+
+    /**
+     * Sets the value of the operator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOperator(String value) {
+        this.operator = value;
     }
 
 }
