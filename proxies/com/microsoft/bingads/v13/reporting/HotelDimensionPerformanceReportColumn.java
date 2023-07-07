@@ -75,6 +75,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CheckInDateDayOfWeek"/>
  *     <enumeration value="LengthOfStay"/>
  *     <enumeration value="AdvancedBookingWindow"/>
+ *     <enumeration value="SiteType"/>
+ *     <enumeration value="UserCountry"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -207,7 +209,11 @@ public enum HotelDimensionPerformanceReportColumn {
     @XmlEnumValue("LengthOfStay")
     LENGTH_OF_STAY("LengthOfStay"),
     @XmlEnumValue("AdvancedBookingWindow")
-    ADVANCED_BOOKING_WINDOW("AdvancedBookingWindow");
+    ADVANCED_BOOKING_WINDOW("AdvancedBookingWindow"),
+    @XmlEnumValue("SiteType")
+    SITE_TYPE("SiteType"),
+    @XmlEnumValue("UserCountry")
+    USER_COUNTRY("UserCountry");
     private final String value;
 
     HotelDimensionPerformanceReportColumn(String v) {

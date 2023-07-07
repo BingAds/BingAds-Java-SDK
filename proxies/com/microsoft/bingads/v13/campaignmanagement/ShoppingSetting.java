@@ -17,9 +17,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
  *       <sequence>
+ *         <element name="FeedLabel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="LocalInventoryAdsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="Priority" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="SalesCountryCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ShoppableAdsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="StoreId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -31,23 +33,53 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ShoppingSetting", propOrder = {
+    "feedLabel",
     "localInventoryAdsEnabled",
     "priority",
     "salesCountryCode",
+    "shoppableAdsEnabled",
     "storeId"
 })
 public class ShoppingSetting
     extends Setting
 {
 
+    @XmlElement(name = "FeedLabel", nillable = true)
+    protected String feedLabel;
     @XmlElement(name = "LocalInventoryAdsEnabled", nillable = true)
     protected Boolean localInventoryAdsEnabled;
     @XmlElement(name = "Priority", nillable = true)
     protected Integer priority;
     @XmlElement(name = "SalesCountryCode", nillable = true)
     protected String salesCountryCode;
+    @XmlElement(name = "ShoppableAdsEnabled", nillable = true)
+    protected Boolean shoppableAdsEnabled;
     @XmlElement(name = "StoreId", nillable = true)
     protected Long storeId;
+
+    /**
+     * Gets the value of the feedLabel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFeedLabel() {
+        return feedLabel;
+    }
+
+    /**
+     * Sets the value of the feedLabel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFeedLabel(String value) {
+        this.feedLabel = value;
+    }
 
     /**
      * Gets the value of the localInventoryAdsEnabled property.
@@ -119,6 +151,30 @@ public class ShoppingSetting
      */
     public void setSalesCountryCode(String value) {
         this.salesCountryCode = value;
+    }
+
+    /**
+     * Gets the value of the shoppableAdsEnabled property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getShoppableAdsEnabled() {
+        return shoppableAdsEnabled;
+    }
+
+    /**
+     * Sets the value of the shoppableAdsEnabled property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setShoppableAdsEnabled(Boolean value) {
+        this.shoppableAdsEnabled = value;
     }
 
     /**
