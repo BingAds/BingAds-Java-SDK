@@ -1,13 +1,13 @@
 package com.microsoft.bingads.examples.v13;
 
-import java.rmi.*;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.v13.campaignmanagement.*;
+
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.microsoft.bingads.*;
-import com.microsoft.bingads.v13.campaignmanagement.*;
 
 // How to apply hotel group for Microsoft Hotel Campaigns.
 
