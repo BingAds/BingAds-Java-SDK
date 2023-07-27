@@ -27,13 +27,12 @@ public class HotelAds extends ExampleBase {
                     API_ENVIRONMENT,
                     ICampaignManagementService.class);
 
-            long customerId = authorizationData.getCustomerId();
-            long accountId = authorizationData.getAccountId();
-            System.out.println(customerId + " -> " + accountId);
+            // Create the hotel campaign
 
             ArrayOfNullableOflong campaignIds = createHotelCampaign();
 
-            // Create the ad group that will have the hotel groups.
+            // Create the hotel ad group that will have the hotel groups.
+
             ArrayOfNullableOflong adGroupIds = createHotelAdGroup(campaignIds);
 
             // Create and update the hotel groups.
@@ -63,7 +62,8 @@ public class HotelAds extends ExampleBase {
         }
     }
 
-    // create a hotel campaign
+    // create hotel campaign
+
     static ArrayOfNullableOflong createHotelCampaign() throws Exception {
         Campaign campaign = new Campaign();
 
@@ -105,6 +105,7 @@ public class HotelAds extends ExampleBase {
     }
 
     // create hotel ad group
+
     static ArrayOfNullableOflong createHotelAdGroup(ArrayOfNullableOflong campaignIds) throws Exception {
         AdGroup adGroup = new AdGroup();
 
@@ -339,7 +340,7 @@ public class HotelAds extends ExampleBase {
         return applyHotelGroupActionsResponse;
     }
 
-    // Deletes and updates branch and leaf criterion.
+    // Delete and update branch and leaf criterion.
 
     static void updateBranchAndLeafCriterion(long adGroupId, long rootId, long starRating4CriterionId) throws RemoteException, Exception
     {
@@ -434,7 +435,7 @@ public class HotelAds extends ExampleBase {
         return rootNode;
     }
 
-    // Gets a Rate bid object with the specified bid amount.
+    // Get a Rate bid object with the specified bid amount.
 
     static RateBid getRateBid(final double bidAmount)
     {
@@ -446,7 +447,7 @@ public class HotelAds extends ExampleBase {
         return rateBid;
     }
 
-    // Adds a criterion action to the list of actions.
+    // Add a criterion action to the list of actions.
 
     static void addAdGroupCriterionAction(final AdGroupCriterion CRITERION, final ItemAction ITEM_ACTION)
     {
@@ -457,7 +458,7 @@ public class HotelAds extends ExampleBase {
         _hotelGroupActions.getAdGroupCriterionActions().add(hotelGroupAction);
     }
 
-    // Adds either a negative or biddable hotel group criterion.
+    // Add either a negative or biddable hotel group criterion.
 
     static AdGroupCriterion addHotelGroup(
             long adGroupId,
