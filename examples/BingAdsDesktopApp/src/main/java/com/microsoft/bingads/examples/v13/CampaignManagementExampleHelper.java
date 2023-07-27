@@ -257,6 +257,15 @@ class CampaignManagementExampleHelper
 
         return CampaignManagementService.getService().applyProductPartitionActions(request);
     }
+    static ApplyHotelGroupActionsResponse applyHotelGroupActions(
+            ArrayOfAdGroupCriterionAction criterionActions) throws RemoteException, Exception
+    {
+        ApplyHotelGroupActionsRequest request = new ApplyHotelGroupActionsRequest();
+
+        request.setCriterionActions(criterionActions);
+
+        return CampaignManagementService.getService().applyHotelGroupActions(request);
+    }
     static DeleteAdExtensionsResponse deleteAdExtensions(
         java.lang.Long accountId,
         ArrayOflong adExtensionIds) throws RemoteException, Exception
