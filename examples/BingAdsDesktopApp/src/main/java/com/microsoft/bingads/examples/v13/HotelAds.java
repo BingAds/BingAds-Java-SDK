@@ -3,7 +3,6 @@ package com.microsoft.bingads.examples.v13;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.v13.campaignmanagement.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -18,6 +17,8 @@ public class HotelAds extends ExampleBase {
 
     public static void main(java.lang.String[] args) {
 
+        // To set up hotel ads, we need to create at least a Campaign, an AdGroup under this campaign, and some Hotel Groups
+
         try
         {
             authorizationData = getAuthorizationData();
@@ -27,22 +28,23 @@ public class HotelAds extends ExampleBase {
                     API_ENVIRONMENT,
                     ICampaignManagementService.class);
 
-            // Create the hotel campaign
+            // Create the hotel campaign. This is needed.
 
             ArrayOfNullableOflong campaignIds = createHotelCampaign();
 
-            // Create the hotel ad group that will have the hotel groups.
+            // Create the hotel ad group that will have the hotel groups. This is needed.
 
             ArrayOfNullableOflong adGroupIds = createHotelAdGroup(campaignIds);
 
+            // Hotel groups are also needed.
             // Create and update the hotel groups.
 
-            addAndUpdateAdGroupCriterion(adGroupIds.getLongs().get(0));
-            ApplyHotelGroupActionsResponse applyHotelGroupActionsResponse = addBranchAndLeafCriterion(adGroupIds.getLongs().get(0));
+            addAndUpdateSingleHotelCriterion(adGroupIds.getLongs().get(0));
+            ApplyHotelGroupActionsResponse applyHotelGroupActionsResponse = addBranchAndLeafHotelCriterionsToRoot(adGroupIds.getLongs().get(0));
 
             long rootId = applyHotelGroupActionsResponse.getAdGroupCriterionIds().getLongs().get(1);
-            long electronicsCriterionId = applyHotelGroupActionsResponse.getAdGroupCriterionIds().getLongs().get(3);
-            updateBranchAndLeafCriterion(adGroupIds.getLongs().get(0), rootId, electronicsCriterionId);
+            long starRating4HotelGroupId = applyHotelGroupActionsResponse.getAdGroupCriterionIds().getLongs().get(3);
+            updateBranchAndLeafHotelCriterionsForStarRating4(adGroupIds.getLongs().get(0), rootId, starRating4HotelGroupId);
 
             // Delete the campaign and everything it contains e.g., ad groups and ads.
 
@@ -158,10 +160,9 @@ public class HotelAds extends ExampleBase {
         return adGroupIds;
     }
 
+    // Create a hotel group tree with one single node (root node), then update bid of the node.
 
-    // Add a criterion to the ad group and then update it.
-
-    static void addAndUpdateAdGroupCriterion(long adGroupId) throws RemoteException, Exception
+    static void addAndUpdateSingleHotelCriterion(long adGroupId) throws Exception
     {
         // Add a biddable criterion as the root.
 
@@ -169,7 +170,7 @@ public class HotelAds extends ExampleBase {
         rootHotelListing.setAttribute(null);
         rootHotelListing.setOperand("All");
 
-        AdGroupCriterion root = addHotelGroup(
+        AdGroupCriterion root = addHotelCriterion(
                 adGroupId,
                 null,
                 rootHotelListing,
@@ -197,7 +198,7 @@ public class HotelAds extends ExampleBase {
         outputStatusMessage("Printing the ad group's hotel group; contains only the tree root node");
         printHotelGroups(adGroupCriterions);
 
-        // Update the bid of the root node that we just added.
+        // Update the bid from 0.35 to 0.40, of the root node that we just added.
 
         BiddableAdGroupCriterion updatedRoot = new BiddableAdGroupCriterion();
         updatedRoot.setId(applyHotelGroupActionsResponse.getAdGroupCriterionIds().getLongs().get(0));
@@ -226,7 +227,7 @@ public class HotelAds extends ExampleBase {
 
     // Add branch and leaf nodes to the hotel group tree and then update it.
 
-    static ApplyHotelGroupActionsResponse addBranchAndLeafCriterion(long adGroupId) throws RemoteException, Exception
+    static ApplyHotelGroupActionsResponse addBranchAndLeafHotelCriterionsToRoot(long adGroupId) throws Exception
     {
         _hotelGroupActions.getAdGroupCriterionActions().clear();
 
@@ -239,16 +240,19 @@ public class HotelAds extends ExampleBase {
                 criterionType,
                 null).getAdGroupCriterions();
 
-        AdGroupCriterion existingRoot = getRootHotelGroupNode(adGroupCriterions);
+        // If we want to update the tree structure at a node, we must delete existing node and then add a new equivalent node,
+        // Here we modify the root node and add some new branches and leafs, so we delete it first.
+        AdGroupCriterion existingRoot = getRootHotelCriterion(adGroupCriterions);
         if (existingRoot != null)
         {
             addAdGroupCriterionAction(existingRoot, ItemAction.DELETE);
         }
 
+        // Add the equivalent new root node
         HotelListing newRootHotelListing = new HotelListing();
         newRootHotelListing.setAttribute(null);
         newRootHotelListing.setOperand("All");
-        AdGroupCriterion newRoot = addHotelGroup(
+        AdGroupCriterion newRoot = addHotelCriterion(
                 adGroupId,
                 null,
                 newRootHotelListing,
@@ -259,7 +263,7 @@ public class HotelAds extends ExampleBase {
         HotelListing starRating5HotelListing = new HotelListing();
         starRating5HotelListing.setAttribute("5");
         starRating5HotelListing.setOperand("StarRating");
-        AdGroupCriterion starRating5SubDivision = addHotelGroup(
+        AdGroupCriterion starRating5SubDivision = addHotelCriterion(
                 adGroupId,
                 newRoot,
                 starRating5HotelListing,
@@ -270,7 +274,7 @@ public class HotelAds extends ExampleBase {
         HotelListing starRating4HotelListing = new HotelListing();
         starRating4HotelListing.setAttribute("4");
         starRating4HotelListing.setOperand("StarRating");
-        AdGroupCriterion starRating4Unit = addHotelGroup(
+        AdGroupCriterion starRating4Unit = addHotelCriterion(
                 adGroupId,
                 newRoot,
                 starRating4HotelListing,
@@ -278,10 +282,12 @@ public class HotelAds extends ExampleBase {
                 getRateBid(0.35),
                 false);
 
+        // "Everything Else" node for StarRating condition. We should define everything else node for each condition/operand
+        // For StarRating, besides 5 stars and 4 stars, all the other hotels below 4 stars are belong to the node below
         HotelListing otherStarRatingsHotelListing = new HotelListing();
         otherStarRatingsHotelListing.setAttribute(null);
         otherStarRatingsHotelListing.setOperand("StarRating");
-        AdGroupCriterion otherStarRatingsUnit = addHotelGroup(
+        AdGroupCriterion otherStarRatingsUnit = addHotelCriterion(
                 adGroupId,
                 newRoot,
                 otherStarRatingsHotelListing,
@@ -292,7 +298,7 @@ public class HotelAds extends ExampleBase {
         HotelListing brandAHotelListing = new HotelListing();
         brandAHotelListing.setAttribute("Brand A");
         brandAHotelListing.setOperand("Brand");
-        AdGroupCriterion brandAUnit = addHotelGroup(
+        AdGroupCriterion brandAUnit = addHotelCriterion(
                 adGroupId,
                 starRating5SubDivision,
                 brandAHotelListing,
@@ -303,7 +309,7 @@ public class HotelAds extends ExampleBase {
         HotelListing brandBHotelListing = new HotelListing();
         brandBHotelListing.setAttribute("Brand B");
         brandBHotelListing.setOperand("Brand");
-        AdGroupCriterion brandBUnit = addHotelGroup(
+        AdGroupCriterion brandBUnit = addHotelCriterion(
                 adGroupId,
                 starRating5SubDivision,
                 brandBHotelListing,
@@ -311,10 +317,11 @@ public class HotelAds extends ExampleBase {
                 null,
                 true);
 
+        // everything else node for Brand condition
         HotelListing otherBrandsHotelListing = new HotelListing();
         otherBrandsHotelListing.setAttribute(null);
         otherBrandsHotelListing.setOperand("Brand");
-        AdGroupCriterion otherBrandsUnit = addHotelGroup(
+        AdGroupCriterion otherBrandsUnit = addHotelCriterion(
                 adGroupId,
                 starRating5SubDivision,
                 otherBrandsHotelListing,
@@ -340,14 +347,14 @@ public class HotelAds extends ExampleBase {
         return applyHotelGroupActionsResponse;
     }
 
-    // Delete and update branch and leaf criterion.
+    // update starRating 4 node to have more leaf hotel groups
 
-    static void updateBranchAndLeafCriterion(long adGroupId, long rootId, long starRating4CriterionId) throws RemoteException, Exception
+    static void updateBranchAndLeafHotelCriterionsForStarRating4(long adGroupId, long rootId, long existingStarRating4CriterionId) throws Exception
     {
         _hotelGroupActions.getAdGroupCriterionActions().clear();
 
         AdGroupCriterion starRating4Criterion = new BiddableAdGroupCriterion();
-        starRating4Criterion.setId(starRating4CriterionId);
+        starRating4Criterion.setId(existingStarRating4CriterionId);
         starRating4Criterion.setAdGroupId(adGroupId);
         addAdGroupCriterionAction(starRating4Criterion, ItemAction.DELETE);
 
@@ -358,20 +365,22 @@ public class HotelAds extends ExampleBase {
         newStarRating4HotelListing.setAttribute("4");
         newStarRating4HotelListing.setOperand("StarRating");
 
-        AdGroupCriterion starRating4Subdivision = addHotelGroup(
+        AdGroupCriterion newStarRating4Subdivision = addHotelCriterion(
                 adGroupId,
                 parent,
                 newStarRating4HotelListing,
-                HotelListingType.SUBDIVISION,
+                HotelListingType.SUBDIVISION, // it's not leave node anymore, the type should set to SUBDIVISION
                 null,
                 false);
+
+        // Add leafs of "Brand C", "Brand D" and other brands, to the star rating 4 branch.
 
         HotelListing brandCHotelListing = new HotelListing();
         brandCHotelListing.setAttribute("Brand C");
         brandCHotelListing.setOperand("Brand");
-        AdGroupCriterion brandCUnit = addHotelGroup(
+        AdGroupCriterion brandCUnit = addHotelCriterion(
                 adGroupId,
-                starRating4Subdivision,
+                newStarRating4Subdivision,
                 brandCHotelListing,
                 HotelListingType.UNIT,
                 getRateBid(0.35),
@@ -380,9 +389,9 @@ public class HotelAds extends ExampleBase {
         HotelListing brandDHotelListing = new HotelListing();
         brandDHotelListing.setAttribute("Brand D");
         brandDHotelListing.setOperand("Brand");
-        AdGroupCriterion brandDUnit = addHotelGroup(
+        AdGroupCriterion brandDUnit = addHotelCriterion(
                 adGroupId,
-                starRating4Subdivision,
+                newStarRating4Subdivision,
                 brandDHotelListing,
                 HotelListingType.UNIT,
                 getRateBid(0.35),
@@ -391,9 +400,9 @@ public class HotelAds extends ExampleBase {
         HotelListing otherBrandsHotelListing = new HotelListing();
         otherBrandsHotelListing.setAttribute(null);
         otherBrandsHotelListing.setOperand("Brand");
-        AdGroupCriterion otherBrandsUnit = addHotelGroup(
+        AdGroupCriterion otherBrandsUnit = addHotelCriterion(
                 adGroupId,
-                starRating4Subdivision,
+                newStarRating4Subdivision,
                 otherBrandsHotelListing,
                 HotelListingType.UNIT,
                 getRateBid(0.35),
@@ -417,9 +426,9 @@ public class HotelAds extends ExampleBase {
         printHotelGroups(adGroupCriterions);
     }
 
-    // Get the root criterion node.
+    // Get the root hotel group node.
 
-    static AdGroupCriterion getRootHotelGroupNode(ArrayOfAdGroupCriterion adGroupCriterions)
+    static AdGroupCriterion getRootHotelCriterion(ArrayOfAdGroupCriterion adGroupCriterions)
     {
         AdGroupCriterion rootNode = null;
 
@@ -459,8 +468,9 @@ public class HotelAds extends ExampleBase {
     }
 
     // Add either a negative or biddable hotel group criterion.
+    // To call Microsoft Ads API, we need to wrap hotel group to AdGroupCriterion
 
-    static AdGroupCriterion addHotelGroup(
+    static AdGroupCriterion addHotelCriterion(
             long adGroupId,
             AdGroupCriterion parent,
             HotelListing hotelListing,
