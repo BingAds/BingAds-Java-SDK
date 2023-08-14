@@ -21,6 +21,7 @@ import jakarta.xml.bind.JAXBElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v13.bulk.entities.BulkFeed.FeedCustomAttribute;
@@ -126,6 +127,12 @@ public class StringExtensions {
 	private static final Pattern numberOperatorPattern = Pattern.compile("^(Equals|GreaterThan|LessThan|GreaterThanEqualTo|LessThanEqualTo) ([^()]*)$");
     private static final Pattern logicalOperatorPattern = Pattern.compile("^(And|Or|Not)\\((.*?)\\)$", Pattern.CASE_INSENSITIVE);
 
+    private static final ObjectMapper mapper;
+    static {
+        mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+    }
+
     public static String toKeywordBidBulkString(Bid bid, Long id) {
         if (bid == null) {
             return null;
@@ -224,7 +231,6 @@ public class StringExtensions {
         }
         
         try {
-        	ObjectMapper mapper = new ObjectMapper();
         	KeyValuePairOfstringstring[][] twoDimKvArr = mapper.readValue(value, KeyValuePairOfstringstring[][].class);
         	ArrayOfArrayOfKeyValuePairOfstringstring result = new ArrayOfArrayOfKeyValuePairOfstringstring();
 
@@ -585,7 +591,6 @@ public class StringExtensions {
         }
         
         try {
-        	ObjectMapper mapper = new ObjectMapper();
         	ArrayOfFrequencyCapSettings result = new ArrayOfFrequencyCapSettings();
         	FrequencyCapSettings[] settings = mapper.readValue(value, FrequencyCapSettings[].class);
         	for (FrequencyCapSettings setting : settings) {
@@ -2093,7 +2098,7 @@ public class StringExtensions {
             imageAssetLinkContracts.add(contract);
         }
         try {
-            return new ObjectMapper().writeValueAsString(imageAssetLinkContracts);
+            return mapper.writeValueAsString(imageAssetLinkContracts);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
@@ -2108,7 +2113,6 @@ public class StringExtensions {
         }
         
         try {
-            ObjectMapper mapper = new ObjectMapper();
             ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
             
             List<ImageAssetLinkContract> imageAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, ImageAssetLinkContract.class));
@@ -2170,7 +2174,7 @@ public class StringExtensions {
             textAssetLinkContracts.add(textAssetLinkContract);
         }
         try {
-            return new ObjectMapper().writeValueAsString(textAssetLinkContracts);
+            return mapper.writeValueAsString(textAssetLinkContracts);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
@@ -2184,7 +2188,6 @@ public class StringExtensions {
         }
         
         try {
-            ObjectMapper mapper = new ObjectMapper();
             ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
             
             List<TextAssetLinkContract> textAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, TextAssetLinkContract.class));
@@ -2243,7 +2246,7 @@ public class StringExtensions {
             videoAssetLinkContracts.add(contract);
         }
         try {
-            return new ObjectMapper().writeValueAsString(videoAssetLinkContracts);
+            return mapper.writeValueAsString(videoAssetLinkContracts);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
@@ -2258,7 +2261,6 @@ public class StringExtensions {
         }
         
         try {
-            ObjectMapper mapper = new ObjectMapper();
             ArrayOfAssetLink assetLinks = new ArrayOfAssetLink();
             
             List<VideoAssetLinkContract> videoAssetLinkContracts = mapper.readValue(value, mapper.getTypeFactory().constructCollectionType(List.class, VideoAssetLinkContract.class));
@@ -2302,7 +2304,7 @@ public class StringExtensions {
         }
         
         try {
-            return new ObjectMapper().writeValueAsString(customAttributes);
+            return mapper.writeValueAsString(customAttributes);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
@@ -2310,7 +2312,6 @@ public class StringExtensions {
     }
 
     public static List<FeedCustomAttribute> parseFeedCustomAttributes(String strCustomAttributes) {
-        ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.readValue(strCustomAttributes,
                     mapper.getTypeFactory().constructCollectionType(
