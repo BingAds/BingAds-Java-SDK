@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NegativeSite
     extends SharedListItem
 {
+    public NegativeSite() {
+      this.type = "NegativeSite";
+    }
 
     @XmlElement(name = "Id", nillable = true)
     protected Long id;

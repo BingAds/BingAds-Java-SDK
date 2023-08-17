@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NumberRuleItem
     extends RuleItem
 {
+    public NumberRuleItem() {
+      this.type = "Number";
+    }
 
     @XmlElement(name = "Operand", nillable = true)
     protected String operand;

@@ -65,6 +65,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AllConversionsQualified"/>
  *     <enumeration value="ViewThroughConversionsQualified"/>
  *     <enumeration value="ViewThroughRevenue"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
+ *     <enumeration value="AssetGroupStatus"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -177,7 +181,15 @@ public enum PublisherUsagePerformanceReportColumn {
     @XmlEnumValue("ViewThroughConversionsQualified")
     VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified"),
     @XmlEnumValue("ViewThroughRevenue")
-    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName"),
+    @XmlEnumValue("AssetGroupStatus")
+    ASSET_GROUP_STATUS("AssetGroupStatus");
     private final String value;
 
     PublisherUsagePerformanceReportColumn(String v) {

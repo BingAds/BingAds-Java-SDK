@@ -37,6 +37,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class AudienceCriterion
     extends Criterion
 {
+    public AudienceCriterion() {
+      this.type = "AudienceCriterion";
+    }
 
     @XmlElement(name = "AudienceId", nillable = true)
     protected Long audienceId;

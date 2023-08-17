@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Webpage
     extends Criterion
 {
+    public Webpage() {
+      this.type = "Webpage";
+    }
 
     @XmlElement(name = "Parameter", nillable = true)
     protected WebpageParameter parameter;

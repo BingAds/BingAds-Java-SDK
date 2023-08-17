@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelLengthOfStayCriterion
     extends Criterion
 {
+    public HotelLengthOfStayCriterion() {
+      this.type = "HotelLengthOfStayCriterion";
+    }
 
     @XmlElement(name = "MaxNights", nillable = true)
     protected Integer maxNights;

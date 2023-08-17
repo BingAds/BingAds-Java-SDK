@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AudienceDimension
     extends AudienceGroupDimension
 {
+    public AudienceDimension() {
+      this.type = AudienceGroupDimensionType.fromValue("Audience");
+    }
 
     @XmlElement(name = "Audiences", nillable = true)
     protected ArrayOfAudienceInfo audiences;

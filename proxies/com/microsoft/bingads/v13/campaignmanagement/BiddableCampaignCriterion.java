@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class BiddableCampaignCriterion
     extends CampaignCriterion
 {
+    public BiddableCampaignCriterion() {
+      this.type = "BiddableCampaignCriterion";
+    }
 
     @XmlElement(name = "CriterionBid", nillable = true)
     protected CriterionBid criterionBid;

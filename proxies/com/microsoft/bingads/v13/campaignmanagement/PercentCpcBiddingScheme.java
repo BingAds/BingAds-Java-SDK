@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PercentCpcBiddingScheme
     extends BiddingScheme
 {
+    public PercentCpcBiddingScheme() {
+      this.type = "PercentCpcBiddingScheme";
+    }
 
     @XmlElement(name = "MaxPercentCpc", nillable = true)
     protected Double maxPercentCpc;

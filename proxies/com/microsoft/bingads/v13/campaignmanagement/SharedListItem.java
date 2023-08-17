@@ -89,7 +89,7 @@ public class SharedListItem {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

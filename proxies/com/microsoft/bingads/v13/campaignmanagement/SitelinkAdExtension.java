@@ -51,6 +51,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SitelinkAdExtension
     extends AdExtension
 {
+    public SitelinkAdExtension() {
+      this.type = "SitelinkAdExtension";
+    }
 
     @XmlElement(name = "Description1", nillable = true)
     protected String description1;

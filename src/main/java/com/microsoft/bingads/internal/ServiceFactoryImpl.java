@@ -32,7 +32,7 @@ import jakarta.xml.ws.spi.Provider;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.16.2";
+    private static final String VERSION = "13.0.17";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -102,7 +102,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
     private Service createServiceWithRetry(Class serviceInterface, ApiEnvironment env) throws Exception {
         final QName qName = getServiceQname(serviceInterface);
         final boolean isCxf = Provider.provider().getClass().getName().contains("org.apache.cxf");
-        final URL url = (isCxf ? null : new URL(getServiceUrl(serviceInterface, env) + "?wsdl")); 
+        final URL url = (isCxf ? null : new URL(getServiceUrl(serviceInterface, env) + "?wsdl"));
 
         int retryLeft = WS_CREATE_RETRY_TIMES;
         int timeout = 0;
@@ -150,7 +150,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
     }
 
     private String getServiceUrl(Class serviceInterface, ApiEnvironment env) {
-        String serviceUrl = getServiceUrlFromConfig(serviceInterface);
+        String serviceUrl = ServiceUtils.getServiceUrlFromConfig(serviceInterface);
 
         if (serviceUrl == null) {
             ServiceInfo serviceInfo = endpoints.get(serviceInterface);
@@ -191,31 +191,6 @@ public class ServiceFactoryImpl implements ServiceFactory {
      */
     protected <T> void configServiceProxy(T port) {
         // By default nothing is add here.
-    }
-
-    private String getServiceUrlFromConfig(Class serviceInterface) {
-        InputStream input = null;
-        try {
-            File file = new File(ServiceUtils.getPropertyFile());
-            if (!file.exists()) {
-                return null;
-            }
-            input = new FileInputStream(file);
-            Properties props = new Properties();
-            props.load(input);
-            return props.getProperty(serviceInterface.getCanonicalName() + ".url");
-        } catch (IOException ex) {
-            // Ignore. In this case we will load service Url from endpoints.
-            return null;
-        } finally {
-            try {
-                if (input != null) {
-                    input.close();
-                }
-            } catch (IOException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     private <T> void addUserAgent(T port) {

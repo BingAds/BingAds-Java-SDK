@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CommissionBiddingScheme
     extends BiddingScheme
 {
+    public CommissionBiddingScheme() {
+      this.type = "CommissionBiddingScheme";
+    }
 
     @XmlElement(name = "CommissionRate", nillable = true)
     protected Double commissionRate;

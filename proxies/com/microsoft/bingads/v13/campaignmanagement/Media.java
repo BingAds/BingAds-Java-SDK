@@ -116,7 +116,7 @@ public class Media {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

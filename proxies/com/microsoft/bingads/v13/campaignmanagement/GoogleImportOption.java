@@ -215,6 +215,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GoogleImportOption
     extends ImportOption
 {
+    public GoogleImportOption() {
+      this.type = "GoogleImportOption";
+    }
 
     @XmlElement(name = "AccountUrlOptions", nillable = true)
     protected Boolean accountUrlOptions;

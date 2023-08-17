@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class StringRuleItem
     extends RuleItem
 {
+    public StringRuleItem() {
+      this.type = "String";
+    }
 
     @XmlElement(name = "Operand", nillable = true)
     protected String operand;

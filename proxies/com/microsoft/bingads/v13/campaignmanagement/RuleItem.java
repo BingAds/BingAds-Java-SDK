@@ -61,7 +61,7 @@ public class RuleItem {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

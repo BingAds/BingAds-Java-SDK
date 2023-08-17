@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DealCriterion
     extends Criterion
 {
+    public DealCriterion() {
+      this.type = "DealCriterion";
+    }
 
     @XmlElement(name = "DealId")
     protected Long dealId;

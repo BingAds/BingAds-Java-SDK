@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBMCStore complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBMCStore {
 
     @XmlElement(name = "BMCStore", nillable = true)
     protected List<BMCStore> bmcStores;
+    public ArrayOfBMCStore()
+    {
+      this.bmcStores = new ArrayList<BMCStore>();
+    }
+    @JsonCreator
+    public ArrayOfBMCStore(List<BMCStore> bmcstores)
+    {
+      this.bmcStores = bmcstores;
+    }
 
     /**
      * Gets the value of the bmcStores property.

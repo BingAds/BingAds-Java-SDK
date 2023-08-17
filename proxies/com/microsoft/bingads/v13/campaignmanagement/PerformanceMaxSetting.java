@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PerformanceMaxSetting
     extends Setting
 {
+    public PerformanceMaxSetting() {
+      this.type = "PerformanceMaxSetting";
+    }
 
     @XmlElement(name = "FinalUrlExpansionOptOut")
     protected Boolean finalUrlExpansionOptOut;

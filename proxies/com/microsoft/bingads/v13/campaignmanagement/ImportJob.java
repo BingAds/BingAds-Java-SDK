@@ -376,7 +376,7 @@ public class ImportJob {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class StructuredSnippetAdExtension
     extends AdExtension
 {
+    public StructuredSnippetAdExtension() {
+      this.type = "StructuredSnippetAdExtension";
+    }
 
     @XmlElement(name = "Header", nillable = true)
     protected String header;

@@ -64,7 +64,7 @@ public class AudienceGroupDimension {
      *     
      */
     public void setType(AudienceGroupDimensionType value) {
-        this.type = value;
+
     }
 
 }

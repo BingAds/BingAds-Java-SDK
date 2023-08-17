@@ -220,7 +220,7 @@ public class AdExtension {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
     /**

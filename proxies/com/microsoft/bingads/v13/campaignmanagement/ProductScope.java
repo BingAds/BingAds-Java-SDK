@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductScope
     extends Criterion
 {
+    public ProductScope() {
+      this.type = "ProductScope";
+    }
 
     @XmlElement(name = "Conditions", nillable = true)
     protected ArrayOfProductCondition conditions;

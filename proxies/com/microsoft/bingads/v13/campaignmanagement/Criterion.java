@@ -51,7 +51,8 @@ import jakarta.xml.bind.annotation.XmlType;
     AudienceCriterion.class,
     ProfileCriterion.class,
     StoreCriterion.class,
-    DealCriterion.class
+    DealCriterion.class,
+    GenreCriterion.class
 })
 public class Criterion {
 
@@ -79,7 +80,7 @@ public class Criterion {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

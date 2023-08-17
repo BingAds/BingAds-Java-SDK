@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SharedList
     extends SharedEntity
 {
+    public SharedList() {
+      this.type = "SharedList";
+    }
 
     @XmlElement(name = "ItemCount", nillable = true)
     protected Integer itemCount;

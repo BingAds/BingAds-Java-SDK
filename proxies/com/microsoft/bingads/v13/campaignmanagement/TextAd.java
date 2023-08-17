@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class TextAd
     extends Ad
 {
+    public TextAd() {
+      this.type = AdType.fromValue("Text");
+    }
 
     @XmlElement(name = "DestinationUrl", nillable = true)
     protected String destinationUrl;

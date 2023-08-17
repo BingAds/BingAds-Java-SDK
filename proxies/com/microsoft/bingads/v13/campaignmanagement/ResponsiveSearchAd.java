@@ -41,6 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ResponsiveSearchAd
     extends Ad
 {
+    public ResponsiveSearchAd() {
+      this.type = AdType.fromValue("ResponsiveSearch");
+    }
 
     @XmlElement(name = "Descriptions", nillable = true)
     protected ArrayOfAssetLink descriptions;

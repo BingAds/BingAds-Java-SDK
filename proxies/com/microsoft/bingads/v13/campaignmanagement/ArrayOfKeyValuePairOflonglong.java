@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeyValuePairOflonglong complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeyValuePairOflonglong {
 
     @XmlElement(name = "KeyValuePairOflonglong")
     protected List<KeyValuePairOflonglong> keyValuePairOflonglongs;
+    public ArrayOfKeyValuePairOflonglong()
+    {
+      this.keyValuePairOflonglongs = new ArrayList<KeyValuePairOflonglong>();
+    }
+    @JsonCreator
+    public ArrayOfKeyValuePairOflonglong(List<KeyValuePairOflonglong> keyvaluepairoflonglongs)
+    {
+      this.keyValuePairOflonglongs = keyvaluepairoflonglongs;
+    }
 
     /**
      * Gets the value of the keyValuePairOflonglongs property.

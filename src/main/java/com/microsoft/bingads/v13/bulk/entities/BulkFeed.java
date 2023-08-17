@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.v13.bulk.BulkFileReader;
@@ -253,7 +254,8 @@ public class BulkFeed extends SingleRecordBulkEntity {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
     }
 
-    
+    @JsonIgnoreProperties(ignoreUnknown = true)
+
     public static class FeedCustomAttribute
     {
         // The Feed attribute type

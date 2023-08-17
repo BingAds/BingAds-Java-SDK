@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class EnhancedCpcBiddingScheme
     extends BiddingScheme
 {
+    public EnhancedCpcBiddingScheme() {
+      this.type = "EnhancedCpc";
+    }
 
 
 }

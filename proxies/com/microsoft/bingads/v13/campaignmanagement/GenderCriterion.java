@@ -34,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GenderCriterion
     extends Criterion
 {
+    public GenderCriterion() {
+      this.type = "GenderCriterion";
+    }
 
     @XmlElement(name = "GenderType", nillable = true)
     @XmlSchemaType(name = "string")

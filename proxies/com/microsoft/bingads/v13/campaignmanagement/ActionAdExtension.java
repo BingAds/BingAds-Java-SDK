@@ -46,6 +46,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ActionAdExtension
     extends AdExtension
 {
+    public ActionAdExtension() {
+      this.type = "ActionAdExtension";
+    }
 
     @XmlElement(name = "ActionType", required = true)
     @XmlSchemaType(name = "string")

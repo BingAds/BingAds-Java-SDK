@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfPriceTableRow complex type.
@@ -36,6 +36,15 @@ public class ArrayOfPriceTableRow {
 
     @XmlElement(name = "PriceTableRow", nillable = true)
     protected List<PriceTableRow> priceTableRows;
+    public ArrayOfPriceTableRow()
+    {
+      this.priceTableRows = new ArrayList<PriceTableRow>();
+    }
+    @JsonCreator
+    public ArrayOfPriceTableRow(List<PriceTableRow> pricetablerows)
+    {
+      this.priceTableRows = pricetablerows;
+    }
 
     /**
      * Gets the value of the priceTableRows property.

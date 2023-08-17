@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfMediaRepresentation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfMediaRepresentation {
 
     @XmlElement(name = "MediaRepresentation", nillable = true)
     protected List<MediaRepresentation> mediaRepresentations;
+    public ArrayOfMediaRepresentation()
+    {
+      this.mediaRepresentations = new ArrayList<MediaRepresentation>();
+    }
+    @JsonCreator
+    public ArrayOfMediaRepresentation(List<MediaRepresentation> mediarepresentations)
+    {
+      this.mediaRepresentations = mediarepresentations;
+    }
 
     /**
      * Gets the value of the mediaRepresentations property.

@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DynamicSearchAd
     extends Ad
 {
+    public DynamicSearchAd() {
+      this.type = AdType.fromValue("DynamicSearch");
+    }
 
     @XmlElement(name = "Path1", nillable = true)
     protected String path1;

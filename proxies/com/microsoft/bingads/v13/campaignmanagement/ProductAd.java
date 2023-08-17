@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductAd
     extends Ad
 {
+    public ProductAd() {
+      this.type = AdType.fromValue("Product");
+    }
 
     @XmlElement(name = "PromotionalText", nillable = true)
     protected String promotionalText;

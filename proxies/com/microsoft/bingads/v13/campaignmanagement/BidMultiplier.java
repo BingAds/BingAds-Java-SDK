@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class BidMultiplier
     extends CriterionBid
 {
+    public BidMultiplier() {
+      this.type = "BidMultiplier";
+    }
 
     @XmlElement(name = "Multiplier")
     protected Double multiplier;

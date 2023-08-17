@@ -27,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RSARecommendationInfo", namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V13.Entity", propOrder = {
+@XmlType(name = "RSARecommendationInfo", propOrder = {
     "adId"
 })
 public class RSARecommendationInfo

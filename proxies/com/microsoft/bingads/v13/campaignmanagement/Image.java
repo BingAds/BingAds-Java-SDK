@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Image
     extends Media
 {
+    public Image() {
+      this.type = "Image";
+    }
 
     @XmlElement(name = "Data", nillable = true)
     protected String data;

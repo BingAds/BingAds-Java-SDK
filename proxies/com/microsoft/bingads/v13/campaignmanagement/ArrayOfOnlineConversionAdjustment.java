@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfOnlineConversionAdjustment complex type.
@@ -36,6 +36,15 @@ public class ArrayOfOnlineConversionAdjustment {
 
     @XmlElement(name = "OnlineConversionAdjustment", nillable = true)
     protected List<OnlineConversionAdjustment> onlineConversionAdjustments;
+    public ArrayOfOnlineConversionAdjustment()
+    {
+      this.onlineConversionAdjustments = new ArrayList<OnlineConversionAdjustment>();
+    }
+    @JsonCreator
+    public ArrayOfOnlineConversionAdjustment(List<OnlineConversionAdjustment> onlineconversionadjustments)
+    {
+      this.onlineConversionAdjustments = onlineconversionadjustments;
+    }
 
     /**
      * Gets the value of the onlineConversionAdjustments property.

@@ -58,6 +58,7 @@ public class ObjectFactory {
     private static final QName _ArrayOfCoupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfCoupon");
     private static final QName _Coupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Coupon");
     private static final QName _CouponRedemption_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponRedemption");
+    private static final QName _CouponClaimInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponClaimInfo");
     private static final QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private static final QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private static final QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -85,10 +86,15 @@ public class ObjectFactory {
     private static final QName _OperationError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "OperationError");
     private static final QName _ArrayOfBatchError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "ArrayOfBatchError");
     private static final QName _BatchError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "BatchError");
+    private static final QName _ArrayOfArrayOfOperationError_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Exception", "ArrayOfArrayOfOperationError");
     private static final QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private static final QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private static final QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
     private static final QName _AdApiError_QNAME = new QName("https://adapi.microsoft.com", "AdApiError");
+    private static final QName _ArrayOfKeyValuePairOflongstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOflongstring");
+    private static final QName _KeyValuePairOflongstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOflongstring");
+    private static final QName _ArrayOfKeyValuePairOflongdateTime_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOflongdateTime");
+    private static final QName _KeyValuePairOflongdateTime_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOflongdateTime");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.microsoft.bingads.v13.customerbilling
@@ -538,6 +544,86 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CheckFeatureAdoptionCouponEligibilityRequest }
+     * 
+     * @return
+     *     the new instance of {@link CheckFeatureAdoptionCouponEligibilityRequest }
+     */
+    public CheckFeatureAdoptionCouponEligibilityRequest createCheckFeatureAdoptionCouponEligibilityRequest() {
+        return new CheckFeatureAdoptionCouponEligibilityRequest();
+    }
+
+    /**
+     * Create an instance of {@link CheckFeatureAdoptionCouponEligibilityResponse }
+     * 
+     * @return
+     *     the new instance of {@link CheckFeatureAdoptionCouponEligibilityResponse }
+     */
+    public CheckFeatureAdoptionCouponEligibilityResponse createCheckFeatureAdoptionCouponEligibilityResponse() {
+        return new CheckFeatureAdoptionCouponEligibilityResponse();
+    }
+
+    /**
+     * Create an instance of {@link ClaimFeatureAdoptionCouponsRequest }
+     * 
+     * @return
+     *     the new instance of {@link ClaimFeatureAdoptionCouponsRequest }
+     */
+    public ClaimFeatureAdoptionCouponsRequest createClaimFeatureAdoptionCouponsRequest() {
+        return new ClaimFeatureAdoptionCouponsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeyValuePairOflongstring }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfKeyValuePairOflongstring }
+     */
+    public ArrayOfKeyValuePairOflongstring createArrayOfKeyValuePairOflongstring() {
+        return new ArrayOfKeyValuePairOflongstring();
+    }
+
+    /**
+     * Create an instance of {@link ClaimFeatureAdoptionCouponsResponse }
+     * 
+     * @return
+     *     the new instance of {@link ClaimFeatureAdoptionCouponsResponse }
+     */
+    public ClaimFeatureAdoptionCouponsResponse createClaimFeatureAdoptionCouponsResponse() {
+        return new ClaimFeatureAdoptionCouponsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeyValuePairOflongdateTime }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfKeyValuePairOflongdateTime }
+     */
+    public ArrayOfKeyValuePairOflongdateTime createArrayOfKeyValuePairOflongdateTime() {
+        return new ArrayOfKeyValuePairOflongdateTime();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfOperationError }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfOperationError }
+     */
+    public ArrayOfOperationError createArrayOfOperationError() {
+        return new ArrayOfOperationError();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfArrayOfOperationError }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfArrayOfOperationError }
+     */
+    public ArrayOfArrayOfOperationError createArrayOfArrayOfOperationError() {
+        return new ArrayOfArrayOfOperationError();
+    }
+
+    /**
      * Create an instance of {@link BillingDocumentInfo }
      * 
      * @return
@@ -608,6 +694,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponClaimInfo }
+     * 
+     * @return
+     *     the new instance of {@link CouponClaimInfo }
+     */
+    public CouponClaimInfo createCouponClaimInfo() {
+        return new CouponClaimInfo();
+    }
+
+    /**
      * Create an instance of {@link Char }
      * 
      * @return
@@ -635,16 +731,6 @@ public class ObjectFactory {
      */
     public Guid createGuid() {
         return new Guid();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfOperationError }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfOperationError }
-     */
-    public ArrayOfOperationError createArrayOfOperationError() {
-        return new ArrayOfOperationError();
     }
 
     /**
@@ -705,6 +791,26 @@ public class ObjectFactory {
      */
     public AdApiError createAdApiError() {
         return new AdApiError();
+    }
+
+    /**
+     * Create an instance of {@link KeyValuePairOflongstring }
+     * 
+     * @return
+     *     the new instance of {@link KeyValuePairOflongstring }
+     */
+    public KeyValuePairOflongstring createKeyValuePairOflongstring() {
+        return new KeyValuePairOflongstring();
+    }
+
+    /**
+     * Create an instance of {@link KeyValuePairOflongdateTime }
+     * 
+     * @return
+     *     the new instance of {@link KeyValuePairOflongdateTime }
+     */
+    public KeyValuePairOflongdateTime createKeyValuePairOflongdateTime() {
+        return new KeyValuePairOflongdateTime();
     }
 
     /**
@@ -1111,6 +1217,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CouponClaimInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CouponClaimInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "CouponClaimInfo")
+    public JAXBElement<CouponClaimInfo> createCouponClaimInfo(CouponClaimInfo value) {
+        return new JAXBElement<>(_CouponClaimInfo_QNAME, CouponClaimInfo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @param value
@@ -1463,6 +1582,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfOperationError }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfOperationError }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Exception", name = "ArrayOfArrayOfOperationError")
+    public JAXBElement<ArrayOfArrayOfOperationError> createArrayOfArrayOfOperationError(ArrayOfArrayOfOperationError value) {
+        return new JAXBElement<>(_ArrayOfArrayOfOperationError_QNAME, ArrayOfArrayOfOperationError.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdApiFaultDetail }{@code >}
      * 
      * @param value
@@ -1512,6 +1644,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "AdApiError")
     public JAXBElement<AdApiError> createAdApiError(AdApiError value) {
         return new JAXBElement<>(_AdApiError_QNAME, AdApiError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "ArrayOfKeyValuePairOflongstring")
+    public JAXBElement<ArrayOfKeyValuePairOflongstring> createArrayOfKeyValuePairOflongstring(ArrayOfKeyValuePairOflongstring value) {
+        return new JAXBElement<>(_ArrayOfKeyValuePairOflongstring_QNAME, ArrayOfKeyValuePairOflongstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOflongstring")
+    public JAXBElement<KeyValuePairOflongstring> createKeyValuePairOflongstring(KeyValuePairOflongstring value) {
+        return new JAXBElement<>(_KeyValuePairOflongstring_QNAME, KeyValuePairOflongstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongdateTime }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongdateTime }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "ArrayOfKeyValuePairOflongdateTime")
+    public JAXBElement<ArrayOfKeyValuePairOflongdateTime> createArrayOfKeyValuePairOflongdateTime(ArrayOfKeyValuePairOflongdateTime value) {
+        return new JAXBElement<>(_ArrayOfKeyValuePairOflongdateTime_QNAME, ArrayOfKeyValuePairOflongdateTime.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongdateTime }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongdateTime }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOflongdateTime")
+    public JAXBElement<KeyValuePairOflongdateTime> createKeyValuePairOflongdateTime(KeyValuePairOflongdateTime value) {
+        return new JAXBElement<>(_KeyValuePairOflongdateTime_QNAME, KeyValuePairOflongdateTime.class, null, value);
     }
 
 }
