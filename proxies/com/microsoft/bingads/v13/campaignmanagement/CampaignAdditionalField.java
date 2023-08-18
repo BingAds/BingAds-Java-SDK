@@ -21,7 +21,8 @@ public enum CampaignAdditionalField {
     RESPONSIVE_SEARCH_ADS_SETTING("ResponsiveSearchAdsSetting"),
     COST_PER_SALE_BIDDING_SCHEME("CostPerSaleBiddingScheme"),
     SHOPPING_SETTING_SHOPPABLE_ADS_ENABLED("ShoppingSettingShoppableAdsEnabled"),
-    SHOPPING_SETTING_FEED_LABEL("ShoppingSettingFeedLabel");
+    SHOPPING_SETTING_FEED_LABEL("ShoppingSettingFeedLabel"),
+    CALL_TO_ACTION_SETTING("CallToActionSetting");
         
     private final String value;
 

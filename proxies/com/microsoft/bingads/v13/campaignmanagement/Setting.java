@@ -32,16 +32,17 @@ import jakarta.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
+    VerifiedTrackingSetting.class,
     ShoppingSetting.class,
     DynamicFeedSetting.class,
     DynamicSearchAdsSetting.class,
     TargetSetting.class,
     CoOpSetting.class,
-    VerifiedTrackingSetting.class,
     DisclaimerSetting.class,
     HotelSetting.class,
     ResponsiveSearchAdsSetting.class,
-    PerformanceMaxSetting.class
+    PerformanceMaxSetting.class,
+    CallToActionSetting.class
 })
 public class Setting {
 

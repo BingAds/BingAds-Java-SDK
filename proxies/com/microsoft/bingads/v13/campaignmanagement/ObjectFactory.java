@@ -53,6 +53,24 @@ public class ObjectFactory {
     private static final QName _ImageAsset_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImageAsset");
     private static final QName _VideoAsset_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VideoAsset");
     private static final QName _AssetLinkEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetLinkEditorialStatus");
+    private static final QName _VerifiedTrackingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VerifiedTrackingSetting");
+    private static final QName _Setting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Setting");
+    private static final QName _ShoppingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ShoppingSetting");
+    private static final QName _DynamicFeedSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicFeedSetting");
+    private static final QName _DynamicSearchAdsSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicSearchAdsSetting");
+    private static final QName _DynamicSearchAdsSource_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicSearchAdsSource");
+    private static final QName _TargetSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetSetting");
+    private static final QName _ArrayOfTargetSettingDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfTargetSettingDetail");
+    private static final QName _TargetSettingDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetSettingDetail");
+    private static final QName _CriterionTypeGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CriterionTypeGroup");
+    private static final QName _CoOpSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CoOpSetting");
+    private static final QName _BidOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BidOption");
+    private static final QName _DisclaimerSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DisclaimerSetting");
+    private static final QName _HotelSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HotelSetting");
+    private static final QName _HotelAdGroupType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HotelAdGroupType");
+    private static final QName _ResponsiveSearchAdsSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAdsSetting");
+    private static final QName _PerformanceMaxSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PerformanceMaxSetting");
+    private static final QName _CallToActionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CallToActionSetting");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
@@ -78,23 +96,6 @@ public class ObjectFactory {
     private static final QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignStatus");
     private static final QName _CampaignType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignType");
     private static final QName _ArrayOfSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSetting");
-    private static final QName _Setting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Setting");
-    private static final QName _ShoppingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ShoppingSetting");
-    private static final QName _DynamicFeedSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicFeedSetting");
-    private static final QName _DynamicSearchAdsSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicSearchAdsSetting");
-    private static final QName _DynamicSearchAdsSource_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DynamicSearchAdsSource");
-    private static final QName _TargetSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetSetting");
-    private static final QName _ArrayOfTargetSettingDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfTargetSettingDetail");
-    private static final QName _TargetSettingDetail_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetSettingDetail");
-    private static final QName _CriterionTypeGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CriterionTypeGroup");
-    private static final QName _CoOpSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CoOpSetting");
-    private static final QName _BidOption_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BidOption");
-    private static final QName _VerifiedTrackingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VerifiedTrackingSetting");
-    private static final QName _DisclaimerSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DisclaimerSetting");
-    private static final QName _HotelSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HotelSetting");
-    private static final QName _HotelAdGroupType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HotelAdGroupType");
-    private static final QName _ResponsiveSearchAdsSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAdsSetting");
-    private static final QName _PerformanceMaxSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PerformanceMaxSetting");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerAccountId");
@@ -268,6 +269,7 @@ public class ObjectFactory {
     private static final QName _ProfileType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileType");
     private static final QName _StoreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "StoreCriterion");
     private static final QName _DealCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DealCriterion");
+    private static final QName _GenreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GenreCriterion");
     private static final QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionStatus");
     private static final QName _BiddableAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableAdGroupCriterion");
     private static final QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionEditorialStatus");
@@ -433,8 +435,8 @@ public class ObjectFactory {
     private static final QName _ArrayOfCampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignConversionGoal");
     private static final QName _CampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignConversionGoal");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
-    private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
+    private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
     private static final QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private static final QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
     private static final QName _ArrayOfArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfArrayOfKeyValuePairOfstringstring");
@@ -805,6 +807,146 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VerifiedTrackingSetting }
+     * 
+     * @return
+     *     the new instance of {@link VerifiedTrackingSetting }
+     */
+    public VerifiedTrackingSetting createVerifiedTrackingSetting() {
+        return new VerifiedTrackingSetting();
+    }
+
+    /**
+     * Create an instance of {@link Setting }
+     * 
+     * @return
+     *     the new instance of {@link Setting }
+     */
+    public Setting createSetting() {
+        return new Setting();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingSetting }
+     * 
+     * @return
+     *     the new instance of {@link ShoppingSetting }
+     */
+    public ShoppingSetting createShoppingSetting() {
+        return new ShoppingSetting();
+    }
+
+    /**
+     * Create an instance of {@link DynamicFeedSetting }
+     * 
+     * @return
+     *     the new instance of {@link DynamicFeedSetting }
+     */
+    public DynamicFeedSetting createDynamicFeedSetting() {
+        return new DynamicFeedSetting();
+    }
+
+    /**
+     * Create an instance of {@link DynamicSearchAdsSetting }
+     * 
+     * @return
+     *     the new instance of {@link DynamicSearchAdsSetting }
+     */
+    public DynamicSearchAdsSetting createDynamicSearchAdsSetting() {
+        return new DynamicSearchAdsSetting();
+    }
+
+    /**
+     * Create an instance of {@link TargetSetting }
+     * 
+     * @return
+     *     the new instance of {@link TargetSetting }
+     */
+    public TargetSetting createTargetSetting() {
+        return new TargetSetting();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTargetSettingDetail }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfTargetSettingDetail }
+     */
+    public ArrayOfTargetSettingDetail createArrayOfTargetSettingDetail() {
+        return new ArrayOfTargetSettingDetail();
+    }
+
+    /**
+     * Create an instance of {@link TargetSettingDetail }
+     * 
+     * @return
+     *     the new instance of {@link TargetSettingDetail }
+     */
+    public TargetSettingDetail createTargetSettingDetail() {
+        return new TargetSettingDetail();
+    }
+
+    /**
+     * Create an instance of {@link CoOpSetting }
+     * 
+     * @return
+     *     the new instance of {@link CoOpSetting }
+     */
+    public CoOpSetting createCoOpSetting() {
+        return new CoOpSetting();
+    }
+
+    /**
+     * Create an instance of {@link DisclaimerSetting }
+     * 
+     * @return
+     *     the new instance of {@link DisclaimerSetting }
+     */
+    public DisclaimerSetting createDisclaimerSetting() {
+        return new DisclaimerSetting();
+    }
+
+    /**
+     * Create an instance of {@link HotelSetting }
+     * 
+     * @return
+     *     the new instance of {@link HotelSetting }
+     */
+    public HotelSetting createHotelSetting() {
+        return new HotelSetting();
+    }
+
+    /**
+     * Create an instance of {@link ResponsiveSearchAdsSetting }
+     * 
+     * @return
+     *     the new instance of {@link ResponsiveSearchAdsSetting }
+     */
+    public ResponsiveSearchAdsSetting createResponsiveSearchAdsSetting() {
+        return new ResponsiveSearchAdsSetting();
+    }
+
+    /**
+     * Create an instance of {@link PerformanceMaxSetting }
+     * 
+     * @return
+     *     the new instance of {@link PerformanceMaxSetting }
+     */
+    public PerformanceMaxSetting createPerformanceMaxSetting() {
+        return new PerformanceMaxSetting();
+    }
+
+    /**
+     * Create an instance of {@link CallToActionSetting }
+     * 
+     * @return
+     *     the new instance of {@link CallToActionSetting }
+     */
+    public CallToActionSetting createCallToActionSetting() {
+        return new CallToActionSetting();
+    }
+
+    /**
      * Create an instance of {@link ResponsiveSearchAd }
      * 
      * @return
@@ -1032,136 +1174,6 @@ public class ObjectFactory {
      */
     public ArrayOfSetting createArrayOfSetting() {
         return new ArrayOfSetting();
-    }
-
-    /**
-     * Create an instance of {@link Setting }
-     * 
-     * @return
-     *     the new instance of {@link Setting }
-     */
-    public Setting createSetting() {
-        return new Setting();
-    }
-
-    /**
-     * Create an instance of {@link ShoppingSetting }
-     * 
-     * @return
-     *     the new instance of {@link ShoppingSetting }
-     */
-    public ShoppingSetting createShoppingSetting() {
-        return new ShoppingSetting();
-    }
-
-    /**
-     * Create an instance of {@link DynamicFeedSetting }
-     * 
-     * @return
-     *     the new instance of {@link DynamicFeedSetting }
-     */
-    public DynamicFeedSetting createDynamicFeedSetting() {
-        return new DynamicFeedSetting();
-    }
-
-    /**
-     * Create an instance of {@link DynamicSearchAdsSetting }
-     * 
-     * @return
-     *     the new instance of {@link DynamicSearchAdsSetting }
-     */
-    public DynamicSearchAdsSetting createDynamicSearchAdsSetting() {
-        return new DynamicSearchAdsSetting();
-    }
-
-    /**
-     * Create an instance of {@link TargetSetting }
-     * 
-     * @return
-     *     the new instance of {@link TargetSetting }
-     */
-    public TargetSetting createTargetSetting() {
-        return new TargetSetting();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfTargetSettingDetail }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfTargetSettingDetail }
-     */
-    public ArrayOfTargetSettingDetail createArrayOfTargetSettingDetail() {
-        return new ArrayOfTargetSettingDetail();
-    }
-
-    /**
-     * Create an instance of {@link TargetSettingDetail }
-     * 
-     * @return
-     *     the new instance of {@link TargetSettingDetail }
-     */
-    public TargetSettingDetail createTargetSettingDetail() {
-        return new TargetSettingDetail();
-    }
-
-    /**
-     * Create an instance of {@link CoOpSetting }
-     * 
-     * @return
-     *     the new instance of {@link CoOpSetting }
-     */
-    public CoOpSetting createCoOpSetting() {
-        return new CoOpSetting();
-    }
-
-    /**
-     * Create an instance of {@link VerifiedTrackingSetting }
-     * 
-     * @return
-     *     the new instance of {@link VerifiedTrackingSetting }
-     */
-    public VerifiedTrackingSetting createVerifiedTrackingSetting() {
-        return new VerifiedTrackingSetting();
-    }
-
-    /**
-     * Create an instance of {@link DisclaimerSetting }
-     * 
-     * @return
-     *     the new instance of {@link DisclaimerSetting }
-     */
-    public DisclaimerSetting createDisclaimerSetting() {
-        return new DisclaimerSetting();
-    }
-
-    /**
-     * Create an instance of {@link HotelSetting }
-     * 
-     * @return
-     *     the new instance of {@link HotelSetting }
-     */
-    public HotelSetting createHotelSetting() {
-        return new HotelSetting();
-    }
-
-    /**
-     * Create an instance of {@link ResponsiveSearchAdsSetting }
-     * 
-     * @return
-     *     the new instance of {@link ResponsiveSearchAdsSetting }
-     */
-    public ResponsiveSearchAdsSetting createResponsiveSearchAdsSetting() {
-        return new ResponsiveSearchAdsSetting();
-    }
-
-    /**
-     * Create an instance of {@link PerformanceMaxSetting }
-     * 
-     * @return
-     *     the new instance of {@link PerformanceMaxSetting }
-     */
-    public PerformanceMaxSetting createPerformanceMaxSetting() {
-        return new PerformanceMaxSetting();
     }
 
     /**
@@ -3362,6 +3374,16 @@ public class ObjectFactory {
      */
     public DealCriterion createDealCriterion() {
         return new DealCriterion();
+    }
+
+    /**
+     * Create an instance of {@link GenreCriterion }
+     * 
+     * @return
+     *     the new instance of {@link GenreCriterion }
+     */
+    public GenreCriterion createGenreCriterion() {
+        return new GenreCriterion();
     }
 
     /**
@@ -7010,6 +7032,241 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VerifiedTrackingSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link VerifiedTrackingSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "VerifiedTrackingSetting")
+    public JAXBElement<VerifiedTrackingSetting> createVerifiedTrackingSetting(VerifiedTrackingSetting value) {
+        return new JAXBElement<>(_VerifiedTrackingSetting_QNAME, VerifiedTrackingSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "Setting")
+    public JAXBElement<Setting> createSetting(Setting value) {
+        return new JAXBElement<>(_Setting_QNAME, Setting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ShoppingSetting")
+    public JAXBElement<ShoppingSetting> createShoppingSetting(ShoppingSetting value) {
+        return new JAXBElement<>(_ShoppingSetting_QNAME, ShoppingSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicFeedSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicFeedSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicFeedSetting")
+    public JAXBElement<DynamicFeedSetting> createDynamicFeedSetting(DynamicFeedSetting value) {
+        return new JAXBElement<>(_DynamicFeedSetting_QNAME, DynamicFeedSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicSearchAdsSetting")
+    public JAXBElement<DynamicSearchAdsSetting> createDynamicSearchAdsSetting(DynamicSearchAdsSetting value) {
+        return new JAXBElement<>(_DynamicSearchAdsSetting_QNAME, DynamicSearchAdsSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSource }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSource }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicSearchAdsSource")
+    public JAXBElement<DynamicSearchAdsSource> createDynamicSearchAdsSource(DynamicSearchAdsSource value) {
+        return new JAXBElement<>(_DynamicSearchAdsSource_QNAME, DynamicSearchAdsSource.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TargetSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TargetSetting")
+    public JAXBElement<TargetSetting> createTargetSetting(TargetSetting value) {
+        return new JAXBElement<>(_TargetSetting_QNAME, TargetSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTargetSettingDetail }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfTargetSettingDetail }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfTargetSettingDetail")
+    public JAXBElement<ArrayOfTargetSettingDetail> createArrayOfTargetSettingDetail(ArrayOfTargetSettingDetail value) {
+        return new JAXBElement<>(_ArrayOfTargetSettingDetail_QNAME, ArrayOfTargetSettingDetail.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetSettingDetail }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TargetSettingDetail }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TargetSettingDetail")
+    public JAXBElement<TargetSettingDetail> createTargetSettingDetail(TargetSettingDetail value) {
+        return new JAXBElement<>(_TargetSettingDetail_QNAME, TargetSettingDetail.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CriterionTypeGroup }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CriterionTypeGroup }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CriterionTypeGroup")
+    public JAXBElement<CriterionTypeGroup> createCriterionTypeGroup(CriterionTypeGroup value) {
+        return new JAXBElement<>(_CriterionTypeGroup_QNAME, CriterionTypeGroup.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CoOpSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CoOpSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CoOpSetting")
+    public JAXBElement<CoOpSetting> createCoOpSetting(CoOpSetting value) {
+        return new JAXBElement<>(_CoOpSetting_QNAME, CoOpSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BidOption }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BidOption }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BidOption")
+    public JAXBElement<BidOption> createBidOption(BidOption value) {
+        return new JAXBElement<>(_BidOption_QNAME, BidOption.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DisclaimerSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DisclaimerSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DisclaimerSetting")
+    public JAXBElement<DisclaimerSetting> createDisclaimerSetting(DisclaimerSetting value) {
+        return new JAXBElement<>(_DisclaimerSetting_QNAME, DisclaimerSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link HotelSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "HotelSetting")
+    public JAXBElement<HotelSetting> createHotelSetting(HotelSetting value) {
+        return new JAXBElement<>(_HotelSetting_QNAME, HotelSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link HotelAdGroupType }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link HotelAdGroupType }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "HotelAdGroupType")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<HotelAdGroupType>> createHotelAdGroupType(Collection<HotelAdGroupType> value) {
+        return new JAXBElement<>(_HotelAdGroupType_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdsSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdsSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ResponsiveSearchAdsSetting")
+    public JAXBElement<ResponsiveSearchAdsSetting> createResponsiveSearchAdsSetting(ResponsiveSearchAdsSetting value) {
+        return new JAXBElement<>(_ResponsiveSearchAdsSetting_QNAME, ResponsiveSearchAdsSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PerformanceMaxSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PerformanceMaxSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PerformanceMaxSetting")
+    public JAXBElement<PerformanceMaxSetting> createPerformanceMaxSetting(PerformanceMaxSetting value) {
+        return new JAXBElement<>(_PerformanceMaxSetting_QNAME, PerformanceMaxSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CallToActionSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CallToActionSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CallToActionSetting")
+    public JAXBElement<CallToActionSetting> createCallToActionSetting(CallToActionSetting value) {
+        return new JAXBElement<>(_CallToActionSetting_QNAME, CallToActionSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAd }{@code >}
      * 
      * @param value
@@ -7317,7 +7574,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignType")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     public JAXBElement<Collection<CampaignType>> createCampaignType(Collection<CampaignType> value) {
         return new JAXBElement<>(_CampaignType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -7333,228 +7590,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfSetting")
     public JAXBElement<ArrayOfSetting> createArrayOfSetting(ArrayOfSetting value) {
         return new JAXBElement<>(_ArrayOfSetting_QNAME, ArrayOfSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Setting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "Setting")
-    public JAXBElement<Setting> createSetting(Setting value) {
-        return new JAXBElement<>(_Setting_QNAME, Setting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ShoppingSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ShoppingSetting")
-    public JAXBElement<ShoppingSetting> createShoppingSetting(ShoppingSetting value) {
-        return new JAXBElement<>(_ShoppingSetting_QNAME, ShoppingSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicFeedSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicFeedSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicFeedSetting")
-    public JAXBElement<DynamicFeedSetting> createDynamicFeedSetting(DynamicFeedSetting value) {
-        return new JAXBElement<>(_DynamicFeedSetting_QNAME, DynamicFeedSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicSearchAdsSetting")
-    public JAXBElement<DynamicSearchAdsSetting> createDynamicSearchAdsSetting(DynamicSearchAdsSetting value) {
-        return new JAXBElement<>(_DynamicSearchAdsSetting_QNAME, DynamicSearchAdsSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSource }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DynamicSearchAdsSource }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DynamicSearchAdsSource")
-    public JAXBElement<DynamicSearchAdsSource> createDynamicSearchAdsSource(DynamicSearchAdsSource value) {
-        return new JAXBElement<>(_DynamicSearchAdsSource_QNAME, DynamicSearchAdsSource.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TargetSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TargetSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TargetSetting")
-    public JAXBElement<TargetSetting> createTargetSetting(TargetSetting value) {
-        return new JAXBElement<>(_TargetSetting_QNAME, TargetSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTargetSettingDetail }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfTargetSettingDetail }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfTargetSettingDetail")
-    public JAXBElement<ArrayOfTargetSettingDetail> createArrayOfTargetSettingDetail(ArrayOfTargetSettingDetail value) {
-        return new JAXBElement<>(_ArrayOfTargetSettingDetail_QNAME, ArrayOfTargetSettingDetail.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TargetSettingDetail }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TargetSettingDetail }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TargetSettingDetail")
-    public JAXBElement<TargetSettingDetail> createTargetSettingDetail(TargetSettingDetail value) {
-        return new JAXBElement<>(_TargetSettingDetail_QNAME, TargetSettingDetail.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CriterionTypeGroup }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CriterionTypeGroup }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CriterionTypeGroup")
-    public JAXBElement<CriterionTypeGroup> createCriterionTypeGroup(CriterionTypeGroup value) {
-        return new JAXBElement<>(_CriterionTypeGroup_QNAME, CriterionTypeGroup.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CoOpSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CoOpSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CoOpSetting")
-    public JAXBElement<CoOpSetting> createCoOpSetting(CoOpSetting value) {
-        return new JAXBElement<>(_CoOpSetting_QNAME, CoOpSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BidOption }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link BidOption }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BidOption")
-    public JAXBElement<BidOption> createBidOption(BidOption value) {
-        return new JAXBElement<>(_BidOption_QNAME, BidOption.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VerifiedTrackingSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link VerifiedTrackingSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "VerifiedTrackingSetting")
-    public JAXBElement<VerifiedTrackingSetting> createVerifiedTrackingSetting(VerifiedTrackingSetting value) {
-        return new JAXBElement<>(_VerifiedTrackingSetting_QNAME, VerifiedTrackingSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DisclaimerSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DisclaimerSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DisclaimerSetting")
-    public JAXBElement<DisclaimerSetting> createDisclaimerSetting(DisclaimerSetting value) {
-        return new JAXBElement<>(_DisclaimerSetting_QNAME, DisclaimerSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HotelSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link HotelSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "HotelSetting")
-    public JAXBElement<HotelSetting> createHotelSetting(HotelSetting value) {
-        return new JAXBElement<>(_HotelSetting_QNAME, HotelSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link HotelAdGroupType }{@code >}{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link HotelAdGroupType }{@code >}{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "HotelAdGroupType")
-    @XmlJavaTypeAdapter(Adapter3 .class)
-    public JAXBElement<Collection<HotelAdGroupType>> createHotelAdGroupType(Collection<HotelAdGroupType> value) {
-        return new JAXBElement<>(_HotelAdGroupType_QNAME, ((Class) Collection.class), null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdsSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdsSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ResponsiveSearchAdsSetting")
-    public JAXBElement<ResponsiveSearchAdsSetting> createResponsiveSearchAdsSetting(ResponsiveSearchAdsSetting value) {
-        return new JAXBElement<>(_ResponsiveSearchAdsSetting_QNAME, ResponsiveSearchAdsSetting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PerformanceMaxSetting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PerformanceMaxSetting }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PerformanceMaxSetting")
-    public JAXBElement<PerformanceMaxSetting> createPerformanceMaxSetting(PerformanceMaxSetting value) {
-        return new JAXBElement<>(_PerformanceMaxSetting_QNAME, PerformanceMaxSetting.class, null, value);
     }
 
     /**
@@ -9817,6 +9852,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GenreCriterion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GenreCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "GenreCriterion")
+    public JAXBElement<GenreCriterion> createGenreCriterion(GenreCriterion value) {
+        return new JAXBElement<>(_GenreCriterion_QNAME, GenreCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterionStatus }{@code >}
      * 
      * @param value
@@ -11969,19 +12017,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfKeyValueOfstringstring")
-    public JAXBElement<ArrayOfKeyValueOfstringstring> createArrayOfKeyValueOfstringstring(ArrayOfKeyValueOfstringstring value) {
-        return new JAXBElement<>(_ArrayOfKeyValueOfstringstring_QNAME, ArrayOfKeyValueOfstringstring.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOflong }{@code >}
      * 
      * @param value
@@ -11992,6 +12027,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOflong")
     public JAXBElement<ArrayOflong> createArrayOflong(ArrayOflong value) {
         return new JAXBElement<>(_ArrayOflong_QNAME, ArrayOflong.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfKeyValueOfstringstring")
+    public JAXBElement<ArrayOfKeyValueOfstringstring> createArrayOfKeyValueOfstringstring(ArrayOfKeyValueOfstringstring value) {
+        return new JAXBElement<>(_ArrayOfKeyValueOfstringstring_QNAME, ArrayOfKeyValueOfstringstring.class, null, value);
     }
 
     /**

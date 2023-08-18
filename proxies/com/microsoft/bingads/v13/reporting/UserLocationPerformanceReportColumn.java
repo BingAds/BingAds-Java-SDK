@@ -79,6 +79,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Neighborhood"/>
  *     <enumeration value="QueryIntentNeighborhood"/>
  *     <enumeration value="ViewThroughRevenue"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -219,7 +222,13 @@ public enum UserLocationPerformanceReportColumn {
     @XmlEnumValue("QueryIntentNeighborhood")
     QUERY_INTENT_NEIGHBORHOOD("QueryIntentNeighborhood"),
     @XmlEnumValue("ViewThroughRevenue")
-    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName");
     private final String value;
 
     UserLocationPerformanceReportColumn(String v) {

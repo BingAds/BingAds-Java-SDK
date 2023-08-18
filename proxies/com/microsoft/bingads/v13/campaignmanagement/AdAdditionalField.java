@@ -7,7 +7,8 @@ public enum AdAdditionalField {
 
     IMPRESSION_TRACKING_URLS("ImpressionTrackingUrls"),
     VIDEOS("Videos"),
-    LONG_HEADLINES("LongHeadlines");
+    LONG_HEADLINES("LongHeadlines"),
+    IMAGE_TARGET_DIMENSION("ImageTargetDimension");
         
     private final String value;
 

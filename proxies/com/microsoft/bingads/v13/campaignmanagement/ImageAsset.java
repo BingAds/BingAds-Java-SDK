@@ -22,6 +22,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="CropX" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CropY" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="TargetHeight" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="TargetWidth" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -36,7 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
     "cropWidth",
     "cropX",
     "cropY",
-    "subType"
+    "subType",
+    "targetHeight",
+    "targetWidth"
 })
 public class ImageAsset
     extends Asset
@@ -52,6 +56,10 @@ public class ImageAsset
     protected Integer cropY;
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;
+    @XmlElement(name = "TargetHeight", nillable = true)
+    protected Integer targetHeight;
+    @XmlElement(name = "TargetWidth", nillable = true)
+    protected Integer targetWidth;
 
     /**
      * Gets the value of the cropHeight property.
@@ -171,6 +179,54 @@ public class ImageAsset
      */
     public void setSubType(String value) {
         this.subType = value;
+    }
+
+    /**
+     * Gets the value of the targetHeight property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getTargetHeight() {
+        return targetHeight;
+    }
+
+    /**
+     * Sets the value of the targetHeight property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setTargetHeight(Integer value) {
+        this.targetHeight = value;
+    }
+
+    /**
+     * Gets the value of the targetWidth property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getTargetWidth() {
+        return targetWidth;
+    }
+
+    /**
+     * Sets the value of the targetWidth property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setTargetWidth(Integer value) {
+        this.targetWidth = value;
     }
 
 }

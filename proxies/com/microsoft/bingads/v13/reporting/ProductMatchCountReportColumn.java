@@ -28,6 +28,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MatchedProductsAtCampaign"/>
  *     <enumeration value="MatchedProductsAtAdGroup"/>
  *     <enumeration value="MatchedProductsAtProductGroup"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -66,7 +69,13 @@ public enum ProductMatchCountReportColumn {
     @XmlEnumValue("MatchedProductsAtAdGroup")
     MATCHED_PRODUCTS_AT_AD_GROUP("MatchedProductsAtAdGroup"),
     @XmlEnumValue("MatchedProductsAtProductGroup")
-    MATCHED_PRODUCTS_AT_PRODUCT_GROUP("MatchedProductsAtProductGroup");
+    MATCHED_PRODUCTS_AT_PRODUCT_GROUP("MatchedProductsAtProductGroup"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName");
     private final String value;
 
     ProductMatchCountReportColumn(String v) {

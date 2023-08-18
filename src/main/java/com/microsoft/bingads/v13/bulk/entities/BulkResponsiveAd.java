@@ -11,10 +11,13 @@ import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.AdType;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfstring;
 import com.microsoft.bingads.v13.campaignmanagement.CallToAction;
 import com.microsoft.bingads.v13.campaignmanagement.LanguageName;
 import com.microsoft.bingads.v13.campaignmanagement.ResponsiveAd;
+import com.microsoft.bingads.v13.campaignmanagement.Setting;
+import com.microsoft.bingads.v13.campaignmanagement.VerifiedTrackingSetting;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
@@ -240,6 +243,32 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                     @Override
                     public void accept(String v, BulkResponsiveAd c) {
                         c.getAd().setVideos(StringExtensions.parseVideoAssetLinks(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkResponsiveAd, String>(StringTable.VerifiedTrackingDatas,
+                new Function<BulkResponsiveAd, String>() {
+                    @Override
+                    public String apply(BulkResponsiveAd c) {
+
+                    	VerifiedTrackingSetting setting = c.getResponsiveAd().getVerifiedTrackingSettings();
+                        return setting == null? null : StringExtensions.toVerifiedTrackingSettingBulkString(setting.getDetails(), c.getResponsiveAd().getId());
+                    }
+                },
+                new BiConsumer<String, BulkResponsiveAd>() {
+                    @Override
+                    public void accept(String v, BulkResponsiveAd c) {
+                    	if (v != null & !v.isEmpty()) {
+                    		c.getResponsiveAd().setVerifiedTrackingSettings(new VerifiedTrackingSetting());
+                    		c.getResponsiveAd().getVerifiedTrackingSettings().setDetails(StringExtensions.parseOptional(v, new Function<String, ArrayOfArrayOfKeyValuePairOfstringstring>() {
+                                @Override
+                                public ArrayOfArrayOfKeyValuePairOfstringstring apply(String s) {
+                                	return StringExtensions.parseVerifiedTrackingSetting(s);
+                                }
+                            }));	
+                    	}
+                        
                     }
                 }
         ));

@@ -65,6 +65,8 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     
     private String budgetName;
     private String BidStrategyName;
+    private String DestinationChannel;
+    private Boolean IsMultiChannelCampaign;
     private static final List<BulkMapping<BulkCampaign>> MAPPINGS;
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
@@ -472,7 +474,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         }
 
                         Setting setting = c.getCampaignSetting(VerifiedTrackingSetting.class, false);
-                        return setting == null? null : StringExtensions.toVerifiedTrackingSettingBulkString(((VerifiedTrackingSetting)setting).getDetails());
+                        return setting == null? null : StringExtensions.toVerifiedTrackingSettingBulkString(((VerifiedTrackingSetting)setting).getDetails(), c.getCampaign().getId());
                     }
                 },
                 new BiConsumer<String, BulkCampaign>() {
@@ -1120,6 +1122,36 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.DestinationChannel,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getDestinationChannel();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.setDestinationChannel(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.IsMultiChannelCampaign,
+                new Function<BulkCampaign, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkCampaign t) {
+                        return t.getIsMultiChannelCampaign();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.setIsMultiChannelCampaign(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
@@ -1194,6 +1226,22 @@ public class BulkCampaign extends SingleRecordBulkEntity {
      * */
     public void setBidStrategyName(String bidStrategyName) {
         BidStrategyName = bidStrategyName;
+    }
+    
+    public String getDestinationChannel() {
+    	return DestinationChannel;
+    }
+    
+    public void setDestinationChannel(String destinationChannel) {
+    	DestinationChannel = destinationChannel;
+    }
+    
+    public Boolean getIsMultiChannelCampaign() {
+    	return IsMultiChannelCampaign;
+    }
+    
+    public void setIsMultiChannelCampaign(Boolean isMultiChannelCampaign) {
+    	IsMultiChannelCampaign = isMultiChannelCampaign;
     }
 
     @Override

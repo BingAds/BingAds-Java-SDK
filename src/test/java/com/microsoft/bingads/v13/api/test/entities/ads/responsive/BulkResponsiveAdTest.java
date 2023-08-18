@@ -6,6 +6,8 @@ import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 import com.microsoft.bingads.v13.api.test.entities.BulkEntityTest;
+import com.microsoft.bingads.v13.api.test.entities.EqualityComparerWithDescription;
+import com.microsoft.bingads.v13.bulk.entities.BulkCampaign;
 import com.microsoft.bingads.v13.bulk.entities.BulkResponsiveAd;
 import com.microsoft.bingads.v13.campaignmanagement.ResponsiveAd;
 
@@ -46,5 +48,25 @@ public abstract class BulkResponsiveAdTest extends BulkEntityTest<BulkResponsive
                 return new BulkResponsiveAd();
             }
         });
+    }
+    
+    protected <TProperty> void testReadProperty(
+            Map<String, String> rowValues,
+            TProperty expectedResult,
+            Function<BulkResponsiveAd, TProperty> actualValueFunc,
+            EqualityComparerWithDescription<TProperty> comparer
+    ) {
+        testReadProperty(
+                rowValues,
+                expectedResult,
+                actualValueFunc,
+                new Supplier<BulkResponsiveAd>() {
+                    @Override
+                    public BulkResponsiveAd get() {
+                        return new BulkResponsiveAd();
+                    }
+                },
+                comparer
+        );
     }
 }
