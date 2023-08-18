@@ -16,6 +16,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Active"/>
  *     <enumeration value="Paused"/>
  *     <enumeration value="Deleted"/>
+ *     <enumeration value="Expired"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -30,7 +31,9 @@ public enum AssetGroupStatus {
     @XmlEnumValue("Paused")
     PAUSED("Paused"),
     @XmlEnumValue("Deleted")
-    DELETED("Deleted");
+    DELETED("Deleted"),
+    @XmlEnumValue("Expired")
+    EXPIRED("Expired");
     private final String value;
 
     AssetGroupStatus(String v) {

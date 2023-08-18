@@ -42,10 +42,10 @@ public class SearchCampaignChangeHistoryReportFilter {
     @XmlJavaTypeAdapter(Adapter3 .class)
     protected Collection<AdDistributionReportFilter> adDistribution;
     @XmlElement(name = "HowChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<ChangeTypeReportFilter> howChanged;
     @XmlElement(name = "ItemChanged", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<ChangeEntityReportFilter> itemChanged;
 
     /**

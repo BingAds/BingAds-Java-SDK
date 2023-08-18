@@ -2,7 +2,7 @@ package com.microsoft.bingads.internal;
 
 import com.microsoft.bingads.ApiEnvironment;
 
-class ServiceInfo {
+public class ServiceInfo {
     
     private String productionUrl;
     

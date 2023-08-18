@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="SendToDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="IsRedeemed" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="RedemptionInfo" type="{https://bingads.microsoft.com/Customer/v13/Entities}CouponRedemption" minOccurs="0"/>
+ *         <element name="ClaimInfo" type="{https://bingads.microsoft.com/Customer/v13/Entities}CouponClaimInfo" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -59,7 +60,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "sendToEmail",
     "sendToDate",
     "isRedeemed",
-    "redemptionInfo"
+    "redemptionInfo",
+    "claimInfo"
 })
 public class Coupon {
 
@@ -101,6 +103,8 @@ public class Coupon {
     protected Boolean isRedeemed;
     @XmlElement(name = "RedemptionInfo", nillable = true)
     protected CouponRedemption redemptionInfo;
+    @XmlElement(name = "ClaimInfo", nillable = true)
+    protected CouponClaimInfo claimInfo;
 
     /**
      * Gets the value of the couponCode property.
@@ -460,6 +464,30 @@ public class Coupon {
      */
     public void setRedemptionInfo(CouponRedemption value) {
         this.redemptionInfo = value;
+    }
+
+    /**
+     * Gets the value of the claimInfo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CouponClaimInfo }
+     *     
+     */
+    public CouponClaimInfo getClaimInfo() {
+        return claimInfo;
+    }
+
+    /**
+     * Sets the value of the claimInfo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CouponClaimInfo }
+     *     
+     */
+    public void setClaimInfo(CouponClaimInfo value) {
+        this.claimInfo = value;
     }
 
 }

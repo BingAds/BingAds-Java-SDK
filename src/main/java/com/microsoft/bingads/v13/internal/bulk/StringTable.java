@@ -137,6 +137,7 @@ public class StringTable {
     public static final String DynamicDescriptionEnabled = "Dynamic Description Enabled";
     
     public static final String VerifiedTrackingData = "Verified Tracking Setting";
+    public static final String VerifiedTrackingDatas = "Verified Tracking Settings";
     
     public static final String CpvBid = "Cpv Bid";
     public static final String CpmBid = "Cpm Bid";
@@ -643,6 +644,7 @@ public class StringTable {
     public static final String AdGroupNegativeGenderCriterion = "Ad Group Negative Gender Criterion";
     public static final String AdGroupNegativeIndustryCriterion = "Ad Group Negative Industry Criterion";
     public static final String AdGroupNegativeJobFunctionCriterion = "Ad Group Negative Job Function Criterion";
+    public static final String AdGroupGenreCriterion = "Ad Group Genre Criterion";
 
     // Campaign Criterion
     public static final String CampaignAgeCriterion = "Campaign Age Criterion";
@@ -656,6 +658,7 @@ public class StringTable {
     public static final String CampaignLocationCriterion = "Campaign Location Criterion";
     public static final String CampaignLocationIntentCriterion = "Campaign Location Intent Criterion";
     public static final String CampaignNegativeLocationCriterion = "Campaign Negative Location Criterion";
+    public static final String CampaignDealCriterion = "Campaign Deal Criterion";
 
     // Label
     public static final String ColorCode = "Color";
@@ -745,6 +748,10 @@ public class StringTable {
     public static final String AgeRanges = "Age Ranges";
     public static final String GenderTypes = "Gender Types";
     public static final String ParentListingGroupId = "Parent Listing Group Id";
+    
+    // MultiChannel Campaign
+    public static final String DestinationChannel = "Destination Channel";
+    public static final String IsMultiChannelCampaign = "Is Multi Channel Campaign";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

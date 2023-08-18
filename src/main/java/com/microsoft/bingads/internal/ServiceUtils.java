@@ -1,9 +1,14 @@
 package com.microsoft.bingads.internal;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Map;
 import java.util.Properties;
+
 
 import jakarta.xml.ws.Response;
 
@@ -70,6 +75,59 @@ public class ServiceUtils {
                 }
             } catch (IOException ex) {
                 throw new InternalException(ex);
+            }
+        }
+    }
+    
+    public static String getServiceUrlFromConfig(Class serviceInterface) {
+    	InputStream input = null;
+        try {
+            File file = new File(ServiceUtils.getPropertyFile());
+            if (!file.exists()) {
+                return null;
+            }
+            input = new FileInputStream(file);
+            Properties props = new Properties();
+            props.load(input);
+            return props.getProperty(serviceInterface.getCanonicalName() + ".url");
+        } catch (IOException ex) {
+            // Ignore. In this case we will load service Url from endpoints.
+            return null;
+        } finally {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+            } catch (IOException ex) {
+            	System.out.println(ex);
+            }
+        }
+    }
+    
+    public static boolean getFallbackFlag() {
+    	InputStream input = null;
+    	try {
+            File file = new File(ServiceUtils.getPropertyFile());
+            if (!file.exists()) {
+                return true;
+            }
+            input = new FileInputStream(file);
+            Properties props = new Properties();
+            props.load(input);
+            if (props.getProperty("EnableFallbackToSoap") == null) {
+            	return true;
+            }
+            return Boolean.valueOf(props.getProperty("EnableFallbackToSoap"));
+        } catch (IOException ex) {
+            // Ignore. In this case we will load service Url from endpoints.
+            return true;
+        } finally {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+            } catch (IOException ex) {
+            	System.out.println(ex);
             }
         }
     }

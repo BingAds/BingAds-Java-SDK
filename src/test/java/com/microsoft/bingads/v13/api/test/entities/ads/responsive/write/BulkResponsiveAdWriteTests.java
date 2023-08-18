@@ -16,6 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkResponsiveAdWriteFromRowValuesImageTest.class,
     BulkResponsiveAdWriteFromRowValuesVideoTest.class,
     BulkResponsiveAdWriteFromRowValuesLongHeadlinesTest.class,
+    BulkResponsiveAdWriteFromRowValuesVerifiedTrackingDatasTest.class,
     })
 public class BulkResponsiveAdWriteTests {
 

@@ -37,7 +37,7 @@ public class HotelSetting
 {
 
     @XmlElement(name = "HotelAdGroupType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<HotelAdGroupType> hotelAdGroupType;
 
     /**

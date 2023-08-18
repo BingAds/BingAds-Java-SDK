@@ -36,6 +36,7 @@ public class CsvHeaders {
             StringTable.FeedId,
             StringTable.DynamicDescriptionEnabled,
             StringTable.VerifiedTrackingData,
+            StringTable.VerifiedTrackingDatas,
 
             // Ad Group
             StringTable.StartDate,
@@ -474,6 +475,10 @@ public class CsvHeaders {
             StringTable.CampaignNegativeWebpage,
             StringTable.AssetGroupListingGroup,
             StringTable.AudienceGroupAssetGroupAssociation,
+            
+            // MultiChannel Campaign
+            StringTable.DestinationChannel,
+            StringTable.IsMultiChannelCampaign,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

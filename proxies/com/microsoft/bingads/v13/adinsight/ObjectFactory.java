@@ -203,6 +203,7 @@ public class ObjectFactory {
     private static final QName _SuggestedResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SuggestedResponsiveSearchAd");
     private static final QName _ArrayOfRecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRecommendationInfo");
     private static final QName _RecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RecommendationInfo");
+    private static final QName _RSARecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RSARecommendationInfo");
     private static final QName _ArrayOfTextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfTextAssetSuggestions");
     private static final QName _TextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "TextAssetSuggestions");
     private static final QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
@@ -232,7 +233,6 @@ public class ObjectFactory {
     private static final QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
-    private static final QName _RSARecommendationInfo_QNAME = new QName("http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V13.Entity", "RSARecommendationInfo");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.microsoft.bingads.v13.adinsight
@@ -2362,6 +2362,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RSARecommendationInfo }
+     * 
+     * @return
+     *     the new instance of {@link RSARecommendationInfo }
+     */
+    public RSARecommendationInfo createRSARecommendationInfo() {
+        return new RSARecommendationInfo();
+    }
+
+    /**
      * Create an instance of {@link TagRecommendationsResponse }
      * 
      * @return
@@ -2479,16 +2489,6 @@ public class ObjectFactory {
      */
     public Guid createGuid() {
         return new Guid();
-    }
-
-    /**
-     * Create an instance of {@link RSARecommendationInfo }
-     * 
-     * @return
-     *     the new instance of {@link RSARecommendationInfo }
-     */
-    public RSARecommendationInfo createRSARecommendationInfo() {
-        return new RSARecommendationInfo();
     }
 
     /**
@@ -4770,6 +4770,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RSARecommendationInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RSARecommendationInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RSARecommendationInfo")
+    public JAXBElement<RSARecommendationInfo> createRSARecommendationInfo(RSARecommendationInfo value) {
+        return new JAXBElement<>(_RSARecommendationInfo_QNAME, RSARecommendationInfo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTextAssetSuggestions }{@code >}
      * 
      * @param value
@@ -5145,19 +5158,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfstring")
     public JAXBElement<ArrayOfstring> createArrayOfstring(ArrayOfstring value) {
         return new JAXBElement<>(_ArrayOfstring_QNAME, ArrayOfstring.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RSARecommendationInfo }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link RSARecommendationInfo }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Microsoft.BingAds.Advertiser.AdInsight.Api.DataContract.V13.Entity", name = "RSARecommendationInfo")
-    public JAXBElement<RSARecommendationInfo> createRSARecommendationInfo(RSARecommendationInfo value) {
-        return new JAXBElement<>(_RSARecommendationInfo_QNAME, RSARecommendationInfo.class, null, value);
     }
 
 }
