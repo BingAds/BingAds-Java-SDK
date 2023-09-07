@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 import jakarta.xml.bind.JAXBElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -192,8 +193,12 @@ public class StringExtensions {
         return value.toString();
     }
  
-    public static String toVerifiedTrackingSettingBulkString(ArrayOfArrayOfKeyValuePairOfstringstring verifiedTrackingSetting)
+    public static String toVerifiedTrackingSettingBulkString(ArrayOfArrayOfKeyValuePairOfstringstring verifiedTrackingSetting, Long id)
     {
+    	if (verifiedTrackingSetting == null) {
+    		return id != null && id > 0 ? StringTable.DeleteValue : null;
+    	}
+    	
     	StringBuilder sb = new StringBuilder(256);
     	sb.append('[');
     	for (ArrayOfKeyValuePairOfstringstring settingArr : verifiedTrackingSetting.getArrayOfKeyValuePairOfstringstrings()) {
@@ -1974,6 +1979,7 @@ public class StringExtensions {
         return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
     }
     
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private static class ImageAssetLinkContract
     {
         // The Asset Id
@@ -2005,8 +2011,15 @@ public class StringExtensions {
 
         // The Asset Name is reserved for future use.
         public String name;
+        
+        // The Asset Target Width
+        public int targetWidth;
+        
+        // The Asset Target Height
+        public int targetHeight;
     }
     
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private static class TextAssetLinkContract {
 
         // The Asset Id
@@ -2034,6 +2047,7 @@ public class StringExtensions {
         public String name;
     }
     
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private static class VideoAssetLinkContract
     {
         // The Asset Id
@@ -2089,6 +2103,8 @@ public class StringExtensions {
             contract.name = asset.getName();
             contract.pinnedField = assetLink.getPinnedField();
             contract.subType = asset.getSubType();
+            contract.targetWidth = asset.getTargetWidth();
+            contract.targetHeight = asset.getTargetHeight();
             
             imageAssetLinkContracts.add(contract);
         }
@@ -2129,6 +2145,8 @@ public class StringExtensions {
                 asset.setCropY(contract.cropY);
                 asset.setSubType(contract.subType);
                 asset.setType("ImageAsset");
+                asset.setTargetWidth(contract.targetWidth);
+                asset.setTargetHeight(contract.targetHeight);
                 assetLink.setAsset(asset);
                 assetLinks.getAssetLinks().add(assetLink);
             }

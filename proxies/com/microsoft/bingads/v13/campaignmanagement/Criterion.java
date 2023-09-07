@@ -50,7 +50,9 @@ import jakarta.xml.bind.annotation.XmlType;
     LocationIntentCriterion.class,
     AudienceCriterion.class,
     ProfileCriterion.class,
-    StoreCriterion.class
+    StoreCriterion.class,
+    DealCriterion.class,
+    GenreCriterion.class
 })
 public class Criterion {
 

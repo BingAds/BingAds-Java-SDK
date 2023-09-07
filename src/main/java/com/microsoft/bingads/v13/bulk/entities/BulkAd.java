@@ -38,6 +38,8 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
     private String campaignName;
 
     private String adGroupName;
+    
+    private String editorialAppealStatus;
 
     protected T ad;
 
@@ -152,6 +154,21 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                                 return AdEditorialStatus.fromValue(value);
                             }
                         }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkAd, String>(StringTable.EditorialAppealStatus,
+                new Function<BulkAd, String>() {
+                    @Override
+                    public String apply(BulkAd c) {
+                        return c.getEditorialAppealStatus();
+                    }
+                },
+                new BiConsumer<String, BulkAd>() {
+                    @Override
+                    public void accept(String v, BulkAd c) {
+                        c.setEditorialAppealStatus(v);
                     }
                 }
         ));
@@ -367,6 +384,14 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
      */
     public void setAdGroupName(String adGroupName) {
         this.adGroupName = adGroupName;
+    }
+    
+    public String getEditorialAppealStatus() {
+        return editorialAppealStatus;
+    }
+    
+    public void setEditorialAppealStatus(String editorialAppealStatus) {
+    	this.editorialAppealStatus = editorialAppealStatus;
     }
 
 }

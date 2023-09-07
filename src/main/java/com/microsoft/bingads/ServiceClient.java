@@ -1,22 +1,33 @@
 package com.microsoft.bingads;
 
-import com.microsoft.bingads.internal.HeaderHandler;
-import com.microsoft.bingads.internal.MessageHandler;
-import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import com.microsoft.bingads.internal.ServiceFactory;
-import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.ServiceUtils;
-
 import java.util.logging.Logger;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.HashMap;
 import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import jakarta.jws.WebService;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.handler.Handler;
 import jakarta.xml.ws.handler.HandlerResolver;
 import jakarta.xml.ws.handler.PortInfo;
+
+import com.microsoft.bingads.internal.HeaderHandler;
+import com.microsoft.bingads.internal.MessageHandler;
+import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
+import com.microsoft.bingads.internal.ServiceFactory;
+import com.microsoft.bingads.internal.ServiceFactoryFactory;
+import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.v13.bulk.IBulkService;
+import com.microsoft.bingads.v13.campaignmanagement.ApiFaultDetail_Exception;
+import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
+import com.microsoft.bingads.v13.customerbilling.ICustomerBillingService;
+import com.microsoft.bingads.v13.customermanagement.ICustomerManagementService;
+import com.microsoft.bingads.v13.reporting.IReportingService;
 
 /**
  * Provides an interface for calling the methods of the specified Bing Ads service.
@@ -44,6 +55,7 @@ public class ServiceClient<T> {
     private final Service service;
     private final ServiceFactory serviceFactory;
     private ApiEnvironment environment;
+    //private RestfulServiceClient restService;
 
     /**
      * Gets the Bing Ads API environment.
@@ -66,7 +78,11 @@ public class ServiceClient<T> {
      * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
-        this(authorizationData, null, serviceInterface);
+        this(authorizationData, null, serviceInterface, true);
+    }
+    
+    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
+    	this(authorizationData, environment, serviceInterface, true);
     }
 
     /**
@@ -76,7 +92,7 @@ public class ServiceClient<T> {
      * @param environment Bing Ads API environment
      * @param serviceInterface the Bing Ads service interface that should be called
      */
-    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
+    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface, boolean enableRestApi) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
         
@@ -141,7 +157,7 @@ public class ServiceClient<T> {
         });
 
         T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
-
+        
         return port;
     }
 

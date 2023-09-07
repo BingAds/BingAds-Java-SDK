@@ -17,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AdGroup"/>
  *     <enumeration value="Ad"/>
  *     <enumeration value="Keyword"/>
+ *     <enumeration value="AssetGroup"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -33,7 +34,9 @@ public enum EntityType {
     @XmlEnumValue("Ad")
     AD("Ad"),
     @XmlEnumValue("Keyword")
-    KEYWORD("Keyword");
+    KEYWORD("Keyword"),
+    @XmlEnumValue("AssetGroup")
+    ASSET_GROUP("AssetGroup");
     private final String value;
 
     EntityType(String v) {

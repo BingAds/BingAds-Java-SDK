@@ -30,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="LongHeadlineString" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="LongHeadlines" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         <element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="VerifiedTrackingSettings" type="{https://bingads.microsoft.com/CampaignManagement/v13}VerifiedTrackingSetting" minOccurs="0"/>
  *         <element name="Videos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -53,6 +54,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "longHeadlineString",
     "longHeadlines",
     "text",
+    "verifiedTrackingSettings",
     "videos"
 })
 public class ResponsiveAd
@@ -85,6 +87,8 @@ public class ResponsiveAd
     protected ArrayOfAssetLink longHeadlines;
     @XmlElement(name = "Text", nillable = true)
     protected String text;
+    @XmlElement(name = "VerifiedTrackingSettings", nillable = true)
+    protected VerifiedTrackingSetting verifiedTrackingSettings;
     @XmlElement(name = "Videos", nillable = true)
     protected ArrayOfAssetLink videos;
 
@@ -374,6 +378,30 @@ public class ResponsiveAd
      */
     public void setText(String value) {
         this.text = value;
+    }
+
+    /**
+     * Gets the value of the verifiedTrackingSettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VerifiedTrackingSetting }
+     *     
+     */
+    public VerifiedTrackingSetting getVerifiedTrackingSettings() {
+        return verifiedTrackingSettings;
+    }
+
+    /**
+     * Sets the value of the verifiedTrackingSettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VerifiedTrackingSetting }
+     *     
+     */
+    public void setVerifiedTrackingSettings(VerifiedTrackingSetting value) {
+        this.verifiedTrackingSettings = value;
     }
 
     /**

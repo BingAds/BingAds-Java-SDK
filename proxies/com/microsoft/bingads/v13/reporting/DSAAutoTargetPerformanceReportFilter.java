@@ -57,7 +57,7 @@ public class DSAAutoTargetPerformanceReportFilter {
     @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
     @XmlElement(name = "DynamicAdTargetStatus", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     protected Collection<DynamicAdTargetStatusReportFilter> dynamicAdTargetStatus;
     @XmlElement(name = "Language", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter11 .class)

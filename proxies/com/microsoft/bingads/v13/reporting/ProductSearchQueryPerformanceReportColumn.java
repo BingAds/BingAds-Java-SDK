@@ -66,6 +66,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="AssistedConversionsQualified"/>
  *     <enumeration value="AllConversionsQualified"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -180,7 +183,13 @@ public enum ProductSearchQueryPerformanceReportColumn {
     @XmlEnumValue("AssistedConversionsQualified")
     ASSISTED_CONVERSIONS_QUALIFIED("AssistedConversionsQualified"),
     @XmlEnumValue("AllConversionsQualified")
-    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified");
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName");
     private final String value;
 
     ProductSearchQueryPerformanceReportColumn(String v) {

@@ -96,6 +96,12 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="TotalWatchTimeInMS"/>
  *     <enumeration value="AverageWatchTimePerVideoView"/>
  *     <enumeration value="AverageWatchTimePerImpression"/>
+ *     <enumeration value="Sales"/>
+ *     <enumeration value="CostPerSale"/>
+ *     <enumeration value="RevenuePerSale"/>
+ *     <enumeration value="Installs"/>
+ *     <enumeration value="CostPerInstall"/>
+ *     <enumeration value="RevenuePerInstall"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -270,7 +276,19 @@ public enum AccountPerformanceReportColumn {
     @XmlEnumValue("AverageWatchTimePerVideoView")
     AVERAGE_WATCH_TIME_PER_VIDEO_VIEW("AverageWatchTimePerVideoView"),
     @XmlEnumValue("AverageWatchTimePerImpression")
-    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression");
+    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression"),
+    @XmlEnumValue("Sales")
+    SALES("Sales"),
+    @XmlEnumValue("CostPerSale")
+    COST_PER_SALE("CostPerSale"),
+    @XmlEnumValue("RevenuePerSale")
+    REVENUE_PER_SALE("RevenuePerSale"),
+    @XmlEnumValue("Installs")
+    INSTALLS("Installs"),
+    @XmlEnumValue("CostPerInstall")
+    COST_PER_INSTALL("CostPerInstall"),
+    @XmlEnumValue("RevenuePerInstall")
+    REVENUE_PER_INSTALL("RevenuePerInstall");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

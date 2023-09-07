@@ -397,4 +397,86 @@ public interface ICustomerBillingService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.CheckFeatureAdoptionCouponEligibilityResponse>
+     */
+    @WebMethod(operationName = "CheckFeatureAdoptionCouponEligibility", action = "CheckFeatureAdoptionCouponEligibility")
+    public Response<CheckFeatureAdoptionCouponEligibilityResponse> checkFeatureAdoptionCouponEligibilityAsync(
+        @WebParam(name = "CheckFeatureAdoptionCouponEligibilityRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        CheckFeatureAdoptionCouponEligibilityRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "CheckFeatureAdoptionCouponEligibility", action = "CheckFeatureAdoptionCouponEligibility")
+    public Future<?> checkFeatureAdoptionCouponEligibilityAsync(
+        @WebParam(name = "CheckFeatureAdoptionCouponEligibilityRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        CheckFeatureAdoptionCouponEligibilityRequest parameters,
+        @WebParam(name = "CheckFeatureAdoptionCouponEligibilityResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<CheckFeatureAdoptionCouponEligibilityResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.CheckFeatureAdoptionCouponEligibilityResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "CheckFeatureAdoptionCouponEligibility", action = "CheckFeatureAdoptionCouponEligibility")
+    @WebResult(name = "CheckFeatureAdoptionCouponEligibilityResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public CheckFeatureAdoptionCouponEligibilityResponse checkFeatureAdoptionCouponEligibility(
+        @WebParam(name = "CheckFeatureAdoptionCouponEligibilityRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        CheckFeatureAdoptionCouponEligibilityRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.ClaimFeatureAdoptionCouponsResponse>
+     */
+    @WebMethod(operationName = "ClaimFeatureAdoptionCoupons", action = "ClaimFeatureAdoptionCoupons")
+    public Response<ClaimFeatureAdoptionCouponsResponse> claimFeatureAdoptionCouponsAsync(
+        @WebParam(name = "ClaimFeatureAdoptionCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        ClaimFeatureAdoptionCouponsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "ClaimFeatureAdoptionCoupons", action = "ClaimFeatureAdoptionCoupons")
+    public Future<?> claimFeatureAdoptionCouponsAsync(
+        @WebParam(name = "ClaimFeatureAdoptionCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        ClaimFeatureAdoptionCouponsRequest parameters,
+        @WebParam(name = "ClaimFeatureAdoptionCouponsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<ClaimFeatureAdoptionCouponsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.ClaimFeatureAdoptionCouponsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "ClaimFeatureAdoptionCoupons", action = "ClaimFeatureAdoptionCoupons")
+    @WebResult(name = "ClaimFeatureAdoptionCouponsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public ClaimFeatureAdoptionCouponsResponse claimFeatureAdoptionCoupons(
+        @WebParam(name = "ClaimFeatureAdoptionCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        ClaimFeatureAdoptionCouponsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

@@ -3966,6 +3966,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetAssetGroupsEditorialReasonsResponse>
+     */
+    @WebMethod(operationName = "GetAssetGroupsEditorialReasons", action = "GetAssetGroupsEditorialReasons")
+    public Response<GetAssetGroupsEditorialReasonsResponse> getAssetGroupsEditorialReasonsAsync(
+        @WebParam(name = "GetAssetGroupsEditorialReasonsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAssetGroupsEditorialReasonsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAssetGroupsEditorialReasons", action = "GetAssetGroupsEditorialReasons")
+    public Future<?> getAssetGroupsEditorialReasonsAsync(
+        @WebParam(name = "GetAssetGroupsEditorialReasonsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAssetGroupsEditorialReasonsRequest parameters,
+        @WebParam(name = "GetAssetGroupsEditorialReasonsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAssetGroupsEditorialReasonsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetAssetGroupsEditorialReasonsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetAssetGroupsEditorialReasons", action = "GetAssetGroupsEditorialReasons")
+    @WebResult(name = "GetAssetGroupsEditorialReasonsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetAssetGroupsEditorialReasonsResponse getAssetGroupsEditorialReasons(
+        @WebParam(name = "GetAssetGroupsEditorialReasonsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAssetGroupsEditorialReasonsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.SetAudienceGroupAssetGroupAssociationsResponse>
      */
     @WebMethod(operationName = "SetAudienceGroupAssetGroupAssociations", action = "SetAudienceGroupAssetGroupAssociations")
@@ -4287,6 +4328,47 @@ public interface ICampaignManagementService {
     public GetAudiencesByIdsResponse getAudiencesByIds(
         @WebParam(name = "GetAudiencesByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         GetAudiencesByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.ApplyCustomerListItemsResponse>
+     */
+    @WebMethod(operationName = "ApplyCustomerListItems", action = "ApplyCustomerListItems")
+    public Response<ApplyCustomerListItemsResponse> applyCustomerListItemsAsync(
+        @WebParam(name = "ApplyCustomerListItemsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListItemsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "ApplyCustomerListItems", action = "ApplyCustomerListItems")
+    public Future<?> applyCustomerListItemsAsync(
+        @WebParam(name = "ApplyCustomerListItemsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListItemsRequest parameters,
+        @WebParam(name = "ApplyCustomerListItemsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<ApplyCustomerListItemsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.ApplyCustomerListItemsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "ApplyCustomerListItems", action = "ApplyCustomerListItems")
+    @WebResult(name = "ApplyCustomerListItemsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public ApplyCustomerListItemsResponse applyCustomerListItems(
+        @WebParam(name = "ApplyCustomerListItemsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListItemsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

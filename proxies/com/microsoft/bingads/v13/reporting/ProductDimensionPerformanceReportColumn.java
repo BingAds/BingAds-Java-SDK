@@ -103,6 +103,16 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MPN"/>
  *     <enumeration value="ViewThroughRevenue"/>
  *     <enumeration value="GoalId"/>
+ *     <enumeration value="Sales"/>
+ *     <enumeration value="CostPerSale"/>
+ *     <enumeration value="RevenuePerSale"/>
+ *     <enumeration value="Installs"/>
+ *     <enumeration value="CostPerInstall"/>
+ *     <enumeration value="RevenuePerInstall"/>
+ *     <enumeration value="CampaignType"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
+ *     <enumeration value="AssetGroupStatus"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -289,7 +299,27 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("ViewThroughRevenue")
     VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("Sales")
+    SALES("Sales"),
+    @XmlEnumValue("CostPerSale")
+    COST_PER_SALE("CostPerSale"),
+    @XmlEnumValue("RevenuePerSale")
+    REVENUE_PER_SALE("RevenuePerSale"),
+    @XmlEnumValue("Installs")
+    INSTALLS("Installs"),
+    @XmlEnumValue("CostPerInstall")
+    COST_PER_INSTALL("CostPerInstall"),
+    @XmlEnumValue("RevenuePerInstall")
+    REVENUE_PER_INSTALL("RevenuePerInstall"),
+    @XmlEnumValue("CampaignType")
+    CAMPAIGN_TYPE("CampaignType"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName"),
+    @XmlEnumValue("AssetGroupStatus")
+    ASSET_GROUP_STATUS("AssetGroupStatus");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {
