@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfEditorialError complex type.
@@ -36,6 +36,15 @@ public class ArrayOfEditorialError {
 
     @XmlElement(name = "EditorialError", nillable = true)
     protected List<EditorialError> editorialErrors;
+    public ArrayOfEditorialError()
+    {
+      this.editorialErrors = new ArrayList<EditorialError>();
+    }
+    @JsonCreator
+    public ArrayOfEditorialError(List<EditorialError> editorialerrors)
+    {
+      this.editorialErrors = editorialerrors;
+    }
 
     /**
      * Gets the value of the editorialErrors property.

@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -36,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class UrlGoal
     extends ConversionGoal
 {
+    public UrlGoal() {
+      this.type = Collections.singletonList(ConversionGoalType.fromValue("Url"));
+    }
 
     @XmlElement(name = "UrlExpression", nillable = true)
     protected String urlExpression;

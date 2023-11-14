@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAssetGroupEditorialReasonCollection complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAssetGroupEditorialReasonCollection {
 
     @XmlElement(name = "AssetGroupEditorialReasonCollection", nillable = true)
     protected List<AssetGroupEditorialReasonCollection> assetGroupEditorialReasonCollections;
+    public ArrayOfAssetGroupEditorialReasonCollection()
+    {
+      this.assetGroupEditorialReasonCollections = new ArrayList<AssetGroupEditorialReasonCollection>();
+    }
+    @JsonCreator
+    public ArrayOfAssetGroupEditorialReasonCollection(List<AssetGroupEditorialReasonCollection> assetgroupeditorialreasoncollections)
+    {
+      this.assetGroupEditorialReasonCollections = assetgroupeditorialreasoncollections;
+    }
 
     /**
      * Gets the value of the assetGroupEditorialReasonCollections property.

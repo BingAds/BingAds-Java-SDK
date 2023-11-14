@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class HotelCheckInDateCriterion
     extends Criterion
 {
+    public HotelCheckInDateCriterion() {
+      this.type = "HotelCheckInDateCriterion";
+    }
 
     @XmlElement(name = "EndDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)

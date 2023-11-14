@@ -379,7 +379,7 @@ public class Audience {
      *     
      */
     public void setType(Collection<AudienceType> value) {
-        this.type = value;
+
     }
 
 }

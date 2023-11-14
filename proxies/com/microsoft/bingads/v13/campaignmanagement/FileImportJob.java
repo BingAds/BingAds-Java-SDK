@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FileImportJob
     extends ImportJob
 {
+    public FileImportJob() {
+      this.type = "FileImportJob";
+    }
 
     @XmlElement(name = "FileSource", required = true, nillable = true)
     protected String fileSource;

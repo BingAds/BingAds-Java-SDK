@@ -36,6 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PageVisitorsRule
     extends RemarketingRule
 {
+    public PageVisitorsRule() {
+      this.type = "PageVisitors";
+    }
 
     @XmlElement(name = "NormalForm", nillable = true)
     @XmlSchemaType(name = "string")

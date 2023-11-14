@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ReviewAdExtension
     extends AdExtension
 {
+    public ReviewAdExtension() {
+      this.type = "ReviewAdExtension";
+    }
 
     @XmlElement(name = "IsExact")
     protected Boolean isExact;

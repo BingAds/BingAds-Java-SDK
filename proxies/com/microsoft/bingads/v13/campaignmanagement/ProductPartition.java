@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductPartition
     extends Criterion
 {
+    public ProductPartition() {
+      this.type = "ProductPartition";
+    }
 
     @XmlElement(name = "Condition", nillable = true)
     protected ProductCondition condition;

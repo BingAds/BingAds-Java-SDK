@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAccountProperty complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAccountProperty {
 
     @XmlElement(name = "AccountProperty", nillable = true)
     protected List<AccountProperty> accountProperties;
+    public ArrayOfAccountProperty()
+    {
+      this.accountProperties = new ArrayList<AccountProperty>();
+    }
+    @JsonCreator
+    public ArrayOfAccountProperty(List<AccountProperty> accountpropertys)
+    {
+      this.accountProperties = accountpropertys;
+    }
 
     /**
      * Gets the value of the accountProperties property.

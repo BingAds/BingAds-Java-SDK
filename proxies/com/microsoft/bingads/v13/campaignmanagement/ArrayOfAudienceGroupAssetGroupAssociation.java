@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAudienceGroupAssetGroupAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAudienceGroupAssetGroupAssociation {
 
     @XmlElement(name = "AudienceGroupAssetGroupAssociation", nillable = true)
     protected List<AudienceGroupAssetGroupAssociation> audienceGroupAssetGroupAssociations;
+    public ArrayOfAudienceGroupAssetGroupAssociation()
+    {
+      this.audienceGroupAssetGroupAssociations = new ArrayList<AudienceGroupAssetGroupAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfAudienceGroupAssetGroupAssociation(List<AudienceGroupAssetGroupAssociation> audiencegroupassetgroupassociations)
+    {
+      this.audienceGroupAssetGroupAssociations = audiencegroupassetgroupassociations;
+    }
 
     /**
      * Gets the value of the audienceGroupAssetGroupAssociations property.

@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class TargetSetting
     extends Setting
 {
+    public TargetSetting() {
+      this.type = "TargetSetting";
+    }
 
     @XmlElement(name = "Details", nillable = true)
     protected ArrayOfTargetSettingDetail details;

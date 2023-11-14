@@ -47,6 +47,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ExpandedTextAd
     extends Ad
 {
+    public ExpandedTextAd() {
+      this.type = AdType.fromValue("ExpandedText");
+    }
 
     @XmlElement(name = "Domain", nillable = true)
     protected String domain;

@@ -1,5 +1,5 @@
 
-package com.microsoft.bingads.v13.customerbilling;
+package com.microsoft.bingads.v13.customermanagement;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -8,17 +8,17 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for KeyValuePairOflongstring complex type.
+ * <p>Java class for KeyValueEntityOfstringstring complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="KeyValuePairOflongstring">
+ * <complexType name="KeyValueEntityOfstringstring">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="key" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         <element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="Key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -28,29 +28,38 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "KeyValuePairOflongstring", namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", propOrder = {
+@XmlType(name = "KeyValueEntityOfstringstring", namespace = "https://bingads.microsoft.com/Customer/v13/Entities", propOrder = {
     "key",
     "value"
 })
-public class KeyValuePairOflongstring {
+public class KeyValueEntityOfstringstring {
 
-    protected long key;
-    @XmlElement(required = true, nillable = true)
+    @XmlElement(name = "Key", nillable = true)
+    protected String key;
+    @XmlElement(name = "Value", nillable = true)
     protected String value;
 
     /**
      * Gets the value of the key property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public long getKey() {
+    public String getKey() {
         return key;
     }
 
     /**
      * Sets the value of the key property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setKey(long value) {
+    public void setKey(String value) {
         this.key = value;
     }
 

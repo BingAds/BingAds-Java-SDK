@@ -70,7 +70,7 @@ public class Setting {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

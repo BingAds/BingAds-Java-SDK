@@ -444,7 +444,7 @@ public class ConversionGoal {
      *     
      */
     public void setType(Collection<ConversionGoalType> value) {
-        this.type = value;
+
     }
 
     /**

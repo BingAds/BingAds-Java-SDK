@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CashbackAdjustment
     extends CriterionCashback
 {
+    public CashbackAdjustment() {
+      this.type = "CashbackAdjustment";
+    }
 
     @XmlElement(name = "CashbackPercent", nillable = true)
     protected Double cashbackPercent;

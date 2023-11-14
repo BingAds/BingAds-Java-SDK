@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AppInstallAd
     extends Ad
 {
+    public AppInstallAd() {
+      this.type = AdType.fromValue("AppInstall");
+    }
 
     @XmlElement(name = "AppPlatform", nillable = true)
     protected String appPlatform;

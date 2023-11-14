@@ -60,7 +60,7 @@ public class CriterionCashback {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

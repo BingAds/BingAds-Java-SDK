@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DayTimeCriterion
     extends Criterion
 {
+    public DayTimeCriterion() {
+      this.type = "DayTimeCriterion";
+    }
 
     @XmlElement(name = "Day", nillable = true)
     @XmlSchemaType(name = "string")

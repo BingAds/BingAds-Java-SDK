@@ -383,7 +383,7 @@ public class Ad {
      *     
      */
     public void setType(AdType value) {
-        this.type = value;
+
     }
 
     /**

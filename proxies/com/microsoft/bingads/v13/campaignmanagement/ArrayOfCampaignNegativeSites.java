@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCampaignNegativeSites complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCampaignNegativeSites {
 
     @XmlElement(name = "CampaignNegativeSites", nillable = true)
     protected List<CampaignNegativeSites> campaignNegativeSites;
+    public ArrayOfCampaignNegativeSites()
+    {
+      this.campaignNegativeSites = new ArrayList<CampaignNegativeSites>();
+    }
+    @JsonCreator
+    public ArrayOfCampaignNegativeSites(List<CampaignNegativeSites> campaignnegativesitess)
+    {
+      this.campaignNegativeSites = campaignnegativesitess;
+    }
 
     /**
      * Gets the value of the campaignNegativeSites property.

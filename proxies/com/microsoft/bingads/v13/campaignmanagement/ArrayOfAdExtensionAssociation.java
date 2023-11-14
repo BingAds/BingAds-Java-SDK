@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdExtensionAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdExtensionAssociation {
 
     @XmlElement(name = "AdExtensionAssociation", nillable = true)
     protected List<AdExtensionAssociation> adExtensionAssociations;
+    public ArrayOfAdExtensionAssociation()
+    {
+      this.adExtensionAssociations = new ArrayList<AdExtensionAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfAdExtensionAssociation(List<AdExtensionAssociation> adextensionassociations)
+    {
+      this.adExtensionAssociations = adextensionassociations;
+    }
 
     /**
      * Gets the value of the adExtensionAssociations property.

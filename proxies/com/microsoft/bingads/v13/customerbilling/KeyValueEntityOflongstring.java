@@ -1,27 +1,24 @@
 
 package com.microsoft.bingads.v13.customerbilling;
 
-import java.util.Calendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for KeyValuePairOflongdateTime complex type.
+ * <p>Java class for KeyValueEntityOflongstring complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="KeyValuePairOflongdateTime">
+ * <complexType name="KeyValueEntityOflongstring">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="key" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         <element name="value" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         <element name="Key" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,31 +28,38 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "KeyValuePairOflongdateTime", namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", propOrder = {
+@XmlType(name = "KeyValueEntityOflongstring", namespace = "https://bingads.microsoft.com/Customer/v13/Entities", propOrder = {
     "key",
     "value"
 })
-public class KeyValuePairOflongdateTime {
+public class KeyValueEntityOflongstring {
 
-    protected long key;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "dateTime")
-    protected Calendar value;
+    @XmlElement(name = "Key")
+    protected Long key;
+    @XmlElement(name = "Value", nillable = true)
+    protected String value;
 
     /**
      * Gets the value of the key property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getKey() {
+    public Long getKey() {
         return key;
     }
 
     /**
      * Sets the value of the key property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setKey(long value) {
+    public void setKey(Long value) {
         this.key = value;
     }
 
@@ -67,7 +71,7 @@ public class KeyValuePairOflongdateTime {
      *     {@link String }
      *     
      */
-    public Calendar getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -79,7 +83,7 @@ public class KeyValuePairOflongdateTime {
      *     {@link String }
      *     
      */
-    public void setValue(Calendar value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

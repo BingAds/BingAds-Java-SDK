@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CalloutAdExtension
     extends AdExtension
 {
+    public CalloutAdExtension() {
+      this.type = "CalloutAdExtension";
+    }
 
     @XmlElement(name = "Text", nillable = true)
     protected String text;

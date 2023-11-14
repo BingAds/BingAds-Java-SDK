@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PlacementExclusionList
     extends SharedList
 {
+    public PlacementExclusionList() {
+      this.type = "PlacementExclusionList";
+    }
 
 
 }

@@ -34,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LocationIntentCriterion
     extends Criterion
 {
+    public LocationIntentCriterion() {
+      this.type = "LocationIntentCriterion";
+    }
 
     @XmlElement(name = "IntentOption", nillable = true)
     @XmlSchemaType(name = "string")

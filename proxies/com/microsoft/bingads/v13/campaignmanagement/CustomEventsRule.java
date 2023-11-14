@@ -49,6 +49,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CustomEventsRule
     extends RemarketingRule
 {
+    public CustomEventsRule() {
+      this.type = "CustomEvents";
+    }
 
     @XmlElement(name = "Action", nillable = true)
     protected String action;

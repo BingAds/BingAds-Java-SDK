@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCustomParameter complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCustomParameter {
 
     @XmlElement(name = "CustomParameter", nillable = true)
     protected List<CustomParameter> customParameters;
+    public ArrayOfCustomParameter()
+    {
+      this.customParameters = new ArrayList<CustomParameter>();
+    }
+    @JsonCreator
+    public ArrayOfCustomParameter(List<CustomParameter> customparameters)
+    {
+      this.customParameters = customparameters;
+    }
 
     /**
      * Gets the value of the customParameters property.

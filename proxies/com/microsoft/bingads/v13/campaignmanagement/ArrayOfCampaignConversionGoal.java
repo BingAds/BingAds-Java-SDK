@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCampaignConversionGoal complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCampaignConversionGoal {
 
     @XmlElement(name = "CampaignConversionGoal", nillable = true)
     protected List<CampaignConversionGoal> campaignConversionGoals;
+    public ArrayOfCampaignConversionGoal()
+    {
+      this.campaignConversionGoals = new ArrayList<CampaignConversionGoal>();
+    }
+    @JsonCreator
+    public ArrayOfCampaignConversionGoal(List<CampaignConversionGoal> campaignconversiongoals)
+    {
+      this.campaignConversionGoals = campaignconversiongoals;
+    }
 
     /**
      * Gets the value of the campaignConversionGoals property.

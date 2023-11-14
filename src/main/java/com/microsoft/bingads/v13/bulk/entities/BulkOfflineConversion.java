@@ -270,6 +270,36 @@ public class BulkOfflineConversion extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkOfflineConversion, String>(StringTable.HashedEmailAddress,
+                new Function<BulkOfflineConversion, String>() {
+                    @Override
+                    public String apply(BulkOfflineConversion c) {
+                        return c.getOfflineConversion().getHashedEmailAddress();
+                    }
+                },
+                new BiConsumer<String, BulkOfflineConversion>() {
+                    @Override
+                    public void accept(String v, BulkOfflineConversion c) {
+                        c.getOfflineConversion().setHashedEmailAddress(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkOfflineConversion, String>(StringTable.HashedPhoneNumber,
+                new Function<BulkOfflineConversion, String>() {
+                    @Override
+                    public String apply(BulkOfflineConversion c) {
+                        return c.getOfflineConversion().getHashedPhoneNumber();
+                    }
+                },
+                new BiConsumer<String, BulkOfflineConversion>() {
+                    @Override
+                    public void accept(String v, BulkOfflineConversion c) {
+                        c.getOfflineConversion().setHashedPhoneNumber(v);
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

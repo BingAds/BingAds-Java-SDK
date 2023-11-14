@@ -19,7 +19,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="CapValue" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         <element name="FrequencyCapUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TimeGranularity" type="{https://bingads.microsoft.com/CampaignManagement/v13}FrequencyCapTimeGranularity" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -32,15 +31,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FrequencyCapSettings", propOrder = {
     "capValue",
-    "frequencyCapUnit",
     "timeGranularity"
 })
 public class FrequencyCapSettings {
 
     @XmlElement(name = "CapValue")
     protected Integer capValue;
-    @XmlElement(name = "FrequencyCapUnit", nillable = true)
-    protected String frequencyCapUnit;
     @XmlElement(name = "TimeGranularity")
     @XmlSchemaType(name = "string")
     protected FrequencyCapTimeGranularity timeGranularity;
@@ -67,30 +63,6 @@ public class FrequencyCapSettings {
      */
     public void setCapValue(Integer value) {
         this.capValue = value;
-    }
-
-    /**
-     * Gets the value of the frequencyCapUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFrequencyCapUnit() {
-        return frequencyCapUnit;
-    }
-
-    /**
-     * Sets the value of the frequencyCapUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFrequencyCapUnit(String value) {
-        this.frequencyCapUnit = value;
     }
 
     /**

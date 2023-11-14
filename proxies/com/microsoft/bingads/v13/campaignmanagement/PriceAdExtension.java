@@ -44,6 +44,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PriceAdExtension
     extends AdExtension
 {
+    public PriceAdExtension() {
+      this.type = "PriceAdExtension";
+    }
 
     @XmlElement(name = "FinalUrlSuffix", nillable = true)
     protected String finalUrlSuffix;

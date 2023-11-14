@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfRuleItem complex type.
@@ -36,6 +36,15 @@ public class ArrayOfRuleItem {
 
     @XmlElement(name = "RuleItem", nillable = true)
     protected List<RuleItem> ruleItems;
+    public ArrayOfRuleItem()
+    {
+      this.ruleItems = new ArrayList<RuleItem>();
+    }
+    @JsonCreator
+    public ArrayOfRuleItem(List<RuleItem> ruleitems)
+    {
+      this.ruleItems = ruleitems;
+    }
 
     /**
      * Gets the value of the ruleItems property.

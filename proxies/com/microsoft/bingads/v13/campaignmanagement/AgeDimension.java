@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AgeDimension
     extends AudienceGroupDimension
 {
+    public AgeDimension() {
+      this.type = AudienceGroupDimensionType.fromValue("Age");
+    }
 
     @XmlElement(name = "AgeRanges", nillable = true)
     protected ArrayOfAgeRange ageRanges;

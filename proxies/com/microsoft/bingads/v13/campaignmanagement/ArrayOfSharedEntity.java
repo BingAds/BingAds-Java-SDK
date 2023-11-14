@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfSharedEntity complex type.
@@ -36,6 +36,15 @@ public class ArrayOfSharedEntity {
 
     @XmlElement(name = "SharedEntity", nillable = true)
     protected List<SharedEntity> sharedEntities;
+    public ArrayOfSharedEntity()
+    {
+      this.sharedEntities = new ArrayList<SharedEntity>();
+    }
+    @JsonCreator
+    public ArrayOfSharedEntity(List<SharedEntity> sharedentitys)
+    {
+      this.sharedEntities = sharedentitys;
+    }
 
     /**
      * Gets the value of the sharedEntities property.

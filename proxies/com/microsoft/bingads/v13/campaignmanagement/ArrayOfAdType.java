@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfAdType {
     @XmlElement(name = "AdType")
     @XmlSchemaType(name = "string")
     protected List<AdType> adTypes;
+    public ArrayOfAdType()
+    {
+      this.adTypes = new ArrayList<AdType>();
+    }
+    @JsonCreator
+    public ArrayOfAdType(List<AdType> adtypes)
+    {
+      this.adTypes = adtypes;
+    }
 
     /**
      * Gets the value of the adTypes property.

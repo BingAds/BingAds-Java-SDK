@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NegativeKeyword
     extends SharedListItem
 {
+    public NegativeKeyword() {
+      this.type = "NegativeKeyword";
+    }
 
     @XmlElement(name = "Id", nillable = true)
     protected Long id;

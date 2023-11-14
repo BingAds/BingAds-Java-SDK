@@ -37,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class EditorialApiFaultDetail
     extends ApplicationFault
 {
+    public EditorialApiFaultDetail() {
+      this.type = "EditorialApiFaultDetail";
+    }
 
     @XmlElement(name = "BatchErrors", nillable = true)
     protected ArrayOfBatchError batchErrors;

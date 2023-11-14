@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAudienceInfo complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAudienceInfo {
 
     @XmlElement(name = "AudienceInfo", nillable = true)
     protected List<AudienceInfo> audienceInfos;
+    public ArrayOfAudienceInfo()
+    {
+      this.audienceInfos = new ArrayList<AudienceInfo>();
+    }
+    @JsonCreator
+    public ArrayOfAudienceInfo(List<AudienceInfo> audienceinfos)
+    {
+      this.audienceInfos = audienceinfos;
+    }
 
     /**
      * Gets the value of the audienceInfos property.

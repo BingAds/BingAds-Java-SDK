@@ -45,6 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLocationTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewLogoAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewNegativeKeywordLists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewNegativeKeywordsForExistingParents" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewNegativeSites" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -95,6 +96,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLocationTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateLogoAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateNegativeKeywordLists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateNegativeSites" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdatePageFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -103,6 +105,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdatePromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateSitelinkUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStatusForAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStatusForAds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStatusForCampaigns" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -147,6 +150,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newLabels",
     "newLocationAdExtensions",
     "newLocationTargets",
+    "newLogoAdExtensions",
     "newNegativeKeywordLists",
     "newNegativeKeywordsForExistingParents",
     "newNegativeSites",
@@ -197,6 +201,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateLabels",
     "updateLocationAdExtensions",
     "updateLocationTargets",
+    "updateLogoAdExtensions",
     "updateNegativeKeywordLists",
     "updateNegativeSites",
     "updatePageFeeds",
@@ -205,6 +210,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updatePromotionAdExtensions",
     "updateReviewAdExtensions",
     "updateSitelinkAdExtensions",
+    "updateSitelinkUrls",
     "updateStatusForAdGroups",
     "updateStatusForAds",
     "updateStatusForCampaigns",
@@ -215,6 +221,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GoogleImportOption
     extends ImportOption
 {
+    public GoogleImportOption() {
+      this.type = "GoogleImportOption";
+    }
 
     @XmlElement(name = "AccountUrlOptions", nillable = true)
     protected Boolean accountUrlOptions;
@@ -272,6 +281,8 @@ public class GoogleImportOption
     protected Boolean newLocationAdExtensions;
     @XmlElement(name = "NewLocationTargets", nillable = true)
     protected Boolean newLocationTargets;
+    @XmlElement(name = "NewLogoAdExtensions", nillable = true)
+    protected Boolean newLogoAdExtensions;
     @XmlElement(name = "NewNegativeKeywordLists", nillable = true)
     protected Boolean newNegativeKeywordLists;
     @XmlElement(name = "NewNegativeKeywordsForExistingParents", nillable = true)
@@ -372,6 +383,8 @@ public class GoogleImportOption
     protected Boolean updateLocationAdExtensions;
     @XmlElement(name = "UpdateLocationTargets", nillable = true)
     protected Boolean updateLocationTargets;
+    @XmlElement(name = "UpdateLogoAdExtensions", nillable = true)
+    protected Boolean updateLogoAdExtensions;
     @XmlElement(name = "UpdateNegativeKeywordLists", nillable = true)
     protected Boolean updateNegativeKeywordLists;
     @XmlElement(name = "UpdateNegativeSites", nillable = true)
@@ -388,6 +401,8 @@ public class GoogleImportOption
     protected Boolean updateReviewAdExtensions;
     @XmlElement(name = "UpdateSitelinkAdExtensions", nillable = true)
     protected Boolean updateSitelinkAdExtensions;
+    @XmlElement(name = "UpdateSitelinkUrls", nillable = true)
+    protected Boolean updateSitelinkUrls;
     @XmlElement(name = "UpdateStatusForAdGroups", nillable = true)
     protected Boolean updateStatusForAdGroups;
     @XmlElement(name = "UpdateStatusForAds", nillable = true)
@@ -1071,6 +1086,30 @@ public class GoogleImportOption
      */
     public void setNewLocationTargets(Boolean value) {
         this.newLocationTargets = value;
+    }
+
+    /**
+     * Gets the value of the newLogoAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewLogoAdExtensions() {
+        return newLogoAdExtensions;
+    }
+
+    /**
+     * Sets the value of the newLogoAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewLogoAdExtensions(Boolean value) {
+        this.newLogoAdExtensions = value;
     }
 
     /**
@@ -2274,6 +2313,30 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the updateLogoAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateLogoAdExtensions() {
+        return updateLogoAdExtensions;
+    }
+
+    /**
+     * Sets the value of the updateLogoAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateLogoAdExtensions(Boolean value) {
+        this.updateLogoAdExtensions = value;
+    }
+
+    /**
      * Gets the value of the updateNegativeKeywordLists property.
      * 
      * @return
@@ -2463,6 +2526,30 @@ public class GoogleImportOption
      */
     public void setUpdateSitelinkAdExtensions(Boolean value) {
         this.updateSitelinkAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the updateSitelinkUrls property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateSitelinkUrls() {
+        return updateSitelinkUrls;
+    }
+
+    /**
+     * Sets the value of the updateSitelinkUrls property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateSitelinkUrls(Boolean value) {
+        this.updateSitelinkUrls = value;
     }
 
     /**

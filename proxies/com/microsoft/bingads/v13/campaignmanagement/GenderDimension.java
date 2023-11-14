@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GenderDimension
     extends AudienceGroupDimension
 {
+    public GenderDimension() {
+      this.type = AudienceGroupDimensionType.fromValue("Gender");
+    }
 
     @XmlElement(name = "GenderTypes", nillable = true)
     protected ArrayOfGenderType genderTypes;

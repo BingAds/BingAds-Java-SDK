@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfSharedEntityAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfSharedEntityAssociation {
 
     @XmlElement(name = "SharedEntityAssociation", nillable = true)
     protected List<SharedEntityAssociation> sharedEntityAssociations;
+    public ArrayOfSharedEntityAssociation()
+    {
+      this.sharedEntityAssociations = new ArrayList<SharedEntityAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfSharedEntityAssociation(List<SharedEntityAssociation> sharedentityassociations)
+    {
+      this.sharedEntityAssociations = sharedentityassociations;
+    }
 
     /**
      * Gets the value of the sharedEntityAssociations property.

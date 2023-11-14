@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdGroupNegativeSites complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdGroupNegativeSites {
 
     @XmlElement(name = "AdGroupNegativeSites", nillable = true)
     protected List<AdGroupNegativeSites> adGroupNegativeSites;
+    public ArrayOfAdGroupNegativeSites()
+    {
+      this.adGroupNegativeSites = new ArrayList<AdGroupNegativeSites>();
+    }
+    @JsonCreator
+    public ArrayOfAdGroupNegativeSites(List<AdGroupNegativeSites> adgroupnegativesitess)
+    {
+      this.adGroupNegativeSites = adgroupnegativesitess;
+    }
 
     /**
      * Gets the value of the adGroupNegativeSites property.

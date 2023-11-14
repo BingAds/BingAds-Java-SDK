@@ -57,6 +57,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class VideoAdExtension
     extends AdExtension
 {
+    public VideoAdExtension() {
+      this.type = "VideoAdExtension";
+    }
 
     @XmlElement(name = "ActionText", nillable = true)
     protected String actionText;

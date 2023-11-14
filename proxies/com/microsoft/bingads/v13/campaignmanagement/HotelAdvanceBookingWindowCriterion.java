@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelAdvanceBookingWindowCriterion
     extends Criterion
 {
+    public HotelAdvanceBookingWindowCriterion() {
+      this.type = "HotelAdvanceBookingWindowCriterion";
+    }
 
     @XmlElement(name = "MaxDays", nillable = true)
     protected Integer maxDays;

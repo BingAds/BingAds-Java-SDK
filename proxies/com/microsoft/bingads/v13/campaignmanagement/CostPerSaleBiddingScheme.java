@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CostPerSaleBiddingScheme
     extends BiddingScheme
 {
+    public CostPerSaleBiddingScheme() {
+      this.type = "CostPerSale";
+    }
 
     @XmlElement(name = "TargetCostPerSale", nillable = true)
     protected Double targetCostPerSale;

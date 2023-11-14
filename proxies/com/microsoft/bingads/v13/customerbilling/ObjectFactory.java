@@ -59,6 +59,10 @@ public class ObjectFactory {
     private static final QName _Coupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Coupon");
     private static final QName _CouponRedemption_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponRedemption");
     private static final QName _CouponClaimInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponClaimInfo");
+    private static final QName _ArrayOfKeyValueEntityOflongstring_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfKeyValueEntityOflongstring");
+    private static final QName _KeyValueEntityOflongstring_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOflongstring");
+    private static final QName _ArrayOfKeyValueEntityOflongdateTime_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfKeyValueEntityOflongdateTime");
+    private static final QName _KeyValueEntityOflongdateTime_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOflongdateTime");
     private static final QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private static final QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private static final QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -91,10 +95,6 @@ public class ObjectFactory {
     private static final QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private static final QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
     private static final QName _AdApiError_QNAME = new QName("https://adapi.microsoft.com", "AdApiError");
-    private static final QName _ArrayOfKeyValuePairOflongstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOflongstring");
-    private static final QName _KeyValuePairOflongstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOflongstring");
-    private static final QName _ArrayOfKeyValuePairOflongdateTime_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOflongdateTime");
-    private static final QName _KeyValuePairOflongdateTime_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOflongdateTime");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.microsoft.bingads.v13.customerbilling
@@ -574,13 +574,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfKeyValuePairOflongstring }
+     * Create an instance of {@link ArrayOfKeyValueEntityOflongstring }
      * 
      * @return
-     *     the new instance of {@link ArrayOfKeyValuePairOflongstring }
+     *     the new instance of {@link ArrayOfKeyValueEntityOflongstring }
      */
-    public ArrayOfKeyValuePairOflongstring createArrayOfKeyValuePairOflongstring() {
-        return new ArrayOfKeyValuePairOflongstring();
+    public ArrayOfKeyValueEntityOflongstring createArrayOfKeyValueEntityOflongstring() {
+        return new ArrayOfKeyValueEntityOflongstring();
     }
 
     /**
@@ -594,13 +594,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfKeyValuePairOflongdateTime }
+     * Create an instance of {@link ArrayOfKeyValueEntityOflongdateTime }
      * 
      * @return
-     *     the new instance of {@link ArrayOfKeyValuePairOflongdateTime }
+     *     the new instance of {@link ArrayOfKeyValueEntityOflongdateTime }
      */
-    public ArrayOfKeyValuePairOflongdateTime createArrayOfKeyValuePairOflongdateTime() {
-        return new ArrayOfKeyValuePairOflongdateTime();
+    public ArrayOfKeyValueEntityOflongdateTime createArrayOfKeyValueEntityOflongdateTime() {
+        return new ArrayOfKeyValueEntityOflongdateTime();
     }
 
     /**
@@ -704,6 +704,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link KeyValueEntityOflongstring }
+     * 
+     * @return
+     *     the new instance of {@link KeyValueEntityOflongstring }
+     */
+    public KeyValueEntityOflongstring createKeyValueEntityOflongstring() {
+        return new KeyValueEntityOflongstring();
+    }
+
+    /**
+     * Create an instance of {@link KeyValueEntityOflongdateTime }
+     * 
+     * @return
+     *     the new instance of {@link KeyValueEntityOflongdateTime }
+     */
+    public KeyValueEntityOflongdateTime createKeyValueEntityOflongdateTime() {
+        return new KeyValueEntityOflongdateTime();
+    }
+
+    /**
      * Create an instance of {@link Char }
      * 
      * @return
@@ -791,26 +811,6 @@ public class ObjectFactory {
      */
     public AdApiError createAdApiError() {
         return new AdApiError();
-    }
-
-    /**
-     * Create an instance of {@link KeyValuePairOflongstring }
-     * 
-     * @return
-     *     the new instance of {@link KeyValuePairOflongstring }
-     */
-    public KeyValuePairOflongstring createKeyValuePairOflongstring() {
-        return new KeyValuePairOflongstring();
-    }
-
-    /**
-     * Create an instance of {@link KeyValuePairOflongdateTime }
-     * 
-     * @return
-     *     the new instance of {@link KeyValuePairOflongdateTime }
-     */
-    public KeyValuePairOflongdateTime createKeyValuePairOflongdateTime() {
-        return new KeyValuePairOflongdateTime();
     }
 
     /**
@@ -1230,6 +1230,58 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOflongstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOflongstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfKeyValueEntityOflongstring")
+    public JAXBElement<ArrayOfKeyValueEntityOflongstring> createArrayOfKeyValueEntityOflongstring(ArrayOfKeyValueEntityOflongstring value) {
+        return new JAXBElement<>(_ArrayOfKeyValueEntityOflongstring_QNAME, ArrayOfKeyValueEntityOflongstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOflongstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOflongstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "KeyValueEntityOflongstring")
+    public JAXBElement<KeyValueEntityOflongstring> createKeyValueEntityOflongstring(KeyValueEntityOflongstring value) {
+        return new JAXBElement<>(_KeyValueEntityOflongstring_QNAME, KeyValueEntityOflongstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOflongdateTime }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOflongdateTime }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfKeyValueEntityOflongdateTime")
+    public JAXBElement<ArrayOfKeyValueEntityOflongdateTime> createArrayOfKeyValueEntityOflongdateTime(ArrayOfKeyValueEntityOflongdateTime value) {
+        return new JAXBElement<>(_ArrayOfKeyValueEntityOflongdateTime_QNAME, ArrayOfKeyValueEntityOflongdateTime.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOflongdateTime }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOflongdateTime }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "KeyValueEntityOflongdateTime")
+    public JAXBElement<KeyValueEntityOflongdateTime> createKeyValueEntityOflongdateTime(KeyValueEntityOflongdateTime value) {
+        return new JAXBElement<>(_KeyValueEntityOflongdateTime_QNAME, KeyValueEntityOflongdateTime.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @param value
@@ -1644,58 +1696,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://adapi.microsoft.com", name = "AdApiError")
     public JAXBElement<AdApiError> createAdApiError(AdApiError value) {
         return new JAXBElement<>(_AdApiError_QNAME, AdApiError.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongstring }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongstring }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "ArrayOfKeyValuePairOflongstring")
-    public JAXBElement<ArrayOfKeyValuePairOflongstring> createArrayOfKeyValuePairOflongstring(ArrayOfKeyValuePairOflongstring value) {
-        return new JAXBElement<>(_ArrayOfKeyValuePairOflongstring_QNAME, ArrayOfKeyValuePairOflongstring.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongstring }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongstring }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOflongstring")
-    public JAXBElement<KeyValuePairOflongstring> createKeyValuePairOflongstring(KeyValuePairOflongstring value) {
-        return new JAXBElement<>(_KeyValuePairOflongstring_QNAME, KeyValuePairOflongstring.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongdateTime }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValuePairOflongdateTime }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "ArrayOfKeyValuePairOflongdateTime")
-    public JAXBElement<ArrayOfKeyValuePairOflongdateTime> createArrayOfKeyValuePairOflongdateTime(ArrayOfKeyValuePairOflongdateTime value) {
-        return new JAXBElement<>(_ArrayOfKeyValuePairOflongdateTime_QNAME, ArrayOfKeyValuePairOflongdateTime.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongdateTime }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValuePairOflongdateTime }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/System.Collections.Generic", name = "KeyValuePairOflongdateTime")
-    public JAXBElement<KeyValuePairOflongdateTime> createKeyValuePairOflongdateTime(KeyValuePairOflongdateTime value) {
-        return new JAXBElement<>(_KeyValuePairOflongdateTime_QNAME, KeyValuePairOflongdateTime.class, null, value);
     }
 
 }

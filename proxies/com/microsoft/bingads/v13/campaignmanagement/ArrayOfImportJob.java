@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfImportJob complex type.
@@ -36,6 +36,15 @@ public class ArrayOfImportJob {
 
     @XmlElement(name = "ImportJob", nillable = true)
     protected List<ImportJob> importJobs;
+    public ArrayOfImportJob()
+    {
+      this.importJobs = new ArrayList<ImportJob>();
+    }
+    @JsonCreator
+    public ArrayOfImportJob(List<ImportJob> importjobs)
+    {
+      this.importJobs = importjobs;
+    }
 
     /**
      * Gets the value of the importJobs property.

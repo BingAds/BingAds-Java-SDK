@@ -66,6 +66,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PromotionAdExtension
     extends AdExtension
 {
+    public PromotionAdExtension() {
+      this.type = "PromotionAdExtension";
+    }
 
     @XmlElement(name = "CurrencyCode", nillable = true)
     protected String currencyCode;
