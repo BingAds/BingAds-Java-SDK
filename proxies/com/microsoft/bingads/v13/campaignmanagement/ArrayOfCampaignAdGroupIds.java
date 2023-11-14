@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCampaignAdGroupIds complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCampaignAdGroupIds {
 
     @XmlElement(name = "CampaignAdGroupIds", nillable = true)
     protected List<CampaignAdGroupIds> campaignAdGroupIds;
+    public ArrayOfCampaignAdGroupIds()
+    {
+      this.campaignAdGroupIds = new ArrayList<CampaignAdGroupIds>();
+    }
+    @JsonCreator
+    public ArrayOfCampaignAdGroupIds(List<CampaignAdGroupIds> campaignadgroupidss)
+    {
+      this.campaignAdGroupIds = campaignadgroupidss;
+    }
 
     /**
      * Gets the value of the campaignAdGroupIds property.

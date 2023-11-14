@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DynamicSearchAdsSetting
     extends Setting
 {
+    public DynamicSearchAdsSetting() {
+      this.type = "DynamicSearchAdsSetting";
+    }
 
     @XmlElement(name = "DomainName", nillable = true)
     protected String domainName;

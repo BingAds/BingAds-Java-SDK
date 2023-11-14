@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class RadiusCriterion
     extends Criterion
 {
+    public RadiusCriterion() {
+      this.type = "RadiusCriterion";
+    }
 
     @XmlElement(name = "LatitudeDegrees", nillable = true)
     protected Double latitudeDegrees;

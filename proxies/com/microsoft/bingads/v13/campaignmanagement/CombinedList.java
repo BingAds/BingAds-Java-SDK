@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CombinedList
     extends Audience
 {
+    public CombinedList() {
+      this.type = Collections.singletonList(AudienceType.fromValue("CombinedList"));
+    }
 
     @XmlElement(name = "CombinationRules", nillable = true)
     protected ArrayOfCombinationRule combinationRules;

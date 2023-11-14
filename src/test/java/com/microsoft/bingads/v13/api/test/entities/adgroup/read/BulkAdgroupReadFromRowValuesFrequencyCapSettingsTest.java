@@ -33,12 +33,11 @@ public class BulkAdgroupReadFromRowValuesFrequencyCapSettingsTest extends BulkAd
         ArrayOfFrequencyCapSettings settings = new ArrayOfFrequencyCapSettings();
         FrequencyCapSettings setting = new FrequencyCapSettings();
         setting.setCapValue(10);
-        setting.setFrequencyCapUnit("IMPRESSION");
         setting.setTimeGranularity(FrequencyCapTimeGranularity.HOUR);
         settings.getFrequencyCapSettings().add(setting);
         return Arrays.asList(
                 new Object[][]{
-                        {"[{\"capValue\":10,\"frequencyCapUnit\":\"IMPRESSION\",\"timeGranularity\":\"HOUR\"}]", settings},
+                        {"[{\"capValue\":10,\"timeGranularity\":\"HOUR\"}]", settings},
                         {"delete_value", new ArrayOfFrequencyCapSettings()}
                 }
         );

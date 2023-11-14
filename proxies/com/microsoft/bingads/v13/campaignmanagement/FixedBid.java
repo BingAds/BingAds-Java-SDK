@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FixedBid
     extends CriterionBid
 {
+    public FixedBid() {
+      this.type = "FixedBid";
+    }
 
     @XmlElement(name = "Amount")
     protected Double amount;

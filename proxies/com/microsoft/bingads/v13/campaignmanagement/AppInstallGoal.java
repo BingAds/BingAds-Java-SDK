@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -35,6 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AppInstallGoal
     extends ConversionGoal
 {
+    public AppInstallGoal() {
+      this.type = Collections.singletonList(ConversionGoalType.fromValue("AppInstall"));
+    }
 
     @XmlElement(name = "AppPlatform", nillable = true)
     protected String appPlatform;

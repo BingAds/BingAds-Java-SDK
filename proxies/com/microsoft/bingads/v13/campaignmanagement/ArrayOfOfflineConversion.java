@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfOfflineConversion complex type.
@@ -36,6 +36,15 @@ public class ArrayOfOfflineConversion {
 
     @XmlElement(name = "OfflineConversion", nillable = true)
     protected List<OfflineConversion> offlineConversions;
+    public ArrayOfOfflineConversion()
+    {
+      this.offlineConversions = new ArrayList<OfflineConversion>();
+    }
+    @JsonCreator
+    public ArrayOfOfflineConversion(List<OfflineConversion> offlineconversions)
+    {
+      this.offlineConversions = offlineconversions;
+    }
 
     /**
      * Gets the value of the offlineConversions property.

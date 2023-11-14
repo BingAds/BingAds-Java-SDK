@@ -51,6 +51,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AppAdExtension
     extends AdExtension
 {
+    public AppAdExtension() {
+      this.type = "AppAdExtension";
+    }
 
     @XmlElement(name = "AppPlatform", nillable = true)
     protected String appPlatform;

@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import java.math.BigDecimal;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -49,6 +50,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class EventGoal
     extends ConversionGoal
 {
+    public EventGoal() {
+      this.type = Collections.singletonList(ConversionGoalType.fromValue("Event"));
+    }
 
     @XmlElement(name = "ActionExpression", nillable = true)
     protected String actionExpression;

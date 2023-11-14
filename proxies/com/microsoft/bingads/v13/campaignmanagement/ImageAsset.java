@@ -45,6 +45,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ImageAsset
     extends Asset
 {
+    public ImageAsset() {
+      this.type = "ImageAsset";
+    }
 
     @XmlElement(name = "CropHeight", nillable = true)
     protected Integer cropHeight;

@@ -52,6 +52,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class BiddableAdGroupCriterion
     extends AdGroupCriterion
 {
+    public BiddableAdGroupCriterion() {
+      this.type = "BiddableAdGroupCriterion";
+    }
 
     @XmlElement(name = "CriterionBid", nillable = true)
     protected CriterionBid criterionBid;

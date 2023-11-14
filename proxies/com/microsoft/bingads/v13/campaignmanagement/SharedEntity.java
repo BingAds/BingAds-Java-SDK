@@ -172,7 +172,7 @@ public class SharedEntity {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

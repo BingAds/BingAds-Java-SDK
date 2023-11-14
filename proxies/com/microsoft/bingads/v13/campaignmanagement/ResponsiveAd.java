@@ -60,6 +60,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ResponsiveAd
     extends Ad
 {
+    public ResponsiveAd() {
+      this.type = AdType.fromValue("ResponsiveAd");
+    }
 
     @XmlElement(name = "BusinessName", nillable = true)
     protected String businessName;

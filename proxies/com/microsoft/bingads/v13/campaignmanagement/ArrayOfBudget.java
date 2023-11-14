@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBudget complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBudget {
 
     @XmlElement(name = "Budget", nillable = true)
     protected List<Budget> budgets;
+    public ArrayOfBudget()
+    {
+      this.budgets = new ArrayList<Budget>();
+    }
+    @JsonCreator
+    public ArrayOfBudget(List<Budget> budgets)
+    {
+      this.budgets = budgets;
+    }
 
     /**
      * Gets the value of the budgets property.

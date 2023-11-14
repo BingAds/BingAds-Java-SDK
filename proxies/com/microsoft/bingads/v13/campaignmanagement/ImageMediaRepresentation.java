@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ImageMediaRepresentation
     extends MediaRepresentation
 {
+    public ImageMediaRepresentation() {
+      this.type = "ImageMediaRepresentation";
+    }
 
     @XmlElement(name = "Height")
     protected Integer height;

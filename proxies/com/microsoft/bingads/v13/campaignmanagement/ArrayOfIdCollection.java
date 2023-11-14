@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfIdCollection complex type.
@@ -36,6 +36,15 @@ public class ArrayOfIdCollection {
 
     @XmlElement(name = "IdCollection", nillable = true)
     protected List<IdCollection> idCollections;
+    public ArrayOfIdCollection()
+    {
+      this.idCollections = new ArrayList<IdCollection>();
+    }
+    @JsonCreator
+    public ArrayOfIdCollection(List<IdCollection> idcollections)
+    {
+      this.idCollections = idcollections;
+    }
 
     /**
      * Gets the value of the idCollections property.

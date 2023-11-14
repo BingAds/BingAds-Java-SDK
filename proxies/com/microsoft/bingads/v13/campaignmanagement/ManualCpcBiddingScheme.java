@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ManualCpcBiddingScheme
     extends BiddingScheme
 {
+    public ManualCpcBiddingScheme() {
+      this.type = "ManualCpc";
+    }
 
 
 }

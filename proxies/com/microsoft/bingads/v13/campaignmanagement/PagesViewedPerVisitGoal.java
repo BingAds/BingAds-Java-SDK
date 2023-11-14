@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PagesViewedPerVisitGoal
     extends ConversionGoal
 {
+    public PagesViewedPerVisitGoal() {
+      this.type = Collections.singletonList(ConversionGoalType.fromValue("PagesViewedPerVisit"));
+    }
 
     @XmlElement(name = "MinimumPagesViewed", nillable = true)
     protected Integer minimumPagesViewed;

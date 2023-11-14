@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class OfflineConversionGoal
     extends ConversionGoal
 {
+    public OfflineConversionGoal() {
+      this.type = Collections.singletonList(ConversionGoalType.fromValue("OfflineConversion"));
+    }
 
     @XmlElement(name = "IsExternallyAttributed", nillable = true)
     protected Boolean isExternallyAttributed;

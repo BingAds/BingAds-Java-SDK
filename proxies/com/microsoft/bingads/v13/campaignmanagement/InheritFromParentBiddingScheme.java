@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class InheritFromParentBiddingScheme
     extends BiddingScheme
 {
+    public InheritFromParentBiddingScheme() {
+      this.type = "InheritFromParent";
+    }
 
     @XmlElement(name = "InheritedBidStrategyType", nillable = true)
     protected String inheritedBidStrategyType;

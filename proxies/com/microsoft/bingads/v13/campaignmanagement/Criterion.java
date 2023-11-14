@@ -80,7 +80,7 @@ public class Criterion {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

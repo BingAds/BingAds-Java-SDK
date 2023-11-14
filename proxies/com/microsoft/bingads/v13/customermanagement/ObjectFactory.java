@@ -88,6 +88,10 @@ public class ObjectFactory {
     private static final QName _ArrayOfAdvertiserAccount_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfAdvertiserAccount");
     private static final QName _ArrayOfUserInvitation_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfUserInvitation");
     private static final QName _ArrayOfAddress_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfAddress");
+    private static final QName _ArrayOfNotification_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfNotification");
+    private static final QName _Notification_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Notification");
+    private static final QName _ArrayOfKeyValueEntityOfstringstring_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfKeyValueEntityOfstringstring");
+    private static final QName _KeyValueEntityOfstringstring_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOfstringstring");
     private static final QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private static final QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
     private static final QName _ArrayOfKeyValuePairOfstringbase64Binary_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringbase64Binary");
@@ -1263,6 +1267,36 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetNotificationsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetNotificationsRequest }
+     */
+    public GetNotificationsRequest createGetNotificationsRequest() {
+        return new GetNotificationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetNotificationsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetNotificationsResponse }
+     */
+    public GetNotificationsResponse createGetNotificationsResponse() {
+        return new GetNotificationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfNotification }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfNotification }
+     */
+    public ArrayOfNotification createArrayOfNotification() {
+        return new ArrayOfNotification();
+    }
+
+    /**
      * Create an instance of {@link AccountInfo }
      * 
      * @return
@@ -1380,6 +1414,36 @@ public class ObjectFactory {
      */
     public ClientLink createClientLink() {
         return new ClientLink();
+    }
+
+    /**
+     * Create an instance of {@link Notification }
+     * 
+     * @return
+     *     the new instance of {@link Notification }
+     */
+    public Notification createNotification() {
+        return new Notification();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfKeyValueEntityOfstringstring }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfKeyValueEntityOfstringstring }
+     */
+    public ArrayOfKeyValueEntityOfstringstring createArrayOfKeyValueEntityOfstringstring() {
+        return new ArrayOfKeyValueEntityOfstringstring();
+    }
+
+    /**
+     * Create an instance of {@link KeyValueEntityOfstringstring }
+     * 
+     * @return
+     *     the new instance of {@link KeyValueEntityOfstringstring }
+     */
+    public KeyValueEntityOfstringstring createKeyValueEntityOfstringstring() {
+        return new KeyValueEntityOfstringstring();
     }
 
     /**
@@ -2281,6 +2345,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfAddress")
     public JAXBElement<ArrayOfAddress> createArrayOfAddress(ArrayOfAddress value) {
         return new JAXBElement<>(_ArrayOfAddress_QNAME, ArrayOfAddress.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfNotification }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfNotification }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfNotification")
+    public JAXBElement<ArrayOfNotification> createArrayOfNotification(ArrayOfNotification value) {
+        return new JAXBElement<>(_ArrayOfNotification_QNAME, ArrayOfNotification.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Notification }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Notification }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "Notification")
+    public JAXBElement<Notification> createNotification(Notification value) {
+        return new JAXBElement<>(_Notification_QNAME, Notification.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOfstringstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueEntityOfstringstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfKeyValueEntityOfstringstring")
+    public JAXBElement<ArrayOfKeyValueEntityOfstringstring> createArrayOfKeyValueEntityOfstringstring(ArrayOfKeyValueEntityOfstringstring value) {
+        return new JAXBElement<>(_ArrayOfKeyValueEntityOfstringstring_QNAME, ArrayOfKeyValueEntityOfstringstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOfstringstring }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeyValueEntityOfstringstring }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "KeyValueEntityOfstringstring")
+    public JAXBElement<KeyValueEntityOfstringstring> createKeyValueEntityOfstringstring(KeyValueEntityOfstringstring value) {
+        return new JAXBElement<>(_KeyValueEntityOfstringstring_QNAME, KeyValueEntityOfstringstring.class, null, value);
     }
 
     /**

@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CoOpSetting
     extends Setting
 {
+    public CoOpSetting() {
+      this.type = "CoOpSetting";
+    }
 
     @XmlElement(name = "BidBoostValue", nillable = true)
     protected Double bidBoostValue;

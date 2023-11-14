@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class VerifiedTrackingSetting
     extends Setting
 {
+    public VerifiedTrackingSetting() {
+      this.type = "VerifiedTrackingSetting";
+    }
 
     @XmlElement(name = "Details", nillable = true)
     protected ArrayOfArrayOfKeyValuePairOfstringstring details;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfTargetSettingDetail complex type.
@@ -36,6 +36,15 @@ public class ArrayOfTargetSettingDetail {
 
     @XmlElement(name = "TargetSettingDetail", nillable = true)
     protected List<TargetSettingDetail> targetSettingDetails;
+    public ArrayOfTargetSettingDetail()
+    {
+      this.targetSettingDetails = new ArrayList<TargetSettingDetail>();
+    }
+    @JsonCreator
+    public ArrayOfTargetSettingDetail(List<TargetSettingDetail> targetsettingdetails)
+    {
+      this.targetSettingDetails = targetsettingdetails;
+    }
 
     /**
      * Gets the value of the targetSettingDetails property.

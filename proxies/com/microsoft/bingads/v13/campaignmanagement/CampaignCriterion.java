@@ -195,7 +195,7 @@ public class CampaignCriterion {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

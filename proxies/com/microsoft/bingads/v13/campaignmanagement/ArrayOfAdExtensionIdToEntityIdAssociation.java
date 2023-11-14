@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdExtensionIdToEntityIdAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdExtensionIdToEntityIdAssociation {
 
     @XmlElement(name = "AdExtensionIdToEntityIdAssociation", nillable = true)
     protected List<AdExtensionIdToEntityIdAssociation> adExtensionIdToEntityIdAssociations;
+    public ArrayOfAdExtensionIdToEntityIdAssociation()
+    {
+      this.adExtensionIdToEntityIdAssociations = new ArrayList<AdExtensionIdToEntityIdAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfAdExtensionIdToEntityIdAssociation(List<AdExtensionIdToEntityIdAssociation> adextensionidtoentityidassociations)
+    {
+      this.adExtensionIdToEntityIdAssociations = adextensionidtoentityidassociations;
+    }
 
     /**
      * Gets the value of the adExtensionIdToEntityIdAssociations property.

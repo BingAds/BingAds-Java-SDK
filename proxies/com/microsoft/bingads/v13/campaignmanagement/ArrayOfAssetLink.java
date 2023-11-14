@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAssetLink complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAssetLink {
 
     @XmlElement(name = "AssetLink", nillable = true)
     protected List<AssetLink> assetLinks;
+    public ArrayOfAssetLink()
+    {
+      this.assetLinks = new ArrayList<AssetLink>();
+    }
+    @JsonCreator
+    public ArrayOfAssetLink(List<AssetLink> assetlinks)
+    {
+      this.assetLinks = assetlinks;
+    }
 
     /**
      * Gets the value of the assetLinks property.

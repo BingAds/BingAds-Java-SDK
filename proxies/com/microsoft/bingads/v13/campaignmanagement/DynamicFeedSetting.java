@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DynamicFeedSetting
     extends Setting
 {
+    public DynamicFeedSetting() {
+      this.type = "DynamicFeedSetting";
+    }
 
     @XmlElement(name = "FeedId", nillable = true)
     protected Long feedId;

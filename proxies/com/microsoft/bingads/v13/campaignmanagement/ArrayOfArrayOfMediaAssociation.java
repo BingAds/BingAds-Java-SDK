@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfArrayOfMediaAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfArrayOfMediaAssociation {
 
     @XmlElement(name = "ArrayOfMediaAssociation", nillable = true)
     protected List<ArrayOfMediaAssociation> arrayOfMediaAssociations;
+    public ArrayOfArrayOfMediaAssociation()
+    {
+      this.arrayOfMediaAssociations = new ArrayList<ArrayOfMediaAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfArrayOfMediaAssociation(List<ArrayOfMediaAssociation> arrayofmediaassociations)
+    {
+      this.arrayOfMediaAssociations = arrayofmediaassociations;
+    }
 
     /**
      * Gets the value of the arrayOfMediaAssociations property.

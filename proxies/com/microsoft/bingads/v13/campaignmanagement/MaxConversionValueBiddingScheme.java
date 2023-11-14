@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class MaxConversionValueBiddingScheme
     extends BiddingScheme
 {
+    public MaxConversionValueBiddingScheme() {
+      this.type = "MaxConversionValueBiddingScheme";
+    }
 
     @XmlElement(name = "TargetRoas", nillable = true)
     protected Double targetRoas;

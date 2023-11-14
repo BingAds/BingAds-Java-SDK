@@ -14,7 +14,8 @@ public enum AdGroupAdditionalField {
     PERCENT_CPC_BID("PercentCpcBid"),
     MCPA_BID("McpaBid"),
     USE_OPTIMIZED_TARGETING("UseOptimizedTargeting"),
-    FREQUENCY_CAP_SETTINGS("FrequencyCapSettings");
+    FREQUENCY_CAP_SETTINGS("FrequencyCapSettings"),
+    USE_PREDICTIVE_TARGETING("UsePredictiveTargeting");
         
     private final String value;
 

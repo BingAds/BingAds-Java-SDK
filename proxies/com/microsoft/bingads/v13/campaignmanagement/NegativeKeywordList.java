@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NegativeKeywordList
     extends SharedList
 {
+    public NegativeKeywordList() {
+      this.type = "NegativeKeywordList";
+    }
 
 
 }

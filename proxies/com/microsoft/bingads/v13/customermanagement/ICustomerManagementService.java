@@ -1543,4 +1543,45 @@ public interface ICustomerManagementService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customermanagement.GetNotificationsResponse>
+     */
+    @WebMethod(operationName = "GetNotifications", action = "GetNotifications")
+    public Response<GetNotificationsResponse> getNotificationsAsync(
+        @WebParam(name = "GetNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetNotificationsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetNotifications", action = "GetNotifications")
+    public Future<?> getNotificationsAsync(
+        @WebParam(name = "GetNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetNotificationsRequest parameters,
+        @WebParam(name = "GetNotificationsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetNotificationsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customermanagement.GetNotificationsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "GetNotifications", action = "GetNotifications")
+    @WebResult(name = "GetNotificationsResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+    public GetNotificationsResponse getNotifications(
+        @WebParam(name = "GetNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        GetNotificationsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

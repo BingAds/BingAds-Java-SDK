@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class RateBid
     extends CriterionBid
 {
+    public RateBid() {
+      this.type = "RateBid";
+    }
 
     @XmlElement(name = "RateAmount", nillable = true)
     protected RateAmount rateAmount;

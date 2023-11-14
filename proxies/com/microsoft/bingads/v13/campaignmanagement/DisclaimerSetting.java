@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DisclaimerSetting
     extends Setting
 {
+    public DisclaimerSetting() {
+      this.type = "DisclaimerSetting";
+    }
 
     @XmlElement(name = "DisclaimerAdsEnabled")
     protected Boolean disclaimerAdsEnabled;

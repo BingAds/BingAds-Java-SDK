@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdApiError complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdApiError {
 
     @XmlElement(name = "AdApiError", nillable = true)
     protected List<AdApiError> adApiErrors;
+    public ArrayOfAdApiError()
+    {
+      this.adApiErrors = new ArrayList<AdApiError>();
+    }
+    @JsonCreator
+    public ArrayOfAdApiError(List<AdApiError> adapierrors)
+    {
+      this.adApiErrors = adapierrors;
+    }
 
     /**
      * Gets the value of the adApiErrors property.

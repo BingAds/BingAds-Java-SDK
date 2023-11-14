@@ -48,6 +48,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FilterLinkAdExtension
     extends AdExtension
 {
+    public FilterLinkAdExtension() {
+      this.type = "FilterLinkAdExtension";
+    }
 
     @XmlElement(name = "AdExtensionHeaderType", nillable = true)
     @XmlSchemaType(name = "string")

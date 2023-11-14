@@ -63,7 +63,7 @@ public class RemarketingRule {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

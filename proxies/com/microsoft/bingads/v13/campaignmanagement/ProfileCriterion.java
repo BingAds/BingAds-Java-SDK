@@ -37,6 +37,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class ProfileCriterion
     extends Criterion
 {
+    public ProfileCriterion() {
+      this.type = "ProfileCriterion";
+    }
 
     @XmlElement(name = "ProfileId")
     protected Long profileId;

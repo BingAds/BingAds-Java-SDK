@@ -57,6 +57,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ImageAdExtension
     extends AdExtension
 {
+    public ImageAdExtension() {
+      this.type = "ImageAdExtension";
+    }
 
     @XmlElement(name = "AlternativeText", nillable = true)
     protected String alternativeText;

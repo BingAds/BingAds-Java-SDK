@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfVideo complex type.
@@ -36,6 +36,15 @@ public class ArrayOfVideo {
 
     @XmlElement(name = "Video", nillable = true)
     protected List<Video> videos;
+    public ArrayOfVideo()
+    {
+      this.videos = new ArrayList<Video>();
+    }
+    @JsonCreator
+    public ArrayOfVideo(List<Video> videos)
+    {
+      this.videos = videos;
+    }
 
     /**
      * Gets the value of the videos property.

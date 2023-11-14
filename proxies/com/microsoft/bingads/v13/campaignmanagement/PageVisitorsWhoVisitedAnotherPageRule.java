@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class PageVisitorsWhoVisitedAnotherPageRule
     extends RemarketingRule
 {
+    public PageVisitorsWhoVisitedAnotherPageRule() {
+      this.type = "PageVisitorsWhoVisitedAnotherPage";
+    }
 
     @XmlElement(name = "AnotherRuleItemGroups", nillable = true)
     protected ArrayOfRuleItemGroup anotherRuleItemGroups;

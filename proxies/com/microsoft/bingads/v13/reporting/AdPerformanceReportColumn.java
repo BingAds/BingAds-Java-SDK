@@ -102,6 +102,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="TotalWatchTimeInMS"/>
  *     <enumeration value="AverageWatchTimePerVideoView"/>
  *     <enumeration value="AverageWatchTimePerImpression"/>
+ *     <enumeration value="AdStrength"/>
+ *     <enumeration value="AdStrengthActionItems"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -288,7 +290,11 @@ public enum AdPerformanceReportColumn {
     @XmlEnumValue("AverageWatchTimePerVideoView")
     AVERAGE_WATCH_TIME_PER_VIDEO_VIEW("AverageWatchTimePerVideoView"),
     @XmlEnumValue("AverageWatchTimePerImpression")
-    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression");
+    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression"),
+    @XmlEnumValue("AdStrength")
+    AD_STRENGTH("AdStrength"),
+    @XmlEnumValue("AdStrengthActionItems")
+    AD_STRENGTH_ACTION_ITEMS("AdStrengthActionItems");
     private final String value;
 
     AdPerformanceReportColumn(String v) {

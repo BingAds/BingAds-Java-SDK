@@ -119,8 +119,34 @@ public class ServiceUtils {
             }
             return Boolean.valueOf(props.getProperty("EnableFallbackToSoap"));
         } catch (IOException ex) {
-            // Ignore. In this case we will load service Url from endpoints.
             return true;
+        } finally {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+            } catch (IOException ex) {
+            	System.out.println(ex);
+            }
+        }
+    }
+
+    public static String getUserAgent() {
+    	InputStream input = null;
+    	try {
+            File file = new File(ServiceUtils.getPropertyFile());
+            if (!file.exists()) {
+                return null;
+            }
+            input = new FileInputStream(file);
+            Properties props = new Properties();
+            props.load(input);
+            if (props.getProperty("UserAgent") == null) {
+            	return null;
+            }
+            return props.getProperty("UserAgent").toString();
+        } catch (IOException ex) {
+            return null;
         } finally {
             try {
                 if (input != null) {

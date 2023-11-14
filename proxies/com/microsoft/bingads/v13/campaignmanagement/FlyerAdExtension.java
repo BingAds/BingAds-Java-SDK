@@ -53,6 +53,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class FlyerAdExtension
     extends AdExtension
 {
+    public FlyerAdExtension() {
+      this.type = "FlyerAdExtension";
+    }
 
     @XmlElement(name = "Description", nillable = true)
     protected String description;
