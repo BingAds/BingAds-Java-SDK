@@ -17,11 +17,6 @@
             <version>13.0.17</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.metro</groupId>
-            <artifactId>wssx-impl</artifactId>
-            <version>4.0.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.10.0</version>
