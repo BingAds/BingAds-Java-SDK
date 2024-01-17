@@ -1,6 +1,14 @@
 com.microsoft.bingads
 com.microsoft.bingads.internal
 com.microsoft.bingads.internal.functionalinterfaces
+com.microsoft.bingads.internal.restful
+com.microsoft.bingads.internal.restful.adaptor
+com.microsoft.bingads.internal.restful.adaptor.generated.bulk.arrayOfTypes
+com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums
+com.microsoft.bingads.internal.restful.adaptor.generated.bulk.polymorphicTypes
+com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.arrayOfTypes
+com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums
+com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.polymorphicTypes
 com.microsoft.bingads.internal.utilities
 com.microsoft.bingads.v13.adinsight
 com.microsoft.bingads.v13.bulk
