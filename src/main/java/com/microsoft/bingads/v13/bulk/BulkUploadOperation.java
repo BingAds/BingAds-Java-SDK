@@ -55,8 +55,7 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
                 httpFileService,
                 downloadHttpTimeoutInMilliseconds,
                 zipExtractor,
-                statusPollIntervalInMilliseconds,
-                new UploadStatusProvider(requestId, serviceClient));
+                new UploadStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds));
     }
 
     @Override

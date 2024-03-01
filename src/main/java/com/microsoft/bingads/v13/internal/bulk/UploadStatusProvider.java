@@ -22,9 +22,23 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
 
     private final ServiceClient<IBulkService> serviceClient;
 
-    public UploadStatusProvider(String requestId, ServiceClient<IBulkService> serviceClient) {
+    /**
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     */
+    private final int statusPollIntervalInMilliseconds;
+
+    public UploadStatusProvider(
+            String requestId,
+            ServiceClient<IBulkService> serviceClient,
+            int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
         this.serviceClient = serviceClient;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
+    }
+
+    @Override
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
     }
 
     @Override

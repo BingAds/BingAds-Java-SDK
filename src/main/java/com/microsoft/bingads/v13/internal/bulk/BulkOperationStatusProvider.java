@@ -7,6 +7,8 @@ import com.microsoft.bingads.v13.bulk.BulkOperationStatus;
 
 public interface BulkOperationStatusProvider<TStatus> {
 
+    int getStatusPollIntervalInMilliseconds();
+
     Future<BulkOperationStatus<TStatus>> getCurrentStatus(AsyncCallback<BulkOperationStatus<TStatus>> callback);
 
     boolean isFinalStatus(BulkOperationStatus<TStatus> currentStatus);

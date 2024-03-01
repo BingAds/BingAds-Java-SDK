@@ -32,7 +32,6 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     private boolean stopTracking;
     protected int lastProgressReported;
     private BulkOperationStatus<TStatus> currentStatus;
-    private final int statusCheckIntervalInMs;
 
     private ResultFuture<BulkOperationStatus<TStatus>> trackResultFuture;
 
@@ -46,11 +45,10 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
         }
     };
 
-    public PollingBulkOperationTracker(BulkOperationStatusProvider<TStatus> statusProvider,
-            Progress<BulkOperationProgressInfo> progress,
-            int statusCheckIntervalInMs) {
+    public PollingBulkOperationTracker(
+            BulkOperationStatusProvider<TStatus> statusProvider,
+            Progress<BulkOperationProgressInfo> progress) {
 
-        this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
         this.progress = progress;
         this.operationStatusRetry = new OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService>(
@@ -116,7 +114,7 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                             int interval = INITIAL_STATUS_CHECK_INTERVAL_IN_MS;
 
                             if (numberOfStatusChecks >= NUMBER_OF_INITIAL_STATUS_CHECKS) {
-                                interval = statusCheckIntervalInMs;
+                                interval = statusProvider.getStatusPollIntervalInMilliseconds();
                             }
 
                             executorService.schedule(pollExecutorTask, interval, TimeUnit.MILLISECONDS);

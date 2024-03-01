@@ -44,11 +44,6 @@ public abstract class BulkOperation<TStatus> {
 
     private final ZipExtractor zipExtractor;
 
-    /**
-     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
-     */
-    private final int statusPollIntervalInMilliseconds;
-
     private final BulkOperationStatusProvider<TStatus> statusProvider;
 
     private BulkOperationStatus<TStatus> finalStatus;
@@ -59,14 +54,12 @@ public abstract class BulkOperation<TStatus> {
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
             ZipExtractor zipExtractor,
-            int statusPollIntervalInMilliseconds,
             BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
         this.trackingId = trackingId;
         this.httpFileService = httpFileService;
         this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.statusProvider = statusProvider;
     }
 
@@ -109,7 +102,7 @@ public abstract class BulkOperation<TStatus> {
     private BulkOperationTracker<TStatus> generateTracker(Progress<BulkOperationProgressInfo> progress) {
         BulkOperationTracker<TStatus> tracker;
 
-        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, progress, this.statusPollIntervalInMilliseconds);
+        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, progress);
 
         return tracker;
     }
@@ -164,13 +157,6 @@ public abstract class BulkOperation<TStatus> {
 
     ZipExtractor getZipExtractor() {
         return zipExtractor;
-    }
-
-    /**
-     * Gets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public int getStatusPollIntervalInMilliseconds() {
-        return statusPollIntervalInMilliseconds;
     }
 
     /**
