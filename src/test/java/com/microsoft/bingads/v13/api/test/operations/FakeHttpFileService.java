@@ -1,9 +1,7 @@
 package com.microsoft.bingads.v13.api.test.operations;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 import org.apache.http.HttpRequest;
 

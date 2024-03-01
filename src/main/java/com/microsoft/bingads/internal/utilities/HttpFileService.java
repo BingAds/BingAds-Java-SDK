@@ -2,7 +2,6 @@ package com.microsoft.bingads.internal.utilities;
 
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.apache.http.HttpRequest;
