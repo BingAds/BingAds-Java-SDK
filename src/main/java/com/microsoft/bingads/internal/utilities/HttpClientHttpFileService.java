@@ -35,12 +35,7 @@ public class HttpClientHttpFileService implements HttpFileService {
             throw new IOException(String.format("Could not download result file due to file %s already exists", tempZipFile));
         }
 
-        CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
-                .setConnectionRequestTimeout(timeoutInMilliseconds)
-                .setConnectTimeout(timeoutInMilliseconds)
-                .setSocketTimeout(timeoutInMilliseconds).build())
-                .useSystemProperties()
-                .build();
+        CloseableHttpClient client = createHttpClient(timeoutInMilliseconds);
 
         try {
             HttpGet httpget = new HttpGet(new URI(url));
@@ -76,15 +71,8 @@ public class HttpClientHttpFileService implements HttpFileService {
         try {
             stream = new FileInputStream(uploadFilePath);
 
-            CloseableHttpClient client = HttpClients.custom()
-                    .setDefaultRequestConfig(RequestConfig.custom()
-                        .setConnectionRequestTimeout(timeoutInMilliseconds)
-                        .setConnectTimeout(timeoutInMilliseconds)
-                        .setSocketTimeout(timeoutInMilliseconds)
-                        .build())
-                    .useSystemProperties()
-                    .build();
-            
+            CloseableHttpClient client = createHttpClient(timeoutInMilliseconds);
+
 
             try {            	
                 HttpPost post = new HttpPost(uri);
@@ -136,5 +124,15 @@ public class HttpClientHttpFileService implements HttpFileService {
                 }
             }
         }
+    }
+
+    private CloseableHttpClient createHttpClient(int timeoutInMilliseconds) {
+        return HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
+                        .setConnectionRequestTimeout(timeoutInMilliseconds)
+                        .setConnectTimeout(timeoutInMilliseconds)
+                        .setSocketTimeout(timeoutInMilliseconds)
+                        .build())
+                .useSystemProperties()
+                .build();
     }
 }
