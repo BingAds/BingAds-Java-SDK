@@ -18,14 +18,17 @@ import com.microsoft.bingads.v13.bulk.UploadStatus;
 
 public class UploadStatusProvider implements BulkOperationStatusProvider<UploadStatus> {
 
-    private final String requestId;      
+    private final String requestId;
 
-    public UploadStatusProvider(String requestId) {
-        this.requestId = requestId;        
+    private final ServiceClient<IBulkService> serviceClient;
+
+    public UploadStatusProvider(String requestId, ServiceClient<IBulkService> serviceClient) {
+        this.requestId = requestId;
+        this.serviceClient = serviceClient;
     }
 
     @Override
-    public Future<BulkOperationStatus<UploadStatus>> getCurrentStatus(ServiceClient<IBulkService> serviceClient, AsyncCallback<BulkOperationStatus<UploadStatus>> callback) {
+    public Future<BulkOperationStatus<UploadStatus>> getCurrentStatus(AsyncCallback<BulkOperationStatus<UploadStatus>> callback) {
     	GetBulkUploadStatusRequest request = new GetBulkUploadStatusRequest();
         request.setRequestId(this.requestId);
 

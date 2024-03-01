@@ -4,7 +4,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
@@ -20,13 +19,16 @@ import jakarta.xml.ws.Response;
 public class DownloadStatusProvider implements BulkOperationStatusProvider<DownloadStatus> {
 
     private final String requestId;
-    
-    public DownloadStatusProvider(String requestId) {
+
+    private final ServiceClient<IBulkService> serviceClient;
+
+    public DownloadStatusProvider(String requestId, ServiceClient<IBulkService> serviceClient) {
         this.requestId = requestId;
+        this.serviceClient = serviceClient;
     }
 
     @Override
-    public Future<BulkOperationStatus<DownloadStatus>> getCurrentStatus(ServiceClient<IBulkService> serviceClient, AsyncCallback<BulkOperationStatus<DownloadStatus>> callback) {
+    public Future<BulkOperationStatus<DownloadStatus>> getCurrentStatus(AsyncCallback<BulkOperationStatus<DownloadStatus>> callback) {
         GetBulkDownloadStatusRequest request = new GetBulkDownloadStatusRequest();
         request.setRequestId(this.requestId);
 

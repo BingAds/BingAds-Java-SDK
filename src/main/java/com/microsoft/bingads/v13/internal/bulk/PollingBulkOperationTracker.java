@@ -9,11 +9,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.OperationStatusRetry;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 import com.microsoft.bingads.internal.utilities.ThreadPool;
 import com.microsoft.bingads.v13.bulk.AdApiFaultDetail_Exception;
 import com.microsoft.bingads.v13.bulk.BulkOperationProgressInfo;
@@ -37,8 +36,6 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
 
     private ResultFuture<BulkOperationStatus<TStatus>> trackResultFuture;
 
-    private ServiceClient<IBulkService> serviceClient;
-
     private OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService> operationStatusRetry;
     private int numberOfStatusRetry = 4;
 
@@ -50,12 +47,11 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
     };
 
     public PollingBulkOperationTracker(BulkOperationStatusProvider<TStatus> statusProvider,
-            ServiceClient<IBulkService> serviceClient, Progress<BulkOperationProgressInfo> progress,
+            Progress<BulkOperationProgressInfo> progress,
             int statusCheckIntervalInMs) {
 
         this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
-        this.serviceClient = serviceClient;
         this.progress = progress;
         this.operationStatusRetry = new OperationStatusRetry<BulkOperationStatus<TStatus>, BulkOperationStatusProvider<TStatus>, IBulkService>(
                 new Function<Exception, Integer>() {
@@ -206,14 +202,14 @@ public class PollingBulkOperationTracker<TStatus> implements BulkOperationTracke
                 callback);
 
         operationStatusRetry.executeWithRetry(
-                new TriConsumer<BulkOperationStatusProvider<TStatus>, ServiceClient<IBulkService>, AsyncCallback<BulkOperationStatus<TStatus>>>() {
+                new BiConsumer<BulkOperationStatusProvider<TStatus>, AsyncCallback<BulkOperationStatus<TStatus>>>() {
                     @Override
-                    public void accept(BulkOperationStatusProvider<TStatus> statusProvider,
-                            ServiceClient<IBulkService> serviceClient,
+                    public void accept(
+                            BulkOperationStatusProvider<TStatus> statusProvider,
                             AsyncCallback<BulkOperationStatus<TStatus>> callback) {
-                        statusProvider.getCurrentStatus(serviceClient, callback);
+                        statusProvider.getCurrentStatus(callback);
                     }
-                }, statusProvider, serviceClient, new Consumer<BulkOperationStatus<TStatus>>() {
+                }, statusProvider, new Consumer<BulkOperationStatus<TStatus>>() {
                     @Override
                     public void accept(BulkOperationStatus<TStatus> status) {
                         currentStatus = status;

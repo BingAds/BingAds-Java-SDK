@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
@@ -45,8 +44,6 @@ public abstract class BulkOperation<TStatus> {
 
     private final ZipExtractor zipExtractor;
 
-    private final ServiceClient<IBulkService> serviceClient;
-
     /**
      * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
      */
@@ -62,7 +59,6 @@ public abstract class BulkOperation<TStatus> {
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
             ZipExtractor zipExtractor,
-            ServiceClient<IBulkService> serviceClient,
             int statusPollIntervalInMilliseconds,
             BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
@@ -70,7 +66,6 @@ public abstract class BulkOperation<TStatus> {
         this.httpFileService = httpFileService;
         this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
-        this.serviceClient = serviceClient;
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.statusProvider = statusProvider;
     }
@@ -114,7 +109,7 @@ public abstract class BulkOperation<TStatus> {
     private BulkOperationTracker<TStatus> generateTracker(Progress<BulkOperationProgressInfo> progress) {
         BulkOperationTracker<TStatus> tracker;
 
-        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, this.serviceClient, progress, this.statusPollIntervalInMilliseconds);
+        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, progress, this.statusPollIntervalInMilliseconds);
 
         return tracker;
     }
@@ -134,7 +129,7 @@ public abstract class BulkOperation<TStatus> {
         }
         
        
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
+        statusProvider.getCurrentStatus(new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
             @Override
             
             public void onSuccess(BulkOperationStatus<TStatus> currentStatus) {

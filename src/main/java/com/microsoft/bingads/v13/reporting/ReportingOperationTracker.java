@@ -12,8 +12,8 @@ import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.OperationStatusRetry;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 
 /**
  * Track the status of reporting operation.
@@ -160,14 +160,14 @@ public class ReportingOperationTracker {
                 callback);
 
         operationStatusRetry.executeWithRetry(
-                new TriConsumer<ReportingStatusProvider, ServiceClient<IReportingService>, AsyncCallback<ReportingOperationStatus>>() {
+                new BiConsumer<ReportingStatusProvider, AsyncCallback<ReportingOperationStatus>>() {
                     @Override
-                    public void accept(ReportingStatusProvider statusProvider,
-                            ServiceClient<IReportingService> serviceClient,
+                    public void accept(
+                            ReportingStatusProvider statusProvider,
                             AsyncCallback<ReportingOperationStatus> callback) {
                         statusProvider.getCurrentStatus(serviceClient, callback);
                     }
-                }, statusProvider, serviceClient, new Consumer<ReportingOperationStatus>() {
+                }, statusProvider, new Consumer<ReportingOperationStatus>() {
                     @Override
                     public void accept(ReportingOperationStatus status) {
                         currentStatus = status;
