@@ -36,13 +36,6 @@ public abstract class BulkOperation<TStatus> {
      */
     private final String trackingId;
 
-    private final ServiceClient<IBulkService> serviceClient;
-
-    /**
-     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
-     */
-    private final int statusPollIntervalInMilliseconds;
-
     private final HttpFileService httpFileService;
 
     /**
@@ -52,6 +45,13 @@ public abstract class BulkOperation<TStatus> {
 
     private final ZipExtractor zipExtractor;
 
+    private final ServiceClient<IBulkService> serviceClient;
+
+    /**
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     */
+    private final int statusPollIntervalInMilliseconds;
+
     private final BulkOperationStatusProvider<TStatus> statusProvider;
 
     private BulkOperationStatus<TStatus> finalStatus;
@@ -59,19 +59,19 @@ public abstract class BulkOperation<TStatus> {
     BulkOperation(
             String requestId,
             String trackingId,
-            ServiceClient<IBulkService> serviceClient,
-            int statusPollIntervalInMilliseconds,
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
             ZipExtractor zipExtractor,
+            ServiceClient<IBulkService> serviceClient,
+            int statusPollIntervalInMilliseconds,
             BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
         this.trackingId = trackingId;
-        this.serviceClient = serviceClient;
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.httpFileService = httpFileService;
         this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
+        this.serviceClient = serviceClient;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.statusProvider = statusProvider;
     }
 

@@ -42,17 +42,4 @@ public class FakeHttpFileService implements HttpFileService {
     public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds) {
-        onDownloadFile.accept(url, tempZipFile);
-        
-        Future<File> result = new CompleteResponse(tempZipFile, new ArrayList<StringHeader>());
-        
-        callback.onCompleted(result);
-        
-        downloadWasCalled = true;
-        
-        return result;
-    }       
 }

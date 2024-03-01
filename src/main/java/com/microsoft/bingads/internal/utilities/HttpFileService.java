@@ -15,6 +15,4 @@ public interface HttpFileService {
 
     void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds);
 
-    Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds);
-
 }

@@ -202,11 +202,11 @@ public class BulkServiceManager {
                             BulkUploadOperation operation = new BulkUploadOperation(
                                     result.getRequestId(),
                                     ServiceUtils.GetTrackingId(res),
-                                    serviceClient,
-                                    statusPollIntervalInMilliseconds,
                                     httpFileService,
                                     downloadHttpTimeoutInMilliseconds,
-                                    zipExtractor);
+                                    zipExtractor,
+                                    serviceClient,
+                                    statusPollIntervalInMilliseconds);
                             operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                                 @Override
                                 public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
@@ -572,11 +572,11 @@ public class BulkServiceManager {
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(),
                                 trackingId,
-                                serviceClient,
-                                statusPollIntervalInMilliseconds,
                                 httpFileService,
                                 downloadHttpTimeoutInMilliseconds,
-                                zipExtractor);
+                                zipExtractor,
+                                serviceClient,
+                                statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -602,11 +602,11 @@ public class BulkServiceManager {
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(),
                                 ServiceUtils.GetTrackingId(res),
-                                serviceClient,
-                                statusPollIntervalInMilliseconds,
                                 httpFileService,
                                 downloadHttpTimeoutInMilliseconds,
-                                zipExtractor);
+                                zipExtractor,
+                                serviceClient,
+                                statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -702,11 +702,11 @@ public class BulkServiceManager {
                     BulkUploadOperation operation = new BulkUploadOperation(
                             response.getRequestId(),
                             trackingId,
-                            serviceClient,
-                            statusPollIntervalInMilliseconds,
                             httpFileService,
                             downloadHttpTimeoutInMilliseconds,
-                            zipExtractor);
+                            zipExtractor,
+                            serviceClient,
+                            statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {

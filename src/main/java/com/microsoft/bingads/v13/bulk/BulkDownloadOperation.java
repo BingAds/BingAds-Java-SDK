@@ -38,30 +38,30 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
         this(
                 requestId,
                 null,
-                serviceClient,
-                statusPollIntervalInMilliseconds,
                 new HttpClientHttpFileService(),
                 Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
-                new SimpleZipExtractor());
+                new SimpleZipExtractor(),
+                serviceClient,
+                statusPollIntervalInMilliseconds);
     }
 
     BulkDownloadOperation(
             String requestId,
             String trackingId,
-            ServiceClient<IBulkService> serviceClient,
-            int statusPollIntervalInMilliseconds,
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
-            ZipExtractor zipExtractor) {
+            ZipExtractor zipExtractor,
+            ServiceClient<IBulkService> serviceClient,
+            int statusPollIntervalInMilliseconds) {
     	super(
                 requestId,
                 trackingId,
-                serviceClient,
-                statusPollIntervalInMilliseconds,
                 httpFileService,
                 downloadHttpTimeoutInMilliseconds,
                 zipExtractor,
-                new DownloadStatusProvider(requestId, serviceClient.getAuthorizationData()));
+                serviceClient,
+                statusPollIntervalInMilliseconds,
+                new DownloadStatusProvider(requestId));
     }
     
     @Override

@@ -21,11 +21,8 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
 
     private final String requestId;
     
-    private final AuthorizationData authorizationData;
-
-    public DownloadStatusProvider(String requestId, AuthorizationData authorizationData) {
+    public DownloadStatusProvider(String requestId) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
     }
 
     @Override

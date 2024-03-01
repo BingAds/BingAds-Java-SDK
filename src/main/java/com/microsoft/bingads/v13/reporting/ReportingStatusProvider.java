@@ -15,11 +15,8 @@ public class ReportingStatusProvider{
 
     private final String requestId;
     
-    private final AuthorizationData authorizationData;
-
-    public ReportingStatusProvider(String requestId, AuthorizationData authorizationData) {
+    public ReportingStatusProvider(String requestId) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
     }
 
     public Future<ReportingOperationStatus> getCurrentStatus(ServiceClient<IReportingService> serviceClient, AsyncCallback<ReportingOperationStatus> callback) {
