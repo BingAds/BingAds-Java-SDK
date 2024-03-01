@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.Future;
 
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -24,10 +23,8 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.CouldNotDownloadResultFileException;
 import com.microsoft.bingads.CouldNotUploadFileException;
-import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 
 public class HttpClientHttpFileService implements HttpFileService {

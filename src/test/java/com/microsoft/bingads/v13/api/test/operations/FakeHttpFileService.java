@@ -4,12 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.concurrent.Future;
 
 import org.apache.http.HttpRequest;
 
-import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
