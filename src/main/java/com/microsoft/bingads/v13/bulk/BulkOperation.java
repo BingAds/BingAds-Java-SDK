@@ -29,12 +29,12 @@ public abstract class BulkOperation<TStatus> {
     /**
      * The request identifier corresponding to the bulk upload or download, depending on the derived type.
      */
-    private String requestId;
+    private final String requestId;
 
     /**
      * The identifier of the log entry that contains the details of the upload or download request.
      */
-    private String trackingId;
+    private final String trackingId;
 
     private final ServiceClient<IBulkService> serviceClient;
 
@@ -162,14 +162,6 @@ public abstract class BulkOperation<TStatus> {
         return statusProvider;
     }
 
-    void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    void setTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-    }
-
     HttpFileService getHttpFileService() {
         return httpFileService;
     }
@@ -226,7 +218,8 @@ public abstract class BulkOperation<TStatus> {
 
     abstract RuntimeException getOperationCouldNotBeCompletedException(List<OperationError> errors, TStatus status);
 
-    private Future<File> downloadResultFileAsyncImpl(final File localResultDirectoryName, final String localResultFileName, final boolean decompress, final boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
+    private Future<File> downloadResultFileAsyncImpl(final File
+            localResultDirectoryName, final String localResultFileName, final boolean decompress, final boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         if (finalStatus == null) {
