@@ -48,7 +48,6 @@ public class HttpClientHttpFileService implements HttpFileService {
         }
     }
 
-    @SuppressWarnings("ZeroLengthArrayAllocation")
     private CopyOption[] copyOptions(boolean overwrite) {
         return overwrite ?
                 new CopyOption[] { StandardCopyOption.REPLACE_EXISTING } :
