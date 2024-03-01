@@ -567,11 +567,9 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        String trackingId = ServiceUtils.GetTrackingId(res);
-
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(),
-                                trackingId,
+                                ServiceUtils.GetTrackingId(res),
                                 httpFileService,
                                 downloadHttpTimeoutInMilliseconds,
                                 zipExtractor,
@@ -650,8 +648,6 @@ public class BulkServiceManager {
                 try {
                     GetBulkUploadUrlResponse response = res.get();
 
-                    String trackingId = ServiceUtils.GetTrackingId(res);
-
                     String uploadUrl = response.getUploadUrl();
 
                     File effectiveUploadPath = parameters.getUploadFilePath();
@@ -701,7 +697,7 @@ public class BulkServiceManager {
                     }
                     BulkUploadOperation operation = new BulkUploadOperation(
                             response.getRequestId(),
-                            trackingId,
+                            ServiceUtils.GetTrackingId(res),
                             httpFileService,
                             downloadHttpTimeoutInMilliseconds,
                             zipExtractor,
