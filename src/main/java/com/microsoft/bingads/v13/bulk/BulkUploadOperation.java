@@ -2,8 +2,7 @@ package com.microsoft.bingads.v13.bulk;
 
 import java.util.List;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
@@ -30,14 +29,12 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
      * Initializes a new instance of this class with the specified requestId and authorization data.
      *
      * @param requestId The identifier of an upload request that has previously been submitted.
-     * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
-	public BulkUploadOperation(String requestId, AuthorizationData authorizationData, int statusPollIntervalInMilliseconds) {
+	public BulkUploadOperation(String requestId, ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         this(
                 requestId,
-                authorizationData,
                 null,
-                null,
+                serviceClient,
                 statusPollIntervalInMilliseconds,
                 new HttpClientHttpFileService(),
                 Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
@@ -46,23 +43,21 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
     
     BulkUploadOperation(
             String requestId,
-            AuthorizationData authorizationData,
             String trackingId,
-            ApiEnvironment apiEnvironment,
+            ServiceClient<IBulkService> serviceClient,
             int statusPollIntervalInMilliseconds,
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
             ZipExtractor zipExtractor) {
         super(
                 requestId,
-                authorizationData,
-                new UploadStatusProvider(requestId),
                 trackingId,
-                apiEnvironment,
+                serviceClient,
                 statusPollIntervalInMilliseconds,
                 httpFileService,
                 downloadHttpTimeoutInMilliseconds,
-                zipExtractor);
+                zipExtractor,
+                new UploadStatusProvider(requestId));
     }
 
     @Override

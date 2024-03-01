@@ -3,6 +3,7 @@ package com.microsoft.bingads.v13.api.test.operations.bulk_upload_operation;
 
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.PasswordAuthentication;
+import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.v13.api.test.operations.FakeApiTest;
 import com.microsoft.bingads.v13.bulk.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.bulk.BulkUploadOperation;
@@ -25,7 +26,9 @@ public class BulkUploadOperationTest extends FakeApiTest {
     }
 
     protected BulkUploadOperation createBulkUploadOperation(Integer statusCheckIntervalInMs) {
-        return new BulkUploadOperation("request123", createUserData(),
+        return new BulkUploadOperation(
+                "request123",
+                new ServiceClient<>(createUserData(), IBulkService.class),
                 statusCheckIntervalInMs != null ? statusCheckIntervalInMs : Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS);
     }
 

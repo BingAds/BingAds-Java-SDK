@@ -201,9 +201,8 @@ public class BulkServiceManager {
                         if (needToFallBacktoAsync(result)) {
                             BulkUploadOperation operation = new BulkUploadOperation(
                                     result.getRequestId(),
-                                    authorizationData,
                                     ServiceUtils.GetTrackingId(res),
-                                    apiEnvironment,
+                                    serviceClient,
                                     statusPollIntervalInMilliseconds,
                                     httpFileService,
                                     downloadHttpTimeoutInMilliseconds,
@@ -572,9 +571,8 @@ public class BulkServiceManager {
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(),
-                                authorizationData,
                                 trackingId,
-                                apiEnvironment,
+                                serviceClient,
                                 statusPollIntervalInMilliseconds,
                                 httpFileService,
                                 downloadHttpTimeoutInMilliseconds,
@@ -603,9 +601,8 @@ public class BulkServiceManager {
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(),
-                                authorizationData,
                                 ServiceUtils.GetTrackingId(res),
-                                apiEnvironment,
+                                serviceClient,
                                 statusPollIntervalInMilliseconds,
                                 httpFileService,
                                 downloadHttpTimeoutInMilliseconds,
@@ -704,9 +701,8 @@ public class BulkServiceManager {
                     }
                     BulkUploadOperation operation = new BulkUploadOperation(
                             response.getRequestId(),
-                            authorizationData,
                             trackingId,
-                            apiEnvironment,
+                            serviceClient,
                             statusPollIntervalInMilliseconds,
                             httpFileService,
                             downloadHttpTimeoutInMilliseconds,

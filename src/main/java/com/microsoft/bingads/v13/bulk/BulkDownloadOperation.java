@@ -2,8 +2,7 @@ package com.microsoft.bingads.v13.bulk;
 
 import java.util.List;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
@@ -34,15 +33,12 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
      *
      * @param requestId The identifier of a download request that has previously
      * been submitted.
-     * @param authorizationData Represents a user who intends to access the
-     * corresponding customer and account.     
      */
-    public BulkDownloadOperation(String requestId, AuthorizationData authorizationData, int statusPollIntervalInMilliseconds) {
+    public BulkDownloadOperation(String requestId, ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         this(
                 requestId,
-                authorizationData,
                 null,
-                null,
+                serviceClient,
                 statusPollIntervalInMilliseconds,
                 new HttpClientHttpFileService(),
                 Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
@@ -51,23 +47,21 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
 
     BulkDownloadOperation(
             String requestId,
-            AuthorizationData authorizationData,
             String trackingId,
-            ApiEnvironment apiEnvironment,
+            ServiceClient<IBulkService> serviceClient,
             int statusPollIntervalInMilliseconds,
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
             ZipExtractor zipExtractor) {
     	super(
                 requestId,
-                authorizationData,
-                new DownloadStatusProvider(requestId, authorizationData),
                 trackingId,
-                apiEnvironment,
+                serviceClient,
                 statusPollIntervalInMilliseconds,
                 httpFileService,
                 downloadHttpTimeoutInMilliseconds,
-                zipExtractor);
+                zipExtractor,
+                new DownloadStatusProvider(requestId, serviceClient.getAuthorizationData()));
     }
     
     @Override

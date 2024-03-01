@@ -6,20 +6,15 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import com.microsoft.bingads.v13.internal.bulk.BulkOperationStatusProvider;
 import com.microsoft.bingads.v13.internal.bulk.BulkOperationTracker;
-import com.microsoft.bingads.v13.internal.bulk.Config;
 import com.microsoft.bingads.v13.internal.bulk.PollingBulkOperationTracker;
 
 /**
@@ -32,11 +27,6 @@ import com.microsoft.bingads.v13.internal.bulk.PollingBulkOperationTracker;
 public abstract class BulkOperation<TStatus> {
 
     /**
-     * Represents a user who intends to access the corresponding customer and account.
-     */
-    private AuthorizationData authorizationData;
-
-    /**
      * The request identifier corresponding to the bulk upload or download, depending on the derived type.
      */
     private String requestId;
@@ -46,46 +36,43 @@ public abstract class BulkOperation<TStatus> {
      */
     private String trackingId;
 
+    private final ServiceClient<IBulkService> serviceClient;
+
     /**
      * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
-     */   
+     */
     private final int statusPollIntervalInMilliseconds;
-    
+
+    private final HttpFileService httpFileService;
+
     /**
      * The timeout in milliseconds of HttpClient download operation.
      */
     private final int downloadHttpTimeoutInMilliseconds;
-    
-    BulkOperationStatusProvider<TStatus> statusProvider;
-    private final HttpFileService httpFileService;
+
     private final ZipExtractor zipExtractor;
 
-    private final ServiceClient<IBulkService> serviceClient;
+    private final BulkOperationStatusProvider<TStatus> statusProvider;
 
     private BulkOperationStatus<TStatus> finalStatus;
 
     BulkOperation(
             String requestId,
-            AuthorizationData authorizationData,
-            BulkOperationStatusProvider<TStatus> statusProvider,
             String trackingId,
-            ApiEnvironment apiEnvironment,
+            ServiceClient<IBulkService> serviceClient,
             int statusPollIntervalInMilliseconds,
             HttpFileService httpFileService,
             int downloadHttpTimeoutInMilliseconds,
-            ZipExtractor zipExtractor) {
-        this.statusProvider = statusProvider;
+            ZipExtractor zipExtractor,
+            BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
         this.trackingId = trackingId;
+        this.serviceClient = serviceClient;
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.httpFileService = httpFileService;
         this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
-
-        this.serviceClient = new ServiceClient<>(authorizationData, apiEnvironment, IBulkService.class);
-
-        zipExtractor = new SimpleZipExtractor();
+        this.statusProvider = statusProvider;
     }
 
     /**
@@ -163,10 +150,6 @@ public abstract class BulkOperation<TStatus> {
         return resultFuture;
     }
 
-    public AuthorizationData getAuthorizationData() {
-        return authorizationData;
-    }
-
     public String getRequestId() {
         return requestId;
     }
@@ -185,10 +168,6 @@ public abstract class BulkOperation<TStatus> {
 
     void setTrackingId(String trackingId) {
         this.trackingId = trackingId;
-    }
-
-    void setStatusProvider(BulkOperationStatusProvider<TStatus> statusProvider) {
-        this.statusProvider = statusProvider;
     }
 
     HttpFileService getHttpFileService() {
