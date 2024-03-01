@@ -8,6 +8,7 @@ import com.microsoft.bingads.v13.bulk.ArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.bulk.BulkUploadOperation;
 import com.microsoft.bingads.v13.bulk.GetBulkUploadStatusResponse;
 import com.microsoft.bingads.v13.bulk.IBulkService;
+import com.microsoft.bingads.v13.internal.bulk.Config;
 
 public class BulkUploadOperationTest extends FakeApiTest {
 
@@ -24,13 +25,8 @@ public class BulkUploadOperationTest extends FakeApiTest {
     }
 
     protected BulkUploadOperation createBulkUploadOperation(Integer statusCheckIntervalInMs) {
-        BulkUploadOperation operation = new BulkUploadOperation("request123", createUserData(), service);
-
-        if (statusCheckIntervalInMs != null) {
-            operation.setStatusPollIntervalInMilliseconds(statusCheckIntervalInMs);
-        }
-
-        return operation;
+        return new BulkUploadOperation("request123", createUserData(),
+                statusCheckIntervalInMs != null ? statusCheckIntervalInMs : Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS);
     }
 
     protected GetBulkUploadStatusResponse createStatusResponse(Integer percentComplete, String status, String resultFileUrl) {

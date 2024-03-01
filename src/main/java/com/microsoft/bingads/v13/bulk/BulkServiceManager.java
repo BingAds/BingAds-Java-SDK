@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
@@ -200,9 +199,15 @@ public class BulkServiceManager {
                     try {
                         UploadEntityRecordsResponse result = res.get();
                         if (needToFallBacktoAsync(result)) {
-                            BulkUploadOperation operation = new BulkUploadOperation(result.getRequestId(), authorizationData, service, ServiceUtils.GetTrackingId(res), apiEnvironment);
-                            operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                            operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                            BulkUploadOperation operation = new BulkUploadOperation(
+                                    result.getRequestId(),
+                                    authorizationData,
+                                    ServiceUtils.GetTrackingId(res),
+                                    apiEnvironment,
+                                    statusPollIntervalInMilliseconds,
+                                    httpFileService,
+                                    downloadHttpTimeoutInMilliseconds,
+                                    zipExtractor);
                             operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                                 @Override
                                 public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
@@ -504,9 +509,6 @@ public class BulkServiceManager {
 
     private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation,
             AsyncCallback<File> callback) throws IOException, URISyntaxException {
-        operation.setHttpFileService(this.httpFileService);
-        operation.setZipExtractor(this.zipExtractor);
-
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         File effectiveResultFileDirectory = resultFileDirectory;
@@ -568,12 +570,15 @@ public class BulkServiceManager {
 
                         String trackingId = ServiceUtils.GetTrackingId(res);
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData, trackingId,
-                                apiEnvironment);
-
-                        operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-
-                        operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(
+                                response.getDownloadRequestId(),
+                                authorizationData,
+                                trackingId,
+                                apiEnvironment,
+                                statusPollIntervalInMilliseconds,
+                                httpFileService,
+                                downloadHttpTimeoutInMilliseconds,
+                                zipExtractor);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -596,12 +601,15 @@ public class BulkServiceManager {
 
                         response = res.get();
 
-                        BulkDownloadOperation operation = new BulkDownloadOperation(response.getDownloadRequestId(), authorizationData,
-                                ServiceUtils.GetTrackingId(res), apiEnvironment);
-
-                        operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-
-                        operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                        BulkDownloadOperation operation = new BulkDownloadOperation(
+                                response.getDownloadRequestId(),
+                                authorizationData,
+                                ServiceUtils.GetTrackingId(res),
+                                apiEnvironment,
+                                statusPollIntervalInMilliseconds,
+                                httpFileService,
+                                downloadHttpTimeoutInMilliseconds,
+                                zipExtractor);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -692,13 +700,17 @@ public class BulkServiceManager {
 
                     if (parameters.getAutoDeleteTempFile()) {
                         parameters.getUploadFilePath().delete();
+
                     }
-
-                    BulkUploadOperation operation = new BulkUploadOperation(response.getRequestId(), authorizationData, service, trackingId, apiEnvironment);
-
-                    operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-
-                    operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                    BulkUploadOperation operation = new BulkUploadOperation(
+                            response.getRequestId(),
+                            authorizationData,
+                            trackingId,
+                            apiEnvironment,
+                            statusPollIntervalInMilliseconds,
+                            httpFileService,
+                            downloadHttpTimeoutInMilliseconds,
+                            zipExtractor);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {

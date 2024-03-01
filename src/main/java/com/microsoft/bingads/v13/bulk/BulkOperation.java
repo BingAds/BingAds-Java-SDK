@@ -49,52 +49,43 @@ public abstract class BulkOperation<TStatus> {
     /**
      * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
      */   
-    private int statusPollIntervalInMilliseconds;
+    private final int statusPollIntervalInMilliseconds;
     
     /**
      * The timeout in milliseconds of HttpClient download operation.
      */
-    private int downloadHttpTimeoutInMilliseconds;
+    private final int downloadHttpTimeoutInMilliseconds;
     
     BulkOperationStatusProvider<TStatus> statusProvider;
-    private HttpFileService httpFileService;
-    private ZipExtractor zipExtractor;
+    private final HttpFileService httpFileService;
+    private final ZipExtractor zipExtractor;
 
-    private ServiceClient<IBulkService> serviceClient;
+    private final ServiceClient<IBulkService> serviceClient;
 
     private BulkOperationStatus<TStatus> finalStatus;
 
-    BulkOperation(String requestId, AuthorizationData authorizationData) {
-        this(requestId, authorizationData, null, null, null);
-    }
-
-    BulkOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(requestId, authorizationData, null, null, apiEnvironment);
-    }
-    
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider) {
-        this(requestId, authorizationData, statusProvider, null, null);
-    }
-
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId) {
-    	 this(requestId, authorizationData, statusProvider, trackingId, null);
-    }
-    
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId, ApiEnvironment apiEnvironment) {
+    BulkOperation(
+            String requestId,
+            AuthorizationData authorizationData,
+            BulkOperationStatusProvider<TStatus> statusProvider,
+            String trackingId,
+            ApiEnvironment apiEnvironment,
+            int statusPollIntervalInMilliseconds,
+            HttpFileService httpFileService,
+            int downloadHttpTimeoutInMilliseconds,
+            ZipExtractor zipExtractor) {
         this.statusProvider = statusProvider;
         this.requestId = requestId;
         this.authorizationData = authorizationData;
         this.trackingId = trackingId;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
+        this.httpFileService = httpFileService;
+        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+        this.zipExtractor = zipExtractor;
 
-        statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
-        
-        downloadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
-
-        this.serviceClient = new ServiceClient<IBulkService>(authorizationData, apiEnvironment, IBulkService.class);
+        this.serviceClient = new ServiceClient<>(authorizationData, apiEnvironment, IBulkService.class);
 
         zipExtractor = new SimpleZipExtractor();
-
-        httpFileService = new HttpClientHttpFileService();
     }
 
     /**
@@ -204,16 +195,9 @@ public abstract class BulkOperation<TStatus> {
         return httpFileService;
     }
 
-    void setHttpFileService(HttpFileService httpFileService) {
-        this.httpFileService = httpFileService;
-    }
 
     ZipExtractor getZipExtractor() {
         return zipExtractor;
-    }
-
-    void setZipExtractor(ZipExtractor zipExtractor) {
-        this.zipExtractor = zipExtractor;
     }
 
     /**
@@ -224,24 +208,10 @@ public abstract class BulkOperation<TStatus> {
     }
 
     /**
-     * Sets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
-    }
-
-    /**
      * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
      */
 	public int getDownloadHttpTimeoutInMilliseconds() {
 		return downloadHttpTimeoutInMilliseconds;
-	}
-
-	/**
-     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
 	}
 
 	/**
@@ -339,10 +309,6 @@ public abstract class BulkOperation<TStatus> {
     }
 
     private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
-        if (httpFileService == null) {
-            httpFileService = new HttpClientHttpFileService();
-        }
-
         httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
 
         return tempZipFile;

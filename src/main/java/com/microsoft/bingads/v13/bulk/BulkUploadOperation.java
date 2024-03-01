@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import com.microsoft.bingads.v13.internal.bulk.Config;
 import com.microsoft.bingads.v13.internal.bulk.UploadStatusProvider;
 
 /**
@@ -27,20 +32,37 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
      * @param requestId The identifier of an upload request that has previously been submitted.
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
-	public BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service) {
-        this(requestId, authorizationData, service, null, null);
+	public BulkUploadOperation(String requestId, AuthorizationData authorizationData, int statusPollIntervalInMilliseconds) {
+        this(
+                requestId,
+                authorizationData,
+                null,
+                null,
+                statusPollIntervalInMilliseconds,
+                new HttpClientHttpFileService(),
+                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
+                new SimpleZipExtractor());
     }
     
-    public BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, ApiEnvironment apiEnvironment) {
-    	this(requestId, authorizationData, service, null, apiEnvironment);
-    }
-
-    protected BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, String trackingId) {
-    	this(requestId, authorizationData, service, trackingId, null);
-    }
-    
-    protected BulkUploadOperation(String requestId, AuthorizationData authorizationData, IBulkService service, String trackingId, ApiEnvironment apiEnvironment) {
-        super(requestId, authorizationData, new UploadStatusProvider(requestId), trackingId, apiEnvironment);
+    BulkUploadOperation(
+            String requestId,
+            AuthorizationData authorizationData,
+            String trackingId,
+            ApiEnvironment apiEnvironment,
+            int statusPollIntervalInMilliseconds,
+            HttpFileService httpFileService,
+            int downloadHttpTimeoutInMilliseconds,
+            ZipExtractor zipExtractor) {
+        super(
+                requestId,
+                authorizationData,
+                new UploadStatusProvider(requestId),
+                trackingId,
+                apiEnvironment,
+                statusPollIntervalInMilliseconds,
+                httpFileService,
+                downloadHttpTimeoutInMilliseconds,
+                zipExtractor);
     }
 
     @Override
