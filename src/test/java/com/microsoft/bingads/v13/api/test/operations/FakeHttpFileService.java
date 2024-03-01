@@ -29,7 +29,7 @@ public class FakeHttpFileService implements HttpFileService {
     }
     
     @Override
-    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws IOException, URISyntaxException {
+    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) {
         onDownloadFile.accept(url, tempZipFile);
         
         downloadWasCalled = true;

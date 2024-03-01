@@ -9,7 +9,7 @@ import org.apache.http.HttpRequest;
 
 public interface HttpFileService {
 
-    void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws IOException, URISyntaxException;
+    void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws URISyntaxException;
 
     void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds);
 
