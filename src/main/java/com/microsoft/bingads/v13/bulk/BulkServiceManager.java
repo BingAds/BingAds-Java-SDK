@@ -200,13 +200,9 @@ public class BulkServiceManager {
                         UploadEntityRecordsResponse result = res.get();
                         if (needToFallBacktoAsync(result)) {
                             BulkUploadOperation operation = new BulkUploadOperation(
-                                    result.getRequestId(),
-                                    ServiceUtils.GetTrackingId(res),
-                                    httpFileService,
-                                    downloadHttpTimeoutInMilliseconds,
-                                    zipExtractor,
-                                    serviceClient,
-                                    statusPollIntervalInMilliseconds);
+                                    result.getRequestId(), ServiceUtils.GetTrackingId(res),
+                                    httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                    serviceClient, statusPollIntervalInMilliseconds);
                             operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                                 @Override
                                 public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
@@ -568,13 +564,9 @@ public class BulkServiceManager {
                         response = res.get();
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
-                                response.getDownloadRequestId(),
-                                ServiceUtils.GetTrackingId(res),
-                                httpFileService,
-                                downloadHttpTimeoutInMilliseconds,
-                                zipExtractor,
-                                serviceClient,
-                                statusPollIntervalInMilliseconds);
+                                response.getDownloadRequestId(), ServiceUtils.GetTrackingId(res),
+                                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                serviceClient, statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -598,13 +590,9 @@ public class BulkServiceManager {
                         response = res.get();
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
-                                response.getDownloadRequestId(),
-                                ServiceUtils.GetTrackingId(res),
-                                httpFileService,
-                                downloadHttpTimeoutInMilliseconds,
-                                zipExtractor,
-                                serviceClient,
-                                statusPollIntervalInMilliseconds);
+                                response.getDownloadRequestId(), ServiceUtils.GetTrackingId(res),
+                                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                serviceClient, statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
                     } catch (InterruptedException e) {
@@ -696,13 +684,9 @@ public class BulkServiceManager {
 
                     }
                     BulkUploadOperation operation = new BulkUploadOperation(
-                            response.getRequestId(),
-                            ServiceUtils.GetTrackingId(res),
-                            httpFileService,
-                            downloadHttpTimeoutInMilliseconds,
-                            zipExtractor,
-                            serviceClient,
-                            statusPollIntervalInMilliseconds);
+                            response.getRequestId(), ServiceUtils.GetTrackingId(res),
+                            httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                            serviceClient, statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
