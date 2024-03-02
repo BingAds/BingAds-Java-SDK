@@ -171,9 +171,6 @@ public class ReportingServiceManager {
     }
 
     private <T> Future<File> downloadReportingFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, ReportingDownloadOperation operation, AsyncCallback<File> callback) throws IOException, URISyntaxException {
-        operation.setHttpFileService(this.httpFileService);
-        operation.setZipExtractor(this.zipExtractor);
-
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         File effectiveResultFileDirectory = resultFileDirectory;
@@ -232,13 +229,10 @@ public class ReportingServiceManager {
 
                     response = res.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(res);
-
-                    ReportingDownloadOperation operation = new ReportingDownloadOperation(response.getReportRequestId(), authorizationData, trackingId, apiEnvironment);
-
-                    operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                    
-                    operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                    ReportingDownloadOperation operation = new ReportingDownloadOperation(
+                            response.getReportRequestId(), ServiceUtils.GetTrackingId(res),
+                            httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                            serviceClient, statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {

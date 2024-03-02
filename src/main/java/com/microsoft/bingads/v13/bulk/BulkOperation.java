@@ -6,20 +6,14 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 import com.microsoft.bingads.v13.internal.bulk.BulkOperationStatusProvider;
 import com.microsoft.bingads.v13.internal.bulk.BulkOperationTracker;
-import com.microsoft.bingads.v13.internal.bulk.Config;
 import com.microsoft.bingads.v13.internal.bulk.PollingBulkOperationTracker;
 
 /**
@@ -32,69 +26,38 @@ import com.microsoft.bingads.v13.internal.bulk.PollingBulkOperationTracker;
 public abstract class BulkOperation<TStatus> {
 
     /**
-     * Represents a user who intends to access the corresponding customer and account.
-     */
-    private AuthorizationData authorizationData;
-
-    /**
      * The request identifier corresponding to the bulk upload or download, depending on the derived type.
      */
-    private String requestId;
+    private final String requestId;
 
     /**
      * The identifier of the log entry that contains the details of the upload or download request.
      */
-    private String trackingId;
+    private final String trackingId;
 
-    /**
-     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
-     */   
-    private int statusPollIntervalInMilliseconds;
-    
+    private final HttpFileService httpFileService;
+
     /**
      * The timeout in milliseconds of HttpClient download operation.
      */
-    private int downloadHttpTimeoutInMilliseconds;
-    
-    BulkOperationStatusProvider<TStatus> statusProvider;
-    private HttpFileService httpFileService;
-    private ZipExtractor zipExtractor;
+    private final int downloadHttpTimeoutInMilliseconds;
 
-    private ServiceClient<IBulkService> serviceClient;
+    private final ZipExtractor zipExtractor;
+
+    private final BulkOperationStatusProvider<TStatus> statusProvider;
 
     private BulkOperationStatus<TStatus> finalStatus;
 
-    BulkOperation(String requestId, AuthorizationData authorizationData) {
-        this(requestId, authorizationData, null, null, null);
-    }
-
-    BulkOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(requestId, authorizationData, null, null, apiEnvironment);
-    }
-    
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider) {
-        this(requestId, authorizationData, statusProvider, null, null);
-    }
-
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId) {
-    	 this(requestId, authorizationData, statusProvider, trackingId, null);
-    }
-    
-    BulkOperation(String requestId, AuthorizationData authorizationData, BulkOperationStatusProvider<TStatus> statusProvider, String trackingId, ApiEnvironment apiEnvironment) {
-        this.statusProvider = statusProvider;
+    BulkOperation(
+            String requestId, String trackingId,
+            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
         this.trackingId = trackingId;
-
-        statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
-        
-        downloadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
-
-        this.serviceClient = new ServiceClient<IBulkService>(authorizationData, apiEnvironment, IBulkService.class);
-
-        zipExtractor = new SimpleZipExtractor();
-
-        httpFileService = new HttpClientHttpFileService();
+        this.httpFileService = httpFileService;
+        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
+        this.zipExtractor = zipExtractor;
+        this.statusProvider = statusProvider;
     }
 
     /**
@@ -136,7 +99,7 @@ public abstract class BulkOperation<TStatus> {
     private BulkOperationTracker<TStatus> generateTracker(Progress<BulkOperationProgressInfo> progress) {
         BulkOperationTracker<TStatus> tracker;
 
-        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, this.serviceClient, progress, this.statusPollIntervalInMilliseconds);
+        tracker = new PollingBulkOperationTracker<TStatus>(statusProvider, progress);
 
         return tracker;
     }
@@ -156,7 +119,7 @@ public abstract class BulkOperation<TStatus> {
         }
         
        
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
+        statusProvider.getCurrentStatus(new ParentCallback<BulkOperationStatus<TStatus>>(resultFuture) {
             @Override
             
             public void onSuccess(BulkOperationStatus<TStatus> currentStatus) {
@@ -172,10 +135,6 @@ public abstract class BulkOperation<TStatus> {
         return resultFuture;
     }
 
-    public AuthorizationData getAuthorizationData() {
-        return authorizationData;
-    }
-
     public String getRequestId() {
         return requestId;
     }
@@ -188,46 +147,13 @@ public abstract class BulkOperation<TStatus> {
         return statusProvider;
     }
 
-    void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    void setTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-    }
-
-    void setStatusProvider(BulkOperationStatusProvider<TStatus> statusProvider) {
-        this.statusProvider = statusProvider;
-    }
-
     HttpFileService getHttpFileService() {
         return httpFileService;
     }
 
-    void setHttpFileService(HttpFileService httpFileService) {
-        this.httpFileService = httpFileService;
-    }
 
     ZipExtractor getZipExtractor() {
         return zipExtractor;
-    }
-
-    void setZipExtractor(ZipExtractor zipExtractor) {
-        this.zipExtractor = zipExtractor;
-    }
-
-    /**
-     * Gets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public int getStatusPollIntervalInMilliseconds() {
-        return statusPollIntervalInMilliseconds;
-    }
-
-    /**
-     * Sets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
     /**
@@ -235,13 +161,6 @@ public abstract class BulkOperation<TStatus> {
      */
 	public int getDownloadHttpTimeoutInMilliseconds() {
 		return downloadHttpTimeoutInMilliseconds;
-	}
-
-	/**
-     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
 	}
 
 	/**
@@ -277,7 +196,8 @@ public abstract class BulkOperation<TStatus> {
 
     abstract RuntimeException getOperationCouldNotBeCompletedException(List<OperationError> errors, TStatus status);
 
-    private Future<File> downloadResultFileAsyncImpl(final File localResultDirectoryName, final String localResultFileName, final boolean decompress, final boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
+    private Future<File> downloadResultFileAsyncImpl(final File
+            localResultDirectoryName, final String localResultFileName, final boolean decompress, final boolean overwrite, AsyncCallback<File> callback) throws IOException, URISyntaxException {
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         if (finalStatus == null) {
@@ -339,10 +259,6 @@ public abstract class BulkOperation<TStatus> {
     }
 
     private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
-        if (httpFileService == null) {
-            httpFileService = new HttpClientHttpFileService();
-        }
-
         httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
 
         return tempZipFile;
