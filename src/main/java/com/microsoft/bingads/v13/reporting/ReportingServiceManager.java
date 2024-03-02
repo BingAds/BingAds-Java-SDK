@@ -82,6 +82,7 @@ public class ReportingServiceManager implements Closeable {
 
     @Override
     public void close() throws IOException {
+        httpFileService.close();
         cleanupTempFiles();
     }
 
