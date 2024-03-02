@@ -47,16 +47,6 @@ public class ReportingDownloadOperation {
     private final ZipExtractor zipExtractor;
 
     /**
-     * The client of reporting service.
-     */
-    private final ServiceClient<IReportingService> serviceClient;
-
-    /**
-     * The amount of time in milliseconds that the download operations should wait before polling the Reporting service for status.
-     */
-    private final int statusPollIntervalInMilliseconds;
-
-    /**
      * Provide the status of the reporting download operation.
      */
     private final ReportingStatusProvider statusProvider;
@@ -67,21 +57,15 @@ public class ReportingDownloadOperation {
     private ReportingOperationStatus finalStatus;
 
     ReportingDownloadOperation(
-            String requestId,
-            String trackingId,
-            ServiceClient<IReportingService> serviceClient,
-            int statusPollIntervalInMilliseconds,
-            HttpFileService httpFileService,
-            int downloadHttpTimeoutInMilliseconds,
-            ZipExtractor zipExtractor) {
+            String requestId, String trackingId,
+            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            ServiceClient<IReportingService> serviceClient, int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
         this.trackingId = trackingId;
-        this.serviceClient = serviceClient;
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
         this.httpFileService = httpFileService;
         this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
-        this.statusProvider = new ReportingStatusProvider(requestId);
+        this.statusProvider = new ReportingStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds);
     }
 
     /**
@@ -112,7 +96,7 @@ public class ReportingDownloadOperation {
     private ReportingOperationTracker generateTracker() {
     	ReportingOperationTracker tracker;
 
-        tracker = new ReportingOperationTracker(statusProvider, this.serviceClient, this.statusPollIntervalInMilliseconds);
+        tracker = new ReportingOperationTracker(statusProvider);
 
         return tracker;
     }
@@ -132,7 +116,7 @@ public class ReportingDownloadOperation {
             return resultFuture;
         }
 
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<ReportingOperationStatus>(resultFuture) {
+        statusProvider.getCurrentStatus(new ParentCallback<ReportingOperationStatus>(resultFuture) {
             @Override
             public void onSuccess(ReportingOperationStatus currentStatus) {
                 if (statusProvider.isFinalStatus(currentStatus)) {
@@ -288,13 +272,6 @@ public class ReportingDownloadOperation {
 	}
 
 	/**
-	 * @return the serviceClient
-	 */
-	public ServiceClient<IReportingService> getServiceClient() {
-		return serviceClient;
-	}
-
-	/**
 	 * @return the finalStatus
 	 */
 	public ReportingOperationStatus getFinalStatus() {
@@ -307,13 +284,6 @@ public class ReportingDownloadOperation {
 	public void setFinalStatus(ReportingOperationStatus finalStatus) {
 		this.finalStatus = finalStatus;
 	}
-
-	/**
-     * Gets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public int getStatusPollIntervalInMilliseconds() {
-        return statusPollIntervalInMilliseconds;
-    }
 
     /**
      * Gets the timeout of HttpClient download operation. The default value is 100000(100s).

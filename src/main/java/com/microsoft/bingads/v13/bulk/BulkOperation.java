@@ -49,11 +49,8 @@ public abstract class BulkOperation<TStatus> {
     private BulkOperationStatus<TStatus> finalStatus;
 
     BulkOperation(
-            String requestId,
-            String trackingId,
-            HttpFileService httpFileService,
-            int downloadHttpTimeoutInMilliseconds,
-            ZipExtractor zipExtractor,
+            String requestId, String trackingId,
+            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
             BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
         this.trackingId = trackingId;

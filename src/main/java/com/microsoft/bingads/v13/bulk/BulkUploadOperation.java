@@ -32,29 +32,18 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
      */
 	public BulkUploadOperation(String requestId, ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         this(
-                requestId,
-                null,
-                new HttpClientHttpFileService(),
-                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
-                new SimpleZipExtractor(),
-                serviceClient,
-                statusPollIntervalInMilliseconds);
+                requestId, null,
+                new HttpClientHttpFileService(), Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS, new SimpleZipExtractor(),
+                serviceClient, statusPollIntervalInMilliseconds);
     }
     
     BulkUploadOperation(
-            String requestId,
-            String trackingId,
-            HttpFileService httpFileService,
-            int downloadHttpTimeoutInMilliseconds,
-            ZipExtractor zipExtractor,
-            ServiceClient<IBulkService> serviceClient,
-            int statusPollIntervalInMilliseconds) {
+            String requestId, String trackingId,
+            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         super(
-                requestId,
-                trackingId,
-                httpFileService,
-                downloadHttpTimeoutInMilliseconds,
-                zipExtractor,
+                requestId, trackingId,
+                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
                 new UploadStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds));
     }
 

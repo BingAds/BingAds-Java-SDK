@@ -232,13 +232,9 @@ public class ReportingServiceManager {
                     String trackingId = ServiceUtils.GetTrackingId(res);
 
                     ReportingDownloadOperation operation = new ReportingDownloadOperation(
-                            response.getReportRequestId(),
-                            trackingId,
-                            serviceClient,
-                            statusPollIntervalInMilliseconds,
-                            httpFileService,
-                            downloadHttpTimeoutInMilliseconds,
-                            zipExtractor);
+                            response.getReportRequestId(), trackingId,
+                            httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                            serviceClient, statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
