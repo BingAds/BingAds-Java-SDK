@@ -37,11 +37,6 @@ public class ReportingDownloadOperation {
     private final HttpFileService httpFileService;
 
     /**
-     * The timeout in milliseconds of HttpClient download operation.
-     */
-    private final int downloadHttpTimeoutInMilliseconds;
-
-    /**
       * To process download file.
       */
     private final ZipExtractor zipExtractor;
@@ -58,12 +53,11 @@ public class ReportingDownloadOperation {
 
     ReportingDownloadOperation(
             String requestId, String trackingId,
-            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            HttpFileService httpFileService, ZipExtractor zipExtractor,
             ServiceClient<IReportingService> serviceClient, int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
         this.trackingId = trackingId;
         this.httpFileService = httpFileService;
-        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
         this.statusProvider = new ReportingStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds);
     }
@@ -231,7 +225,7 @@ public class ReportingDownloadOperation {
     }
 
     private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
-        httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
+        httpFileService.downloadFile(url, tempZipFile, overwrite);
 
         return tempZipFile;
     }
@@ -283,12 +277,5 @@ public class ReportingDownloadOperation {
 	 */
 	public void setFinalStatus(ReportingOperationStatus finalStatus) {
 		this.finalStatus = finalStatus;
-	}
-
-    /**
-     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public int getDownloadHttpTimeoutInMilliseconds() {
-		return downloadHttpTimeoutInMilliseconds;
 	}
 }

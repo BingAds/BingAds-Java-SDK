@@ -13,11 +13,13 @@ import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
+import com.microsoft.bingads.v13.internal.bulk.Config;
 import org.apache.http.HttpRequest;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -26,6 +28,7 @@ import org.apache.http.impl.client.HttpClients;
 import com.microsoft.bingads.CouldNotDownloadResultFileException;
 import com.microsoft.bingads.CouldNotUploadFileException;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -35,11 +38,53 @@ public class HttpClientHttpFileService implements HttpFileService {
 
     private static final ContentType APPLICATION_ZIP = ContentType.create("application/zip");
 
+    private final CloseableHttpClient downloadClient;
+    private final CloseableHttpClient uploadClient;
+
+    public HttpClientHttpFileService() {
+        this(
+                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
+                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS);
+    }
+
+    public HttpClientHttpFileService(
+            int downloadTimeoutInMilliseconds,
+            int uploadTimeoutInMilliseconds) {
+        this(
+                new PoolingHttpClientConnectionManager(),
+                downloadTimeoutInMilliseconds,
+                uploadTimeoutInMilliseconds);
+    }
+
+    public HttpClientHttpFileService(
+            HttpClientConnectionManager connectionManager,
+            int downloadTimeoutInMilliseconds,
+            int uploadTimeoutInMilliseconds) {
+        this(
+                createHttpClient(connectionManager, downloadTimeoutInMilliseconds),
+                createHttpClient(connectionManager, uploadTimeoutInMilliseconds));
+    }
+
+    public HttpClientHttpFileService(CloseableHttpClient client) {
+        this(client, client);
+    }
+
+    public HttpClientHttpFileService(CloseableHttpClient downloadClient, CloseableHttpClient uploadClient) {
+        this.downloadClient = downloadClient;
+        this.uploadClient = uploadClient;
+    }
+
     @Override
-    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws URISyntaxException {
-        try (CloseableHttpClient client = createHttpClient(timeoutInMilliseconds)) {
+    public void close() throws IOException {
+        downloadClient.close();
+        uploadClient.close();
+    }
+
+    @Override
+    public void downloadFile(String url, File tempZipFile, boolean overwrite) throws URISyntaxException {
+        try {
             HttpGet get = new HttpGet(new URI(url));
-            try (CloseableHttpResponse response = client.execute(get)) {
+            try (CloseableHttpResponse response = uploadClient.execute(get)) {
                 InputStream content = response.getEntity().getContent();
                 Files.copy(content, tempZipFile.toPath(), copyOptions(overwrite));
             }
@@ -55,16 +100,15 @@ public class HttpClientHttpFileService implements HttpFileService {
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
-        try (CloseableHttpClient client = createHttpClient(timeoutInMilliseconds);
-             FileInputStream stream = new FileInputStream(uploadFilePath)) {
+    public void uploadFile(URI uri, File uploadZipFile, Consumer<HttpRequest> addHeaders) {
+        try (FileInputStream stream = new FileInputStream(uploadZipFile)) {
             HttpPost post = new HttpPost(uri);
             addHeaders.accept(post);
             post.setEntity(MultipartEntityBuilder.create()
-                    .addBinaryBody("upstream", stream, APPLICATION_ZIP, uploadFilePath.getName())
+                    .addBinaryBody("upstream", stream, APPLICATION_ZIP, uploadZipFile.getName())
                     .setMode(BROWSER_COMPATIBLE)
                     .build());
-            try (CloseableHttpResponse response = client.execute(post)) {
+            try (CloseableHttpResponse response = uploadClient.execute(post)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode != 200) {
                     InputStream content = response.getEntity().getContent();
@@ -80,8 +124,11 @@ public class HttpClientHttpFileService implements HttpFileService {
         }
     }
 
-    private CloseableHttpClient createHttpClient(int timeoutInMilliseconds) {
+    private static CloseableHttpClient createHttpClient(
+            HttpClientConnectionManager connectionManager,
+            int timeoutInMilliseconds) {
         return HttpClients.custom()
+                .setConnectionManager(connectionManager)
                 .setDefaultRequestConfig(RequestConfig.custom()
                         .setConnectionRequestTimeout(timeoutInMilliseconds)
                         .setConnectTimeout(timeoutInMilliseconds)

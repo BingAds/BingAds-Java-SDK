@@ -7,7 +7,6 @@ import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
-import com.microsoft.bingads.v13.internal.bulk.Config;
 import com.microsoft.bingads.v13.internal.bulk.UploadStatusProvider;
 
 /**
@@ -33,17 +32,17 @@ public class BulkUploadOperation extends BulkOperation<UploadStatus> {
 	public BulkUploadOperation(String requestId, ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         this(
                 requestId, null,
-                new HttpClientHttpFileService(), Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS, new SimpleZipExtractor(),
+                new HttpClientHttpFileService(), new SimpleZipExtractor(),
                 serviceClient, statusPollIntervalInMilliseconds);
     }
     
     BulkUploadOperation(
             String requestId, String trackingId,
-            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            HttpFileService httpFileService, ZipExtractor zipExtractor,
             ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
         super(
                 requestId, trackingId,
-                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                httpFileService, zipExtractor,
                 new UploadStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds));
     }
 

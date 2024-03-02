@@ -37,11 +37,6 @@ public abstract class BulkOperation<TStatus> {
 
     private final HttpFileService httpFileService;
 
-    /**
-     * The timeout in milliseconds of HttpClient download operation.
-     */
-    private final int downloadHttpTimeoutInMilliseconds;
-
     private final ZipExtractor zipExtractor;
 
     private final BulkOperationStatusProvider<TStatus> statusProvider;
@@ -50,12 +45,11 @@ public abstract class BulkOperation<TStatus> {
 
     BulkOperation(
             String requestId, String trackingId,
-            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            HttpFileService httpFileService, ZipExtractor zipExtractor,
             BulkOperationStatusProvider<TStatus> statusProvider) {
         this.requestId = requestId;
         this.trackingId = trackingId;
         this.httpFileService = httpFileService;
-        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
         this.zipExtractor = zipExtractor;
         this.statusProvider = statusProvider;
     }
@@ -156,13 +150,6 @@ public abstract class BulkOperation<TStatus> {
         return zipExtractor;
     }
 
-    /**
-     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public int getDownloadHttpTimeoutInMilliseconds() {
-		return downloadHttpTimeoutInMilliseconds;
-	}
-
 	/**
      * Downloads and optionally decompress the result file from the bulk operation
      * @param localResultDirectoryName the directory to place the result file in
@@ -258,8 +245,8 @@ public abstract class BulkOperation<TStatus> {
         return extractedFile;
     }
 
-    private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
-        httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
+    private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws URISyntaxException {
+        httpFileService.downloadFile(url, tempZipFile, overwrite);
 
         return tempZipFile;
     }

@@ -1,6 +1,7 @@
 package com.microsoft.bingads.v13.bulk;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -59,7 +60,7 @@ import com.microsoft.bingads.v13.internal.bulk.StringTable;
  * </p>
  *
  */
-public class BulkServiceManager {
+public class BulkServiceManager implements Closeable {
 
     private static final int SYNC_THRESHOLD = 1000;
     private static final String FORMAT_VERSION = StringTable.FORMAT_VERSION;
@@ -74,16 +75,6 @@ public class BulkServiceManager {
      * service for status.
      */
     private int statusPollIntervalInMilliseconds;
-
-    /**
-     * The timeout in milliseconds of HttpClient upload operation.
-     */
-    private int uploadHttpTimeoutInMilliseconds;
-
-    /**
-     * The timeout in milliseconds of HttpClient download operation.
-     */
-    private int downloadHttpTimeoutInMilliseconds;
 
     private final ServiceClient<IBulkService> serviceClient;
 
@@ -115,10 +106,21 @@ public class BulkServiceManager {
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
         statusPollIntervalInMilliseconds = Config.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
+    }
 
-        uploadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
+    @Override
+    public void close() throws IOException {
+        cleanupTempFiles();
+    }
 
-        downloadHttpTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
+    /**
+     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another
+     * instance.
+     */
+    public void cleanupTempFiles() {
+        for (File file : workingDirectory.listFiles()) {
+            file.delete();
+        }
     }
 
     /**
@@ -201,7 +203,7 @@ public class BulkServiceManager {
                         if (needToFallBacktoAsync(result)) {
                             BulkUploadOperation operation = new BulkUploadOperation(
                                     result.getRequestId(), ServiceUtils.GetTrackingId(res),
-                                    httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                    httpFileService, zipExtractor,
                                     serviceClient, statusPollIntervalInMilliseconds);
                             operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                                 @Override
@@ -565,7 +567,7 @@ public class BulkServiceManager {
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(), ServiceUtils.GetTrackingId(res),
-                                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                httpFileService, zipExtractor,
                                 serviceClient, statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
@@ -591,7 +593,7 @@ public class BulkServiceManager {
 
                         BulkDownloadOperation operation = new BulkDownloadOperation(
                                 response.getDownloadRequestId(), ServiceUtils.GetTrackingId(res),
-                                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                                httpFileService, zipExtractor,
                                 serviceClient, statusPollIntervalInMilliseconds);
 
                         resultFuture.setResult(operation);
@@ -673,7 +675,7 @@ public class BulkServiceManager {
                     MessageHandler.getInstance().handleDirectMessage("Bulk Upload... requestId: " + response.getRequestId() + "; UploadFilePath:"
                             + parameters.getUploadFilePath() + "; uploadUrl: " + uploadUrl);
 
-                    httpFileService.uploadFile(new URI(uploadUrl), effectiveUploadPath, addHeaders, uploadHttpTimeoutInMilliseconds);
+                    httpFileService.uploadFile(new URI(uploadUrl), effectiveUploadPath, addHeaders);
 
                     if (shouldCompress) {
                         compressedFilePath.delete();
@@ -685,7 +687,7 @@ public class BulkServiceManager {
                     }
                     BulkUploadOperation operation = new BulkUploadOperation(
                             response.getRequestId(), ServiceUtils.GetTrackingId(res),
-                            httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                            httpFileService, zipExtractor,
                             serviceClient, statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
@@ -722,16 +724,6 @@ public class BulkServiceManager {
         zipExtractor.compressFile(uploadFilePath, compressedFilePath);
 
         return compressedFilePath;
-    }
-
-    /**
-     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another
-     * instance.
-     */
-    public void cleanupTempFiles() {
-        for (File file : workingDirectory.listFiles()) {
-            file.delete();
-        }
     }
 
     private DownloadCampaignsByCampaignIdsRequest generateCampaignsByCampaignIdsRequest(SubmitDownloadParameters parameters) {
@@ -881,34 +873,6 @@ public class BulkServiceManager {
      */
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
-    }
-
-    /**
-     * Gets the timeout of HttpClient upload operation. The default value is 100000(100s).
-     */
-    public int getUploadHttpTimeoutInMilliseconds() {
-        return uploadHttpTimeoutInMilliseconds;
-    }
-
-    /**
-     * Sets the timeout of HttpClient upload operation. The default value is 100000(100s).
-     */
-    public void setUploadHttpTimeoutInMilliseconds(int uploadHttpTimeoutInMilliseconds) {
-        this.uploadHttpTimeoutInMilliseconds = uploadHttpTimeoutInMilliseconds;
-    }
-
-    /**
-     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-    public int getDownloadHttpTimeoutInMilliseconds() {
-        return downloadHttpTimeoutInMilliseconds;
-    }
-
-    /**
-     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-    public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-        this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
     }
 }
 
