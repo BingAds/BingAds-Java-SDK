@@ -229,10 +229,8 @@ public class ReportingServiceManager {
 
                     response = res.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(res);
-
                     ReportingDownloadOperation operation = new ReportingDownloadOperation(
-                            response.getReportRequestId(), trackingId,
+                            response.getReportRequestId(), ServiceUtils.GetTrackingId(res),
                             httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
                             serviceClient, statusPollIntervalInMilliseconds);
 

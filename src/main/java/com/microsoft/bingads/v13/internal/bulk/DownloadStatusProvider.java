@@ -54,13 +54,11 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
                 try {
                     GetBulkDownloadStatusResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-
                     BulkOperationStatus<DownloadStatus> status = new BulkOperationStatus<DownloadStatus>(
                             DownloadStatus.fromValue(statusResponse.getRequestStatus()),
                             statusResponse.getPercentComplete(),
                             statusResponse.getResultFileUrl(),
-                            trackingId,
+                            ServiceUtils.GetTrackingId(result),
                             statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );
                     

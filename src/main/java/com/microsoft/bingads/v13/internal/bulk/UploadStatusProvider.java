@@ -56,13 +56,11 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
                 try {
                     GetBulkUploadStatusResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-
                     BulkOperationStatus<UploadStatus> status = new BulkOperationStatus<UploadStatus>(
                         UploadStatus.fromValue(statusResponse.getRequestStatus()),
                         statusResponse.getPercentComplete(),
                         statusResponse.getResultFileUrl(),
-                        trackingId,
+                            ServiceUtils.GetTrackingId(result),
                         statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );                   
 

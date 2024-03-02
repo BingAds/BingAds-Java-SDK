@@ -49,12 +49,10 @@ public class ReportingStatusProvider{
                 try {
                     PollGenerateReportResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-                    
                     ReportingOperationStatus status = new ReportingOperationStatus(
                     		ReportRequestStatusType.fromValue(statusResponse.getReportRequestStatus().getStatus().value()),
                             statusResponse.getReportRequestStatus().getReportDownloadUrl(),
-                            trackingId                            
+                            ServiceUtils.GetTrackingId(result)
                     );                    
                     resultFuture.setResult(status);
                 } catch (InterruptedException e) {                    
