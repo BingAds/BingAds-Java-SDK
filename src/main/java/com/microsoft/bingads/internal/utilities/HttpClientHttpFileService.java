@@ -148,17 +148,22 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
             try (CloseableHttpResponse response = uploadClient.execute(post)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode != 200) {
-                    InputStream content = response.getEntity().getContent();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(content, UTF_8));
-                    StringBuilder exceptionMessage = new StringBuilder(64);
-                    reader.lines().forEach(exceptionMessage::append);
                     throw new CouldNotUploadFileException(format(
-                            "Unsuccessful Status Code: %d; Exception Message: %s", statusCode, exceptionMessage));
+                            "Unsuccessful Status Code: %d; Exception Message: %s", statusCode, readMessage(response)));
                 }
             }
         } catch (IOException | UncheckedIOException e) {
             throw new CouldNotUploadFileException(e);
         }
+    }
+
+    private String readMessage(CloseableHttpResponse response) throws IOException {
+        StringBuilder exceptionMessage = new StringBuilder(64);
+        try (InputStream content = response.getEntity().getContent();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(content, UTF_8))) {
+            reader.lines().forEach(exceptionMessage::append);
+        }
+        return exceptionMessage.toString();
     }
 
     //
