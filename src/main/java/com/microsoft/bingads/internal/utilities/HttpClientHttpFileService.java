@@ -134,7 +134,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     }
 
     //
-    // Connection pool config.
+    // Connection pool configuration.
     //
 
     @Override
@@ -193,7 +193,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     }
 
     //
-    // Client config.
+    // Client configuration.
     //
 
     /**
