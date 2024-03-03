@@ -42,14 +42,14 @@ public class HttpClientHttpFileService implements HttpFileService {
     private final CloseableHttpClient uploadClient;
 
     public HttpClientHttpFileService() {
-        this(
-                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS,
-                Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS);
+        this(Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS);
     }
 
-    public HttpClientHttpFileService(
-            int downloadTimeoutInMilliseconds,
-            int uploadTimeoutInMilliseconds) {
+    public HttpClientHttpFileService(int timeoutInMilliseconds) {
+        this(createHttpClient(new PoolingHttpClientConnectionManager(), timeoutInMilliseconds));
+    }
+
+    public HttpClientHttpFileService(int downloadTimeoutInMilliseconds, int uploadTimeoutInMilliseconds) {
         this(
                 new PoolingHttpClientConnectionManager(),
                 downloadTimeoutInMilliseconds,
