@@ -122,7 +122,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     @Override
     public void downloadFile(String url, File tempZipFile, boolean overwrite) throws URISyntaxException {
         HttpGet get = new HttpGet(new URI(url));
-        try (CloseableHttpResponse response = uploadClient.execute(get)) {
+        try (CloseableHttpResponse response = downloadClient.execute(get)) {
             InputStream content = response.getEntity().getContent();
             Files.copy(content, tempZipFile.toPath(), copyOptions(overwrite));
         } catch (IOException ex) {
