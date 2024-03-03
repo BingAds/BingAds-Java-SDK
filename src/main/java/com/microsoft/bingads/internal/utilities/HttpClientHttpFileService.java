@@ -12,6 +12,8 @@ import java.net.URISyntaxException;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.microsoft.bingads.v13.internal.bulk.Config;
 import org.apache.http.HttpRequest;
@@ -35,6 +37,7 @@ import org.apache.http.pool.PoolStats;
 
 import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.concurrent.TimeUnit.MINUTES;
 import static org.apache.http.entity.mime.HttpMultipartMode.BROWSER_COMPATIBLE;
 
 public class HttpClientHttpFileService implements HttpFileService, ConnPoolControl<HttpRoute> {
@@ -44,6 +47,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     private final PoolingHttpClientConnectionManager connectionManager;
     private final CloseableHttpClient downloadClient;
     private final CloseableHttpClient uploadClient;
+    private final Timer cleanupTimer = new Timer("Bing Ads idle HTTP connection closer", true);
 
     /**
      * Constructor using {@link Config#DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS} for download and upload timeout.
@@ -110,12 +114,21 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
             connectionManager.setDefaultMaxPerRoute(maxConnections);
             connectionManager.setMaxTotal(maxConnections * 2);
         }
+
+        TimerTask cleanupTask = new TimerTask() {
+            @Override
+            public void run() {
+                connectionManager.closeIdleConnections(15, MINUTES);
+            }
+        };
+        cleanupTimer.scheduleAtFixedRate(cleanupTask, 60_000, 60_000);
     }
 
     @Override
     public void close() throws IOException {
         downloadClient.close();
         uploadClient.close();
+        cleanupTimer.cancel();
         connectionManager.close();
     }
 
