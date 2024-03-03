@@ -15,29 +15,28 @@ import java.nio.file.StandardCopyOption;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.microsoft.bingads.CouldNotDownloadResultFileException;
+import com.microsoft.bingads.CouldNotUploadFileException;
+import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.v13.internal.bulk.Config;
 import org.apache.http.HttpRequest;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-
-import com.microsoft.bingads.CouldNotDownloadResultFileException;
-import com.microsoft.bingads.CouldNotUploadFileException;
-import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.pool.ConnPoolControl;
 import org.apache.http.pool.PoolStats;
 
 import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.concurrent.TimeUnit.MINUTES;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.apache.http.entity.mime.HttpMultipartMode.BROWSER_COMPATIBLE;
 
 public class HttpClientHttpFileService implements HttpFileService, ConnPoolControl<HttpRoute> {
@@ -45,67 +44,15 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     private static final ContentType APPLICATION_ZIP = ContentType.create("application/zip");
 
     private final PoolingHttpClientConnectionManager connectionManager;
-    private final CloseableHttpClient downloadClient;
-    private final CloseableHttpClient uploadClient;
     private final Timer cleanupTimer = new Timer("Bing Ads idle HTTP connection closer", true);
+    private volatile int maxIdleInMilliseconds = 15 * 60 * 1000;
+    private volatile int downloadTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
+    private CloseableHttpClient downloadClient;
+    private volatile int uploadTimeoutInMilliseconds = Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
+    private CloseableHttpClient uploadClient;
 
-    /**
-     * Constructor using {@link Config#DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS} for download and upload timeout.
-     */
     public HttpClientHttpFileService() {
-        this(Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS);
-    }
-
-    /**
-     * Constructor using the same download and upload timeout.
-     */
-    public HttpClientHttpFileService(int timeoutInMilliseconds) {
-        this(new PoolingHttpClientConnectionManager(), timeoutInMilliseconds);
-    }
-
-    private HttpClientHttpFileService(
-            PoolingHttpClientConnectionManager connectionManager,
-            int timeoutInMilliseconds) {
-        this(
-                connectionManager,
-                createHttpClient(connectionManager, timeoutInMilliseconds));
-    }
-
-    private HttpClientHttpFileService(
-            PoolingHttpClientConnectionManager connectionManager,
-            CloseableHttpClient client) {
-        this(connectionManager, client, client);
-    }
-
-    /**
-     * Constructor using different download and upload timeouts.
-     */
-    public HttpClientHttpFileService(
-            int downloadTimeoutInMilliseconds,
-            int uploadTimeoutInMilliseconds) {
-        this(
-                new PoolingHttpClientConnectionManager(),
-                downloadTimeoutInMilliseconds,
-                uploadTimeoutInMilliseconds);
-    }
-
-    private HttpClientHttpFileService(
-            PoolingHttpClientConnectionManager connectionManager,
-            int downloadTimeoutInMilliseconds,
-            int uploadTimeoutInMilliseconds) {
-        this(
-                connectionManager,
-                createHttpClient(connectionManager, downloadTimeoutInMilliseconds),
-                createHttpClient(connectionManager, uploadTimeoutInMilliseconds));
-    }
-
-    private HttpClientHttpFileService(
-            PoolingHttpClientConnectionManager connectionManager,
-            CloseableHttpClient downloadClient,
-            CloseableHttpClient uploadClient) {
-        this.connectionManager = connectionManager;
-        this.downloadClient = downloadClient;
-        this.uploadClient = uploadClient;
+        this.connectionManager = new PoolingHttpClientConnectionManager();
 
         // Default pool config taken from the HTTP client builder.
         String keepAlive = System.getProperty("http.keepAlive", "true");
@@ -118,7 +65,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
         TimerTask cleanupTask = new TimerTask() {
             @Override
             public void run() {
-                connectionManager.closeIdleConnections(15, MINUTES);
+                connectionManager.closeIdleConnections(maxIdleInMilliseconds, MILLISECONDS);
             }
         };
         cleanupTimer.scheduleAtFixedRate(cleanupTask, 60_000, 60_000);
@@ -126,16 +73,23 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
 
     @Override
     public void close() throws IOException {
-        downloadClient.close();
-        uploadClient.close();
-        cleanupTimer.cancel();
-        connectionManager.close();
+        try {
+            if (downloadClient != null) {
+                downloadClient.close();
+            }
+            if (uploadClient != null) {
+                uploadClient.close();
+            }
+            cleanupTimer.cancel();
+        } finally {
+            connectionManager.close();
+        }
     }
 
     @Override
     public void downloadFile(String url, File tempZipFile, boolean overwrite) throws URISyntaxException {
         HttpGet get = new HttpGet(new URI(url));
-        try (CloseableHttpResponse response = downloadClient.execute(get);
+        try (CloseableHttpResponse response = downloadClient().execute(get);
              InputStream content = response.getEntity().getContent()) {
             Files.copy(content, tempZipFile.toPath(), copyOptions(overwrite));
         } catch (IOException ex) {
@@ -158,7 +112,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
                     .addBinaryBody("upstream", stream, APPLICATION_ZIP, uploadZipFile.getName())
                     .setMode(BROWSER_COMPATIBLE)
                     .build());
-            try (CloseableHttpResponse response = uploadClient.execute(post)) {
+            try (CloseableHttpResponse response = uploadClient().execute(post)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode != 200) {
                     throw new CouldNotUploadFileException(format(
@@ -180,7 +134,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
     }
 
     //
-    // Connection pool control.
+    // Connection pool config.
     //
 
     @Override
@@ -223,13 +177,99 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
         return connectionManager.getTotalStats();
     }
 
+    /**
+     * Time after idle HTTP connections get closed.
+     * Defaults to 15 minutes.
+     */
+    public int getMaxIdleInMilliseconds() {
+        return maxIdleInMilliseconds;
+    }
+
+    /**
+     * Time after idle HTTP connections get closed.
+     */
+    public void setMaxIdleInMilliseconds(int maxIdleInMilliseconds) {
+        this.maxIdleInMilliseconds = maxIdleInMilliseconds;
+    }
+
     //
-    //
+    // Client config.
     //
 
-    private static CloseableHttpClient createHttpClient(
-            HttpClientConnectionManager connectionManager,
-            int timeoutInMilliseconds) {
+    /**
+     * Timeout when downloading.
+     * Defaults to {@link Config#DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS}.
+     */
+    public int getDownloadTimeoutInMilliseconds() {
+        return downloadTimeoutInMilliseconds;
+    }
+
+    /**
+     * Timeout when downloading.
+     * After the first download changes will be ignored.
+     */
+    public void setDownloadTimeoutInMilliseconds(int downloadTimeoutInMilliseconds) {
+        this.downloadTimeoutInMilliseconds = downloadTimeoutInMilliseconds;
+    }
+
+    /**
+     * Timeout when uploading.
+     * Defaults to {@link Config#DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS}.
+     */
+    public int getUploadTimeoutInMilliseconds() {
+        return uploadTimeoutInMilliseconds;
+    }
+
+    /**
+     * Timeout when uploading.
+     * After the first upload changes will be ignored.
+     */
+    public void setUploadTimeoutInMilliseconds(int uploadTimeoutInMilliseconds) {
+        this.uploadTimeoutInMilliseconds = uploadTimeoutInMilliseconds;
+    }
+
+    //
+    // Client creation.
+    //
+
+    private CloseableHttpClient downloadClient() {
+        synchronized (connectionManager) {
+            if (downloadClient == null) {
+                HttpClientBuilder builder = createHttpClient(downloadTimeoutInMilliseconds);
+                customizeDownloadClient(builder);
+                downloadClient = builder.build();
+            }
+            return downloadClient;
+        }
+    }
+
+    /**
+     * Overwrite to customize the download client.
+     */
+    protected void customizeDownloadClient(HttpClientBuilder downloadClient) {
+    }
+
+    private CloseableHttpClient uploadClient() {
+        synchronized (connectionManager) {
+            if (uploadClient == null) {
+                HttpClientBuilder builder = createHttpClient(uploadTimeoutInMilliseconds);
+                customizeUploadClient(builder);
+                uploadClient = builder.build();
+            }
+            return uploadClient;
+        }
+    }
+
+    /**
+     * Overwrite to customize the upload client.
+     */
+    protected void customizeUploadClient(HttpClientBuilder uploadClient) {
+    }
+
+    /**
+     * Default HTTP client.
+     */
+    private HttpClientBuilder createHttpClient(int timeoutInMilliseconds) {
         return HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .setDefaultRequestConfig(RequestConfig.custom()
@@ -237,7 +277,6 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
                         .setConnectTimeout(timeoutInMilliseconds)
                         .setSocketTimeout(timeoutInMilliseconds)
                         .build())
-                .useSystemProperties()
-                .build();
+                .useSystemProperties();
     }
 }
