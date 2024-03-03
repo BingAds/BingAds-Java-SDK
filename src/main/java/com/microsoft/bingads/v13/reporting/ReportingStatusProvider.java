@@ -8,21 +8,36 @@ import com.microsoft.bingads.internal.ServiceUtils;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
+import com.microsoft.bingads.v13.bulk.IBulkService;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
 
 public class ReportingStatusProvider{
 
     private final String requestId;
-    
-    private final AuthorizationData authorizationData;
 
-    public ReportingStatusProvider(String requestId, AuthorizationData authorizationData) {
+    private final ServiceClient<IReportingService> serviceClient;
+
+    /**
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     */
+    private final int statusPollIntervalInMilliseconds;
+
+    public ReportingStatusProvider(
+            String requestId,
+            ServiceClient<IReportingService> serviceClient,
+            int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
+        this.serviceClient = serviceClient;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
-    public Future<ReportingOperationStatus> getCurrentStatus(ServiceClient<IReportingService> serviceClient, AsyncCallback<ReportingOperationStatus> callback) {
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
+    }
+
+    public Future<ReportingOperationStatus> getCurrentStatus(AsyncCallback<ReportingOperationStatus> callback) {
         PollGenerateReportRequest request = new PollGenerateReportRequest();
         request.setReportRequestId(this.requestId);
 
@@ -34,12 +49,10 @@ public class ReportingStatusProvider{
                 try {
                     PollGenerateReportResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-                    
                     ReportingOperationStatus status = new ReportingOperationStatus(
                     		ReportRequestStatusType.fromValue(statusResponse.getReportRequestStatus().getStatus().value()),
                             statusResponse.getReportRequestStatus().getReportDownloadUrl(),
-                            trackingId                            
+                            ServiceUtils.GetTrackingId(result)
                     );                    
                     resultFuture.setResult(status);
                 } catch (InterruptedException e) {                    

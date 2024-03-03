@@ -1,15 +1,10 @@
 package com.microsoft.bingads.v13.api.test.operations;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.concurrent.Future;
 
 import org.apache.http.HttpRequest;
 
-import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
@@ -17,8 +12,9 @@ import com.microsoft.bingads.internal.utilities.HttpFileService;
 public class FakeHttpFileService implements HttpFileService {
     private BiConsumer<String, File> onDownloadFile;
     
-    private Boolean downloadWasCalled;
-    
+    private boolean downloadWasCalled;
+    private boolean closeWasCalled;
+
     public BiConsumer<String, File> getOnDownloadFile() {
         return onDownloadFile;
     }
@@ -27,32 +23,28 @@ public class FakeHttpFileService implements HttpFileService {
         onDownloadFile = value;
     }
     
-    public Boolean getDownloadWasCalled() {
+    public boolean isDownloadWasCalled() {
         return downloadWasCalled;
     }
-    
+
+    public boolean isCloseWasCalled() {
+        return closeWasCalled;
+    }
+
     @Override
-    public void downloadFile(String url, File tempZipFile, boolean overwrite, int timeoutInMilliseconds) throws IOException, URISyntaxException {
+    public void close() {
+        closeWasCalled = true;
+    }
+
+    @Override
+    public void downloadFile(String url, File tempZipFile, boolean overwrite) {
         onDownloadFile.accept(url, tempZipFile);
         
         downloadWasCalled = true;
     }
 
     @Override
-    public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
+    public void uploadFile(URI uri, File uploadZipFile, Consumer<HttpRequest> addHeaders) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public Future<File> downloadFileAsync(String url, File tempZipFile, AsyncCallback<File> callback, int timeoutInMilliseconds) {
-        onDownloadFile.accept(url, tempZipFile);
-        
-        Future<File> result = new CompleteResponse(tempZipFile, new ArrayList<StringHeader>());
-        
-        callback.onCompleted(result);
-        
-        downloadWasCalled = true;
-        
-        return result;
-    }       
 }
