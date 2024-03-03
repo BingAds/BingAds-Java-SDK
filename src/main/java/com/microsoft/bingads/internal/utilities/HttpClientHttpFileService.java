@@ -189,7 +189,7 @@ public class HttpClientHttpFileService implements HttpFileService, ConnPoolContr
 
     @Override
     public int getMaxPerRoute(HttpRoute route) {
-        return getMaxPerRoute(route);
+        return connectionManager.getMaxPerRoute(route);
     }
 
     @Override
