@@ -4,38 +4,33 @@ import com.microsoft.bingads.ApiEnvironment;
 
 public class ServiceInfo {
     
-    private String productionUrl;
-    
-    private String sandboxUrl;        
+    private final String productionUrl;
+    private final String sandboxUrl;
+
+    public ServiceInfo(String productionUrl, String sandboxUrl) {
+        this.productionUrl = productionUrl;
+        this.sandboxUrl = sandboxUrl;
+    }
 
     public String getProductionUrl() {
         return productionUrl;
-    }
-
-    public void setProductionUrl(String productionUrl) {
-        this.productionUrl = productionUrl;
     }
 
     public String getSandboxUrl() {
         return sandboxUrl;
     }
 
-    public void setSandboxUrl(String sandboxUrl) {
-        this.sandboxUrl = sandboxUrl;
-    }
-        
-    public String GetUrl(ApiEnvironment environment) {
+    public String getUrl(ApiEnvironment environment) {
         switch (environment) {
-            case SANDBOX:
-                if (getSandboxUrl() == null) {
-                    throw new UnsupportedOperationException("The service is not available in Sandbox");
-                }
-            
-                return getSandboxUrl();
             case PRODUCTION:
-                return getProductionUrl();
+                return productionUrl;
+            case SANDBOX:
+                if (sandboxUrl == null) {
+                    throw new UnsupportedOperationException("The service is not available in " + environment.value());
+                }
+                return sandboxUrl;
             default:
-                throw new UnsupportedOperationException("The service is not available in Sandbox");
+                throw new IllegalArgumentException("Unsupported environment " + environment.value());
         }
     }
 }
