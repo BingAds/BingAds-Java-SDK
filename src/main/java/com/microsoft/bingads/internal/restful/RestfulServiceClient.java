@@ -16,6 +16,12 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.microsoft.bingads.v13.adinsight.IAdInsightService;
+import com.microsoft.bingads.v13.bulk.IBulkService;
+import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
+import com.microsoft.bingads.v13.customerbilling.ICustomerBillingService;
+import com.microsoft.bingads.v13.customermanagement.ICustomerManagementService;
+import com.microsoft.bingads.v13.reporting.IReportingService;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.ContentType;
@@ -33,8 +39,6 @@ import org.apache.http.impl.nio.client.HttpAsyncClients;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.HeadersImpl;
@@ -90,22 +94,6 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
     public void setSoapService(Object soapService)
     {
     	this.soapService = soapService;
-    }
-
-    private String getServiceUrl(String entityEndpoint) {
-        String serviceUrl = ServiceUtils.getServiceUrlFromConfig(serviceInterface);
-
-        if (serviceUrl == null) {
-            ServiceInfo serviceInfo = endpoints.get(serviceInterface);
-
-            serviceUrl = serviceInfo.GetUrl(environment);
-        }
-        else {
-        	URI uri = URI.create(serviceUrl);
-            serviceUrl = "https://" + uri.getAuthority() + "/CampaignManagement/v13";
-        }
-        
-        return serviceUrl + entityEndpoint;
     }
 
     private List<String> buildHeaders() {
@@ -387,49 +375,42 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         };
     }
 
-    private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
-        {
+    //
+    // Service configuration.
+    //
 
-            put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Billing/v13");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Billing/v13");
-                }
-            });
+    private static final Map<Class<?>, ServiceInfo> ENDPOINTS = new HashMap<>();
+    static {
+        ENDPOINTS.put(ICustomerBillingService.class, new ServiceInfo(
+                "https://clientcenter.api.bingads.microsoft.com/Billing/v13",
+                "https://clientcenter.api.sandbox.bingads.microsoft.com/Billing/v13"));
+        ENDPOINTS.put(ICustomerManagementService.class, new ServiceInfo(
+                "https://clientcenter.api.bingads.microsoft.com/CustomerManagement/v13",
+                "https://clientcenter.api.sandbox.bingads.microsoft.com/CustomerManagement/v13"));
+        ENDPOINTS.put(IReportingService.class, new ServiceInfo(
+                "https://reporting.api.bingads.microsoft.com/Reporting/v13",
+                "https://reporting.api.sandbox.bingads.microsoft.com/Reporting/v13"));
+        ENDPOINTS.put(ICampaignManagementService.class, new ServiceInfo(
+                "https://campaign.api.bingads.microsoft.com/CampaignManagement/v13",
+                "https://campaign.api.sandbox.bingads.microsoft.com/CampaignManagement/v13"));
+        ENDPOINTS.put(IAdInsightService.class, new ServiceInfo(
+                "https://adinsight.api.bingads.microsoft.com/AdInsight/v13",
+                "https://adinsight.api.sandbox.bingads.microsoft.com/AdInsight/v13"));
+        ENDPOINTS.put(IBulkService.class, new ServiceInfo(
+                "https://bulk.api.bingads.microsoft.com/CampaignManagement/v13",
+                "https://bulk.api.sandbox.bingads.microsoft.com/CampaignManagement/v13"));
+        // End of v13
+    }
 
-            put(com.microsoft.bingads.v13.customermanagement.ICustomerManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/CustomerManagement/v13");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/CustomerManagement/v13");
-                }
-            });
-
-            put(com.microsoft.bingads.v13.reporting.IReportingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://reporting.api.bingads.microsoft.com/Reporting/v13");
-                    setSandboxUrl("https://reporting.api.sandbox.bingads.microsoft.com/Reporting/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://campaign.api.bingads.microsoft.com/CampaignManagement/v13");
-                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/CampaignManagement/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.adinsight.IAdInsightService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/AdInsight/v13");
-                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/AdInsight/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.bulk.IBulkService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://bulk.api.bingads.microsoft.com/CampaignManagement/v13");
-                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/CampaignManagement/v13");
-                }
-            });
-            // End of v13
+    private String getServiceUrl(String entityEndpoint) {
+        String serviceUrl = ServiceUtils.getServiceUrlFromConfig(serviceInterface);
+        if (serviceUrl == null) {
+            serviceUrl = ENDPOINTS.get(serviceInterface).getUrl(environment);
+        } else {
+            URI uri = URI.create(serviceUrl);
+            serviceUrl = "https://" + uri.getAuthority() + "/CampaignManagement/v13";
         }
-    };
 
+        return serviceUrl + entityEndpoint;
+    }
 }
