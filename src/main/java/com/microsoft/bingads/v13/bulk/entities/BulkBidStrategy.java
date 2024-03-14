@@ -141,7 +141,12 @@ public class BulkBidStrategy extends SingleRecordBulkEntity {
                 new BiConsumer<String, BulkBidStrategy>() {
                     @Override
                     public void accept(String v, BulkBidStrategy c) {
-                        c.getBidStrategy().setAssociatedCampaignType(Collections.singletonList(CampaignType.fromValue(v)));
+                    	c.getBidStrategy().setAssociatedCampaignType(StringExtensions.parseOptional(v, new Function<String, Collection<CampaignType>>() {
+                            @Override
+                            public Collection<CampaignType> apply(String value) {
+                                return Collections.singletonList(CampaignType.fromValue(v));
+                            }
+                        }));
                     }
                 }
         ));

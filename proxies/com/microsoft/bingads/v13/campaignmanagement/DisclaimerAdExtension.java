@@ -53,6 +53,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DisclaimerAdExtension
     extends AdExtension
 {
+    public DisclaimerAdExtension() {
+      this.type = "DisclaimerAdExtension";
+    }
 
     @XmlElement(name = "DisclaimerLayout", required = true, nillable = true)
     protected String disclaimerLayout;

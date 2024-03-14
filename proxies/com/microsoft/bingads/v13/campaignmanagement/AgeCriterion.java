@@ -34,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AgeCriterion
     extends Criterion
 {
+    public AgeCriterion() {
+      this.type = "AgeCriterion";
+    }
 
     @XmlElement(name = "AgeRange", nillable = true)
     @XmlSchemaType(name = "string")

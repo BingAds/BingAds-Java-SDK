@@ -15,8 +15,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="HOUR"/>
  *     <enumeration value="DAY"/>
  *     <enumeration value="WEEK"/>
- *     <enumeration value="MONTH"/>
- *     <enumeration value="LIFETIME"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -28,9 +26,7 @@ public enum FrequencyCapTimeGranularity {
 
     HOUR,
     DAY,
-    WEEK,
-    MONTH,
-    LIFETIME;
+    WEEK;
 
     public String value() {
         return name();

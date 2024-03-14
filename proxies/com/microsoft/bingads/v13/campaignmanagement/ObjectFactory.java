@@ -301,6 +301,7 @@ public class ObjectFactory {
     private static final QName _SharedList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SharedList");
     private static final QName _NegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeKeywordList");
     private static final QName _PlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementExclusionList");
+    private static final QName _AccountNegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountNegativeKeywordList");
     private static final QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityScope");
     private static final QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedListItem");
     private static final QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntityAssociation");
@@ -3874,6 +3875,16 @@ public class ObjectFactory {
      */
     public PlacementExclusionList createPlacementExclusionList() {
         return new PlacementExclusionList();
+    }
+
+    /**
+     * Create an instance of {@link AccountNegativeKeywordList }
+     * 
+     * @return
+     *     the new instance of {@link AccountNegativeKeywordList }
+     */
+    public AccountNegativeKeywordList createAccountNegativeKeywordList() {
+        return new AccountNegativeKeywordList();
     }
 
     /**
@@ -10266,6 +10277,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PlacementExclusionList")
     public JAXBElement<PlacementExclusionList> createPlacementExclusionList(PlacementExclusionList value) {
         return new JAXBElement<>(_PlacementExclusionList_QNAME, PlacementExclusionList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountNegativeKeywordList }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AccountNegativeKeywordList }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AccountNegativeKeywordList")
+    public JAXBElement<AccountNegativeKeywordList> createAccountNegativeKeywordList(AccountNegativeKeywordList value) {
+        return new JAXBElement<>(_AccountNegativeKeywordList_QNAME, AccountNegativeKeywordList.class, null, value);
     }
 
     /**

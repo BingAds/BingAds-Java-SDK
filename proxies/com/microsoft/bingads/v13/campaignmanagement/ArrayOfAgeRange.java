@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfAgeRange {
     @XmlElement(name = "AgeRange")
     @XmlSchemaType(name = "string")
     protected List<AgeRange> ageRanges;
+    public ArrayOfAgeRange()
+    {
+      this.ageRanges = new ArrayList<AgeRange>();
+    }
+    @JsonCreator
+    public ArrayOfAgeRange(List<AgeRange> ageranges)
+    {
+      this.ageRanges = ageranges;
+    }
 
     /**
      * Gets the value of the ageRanges property.

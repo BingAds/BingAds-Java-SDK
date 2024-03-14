@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfProductCondition complex type.
@@ -36,6 +36,15 @@ public class ArrayOfProductCondition {
 
     @XmlElement(name = "ProductCondition", nillable = true)
     protected List<ProductCondition> productConditions;
+    public ArrayOfProductCondition()
+    {
+      this.productConditions = new ArrayList<ProductCondition>();
+    }
+    @JsonCreator
+    public ArrayOfProductCondition(List<ProductCondition> productconditions)
+    {
+      this.productConditions = productconditions;
+    }
 
     /**
      * Gets the value of the productConditions property.

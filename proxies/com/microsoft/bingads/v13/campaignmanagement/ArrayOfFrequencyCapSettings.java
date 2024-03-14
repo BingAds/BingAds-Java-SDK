@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfFrequencyCapSettings complex type.
@@ -36,6 +36,15 @@ public class ArrayOfFrequencyCapSettings {
 
     @XmlElement(name = "FrequencyCapSettings", nillable = true)
     protected List<FrequencyCapSettings> frequencyCapSettings;
+    public ArrayOfFrequencyCapSettings()
+    {
+      this.frequencyCapSettings = new ArrayList<FrequencyCapSettings>();
+    }
+    @JsonCreator
+    public ArrayOfFrequencyCapSettings(List<FrequencyCapSettings> frequencycapsettingss)
+    {
+      this.frequencyCapSettings = frequencycapsettingss;
+    }
 
     /**
      * Gets the value of the frequencyCapSettings property.

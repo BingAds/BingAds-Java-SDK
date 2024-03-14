@@ -43,6 +43,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ShoppingSetting
     extends Setting
 {
+    public ShoppingSetting() {
+      this.type = "ShoppingSetting";
+    }
 
     @XmlElement(name = "FeedLabel", nillable = true)
     protected String feedLabel;

@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class StoreCriterion
     extends Criterion
 {
+    public StoreCriterion() {
+      this.type = "StoreCriterion";
+    }
 
     @XmlElement(name = "StoreId", nillable = true)
     protected Long storeId;

@@ -34,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelCheckInDayCriterion
     extends Criterion
 {
+    public HotelCheckInDayCriterion() {
+      this.type = "HotelCheckInDayCriterion";
+    }
 
     @XmlElement(name = "CheckInDay", nillable = true)
     @XmlSchemaType(name = "string")

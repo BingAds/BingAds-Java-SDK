@@ -92,7 +92,7 @@ public class MediaRepresentation {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
     /**

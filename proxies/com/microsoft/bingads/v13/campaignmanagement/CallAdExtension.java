@@ -41,6 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CallAdExtension
     extends AdExtension
 {
+    public CallAdExtension() {
+      this.type = "CallAdExtension";
+    }
 
     @XmlElement(name = "CountryCode", nillable = true)
     protected String countryCode;

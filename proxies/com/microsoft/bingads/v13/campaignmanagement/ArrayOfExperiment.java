@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfExperiment complex type.
@@ -36,6 +36,15 @@ public class ArrayOfExperiment {
 
     @XmlElement(name = "Experiment", nillable = true)
     protected List<Experiment> experiments;
+    public ArrayOfExperiment()
+    {
+      this.experiments = new ArrayList<Experiment>();
+    }
+    @JsonCreator
+    public ArrayOfExperiment(List<Experiment> experiments)
+    {
+      this.experiments = experiments;
+    }
 
     /**
      * Gets the value of the experiments property.

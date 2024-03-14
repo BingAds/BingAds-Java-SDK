@@ -41,6 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class EditorialErrorCollection
     extends BatchErrorCollection
 {
+    public EditorialErrorCollection() {
+      this.type = "EditorialErrorCollection";
+    }
 
     @XmlElement(name = "Appealable", nillable = true)
     protected Boolean appealable;

@@ -62,7 +62,7 @@ public class CriterionBid {
      *     
      */
     public void setType(String value) {
-        this.type = value;
+
     }
 
 }

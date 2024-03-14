@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="ClaimedDateByAccountId" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOflongdateTime" minOccurs="0"/>
+ *         <element name="ClaimedDateByAccountId" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfKeyValueEntityOflongdateTime" minOccurs="0"/>
  *         <element name="OperationErrors" type="{https://bingads.microsoft.com/Customer/v13/Exception}ArrayOfOperationError" minOccurs="0"/>
  *         <element name="PartialErrors" type="{https://bingads.microsoft.com/Customer/v13/Exception}ArrayOfArrayOfOperationError" minOccurs="0"/>
  *       </sequence>
@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ClaimFeatureAdoptionCouponsResponse {
 
     @XmlElement(name = "ClaimedDateByAccountId", nillable = true)
-    protected ArrayOfKeyValuePairOflongdateTime claimedDateByAccountId;
+    protected ArrayOfKeyValueEntityOflongdateTime claimedDateByAccountId;
     @XmlElement(name = "OperationErrors", nillable = true)
     protected ArrayOfOperationError operationErrors;
     @XmlElement(name = "PartialErrors", nillable = true)
@@ -50,10 +50,10 @@ public class ClaimFeatureAdoptionCouponsResponse {
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfKeyValuePairOflongdateTime }
+     *     {@link ArrayOfKeyValueEntityOflongdateTime }
      *     
      */
-    public ArrayOfKeyValuePairOflongdateTime getClaimedDateByAccountId() {
+    public ArrayOfKeyValueEntityOflongdateTime getClaimedDateByAccountId() {
         return claimedDateByAccountId;
     }
 
@@ -62,10 +62,10 @@ public class ClaimFeatureAdoptionCouponsResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfKeyValuePairOflongdateTime }
+     *     {@link ArrayOfKeyValueEntityOflongdateTime }
      *     
      */
-    public void setClaimedDateByAccountId(ArrayOfKeyValuePairOflongdateTime value) {
+    public void setClaimedDateByAccountId(ArrayOfKeyValueEntityOflongdateTime value) {
         this.claimedDateByAccountId = value;
     }
 

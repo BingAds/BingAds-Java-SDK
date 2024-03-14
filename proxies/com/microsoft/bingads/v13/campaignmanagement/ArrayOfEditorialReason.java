@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfEditorialReason complex type.
@@ -36,6 +36,15 @@ public class ArrayOfEditorialReason {
 
     @XmlElement(name = "EditorialReason", nillable = true)
     protected List<EditorialReason> editorialReasons;
+    public ArrayOfEditorialReason()
+    {
+      this.editorialReasons = new ArrayList<EditorialReason>();
+    }
+    @JsonCreator
+    public ArrayOfEditorialReason(List<EditorialReason> editorialreasons)
+    {
+      this.editorialReasons = editorialreasons;
+    }
 
     /**
      * Gets the value of the editorialReasons property.

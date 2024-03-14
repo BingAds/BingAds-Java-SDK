@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
  *       <sequence>
  *         <element name="FinalUrlExpansionOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="PageFeedIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -28,14 +29,20 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PerformanceMaxSetting", propOrder = {
-    "finalUrlExpansionOptOut"
+    "finalUrlExpansionOptOut",
+    "pageFeedIds"
 })
 public class PerformanceMaxSetting
     extends Setting
 {
+    public PerformanceMaxSetting() {
+      this.type = "PerformanceMaxSetting";
+    }
 
     @XmlElement(name = "FinalUrlExpansionOptOut")
     protected Boolean finalUrlExpansionOptOut;
+    @XmlElement(name = "PageFeedIds", nillable = true)
+    protected ArrayOflong pageFeedIds;
 
     /**
      * Gets the value of the finalUrlExpansionOptOut property.
@@ -59,6 +66,30 @@ public class PerformanceMaxSetting
      */
     public void setFinalUrlExpansionOptOut(Boolean value) {
         this.finalUrlExpansionOptOut = value;
+    }
+
+    /**
+     * Gets the value of the pageFeedIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getPageFeedIds() {
+        return pageFeedIds;
+    }
+
+    /**
+     * Sets the value of the pageFeedIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setPageFeedIds(ArrayOflong value) {
+        this.pageFeedIds = value;
     }
 
 }

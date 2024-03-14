@@ -431,6 +431,8 @@ public class CsvHeaders {
             StringTable.AdjustmentType,
             StringTable.ExternalAttributionCredit,
             StringTable.ExternalAttributionModel,
+            StringTable.HashedEmailAddress,
+            StringTable.HashedPhoneNumber,
             
             // Account
             StringTable.MSCLKIDAutoTaggingEnabled,

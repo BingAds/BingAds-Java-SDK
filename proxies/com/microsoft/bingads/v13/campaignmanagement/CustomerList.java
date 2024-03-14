@@ -1,5 +1,6 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
+import java.util.Collections;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -36,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CustomerList
     extends Audience
 {
+    public CustomerList() {
+      this.type = Collections.singletonList(AudienceType.fromValue("CustomerList"));
+    }
 
     @XmlElement(name = "ActionType", nillable = true)
     @XmlSchemaType(name = "string")

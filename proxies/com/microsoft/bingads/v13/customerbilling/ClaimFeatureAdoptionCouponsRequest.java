@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="AccountCouponPairs" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOflongstring" minOccurs="0"/>
+ *         <element name="AccountCouponPairs" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfKeyValueEntityOflongstring" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,17 +35,17 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ClaimFeatureAdoptionCouponsRequest {
 
     @XmlElement(name = "AccountCouponPairs", nillable = true)
-    protected ArrayOfKeyValuePairOflongstring accountCouponPairs;
+    protected ArrayOfKeyValueEntityOflongstring accountCouponPairs;
 
     /**
      * Gets the value of the accountCouponPairs property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfKeyValuePairOflongstring }
+     *     {@link ArrayOfKeyValueEntityOflongstring }
      *     
      */
-    public ArrayOfKeyValuePairOflongstring getAccountCouponPairs() {
+    public ArrayOfKeyValueEntityOflongstring getAccountCouponPairs() {
         return accountCouponPairs;
     }
 
@@ -54,10 +54,10 @@ public class ClaimFeatureAdoptionCouponsRequest {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfKeyValuePairOflongstring }
+     *     {@link ArrayOfKeyValueEntityOflongstring }
      *     
      */
-    public void setAccountCouponPairs(ArrayOfKeyValuePairOflongstring value) {
+    public void setAccountCouponPairs(ArrayOfKeyValueEntityOflongstring value) {
         this.accountCouponPairs = value;
     }
 

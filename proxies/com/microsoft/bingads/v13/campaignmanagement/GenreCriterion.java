@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GenreCriterion
     extends Criterion
 {
+    public GenreCriterion() {
+      this.type = "GenreCriterion";
+    }
 
     @XmlElement(name = "GenreId")
     protected Long genreId;

@@ -40,6 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *         <element name="UseOptimizedTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UsePredictiveTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="AdScheduleUseSearcherTimeZone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="AdGroupType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CpvBid" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
@@ -77,6 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "trackingUrlTemplate",
     "urlCustomParameters",
     "useOptimizedTargeting",
+    "usePredictiveTargeting",
     "adScheduleUseSearcherTimeZone",
     "adGroupType",
     "cpvBid",
@@ -132,6 +134,8 @@ public class AdGroup {
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "UseOptimizedTargeting", nillable = true)
     protected Boolean useOptimizedTargeting;
+    @XmlElement(name = "UsePredictiveTargeting", nillable = true)
+    protected Boolean usePredictiveTargeting;
     @XmlElement(name = "AdScheduleUseSearcherTimeZone", nillable = true)
     protected Boolean adScheduleUseSearcherTimeZone;
     @XmlElement(name = "AdGroupType", nillable = true)
@@ -669,6 +673,30 @@ public class AdGroup {
      */
     public void setUseOptimizedTargeting(Boolean value) {
         this.useOptimizedTargeting = value;
+    }
+
+    /**
+     * Gets the value of the usePredictiveTargeting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUsePredictiveTargeting() {
+        return usePredictiveTargeting;
+    }
+
+    /**
+     * Sets the value of the usePredictiveTargeting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUsePredictiveTargeting(Boolean value) {
+        this.usePredictiveTargeting = value;
     }
 
     /**

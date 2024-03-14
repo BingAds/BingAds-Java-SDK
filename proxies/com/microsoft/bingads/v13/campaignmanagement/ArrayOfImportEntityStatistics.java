@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfImportEntityStatistics complex type.
@@ -36,6 +36,15 @@ public class ArrayOfImportEntityStatistics {
 
     @XmlElement(name = "ImportEntityStatistics", nillable = true)
     protected List<ImportEntityStatistics> importEntityStatistics;
+    public ArrayOfImportEntityStatistics()
+    {
+      this.importEntityStatistics = new ArrayList<ImportEntityStatistics>();
+    }
+    @JsonCreator
+    public ArrayOfImportEntityStatistics(List<ImportEntityStatistics> importentitystatisticss)
+    {
+      this.importEntityStatistics = importentitystatisticss;
+    }
 
     /**
      * Gets the value of the importEntityStatistics property.

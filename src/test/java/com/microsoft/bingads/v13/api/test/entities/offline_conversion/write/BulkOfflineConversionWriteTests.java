@@ -16,7 +16,9 @@ import org.junit.runners.Suite.SuiteClasses;
         BulkOfflineConversionWriteToRowValueExternalAttributionCreditTest.class,
         BulkOfflineConversionWriteToRowValueExternalAttributionModelTest.class,
         BulkOfflineConversionWriteToRowValueAdjustmentTypeTest.class,
-        BulkOfflineConversionWriteToRowValueAdjustmentCurrencyCodeTest.class
+        BulkOfflineConversionWriteToRowValueAdjustmentCurrencyCodeTest.class,
+        BulkOfflineConversionWriteToRowValueHashedEmailAddressTest.class,
+        BulkOfflineConversionWriteToRowValueHashedPhoneNumberTest.class
 })
 public class BulkOfflineConversionWriteTests {
 

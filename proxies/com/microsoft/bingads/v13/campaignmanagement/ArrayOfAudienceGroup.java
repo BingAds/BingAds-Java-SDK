@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAudienceGroup complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAudienceGroup {
 
     @XmlElement(name = "AudienceGroup", nillable = true)
     protected List<AudienceGroup> audienceGroups;
+    public ArrayOfAudienceGroup()
+    {
+      this.audienceGroups = new ArrayList<AudienceGroup>();
+    }
+    @JsonCreator
+    public ArrayOfAudienceGroup(List<AudienceGroup> audiencegroups)
+    {
+      this.audienceGroups = audiencegroups;
+    }
 
     /**
      * Gets the value of the audienceGroups property.

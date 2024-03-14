@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LocationAdExtension
     extends AdExtension
 {
+    public LocationAdExtension() {
+      this.type = "LocationAdExtension";
+    }
 
     @XmlElement(name = "Address", nillable = true)
     protected Address address;

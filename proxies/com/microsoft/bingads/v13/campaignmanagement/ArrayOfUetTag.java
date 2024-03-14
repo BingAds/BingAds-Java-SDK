@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfUetTag complex type.
@@ -36,6 +36,15 @@ public class ArrayOfUetTag {
 
     @XmlElement(name = "UetTag", nillable = true)
     protected List<UetTag> uetTags;
+    public ArrayOfUetTag()
+    {
+      this.uetTags = new ArrayList<UetTag>();
+    }
+    @JsonCreator
+    public ArrayOfUetTag(List<UetTag> uettags)
+    {
+      this.uetTags = uettags;
+    }
 
     /**
      * Gets the value of the uetTags property.

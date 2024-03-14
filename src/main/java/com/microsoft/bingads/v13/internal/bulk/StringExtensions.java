@@ -566,9 +566,7 @@ public class StringExtensions {
     	for (FrequencyCapSettings setting : settings.getFrequencyCapSettings()) {
     		sb.append("{\"capValue\":")
     		  .append(setting.getCapValue())
-    		  .append(",\"frequencyCapUnit\":\"")
-    		  .append(setting.getFrequencyCapUnit())
-    		  .append("\",\"timeGranularity\":\"")
+    		  .append(",\"timeGranularity\":\"")
     		  .append(setting.getTimeGranularity().toString())
     		  .append("\"},");
     	}

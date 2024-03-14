@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelAd
     extends Ad
 {
+    public HotelAd() {
+      this.type = AdType.fromValue("Hotel");
+    }
 
 
 }

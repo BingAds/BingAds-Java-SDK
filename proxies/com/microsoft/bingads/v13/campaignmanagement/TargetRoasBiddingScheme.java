@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class TargetRoasBiddingScheme
     extends BiddingScheme
 {
+    public TargetRoasBiddingScheme() {
+      this.type = "TargetRoasBiddingScheme";
+    }
 
     @XmlElement(name = "MaxCpc", nillable = true)
     protected Bid maxCpc;

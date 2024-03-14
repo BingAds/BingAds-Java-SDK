@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfDayTime complex type.
@@ -36,6 +36,15 @@ public class ArrayOfDayTime {
 
     @XmlElement(name = "DayTime", nillable = true)
     protected List<DayTime> dayTimes;
+    public ArrayOfDayTime()
+    {
+      this.dayTimes = new ArrayList<DayTime>();
+    }
+    @JsonCreator
+    public ArrayOfDayTime(List<DayTime> daytimes)
+    {
+      this.dayTimes = daytimes;
+    }
 
     /**
      * Gets the value of the dayTimes property.

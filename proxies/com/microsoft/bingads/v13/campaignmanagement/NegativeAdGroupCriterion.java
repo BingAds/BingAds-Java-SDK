@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NegativeAdGroupCriterion
     extends AdGroupCriterion
 {
+    public NegativeAdGroupCriterion() {
+      this.type = "NegativeAdGroupCriterion";
+    }
 
 
 }

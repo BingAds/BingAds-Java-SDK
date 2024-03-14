@@ -687,8 +687,9 @@ public class StringTable {
     public static final String AdjustmentType = "Adjustment Type";
     public static final String ExternalAttributionModel = "External Attribution Model";
     public static final String ExternalAttributionCredit = "External Attribution Credit";
+    public static final String HashedEmailAddress = "Hashed Email Address";
+    public static final String HashedPhoneNumber = "Hashed Phone Number";
 
-    
     // Account
     public static final String MSCLKIDAutoTaggingEnabled = "MSCLKID Auto Tagging Enabled";
     public static final String IncludeViewThroughConversions = "Include View Through Conversions";

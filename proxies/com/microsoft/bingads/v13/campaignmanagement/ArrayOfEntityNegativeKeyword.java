@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfEntityNegativeKeyword complex type.
@@ -36,6 +36,15 @@ public class ArrayOfEntityNegativeKeyword {
 
     @XmlElement(name = "EntityNegativeKeyword", nillable = true)
     protected List<EntityNegativeKeyword> entityNegativeKeywords;
+    public ArrayOfEntityNegativeKeyword()
+    {
+      this.entityNegativeKeywords = new ArrayList<EntityNegativeKeyword>();
+    }
+    @JsonCreator
+    public ArrayOfEntityNegativeKeyword(List<EntityNegativeKeyword> entitynegativekeywords)
+    {
+      this.entityNegativeKeywords = entitynegativekeywords;
+    }
 
     /**
      * Gets the value of the entityNegativeKeywords property.

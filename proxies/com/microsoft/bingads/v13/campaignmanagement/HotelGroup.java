@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelGroup
     extends Criterion
 {
+    public HotelGroup() {
+      this.type = "HotelGroup";
+    }
 
     @XmlElement(name = "Listing", nillable = true)
     protected HotelListing listing;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdGroupCriterionAction complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdGroupCriterionAction {
 
     @XmlElement(name = "AdGroupCriterionAction", nillable = true)
     protected List<AdGroupCriterionAction> adGroupCriterionActions;
+    public ArrayOfAdGroupCriterionAction()
+    {
+      this.adGroupCriterionActions = new ArrayList<AdGroupCriterionAction>();
+    }
+    @JsonCreator
+    public ArrayOfAdGroupCriterionAction(List<AdGroupCriterionAction> adgroupcriterionactions)
+    {
+      this.adGroupCriterionActions = adgroupcriterionactions;
+    }
 
     /**
      * Gets the value of the adGroupCriterionActions property.

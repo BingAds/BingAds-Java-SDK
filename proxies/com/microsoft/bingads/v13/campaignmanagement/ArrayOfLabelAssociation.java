@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfLabelAssociation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfLabelAssociation {
 
     @XmlElement(name = "LabelAssociation", nillable = true)
     protected List<LabelAssociation> labelAssociations;
+    public ArrayOfLabelAssociation()
+    {
+      this.labelAssociations = new ArrayList<LabelAssociation>();
+    }
+    @JsonCreator
+    public ArrayOfLabelAssociation(List<LabelAssociation> labelassociations)
+    {
+      this.labelAssociations = labelassociations;
+    }
 
     /**
      * Gets the value of the labelAssociations property.

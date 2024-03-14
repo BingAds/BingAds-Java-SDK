@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class VideoAsset
     extends Asset
 {
+    public VideoAsset() {
+      this.type = "VideoAsset";
+    }
 
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;

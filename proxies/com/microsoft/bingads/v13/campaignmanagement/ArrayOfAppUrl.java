@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAppUrl complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAppUrl {
 
     @XmlElement(name = "AppUrl", nillable = true)
     protected List<AppUrl> appUrls;
+    public ArrayOfAppUrl()
+    {
+      this.appUrls = new ArrayList<AppUrl>();
+    }
+    @JsonCreator
+    public ArrayOfAppUrl(List<AppUrl> appurls)
+    {
+      this.appUrls = appurls;
+    }
 
     /**
      * Gets the value of the appUrls property.

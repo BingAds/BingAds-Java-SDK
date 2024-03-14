@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfWebpageCondition complex type.
@@ -36,6 +36,15 @@ public class ArrayOfWebpageCondition {
 
     @XmlElement(name = "WebpageCondition", nillable = true)
     protected List<WebpageCondition> webpageConditions;
+    public ArrayOfWebpageCondition()
+    {
+      this.webpageConditions = new ArrayList<WebpageCondition>();
+    }
+    @JsonCreator
+    public ArrayOfWebpageCondition(List<WebpageCondition> webpageconditions)
+    {
+      this.webpageConditions = webpageconditions;
+    }
 
     /**
      * Gets the value of the webpageConditions property.

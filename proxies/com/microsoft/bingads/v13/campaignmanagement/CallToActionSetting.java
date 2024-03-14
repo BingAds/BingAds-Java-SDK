@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CallToActionSetting
     extends Setting
 {
+    public CallToActionSetting() {
+      this.type = "CallToActionSetting";
+    }
 
     @XmlElement(name = "AutomatedCallToActionOptOut", nillable = true)
     protected Boolean automatedCallToActionOptOut;

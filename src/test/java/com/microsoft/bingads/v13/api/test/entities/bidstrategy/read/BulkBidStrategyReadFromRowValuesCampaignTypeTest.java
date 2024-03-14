@@ -26,6 +26,7 @@ public class BulkBidStrategyReadFromRowValuesCampaignTypeTest extends BulkBidStr
         return Arrays.asList(
                 new Object[][]{
                         {null, null},
+                        {"", null},
                         {"Search", Collections.singletonList(CampaignType.SEARCH)},
                         {"Shopping", Collections.singletonList(CampaignType.SHOPPING)},
                         {"DynamicSearchAds", Collections.singletonList(CampaignType.DYNAMIC_SEARCH_ADS)},

@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GoogleImportJob
     extends ImportJob
 {
+    public GoogleImportJob() {
+      this.type = "GoogleImportJob";
+    }
 
     @XmlElement(name = "CampaignAdGroupIds", nillable = true)
     protected ArrayOfCampaignAdGroupIds campaignAdGroupIds;
