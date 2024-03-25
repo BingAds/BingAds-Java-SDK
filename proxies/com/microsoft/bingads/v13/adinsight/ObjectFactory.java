@@ -206,6 +206,32 @@ public class ObjectFactory {
     private static final QName _RSARecommendationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RSARecommendationInfo");
     private static final QName _ArrayOfTextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfTextAssetSuggestions");
     private static final QName _TextAssetSuggestions_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "TextAssetSuggestions");
+    private static final QName _ArrayOfApplyRecommendationEntity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfApplyRecommendationEntity");
+    private static final QName _ApplyRecommendationEntity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ApplyRecommendationEntity");
+    private static final QName _ArrayOfDismissRecommendationEntity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfDismissRecommendationEntity");
+    private static final QName _DismissRecommendationEntity_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DismissRecommendationEntity");
+    private static final QName _ArrayOfRecommendationBase_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRecommendationBase");
+    private static final QName _RecommendationBase_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RecommendationBase");
+    private static final QName _RecommendationType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RecommendationType");
+    private static final QName _CampaignBudgetRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignBudgetRecommendation");
+    private static final QName _KeywordRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordRecommendation");
+    private static final QName _ResponsiveSearchAdRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ResponsiveSearchAdRecommendation");
+    private static final QName _SelectionOfAgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOfAgeEnum");
+    private static final QName _ArrayOfAgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfAgeEnum");
+    private static final QName _AgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AgeEnum");
+    private static final QName _SelectionOfGenderEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOfGenderEnum");
+    private static final QName _ArrayOfGenderEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfGenderEnum");
+    private static final QName _GenderEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "GenderEnum");
+    private static final QName _SelectionOflong_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOflong");
+    private static final QName _ArrayOfRadiusTarget_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRadiusTarget");
+    private static final QName _RadiusTarget_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RadiusTarget");
+    private static final QName _RadiusUnit_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RadiusUnit");
+    private static final QName _Feed_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Feed");
+    private static final QName _Currency_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Currency");
+    private static final QName _RangeResultOfDecimalRoundedResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RangeResultOfDecimalRoundedResult");
+    private static final QName _DecimalRoundedResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DecimalRoundedResult");
+    private static final QName _ScaleUnit_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ScaleUnit");
+    private static final QName _RangeResultOfdouble_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RangeResultOfdouble");
     private static final QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private static final QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private static final QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
@@ -2419,6 +2445,286 @@ public class ObjectFactory {
      */
     public TextAssetSuggestions createTextAssetSuggestions() {
         return new TextAssetSuggestions();
+    }
+
+    /**
+     * Create an instance of {@link ApplyRecommendationsRequest }
+     * 
+     * @return
+     *     the new instance of {@link ApplyRecommendationsRequest }
+     */
+    public ApplyRecommendationsRequest createApplyRecommendationsRequest() {
+        return new ApplyRecommendationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfApplyRecommendationEntity }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfApplyRecommendationEntity }
+     */
+    public ArrayOfApplyRecommendationEntity createArrayOfApplyRecommendationEntity() {
+        return new ArrayOfApplyRecommendationEntity();
+    }
+
+    /**
+     * Create an instance of {@link ApplyRecommendationEntity }
+     * 
+     * @return
+     *     the new instance of {@link ApplyRecommendationEntity }
+     */
+    public ApplyRecommendationEntity createApplyRecommendationEntity() {
+        return new ApplyRecommendationEntity();
+    }
+
+    /**
+     * Create an instance of {@link ApplyRecommendationsResponse }
+     * 
+     * @return
+     *     the new instance of {@link ApplyRecommendationsResponse }
+     */
+    public ApplyRecommendationsResponse createApplyRecommendationsResponse() {
+        return new ApplyRecommendationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DismissRecommendationsRequest }
+     * 
+     * @return
+     *     the new instance of {@link DismissRecommendationsRequest }
+     */
+    public DismissRecommendationsRequest createDismissRecommendationsRequest() {
+        return new DismissRecommendationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDismissRecommendationEntity }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDismissRecommendationEntity }
+     */
+    public ArrayOfDismissRecommendationEntity createArrayOfDismissRecommendationEntity() {
+        return new ArrayOfDismissRecommendationEntity();
+    }
+
+    /**
+     * Create an instance of {@link DismissRecommendationEntity }
+     * 
+     * @return
+     *     the new instance of {@link DismissRecommendationEntity }
+     */
+    public DismissRecommendationEntity createDismissRecommendationEntity() {
+        return new DismissRecommendationEntity();
+    }
+
+    /**
+     * Create an instance of {@link DismissRecommendationsResponse }
+     * 
+     * @return
+     *     the new instance of {@link DismissRecommendationsResponse }
+     */
+    public DismissRecommendationsResponse createDismissRecommendationsResponse() {
+        return new DismissRecommendationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RetrieveRecommendationsRequest }
+     * 
+     * @return
+     *     the new instance of {@link RetrieveRecommendationsRequest }
+     */
+    public RetrieveRecommendationsRequest createRetrieveRecommendationsRequest() {
+        return new RetrieveRecommendationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link RetrieveRecommendationsResponse }
+     * 
+     * @return
+     *     the new instance of {@link RetrieveRecommendationsResponse }
+     */
+    public RetrieveRecommendationsResponse createRetrieveRecommendationsResponse() {
+        return new RetrieveRecommendationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRecommendationBase }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfRecommendationBase }
+     */
+    public ArrayOfRecommendationBase createArrayOfRecommendationBase() {
+        return new ArrayOfRecommendationBase();
+    }
+
+    /**
+     * Create an instance of {@link RecommendationBase }
+     * 
+     * @return
+     *     the new instance of {@link RecommendationBase }
+     */
+    public RecommendationBase createRecommendationBase() {
+        return new RecommendationBase();
+    }
+
+    /**
+     * Create an instance of {@link CampaignBudgetRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link CampaignBudgetRecommendation }
+     */
+    public CampaignBudgetRecommendation createCampaignBudgetRecommendation() {
+        return new CampaignBudgetRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link KeywordRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link KeywordRecommendation }
+     */
+    public KeywordRecommendation createKeywordRecommendation() {
+        return new KeywordRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link ResponsiveSearchAdRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link ResponsiveSearchAdRecommendation }
+     */
+    public ResponsiveSearchAdRecommendation createResponsiveSearchAdRecommendation() {
+        return new ResponsiveSearchAdRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link GetAudienceFullEstimationRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetAudienceFullEstimationRequest }
+     */
+    public GetAudienceFullEstimationRequest createGetAudienceFullEstimationRequest() {
+        return new GetAudienceFullEstimationRequest();
+    }
+
+    /**
+     * Create an instance of {@link SelectionOfAgeEnum }
+     * 
+     * @return
+     *     the new instance of {@link SelectionOfAgeEnum }
+     */
+    public SelectionOfAgeEnum createSelectionOfAgeEnum() {
+        return new SelectionOfAgeEnum();
+    }
+
+    /**
+     * Create an instance of {@link SelectionOfGenderEnum }
+     * 
+     * @return
+     *     the new instance of {@link SelectionOfGenderEnum }
+     */
+    public SelectionOfGenderEnum createSelectionOfGenderEnum() {
+        return new SelectionOfGenderEnum();
+    }
+
+    /**
+     * Create an instance of {@link SelectionOflong }
+     * 
+     * @return
+     *     the new instance of {@link SelectionOflong }
+     */
+    public SelectionOflong createSelectionOflong() {
+        return new SelectionOflong();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRadiusTarget }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfRadiusTarget }
+     */
+    public ArrayOfRadiusTarget createArrayOfRadiusTarget() {
+        return new ArrayOfRadiusTarget();
+    }
+
+    /**
+     * Create an instance of {@link Feed }
+     * 
+     * @return
+     *     the new instance of {@link Feed }
+     */
+    public Feed createFeed() {
+        return new Feed();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAgeEnum }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAgeEnum }
+     */
+    public ArrayOfAgeEnum createArrayOfAgeEnum() {
+        return new ArrayOfAgeEnum();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfGenderEnum }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfGenderEnum }
+     */
+    public ArrayOfGenderEnum createArrayOfGenderEnum() {
+        return new ArrayOfGenderEnum();
+    }
+
+    /**
+     * Create an instance of {@link RadiusTarget }
+     * 
+     * @return
+     *     the new instance of {@link RadiusTarget }
+     */
+    public RadiusTarget createRadiusTarget() {
+        return new RadiusTarget();
+    }
+
+    /**
+     * Create an instance of {@link GetAudienceFullEstimationResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetAudienceFullEstimationResponse }
+     */
+    public GetAudienceFullEstimationResponse createGetAudienceFullEstimationResponse() {
+        return new GetAudienceFullEstimationResponse();
+    }
+
+    /**
+     * Create an instance of {@link RangeResultOfDecimalRoundedResult }
+     * 
+     * @return
+     *     the new instance of {@link RangeResultOfDecimalRoundedResult }
+     */
+    public RangeResultOfDecimalRoundedResult createRangeResultOfDecimalRoundedResult() {
+        return new RangeResultOfDecimalRoundedResult();
+    }
+
+    /**
+     * Create an instance of {@link RangeResultOfdouble }
+     * 
+     * @return
+     *     the new instance of {@link RangeResultOfdouble }
+     */
+    public RangeResultOfdouble createRangeResultOfdouble() {
+        return new RangeResultOfdouble();
+    }
+
+    /**
+     * Create an instance of {@link DecimalRoundedResult }
+     * 
+     * @return
+     *     the new instance of {@link DecimalRoundedResult }
+     */
+    public DecimalRoundedResult createDecimalRoundedResult() {
+        return new DecimalRoundedResult();
     }
 
     /**
@@ -4806,6 +5112,344 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "TextAssetSuggestions")
     public JAXBElement<TextAssetSuggestions> createTextAssetSuggestions(TextAssetSuggestions value) {
         return new JAXBElement<>(_TextAssetSuggestions_QNAME, TextAssetSuggestions.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfApplyRecommendationEntity }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfApplyRecommendationEntity }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfApplyRecommendationEntity")
+    public JAXBElement<ArrayOfApplyRecommendationEntity> createArrayOfApplyRecommendationEntity(ArrayOfApplyRecommendationEntity value) {
+        return new JAXBElement<>(_ArrayOfApplyRecommendationEntity_QNAME, ArrayOfApplyRecommendationEntity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ApplyRecommendationEntity }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ApplyRecommendationEntity }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ApplyRecommendationEntity")
+    public JAXBElement<ApplyRecommendationEntity> createApplyRecommendationEntity(ApplyRecommendationEntity value) {
+        return new JAXBElement<>(_ApplyRecommendationEntity_QNAME, ApplyRecommendationEntity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDismissRecommendationEntity }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDismissRecommendationEntity }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfDismissRecommendationEntity")
+    public JAXBElement<ArrayOfDismissRecommendationEntity> createArrayOfDismissRecommendationEntity(ArrayOfDismissRecommendationEntity value) {
+        return new JAXBElement<>(_ArrayOfDismissRecommendationEntity_QNAME, ArrayOfDismissRecommendationEntity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DismissRecommendationEntity }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DismissRecommendationEntity }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "DismissRecommendationEntity")
+    public JAXBElement<DismissRecommendationEntity> createDismissRecommendationEntity(DismissRecommendationEntity value) {
+        return new JAXBElement<>(_DismissRecommendationEntity_QNAME, DismissRecommendationEntity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRecommendationBase }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfRecommendationBase }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfRecommendationBase")
+    public JAXBElement<ArrayOfRecommendationBase> createArrayOfRecommendationBase(ArrayOfRecommendationBase value) {
+        return new JAXBElement<>(_ArrayOfRecommendationBase_QNAME, ArrayOfRecommendationBase.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RecommendationBase }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RecommendationBase }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RecommendationBase")
+    public JAXBElement<RecommendationBase> createRecommendationBase(RecommendationBase value) {
+        return new JAXBElement<>(_RecommendationBase_QNAME, RecommendationBase.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RecommendationType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RecommendationType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RecommendationType")
+    public JAXBElement<RecommendationType> createRecommendationType(RecommendationType value) {
+        return new JAXBElement<>(_RecommendationType_QNAME, RecommendationType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignBudgetRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignBudgetRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "CampaignBudgetRecommendation")
+    public JAXBElement<CampaignBudgetRecommendation> createCampaignBudgetRecommendation(CampaignBudgetRecommendation value) {
+        return new JAXBElement<>(_CampaignBudgetRecommendation_QNAME, CampaignBudgetRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KeywordRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link KeywordRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "KeywordRecommendation")
+    public JAXBElement<KeywordRecommendation> createKeywordRecommendation(KeywordRecommendation value) {
+        return new JAXBElement<>(_KeywordRecommendation_QNAME, KeywordRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ResponsiveSearchAdRecommendation")
+    public JAXBElement<ResponsiveSearchAdRecommendation> createResponsiveSearchAdRecommendation(ResponsiveSearchAdRecommendation value) {
+        return new JAXBElement<>(_ResponsiveSearchAdRecommendation_QNAME, ResponsiveSearchAdRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectionOfAgeEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SelectionOfAgeEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SelectionOfAgeEnum")
+    public JAXBElement<SelectionOfAgeEnum> createSelectionOfAgeEnum(SelectionOfAgeEnum value) {
+        return new JAXBElement<>(_SelectionOfAgeEnum_QNAME, SelectionOfAgeEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAgeEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAgeEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfAgeEnum")
+    public JAXBElement<ArrayOfAgeEnum> createArrayOfAgeEnum(ArrayOfAgeEnum value) {
+        return new JAXBElement<>(_ArrayOfAgeEnum_QNAME, ArrayOfAgeEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AgeEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AgeEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "AgeEnum")
+    public JAXBElement<AgeEnum> createAgeEnum(AgeEnum value) {
+        return new JAXBElement<>(_AgeEnum_QNAME, AgeEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectionOfGenderEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SelectionOfGenderEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SelectionOfGenderEnum")
+    public JAXBElement<SelectionOfGenderEnum> createSelectionOfGenderEnum(SelectionOfGenderEnum value) {
+        return new JAXBElement<>(_SelectionOfGenderEnum_QNAME, SelectionOfGenderEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfGenderEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfGenderEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfGenderEnum")
+    public JAXBElement<ArrayOfGenderEnum> createArrayOfGenderEnum(ArrayOfGenderEnum value) {
+        return new JAXBElement<>(_ArrayOfGenderEnum_QNAME, ArrayOfGenderEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GenderEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GenderEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "GenderEnum")
+    public JAXBElement<GenderEnum> createGenderEnum(GenderEnum value) {
+        return new JAXBElement<>(_GenderEnum_QNAME, GenderEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectionOflong }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SelectionOflong }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SelectionOflong")
+    public JAXBElement<SelectionOflong> createSelectionOflong(SelectionOflong value) {
+        return new JAXBElement<>(_SelectionOflong_QNAME, SelectionOflong.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRadiusTarget }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfRadiusTarget }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfRadiusTarget")
+    public JAXBElement<ArrayOfRadiusTarget> createArrayOfRadiusTarget(ArrayOfRadiusTarget value) {
+        return new JAXBElement<>(_ArrayOfRadiusTarget_QNAME, ArrayOfRadiusTarget.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RadiusTarget }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RadiusTarget }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RadiusTarget")
+    public JAXBElement<RadiusTarget> createRadiusTarget(RadiusTarget value) {
+        return new JAXBElement<>(_RadiusTarget_QNAME, RadiusTarget.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RadiusUnit }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RadiusUnit }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RadiusUnit")
+    public JAXBElement<RadiusUnit> createRadiusUnit(RadiusUnit value) {
+        return new JAXBElement<>(_RadiusUnit_QNAME, RadiusUnit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Feed }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Feed }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Feed")
+    public JAXBElement<Feed> createFeed(Feed value) {
+        return new JAXBElement<>(_Feed_QNAME, Feed.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Currency }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Currency }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Currency")
+    public JAXBElement<Currency> createCurrency(Currency value) {
+        return new JAXBElement<>(_Currency_QNAME, Currency.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RangeResultOfDecimalRoundedResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RangeResultOfDecimalRoundedResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RangeResultOfDecimalRoundedResult")
+    public JAXBElement<RangeResultOfDecimalRoundedResult> createRangeResultOfDecimalRoundedResult(RangeResultOfDecimalRoundedResult value) {
+        return new JAXBElement<>(_RangeResultOfDecimalRoundedResult_QNAME, RangeResultOfDecimalRoundedResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DecimalRoundedResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DecimalRoundedResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "DecimalRoundedResult")
+    public JAXBElement<DecimalRoundedResult> createDecimalRoundedResult(DecimalRoundedResult value) {
+        return new JAXBElement<>(_DecimalRoundedResult_QNAME, DecimalRoundedResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ScaleUnit }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ScaleUnit }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ScaleUnit")
+    public JAXBElement<ScaleUnit> createScaleUnit(ScaleUnit value) {
+        return new JAXBElement<>(_ScaleUnit_QNAME, ScaleUnit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RangeResultOfdouble }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RangeResultOfdouble }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RangeResultOfdouble")
+    public JAXBElement<RangeResultOfdouble> createRangeResultOfdouble(RangeResultOfdouble value) {
+        return new JAXBElement<>(_RangeResultOfdouble_QNAME, RangeResultOfdouble.class, null, value);
     }
 
     /**

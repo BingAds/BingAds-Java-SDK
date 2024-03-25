@@ -43,6 +43,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="SeriesName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="IsInSeries" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="SeriesFrequencyType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="IsUnlimited" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="IsEndless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -75,7 +77,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "budgetSpentPercent",
     "seriesName",
     "isInSeries",
-    "seriesFrequencyType"
+    "seriesFrequencyType",
+    "isUnlimited",
+    "isEndless"
 })
 public class InsertionOrder {
 
@@ -132,6 +136,10 @@ public class InsertionOrder {
     protected Boolean isInSeries;
     @XmlElement(name = "SeriesFrequencyType", nillable = true)
     protected String seriesFrequencyType;
+    @XmlElement(name = "IsUnlimited", nillable = true)
+    protected Boolean isUnlimited;
+    @XmlElement(name = "IsEndless", nillable = true)
+    protected Boolean isEndless;
 
     /**
      * Gets the value of the accountId property.
@@ -683,6 +691,54 @@ public class InsertionOrder {
      */
     public void setSeriesFrequencyType(String value) {
         this.seriesFrequencyType = value;
+    }
+
+    /**
+     * Gets the value of the isUnlimited property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsUnlimited() {
+        return isUnlimited;
+    }
+
+    /**
+     * Sets the value of the isUnlimited property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsUnlimited(Boolean value) {
+        this.isUnlimited = value;
+    }
+
+    /**
+     * Gets the value of the isEndless property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsEndless() {
+        return isEndless;
+    }
+
+    /**
+     * Sets the value of the isEndless property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsEndless(Boolean value) {
+        this.isEndless = value;
     }
 
 }

@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AdExtensionByKeywordReportRequest
     extends ReportRequest
 {
+    public AdExtensionByKeywordReportRequest() {
+      this.type = "AdExtensionByKeywordReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

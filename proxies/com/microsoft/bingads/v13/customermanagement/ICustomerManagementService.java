@@ -1584,4 +1584,45 @@ public interface ICustomerManagementService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customermanagement.DismissNotificationsResponse>
+     */
+    @WebMethod(operationName = "DismissNotifications", action = "DismissNotifications")
+    public Response<DismissNotificationsResponse> dismissNotificationsAsync(
+        @WebParam(name = "DismissNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        DismissNotificationsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DismissNotifications", action = "DismissNotifications")
+    public Future<?> dismissNotificationsAsync(
+        @WebParam(name = "DismissNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        DismissNotificationsRequest parameters,
+        @WebParam(name = "DismissNotificationsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DismissNotificationsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customermanagement.DismissNotificationsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "DismissNotifications", action = "DismissNotifications")
+    @WebResult(name = "DismissNotificationsResponse", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+    public DismissNotificationsResponse dismissNotifications(
+        @WebParam(name = "DismissNotificationsRequest", targetNamespace = "https://bingads.microsoft.com/Customer/v13", partName = "parameters")
+        DismissNotificationsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.customermanagement;
 public enum AccountAdditionalField {
 
     TAX_CERTIFICATE("TaxCertificate"),
-    ACCOUNT_MODE("AccountMode");
+    ACCOUNT_MODE("AccountMode"),
+    COUPON_CLAIM_INFO("CouponClaimInfo");
         
     private final String value;
 

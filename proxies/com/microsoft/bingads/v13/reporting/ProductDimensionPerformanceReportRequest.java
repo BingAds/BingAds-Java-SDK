@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductDimensionPerformanceReportRequest
     extends ReportRequest
 {
+    public ProductDimensionPerformanceReportRequest() {
+      this.type = "ProductDimensionPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

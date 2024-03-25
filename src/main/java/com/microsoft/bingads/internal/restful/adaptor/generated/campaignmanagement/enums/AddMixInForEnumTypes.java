@@ -86,9 +86,9 @@ public class AddMixInForEnumTypes {
 				.addMixIn(NumberOperator.class, NumberOperatorMixIn.class)
 				.addMixIn(ProductAudienceType.class, ProductAudienceTypeMixIn.class)
 				.addMixIn(LogicalOperator.class, LogicalOperatorMixIn.class)
+				.addMixIn(AudienceAdditionalField.class, AudienceAdditionalFieldMixIn.class)
 				.addMixIn(CustomerListActionType.class, CustomerListActionTypeMixIn.class)
 				.addMixIn(CustomerListItemSubType.class, CustomerListItemSubTypeMixIn.class)
-				.addMixIn(AudienceAdditionalField.class, AudienceAdditionalFieldMixIn.class)
 				.addMixIn(UetTagTrackingStatus.class, UetTagTrackingStatusMixIn.class)
 				.addMixIn(ConversionGoalType.class, ConversionGoalTypeMixIn.class)
 				.addMixIn(ConversionGoalAdditionalField.class, ConversionGoalAdditionalFieldMixIn.class)
@@ -102,6 +102,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ValueOperator.class, ValueOperatorMixIn.class)
 				.addMixIn(ImportAdditionalField.class, ImportAdditionalFieldMixIn.class)
 				.addMixIn(ImportEntityType.class, ImportEntityTypeMixIn.class)
+				.addMixIn(DeviceType.class, DeviceTypeMixIn.class)
 				;
 	}
 }

@@ -15,14 +15,16 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 
 @JsonTypeInfo(
 	      use = JsonTypeInfo.Id.NAME, 
-	      include = JsonTypeInfo.As.EXISTING_PROPERTY, 
-	      property = "Type",
+	      include = JsonTypeInfo.As.EXISTING_PROPERTY,   
+		  property = "Type",
 		  visible = true)
 	    @JsonSubTypes({
 						
 			@JsonSubTypes.Type(value = NegativeKeyword.class, name = "NegativeKeyword"),
 						
 			@JsonSubTypes.Type(value = NegativeSite.class, name = "NegativeSite"),
+						
+			@JsonSubTypes.Type(value = BrandItem.class, name = "BrandItem"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AdGroupPerformanceReportRequest
     extends ReportRequest
 {
+    public AdGroupPerformanceReportRequest() {
+      this.type = "AdGroupPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

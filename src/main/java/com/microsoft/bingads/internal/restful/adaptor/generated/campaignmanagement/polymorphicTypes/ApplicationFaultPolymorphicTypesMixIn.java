@@ -15,9 +15,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 
 @JsonTypeInfo(
 	      use = JsonTypeInfo.Id.NAME, 
-	      include = JsonTypeInfo.As.EXISTING_PROPERTY, 
-	      property = "Type",
-		  visible = true)
+	      include = JsonTypeInfo.As.EXISTING_PROPERTY,   
+		  property = "Type")
 	    @JsonSubTypes({
 						
 			@JsonSubTypes.Type(value = ApiFaultDetail.class, name = "ApiFaultDetail"),

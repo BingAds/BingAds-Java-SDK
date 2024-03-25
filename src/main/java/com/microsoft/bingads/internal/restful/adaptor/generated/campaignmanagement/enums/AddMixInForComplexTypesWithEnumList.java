@@ -48,6 +48,8 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(Audience.class, AudienceEnumsMixIn.class)
 				.addMixIn(ProductAudience.class, ProductAudienceEnumsMixIn.class)
 				.addMixIn(ConversionGoal.class, ConversionGoalEnumsMixIn.class)
+				.addMixIn(DataExclusion.class, DataExclusionEnumsMixIn.class)
+				.addMixIn(SeasonalityAdjustment.class, SeasonalityAdjustmentEnumsMixIn.class)
 				;
 	}
 }

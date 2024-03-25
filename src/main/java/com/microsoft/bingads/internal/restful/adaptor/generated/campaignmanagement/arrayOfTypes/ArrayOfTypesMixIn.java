@@ -296,10 +296,6 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<CustomerListItem> getCustomerListItems();
-
-            
-	@JsonValue
 	List<UetTag> getUetTags();
 
             
@@ -357,6 +353,18 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<CampaignConversionGoal> getCampaignConversionGoals();
+
+            
+	@JsonValue
+	List<DataExclusion> getDataExclusions();
+
+            
+	@JsonValue
+	List<CampaignAssociation> getCampaignAssociations();
+
+            
+	@JsonValue
+	List<SeasonalityAdjustment> getSeasonalityAdjustments();
 
             
 	@JsonValue

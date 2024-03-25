@@ -1174,4 +1174,168 @@ public interface IAdInsightService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.ApplyRecommendationsResponse>
+     */
+    @WebMethod(operationName = "ApplyRecommendations", action = "ApplyRecommendations")
+    public Response<ApplyRecommendationsResponse> applyRecommendationsAsync(
+        @WebParam(name = "ApplyRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        ApplyRecommendationsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "ApplyRecommendations", action = "ApplyRecommendations")
+    public Future<?> applyRecommendationsAsync(
+        @WebParam(name = "ApplyRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        ApplyRecommendationsRequest parameters,
+        @WebParam(name = "ApplyRecommendationsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<ApplyRecommendationsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.ApplyRecommendationsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "ApplyRecommendations", action = "ApplyRecommendations")
+    @WebResult(name = "ApplyRecommendationsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public ApplyRecommendationsResponse applyRecommendations(
+        @WebParam(name = "ApplyRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        ApplyRecommendationsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.DismissRecommendationsResponse>
+     */
+    @WebMethod(operationName = "DismissRecommendations", action = "DismissRecommendations")
+    public Response<DismissRecommendationsResponse> dismissRecommendationsAsync(
+        @WebParam(name = "DismissRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        DismissRecommendationsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DismissRecommendations", action = "DismissRecommendations")
+    public Future<?> dismissRecommendationsAsync(
+        @WebParam(name = "DismissRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        DismissRecommendationsRequest parameters,
+        @WebParam(name = "DismissRecommendationsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DismissRecommendationsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.DismissRecommendationsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DismissRecommendations", action = "DismissRecommendations")
+    @WebResult(name = "DismissRecommendationsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public DismissRecommendationsResponse dismissRecommendations(
+        @WebParam(name = "DismissRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        DismissRecommendationsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.RetrieveRecommendationsResponse>
+     */
+    @WebMethod(operationName = "RetrieveRecommendations", action = "RetrieveRecommendations")
+    public Response<RetrieveRecommendationsResponse> retrieveRecommendationsAsync(
+        @WebParam(name = "RetrieveRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        RetrieveRecommendationsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "RetrieveRecommendations", action = "RetrieveRecommendations")
+    public Future<?> retrieveRecommendationsAsync(
+        @WebParam(name = "RetrieveRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        RetrieveRecommendationsRequest parameters,
+        @WebParam(name = "RetrieveRecommendationsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<RetrieveRecommendationsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.RetrieveRecommendationsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "RetrieveRecommendations", action = "RetrieveRecommendations")
+    @WebResult(name = "RetrieveRecommendationsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public RetrieveRecommendationsResponse retrieveRecommendations(
+        @WebParam(name = "RetrieveRecommendationsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        RetrieveRecommendationsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetAudienceFullEstimationResponse>
+     */
+    @WebMethod(operationName = "GetAudienceFullEstimation", action = "GetAudienceFullEstimation")
+    public Response<GetAudienceFullEstimationResponse> getAudienceFullEstimationAsync(
+        @WebParam(name = "GetAudienceFullEstimationRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceFullEstimationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAudienceFullEstimation", action = "GetAudienceFullEstimation")
+    public Future<?> getAudienceFullEstimationAsync(
+        @WebParam(name = "GetAudienceFullEstimationRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceFullEstimationRequest parameters,
+        @WebParam(name = "GetAudienceFullEstimationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAudienceFullEstimationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.GetAudienceFullEstimationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetAudienceFullEstimation", action = "GetAudienceFullEstimation")
+    @WebResult(name = "GetAudienceFullEstimationResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public GetAudienceFullEstimationResponse getAudienceFullEstimation(
+        @WebParam(name = "GetAudienceFullEstimationRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceFullEstimationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

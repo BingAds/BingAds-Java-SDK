@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdGroupReportScope complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdGroupReportScope {
 
     @XmlElement(name = "AdGroupReportScope", nillable = true)
     protected List<AdGroupReportScope> adGroupReportScopes;
+    public ArrayOfAdGroupReportScope()
+    {
+      this.adGroupReportScopes = new ArrayList<AdGroupReportScope>();
+    }
+    @JsonCreator
+    public ArrayOfAdGroupReportScope(List<AdGroupReportScope> adgroupreportscopes)
+    {
+      this.adGroupReportScopes = adgroupreportscopes;
+    }
 
     /**
      * Gets the value of the adGroupReportScopes property.

@@ -4376,6 +4376,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.ApplyCustomerListUserDataResponse>
+     */
+    @WebMethod(operationName = "ApplyCustomerListUserData", action = "ApplyCustomerListUserData")
+    public Response<ApplyCustomerListUserDataResponse> applyCustomerListUserDataAsync(
+        @WebParam(name = "ApplyCustomerListUserDataRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListUserDataRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "ApplyCustomerListUserData", action = "ApplyCustomerListUserData")
+    public Future<?> applyCustomerListUserDataAsync(
+        @WebParam(name = "ApplyCustomerListUserDataRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListUserDataRequest parameters,
+        @WebParam(name = "ApplyCustomerListUserDataResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<ApplyCustomerListUserDataResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.ApplyCustomerListUserDataResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "ApplyCustomerListUserData", action = "ApplyCustomerListUserData")
+    @WebResult(name = "ApplyCustomerListUserDataResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public ApplyCustomerListUserDataResponse applyCustomerListUserData(
+        @WebParam(name = "ApplyCustomerListUserDataRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        ApplyCustomerListUserDataRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetUetTagsByIdsResponse>
      */
     @WebMethod(operationName = "GetUetTagsByIds", action = "GetUetTagsByIds")
@@ -5886,6 +5927,416 @@ public interface ICampaignManagementService {
     public DeleteCampaignConversionGoalsResponse deleteCampaignConversionGoals(
         @WebParam(name = "DeleteCampaignConversionGoalsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         DeleteCampaignConversionGoalsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddDataExclusionsResponse>
+     */
+    @WebMethod(operationName = "AddDataExclusions", action = "AddDataExclusions")
+    public Response<AddDataExclusionsResponse> addDataExclusionsAsync(
+        @WebParam(name = "AddDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddDataExclusionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddDataExclusions", action = "AddDataExclusions")
+    public Future<?> addDataExclusionsAsync(
+        @WebParam(name = "AddDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddDataExclusionsRequest parameters,
+        @WebParam(name = "AddDataExclusionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddDataExclusionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddDataExclusionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddDataExclusions", action = "AddDataExclusions")
+    @WebResult(name = "AddDataExclusionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddDataExclusionsResponse addDataExclusions(
+        @WebParam(name = "AddDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddDataExclusionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateDataExclusionsResponse>
+     */
+    @WebMethod(operationName = "UpdateDataExclusions", action = "UpdateDataExclusions")
+    public Response<UpdateDataExclusionsResponse> updateDataExclusionsAsync(
+        @WebParam(name = "UpdateDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateDataExclusionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateDataExclusions", action = "UpdateDataExclusions")
+    public Future<?> updateDataExclusionsAsync(
+        @WebParam(name = "UpdateDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateDataExclusionsRequest parameters,
+        @WebParam(name = "UpdateDataExclusionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateDataExclusionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateDataExclusionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateDataExclusions", action = "UpdateDataExclusions")
+    @WebResult(name = "UpdateDataExclusionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateDataExclusionsResponse updateDataExclusions(
+        @WebParam(name = "UpdateDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateDataExclusionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteDataExclusionsResponse>
+     */
+    @WebMethod(operationName = "DeleteDataExclusions", action = "DeleteDataExclusions")
+    public Response<DeleteDataExclusionsResponse> deleteDataExclusionsAsync(
+        @WebParam(name = "DeleteDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteDataExclusionsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteDataExclusions", action = "DeleteDataExclusions")
+    public Future<?> deleteDataExclusionsAsync(
+        @WebParam(name = "DeleteDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteDataExclusionsRequest parameters,
+        @WebParam(name = "DeleteDataExclusionsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteDataExclusionsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteDataExclusionsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteDataExclusions", action = "DeleteDataExclusions")
+    @WebResult(name = "DeleteDataExclusionsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteDataExclusionsResponse deleteDataExclusions(
+        @WebParam(name = "DeleteDataExclusionsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteDataExclusionsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetDataExclusionsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetDataExclusionsByIds", action = "GetDataExclusionsByIds")
+    public Response<GetDataExclusionsByIdsResponse> getDataExclusionsByIdsAsync(
+        @WebParam(name = "GetDataExclusionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetDataExclusionsByIds", action = "GetDataExclusionsByIds")
+    public Future<?> getDataExclusionsByIdsAsync(
+        @WebParam(name = "GetDataExclusionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByIdsRequest parameters,
+        @WebParam(name = "GetDataExclusionsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetDataExclusionsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetDataExclusionsByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetDataExclusionsByIds", action = "GetDataExclusionsByIds")
+    @WebResult(name = "GetDataExclusionsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetDataExclusionsByIdsResponse getDataExclusionsByIds(
+        @WebParam(name = "GetDataExclusionsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetDataExclusionsByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetDataExclusionsByAccountId", action = "GetDataExclusionsByAccountId")
+    public Response<GetDataExclusionsByAccountIdResponse> getDataExclusionsByAccountIdAsync(
+        @WebParam(name = "GetDataExclusionsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetDataExclusionsByAccountId", action = "GetDataExclusionsByAccountId")
+    public Future<?> getDataExclusionsByAccountIdAsync(
+        @WebParam(name = "GetDataExclusionsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByAccountIdRequest parameters,
+        @WebParam(name = "GetDataExclusionsByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetDataExclusionsByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetDataExclusionsByAccountIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetDataExclusionsByAccountId", action = "GetDataExclusionsByAccountId")
+    @WebResult(name = "GetDataExclusionsByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetDataExclusionsByAccountIdResponse getDataExclusionsByAccountId(
+        @WebParam(name = "GetDataExclusionsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDataExclusionsByAccountIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddSeasonalityAdjustmentsResponse>
+     */
+    @WebMethod(operationName = "AddSeasonalityAdjustments", action = "AddSeasonalityAdjustments")
+    public Response<AddSeasonalityAdjustmentsResponse> addSeasonalityAdjustmentsAsync(
+        @WebParam(name = "AddSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddSeasonalityAdjustmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddSeasonalityAdjustments", action = "AddSeasonalityAdjustments")
+    public Future<?> addSeasonalityAdjustmentsAsync(
+        @WebParam(name = "AddSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddSeasonalityAdjustmentsRequest parameters,
+        @WebParam(name = "AddSeasonalityAdjustmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddSeasonalityAdjustmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddSeasonalityAdjustmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddSeasonalityAdjustments", action = "AddSeasonalityAdjustments")
+    @WebResult(name = "AddSeasonalityAdjustmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddSeasonalityAdjustmentsResponse addSeasonalityAdjustments(
+        @WebParam(name = "AddSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddSeasonalityAdjustmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateSeasonalityAdjustmentsResponse>
+     */
+    @WebMethod(operationName = "UpdateSeasonalityAdjustments", action = "UpdateSeasonalityAdjustments")
+    public Response<UpdateSeasonalityAdjustmentsResponse> updateSeasonalityAdjustmentsAsync(
+        @WebParam(name = "UpdateSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateSeasonalityAdjustmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateSeasonalityAdjustments", action = "UpdateSeasonalityAdjustments")
+    public Future<?> updateSeasonalityAdjustmentsAsync(
+        @WebParam(name = "UpdateSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateSeasonalityAdjustmentsRequest parameters,
+        @WebParam(name = "UpdateSeasonalityAdjustmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateSeasonalityAdjustmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateSeasonalityAdjustmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateSeasonalityAdjustments", action = "UpdateSeasonalityAdjustments")
+    @WebResult(name = "UpdateSeasonalityAdjustmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateSeasonalityAdjustmentsResponse updateSeasonalityAdjustments(
+        @WebParam(name = "UpdateSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateSeasonalityAdjustmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteSeasonalityAdjustmentsResponse>
+     */
+    @WebMethod(operationName = "DeleteSeasonalityAdjustments", action = "DeleteSeasonalityAdjustments")
+    public Response<DeleteSeasonalityAdjustmentsResponse> deleteSeasonalityAdjustmentsAsync(
+        @WebParam(name = "DeleteSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteSeasonalityAdjustmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteSeasonalityAdjustments", action = "DeleteSeasonalityAdjustments")
+    public Future<?> deleteSeasonalityAdjustmentsAsync(
+        @WebParam(name = "DeleteSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteSeasonalityAdjustmentsRequest parameters,
+        @WebParam(name = "DeleteSeasonalityAdjustmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteSeasonalityAdjustmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteSeasonalityAdjustmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteSeasonalityAdjustments", action = "DeleteSeasonalityAdjustments")
+    @WebResult(name = "DeleteSeasonalityAdjustmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteSeasonalityAdjustmentsResponse deleteSeasonalityAdjustments(
+        @WebParam(name = "DeleteSeasonalityAdjustmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteSeasonalityAdjustmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetSeasonalityAdjustmentsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByIds", action = "GetSeasonalityAdjustmentsByIds")
+    public Response<GetSeasonalityAdjustmentsByIdsResponse> getSeasonalityAdjustmentsByIdsAsync(
+        @WebParam(name = "GetSeasonalityAdjustmentsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByIds", action = "GetSeasonalityAdjustmentsByIds")
+    public Future<?> getSeasonalityAdjustmentsByIdsAsync(
+        @WebParam(name = "GetSeasonalityAdjustmentsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByIdsRequest parameters,
+        @WebParam(name = "GetSeasonalityAdjustmentsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetSeasonalityAdjustmentsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetSeasonalityAdjustmentsByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByIds", action = "GetSeasonalityAdjustmentsByIds")
+    @WebResult(name = "GetSeasonalityAdjustmentsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetSeasonalityAdjustmentsByIdsResponse getSeasonalityAdjustmentsByIds(
+        @WebParam(name = "GetSeasonalityAdjustmentsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetSeasonalityAdjustmentsByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByAccountId", action = "GetSeasonalityAdjustmentsByAccountId")
+    public Response<GetSeasonalityAdjustmentsByAccountIdResponse> getSeasonalityAdjustmentsByAccountIdAsync(
+        @WebParam(name = "GetSeasonalityAdjustmentsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByAccountId", action = "GetSeasonalityAdjustmentsByAccountId")
+    public Future<?> getSeasonalityAdjustmentsByAccountIdAsync(
+        @WebParam(name = "GetSeasonalityAdjustmentsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByAccountIdRequest parameters,
+        @WebParam(name = "GetSeasonalityAdjustmentsByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetSeasonalityAdjustmentsByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetSeasonalityAdjustmentsByAccountIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetSeasonalityAdjustmentsByAccountId", action = "GetSeasonalityAdjustmentsByAccountId")
+    @WebResult(name = "GetSeasonalityAdjustmentsByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetSeasonalityAdjustmentsByAccountIdResponse getSeasonalityAdjustmentsByAccountId(
+        @WebParam(name = "GetSeasonalityAdjustmentsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSeasonalityAdjustmentsByAccountIdRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

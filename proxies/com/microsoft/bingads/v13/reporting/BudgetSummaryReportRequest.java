@@ -37,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class BudgetSummaryReportRequest
     extends ReportRequest
 {
+    public BudgetSummaryReportRequest() {
+      this.type = "BudgetSummaryReportRequest";
+    }
 
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfBudgetSummaryReportColumn columns;

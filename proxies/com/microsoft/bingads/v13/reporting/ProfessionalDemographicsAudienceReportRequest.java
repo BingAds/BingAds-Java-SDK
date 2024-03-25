@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProfessionalDemographicsAudienceReportRequest
     extends ReportRequest
 {
+    public ProfessionalDemographicsAudienceReportRequest() {
+      this.type = "ProfessionalDemographicsAudienceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

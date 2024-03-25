@@ -35,6 +35,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AdStatus;
 import com.microsoft.bingads.v13.campaignmanagement.AgeRange;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfAssetLink;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCampaignAssociation;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfCustomParameter;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfDayTime;
@@ -49,6 +50,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AssetLinkEditorialStatus;
 import com.microsoft.bingads.v13.campaignmanagement.Bid;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.BusinessGeoCodeStatus;
+import com.microsoft.bingads.v13.campaignmanagement.CampaignAssociation;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
 import com.microsoft.bingads.v13.campaignmanagement.CombinationRule;
 import com.microsoft.bingads.v13.campaignmanagement.CommissionBiddingScheme;
@@ -1176,6 +1178,86 @@ public class StringExtensions {
         
         return enumList;
     }
+    
+    public static String toCampaignTypeListBulkString(String separator, Collection<CampaignType> types)
+    {
+    	if (types == null || types.size() == 0) {
+    		return null;
+    	}
+    	
+    	StringBuilder result = new StringBuilder("");
+    	
+    	int length =  types.size();
+        for (CampaignType type : types) {
+            result.append(type.value() + separator);
+        }
+
+        result.setLength(result.length() - separator.length());
+        return result.toString();
+    }
+    
+    public static Collection<CampaignType> parseCampaignTypeList(String v, String separator)
+    {
+    	if (StringExtensions.isNullOrEmpty(v))
+            return null;
+        
+        Collection<CampaignType> enumList = new ArrayList<CampaignType>();
+        
+        String[] enums = v.split(separator);
+        
+        for(String e : enums) {
+            if (!StringExtensions.isNullOrEmpty(e) && ! separator.equals(e))
+            	enumList.add(CampaignType.fromValue(e.trim()));
+        }   
+        
+        return enumList;
+    }
+    
+    public static String toCampaignAssociationsBulkString(String separator, ArrayOfCampaignAssociation associations)
+    {
+    	if (associations == null)
+    	{
+    		return null;
+    	}
+    	
+    	List<CampaignAssociation> list = associations.getCampaignAssociations();
+    	
+    	if (list == null || list.size() == 0) {
+    		return null;
+    	}
+    	
+    	StringBuilder result = new StringBuilder("");
+    	
+    	int length =  list.size();
+    	for (Integer i = 0; i < length - 1; i++) {
+    		
+            result.append(list.get(i).getCampaignId().toString() + separator);
+        }
+
+    	result.append(list.get(length - 1).getCampaignId().toString());
+        return result.toString();
+    }
+    
+    public static ArrayOfCampaignAssociation parseCampaignAssociations(String v, String separator)
+    {
+    	if (StringExtensions.isNullOrEmpty(v))
+            return null;
+
+        List<CampaignAssociation> list = new ArrayList<CampaignAssociation>();
+        
+        String[] enums = v.split(separator);
+        
+        for(String e : enums) {
+            if (!StringExtensions.isNullOrEmpty(e) && ! separator.equals(e))
+            {
+            	CampaignAssociation association = new CampaignAssociation();
+            	association.setCampaignId(Long.valueOf(e.trim()));
+            	list.add(association);
+            }
+        }   
+              
+        return new ArrayOfCampaignAssociation(list);
+    }
         
     public static List<Long> parseIdList(String v) {
         if (StringExtensions.isNullOrEmpty(v))
@@ -1987,16 +2069,16 @@ public class StringExtensions {
         public String subType;
 
         // The Asset CropHeight
-        public int cropHeight;
+        public Integer cropHeight;
 
         // The Asset CropWidth
-        public int cropWidth;
+        public Integer cropWidth;
 
         // The Asset CropX
-        public int cropX;
+        public Integer cropX;
 
         // The Asset CropY
-        public int cropY;
+        public Integer cropY;
         
         // The AssetLink PinnedField
         public String pinnedField;
@@ -2011,10 +2093,10 @@ public class StringExtensions {
         public String name;
         
         // The Asset Target Width
-        public int targetWidth;
+        public Integer targetWidth;
         
         // The Asset Target Height
-        public int targetHeight;
+        public Integer targetHeight;
     }
     
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -2399,6 +2481,12 @@ public class StringExtensions {
                     Double commissionRate = commissionBiddingScheme.getCommissionRate();
                     values.put(StringTable.BidStrategyCommissionRate, StringExtensions.toBulkString(commissionRate));
                 }
+            } else if (biddingScheme instanceof CostPerSaleBiddingScheme) {
+            	CostPerSaleBiddingScheme costPerSaleBiddingScheme = (CostPerSaleBiddingScheme) biddingScheme;
+                if (costPerSaleBiddingScheme != null) {
+                    Double costPerSale = costPerSaleBiddingScheme.getTargetCostPerSale();
+                    values.put(StringTable.BidStrategyTargetCostPerSale, StringExtensions.toBulkString(costPerSale));
+                }
             }
         
         } catch (Exception e) {
@@ -2422,6 +2510,7 @@ public class StringExtensions {
             String targetImpressionShareRowValue = values.get(StringTable.BidStrategyTargetImpressionShare);
             String commissionRate= values.get(StringTable.BidStrategyCommissionRate);
             String maxPercentCpc = values.get(StringTable.BidStrategyPercentMaxCpc);
+            String costPerSale = values.get(StringTable.BidStrategyTargetCostPerSale);
 
 
             Bid maxCpcValue = StringExtensions.parseBid(maxCpcRowValue);
@@ -2430,6 +2519,7 @@ public class StringExtensions {
             Double targetImpressionShareValue = StringExtensions.nullOrDouble(targetImpressionShareRowValue);
             Double commissionRateValue = StringExtensions.nullOrDouble(commissionRate);
             Double maxPercentCpcValue = StringExtensions.nullOrDouble(maxPercentCpc);
+            Double costPerSaleValue = StringExtensions.nullOrDouble(costPerSale);
             
             if (biddingScheme instanceof MaxClicksBiddingScheme) {
                 ((MaxClicksBiddingScheme)biddingScheme).setMaxCpc(maxCpcValue);
@@ -2454,6 +2544,8 @@ public class StringExtensions {
                 ((CommissionBiddingScheme)biddingScheme).setCommissionRate(commissionRateValue);
             } else if (biddingScheme instanceof PercentCpcBiddingScheme) {
                 ((PercentCpcBiddingScheme)biddingScheme).setMaxPercentCpc(maxPercentCpcValue);
+            } else if (biddingScheme instanceof CostPerSaleBiddingScheme) {
+                ((CostPerSaleBiddingScheme)biddingScheme).setTargetCostPerSale(costPerSaleValue);
             }
             return biddingScheme;
             

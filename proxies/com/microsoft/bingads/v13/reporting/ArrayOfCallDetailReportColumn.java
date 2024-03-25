@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfCallDetailReportColumn {
     @XmlElement(name = "CallDetailReportColumn")
     @XmlSchemaType(name = "string")
     protected List<CallDetailReportColumn> callDetailReportColumns;
+    public ArrayOfCallDetailReportColumn()
+    {
+      this.callDetailReportColumns = new ArrayList<CallDetailReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfCallDetailReportColumn(List<CallDetailReportColumn> calldetailreportcolumns)
+    {
+      this.callDetailReportColumns = calldetailreportcolumns;
+    }
 
     /**
      * Gets the value of the callDetailReportColumns property.

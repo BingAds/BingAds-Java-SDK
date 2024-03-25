@@ -15,7 +15,7 @@ The Bing Ads Java SDK includes and depends on the microsoft.bingads Maven artifa
 <dependency>
   <groupId>com.microsoft.bingads</groupId>
   <artifactId>microsoft.bingads</artifactId>
-  <version>13.0.18</version>
+  <version>13.0.19</version>
 </dependency>
 ```
 If you are not using a Maven project, you must include the correct version of each dependency. You can review the complete list of Bing Ads Java SDK dependencies at the [Maven Repository](http://mvnrepository.com/artifact/com.microsoft.bingads/microsoft.bingads/).

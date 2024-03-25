@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CallDetailReportRequest
     extends ReportRequest
 {
+    public CallDetailReportRequest() {
+      this.type = "CallDetailReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

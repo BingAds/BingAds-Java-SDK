@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
  *         <element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BudgetLimitType" minOccurs="0"/>
  *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         <element name="DealIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="ExperimentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
@@ -56,6 +57,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "biddingScheme",
     "budgetType",
     "dailyBudget",
+    "dealIds",
     "experimentId",
     "finalUrlSuffix",
     "forwardCompatibilityMap",
@@ -86,6 +88,8 @@ public class Campaign {
     protected BudgetLimitType budgetType;
     @XmlElement(name = "DailyBudget", nillable = true)
     protected Double dailyBudget;
+    @XmlElement(name = "DealIds", nillable = true)
+    protected ArrayOflong dealIds;
     @XmlElement(name = "ExperimentId", nillable = true)
     protected Long experimentId;
     @XmlElement(name = "FinalUrlSuffix", nillable = true)
@@ -219,6 +223,30 @@ public class Campaign {
      */
     public void setDailyBudget(Double value) {
         this.dailyBudget = value;
+    }
+
+    /**
+     * Gets the value of the dealIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getDealIds() {
+        return dealIds;
+    }
+
+    /**
+     * Sets the value of the dealIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setDealIds(ArrayOflong value) {
+        this.dealIds = value;
     }
 
     /**

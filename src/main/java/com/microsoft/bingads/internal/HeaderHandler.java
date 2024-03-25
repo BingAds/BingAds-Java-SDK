@@ -10,38 +10,34 @@ import jakarta.xml.ws.handler.soap.SOAPMessageContext;
 
 import com.microsoft.bingads.InternalException;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
-
 
 /**
  * Created by Esti Fisher on 11/10/2015.
  */
 public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
+    private static HeaderHandler instance = new HeaderHandler();
 
-    private final Map<String, String> headers;
-
-    private final String namespaceURI;
-
-    public HeaderHandler(String namespaceURI, Map<String, String> headers) {
-        this.headers = headers;
-        this.namespaceURI = namespaceURI;
+    public static HeaderHandler getInstance() {
+        return instance;
     }
 
     @Override
     public boolean handleMessage(SOAPMessageContext context) {
         try {
-
             Boolean outbound = (Boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
             if (outbound) {
-
                 SOAPMessage message = context.getMessage();
                 SOAPHeader header = message.getSOAPHeader();
                 SOAPEnvelope envelope = message.getSOAPPart().getEnvelope();
                 if (header == null) {
                     header = envelope.addHeader();
                 }
+
+                Map<String, String> headers = (Map<String, String>)context.get(ServiceUtils.REQUEST_HEADERS_KEY);
+
+                String namespaceURI = ((QName)context.get(MessageContext.WSDL_INTERFACE)).getNamespaceURI();
 
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
                     header.addHeaderElement(new QName(namespaceURI, entry.getKey())).addTextNode(entry.getValue());
@@ -54,13 +50,11 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
                     context.setScope(ServiceUtils.TRACKING_KEY, MessageContext.Scope.APPLICATION);
                 }
             }
-
         } catch (Exception e) {
             throw new InternalException(e);
         }
 
         return true;
-
     }
 
     private String getSpecificHeaderValue(SOAPHeader header, String localName) {

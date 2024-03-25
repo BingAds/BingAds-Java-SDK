@@ -63,9 +63,9 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
         this(clientId, clientSecret, redirectionUri, env, oAuthScope);
         if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
         	throw new NullPointerException("OAuth tokens must not be null");     	
-        } 
-        
-        oAuthTokens = new OAuthTokens(null, 0, oauthTokens.getRefreshToken());
+        }
+
+        oAuthTokens = new OAuthTokens(oauthTokens.getAccessToken(), oauthTokens.getAccessTokenExpiresInSeconds(), oauthTokens.getRefreshToken());
     }
     
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, OAuthScope oAuthScope) {

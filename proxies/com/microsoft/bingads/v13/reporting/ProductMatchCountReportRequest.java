@@ -40,6 +40,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductMatchCountReportRequest
     extends ReportRequest
 {
+    public ProductMatchCountReportRequest() {
+      this.type = "ProductMatchCountReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

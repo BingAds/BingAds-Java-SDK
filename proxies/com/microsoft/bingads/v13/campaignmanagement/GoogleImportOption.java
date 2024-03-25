@@ -27,6 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="DeleteRemovedEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableAutoCurrencyConversion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveCampaignsAndChildEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAdCustomizerFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -43,6 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewKeywordUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewKeywordsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewLeadFormAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLocationTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewLogoAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -75,6 +77,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="SuffixForCampaignNames" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SuffixForTrackingTemplates" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SuffixForUrls" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="UpdateAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateAdCustomizerAttributes" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdCustomizerFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdGroupNetwork" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdSchedules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -94,6 +98,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateImageAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateKeywordUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLabels" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateLeadFormAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLocationTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLogoAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -132,6 +137,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "deleteRemovedEntities",
     "enableAutoCurrencyConversion",
     "enableParentLocationMapping",
+    "newAccountNegativeKeywords",
     "newActiveAdsForExistingAdGroups",
     "newActiveCampaignsAndChildEntities",
     "newAdCustomizerFeeds",
@@ -148,6 +154,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newKeywordUrls",
     "newKeywordsForExistingAdGroups",
     "newLabels",
+    "newLeadFormAdExtensions",
     "newLocationAdExtensions",
     "newLocationTargets",
     "newLogoAdExtensions",
@@ -180,6 +187,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "suffixForCampaignNames",
     "suffixForTrackingTemplates",
     "suffixForUrls",
+    "updateAccountNegativeKeywords",
+    "updateAdCustomizerAttributes",
     "updateAdCustomizerFeeds",
     "updateAdGroupNetwork",
     "updateAdSchedules",
@@ -199,6 +208,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateImageAdExtensions",
     "updateKeywordUrls",
     "updateLabels",
+    "updateLeadFormAdExtensions",
     "updateLocationAdExtensions",
     "updateLocationTargets",
     "updateLogoAdExtensions",
@@ -245,6 +255,8 @@ public class GoogleImportOption
     protected Boolean enableAutoCurrencyConversion;
     @XmlElement(name = "EnableParentLocationMapping", nillable = true)
     protected Boolean enableParentLocationMapping;
+    @XmlElement(name = "NewAccountNegativeKeywords", nillable = true)
+    protected Boolean newAccountNegativeKeywords;
     @XmlElement(name = "NewActiveAdsForExistingAdGroups", nillable = true)
     protected Boolean newActiveAdsForExistingAdGroups;
     @XmlElement(name = "NewActiveCampaignsAndChildEntities", nillable = true)
@@ -277,6 +289,8 @@ public class GoogleImportOption
     protected Boolean newKeywordsForExistingAdGroups;
     @XmlElement(name = "NewLabels", nillable = true)
     protected Boolean newLabels;
+    @XmlElement(name = "NewLeadFormAdExtensions", nillable = true)
+    protected Boolean newLeadFormAdExtensions;
     @XmlElement(name = "NewLocationAdExtensions", nillable = true)
     protected Boolean newLocationAdExtensions;
     @XmlElement(name = "NewLocationTargets", nillable = true)
@@ -341,6 +355,10 @@ public class GoogleImportOption
     protected String suffixForTrackingTemplates;
     @XmlElement(name = "SuffixForUrls", nillable = true)
     protected String suffixForUrls;
+    @XmlElement(name = "UpdateAccountNegativeKeywords", nillable = true)
+    protected Boolean updateAccountNegativeKeywords;
+    @XmlElement(name = "UpdateAdCustomizerAttributes", nillable = true)
+    protected Boolean updateAdCustomizerAttributes;
     @XmlElement(name = "UpdateAdCustomizerFeeds", nillable = true)
     protected Boolean updateAdCustomizerFeeds;
     @XmlElement(name = "UpdateAdGroupNetwork", nillable = true)
@@ -379,6 +397,8 @@ public class GoogleImportOption
     protected Boolean updateKeywordUrls;
     @XmlElement(name = "UpdateLabels", nillable = true)
     protected Boolean updateLabels;
+    @XmlElement(name = "UpdateLeadFormAdExtensions", nillable = true)
+    protected Boolean updateLeadFormAdExtensions;
     @XmlElement(name = "UpdateLocationAdExtensions", nillable = true)
     protected Boolean updateLocationAdExtensions;
     @XmlElement(name = "UpdateLocationTargets", nillable = true)
@@ -654,6 +674,30 @@ public class GoogleImportOption
      */
     public void setEnableParentLocationMapping(Boolean value) {
         this.enableParentLocationMapping = value;
+    }
+
+    /**
+     * Gets the value of the newAccountNegativeKeywords property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewAccountNegativeKeywords() {
+        return newAccountNegativeKeywords;
+    }
+
+    /**
+     * Sets the value of the newAccountNegativeKeywords property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewAccountNegativeKeywords(Boolean value) {
+        this.newAccountNegativeKeywords = value;
     }
 
     /**
@@ -1038,6 +1082,30 @@ public class GoogleImportOption
      */
     public void setNewLabels(Boolean value) {
         this.newLabels = value;
+    }
+
+    /**
+     * Gets the value of the newLeadFormAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewLeadFormAdExtensions() {
+        return newLeadFormAdExtensions;
+    }
+
+    /**
+     * Sets the value of the newLeadFormAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewLeadFormAdExtensions(Boolean value) {
+        this.newLeadFormAdExtensions = value;
     }
 
     /**
@@ -1809,6 +1877,54 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the updateAccountNegativeKeywords property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAccountNegativeKeywords() {
+        return updateAccountNegativeKeywords;
+    }
+
+    /**
+     * Sets the value of the updateAccountNegativeKeywords property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAccountNegativeKeywords(Boolean value) {
+        this.updateAccountNegativeKeywords = value;
+    }
+
+    /**
+     * Gets the value of the updateAdCustomizerAttributes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAdCustomizerAttributes() {
+        return updateAdCustomizerAttributes;
+    }
+
+    /**
+     * Sets the value of the updateAdCustomizerAttributes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAdCustomizerAttributes(Boolean value) {
+        this.updateAdCustomizerAttributes = value;
+    }
+
+    /**
      * Gets the value of the updateAdCustomizerFeeds property.
      * 
      * @return
@@ -2262,6 +2378,30 @@ public class GoogleImportOption
      */
     public void setUpdateLabels(Boolean value) {
         this.updateLabels = value;
+    }
+
+    /**
+     * Gets the value of the updateLeadFormAdExtensions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateLeadFormAdExtensions() {
+        return updateLeadFormAdExtensions;
+    }
+
+    /**
+     * Sets the value of the updateLeadFormAdExtensions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateLeadFormAdExtensions(Boolean value) {
+        this.updateLeadFormAdExtensions = value;
     }
 
     /**

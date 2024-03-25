@@ -3,6 +3,7 @@ package com.microsoft.bingads.v13.customerbilling;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Collection;
 import javax.xml.namespace.QName;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
@@ -54,7 +55,9 @@ public class ObjectFactory {
     private static final QName _OrderByField_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "OrderByField");
     private static final QName _SortOrder_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "SortOrder");
     private static final QName _Paging_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Paging");
+    private static final QName _InsertionOrderAdditionalField_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "InsertionOrderAdditionalField");
     private static final QName _ArrayOfInsertionOrder_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfInsertionOrder");
+    private static final QName _AccountAdditionalField_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "AccountAdditionalField");
     private static final QName _ArrayOfCoupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfCoupon");
     private static final QName _Coupon_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "Coupon");
     private static final QName _CouponRedemption_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponRedemption");
@@ -1165,6 +1168,20 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link InsertionOrderAdditionalField }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link InsertionOrderAdditionalField }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "InsertionOrderAdditionalField")
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Collection<InsertionOrderAdditionalField>> createInsertionOrderAdditionalField(Collection<InsertionOrderAdditionalField> value) {
+        return new JAXBElement<>(_InsertionOrderAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfInsertionOrder }{@code >}
      * 
      * @param value
@@ -1175,6 +1192,20 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfInsertionOrder")
     public JAXBElement<ArrayOfInsertionOrder> createArrayOfInsertionOrder(ArrayOfInsertionOrder value) {
         return new JAXBElement<>(_ArrayOfInsertionOrder_QNAME, ArrayOfInsertionOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AccountAdditionalField }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AccountAdditionalField }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "AccountAdditionalField")
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    public JAXBElement<Collection<AccountAdditionalField>> createAccountAdditionalField(Collection<AccountAdditionalField> value) {
+        return new JAXBElement<>(_AccountAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

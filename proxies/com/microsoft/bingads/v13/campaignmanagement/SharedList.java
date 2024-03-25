@@ -34,7 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     NegativeKeywordList.class,
     PlacementExclusionList.class,
-    AccountNegativeKeywordList.class
+    AccountNegativeKeywordList.class,
+    BrandList.class
 })
 public class SharedList
     extends SharedEntity

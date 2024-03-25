@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfNegativeKeywordConflictReportColumn {
     @XmlElement(name = "NegativeKeywordConflictReportColumn")
     @XmlSchemaType(name = "string")
     protected List<NegativeKeywordConflictReportColumn> negativeKeywordConflictReportColumns;
+    public ArrayOfNegativeKeywordConflictReportColumn()
+    {
+      this.negativeKeywordConflictReportColumns = new ArrayList<NegativeKeywordConflictReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfNegativeKeywordConflictReportColumn(List<NegativeKeywordConflictReportColumn> negativekeywordconflictreportcolumns)
+    {
+      this.negativeKeywordConflictReportColumns = negativekeywordconflictreportcolumns;
+    }
 
     /**
      * Gets the value of the negativeKeywordConflictReportColumns property.

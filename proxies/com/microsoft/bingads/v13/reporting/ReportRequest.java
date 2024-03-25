@@ -36,6 +36,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReportRequest", propOrder = {
+    "type",
     "excludeColumnHeaders",
     "excludeReportFooter",
     "excludeReportHeader",
@@ -82,6 +83,9 @@ import jakarta.xml.bind.annotation.XmlType;
     HotelGroupPerformanceReportRequest.class
 })
 public class ReportRequest {
+
+    @XmlElement(name = "Type", nillable = true)
+    protected String type;
 
     @XmlElement(name = "ExcludeColumnHeaders", nillable = true)
     protected Boolean excludeColumnHeaders;

@@ -37,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ProductNegativeKeywordConflictReportRequest
     extends ReportRequest
 {
+    public ProductNegativeKeywordConflictReportRequest() {
+      this.type = "ProductNegativeKeywordConflictReportRequest";
+    }
 
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfProductNegativeKeywordConflictReportColumn columns;

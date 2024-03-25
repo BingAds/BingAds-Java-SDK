@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfProfessionalDemographicsAudienceReportColumn {
     @XmlElement(name = "ProfessionalDemographicsAudienceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<ProfessionalDemographicsAudienceReportColumn> professionalDemographicsAudienceReportColumns;
+    public ArrayOfProfessionalDemographicsAudienceReportColumn()
+    {
+      this.professionalDemographicsAudienceReportColumns = new ArrayList<ProfessionalDemographicsAudienceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfProfessionalDemographicsAudienceReportColumn(List<ProfessionalDemographicsAudienceReportColumn> professionaldemographicsaudiencereportcolumns)
+    {
+      this.professionalDemographicsAudienceReportColumns = professionaldemographicsaudiencereportcolumns;
+    }
 
     /**
      * Gets the value of the professionalDemographicsAudienceReportColumns property.

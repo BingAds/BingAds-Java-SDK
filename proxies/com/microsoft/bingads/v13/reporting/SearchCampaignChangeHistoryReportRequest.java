@@ -39,6 +39,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SearchCampaignChangeHistoryReportRequest
     extends ReportRequest
 {
+    public SearchCampaignChangeHistoryReportRequest() {
+      this.type = "SearchCampaignChangeHistoryReportRequest";
+    }
 
     @XmlElement(name = "Columns", required = true, nillable = true)
     protected ArrayOfSearchCampaignChangeHistoryReportColumn columns;

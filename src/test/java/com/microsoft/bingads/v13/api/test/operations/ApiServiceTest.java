@@ -1,6 +1,8 @@
 package com.microsoft.bingads.v13.api.test.operations;
 
+import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
 
 import java.net.URL;
@@ -9,6 +11,7 @@ import java.util.concurrent.Future;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
+import jakarta.xml.ws.handler.HandlerResolver;
 
 import org.easymock.EasyMockSupport;
 import org.junit.Test;
@@ -99,6 +102,9 @@ public class ApiServiceTest extends EasyMockSupport {
         final ServiceFactory serviceFactory = createMock(ServiceFactory.class);
         
         expect(serviceFactory.createService(ITestService.class, ApiEnvironment.PRODUCTION)).andReturn(service);
+
+        service.setHandlerResolver(anyObject(HandlerResolver.class));
+        expectLastCall().andVoid();
         
         expect(serviceFactory.createProxyFromService(service, ApiEnvironment.PRODUCTION, ITestService.class)).andReturn(proxy);
         

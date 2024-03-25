@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AdDynamicTextPerformanceReportRequest
     extends ReportRequest
 {
+    public AdDynamicTextPerformanceReportRequest() {
+      this.type = "AdDynamicTextPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")
