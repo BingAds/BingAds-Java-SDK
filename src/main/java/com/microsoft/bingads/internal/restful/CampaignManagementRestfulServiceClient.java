@@ -117,17 +117,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetNegativeSitesToCampaignsResponse setNegativeSitesToCampaigns(SetNegativeSitesToCampaignsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/NegativeSitesSetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class);
+		return sendRequest(request, "/NegativeSites/SetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class);
 	}
 
     public Response<SetNegativeSitesToCampaignsResponse> setNegativeSitesToCampaignsAsync(SetNegativeSitesToCampaignsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeSitesSetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class);
+		return sendRequestAsync(request, "/NegativeSites/SetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class);
 	}
 
 	public Future<?> setNegativeSitesToCampaignsAsync(SetNegativeSitesToCampaignsRequest request, AsyncHandler<SetNegativeSitesToCampaignsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeSitesSetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/NegativeSites/SetToCampaigns", HttpPost, SetNegativeSitesToCampaignsResponse.class, asyncHandler);
 	}
 	
     	
@@ -261,17 +261,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetNegativeSitesToAdGroupsResponse setNegativeSitesToAdGroups(SetNegativeSitesToAdGroupsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/NegativeSitesSetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class);
+		return sendRequest(request, "/NegativeSites/SetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class);
 	}
 
     public Response<SetNegativeSitesToAdGroupsResponse> setNegativeSitesToAdGroupsAsync(SetNegativeSitesToAdGroupsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeSitesSetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class);
+		return sendRequestAsync(request, "/NegativeSites/SetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class);
 	}
 
 	public Future<?> setNegativeSitesToAdGroupsAsync(SetNegativeSitesToAdGroupsRequest request, AsyncHandler<SetNegativeSitesToAdGroupsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeSitesSetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/NegativeSites/SetToAdGroups", HttpPost, SetNegativeSitesToAdGroupsResponse.class, asyncHandler);
 	}
 	
     	
@@ -485,17 +485,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public AppealEditorialRejectionsResponse appealEditorialRejections(AppealEditorialRejectionsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/EditorialRejectionsAppeal", HttpPost, AppealEditorialRejectionsResponse.class);
+		return sendRequest(request, "/EditorialRejections/Appeal", HttpPost, AppealEditorialRejectionsResponse.class);
 	}
 
     public Response<AppealEditorialRejectionsResponse> appealEditorialRejectionsAsync(AppealEditorialRejectionsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/EditorialRejectionsAppeal", HttpPost, AppealEditorialRejectionsResponse.class);
+		return sendRequestAsync(request, "/EditorialRejections/Appeal", HttpPost, AppealEditorialRejectionsResponse.class);
 	}
 
 	public Future<?> appealEditorialRejectionsAsync(AppealEditorialRejectionsRequest request, AsyncHandler<AppealEditorialRejectionsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/EditorialRejectionsAppeal", HttpPost, AppealEditorialRejectionsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/EditorialRejections/Appeal", HttpPost, AppealEditorialRejectionsResponse.class, asyncHandler);
 	}
 	
     	
@@ -533,17 +533,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetAccountPropertiesResponse setAccountProperties(SetAccountPropertiesRequest request) 
 			throws Exception {
-		return sendRequest(request, "/AccountPropertiesSet", HttpPost, SetAccountPropertiesResponse.class);
+		return sendRequest(request, "/AccountProperties/Set", HttpPost, SetAccountPropertiesResponse.class);
 	}
 
     public Response<SetAccountPropertiesResponse> setAccountPropertiesAsync(SetAccountPropertiesRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AccountPropertiesSet", HttpPost, SetAccountPropertiesResponse.class);
+		return sendRequestAsync(request, "/AccountProperties/Set", HttpPost, SetAccountPropertiesResponse.class);
 	}
 
 	public Future<?> setAccountPropertiesAsync(SetAccountPropertiesRequest request, AsyncHandler<SetAccountPropertiesResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AccountPropertiesSet", HttpPost, SetAccountPropertiesResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/AccountProperties/Set", HttpPost, SetAccountPropertiesResponse.class, asyncHandler);
 	}
 	
     	
@@ -645,17 +645,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetAdExtensionsAssociationsResponse setAdExtensionsAssociations(SetAdExtensionsAssociationsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/AdExtensionsAssociationsSet", HttpPost, SetAdExtensionsAssociationsResponse.class);
+		return sendRequest(request, "/AdExtensionsAssociations/Set", HttpPost, SetAdExtensionsAssociationsResponse.class);
 	}
 
     public Response<SetAdExtensionsAssociationsResponse> setAdExtensionsAssociationsAsync(SetAdExtensionsAssociationsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AdExtensionsAssociationsSet", HttpPost, SetAdExtensionsAssociationsResponse.class);
+		return sendRequestAsync(request, "/AdExtensionsAssociations/Set", HttpPost, SetAdExtensionsAssociationsResponse.class);
 	}
 
 	public Future<?> setAdExtensionsAssociationsAsync(SetAdExtensionsAssociationsRequest request, AsyncHandler<SetAdExtensionsAssociationsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AdExtensionsAssociationsSet", HttpPost, SetAdExtensionsAssociationsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/AdExtensionsAssociations/Set", HttpPost, SetAdExtensionsAssociationsResponse.class, asyncHandler);
 	}
 	
     	
@@ -853,49 +853,49 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public ApplyProductPartitionActionsResponse applyProductPartitionActions(ApplyProductPartitionActionsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/ProductPartitionActionsApply", HttpPost, ApplyProductPartitionActionsResponse.class);
+		return sendRequest(request, "/ProductPartitionActions/Apply", HttpPost, ApplyProductPartitionActionsResponse.class);
 	}
 
     public Response<ApplyProductPartitionActionsResponse> applyProductPartitionActionsAsync(ApplyProductPartitionActionsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ProductPartitionActionsApply", HttpPost, ApplyProductPartitionActionsResponse.class);
+		return sendRequestAsync(request, "/ProductPartitionActions/Apply", HttpPost, ApplyProductPartitionActionsResponse.class);
 	}
 
 	public Future<?> applyProductPartitionActionsAsync(ApplyProductPartitionActionsRequest request, AsyncHandler<ApplyProductPartitionActionsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ProductPartitionActionsApply", HttpPost, ApplyProductPartitionActionsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/ProductPartitionActions/Apply", HttpPost, ApplyProductPartitionActionsResponse.class, asyncHandler);
 	}
 	
     	
 	public ApplyHotelGroupActionsResponse applyHotelGroupActions(ApplyHotelGroupActionsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/HotelGroupActionsApply", HttpPost, ApplyHotelGroupActionsResponse.class);
+		return sendRequest(request, "/HotelGroupActions/Apply", HttpPost, ApplyHotelGroupActionsResponse.class);
 	}
 
     public Response<ApplyHotelGroupActionsResponse> applyHotelGroupActionsAsync(ApplyHotelGroupActionsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/HotelGroupActionsApply", HttpPost, ApplyHotelGroupActionsResponse.class);
+		return sendRequestAsync(request, "/HotelGroupActions/Apply", HttpPost, ApplyHotelGroupActionsResponse.class);
 	}
 
 	public Future<?> applyHotelGroupActionsAsync(ApplyHotelGroupActionsRequest request, AsyncHandler<ApplyHotelGroupActionsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/HotelGroupActionsApply", HttpPost, ApplyHotelGroupActionsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/HotelGroupActions/Apply", HttpPost, ApplyHotelGroupActionsResponse.class, asyncHandler);
 	}
 	
     	
 	public ApplyAssetGroupListingGroupActionsResponse applyAssetGroupListingGroupActions(ApplyAssetGroupListingGroupActionsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/AssetGroupListingGroupActionsApply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class);
+		return sendRequest(request, "/AssetGroupListingGroupActions/Apply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class);
 	}
 
     public Response<ApplyAssetGroupListingGroupActionsResponse> applyAssetGroupListingGroupActionsAsync(ApplyAssetGroupListingGroupActionsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AssetGroupListingGroupActionsApply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class);
+		return sendRequestAsync(request, "/AssetGroupListingGroupActions/Apply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class);
 	}
 
 	public Future<?> applyAssetGroupListingGroupActionsAsync(ApplyAssetGroupListingGroupActionsRequest request, AsyncHandler<ApplyAssetGroupListingGroupActionsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AssetGroupListingGroupActionsApply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/AssetGroupListingGroupActions/Apply", HttpPost, ApplyAssetGroupListingGroupActionsResponse.class, asyncHandler);
 	}
 	
     	
@@ -933,17 +933,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public AddNegativeKeywordsToEntitiesResponse addNegativeKeywordsToEntities(AddNegativeKeywordsToEntitiesRequest request) 
 			throws Exception {
-		return sendRequest(request, "/NegativeKeywordsToEntities", HttpPost, AddNegativeKeywordsToEntitiesResponse.class);
+		return sendRequest(request, "/EntityNegativeKeywords", HttpPost, AddNegativeKeywordsToEntitiesResponse.class);
 	}
 
     public Response<AddNegativeKeywordsToEntitiesResponse> addNegativeKeywordsToEntitiesAsync(AddNegativeKeywordsToEntitiesRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeKeywordsToEntities", HttpPost, AddNegativeKeywordsToEntitiesResponse.class);
+		return sendRequestAsync(request, "/EntityNegativeKeywords", HttpPost, AddNegativeKeywordsToEntitiesResponse.class);
 	}
 
 	public Future<?> addNegativeKeywordsToEntitiesAsync(AddNegativeKeywordsToEntitiesRequest request, AsyncHandler<AddNegativeKeywordsToEntitiesResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeKeywordsToEntities", HttpPost, AddNegativeKeywordsToEntitiesResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/EntityNegativeKeywords", HttpPost, AddNegativeKeywordsToEntitiesResponse.class, asyncHandler);
 	}
 	
     	
@@ -965,17 +965,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public DeleteNegativeKeywordsFromEntitiesResponse deleteNegativeKeywordsFromEntities(DeleteNegativeKeywordsFromEntitiesRequest request) 
 			throws Exception {
-		return sendRequest(request, "/NegativeKeywordsFromEntities", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class);
+		return sendRequest(request, "/EntityNegativeKeywords", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class);
 	}
 
     public Response<DeleteNegativeKeywordsFromEntitiesResponse> deleteNegativeKeywordsFromEntitiesAsync(DeleteNegativeKeywordsFromEntitiesRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeKeywordsFromEntities", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class);
+		return sendRequestAsync(request, "/EntityNegativeKeywords", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class);
 	}
 
 	public Future<?> deleteNegativeKeywordsFromEntitiesAsync(DeleteNegativeKeywordsFromEntitiesRequest request, AsyncHandler<DeleteNegativeKeywordsFromEntitiesResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/NegativeKeywordsFromEntities", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/EntityNegativeKeywords", HttpDelete, DeleteNegativeKeywordsFromEntitiesResponse.class, asyncHandler);
 	}
 	
     	
@@ -1045,17 +1045,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public AddListItemsToSharedListResponse addListItemsToSharedList(AddListItemsToSharedListRequest request) 
 			throws Exception {
-		return sendRequest(request, "/ListItemsToSharedList", HttpPost, AddListItemsToSharedListResponse.class);
+		return sendRequest(request, "/ListItems", HttpPost, AddListItemsToSharedListResponse.class);
 	}
 
     public Response<AddListItemsToSharedListResponse> addListItemsToSharedListAsync(AddListItemsToSharedListRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ListItemsToSharedList", HttpPost, AddListItemsToSharedListResponse.class);
+		return sendRequestAsync(request, "/ListItems", HttpPost, AddListItemsToSharedListResponse.class);
 	}
 
 	public Future<?> addListItemsToSharedListAsync(AddListItemsToSharedListRequest request, AsyncHandler<AddListItemsToSharedListResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ListItemsToSharedList", HttpPost, AddListItemsToSharedListResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/ListItems", HttpPost, AddListItemsToSharedListResponse.class, asyncHandler);
 	}
 	
     	
@@ -1077,33 +1077,33 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public DeleteListItemsFromSharedListResponse deleteListItemsFromSharedList(DeleteListItemsFromSharedListRequest request) 
 			throws Exception {
-		return sendRequest(request, "/ListItemsFromSharedList", HttpDelete, DeleteListItemsFromSharedListResponse.class);
+		return sendRequest(request, "/ListItems", HttpDelete, DeleteListItemsFromSharedListResponse.class);
 	}
 
     public Response<DeleteListItemsFromSharedListResponse> deleteListItemsFromSharedListAsync(DeleteListItemsFromSharedListRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ListItemsFromSharedList", HttpDelete, DeleteListItemsFromSharedListResponse.class);
+		return sendRequestAsync(request, "/ListItems", HttpDelete, DeleteListItemsFromSharedListResponse.class);
 	}
 
 	public Future<?> deleteListItemsFromSharedListAsync(DeleteListItemsFromSharedListRequest request, AsyncHandler<DeleteListItemsFromSharedListResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/ListItemsFromSharedList", HttpDelete, DeleteListItemsFromSharedListResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/ListItems", HttpDelete, DeleteListItemsFromSharedListResponse.class, asyncHandler);
 	}
 	
     	
 	public SetSharedEntityAssociationsResponse setSharedEntityAssociations(SetSharedEntityAssociationsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/SharedEntityAssociationsSet", HttpPost, SetSharedEntityAssociationsResponse.class);
+		return sendRequest(request, "/SharedEntityAssociations/Set", HttpPost, SetSharedEntityAssociationsResponse.class);
 	}
 
     public Response<SetSharedEntityAssociationsResponse> setSharedEntityAssociationsAsync(SetSharedEntityAssociationsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/SharedEntityAssociationsSet", HttpPost, SetSharedEntityAssociationsResponse.class);
+		return sendRequestAsync(request, "/SharedEntityAssociations/Set", HttpPost, SetSharedEntityAssociationsResponse.class);
 	}
 
 	public Future<?> setSharedEntityAssociationsAsync(SetSharedEntityAssociationsRequest request, AsyncHandler<SetSharedEntityAssociationsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/SharedEntityAssociationsSet", HttpPost, SetSharedEntityAssociationsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/SharedEntityAssociations/Set", HttpPost, SetSharedEntityAssociationsResponse.class, asyncHandler);
 	}
 	
     	
@@ -1573,17 +1573,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetAudienceGroupAssetGroupAssociationsResponse setAudienceGroupAssetGroupAssociations(SetAudienceGroupAssetGroupAssociationsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/AudienceGroupAssetGroupAssociationsSet", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class);
+		return sendRequest(request, "/AudienceGroupAssetGroupAssociations/Set", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class);
 	}
 
     public Response<SetAudienceGroupAssetGroupAssociationsResponse> setAudienceGroupAssetGroupAssociationsAsync(SetAudienceGroupAssetGroupAssociationsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AudienceGroupAssetGroupAssociationsSet", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class);
+		return sendRequestAsync(request, "/AudienceGroupAssetGroupAssociations/Set", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class);
 	}
 
 	public Future<?> setAudienceGroupAssetGroupAssociationsAsync(SetAudienceGroupAssetGroupAssociationsRequest request, AsyncHandler<SetAudienceGroupAssetGroupAssociationsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/AudienceGroupAssetGroupAssociationsSet", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/AudienceGroupAssetGroupAssociations/Set", HttpPost, SetAudienceGroupAssetGroupAssociationsResponse.class, asyncHandler);
 	}
 	
     	
@@ -1701,17 +1701,33 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public ApplyCustomerListItemsResponse applyCustomerListItems(ApplyCustomerListItemsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/CustomerListItemsApply", HttpPost, ApplyCustomerListItemsResponse.class);
+		return sendRequest(request, "/CustomerListItems/Apply", HttpPost, ApplyCustomerListItemsResponse.class);
 	}
 
     public Response<ApplyCustomerListItemsResponse> applyCustomerListItemsAsync(ApplyCustomerListItemsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/CustomerListItemsApply", HttpPost, ApplyCustomerListItemsResponse.class);
+		return sendRequestAsync(request, "/CustomerListItems/Apply", HttpPost, ApplyCustomerListItemsResponse.class);
 	}
 
 	public Future<?> applyCustomerListItemsAsync(ApplyCustomerListItemsRequest request, AsyncHandler<ApplyCustomerListItemsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/CustomerListItemsApply", HttpPost, ApplyCustomerListItemsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/CustomerListItems/Apply", HttpPost, ApplyCustomerListItemsResponse.class, asyncHandler);
+	}
+	
+    	
+	public ApplyCustomerListUserDataResponse applyCustomerListUserData(ApplyCustomerListUserDataRequest request) 
+			throws Exception {
+		return sendRequest(request, "/CustomerListUserData/Apply", HttpPost, ApplyCustomerListUserDataResponse.class);
+	}
+
+    public Response<ApplyCustomerListUserDataResponse> applyCustomerListUserDataAsync(ApplyCustomerListUserDataRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/CustomerListUserData/Apply", HttpPost, ApplyCustomerListUserDataResponse.class);
+	}
+
+	public Future<?> applyCustomerListUserDataAsync(ApplyCustomerListUserDataRequest request, AsyncHandler<ApplyCustomerListUserDataResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/CustomerListUserData/Apply", HttpPost, ApplyCustomerListUserDataResponse.class, asyncHandler);
 	}
 	
     	
@@ -1829,49 +1845,49 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public ApplyOfflineConversionsResponse applyOfflineConversions(ApplyOfflineConversionsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/OfflineConversionsApply", HttpPost, ApplyOfflineConversionsResponse.class);
+		return sendRequest(request, "/OfflineConversions/Apply", HttpPost, ApplyOfflineConversionsResponse.class);
 	}
 
     public Response<ApplyOfflineConversionsResponse> applyOfflineConversionsAsync(ApplyOfflineConversionsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OfflineConversionsApply", HttpPost, ApplyOfflineConversionsResponse.class);
+		return sendRequestAsync(request, "/OfflineConversions/Apply", HttpPost, ApplyOfflineConversionsResponse.class);
 	}
 
 	public Future<?> applyOfflineConversionsAsync(ApplyOfflineConversionsRequest request, AsyncHandler<ApplyOfflineConversionsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OfflineConversionsApply", HttpPost, ApplyOfflineConversionsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/OfflineConversions/Apply", HttpPost, ApplyOfflineConversionsResponse.class, asyncHandler);
 	}
 	
     	
 	public ApplyOfflineConversionAdjustmentsResponse applyOfflineConversionAdjustments(ApplyOfflineConversionAdjustmentsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/OfflineConversionAdjustmentsApply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class);
+		return sendRequest(request, "/OfflineConversionAdjustments/Apply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class);
 	}
 
     public Response<ApplyOfflineConversionAdjustmentsResponse> applyOfflineConversionAdjustmentsAsync(ApplyOfflineConversionAdjustmentsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OfflineConversionAdjustmentsApply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class);
+		return sendRequestAsync(request, "/OfflineConversionAdjustments/Apply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class);
 	}
 
 	public Future<?> applyOfflineConversionAdjustmentsAsync(ApplyOfflineConversionAdjustmentsRequest request, AsyncHandler<ApplyOfflineConversionAdjustmentsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OfflineConversionAdjustmentsApply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/OfflineConversionAdjustments/Apply", HttpPost, ApplyOfflineConversionAdjustmentsResponse.class, asyncHandler);
 	}
 	
     	
 	public ApplyOnlineConversionAdjustmentsResponse applyOnlineConversionAdjustments(ApplyOnlineConversionAdjustmentsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/OnlineConversionAdjustmentsApply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class);
+		return sendRequest(request, "/OnlineConversionAdjustments/Apply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class);
 	}
 
     public Response<ApplyOnlineConversionAdjustmentsResponse> applyOnlineConversionAdjustmentsAsync(ApplyOnlineConversionAdjustmentsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OnlineConversionAdjustmentsApply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class);
+		return sendRequestAsync(request, "/OnlineConversionAdjustments/Apply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class);
 	}
 
 	public Future<?> applyOnlineConversionAdjustmentsAsync(ApplyOnlineConversionAdjustmentsRequest request, AsyncHandler<ApplyOnlineConversionAdjustmentsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/OnlineConversionAdjustmentsApply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/OnlineConversionAdjustments/Apply", HttpPost, ApplyOnlineConversionAdjustmentsResponse.class, asyncHandler);
 	}
 	
     	
@@ -1941,17 +1957,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SetLabelAssociationsResponse setLabelAssociations(SetLabelAssociationsRequest request) 
 			throws Exception {
-		return sendRequest(request, "/LabelAssociationsSet", HttpPost, SetLabelAssociationsResponse.class);
+		return sendRequest(request, "/LabelAssociations/Set", HttpPost, SetLabelAssociationsResponse.class);
 	}
 
     public Response<SetLabelAssociationsResponse> setLabelAssociationsAsync(SetLabelAssociationsRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/LabelAssociationsSet", HttpPost, SetLabelAssociationsResponse.class);
+		return sendRequestAsync(request, "/LabelAssociations/Set", HttpPost, SetLabelAssociationsResponse.class);
 	}
 
 	public Future<?> setLabelAssociationsAsync(SetLabelAssociationsRequest request, AsyncHandler<SetLabelAssociationsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/LabelAssociationsSet", HttpPost, SetLabelAssociationsResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/LabelAssociations/Set", HttpPost, SetLabelAssociationsResponse.class, asyncHandler);
 	}
 	
     	
@@ -2085,17 +2101,17 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
     	
 	public SearchCompaniesResponse searchCompanies(SearchCompaniesRequest request) 
 			throws Exception {
-		return sendRequest(request, "/CompaniesSearch", HttpPost, SearchCompaniesResponse.class);
+		return sendRequest(request, "/Companies/Search", HttpPost, SearchCompaniesResponse.class);
 	}
 
     public Response<SearchCompaniesResponse> searchCompaniesAsync(SearchCompaniesRequest request)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/CompaniesSearch", HttpPost, SearchCompaniesResponse.class);
+		return sendRequestAsync(request, "/Companies/Search", HttpPost, SearchCompaniesResponse.class);
 	}
 
 	public Future<?> searchCompaniesAsync(SearchCompaniesRequest request, AsyncHandler<SearchCompaniesResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-		return sendRequestAsync(request, "/CompaniesSearch", HttpPost, SearchCompaniesResponse.class, asyncHandler);
+		return sendRequestAsync(request, "/Companies/Search", HttpPost, SearchCompaniesResponse.class, asyncHandler);
 	}
 	
     	
@@ -2304,6 +2320,166 @@ public class CampaignManagementRestfulServiceClient extends RestfulServiceClient
 	public Future<?> deleteCampaignConversionGoalsAsync(DeleteCampaignConversionGoalsRequest request, AsyncHandler<DeleteCampaignConversionGoalsResponse> asyncHandler)
 			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
 		return sendRequestAsync(request, "/CampaignConversionGoals", HttpDelete, DeleteCampaignConversionGoalsResponse.class, asyncHandler);
+	}
+	
+    	
+	public AddDataExclusionsResponse addDataExclusions(AddDataExclusionsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/DataExclusions", HttpPost, AddDataExclusionsResponse.class);
+	}
+
+    public Response<AddDataExclusionsResponse> addDataExclusionsAsync(AddDataExclusionsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpPost, AddDataExclusionsResponse.class);
+	}
+
+	public Future<?> addDataExclusionsAsync(AddDataExclusionsRequest request, AsyncHandler<AddDataExclusionsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpPost, AddDataExclusionsResponse.class, asyncHandler);
+	}
+	
+    	
+	public UpdateDataExclusionsResponse updateDataExclusions(UpdateDataExclusionsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/DataExclusions", HttpPut, UpdateDataExclusionsResponse.class);
+	}
+
+    public Response<UpdateDataExclusionsResponse> updateDataExclusionsAsync(UpdateDataExclusionsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpPut, UpdateDataExclusionsResponse.class);
+	}
+
+	public Future<?> updateDataExclusionsAsync(UpdateDataExclusionsRequest request, AsyncHandler<UpdateDataExclusionsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpPut, UpdateDataExclusionsResponse.class, asyncHandler);
+	}
+	
+    	
+	public DeleteDataExclusionsResponse deleteDataExclusions(DeleteDataExclusionsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/DataExclusions", HttpDelete, DeleteDataExclusionsResponse.class);
+	}
+
+    public Response<DeleteDataExclusionsResponse> deleteDataExclusionsAsync(DeleteDataExclusionsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpDelete, DeleteDataExclusionsResponse.class);
+	}
+
+	public Future<?> deleteDataExclusionsAsync(DeleteDataExclusionsRequest request, AsyncHandler<DeleteDataExclusionsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions", HttpDelete, DeleteDataExclusionsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetDataExclusionsByIdsResponse getDataExclusionsByIds(GetDataExclusionsByIdsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/DataExclusions/QueryByIds", HttpPost, GetDataExclusionsByIdsResponse.class);
+	}
+
+    public Response<GetDataExclusionsByIdsResponse> getDataExclusionsByIdsAsync(GetDataExclusionsByIdsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions/QueryByIds", HttpPost, GetDataExclusionsByIdsResponse.class);
+	}
+
+	public Future<?> getDataExclusionsByIdsAsync(GetDataExclusionsByIdsRequest request, AsyncHandler<GetDataExclusionsByIdsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions/QueryByIds", HttpPost, GetDataExclusionsByIdsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetDataExclusionsByAccountIdResponse getDataExclusionsByAccountId(GetDataExclusionsByAccountIdRequest request) 
+			throws Exception {
+		return sendRequest(request, "/DataExclusions/QueryByAccountId", HttpPost, GetDataExclusionsByAccountIdResponse.class);
+	}
+
+    public Response<GetDataExclusionsByAccountIdResponse> getDataExclusionsByAccountIdAsync(GetDataExclusionsByAccountIdRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions/QueryByAccountId", HttpPost, GetDataExclusionsByAccountIdResponse.class);
+	}
+
+	public Future<?> getDataExclusionsByAccountIdAsync(GetDataExclusionsByAccountIdRequest request, AsyncHandler<GetDataExclusionsByAccountIdResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/DataExclusions/QueryByAccountId", HttpPost, GetDataExclusionsByAccountIdResponse.class, asyncHandler);
+	}
+	
+    	
+	public AddSeasonalityAdjustmentsResponse addSeasonalityAdjustments(AddSeasonalityAdjustmentsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/SeasonalityAdjustments", HttpPost, AddSeasonalityAdjustmentsResponse.class);
+	}
+
+    public Response<AddSeasonalityAdjustmentsResponse> addSeasonalityAdjustmentsAsync(AddSeasonalityAdjustmentsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpPost, AddSeasonalityAdjustmentsResponse.class);
+	}
+
+	public Future<?> addSeasonalityAdjustmentsAsync(AddSeasonalityAdjustmentsRequest request, AsyncHandler<AddSeasonalityAdjustmentsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpPost, AddSeasonalityAdjustmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public UpdateSeasonalityAdjustmentsResponse updateSeasonalityAdjustments(UpdateSeasonalityAdjustmentsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/SeasonalityAdjustments", HttpPut, UpdateSeasonalityAdjustmentsResponse.class);
+	}
+
+    public Response<UpdateSeasonalityAdjustmentsResponse> updateSeasonalityAdjustmentsAsync(UpdateSeasonalityAdjustmentsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpPut, UpdateSeasonalityAdjustmentsResponse.class);
+	}
+
+	public Future<?> updateSeasonalityAdjustmentsAsync(UpdateSeasonalityAdjustmentsRequest request, AsyncHandler<UpdateSeasonalityAdjustmentsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpPut, UpdateSeasonalityAdjustmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public DeleteSeasonalityAdjustmentsResponse deleteSeasonalityAdjustments(DeleteSeasonalityAdjustmentsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/SeasonalityAdjustments", HttpDelete, DeleteSeasonalityAdjustmentsResponse.class);
+	}
+
+    public Response<DeleteSeasonalityAdjustmentsResponse> deleteSeasonalityAdjustmentsAsync(DeleteSeasonalityAdjustmentsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpDelete, DeleteSeasonalityAdjustmentsResponse.class);
+	}
+
+	public Future<?> deleteSeasonalityAdjustmentsAsync(DeleteSeasonalityAdjustmentsRequest request, AsyncHandler<DeleteSeasonalityAdjustmentsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments", HttpDelete, DeleteSeasonalityAdjustmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetSeasonalityAdjustmentsByIdsResponse getSeasonalityAdjustmentsByIds(GetSeasonalityAdjustmentsByIdsRequest request) 
+			throws Exception {
+		return sendRequest(request, "/SeasonalityAdjustments/QueryByIds", HttpPost, GetSeasonalityAdjustmentsByIdsResponse.class);
+	}
+
+    public Response<GetSeasonalityAdjustmentsByIdsResponse> getSeasonalityAdjustmentsByIdsAsync(GetSeasonalityAdjustmentsByIdsRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments/QueryByIds", HttpPost, GetSeasonalityAdjustmentsByIdsResponse.class);
+	}
+
+	public Future<?> getSeasonalityAdjustmentsByIdsAsync(GetSeasonalityAdjustmentsByIdsRequest request, AsyncHandler<GetSeasonalityAdjustmentsByIdsResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments/QueryByIds", HttpPost, GetSeasonalityAdjustmentsByIdsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetSeasonalityAdjustmentsByAccountIdResponse getSeasonalityAdjustmentsByAccountId(GetSeasonalityAdjustmentsByAccountIdRequest request) 
+			throws Exception {
+		return sendRequest(request, "/SeasonalityAdjustments/QueryByAccountId", HttpPost, GetSeasonalityAdjustmentsByAccountIdResponse.class);
+	}
+
+    public Response<GetSeasonalityAdjustmentsByAccountIdResponse> getSeasonalityAdjustmentsByAccountIdAsync(GetSeasonalityAdjustmentsByAccountIdRequest request)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments/QueryByAccountId", HttpPost, GetSeasonalityAdjustmentsByAccountIdResponse.class);
+	}
+
+	public Future<?> getSeasonalityAdjustmentsByAccountIdAsync(GetSeasonalityAdjustmentsByAccountIdRequest request, AsyncHandler<GetSeasonalityAdjustmentsByAccountIdResponse> asyncHandler)
+			throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+		return sendRequestAsync(request, "/SeasonalityAdjustments/QueryByAccountId", HttpPost, GetSeasonalityAdjustmentsByAccountIdResponse.class, asyncHandler);
 	}
 	
     }

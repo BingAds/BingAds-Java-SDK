@@ -35,7 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     NegativeKeyword.class,
-    NegativeSite.class
+    NegativeSite.class,
+    BrandItem.class
 })
 public class SharedListItem {
 

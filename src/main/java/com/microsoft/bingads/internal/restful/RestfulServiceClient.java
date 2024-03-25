@@ -57,7 +57,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
     
     private ConcurrentHashMap<Class, Calendar> retryAfter = new ConcurrentHashMap<Class, Calendar>();
     
-    private ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403));
+    private ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
     
     private ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
     
@@ -84,6 +84,16 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
         	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
         	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+        case "IBulkService":
+        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+        case "IReportingService":
+        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
         }
     }
     
@@ -102,7 +112,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         }
         else {
         	URI uri = URI.create(serviceUrl);
-            serviceUrl = "https://" + uri.getAuthority() + "/CampaignManagement/v13";
+            serviceUrl = "https://" + uri.getAuthority() + serviceNameAndVersion.get(serviceInterface);
         }
         
         return serviceUrl + entityEndpoint;
@@ -326,7 +336,10 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
                 if (statusCodesForSwitchToSoap.contains(statusCode)) {
                 	SetRetryAfterTime(header);
                 }
+
+                Header trackingIdHeader = resp.getFirstHeader(ServiceUtils.TRACKING_HEADER_NAME);
             	
+                context.put(ServiceUtils.TRACKING_KEY, trackingIdHeader.getValue());
             	      	
             	if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
             		try {
@@ -379,13 +392,31 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
             	return null;
             }
 
+            private final Map<String, Object> context = new HashMap<>();
+
             @Override
             public Map<String, Object> getContext() {
-                return null;
+                return context;
             }
 
         };
     }
+    
+    private static final Map<Class, String> serviceNameAndVersion = new HashMap<Class, String>() {
+    	{
+    		put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, "/Billing/v13");
+
+    		put(com.microsoft.bingads.v13.customermanagement.ICustomerManagementService.class, "/CustomerManagement/v13");
+    		
+    		put(com.microsoft.bingads.v13.reporting.IReportingService.class, "/Reporting/v13");
+    		
+    		put(com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService.class, "/CampaignManagement/v13");
+    		
+    		put(com.microsoft.bingads.v13.adinsight.IAdInsightService.class, "/AdInsight/v13");
+    		
+    		put(com.microsoft.bingads.v13.bulk.IBulkService.class, "/Bulk/v13");
+    	}
+    };
 
     private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
         {
@@ -424,8 +455,8 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
             });
             put(com.microsoft.bingads.v13.bulk.IBulkService.class, new ServiceInfo() {
                 {
-                    setProductionUrl("https://bulk.api.bingads.microsoft.com/CampaignManagement/v13");
-                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/CampaignManagement/v13");
+                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Bulk/v13");
+                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Bulk/v13");
                 }
             });
             // End of v13

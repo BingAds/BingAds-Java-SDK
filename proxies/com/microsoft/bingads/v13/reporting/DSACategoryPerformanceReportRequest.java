@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DSACategoryPerformanceReportRequest
     extends ReportRequest
 {
+    public DSACategoryPerformanceReportRequest() {
+      this.type = "DSACategoryPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

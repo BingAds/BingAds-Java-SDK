@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ShareOfVoiceReportRequest
     extends ReportRequest
 {
+    public ShareOfVoiceReportRequest() {
+      this.type = "ShareOfVoiceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

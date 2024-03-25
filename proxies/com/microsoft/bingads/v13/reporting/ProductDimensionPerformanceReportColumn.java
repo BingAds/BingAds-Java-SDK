@@ -113,6 +113,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AssetGroupName"/>
  *     <enumeration value="AssetGroupStatus"/>
+ *     <enumeration value="CollectionId"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -319,7 +320,9 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("AssetGroupName")
     ASSET_GROUP_NAME("AssetGroupName"),
     @XmlEnumValue("AssetGroupStatus")
-    ASSET_GROUP_STATUS("AssetGroupStatus");
+    ASSET_GROUP_STATUS("AssetGroupStatus"),
+    @XmlEnumValue("CollectionId")
+    COLLECTION_ID("CollectionId");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ApplicationFault", namespace = "https://adapi.microsoft.com", propOrder = {
+    "type",
     "trackingId"
 })
 @XmlSeeAlso({
@@ -36,6 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
     AdApiFaultDetail.class
 })
 public class ApplicationFault {
+
+    @XmlElement(name = "Type", nillable = true)
+    protected String type;
 
     @XmlElement(name = "TrackingId", nillable = true)
     protected String trackingId;

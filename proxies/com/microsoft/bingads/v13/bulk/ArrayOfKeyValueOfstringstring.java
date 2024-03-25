@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeyValueOfstringstring complex type.
@@ -47,6 +47,15 @@ public class ArrayOfKeyValueOfstringstring {
 
     @XmlElement(name = "KeyValueOfstringstring")
     protected List<ArrayOfKeyValueOfstringstring.KeyValueOfstringstring> keyValueOfstringstrings;
+    public ArrayOfKeyValueOfstringstring()
+    {
+      this.keyValueOfstringstrings = new ArrayList<ArrayOfKeyValueOfstringstring.KeyValueOfstringstring>();
+    }
+    @JsonCreator
+    public ArrayOfKeyValueOfstringstring(List<ArrayOfKeyValueOfstringstring.KeyValueOfstringstring> keyvalueofstringstrings)
+    {
+      this.keyValueOfstringstrings = keyvalueofstringstrings;
+    }
 
     /**
      * Gets the value of the keyValueOfstringstrings property.

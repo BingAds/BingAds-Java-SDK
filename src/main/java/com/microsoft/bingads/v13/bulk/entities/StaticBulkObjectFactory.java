@@ -1144,6 +1144,38 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             }
         }));
         
+        m.put(StringTable.SeasonalityAdjustment, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkSeasonalityAdjustment();
+            }
+        }));
+        
+        m.put(StringTable.DataExclusion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkDataExclusion();
+            }
+        }));
+        m.put("Account Negative Keyword List", new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountNegativeKeywordList();
+            }
+        }));
+        m.put("Account Negative Keyword List Association", new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountNegativeKeywordListAssociation();
+            }
+        }));
+        m.put("Account Shared Negative Keyword", new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountSharedNegativeKeyword();
+            }
+        }));
+        
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 
         Map<String, Supplier<BulkObject>> addl = new HashMap<String, Supplier<BulkObject>>();

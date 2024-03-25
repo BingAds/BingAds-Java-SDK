@@ -78,6 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="SiteType"/>
  *     <enumeration value="UserCountry"/>
  *     <enumeration value="ClickShare"/>
+ *     <enumeration value="MissedImpressionsInsufficientBid"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -216,7 +217,9 @@ public enum HotelDimensionPerformanceReportColumn {
     @XmlEnumValue("UserCountry")
     USER_COUNTRY("UserCountry"),
     @XmlEnumValue("ClickShare")
-    CLICK_SHARE("ClickShare");
+    CLICK_SHARE("ClickShare"),
+    @XmlEnumValue("MissedImpressionsInsufficientBid")
+    MISSED_IMPRESSIONS_INSUFFICIENT_BID("MissedImpressionsInsufficientBid");
     private final String value;
 
     HotelDimensionPerformanceReportColumn(String v) {

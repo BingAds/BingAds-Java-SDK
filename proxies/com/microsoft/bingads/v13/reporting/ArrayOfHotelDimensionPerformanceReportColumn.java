@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfHotelDimensionPerformanceReportColumn {
     @XmlElement(name = "HotelDimensionPerformanceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<HotelDimensionPerformanceReportColumn> hotelDimensionPerformanceReportColumns;
+    public ArrayOfHotelDimensionPerformanceReportColumn()
+    {
+      this.hotelDimensionPerformanceReportColumns = new ArrayList<HotelDimensionPerformanceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfHotelDimensionPerformanceReportColumn(List<HotelDimensionPerformanceReportColumn> hoteldimensionperformancereportcolumns)
+    {
+      this.hotelDimensionPerformanceReportColumns = hoteldimensionperformancereportcolumns;
+    }
 
     /**
      * Gets the value of the hotelDimensionPerformanceReportColumns property.

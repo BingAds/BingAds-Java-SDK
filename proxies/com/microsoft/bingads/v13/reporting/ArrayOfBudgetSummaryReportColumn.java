@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfBudgetSummaryReportColumn {
     @XmlElement(name = "BudgetSummaryReportColumn")
     @XmlSchemaType(name = "string")
     protected List<BudgetSummaryReportColumn> budgetSummaryReportColumns;
+    public ArrayOfBudgetSummaryReportColumn()
+    {
+      this.budgetSummaryReportColumns = new ArrayList<BudgetSummaryReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfBudgetSummaryReportColumn(List<BudgetSummaryReportColumn> budgetsummaryreportcolumns)
+    {
+      this.budgetSummaryReportColumns = budgetsummaryreportcolumns;
+    }
 
     /**
      * Gets the value of the budgetSummaryReportColumns property.

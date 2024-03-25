@@ -18,7 +18,12 @@ public enum ImportAdditionalField {
     UPDATE_AD_URLS("UpdateAdUrls"),
     NEW_LOGO_AD_EXTENSIONS("NewLogoAdExtensions"),
     UPDATE_LOGO_AD_EXTENSIONS("UpdateLogoAdExtensions"),
-    UPDATE_SITELINK_URLS("UpdateSitelinkUrls");
+    UPDATE_SITELINK_URLS("UpdateSitelinkUrls"),
+    NEW_LEAD_FORM_AD_EXTENSIONS("NewLeadFormAdExtensions"),
+    UPDATE_LEAD_FORM_AD_EXTENSIONS("UpdateLeadFormAdExtensions"),
+    NEW_ACCOUNT_NEGATIVE_KEYWORDS("NewAccountNegativeKeywords"),
+    UPDATE_ACCOUNT_NEGATIVE_KEYWORDS("UpdateAccountNegativeKeywords"),
+    UPDATE_AD_CUSTOMIZER_ATTRIBUTES("UpdateAdCustomizerAttributes");
         
     private final String value;
 

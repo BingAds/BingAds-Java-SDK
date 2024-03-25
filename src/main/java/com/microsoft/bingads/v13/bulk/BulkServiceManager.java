@@ -98,20 +98,28 @@ public class BulkServiceManager {
     public BulkServiceManager(AuthorizationData authorizationData) {
         this(authorizationData, null);
     }
+    
+    public BulkServiceManager(AuthorizationData authorizationData, boolean enableRestApi) {
+        this(authorizationData, null, enableRestApi);
+    }
 
     public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment);
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, false);
+    }
+    
+    public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment, boolean enableRestApi) {
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, enableRestApi);
     }
 
     private BulkServiceManager(AuthorizationData authorizationData, HttpFileService httpFileService, ZipExtractor zipExtractor,
-            BulkEntityReaderFactory factory, ApiEnvironment apiEnvironment) {
+            BulkEntityReaderFactory factory, ApiEnvironment apiEnvironment, boolean enableRestApi) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
         this.bulkEntityReaderFactory = factory;
         this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class);
+        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class, enableRestApi);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 

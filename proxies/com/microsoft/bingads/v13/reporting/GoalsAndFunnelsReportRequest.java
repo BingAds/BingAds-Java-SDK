@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GoalsAndFunnelsReportRequest
     extends ReportRequest
 {
+    public GoalsAndFunnelsReportRequest() {
+      this.type = "GoalsAndFunnelsReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AudiencePerformanceReportRequest
     extends ReportRequest
 {
+    public AudiencePerformanceReportRequest() {
+      this.type = "AudiencePerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

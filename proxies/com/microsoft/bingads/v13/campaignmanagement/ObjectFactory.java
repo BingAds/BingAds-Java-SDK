@@ -294,6 +294,7 @@ public class ObjectFactory {
     private static final QName _NegativeKeyword_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeKeyword");
     private static final QName _SharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SharedListItem");
     private static final QName _NegativeSite_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeSite");
+    private static final QName _BrandItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandItem");
     private static final QName _ArrayOfIdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfIdCollection");
     private static final QName _IdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "IdCollection");
     private static final QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntity");
@@ -302,6 +303,7 @@ public class ObjectFactory {
     private static final QName _NegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeKeywordList");
     private static final QName _PlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementExclusionList");
     private static final QName _AccountNegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountNegativeKeywordList");
+    private static final QName _BrandList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandList");
     private static final QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityScope");
     private static final QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedListItem");
     private static final QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntityAssociation");
@@ -372,11 +374,10 @@ public class ObjectFactory {
     private static final QName _CombinationRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CombinationRule");
     private static final QName _LogicalOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LogicalOperator");
     private static final QName _CustomerList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerList");
-    private static final QName _CustomerListActionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListActionType");
-    private static final QName _ArrayOfCustomerListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCustomerListItem");
-    private static final QName _CustomerListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItem");
-    private static final QName _CustomerListItemSubType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItemSubType");
     private static final QName _AudienceAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceAdditionalField");
+    private static final QName _CustomerListUserData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListUserData");
+    private static final QName _CustomerListActionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListActionType");
+    private static final QName _CustomerListItemSubType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItemSubType");
     private static final QName _ArrayOfUetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfUetTag");
     private static final QName _UetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTag");
     private static final QName _UetTagTrackingStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTagTrackingStatus");
@@ -435,6 +436,13 @@ public class ObjectFactory {
     private static final QName _Video_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Video");
     private static final QName _ArrayOfCampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignConversionGoal");
     private static final QName _CampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignConversionGoal");
+    private static final QName _ArrayOfDataExclusion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDataExclusion");
+    private static final QName _DataExclusion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DataExclusion");
+    private static final QName _ArrayOfCampaignAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignAssociation");
+    private static final QName _CampaignAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignAssociation");
+    private static final QName _DeviceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DeviceType");
+    private static final QName _ArrayOfSeasonalityAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSeasonalityAdjustment");
+    private static final QName _SeasonalityAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SeasonalityAdjustment");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
@@ -3738,6 +3746,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BrandItem }
+     * 
+     * @return
+     *     the new instance of {@link BrandItem }
+     */
+    public BrandItem createBrandItem() {
+        return new BrandItem();
+    }
+
+    /**
      * Create an instance of {@link AddNegativeKeywordsToEntitiesResponse }
      * 
      * @return
@@ -3885,6 +3903,16 @@ public class ObjectFactory {
      */
     public AccountNegativeKeywordList createAccountNegativeKeywordList() {
         return new AccountNegativeKeywordList();
+    }
+
+    /**
+     * Create an instance of {@link BrandList }
+     * 
+     * @return
+     *     the new instance of {@link BrandList }
+     */
+    public BrandList createBrandList() {
+        return new BrandList();
     }
 
     /**
@@ -5288,26 +5316,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfCustomerListItem }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfCustomerListItem }
-     */
-    public ArrayOfCustomerListItem createArrayOfCustomerListItem() {
-        return new ArrayOfCustomerListItem();
-    }
-
-    /**
-     * Create an instance of {@link CustomerListItem }
-     * 
-     * @return
-     *     the new instance of {@link CustomerListItem }
-     */
-    public CustomerListItem createCustomerListItem() {
-        return new CustomerListItem();
-    }
-
-    /**
      * Create an instance of {@link AddAudiencesResponse }
      * 
      * @return
@@ -5395,6 +5403,36 @@ public class ObjectFactory {
      */
     public ApplyCustomerListItemsResponse createApplyCustomerListItemsResponse() {
         return new ApplyCustomerListItemsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ApplyCustomerListUserDataRequest }
+     * 
+     * @return
+     *     the new instance of {@link ApplyCustomerListUserDataRequest }
+     */
+    public ApplyCustomerListUserDataRequest createApplyCustomerListUserDataRequest() {
+        return new ApplyCustomerListUserDataRequest();
+    }
+
+    /**
+     * Create an instance of {@link CustomerListUserData }
+     * 
+     * @return
+     *     the new instance of {@link CustomerListUserData }
+     */
+    public CustomerListUserData createCustomerListUserData() {
+        return new CustomerListUserData();
+    }
+
+    /**
+     * Create an instance of {@link ApplyCustomerListUserDataResponse }
+     * 
+     * @return
+     *     the new instance of {@link ApplyCustomerListUserDataResponse }
+     */
+    public ApplyCustomerListUserDataResponse createApplyCustomerListUserDataResponse() {
+        return new ApplyCustomerListUserDataResponse();
     }
 
     /**
@@ -6595,6 +6633,266 @@ public class ObjectFactory {
      */
     public DeleteCampaignConversionGoalsResponse createDeleteCampaignConversionGoalsResponse() {
         return new DeleteCampaignConversionGoalsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddDataExclusionsRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddDataExclusionsRequest }
+     */
+    public AddDataExclusionsRequest createAddDataExclusionsRequest() {
+        return new AddDataExclusionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDataExclusion }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDataExclusion }
+     */
+    public ArrayOfDataExclusion createArrayOfDataExclusion() {
+        return new ArrayOfDataExclusion();
+    }
+
+    /**
+     * Create an instance of {@link DataExclusion }
+     * 
+     * @return
+     *     the new instance of {@link DataExclusion }
+     */
+    public DataExclusion createDataExclusion() {
+        return new DataExclusion();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignAssociation }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCampaignAssociation }
+     */
+    public ArrayOfCampaignAssociation createArrayOfCampaignAssociation() {
+        return new ArrayOfCampaignAssociation();
+    }
+
+    /**
+     * Create an instance of {@link CampaignAssociation }
+     * 
+     * @return
+     *     the new instance of {@link CampaignAssociation }
+     */
+    public CampaignAssociation createCampaignAssociation() {
+        return new CampaignAssociation();
+    }
+
+    /**
+     * Create an instance of {@link AddDataExclusionsResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddDataExclusionsResponse }
+     */
+    public AddDataExclusionsResponse createAddDataExclusionsResponse() {
+        return new AddDataExclusionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateDataExclusionsRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateDataExclusionsRequest }
+     */
+    public UpdateDataExclusionsRequest createUpdateDataExclusionsRequest() {
+        return new UpdateDataExclusionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateDataExclusionsResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateDataExclusionsResponse }
+     */
+    public UpdateDataExclusionsResponse createUpdateDataExclusionsResponse() {
+        return new UpdateDataExclusionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDataExclusionsRequest }
+     * 
+     * @return
+     *     the new instance of {@link DeleteDataExclusionsRequest }
+     */
+    public DeleteDataExclusionsRequest createDeleteDataExclusionsRequest() {
+        return new DeleteDataExclusionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDataExclusionsResponse }
+     * 
+     * @return
+     *     the new instance of {@link DeleteDataExclusionsResponse }
+     */
+    public DeleteDataExclusionsResponse createDeleteDataExclusionsResponse() {
+        return new DeleteDataExclusionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDataExclusionsByIdsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetDataExclusionsByIdsRequest }
+     */
+    public GetDataExclusionsByIdsRequest createGetDataExclusionsByIdsRequest() {
+        return new GetDataExclusionsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetDataExclusionsByIdsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetDataExclusionsByIdsResponse }
+     */
+    public GetDataExclusionsByIdsResponse createGetDataExclusionsByIdsResponse() {
+        return new GetDataExclusionsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDataExclusionsByAccountIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetDataExclusionsByAccountIdRequest }
+     */
+    public GetDataExclusionsByAccountIdRequest createGetDataExclusionsByAccountIdRequest() {
+        return new GetDataExclusionsByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetDataExclusionsByAccountIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetDataExclusionsByAccountIdResponse }
+     */
+    public GetDataExclusionsByAccountIdResponse createGetDataExclusionsByAccountIdResponse() {
+        return new GetDataExclusionsByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSeasonalityAdjustmentsRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddSeasonalityAdjustmentsRequest }
+     */
+    public AddSeasonalityAdjustmentsRequest createAddSeasonalityAdjustmentsRequest() {
+        return new AddSeasonalityAdjustmentsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSeasonalityAdjustment }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfSeasonalityAdjustment }
+     */
+    public ArrayOfSeasonalityAdjustment createArrayOfSeasonalityAdjustment() {
+        return new ArrayOfSeasonalityAdjustment();
+    }
+
+    /**
+     * Create an instance of {@link SeasonalityAdjustment }
+     * 
+     * @return
+     *     the new instance of {@link SeasonalityAdjustment }
+     */
+    public SeasonalityAdjustment createSeasonalityAdjustment() {
+        return new SeasonalityAdjustment();
+    }
+
+    /**
+     * Create an instance of {@link AddSeasonalityAdjustmentsResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddSeasonalityAdjustmentsResponse }
+     */
+    public AddSeasonalityAdjustmentsResponse createAddSeasonalityAdjustmentsResponse() {
+        return new AddSeasonalityAdjustmentsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSeasonalityAdjustmentsRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateSeasonalityAdjustmentsRequest }
+     */
+    public UpdateSeasonalityAdjustmentsRequest createUpdateSeasonalityAdjustmentsRequest() {
+        return new UpdateSeasonalityAdjustmentsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSeasonalityAdjustmentsResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateSeasonalityAdjustmentsResponse }
+     */
+    public UpdateSeasonalityAdjustmentsResponse createUpdateSeasonalityAdjustmentsResponse() {
+        return new UpdateSeasonalityAdjustmentsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSeasonalityAdjustmentsRequest }
+     * 
+     * @return
+     *     the new instance of {@link DeleteSeasonalityAdjustmentsRequest }
+     */
+    public DeleteSeasonalityAdjustmentsRequest createDeleteSeasonalityAdjustmentsRequest() {
+        return new DeleteSeasonalityAdjustmentsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSeasonalityAdjustmentsResponse }
+     * 
+     * @return
+     *     the new instance of {@link DeleteSeasonalityAdjustmentsResponse }
+     */
+    public DeleteSeasonalityAdjustmentsResponse createDeleteSeasonalityAdjustmentsResponse() {
+        return new DeleteSeasonalityAdjustmentsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSeasonalityAdjustmentsByIdsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetSeasonalityAdjustmentsByIdsRequest }
+     */
+    public GetSeasonalityAdjustmentsByIdsRequest createGetSeasonalityAdjustmentsByIdsRequest() {
+        return new GetSeasonalityAdjustmentsByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetSeasonalityAdjustmentsByIdsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetSeasonalityAdjustmentsByIdsResponse }
+     */
+    public GetSeasonalityAdjustmentsByIdsResponse createGetSeasonalityAdjustmentsByIdsResponse() {
+        return new GetSeasonalityAdjustmentsByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSeasonalityAdjustmentsByAccountIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetSeasonalityAdjustmentsByAccountIdRequest }
+     */
+    public GetSeasonalityAdjustmentsByAccountIdRequest createGetSeasonalityAdjustmentsByAccountIdRequest() {
+        return new GetSeasonalityAdjustmentsByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetSeasonalityAdjustmentsByAccountIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetSeasonalityAdjustmentsByAccountIdResponse }
+     */
+    public GetSeasonalityAdjustmentsByAccountIdResponse createGetSeasonalityAdjustmentsByAccountIdResponse() {
+        return new GetSeasonalityAdjustmentsByAccountIdResponse();
     }
 
     /**
@@ -10189,6 +10487,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandItem }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandItem }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandItem")
+    public JAXBElement<BrandItem> createBrandItem(BrandItem value) {
+        return new JAXBElement<>(_BrandItem_QNAME, BrandItem.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfIdCollection }{@code >}
      * 
      * @param value
@@ -10290,6 +10601,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AccountNegativeKeywordList")
     public JAXBElement<AccountNegativeKeywordList> createAccountNegativeKeywordList(AccountNegativeKeywordList value) {
         return new JAXBElement<>(_AccountNegativeKeywordList_QNAME, AccountNegativeKeywordList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandList }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandList }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandList")
+    public JAXBElement<BrandList> createBrandList(BrandList value) {
+        return new JAXBElement<>(_BrandList_QNAME, BrandList.class, null, value);
     }
 
     /**
@@ -11205,6 +11529,33 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceAdditionalField")
+    @XmlJavaTypeAdapter(Adapter17 .class)
+    public JAXBElement<Collection<AudienceAdditionalField>> createAudienceAdditionalField(Collection<AudienceAdditionalField> value) {
+        return new JAXBElement<>(_AudienceAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListUserData }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CustomerListUserData }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListUserData")
+    public JAXBElement<CustomerListUserData> createCustomerListUserData(CustomerListUserData value) {
+        return new JAXBElement<>(_CustomerListUserData_QNAME, CustomerListUserData.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListActionType }{@code >}
      * 
      * @param value
@@ -11218,32 +11569,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCustomerListItem }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCustomerListItem }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCustomerListItem")
-    public JAXBElement<ArrayOfCustomerListItem> createArrayOfCustomerListItem(ArrayOfCustomerListItem value) {
-        return new JAXBElement<>(_ArrayOfCustomerListItem_QNAME, ArrayOfCustomerListItem.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListItem }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CustomerListItem }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListItem")
-    public JAXBElement<CustomerListItem> createCustomerListItem(CustomerListItem value) {
-        return new JAXBElement<>(_CustomerListItem_QNAME, CustomerListItem.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CustomerListItemSubType }{@code >}
      * 
      * @param value
@@ -11254,20 +11579,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomerListItemSubType")
     public JAXBElement<CustomerListItemSubType> createCustomerListItemSubType(CustomerListItemSubType value) {
         return new JAXBElement<>(_CustomerListItemSubType_QNAME, CustomerListItemSubType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceAdditionalField")
-    @XmlJavaTypeAdapter(Adapter17 .class)
-    public JAXBElement<Collection<AudienceAdditionalField>> createAudienceAdditionalField(Collection<AudienceAdditionalField> value) {
-        return new JAXBElement<>(_AudienceAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**
@@ -12025,6 +12336,97 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignConversionGoal")
     public JAXBElement<CampaignConversionGoal> createCampaignConversionGoal(CampaignConversionGoal value) {
         return new JAXBElement<>(_CampaignConversionGoal_QNAME, CampaignConversionGoal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDataExclusion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDataExclusion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDataExclusion")
+    public JAXBElement<ArrayOfDataExclusion> createArrayOfDataExclusion(ArrayOfDataExclusion value) {
+        return new JAXBElement<>(_ArrayOfDataExclusion_QNAME, ArrayOfDataExclusion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataExclusion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DataExclusion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DataExclusion")
+    public JAXBElement<DataExclusion> createDataExclusion(DataExclusion value) {
+        return new JAXBElement<>(_DataExclusion_QNAME, DataExclusion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignAssociation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignAssociation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCampaignAssociation")
+    public JAXBElement<ArrayOfCampaignAssociation> createArrayOfCampaignAssociation(ArrayOfCampaignAssociation value) {
+        return new JAXBElement<>(_ArrayOfCampaignAssociation_QNAME, ArrayOfCampaignAssociation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignAssociation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignAssociation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignAssociation")
+    public JAXBElement<CampaignAssociation> createCampaignAssociation(CampaignAssociation value) {
+        return new JAXBElement<>(_CampaignAssociation_QNAME, CampaignAssociation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeviceType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DeviceType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DeviceType")
+    public JAXBElement<DeviceType> createDeviceType(DeviceType value) {
+        return new JAXBElement<>(_DeviceType_QNAME, DeviceType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSeasonalityAdjustment }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfSeasonalityAdjustment }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfSeasonalityAdjustment")
+    public JAXBElement<ArrayOfSeasonalityAdjustment> createArrayOfSeasonalityAdjustment(ArrayOfSeasonalityAdjustment value) {
+        return new JAXBElement<>(_ArrayOfSeasonalityAdjustment_QNAME, ArrayOfSeasonalityAdjustment.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SeasonalityAdjustment }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SeasonalityAdjustment }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "SeasonalityAdjustment")
+    public JAXBElement<SeasonalityAdjustment> createSeasonalityAdjustment(SeasonalityAdjustment value) {
+        return new JAXBElement<>(_SeasonalityAdjustment_QNAME, SeasonalityAdjustment.class, null, value);
     }
 
     /**

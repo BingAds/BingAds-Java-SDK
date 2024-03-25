@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.customerbilling;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Predicates" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfPredicate" minOccurs="0"/>
  *         <element name="Ordering" type="{https://bingads.microsoft.com/Customer/v13/Entities}ArrayOfOrderBy" minOccurs="0"/>
  *         <element name="PageInfo" type="{https://bingads.microsoft.com/Customer/v13/Entities}Paging" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,7 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "predicates",
     "ordering",
-    "pageInfo"
+    "pageInfo",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "SearchCouponsRequest")
 public class SearchCouponsRequest {
@@ -44,6 +48,9 @@ public class SearchCouponsRequest {
     protected ArrayOfOrderBy ordering;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    protected Collection<AccountAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the predicates property.
@@ -115,6 +122,30 @@ public class SearchCouponsRequest {
      */
     public void setPageInfo(Paging value) {
         this.pageInfo = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AccountAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AccountAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfKeywordPerformanceReportColumn {
     @XmlElement(name = "KeywordPerformanceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<KeywordPerformanceReportColumn> keywordPerformanceReportColumns;
+    public ArrayOfKeywordPerformanceReportColumn()
+    {
+      this.keywordPerformanceReportColumns = new ArrayList<KeywordPerformanceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordPerformanceReportColumn(List<KeywordPerformanceReportColumn> keywordperformancereportcolumns)
+    {
+      this.keywordPerformanceReportColumns = keywordperformancereportcolumns;
+    }
 
     /**
      * Gets the value of the keywordPerformanceReportColumns property.

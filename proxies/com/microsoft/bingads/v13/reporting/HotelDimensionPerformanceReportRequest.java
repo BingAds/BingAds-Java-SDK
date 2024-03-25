@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class HotelDimensionPerformanceReportRequest
     extends ReportRequest
 {
+    public HotelDimensionPerformanceReportRequest() {
+      this.type = "HotelDimensionPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

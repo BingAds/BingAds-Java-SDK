@@ -4,24 +4,40 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies.NamingBase;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.microsoft.bingads.v13.campaignmanagement.*;
-
 
 public class AdaptorUtil {
+    // Using UPPER_CAMEL_CASE changes name for some fields. For example DeviceCriterion.getOSName() gets serialized as "Osname".
+    // Ideally we should explicitly check the name in SOAP API during generation and generate a mixin if it's different from the get method
+    public static class SimpleNaming extends NamingBase {
 
-	public static SimpleModule module = new SimpleModule().addDeserializer(Calendar.class, new CalendarDeserializer()).addSerializer(Calendar.class, new CalendarSerializer())
+        @Override
+        public String nameForGetterMethod(MapperConfig<?> config, AnnotatedMethod method, String defaultName) {
+            return method.getName().substring(3);
+        }
+
+        @Override
+        public String nameForSetterMethod(MapperConfig<?> config, AnnotatedMethod method, String defaultName) {
+            return method.getName().substring(3);
+        }
+
+        @Override
+        public String translate(String propertyName) {
+            return propertyName;
+        }
+
+    }
+
+    public static SimpleModule module = new SimpleModule().addDeserializer(Calendar.class, new CalendarDeserializer()).addSerializer(Calendar.class, new CalendarSerializer())
 														  .addDeserializer(Long.class, new LongTypeDeserializer()).addSerializer(Long.class, new LongTypeSerializer())
 														  .addDeserializer(long.class, new LongTypeDeserializer()).addSerializer(long.class, new LongTypeSerializer());
 	
-	public static ObjectMapper mapper = new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategies.UPPER_CAMEL_CASE)
-	  				    								  .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-	  				    								  .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
-	  				    								  .setSerializationInclusion(Include.NON_NULL)
+	public static ObjectMapper mapper = new ObjectMapper().setPropertyNamingStrategy(new SimpleNaming())
+	  				    								  .setSerializationInclusion(Include.NON_NULL) // needed for property types like int and flag enums, which are represented as Integer and Collection in Java SDK
 	  				    								  .registerModule(module);
 	
     public static String toCamelcase(Object o) {

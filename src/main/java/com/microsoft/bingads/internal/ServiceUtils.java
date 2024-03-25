@@ -25,12 +25,13 @@ public class ServiceUtils {
 
     public static String TRACKING_KEY = "com.microsoft.bingads.trackingId";
 
+    public static String REQUEST_HEADERS_KEY = "com.microsoft.bingads.requestHeaders";
+
     public static String TRACKING_HEADER_NAME = "TrackingId";
 
     public static String GetTrackingId(Response response) {        
         Map<String, Object> context = response.getContext();
-    
-        return context.get(TRACKING_KEY).toString();
+        return context != null ? context.get(TRACKING_KEY).toString() : "";
     }
     
     public static String getPropertyFile() {

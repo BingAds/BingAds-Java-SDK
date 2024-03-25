@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfShareOfVoiceReportColumn {
     @XmlElement(name = "ShareOfVoiceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<ShareOfVoiceReportColumn> shareOfVoiceReportColumns;
+    public ArrayOfShareOfVoiceReportColumn()
+    {
+      this.shareOfVoiceReportColumns = new ArrayList<ShareOfVoiceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfShareOfVoiceReportColumn(List<ShareOfVoiceReportColumn> shareofvoicereportcolumns)
+    {
+      this.shareOfVoiceReportColumns = shareofvoicereportcolumns;
+    }
 
     /**
      * Gets the value of the shareOfVoiceReportColumns property.

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordPerformanceReportSort complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordPerformanceReportSort {
 
     @XmlElement(name = "KeywordPerformanceReportSort", nillable = true)
     protected List<KeywordPerformanceReportSort> keywordPerformanceReportSorts;
+    public ArrayOfKeywordPerformanceReportSort()
+    {
+      this.keywordPerformanceReportSorts = new ArrayList<KeywordPerformanceReportSort>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordPerformanceReportSort(List<KeywordPerformanceReportSort> keywordperformancereportsorts)
+    {
+      this.keywordPerformanceReportSorts = keywordperformancereportsorts;
+    }
 
     /**
      * Gets the value of the keywordPerformanceReportSorts property.

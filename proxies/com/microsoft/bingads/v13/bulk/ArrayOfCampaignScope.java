@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCampaignScope complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCampaignScope {
 
     @XmlElement(name = "CampaignScope", nillable = true)
     protected List<CampaignScope> campaignScopes;
+    public ArrayOfCampaignScope()
+    {
+      this.campaignScopes = new ArrayList<CampaignScope>();
+    }
+    @JsonCreator
+    public ArrayOfCampaignScope(List<CampaignScope> campaignscopes)
+    {
+      this.campaignScopes = campaignscopes;
+    }
 
     /**
      * Gets the value of the campaignScopes property.

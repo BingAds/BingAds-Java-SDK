@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DestinationUrlPerformanceReportRequest
     extends ReportRequest
 {
+    public DestinationUrlPerformanceReportRequest() {
+      this.type = "DestinationUrlPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

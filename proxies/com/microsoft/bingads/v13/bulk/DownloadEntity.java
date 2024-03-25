@@ -170,6 +170,23 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="LeadFormAdExtensions"/>
  *     <enumeration value="AccountLeadFormAdExtensions"/>
  *     <enumeration value="CampaignLeadFormAdExtensions"/>
+ *     <enumeration value="AccountNegativeKeywordList"/>
+ *     <enumeration value="AccountNegativeKeywordListAssociation"/>
+ *     <enumeration value="AccountNegativeKeyword"/>
+ *     <enumeration value="ConversionGoal"/>
+ *     <enumeration value="EventGoal"/>
+ *     <enumeration value="AppInstallGoal"/>
+ *     <enumeration value="MultiStageGoal"/>
+ *     <enumeration value="DurationGoal"/>
+ *     <enumeration value="OfflineConversionGoal"/>
+ *     <enumeration value="UrlGoal"/>
+ *     <enumeration value="InStoreTransactionGoal"/>
+ *     <enumeration value="PagesViewedPerVisitGoal"/>
+ *     <enumeration value="SmartGoal"/>
+ *     <enumeration value="InStoreVisitGoal"/>
+ *     <enumeration value="ProductGoal"/>
+ *     <enumeration value="SeasonalityAdjustments"/>
+ *     <enumeration value="DataExclusions"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -492,7 +509,41 @@ public enum DownloadEntity {
     @XmlEnumValue("AccountLeadFormAdExtensions")
     ACCOUNT_LEAD_FORM_AD_EXTENSIONS("AccountLeadFormAdExtensions"),
     @XmlEnumValue("CampaignLeadFormAdExtensions")
-    CAMPAIGN_LEAD_FORM_AD_EXTENSIONS("CampaignLeadFormAdExtensions");
+    CAMPAIGN_LEAD_FORM_AD_EXTENSIONS("CampaignLeadFormAdExtensions"),
+    @XmlEnumValue("AccountNegativeKeywordList")
+    ACCOUNT_NEGATIVE_KEYWORD_LIST("AccountNegativeKeywordList"),
+    @XmlEnumValue("AccountNegativeKeywordListAssociation")
+    ACCOUNT_NEGATIVE_KEYWORD_LIST_ASSOCIATION("AccountNegativeKeywordListAssociation"),
+    @XmlEnumValue("AccountNegativeKeyword")
+    ACCOUNT_NEGATIVE_KEYWORD("AccountNegativeKeyword"),
+    @XmlEnumValue("ConversionGoal")
+    CONVERSION_GOAL("ConversionGoal"),
+    @XmlEnumValue("EventGoal")
+    EVENT_GOAL("EventGoal"),
+    @XmlEnumValue("AppInstallGoal")
+    APP_INSTALL_GOAL("AppInstallGoal"),
+    @XmlEnumValue("MultiStageGoal")
+    MULTI_STAGE_GOAL("MultiStageGoal"),
+    @XmlEnumValue("DurationGoal")
+    DURATION_GOAL("DurationGoal"),
+    @XmlEnumValue("OfflineConversionGoal")
+    OFFLINE_CONVERSION_GOAL("OfflineConversionGoal"),
+    @XmlEnumValue("UrlGoal")
+    URL_GOAL("UrlGoal"),
+    @XmlEnumValue("InStoreTransactionGoal")
+    IN_STORE_TRANSACTION_GOAL("InStoreTransactionGoal"),
+    @XmlEnumValue("PagesViewedPerVisitGoal")
+    PAGES_VIEWED_PER_VISIT_GOAL("PagesViewedPerVisitGoal"),
+    @XmlEnumValue("SmartGoal")
+    SMART_GOAL("SmartGoal"),
+    @XmlEnumValue("InStoreVisitGoal")
+    IN_STORE_VISIT_GOAL("InStoreVisitGoal"),
+    @XmlEnumValue("ProductGoal")
+    PRODUCT_GOAL("ProductGoal"),
+    @XmlEnumValue("SeasonalityAdjustments")
+    SEASONALITY_ADJUSTMENTS("SeasonalityAdjustments"),
+    @XmlEnumValue("DataExclusions")
+    DATA_EXCLUSIONS("DataExclusions");
     private final String value;
 
     DownloadEntity(String v) {

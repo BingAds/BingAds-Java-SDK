@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfAdExtensionByKeywordReportColumn {
     @XmlElement(name = "AdExtensionByKeywordReportColumn")
     @XmlSchemaType(name = "string")
     protected List<AdExtensionByKeywordReportColumn> adExtensionByKeywordReportColumns;
+    public ArrayOfAdExtensionByKeywordReportColumn()
+    {
+      this.adExtensionByKeywordReportColumns = new ArrayList<AdExtensionByKeywordReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfAdExtensionByKeywordReportColumn(List<AdExtensionByKeywordReportColumn> adextensionbykeywordreportcolumns)
+    {
+      this.adExtensionByKeywordReportColumns = adextensionbykeywordreportcolumns;
+    }
 
     /**
      * Gets the value of the adExtensionByKeywordReportColumns property.

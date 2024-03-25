@@ -46,6 +46,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class KeywordPerformanceReportRequest
     extends ReportRequest
 {
+    public KeywordPerformanceReportRequest() {
+      this.type = "KeywordPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

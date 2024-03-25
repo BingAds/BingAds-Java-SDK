@@ -42,6 +42,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class UserLocationPerformanceReportRequest
     extends ReportRequest
 {
+    public UserLocationPerformanceReportRequest() {
+      this.type = "UserLocationPerformanceReportRequest";
+    }
 
     @XmlElement(name = "Aggregation", required = true)
     @XmlSchemaType(name = "string")

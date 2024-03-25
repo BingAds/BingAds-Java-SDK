@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfProductSearchQueryPerformanceReportColumn {
     @XmlElement(name = "ProductSearchQueryPerformanceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<ProductSearchQueryPerformanceReportColumn> productSearchQueryPerformanceReportColumns;
+    public ArrayOfProductSearchQueryPerformanceReportColumn()
+    {
+      this.productSearchQueryPerformanceReportColumns = new ArrayList<ProductSearchQueryPerformanceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfProductSearchQueryPerformanceReportColumn(List<ProductSearchQueryPerformanceReportColumn> productsearchqueryperformancereportcolumns)
+    {
+      this.productSearchQueryPerformanceReportColumns = productsearchqueryperformancereportcolumns;
+    }
 
     /**
      * Gets the value of the productSearchQueryPerformanceReportColumns property.

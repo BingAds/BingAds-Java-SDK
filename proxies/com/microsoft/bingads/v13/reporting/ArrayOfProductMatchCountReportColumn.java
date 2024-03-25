@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfProductMatchCountReportColumn {
     @XmlElement(name = "ProductMatchCountReportColumn")
     @XmlSchemaType(name = "string")
     protected List<ProductMatchCountReportColumn> productMatchCountReportColumns;
+    public ArrayOfProductMatchCountReportColumn()
+    {
+      this.productMatchCountReportColumns = new ArrayList<ProductMatchCountReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfProductMatchCountReportColumn(List<ProductMatchCountReportColumn> productmatchcountreportcolumns)
+    {
+      this.productMatchCountReportColumns = productmatchcountreportcolumns;
+    }
 
     /**
      * Gets the value of the productMatchCountReportColumns property.

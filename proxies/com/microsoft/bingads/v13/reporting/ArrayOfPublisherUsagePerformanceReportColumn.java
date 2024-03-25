@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfPublisherUsagePerformanceReportColumn {
     @XmlElement(name = "PublisherUsagePerformanceReportColumn")
     @XmlSchemaType(name = "string")
     protected List<PublisherUsagePerformanceReportColumn> publisherUsagePerformanceReportColumns;
+    public ArrayOfPublisherUsagePerformanceReportColumn()
+    {
+      this.publisherUsagePerformanceReportColumns = new ArrayList<PublisherUsagePerformanceReportColumn>();
+    }
+    @JsonCreator
+    public ArrayOfPublisherUsagePerformanceReportColumn(List<PublisherUsagePerformanceReportColumn> publisherusageperformancereportcolumns)
+    {
+      this.publisherUsagePerformanceReportColumns = publisherusageperformancereportcolumns;
+    }
 
     /**
      * Gets the value of the publisherUsagePerformanceReportColumns property.

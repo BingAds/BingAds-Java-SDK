@@ -7,8 +7,9 @@ import java.util.List;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.ArrayList;
+import java.util.Arrays;
 import jakarta.jws.WebService;
+import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.handler.Handler;
 import jakarta.xml.ws.handler.HandlerResolver;
@@ -21,6 +22,7 @@ import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.restful.RestfulServiceClient;
+import com.microsoft.bingads.v13.adinsight.IAdInsightService;
 import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
 import com.microsoft.bingads.v13.customerbilling.ICustomerBillingService;
@@ -69,6 +71,29 @@ public class ServiceClient<T> {
         return authorizationData;
     }
 
+    private static HashMap<Class<?>, Boolean> EnableRestApiDefault = new HashMap<Class<?>, Boolean>() {{
+        put(ICampaignManagementService.class, false);
+        put(IBulkService.class, false);
+        put(IReportingService.class, false);
+        put(ICustomerManagementService.class, false);
+        put(ICustomerBillingService.class, false);
+        put(IAdInsightService.class, false);
+    }};
+
+    public static void setRestApiEnabledDefault(Class<?> serviceClass, boolean restApiEnabled) {
+        EnableRestApiDefault.replace(serviceClass, restApiEnabled);
+    }
+
+    public static boolean getRestApiEnabledDefault(Class<?> serviceClass) {
+        Boolean restApiEnabled = EnableRestApiDefault.get(serviceClass);
+
+        if (restApiEnabled == null) {
+            return false;
+        }
+
+        return restApiEnabled;
+    }
+
     /**
      * Initializes a new instance of this class with the specified authorization data.
      *
@@ -76,11 +101,11 @@ public class ServiceClient<T> {
      * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
-        this(authorizationData, null, serviceInterface, false);
+        this(authorizationData, null, serviceInterface, getRestApiEnabledDefault(serviceInterface));
     }
     
     public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
-    	this(authorizationData, environment, serviceInterface, false);
+    	this(authorizationData, environment, serviceInterface, getRestApiEnabledDefault(serviceInterface));
     }
 
     /**
@@ -113,6 +138,13 @@ public class ServiceClient<T> {
         serviceFactory = ServiceFactoryFactory.createServiceFactory();
 
         service = serviceFactory.createService(serviceInterface, environment);
+
+        service.setHandlerResolver(new HandlerResolver() {
+            @Override
+            public List<Handler> getHandlerChain(PortInfo portInfo) {
+                return Arrays.asList(HeaderHandler.getInstance(), MessageHandler.getInstance());
+            }
+        });
         
         if (enableRestApi) {
         	restService = RestfulServiceFactory.createServiceClient(authorizationData, environment, serviceInterface);
@@ -126,10 +158,6 @@ public class ServiceClient<T> {
      */
     public T getService() {
         authorizationData.validate();
-
-        WebService webServiceAnnotation = serviceInterface.getAnnotation(WebService.class);
-
-        final String ns = webServiceAnnotation.targetNamespace();
 
         final Map<String, String> headers = new HashMap<String, String>();
 
@@ -148,17 +176,9 @@ public class ServiceClient<T> {
             }
         });
 
-        service.setHandlerResolver(new HandlerResolver() {
-            @Override
-            public List<Handler> getHandlerChain(PortInfo portInfo) {
-                List<Handler> handlerList = new ArrayList<Handler>();
-                handlerList.add(new HeaderHandler(ns, headers));
-                handlerList.add(MessageHandler.getInstance());
-                return handlerList;
-            }
-        });
-
         T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
+
+        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
         
         if (restService == null) {
         	return port;
@@ -189,8 +209,7 @@ public class ServiceClient<T> {
         if (authorizationData.getAuthentication() instanceof OAuthWithAuthorizationCode) {
             OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode) authorizationData.getAuthentication();
 
-            auth.refreshTokensIfNeeded(false);
+            auth.refreshTokensIfNeeded(false);            
         }
     }
-
 }
