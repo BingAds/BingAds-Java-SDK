@@ -1,4 +1,4 @@
-package com.microsoft.bingads.v13.api.test.entities.negative_keywords.account_negative_keyword_list_association.write;
+package com.microsoft.bingads.v13.api.test.entities.account_negative_keyword_list_association.write;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
-import com.microsoft.bingads.v13.api.test.entities.negative_keywords.account_negative_keyword_list_association.BulkAccountNKListAssociationTest;
+import com.microsoft.bingads.v13.api.test.entities.account_negative_keyword_list_association.BulkAccountNKListAssociationTest;
 import com.microsoft.bingads.v13.bulk.entities.BulkAccountNegativeKeywordListAssociation;
 import com.microsoft.bingads.v13.bulk.entities.Status;
 

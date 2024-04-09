@@ -80,7 +80,8 @@ import jakarta.xml.bind.annotation.XmlType;
     DSAAutoTargetPerformanceReportRequest.class,
     DSACategoryPerformanceReportRequest.class,
     HotelDimensionPerformanceReportRequest.class,
-    HotelGroupPerformanceReportRequest.class
+    HotelGroupPerformanceReportRequest.class,
+    AssetGroupPerformanceReportRequest.class
 })
 public class ReportRequest {
 
