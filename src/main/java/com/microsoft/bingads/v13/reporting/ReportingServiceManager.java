@@ -63,21 +63,29 @@ public class ReportingServiceManager {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account
      */
     public ReportingServiceManager(AuthorizationData authorizationData) {
-        this(authorizationData, null);
+        this(authorizationData, null, ServiceClient.getRestApiEnabledDefault(IReportingService.class));
+    }
+    
+    public ReportingServiceManager(AuthorizationData authorizationData, boolean enableRestApi) {
+        this(authorizationData, null, enableRestApi);
     }
     
     public ReportingServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), apiEnvironment);
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), apiEnvironment, ServiceClient.getRestApiEnabledDefault(IReportingService.class));
+    }
+    
+    public ReportingServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment, boolean enableRestApi) {
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), apiEnvironment, enableRestApi);
     }
 
     private ReportingServiceManager(AuthorizationData authorizationData,
-            HttpFileService httpFileService, ZipExtractor zipExtractor, ApiEnvironment apiEnvironment) {
+            HttpFileService httpFileService, ZipExtractor zipExtractor, ApiEnvironment apiEnvironment, boolean enableRestApi) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
         this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IReportingService>(this.authorizationData, apiEnvironment, IReportingService.class);
+        serviceClient = new ServiceClient<IReportingService>(this.authorizationData, apiEnvironment, IReportingService.class, enableRestApi);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 

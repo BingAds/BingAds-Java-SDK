@@ -96,7 +96,7 @@ public class BulkServiceManager {
      * @param authorizationData Represents a user who intends to access the corresponding customer and account.
      */
     public BulkServiceManager(AuthorizationData authorizationData) {
-        this(authorizationData, null);
+        this(authorizationData, null, ServiceClient.getRestApiEnabledDefault(IBulkService.class));
     }
     
     public BulkServiceManager(AuthorizationData authorizationData, boolean enableRestApi) {
@@ -104,7 +104,7 @@ public class BulkServiceManager {
     }
 
     public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, false);
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, ServiceClient.getRestApiEnabledDefault(IBulkService.class));
     }
     
     public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment, boolean enableRestApi) {

@@ -1,83 +1,97 @@
 package com.microsoft.bingads.internal.restful;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
+import java.io.InputStream;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-
+import org.eclipse.jetty.client.InputStreamResponseListener;
+import org.eclipse.jetty.client.Request;
+import org.eclipse.jetty.client.Response.HeadersListener;
+import org.eclipse.jetty.client.StringRequestContent;
+import org.eclipse.jetty.http.HttpMethod;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.microsoft.bingads.ApiEnvironment;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.HeadersImpl;
+import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
+import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceInfo;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.restful.adaptor.AdaptorUtil;
 
-public class RestfulServiceClient extends RestfulServiceClientExtension{
+class ResponseInfo<TResponse, TFaultDetail> {
+    private TResponse response;
+
+    public TResponse getResponse() {
+        return response;
+    }
+
+    public void setResponse(TResponse response) {
+        this.response = response;
+    }
+
+    private TFaultDetail faultDetail;
+
+    public TFaultDetail getFaultDetail() {
+        return faultDetail;
+    }
+
+    public void setFaultDetail(TFaultDetail faultDetail) {
+        this.faultDetail = faultDetail;
+    }
+}
+
+class RestfulServiceClient {
     protected static final String HttpPost = "POST";
     protected static final String HttpPut = "PUT";
     protected static final String HttpDelete = "DELETE";
 
-    protected AuthorizationData authorizationData;
+    protected Authentication authentication;
+
+    protected Map<String, String> headers;
 
     protected ApiEnvironment environment;
-    
-    protected Object soapService;
 
-    private Class serviceInterface;
+    private Class<?> serviceInterface;
     
-    private ConcurrentHashMap<Class, Calendar> retryAfter = new ConcurrentHashMap<Class, Calendar>();
+    private static final ConcurrentHashMap<Class<?>, Calendar> retryAfter = new ConcurrentHashMap<Class<?>, Calendar>();
     
-    private ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
+    private static final ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
     
-    private ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
-    
-    private CloseableHttpAsyncClient asyncClient = HttpAsyncClients.createDefault();
-    
-    private CloseableHttpClient httpClient = HttpClients.custom()
-    												.setConnectionManager(new PoolingHttpClientConnectionManager())
-    												.setConnectionManagerShared(true)
-    												.build();
-    
-    private String userAgent;
+    private static final ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
+
+    private static final String userAgent = ServiceUtils.getUserAgent();
     
     private boolean enableFallbackToSoap;
 
-    protected RestfulServiceClient(AuthorizationData authData, ApiEnvironment env, Class serviceInterface) {
-        this.authorizationData = authData;
+    protected RestfulServiceClient(Authentication authentication, Map<String, String> headers, ApiEnvironment env, Class<?> serviceInterface) {
+        this.authentication = authentication;
+        this.headers = headers;
         this.environment = env;
         this.serviceInterface = serviceInterface;
         this.enableFallbackToSoap = ServiceUtils.getFallbackFlag();
-        this.userAgent = ServiceUtils.getUserAgent();
         switch (serviceInterface.getSimpleName()) {
         case "ICampaignManagementService":
         	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
@@ -95,12 +109,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
         	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
         }
-    }
-    
-    public void setSoapService(Object soapService)
-    {
-    	this.soapService = soapService;
-    }
+    }   
 
     private String getServiceUrl(String entityEndpoint) {
         String serviceUrl = ServiceUtils.getServiceUrlFromConfig(serviceInterface);
@@ -118,38 +127,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         return serviceUrl + entityEndpoint;
     }
 
-    private List<String> buildHeaders() {
-        List<String> headers = new ArrayList<String>();
-
-        //headers.add("Content-Type");
-        //headers.add("application/json");
-
-        headers.add("ApplicationToken");
-        headers.add(authorizationData.getDeveloperToken());
-
-        headers.add("CustomerId");
-        headers.add(Long.toString(authorizationData.getCustomerId()));
-
-        headers.add("CustomerAccountId");
-        headers.add(Long.toString(authorizationData.getAccountId()));
-
-        headers.add("DeveloperToken");
-        headers.add(authorizationData.getDeveloperToken());
-
-        this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
-            @Override
-            public void addHeader(String name, String value) {
-                headers.add(name);
-                headers.add(value);
-            }
-        });
-
-        addUserAgent(headers);
-
-        return headers;
-    }
-
-    private <T> void addUserAgent(List<String> headers) {
+    private static String getFullUserAgent() {
         String actualUserAgent = "BingAdsSDKJava.RestApi";
         if (userAgent != null) {
         	actualUserAgent += "." + userAgent;
@@ -160,76 +138,59 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
         	actualUserAgent += "/" + javaVersion;
         }
 
-        headers.add("User-Agent");
-        headers.add(actualUserAgent);
+        return actualUserAgent;
     }
     
-    private <Req, Resp> Resp callSoapMethod(Req request) throws Exception {
-    	Method method;
-    	Object response = null;
-    	String[] strs = request.getClass().getName().split("\\.");
-    	String methodName = strs[strs.length - 1];
-    	methodName = methodName.substring(0, 1).toLowerCase() + methodName.substring(1, methodName.length() - 7);
-		try {
-			method = soapService.getClass().getMethod(methodName, request.getClass());
-			response = method.invoke(soapService, request);
-		} catch (Exception e) {
-			throw (Exception)e.getCause();
-		}
-    	return (Resp)response;
-    }
-    
-    private <Req, Resp> Response<Resp> callSoapMethodAsync(Req request)
-    {
-    	Method method;
-    	Response<Resp> response = null;
-    	String[] strs = request.getClass().getName().split("\\.");
-    	String methodName = strs[strs.length - 1];
-    	methodName = methodName.substring(0, 1).toLowerCase() + methodName.substring(1, methodName.length() - 7) + "Async";
-    	try {
-    		method = soapService.getClass().getMethod(methodName, request.getClass());
-			response = (Response<Resp>) method.invoke(soapService, request);
-    	} catch (Exception e) {
-    		e.printStackTrace();
-		}
-    	
-    	return response;
-    }
-    
-    private HttpEntityEnclosingRequestBase asRequest(String request, String verb, String entityEndpoint)
-    		throws Exception {
-    	HttpEntityEnclosingRequestBase req = null;
-    	URI uri = new URI(getServiceUrl(entityEndpoint));
-    	StringEntity entity = new StringEntity(request, ContentType.APPLICATION_JSON);
-    	List<String> headers = buildHeaders();
-    	
-    	switch (verb) {
-    		case HttpPost:
-    			req = new HttpPost(uri);
-    			req.setEntity(entity);
-    			break;
-    		case HttpPut:
-    			req = new HttpPut(uri);
-    			req.setEntity(entity);
-    			break;
-    		case HttpDelete:
-    			req = new HttpDeleteWithBody(uri);
-    			req.setEntity(entity);
-    			break;
-    	}
+    private Request asRequest(String request, String verb, String entityEndpoint) {
+        HttpMethod method;
 
-    	if (req != null) {
-    		for (int i = 0; i < headers.size(); i += 2) {
-    			req.setHeader(headers.get(i), headers.get(i + 1));
-    		}
-    	}
-    	
-    	return req;
+        switch (verb) {
+            case HttpPost:
+                method = HttpMethod.POST;
+                break;
+            case HttpPut:
+                method = HttpMethod.PUT;
+                break;
+            case HttpDelete:
+                method = HttpMethod.DELETE;
+                break;
+            default:
+                throw new InternalException("Unknown HTTP verb: " + verb);
+        }
+
+        String uri = getServiceUrl(entityEndpoint);
+
+        Request req = HttpClientFactory.get()            
+            .newRequest(uri)
+            .method(method)
+            .body(new StringRequestContent("application/json", request));
+
+        if (authentication instanceof OAuthWithAuthorizationCode) {
+            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode) authentication;
+
+            auth.refreshTokensIfNeeded(false);            
+        }
+
+        req.headers(h -> {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                h.put(entry.getKey(), entry.getValue());
+            }
+
+            authentication.addHeaders(new HeadersImpl() {
+                @Override
+                public void addHeader(String name, String value) {
+                    h.put(name, value);
+                }
+            });
+
+            h.put("User-Agent", getFullUserAgent());
+        });
+
+        return req;
     }
-    
-    private void SetRetryAfterTime(Header header)
-    {
-    	String value = header != null ? header.getValue() : null;
+
+    private void SetRetryAfterTime(String value)
+    {    	
     	int delta;
     	try {
     		delta = Integer.parseInt(value);
@@ -241,168 +202,245 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
     	retryAfter.put(serviceInterface, cal);
     }
     
-    protected <Req, Resp> Resp sendRequest(Req request, String entityEndpoint, String verb, Class respClass)
-            throws Exception {
-    	if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
-    		&& Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
-    		return callSoapMethod(request);
-    	}
+    protected <TRequest, TResponse, TFaultDetail> ResponseInfo<TResponse, TFaultDetail> getResponseInfo(TRequest request, String entityEndpoint, String verb, Class<TResponse> responseClass, Class<TFaultDetail> faultDetailClass) {
+        if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
+            && Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
+            return null;
+        }
 
-        String jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
-    	
-        String[] headers = buildHeaders().toArray(new String[0]);
+        String jsonRequest;
+        try {
+            jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
+        } catch (JsonProcessingException e) {
+            throw new InternalException(e);
+        }
 
-        HttpEntityEnclosingRequestBase req = asRequest(jsonRequest, verb, entityEndpoint);
-        CloseableHttpResponse response = httpClient.execute(req);
+        Request httpRequest = asRequest(jsonRequest, verb, entityEndpoint);
+
+        InputStreamResponseListener listener = new InputStreamResponseListener();
+
+        httpRequest.send(listener);
         
-        int statusCode = response.getStatusLine().getStatusCode();    
-        Header header = response.getFirstHeader("Retry-After");
-        if (statusCodesForSwitchToSoap.contains(statusCode)) {
-        	SetRetryAfterTime(header);
+        org.eclipse.jetty.client.Response httpResponse;
+        try {
+            httpResponse = listener.get(5, TimeUnit.MINUTES);
+        } catch (InterruptedException | TimeoutException | ExecutionException e) {
+            throw new InternalException(e);
+        }
+
+        int statusCode = httpResponse.getStatus();
+
+        if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {                
+            SetRetryAfterTime(httpResponse.getHeaders().get("RetryAfter"));
+
+            return null;
         }
         
-        
+        ResponseInfo<TResponse, TFaultDetail> responseInfo = new ResponseInfo<>();
+
         if (statusCodesForApplicationFault.contains(statusCode)) {
-        	throwException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), response);
+            TFaultDetail faultDetail = parseStream(listener.getInputStream(), faultDetailClass);
+
+            responseInfo.setFaultDetail(faultDetail);
+
+            return responseInfo;
         }
-     
-        if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-        	return callSoapMethod(request);
+
+        if (statusCode >= 200 && statusCode <= 299) {
+            TResponse response = parseStream(listener.getInputStream(), responseClass);
+
+            responseInfo.setResponse(response);
+
+            return responseInfo;
         }
+
+        throw new InternalException("Unexpected HTTP status code: " + statusCode);
+    }
+
+    protected String getFaultMessage(String trackingId) {
+		return "An error occurred while executing the request. Please check the exception Detail property for more information. TrackingId: " + trackingId;
+	}
+
+    protected <T> T parseStream(InputStream stream, Class<T> resultClass) {
+        try {
+            return AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(stream), resultClass);
+        } catch (IOException e) {
+            throw new InternalException(e);
+        } finally {
+            try {
+                stream.close();
+            } catch (IOException e) {
+                throw new InternalException(e);
+            }
+        }
+    }
+
+    protected <TRequest, TResponse, TFaultDetail> Response<TResponse> processRequestAsync(TRequest request, String entityEndpoint, String verb, Class<TResponse> respClass, Class<TFaultDetail> faultDetailClass, Function<TFaultDetail, Exception> getException, BiFunction<TRequest, AsyncHandler<TResponse>, Future<?>> soapMethod, AsyncHandler<TResponse> handler) {        
+        ResponseFuture<TResponse> responseFuture = new ResponseFuture<TResponse>(); 
+
+        if (handler != null) {
+            responseFuture.setHandler(handler);
+        }
+
+        Calendar retryAfterTime = retryAfter.get(serviceInterface);
+
+        if (retryAfterTime != null && Calendar.getInstance().before(retryAfterTime)) {
+            soapMethod.apply(request, new AsyncHandler<TResponse>() {
+                @Override
+                public void handleResponse(Response<TResponse> soapResponse) {
+                    try {
+                        responseFuture.setContext(soapResponse.getContext());                        
+
+                        responseFuture.setResult(soapResponse.get());
+                    } catch (Throwable e) {
+                        responseFuture.setException(e);
+                    }
+                }
+            });
+
+            return responseFuture;
+        }
+
+        String jsonRequest;
+        try {
+            jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
+        } catch (JsonProcessingException e) {
+            throw new InternalException(e);
+        }
+
+        InputStreamResponseListener listener = new InputStreamResponseListener();
+
+        Request httpRequest = asRequest(jsonRequest, verb, entityEndpoint).onResponseHeaders(new HeadersListener() {
+            @Override
+            public void onHeaders(org.eclipse.jetty.client.Response httpResponse) {
+                try {
+                    int statusCode = httpResponse.getStatus();
+
+                    if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) { 
+                        httpResponse.abort(new IOException("REST API method not supported, will fallback"));
+                        
+                        SetRetryAfterTime(httpResponse.getHeaders().get("RetryAfter"));
+                        
+                        soapMethod.apply(request, new AsyncHandler<TResponse>() {
+                            @Override
+                            public void handleResponse(Response<TResponse> soapResponse) {
+                                try {
+                                    responseFuture.setContext(soapResponse.getContext());
+
+                                    responseFuture.setResult(soapResponse.get());
+                                } catch (Throwable e) {
+                                    responseFuture.setException(e);
+                                }
+                            }
+                        });
+
+                        return;
+                    }
+
+                    String trackingIdHeader = httpResponse.getHeaders().get(ServiceUtils.TRACKING_HEADER_NAME);
+                    
+                    CompletableFuture.runAsync(() -> {                    
+                        if (statusCodesForApplicationFault.contains(statusCode)) {
+                            TFaultDetail faultDetail = parseStream(listener.getInputStream(), faultDetailClass);
+
+                            Exception exception = getException.apply(faultDetail);
+
+                            responseFuture.setException(exception);
+
+                            return;
+                        }
+                        
+                        Map<String, Object> context = new HashMap<>();
+
+                        context.put(ServiceUtils.TRACKING_KEY, trackingIdHeader);
+                        
+                        responseFuture.setContext(context);
+
+                        if (statusCode >= 200 && statusCode <= 299) {
+                            TResponse responseObj = parseStream(listener.getInputStream(), respClass);
+
+                            responseFuture.setResult(responseObj);
+
+                            return;
+                        }
+
+                        throw new InternalException("Unexpected HTTP status code: " + statusCode);
+                    })
+                    .whenComplete((r, e) -> { 
+                        if (e != null) {
+                            responseFuture.setException(e); 
+                        }
+                    });
+                } catch (Throwable e) {
+                    responseFuture.setException(e);
+                }
+            }
+        });
+
+        httpRequest.send(listener);
         
-        Resp resp = (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(response.getEntity().getContent()), respClass);
-        response.close();
-        httpClient.close();
-        return resp;
-    }
-    
-    protected <Req, Resp> Future<?> sendRequestAsync(Req request, String entityEndpoint, String verb, Class respClass, AsyncHandler<Resp> asyncHandler)
-            throws URISyntaxException, IOException, InterruptedException {
-    	Response<Resp> resp = sendRequestAsync(request, entityEndpoint, verb, respClass);
-    	asyncHandler.handleResponse(resp);
-        return resp;
+        return responseFuture;
     }
 
-    protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class respClass)
-            throws URISyntaxException, IOException, InterruptedException {
-    	if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
-    		&& Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
-    		return callSoapMethodAsync(request);
-    	}
+    static class ResponseFuture<T> extends ResultFuture<T> implements Response<T> {
+        private Map<String, Object> context = null;
 
-    	String jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
-    	
-    	HttpEntityEnclosingRequestBase req = null;
-		try {
-			req = asRequest(jsonRequest, verb, entityEndpoint);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-		asyncClient.start();
-    	Future<HttpResponse> future = asyncClient.execute(req, null);
-    	
-    	return new Response<Resp>() {
+        public ResponseFuture() {
+            super(null);
+        }
 
-            @Override
-            public boolean cancel(boolean mayInterruptIfRunning) {
-                // TODO Auto-generated method stub
-                return future.cancel(mayInterruptIfRunning);
-            }
+        public void setHandler(AsyncHandler<T> handler) {
+            super.handler = new AsyncCallback<T>() {
+                @Override
+                public void onCompleted(Future<T> result) {
+                    handler.handleResponse(new Response<T>() {
+                        @Override
+                        public boolean cancel(boolean mayInterruptIfRunning) {
+                            return result.cancel(mayInterruptIfRunning);
+                        }
 
-            @Override
-            public boolean isCancelled() {
-                // TODO Auto-generated method stub
-                return future.isCancelled();
-            }
+                        @Override
+                        public boolean isCancelled() {
+                            return result.isCancelled();
+                        }
 
-            @Override
-            public boolean isDone() {
-                // TODO Auto-generated method stub
-                return future.isDone();
-            }
+                        @Override
+                        public boolean isDone() {
+                            return result.isDone();
+                        }
 
-            @Override
-            public Resp get() throws InterruptedException, ExecutionException {
-            	HttpResponse resp = null;
-            	try {
-            		resp = future.get();
-            	} catch (InterruptedException e) {
-            		System.out.println(e.getCause());
-            	}
-            	
-            	int statusCode = resp.getStatusLine().getStatusCode(); 
-            	Header header = resp.getFirstHeader("RetryAfter");
-                if (statusCodesForSwitchToSoap.contains(statusCode)) {
-                	SetRetryAfterTime(header);
+                        @Override
+                        public T get() throws InterruptedException, ExecutionException {
+                            return result.get();
+                        }
+
+                        @Override
+                        public T get(long timeout, TimeUnit unit)
+                                throws InterruptedException, ExecutionException, TimeoutException {
+                            return result.get(timeout, unit);
+                        }
+
+                        @Override
+                        public Map<String, Object> getContext() {
+                            return context;
+                        }
+                    });
                 }
 
-                Header trackingIdHeader = resp.getFirstHeader(ServiceUtils.TRACKING_HEADER_NAME);
-            	
-                context.put(ServiceUtils.TRACKING_KEY, trackingIdHeader.getValue());
-            	      	
-            	if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-            		try {
-						Response<Resp> response = callSoapMethodAsync(request);
-						return response.get();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-            	}
-            	else if (statusCodesForApplicationFault.contains(statusCode)) {
-            		throwExecutionException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), resp);
-            	}
-            	  	
-            	try {
-            		return (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(resp.getEntity().getContent()), respClass);
-            	} catch (Exception e) {
-					e.printStackTrace();
-				}
-            	
-            	return null;
-            }
+            };
+        }
 
-            @Override
-            public Resp get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-            	HttpResponse resp = future.get(timeout, unit);
-            	int statusCode = resp.getStatusLine().getStatusCode();  
-            	Header header = resp.getFirstHeader("RetryAfter");
-                if (statusCodesForSwitchToSoap.contains(statusCode)) {
-                	SetRetryAfterTime(header);
-                }
-            		     	
-            	if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-            		try {
-						Response<Resp> response = callSoapMethodAsync(request);
-						return response.get();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-            	}
-            	else if (statusCodesForApplicationFault.contains(statusCode)) {
-            		throwExecutionException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), resp);
-            	}
-            	
-            	try {
-            		return (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(resp.getEntity().getContent()), respClass);
-            	} catch (Exception e) {
-					e.printStackTrace();
-				}
-            	
-            	return null;
-            }
+        @Override
+        public Map<String, Object> getContext() {
+            return context;
+        }
 
-            private final Map<String, Object> context = new HashMap<>();
-
-            @Override
-            public Map<String, Object> getContext() {
-                return context;
-            }
-
-        };
+        void setContext(Map<String, Object> context) {
+            this.context = context;
+        }
     }
     
-    private static final Map<Class, String> serviceNameAndVersion = new HashMap<Class, String>() {
+    private static final Map<Class<?>, String> serviceNameAndVersion = new HashMap<Class<?>, String>() {
     	{
     		put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, "/Billing/v13");
 
@@ -418,7 +456,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
     	}
     };
 
-    private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
+    private static final Map<Class<?>, ServiceInfo> endpoints = new HashMap<Class<?>, ServiceInfo>() {
         {
 
             put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
@@ -427,14 +465,12 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Billing/v13");
                 }
             });
-
             put(com.microsoft.bingads.v13.customermanagement.ICustomerManagementService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/CustomerManagement/v13");
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/CustomerManagement/v13");
                 }
             });
-
             put(com.microsoft.bingads.v13.reporting.IReportingService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://reporting.api.bingads.microsoft.com/Reporting/v13");
@@ -458,8 +494,7 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
                     setProductionUrl("https://bulk.api.bingads.microsoft.com/Bulk/v13");
                     setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Bulk/v13");
                 }
-            });
-            // End of v13
+            });            
         }
     };
 

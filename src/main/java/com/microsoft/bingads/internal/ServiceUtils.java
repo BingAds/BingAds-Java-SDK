@@ -27,6 +27,8 @@ public class ServiceUtils {
 
     public static String REQUEST_HEADERS_KEY = "com.microsoft.bingads.requestHeaders";
 
+    public static String REQUEST_AUTHENTICATION_KEY = "com.microsoft.bingads.authentication";
+
     public static String TRACKING_HEADER_NAME = "TrackingId";
 
     public static String GetTrackingId(Response response) {        

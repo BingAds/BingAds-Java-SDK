@@ -4,11 +4,7 @@ import java.util.logging.Logger;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.Arrays;
-import jakarta.jws.WebService;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.handler.Handler;
@@ -17,11 +13,9 @@ import jakarta.xml.ws.handler.PortInfo;
 
 import com.microsoft.bingads.internal.HeaderHandler;
 import com.microsoft.bingads.internal.MessageHandler;
-import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.internal.restful.RestfulServiceClient;
 import com.microsoft.bingads.v13.adinsight.IAdInsightService;
 import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
@@ -55,7 +49,9 @@ public class ServiceClient<T> {
     private final Service service;
     private final ServiceFactory serviceFactory;
     private ApiEnvironment environment;
-    private RestfulServiceClient restService;
+    private T restService;
+
+    private boolean enableRestApi;
 
     /**
      * Gets the Bing Ads API environment.
@@ -145,10 +141,8 @@ public class ServiceClient<T> {
                 return Arrays.asList(HeaderHandler.getInstance(), MessageHandler.getInstance());
             }
         });
-        
-        if (enableRestApi) {
-        	restService = RestfulServiceFactory.createServiceClient(authorizationData, environment, serviceInterface);
-        }
+
+        this.enableRestApi = enableRestApi;
     }
 
     /**
@@ -166,50 +160,26 @@ public class ServiceClient<T> {
         headers.put("CustomerId", Long.toString(authorizationData.getCustomerId()));
 
         headers.put("DeveloperToken", authorizationData.getDeveloperToken());
-
-        refreshOAuthTokensIfNeeded();
-
-        this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
-            @Override
-            public void addHeader(String name, String value) {
-                headers.put(name, value);
-            }
-        });
-
-        T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
-
-        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
         
-        if (restService == null) {
-        	return port;
+        if (!enableRestApi) {
+        	return createSoapPort(headers);
         }
-        else {
-        	restService.setSoapService(port);
-            
-            return (T) Proxy.newProxyInstance(port.getClass().getClassLoader(), port.getClass().getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args)  throws Throwable {
-                	String methodName = method.getName();
-                	Method delegationMethod = restService.getClass().getMethod(methodName, method.getParameterTypes());
-                	Object response = null;
-                	try {
-                		response = delegationMethod.invoke(restService, args);
-                	}
-                	catch (Exception e)
-                	{
-                		throw e.getCause();
-                	}
-                	return response;
-                }
-            });
+        else {       	
+            return createRestService(headers);
         } 
     }
 
-    private void refreshOAuthTokensIfNeeded() {
-        if (authorizationData.getAuthentication() instanceof OAuthWithAuthorizationCode) {
-            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode) authorizationData.getAuthentication();
+    T createSoapPort(Map<String, String> headers) {
+        T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
 
-            auth.refreshTokensIfNeeded(false);            
-        }
+        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
+
+        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_AUTHENTICATION_KEY, this.authorizationData.getAuthentication());
+
+        return port;
+    }
+
+    T createRestService(Map<String, String> headers) {        
+        return RestfulServiceFactory.createServiceClient(authorizationData.getAuthentication(), headers, environment, serviceInterface, () -> createSoapPort(headers));
     }
 }
