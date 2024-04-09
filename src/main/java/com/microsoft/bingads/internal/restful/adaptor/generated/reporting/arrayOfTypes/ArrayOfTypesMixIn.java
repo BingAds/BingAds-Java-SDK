@@ -167,6 +167,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AssetGroupPerformanceReportColumn> getAssetGroupPerformanceReportColumns();
+
+            
+	@JsonValue
+	List<AssetGroupReportScope> getAssetGroupReportScopes();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

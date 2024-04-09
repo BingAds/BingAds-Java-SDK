@@ -88,6 +88,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.
 			@JsonSubTypes.Type(value = HotelDimensionPerformanceReportRequest.class, name = "HotelDimensionPerformanceReportRequest"),
 						
 			@JsonSubTypes.Type(value = HotelGroupPerformanceReportRequest.class, name = "HotelGroupPerformanceReportRequest"),
+						
+			@JsonSubTypes.Type(value = AssetGroupPerformanceReportRequest.class, name = "AssetGroupPerformanceReportRequest"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
