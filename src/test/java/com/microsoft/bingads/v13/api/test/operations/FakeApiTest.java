@@ -23,6 +23,13 @@ import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 public class FakeApiTest {   
     @Before
     public void setUp() {        
+        System.setProperty("com.microsoft.bingads.ICampaignManagementService.DisableRestApi", "true");
+        System.setProperty("com.microsoft.bingads.IBulkService.DisableRestApi", "true");
+        System.setProperty("com.microsoft.bingads.IReportingService.DisableRestApi", "true");
+        System.setProperty("com.microsoft.bingads.ICustomerManagementService.DisableRestApi", "true");
+        System.setProperty("com.microsoft.bingads.ICustomerBillingService.DisableRestApi", "true");
+        System.setProperty("com.microsoft.bingads.IAdInsightService.DisableRestApi", "true");
+
         ServiceFactoryFactory.setCustomServiceFactorySupplier(new Supplier<ServiceFactory>() {
             @Override
             public ServiceFactory get() {

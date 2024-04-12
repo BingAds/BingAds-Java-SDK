@@ -76,6 +76,10 @@ public class AdExtension {
     protected AdExtensionStatus status;
     @XmlElement(name = "Type", nillable = true)
     protected String type;
+
+    public AdExtension() {
+        this.type = "AdExtension";
+    }
     @XmlElement(name = "Version", nillable = true)
     protected Integer version;
 

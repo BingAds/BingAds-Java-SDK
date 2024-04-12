@@ -41,6 +41,10 @@ public class CriterionBid {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public CriterionBid() {
+        this.type = "CriterionBid";
+    }
+
     /**
      * Gets the value of the type property.
      * 

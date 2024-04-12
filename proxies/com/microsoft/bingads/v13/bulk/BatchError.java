@@ -67,6 +67,10 @@ public class BatchError {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public BatchError() {
+        this.type = "BatchError";
+    }
+
     /**
      * Gets the value of the code property.
      * 

@@ -44,6 +44,10 @@ public class ImportOption {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public ImportOption() {
+        this.type = "ImportOption";
+    }
+
     /**
      * Gets the value of the forwardCompatibilityMap property.
      * 

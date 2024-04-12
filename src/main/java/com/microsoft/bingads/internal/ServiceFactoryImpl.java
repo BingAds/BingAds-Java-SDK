@@ -1,23 +1,18 @@
 package com.microsoft.bingads.internal;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.xml.namespace.QName;
 
@@ -32,7 +27,7 @@ import jakarta.xml.ws.spi.Provider;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 
-    private static final String VERSION = "13.0.19";
+    public static final String VERSION = "13.0.19.1";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     
@@ -40,15 +35,13 @@ public class ServiceFactoryImpl implements ServiceFactory {
     
     private static final int WS_CREATE_RETRY_TIMES = 3;
 
-    private static Logger logger = Logger.getLogger(ServiceFactoryImpl.class.getName());
-
-    private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
+    public static final Map<Class<?>, ServiceInfo> endpoints = new HashMap<Class<?>, ServiceInfo>() {
         {
-
             put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v13/CustomerBillingService.svc");
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v13/CustomerBillingService.svc");
+                    setServiceNameAndVersion("Billing/v13");
                 }
             });
 
@@ -56,6 +49,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc");
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v13/CustomerManagementService.svc");
+                    setServiceNameAndVersion("CustomerManagement/v13");
                 }
             });
 
@@ -63,24 +57,28 @@ public class ServiceFactoryImpl implements ServiceFactory {
                 {
                 	setProductionUrl("https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc");
                     setSandboxUrl("https://reporting.api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc");
+                    setServiceNameAndVersion("Reporting/v13");
                 }
             });
             put(com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/CampaignManagementService.svc");
                     setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/CampaignManagementService.svc");
+                    setServiceNameAndVersion("CampaignManagement/v13");
                 }
             });
             put(com.microsoft.bingads.v13.adinsight.IAdInsightService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/v13/AdInsightService.svc");
                     setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/Api/Advertiser/AdInsight/v13/AdInsightService.svc");
+                    setServiceNameAndVersion("AdInsight/v13");
                 }
             });
             put(com.microsoft.bingads.v13.bulk.IBulkService.class, new ServiceInfo() {
                 {
                     setProductionUrl("https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/BulkService.svc");
                     setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/BulkService.svc");
+                    setServiceNameAndVersion("Bulk/v13");
                 }
             });
 			//End of v13
@@ -115,11 +113,21 @@ public class ServiceFactoryImpl implements ServiceFactory {
                 Future<Service> future = pool.submit(new Callable<Service>() {
                     public Service call() throws Exception {
                         if (isCxf) {
-                            // CXF doesn't require WSDL url to be passed
-                            return Service.create(qName);
-                        } else {
-                            return Service.create(url, qName);
-                        }
+                            return CxfUtils.runOnNewBus(
+                                // CXF doesn't require WSDL url to be passed
+                                () -> Service.create(qName), 
+                                (logging) -> { 
+                                    Set<String> elementNames = new HashSet<>();
+                    
+                                    elementNames.add("AuthenticationToken");
+                                    elementNames.add("Password");
+
+                                    logging.setSensitiveElementNames(elementNames); 
+                                }
+                            );
+                        } 
+                            
+                        return Service.create(url, qName);
                     }
                 });
 

@@ -1,7 +1,6 @@
 package com.microsoft.bingads.internal;
 
 import javax.xml.namespace.QName;
-import jakarta.xml.soap.SOAPEnvelope;
 import jakarta.xml.soap.SOAPHeader;
 import jakarta.xml.soap.SOAPMessage;
 import jakarta.xml.ws.handler.MessageContext;
@@ -29,11 +28,14 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
             Boolean outbound = (Boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
             if (outbound) {
                 SOAPMessage message = context.getMessage();
-                SOAPHeader header = message.getSOAPHeader();
-                SOAPEnvelope envelope = message.getSOAPPart().getEnvelope();
-                if (header == null) {
-                    header = envelope.addHeader();
+                
+                SOAPHeader tempHeader = message.getSOAPHeader();
+                
+                if (tempHeader == null) {
+                    tempHeader = message.getSOAPPart().getEnvelope().addHeader();
                 }
+
+                final SOAPHeader header = tempHeader;
 
                 Map<String, String> headers = (Map<String, String>)context.get(ServiceUtils.REQUEST_HEADERS_KEY);
 

@@ -54,6 +54,10 @@ public class BiddingScheme {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public BiddingScheme() {
+        this.type = "BiddingScheme";
+    }
+
     /**
      * Gets the value of the type property.
      * 

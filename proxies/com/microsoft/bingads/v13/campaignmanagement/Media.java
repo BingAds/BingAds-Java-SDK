@@ -47,6 +47,10 @@ public class Media {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public Media() {
+        this.type = "Media";
+    }
+
     /**
      * Gets the value of the id property.
      * 

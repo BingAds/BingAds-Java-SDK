@@ -91,6 +91,10 @@ public class ImportJob {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public ImportJob() {
+        this.type = "ImportJob";
+    }
+
     /**
      * Gets the value of the createdByUserId property.
      * 

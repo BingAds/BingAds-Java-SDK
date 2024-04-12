@@ -45,6 +45,10 @@ public class SharedListItem {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public SharedListItem() {
+        this.type = "SharedListItem";
+    }
+
     /**
      * Gets the value of the forwardCompatibilityMap property.
      * 

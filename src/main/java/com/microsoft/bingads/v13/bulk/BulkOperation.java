@@ -10,7 +10,6 @@ import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
@@ -332,8 +331,6 @@ public abstract class BulkOperation<TStatus> {
         File extractedFile = zipExtractor.extractFirstEntryToFile(zipResultPath, fullPath, localResultFileName == null, overwrite);
         
         zipResultPath.delete();
-        
-        MessageHandler.getInstance().handleDirectMessage("Bulk Download... RequestId: " + requestId + "; DownloadUrl: " + finalStatus.getResultFileUrl() + "; LocalPath: " + localResultDirectoryName.getPath());
 
         return extractedFile;
     }
