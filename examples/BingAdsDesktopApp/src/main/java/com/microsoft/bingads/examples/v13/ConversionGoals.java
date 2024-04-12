@@ -95,6 +95,7 @@ public class ConversionGoals extends ExampleBase {
             addConversionGoals.getConversionGoals().add(addDurationGoal);
             
             EventGoal addEventGoal = new EventGoal();
+            addEventGoal.setGoalCategory(ConversionGoalCategory.PURCHASE);
             // The type of user interaction you want to track.
             addEventGoal.setActionExpression("play");
             addEventGoal.setActionOperator(ExpressionOperator.CONTAINS);
@@ -137,6 +138,7 @@ public class ConversionGoals extends ExampleBase {
             addConversionGoals.getConversionGoals().add(addPagesViewedPerVisitGoal);
             
             UrlGoal addUrlGoal = new UrlGoal();
+            addUrlGoal.setGoalCategory(ConversionGoalCategory.PURCHASE);
             addUrlGoal.setConversionWindowInMinutes(30);
             addUrlGoal.setCountType(ConversionGoalCountType.ALL);
             addUrlGoal.setName("My Url Goal");

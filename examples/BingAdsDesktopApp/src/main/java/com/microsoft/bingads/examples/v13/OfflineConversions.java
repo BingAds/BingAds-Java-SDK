@@ -28,6 +28,7 @@ public class OfflineConversions extends ExampleBase {
             ArrayOfConversionGoal conversionGoals = new ArrayOfConversionGoal();
             
             OfflineConversionGoal offlineConversionGoal = new OfflineConversionGoal();
+            offlineConversionGoal.setGoalCategory(ConversionGoalCategory.PURCHASE);
             // Determines how long after a click that you want to count offline conversions. 
             offlineConversionGoal.setConversionWindowInMinutes(43200);
             // If the count type is 'Unique' then only the first offline conversion will be counted.
