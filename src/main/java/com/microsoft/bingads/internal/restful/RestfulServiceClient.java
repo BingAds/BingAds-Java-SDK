@@ -1,235 +1,140 @@
 package com.microsoft.bingads.internal.restful;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-
+import jakarta.ws.rs.client.AsyncInvoker;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.InvocationCallback;
+import jakarta.ws.rs.client.WebTarget;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.HeadersImpl;
-import com.microsoft.bingads.internal.ServiceInfo;
+import com.microsoft.bingads.AsyncCallback;
+import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.ServiceFactoryImpl;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.restful.adaptor.AdaptorUtil;
 
-public class RestfulServiceClient extends RestfulServiceClientExtension{
+class ResponseInfo<TResponse, TFaultDetail> {
+    private TResponse response;
+
+    public TResponse getResponse() {
+        return response;
+    }
+
+    public void setResponse(TResponse response) {
+        this.response = response;
+    }
+
+    private TFaultDetail faultDetail;
+
+    public TFaultDetail getFaultDetail() {
+        return faultDetail;
+    }
+
+    public void setFaultDetail(TFaultDetail faultDetail) {
+        this.faultDetail = faultDetail;
+    }
+}
+
+class RestfulServiceClient {
     protected static final String HttpPost = "POST";
     protected static final String HttpPut = "PUT";
     protected static final String HttpDelete = "DELETE";
 
-    protected AuthorizationData authorizationData;
+    protected Map<String, String> headers;
 
     protected ApiEnvironment environment;
-    
-    protected Object soapService;
 
-    private Class serviceInterface;
+    private Class<?> serviceInterface;
     
-    private ConcurrentHashMap<Class, Calendar> retryAfter = new ConcurrentHashMap<Class, Calendar>();
+    private static final ConcurrentHashMap<Class<?>, Calendar> retryAfter = new ConcurrentHashMap<Class<?>, Calendar>();
     
-    private ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
+    private static final ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
     
-    private ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
-    
-    private CloseableHttpAsyncClient asyncClient = HttpAsyncClients.createDefault();
-    
-    private CloseableHttpClient httpClient = HttpClients.custom()
-    												.setConnectionManager(new PoolingHttpClientConnectionManager())
-    												.setConnectionManagerShared(true)
-    												.build();
-    
-    private String userAgent;
+    private static final ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
+
+    private static final String userAgent = getUserAgent();
     
     private boolean enableFallbackToSoap;
 
-    protected RestfulServiceClient(AuthorizationData authData, ApiEnvironment env, Class serviceInterface) {
-        this.authorizationData = authData;
+    static {
+        com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+    
+        com.microsoft.bingads.internal.restful.adaptor.generated.bulk.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.bulk.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+    
+        com.microsoft.bingads.internal.restful.adaptor.generated.reporting.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.reporting.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+    }
+
+    protected RestfulServiceClient(Map<String, String> headers, ApiEnvironment env, Class<?> serviceInterface) {
+        this.headers = headers;
         this.environment = env;
         this.serviceInterface = serviceInterface;
         this.enableFallbackToSoap = ServiceUtils.getFallbackFlag();
-        this.userAgent = ServiceUtils.getUserAgent();
-        switch (serviceInterface.getSimpleName()) {
-        case "ICampaignManagementService":
-        	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
-        case "IBulkService":
-        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.bulk.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
-        case "IReportingService":
-        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
-        	com.microsoft.bingads.internal.restful.adaptor.generated.reporting.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
-        }
-    }
-    
-    public void setSoapService(Object soapService)
-    {
-    	this.soapService = soapService;
     }
 
-    private String getServiceUrl(String entityEndpoint) {
-        String serviceUrl = ServiceUtils.getServiceUrlFromConfig(serviceInterface);
-
-        if (serviceUrl == null) {
-            ServiceInfo serviceInfo = endpoints.get(serviceInterface);
-
-            serviceUrl = serviceInfo.GetUrl(environment);
-        }
-        else {
-        	URI uri = URI.create(serviceUrl);
-            serviceUrl = "https://" + uri.getAuthority() + serviceNameAndVersion.get(serviceInterface);
-        }
-        
-        return serviceUrl + entityEndpoint;
-    }
-
-    private List<String> buildHeaders() {
-        List<String> headers = new ArrayList<String>();
-
-        //headers.add("Content-Type");
-        //headers.add("application/json");
-
-        headers.add("ApplicationToken");
-        headers.add(authorizationData.getDeveloperToken());
-
-        headers.add("CustomerId");
-        headers.add(Long.toString(authorizationData.getCustomerId()));
-
-        headers.add("CustomerAccountId");
-        headers.add(Long.toString(authorizationData.getAccountId()));
-
-        headers.add("DeveloperToken");
-        headers.add(authorizationData.getDeveloperToken());
-
-        this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
-            @Override
-            public void addHeader(String name, String value) {
-                headers.add(name);
-                headers.add(value);
-            }
-        });
-
-        addUserAgent(headers);
-
-        return headers;
-    }
-
-    private <T> void addUserAgent(List<String> headers) {
+    private static String getUserAgent() {
         String actualUserAgent = "BingAdsSDKJava.RestApi";
-        if (userAgent != null) {
-        	actualUserAgent += "." + userAgent;
-        } 
+
+        String clientName = ServiceUtils.getClientName();
+
+        if (clientName != null) {
+        	actualUserAgent += "." + clientName;
+        }
+
+        actualUserAgent += "/" + ServiceFactoryImpl.VERSION;
         
         String javaVersion = System.getProperty("java.version");
+
         if (javaVersion.matches("\\d+[\\d|\\.|\\_]*\\d+")) {
-        	actualUserAgent += "/" + javaVersion;
+        	actualUserAgent += "_" + javaVersion;
         }
 
-        headers.add("User-Agent");
-        headers.add(actualUserAgent);
+        return actualUserAgent;
     }
-    
-    private <Req, Resp> Resp callSoapMethod(Req request) throws Exception {
-    	Method method;
-    	Object response = null;
-    	String[] strs = request.getClass().getName().split("\\.");
-    	String methodName = strs[strs.length - 1];
-    	methodName = methodName.substring(0, 1).toLowerCase() + methodName.substring(1, methodName.length() - 7);
-		try {
-			method = soapService.getClass().getMethod(methodName, request.getClass());
-			response = method.invoke(soapService, request);
-		} catch (Exception e) {
-			throw (Exception)e.getCause();
-		}
-    	return (Resp)response;
-    }
-    
-    private <Req, Resp> Response<Resp> callSoapMethodAsync(Req request)
-    {
-    	Method method;
-    	Response<Resp> response = null;
-    	String[] strs = request.getClass().getName().split("\\.");
-    	String methodName = strs[strs.length - 1];
-    	methodName = methodName.substring(0, 1).toLowerCase() + methodName.substring(1, methodName.length() - 7) + "Async";
-    	try {
-    		method = soapService.getClass().getMethod(methodName, request.getClass());
-			response = (Response<Resp>) method.invoke(soapService, request);
-    	} catch (Exception e) {
-    		e.printStackTrace();
-		}
-    	
-    	return response;
-    }
-    
-    private HttpEntityEnclosingRequestBase asRequest(String request, String verb, String entityEndpoint)
-    		throws Exception {
-    	HttpEntityEnclosingRequestBase req = null;
-    	URI uri = new URI(getServiceUrl(entityEndpoint));
-    	StringEntity entity = new StringEntity(request, ContentType.APPLICATION_JSON);
-    	List<String> headers = buildHeaders();
-    	
-    	switch (verb) {
-    		case HttpPost:
-    			req = new HttpPost(uri);
-    			req.setEntity(entity);
-    			break;
-    		case HttpPut:
-    			req = new HttpPut(uri);
-    			req.setEntity(entity);
-    			break;
-    		case HttpDelete:
-    			req = new HttpDeleteWithBody(uri);
-    			req.setEntity(entity);
-    			break;
-    	}
 
-    	if (req != null) {
-    		for (int i = 0; i < headers.size(); i += 2) {
-    			req.setHeader(headers.get(i), headers.get(i + 1));
-    		}
-    	}
-    	
-    	return req;
+    private Invocation.Builder asRequest(String entityEndpointPath) {
+        WebTarget targetForService = HttpClientFactory.get(serviceInterface, environment);
+
+        Invocation.Builder builder = targetForService.path(entityEndpointPath).request();
+        
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+            builder.header(entry.getKey(), entry.getValue());
+        }
+
+        builder.header("User-Agent", userAgent);
+
+        return builder;
     }
-    
-    private void SetRetryAfterTime(Header header)
-    {
-    	String value = header != null ? header.getValue() : null;
+
+    private void SetRetryAfterTime(String value)
+    {    	
     	int delta;
     	try {
     		delta = Integer.parseInt(value);
@@ -241,226 +146,258 @@ public class RestfulServiceClient extends RestfulServiceClientExtension{
     	retryAfter.put(serviceInterface, cal);
     }
     
-    protected <Req, Resp> Resp sendRequest(Req request, String entityEndpoint, String verb, Class respClass)
-            throws Exception {
-    	if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
-    		&& Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
-    		return callSoapMethod(request);
-    	}
+    protected <TRequest, TResponse, TFaultDetail> ResponseInfo<TResponse, TFaultDetail> getResponseInfo(TRequest request, String entityEndpoint, String verb, Class<TResponse> responseClass, Class<TFaultDetail> faultDetailClass) {
+        if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
+            && Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
+            return null;
+        }
 
-        String jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
-    	
-        String[] headers = buildHeaders().toArray(new String[0]);
+        String jsonRequest;
+        try {
+            jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
+        } catch (JsonProcessingException e) {
+            throw new InternalException(e);
+        }
 
-        HttpEntityEnclosingRequestBase req = asRequest(jsonRequest, verb, entityEndpoint);
-        CloseableHttpResponse response = httpClient.execute(req);
-        
-        int statusCode = response.getStatusLine().getStatusCode();    
-        Header header = response.getFirstHeader("Retry-After");
-        if (statusCodesForSwitchToSoap.contains(statusCode)) {
-        	SetRetryAfterTime(header);
+        Invocation.Builder builder = asRequest(entityEndpoint);
+
+        jakarta.ws.rs.core.Response httpResponse;
+
+        switch (verb) {
+            case HttpPost:
+                httpResponse = builder.post(Entity.json(jsonRequest));
+                break;
+            case HttpPut:
+                httpResponse = builder.put(Entity.json(jsonRequest));
+                break;
+            case HttpDelete:
+                httpResponse = builder.method("DELETE", Entity.json(jsonRequest));
+                break;
+            default:
+                throw new InternalException("Unknown HTTP verb: " + verb);
+        }
+
+        int statusCode = httpResponse.getStatus();
+
+        if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {                
+            SetRetryAfterTime(httpResponse.getHeaderString("RetryAfter"));
+
+            httpResponse.close();
+
+            return null;
         }
         
-        
+        ResponseInfo<TResponse, TFaultDetail> responseInfo = new ResponseInfo<>();
+
         if (statusCodesForApplicationFault.contains(statusCode)) {
-        	throwException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), response);
+            TFaultDetail faultDetail = parseStream((InputStream)httpResponse.getEntity(), faultDetailClass);
+
+            responseInfo.setFaultDetail(faultDetail);
+
+            return responseInfo;
         }
-     
-        if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-        	return callSoapMethod(request);
+
+        if (statusCode >= 200 && statusCode <= 299) {
+            TResponse response = parseStream((InputStream)httpResponse.getEntity(), responseClass);
+
+            responseInfo.setResponse(response);
+
+            return responseInfo;
         }
-        
-        Resp resp = (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(response.getEntity().getContent()), respClass);
-        response.close();
-        httpClient.close();
-        return resp;
-    }
-    
-    protected <Req, Resp> Future<?> sendRequestAsync(Req request, String entityEndpoint, String verb, Class respClass, AsyncHandler<Resp> asyncHandler)
-            throws URISyntaxException, IOException, InterruptedException {
-    	Response<Resp> resp = sendRequestAsync(request, entityEndpoint, verb, respClass);
-    	asyncHandler.handleResponse(resp);
-        return resp;
+
+        throw new InternalException("Got unexpected status code " + statusCode + " with response content: " + httpResponse.readEntity(String.class));
     }
 
-    protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class respClass)
-            throws URISyntaxException, IOException, InterruptedException {
-    	if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
-    		&& Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
-    		return callSoapMethodAsync(request);
-    	}
+    protected String getFaultMessage(String trackingId) {
+		return "An error occurred while executing the request. Please check the exception Detail property for more information. TrackingId: " + trackingId;
+	}
 
-    	String jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
-    	
-    	HttpEntityEnclosingRequestBase req = null;
-		try {
-			req = asRequest(jsonRequest, verb, entityEndpoint);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-		asyncClient.start();
-    	Future<HttpResponse> future = asyncClient.execute(req, null);
-    	
-    	return new Response<Resp>() {
-
-            @Override
-            public boolean cancel(boolean mayInterruptIfRunning) {
-                // TODO Auto-generated method stub
-                return future.cancel(mayInterruptIfRunning);
+    protected <T> T parseStream(InputStream stream, Class<T> resultClass) {
+        try {
+            return AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(stream), resultClass);
+        } catch (IOException e) {
+            throw new InternalException(e);
+        } finally {
+            try {
+                stream.close();
+            } catch (IOException e) {
+                throw new InternalException(e);
             }
+        }
+    }
 
-            @Override
-            public boolean isCancelled() {
-                // TODO Auto-generated method stub
-                return future.isCancelled();
-            }
+    protected <TRequest, TResponse, TFaultDetail> Response<TResponse> processRequestAsync(TRequest request, String entityEndpoint, String verb, Class<TResponse> respClass, Class<TFaultDetail> faultDetailClass, Function<TFaultDetail, Exception> getException, BiFunction<TRequest, AsyncHandler<TResponse>, Future<?>> soapMethod, AsyncHandler<TResponse> handler) {        
+        ResponseFuture<TResponse> responseFuture = new ResponseFuture<TResponse>(); 
 
-            @Override
-            public boolean isDone() {
-                // TODO Auto-generated method stub
-                return future.isDone();
-            }
+        if (handler != null) {
+            responseFuture.setHandler(handler);
+        }
 
-            @Override
-            public Resp get() throws InterruptedException, ExecutionException {
-            	HttpResponse resp = null;
-            	try {
-            		resp = future.get();
-            	} catch (InterruptedException e) {
-            		System.out.println(e.getCause());
-            	}
-            	
-            	int statusCode = resp.getStatusLine().getStatusCode(); 
-            	Header header = resp.getFirstHeader("RetryAfter");
-                if (statusCodesForSwitchToSoap.contains(statusCode)) {
-                	SetRetryAfterTime(header);
+        Calendar retryAfterTime = retryAfter.get(serviceInterface);
+
+        if (retryAfterTime != null && Calendar.getInstance().before(retryAfterTime)) {
+            soapMethod.apply(request, new AsyncHandler<TResponse>() {
+                @Override
+                public void handleResponse(Response<TResponse> soapResponse) {
+                    try {
+                        responseFuture.setContext(soapResponse.getContext());                        
+
+                        responseFuture.setResult(soapResponse.get());
+                    } catch (Throwable e) {
+                        responseFuture.setException(e);
+                    }
                 }
+            });
 
-                Header trackingIdHeader = resp.getFirstHeader(ServiceUtils.TRACKING_HEADER_NAME);
-            	
-                context.put(ServiceUtils.TRACKING_KEY, trackingIdHeader.getValue());
-            	      	
-            	if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-            		try {
-						Response<Resp> response = callSoapMethodAsync(request);
-						return response.get();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-            	}
-            	else if (statusCodesForApplicationFault.contains(statusCode)) {
-            		throwExecutionException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), resp);
-            	}
-            	  	
-            	try {
-            		return (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(resp.getEntity().getContent()), respClass);
-            	} catch (Exception e) {
-					e.printStackTrace();
-				}
-            	
-            	return null;
-            }
+            return responseFuture;
+        }
 
+        String jsonRequest;
+        try {
+            jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
+        } catch (JsonProcessingException e) {
+            throw new InternalException(e);
+        }
+
+        InvocationCallback<jakarta.ws.rs.core.Response> invocationCallback = new InvocationCallback<jakarta.ws.rs.core.Response>() {
             @Override
-            public Resp get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-            	HttpResponse resp = future.get(timeout, unit);
-            	int statusCode = resp.getStatusLine().getStatusCode();  
-            	Header header = resp.getFirstHeader("RetryAfter");
-                if (statusCodesForSwitchToSoap.contains(statusCode)) {
-                	SetRetryAfterTime(header);
+            public void completed(jakarta.ws.rs.core.Response httpResponse) {
+                try {
+                    int statusCode = httpResponse.getStatus();
+
+                    if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) { 
+                        httpResponse.close();
+                        
+                        SetRetryAfterTime(httpResponse.getHeaderString("RetryAfter"));
+                        
+                        soapMethod.apply(request, new AsyncHandler<TResponse>() {
+                            @Override
+                            public void handleResponse(Response<TResponse> soapResponse) {
+                                try {
+                                    responseFuture.setContext(soapResponse.getContext());
+
+                                    responseFuture.setResult(soapResponse.get());
+                                } catch (Throwable e) {
+                                    responseFuture.setException(e);
+                                }
+                            }
+                        });
+
+                        return;
+                    }
+
+                    String trackingIdHeader = httpResponse.getHeaderString(ServiceUtils.TRACKING_HEADER_NAME);
+                    
+                    if (statusCodesForApplicationFault.contains(statusCode)) {
+                        TFaultDetail faultDetail = parseStream(httpResponse.readEntity(InputStream.class), faultDetailClass);
+
+                        Exception exception = getException.apply(faultDetail);
+
+                        responseFuture.setException(exception);
+
+                        return;
+                    }
+                    
+                    Map<String, Object> context = new HashMap<>();
+
+                    context.put(ServiceUtils.TRACKING_KEY, trackingIdHeader);
+                    
+                    responseFuture.setContext(context);
+
+                    if (statusCode >= 200 && statusCode <= 299) {
+                        TResponse responseObj = parseStream(httpResponse.readEntity(InputStream.class), respClass);
+
+                        responseFuture.setResult(responseObj);
+
+                        return;
+                    }
+
+                    throw new InternalException("Got unexpected status code " + statusCode + " with response content: " + httpResponse.readEntity(String.class));
+                } catch (Throwable e) {
+                    responseFuture.setException(e);
                 }
-            		     	
-            	if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {
-            		try {
-						Response<Resp> response = callSoapMethodAsync(request);
-						return response.get();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-            	}
-            	else if (statusCodesForApplicationFault.contains(statusCode)) {
-            		throwExecutionException(serviceInterface.getName().replace(serviceInterface.getSimpleName(), ""), resp);
-            	}
-            	
-            	try {
-            		return (Resp)AdaptorUtil.mapper.readValue(AdaptorUtil.mapper.getFactory().createParser(resp.getEntity().getContent()), respClass);
-            	} catch (Exception e) {
-					e.printStackTrace();
-				}
-            	
-            	return null;
             }
-
-            private final Map<String, Object> context = new HashMap<>();
 
             @Override
-            public Map<String, Object> getContext() {
-                return context;
+            public void failed(Throwable throwable) {
+                responseFuture.setException(throwable);
             }
-
         };
+
+        AsyncInvoker asyncInvoker = asRequest(entityEndpoint).async();
+
+        switch (verb) {
+            case HttpPost:
+                asyncInvoker.post(Entity.json(jsonRequest), invocationCallback);
+                break;
+            case HttpPut:
+                asyncInvoker.put(Entity.json(jsonRequest), invocationCallback);
+                break;
+            case HttpDelete:
+                asyncInvoker.method("DELETE", Entity.json(jsonRequest), invocationCallback);
+                break;
+            default:
+                throw new InternalException("Unknown HTTP verb: " + verb);
+        }        
+        
+        return responseFuture;
     }
-    
-    private static final Map<Class, String> serviceNameAndVersion = new HashMap<Class, String>() {
-    	{
-    		put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, "/Billing/v13");
 
-    		put(com.microsoft.bingads.v13.customermanagement.ICustomerManagementService.class, "/CustomerManagement/v13");
-    		
-    		put(com.microsoft.bingads.v13.reporting.IReportingService.class, "/Reporting/v13");
-    		
-    		put(com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService.class, "/CampaignManagement/v13");
-    		
-    		put(com.microsoft.bingads.v13.adinsight.IAdInsightService.class, "/AdInsight/v13");
-    		
-    		put(com.microsoft.bingads.v13.bulk.IBulkService.class, "/Bulk/v13");
-    	}
-    };
+    static class ResponseFuture<T> extends ResultFuture<T> implements Response<T> {
+        private Map<String, Object> context = null;
 
-    private static final Map<Class, ServiceInfo> endpoints = new HashMap<Class, ServiceInfo>() {
-        {
-
-            put(com.microsoft.bingads.v13.customerbilling.ICustomerBillingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Billing/v13");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Billing/v13");
-                }
-            });
-
-            put(com.microsoft.bingads.v13.customermanagement.ICustomerManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://clientcenter.api.bingads.microsoft.com/CustomerManagement/v13");
-                    setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/CustomerManagement/v13");
-                }
-            });
-
-            put(com.microsoft.bingads.v13.reporting.IReportingService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://reporting.api.bingads.microsoft.com/Reporting/v13");
-                    setSandboxUrl("https://reporting.api.sandbox.bingads.microsoft.com/Reporting/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://campaign.api.bingads.microsoft.com/CampaignManagement/v13");
-                    setSandboxUrl("https://campaign.api.sandbox.bingads.microsoft.com/CampaignManagement/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.adinsight.IAdInsightService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://adinsight.api.bingads.microsoft.com/AdInsight/v13");
-                    setSandboxUrl("https://adinsight.api.sandbox.bingads.microsoft.com/AdInsight/v13");
-                }
-            });
-            put(com.microsoft.bingads.v13.bulk.IBulkService.class, new ServiceInfo() {
-                {
-                    setProductionUrl("https://bulk.api.bingads.microsoft.com/Bulk/v13");
-                    setSandboxUrl("https://bulk.api.sandbox.bingads.microsoft.com/Bulk/v13");
-                }
-            });
-            // End of v13
+        public ResponseFuture() {
+            super(null);
         }
-    };
 
+        public void setHandler(AsyncHandler<T> handler) {
+            super.handler = new AsyncCallback<T>() {
+                @Override
+                public void onCompleted(Future<T> result) {
+                    handler.handleResponse(new Response<T>() {
+                        @Override
+                        public boolean cancel(boolean mayInterruptIfRunning) {
+                            return result.cancel(mayInterruptIfRunning);
+                        }
+
+                        @Override
+                        public boolean isCancelled() {
+                            return result.isCancelled();
+                        }
+
+                        @Override
+                        public boolean isDone() {
+                            return result.isDone();
+                        }
+
+                        @Override
+                        public T get() throws InterruptedException, ExecutionException {
+                            return result.get();
+                        }
+
+                        @Override
+                        public T get(long timeout, TimeUnit unit)
+                                throws InterruptedException, ExecutionException, TimeoutException {
+                            return result.get(timeout, unit);
+                        }
+
+                        @Override
+                        public Map<String, Object> getContext() {
+                            return context;
+                        }
+                    });
+                }
+
+            };
+        }
+
+        @Override
+        public Map<String, Object> getContext() {
+            return context;
+        }
+
+        void setContext(Map<String, Object> context) {
+            this.context = context;
+        }
+    }
 }

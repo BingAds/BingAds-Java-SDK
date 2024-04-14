@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
 
 public class ResultFuture<T> implements Future<T> {
 
-    final AsyncCallback<T> handler;
+    protected AsyncCallback<T> handler;
 
     protected T result;
     protected Throwable exception;
@@ -23,33 +23,39 @@ public class ResultFuture<T> implements Future<T> {
         result = res;
 
         if (handler != null) {
-            handler.onCompleted(new Future<T>() {
-                @Override
-                public boolean cancel(boolean mayInterruptIfRunning) {
-                    cancelled = true;
-                    return true;
-                }
+            try {
+                handler.onCompleted(new Future<T>() {
+                    @Override
+                    public boolean cancel(boolean mayInterruptIfRunning) {
+                        cancelled = true;
+                        return true;
+                    }
 
-                @Override
-                public boolean isCancelled() {
-                    return cancelled;
-                }
+                    @Override
+                    public boolean isCancelled() {
+                        return cancelled;
+                    }
 
-                @Override
-                public boolean isDone() {
-                    return true;
-                }
+                    @Override
+                    public boolean isDone() {
+                        return true;
+                    }
 
-                @Override
-                public T get() throws InterruptedException, ExecutionException {
-                    return result;
-                }
+                    @Override
+                    public T get() throws InterruptedException, ExecutionException {
+                        return result;
+                    }
 
-                @Override
-                public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-                    return result;
-                }
-            });
+                    @Override
+                    public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+                        return result;
+                    }
+                });
+            } catch (Throwable t) {
+                setException(t, false);
+
+                return;
+            }
         }
 
         done = true;
@@ -123,38 +129,48 @@ public class ResultFuture<T> implements Future<T> {
     }
 
     public void setException(final Throwable ex) {
+        setException(ex, true);
+    }
+
+    private void setException(final Throwable ex, boolean invokeHandler) {
         exception = ex instanceof ExecutionException
-                ? ex.getCause()
-                : ex;
+            ? ex.getCause()
+            : ex;
 
-        if (handler != null) {
-            handler.onCompleted(new Future<T>() {
-                @Override
-                public boolean cancel(boolean mayInterruptIfRunning) {
-                    cancelled = true;
-                    return true;
-                }
+        if (invokeHandler && handler != null) {
+            try {
+                handler.onCompleted(new Future<T>() {
+                    @Override
+                    public boolean cancel(boolean mayInterruptIfRunning) {
+                        cancelled = true;
+                        return true;
+                    }
 
-                @Override
-                public boolean isCancelled() {
-                    return cancelled;
-                }
+                    @Override
+                    public boolean isCancelled() {
+                        return cancelled;
+                    }
 
-                @Override
-                public boolean isDone() {
-                    return true;
-                }
+                    @Override
+                    public boolean isDone() {
+                        return true;
+                    }
 
-                @Override
-                public T get() throws InterruptedException, ExecutionException {
-                    throw new ExecutionException(exception);
-                }
+                    @Override
+                    public T get() throws InterruptedException, ExecutionException {
+                        throw new ExecutionException(exception);
+                    }
 
-                @Override
-                public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-                    throw new ExecutionException(exception);
-                }
-            });
+                    @Override
+                    public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+                        throw new ExecutionException(exception);
+                    }
+                });
+            } catch (Throwable t) {
+                setException(t, false);
+
+                return;
+            }
         }
 
         done = true;

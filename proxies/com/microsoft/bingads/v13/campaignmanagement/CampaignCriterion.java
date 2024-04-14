@@ -62,6 +62,10 @@ public class CampaignCriterion {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public CampaignCriterion() {
+        this.type = "CampaignCriterion";
+    }
+
     /**
      * Gets the value of the campaignId property.
      * 

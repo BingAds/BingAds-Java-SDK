@@ -59,6 +59,10 @@ public class Criterion {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public Criterion() {
+        this.type = "Criterion";
+    }
+
     /**
      * Gets the value of the type property.
      * 

@@ -1,14 +1,9 @@
 package com.microsoft.bingads;
 
-import java.util.logging.Logger;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.Arrays;
-import jakarta.jws.WebService;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.handler.Handler;
@@ -21,7 +16,7 @@ import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.internal.restful.RestfulServiceClient;
+import com.microsoft.bingads.internal.utilities.Lazy;
 import com.microsoft.bingads.v13.adinsight.IAdInsightService;
 import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
@@ -34,6 +29,7 @@ import com.microsoft.bingads.v13.reporting.IReportingService;
  * <p>
  *     Note: Valid value of {@link T} are:
  *     <ul>
+ *         <li>{@link IAdInsightService}</li>
  *         <li>{@link IBulkService}</li>
  *         <li>{@link ICampaignManagementService}</li>
  *         <li>{@link ICustomerBillingService}</li>
@@ -47,15 +43,12 @@ import com.microsoft.bingads.v13.reporting.IReportingService;
  *
  */
 public class ServiceClient<T> {
-    private static Logger logger = Logger.getLogger(ServiceClient.class.getName());
-
     private final AuthorizationData authorizationData;
 
     private final Class<T> serviceInterface;
-    private final Service service;
     private final ServiceFactory serviceFactory;
     private ApiEnvironment environment;
-    private RestfulServiceClient restService;
+    private final Lazy<Service> service;
 
     /**
      * Gets the Bing Ads API environment.
@@ -71,27 +64,14 @@ public class ServiceClient<T> {
         return authorizationData;
     }
 
-    private static HashMap<Class<?>, Boolean> EnableRestApiDefault = new HashMap<Class<?>, Boolean>() {{
-        put(ICampaignManagementService.class, false);
-        put(IBulkService.class, false);
-        put(IReportingService.class, false);
-        put(ICustomerManagementService.class, false);
-        put(ICustomerBillingService.class, false);
-        put(IAdInsightService.class, false);
-    }};
-
-    public static void setRestApiEnabledDefault(Class<?> serviceClass, boolean restApiEnabled) {
-        EnableRestApiDefault.replace(serviceClass, restApiEnabled);
-    }
-
-    public static boolean getRestApiEnabledDefault(Class<?> serviceClass) {
-        Boolean restApiEnabled = EnableRestApiDefault.get(serviceClass);
-
-        if (restApiEnabled == null) {
-            return false;
+    private static boolean getDisableRestApi(Class<?> serviceClass) {
+        if (serviceClass == ICustomerManagementService.class ||
+            serviceClass == ICustomerBillingService.class ||
+            serviceClass == IAdInsightService.class) {
+                return true;
         }
 
-        return restApiEnabled;
+        return ServiceUtils.getDisableRestApi(serviceClass);
     }
 
     /**
@@ -101,12 +81,8 @@ public class ServiceClient<T> {
      * @param serviceInterface the Bing Ads service interface that should be called
      */
     public ServiceClient(AuthorizationData authorizationData, Class<T> serviceInterface) {
-        this(authorizationData, null, serviceInterface, getRestApiEnabledDefault(serviceInterface));
-    }
-    
-    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
-    	this(authorizationData, environment, serviceInterface, getRestApiEnabledDefault(serviceInterface));
-    }
+        this(authorizationData, null, serviceInterface);
+    }    
 
     /**
      * Initializes a new instance of this class with the specified authorization data and Bing Ads API environment.
@@ -115,7 +91,7 @@ public class ServiceClient<T> {
      * @param environment Bing Ads API environment
      * @param serviceInterface the Bing Ads service interface that should be called
      */
-    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface, boolean enableRestApi) {
+    public ServiceClient(AuthorizationData authorizationData, ApiEnvironment environment, Class<T> serviceInterface) {
         this.authorizationData = authorizationData;
         this.serviceInterface = serviceInterface;
         
@@ -137,18 +113,18 @@ public class ServiceClient<T> {
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();
 
-        service = serviceFactory.createService(serviceInterface, environment);
+        service = new Lazy<Service>(() -> {
+            Service newService = serviceFactory.createService(this.serviceInterface, this.environment);
 
-        service.setHandlerResolver(new HandlerResolver() {
-            @Override
-            public List<Handler> getHandlerChain(PortInfo portInfo) {
-                return Arrays.asList(HeaderHandler.getInstance(), MessageHandler.getInstance());
-            }
+            newService.setHandlerResolver(new HandlerResolver() {
+                @Override
+                public List<Handler> getHandlerChain(PortInfo portInfo) {
+                    return Arrays.asList(HeaderHandler.getInstance(), MessageHandler.getInstance());
+                }
+            });
+
+            return newService;
         });
-        
-        if (enableRestApi) {
-        	restService = RestfulServiceFactory.createServiceClient(authorizationData, environment, serviceInterface);
-        }
     }
 
     /**
@@ -159,6 +135,16 @@ public class ServiceClient<T> {
     public T getService() {
         authorizationData.validate();
 
+        final Map<String, String> headers = buildHeaders();
+
+        if (getDisableRestApi(serviceInterface)) {
+            return createSoapPort(headers);
+        }
+        
+        return createRestService(headers);        
+    }
+
+    private Map<String, String> buildHeaders() {
         final Map<String, String> headers = new HashMap<String, String>();
 
         headers.put("CustomerAccountId", Long.toString(authorizationData.getAccountId()));
@@ -167,49 +153,31 @@ public class ServiceClient<T> {
 
         headers.put("DeveloperToken", authorizationData.getDeveloperToken());
 
-        refreshOAuthTokensIfNeeded();
+        Authentication authentication = authorizationData.getAuthentication();
 
-        this.authorizationData.getAuthentication().addHeaders(new HeadersImpl() {
+        if (authentication instanceof OAuthWithAuthorizationCode) {
+            ((OAuthWithAuthorizationCode) authentication).refreshTokensIfNeeded(false);            
+        }
+
+        authentication.addHeaders(new HeadersImpl() {
             @Override
             public void addHeader(String name, String value) {
                 headers.put(name, value);
             }
         });
 
-        T port = serviceFactory.createProxyFromService(service, environment, serviceInterface);
-
-        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
-        
-        if (restService == null) {
-        	return port;
-        }
-        else {
-        	restService.setSoapService(port);
-            
-            return (T) Proxy.newProxyInstance(port.getClass().getClassLoader(), port.getClass().getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args)  throws Throwable {
-                	String methodName = method.getName();
-                	Method delegationMethod = restService.getClass().getMethod(methodName, method.getParameterTypes());
-                	Object response = null;
-                	try {
-                		response = delegationMethod.invoke(restService, args);
-                	}
-                	catch (Exception e)
-                	{
-                		throw e.getCause();
-                	}
-                	return response;
-                }
-            });
-        } 
+        return headers;
     }
 
-    private void refreshOAuthTokensIfNeeded() {
-        if (authorizationData.getAuthentication() instanceof OAuthWithAuthorizationCode) {
-            OAuthWithAuthorizationCode auth = (OAuthWithAuthorizationCode) authorizationData.getAuthentication();
+    T createSoapPort(Map<String, String> headers) {
+        T port = serviceFactory.createProxyFromService(service.getValue(), environment, serviceInterface);
 
-            auth.refreshTokensIfNeeded(false);            
-        }
+        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
+
+        return port;
+    }
+
+    T createRestService(Map<String, String> headers) {        
+        return RestfulServiceFactory.createServiceClient(headers, environment, serviceInterface, () -> createSoapPort(headers));
     }
 }

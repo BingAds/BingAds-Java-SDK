@@ -49,6 +49,10 @@ public class Setting {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public Setting() {
+        this.type = "Setting";
+    }
+
     /**
      * Gets the value of the type property.
      * 
