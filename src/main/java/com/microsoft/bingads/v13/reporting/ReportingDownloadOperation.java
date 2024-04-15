@@ -5,16 +5,12 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.concurrent.Future;
 
-import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
-import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
-import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
 import com.microsoft.bingads.internal.utilities.ZipExtractor;
 
 /**
@@ -26,98 +22,44 @@ import com.microsoft.bingads.internal.utilities.ZipExtractor;
 public class ReportingDownloadOperation {
 
     /**
-     * Represents a user who intends to access the corresponding customer and account.
-     */
-    private AuthorizationData authorizationData;
-
-    /**
      * The request identifier corresponding to the reporting download.
      */
-    private String requestId;
+    private final String requestId;
 
     /**
      * The identifier of the log entry that contains the details of the download request.
      */
-    private String trackingId;
+    private final String trackingId;
 
-    /**
-     * The amount of time in milliseconds that the download operations should wait before polling the Reporting service for status.
-     */
-    private int statusPollIntervalInMilliseconds;
-    
-    /**
-     * The timeout in milliseconds of HttpClient download operation.
-     */
-    private int downloadHttpTimeoutInMilliseconds;
-    
-    /**
-     * Provide the status of the reporting download operation.
-     */
-    ReportingStatusProvider statusProvider;
-    
     /**
      * The service to download files.
      */
-    private HttpFileService httpFileService;
-    
-     /**
+    private final HttpFileService httpFileService;
+
+    /**
       * To process download file.
       */
-    private ZipExtractor zipExtractor;
-    
-     /**
-      * The client of reporting service.
-      */
-    private ServiceClient<IReportingService> serviceClient;
-    
- 	/**
+    private final ZipExtractor zipExtractor;
+
+    /**
+     * Provide the status of the reporting download operation.
+     */
+    private final ReportingStatusProvider statusProvider;
+
+    /**
  	 * The final status of reporting download operation.
  	 */
     private ReportingOperationStatus finalStatus;
 
-    /**@param requestId
-     * @param authorizationData
-     */
-    public ReportingDownloadOperation(String requestId, AuthorizationData authorizationData) {
-        this(requestId, authorizationData, null, null);
-    }
-    
-    public ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(requestId, authorizationData, null, apiEnvironment);
-    }
-    
-    /**@param requestId
-     * @param authorizationData
-     * @param trackingId
-     */
-    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
-        this(requestId, authorizationData, new ReportingStatusProvider(requestId, authorizationData), trackingId, null);
-    }
-    
-    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId, ApiEnvironment apiEnvironment) {
-        this(requestId, authorizationData, new ReportingStatusProvider(requestId, authorizationData), trackingId, apiEnvironment);
-    }
-
-    /**@param requestId
-     * @param authorizationData
-     * @param statusProvider
-     * @param trackingId
-     */
-    ReportingDownloadOperation(String requestId, AuthorizationData authorizationData, ReportingStatusProvider statusProvider, String trackingId, ApiEnvironment apiEnvironment) {
-        this.statusProvider = statusProvider;
+    ReportingDownloadOperation(
+            String requestId, String trackingId,
+            HttpFileService httpFileService, ZipExtractor zipExtractor,
+            ServiceClient<IReportingService> serviceClient, int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
         this.trackingId = trackingId;
-
-        statusPollIntervalInMilliseconds = ReportingConfig.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
-        
-        downloadHttpTimeoutInMilliseconds = ReportingConfig.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
-
-        this.serviceClient = new ServiceClient<IReportingService>(authorizationData, apiEnvironment, IReportingService.class);
-
-        zipExtractor = new SimpleZipExtractor();
-
-        httpFileService = new HttpClientHttpFileService();
+        this.httpFileService = httpFileService;
+        this.zipExtractor = zipExtractor;
+        this.statusProvider = new ReportingStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds);
     }
 
     /**
@@ -148,7 +90,7 @@ public class ReportingDownloadOperation {
     private ReportingOperationTracker generateTracker() {
     	ReportingOperationTracker tracker;
 
-        tracker = new ReportingOperationTracker(statusProvider, this.serviceClient, this.statusPollIntervalInMilliseconds);
+        tracker = new ReportingOperationTracker(statusProvider);
 
         return tracker;
     }
@@ -168,7 +110,7 @@ public class ReportingDownloadOperation {
             return resultFuture;
         }
 
-        statusProvider.getCurrentStatus(this.serviceClient, new ParentCallback<ReportingOperationStatus>(resultFuture) {
+        statusProvider.getCurrentStatus(new ParentCallback<ReportingOperationStatus>(resultFuture) {
             @Override
             public void onSuccess(ReportingOperationStatus currentStatus) {
                 if (statusProvider.isFinalStatus(currentStatus)) {
@@ -283,34 +225,16 @@ public class ReportingDownloadOperation {
     }
 
     private File downloadResultFileZip(String url, File tempZipFile, boolean overwrite) throws IOException, URISyntaxException {
-        if (httpFileService == null) {
-            httpFileService = new HttpClientHttpFileService();
-        }
-
-        httpFileService.downloadFile(url, tempZipFile, overwrite, downloadHttpTimeoutInMilliseconds);
+        httpFileService.downloadFile(url, tempZipFile, overwrite);
 
         return tempZipFile;
     }
     
     /**
-	 * @return the authorizationData
-	 */
-    public AuthorizationData getAuthorizationData() {
-        return authorizationData;
-    }
-
-    /**
 	 * @return the requestId
 	 */
 	public String getRequestId() {
 		return requestId;
-	}
-
-	/**
-	 * @param requestId the requestId to set
-	 */
-	public void setRequestId(String requestId) {
-		this.requestId = requestId;
 	}
 
 	/**
@@ -321,24 +245,10 @@ public class ReportingDownloadOperation {
 	}
 
 	/**
-	 * @param trackingId the trackingId to set
-	 */
-	public void setTrackingId(String trackingId) {
-		this.trackingId = trackingId;
-	}
-
-	/**
 	 * @return the statusProvider
 	 */
 	public ReportingStatusProvider getStatusProvider() {
 		return statusProvider;
-	}
-
-	/**
-	 * @param statusProvider the statusProvider to set
-	 */
-	public void setStatusProvider(ReportingStatusProvider statusProvider) {
-		this.statusProvider = statusProvider;
 	}
 
 	/**
@@ -349,38 +259,10 @@ public class ReportingDownloadOperation {
 	}
 
 	/**
-	 * @param httpFileService the httpFileService to set
-	 */
-	public void setHttpFileService(HttpFileService httpFileService) {
-		this.httpFileService = httpFileService;
-	}
-
-	/**
 	 * @return the zipExtractor
 	 */
 	public ZipExtractor getZipExtractor() {
 		return zipExtractor;
-	}
-
-	/**
-	 * @param zipExtractor the zipExtractor to set
-	 */
-	public void setZipExtractor(ZipExtractor zipExtractor) {
-		this.zipExtractor = zipExtractor;
-	}
-
-	/**
-	 * @return the serviceClient
-	 */
-	public ServiceClient<IReportingService> getServiceClient() {
-		return serviceClient;
-	}
-
-	/**
-	 * @param serviceClient the serviceClient to set
-	 */
-	public void setServiceClient(ServiceClient<IReportingService> serviceClient) {
-		this.serviceClient = serviceClient;
 	}
 
 	/**
@@ -395,33 +277,5 @@ public class ReportingDownloadOperation {
 	 */
 	public void setFinalStatus(ReportingOperationStatus finalStatus) {
 		this.finalStatus = finalStatus;
-	}
-
-	/**
-     * Gets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public int getStatusPollIntervalInMilliseconds() {
-        return statusPollIntervalInMilliseconds;
-    }
-
-    /**
-     * Sets the time interval in milliseconds between two status polling attempts. The default value is 5000 (5 second).
-     */
-    public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
-        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
-    }
-    
-    /**
-     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public int getDownloadHttpTimeoutInMilliseconds() {
-		return downloadHttpTimeoutInMilliseconds;
-	}
-
-	/**
-     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
 	}
 }

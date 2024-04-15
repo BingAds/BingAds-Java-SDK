@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v13.reporting;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -36,7 +37,7 @@ import com.microsoft.bingads.internal.utilities.ZipExtractor;
  * </p>
  *
  */
-public class ReportingServiceManager {
+public class ReportingServiceManager implements Closeable {
 	
     private AuthorizationData authorizationData;
     private HttpFileService httpFileService;
@@ -48,11 +49,6 @@ public class ReportingServiceManager {
      * */
     private int statusPollIntervalInMilliseconds;
     
-    /**
-     * The timeout in milliseconds of HttpClient download operation.
-     */
-    private int downloadHttpTimeoutInMilliseconds;
-
     private final ServiceClient<IReportingService> serviceClient;
 
     private File workingDirectory;
@@ -82,8 +78,22 @@ public class ReportingServiceManager {
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
         statusPollIntervalInMilliseconds = ReportingConfig.DEFAULT_STATUS_CHECK_INTERVAL_IN_MS;
-        
-        downloadHttpTimeoutInMilliseconds = ReportingConfig.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS;
+    }
+
+    @Override
+    public void close() throws IOException {
+        httpFileService.close();
+        cleanupTempFiles();
+    }
+
+    /**
+     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another
+     * instance.
+     */
+    public void cleanupTempFiles() {
+        for (File file : workingDirectory.listFiles()) {
+            file.delete();
+        }
     }
 
     /**
@@ -171,9 +181,6 @@ public class ReportingServiceManager {
     }
 
     private <T> Future<File> downloadReportingFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, ReportingDownloadOperation operation, AsyncCallback<File> callback) throws IOException, URISyntaxException {
-        operation.setHttpFileService(this.httpFileService);
-        operation.setZipExtractor(this.zipExtractor);
-
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
         File effectiveResultFileDirectory = resultFileDirectory;
@@ -232,13 +239,10 @@ public class ReportingServiceManager {
 
                     response = res.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(res);
-
-                    ReportingDownloadOperation operation = new ReportingDownloadOperation(response.getReportRequestId(), authorizationData, trackingId, apiEnvironment);
-
-                    operation.setStatusPollIntervalInMilliseconds(statusPollIntervalInMilliseconds);
-                    
-                    operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
+                    ReportingDownloadOperation operation = new ReportingDownloadOperation(
+                            response.getReportRequestId(), ServiceUtils.GetTrackingId(res),
+                            httpFileService, zipExtractor,
+                            serviceClient, statusPollIntervalInMilliseconds);
 
                     resultFuture.setResult(operation);
                 } catch (InterruptedException e) {
@@ -307,28 +311,5 @@ public class ReportingServiceManager {
      */
     public void setStatusPollIntervalInMilliseconds(int statusPollIntervalInMilliseconds) {
         this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
-    }
-    
-    /**
-     * Gets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public int getDownloadHttpTimeoutInMilliseconds() {
-		return downloadHttpTimeoutInMilliseconds;
-	}
-
-	/**
-     * Sets the timeout of HttpClient download operation. The default value is 100000(100s).
-     */
-	public void setDownloadHttpTimeoutInMilliseconds(int downloadHttpTimeoutInMilliseconds) {
-		this.downloadHttpTimeoutInMilliseconds = downloadHttpTimeoutInMilliseconds;
-	}
-	
-    /**
-     * Removes all files from the working directory, whether the files are used by this BulkServiceManager or by another instance.
-     */
-    public void cleanupTempFiles() {
-        for(File file : workingDirectory.listFiles()) {
-            file.delete();
-        }
     }
 }

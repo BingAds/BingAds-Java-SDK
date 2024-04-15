@@ -8,9 +8,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 
 public class OperationStatusRetry<TOperationStatus, TOperationStatusProvider, TService> {
     private static final int INTERVAL_OF_RETRY = 1000; // TimeUnit Milliseconds
@@ -28,20 +27,21 @@ public class OperationStatusRetry<TOperationStatus, TOperationStatusProvider, TS
     }
 
     public void executeWithRetry(
-            final TriConsumer<TOperationStatusProvider, ServiceClient<TService>, AsyncCallback<TOperationStatus>> action,
-            final TOperationStatusProvider statusProvider, final ServiceClient<TService> serviceClient,
-            final Consumer<TOperationStatus> statusConsumer, final Consumer<Exception> exceptionConsumer,
+            final BiConsumer<TOperationStatusProvider, AsyncCallback<TOperationStatus>> action,
+            final TOperationStatusProvider statusProvider,
+            final Consumer<TOperationStatus> statusConsumer,
+            final Consumer<Exception> exceptionConsumer,
             final int maxRetryCount) {
         executor = Executors.newSingleThreadScheduledExecutor();
-        doPollOperationStatus(action, statusProvider, serviceClient, statusConsumer, exceptionConsumer, maxRetryCount);
+        doPollOperationStatus(action, statusProvider, statusConsumer, exceptionConsumer, maxRetryCount);
     }
 
     private void doPollOperationStatus(
-            final TriConsumer<TOperationStatusProvider, ServiceClient<TService>, AsyncCallback<TOperationStatus>> action,
-            final TOperationStatusProvider statusProvider, final ServiceClient<TService> serviceClient,
+            final BiConsumer<TOperationStatusProvider, AsyncCallback<TOperationStatus>> action,
+            final TOperationStatusProvider statusProvider,
             final Consumer<TOperationStatus> statusConsumer, final Consumer<Exception> exceptionConsumer,
             final int maxRetryCount) {
-        action.accept(statusProvider, serviceClient, new AsyncCallback<TOperationStatus>() {
+        action.accept(statusProvider, new AsyncCallback<TOperationStatus>() {
 
             @Override
             public void onCompleted(Future<TOperationStatus> result) {
@@ -49,22 +49,21 @@ public class OperationStatusRetry<TOperationStatus, TOperationStatusProvider, TS
                     statusConsumer.accept(result.get());
                     executor.shutdown();
                 } catch (InterruptedException exception) {
-                    retryWhenException(action, statusProvider, serviceClient, statusConsumer, exceptionConsumer,
+                    retryWhenException(action, statusProvider, statusConsumer, exceptionConsumer,
                             maxRetryCount, exception);
                 } catch (ExecutionException exception) {
-                    retryWhenException(action, statusProvider, serviceClient, statusConsumer, exceptionConsumer,
+                    retryWhenException(action, statusProvider, statusConsumer, exceptionConsumer,
                             maxRetryCount, exception);
                 }
             }
 
             private void retryWhenException(
-                    final TriConsumer<TOperationStatusProvider, ServiceClient<TService>, AsyncCallback<TOperationStatus>> action,
-                    final TOperationStatusProvider statusProvider, final ServiceClient<TService> serviceClient,
+                    final BiConsumer<TOperationStatusProvider, AsyncCallback<TOperationStatus>> action,
+                    final TOperationStatusProvider statusProvider,
                     final Consumer<TOperationStatus> statusConsumer, final Consumer<Exception> exceptionConsumer,
                     final int maxRetryCount, Exception exception) {
                 if (maxRetryCount > 0) {
-                    retry(action, statusProvider, serviceClient, statusConsumer, exceptionConsumer, maxRetryCount - 1,
-                            exception);
+                    retry(action, statusProvider, statusConsumer, exceptionConsumer, maxRetryCount - 1, exception);
                 } else {
                     executor.shutdown();
                     exceptionConsumer.accept(exception);
@@ -74,16 +73,15 @@ public class OperationStatusRetry<TOperationStatus, TOperationStatusProvider, TS
     }
 
     private void retry(
-            final TriConsumer<TOperationStatusProvider, ServiceClient<TService>, AsyncCallback<TOperationStatus>> action,
-            final TOperationStatusProvider statusProvider, final ServiceClient<TService> serviceClient,
+            final BiConsumer<TOperationStatusProvider, AsyncCallback<TOperationStatus>> action,
+            final TOperationStatusProvider statusProvider,
             final Consumer<TOperationStatus> statusConsumer, final Consumer<Exception> exceptionConsumer,
             final int maxRetryCount, Exception exception) {
         int interval = getInterval(exception, maxRetryCount);
         executor.schedule(new Runnable() {
             @Override
             public void run() {
-                doPollOperationStatus(action, statusProvider, serviceClient, statusConsumer, exceptionConsumer,
-                        maxRetryCount);
+                doPollOperationStatus(action, statusProvider, statusConsumer, exceptionConsumer, maxRetryCount);
             }
         }, interval, TimeUnit.MILLISECONDS);
 

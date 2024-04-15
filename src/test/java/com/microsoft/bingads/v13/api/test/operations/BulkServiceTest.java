@@ -248,7 +248,7 @@ public class BulkServiceTest extends FakeApiTest {
         verify(zipExtractor);
         
         assertEquals(new File("file path"), file);
-        assertTrue(httpFileService.getDownloadWasCalled());
+        assertTrue(httpFileService.isDownloadWasCalled());
     }   
 
     @Test
@@ -351,7 +351,7 @@ public class BulkServiceTest extends FakeApiTest {
         verify(zipExtractor);
         
         assertEquals(bulkEntities, resultEntities);
-        assertTrue(httpFileService.getDownloadWasCalled());
+        assertTrue(httpFileService.isDownloadWasCalled());
     }
     
     private static AuthorizationData createUserData() {

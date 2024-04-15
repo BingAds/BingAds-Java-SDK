@@ -18,14 +18,31 @@ import com.microsoft.bingads.v13.bulk.UploadStatus;
 
 public class UploadStatusProvider implements BulkOperationStatusProvider<UploadStatus> {
 
-    private final String requestId;      
+    private final String requestId;
 
-    public UploadStatusProvider(String requestId) {
-        this.requestId = requestId;        
+    private final ServiceClient<IBulkService> serviceClient;
+
+    /**
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     */
+    private final int statusPollIntervalInMilliseconds;
+
+    public UploadStatusProvider(
+            String requestId,
+            ServiceClient<IBulkService> serviceClient,
+            int statusPollIntervalInMilliseconds) {
+        this.requestId = requestId;
+        this.serviceClient = serviceClient;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
     @Override
-    public Future<BulkOperationStatus<UploadStatus>> getCurrentStatus(ServiceClient<IBulkService> serviceClient, AsyncCallback<BulkOperationStatus<UploadStatus>> callback) {
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
+    }
+
+    @Override
+    public Future<BulkOperationStatus<UploadStatus>> getCurrentStatus(AsyncCallback<BulkOperationStatus<UploadStatus>> callback) {
     	GetBulkUploadStatusRequest request = new GetBulkUploadStatusRequest();
         request.setRequestId(this.requestId);
 
@@ -39,13 +56,11 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
                 try {
                     GetBulkUploadStatusResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-
                     BulkOperationStatus<UploadStatus> status = new BulkOperationStatus<UploadStatus>(
                         UploadStatus.fromValue(statusResponse.getRequestStatus()),
                         statusResponse.getPercentComplete(),
                         statusResponse.getResultFileUrl(),
-                        trackingId,
+                            ServiceUtils.GetTrackingId(result),
                         statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );                   
 
