@@ -4,7 +4,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.microsoft.bingads.AsyncCallback;
-import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
@@ -20,16 +19,30 @@ import jakarta.xml.ws.Response;
 public class DownloadStatusProvider implements BulkOperationStatusProvider<DownloadStatus> {
 
     private final String requestId;
-    
-    private final AuthorizationData authorizationData;
 
-    public DownloadStatusProvider(String requestId, AuthorizationData authorizationData) {
+    private final ServiceClient<IBulkService> serviceClient;
+
+    /**
+     * The amount of time in milliseconds that the upload and download operations should wait before polling the Bulk service for status.
+     */
+    private final int statusPollIntervalInMilliseconds;
+
+    public DownloadStatusProvider(
+            String requestId,
+            ServiceClient<IBulkService> serviceClient,
+            int statusPollIntervalInMilliseconds) {
         this.requestId = requestId;
-        this.authorizationData = authorizationData;
+        this.serviceClient = serviceClient;
+        this.statusPollIntervalInMilliseconds = statusPollIntervalInMilliseconds;
     }
 
     @Override
-    public Future<BulkOperationStatus<DownloadStatus>> getCurrentStatus(ServiceClient<IBulkService> serviceClient, AsyncCallback<BulkOperationStatus<DownloadStatus>> callback) {
+    public int getStatusPollIntervalInMilliseconds() {
+        return statusPollIntervalInMilliseconds;
+    }
+
+    @Override
+    public Future<BulkOperationStatus<DownloadStatus>> getCurrentStatus(AsyncCallback<BulkOperationStatus<DownloadStatus>> callback) {
         GetBulkDownloadStatusRequest request = new GetBulkDownloadStatusRequest();
         request.setRequestId(this.requestId);
 
@@ -41,13 +54,11 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
                 try {
                     GetBulkDownloadStatusResponse statusResponse = result.get();
                     
-                    String trackingId = ServiceUtils.GetTrackingId(result);
-
                     BulkOperationStatus<DownloadStatus> status = new BulkOperationStatus<DownloadStatus>(
                             DownloadStatus.fromValue(statusResponse.getRequestStatus()),
                             statusResponse.getPercentComplete(),
                             statusResponse.getResultFileUrl(),
-                            trackingId,
+                            ServiceUtils.GetTrackingId(result),
                             statusResponse.getErrors() != null ? statusResponse.getErrors().getOperationErrors() : null
                     );
                     

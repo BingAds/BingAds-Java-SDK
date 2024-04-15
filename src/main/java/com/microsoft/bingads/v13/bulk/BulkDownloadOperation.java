@@ -2,8 +2,12 @@ package com.microsoft.bingads.v13.bulk;
 
 import java.util.List;
 
-import com.microsoft.bingads.ApiEnvironment;
-import com.microsoft.bingads.AuthorizationData;
+import com.microsoft.bingads.ServiceClient;
+import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
+import com.microsoft.bingads.internal.utilities.HttpFileService;
+import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
+import com.microsoft.bingads.internal.utilities.ZipExtractor;
+import com.microsoft.bingads.v13.internal.bulk.Config;
 import com.microsoft.bingads.v13.internal.bulk.DownloadStatusProvider;
 
 /**
@@ -29,23 +33,22 @@ public class BulkDownloadOperation extends BulkOperation<DownloadStatus> {
      *
      * @param requestId The identifier of a download request that has previously
      * been submitted.
-     * @param authorizationData Represents a user who intends to access the
-     * corresponding customer and account.     
      */
-    public BulkDownloadOperation(String requestId, AuthorizationData authorizationData) {
-        super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData));
+    public BulkDownloadOperation(String requestId, ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
+        this(
+                requestId, null,
+                new HttpClientHttpFileService(), Config.DEFAULT_HTTPCLIENT_TIMEOUT_IN_MS, new SimpleZipExtractor(),
+                serviceClient, statusPollIntervalInMilliseconds);
     }
 
-    public BulkDownloadOperation(String requestId, AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), null, apiEnvironment);
-    }
-    
-    BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId) {
-        super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), trackingId);
-    }
-    
-    BulkDownloadOperation(String requestId, AuthorizationData authorizationData, String trackingId, ApiEnvironment apiEnvironment) {
-    	super(requestId, authorizationData, new DownloadStatusProvider(requestId, authorizationData), trackingId, apiEnvironment);
+    BulkDownloadOperation(
+            String requestId, String trackingId,
+            HttpFileService httpFileService, int downloadHttpTimeoutInMilliseconds, ZipExtractor zipExtractor,
+            ServiceClient<IBulkService> serviceClient, int statusPollIntervalInMilliseconds) {
+    	super(
+                requestId, trackingId,
+                httpFileService, downloadHttpTimeoutInMilliseconds, zipExtractor,
+                new DownloadStatusProvider(requestId, serviceClient, statusPollIntervalInMilliseconds));
     }
     
     @Override

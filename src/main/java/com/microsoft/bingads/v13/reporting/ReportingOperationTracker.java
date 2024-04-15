@@ -12,8 +12,8 @@ import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.OperationStatusRetry;
 import com.microsoft.bingads.internal.ResultFuture;
+import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
-import com.microsoft.bingads.internal.functionalinterfaces.TriConsumer;
 
 /**
  * Track the status of reporting operation.
@@ -29,7 +29,6 @@ public class ReportingOperationTracker {
     private boolean stopTracking;
     protected int lastProgressReported;
     private ReportingOperationStatus currentStatus;
-    private final int statusCheckIntervalInMs;
 
     private ResultFuture<ReportingOperationStatus> trackResultFuture;
 
@@ -45,12 +44,9 @@ public class ReportingOperationTracker {
         }
     };
 
-    public ReportingOperationTracker(ReportingStatusProvider statusProvider,
-            ServiceClient<IReportingService> serviceClient, int statusCheckIntervalInMs) {
+    public ReportingOperationTracker(ReportingStatusProvider statusProvider) {
 
-        this.statusCheckIntervalInMs = statusCheckIntervalInMs;
         this.statusProvider = statusProvider;
-        this.serviceClient = serviceClient;
         this.operationStatusRetry = new OperationStatusRetry<ReportingOperationStatus, ReportingStatusProvider, IReportingService>(
                 new Function<Exception, Integer>() {
 
@@ -112,7 +108,7 @@ public class ReportingOperationTracker {
                             int interval = INITIAL_STATUS_CHECK_INTERVAL_IN_MS;
 
                             if (numberOfStatusChecks >= NUMBER_OF_INITIAL_STATUS_CHECKS) {
-                                interval = statusCheckIntervalInMs;
+                                interval = statusProvider.getStatusPollIntervalInMilliseconds();
                             }
 
                             executorService.schedule(pollExecutorTask, interval, TimeUnit.MILLISECONDS);
@@ -160,14 +156,14 @@ public class ReportingOperationTracker {
                 callback);
 
         operationStatusRetry.executeWithRetry(
-                new TriConsumer<ReportingStatusProvider, ServiceClient<IReportingService>, AsyncCallback<ReportingOperationStatus>>() {
+                new BiConsumer<ReportingStatusProvider, AsyncCallback<ReportingOperationStatus>>() {
                     @Override
-                    public void accept(ReportingStatusProvider statusProvider,
-                            ServiceClient<IReportingService> serviceClient,
+                    public void accept(
+                            ReportingStatusProvider statusProvider,
                             AsyncCallback<ReportingOperationStatus> callback) {
-                        statusProvider.getCurrentStatus(serviceClient, callback);
+                        statusProvider.getCurrentStatus(callback);
                     }
-                }, statusProvider, serviceClient, new Consumer<ReportingOperationStatus>() {
+                }, statusProvider, new Consumer<ReportingOperationStatus>() {
                     @Override
                     public void accept(ReportingOperationStatus status) {
                         currentStatus = status;
