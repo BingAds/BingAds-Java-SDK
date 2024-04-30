@@ -40,6 +40,10 @@ public class RuleItem {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public RuleItem() {
+        this.type = "RuleItem";
+    }
+
     /**
      * Gets the value of the type property.
      * 

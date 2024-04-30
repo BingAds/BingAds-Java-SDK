@@ -42,6 +42,10 @@ public class RemarketingRule {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public RemarketingRule() {
+        this.type = "RemarketingRule";
+    }
+
     /**
      * Gets the value of the type property.
      * 

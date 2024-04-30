@@ -9,7 +9,6 @@ import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
@@ -230,8 +229,6 @@ public class ReportingDownloadOperation {
                     }
 
                     File resultFile = downloadFileWithFinalStatus(localResultDirectoryName, localResultFileName, decompress, overwrite);
-
-                    MessageHandler.getInstance().handleDirectMessage("Reporting Download... RequestId: " + requestId + "; DownloadUrl: " + finalStatus.getResultFileUrl() + "; LocalPath: " + localResultDirectoryName.getPath());
 
                     resultFuture.setResult(resultFile);
                 }

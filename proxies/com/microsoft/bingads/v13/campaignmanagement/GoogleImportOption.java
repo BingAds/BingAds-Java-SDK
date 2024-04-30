@@ -37,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewConversionGoals" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewDemographicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewDeviceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -92,6 +93,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateCampaignAdGroupLanguages" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCampaignBudgets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCampaignNames" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateConversionGoals" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateDemographicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateDeviceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -147,6 +149,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newAudienceTargets",
     "newCallAdExtensions",
     "newCalloutAdExtensions",
+    "newConversionGoals",
     "newDemographicTargets",
     "newDeviceTargets",
     "newEntities",
@@ -202,6 +205,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateCampaignAdGroupLanguages",
     "updateCampaignBudgets",
     "updateCampaignNames",
+    "updateConversionGoals",
     "updateDemographicTargets",
     "updateDeviceTargets",
     "updateEntities",
@@ -275,6 +279,8 @@ public class GoogleImportOption
     protected Boolean newCallAdExtensions;
     @XmlElement(name = "NewCalloutAdExtensions", nillable = true)
     protected Boolean newCalloutAdExtensions;
+    @XmlElement(name = "NewConversionGoals", nillable = true)
+    protected Boolean newConversionGoals;
     @XmlElement(name = "NewDemographicTargets", nillable = true)
     protected Boolean newDemographicTargets;
     @XmlElement(name = "NewDeviceTargets", nillable = true)
@@ -385,6 +391,8 @@ public class GoogleImportOption
     protected Boolean updateCampaignBudgets;
     @XmlElement(name = "UpdateCampaignNames", nillable = true)
     protected Boolean updateCampaignNames;
+    @XmlElement(name = "UpdateConversionGoals", nillable = true)
+    protected Boolean updateConversionGoals;
     @XmlElement(name = "UpdateDemographicTargets", nillable = true)
     protected Boolean updateDemographicTargets;
     @XmlElement(name = "UpdateDeviceTargets", nillable = true)
@@ -914,6 +922,30 @@ public class GoogleImportOption
      */
     public void setNewCalloutAdExtensions(Boolean value) {
         this.newCalloutAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the newConversionGoals property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewConversionGoals() {
+        return newConversionGoals;
+    }
+
+    /**
+     * Sets the value of the newConversionGoals property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewConversionGoals(Boolean value) {
+        this.newConversionGoals = value;
     }
 
     /**
@@ -2234,6 +2266,30 @@ public class GoogleImportOption
      */
     public void setUpdateCampaignNames(Boolean value) {
         this.updateCampaignNames = value;
+    }
+
+    /**
+     * Gets the value of the updateConversionGoals property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateConversionGoals() {
+        return updateConversionGoals;
+    }
+
+    /**
+     * Sets the value of the updateConversionGoals property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateConversionGoals(Boolean value) {
+        this.updateConversionGoals = value;
     }
 
     /**
