@@ -42,6 +42,10 @@ public class ApplicationFault {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+
+    public ApplicationFault() {
+        this.type = "ApplicationFault";
+    }
     @XmlElement(name = "TrackingId", nillable = true)
     protected String trackingId;
 

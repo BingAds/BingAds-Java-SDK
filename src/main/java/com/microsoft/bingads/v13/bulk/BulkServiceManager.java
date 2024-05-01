@@ -28,7 +28,6 @@ import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.HttpHeaders;
-import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
@@ -98,28 +97,20 @@ public class BulkServiceManager {
     public BulkServiceManager(AuthorizationData authorizationData) {
         this(authorizationData, null);
     }
-    
-    public BulkServiceManager(AuthorizationData authorizationData, boolean enableRestApi) {
-        this(authorizationData, null, enableRestApi);
-    }
 
     public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, false);
-    }
-    
-    public BulkServiceManager(AuthorizationData authorizationData, ApiEnvironment apiEnvironment, boolean enableRestApi) {
-        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment, enableRestApi);
+        this(authorizationData, new HttpClientHttpFileService(), new SimpleZipExtractor(), new CsvBulkEntityReaderFactory(), apiEnvironment);
     }
 
     private BulkServiceManager(AuthorizationData authorizationData, HttpFileService httpFileService, ZipExtractor zipExtractor,
-            BulkEntityReaderFactory factory, ApiEnvironment apiEnvironment, boolean enableRestApi) {
+            BulkEntityReaderFactory factory, ApiEnvironment apiEnvironment) {
         this.authorizationData = authorizationData;
         this.httpFileService = httpFileService;
         this.zipExtractor = zipExtractor;
         this.bulkEntityReaderFactory = factory;
         this.apiEnvironment = apiEnvironment;
 
-        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class, enableRestApi);
+        serviceClient = new ServiceClient<IBulkService>(this.authorizationData, apiEnvironment, IBulkService.class);
 
         workingDirectory = new File(System.getProperty("java.io.tmpdir"), "BingAdsSDK");
 
@@ -688,9 +679,6 @@ public class BulkServiceManager {
                             });
                         }
                     };
-
-                    MessageHandler.getInstance().handleDirectMessage("Bulk Upload... requestId: " + response.getRequestId() + "; UploadFilePath:"
-                            + parameters.getUploadFilePath() + "; uploadUrl: " + uploadUrl);
 
                     httpFileService.uploadFile(new URI(uploadUrl), effectiveUploadPath, addHeaders, uploadHttpTimeoutInMilliseconds);
 

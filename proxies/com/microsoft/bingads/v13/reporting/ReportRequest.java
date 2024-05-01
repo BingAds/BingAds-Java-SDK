@@ -88,6 +88,13 @@ public class ReportRequest {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public String getType() {
+        return type;
+    }
+
+    public ReportRequest() {
+        this.type = "ReportRequest";
+    }
     @XmlElement(name = "ExcludeColumnHeaders", nillable = true)
     protected Boolean excludeColumnHeaders;
     @XmlElement(name = "ExcludeReportFooter", nillable = true)

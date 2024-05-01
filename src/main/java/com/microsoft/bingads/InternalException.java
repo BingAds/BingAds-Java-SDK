@@ -7,4 +7,8 @@ public class InternalException extends RuntimeException {
     public InternalException(Throwable cause) {
         super("Internal BingAds SDK exception has occured", cause);
     }
+
+    public InternalException(String message) {
+        super("Internal BingAds SDK exception has occured: " + message);
+    }
 }

@@ -39,6 +39,10 @@ public class CriterionCashback {
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
+    public CriterionCashback() {
+        this.type = "CriterionCashback";
+    }
+
     /**
      * Gets the value of the type property.
      * 
