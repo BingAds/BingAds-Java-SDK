@@ -123,7 +123,12 @@ class RestfulServiceClient {
     private Invocation.Builder createRequestBuilder(String entityEndpointPath) {
         WebTarget targetForService = GlobalSettings.getHttpClientProvider().get(serviceInterface, environment);
 
-        Invocation.Builder builder = targetForService.path(entityEndpointPath).request();
+        Invocation.Builder builder;
+        
+        // some implementations, for example CXF, may not be thread safe
+        synchronized (targetForService) {
+            builder = targetForService.path(entityEndpointPath).request();
+        }
         
         for (Map.Entry<String, String> entry : headers.entrySet()) {
             String name = entry.getKey();
@@ -199,7 +204,7 @@ class RestfulServiceClient {
         ResponseInfo<TResponse, TFaultDetail> responseInfo = new ResponseInfo<>();
 
         if (statusCodesForApplicationFault.contains(statusCode)) {
-            TFaultDetail faultDetail = parseStream((InputStream)httpResponse.getEntity(), faultDetailClass);
+            TFaultDetail faultDetail = parseStream(httpResponse.readEntity(InputStream.class), faultDetailClass);
 
             responseInfo.setFaultDetail(faultDetail);
 
@@ -207,7 +212,7 @@ class RestfulServiceClient {
         }
 
         if (statusCode >= 200 && statusCode <= 299) {
-            TResponse response = parseStream((InputStream)httpResponse.getEntity(), responseClass);
+            TResponse response = parseStream(httpResponse.readEntity(InputStream.class), responseClass);
 
             responseInfo.setResponse(response);
 
