@@ -1,10 +1,9 @@
-package com.microsoft.bingads.internal.restful.adaptor;
+package com.microsoft.bingads.v13.api.test.restfulapi;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-
+import java.util.Date;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
@@ -24,6 +23,9 @@ public class CalendarSerializer extends StdSerializer<Calendar> {
 
 	@Override
 	public void serialize(Calendar value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-		gen.writeString(jakarta.xml.bind.DatatypeConverter.printDateTime(value));
+		formatter.setTimeZone(value.getTimeZone());
+		String zone = value.getTimeZone().getID().replaceAll("GMT", "").replaceAll("UTC", "");
+		Date date = value.getTime();
+		gen.writeString(formatter.format(value.getTime()) + zone);
 	}
 }
