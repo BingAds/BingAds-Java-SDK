@@ -60,7 +60,7 @@ public class BulkCampaignGenderCriterion extends BulkCampaignBiddableCriterion {
 	                		((GenderCriterion)c.getBiddableCampaignCriterion().getCriterion()).setGenderType(StringExtensions.parseOptional(v, new Function<String, GenderType>() {
 	                                @Override
 	                                public GenderType apply(String s) {
-	                                    return GenderType.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, GenderType.class);
 	                                }
 	                            }));
                     	}

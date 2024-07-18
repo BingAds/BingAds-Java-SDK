@@ -47,10 +47,10 @@ public class GetAdGroupCriterionsByIdsRequest {
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     protected Collection<AdGroupCriterionType> criterionType;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<CriterionAdditionalField> returnAdditionalFields;
 
     /**

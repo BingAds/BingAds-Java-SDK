@@ -26,7 +26,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="https://tools.ietf.org/html/rfc6749#section-4.1">https://tools.ietf.org/html/rfc6749#section-4.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken) {
-        this(clientId, refreshToken, ApiEnvironment.PRODUCTION);
+        this(clientId, refreshToken, defaultEnv);
     }
     
     
@@ -63,7 +63,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId) {
-        this(clientId, ApiEnvironment.PRODUCTION);
+        this(clientId, defaultEnv);
     }
 
     /**
@@ -96,7 +96,7 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens) {
-        this(clientId, oauthTokens, ApiEnvironment.PRODUCTION);
+        this(clientId, oauthTokens, defaultEnv);
     }
     
     /**

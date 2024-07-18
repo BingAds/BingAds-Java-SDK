@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="AssetGroupSearchThemes" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetGroupSearchTheme" minOccurs="0"/>
  *         <element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CallToAction" type="{https://bingads.microsoft.com/CampaignManagement/v13}CallToAction" minOccurs="0"/>
  *         <element name="Descriptions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
@@ -45,6 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AssetGroup", propOrder = {
+    "assetGroupSearchThemes",
     "businessName",
     "callToAction",
     "descriptions",
@@ -65,6 +67,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class AssetGroup {
 
+    @XmlElement(name = "AssetGroupSearchThemes", nillable = true)
+    protected ArrayOfAssetGroupSearchTheme assetGroupSearchThemes;
     @XmlElement(name = "BusinessName", nillable = true)
     protected String businessName;
     @XmlElement(name = "CallToAction", nillable = true)
@@ -102,6 +106,30 @@ public class AssetGroup {
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected AssetGroupStatus status;
+
+    /**
+     * Gets the value of the assetGroupSearchThemes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetGroupSearchTheme }
+     *     
+     */
+    public ArrayOfAssetGroupSearchTheme getAssetGroupSearchThemes() {
+        return assetGroupSearchThemes;
+    }
+
+    /**
+     * Sets the value of the assetGroupSearchThemes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetGroupSearchTheme }
+     *     
+     */
+    public void setAssetGroupSearchThemes(ArrayOfAssetGroupSearchTheme value) {
+        this.assetGroupSearchThemes = value;
+    }
 
     /**
      * Gets the value of the businessName property.

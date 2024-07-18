@@ -1,0 +1,34 @@
+package com.microsoft.bingads.v13.api.test.entities.goal.event.write;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+	BulkEventGoalWriteToRowValuesActionExpressionTest.class,
+	BulkEventGoalWriteToRowValuesActionOperatorTest.class,
+	BulkEventGoalWriteToRowValuesAttributionModelTypeTest.class,
+	BulkEventGoalWriteToRowValuesCategoryExpressionTest.class,
+	BulkEventGoalWriteToRowValuesCategoryOperatorTest.class,
+	BulkEventGoalWriteToRowValuesConversionWindowInMinutesTest.class,
+	BulkEventGoalWriteToRowValuesCountTypeTest.class,
+	BulkEventGoalWriteToRowValuesCurrencyCodeTest.class,
+	BulkEventGoalWriteToRowValuesEventValueOperatorTest.class,
+	BulkEventGoalWriteToRowValuesEventValueTest.class,
+	BulkEventGoalWriteToRowValuesExcludeFromBiddingTest.class,
+	BulkEventGoalWriteToRowValuesGoalCategoryTest.class,
+	BulkEventGoalWriteToRowValuesIdTest.class,
+	BulkEventGoalWriteToRowValuesIsEnhancedConversionsEnabledTest.class,
+	BulkEventGoalWriteToRowValuesLabelExpressionTest.class,
+	BulkEventGoalWriteToRowValuesLabelOperatorTest.class,
+	BulkEventGoalWriteToRowValuesRevenueTypeTest.class,
+	BulkEventGoalWriteToRowValuesRevenueValueTest.class,
+	BulkEventGoalWriteToRowValuesScopeTest.class,
+    BulkEventGoalWriteToRowValuesStatusTest.class,
+    BulkEventGoalWriteToRowValuesTagIdTest.class,
+    BulkEventGoalWriteToRowValuesViewThroughConversionWindowInMinutesTest.class
+})
+public class BulkEventGoalWriteTests {
+
+}

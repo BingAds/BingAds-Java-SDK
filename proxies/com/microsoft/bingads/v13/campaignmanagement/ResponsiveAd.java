@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -18,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Ad">
  *       <sequence>
+ *         <element name="AdSubType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdSubType" minOccurs="0"/>
  *         <element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CallToAction" type="{https://bingads.microsoft.com/CampaignManagement/v13}CallToAction" minOccurs="0"/>
  *         <element name="CallToActionLanguage" type="{https://bingads.microsoft.com/CampaignManagement/v13}LanguageName" minOccurs="0"/>
@@ -42,6 +45,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResponsiveAd", propOrder = {
+    "adSubType",
     "businessName",
     "callToAction",
     "callToActionLanguage",
@@ -64,6 +68,9 @@ public class ResponsiveAd
       this.type = AdType.fromValue("ResponsiveAd");
     }
 
+    @XmlElement(name = "AdSubType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Collection<AdSubType> adSubType;
     @XmlElement(name = "BusinessName", nillable = true)
     protected String businessName;
     @XmlElement(name = "CallToAction", nillable = true)
@@ -94,6 +101,30 @@ public class ResponsiveAd
     protected VerifiedTrackingSetting verifiedTrackingSettings;
     @XmlElement(name = "Videos", nillable = true)
     protected ArrayOfAssetLink videos;
+
+    /**
+     * Gets the value of the adSubType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AdSubType> getAdSubType() {
+        return adSubType;
+    }
+
+    /**
+     * Sets the value of the adSubType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdSubType(Collection<AdSubType> value) {
+        this.adSubType = value;
+    }
 
     /**
      * Gets the value of the businessName property.

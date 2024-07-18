@@ -49,6 +49,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = VideoAdExtension.class, name = "VideoAdExtension"),
 						
 			@JsonSubTypes.Type(value = DisclaimerAdExtension.class, name = "DisclaimerAdExtension"),
+						
+			@JsonSubTypes.Type(value = LogoAdExtension.class, name = "LogoAdExtension"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

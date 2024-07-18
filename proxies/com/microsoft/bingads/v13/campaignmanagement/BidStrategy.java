@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class BidStrategy {
 
     @XmlElement(name = "AssociatedCampaignType", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<CampaignType> associatedCampaignType;
     @XmlElement(name = "AssociationCount", nillable = true)
     protected Integer associationCount;

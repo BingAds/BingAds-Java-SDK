@@ -260,6 +260,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AssetGroupSearchTheme> getAssetGroupSearchThemes();
+
+            
+	@JsonValue
 	List<AssetGroupEditorialReasonCollection> getAssetGroupEditorialReasonCollections();
 
             

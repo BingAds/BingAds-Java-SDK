@@ -60,7 +60,7 @@ public class BulkAdGroupDayTimeCriterion extends BulkAdGroupBiddableCriterion {
 	                		((DayTimeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
 	                                @Override
 	                                public Day apply(String s) {
-	                                    return Day.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, Day.class);
 	                                }
 	                            }));
                     	}

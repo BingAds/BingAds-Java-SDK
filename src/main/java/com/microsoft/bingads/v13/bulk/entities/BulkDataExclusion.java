@@ -195,19 +195,14 @@ public class BulkDataExclusion extends SingleRecordBulkEntity {
         m.add(new SimpleBulkMapping<BulkDataExclusion, String>(StringTable.DeviceType,
                 new Function<BulkDataExclusion, String>() {
                     @Override
-                    public String apply(BulkDataExclusion t) {
-                        return t.getDataExclusion().getDeviceTypeFilter() != null ? t.getDataExclusion().getDeviceTypeFilter().value() : null;
+                    public String apply(BulkDataExclusion c) {
+                    	return StringExtensions.toDeviceTypeListBulkString(",", c.getDataExclusion().getDeviceTypeFilter());
                     }
                 },
                 new BiConsumer<String, BulkDataExclusion>() {
                     @Override
-                    public void accept(String v, BulkDataExclusion c) {
-                        c.getDataExclusion().setDeviceTypeFilter(StringExtensions.parseOptional(v, new Function<String, DeviceType>() {
-                            @Override
-                            public DeviceType apply(String value) {
-                                return DeviceType.fromValue(value);
-                            }
-                        }));
+                    public void accept(String v, BulkDataExclusion c) { 	
+                        c.getDataExclusion().setDeviceTypeFilter(StringExtensions.parseDeviceTypeList(v, ","));
                     }
                 }
         ));

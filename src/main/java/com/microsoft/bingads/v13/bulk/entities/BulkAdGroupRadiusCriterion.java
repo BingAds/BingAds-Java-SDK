@@ -141,7 +141,7 @@ public class BulkAdGroupRadiusCriterion extends BulkAdGroupBiddableCriterion {
 	                		((RadiusCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setRadiusUnit(StringExtensions.parseOptional(v, new Function<String, DistanceUnit>() {
 	                            @Override
 	                            public DistanceUnit apply(String s) {
-	                                return DistanceUnit.fromValue(s);
+	                                return StringExtensions.fromValueOptional(s, DistanceUnit.class);
 	                            }
 	                        }));
                     	}

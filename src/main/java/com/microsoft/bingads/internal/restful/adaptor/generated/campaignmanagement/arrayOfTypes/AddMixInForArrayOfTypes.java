@@ -72,6 +72,7 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfGenderType.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAudienceInfo.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAssetGroup.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAssetGroupSearchTheme.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAssetGroupEditorialReasonCollection.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAssetGroupEditorialReason.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAudienceGroupAssetGroupAssociation.class, ArrayOfTypesMixIn.class)

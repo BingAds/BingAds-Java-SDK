@@ -80,7 +80,7 @@ public class BulkAudienceGroup extends SingleRecordBulkEntity {
                         c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }

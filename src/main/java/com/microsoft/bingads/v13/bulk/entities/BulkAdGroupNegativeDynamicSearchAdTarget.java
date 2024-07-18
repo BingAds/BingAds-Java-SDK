@@ -66,7 +66,7 @@ public class BulkAdGroupNegativeDynamicSearchAdTarget extends SingleRecordBulkEn
                         c.getNegativeAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
-                                return AdGroupCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, AdGroupCriterionStatus.class);
                             }
                         }));
                     }

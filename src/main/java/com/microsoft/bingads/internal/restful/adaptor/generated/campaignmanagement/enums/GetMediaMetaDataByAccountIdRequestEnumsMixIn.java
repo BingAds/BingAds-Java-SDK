@@ -18,4 +18,9 @@ public interface GetMediaMetaDataByAccountIdRequestEnumsMixIn{
 	@JsonDeserialize(using = MediaEnabledEntityFilterDeserializer.class)
 	Collection<MediaEnabledEntityFilter> getMediaEnabledEntities();
 
+    	
+	@JsonSerialize(using = EnumListSerializer.class)
+	@JsonDeserialize(using = MediaAdditionalFieldDeserializer.class)
+	Collection<MediaAdditionalField> getReturnAdditionalFields();
+
     }

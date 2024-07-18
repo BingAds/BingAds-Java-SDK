@@ -86,7 +86,7 @@ public class BulkPriceAdExtension extends BulkAdExtension<PriceAdExtension> {
                     	c.getPriceAdExtension().setPriceExtensionType(StringExtensions.parseOptional(v, new Function<String, PriceExtensionType>() {
                             @Override
                             public PriceExtensionType apply(String s) {
-                                return PriceExtensionType.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, PriceExtensionType.class);
                             }
                         }));
                     }

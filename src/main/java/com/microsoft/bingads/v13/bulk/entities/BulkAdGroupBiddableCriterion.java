@@ -61,7 +61,7 @@ public abstract class BulkAdGroupBiddableCriterion extends SingleRecordBulkEntit
                         c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
-                                return AdGroupCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, AdGroupCriterionStatus.class);
                             }
                         }));
                     }

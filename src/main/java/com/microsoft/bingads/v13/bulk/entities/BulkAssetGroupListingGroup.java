@@ -67,7 +67,7 @@ public class BulkAssetGroupListingGroup extends SingleRecordBulkEntity {
                         c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }
@@ -182,7 +182,7 @@ public class BulkAssetGroupListingGroup extends SingleRecordBulkEntity {
                         c.getAssetGroupListingGroup().setAssetGroupListingType(StringExtensions.parseOptional(v, new Function<String, AssetGroupListingType>() {
                             @Override
                             public AssetGroupListingType apply(String value) {
-                                return AssetGroupListingType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AssetGroupListingType.class);
                             }
                         }));
                     }

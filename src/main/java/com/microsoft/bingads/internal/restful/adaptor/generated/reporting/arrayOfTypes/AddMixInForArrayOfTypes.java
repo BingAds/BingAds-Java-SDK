@@ -51,6 +51,8 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfHotelGroupPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAssetGroupPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAssetGroupReportScope.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfSearchInsightPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAssetPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBatchError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfOperationError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)

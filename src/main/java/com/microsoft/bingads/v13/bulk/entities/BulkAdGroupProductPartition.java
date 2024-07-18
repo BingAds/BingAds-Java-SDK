@@ -67,7 +67,7 @@ public class BulkAdGroupProductPartition extends BulkAdGroupCriterion {
                                 StringExtensions.parseOptional(v, new Function<String, ProductPartitionType>() {
                                     @Override
                                     public ProductPartitionType apply(String s) {
-                                        return ProductPartitionType.fromValue(s);
+                                        return StringExtensions.fromValueOptional(s, ProductPartitionType.class);
                                     }
                                 })
                         );

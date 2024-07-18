@@ -171,7 +171,7 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
                     	c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }
@@ -251,7 +251,7 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
                         c.setMatchType(StringExtensions.<MatchType>parseOptional(v, new Function<String, MatchType>() {
                             @Override
                             public MatchType apply(String value) {
-                                return MatchType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, MatchType.class);
                             }
                         }));
                     }
@@ -271,7 +271,7 @@ public class BulkFeedItem extends SingleRecordBulkEntity {
                         c.setIntentOption(StringExtensions.<IntentOption>parseOptional(v, new Function<String, IntentOption>() {
                             @Override
                             public IntentOption apply(String value) {
-                                return IntentOption.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, IntentOption.class);
                             }
                         }));
                     }

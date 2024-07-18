@@ -69,6 +69,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(HotelDimensionPerformanceReportColumn.class, HotelDimensionPerformanceReportColumnMixIn.class)
 				.addMixIn(HotelGroupPerformanceReportColumn.class, HotelGroupPerformanceReportColumnMixIn.class)
 				.addMixIn(AssetGroupPerformanceReportColumn.class, AssetGroupPerformanceReportColumnMixIn.class)
+				.addMixIn(SearchInsightPerformanceReportColumn.class, SearchInsightPerformanceReportColumnMixIn.class)
+				.addMixIn(AssetPerformanceReportColumn.class, AssetPerformanceReportColumnMixIn.class)
 				.addMixIn(ReportRequestStatusType.class, ReportRequestStatusTypeMixIn.class)
 				;
 	}

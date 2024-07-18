@@ -67,7 +67,7 @@ public class BulkAdGroupHotelListingGroup extends BulkAdGroupCriterion {
                             StringExtensions.parseOptional(v, new Function<String, HotelListingType>() {
                                 @Override
                                 public HotelListingType apply(String s) {
-                                    return HotelListingType.fromValue(s);
+                                    return StringExtensions.fromValueOptional(s, HotelListingType.class);
                                 }
                             })
                     );

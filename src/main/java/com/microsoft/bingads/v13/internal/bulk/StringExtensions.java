@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.internal.restful.adaptor.AdaptorUtil;
 import com.microsoft.bingads.v13.bulk.entities.BulkFeed.FeedCustomAttribute;
 import com.microsoft.bingads.v13.bulk.entities.LocationTargetType;
 import com.microsoft.bingads.v13.bulk.entities.Status;
@@ -63,6 +64,7 @@ import com.microsoft.bingads.v13.campaignmanagement.CustomParameters;
 import com.microsoft.bingads.v13.campaignmanagement.Date;
 import com.microsoft.bingads.v13.campaignmanagement.Day;
 import com.microsoft.bingads.v13.campaignmanagement.DayTime;
+import com.microsoft.bingads.v13.campaignmanagement.DeviceType;
 import com.microsoft.bingads.v13.campaignmanagement.EnhancedCpcBiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v13.campaignmanagement.FrequencyCapSettings;
@@ -442,13 +444,14 @@ public class StringExtensions {
             return null;
         }
 
-        try {
-            AdRotation rotation = new AdRotation();
-            rotation.setType(AdRotationType.fromValue(v));
-            return rotation;
-        } catch (IllegalArgumentException e) {
-            return null;
+        AdRotation rotation = new AdRotation();
+        AdRotationType type = fromValueOptional(v, AdRotationType.class);
+        if (type == null)
+        {
+        	return null;
         }
+        rotation.setType(type);   
+        return rotation;
     }
 
     public static boolean isTurnedOn(String v) {
@@ -772,7 +775,7 @@ public class StringExtensions {
         } else if (s.equals("Postal Code")) {
             return LocationTargetType.POSTAL_CODE;
         } else {
-            return LocationTargetType.fromValue(s);
+            return fromValueOptional(s, LocationTargetType.class);
         }
     }
 
@@ -1139,7 +1142,7 @@ public class StringExtensions {
         
         for(String e : enums) {
             if (!StringExtensions.isNullOrEmpty(e) && ! ";".equals(e))
-            	enumList.add(AgeRange.fromValue(e));
+            	enumList.add(fromValueOptional(e, AgeRange.class));
         }   
         
         return enumList;
@@ -1173,7 +1176,7 @@ public class StringExtensions {
         
         for(String e : enums) {
             if (!StringExtensions.isNullOrEmpty(e) && ! ";".equals(e))
-            	enumList.add(GenderType.fromValue(e));
+            	enumList.add(fromValueOptional(e, GenderType.class));
         }   
         
         return enumList;
@@ -1207,11 +1210,13 @@ public class StringExtensions {
         
         for(String e : enums) {
             if (!StringExtensions.isNullOrEmpty(e) && ! separator.equals(e))
-            	enumList.add(CampaignType.fromValue(e.trim()));
+            	enumList.add(fromValueOptional(e.trim(), CampaignType.class));
         }   
         
         return enumList;
     }
+    
+    
     
     public static String toCampaignAssociationsBulkString(String separator, ArrayOfCampaignAssociation associations)
     {
@@ -1236,6 +1241,40 @@ public class StringExtensions {
 
     	result.append(list.get(length - 1).getCampaignId().toString());
         return result.toString();
+    }
+    
+    public static String toDeviceTypeListBulkString(String separator, Collection<DeviceType> types)
+    {
+    	if (types == null || types.size() == 0) {
+    		return null;
+    	}
+    	
+    	StringBuilder result = new StringBuilder("");
+    	
+    	int length =  types.size();
+        for (DeviceType type : types) {
+            result.append(type.value() + separator);
+        }
+
+        result.setLength(result.length() - separator.length());
+        return result.toString();
+    }
+    
+    public static Collection<DeviceType> parseDeviceTypeList(String v, String separator)
+    {
+    	if (StringExtensions.isNullOrEmpty(v))
+            return null;
+        
+        Collection<DeviceType> enumList = new ArrayList<DeviceType>();
+        
+        String[] enums = v.split(separator);
+        
+        for(String e : enums) {
+            if (!StringExtensions.isNullOrEmpty(e) && ! separator.equals(e))
+            	enumList.add(fromValueOptional(e.trim(), DeviceType.class));
+        }   
+        
+        return enumList;
     }
     
     public static ArrayOfCampaignAssociation parseCampaignAssociations(String v, String separator)
@@ -1972,7 +2011,7 @@ public class StringExtensions {
         if (value != null) {
             String[] values = value.trim().replace('|', ',').split(",");
             if (values != null && values.length > 0) {
-                List<HotelAdGroupType> hotelAdGroupTypes = Arrays.stream(values).filter(v -> v.isEmpty() == false).map(v -> HotelAdGroupType.fromValue(v.trim()))
+                List<HotelAdGroupType> hotelAdGroupTypes = Arrays.stream(values).filter(v -> v.isEmpty() == false).map(v -> fromValueOptional(v.trim(), HotelAdGroupType.class))
                         .collect(Collectors.toList());
                 if (hotelAdGroupTypes.isEmpty() == false) {
                     HotelSetting setting = new HotelSetting();
@@ -2019,7 +2058,7 @@ public class StringExtensions {
             .filter(s -> s != null )
             .map(s -> {
                 TargetSettingDetail targetSettingDetail = new TargetSettingDetail();
-                targetSettingDetail.setCriterionTypeGroup(CriterionTypeGroup.fromValue(s));
+                targetSettingDetail.setCriterionTypeGroup(fromValueOptional(s, CriterionTypeGroup.class));
                 targetSettingDetail.setTargetAndBid(true);
                 return targetSettingDetail;
             })
@@ -2056,7 +2095,7 @@ public class StringExtensions {
     public static Collection<ProductAudienceType> parseProductAudienceType(String value) {
         if (isNullOrEmpty(value) ) return null;
         String[] parts = value.split(";");
-        return Arrays.stream(parts).map(s -> s.trim()).map(p -> ProductAudienceType.fromValue(p)).collect(Collectors.toList());
+        return Arrays.stream(parts).map(s -> s.trim()).map(p -> fromValueOptional(p, ProductAudienceType.class)).collect(Collectors.toList());
     }
     
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -2211,7 +2250,7 @@ public class StringExtensions {
             for (ImageAssetLinkContract contract : imageAssetLinkContracts) {
                 AssetLink assetLink = new AssetLink();
                 if (contract.editorialStatus != null) {
-                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                    assetLink.setEditorialStatus(fromValueOptional(contract.editorialStatus, AssetLinkEditorialStatus.class));
                 }
                 assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
                 assetLink.setPinnedField(contract.pinnedField);
@@ -2289,7 +2328,7 @@ public class StringExtensions {
             for (TextAssetLinkContract contract : textAssetLinkContracts) {
                 AssetLink assetLink = new AssetLink();
                 if (contract.editorialStatus != null) {
-                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                    assetLink.setEditorialStatus(fromValueOptional(contract.editorialStatus, AssetLinkEditorialStatus.class));
                 }
                 assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
                 assetLink.setPinnedField(contract.pinnedField);
@@ -2363,7 +2402,7 @@ public class StringExtensions {
             for (VideoAssetLinkContract contract : videoAssetLinkContracts) {
                 AssetLink assetLink = new AssetLink();
                 if (contract.editorialStatus != null) {
-                    assetLink.setEditorialStatus(AssetLinkEditorialStatus.fromValue(contract.editorialStatus));
+                    assetLink.setEditorialStatus(fromValueOptional(contract.editorialStatus, AssetLinkEditorialStatus.class));
                 }
                 assetLink.setAssetPerformanceLabel(contract.assetPerformanceLabel);
                 assetLink.setPinnedField(contract.pinnedField);
@@ -2419,6 +2458,22 @@ public class StringExtensions {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public static <T extends Enum<T>> T fromValueOptional(String v, Class<T> enumClass) {
+    	for (T c: enumClass.getEnumConstants()) {
+    		String value = AdaptorUtil.toCamelcase(c.name());
+    		// EditorialStatus.java is written manually, it should be changed to follow the same pattern as other enums.
+    		if (value == "APPROVEDLIMITED")
+    		{
+    			value = "APPROVED_LIMITED";
+    		}
+    		if (value.equalsIgnoreCase(v)) {
+    			return c;
+    		}
+    	}
+    	
+    	return null;
     }
 
     public static void writeBiddingScheme(BiddingScheme biddingScheme, Long entityId, RowValues values) {

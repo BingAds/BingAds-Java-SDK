@@ -187,6 +187,15 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ProductGoal"/>
  *     <enumeration value="SeasonalityAdjustments"/>
  *     <enumeration value="DataExclusions"/>
+ *     <enumeration value="BrandList"/>
+ *     <enumeration value="BrandItem"/>
+ *     <enumeration value="CampaignBrandListAssociation"/>
+ *     <enumeration value="AssetGroupSearchThemes"/>
+ *     <enumeration value="ImpressionBasedRemarketingList"/>
+ *     <enumeration value="AdGroupImpressionBasedRemarketingListAssociations"/>
+ *     <enumeration value="AdGroupNegativeImpressionBasedRemarketingListAssociations"/>
+ *     <enumeration value="CampaignImpressionBasedRemarketingListAssociations"/>
+ *     <enumeration value="CampaignNegativeImpressionBasedRemarketingListAssociations"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -543,7 +552,25 @@ public enum DownloadEntity {
     @XmlEnumValue("SeasonalityAdjustments")
     SEASONALITY_ADJUSTMENTS("SeasonalityAdjustments"),
     @XmlEnumValue("DataExclusions")
-    DATA_EXCLUSIONS("DataExclusions");
+    DATA_EXCLUSIONS("DataExclusions"),
+    @XmlEnumValue("BrandList")
+    BRAND_LIST("BrandList"),
+    @XmlEnumValue("BrandItem")
+    BRAND_ITEM("BrandItem"),
+    @XmlEnumValue("CampaignBrandListAssociation")
+    CAMPAIGN_BRAND_LIST_ASSOCIATION("CampaignBrandListAssociation"),
+    @XmlEnumValue("AssetGroupSearchThemes")
+    ASSET_GROUP_SEARCH_THEMES("AssetGroupSearchThemes"),
+    @XmlEnumValue("ImpressionBasedRemarketingList")
+    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
+    @XmlEnumValue("AdGroupImpressionBasedRemarketingListAssociations")
+    AD_GROUP_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("AdGroupImpressionBasedRemarketingListAssociations"),
+    @XmlEnumValue("AdGroupNegativeImpressionBasedRemarketingListAssociations")
+    AD_GROUP_NEGATIVE_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("AdGroupNegativeImpressionBasedRemarketingListAssociations"),
+    @XmlEnumValue("CampaignImpressionBasedRemarketingListAssociations")
+    CAMPAIGN_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignImpressionBasedRemarketingListAssociations"),
+    @XmlEnumValue("CampaignNegativeImpressionBasedRemarketingListAssociations")
+    CAMPAIGN_NEGATIVE_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeImpressionBasedRemarketingListAssociations");
     private final String value;
 
     DownloadEntity(String v) {

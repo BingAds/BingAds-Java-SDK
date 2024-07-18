@@ -5,16 +5,16 @@ import java.util.Collection;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter10
-    extends XmlAdapter<String, Collection<AdGroupCriterionType>>
+    extends XmlAdapter<String, Collection<MediaEnabledEntityFilter>>
 {
 
 
-    public Collection<AdGroupCriterionType> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionTypeConverter.convertToList(value));
+    public Collection<MediaEnabledEntityFilter> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.MediaEnabledEntityFilterConverter.convertToList(value));
     }
 
-    public String marshal(Collection<AdGroupCriterionType> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionTypeConverter.convertToString(value));
+    public String marshal(Collection<MediaEnabledEntityFilter> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.MediaEnabledEntityFilterConverter.convertToString(value));
     }
 
 }

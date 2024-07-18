@@ -18,4 +18,9 @@ public interface SeasonalityAdjustmentEnumsMixIn{
 	@JsonDeserialize(using = CampaignTypeDeserializer.class)
 	Collection<CampaignType> getCampaignTypeFilter();
 
+    	
+	@JsonSerialize(using = EnumListSerializer.class)
+	@JsonDeserialize(using = DeviceTypeDeserializer.class)
+	Collection<DeviceType> getDeviceTypeFilter();
+
     }

@@ -63,7 +63,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     ProductAudience.class,
     SimilarRemarketingList.class,
     CombinedList.class,
-    CustomerList.class
+    CustomerList.class,
+    ImpressionBasedRemarketingList.class
 })
 public class Audience {
 
@@ -91,7 +92,7 @@ public class Audience {
     @XmlElement(name = "SupportedCampaignTypes", nillable = true)
     protected ArrayOfstring supportedCampaignTypes;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AudienceType> type;
 
     /**

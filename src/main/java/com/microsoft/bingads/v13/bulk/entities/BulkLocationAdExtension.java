@@ -99,7 +99,7 @@ public class BulkLocationAdExtension extends BulkAdExtension<LocationAdExtension
                         c.getLocationAdExtension().setGeoCodeStatus(StringExtensions.<BusinessGeoCodeStatus>parseOptional(v, new Function<String, BusinessGeoCodeStatus>() {
                             @Override
                             public BusinessGeoCodeStatus apply(String value) {
-                                return BusinessGeoCodeStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, BusinessGeoCodeStatus.class);
                             }
                         }));
                     }

@@ -55,7 +55,7 @@ public abstract class BulkCampaignNegativeCriterion extends SingleRecordBulkEnti
                         c.getNegativeCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, CampaignCriterionStatus.class);
                             }
                         }));
                     }

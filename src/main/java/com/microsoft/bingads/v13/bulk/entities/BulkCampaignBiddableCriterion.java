@@ -59,7 +59,7 @@ public abstract class BulkCampaignBiddableCriterion extends SingleRecordBulkEnti
                         c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, CampaignCriterionStatus.class);
                             }
                         }));
                     }

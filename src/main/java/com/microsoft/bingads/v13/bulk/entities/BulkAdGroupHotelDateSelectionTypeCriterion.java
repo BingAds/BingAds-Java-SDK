@@ -59,7 +59,7 @@ public class BulkAdGroupHotelDateSelectionTypeCriterion extends BulkAdGroupBidda
                                     .setHotelDateSelectionType(StringExtensions.parseOptional(v, new Function<String, HotelDateSelectionType>() {
                                         @Override
                                         public HotelDateSelectionType apply(String t) {
-                                            return HotelDateSelectionType.fromValue(t);
+                                            return StringExtensions.fromValueOptional(t, HotelDateSelectionType.class);
                                         }
                                     }));
                         }

@@ -10,7 +10,8 @@ public enum AdExtensionAdditionalField {
     LAYOUTS("Layouts"),
     ACTION_TYPES_PHASE3("ActionTypesPhase3"),
     ACTION_TYPES_PHASE4("ActionTypesPhase4"),
-    NEW_FILTER_LINK_HEADERS("NewFilterLinkHeaders");
+    NEW_FILTER_LINK_HEADERS("NewFilterLinkHeaders"),
+    SOURCE_TYPE("SourceType");
         
     private final String value;
 

@@ -98,7 +98,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                         c.getAdGroup().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupStatus>() {
                             @Override
                             public AdGroupStatus apply(String value) {
-                                return AdGroupStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AdGroupStatus.class);
                             }
                         }));
                     }
@@ -206,7 +206,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                         c.getAdGroup().setNetwork(StringExtensions.parseOptional(v, new Function<String, Network>() {
                             @Override
                             public Network apply(String value) {
-                                return Network.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Network.class);
                             }
                         }));
                     }
@@ -376,7 +376,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                         c.getAdGroup().setPrivacyStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupPrivacyStatus>() {
                             @Override
                             public AdGroupPrivacyStatus apply(String value) {
-                                return AdGroupPrivacyStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AdGroupPrivacyStatus.class);
                             }
                         }));
                     }
@@ -670,7 +670,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
         BidOption bo = StringExtensions.parseOptional(values.tryGet(StringTable.BidOption), new Function<String, BidOption>() {
             @Override
             public BidOption apply(String value) {
-                return BidOption.fromValue(value);
+                return StringExtensions.fromValueOptional(value, BidOption.class);
             }
         });
         Double boostValue = StringExtensions.parseOptional(values.tryGet(StringTable.BidBoostValue), new Function<String, Double>() {

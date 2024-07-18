@@ -60,7 +60,7 @@ public class BulkAdGroupHotelCheckInDayCriterion extends BulkAdGroupBiddableCrit
                                     .setCheckInDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
                                         @Override
                                         public Day apply(String t) {
-                                            return Day.fromValue(t);
+                                            return StringExtensions.fromValueOptional(t, Day.class);
                                         }
                                     }));
                         }

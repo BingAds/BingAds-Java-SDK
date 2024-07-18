@@ -232,7 +232,7 @@ public class BulkPromotionAdExtension extends BulkAdExtension<PromotionAdExtensi
                         c.getPromotionAdExtension().setDiscountModifier(StringExtensions.parseOptional(v,  new Function<String, PromotionDiscountModifier>() {
                             @Override
                             public PromotionDiscountModifier apply(String value) {
-                                return PromotionDiscountModifier.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, PromotionDiscountModifier.class);
                             }
                         }));
                     }
@@ -253,7 +253,7 @@ public class BulkPromotionAdExtension extends BulkAdExtension<PromotionAdExtensi
                         c.getPromotionAdExtension().setPromotionOccasion(StringExtensions.parseOptional(v,  new Function<String, PromotionOccasion>() {
                             @Override
                             public PromotionOccasion apply(String value) {
-                                return PromotionOccasion.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, PromotionOccasion.class);
                             }
                         }));
                     }

@@ -1,0 +1,34 @@
+package com.microsoft.bingads.v13.api.test.entities.goal.event.read;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+	BulkEventGoalReadFromRowValuesTagIdTest.class,
+	BulkEventGoalReadFromRowValuesActionExpressionTest.class,
+	BulkEventGoalReadFromRowValuesActionOperatorTest.class,
+	BulkEventGoalReadFromRowValuesAttributionModelTypeTest.class,
+	BulkEventGoalReadFromRowValuesCategoryExpressionTest.class,
+	BulkEventGoalReadFromRowValuesCategoryOperatorTest.class,
+	BulkEventGoalReadFromRowValuesConversionWindowInMinutesTest.class,
+	BulkEventGoalReadFromRowValuesCurrencyCodeTest.class,
+	BulkEventGoalReadFromRowValuesEventValueOperatorTest.class,
+	BulkEventGoalReadFromRowValuesEventValueTest.class,
+	BulkEventGoalReadFromRowValuesExcludeFromBiddingTest.class,
+	BulkEventGoalReadFromRowValuesGoalCategoryTest.class,
+	BulkEventGoalReadFromRowValuesIdTest.class,
+	BulkEventGoalReadFromRowValuesIsEnhancedConversionsEnabledTest.class,
+	BulkEventGoalReadFromRowValuesLabelExpressionTest.class,
+	BulkEventGoalReadFromRowValuesLabelOperatorTest.class,
+	BulkEventGoalReadFromRowValuesRevenueTypeTest.class,
+	BulkEventGoalReadFromRowValuesRevenueValueTest.class,
+	BulkEventGoalReadFromRowValuesScopeTest.class,
+	BulkEventGoalReadFromRowValuesStatusTest.class,
+	BulkEventGoalReadFromRowValuesViewThroughConversionWindowInMinutesTest.class,
+	BulkEventGoalReadFromRowValuesCountTypeTest.class
+})
+public class BulkEventGoalReadTests {
+
+}

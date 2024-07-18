@@ -80,8 +80,8 @@ class PriceTableRowHelper {
                 priceTableRow.setFinalUrls(finalUrls);
 
                 priceTableRow.setPrice(StringExtensions.nullOrDouble(price));
-                priceTableRow.setPriceQualifier(PriceQualifier.fromValue(priceQualifier));
-                priceTableRow.setPriceUnit(PriceUnit.fromValue(priceUnit));
+                priceTableRow.setPriceQualifier(StringExtensions.fromValueOptional(priceQualifier, PriceQualifier.class));
+                priceTableRow.setPriceUnit(StringExtensions.fromValueOptional(priceUnit, PriceUnit.class));
                 priceTableRows.add(priceTableRow);
             }
         }

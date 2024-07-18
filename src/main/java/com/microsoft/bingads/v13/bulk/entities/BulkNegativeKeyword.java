@@ -71,7 +71,7 @@ abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
                         c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }
@@ -126,7 +126,7 @@ abstract class BulkNegativeKeyword extends SingleRecordBulkEntity {
                         c.getNegativeKeyword().setMatchType(StringExtensions.parseOptional(v, new Function<String, MatchType>() {
                             @Override
                             public MatchType apply(String t) {
-                                return MatchType.fromValue(t);
+                                return StringExtensions.fromValueOptional(t, MatchType.class);
                             }
                         }));
                     }

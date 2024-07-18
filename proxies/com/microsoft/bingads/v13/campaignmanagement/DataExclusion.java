@@ -53,13 +53,13 @@ public class DataExclusion {
     @XmlElement(name = "CampaignAssociations", nillable = true)
     protected ArrayOfCampaignAssociation campaignAssociations;
     @XmlElement(name = "CampaignTypeFilter", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected Collection<CampaignType> campaignTypeFilter;
     @XmlElement(name = "Description", nillable = true)
     protected String description;
-    @XmlElement(name = "DeviceTypeFilter", nillable = true)
-    @XmlSchemaType(name = "string")
-    protected DeviceType deviceTypeFilter;
+    @XmlElement(name = "DeviceTypeFilter", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter24 .class)
+    protected Collection<DeviceType> deviceTypeFilter;
     @XmlElement(name = "EndDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
@@ -150,10 +150,10 @@ public class DataExclusion {
      * 
      * @return
      *     possible object is
-     *     {@link DeviceType }
+     *     {@link String }
      *     
      */
-    public DeviceType getDeviceTypeFilter() {
+    public Collection<DeviceType> getDeviceTypeFilter() {
         return deviceTypeFilter;
     }
 
@@ -162,10 +162,10 @@ public class DataExclusion {
      * 
      * @param value
      *     allowed object is
-     *     {@link DeviceType }
+     *     {@link String }
      *     
      */
-    public void setDeviceTypeFilter(DeviceType value) {
+    public void setDeviceTypeFilter(Collection<DeviceType> value) {
         this.deviceTypeFilter = value;
     }
 

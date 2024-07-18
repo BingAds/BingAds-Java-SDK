@@ -115,7 +115,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                         c.getKeyword().setStatus(StringExtensions.<KeywordStatus>parseOptional(v, new Function<String, KeywordStatus>() {
                             @Override
                             public KeywordStatus apply(String value) {
-                                return KeywordStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, KeywordStatus.class);
                             }
                         }));
                     }
@@ -196,7 +196,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                         c.getKeyword().setEditorialStatus(StringExtensions.<KeywordEditorialStatus>parseOptional(v, new Function<String, KeywordEditorialStatus>() {
                             @Override
                             public KeywordEditorialStatus apply(String value) {
-                                return KeywordEditorialStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, KeywordEditorialStatus.class);
                             }
                         }));
                     }
@@ -216,7 +216,7 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                         c.getKeyword().setMatchType(StringExtensions.<MatchType>parseOptional(v, new Function<String, MatchType>() {
                             @Override
                             public MatchType apply(String value) {
-                                return MatchType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, MatchType.class);
                             }
                         }));
                     }

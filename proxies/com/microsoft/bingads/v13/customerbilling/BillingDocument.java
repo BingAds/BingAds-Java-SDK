@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Data" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="Type" type="{https://bingads.microsoft.com/Customer/v13/Entities}DataType" minOccurs="0"/>
+ *         <element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,7 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "BillingDocument", namespace = "https://bingads.microsoft.com/Customer/v13/Entities", propOrder = {
     "data",
     "id",
-    "type"
+    "type",
+    "number"
 })
 public class BillingDocument {
 
@@ -44,6 +46,8 @@ public class BillingDocument {
     @XmlElement(name = "Type")
     @XmlSchemaType(name = "string")
     protected DataType type;
+    @XmlElement(name = "Number", nillable = true)
+    protected String number;
 
     /**
      * Gets the value of the data property.
@@ -113,6 +117,30 @@ public class BillingDocument {
      */
     public void setType(DataType value) {
         this.type = value;
+    }
+
+    /**
+     * Gets the value of the number property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNumber() {
+        return number;
+    }
+
+    /**
+     * Sets the value of the number property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNumber(String value) {
+        this.number = value;
     }
 
 }

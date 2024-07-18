@@ -28,6 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="ImageMediaIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         <element name="Layouts" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         <element name="SourceType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *       </sequence>
@@ -51,6 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "imageMediaIds",
     "images",
     "layouts",
+    "sourceType",
     "trackingUrlTemplate",
     "urlCustomParameters"
 })
@@ -83,6 +85,8 @@ public class ImageAdExtension
     protected ArrayOfAssetLink images;
     @XmlElement(name = "Layouts", nillable = true)
     protected ArrayOfstring layouts;
+    @XmlElement(name = "SourceType", nillable = true)
+    protected String sourceType;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
@@ -350,6 +354,30 @@ public class ImageAdExtension
      */
     public void setLayouts(ArrayOfstring value) {
         this.layouts = value;
+    }
+
+    /**
+     * Gets the value of the sourceType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSourceType() {
+        return sourceType;
+    }
+
+    /**
+     * Sets the value of the sourceType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSourceType(String value) {
+        this.sourceType = value;
     }
 
     /**
