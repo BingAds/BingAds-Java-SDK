@@ -11,7 +11,7 @@ import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
 
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken) {
-        this(clientId, clientSecret, redirectionUrl, refreshToken, ApiEnvironment.PRODUCTION);
+        this(clientId, clientSecret, redirectionUrl, refreshToken, defaultEnv);
     }
     
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, String refreshToken, ApiEnvironment env) {
@@ -36,7 +36,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">https://tools.ietf.org/html/rfc6749#section-3.1.2</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl) {
-        this(clientId, clientSecret, redirectionUrl, ApiEnvironment.PRODUCTION);
+        this(clientId, clientSecret, redirectionUrl, defaultEnv);
     }
     
 
@@ -92,7 +92,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUrl, OAuthTokens oauthTokens) {
-        this(clientId, clientSecret, redirectionUrl, oauthTokens, ApiEnvironment.PRODUCTION);        
+        this(clientId, clientSecret, redirectionUrl, oauthTokens, defaultEnv);        
     }
     
     /**
@@ -135,7 +135,7 @@ public class OAuthWebAuthCodeGrant extends OAuthWithAuthorizationCode {
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-2.1.1</a>
      */
     public OAuthWebAuthCodeGrant(String clientId, String clientSecret, URL redirectionUri, OAuthService oAuthService, OAuthScope oAuthScope) {
-        this(clientId, clientSecret, redirectionUri, oAuthService, ApiEnvironment.PRODUCTION, oAuthScope);
+        this(clientId, clientSecret, redirectionUri, oAuthService, defaultEnv, oAuthScope);
     }
     
     /**

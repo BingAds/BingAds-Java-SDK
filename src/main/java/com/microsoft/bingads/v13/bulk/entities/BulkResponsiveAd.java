@@ -76,7 +76,7 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                         c.getAd().setCallToAction(StringExtensions.parseOptional(v, new Function<String, CallToAction>() {
                             @Override
                             public CallToAction apply(String value) {
-                                return CallToAction.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, CallToAction.class);
                             }
                         }));
                     }
@@ -96,7 +96,7 @@ public class BulkResponsiveAd extends BulkAd<ResponsiveAd> {
                         c.getAd().setCallToActionLanguage(StringExtensions.parseOptional(v, new Function<String, LanguageName>() {
                             @Override
                             public LanguageName apply(String value) {
-                                return LanguageName.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, LanguageName.class);
                             }
                         }));
                     }

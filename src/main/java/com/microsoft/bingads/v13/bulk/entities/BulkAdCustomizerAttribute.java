@@ -108,7 +108,7 @@ public class BulkAdCustomizerAttribute extends SingleRecordBulkEntity {
 						t.setDataType(StringExtensions.parseOptional(v, new Function<String, AttributeType>() {
 							@Override
 							public AttributeType apply(String value) {
-								return AttributeType.fromValue(value);
+								return StringExtensions.fromValueOptional(value, AttributeType.class);
 							}
 						}));
 					}
@@ -128,7 +128,7 @@ public class BulkAdCustomizerAttribute extends SingleRecordBulkEntity {
 						t.setEditorialStatus(StringExtensions.parseOptional(v, new Function<String, EditorialStatus>() {
 							@Override
 							public EditorialStatus apply(String value) {
-								return EditorialStatus.fromValue(value);
+								return StringExtensions.fromValueOptional(value, EditorialStatus.class);
 							}
 						}));
 					}

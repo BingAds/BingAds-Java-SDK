@@ -31,6 +31,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Russian"/>
  *     <enumeration value="TraditionalChinese"/>
  *     <enumeration value="SimplifiedChinese"/>
+ *     <enumeration value="Thai"/>
+ *     <enumeration value="Turkish"/>
+ *     <enumeration value="Filipino"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -75,7 +78,13 @@ public enum LanguageType {
     @XmlEnumValue("TraditionalChinese")
     TRADITIONAL_CHINESE("TraditionalChinese"),
     @XmlEnumValue("SimplifiedChinese")
-    SIMPLIFIED_CHINESE("SimplifiedChinese");
+    SIMPLIFIED_CHINESE("SimplifiedChinese"),
+    @XmlEnumValue("Thai")
+    THAI("Thai"),
+    @XmlEnumValue("Turkish")
+    TURKISH("Turkish"),
+    @XmlEnumValue("Filipino")
+    FILIPINO("Filipino");
     private final String value;
 
     LanguageType(String v) {

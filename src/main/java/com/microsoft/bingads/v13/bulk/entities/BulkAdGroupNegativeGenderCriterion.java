@@ -58,7 +58,7 @@ public class BulkAdGroupNegativeGenderCriterion extends BulkAdGroupNegativeCrite
                                     StringExtensions.parseOptional(v, new Function<String, GenderType>() {
                                         @Override
                                         public GenderType apply(String s) {
-                                            return GenderType.fromValue(s);
+                                            return StringExtensions.fromValueOptional(s, GenderType.class);
                                         }
                                     }));
                         }

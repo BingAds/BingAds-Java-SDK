@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -19,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroupAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -29,13 +32,17 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "campaignId"
+    "campaignId",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAssetGroupsByCampaignIdRequest")
 public class GetAssetGroupsByCampaignIdRequest {
 
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter18 .class)
+    protected Collection<AssetGroupAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the campaignId property.
@@ -59,6 +66,30 @@ public class GetAssetGroupsByCampaignIdRequest {
      */
     public void setCampaignId(Long value) {
         this.campaignId = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AssetGroupAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AssetGroupAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

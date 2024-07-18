@@ -18,23 +18,22 @@ import com.microsoft.bingads.v13.campaignmanagement.DeviceType;
 public class BulkSeasonalityAdjustmentWriteToRowValuesDeviceTypeTest extends BulkSeasonalityAdjustmentTest {
 
     @Parameter(value = 1)
-    public DeviceType propertyValue;
+    public Collection<DeviceType> propertyValue;
 
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-        	{"Computers", DeviceType.COMPUTERS},
-            {"Tablets", DeviceType.TABLETS},
+        	{"Computers,Tablets", Arrays.asList(new DeviceType[] { DeviceType.COMPUTERS, DeviceType.TABLETS })},
             {null, null}
         });
     }
 
     @Test
     public void testWrite() {
-        this.<DeviceType>testWriteProperty("Device Type", this.datum, this.propertyValue, new BiConsumer<BulkSeasonalityAdjustment, DeviceType>() {
+        this.<Collection<DeviceType>> testWriteProperty("Device Type", this.datum, this.propertyValue, new BiConsumer<BulkSeasonalityAdjustment, Collection<DeviceType>>() {
             @Override
-            public void accept(BulkSeasonalityAdjustment c, DeviceType v) {
-                c.getSeasonalityAdjustment().setDeviceTypeFilter(v);;
+            public void accept(BulkSeasonalityAdjustment c, Collection<DeviceType> v) {
+                c.getSeasonalityAdjustment().setDeviceTypeFilter(v);
             }
         });
     }

@@ -82,7 +82,7 @@ public class BulkProductAudience extends BulkAudience<ProductAudience> {
                         ProductAudienceType productAudienceType = StringExtensions.parseOptional(v, new Function<String, ProductAudienceType>() {
                             @Override
                             public ProductAudienceType apply(String value) {
-                                return ProductAudienceType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, ProductAudienceType.class);
                             }
                         });
                         if (productAudienceType != null) {

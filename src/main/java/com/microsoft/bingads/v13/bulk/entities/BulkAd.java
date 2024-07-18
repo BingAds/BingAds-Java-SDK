@@ -61,7 +61,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                         c.getAd().setStatus(StringExtensions.<AdStatus>parseOptional(v, new Function<String, AdStatus>() {
                             @Override
                             public AdStatus apply(String value) {
-                                return AdStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AdStatus.class);
                             }
                         }));
                     }
@@ -151,7 +151,7 @@ class BulkAd<T extends Ad> extends SingleRecordBulkEntity {
                         c.getAd().setEditorialStatus(StringExtensions.<AdEditorialStatus>parseOptional(v, new Function<String, AdEditorialStatus>() {
                             @Override
                             public AdEditorialStatus apply(String value) {
-                                return AdEditorialStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AdEditorialStatus.class);
                             }
                         }));
                     }

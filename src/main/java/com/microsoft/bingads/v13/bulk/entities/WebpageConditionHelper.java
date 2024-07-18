@@ -7,6 +7,7 @@ import com.microsoft.bingads.v13.campaignmanagement.WebpageCondition;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageConditionOperand;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageConditionOperator;
 import com.microsoft.bingads.v13.internal.bulk.RowValues;
+import com.microsoft.bingads.v13.internal.bulk.StringExtensions;
 import com.microsoft.bingads.v13.internal.bulk.StringTable;
 
 class WebpageConditionHelper {
@@ -44,11 +45,11 @@ class WebpageConditionHelper {
             if (webpageCondition != null && !webpageCondition.isEmpty() && webpageValue != null && !webpageValue.isEmpty()) {
             	WebpageCondition condition = new WebpageCondition();
                 condition.setArgument(webpageValue);
-                condition.setOperand(WebpageConditionOperand.fromValue(webpageCondition));
+                condition.setOperand(StringExtensions.fromValueOptional(webpageCondition, WebpageConditionOperand.class));
                 
                 if (webpageOperator != null && !webpageOperator.isEmpty())
                 {
-                    condition.setOperator(WebpageConditionOperator.fromValue(webpageOperator));
+                    condition.setOperator(StringExtensions.fromValueOptional(webpageCondition, WebpageConditionOperator.class));
                 }
                 
                 conditions.add(condition);

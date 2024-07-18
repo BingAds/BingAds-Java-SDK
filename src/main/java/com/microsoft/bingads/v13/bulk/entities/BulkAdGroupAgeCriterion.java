@@ -59,7 +59,7 @@ public class BulkAdGroupAgeCriterion extends BulkAdGroupBiddableCriterion {
 	                		((AgeCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setAgeRange(StringExtensions.parseOptional(v, new Function<String, AgeRange>() {
 	                                @Override
 	                                public AgeRange apply(String s) {
-	                                    return AgeRange.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, AgeRange.class);
 	                                }
 	                            }));
                     	}

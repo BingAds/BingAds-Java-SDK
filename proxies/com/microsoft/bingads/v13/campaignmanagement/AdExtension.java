@@ -59,7 +59,8 @@ import jakarta.xml.bind.annotation.XmlType;
     FilterLinkAdExtension.class,
     FlyerAdExtension.class,
     VideoAdExtension.class,
-    DisclaimerAdExtension.class
+    DisclaimerAdExtension.class,
+    LogoAdExtension.class
 })
 public class AdExtension {
 

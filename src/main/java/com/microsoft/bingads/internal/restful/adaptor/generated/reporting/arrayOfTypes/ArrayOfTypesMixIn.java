@@ -175,6 +175,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<SearchInsightPerformanceReportColumn> getSearchInsightPerformanceReportColumns();
+
+            
+	@JsonValue
+	List<AssetPerformanceReportColumn> getAssetPerformanceReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

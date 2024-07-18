@@ -61,7 +61,7 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
                         c.getBiddableCampaignCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, CampaignCriterionStatus>() {
                             @Override
                             public CampaignCriterionStatus apply(String s) {
-                                return CampaignCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, CampaignCriterionStatus.class);
                             }
                         }));
                     }
@@ -136,7 +136,7 @@ public class BulkCampaignLocationIntentCriterion extends SingleRecordBulkEntity 
 	                		((LocationIntentCriterion)c.getBiddableCampaignCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
 	                                @Override
 	                                public IntentOption apply(String s) {
-	                                    return IntentOption.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, IntentOption.class);
 	                                }
 	                            }));
                     	}

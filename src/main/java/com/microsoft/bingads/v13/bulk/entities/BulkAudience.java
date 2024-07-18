@@ -60,7 +60,7 @@ public abstract class BulkAudience<T extends Audience> extends SingleRecordBulkE
                         c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }
@@ -190,7 +190,7 @@ public abstract class BulkAudience<T extends Audience> extends SingleRecordBulkE
                         c.getAudience().setScope(StringExtensions.parseOptional(v, new Function<String, EntityScope>() {
                             @Override
                             public EntityScope apply(String value) {
-                                return EntityScope.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, EntityScope.class);
                             }
                         }));
                     }

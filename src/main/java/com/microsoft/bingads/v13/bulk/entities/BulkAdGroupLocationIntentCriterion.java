@@ -63,7 +63,7 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
                         c.getBiddableAdGroupCriterion().setStatus(StringExtensions.parseOptional(v, new Function<String, AdGroupCriterionStatus>() {
                             @Override
                             public AdGroupCriterionStatus apply(String s) {
-                                return AdGroupCriterionStatus.fromValue(s);
+                                return StringExtensions.fromValueOptional(s, AdGroupCriterionStatus.class);
                             }
                         }));
                     }
@@ -158,7 +158,7 @@ public class BulkAdGroupLocationIntentCriterion extends SingleRecordBulkEntity {
 	                		((LocationIntentCriterion)c.getBiddableAdGroupCriterion().getCriterion()).setIntentOption(StringExtensions.parseOptional(v, new Function<String, IntentOption>() {
 	                                @Override
 	                                public IntentOption apply(String s) {
-	                                    return IntentOption.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, IntentOption.class);
 	                                }
 	                            }));
                     	}

@@ -60,7 +60,7 @@ public class BulkAdGroupNegativeAgeCriterion extends BulkAdGroupNegativeCriterio
                                     .setAgeRange(StringExtensions.parseOptional(v, new Function<String, AgeRange>() {
                                         @Override
                                         public AgeRange apply(String s) {
-                                            return AgeRange.fromValue(s);
+                                            return StringExtensions.fromValueOptional(s, AgeRange.class);
                                         }
                                     }));
                         }

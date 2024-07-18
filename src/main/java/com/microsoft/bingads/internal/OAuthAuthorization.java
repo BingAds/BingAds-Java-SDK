@@ -9,6 +9,7 @@ import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthTokens;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
+import com.microsoft.bingads.internal.ServiceUtils;
 
 /**
  * The abstract base class for all OAuth authentication classes.
@@ -25,6 +26,8 @@ import com.microsoft.bingads.OAuthWebAuthCodeGrant;
  */
 abstract class OAuthAuthorization extends Authentication {
 
+	protected static ApiEnvironment defaultEnv = ServiceUtils.getEnvironmentFromConfig() == ApiEnvironment.SANDBOX ? ApiEnvironment.SANDBOX : ApiEnvironment.PRODUCTION;
+	
     /**
      * Returns OAuth Authorization Endpoint that the user has to navigate to
      * from the browser in order to get to the user consent page.
@@ -75,7 +78,7 @@ abstract class OAuthAuthorization extends Authentication {
     }
     
     public OAuthAuthorization(ApiEnvironment env) {
-        this.environment = env;
+    	this.environment = env;
     }
 
     /**
@@ -106,7 +109,7 @@ abstract class OAuthAuthorization extends Authentication {
     }
 
     public void setEnvironment(ApiEnvironment environment) {
-        this.environment = environment;
+    	this.environment = environment;
     }
     
     

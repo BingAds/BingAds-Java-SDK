@@ -19,7 +19,8 @@ public enum AdExtensionsTypeFilter {
     FILTER_LINK_AD_EXTENSION("FilterLinkAdExtension"),
     FLYER_AD_EXTENSION("FlyerAdExtension"),
     VIDEO_AD_EXTENSION("VideoAdExtension"),
-    DISCLAIMER_AD_EXTENSION("DisclaimerAdExtension");
+    DISCLAIMER_AD_EXTENSION("DisclaimerAdExtension"),
+    LOGO_AD_EXTENSION("LogoAdExtension");
         
     private final String value;
 

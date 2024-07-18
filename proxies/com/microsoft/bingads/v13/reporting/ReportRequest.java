@@ -81,7 +81,9 @@ import jakarta.xml.bind.annotation.XmlType;
     DSACategoryPerformanceReportRequest.class,
     HotelDimensionPerformanceReportRequest.class,
     HotelGroupPerformanceReportRequest.class,
-    AssetGroupPerformanceReportRequest.class
+    AssetGroupPerformanceReportRequest.class,
+    SearchInsightPerformanceReportRequest.class,
+    AssetPerformanceReportRequest.class
 })
 public class ReportRequest {
 

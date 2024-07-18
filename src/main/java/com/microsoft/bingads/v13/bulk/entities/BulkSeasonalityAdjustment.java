@@ -195,19 +195,14 @@ public class BulkSeasonalityAdjustment extends SingleRecordBulkEntity {
         m.add(new SimpleBulkMapping<BulkSeasonalityAdjustment, String>(StringTable.DeviceType,
                 new Function<BulkSeasonalityAdjustment, String>() {
                     @Override
-                    public String apply(BulkSeasonalityAdjustment t) {
-                        return t.getSeasonalityAdjustment().getDeviceTypeFilter() != null ? t.getSeasonalityAdjustment().getDeviceTypeFilter().value() : null;
+                    public String apply(BulkSeasonalityAdjustment c) {
+                    	return StringExtensions.toDeviceTypeListBulkString(",", c.getSeasonalityAdjustment().getDeviceTypeFilter());
                     }
                 },
                 new BiConsumer<String, BulkSeasonalityAdjustment>() {
                     @Override
-                    public void accept(String v, BulkSeasonalityAdjustment c) {
-                        c.getSeasonalityAdjustment().setDeviceTypeFilter(StringExtensions.parseOptional(v, new Function<String, DeviceType>() {
-                            @Override
-                            public DeviceType apply(String value) {
-                                return DeviceType.fromValue(value);
-                            }
-                        }));
+                    public void accept(String v, BulkSeasonalityAdjustment c) { 	
+                        c.getSeasonalityAdjustment().setDeviceTypeFilter(StringExtensions.parseDeviceTypeList(v, ","));
                     }
                 }
         ));

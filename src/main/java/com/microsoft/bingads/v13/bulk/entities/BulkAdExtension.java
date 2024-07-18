@@ -88,7 +88,7 @@ class BulkAdExtension<T extends AdExtension> extends SingleRecordBulkEntity {
                         c.getAdExtension().setStatus(StringExtensions.parseOptional(v, new Function<String, AdExtensionStatus>() {
                             @Override
                             public AdExtensionStatus apply(String value) {
-                                return AdExtensionStatus.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, AdExtensionStatus.class);
                             }
                         }));
                     }

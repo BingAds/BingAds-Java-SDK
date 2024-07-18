@@ -98,7 +98,7 @@ public class BulkBidStrategy extends SingleRecordBulkEntity {
                     	c.setStatus(StringExtensions.parseOptional(v, new Function<String, Status>() {
                             @Override
                             public Status apply(String value) {
-                                return Status.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, Status.class);
                             }
                         }));
                     }
@@ -144,7 +144,7 @@ public class BulkBidStrategy extends SingleRecordBulkEntity {
                     	c.getBidStrategy().setAssociatedCampaignType(StringExtensions.parseOptional(v, new Function<String, Collection<CampaignType>>() {
                             @Override
                             public Collection<CampaignType> apply(String value) {
-                                return Collections.singletonList(CampaignType.fromValue(v));
+                                return Collections.singletonList(StringExtensions.fromValueOptional(v, CampaignType.class));
                             }
                         }));
                     }

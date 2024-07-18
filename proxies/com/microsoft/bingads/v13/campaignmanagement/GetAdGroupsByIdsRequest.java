@@ -45,7 +45,7 @@ public class GetAdGroupsByIdsRequest {
     @XmlElement(name = "AdGroupIds", nillable = true)
     protected ArrayOflong adGroupIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<AdGroupAdditionalField> returnAdditionalFields;
 
     /**

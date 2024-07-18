@@ -48,6 +48,7 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.*;
         BulkCampaignWriteToRowValuesImageOptOutPerformanceMaxSettingTest.class,
         BulkCampaignWriteToRowValuesPageFeedIdsPerformanceMaxSettingTest.class,
         BulkCampaignWriteToRowValuesTextOptOutPerformanceMaxSettingTest.class,
+        BulkCampaignWriteToRowValuesCostPerSaleOptOutTest.class,
 })
 public class BulkCampaignWriteTests {
 

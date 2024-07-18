@@ -73,7 +73,7 @@ public class BulkFilterLinkAdExtension extends BulkAdExtension<FilterLinkAdExten
                         c.getAdExtension().setAdExtensionHeaderType(StringExtensions.parseOptional(v, new Function<String, AdExtensionHeaderType>() {
                             @Override
                             public AdExtensionHeaderType apply(String value) {
-                                return AdExtensionHeaderType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value,  AdExtensionHeaderType.class);
                             }
                         }));
                     }

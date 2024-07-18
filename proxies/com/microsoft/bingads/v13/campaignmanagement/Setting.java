@@ -42,7 +42,8 @@ import jakarta.xml.bind.annotation.XmlType;
     HotelSetting.class,
     ResponsiveSearchAdsSetting.class,
     PerformanceMaxSetting.class,
-    CallToActionSetting.class
+    CallToActionSetting.class,
+    VanityPharmaSetting.class
 })
 public class Setting {
 

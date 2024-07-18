@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AccountIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="ReturnInvoiceNumber" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -36,7 +37,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "accountIds",
     "startDate",
-    "endDate"
+    "endDate",
+    "returnInvoiceNumber"
 })
 @XmlRootElement(name = "GetBillingDocumentsInfoRequest")
 public class GetBillingDocumentsInfoRequest {
@@ -51,6 +53,8 @@ public class GetBillingDocumentsInfoRequest {
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar endDate;
+    @XmlElement(name = "ReturnInvoiceNumber", nillable = true)
+    protected Boolean returnInvoiceNumber;
 
     /**
      * Gets the value of the accountIds property.
@@ -122,6 +126,30 @@ public class GetBillingDocumentsInfoRequest {
      */
     public void setEndDate(Calendar value) {
         this.endDate = value;
+    }
+
+    /**
+     * Gets the value of the returnInvoiceNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getReturnInvoiceNumber() {
+        return returnInvoiceNumber;
+    }
+
+    /**
+     * Sets the value of the returnInvoiceNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReturnInvoiceNumber(Boolean value) {
+        this.returnInvoiceNumber = value;
     }
 
 }

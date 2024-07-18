@@ -39,7 +39,7 @@ public class AudienceInfo {
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Collection<AudienceType> type;
 
     /**

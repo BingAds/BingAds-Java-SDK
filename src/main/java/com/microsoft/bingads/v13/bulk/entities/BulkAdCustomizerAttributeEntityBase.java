@@ -117,7 +117,7 @@ public class BulkAdCustomizerAttributeEntityBase extends SingleRecordBulkEntity 
 						c.setEditorialStatus(StringExtensions.parseOptional(v, new Function<String, EditorialStatus>() {
 							@Override
 							public EditorialStatus apply(String value) {
-								return EditorialStatus.fromValue(value);
+								return StringExtensions.fromValueOptional(value, EditorialStatus.class);
 							}
 						}));
 					}

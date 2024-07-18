@@ -31,6 +31,6 @@ public enum ApiEnvironment {
                 return c;
             }
         }
-        throw new IllegalArgumentException(v);
+        return null;
     }
 }

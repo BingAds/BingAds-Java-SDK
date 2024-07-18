@@ -49,7 +49,7 @@ public class GetAdsByIdsRequest {
     @XmlElement(name = "AdTypes", nillable = true)
     protected ArrayOfAdType adTypes;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AdAdditionalField> returnAdditionalFields;
 
     /**

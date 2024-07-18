@@ -71,7 +71,7 @@ public class BulkActionAdExtension extends BulkAdExtension<ActionAdExtension> {
                         c.getActionAdExtension().setActionType(StringExtensions.<ActionAdExtensionActionType>parseOptional(v, new Function<String, ActionAdExtensionActionType>() {
                             @Override
                             public ActionAdExtensionActionType apply(String value) {
-                                return ActionAdExtensionActionType.fromValue(value);
+                                return StringExtensions.fromValueOptional(value, ActionAdExtensionActionType.class);
                             }
                         }));
                     }

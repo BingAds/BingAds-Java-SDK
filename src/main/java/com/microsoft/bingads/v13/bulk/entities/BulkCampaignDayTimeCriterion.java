@@ -60,7 +60,7 @@ public class BulkCampaignDayTimeCriterion extends BulkCampaignBiddableCriterion 
 	                		((DayTimeCriterion)c.getBiddableCampaignCriterion().getCriterion()).setDay(StringExtensions.parseOptional(v, new Function<String, Day>() {
 	                                @Override
 	                                public Day apply(String s) {
-	                                    return Day.fromValue(s);
+	                                    return StringExtensions.fromValueOptional(s, Day.class);
 	                                }
 	                            }));
                     	}
