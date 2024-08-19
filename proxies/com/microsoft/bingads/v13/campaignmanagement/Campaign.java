@@ -30,6 +30,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         <element name="GoalIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignStatus" minOccurs="0"/>
@@ -63,6 +64,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "forwardCompatibilityMap",
     "goalIds",
     "id",
+    "isDealCampaign",
     "multimediaAdsBidAdjustment",
     "name",
     "status",
@@ -100,6 +102,8 @@ public class Campaign {
     protected ArrayOflong goalIds;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "IsDealCampaign", nillable = true)
+    protected Boolean isDealCampaign;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
@@ -367,6 +371,30 @@ public class Campaign {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the isDealCampaign property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsDealCampaign() {
+        return isDealCampaign;
+    }
+
+    /**
+     * Sets the value of the isDealCampaign property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsDealCampaign(Boolean value) {
+        this.isDealCampaign = value;
     }
 
     /**

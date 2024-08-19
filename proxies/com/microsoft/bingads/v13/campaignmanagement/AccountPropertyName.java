@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="EnableMMAUnderDSAAdgroups"/>
  *     <enumeration value="OptOutFromMCM"/>
  *     <enumeration value="NetflixTCAccepted"/>
+ *     <enumeration value="BlockedContentSegments"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -69,7 +70,9 @@ public enum AccountPropertyName {
     @XmlEnumValue("OptOutFromMCM")
     OPT_OUT_FROM_MCM("OptOutFromMCM"),
     @XmlEnumValue("NetflixTCAccepted")
-    NETFLIX_TC_ACCEPTED("NetflixTCAccepted");
+    NETFLIX_TC_ACCEPTED("NetflixTCAccepted"),
+    @XmlEnumValue("BlockedContentSegments")
+    BLOCKED_CONTENT_SEGMENTS("BlockedContentSegments");
     private final String value;
 
     AccountPropertyName(String v) {
