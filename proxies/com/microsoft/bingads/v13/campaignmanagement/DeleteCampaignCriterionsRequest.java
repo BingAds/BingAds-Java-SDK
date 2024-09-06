@@ -45,7 +45,7 @@ public class DeleteCampaignCriterionsRequest {
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     protected Collection<CampaignCriterionType> criterionType;
 
     /**

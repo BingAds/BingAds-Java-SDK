@@ -29,7 +29,8 @@ public enum CampaignAdditionalField {
     COST_PER_SALE_OPT_OUT_IN_PERFORMANCE_MAX_SETTINGS("CostPerSaleOptOutInPerformanceMaxSettings"),
     VANITY_PHARMA_SETTING("VanityPharmaSetting"),
     MANUAL_CPI("ManualCpi"),
-    IS_DEAL_CAMPAIGN("IsDealCampaign");
+    IS_DEAL_CAMPAIGN("IsDealCampaign"),
+    APP_SETTING("AppSetting");
         
     private final String value;
 

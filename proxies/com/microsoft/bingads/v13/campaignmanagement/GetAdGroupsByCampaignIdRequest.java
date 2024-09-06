@@ -41,7 +41,7 @@ public class GetAdGroupsByCampaignIdRequest {
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AdGroupAdditionalField> returnAdditionalFields;
 
     /**

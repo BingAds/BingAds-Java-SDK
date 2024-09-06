@@ -24,6 +24,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(HotelAdGroupType.class, HotelAdGroupTypeMixIn.class)
 				.addMixIn(VanityPharmaDisplayUrlMode.class, VanityPharmaDisplayUrlModeMixIn.class)
 				.addMixIn(VanityPharmaWebsiteDescription.class, VanityPharmaWebsiteDescriptionMixIn.class)
+				.addMixIn(AppStore.class, AppStoreMixIn.class)
 				.addMixIn(BudgetLimitType.class, BudgetLimitTypeMixIn.class)
 				.addMixIn(CampaignStatus.class, CampaignStatusMixIn.class)
 				.addMixIn(CampaignType.class, CampaignTypeMixIn.class)

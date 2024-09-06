@@ -57,12 +57,12 @@ public class SeasonalityAdjustment {
     @XmlElement(name = "CampaignAssociations", nillable = true)
     protected ArrayOfCampaignAssociation campaignAssociations;
     @XmlElement(name = "CampaignTypeFilter", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<CampaignType> campaignTypeFilter;
     @XmlElement(name = "Description", nillable = true)
     protected String description;
     @XmlElement(name = "DeviceTypeFilter", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter24 .class)
+    @XmlJavaTypeAdapter(Adapter25 .class)
     protected Collection<DeviceType> deviceTypeFilter;
     @XmlElement(name = "EndDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)

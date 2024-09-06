@@ -43,6 +43,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(GetImportJobsByIdsRequest.class, GetImportJobsByIdsRequestEnumsMixIn.class)
 				.addMixIn(ResponsiveAd.class, ResponsiveAdEnumsMixIn.class)
 				.addMixIn(HotelSetting.class, HotelSettingEnumsMixIn.class)
+				.addMixIn(AppSetting.class, AppSettingEnumsMixIn.class)
 				.addMixIn(Campaign.class, CampaignEnumsMixIn.class)
 				.addMixIn(MediaAssociation.class, MediaAssociationEnumsMixIn.class)
 				.addMixIn(AudienceCriterion.class, AudienceCriterionEnumsMixIn.class)
