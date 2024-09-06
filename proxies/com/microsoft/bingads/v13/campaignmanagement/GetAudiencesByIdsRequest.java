@@ -43,10 +43,10 @@ public class GetAudiencesByIdsRequest {
     @XmlElement(name = "AudienceIds", nillable = true)
     protected ArrayOflong audienceIds;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AudienceType> type;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Collection<AudienceAdditionalField> returnAdditionalFields;
 
     /**

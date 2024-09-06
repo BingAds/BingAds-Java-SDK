@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetMediaAssociationsRequest {
 
     @XmlElement(name = "MediaEnabledEntities", type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Collection<MediaEnabledEntityFilter> mediaEnabledEntities;
     @XmlElement(name = "MediaIds", nillable = true)
     protected ArrayOflong mediaIds;

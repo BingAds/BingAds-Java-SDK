@@ -12,6 +12,8 @@ import com.microsoft.bingads.v13.bulk.BulkFileReader;
 import com.microsoft.bingads.v13.bulk.BulkFileWriter;
 import com.microsoft.bingads.v13.bulk.BulkOperation;
 import com.microsoft.bingads.v13.bulk.BulkServiceManager;
+import com.microsoft.bingads.v13.campaignmanagement.AppSetting;
+import com.microsoft.bingads.v13.campaignmanagement.AppStore;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfArrayOfKeyValuePairOfstringstring;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
@@ -144,6 +146,10 @@ public class BulkCampaign extends SingleRecordBulkEntity {
             setting.setType(ShoppingSetting.class.getSimpleName());
             settings.add(setting);
         	break;
+        case APP:
+        	setting = new AppSetting();
+        	setting.setType(AppSetting.class.getSimpleName());
+        	settings.add(setting);
         }
         arrayOfSettings.getSettings().addAll(settings);
 
@@ -705,6 +711,84 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.ShoppableAdsEnabled,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+
+                        return StringExtensions.toBooleanBulkString(((ShoppingSetting)setting).getShoppableAdsEnabled());
+
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((ShoppingSetting)setting).setShoppableAdsEnabled(StringExtensions.<Boolean>parseOptional(v, new Function<String, Boolean>() {
+                            @Override
+                            public Boolean apply(String value) {
+                                return Boolean.parseBoolean(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.FeedLabel,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+
+                        return ((ShoppingSetting)setting).getFeedLabel();
+
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(ShoppingSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((ShoppingSetting)setting).setFeedLabel(v);
+
+                    }
+                }
+        ));
 
         m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.TargetSetting,
                 new Function<BulkCampaign, String>() {
@@ -1226,6 +1310,88 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     @Override
                     public void accept(String v, BulkCampaign c) {
                         c.setShouldServeOnMSAN(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.AppStoreId,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(AppSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+
+                        return ((AppSetting)setting).getAppId();
+
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(AppSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((AppSetting)setting).setAppId(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.AppStore,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return null;
+                        }
+
+                        Setting setting = c.getCampaignSetting(AppSetting.class, false);
+
+                        if (setting == null) {
+                            return null;
+                        }
+                        
+                        if (((AppSetting)setting).getAppStore().size() != 1) {
+                            throw new IllegalArgumentException("Only 1 App Store can be set in App Campaign");
+                        }
+
+                        Collection<AppStore> appStore = ((AppSetting)setting).getAppStore();
+                        
+                        return (appStore.toArray(new AppStore[appStore.size()])[0]).value();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        if (c.getCampaign().getCampaignType() == null) {
+                            return;
+                        }
+
+                        Setting setting = c.getCampaignSetting(AppSetting.class, true);
+
+                        if (setting == null) {
+                            return;
+                        }
+
+                        ((AppSetting)setting).setAppStore(StringExtensions.parseOptional(v, new Function<String, Collection<AppStore>>() {
+                            @Override
+                            public Collection<AppStore> apply(String value) {
+                                return Collections.singletonList(StringExtensions.fromValueOptional(v, AppStore.class));
+                            }
+                        }));
                     }
                 }
         ));

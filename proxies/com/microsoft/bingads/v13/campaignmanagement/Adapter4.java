@@ -5,16 +5,16 @@ import java.util.Collection;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter4
-    extends XmlAdapter<String, Collection<CampaignType>>
+    extends XmlAdapter<String, Collection<AppStore>>
 {
 
 
-    public Collection<CampaignType> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToList(value));
+    public Collection<AppStore> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.AppStoreConverter.convertToList(value));
     }
 
-    public String marshal(Collection<CampaignType> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.CampaignTypeConverter.convertToString(value));
+    public String marshal(Collection<AppStore> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.AppStoreConverter.convertToString(value));
     }
 
 }

@@ -217,6 +217,11 @@ public class CsvHeaders {
 
             StringTable.CampaignPriority,
             StringTable.LocalInventoryAdsEnabled,
+            StringTable.FeedLabel,
+            StringTable.ShoppableAdsEnabled,
+            
+            // App Campaign
+            StringTable.AppStore,
 
             // experiment
             StringTable.TrafficSplitPercent,

@@ -43,6 +43,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = CallToActionSetting.class, name = "CallToActionSetting"),
 						
 			@JsonSubTypes.Type(value = VanityPharmaSetting.class, name = "VanityPharmaSetting"),
+						
+			@JsonSubTypes.Type(value = AppSetting.class, name = "AppSetting"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

@@ -330,6 +330,11 @@ public class StringTable {
     public static final String CampaignType = "Campaign Type";
     public static final String CampaignPriority = "Priority";
     public static final String LocalInventoryAdsEnabled = "LocalInventoryAdsEnabled";
+    public static final String FeedLabel = "FeedLabel";
+    public static final String ShoppableAdsEnabled = "ShoppableAdsEnabled";
+    
+    // App Campaign
+    public static final String AppStore = "App Store";
     
     // SPA
     public static final String CampaignNegativeStoreCriterion = "Campaign Negative Store Criterion";

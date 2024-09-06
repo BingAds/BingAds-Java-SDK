@@ -43,7 +43,8 @@ import jakarta.xml.bind.annotation.XmlType;
     ResponsiveSearchAdsSetting.class,
     PerformanceMaxSetting.class,
     CallToActionSetting.class,
-    VanityPharmaSetting.class
+    VanityPharmaSetting.class,
+    AppSetting.class
 })
 public class Setting {
 
