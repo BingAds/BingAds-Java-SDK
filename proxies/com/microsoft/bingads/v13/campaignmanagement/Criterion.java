@@ -52,7 +52,8 @@ import jakarta.xml.bind.annotation.XmlType;
     ProfileCriterion.class,
     StoreCriterion.class,
     DealCriterion.class,
-    GenreCriterion.class
+    GenreCriterion.class,
+    PlacementCriterion.class
 })
 public class Criterion {
 

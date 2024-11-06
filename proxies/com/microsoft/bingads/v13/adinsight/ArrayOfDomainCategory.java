@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfDomainCategory complex type.
@@ -36,6 +36,15 @@ public class ArrayOfDomainCategory {
 
     @XmlElement(name = "DomainCategory", nillable = true)
     protected List<DomainCategory> domainCategories;
+    public ArrayOfDomainCategory()
+    {
+      this.domainCategories = new ArrayList<DomainCategory>();
+    }
+    @JsonCreator
+    public ArrayOfDomainCategory(List<DomainCategory> domaincategorys)
+    {
+      this.domainCategories = domaincategorys;
+    }
 
     /**
      * Gets the value of the domainCategories property.

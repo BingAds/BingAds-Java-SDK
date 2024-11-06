@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordBidLandscape complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordBidLandscape {
 
     @XmlElement(name = "KeywordBidLandscape", nillable = true)
     protected List<KeywordBidLandscape> keywordBidLandscapes;
+    public ArrayOfKeywordBidLandscape()
+    {
+      this.keywordBidLandscapes = new ArrayList<KeywordBidLandscape>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordBidLandscape(List<KeywordBidLandscape> keywordbidlandscapes)
+    {
+      this.keywordBidLandscapes = keywordbidlandscapes;
+    }
 
     /**
      * Gets the value of the keywordBidLandscapes property.

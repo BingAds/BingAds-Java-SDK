@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfEstimatedPositionAndTraffic complex type.
@@ -36,6 +36,15 @@ public class ArrayOfEstimatedPositionAndTraffic {
 
     @XmlElement(name = "EstimatedPositionAndTraffic", nillable = true)
     protected List<EstimatedPositionAndTraffic> estimatedPositionAndTraffics;
+    public ArrayOfEstimatedPositionAndTraffic()
+    {
+      this.estimatedPositionAndTraffics = new ArrayList<EstimatedPositionAndTraffic>();
+    }
+    @JsonCreator
+    public ArrayOfEstimatedPositionAndTraffic(List<EstimatedPositionAndTraffic> estimatedpositionandtraffics)
+    {
+      this.estimatedPositionAndTraffics = estimatedpositionandtraffics;
+    }
 
     /**
      * Gets the value of the estimatedPositionAndTraffics property.

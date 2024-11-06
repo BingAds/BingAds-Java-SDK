@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class UrlSearchParameter
     extends SearchParameter
 {
+    public UrlSearchParameter() {
+      this.type = "UrlSearchParameter";
+    }
 
     @XmlElement(name = "Url", nillable = true)
     protected String url;

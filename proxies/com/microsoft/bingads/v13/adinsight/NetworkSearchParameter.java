@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class NetworkSearchParameter
     extends SearchParameter
 {
+    public NetworkSearchParameter() {
+      this.type = "NetworkSearchParameter";
+    }
 
     @XmlElement(name = "Network", nillable = true)
     protected NetworkCriterion network;

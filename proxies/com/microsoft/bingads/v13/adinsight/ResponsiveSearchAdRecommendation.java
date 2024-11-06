@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ResponsiveSearchAdRecommendation
     extends RecommendationBase
 {
+    public ResponsiveSearchAdRecommendation() {
+      this.type = RecommendationType.fromValue("ResponsiveSearchAdRecommendation");
+    }
 
     @XmlElement(name = "SuggestedAd", nillable = true)
     protected SuggestedResponsiveSearchAd suggestedAd;

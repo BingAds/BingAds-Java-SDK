@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ExcludeAccountKeywordsSearchParameter
     extends SearchParameter
 {
+    public ExcludeAccountKeywordsSearchParameter() {
+      this.type = "ExcludeAccountKeywordsSearchParameter";
+    }
 
     @XmlElement(name = "ExcludeAccountKeywords")
     protected Boolean excludeAccountKeywords;

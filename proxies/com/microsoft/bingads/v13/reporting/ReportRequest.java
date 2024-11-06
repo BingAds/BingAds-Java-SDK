@@ -83,21 +83,24 @@ import jakarta.xml.bind.annotation.XmlType;
     HotelGroupPerformanceReportRequest.class,
     AssetGroupPerformanceReportRequest.class,
     SearchInsightPerformanceReportRequest.class,
-    AssetPerformanceReportRequest.class
+    AssetPerformanceReportRequest.class,
+    CategoryInsightsReportRequest.class,
+    CategoryClickCoverageReportRequest.class
 })
 public class ReportRequest {
-
-    @XmlElement(name = "Type", nillable = true)
     protected String type;
 
     public String getType() {
         return type;
     }
+    public void setType(String value) {
+
+    }
 
     public ReportRequest() {
         this.type = "ReportRequest";
     }
-    @XmlElement(name = "ExcludeColumnHeaders", nillable = true)
+
     protected Boolean excludeColumnHeaders;
     @XmlElement(name = "ExcludeReportFooter", nillable = true)
     protected Boolean excludeReportFooter;

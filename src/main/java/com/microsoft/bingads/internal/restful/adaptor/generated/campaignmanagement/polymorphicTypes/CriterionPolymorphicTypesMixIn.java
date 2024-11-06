@@ -16,8 +16,7 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 @JsonTypeInfo(
 	      use = JsonTypeInfo.Id.NAME, 
 	      include = JsonTypeInfo.As.EXISTING_PROPERTY,   
-		  property = "Type",
-		  visible = true)
+		  property = "Type")
 	    @JsonSubTypes({
 						
 			@JsonSubTypes.Type(value = ProductPartition.class, name = "ProductPartition"),
@@ -61,6 +60,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = DealCriterion.class, name = "DealCriterion"),
 						
 			@JsonSubTypes.Type(value = GenreCriterion.class, name = "GenreCriterion"),
+						
+			@JsonSubTypes.Type(value = PlacementCriterion.class, name = "PlacementCriterion"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

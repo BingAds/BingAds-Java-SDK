@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordIdea complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordIdea {
 
     @XmlElement(name = "KeywordIdea", nillable = true)
     protected List<KeywordIdea> keywordIdeas;
+    public ArrayOfKeywordIdea()
+    {
+      this.keywordIdeas = new ArrayList<KeywordIdea>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordIdea(List<KeywordIdea> keywordideas)
+    {
+      this.keywordIdeas = keywordideas;
+    }
 
     /**
      * Gets the value of the keywordIdeas property.

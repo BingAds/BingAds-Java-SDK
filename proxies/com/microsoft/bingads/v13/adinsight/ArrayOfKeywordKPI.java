@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordKPI complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordKPI {
 
     @XmlElement(name = "KeywordKPI", nillable = true)
     protected List<KeywordKPI> keywordKPIs;
+    public ArrayOfKeywordKPI()
+    {
+      this.keywordKPIs = new ArrayList<KeywordKPI>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordKPI(List<KeywordKPI> keywordkpis)
+    {
+      this.keywordKPIs = keywordkpis;
+    }
 
     /**
      * Gets the value of the keywordKPIs property.

@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Opportunity", propOrder = {
+    "type",
     "opportunityKey"
 })
 @XmlSeeAlso({
@@ -37,7 +38,14 @@ import jakarta.xml.bind.annotation.XmlType;
     KeywordOpportunity.class
 })
 public class Opportunity {
+    protected String type;
 
+    public String getType() {
+        return type;
+    }
+    public void setType(String value) {
+
+    }
     @XmlElement(name = "OpportunityKey", nillable = true)
     protected String opportunityKey;
 

@@ -34,6 +34,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class AuctionSegmentSearchParameter
     extends SearchParameter
 {
+    public AuctionSegmentSearchParameter() {
+      this.type = "AuctionSegmentSearchParameter";
+    }
 
     @XmlElement(name = "Segment")
     @XmlSchemaType(name = "string")

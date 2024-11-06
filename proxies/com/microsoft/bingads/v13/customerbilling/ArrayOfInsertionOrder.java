@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfInsertionOrder complex type.
@@ -36,6 +36,15 @@ public class ArrayOfInsertionOrder {
 
     @XmlElement(name = "InsertionOrder", nillable = true)
     protected List<InsertionOrder> insertionOrders;
+    public ArrayOfInsertionOrder()
+    {
+      this.insertionOrders = new ArrayList<InsertionOrder>();
+    }
+    @JsonCreator
+    public ArrayOfInsertionOrder(List<InsertionOrder> insertionorders)
+    {
+      this.insertionOrders = insertionorders;
+    }
 
     /**
      * Gets the value of the insertionOrders property.

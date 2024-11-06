@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LocationSearchParameter
     extends SearchParameter
 {
+    public LocationSearchParameter() {
+      this.type = "LocationSearchParameter";
+    }
 
     @XmlElement(name = "Locations", nillable = true)
     protected ArrayOfLocationCriterion locations;

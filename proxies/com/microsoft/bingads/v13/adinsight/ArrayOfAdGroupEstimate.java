@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdGroupEstimate complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdGroupEstimate {
 
     @XmlElement(name = "AdGroupEstimate", nillable = true)
     protected List<AdGroupEstimate> adGroupEstimates;
+    public ArrayOfAdGroupEstimate()
+    {
+      this.adGroupEstimates = new ArrayList<AdGroupEstimate>();
+    }
+    @JsonCreator
+    public ArrayOfAdGroupEstimate(List<AdGroupEstimate> adgroupestimates)
+    {
+      this.adGroupEstimates = adgroupestimates;
+    }
 
     /**
      * Gets the value of the adGroupEstimates property.

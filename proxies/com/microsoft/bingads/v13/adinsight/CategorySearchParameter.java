@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CategorySearchParameter
     extends SearchParameter
 {
+    public CategorySearchParameter() {
+      this.type = "CategorySearchParameter";
+    }
 
     @XmlElement(name = "CategoryId")
     protected Long categoryId;

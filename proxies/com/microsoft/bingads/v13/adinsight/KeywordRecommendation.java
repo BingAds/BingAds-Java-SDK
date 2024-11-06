@@ -41,6 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class KeywordRecommendation
     extends RecommendationBase
 {
+    public KeywordRecommendation() {
+      this.type = RecommendationType.fromValue("KeywordRecommendation");
+    }
 
     @XmlElement(name = "Competition")
     protected Double competition;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfstring complex type.
@@ -36,6 +36,15 @@ public class ArrayOfstring {
 
     @XmlElement(name = "string", nillable = true)
     protected List<String> strings;
+    public ArrayOfstring()
+    {
+      this.strings = new ArrayList<String>();
+    }
+    @JsonCreator
+    public ArrayOfstring(List<String> strings)
+    {
+      this.strings = strings;
+    }
 
     /**
      * Gets the value of the strings property.

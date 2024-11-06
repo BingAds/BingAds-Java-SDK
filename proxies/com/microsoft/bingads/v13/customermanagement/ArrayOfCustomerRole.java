@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCustomerRole complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCustomerRole {
 
     @XmlElement(name = "CustomerRole", nillable = true)
     protected List<CustomerRole> customerRoles;
+    public ArrayOfCustomerRole()
+    {
+      this.customerRoles = new ArrayList<CustomerRole>();
+    }
+    @JsonCreator
+    public ArrayOfCustomerRole(List<CustomerRole> customerroles)
+    {
+      this.customerRoles = customerroles;
+    }
 
     /**
      * Gets the value of the customerRoles property.

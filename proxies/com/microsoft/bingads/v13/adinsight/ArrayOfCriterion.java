@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCriterion complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCriterion {
 
     @XmlElement(name = "Criterion", nillable = true)
     protected List<Criterion> criterions;
+    public ArrayOfCriterion()
+    {
+      this.criterions = new ArrayList<Criterion>();
+    }
+    @JsonCreator
+    public ArrayOfCriterion(List<Criterion> criterions)
+    {
+      this.criterions = criterions;
+    }
 
     /**
      * Gets the value of the criterions property.

@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SearchVolumeSearchParameter
     extends SearchParameter
 {
+    public SearchVolumeSearchParameter() {
+      this.type = "SearchVolumeSearchParameter";
+    }
 
     @XmlElement(name = "Maximum", nillable = true)
     protected Long maximum;

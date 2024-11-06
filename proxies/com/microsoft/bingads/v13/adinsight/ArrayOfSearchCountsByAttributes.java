@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfSearchCountsByAttributes complex type.
@@ -36,6 +36,15 @@ public class ArrayOfSearchCountsByAttributes {
 
     @XmlElement(name = "SearchCountsByAttributes", nillable = true)
     protected List<SearchCountsByAttributes> searchCountsByAttributes;
+    public ArrayOfSearchCountsByAttributes()
+    {
+      this.searchCountsByAttributes = new ArrayList<SearchCountsByAttributes>();
+    }
+    @JsonCreator
+    public ArrayOfSearchCountsByAttributes(List<SearchCountsByAttributes> searchcountsbyattributess)
+    {
+      this.searchCountsByAttributes = searchcountsbyattributess;
+    }
 
     /**
      * Gets the value of the searchCountsByAttributes property.

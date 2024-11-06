@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfPredicate complex type.
@@ -36,6 +36,15 @@ public class ArrayOfPredicate {
 
     @XmlElement(name = "Predicate", nillable = true)
     protected List<Predicate> predicates;
+    public ArrayOfPredicate()
+    {
+      this.predicates = new ArrayList<Predicate>();
+    }
+    @JsonCreator
+    public ArrayOfPredicate(List<Predicate> predicates)
+    {
+      this.predicates = predicates;
+    }
 
     /**
      * Gets the value of the predicates property.

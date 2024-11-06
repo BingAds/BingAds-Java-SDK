@@ -4827,6 +4827,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetOfflineConversionReportsResponse>
+     */
+    @WebMethod(operationName = "GetOfflineConversionReports", action = "GetOfflineConversionReports")
+    public Response<GetOfflineConversionReportsResponse> getOfflineConversionReportsAsync(
+        @WebParam(name = "GetOfflineConversionReportsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetOfflineConversionReports", action = "GetOfflineConversionReports")
+    public Future<?> getOfflineConversionReportsAsync(
+        @WebParam(name = "GetOfflineConversionReportsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportsRequest parameters,
+        @WebParam(name = "GetOfflineConversionReportsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetOfflineConversionReportsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetOfflineConversionReportsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetOfflineConversionReports", action = "GetOfflineConversionReports")
+    @WebResult(name = "GetOfflineConversionReportsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetOfflineConversionReportsResponse getOfflineConversionReports(
+        @WebParam(name = "GetOfflineConversionReportsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddLabelsResponse>
      */
     @WebMethod(operationName = "AddLabels", action = "AddLabels")
@@ -6337,6 +6378,252 @@ public interface ICampaignManagementService {
     public GetSeasonalityAdjustmentsByAccountIdResponse getSeasonalityAdjustmentsByAccountId(
         @WebParam(name = "GetSeasonalityAdjustmentsByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         GetSeasonalityAdjustmentsByAccountIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.CreateAssetGroupRecommendationResponse>
+     */
+    @WebMethod(operationName = "CreateAssetGroupRecommendation", action = "CreateAssetGroupRecommendation")
+    public Response<CreateAssetGroupRecommendationResponse> createAssetGroupRecommendationAsync(
+        @WebParam(name = "CreateAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateAssetGroupRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "CreateAssetGroupRecommendation", action = "CreateAssetGroupRecommendation")
+    public Future<?> createAssetGroupRecommendationAsync(
+        @WebParam(name = "CreateAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateAssetGroupRecommendationRequest parameters,
+        @WebParam(name = "CreateAssetGroupRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<CreateAssetGroupRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.CreateAssetGroupRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "CreateAssetGroupRecommendation", action = "CreateAssetGroupRecommendation")
+    @WebResult(name = "CreateAssetGroupRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public CreateAssetGroupRecommendationResponse createAssetGroupRecommendation(
+        @WebParam(name = "CreateAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateAssetGroupRecommendationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.CreateResponsiveAdRecommendationResponse>
+     */
+    @WebMethod(operationName = "CreateResponsiveAdRecommendation", action = "CreateResponsiveAdRecommendation")
+    public Response<CreateResponsiveAdRecommendationResponse> createResponsiveAdRecommendationAsync(
+        @WebParam(name = "CreateResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveAdRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "CreateResponsiveAdRecommendation", action = "CreateResponsiveAdRecommendation")
+    public Future<?> createResponsiveAdRecommendationAsync(
+        @WebParam(name = "CreateResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveAdRecommendationRequest parameters,
+        @WebParam(name = "CreateResponsiveAdRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<CreateResponsiveAdRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.CreateResponsiveAdRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "CreateResponsiveAdRecommendation", action = "CreateResponsiveAdRecommendation")
+    @WebResult(name = "CreateResponsiveAdRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public CreateResponsiveAdRecommendationResponse createResponsiveAdRecommendation(
+        @WebParam(name = "CreateResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveAdRecommendationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.CreateResponsiveSearchAdRecommendationResponse>
+     */
+    @WebMethod(operationName = "CreateResponsiveSearchAdRecommendation", action = "CreateResponsiveSearchAdRecommendation")
+    public Response<CreateResponsiveSearchAdRecommendationResponse> createResponsiveSearchAdRecommendationAsync(
+        @WebParam(name = "CreateResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveSearchAdRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "CreateResponsiveSearchAdRecommendation", action = "CreateResponsiveSearchAdRecommendation")
+    public Future<?> createResponsiveSearchAdRecommendationAsync(
+        @WebParam(name = "CreateResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveSearchAdRecommendationRequest parameters,
+        @WebParam(name = "CreateResponsiveSearchAdRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<CreateResponsiveSearchAdRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.CreateResponsiveSearchAdRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "CreateResponsiveSearchAdRecommendation", action = "CreateResponsiveSearchAdRecommendation")
+    @WebResult(name = "CreateResponsiveSearchAdRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public CreateResponsiveSearchAdRecommendationResponse createResponsiveSearchAdRecommendation(
+        @WebParam(name = "CreateResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateResponsiveSearchAdRecommendationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.RefineAssetGroupRecommendationResponse>
+     */
+    @WebMethod(operationName = "RefineAssetGroupRecommendation", action = "RefineAssetGroupRecommendation")
+    public Response<RefineAssetGroupRecommendationResponse> refineAssetGroupRecommendationAsync(
+        @WebParam(name = "RefineAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineAssetGroupRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "RefineAssetGroupRecommendation", action = "RefineAssetGroupRecommendation")
+    public Future<?> refineAssetGroupRecommendationAsync(
+        @WebParam(name = "RefineAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineAssetGroupRecommendationRequest parameters,
+        @WebParam(name = "RefineAssetGroupRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<RefineAssetGroupRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.RefineAssetGroupRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "RefineAssetGroupRecommendation", action = "RefineAssetGroupRecommendation")
+    @WebResult(name = "RefineAssetGroupRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public RefineAssetGroupRecommendationResponse refineAssetGroupRecommendation(
+        @WebParam(name = "RefineAssetGroupRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineAssetGroupRecommendationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.RefineResponsiveAdRecommendationResponse>
+     */
+    @WebMethod(operationName = "RefineResponsiveAdRecommendation", action = "RefineResponsiveAdRecommendation")
+    public Response<RefineResponsiveAdRecommendationResponse> refineResponsiveAdRecommendationAsync(
+        @WebParam(name = "RefineResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveAdRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "RefineResponsiveAdRecommendation", action = "RefineResponsiveAdRecommendation")
+    public Future<?> refineResponsiveAdRecommendationAsync(
+        @WebParam(name = "RefineResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveAdRecommendationRequest parameters,
+        @WebParam(name = "RefineResponsiveAdRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<RefineResponsiveAdRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.RefineResponsiveAdRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "RefineResponsiveAdRecommendation", action = "RefineResponsiveAdRecommendation")
+    @WebResult(name = "RefineResponsiveAdRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public RefineResponsiveAdRecommendationResponse refineResponsiveAdRecommendation(
+        @WebParam(name = "RefineResponsiveAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveAdRecommendationRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.RefineResponsiveSearchAdRecommendationResponse>
+     */
+    @WebMethod(operationName = "RefineResponsiveSearchAdRecommendation", action = "RefineResponsiveSearchAdRecommendation")
+    public Response<RefineResponsiveSearchAdRecommendationResponse> refineResponsiveSearchAdRecommendationAsync(
+        @WebParam(name = "RefineResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveSearchAdRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "RefineResponsiveSearchAdRecommendation", action = "RefineResponsiveSearchAdRecommendation")
+    public Future<?> refineResponsiveSearchAdRecommendationAsync(
+        @WebParam(name = "RefineResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveSearchAdRecommendationRequest parameters,
+        @WebParam(name = "RefineResponsiveSearchAdRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<RefineResponsiveSearchAdRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.RefineResponsiveSearchAdRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "RefineResponsiveSearchAdRecommendation", action = "RefineResponsiveSearchAdRecommendation")
+    @WebResult(name = "RefineResponsiveSearchAdRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public RefineResponsiveSearchAdRecommendationResponse refineResponsiveSearchAdRecommendation(
+        @WebParam(name = "RefineResponsiveSearchAdRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        RefineResponsiveSearchAdRecommendationRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

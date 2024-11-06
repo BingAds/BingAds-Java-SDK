@@ -69,6 +69,14 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="EnglishSingapore"/>
  *     <enumeration value="TurkishTurkey"/>
  *     <enumeration value="FilipinoPhilippines"/>
+ *     <enumeration value="PolandPolish"/>
+ *     <enumeration value="MalayMalaysia"/>
+ *     <enumeration value="UkrainianUkraine"/>
+ *     <enumeration value="CzechRepublicCZ"/>
+ *     <enumeration value="RomaniaRO"/>
+ *     <enumeration value="GreekGreece"/>
+ *     <enumeration value="HungaryHU"/>
+ *     <enumeration value="HindiIndia"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -189,7 +197,23 @@ public enum LCID {
     @XmlEnumValue("TurkishTurkey")
     TURKISH_TURKEY("TurkishTurkey"),
     @XmlEnumValue("FilipinoPhilippines")
-    FILIPINO_PHILIPPINES("FilipinoPhilippines");
+    FILIPINO_PHILIPPINES("FilipinoPhilippines"),
+    @XmlEnumValue("PolandPolish")
+    POLAND_POLISH("PolandPolish"),
+    @XmlEnumValue("MalayMalaysia")
+    MALAY_MALAYSIA("MalayMalaysia"),
+    @XmlEnumValue("UkrainianUkraine")
+    UKRAINIAN_UKRAINE("UkrainianUkraine"),
+    @XmlEnumValue("CzechRepublicCZ")
+    CZECH_REPUBLIC_CZ("CzechRepublicCZ"),
+    @XmlEnumValue("RomaniaRO")
+    ROMANIA_RO("RomaniaRO"),
+    @XmlEnumValue("GreekGreece")
+    GREEK_GREECE("GreekGreece"),
+    @XmlEnumValue("HungaryHU")
+    HUNGARY_HU("HungaryHU"),
+    @XmlEnumValue("HindiIndia")
+    HINDI_INDIA("HindiIndia");
     private final String value;
 
     LCID(String v) {

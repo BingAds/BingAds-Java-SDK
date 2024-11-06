@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordDemographicResult complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordDemographicResult {
 
     @XmlElement(name = "KeywordDemographicResult", nillable = true)
     protected List<KeywordDemographicResult> keywordDemographicResults;
+    public ArrayOfKeywordDemographicResult()
+    {
+      this.keywordDemographicResults = new ArrayList<KeywordDemographicResult>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordDemographicResult(List<KeywordDemographicResult> keyworddemographicresults)
+    {
+      this.keywordDemographicResults = keyworddemographicresults;
+    }
 
     /**
      * Gets the value of the keywordDemographicResults property.

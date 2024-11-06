@@ -41,7 +41,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
                 {
                     setProductionUrl("https://clientcenter.api.bingads.microsoft.com/Api/Billing/v13/CustomerBillingService.svc");
                     setSandboxUrl("https://clientcenter.api.sandbox.bingads.microsoft.com/Api/Billing/v13/CustomerBillingService.svc");
-                    setServiceNameAndVersion("Billing/v13");
+                    setServiceNameAndVersion("CustomerBilling/v13");
                 }
             });
 

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordAndMatchType complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordAndMatchType {
 
     @XmlElement(name = "KeywordAndMatchType", nillable = true)
     protected List<KeywordAndMatchType> keywordAndMatchTypes;
+    public ArrayOfKeywordAndMatchType()
+    {
+      this.keywordAndMatchTypes = new ArrayList<KeywordAndMatchType>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordAndMatchType(List<KeywordAndMatchType> keywordandmatchtypes)
+    {
+      this.keywordAndMatchTypes = keywordandmatchtypes;
+    }
 
     /**
      * Gets the value of the keywordAndMatchTypes property.

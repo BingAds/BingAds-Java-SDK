@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfPilotFeature complex type.
@@ -36,6 +36,15 @@ public class ArrayOfPilotFeature {
 
     @XmlElement(name = "PilotFeature")
     protected List<PilotFeature> pilotFeatures;
+    public ArrayOfPilotFeature()
+    {
+      this.pilotFeatures = new ArrayList<PilotFeature>();
+    }
+    @JsonCreator
+    public ArrayOfPilotFeature(List<PilotFeature> pilotfeatures)
+    {
+      this.pilotFeatures = pilotfeatures;
+    }
 
     /**
      * Gets the value of the pilotFeatures property.

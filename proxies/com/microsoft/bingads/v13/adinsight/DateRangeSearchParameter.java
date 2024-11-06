@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DateRangeSearchParameter
     extends SearchParameter
 {
+    public DateRangeSearchParameter() {
+      this.type = "DateRangeSearchParameter";
+    }
 
     @XmlElement(name = "EndDate", nillable = true)
     protected DayMonthAndYear endDate;

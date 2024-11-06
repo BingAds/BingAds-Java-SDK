@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CompetitionSearchParameter
     extends SearchParameter
 {
+    public CompetitionSearchParameter() {
+      this.type = "CompetitionSearchParameter";
+    }
 
     @XmlElement(name = "CompetitionLevels", nillable = true)
     protected ArrayOfCompetitionLevel competitionLevels;

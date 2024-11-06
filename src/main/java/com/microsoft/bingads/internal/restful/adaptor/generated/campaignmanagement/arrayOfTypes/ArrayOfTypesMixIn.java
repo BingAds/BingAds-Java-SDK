@@ -320,6 +320,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<DailySummary> getDailySummaries();
+
+            
+	@JsonValue
 	List<Label> getLabels();
 
             
@@ -369,6 +373,26 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<SeasonalityAdjustment> getSeasonalityAdjustments();
+
+            
+	@JsonValue
+	List<AdRecommendationImageSuggestion> getAdRecommendationImageSuggestions();
+
+            
+	@JsonValue
+	List<AdRecommendationVideoSuggestion> getAdRecommendationVideoSuggestions();
+
+            
+	@JsonValue
+	List<AdRecommendationTextRefineOperation> getAdRecommendationTextRefineOperations();
+
+            
+	@JsonValue
+	List<ArrayOfAdRecommendationTextSuggestion> getArrayOfAdRecommendationTextSuggestions();
+
+            
+	@JsonValue
+	List<AdRecommendationTextSuggestion> getAdRecommendationTextSuggestions();
 
             
 	@JsonValue

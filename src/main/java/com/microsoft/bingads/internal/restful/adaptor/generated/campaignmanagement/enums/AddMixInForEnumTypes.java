@@ -110,6 +110,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ImportAdditionalField.class, ImportAdditionalFieldMixIn.class)
 				.addMixIn(ImportEntityType.class, ImportEntityTypeMixIn.class)
 				.addMixIn(DeviceType.class, DeviceTypeMixIn.class)
+				.addMixIn(AdRecommendationTextTone.class, AdRecommendationTextToneMixIn.class)
+				.addMixIn(AdRecommendationTextField.class, AdRecommendationTextFieldMixIn.class)
 				;
 	}
 }

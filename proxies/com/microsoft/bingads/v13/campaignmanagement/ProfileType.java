@@ -7,7 +7,9 @@ public enum ProfileType {
 
     COMPANY_NAME("CompanyName"),
     JOB_FUNCTION("JobFunction"),
-    INDUSTRY("Industry");
+    INDUSTRY("Industry"),
+    JOB_SENIORITY("JobSeniority"),
+    JOB_TITLE("JobTitle");
         
     private final String value;
 

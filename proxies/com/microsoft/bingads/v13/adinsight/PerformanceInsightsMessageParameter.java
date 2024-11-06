@@ -64,7 +64,7 @@ public class PerformanceInsightsMessageParameter {
      *     
      */
     public void setType(ParameterType value) {
-        this.type = value;
+
     }
 
 }

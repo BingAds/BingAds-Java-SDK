@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeyValueEntityOflongstring complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeyValueEntityOflongstring {
 
     @XmlElement(name = "KeyValueEntityOflongstring", nillable = true)
     protected List<KeyValueEntityOflongstring> keyValueEntityOflongstrings;
+    public ArrayOfKeyValueEntityOflongstring()
+    {
+      this.keyValueEntityOflongstrings = new ArrayList<KeyValueEntityOflongstring>();
+    }
+    @JsonCreator
+    public ArrayOfKeyValueEntityOflongstring(List<KeyValueEntityOflongstring> keyvalueentityoflongstrings)
+    {
+      this.keyValueEntityOflongstrings = keyvalueentityoflongstrings;
+    }
 
     /**
      * Gets the value of the keyValueEntityOflongstrings property.

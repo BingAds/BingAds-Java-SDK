@@ -216,6 +216,9 @@ public class ObjectFactory {
     private static final QName _CampaignBudgetRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignBudgetRecommendation");
     private static final QName _KeywordRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordRecommendation");
     private static final QName _ResponsiveSearchAdRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ResponsiveSearchAdRecommendation");
+    private static final QName _RemoveConflictingNegativeKeywordRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RemoveConflictingNegativeKeywordRecommendation");
+    private static final QName _UseBroadMatchKeywordRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "UseBroadMatchKeywordRecommendation");
+    private static final QName _ResponsiveSearchAdAssetRecommendation_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ResponsiveSearchAdAssetRecommendation");
     private static final QName _SelectionOfAgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOfAgeEnum");
     private static final QName _ArrayOfAgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfAgeEnum");
     private static final QName _AgeEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "AgeEnum");
@@ -2595,6 +2598,36 @@ public class ObjectFactory {
      */
     public ResponsiveSearchAdRecommendation createResponsiveSearchAdRecommendation() {
         return new ResponsiveSearchAdRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link RemoveConflictingNegativeKeywordRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link RemoveConflictingNegativeKeywordRecommendation }
+     */
+    public RemoveConflictingNegativeKeywordRecommendation createRemoveConflictingNegativeKeywordRecommendation() {
+        return new RemoveConflictingNegativeKeywordRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link UseBroadMatchKeywordRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link UseBroadMatchKeywordRecommendation }
+     */
+    public UseBroadMatchKeywordRecommendation createUseBroadMatchKeywordRecommendation() {
+        return new UseBroadMatchKeywordRecommendation();
+    }
+
+    /**
+     * Create an instance of {@link ResponsiveSearchAdAssetRecommendation }
+     * 
+     * @return
+     *     the new instance of {@link ResponsiveSearchAdAssetRecommendation }
+     */
+    public ResponsiveSearchAdAssetRecommendation createResponsiveSearchAdAssetRecommendation() {
+        return new ResponsiveSearchAdAssetRecommendation();
     }
 
     /**
@@ -5242,6 +5275,45 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ResponsiveSearchAdRecommendation")
     public JAXBElement<ResponsiveSearchAdRecommendation> createResponsiveSearchAdRecommendation(ResponsiveSearchAdRecommendation value) {
         return new JAXBElement<>(_ResponsiveSearchAdRecommendation_QNAME, ResponsiveSearchAdRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveConflictingNegativeKeywordRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemoveConflictingNegativeKeywordRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RemoveConflictingNegativeKeywordRecommendation")
+    public JAXBElement<RemoveConflictingNegativeKeywordRecommendation> createRemoveConflictingNegativeKeywordRecommendation(RemoveConflictingNegativeKeywordRecommendation value) {
+        return new JAXBElement<>(_RemoveConflictingNegativeKeywordRecommendation_QNAME, RemoveConflictingNegativeKeywordRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UseBroadMatchKeywordRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UseBroadMatchKeywordRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "UseBroadMatchKeywordRecommendation")
+    public JAXBElement<UseBroadMatchKeywordRecommendation> createUseBroadMatchKeywordRecommendation(UseBroadMatchKeywordRecommendation value) {
+        return new JAXBElement<>(_UseBroadMatchKeywordRecommendation_QNAME, UseBroadMatchKeywordRecommendation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdAssetRecommendation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ResponsiveSearchAdAssetRecommendation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ResponsiveSearchAdAssetRecommendation")
+    public JAXBElement<ResponsiveSearchAdAssetRecommendation> createResponsiveSearchAdAssetRecommendation(ResponsiveSearchAdAssetRecommendation value) {
+        return new JAXBElement<>(_ResponsiveSearchAdAssetRecommendation_QNAME, ResponsiveSearchAdAssetRecommendation.class, null, value);
     }
 
     /**

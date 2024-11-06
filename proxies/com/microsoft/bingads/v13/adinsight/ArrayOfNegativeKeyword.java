@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfNegativeKeyword complex type.
@@ -36,6 +36,15 @@ public class ArrayOfNegativeKeyword {
 
     @XmlElement(name = "NegativeKeyword", nillable = true)
     protected List<NegativeKeyword> negativeKeywords;
+    public ArrayOfNegativeKeyword()
+    {
+      this.negativeKeywords = new ArrayList<NegativeKeyword>();
+    }
+    @JsonCreator
+    public ArrayOfNegativeKeyword(List<NegativeKeyword> negativekeywords)
+    {
+      this.negativeKeywords = negativekeywords;
+    }
 
     /**
      * Gets the value of the negativeKeywords property.

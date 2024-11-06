@@ -2476,6 +2476,26 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	}
 	
     	
+	public GetOfflineConversionReportsResponse getOfflineConversionReports(GetOfflineConversionReportsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetOfflineConversionReportsResponse response = sendRequest(request, "/OfflineConversionReports/Query", HttpPost, GetOfflineConversionReportsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getOfflineConversionReports(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetOfflineConversionReportsResponse> getOfflineConversionReportsAsync(GetOfflineConversionReportsRequest request) {
+		return sendRequestAsync(request, "/OfflineConversionReports/Query", HttpPost, GetOfflineConversionReportsResponse.class, (r, h) -> fallbackService.get().getOfflineConversionReportsAsync(r, h), null);
+	}
+
+	public Future<?> getOfflineConversionReportsAsync(GetOfflineConversionReportsRequest request, AsyncHandler<GetOfflineConversionReportsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/OfflineConversionReports/Query", HttpPost, GetOfflineConversionReportsResponse.class, (r, h) -> fallbackService.get().getOfflineConversionReportsAsync(r, h), asyncHandler);
+	}
+	
+    	
 	public AddLabelsResponse addLabels(AddLabelsRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		AddLabelsResponse response = sendRequest(request, "/Labels", HttpPost, AddLabelsResponse.class);
@@ -3213,6 +3233,126 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 
 	public Future<?> getSeasonalityAdjustmentsByAccountIdAsync(GetSeasonalityAdjustmentsByAccountIdRequest request, AsyncHandler<GetSeasonalityAdjustmentsByAccountIdResponse> asyncHandler) {
 		return sendRequestAsync(request, "/SeasonalityAdjustments/QueryByAccountId", HttpPost, GetSeasonalityAdjustmentsByAccountIdResponse.class, (r, h) -> fallbackService.get().getSeasonalityAdjustmentsByAccountIdAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public CreateAssetGroupRecommendationResponse createAssetGroupRecommendation(CreateAssetGroupRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		CreateAssetGroupRecommendationResponse response = sendRequest(request, "/AssetGroupRecommendation/Create", HttpPost, CreateAssetGroupRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().createAssetGroupRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<CreateAssetGroupRecommendationResponse> createAssetGroupRecommendationAsync(CreateAssetGroupRecommendationRequest request) {
+		return sendRequestAsync(request, "/AssetGroupRecommendation/Create", HttpPost, CreateAssetGroupRecommendationResponse.class, (r, h) -> fallbackService.get().createAssetGroupRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> createAssetGroupRecommendationAsync(CreateAssetGroupRecommendationRequest request, AsyncHandler<CreateAssetGroupRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/AssetGroupRecommendation/Create", HttpPost, CreateAssetGroupRecommendationResponse.class, (r, h) -> fallbackService.get().createAssetGroupRecommendationAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public CreateResponsiveAdRecommendationResponse createResponsiveAdRecommendation(CreateResponsiveAdRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		CreateResponsiveAdRecommendationResponse response = sendRequest(request, "/ResponsiveAdRecommendation/Create", HttpPost, CreateResponsiveAdRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().createResponsiveAdRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<CreateResponsiveAdRecommendationResponse> createResponsiveAdRecommendationAsync(CreateResponsiveAdRecommendationRequest request) {
+		return sendRequestAsync(request, "/ResponsiveAdRecommendation/Create", HttpPost, CreateResponsiveAdRecommendationResponse.class, (r, h) -> fallbackService.get().createResponsiveAdRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> createResponsiveAdRecommendationAsync(CreateResponsiveAdRecommendationRequest request, AsyncHandler<CreateResponsiveAdRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ResponsiveAdRecommendation/Create", HttpPost, CreateResponsiveAdRecommendationResponse.class, (r, h) -> fallbackService.get().createResponsiveAdRecommendationAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public CreateResponsiveSearchAdRecommendationResponse createResponsiveSearchAdRecommendation(CreateResponsiveSearchAdRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		CreateResponsiveSearchAdRecommendationResponse response = sendRequest(request, "/ResponsiveSearchAdRecommendation/Create", HttpPost, CreateResponsiveSearchAdRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().createResponsiveSearchAdRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<CreateResponsiveSearchAdRecommendationResponse> createResponsiveSearchAdRecommendationAsync(CreateResponsiveSearchAdRecommendationRequest request) {
+		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Create", HttpPost, CreateResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().createResponsiveSearchAdRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> createResponsiveSearchAdRecommendationAsync(CreateResponsiveSearchAdRecommendationRequest request, AsyncHandler<CreateResponsiveSearchAdRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Create", HttpPost, CreateResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().createResponsiveSearchAdRecommendationAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public RefineAssetGroupRecommendationResponse refineAssetGroupRecommendation(RefineAssetGroupRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		RefineAssetGroupRecommendationResponse response = sendRequest(request, "/AssetGroupRecommendation/Refine", HttpPost, RefineAssetGroupRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().refineAssetGroupRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<RefineAssetGroupRecommendationResponse> refineAssetGroupRecommendationAsync(RefineAssetGroupRecommendationRequest request) {
+		return sendRequestAsync(request, "/AssetGroupRecommendation/Refine", HttpPost, RefineAssetGroupRecommendationResponse.class, (r, h) -> fallbackService.get().refineAssetGroupRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> refineAssetGroupRecommendationAsync(RefineAssetGroupRecommendationRequest request, AsyncHandler<RefineAssetGroupRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/AssetGroupRecommendation/Refine", HttpPost, RefineAssetGroupRecommendationResponse.class, (r, h) -> fallbackService.get().refineAssetGroupRecommendationAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public RefineResponsiveAdRecommendationResponse refineResponsiveAdRecommendation(RefineResponsiveAdRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		RefineResponsiveAdRecommendationResponse response = sendRequest(request, "/ResponsiveAdRecommendation/Refine", HttpPost, RefineResponsiveAdRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().refineResponsiveAdRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<RefineResponsiveAdRecommendationResponse> refineResponsiveAdRecommendationAsync(RefineResponsiveAdRecommendationRequest request) {
+		return sendRequestAsync(request, "/ResponsiveAdRecommendation/Refine", HttpPost, RefineResponsiveAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveAdRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> refineResponsiveAdRecommendationAsync(RefineResponsiveAdRecommendationRequest request, AsyncHandler<RefineResponsiveAdRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ResponsiveAdRecommendation/Refine", HttpPost, RefineResponsiveAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveAdRecommendationAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public RefineResponsiveSearchAdRecommendationResponse refineResponsiveSearchAdRecommendation(RefineResponsiveSearchAdRecommendationRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		RefineResponsiveSearchAdRecommendationResponse response = sendRequest(request, "/ResponsiveSearchAdRecommendation/Refine", HttpPost, RefineResponsiveSearchAdRecommendationResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().refineResponsiveSearchAdRecommendation(request);
+		}
+		
+		return response;
+	}
+
+    public Response<RefineResponsiveSearchAdRecommendationResponse> refineResponsiveSearchAdRecommendationAsync(RefineResponsiveSearchAdRecommendationRequest request) {
+		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Refine", HttpPost, RefineResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveSearchAdRecommendationAsync(r, h), null);
+	}
+
+	public Future<?> refineResponsiveSearchAdRecommendationAsync(RefineResponsiveSearchAdRecommendationRequest request, AsyncHandler<RefineResponsiveSearchAdRecommendationResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Refine", HttpPost, RefineResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveSearchAdRecommendationAsync(r, h), asyncHandler);
 	}
 	
     }

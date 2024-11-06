@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfApplyRecommendationEntity complex type.
@@ -36,6 +36,15 @@ public class ArrayOfApplyRecommendationEntity {
 
     @XmlElement(name = "ApplyRecommendationEntity", nillable = true)
     protected List<ApplyRecommendationEntity> applyRecommendationEntities;
+    public ArrayOfApplyRecommendationEntity()
+    {
+      this.applyRecommendationEntities = new ArrayList<ApplyRecommendationEntity>();
+    }
+    @JsonCreator
+    public ArrayOfApplyRecommendationEntity(List<ApplyRecommendationEntity> applyrecommendationentitys)
+    {
+      this.applyRecommendationEntities = applyrecommendationentitys;
+    }
 
     /**
      * Gets the value of the applyRecommendationEntities property.

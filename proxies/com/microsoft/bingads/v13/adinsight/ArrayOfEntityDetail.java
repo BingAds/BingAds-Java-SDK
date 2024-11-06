@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfEntityDetail complex type.
@@ -36,6 +36,15 @@ public class ArrayOfEntityDetail {
 
     @XmlElement(name = "EntityDetail", nillable = true)
     protected List<EntityDetail> entityDetails;
+    public ArrayOfEntityDetail()
+    {
+      this.entityDetails = new ArrayList<EntityDetail>();
+    }
+    @JsonCreator
+    public ArrayOfEntityDetail(List<EntityDetail> entitydetails)
+    {
+      this.entityDetails = entitydetails;
+    }
 
     /**
      * Gets the value of the entityDetails property.

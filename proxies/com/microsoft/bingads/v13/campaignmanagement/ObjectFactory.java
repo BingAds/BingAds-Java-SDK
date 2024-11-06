@@ -77,6 +77,7 @@ public class ObjectFactory {
     private static final QName _VanityPharmaWebsiteDescription_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VanityPharmaWebsiteDescription");
     private static final QName _AppSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppSetting");
     private static final QName _AppStore_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppStore");
+    private static final QName _ThirdPartyMeasurementSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ThirdPartyMeasurementSetting");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
@@ -278,6 +279,7 @@ public class ObjectFactory {
     private static final QName _StoreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "StoreCriterion");
     private static final QName _DealCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DealCriterion");
     private static final QName _GenreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GenreCriterion");
+    private static final QName _PlacementCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementCriterion");
     private static final QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionStatus");
     private static final QName _BiddableAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableAdGroupCriterion");
     private static final QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionEditorialStatus");
@@ -420,6 +422,8 @@ public class ObjectFactory {
     private static final QName _OfflineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OfflineConversionAdjustment");
     private static final QName _ArrayOfOnlineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfOnlineConversionAdjustment");
     private static final QName _OnlineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OnlineConversionAdjustment");
+    private static final QName _ArrayOfDailySummary_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDailySummary");
+    private static final QName _DailySummary_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DailySummary");
     private static final QName _ArrayOfLabel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfLabel");
     private static final QName _Label_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Label");
     private static final QName _ArrayOfLabelAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfLabelAssociation");
@@ -456,6 +460,17 @@ public class ObjectFactory {
     private static final QName _DeviceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DeviceType");
     private static final QName _ArrayOfSeasonalityAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSeasonalityAdjustment");
     private static final QName _SeasonalityAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SeasonalityAdjustment");
+    private static final QName _AdRecommendationTextTone_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextTone");
+    private static final QName _ArrayOfAdRecommendationImageSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationImageSuggestion");
+    private static final QName _AdRecommendationImageSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationImageSuggestion");
+    private static final QName _ArrayOfAdRecommendationVideoSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationVideoSuggestion");
+    private static final QName _AdRecommendationVideoSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationVideoSuggestion");
+    private static final QName _ArrayOfAdRecommendationTextRefineOperation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationTextRefineOperation");
+    private static final QName _AdRecommendationTextRefineOperation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextRefineOperation");
+    private static final QName _AdRecommendationTextField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextField");
+    private static final QName _ArrayOfArrayOfAdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfArrayOfAdRecommendationTextSuggestion");
+    private static final QName _ArrayOfAdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationTextSuggestion");
+    private static final QName _AdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextSuggestion");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
@@ -986,6 +1001,16 @@ public class ObjectFactory {
      */
     public AppSetting createAppSetting() {
         return new AppSetting();
+    }
+
+    /**
+     * Create an instance of {@link ThirdPartyMeasurementSetting }
+     * 
+     * @return
+     *     the new instance of {@link ThirdPartyMeasurementSetting }
+     */
+    public ThirdPartyMeasurementSetting createThirdPartyMeasurementSetting() {
+        return new ThirdPartyMeasurementSetting();
     }
 
     /**
@@ -3439,6 +3464,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PlacementCriterion }
+     * 
+     * @return
+     *     the new instance of {@link PlacementCriterion }
+     */
+    public PlacementCriterion createPlacementCriterion() {
+        return new PlacementCriterion();
+    }
+
+    /**
      * Create an instance of {@link BiddableAdGroupCriterion }
      * 
      * @return
@@ -5889,6 +5924,46 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetOfflineConversionReportsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetOfflineConversionReportsRequest }
+     */
+    public GetOfflineConversionReportsRequest createGetOfflineConversionReportsRequest() {
+        return new GetOfflineConversionReportsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetOfflineConversionReportsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetOfflineConversionReportsResponse }
+     */
+    public GetOfflineConversionReportsResponse createGetOfflineConversionReportsResponse() {
+        return new GetOfflineConversionReportsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDailySummary }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDailySummary }
+     */
+    public ArrayOfDailySummary createArrayOfDailySummary() {
+        return new ArrayOfDailySummary();
+    }
+
+    /**
+     * Create an instance of {@link DailySummary }
+     * 
+     * @return
+     *     the new instance of {@link DailySummary }
+     */
+    public DailySummary createDailySummary() {
+        return new DailySummary();
+    }
+
+    /**
      * Create an instance of {@link AddLabelsRequest }
      * 
      * @return
@@ -6969,6 +7044,216 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateAssetGroupRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link CreateAssetGroupRecommendationRequest }
+     */
+    public CreateAssetGroupRecommendationRequest createCreateAssetGroupRecommendationRequest() {
+        return new CreateAssetGroupRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link CreateAssetGroupRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link CreateAssetGroupRecommendationResponse }
+     */
+    public CreateAssetGroupRecommendationResponse createCreateAssetGroupRecommendationResponse() {
+        return new CreateAssetGroupRecommendationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdRecommendationImageSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAdRecommendationImageSuggestion }
+     */
+    public ArrayOfAdRecommendationImageSuggestion createArrayOfAdRecommendationImageSuggestion() {
+        return new ArrayOfAdRecommendationImageSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link AdRecommendationImageSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link AdRecommendationImageSuggestion }
+     */
+    public AdRecommendationImageSuggestion createAdRecommendationImageSuggestion() {
+        return new AdRecommendationImageSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link CreateResponsiveAdRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link CreateResponsiveAdRecommendationRequest }
+     */
+    public CreateResponsiveAdRecommendationRequest createCreateResponsiveAdRecommendationRequest() {
+        return new CreateResponsiveAdRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link CreateResponsiveAdRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link CreateResponsiveAdRecommendationResponse }
+     */
+    public CreateResponsiveAdRecommendationResponse createCreateResponsiveAdRecommendationResponse() {
+        return new CreateResponsiveAdRecommendationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdRecommendationVideoSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAdRecommendationVideoSuggestion }
+     */
+    public ArrayOfAdRecommendationVideoSuggestion createArrayOfAdRecommendationVideoSuggestion() {
+        return new ArrayOfAdRecommendationVideoSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link AdRecommendationVideoSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link AdRecommendationVideoSuggestion }
+     */
+    public AdRecommendationVideoSuggestion createAdRecommendationVideoSuggestion() {
+        return new AdRecommendationVideoSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link CreateResponsiveSearchAdRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link CreateResponsiveSearchAdRecommendationRequest }
+     */
+    public CreateResponsiveSearchAdRecommendationRequest createCreateResponsiveSearchAdRecommendationRequest() {
+        return new CreateResponsiveSearchAdRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link CreateResponsiveSearchAdRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link CreateResponsiveSearchAdRecommendationResponse }
+     */
+    public CreateResponsiveSearchAdRecommendationResponse createCreateResponsiveSearchAdRecommendationResponse() {
+        return new CreateResponsiveSearchAdRecommendationResponse();
+    }
+
+    /**
+     * Create an instance of {@link RefineAssetGroupRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link RefineAssetGroupRecommendationRequest }
+     */
+    public RefineAssetGroupRecommendationRequest createRefineAssetGroupRecommendationRequest() {
+        return new RefineAssetGroupRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdRecommendationTextRefineOperation }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAdRecommendationTextRefineOperation }
+     */
+    public ArrayOfAdRecommendationTextRefineOperation createArrayOfAdRecommendationTextRefineOperation() {
+        return new ArrayOfAdRecommendationTextRefineOperation();
+    }
+
+    /**
+     * Create an instance of {@link AdRecommendationTextRefineOperation }
+     * 
+     * @return
+     *     the new instance of {@link AdRecommendationTextRefineOperation }
+     */
+    public AdRecommendationTextRefineOperation createAdRecommendationTextRefineOperation() {
+        return new AdRecommendationTextRefineOperation();
+    }
+
+    /**
+     * Create an instance of {@link RefineAssetGroupRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link RefineAssetGroupRecommendationResponse }
+     */
+    public RefineAssetGroupRecommendationResponse createRefineAssetGroupRecommendationResponse() {
+        return new RefineAssetGroupRecommendationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     */
+    public ArrayOfArrayOfAdRecommendationTextSuggestion createArrayOfArrayOfAdRecommendationTextSuggestion() {
+        return new ArrayOfArrayOfAdRecommendationTextSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdRecommendationTextSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAdRecommendationTextSuggestion }
+     */
+    public ArrayOfAdRecommendationTextSuggestion createArrayOfAdRecommendationTextSuggestion() {
+        return new ArrayOfAdRecommendationTextSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link AdRecommendationTextSuggestion }
+     * 
+     * @return
+     *     the new instance of {@link AdRecommendationTextSuggestion }
+     */
+    public AdRecommendationTextSuggestion createAdRecommendationTextSuggestion() {
+        return new AdRecommendationTextSuggestion();
+    }
+
+    /**
+     * Create an instance of {@link RefineResponsiveAdRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link RefineResponsiveAdRecommendationRequest }
+     */
+    public RefineResponsiveAdRecommendationRequest createRefineResponsiveAdRecommendationRequest() {
+        return new RefineResponsiveAdRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link RefineResponsiveAdRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link RefineResponsiveAdRecommendationResponse }
+     */
+    public RefineResponsiveAdRecommendationResponse createRefineResponsiveAdRecommendationResponse() {
+        return new RefineResponsiveAdRecommendationResponse();
+    }
+
+    /**
+     * Create an instance of {@link RefineResponsiveSearchAdRecommendationRequest }
+     * 
+     * @return
+     *     the new instance of {@link RefineResponsiveSearchAdRecommendationRequest }
+     */
+    public RefineResponsiveSearchAdRecommendationRequest createRefineResponsiveSearchAdRecommendationRequest() {
+        return new RefineResponsiveSearchAdRecommendationRequest();
+    }
+
+    /**
+     * Create an instance of {@link RefineResponsiveSearchAdRecommendationResponse }
+     * 
+     * @return
+     *     the new instance of {@link RefineResponsiveSearchAdRecommendationResponse }
+     */
+    public RefineResponsiveSearchAdRecommendationResponse createRefineResponsiveSearchAdRecommendationResponse() {
+        return new RefineResponsiveSearchAdRecommendationResponse();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfKeyValuePairOfstringstring }
      * 
      * @return
@@ -7726,6 +8011,19 @@ public class ObjectFactory {
     @XmlJavaTypeAdapter(Adapter4 .class)
     public JAXBElement<Collection<AppStore>> createAppStore(Collection<AppStore> value) {
         return new JAXBElement<>(_AppStore_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ThirdPartyMeasurementSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ThirdPartyMeasurementSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ThirdPartyMeasurementSetting")
+    public JAXBElement<ThirdPartyMeasurementSetting> createThirdPartyMeasurementSetting(ThirdPartyMeasurementSetting value) {
+        return new JAXBElement<>(_ThirdPartyMeasurementSetting_QNAME, ThirdPartyMeasurementSetting.class, null, value);
     }
 
     /**
@@ -10354,6 +10652,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PlacementCriterion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PlacementCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "PlacementCriterion")
+    public JAXBElement<PlacementCriterion> createPlacementCriterion(PlacementCriterion value) {
+        return new JAXBElement<>(_PlacementCriterion_QNAME, PlacementCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdGroupCriterionStatus }{@code >}
      * 
      * @param value
@@ -12207,6 +12518,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDailySummary }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDailySummary }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDailySummary")
+    public JAXBElement<ArrayOfDailySummary> createArrayOfDailySummary(ArrayOfDailySummary value) {
+        return new JAXBElement<>(_ArrayOfDailySummary_QNAME, ArrayOfDailySummary.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DailySummary }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DailySummary }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DailySummary")
+    public JAXBElement<DailySummary> createDailySummary(DailySummary value) {
+        return new JAXBElement<>(_DailySummary_QNAME, DailySummary.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLabel }{@code >}
      * 
      * @param value
@@ -12674,6 +13011,149 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "SeasonalityAdjustment")
     public JAXBElement<SeasonalityAdjustment> createSeasonalityAdjustment(SeasonalityAdjustment value) {
         return new JAXBElement<>(_SeasonalityAdjustment_QNAME, SeasonalityAdjustment.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextTone }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextTone }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextTone")
+    public JAXBElement<AdRecommendationTextTone> createAdRecommendationTextTone(AdRecommendationTextTone value) {
+        return new JAXBElement<>(_AdRecommendationTextTone_QNAME, AdRecommendationTextTone.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationImageSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationImageSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationImageSuggestion")
+    public JAXBElement<ArrayOfAdRecommendationImageSuggestion> createArrayOfAdRecommendationImageSuggestion(ArrayOfAdRecommendationImageSuggestion value) {
+        return new JAXBElement<>(_ArrayOfAdRecommendationImageSuggestion_QNAME, ArrayOfAdRecommendationImageSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationImageSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationImageSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationImageSuggestion")
+    public JAXBElement<AdRecommendationImageSuggestion> createAdRecommendationImageSuggestion(AdRecommendationImageSuggestion value) {
+        return new JAXBElement<>(_AdRecommendationImageSuggestion_QNAME, AdRecommendationImageSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationVideoSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationVideoSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationVideoSuggestion")
+    public JAXBElement<ArrayOfAdRecommendationVideoSuggestion> createArrayOfAdRecommendationVideoSuggestion(ArrayOfAdRecommendationVideoSuggestion value) {
+        return new JAXBElement<>(_ArrayOfAdRecommendationVideoSuggestion_QNAME, ArrayOfAdRecommendationVideoSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationVideoSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationVideoSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationVideoSuggestion")
+    public JAXBElement<AdRecommendationVideoSuggestion> createAdRecommendationVideoSuggestion(AdRecommendationVideoSuggestion value) {
+        return new JAXBElement<>(_AdRecommendationVideoSuggestion_QNAME, AdRecommendationVideoSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextRefineOperation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextRefineOperation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationTextRefineOperation")
+    public JAXBElement<ArrayOfAdRecommendationTextRefineOperation> createArrayOfAdRecommendationTextRefineOperation(ArrayOfAdRecommendationTextRefineOperation value) {
+        return new JAXBElement<>(_ArrayOfAdRecommendationTextRefineOperation_QNAME, ArrayOfAdRecommendationTextRefineOperation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextRefineOperation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextRefineOperation }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextRefineOperation")
+    public JAXBElement<AdRecommendationTextRefineOperation> createAdRecommendationTextRefineOperation(AdRecommendationTextRefineOperation value) {
+        return new JAXBElement<>(_AdRecommendationTextRefineOperation_QNAME, AdRecommendationTextRefineOperation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextField }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextField }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextField")
+    public JAXBElement<AdRecommendationTextField> createAdRecommendationTextField(AdRecommendationTextField value) {
+        return new JAXBElement<>(_AdRecommendationTextField_QNAME, AdRecommendationTextField.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfAdRecommendationTextSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfAdRecommendationTextSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfArrayOfAdRecommendationTextSuggestion")
+    public JAXBElement<ArrayOfArrayOfAdRecommendationTextSuggestion> createArrayOfArrayOfAdRecommendationTextSuggestion(ArrayOfArrayOfAdRecommendationTextSuggestion value) {
+        return new JAXBElement<>(_ArrayOfArrayOfAdRecommendationTextSuggestion_QNAME, ArrayOfArrayOfAdRecommendationTextSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationTextSuggestion")
+    public JAXBElement<ArrayOfAdRecommendationTextSuggestion> createArrayOfAdRecommendationTextSuggestion(ArrayOfAdRecommendationTextSuggestion value) {
+        return new JAXBElement<>(_ArrayOfAdRecommendationTextSuggestion_QNAME, ArrayOfAdRecommendationTextSuggestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextSuggestion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextSuggestion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextSuggestion")
+    public JAXBElement<AdRecommendationTextSuggestion> createAdRecommendationTextSuggestion(AdRecommendationTextSuggestion value) {
+        return new JAXBElement<>(_AdRecommendationTextSuggestion_QNAME, AdRecommendationTextSuggestion.class, null, value);
     }
 
     /**

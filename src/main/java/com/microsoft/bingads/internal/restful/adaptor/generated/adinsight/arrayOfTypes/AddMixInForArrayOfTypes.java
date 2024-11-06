@@ -1,0 +1,86 @@
+package com.microsoft.bingads.internal.restful.adaptor.generated.adinsight.arrayOfTypes;
+
+import java.util.Locale;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.microsoft.bingads.v13.adinsight.*;
+import com.microsoft.bingads.internal.restful.adaptor.AdaptorUtil;
+
+public class AddMixInForArrayOfTypes {
+	public static void AddMixInForArrayOfTypes() {
+		AdaptorUtil.mapper
+				.addMixIn(ArrayOfBidOpportunity.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBatchError.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfOperationError.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBudgetOpportunity.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBudgetPoint.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordOpportunity.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBroadMatchSearchQueryKPI.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordIdEstimatedBid.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfEstimatedBidAndTraffic.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordIdEstimatedPosition.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfEstimatedPositionAndTraffic.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordAndMatchType.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfMatchType.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordEstimatedBid.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordEstimatedPosition.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAdGroupBidLandscapeInput.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAdGroupBidLandscape.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBidLandscapePoint.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordBidLandscape.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordHistoricalPerformance.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordKPI.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordSearchCount.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfSearchCountsByAttributes.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfHistoricalSearchCountPeriodic.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordCategoryResult.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordCategory.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordDemographicResult.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordDemographic.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordLocationResult.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordLocation.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordAndConfidence.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordSuggestion.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfSearchParameter.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeyword.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfLocationCriterion.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfLanguageCriterion.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfCompetitionLevel.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAuctionSegment.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAuctionInsightEntry.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAuctionInsightKpi.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfDomainCategory.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfMetricData.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordIdeaCategory.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordIdeaAttribute.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordIdea.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfCampaignEstimator.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAdGroupEstimator.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordEstimator.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfCriterion.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfNegativeKeyword.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfCampaignEstimate.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAdGroupEstimate.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfKeywordEstimate.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAutoApplyRecommendationsInfo.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfPerformanceInsightsDetail.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfPerformanceInsightsMessageParameter.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfEntityDetail.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfPerformanceInsightsMessage.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfRecommendation.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfRecommendationInfo.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfTextAssetSuggestions.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfApplyRecommendationEntity.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfDismissRecommendationEntity.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfRecommendationBase.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAgeEnum.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfGenderEnum.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfRadiusTarget.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAdApiError.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfstring.class, ArrayOfTypesMixIn.class)
+				;
+	}
+}

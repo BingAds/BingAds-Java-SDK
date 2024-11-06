@@ -16,6 +16,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CampaignBudgetRecommendation"/>
  *     <enumeration value="KeywordRecommendation"/>
  *     <enumeration value="ResponsiveSearchAdRecommendation"/>
+ *     <enumeration value="RemoveConflictingNegativeKeywordRecommendation"/>
+ *     <enumeration value="UseBroadMatchKeywordRecommendation"/>
+ *     <enumeration value="ResponsiveSearchAdAssetRecommendation"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -30,7 +33,13 @@ public enum RecommendationType {
     @XmlEnumValue("KeywordRecommendation")
     KEYWORD_RECOMMENDATION("KeywordRecommendation"),
     @XmlEnumValue("ResponsiveSearchAdRecommendation")
-    RESPONSIVE_SEARCH_AD_RECOMMENDATION("ResponsiveSearchAdRecommendation");
+    RESPONSIVE_SEARCH_AD_RECOMMENDATION("ResponsiveSearchAdRecommendation"),
+    @XmlEnumValue("RemoveConflictingNegativeKeywordRecommendation")
+    REMOVE_CONFLICTING_NEGATIVE_KEYWORD_RECOMMENDATION("RemoveConflictingNegativeKeywordRecommendation"),
+    @XmlEnumValue("UseBroadMatchKeywordRecommendation")
+    USE_BROAD_MATCH_KEYWORD_RECOMMENDATION("UseBroadMatchKeywordRecommendation"),
+    @XmlEnumValue("ResponsiveSearchAdAssetRecommendation")
+    RESPONSIVE_SEARCH_AD_ASSET_RECOMMENDATION("ResponsiveSearchAdAssetRecommendation");
     private final String value;
 
     RecommendationType(String v) {

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordIdEstimatedPosition complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordIdEstimatedPosition {
 
     @XmlElement(name = "KeywordIdEstimatedPosition", nillable = true)
     protected List<KeywordIdEstimatedPosition> keywordIdEstimatedPositions;
+    public ArrayOfKeywordIdEstimatedPosition()
+    {
+      this.keywordIdEstimatedPositions = new ArrayList<KeywordIdEstimatedPosition>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordIdEstimatedPosition(List<KeywordIdEstimatedPosition> keywordidestimatedpositions)
+    {
+      this.keywordIdEstimatedPositions = keywordidestimatedpositions;
+    }
 
     /**
      * Gets the value of the keywordIdEstimatedPositions property.

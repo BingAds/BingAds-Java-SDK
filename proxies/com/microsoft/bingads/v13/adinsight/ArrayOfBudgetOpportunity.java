@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBudgetOpportunity complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBudgetOpportunity {
 
     @XmlElement(name = "BudgetOpportunity", nillable = true)
     protected List<BudgetOpportunity> budgetOpportunities;
+    public ArrayOfBudgetOpportunity()
+    {
+      this.budgetOpportunities = new ArrayList<BudgetOpportunity>();
+    }
+    @JsonCreator
+    public ArrayOfBudgetOpportunity(List<BudgetOpportunity> budgetopportunitys)
+    {
+      this.budgetOpportunities = budgetopportunitys;
+    }
 
     /**
      * Gets the value of the budgetOpportunities property.

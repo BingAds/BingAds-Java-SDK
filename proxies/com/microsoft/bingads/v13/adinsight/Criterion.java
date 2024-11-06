@@ -34,6 +34,17 @@ import jakarta.xml.bind.annotation.XmlType;
     DeviceCriterion.class
 })
 public class Criterion {
+    protected String type;
 
+    public String getType() {
+        return type;
+    }
+    public void setType(String value) {
+
+    }
+
+    public Criterion() {
+        this.type = "Criterion";
+    }
 
 }

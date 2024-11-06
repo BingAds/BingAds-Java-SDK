@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBidOpportunity complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBidOpportunity {
 
     @XmlElement(name = "BidOpportunity", nillable = true)
     protected List<BidOpportunity> bidOpportunities;
+    public ArrayOfBidOpportunity()
+    {
+      this.bidOpportunities = new ArrayList<BidOpportunity>();
+    }
+    @JsonCreator
+    public ArrayOfBidOpportunity(List<BidOpportunity> bidopportunitys)
+    {
+      this.bidOpportunities = bidopportunitys;
+    }
 
     /**
      * Gets the value of the bidOpportunities property.

@@ -25,7 +25,9 @@ public enum ImportAdditionalField {
     UPDATE_ACCOUNT_NEGATIVE_KEYWORDS("UpdateAccountNegativeKeywords"),
     UPDATE_AD_CUSTOMIZER_ATTRIBUTES("UpdateAdCustomizerAttributes"),
     NEW_CONVERSION_GOALS("NewConversionGoals"),
-    UPDATE_CONVERSION_GOALS("UpdateConversionGoals");
+    UPDATE_CONVERSION_GOALS("UpdateConversionGoals"),
+    NEW_BRAND_SUITABILITY("NewBrandSuitability"),
+    UPDATE_BRAND_SUITABILITY("UpdateBrandSuitability");
         
     private final String value;
 

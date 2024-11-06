@@ -42,6 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Recommendation", propOrder = {
+    "type",
     "accountId",
     "adGroupId",
     "campaignId",
@@ -61,8 +62,19 @@ import jakarta.xml.bind.annotation.XmlType;
     ResponsiveSearchAdsRecommendation.class
 })
 public class Recommendation {
+    protected String type;
 
-    @XmlElement(name = "AccountId")
+    public String getType() {
+        return type;
+    }
+    public void setType(String value) {
+
+    }
+
+    public Recommendation() {
+        this.type = "Recommendation";
+    }
+
     protected Long accountId;
     @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;

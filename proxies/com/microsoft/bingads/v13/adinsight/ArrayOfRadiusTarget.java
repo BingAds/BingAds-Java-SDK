@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfRadiusTarget complex type.
@@ -36,6 +36,15 @@ public class ArrayOfRadiusTarget {
 
     @XmlElement(name = "RadiusTarget", nillable = true)
     protected List<RadiusTarget> radiusTargets;
+    public ArrayOfRadiusTarget()
+    {
+      this.radiusTargets = new ArrayList<RadiusTarget>();
+    }
+    @JsonCreator
+    public ArrayOfRadiusTarget(List<RadiusTarget> radiustargets)
+    {
+      this.radiusTargets = radiustargets;
+    }
 
     /**
      * Gets the value of the radiusTargets property.

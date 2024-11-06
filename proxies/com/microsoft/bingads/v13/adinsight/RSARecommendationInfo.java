@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class RSARecommendationInfo
     extends RecommendationInfo
 {
+    public RSARecommendationInfo() {
+      this.type = "RSARecommendationInfo";
+    }
 
     @XmlElement(name = "AdId", nillable = true)
     protected Long adId;

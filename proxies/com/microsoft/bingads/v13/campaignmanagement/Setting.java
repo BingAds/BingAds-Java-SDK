@@ -44,7 +44,8 @@ import jakarta.xml.bind.annotation.XmlType;
     PerformanceMaxSetting.class,
     CallToActionSetting.class,
     VanityPharmaSetting.class,
-    AppSetting.class
+    AppSetting.class,
+    ThirdPartyMeasurementSetting.class
 })
 public class Setting {
 

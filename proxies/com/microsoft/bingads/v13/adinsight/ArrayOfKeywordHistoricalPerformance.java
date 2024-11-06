@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordHistoricalPerformance complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordHistoricalPerformance {
 
     @XmlElement(name = "KeywordHistoricalPerformance", nillable = true)
     protected List<KeywordHistoricalPerformance> keywordHistoricalPerformances;
+    public ArrayOfKeywordHistoricalPerformance()
+    {
+      this.keywordHistoricalPerformances = new ArrayList<KeywordHistoricalPerformance>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordHistoricalPerformance(List<KeywordHistoricalPerformance> keywordhistoricalperformances)
+    {
+      this.keywordHistoricalPerformances = keywordhistoricalperformances;
+    }
 
     /**
      * Gets the value of the keywordHistoricalPerformances property.

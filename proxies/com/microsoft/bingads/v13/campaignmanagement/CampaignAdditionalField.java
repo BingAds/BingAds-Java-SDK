@@ -30,7 +30,9 @@ public enum CampaignAdditionalField {
     VANITY_PHARMA_SETTING("VanityPharmaSetting"),
     MANUAL_CPI("ManualCpi"),
     IS_DEAL_CAMPAIGN("IsDealCampaign"),
-    APP_SETTING("AppSetting");
+    APP_SETTING("AppSetting"),
+    CALL_TO_ACTION_OPT_OUT("CallToActionOptOut"),
+    THIRD_PARTY_MEASUREMENT_SETTING("ThirdPartyMeasurementSetting");
         
     private final String value;
 

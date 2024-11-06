@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfUserInvitation complex type.
@@ -36,6 +36,15 @@ public class ArrayOfUserInvitation {
 
     @XmlElement(name = "UserInvitation", nillable = true)
     protected List<UserInvitation> userInvitations;
+    public ArrayOfUserInvitation()
+    {
+      this.userInvitations = new ArrayList<UserInvitation>();
+    }
+    @JsonCreator
+    public ArrayOfUserInvitation(List<UserInvitation> userinvitations)
+    {
+      this.userInvitations = userinvitations;
+    }
 
     /**
      * Gets the value of the userInvitations property.

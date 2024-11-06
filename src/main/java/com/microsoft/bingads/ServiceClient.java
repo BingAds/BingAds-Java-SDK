@@ -65,12 +65,6 @@ public class ServiceClient<T> {
     }
 
     private static boolean getDisableRestApi(Class<?> serviceClass) {
-        if (serviceClass == ICustomerManagementService.class ||
-            serviceClass == ICustomerBillingService.class ||
-            serviceClass == IAdInsightService.class) {
-                return true;
-        }
-
         return ServiceUtils.getDisableRestApi(serviceClass);
     }
 
