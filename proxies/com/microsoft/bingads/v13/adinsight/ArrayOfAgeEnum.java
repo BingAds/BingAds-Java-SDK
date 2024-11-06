@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 /**
@@ -38,6 +38,15 @@ public class ArrayOfAgeEnum {
     @XmlElement(name = "AgeEnum")
     @XmlSchemaType(name = "string")
     protected List<AgeEnum> ageEna;
+    public ArrayOfAgeEnum()
+    {
+      this.ageEna = new ArrayList<AgeEnum>();
+    }
+    @JsonCreator
+    public ArrayOfAgeEnum(List<AgeEnum> ageenums)
+    {
+      this.ageEna = ageenums;
+    }
 
     /**
      * Gets the value of the ageEna property.

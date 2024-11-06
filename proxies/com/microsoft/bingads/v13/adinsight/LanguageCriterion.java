@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LanguageCriterion
     extends Criterion
 {
+    public LanguageCriterion() {
+      this.type = "LanguageCriterion";
+    }
 
     @XmlElement(name = "Language", nillable = true)
     protected String language;

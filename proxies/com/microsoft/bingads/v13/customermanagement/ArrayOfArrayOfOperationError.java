@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfArrayOfOperationError complex type.
@@ -36,6 +36,15 @@ public class ArrayOfArrayOfOperationError {
 
     @XmlElement(name = "ArrayOfOperationError", nillable = true)
     protected List<ArrayOfOperationError> arrayOfOperationErrors;
+    public ArrayOfArrayOfOperationError()
+    {
+      this.arrayOfOperationErrors = new ArrayList<ArrayOfOperationError>();
+    }
+    @JsonCreator
+    public ArrayOfArrayOfOperationError(List<ArrayOfOperationError> arrayofoperationerrors)
+    {
+      this.arrayOfOperationErrors = arrayofoperationerrors;
+    }
 
     /**
      * Gets the value of the arrayOfOperationErrors property.

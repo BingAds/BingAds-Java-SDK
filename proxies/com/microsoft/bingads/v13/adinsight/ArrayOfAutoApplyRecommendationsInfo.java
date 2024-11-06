@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAutoApplyRecommendationsInfo complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAutoApplyRecommendationsInfo {
 
     @XmlElement(name = "AutoApplyRecommendationsInfo", nillable = true)
     protected List<AutoApplyRecommendationsInfo> autoApplyRecommendationsInfos;
+    public ArrayOfAutoApplyRecommendationsInfo()
+    {
+      this.autoApplyRecommendationsInfos = new ArrayList<AutoApplyRecommendationsInfo>();
+    }
+    @JsonCreator
+    public ArrayOfAutoApplyRecommendationsInfo(List<AutoApplyRecommendationsInfo> autoapplyrecommendationsinfos)
+    {
+      this.autoApplyRecommendationsInfos = autoapplyrecommendationsinfos;
+    }
 
     /**
      * Gets the value of the autoApplyRecommendationsInfos property.

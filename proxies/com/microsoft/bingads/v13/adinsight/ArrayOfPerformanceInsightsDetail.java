@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfPerformanceInsightsDetail complex type.
@@ -36,6 +36,15 @@ public class ArrayOfPerformanceInsightsDetail {
 
     @XmlElement(name = "PerformanceInsightsDetail", nillable = true)
     protected List<PerformanceInsightsDetail> performanceInsightsDetails;
+    public ArrayOfPerformanceInsightsDetail()
+    {
+      this.performanceInsightsDetails = new ArrayList<PerformanceInsightsDetail>();
+    }
+    @JsonCreator
+    public ArrayOfPerformanceInsightsDetail(List<PerformanceInsightsDetail> performanceinsightsdetails)
+    {
+      this.performanceInsightsDetails = performanceinsightsdetails;
+    }
 
     /**
      * Gets the value of the performanceInsightsDetails property.

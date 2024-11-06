@@ -40,6 +40,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class EntityParameter
     extends PerformanceInsightsMessageParameter
 {
+    public EntityParameter() {
+      this.type = ParameterType.fromValue("Entities");
+    }
 
     @XmlElement(name = "EntityCount")
     protected Integer entityCount;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfHistoricalSearchCountPeriodic complex type.
@@ -36,6 +36,15 @@ public class ArrayOfHistoricalSearchCountPeriodic {
 
     @XmlElement(name = "HistoricalSearchCountPeriodic", nillable = true)
     protected List<HistoricalSearchCountPeriodic> historicalSearchCountPeriodics;
+    public ArrayOfHistoricalSearchCountPeriodic()
+    {
+      this.historicalSearchCountPeriodics = new ArrayList<HistoricalSearchCountPeriodic>();
+    }
+    @JsonCreator
+    public ArrayOfHistoricalSearchCountPeriodic(List<HistoricalSearchCountPeriodic> historicalsearchcountperiodics)
+    {
+      this.historicalSearchCountPeriodics = historicalsearchcountperiodics;
+    }
 
     /**
      * Gets the value of the historicalSearchCountPeriodics property.

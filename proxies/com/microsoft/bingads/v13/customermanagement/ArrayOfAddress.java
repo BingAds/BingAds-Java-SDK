@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAddress complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAddress {
 
     @XmlElement(name = "Address", nillable = true)
     protected List<Address> addresses;
+    public ArrayOfAddress()
+    {
+      this.addresses = new ArrayList<Address>();
+    }
+    @JsonCreator
+    public ArrayOfAddress(List<Address> addresss)
+    {
+      this.addresses = addresss;
+    }
 
     /**
      * Gets the value of the addresses property.

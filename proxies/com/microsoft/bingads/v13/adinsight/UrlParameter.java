@@ -40,6 +40,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class UrlParameter
     extends PerformanceInsightsMessageParameter
 {
+    public UrlParameter() {
+      this.type = ParameterType.fromValue("Url");
+    }
 
     @XmlElement(name = "SuggestedText", nillable = true)
     protected String suggestedText;

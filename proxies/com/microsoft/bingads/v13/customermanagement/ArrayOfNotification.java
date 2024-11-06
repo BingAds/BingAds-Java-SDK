@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfNotification complex type.
@@ -36,6 +36,15 @@ public class ArrayOfNotification {
 
     @XmlElement(name = "Notification", nillable = true)
     protected List<Notification> notifications;
+    public ArrayOfNotification()
+    {
+      this.notifications = new ArrayList<Notification>();
+    }
+    @JsonCreator
+    public ArrayOfNotification(List<Notification> notifications)
+    {
+      this.notifications = notifications;
+    }
 
     /**
      * Gets the value of the notifications property.

@@ -30,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecommendationInfo", propOrder = {
+    "type",
     "recommendationHash",
     "recommendationId"
 })
@@ -37,8 +38,19 @@ import jakarta.xml.bind.annotation.XmlType;
     RSARecommendationInfo.class
 })
 public class RecommendationInfo {
+    protected String type;
 
-    @XmlElement(name = "RecommendationHash", nillable = true)
+    public String getType() {
+        return type;
+    }
+    public void setType(String value) {
+
+    }
+
+    public RecommendationInfo() {
+        this.type = "RecommendationInfo";
+    }
+
     protected String recommendationHash;
     @XmlElement(name = "RecommendationId", nillable = true)
     protected String recommendationId;

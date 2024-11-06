@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ImpressionShareSearchParameter
     extends SearchParameter
 {
+    public ImpressionShareSearchParameter() {
+      this.type = "ImpressionShareSearchParameter";
+    }
 
     @XmlElement(name = "Maximum", nillable = true)
     protected Double maximum;

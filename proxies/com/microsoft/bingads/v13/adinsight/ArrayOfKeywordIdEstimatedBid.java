@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordIdEstimatedBid complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordIdEstimatedBid {
 
     @XmlElement(name = "KeywordIdEstimatedBid", nillable = true)
     protected List<KeywordIdEstimatedBid> keywordIdEstimatedBids;
+    public ArrayOfKeywordIdEstimatedBid()
+    {
+      this.keywordIdEstimatedBids = new ArrayList<KeywordIdEstimatedBid>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordIdEstimatedBid(List<KeywordIdEstimatedBid> keywordidestimatedbids)
+    {
+      this.keywordIdEstimatedBids = keywordidestimatedbids;
+    }
 
     /**
      * Gets the value of the keywordIdEstimatedBids property.

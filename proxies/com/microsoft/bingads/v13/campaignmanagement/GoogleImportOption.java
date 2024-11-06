@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewAdSchedules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewBrandSuitability" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewConversionGoals" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -88,6 +89,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBiddingStrategies" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBids" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateBrandSuitability" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCampaignAdGroupLanguages" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -147,6 +149,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newAdSchedules",
     "newAppAdExtensions",
     "newAudienceTargets",
+    "newBrandSuitability",
     "newCallAdExtensions",
     "newCalloutAdExtensions",
     "newConversionGoals",
@@ -200,6 +203,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateAudienceTargets",
     "updateBiddingStrategies",
     "updateBids",
+    "updateBrandSuitability",
     "updateCallAdExtensions",
     "updateCalloutAdExtensions",
     "updateCampaignAdGroupLanguages",
@@ -275,6 +279,8 @@ public class GoogleImportOption
     protected Boolean newAppAdExtensions;
     @XmlElement(name = "NewAudienceTargets", nillable = true)
     protected Boolean newAudienceTargets;
+    @XmlElement(name = "NewBrandSuitability", nillable = true)
+    protected Boolean newBrandSuitability;
     @XmlElement(name = "NewCallAdExtensions", nillable = true)
     protected Boolean newCallAdExtensions;
     @XmlElement(name = "NewCalloutAdExtensions", nillable = true)
@@ -381,6 +387,8 @@ public class GoogleImportOption
     protected Boolean updateBiddingStrategies;
     @XmlElement(name = "UpdateBids", nillable = true)
     protected Boolean updateBids;
+    @XmlElement(name = "UpdateBrandSuitability", nillable = true)
+    protected Boolean updateBrandSuitability;
     @XmlElement(name = "UpdateCallAdExtensions", nillable = true)
     protected Boolean updateCallAdExtensions;
     @XmlElement(name = "UpdateCalloutAdExtensions", nillable = true)
@@ -874,6 +882,30 @@ public class GoogleImportOption
      */
     public void setNewAudienceTargets(Boolean value) {
         this.newAudienceTargets = value;
+    }
+
+    /**
+     * Gets the value of the newBrandSuitability property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewBrandSuitability() {
+        return newBrandSuitability;
+    }
+
+    /**
+     * Sets the value of the newBrandSuitability property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewBrandSuitability(Boolean value) {
+        this.newBrandSuitability = value;
     }
 
     /**
@@ -2146,6 +2178,30 @@ public class GoogleImportOption
      */
     public void setUpdateBids(Boolean value) {
         this.updateBids = value;
+    }
+
+    /**
+     * Gets the value of the updateBrandSuitability property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateBrandSuitability() {
+        return updateBrandSuitability;
+    }
+
+    /**
+     * Sets the value of the updateBrandSuitability property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateBrandSuitability(Boolean value) {
+        this.updateBrandSuitability = value;
     }
 
     /**

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAdGroupBidLandscape complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAdGroupBidLandscape {
 
     @XmlElement(name = "AdGroupBidLandscape", nillable = true)
     protected List<AdGroupBidLandscape> adGroupBidLandscapes;
+    public ArrayOfAdGroupBidLandscape()
+    {
+      this.adGroupBidLandscapes = new ArrayList<AdGroupBidLandscape>();
+    }
+    @JsonCreator
+    public ArrayOfAdGroupBidLandscape(List<AdGroupBidLandscape> adgroupbidlandscapes)
+    {
+      this.adGroupBidLandscapes = adgroupbidlandscapes;
+    }
 
     /**
      * Gets the value of the adGroupBidLandscapes property.

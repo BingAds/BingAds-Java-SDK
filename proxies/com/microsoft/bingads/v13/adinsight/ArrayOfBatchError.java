@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBatchError complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBatchError {
 
     @XmlElement(name = "BatchError", nillable = true)
     protected List<BatchError> batchErrors;
+    public ArrayOfBatchError()
+    {
+      this.batchErrors = new ArrayList<BatchError>();
+    }
+    @JsonCreator
+    public ArrayOfBatchError(List<BatchError> batcherrors)
+    {
+      this.batchErrors = batcherrors;
+    }
 
     /**
      * Gets the value of the batchErrors property.

@@ -47,6 +47,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class BroadMatchKeywordOpportunity
     extends KeywordOpportunity
 {
+    public BroadMatchKeywordOpportunity() {
+      this.type = "BroadMatchKeywordOpportunity";
+    }
 
     @XmlElement(name = "AverageCPC")
     protected Double averageCPC;

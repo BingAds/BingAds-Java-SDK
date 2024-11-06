@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class IdeaTextSearchParameter
     extends SearchParameter
 {
+    public IdeaTextSearchParameter() {
+      this.type = "IdeaTextSearchParameter";
+    }
 
     @XmlElement(name = "Excluded", nillable = true)
     protected ArrayOfKeyword excluded;

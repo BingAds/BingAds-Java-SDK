@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBillingDocument complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBillingDocument {
 
     @XmlElement(name = "BillingDocument", nillable = true)
     protected List<BillingDocument> billingDocuments;
+    public ArrayOfBillingDocument()
+    {
+      this.billingDocuments = new ArrayList<BillingDocument>();
+    }
+    @JsonCreator
+    public ArrayOfBillingDocument(List<BillingDocument> billingdocuments)
+    {
+      this.billingDocuments = billingdocuments;
+    }
 
     /**
      * Gets the value of the billingDocuments property.

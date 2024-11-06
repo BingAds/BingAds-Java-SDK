@@ -40,6 +40,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CampaignBudgetRecommendation
     extends RecommendationBase
 {
+    public CampaignBudgetRecommendation() {
+      this.type = RecommendationType.fromValue("CampaignBudgetRecommendation");
+    }
 
     @XmlElement(name = "BudgetPoints", nillable = true)
     protected ArrayOfBudgetPoint budgetPoints;

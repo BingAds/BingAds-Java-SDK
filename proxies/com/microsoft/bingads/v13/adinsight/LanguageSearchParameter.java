@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LanguageSearchParameter
     extends SearchParameter
 {
+    public LanguageSearchParameter() {
+      this.type = "LanguageSearchParameter";
+    }
 
     @XmlElement(name = "Languages", nillable = true)
     protected ArrayOfLanguageCriterion languages;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfMetricData complex type.
@@ -36,6 +36,15 @@ public class ArrayOfMetricData {
 
     @XmlElement(name = "MetricData", nillable = true)
     protected List<MetricData> metricDatas;
+    public ArrayOfMetricData()
+    {
+      this.metricDatas = new ArrayList<MetricData>();
+    }
+    @JsonCreator
+    public ArrayOfMetricData(List<MetricData> metricdatas)
+    {
+      this.metricDatas = metricdatas;
+    }
 
     /**
      * Gets the value of the metricDatas property.

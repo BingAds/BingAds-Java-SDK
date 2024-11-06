@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfBroadMatchSearchQueryKPI complex type.
@@ -36,6 +36,15 @@ public class ArrayOfBroadMatchSearchQueryKPI {
 
     @XmlElement(name = "BroadMatchSearchQueryKPI", nillable = true)
     protected List<BroadMatchSearchQueryKPI> broadMatchSearchQueryKPIs;
+    public ArrayOfBroadMatchSearchQueryKPI()
+    {
+      this.broadMatchSearchQueryKPIs = new ArrayList<BroadMatchSearchQueryKPI>();
+    }
+    @JsonCreator
+    public ArrayOfBroadMatchSearchQueryKPI(List<BroadMatchSearchQueryKPI> broadmatchsearchquerykpis)
+    {
+      this.broadMatchSearchQueryKPIs = broadmatchsearchquerykpis;
+    }
 
     /**
      * Gets the value of the broadMatchSearchQueryKPIs property.

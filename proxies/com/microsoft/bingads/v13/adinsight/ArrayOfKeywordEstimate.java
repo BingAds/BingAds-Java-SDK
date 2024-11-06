@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordEstimate complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordEstimate {
 
     @XmlElement(name = "KeywordEstimate", nillable = true)
     protected List<KeywordEstimate> keywordEstimates;
+    public ArrayOfKeywordEstimate()
+    {
+      this.keywordEstimates = new ArrayList<KeywordEstimate>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordEstimate(List<KeywordEstimate> keywordestimates)
+    {
+      this.keywordEstimates = keywordestimates;
+    }
 
     /**
      * Gets the value of the keywordEstimates property.

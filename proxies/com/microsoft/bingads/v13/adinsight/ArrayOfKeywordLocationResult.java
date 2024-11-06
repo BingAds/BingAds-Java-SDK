@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordLocationResult complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordLocationResult {
 
     @XmlElement(name = "KeywordLocationResult", nillable = true)
     protected List<KeywordLocationResult> keywordLocationResults;
+    public ArrayOfKeywordLocationResult()
+    {
+      this.keywordLocationResults = new ArrayList<KeywordLocationResult>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordLocationResult(List<KeywordLocationResult> keywordlocationresults)
+    {
+      this.keywordLocationResults = keywordlocationresults;
+    }
 
     /**
      * Gets the value of the keywordLocationResults property.

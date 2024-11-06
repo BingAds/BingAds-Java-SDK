@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfAuctionInsightKpi complex type.
@@ -36,6 +36,15 @@ public class ArrayOfAuctionInsightKpi {
 
     @XmlElement(name = "AuctionInsightKpi", nillable = true)
     protected List<AuctionInsightKpi> auctionInsightKpis;
+    public ArrayOfAuctionInsightKpi()
+    {
+      this.auctionInsightKpis = new ArrayList<AuctionInsightKpi>();
+    }
+    @JsonCreator
+    public ArrayOfAuctionInsightKpi(List<AuctionInsightKpi> auctioninsightkpis)
+    {
+      this.auctionInsightKpis = auctioninsightkpis;
+    }
 
     /**
      * Gets the value of the auctionInsightKpis property.

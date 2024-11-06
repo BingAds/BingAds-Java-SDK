@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCampaignEstimate complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCampaignEstimate {
 
     @XmlElement(name = "CampaignEstimate", nillable = true)
     protected List<CampaignEstimate> campaignEstimates;
+    public ArrayOfCampaignEstimate()
+    {
+      this.campaignEstimates = new ArrayList<CampaignEstimate>();
+    }
+    @JsonCreator
+    public ArrayOfCampaignEstimate(List<CampaignEstimate> campaignestimates)
+    {
+      this.campaignEstimates = campaignestimates;
+    }
 
     /**
      * Gets the value of the campaignEstimates property.

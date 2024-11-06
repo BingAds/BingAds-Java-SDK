@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfTextAssetSuggestions complex type.
@@ -36,6 +36,15 @@ public class ArrayOfTextAssetSuggestions {
 
     @XmlElement(name = "TextAssetSuggestions", nillable = true)
     protected List<TextAssetSuggestions> textAssetSuggestions;
+    public ArrayOfTextAssetSuggestions()
+    {
+      this.textAssetSuggestions = new ArrayList<TextAssetSuggestions>();
+    }
+    @JsonCreator
+    public ArrayOfTextAssetSuggestions(List<TextAssetSuggestions> textassetsuggestionss)
+    {
+      this.textAssetSuggestions = textassetsuggestionss;
+    }
 
     /**
      * Gets the value of the textAssetSuggestions property.

@@ -45,6 +45,17 @@ import jakarta.xml.bind.annotation.XmlType;
     AuctionSegmentSearchParameter.class
 })
 public class SearchParameter {
+    protected String type;
 
+    public String getType() {
+        return type;
+    }
+    public void setType(String value) {
+
+    }
+
+    public SearchParameter() {
+        this.type = "SearchParameter";
+    }
 
 }

@@ -91,6 +91,21 @@ class RestfulServiceClient {
         com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
         com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
         com.microsoft.bingads.internal.restful.adaptor.generated.reporting.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+        
+        com.microsoft.bingads.internal.restful.adaptor.generated.customermanagement.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customermanagement.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customermanagement.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customermanagement.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+        
+        com.microsoft.bingads.internal.restful.adaptor.generated.customerbilling.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customerbilling.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customerbilling.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.customerbilling.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
+        
+        com.microsoft.bingads.internal.restful.adaptor.generated.adinsight.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.adinsight.enums.AddMixInForEnumTypes.AddMixInForEnumTypes();
+        com.microsoft.bingads.internal.restful.adaptor.generated.adinsight.enums.AddMixInForComplexTypesWithEnumList.AddMixInForComplexTypesWithEnumList();
+        com.microsoft.bingads.internal.restful.adaptor.generated.adinsight.polymorphicTypes.AddMixInForPolymorphicTypes.AddMixInForPolymorphicTypes();
     }
 
     protected RestfulServiceClient(Map<String, String> headers, ApiEnvironment env, Class<?> serviceInterface) {

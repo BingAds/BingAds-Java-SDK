@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfCoupon complex type.
@@ -36,6 +36,15 @@ public class ArrayOfCoupon {
 
     @XmlElement(name = "Coupon", nillable = true)
     protected List<Coupon> coupons;
+    public ArrayOfCoupon()
+    {
+      this.coupons = new ArrayList<Coupon>();
+    }
+    @JsonCreator
+    public ArrayOfCoupon(List<Coupon> coupons)
+    {
+      this.coupons = coupons;
+    }
 
     /**
      * Gets the value of the coupons property.

@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum CriterionAdditionalField {
 
     CRITERION_CASHBACK("CriterionCashback"),
-    OPERATOR("Operator");
+    OPERATOR("Operator"),
+    PLACEMENT("Placement");
         
     private final String value;
 

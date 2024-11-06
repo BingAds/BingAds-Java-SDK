@@ -38,8 +38,6 @@ import jakarta.xml.bind.annotation.XmlType;
     AdApiFaultDetail.class
 })
 public class ApplicationFault {
-
-    @XmlElement(name = "Type", nillable = true)
     protected String type;
 
 

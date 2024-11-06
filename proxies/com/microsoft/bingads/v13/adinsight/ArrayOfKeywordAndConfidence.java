@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeywordAndConfidence complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeywordAndConfidence {
 
     @XmlElement(name = "KeywordAndConfidence", nillable = true)
     protected List<KeywordAndConfidence> keywordAndConfidences;
+    public ArrayOfKeywordAndConfidence()
+    {
+      this.keywordAndConfidences = new ArrayList<KeywordAndConfidence>();
+    }
+    @JsonCreator
+    public ArrayOfKeywordAndConfidence(List<KeywordAndConfidence> keywordandconfidences)
+    {
+      this.keywordAndConfidences = keywordandconfidences;
+    }
 
     /**
      * Gets the value of the keywordAndConfidences property.

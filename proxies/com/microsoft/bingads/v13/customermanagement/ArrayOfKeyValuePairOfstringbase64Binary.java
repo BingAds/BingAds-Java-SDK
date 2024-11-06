@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfKeyValuePairOfstringbase64Binary complex type.
@@ -36,6 +36,15 @@ public class ArrayOfKeyValuePairOfstringbase64Binary {
 
     @XmlElement(name = "KeyValuePairOfstringbase64Binary")
     protected List<KeyValuePairOfstringbase64Binary> keyValuePairOfstringbase64Binaries;
+    public ArrayOfKeyValuePairOfstringbase64Binary()
+    {
+      this.keyValuePairOfstringbase64Binaries = new ArrayList<KeyValuePairOfstringbase64Binary>();
+    }
+    @JsonCreator
+    public ArrayOfKeyValuePairOfstringbase64Binary(List<KeyValuePairOfstringbase64Binary> keyvaluepairofstringbase64binarys)
+    {
+      this.keyValuePairOfstringbase64Binaries = keyvaluepairofstringbase64binarys;
+    }
 
     /**
      * Gets the value of the keyValuePairOfstringbase64Binaries property.

@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ApiFault
     extends ApplicationFault
 {
+    public ApiFault() {
+      this.type = "ApiFault";
+    }
 
     @XmlElement(name = "OperationErrors", nillable = true)
     protected ArrayOfOperationError operationErrors;

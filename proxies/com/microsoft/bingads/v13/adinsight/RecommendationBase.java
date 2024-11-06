@@ -20,8 +20,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="AccountName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="AdGroupName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CampaignName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CurrentClicks" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="CurrentConversions" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="CurrentCost" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
@@ -46,8 +49,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecommendationBase", propOrder = {
     "accountId",
+    "accountName",
     "adGroupId",
+    "adGroupName",
     "campaignId",
+    "campaignName",
     "currentClicks",
     "currentConversions",
     "currentCost",
@@ -65,16 +71,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     CampaignBudgetRecommendation.class,
     KeywordRecommendation.class,
-    ResponsiveSearchAdRecommendation.class
+    ResponsiveSearchAdRecommendation.class,
+    RemoveConflictingNegativeKeywordRecommendation.class,
+    UseBroadMatchKeywordRecommendation.class,
+    ResponsiveSearchAdAssetRecommendation.class
 })
 public class RecommendationBase {
 
     @XmlElement(name = "AccountId")
     protected Long accountId;
+    @XmlElement(name = "AccountName", nillable = true)
+    protected String accountName;
     @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
+    @XmlElement(name = "AdGroupName", nillable = true)
+    protected String adGroupName;
     @XmlElement(name = "CampaignId", nillable = true)
     protected Long campaignId;
+    @XmlElement(name = "CampaignName", nillable = true)
+    protected String campaignName;
     @XmlElement(name = "CurrentClicks")
     protected Long currentClicks;
     @XmlElement(name = "CurrentConversions")
@@ -128,6 +143,30 @@ public class RecommendationBase {
     }
 
     /**
+     * Gets the value of the accountName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAccountName() {
+        return accountName;
+    }
+
+    /**
+     * Sets the value of the accountName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccountName(String value) {
+        this.accountName = value;
+    }
+
+    /**
      * Gets the value of the adGroupId property.
      * 
      * @return
@@ -152,6 +191,30 @@ public class RecommendationBase {
     }
 
     /**
+     * Gets the value of the adGroupName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdGroupName() {
+        return adGroupName;
+    }
+
+    /**
+     * Sets the value of the adGroupName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdGroupName(String value) {
+        this.adGroupName = value;
+    }
+
+    /**
      * Gets the value of the campaignId property.
      * 
      * @return
@@ -173,6 +236,30 @@ public class RecommendationBase {
      */
     public void setCampaignId(Long value) {
         this.campaignId = value;
+    }
+
+    /**
+     * Gets the value of the campaignName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCampaignName() {
+        return campaignName;
+    }
+
+    /**
+     * Sets the value of the campaignName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampaignName(String value) {
+        this.campaignName = value;
     }
 
     /**
@@ -484,7 +571,7 @@ public class RecommendationBase {
      *     
      */
     public void setType(RecommendationType value) {
-        this.type = value;
+
     }
 
 }

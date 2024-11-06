@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Setting">
  *       <sequence>
  *         <element name="AutomatedCallToActionOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="CallToActionOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -28,7 +29,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CallToActionSetting", propOrder = {
-    "automatedCallToActionOptOut"
+    "automatedCallToActionOptOut",
+    "callToActionOptOut"
 })
 public class CallToActionSetting
     extends Setting
@@ -39,6 +41,8 @@ public class CallToActionSetting
 
     @XmlElement(name = "AutomatedCallToActionOptOut", nillable = true)
     protected Boolean automatedCallToActionOptOut;
+    @XmlElement(name = "CallToActionOptOut", nillable = true)
+    protected Boolean callToActionOptOut;
 
     /**
      * Gets the value of the automatedCallToActionOptOut property.
@@ -62,6 +66,30 @@ public class CallToActionSetting
      */
     public void setAutomatedCallToActionOptOut(Boolean value) {
         this.automatedCallToActionOptOut = value;
+    }
+
+    /**
+     * Gets the value of the callToActionOptOut property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getCallToActionOptOut() {
+        return callToActionOptOut;
+    }
+
+    /**
+     * Sets the value of the callToActionOptOut property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setCallToActionOptOut(Boolean value) {
+        this.callToActionOptOut = value;
     }
 
 }

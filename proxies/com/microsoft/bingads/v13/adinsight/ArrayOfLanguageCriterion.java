@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfLanguageCriterion complex type.
@@ -36,6 +36,15 @@ public class ArrayOfLanguageCriterion {
 
     @XmlElement(name = "LanguageCriterion", nillable = true)
     protected List<LanguageCriterion> languageCriterions;
+    public ArrayOfLanguageCriterion()
+    {
+      this.languageCriterions = new ArrayList<LanguageCriterion>();
+    }
+    @JsonCreator
+    public ArrayOfLanguageCriterion(List<LanguageCriterion> languagecriterions)
+    {
+      this.languageCriterions = languagecriterions;
+    }
 
     /**
      * Gets the value of the languageCriterions property.

@@ -214,6 +214,14 @@ public class ObjectFactory {
     private static final QName _AssetPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AssetPerformanceReportRequest");
     private static final QName _ArrayOfAssetPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAssetPerformanceReportColumn");
     private static final QName _AssetPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AssetPerformanceReportColumn");
+    private static final QName _CategoryInsightsReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryInsightsReportRequest");
+    private static final QName _ArrayOfCategoryInsightsReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfCategoryInsightsReportColumn");
+    private static final QName _CategoryInsightsReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryInsightsReportColumn");
+    private static final QName _CategoryInsightsReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryInsightsReportFilter");
+    private static final QName _CategoryClickCoverageReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryClickCoverageReportRequest");
+    private static final QName _ArrayOfCategoryClickCoverageReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfCategoryClickCoverageReportColumn");
+    private static final QName _CategoryClickCoverageReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryClickCoverageReportColumn");
+    private static final QName _CategoryClickCoverageReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CategoryClickCoverageReportFilter");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CustomerAccountId");
@@ -1663,6 +1671,66 @@ public class ObjectFactory {
      */
     public ArrayOfAssetPerformanceReportColumn createArrayOfAssetPerformanceReportColumn() {
         return new ArrayOfAssetPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link CategoryInsightsReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link CategoryInsightsReportRequest }
+     */
+    public CategoryInsightsReportRequest createCategoryInsightsReportRequest() {
+        return new CategoryInsightsReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCategoryInsightsReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCategoryInsightsReportColumn }
+     */
+    public ArrayOfCategoryInsightsReportColumn createArrayOfCategoryInsightsReportColumn() {
+        return new ArrayOfCategoryInsightsReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link CategoryInsightsReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link CategoryInsightsReportFilter }
+     */
+    public CategoryInsightsReportFilter createCategoryInsightsReportFilter() {
+        return new CategoryInsightsReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link CategoryClickCoverageReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link CategoryClickCoverageReportRequest }
+     */
+    public CategoryClickCoverageReportRequest createCategoryClickCoverageReportRequest() {
+        return new CategoryClickCoverageReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCategoryClickCoverageReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCategoryClickCoverageReportColumn }
+     */
+    public ArrayOfCategoryClickCoverageReportColumn createArrayOfCategoryClickCoverageReportColumn() {
+        return new ArrayOfCategoryClickCoverageReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link CategoryClickCoverageReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link CategoryClickCoverageReportFilter }
+     */
+    public CategoryClickCoverageReportFilter createCategoryClickCoverageReportFilter() {
+        return new CategoryClickCoverageReportFilter();
     }
 
     /**
@@ -4288,6 +4356,110 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AssetPerformanceReportColumn")
     public JAXBElement<AssetPerformanceReportColumn> createAssetPerformanceReportColumn(AssetPerformanceReportColumn value) {
         return new JAXBElement<>(_AssetPerformanceReportColumn_QNAME, AssetPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryInsightsReportRequest")
+    public JAXBElement<CategoryInsightsReportRequest> createCategoryInsightsReportRequest(CategoryInsightsReportRequest value) {
+        return new JAXBElement<>(_CategoryInsightsReportRequest_QNAME, CategoryInsightsReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryInsightsReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryInsightsReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfCategoryInsightsReportColumn")
+    public JAXBElement<ArrayOfCategoryInsightsReportColumn> createArrayOfCategoryInsightsReportColumn(ArrayOfCategoryInsightsReportColumn value) {
+        return new JAXBElement<>(_ArrayOfCategoryInsightsReportColumn_QNAME, ArrayOfCategoryInsightsReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryInsightsReportColumn")
+    public JAXBElement<CategoryInsightsReportColumn> createCategoryInsightsReportColumn(CategoryInsightsReportColumn value) {
+        return new JAXBElement<>(_CategoryInsightsReportColumn_QNAME, CategoryInsightsReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryInsightsReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryInsightsReportFilter")
+    public JAXBElement<CategoryInsightsReportFilter> createCategoryInsightsReportFilter(CategoryInsightsReportFilter value) {
+        return new JAXBElement<>(_CategoryInsightsReportFilter_QNAME, CategoryInsightsReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryClickCoverageReportRequest")
+    public JAXBElement<CategoryClickCoverageReportRequest> createCategoryClickCoverageReportRequest(CategoryClickCoverageReportRequest value) {
+        return new JAXBElement<>(_CategoryClickCoverageReportRequest_QNAME, CategoryClickCoverageReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryClickCoverageReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryClickCoverageReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfCategoryClickCoverageReportColumn")
+    public JAXBElement<ArrayOfCategoryClickCoverageReportColumn> createArrayOfCategoryClickCoverageReportColumn(ArrayOfCategoryClickCoverageReportColumn value) {
+        return new JAXBElement<>(_ArrayOfCategoryClickCoverageReportColumn_QNAME, ArrayOfCategoryClickCoverageReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryClickCoverageReportColumn")
+    public JAXBElement<CategoryClickCoverageReportColumn> createCategoryClickCoverageReportColumn(CategoryClickCoverageReportColumn value) {
+        return new JAXBElement<>(_CategoryClickCoverageReportColumn_QNAME, CategoryClickCoverageReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryClickCoverageReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CategoryClickCoverageReportFilter")
+    public JAXBElement<CategoryClickCoverageReportFilter> createCategoryClickCoverageReportFilter(CategoryClickCoverageReportFilter value) {
+        return new JAXBElement<>(_CategoryClickCoverageReportFilter_QNAME, CategoryClickCoverageReportFilter.class, null, value);
     }
 
     /**

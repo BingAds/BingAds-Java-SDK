@@ -183,6 +183,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<CategoryInsightsReportColumn> getCategoryInsightsReportColumns();
+
+            
+	@JsonValue
+	List<CategoryClickCoverageReportColumn> getCategoryClickCoverageReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

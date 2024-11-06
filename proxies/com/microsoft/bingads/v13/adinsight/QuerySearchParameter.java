@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class QuerySearchParameter
     extends SearchParameter
 {
+    public QuerySearchParameter() {
+      this.type = "QuerySearchParameter";
+    }
 
     @XmlElement(name = "Queries", nillable = true)
     protected ArrayOfstring queries;

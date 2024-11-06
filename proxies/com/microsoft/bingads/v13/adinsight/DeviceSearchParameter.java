@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DeviceSearchParameter
     extends SearchParameter
 {
+    public DeviceSearchParameter() {
+      this.type = "DeviceSearchParameter";
+    }
 
     @XmlElement(name = "Device", nillable = true)
     protected DeviceCriterion device;

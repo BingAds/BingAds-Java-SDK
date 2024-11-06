@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfSearchParameter complex type.
@@ -36,6 +36,15 @@ public class ArrayOfSearchParameter {
 
     @XmlElement(name = "SearchParameter", nillable = true)
     protected List<SearchParameter> searchParameters;
+    public ArrayOfSearchParameter()
+    {
+      this.searchParameters = new ArrayList<SearchParameter>();
+    }
+    @JsonCreator
+    public ArrayOfSearchParameter(List<SearchParameter> searchparameters)
+    {
+      this.searchParameters = searchparameters;
+    }
 
     /**
      * Gets the value of the searchParameters property.

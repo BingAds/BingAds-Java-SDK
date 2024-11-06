@@ -33,7 +33,8 @@ public enum AdGroupCriterionType {
     HOTEL_CHECK_IN_DATE("HotelCheckInDate"),
     GENRE("Genre"),
     CUSTOMER_LIST("CustomerList"),
-    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList");
+    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
+    PLACEMENT("Placement");
         
     private final String value;
 

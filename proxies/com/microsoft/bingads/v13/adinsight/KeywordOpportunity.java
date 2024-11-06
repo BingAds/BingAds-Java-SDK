@@ -60,6 +60,10 @@ public class KeywordOpportunity
     extends Opportunity
 {
 
+
+    public KeywordOpportunity() {
+        this.type = "KeywordOpportunity";
+    }
     @XmlElement(name = "AdGroupId")
     protected Long adGroupId;
     @XmlElement(name = "AdGroupName", nillable = true)

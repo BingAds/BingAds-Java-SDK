@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DeviceCriterion
     extends Criterion
 {
+    public DeviceCriterion() {
+      this.type = "DeviceCriterion";
+    }
 
     @XmlElement(name = "DeviceName", nillable = true)
     protected String deviceName;

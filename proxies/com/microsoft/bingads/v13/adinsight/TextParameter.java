@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class TextParameter
     extends PerformanceInsightsMessageParameter
 {
+    public TextParameter() {
+      this.type = ParameterType.fromValue("Text");
+    }
 
     @XmlElement(name = "SuggestedText", nillable = true)
     protected String suggestedText;

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * <p>Java class for ArrayOfint complex type.
@@ -36,6 +36,15 @@ public class ArrayOfint {
 
     @XmlElement(name = "int", type = Integer.class)
     protected List<Integer> ints;
+    public ArrayOfint()
+    {
+      this.ints = new ArrayList<Integer>();
+    }
+    @JsonCreator
+    public ArrayOfint(List<Integer> ints)
+    {
+      this.ints = ints;
+    }
 
     /**
      * Gets the value of the ints property.

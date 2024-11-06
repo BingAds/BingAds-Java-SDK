@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class LocationCriterion
     extends Criterion
 {
+    public LocationCriterion() {
+      this.type = "LocationCriterion";
+    }
 
     @XmlElement(name = "LocationId")
     protected Long locationId;

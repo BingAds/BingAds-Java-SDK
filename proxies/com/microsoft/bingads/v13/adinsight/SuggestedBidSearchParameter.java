@@ -35,6 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 public class SuggestedBidSearchParameter
     extends SearchParameter
 {
+    public SuggestedBidSearchParameter() {
+      this.type = "SuggestedBidSearchParameter";
+    }
 
     @XmlElement(name = "Maximum", nillable = true)
     protected Double maximum;
