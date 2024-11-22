@@ -98,6 +98,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.
 			@JsonSubTypes.Type(value = CategoryInsightsReportRequest.class, name = "CategoryInsightsReportRequest"),
 						
 			@JsonSubTypes.Type(value = CategoryClickCoverageReportRequest.class, name = "CategoryClickCoverageReportRequest"),
+						
+			@JsonSubTypes.Type(value = CombinationPerformanceReportRequest.class, name = "CombinationPerformanceReportRequest"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

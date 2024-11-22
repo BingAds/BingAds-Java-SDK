@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "CreateResponsiveAdRecommendationRequest")
 public class CreateResponsiveAdRecommendationRequest {
 
-    @XmlElement(name = "AdSubType", type = String.class)
+    @XmlElement(name = "AdSubType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter2 .class)
     protected Collection<AdSubType> adSubType;
     @XmlElement(name = "FinalUrls", nillable = true)

@@ -1,0 +1,24 @@
+package com.microsoft.bingads.v13.api.test.entities.asset_group_url_target.read;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetCondition1Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetCondition2Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetCondition3Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetConditionOperator1Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetConditionOperator2Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetConditionOperator3Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetValue1Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetValue2Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesAssetGroupTargetValue3Test.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesIdTest.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesParentIdTest.class,
+		BulkAssetGroupUrlTargetReadFromRowValuesStatusTest.class,
+})
+public class BulkAssetGroupUrlTargetReadTests {
+
+}

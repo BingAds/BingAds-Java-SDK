@@ -19,6 +19,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ThirtyFiveToFourtyNine"/>
  *     <enumeration value="FiftyToSixtyFour"/>
  *     <enumeration value="SixtyFiveAndAbove"/>
+ *     <enumeration value="ThirtyFiveToFiftyFour"/>
+ *     <enumeration value="FiftyFiveAndAbove"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -39,7 +41,11 @@ public enum AgeRange {
     @XmlEnumValue("FiftyToSixtyFour")
     FIFTY_TO_SIXTY_FOUR("FiftyToSixtyFour"),
     @XmlEnumValue("SixtyFiveAndAbove")
-    SIXTY_FIVE_AND_ABOVE("SixtyFiveAndAbove");
+    SIXTY_FIVE_AND_ABOVE("SixtyFiveAndAbove"),
+    @XmlEnumValue("ThirtyFiveToFiftyFour")
+    THIRTY_FIVE_TO_FIFTY_FOUR("ThirtyFiveToFiftyFour"),
+    @XmlEnumValue("FiftyFiveAndAbove")
+    FIFTY_FIVE_AND_ABOVE("FiftyFiveAndAbove");
     private final String value;
 
     AgeRange(String v) {

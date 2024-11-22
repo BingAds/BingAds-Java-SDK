@@ -1,0 +1,35 @@
+package com.microsoft.bingads.v13.api.test.entities.asset_group_url_target.write;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesAssetGroupTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesCampaignTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesIsExcludedTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesParentIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesParentListingGroupIdTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesProductCondition1Test;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesProductValue1Test;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesStatusTest;
+import com.microsoft.bingads.v13.api.test.entities.asset_group_listing_group.write.BulkAssetGroupListingGroupWriteToRowValuesSubTypeTest;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetCondition1Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetCondition2Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetCondition3Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetConditionOperator1Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetConditionOperator2Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetConditionOperator3Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetValue1Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetValue2Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesAssetGroupTargetValue3Test.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesIdTest.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesParentIdTest.class,
+	BulkAssetGroupUrlTargetWriteToRowValuesStatusTest.class,
+})
+public class BulkAssetGroupUrlTargetWriteTests {
+
+}

@@ -534,6 +534,17 @@ public class CsvHeaders {
             StringTable.BrandUrl,
             StringTable.BrandName,
             StringTable.StatusDateTime,
+            
+            //Asset Group Url Target
+            StringTable.AssetGroupTargetCondition1,
+            StringTable.AssetGroupTargetCondition2,
+            StringTable.AssetGroupTargetCondition3,
+            StringTable.AssetGroupTargetConditionOperator1,
+            StringTable.AssetGroupTargetConditionOperator2,
+            StringTable.AssetGroupTargetConditionOperator3,
+            StringTable.AssetGroupTargetValue1,
+            StringTable.AssetGroupTargetValue2,
+            StringTable.AssetGroupTargetValue3,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -3354,5 +3354,6 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	public Future<?> refineResponsiveSearchAdRecommendationAsync(RefineResponsiveSearchAdRecommendationRequest request, AsyncHandler<RefineResponsiveSearchAdRecommendationResponse> asyncHandler) {
 		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Refine", HttpPost, RefineResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveSearchAdRecommendationAsync(r, h), asyncHandler);
 	}
+
 	
     }

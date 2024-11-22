@@ -196,6 +196,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AdGroupNegativeImpressionBasedRemarketingListAssociations"/>
  *     <enumeration value="CampaignImpressionBasedRemarketingListAssociations"/>
  *     <enumeration value="CampaignNegativeImpressionBasedRemarketingListAssociations"/>
+ *     <enumeration value="AssetGroupUrlTargets"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -570,7 +571,9 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignImpressionBasedRemarketingListAssociations")
     CAMPAIGN_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignImpressionBasedRemarketingListAssociations"),
     @XmlEnumValue("CampaignNegativeImpressionBasedRemarketingListAssociations")
-    CAMPAIGN_NEGATIVE_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeImpressionBasedRemarketingListAssociations");
+    CAMPAIGN_NEGATIVE_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeImpressionBasedRemarketingListAssociations"),
+    @XmlEnumValue("AssetGroupUrlTargets")
+    ASSET_GROUP_URL_TARGETS("AssetGroupUrlTargets");
     private final String value;
 
     DownloadEntity(String v) {

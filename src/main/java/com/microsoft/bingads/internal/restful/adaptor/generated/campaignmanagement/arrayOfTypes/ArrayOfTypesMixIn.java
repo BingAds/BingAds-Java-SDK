@@ -264,6 +264,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AssetGroupUrlTarget> getAssetGroupUrlTargets();
+
+            
+	@JsonValue
 	List<AssetGroupEditorialReasonCollection> getAssetGroupEditorialReasonCollections();
 
             
@@ -393,6 +397,22 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<AdRecommendationTextSuggestion> getAdRecommendationTextSuggestions();
+
+            
+	@JsonValue
+	List<ConversionValueRule> getConversionValueRules();
+
+            
+	@JsonValue
+	List<AudienceConditionItem> getAudienceConditionItems();
+
+            
+	@JsonValue
+	List<DeviceType> getDeviceTypes();
+
+            
+	@JsonValue
+	List<LocationConditionItem> getLocationConditionItems();
 
             
 	@JsonValue
