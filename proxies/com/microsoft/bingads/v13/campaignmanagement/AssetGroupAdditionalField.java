@@ -5,7 +5,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum AssetGroupAdditionalField {
 
-    ASSET_GROUP_SEARCH_THEMES("AssetGroupSearchThemes");
+    ASSET_GROUP_SEARCH_THEMES("AssetGroupSearchThemes"),
+    ASSET_GROUP_URL_TARGETS("AssetGroupUrlTargets");
         
     private final String value;
 

@@ -828,6 +828,19 @@ public class StringTable {
     public static final String BrandName = "Brand Name";
     public static final String StatusDateTime = "Editorial Status Date";
     
+    // Asset Group Url Target
+    public static final String AssetGroupUrlTarget = "Asset Group Url Target";
+    public static final String AssetGroupTargetCondition1 = "Asset Group Target Condition 1";
+    public static final String AssetGroupTargetCondition2 = "Asset Group Target Condition 2";
+    public static final String AssetGroupTargetCondition3 = "Asset Group Target Condition 3";
+    public static final String AssetGroupTargetConditionOperator1 = "Asset Group Target Condition Operator 1";
+    public static final String AssetGroupTargetConditionOperator2 = "Asset Group Target Condition Operator 2";
+    public static final String AssetGroupTargetConditionOperator3 = "Asset Group Target Condition Operator 3";
+    public static final String AssetGroupTargetValue1 = "Asset Group Target Value 1";
+    public static final String AssetGroupTargetValue2 = "Asset Group Target Value 2";
+    public static final String AssetGroupTargetValue3 = "Asset Group Target Value 3";
+    
+    
     static {
         Map<String, String> m = new HashMap<String, String>();
 

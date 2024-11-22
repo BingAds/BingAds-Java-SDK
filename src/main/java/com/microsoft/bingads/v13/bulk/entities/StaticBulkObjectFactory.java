@@ -1283,6 +1283,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignBrandListAssociation();
             }
         }));
+        m.put(StringTable.AssetGroupUrlTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAssetGroupUrlTarget();
+            }
+        }));
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 
