@@ -65,6 +65,9 @@ public class ServiceClient<T> {
     }
 
     private static boolean getDisableRestApi(Class<?> serviceClass) {
+		if (serviceClass == IAdInsightService.class) {
+            return true;
+        }
         return ServiceUtils.getDisableRestApi(serviceClass);
     }
 
