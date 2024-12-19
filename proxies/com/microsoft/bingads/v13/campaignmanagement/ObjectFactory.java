@@ -479,7 +479,6 @@ public class ObjectFactory {
     private static final QName _ArrayOfAudienceConditionItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAudienceConditionItem");
     private static final QName _AudienceConditionItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceConditionItem");
     private static final QName _DeviceCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DeviceCondition");
-    private static final QName _ArrayOfDeviceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDeviceType");
     private static final QName _LocationCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LocationCondition");
     private static final QName _ArrayOfLocationConditionItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfLocationConditionItem");
     private static final QName _LocationConditionItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LocationConditionItem");
@@ -7289,6 +7288,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateConversionValueRulesRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateConversionValueRulesRequest }
+     */
+    public UpdateConversionValueRulesRequest createUpdateConversionValueRulesRequest() {
+        return new UpdateConversionValueRulesRequest();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfConversionValueRule }
      * 
      * @return
@@ -7349,16 +7358,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfDeviceType }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfDeviceType }
-     */
-    public ArrayOfDeviceType createArrayOfDeviceType() {
-        return new ArrayOfDeviceType();
-    }
-
-    /**
      * Create an instance of {@link LocationCondition }
      * 
      * @return
@@ -7386,6 +7385,96 @@ public class ObjectFactory {
      */
     public LocationConditionItem createLocationConditionItem() {
         return new LocationConditionItem();
+    }
+
+    /**
+     * Create an instance of {@link UpdateConversionValueRulesResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateConversionValueRulesResponse }
+     */
+    public UpdateConversionValueRulesResponse createUpdateConversionValueRulesResponse() {
+        return new UpdateConversionValueRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateConversionValueRulesStatusRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateConversionValueRulesStatusRequest }
+     */
+    public UpdateConversionValueRulesStatusRequest createUpdateConversionValueRulesStatusRequest() {
+        return new UpdateConversionValueRulesStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateConversionValueRulesStatusResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateConversionValueRulesStatusResponse }
+     */
+    public UpdateConversionValueRulesStatusResponse createUpdateConversionValueRulesStatusResponse() {
+        return new UpdateConversionValueRulesStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddConversionValueRulesRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddConversionValueRulesRequest }
+     */
+    public AddConversionValueRulesRequest createAddConversionValueRulesRequest() {
+        return new AddConversionValueRulesRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddConversionValueRulesResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddConversionValueRulesResponse }
+     */
+    public AddConversionValueRulesResponse createAddConversionValueRulesResponse() {
+        return new AddConversionValueRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetConversionValueRulesByAccountIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetConversionValueRulesByAccountIdRequest }
+     */
+    public GetConversionValueRulesByAccountIdRequest createGetConversionValueRulesByAccountIdRequest() {
+        return new GetConversionValueRulesByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetConversionValueRulesByAccountIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetConversionValueRulesByAccountIdResponse }
+     */
+    public GetConversionValueRulesByAccountIdResponse createGetConversionValueRulesByAccountIdResponse() {
+        return new GetConversionValueRulesByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetConversionValueRulesByIdsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetConversionValueRulesByIdsRequest }
+     */
+    public GetConversionValueRulesByIdsRequest createGetConversionValueRulesByIdsRequest() {
+        return new GetConversionValueRulesByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetConversionValueRulesByIdsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetConversionValueRulesByIdsResponse }
+     */
+    public GetConversionValueRulesByIdsResponse createGetConversionValueRulesByIdsResponse() {
+        return new GetConversionValueRulesByIdsResponse();
     }
 
     /**
@@ -13393,19 +13482,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DeviceCondition")
     public JAXBElement<DeviceCondition> createDeviceCondition(DeviceCondition value) {
         return new JAXBElement<>(_DeviceCondition_QNAME, DeviceCondition.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDeviceType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDeviceType }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDeviceType")
-    public JAXBElement<ArrayOfDeviceType> createArrayOfDeviceType(ArrayOfDeviceType value) {
-        return new JAXBElement<>(_ArrayOfDeviceType_QNAME, ArrayOfDeviceType.class, null, value);
     }
 
     /**

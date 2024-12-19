@@ -17,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="AssetLink" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetLink" minOccurs="0"/>
  *         <element name="Image" type="{https://bingads.microsoft.com/CampaignManagement/v13}Image" minOccurs="0"/>
  *         <element name="ImageUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
@@ -29,15 +30,42 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AdRecommendationImageSuggestion", propOrder = {
+    "assetLink",
     "image",
     "imageUrl"
 })
 public class AdRecommendationImageSuggestion {
 
+    @XmlElement(name = "AssetLink", nillable = true)
+    protected AssetLink assetLink;
     @XmlElement(name = "Image", nillable = true)
     protected Image image;
     @XmlElement(name = "ImageUrl", nillable = true)
     protected String imageUrl;
+
+    /**
+     * Gets the value of the assetLink property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AssetLink }
+     *     
+     */
+    public AssetLink getAssetLink() {
+        return assetLink;
+    }
+
+    /**
+     * Sets the value of the assetLink property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AssetLink }
+     *     
+     */
+    public void setAssetLink(AssetLink value) {
+        this.assetLink = value;
+    }
 
     /**
      * Gets the value of the image property.

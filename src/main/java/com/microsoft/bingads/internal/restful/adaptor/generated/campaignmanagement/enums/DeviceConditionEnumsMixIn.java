@@ -13,4 +13,9 @@ import com.microsoft.bingads.internal.restful.adaptor.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public interface DeviceConditionEnumsMixIn{
-	}
+		
+	@JsonSerialize(using = EnumListSerializer.class)
+	@JsonDeserialize(using = DeviceTypeDeserializer.class)
+	Collection<DeviceType> getDeviceTypes();
+
+    }

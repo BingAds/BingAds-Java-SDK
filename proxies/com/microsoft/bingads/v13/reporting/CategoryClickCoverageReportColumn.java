@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="WeekStartingMonday"/>
  *     <enumeration value="MarketplaceClickCoverage"/>
  *     <enumeration value="Country"/>
+ *     <enumeration value="ProportionOfSpend"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -45,7 +46,9 @@ public enum CategoryClickCoverageReportColumn {
     @XmlEnumValue("MarketplaceClickCoverage")
     MARKETPLACE_CLICK_COVERAGE("MarketplaceClickCoverage"),
     @XmlEnumValue("Country")
-    COUNTRY("Country");
+    COUNTRY("Country"),
+    @XmlEnumValue("ProportionOfSpend")
+    PROPORTION_OF_SPEND("ProportionOfSpend");
     private final String value;
 
     CategoryClickCoverageReportColumn(String v) {

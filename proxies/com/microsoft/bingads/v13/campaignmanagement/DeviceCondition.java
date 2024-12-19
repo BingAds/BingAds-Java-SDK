@@ -1,10 +1,12 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -17,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="DeviceTypes" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfDeviceType" minOccurs="0"/>
+ *         <element name="DeviceTypes" type="{https://bingads.microsoft.com/CampaignManagement/v13}DeviceType" minOccurs="0"/>
  *         <element name="IsPrimary" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -34,8 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class DeviceCondition {
 
-    @XmlElement(name = "DeviceTypes", nillable = true)
-    protected ArrayOfDeviceType deviceTypes;
+    @XmlElement(name = "DeviceTypes", type = String.class)
+    @XmlJavaTypeAdapter(Adapter25 .class)
+    protected Collection<DeviceType> deviceTypes;
     @XmlElement(name = "IsPrimary")
     protected Boolean isPrimary;
 
@@ -44,10 +47,10 @@ public class DeviceCondition {
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfDeviceType }
+     *     {@link String }
      *     
      */
-    public ArrayOfDeviceType getDeviceTypes() {
+    public Collection<DeviceType> getDeviceTypes() {
         return deviceTypes;
     }
 
@@ -56,10 +59,10 @@ public class DeviceCondition {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfDeviceType }
+     *     {@link String }
      *     
      */
-    public void setDeviceTypes(ArrayOfDeviceType value) {
+    public void setDeviceTypes(Collection<DeviceType> value) {
         this.deviceTypes = value;
     }
 

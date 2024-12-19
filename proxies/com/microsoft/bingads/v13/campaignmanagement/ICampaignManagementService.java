@@ -6627,4 +6627,209 @@ public interface ICampaignManagementService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateConversionValueRulesResponse>
+     */
+    @WebMethod(operationName = "UpdateConversionValueRules", action = "UpdateConversionValueRules")
+    public Response<UpdateConversionValueRulesResponse> updateConversionValueRulesAsync(
+        @WebParam(name = "UpdateConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateConversionValueRules", action = "UpdateConversionValueRules")
+    public Future<?> updateConversionValueRulesAsync(
+        @WebParam(name = "UpdateConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesRequest parameters,
+        @WebParam(name = "UpdateConversionValueRulesResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateConversionValueRulesResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateConversionValueRulesResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateConversionValueRules", action = "UpdateConversionValueRules")
+    @WebResult(name = "UpdateConversionValueRulesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateConversionValueRulesResponse updateConversionValueRules(
+        @WebParam(name = "UpdateConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateConversionValueRulesStatusResponse>
+     */
+    @WebMethod(operationName = "UpdateConversionValueRulesStatus", action = "UpdateConversionValueRulesStatus")
+    public Response<UpdateConversionValueRulesStatusResponse> updateConversionValueRulesStatusAsync(
+        @WebParam(name = "UpdateConversionValueRulesStatusRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesStatusRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateConversionValueRulesStatus", action = "UpdateConversionValueRulesStatus")
+    public Future<?> updateConversionValueRulesStatusAsync(
+        @WebParam(name = "UpdateConversionValueRulesStatusRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesStatusRequest parameters,
+        @WebParam(name = "UpdateConversionValueRulesStatusResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateConversionValueRulesStatusResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateConversionValueRulesStatusResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateConversionValueRulesStatus", action = "UpdateConversionValueRulesStatus")
+    @WebResult(name = "UpdateConversionValueRulesStatusResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateConversionValueRulesStatusResponse updateConversionValueRulesStatus(
+        @WebParam(name = "UpdateConversionValueRulesStatusRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateConversionValueRulesStatusRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddConversionValueRulesResponse>
+     */
+    @WebMethod(operationName = "AddConversionValueRules", action = "AddConversionValueRules")
+    public Response<AddConversionValueRulesResponse> addConversionValueRulesAsync(
+        @WebParam(name = "AddConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddConversionValueRulesRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddConversionValueRules", action = "AddConversionValueRules")
+    public Future<?> addConversionValueRulesAsync(
+        @WebParam(name = "AddConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddConversionValueRulesRequest parameters,
+        @WebParam(name = "AddConversionValueRulesResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddConversionValueRulesResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddConversionValueRulesResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddConversionValueRules", action = "AddConversionValueRules")
+    @WebResult(name = "AddConversionValueRulesResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddConversionValueRulesResponse addConversionValueRules(
+        @WebParam(name = "AddConversionValueRulesRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddConversionValueRulesRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetConversionValueRulesByAccountIdResponse>
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByAccountId", action = "GetConversionValueRulesByAccountId")
+    public Response<GetConversionValueRulesByAccountIdResponse> getConversionValueRulesByAccountIdAsync(
+        @WebParam(name = "GetConversionValueRulesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByAccountIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByAccountId", action = "GetConversionValueRulesByAccountId")
+    public Future<?> getConversionValueRulesByAccountIdAsync(
+        @WebParam(name = "GetConversionValueRulesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByAccountIdRequest parameters,
+        @WebParam(name = "GetConversionValueRulesByAccountIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetConversionValueRulesByAccountIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetConversionValueRulesByAccountIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByAccountId", action = "GetConversionValueRulesByAccountId")
+    @WebResult(name = "GetConversionValueRulesByAccountIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetConversionValueRulesByAccountIdResponse getConversionValueRulesByAccountId(
+        @WebParam(name = "GetConversionValueRulesByAccountIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByAccountIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetConversionValueRulesByIdsResponse>
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByIds", action = "GetConversionValueRulesByIds")
+    public Response<GetConversionValueRulesByIdsResponse> getConversionValueRulesByIdsAsync(
+        @WebParam(name = "GetConversionValueRulesByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByIds", action = "GetConversionValueRulesByIds")
+    public Future<?> getConversionValueRulesByIdsAsync(
+        @WebParam(name = "GetConversionValueRulesByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByIdsRequest parameters,
+        @WebParam(name = "GetConversionValueRulesByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetConversionValueRulesByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetConversionValueRulesByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetConversionValueRulesByIds", action = "GetConversionValueRulesByIds")
+    @WebResult(name = "GetConversionValueRulesByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetConversionValueRulesByIdsResponse getConversionValueRulesByIds(
+        @WebParam(name = "GetConversionValueRulesByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetConversionValueRulesByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

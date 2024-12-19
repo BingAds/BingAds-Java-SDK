@@ -109,7 +109,6 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfAdRecommendationTextSuggestion.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfConversionValueRule.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAudienceConditionItem.class, ArrayOfTypesMixIn.class)
-				.addMixIn(ArrayOfDeviceType.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfLocationConditionItem.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfstring.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)

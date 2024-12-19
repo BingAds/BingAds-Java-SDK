@@ -77,6 +77,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="GreekGreece"/>
  *     <enumeration value="HungaryHU"/>
  *     <enumeration value="HindiIndia"/>
+ *     <enumeration value="Bulgarian"/>
+ *     <enumeration value="Lithuanian"/>
+ *     <enumeration value="Croatian"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -213,7 +216,13 @@ public enum LCID {
     @XmlEnumValue("HungaryHU")
     HUNGARY_HU("HungaryHU"),
     @XmlEnumValue("HindiIndia")
-    HINDI_INDIA("HindiIndia");
+    HINDI_INDIA("HindiIndia"),
+    @XmlEnumValue("Bulgarian")
+    BULGARIAN("Bulgarian"),
+    @XmlEnumValue("Lithuanian")
+    LITHUANIAN("Lithuanian"),
+    @XmlEnumValue("Croatian")
+    CROATIAN("Croatian");
     private final String value;
 
     LCID(String v) {

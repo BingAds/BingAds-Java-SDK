@@ -408,10 +408,6 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<DeviceType> getDeviceTypes();
-
-            
-	@JsonValue
 	List<LocationConditionItem> getLocationConditionItems();
 
             
