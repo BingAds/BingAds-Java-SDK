@@ -61,7 +61,6 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(SeasonalityAdjustment.class, SeasonalityAdjustmentEnumsMixIn.class)
 				.addMixIn(AudienceConditionItem.class, AudienceConditionItemEnumsMixIn.class)
 				.addMixIn(DeviceCondition.class, DeviceConditionEnumsMixIn.class)
-				.addMixIn(ArrayOfDeviceType.class, ArrayOfDeviceTypeEnumsMixIn.class)
 				;
 	}
 }

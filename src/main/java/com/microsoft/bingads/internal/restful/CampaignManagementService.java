@@ -3354,6 +3354,105 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	public Future<?> refineResponsiveSearchAdRecommendationAsync(RefineResponsiveSearchAdRecommendationRequest request, AsyncHandler<RefineResponsiveSearchAdRecommendationResponse> asyncHandler) {
 		return sendRequestAsync(request, "/ResponsiveSearchAdRecommendation/Refine", HttpPost, RefineResponsiveSearchAdRecommendationResponse.class, (r, h) -> fallbackService.get().refineResponsiveSearchAdRecommendationAsync(r, h), asyncHandler);
 	}
+	
+    	
+	public UpdateConversionValueRulesResponse updateConversionValueRules(UpdateConversionValueRulesRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateConversionValueRulesResponse response = sendRequest(request, "/ConversionValueRules", HttpPut, UpdateConversionValueRulesResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().updateConversionValueRules(request);
+		}
+		
+		return response;
+	}
 
+    public Response<UpdateConversionValueRulesResponse> updateConversionValueRulesAsync(UpdateConversionValueRulesRequest request) {
+		return sendRequestAsync(request, "/ConversionValueRules", HttpPut, UpdateConversionValueRulesResponse.class, (r, h) -> fallbackService.get().updateConversionValueRulesAsync(r, h), null);
+	}
+
+	public Future<?> updateConversionValueRulesAsync(UpdateConversionValueRulesRequest request, AsyncHandler<UpdateConversionValueRulesResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ConversionValueRules", HttpPut, UpdateConversionValueRulesResponse.class, (r, h) -> fallbackService.get().updateConversionValueRulesAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public UpdateConversionValueRulesStatusResponse updateConversionValueRulesStatus(UpdateConversionValueRulesStatusRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateConversionValueRulesStatusResponse response = sendRequest(request, "/ConversionValueRulesStatus", HttpPut, UpdateConversionValueRulesStatusResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().updateConversionValueRulesStatus(request);
+		}
+		
+		return response;
+	}
+
+    public Response<UpdateConversionValueRulesStatusResponse> updateConversionValueRulesStatusAsync(UpdateConversionValueRulesStatusRequest request) {
+		return sendRequestAsync(request, "/ConversionValueRulesStatus", HttpPut, UpdateConversionValueRulesStatusResponse.class, (r, h) -> fallbackService.get().updateConversionValueRulesStatusAsync(r, h), null);
+	}
+
+	public Future<?> updateConversionValueRulesStatusAsync(UpdateConversionValueRulesStatusRequest request, AsyncHandler<UpdateConversionValueRulesStatusResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ConversionValueRulesStatus", HttpPut, UpdateConversionValueRulesStatusResponse.class, (r, h) -> fallbackService.get().updateConversionValueRulesStatusAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public AddConversionValueRulesResponse addConversionValueRules(AddConversionValueRulesRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		AddConversionValueRulesResponse response = sendRequest(request, "/ConversionValueRules", HttpPost, AddConversionValueRulesResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().addConversionValueRules(request);
+		}
+		
+		return response;
+	}
+
+    public Response<AddConversionValueRulesResponse> addConversionValueRulesAsync(AddConversionValueRulesRequest request) {
+		return sendRequestAsync(request, "/ConversionValueRules", HttpPost, AddConversionValueRulesResponse.class, (r, h) -> fallbackService.get().addConversionValueRulesAsync(r, h), null);
+	}
+
+	public Future<?> addConversionValueRulesAsync(AddConversionValueRulesRequest request, AsyncHandler<AddConversionValueRulesResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ConversionValueRules", HttpPost, AddConversionValueRulesResponse.class, (r, h) -> fallbackService.get().addConversionValueRulesAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetConversionValueRulesByAccountIdResponse getConversionValueRulesByAccountId(GetConversionValueRulesByAccountIdRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetConversionValueRulesByAccountIdResponse response = sendRequest(request, "/ConversionValueRules/QueryByAccountId", HttpPost, GetConversionValueRulesByAccountIdResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getConversionValueRulesByAccountId(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetConversionValueRulesByAccountIdResponse> getConversionValueRulesByAccountIdAsync(GetConversionValueRulesByAccountIdRequest request) {
+		return sendRequestAsync(request, "/ConversionValueRules/QueryByAccountId", HttpPost, GetConversionValueRulesByAccountIdResponse.class, (r, h) -> fallbackService.get().getConversionValueRulesByAccountIdAsync(r, h), null);
+	}
+
+	public Future<?> getConversionValueRulesByAccountIdAsync(GetConversionValueRulesByAccountIdRequest request, AsyncHandler<GetConversionValueRulesByAccountIdResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ConversionValueRules/QueryByAccountId", HttpPost, GetConversionValueRulesByAccountIdResponse.class, (r, h) -> fallbackService.get().getConversionValueRulesByAccountIdAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetConversionValueRulesByIdsResponse getConversionValueRulesByIds(GetConversionValueRulesByIdsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetConversionValueRulesByIdsResponse response = sendRequest(request, "/ConversionValueRules/QueryByIds", HttpPost, GetConversionValueRulesByIdsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getConversionValueRulesByIds(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetConversionValueRulesByIdsResponse> getConversionValueRulesByIdsAsync(GetConversionValueRulesByIdsRequest request) {
+		return sendRequestAsync(request, "/ConversionValueRules/QueryByIds", HttpPost, GetConversionValueRulesByIdsResponse.class, (r, h) -> fallbackService.get().getConversionValueRulesByIdsAsync(r, h), null);
+	}
+
+	public Future<?> getConversionValueRulesByIdsAsync(GetConversionValueRulesByIdsRequest request, AsyncHandler<GetConversionValueRulesByIdsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ConversionValueRules/QueryByIds", HttpPost, GetConversionValueRulesByIdsResponse.class, (r, h) -> fallbackService.get().getConversionValueRulesByIdsAsync(r, h), asyncHandler);
+	}
 	
     }
