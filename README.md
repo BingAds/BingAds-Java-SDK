@@ -20,3 +20,6 @@ The Bing Ads Java SDK includes and depends on the microsoft.bingads Maven artifa
 </dependency>
 ```
 If you are not using a Maven project, you must include the correct version of each dependency. You can review the complete list of Bing Ads Java SDK dependencies at the [Maven Repository](http://mvnrepository.com/artifact/com.microsoft.bingads/microsoft.bingads/).
+
+# Shadow Jar
+You can package a shadow jar using pom_for_shadow_jar.xml which contains all dependencies to avoid conflicts, but its size will be larger.
