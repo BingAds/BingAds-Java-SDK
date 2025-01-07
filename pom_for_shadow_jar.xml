@@ -32,25 +32,69 @@
     <build>
         <plugins>
             <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>
-            <version>3.2.4</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>shade</goal>
-                    </goals>
-                    <configuration>
-                        <transformers>
-							<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-								<resource>META-INF/cxf/bus-extensions.txt</resource>
-							</transformer>
-						</transformers>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.4</version>
+				<executions>
+					<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+					<configuration>
+					<transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                             <resource>META-INF/cxf/bus-extensions.txt</resource>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+                            <resource>META-INF/cxf/bus-extensions.txt</resource>
+                            <file>my-bus-extensions.txt</file>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/cxf/bus-extensions.txt</resource>
+						</transformer>
+					</transformers>
+					<relocations>
+						<relocation>
+							<pattern>com.fasterxml.jackson.core</pattern>
+							<shadedPattern>shaded.com.fasterxml.jackson.core</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>com.googlecode.jcsv</pattern>
+							<shadedPattern>shaded.com.googlecode.jcsv</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>jakarta.jws</pattern>
+							<shadedPattern>shaded.jakarta.jws</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>jakarta.xml.ws</pattern>
+							<shadedPattern>shaded.jakarta.xml.ws</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>com.sun.xml.messaging.saaj</pattern>
+							<shadedPattern>shaded.com.sun.xml.messaging.saaj</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.apache.cxf</pattern>
+							<shadedPattern>shaded.org.apache.cxf</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.apache.httpcomponents</pattern>
+							<shadedPattern>shaded.org.apache.httpcomponents</shadedPattern>
+						</relocation>
+					</relocations>
+                    <relocators>
+                        <relocator implementation="com.example.CustomRelocator">
+                            <pattern>org.apache.cxf</pattern>
+                            <shadedPattern>shaded.org.apache.cxf</shadedPattern>
+                        </relocator>
+                    </relocators>
+					</configuration>
+					</execution>
+				</executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
