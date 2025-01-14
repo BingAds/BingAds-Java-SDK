@@ -57,32 +57,52 @@
 					</transformers>
 					<relocations>
 						<relocation>
-							<pattern>com.fasterxml.jackson.core</pattern>
-							<shadedPattern>shaded.com.fasterxml.jackson.core</shadedPattern>
+							<pattern>com.ctc</pattern>
+							<shadedPattern>shaded.com.ctc</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>com.googlecode.jcsv</pattern>
-							<shadedPattern>shaded.com.googlecode.jcsv</shadedPattern>
+							<pattern>com.fasterxml</pattern>
+							<shadedPattern>shaded.com.fasterxml</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>jakarta.jws</pattern>
-							<shadedPattern>shaded.jakarta.jws</shadedPattern>
+							<pattern>com.googlecode</pattern>
+							<shadedPattern>shaded.com.googlecode</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>jakarta.xml.ws</pattern>
-							<shadedPattern>shaded.jakarta.xml.ws</shadedPattern>
+							<pattern>com.ibm</pattern>
+							<shadedPattern>shaded.com.ibm</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>com.sun.xml.messaging.saaj</pattern>
-							<shadedPattern>shaded.com.sun.xml.messaging.saaj</shadedPattern>
+							<pattern>com.sun</pattern>
+							<shadedPattern>shaded.com.sun</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>org.apache.cxf</pattern>
-							<shadedPattern>shaded.org.apache.cxf</shadedPattern>
+							<pattern>jakarta</pattern>
+							<shadedPattern>shaded.jakarta</shadedPattern>
 						</relocation>
                         <relocation>
-							<pattern>org.apache.httpcomponents</pattern>
-							<shadedPattern>shaded.org.apache.httpcomponents</shadedPattern>
+							<pattern>org.apache</pattern>
+							<shadedPattern>shaded.org.apache</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.codehaus</pattern>
+							<shadedPattern>shaded.org.codehaus</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.glassfish</pattern>
+							<shadedPattern>shaded.org.glassfish</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.slf4j</pattern>
+							<shadedPattern>shaded.org.slf4j</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.jvnet</pattern>
+							<shadedPattern>shaded.org.jvnet</shadedPattern>
+						</relocation>
+                        <relocation>
+							<pattern>org.objectweb</pattern>
+							<shadedPattern>shaded.org.objectweb</shadedPattern>
 						</relocation>
 					</relocations>
                     <relocators>
