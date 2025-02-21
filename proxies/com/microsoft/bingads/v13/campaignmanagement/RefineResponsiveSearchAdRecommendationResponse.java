@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="TextSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfArrayOfAdRecommendationTextSuggestion" minOccurs="0"/>
+ *         <element name="TextRefineResults" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationTextRefineResult" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -29,36 +29,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "textSuggestions"
+    "textRefineResults"
 })
 @XmlRootElement(name = "RefineResponsiveSearchAdRecommendationResponse")
 public class RefineResponsiveSearchAdRecommendationResponse {
 
-    @XmlElement(name = "TextSuggestions", nillable = true)
-    protected ArrayOfArrayOfAdRecommendationTextSuggestion textSuggestions;
+    @XmlElement(name = "TextRefineResults", nillable = true)
+    protected ArrayOfAdRecommendationTextRefineResult textRefineResults;
 
     /**
-     * Gets the value of the textSuggestions property.
+     * Gets the value of the textRefineResults property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     *     {@link ArrayOfAdRecommendationTextRefineResult }
      *     
      */
-    public ArrayOfArrayOfAdRecommendationTextSuggestion getTextSuggestions() {
-        return textSuggestions;
+    public ArrayOfAdRecommendationTextRefineResult getTextRefineResults() {
+        return textRefineResults;
     }
 
     /**
-     * Sets the value of the textSuggestions property.
+     * Sets the value of the textRefineResults property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     *     {@link ArrayOfAdRecommendationTextRefineResult }
      *     
      */
-    public void setTextSuggestions(ArrayOfArrayOfAdRecommendationTextSuggestion value) {
-        this.textSuggestions = value;
+    public void setTextRefineResults(ArrayOfAdRecommendationTextRefineResult value) {
+        this.textRefineResults = value;
     }
 
 }

@@ -15,6 +15,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     <enumeration value="DailyBudgetAccelerated"/>
  *     <enumeration value="DailyBudgetStandard"/>
+ *     <enumeration value="LifetimeBudgetStandard"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -27,7 +28,9 @@ public enum BudgetLimitType {
     @XmlEnumValue("DailyBudgetAccelerated")
     DAILY_BUDGET_ACCELERATED("DailyBudgetAccelerated"),
     @XmlEnumValue("DailyBudgetStandard")
-    DAILY_BUDGET_STANDARD("DailyBudgetStandard");
+    DAILY_BUDGET_STANDARD("DailyBudgetStandard"),
+    @XmlEnumValue("LifetimeBudgetStandard")
+    LIFETIME_BUDGET_STANDARD("LifetimeBudgetStandard");
     private final String value;
 
     BudgetLimitType(String v) {

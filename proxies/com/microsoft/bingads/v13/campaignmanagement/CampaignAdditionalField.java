@@ -32,7 +32,10 @@ public enum CampaignAdditionalField {
     IS_DEAL_CAMPAIGN("IsDealCampaign"),
     APP_SETTING("AppSetting"),
     CALL_TO_ACTION_OPT_OUT("CallToActionOptOut"),
-    THIRD_PARTY_MEASUREMENT_SETTING("ThirdPartyMeasurementSetting");
+    THIRD_PARTY_MEASUREMENT_SETTING("ThirdPartyMeasurementSetting"),
+    MANUAL_CPC("ManualCpc"),
+    NEW_CUSTOMER_ACQUISITION_GOAL_SETTING("NewCustomerAcquisitionGoalSetting"),
+    LIFETIME_BUDGET_FIELDS("LifetimeBudgetFields");
         
     private final String value;
 

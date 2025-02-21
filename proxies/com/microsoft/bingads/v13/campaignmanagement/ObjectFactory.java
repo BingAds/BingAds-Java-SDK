@@ -78,6 +78,7 @@ public class ObjectFactory {
     private static final QName _AppSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppSetting");
     private static final QName _AppStore_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppStore");
     private static final QName _ThirdPartyMeasurementSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ThirdPartyMeasurementSetting");
+    private static final QName _NewCustomerAcquisitionGoalSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NewCustomerAcquisitionGoalSetting");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
@@ -305,6 +306,7 @@ public class ObjectFactory {
     private static final QName _SharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SharedListItem");
     private static final QName _NegativeSite_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeSite");
     private static final QName _BrandItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandItem");
+    private static final QName _Site_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Site");
     private static final QName _ArrayOfIdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfIdCollection");
     private static final QName _IdCollection_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "IdCollection");
     private static final QName _ArrayOfSharedEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntity");
@@ -314,6 +316,8 @@ public class ObjectFactory {
     private static final QName _PlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementExclusionList");
     private static final QName _AccountNegativeKeywordList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountNegativeKeywordList");
     private static final QName _BrandList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandList");
+    private static final QName _AccountPlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountPlacementExclusionList");
+    private static final QName _AccountPlacementInclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountPlacementInclusionList");
     private static final QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityScope");
     private static final QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedListItem");
     private static final QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntityAssociation");
@@ -342,6 +346,10 @@ public class ObjectFactory {
     private static final QName _AudienceDimension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceDimension");
     private static final QName _ArrayOfAudienceInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAudienceInfo");
     private static final QName _AudienceInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceInfo");
+    private static final QName _ProfileDimension_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileDimension");
+    private static final QName _ArrayOfProfileInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfProfileInfo");
+    private static final QName _ProfileInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileInfo");
+    private static final QName _AudienceGroupAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceGroupAdditionalField");
     private static final QName _ArrayOfAssetGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAssetGroup");
     private static final QName _AssetGroup_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AssetGroup");
     private static final QName _ArrayOfAssetGroupSearchTheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAssetGroupSearchTheme");
@@ -465,14 +473,14 @@ public class ObjectFactory {
     private static final QName _AdRecommendationTextTone_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextTone");
     private static final QName _ArrayOfAdRecommendationImageSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationImageSuggestion");
     private static final QName _AdRecommendationImageSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationImageSuggestion");
+    private static final QName _AdRecommendationVideoType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationVideoType");
     private static final QName _ArrayOfAdRecommendationVideoSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationVideoSuggestion");
     private static final QName _AdRecommendationVideoSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationVideoSuggestion");
     private static final QName _ArrayOfAdRecommendationTextRefineOperation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationTextRefineOperation");
     private static final QName _AdRecommendationTextRefineOperation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextRefineOperation");
     private static final QName _AdRecommendationTextField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextField");
-    private static final QName _ArrayOfArrayOfAdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfArrayOfAdRecommendationTextSuggestion");
-    private static final QName _ArrayOfAdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationTextSuggestion");
-    private static final QName _AdRecommendationTextSuggestion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextSuggestion");
+    private static final QName _ArrayOfAdRecommendationTextRefineResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAdRecommendationTextRefineResult");
+    private static final QName _AdRecommendationTextRefineResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdRecommendationTextRefineResult");
     private static final QName _ArrayOfConversionValueRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfConversionValueRule");
     private static final QName _ConversionValueRule_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionValueRule");
     private static final QName _AudienceCondition_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceCondition");
@@ -485,9 +493,32 @@ public class ObjectFactory {
     private static final QName _LocationType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LocationType");
     private static final QName _ConversionValueRuleOperator_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionValueRuleOperator");
     private static final QName _ConversionValueRuleStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionValueRuleStatus");
+    private static final QName _ArrayOfBrandKit_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBrandKit");
+    private static final QName _BrandKit_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandKit");
+    private static final QName _ArrayOfBrandKitFont_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBrandKitFont");
+    private static final QName _BrandKitFont_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandKitFont");
+    private static final QName _FontTextAssetType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FontTextAssetType");
+    private static final QName _ArrayOfBrandKitImage_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBrandKitImage");
+    private static final QName _BrandKitImage_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandKitImage");
+    private static final QName _ArrayOfBrandKitPalette_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBrandKitPalette");
+    private static final QName _BrandKitPalette_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandKitPalette");
+    private static final QName _ArrayOfBrandKitColor_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBrandKitColor");
+    private static final QName _BrandKitColor_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandKitColor");
+    private static final QName _ArrayOfNewCustomerAcquisitionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfNewCustomerAcquisitionGoal");
+    private static final QName _NewCustomerAcquisitionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NewCustomerAcquisitionGoal");
+    private static final QName _ArrayOfAudienceIdName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAudienceIdName");
+    private static final QName _AudienceIdName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceIdName");
+    private static final QName _VideoTemplateFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "VideoTemplateFilter");
+    private static final QName _ArrayOfClipchampTemplateInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfClipchampTemplateInfo");
+    private static final QName _ClipchampTemplateInfo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ClipchampTemplateInfo");
+    private static final QName _AudioFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudioFilter");
+    private static final QName _GetSupportedClipchampAudioData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GetSupportedClipchampAudioData");
+    private static final QName _ArrayOfGetSupportedClipchampAudio_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfGetSupportedClipchampAudio");
+    private static final QName _GetSupportedClipchampAudio_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GetSupportedClipchampAudio");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
+    private static final QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
     private static final QName _ArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfKeyValuePairOfstringstring");
     private static final QName _KeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "KeyValuePairOfstringstring");
     private static final QName _ArrayOfArrayOfKeyValuePairOfstringstring_QNAME = new QName("http://schemas.datacontract.org/2004/07/System.Collections.Generic", "ArrayOfArrayOfKeyValuePairOfstringstring");
@@ -1025,6 +1056,16 @@ public class ObjectFactory {
      */
     public ThirdPartyMeasurementSetting createThirdPartyMeasurementSetting() {
         return new ThirdPartyMeasurementSetting();
+    }
+
+    /**
+     * Create an instance of {@link NewCustomerAcquisitionGoalSetting }
+     * 
+     * @return
+     *     the new instance of {@link NewCustomerAcquisitionGoalSetting }
+     */
+    public NewCustomerAcquisitionGoalSetting createNewCustomerAcquisitionGoalSetting() {
+        return new NewCustomerAcquisitionGoalSetting();
     }
 
     /**
@@ -3848,6 +3889,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Site }
+     * 
+     * @return
+     *     the new instance of {@link Site }
+     */
+    public Site createSite() {
+        return new Site();
+    }
+
+    /**
      * Create an instance of {@link AddNegativeKeywordsToEntitiesResponse }
      * 
      * @return
@@ -4005,6 +4056,26 @@ public class ObjectFactory {
      */
     public BrandList createBrandList() {
         return new BrandList();
+    }
+
+    /**
+     * Create an instance of {@link AccountPlacementExclusionList }
+     * 
+     * @return
+     *     the new instance of {@link AccountPlacementExclusionList }
+     */
+    public AccountPlacementExclusionList createAccountPlacementExclusionList() {
+        return new AccountPlacementExclusionList();
+    }
+
+    /**
+     * Create an instance of {@link AccountPlacementInclusionList }
+     * 
+     * @return
+     *     the new instance of {@link AccountPlacementInclusionList }
+     */
+    public AccountPlacementInclusionList createAccountPlacementInclusionList() {
+        return new AccountPlacementInclusionList();
     }
 
     /**
@@ -4775,6 +4846,36 @@ public class ObjectFactory {
      */
     public AudienceInfo createAudienceInfo() {
         return new AudienceInfo();
+    }
+
+    /**
+     * Create an instance of {@link ProfileDimension }
+     * 
+     * @return
+     *     the new instance of {@link ProfileDimension }
+     */
+    public ProfileDimension createProfileDimension() {
+        return new ProfileDimension();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfProfileInfo }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfProfileInfo }
+     */
+    public ArrayOfProfileInfo createArrayOfProfileInfo() {
+        return new ArrayOfProfileInfo();
+    }
+
+    /**
+     * Create an instance of {@link ProfileInfo }
+     * 
+     * @return
+     *     the new instance of {@link ProfileInfo }
+     */
+    public ProfileInfo createProfileInfo() {
+        return new ProfileInfo();
     }
 
     /**
@@ -7218,33 +7319,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     * Create an instance of {@link ArrayOfAdRecommendationTextRefineResult }
      * 
      * @return
-     *     the new instance of {@link ArrayOfArrayOfAdRecommendationTextSuggestion }
+     *     the new instance of {@link ArrayOfAdRecommendationTextRefineResult }
      */
-    public ArrayOfArrayOfAdRecommendationTextSuggestion createArrayOfArrayOfAdRecommendationTextSuggestion() {
-        return new ArrayOfArrayOfAdRecommendationTextSuggestion();
+    public ArrayOfAdRecommendationTextRefineResult createArrayOfAdRecommendationTextRefineResult() {
+        return new ArrayOfAdRecommendationTextRefineResult();
     }
 
     /**
-     * Create an instance of {@link ArrayOfAdRecommendationTextSuggestion }
+     * Create an instance of {@link AdRecommendationTextRefineResult }
      * 
      * @return
-     *     the new instance of {@link ArrayOfAdRecommendationTextSuggestion }
+     *     the new instance of {@link AdRecommendationTextRefineResult }
      */
-    public ArrayOfAdRecommendationTextSuggestion createArrayOfAdRecommendationTextSuggestion() {
-        return new ArrayOfAdRecommendationTextSuggestion();
-    }
-
-    /**
-     * Create an instance of {@link AdRecommendationTextSuggestion }
-     * 
-     * @return
-     *     the new instance of {@link AdRecommendationTextSuggestion }
-     */
-    public AdRecommendationTextSuggestion createAdRecommendationTextSuggestion() {
-        return new AdRecommendationTextSuggestion();
+    public AdRecommendationTextRefineResult createAdRecommendationTextRefineResult() {
+        return new AdRecommendationTextRefineResult();
     }
 
     /**
@@ -7475,6 +7566,406 @@ public class ObjectFactory {
      */
     public GetConversionValueRulesByIdsResponse createGetConversionValueRulesByIdsResponse() {
         return new GetConversionValueRulesByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddBrandKitsRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddBrandKitsRequest }
+     */
+    public AddBrandKitsRequest createAddBrandKitsRequest() {
+        return new AddBrandKitsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBrandKit }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBrandKit }
+     */
+    public ArrayOfBrandKit createArrayOfBrandKit() {
+        return new ArrayOfBrandKit();
+    }
+
+    /**
+     * Create an instance of {@link BrandKit }
+     * 
+     * @return
+     *     the new instance of {@link BrandKit }
+     */
+    public BrandKit createBrandKit() {
+        return new BrandKit();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBrandKitFont }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBrandKitFont }
+     */
+    public ArrayOfBrandKitFont createArrayOfBrandKitFont() {
+        return new ArrayOfBrandKitFont();
+    }
+
+    /**
+     * Create an instance of {@link BrandKitFont }
+     * 
+     * @return
+     *     the new instance of {@link BrandKitFont }
+     */
+    public BrandKitFont createBrandKitFont() {
+        return new BrandKitFont();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBrandKitImage }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBrandKitImage }
+     */
+    public ArrayOfBrandKitImage createArrayOfBrandKitImage() {
+        return new ArrayOfBrandKitImage();
+    }
+
+    /**
+     * Create an instance of {@link BrandKitImage }
+     * 
+     * @return
+     *     the new instance of {@link BrandKitImage }
+     */
+    public BrandKitImage createBrandKitImage() {
+        return new BrandKitImage();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBrandKitPalette }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBrandKitPalette }
+     */
+    public ArrayOfBrandKitPalette createArrayOfBrandKitPalette() {
+        return new ArrayOfBrandKitPalette();
+    }
+
+    /**
+     * Create an instance of {@link BrandKitPalette }
+     * 
+     * @return
+     *     the new instance of {@link BrandKitPalette }
+     */
+    public BrandKitPalette createBrandKitPalette() {
+        return new BrandKitPalette();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBrandKitColor }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBrandKitColor }
+     */
+    public ArrayOfBrandKitColor createArrayOfBrandKitColor() {
+        return new ArrayOfBrandKitColor();
+    }
+
+    /**
+     * Create an instance of {@link BrandKitColor }
+     * 
+     * @return
+     *     the new instance of {@link BrandKitColor }
+     */
+    public BrandKitColor createBrandKitColor() {
+        return new BrandKitColor();
+    }
+
+    /**
+     * Create an instance of {@link AddBrandKitsResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddBrandKitsResponse }
+     */
+    public AddBrandKitsResponse createAddBrandKitsResponse() {
+        return new AddBrandKitsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBrandKitsRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateBrandKitsRequest }
+     */
+    public UpdateBrandKitsRequest createUpdateBrandKitsRequest() {
+        return new UpdateBrandKitsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBrandKitsResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateBrandKitsResponse }
+     */
+    public UpdateBrandKitsResponse createUpdateBrandKitsResponse() {
+        return new UpdateBrandKitsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteBrandKitsRequest }
+     * 
+     * @return
+     *     the new instance of {@link DeleteBrandKitsRequest }
+     */
+    public DeleteBrandKitsRequest createDeleteBrandKitsRequest() {
+        return new DeleteBrandKitsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteBrandKitsResponse }
+     * 
+     * @return
+     *     the new instance of {@link DeleteBrandKitsResponse }
+     */
+    public DeleteBrandKitsResponse createDeleteBrandKitsResponse() {
+        return new DeleteBrandKitsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddNewCustomerAcquisitionGoalsRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddNewCustomerAcquisitionGoalsRequest }
+     */
+    public AddNewCustomerAcquisitionGoalsRequest createAddNewCustomerAcquisitionGoalsRequest() {
+        return new AddNewCustomerAcquisitionGoalsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfNewCustomerAcquisitionGoal }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfNewCustomerAcquisitionGoal }
+     */
+    public ArrayOfNewCustomerAcquisitionGoal createArrayOfNewCustomerAcquisitionGoal() {
+        return new ArrayOfNewCustomerAcquisitionGoal();
+    }
+
+    /**
+     * Create an instance of {@link NewCustomerAcquisitionGoal }
+     * 
+     * @return
+     *     the new instance of {@link NewCustomerAcquisitionGoal }
+     */
+    public NewCustomerAcquisitionGoal createNewCustomerAcquisitionGoal() {
+        return new NewCustomerAcquisitionGoal();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAudienceIdName }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAudienceIdName }
+     */
+    public ArrayOfAudienceIdName createArrayOfAudienceIdName() {
+        return new ArrayOfAudienceIdName();
+    }
+
+    /**
+     * Create an instance of {@link AudienceIdName }
+     * 
+     * @return
+     *     the new instance of {@link AudienceIdName }
+     */
+    public AudienceIdName createAudienceIdName() {
+        return new AudienceIdName();
+    }
+
+    /**
+     * Create an instance of {@link AddNewCustomerAcquisitionGoalsResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddNewCustomerAcquisitionGoalsResponse }
+     */
+    public AddNewCustomerAcquisitionGoalsResponse createAddNewCustomerAcquisitionGoalsResponse() {
+        return new AddNewCustomerAcquisitionGoalsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateNewCustomerAcquisitionGoalsRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateNewCustomerAcquisitionGoalsRequest }
+     */
+    public UpdateNewCustomerAcquisitionGoalsRequest createUpdateNewCustomerAcquisitionGoalsRequest() {
+        return new UpdateNewCustomerAcquisitionGoalsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateNewCustomerAcquisitionGoalsResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateNewCustomerAcquisitionGoalsResponse }
+     */
+    public UpdateNewCustomerAcquisitionGoalsResponse createUpdateNewCustomerAcquisitionGoalsResponse() {
+        return new UpdateNewCustomerAcquisitionGoalsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetNewCustomerAcquisitionGoalsByAccountIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetNewCustomerAcquisitionGoalsByAccountIdRequest }
+     */
+    public GetNewCustomerAcquisitionGoalsByAccountIdRequest createGetNewCustomerAcquisitionGoalsByAccountIdRequest() {
+        return new GetNewCustomerAcquisitionGoalsByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetNewCustomerAcquisitionGoalsByAccountIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetNewCustomerAcquisitionGoalsByAccountIdResponse }
+     */
+    public GetNewCustomerAcquisitionGoalsByAccountIdResponse createGetNewCustomerAcquisitionGoalsByAccountIdResponse() {
+        return new GetNewCustomerAcquisitionGoalsByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetBrandKitsByAccountIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetBrandKitsByAccountIdRequest }
+     */
+    public GetBrandKitsByAccountIdRequest createGetBrandKitsByAccountIdRequest() {
+        return new GetBrandKitsByAccountIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBrandKitsByAccountIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetBrandKitsByAccountIdResponse }
+     */
+    public GetBrandKitsByAccountIdResponse createGetBrandKitsByAccountIdResponse() {
+        return new GetBrandKitsByAccountIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetClipchampTemplatesRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetClipchampTemplatesRequest }
+     */
+    public GetClipchampTemplatesRequest createGetClipchampTemplatesRequest() {
+        return new GetClipchampTemplatesRequest();
+    }
+
+    /**
+     * Create an instance of {@link VideoTemplateFilter }
+     * 
+     * @return
+     *     the new instance of {@link VideoTemplateFilter }
+     */
+    public VideoTemplateFilter createVideoTemplateFilter() {
+        return new VideoTemplateFilter();
+    }
+
+    /**
+     * Create an instance of {@link GetClipchampTemplatesResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetClipchampTemplatesResponse }
+     */
+    public GetClipchampTemplatesResponse createGetClipchampTemplatesResponse() {
+        return new GetClipchampTemplatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfClipchampTemplateInfo }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfClipchampTemplateInfo }
+     */
+    public ArrayOfClipchampTemplateInfo createArrayOfClipchampTemplateInfo() {
+        return new ArrayOfClipchampTemplateInfo();
+    }
+
+    /**
+     * Create an instance of {@link ClipchampTemplateInfo }
+     * 
+     * @return
+     *     the new instance of {@link ClipchampTemplateInfo }
+     */
+    public ClipchampTemplateInfo createClipchampTemplateInfo() {
+        return new ClipchampTemplateInfo();
+    }
+
+    /**
+     * Create an instance of {@link GetSupportedClipchampAudioRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetSupportedClipchampAudioRequest }
+     */
+    public GetSupportedClipchampAudioRequest createGetSupportedClipchampAudioRequest() {
+        return new GetSupportedClipchampAudioRequest();
+    }
+
+    /**
+     * Create an instance of {@link AudioFilter }
+     * 
+     * @return
+     *     the new instance of {@link AudioFilter }
+     */
+    public AudioFilter createAudioFilter() {
+        return new AudioFilter();
+    }
+
+    /**
+     * Create an instance of {@link GetSupportedClipchampAudioResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetSupportedClipchampAudioResponse }
+     */
+    public GetSupportedClipchampAudioResponse createGetSupportedClipchampAudioResponse() {
+        return new GetSupportedClipchampAudioResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSupportedClipchampAudioData }
+     * 
+     * @return
+     *     the new instance of {@link GetSupportedClipchampAudioData }
+     */
+    public GetSupportedClipchampAudioData createGetSupportedClipchampAudioData() {
+        return new GetSupportedClipchampAudioData();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfGetSupportedClipchampAudio }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfGetSupportedClipchampAudio }
+     */
+    public ArrayOfGetSupportedClipchampAudio createArrayOfGetSupportedClipchampAudio() {
+        return new ArrayOfGetSupportedClipchampAudio();
+    }
+
+    /**
+     * Create an instance of {@link GetSupportedClipchampAudio }
+     * 
+     * @return
+     *     the new instance of {@link GetSupportedClipchampAudio }
+     */
+    public GetSupportedClipchampAudio createGetSupportedClipchampAudio() {
+        return new GetSupportedClipchampAudio();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfint }
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
     }
 
     /**
@@ -8248,6 +8739,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ThirdPartyMeasurementSetting")
     public JAXBElement<ThirdPartyMeasurementSetting> createThirdPartyMeasurementSetting(ThirdPartyMeasurementSetting value) {
         return new JAXBElement<>(_ThirdPartyMeasurementSetting_QNAME, ThirdPartyMeasurementSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NewCustomerAcquisitionGoalSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link NewCustomerAcquisitionGoalSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NewCustomerAcquisitionGoalSetting")
+    public JAXBElement<NewCustomerAcquisitionGoalSetting> createNewCustomerAcquisitionGoalSetting(NewCustomerAcquisitionGoalSetting value) {
+        return new JAXBElement<>(_NewCustomerAcquisitionGoalSetting_QNAME, NewCustomerAcquisitionGoalSetting.class, null, value);
     }
 
     /**
@@ -11215,6 +11719,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Site }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Site }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "Site")
+    public JAXBElement<Site> createSite(Site value) {
+        return new JAXBElement<>(_Site_QNAME, Site.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfIdCollection }{@code >}
      * 
      * @param value
@@ -11329,6 +11846,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandList")
     public JAXBElement<BrandList> createBrandList(BrandList value) {
         return new JAXBElement<>(_BrandList_QNAME, BrandList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountPlacementExclusionList }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AccountPlacementExclusionList }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AccountPlacementExclusionList")
+    public JAXBElement<AccountPlacementExclusionList> createAccountPlacementExclusionList(AccountPlacementExclusionList value) {
+        return new JAXBElement<>(_AccountPlacementExclusionList_QNAME, AccountPlacementExclusionList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccountPlacementInclusionList }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AccountPlacementInclusionList }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AccountPlacementInclusionList")
+    public JAXBElement<AccountPlacementInclusionList> createAccountPlacementInclusionList(AccountPlacementInclusionList value) {
+        return new JAXBElement<>(_AccountPlacementInclusionList_QNAME, AccountPlacementInclusionList.class, null, value);
     }
 
     /**
@@ -11697,6 +12240,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProfileDimension }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ProfileDimension }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ProfileDimension")
+    public JAXBElement<ProfileDimension> createProfileDimension(ProfileDimension value) {
+        return new JAXBElement<>(_ProfileDimension_QNAME, ProfileDimension.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfProfileInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfProfileInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfProfileInfo")
+    public JAXBElement<ArrayOfProfileInfo> createArrayOfProfileInfo(ArrayOfProfileInfo value) {
+        return new JAXBElement<>(_ArrayOfProfileInfo_QNAME, ArrayOfProfileInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProfileInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ProfileInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ProfileInfo")
+    public JAXBElement<ProfileInfo> createProfileInfo(ProfileInfo value) {
+        return new JAXBElement<>(_ProfileInfo_QNAME, ProfileInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceGroupAdditionalField }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceGroupAdditionalField }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceGroupAdditionalField")
+    @XmlJavaTypeAdapter(Adapter19 .class)
+    public JAXBElement<Collection<AudienceGroupAdditionalField>> createAudienceGroupAdditionalField(Collection<AudienceGroupAdditionalField> value) {
+        return new JAXBElement<>(_AudienceGroupAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAssetGroup }{@code >}
      * 
      * @param value
@@ -11809,7 +12405,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AssetGroupAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AssetGroupAdditionalField")
-    @XmlJavaTypeAdapter(Adapter19 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     public JAXBElement<Collection<AssetGroupAdditionalField>> createAssetGroupAdditionalField(Collection<AssetGroupAdditionalField> value) {
         return new JAXBElement<>(_AssetGroupAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -12226,7 +12822,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ProductAudienceType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ProductAudienceType")
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     public JAXBElement<Collection<ProductAudienceType>> createProductAudienceType(Collection<ProductAudienceType> value) {
         return new JAXBElement<>(_ProductAudienceType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -12344,7 +12940,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link AudienceAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceAdditionalField")
-    @XmlJavaTypeAdapter(Adapter21 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     public JAXBElement<Collection<AudienceAdditionalField>> createAudienceAdditionalField(Collection<AudienceAdditionalField> value) {
         return new JAXBElement<>(_AudienceAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -12436,7 +13032,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ConversionGoalType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalType")
-    @XmlJavaTypeAdapter(Adapter22 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     public JAXBElement<Collection<ConversionGoalType>> createConversionGoalType(Collection<ConversionGoalType> value) {
         return new JAXBElement<>(_ConversionGoalType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -12450,7 +13046,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ConversionGoalAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalAdditionalField")
-    @XmlJavaTypeAdapter(Adapter23 .class)
+    @XmlJavaTypeAdapter(Adapter24 .class)
     public JAXBElement<Collection<ConversionGoalAdditionalField>> createConversionGoalAdditionalField(Collection<ConversionGoalAdditionalField> value) {
         return new JAXBElement<>(_ConversionGoalAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -13049,7 +13645,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ImportAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImportAdditionalField")
-    @XmlJavaTypeAdapter(Adapter24 .class)
+    @XmlJavaTypeAdapter(Adapter25 .class)
     public JAXBElement<Collection<ImportAdditionalField>> createImportAdditionalField(Collection<ImportAdditionalField> value) {
         return new JAXBElement<>(_ImportAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -13232,7 +13828,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DeviceType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DeviceType")
-    @XmlJavaTypeAdapter(Adapter25 .class)
+    @XmlJavaTypeAdapter(Adapter26 .class)
     public JAXBElement<Collection<DeviceType>> createDeviceType(Collection<DeviceType> value) {
         return new JAXBElement<>(_DeviceType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -13303,6 +13899,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationVideoType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationVideoType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationVideoType")
+    public JAXBElement<AdRecommendationVideoType> createAdRecommendationVideoType(AdRecommendationVideoType value) {
+        return new JAXBElement<>(_AdRecommendationVideoType_QNAME, AdRecommendationVideoType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationVideoSuggestion }{@code >}
      * 
      * @param value
@@ -13368,42 +13977,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfAdRecommendationTextSuggestion }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextRefineResult }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfAdRecommendationTextSuggestion }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextRefineResult }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfArrayOfAdRecommendationTextSuggestion")
-    public JAXBElement<ArrayOfArrayOfAdRecommendationTextSuggestion> createArrayOfArrayOfAdRecommendationTextSuggestion(ArrayOfArrayOfAdRecommendationTextSuggestion value) {
-        return new JAXBElement<>(_ArrayOfArrayOfAdRecommendationTextSuggestion_QNAME, ArrayOfArrayOfAdRecommendationTextSuggestion.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationTextRefineResult")
+    public JAXBElement<ArrayOfAdRecommendationTextRefineResult> createArrayOfAdRecommendationTextRefineResult(ArrayOfAdRecommendationTextRefineResult value) {
+        return new JAXBElement<>(_ArrayOfAdRecommendationTextRefineResult_QNAME, ArrayOfAdRecommendationTextRefineResult.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextSuggestion }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextRefineResult }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAdRecommendationTextSuggestion }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextRefineResult }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAdRecommendationTextSuggestion")
-    public JAXBElement<ArrayOfAdRecommendationTextSuggestion> createArrayOfAdRecommendationTextSuggestion(ArrayOfAdRecommendationTextSuggestion value) {
-        return new JAXBElement<>(_ArrayOfAdRecommendationTextSuggestion_QNAME, ArrayOfAdRecommendationTextSuggestion.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextSuggestion }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AdRecommendationTextSuggestion }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextSuggestion")
-    public JAXBElement<AdRecommendationTextSuggestion> createAdRecommendationTextSuggestion(AdRecommendationTextSuggestion value) {
-        return new JAXBElement<>(_AdRecommendationTextSuggestion_QNAME, AdRecommendationTextSuggestion.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdRecommendationTextRefineResult")
+    public JAXBElement<AdRecommendationTextRefineResult> createAdRecommendationTextRefineResult(AdRecommendationTextRefineResult value) {
+        return new JAXBElement<>(_AdRecommendationTextRefineResult_QNAME, AdRecommendationTextRefineResult.class, null, value);
     }
 
     /**
@@ -13563,6 +14159,292 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKit }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKit }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBrandKit")
+    public JAXBElement<ArrayOfBrandKit> createArrayOfBrandKit(ArrayOfBrandKit value) {
+        return new JAXBElement<>(_ArrayOfBrandKit_QNAME, ArrayOfBrandKit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandKit }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandKit }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandKit")
+    public JAXBElement<BrandKit> createBrandKit(BrandKit value) {
+        return new JAXBElement<>(_BrandKit_QNAME, BrandKit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitFont }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitFont }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBrandKitFont")
+    public JAXBElement<ArrayOfBrandKitFont> createArrayOfBrandKitFont(ArrayOfBrandKitFont value) {
+        return new JAXBElement<>(_ArrayOfBrandKitFont_QNAME, ArrayOfBrandKitFont.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandKitFont }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandKitFont }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandKitFont")
+    public JAXBElement<BrandKitFont> createBrandKitFont(BrandKitFont value) {
+        return new JAXBElement<>(_BrandKitFont_QNAME, BrandKitFont.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FontTextAssetType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FontTextAssetType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FontTextAssetType")
+    public JAXBElement<FontTextAssetType> createFontTextAssetType(FontTextAssetType value) {
+        return new JAXBElement<>(_FontTextAssetType_QNAME, FontTextAssetType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitImage }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitImage }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBrandKitImage")
+    public JAXBElement<ArrayOfBrandKitImage> createArrayOfBrandKitImage(ArrayOfBrandKitImage value) {
+        return new JAXBElement<>(_ArrayOfBrandKitImage_QNAME, ArrayOfBrandKitImage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandKitImage }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandKitImage }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandKitImage")
+    public JAXBElement<BrandKitImage> createBrandKitImage(BrandKitImage value) {
+        return new JAXBElement<>(_BrandKitImage_QNAME, BrandKitImage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitPalette }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitPalette }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBrandKitPalette")
+    public JAXBElement<ArrayOfBrandKitPalette> createArrayOfBrandKitPalette(ArrayOfBrandKitPalette value) {
+        return new JAXBElement<>(_ArrayOfBrandKitPalette_QNAME, ArrayOfBrandKitPalette.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandKitPalette }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandKitPalette }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandKitPalette")
+    public JAXBElement<BrandKitPalette> createBrandKitPalette(BrandKitPalette value) {
+        return new JAXBElement<>(_BrandKitPalette_QNAME, BrandKitPalette.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitColor }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBrandKitColor }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfBrandKitColor")
+    public JAXBElement<ArrayOfBrandKitColor> createArrayOfBrandKitColor(ArrayOfBrandKitColor value) {
+        return new JAXBElement<>(_ArrayOfBrandKitColor_QNAME, ArrayOfBrandKitColor.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandKitColor }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandKitColor }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandKitColor")
+    public JAXBElement<BrandKitColor> createBrandKitColor(BrandKitColor value) {
+        return new JAXBElement<>(_BrandKitColor_QNAME, BrandKitColor.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfNewCustomerAcquisitionGoal }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfNewCustomerAcquisitionGoal }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfNewCustomerAcquisitionGoal")
+    public JAXBElement<ArrayOfNewCustomerAcquisitionGoal> createArrayOfNewCustomerAcquisitionGoal(ArrayOfNewCustomerAcquisitionGoal value) {
+        return new JAXBElement<>(_ArrayOfNewCustomerAcquisitionGoal_QNAME, ArrayOfNewCustomerAcquisitionGoal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NewCustomerAcquisitionGoal }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link NewCustomerAcquisitionGoal }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NewCustomerAcquisitionGoal")
+    public JAXBElement<NewCustomerAcquisitionGoal> createNewCustomerAcquisitionGoal(NewCustomerAcquisitionGoal value) {
+        return new JAXBElement<>(_NewCustomerAcquisitionGoal_QNAME, NewCustomerAcquisitionGoal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAudienceIdName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAudienceIdName }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAudienceIdName")
+    public JAXBElement<ArrayOfAudienceIdName> createArrayOfAudienceIdName(ArrayOfAudienceIdName value) {
+        return new JAXBElement<>(_ArrayOfAudienceIdName_QNAME, ArrayOfAudienceIdName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AudienceIdName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AudienceIdName }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudienceIdName")
+    public JAXBElement<AudienceIdName> createAudienceIdName(AudienceIdName value) {
+        return new JAXBElement<>(_AudienceIdName_QNAME, AudienceIdName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VideoTemplateFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link VideoTemplateFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "VideoTemplateFilter")
+    public JAXBElement<VideoTemplateFilter> createVideoTemplateFilter(VideoTemplateFilter value) {
+        return new JAXBElement<>(_VideoTemplateFilter_QNAME, VideoTemplateFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfClipchampTemplateInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfClipchampTemplateInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfClipchampTemplateInfo")
+    public JAXBElement<ArrayOfClipchampTemplateInfo> createArrayOfClipchampTemplateInfo(ArrayOfClipchampTemplateInfo value) {
+        return new JAXBElement<>(_ArrayOfClipchampTemplateInfo_QNAME, ArrayOfClipchampTemplateInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClipchampTemplateInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ClipchampTemplateInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ClipchampTemplateInfo")
+    public JAXBElement<ClipchampTemplateInfo> createClipchampTemplateInfo(ClipchampTemplateInfo value) {
+        return new JAXBElement<>(_ClipchampTemplateInfo_QNAME, ClipchampTemplateInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AudioFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AudioFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AudioFilter")
+    public JAXBElement<AudioFilter> createAudioFilter(AudioFilter value) {
+        return new JAXBElement<>(_AudioFilter_QNAME, AudioFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSupportedClipchampAudioData }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetSupportedClipchampAudioData }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "GetSupportedClipchampAudioData")
+    public JAXBElement<GetSupportedClipchampAudioData> createGetSupportedClipchampAudioData(GetSupportedClipchampAudioData value) {
+        return new JAXBElement<>(_GetSupportedClipchampAudioData_QNAME, GetSupportedClipchampAudioData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfGetSupportedClipchampAudio }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfGetSupportedClipchampAudio }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfGetSupportedClipchampAudio")
+    public JAXBElement<ArrayOfGetSupportedClipchampAudio> createArrayOfGetSupportedClipchampAudio(ArrayOfGetSupportedClipchampAudio value) {
+        return new JAXBElement<>(_ArrayOfGetSupportedClipchampAudio_QNAME, ArrayOfGetSupportedClipchampAudio.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSupportedClipchampAudio }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link GetSupportedClipchampAudio }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "GetSupportedClipchampAudio")
+    public JAXBElement<GetSupportedClipchampAudio> createGetSupportedClipchampAudio(GetSupportedClipchampAudio value) {
+        return new JAXBElement<>(_GetSupportedClipchampAudio_QNAME, GetSupportedClipchampAudio.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfstring }{@code >}
      * 
      * @param value
@@ -13599,6 +14481,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfKeyValueOfstringstring")
     public JAXBElement<ArrayOfKeyValueOfstringstring> createArrayOfKeyValueOfstringstring(ArrayOfKeyValueOfstringstring value) {
         return new JAXBElement<>(_ArrayOfKeyValueOfstringstring_QNAME, ArrayOfKeyValueOfstringstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfint")
+    public JAXBElement<ArrayOfint> createArrayOfint(ArrayOfint value) {
+        return new JAXBElement<>(_ArrayOfint_QNAME, ArrayOfint.class, null, value);
     }
 
     /**

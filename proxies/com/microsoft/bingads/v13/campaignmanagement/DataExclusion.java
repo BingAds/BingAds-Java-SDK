@@ -58,7 +58,7 @@ public class DataExclusion {
     @XmlElement(name = "Description", nillable = true)
     protected String description;
     @XmlElement(name = "DeviceTypeFilter", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter25 .class)
+    @XmlJavaTypeAdapter(Adapter26 .class)
     protected Collection<DeviceType> deviceTypeFilter;
     @XmlElement(name = "EndDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)

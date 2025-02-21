@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AccountStatus" type="{https://bingads.microsoft.com/Reporting/v13}AccountStatusReportFilter" minOccurs="0"/>
  *         <element name="AdDistribution" type="{https://bingads.microsoft.com/Reporting/v13}AdDistributionReportFilter" minOccurs="0"/>
  *         <element name="AdGroupStatus" type="{https://bingads.microsoft.com/Reporting/v13}AdGroupStatusReportFilter" minOccurs="0"/>
+ *         <element name="AssetGroupStatus" type="{https://bingads.microsoft.com/Reporting/v13}AssetGroupStatusReportFilter" minOccurs="0"/>
  *         <element name="CampaignStatus" type="{https://bingads.microsoft.com/Reporting/v13}CampaignStatusReportFilter" minOccurs="0"/>
  *         <element name="DeviceOS" type="{https://bingads.microsoft.com/Reporting/v13}DeviceOSReportFilter" minOccurs="0"/>
  *         <element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v13}DeviceTypeReportFilter" minOccurs="0"/>
@@ -40,6 +41,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "accountStatus",
     "adDistribution",
     "adGroupStatus",
+    "assetGroupStatus",
     "campaignStatus",
     "deviceOS",
     "deviceType",
@@ -57,6 +59,9 @@ public class GoalsAndFunnelsReportFilter {
     @XmlElement(name = "AdGroupStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter7 .class)
     protected Collection<AdGroupStatusReportFilter> adGroupStatus;
+    @XmlElement(name = "AssetGroupStatus", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter15 .class)
+    protected Collection<AssetGroupStatusReportFilter> assetGroupStatus;
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
@@ -142,6 +147,30 @@ public class GoalsAndFunnelsReportFilter {
      */
     public void setAdGroupStatus(Collection<AdGroupStatusReportFilter> value) {
         this.adGroupStatus = value;
+    }
+
+    /**
+     * Gets the value of the assetGroupStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AssetGroupStatusReportFilter> getAssetGroupStatus() {
+        return assetGroupStatus;
+    }
+
+    /**
+     * Sets the value of the assetGroupStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAssetGroupStatus(Collection<AssetGroupStatusReportFilter> value) {
+        this.assetGroupStatus = value;
     }
 
     /**

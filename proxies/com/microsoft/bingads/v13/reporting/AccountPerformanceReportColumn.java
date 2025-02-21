@@ -114,6 +114,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Subscriptions"/>
  *     <enumeration value="PostInstallSubscriptionRate"/>
  *     <enumeration value="CPS"/>
+ *     <enumeration value="NewCustomerConversions"/>
+ *     <enumeration value="NewCustomerRevenue"/>
+ *     <enumeration value="NewCustomerConversionRate"/>
+ *     <enumeration value="NewCustomerCPA"/>
+ *     <enumeration value="NewCustomerReturnOnAdSpend"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -321,7 +326,17 @@ public enum AccountPerformanceReportColumn {
     SUBSCRIPTIONS("Subscriptions"),
     @XmlEnumValue("PostInstallSubscriptionRate")
     POST_INSTALL_SUBSCRIPTION_RATE("PostInstallSubscriptionRate"),
-    CPS("CPS");
+    CPS("CPS"),
+    @XmlEnumValue("NewCustomerConversions")
+    NEW_CUSTOMER_CONVERSIONS("NewCustomerConversions"),
+    @XmlEnumValue("NewCustomerRevenue")
+    NEW_CUSTOMER_REVENUE("NewCustomerRevenue"),
+    @XmlEnumValue("NewCustomerConversionRate")
+    NEW_CUSTOMER_CONVERSION_RATE("NewCustomerConversionRate"),
+    @XmlEnumValue("NewCustomerCPA")
+    NEW_CUSTOMER_CPA("NewCustomerCPA"),
+    @XmlEnumValue("NewCustomerReturnOnAdSpend")
+    NEW_CUSTOMER_RETURN_ON_AD_SPEND("NewCustomerReturnOnAdSpend");
     private final String value;
 
     AccountPerformanceReportColumn(String v) {

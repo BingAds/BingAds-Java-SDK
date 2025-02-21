@@ -156,6 +156,7 @@ public class ObjectFactory {
     private static final QName _ArrayOfProductPartitionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfProductPartitionPerformanceReportColumn");
     private static final QName _ProductPartitionPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionPerformanceReportColumn");
     private static final QName _ProductPartitionPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionPerformanceReportFilter");
+    private static final QName _CampaignTypeReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CampaignTypeReportFilter");
     private static final QName _ProductPartitionUnitPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionUnitPerformanceReportRequest");
     private static final QName _ArrayOfProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfProductPartitionUnitPerformanceReportColumn");
     private static final QName _ProductPartitionUnitPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ProductPartitionUnitPerformanceReportColumn");
@@ -3638,6 +3639,20 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignTypeReportFilter }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link CampaignTypeReportFilter }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CampaignTypeReportFilter")
+    @XmlJavaTypeAdapter(Adapter18 .class)
+    public JAXBElement<Collection<CampaignTypeReportFilter>> createCampaignTypeReportFilter(Collection<CampaignTypeReportFilter> value) {
+        return new JAXBElement<>(_CampaignTypeReportFilter_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ProductPartitionUnitPerformanceReportRequest }{@code >}
      * 
      * @param value
@@ -4049,7 +4064,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DynamicAdTargetStatusReportFilter }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "DynamicAdTargetStatusReportFilter")
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     public JAXBElement<Collection<DynamicAdTargetStatusReportFilter>> createDynamicAdTargetStatusReportFilter(Collection<DynamicAdTargetStatusReportFilter> value) {
         return new JAXBElement<>(_DynamicAdTargetStatusReportFilter_QNAME, ((Class) Collection.class), null, value);
     }

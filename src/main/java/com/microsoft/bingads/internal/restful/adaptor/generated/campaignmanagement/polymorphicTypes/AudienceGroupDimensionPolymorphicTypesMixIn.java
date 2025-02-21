@@ -25,6 +25,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = GenderDimension.class, name = "Gender"),
 						
 			@JsonSubTypes.Type(value = AudienceDimension.class, name = "Audience"),
+						
+			@JsonSubTypes.Type(value = ProfileDimension.class, name = "Profile"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

@@ -84,6 +84,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(CampaignCriterionStatus.class, CampaignCriterionStatusMixIn.class)
 				.addMixIn(CampaignCriterionType.class, CampaignCriterionTypeMixIn.class)
 				.addMixIn(AudienceGroupDimensionType.class, AudienceGroupDimensionTypeMixIn.class)
+				.addMixIn(AudienceGroupAdditionalField.class, AudienceGroupAdditionalFieldMixIn.class)
 				.addMixIn(AssetGroupEditorialStatus.class, AssetGroupEditorialStatusMixIn.class)
 				.addMixIn(AssetGroupStatus.class, AssetGroupStatusMixIn.class)
 				.addMixIn(AssetGroupAdditionalField.class, AssetGroupAdditionalFieldMixIn.class)
@@ -111,10 +112,12 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ImportEntityType.class, ImportEntityTypeMixIn.class)
 				.addMixIn(DeviceType.class, DeviceTypeMixIn.class)
 				.addMixIn(AdRecommendationTextTone.class, AdRecommendationTextToneMixIn.class)
+				.addMixIn(AdRecommendationVideoType.class, AdRecommendationVideoTypeMixIn.class)
 				.addMixIn(AdRecommendationTextField.class, AdRecommendationTextFieldMixIn.class)
 				.addMixIn(LocationType.class, LocationTypeMixIn.class)
 				.addMixIn(ConversionValueRuleOperator.class, ConversionValueRuleOperatorMixIn.class)
 				.addMixIn(ConversionValueRuleStatus.class, ConversionValueRuleStatusMixIn.class)
+				.addMixIn(FontTextAssetType.class, FontTextAssetTypeMixIn.class)
 				;
 	}
 }

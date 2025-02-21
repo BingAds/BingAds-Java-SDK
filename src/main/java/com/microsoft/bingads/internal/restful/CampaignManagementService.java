@@ -3455,4 +3455,184 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 		return sendRequestAsync(request, "/ConversionValueRules/QueryByIds", HttpPost, GetConversionValueRulesByIdsResponse.class, (r, h) -> fallbackService.get().getConversionValueRulesByIdsAsync(r, h), asyncHandler);
 	}
 	
+    	
+	public AddBrandKitsResponse addBrandKits(AddBrandKitsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		AddBrandKitsResponse response = sendRequest(request, "/BrandKits", HttpPost, AddBrandKitsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().addBrandKits(request);
+		}
+		
+		return response;
+	}
+
+    public Response<AddBrandKitsResponse> addBrandKitsAsync(AddBrandKitsRequest request) {
+		return sendRequestAsync(request, "/BrandKits", HttpPost, AddBrandKitsResponse.class, (r, h) -> fallbackService.get().addBrandKitsAsync(r, h), null);
+	}
+
+	public Future<?> addBrandKitsAsync(AddBrandKitsRequest request, AsyncHandler<AddBrandKitsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BrandKits", HttpPost, AddBrandKitsResponse.class, (r, h) -> fallbackService.get().addBrandKitsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public UpdateBrandKitsResponse updateBrandKits(UpdateBrandKitsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateBrandKitsResponse response = sendRequest(request, "/BrandKits", HttpPut, UpdateBrandKitsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().updateBrandKits(request);
+		}
+		
+		return response;
+	}
+
+    public Response<UpdateBrandKitsResponse> updateBrandKitsAsync(UpdateBrandKitsRequest request) {
+		return sendRequestAsync(request, "/BrandKits", HttpPut, UpdateBrandKitsResponse.class, (r, h) -> fallbackService.get().updateBrandKitsAsync(r, h), null);
+	}
+
+	public Future<?> updateBrandKitsAsync(UpdateBrandKitsRequest request, AsyncHandler<UpdateBrandKitsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BrandKits", HttpPut, UpdateBrandKitsResponse.class, (r, h) -> fallbackService.get().updateBrandKitsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public DeleteBrandKitsResponse deleteBrandKits(DeleteBrandKitsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		DeleteBrandKitsResponse response = sendRequest(request, "/BrandKits", HttpDelete, DeleteBrandKitsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().deleteBrandKits(request);
+		}
+		
+		return response;
+	}
+
+    public Response<DeleteBrandKitsResponse> deleteBrandKitsAsync(DeleteBrandKitsRequest request) {
+		return sendRequestAsync(request, "/BrandKits", HttpDelete, DeleteBrandKitsResponse.class, (r, h) -> fallbackService.get().deleteBrandKitsAsync(r, h), null);
+	}
+
+	public Future<?> deleteBrandKitsAsync(DeleteBrandKitsRequest request, AsyncHandler<DeleteBrandKitsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BrandKits", HttpDelete, DeleteBrandKitsResponse.class, (r, h) -> fallbackService.get().deleteBrandKitsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public AddNewCustomerAcquisitionGoalsResponse addNewCustomerAcquisitionGoals(AddNewCustomerAcquisitionGoalsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		AddNewCustomerAcquisitionGoalsResponse response = sendRequest(request, "/NewCustomerAcquisitionGoals", HttpPost, AddNewCustomerAcquisitionGoalsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().addNewCustomerAcquisitionGoals(request);
+		}
+		
+		return response;
+	}
+
+    public Response<AddNewCustomerAcquisitionGoalsResponse> addNewCustomerAcquisitionGoalsAsync(AddNewCustomerAcquisitionGoalsRequest request) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals", HttpPost, AddNewCustomerAcquisitionGoalsResponse.class, (r, h) -> fallbackService.get().addNewCustomerAcquisitionGoalsAsync(r, h), null);
+	}
+
+	public Future<?> addNewCustomerAcquisitionGoalsAsync(AddNewCustomerAcquisitionGoalsRequest request, AsyncHandler<AddNewCustomerAcquisitionGoalsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals", HttpPost, AddNewCustomerAcquisitionGoalsResponse.class, (r, h) -> fallbackService.get().addNewCustomerAcquisitionGoalsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public UpdateNewCustomerAcquisitionGoalsResponse updateNewCustomerAcquisitionGoals(UpdateNewCustomerAcquisitionGoalsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateNewCustomerAcquisitionGoalsResponse response = sendRequest(request, "/NewCustomerAcquisitionGoals", HttpPut, UpdateNewCustomerAcquisitionGoalsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().updateNewCustomerAcquisitionGoals(request);
+		}
+		
+		return response;
+	}
+
+    public Response<UpdateNewCustomerAcquisitionGoalsResponse> updateNewCustomerAcquisitionGoalsAsync(UpdateNewCustomerAcquisitionGoalsRequest request) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals", HttpPut, UpdateNewCustomerAcquisitionGoalsResponse.class, (r, h) -> fallbackService.get().updateNewCustomerAcquisitionGoalsAsync(r, h), null);
+	}
+
+	public Future<?> updateNewCustomerAcquisitionGoalsAsync(UpdateNewCustomerAcquisitionGoalsRequest request, AsyncHandler<UpdateNewCustomerAcquisitionGoalsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals", HttpPut, UpdateNewCustomerAcquisitionGoalsResponse.class, (r, h) -> fallbackService.get().updateNewCustomerAcquisitionGoalsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetNewCustomerAcquisitionGoalsByAccountIdResponse getNewCustomerAcquisitionGoalsByAccountId(GetNewCustomerAcquisitionGoalsByAccountIdRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetNewCustomerAcquisitionGoalsByAccountIdResponse response = sendRequest(request, "/NewCustomerAcquisitionGoals/QueryByAccountId", HttpPost, GetNewCustomerAcquisitionGoalsByAccountIdResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getNewCustomerAcquisitionGoalsByAccountId(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetNewCustomerAcquisitionGoalsByAccountIdResponse> getNewCustomerAcquisitionGoalsByAccountIdAsync(GetNewCustomerAcquisitionGoalsByAccountIdRequest request) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals/QueryByAccountId", HttpPost, GetNewCustomerAcquisitionGoalsByAccountIdResponse.class, (r, h) -> fallbackService.get().getNewCustomerAcquisitionGoalsByAccountIdAsync(r, h), null);
+	}
+
+	public Future<?> getNewCustomerAcquisitionGoalsByAccountIdAsync(GetNewCustomerAcquisitionGoalsByAccountIdRequest request, AsyncHandler<GetNewCustomerAcquisitionGoalsByAccountIdResponse> asyncHandler) {
+		return sendRequestAsync(request, "/NewCustomerAcquisitionGoals/QueryByAccountId", HttpPost, GetNewCustomerAcquisitionGoalsByAccountIdResponse.class, (r, h) -> fallbackService.get().getNewCustomerAcquisitionGoalsByAccountIdAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetBrandKitsByAccountIdResponse getBrandKitsByAccountId(GetBrandKitsByAccountIdRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetBrandKitsByAccountIdResponse response = sendRequest(request, "/BrandKits/QueryByAccountId", HttpPost, GetBrandKitsByAccountIdResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getBrandKitsByAccountId(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetBrandKitsByAccountIdResponse> getBrandKitsByAccountIdAsync(GetBrandKitsByAccountIdRequest request) {
+		return sendRequestAsync(request, "/BrandKits/QueryByAccountId", HttpPost, GetBrandKitsByAccountIdResponse.class, (r, h) -> fallbackService.get().getBrandKitsByAccountIdAsync(r, h), null);
+	}
+
+	public Future<?> getBrandKitsByAccountIdAsync(GetBrandKitsByAccountIdRequest request, AsyncHandler<GetBrandKitsByAccountIdResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BrandKits/QueryByAccountId", HttpPost, GetBrandKitsByAccountIdResponse.class, (r, h) -> fallbackService.get().getBrandKitsByAccountIdAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetClipchampTemplatesResponse getClipchampTemplates(GetClipchampTemplatesRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetClipchampTemplatesResponse response = sendRequest(request, "/ClipchampTemplates/Query", HttpPost, GetClipchampTemplatesResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getClipchampTemplates(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetClipchampTemplatesResponse> getClipchampTemplatesAsync(GetClipchampTemplatesRequest request) {
+		return sendRequestAsync(request, "/ClipchampTemplates/Query", HttpPost, GetClipchampTemplatesResponse.class, (r, h) -> fallbackService.get().getClipchampTemplatesAsync(r, h), null);
+	}
+
+	public Future<?> getClipchampTemplatesAsync(GetClipchampTemplatesRequest request, AsyncHandler<GetClipchampTemplatesResponse> asyncHandler) {
+		return sendRequestAsync(request, "/ClipchampTemplates/Query", HttpPost, GetClipchampTemplatesResponse.class, (r, h) -> fallbackService.get().getClipchampTemplatesAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetSupportedClipchampAudioResponse getSupportedClipchampAudio(GetSupportedClipchampAudioRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetSupportedClipchampAudioResponse response = sendRequest(request, "/SupportedClipchampAudio/Query", HttpPost, GetSupportedClipchampAudioResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getSupportedClipchampAudio(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetSupportedClipchampAudioResponse> getSupportedClipchampAudioAsync(GetSupportedClipchampAudioRequest request) {
+		return sendRequestAsync(request, "/SupportedClipchampAudio/Query", HttpPost, GetSupportedClipchampAudioResponse.class, (r, h) -> fallbackService.get().getSupportedClipchampAudioAsync(r, h), null);
+	}
+
+	public Future<?> getSupportedClipchampAudioAsync(GetSupportedClipchampAudioRequest request, AsyncHandler<GetSupportedClipchampAudioResponse> asyncHandler) {
+		return sendRequestAsync(request, "/SupportedClipchampAudio/Query", HttpPost, GetSupportedClipchampAudioResponse.class, (r, h) -> fallbackService.get().getSupportedClipchampAudioAsync(r, h), asyncHandler);
+	}
+	
     }

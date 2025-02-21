@@ -57,6 +57,8 @@ public class BulkKeyword extends SingleRecordBulkEntity {
     private String campaignName;
 
     private String adGroupName;
+    
+    private Long campaignId;
 
     private QualityScoreData qualityScoreData;
 
@@ -93,6 +95,26 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                     @Override
                     public void accept(String v, BulkKeyword c) {
                         c.setAdGroupId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkKeyword, Long>(StringTable.CampaignId,
+                new Function<BulkKeyword, Long>() {
+                    @Override
+                    public Long apply(BulkKeyword c) {
+                        return c.getCampaignId();
+                    }
+                },
+                new BiConsumer<String, BulkKeyword>() {
+                    @Override
+                    public void accept(String v, BulkKeyword c) {
+                        c.setCampaignId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
                             @Override
                             public Long apply(String value) {
                                 return Long.parseLong(value);
@@ -567,6 +589,20 @@ public class BulkKeyword extends SingleRecordBulkEntity {
     public String getAdGroupName() {
         return adGroupName;
     }
+    
+    /**
+     * Gets the campaign id 
+     * */
+    public Long getCampaignId() {
+		return campaignId;
+	}
+
+    /**
+     * Sets the campaign id
+     * */
+	public void setCampaignId(Long campaignId) {
+		this.campaignId = campaignId;
+	}
 
     /**
      * Gets the quality score data for the keyword.

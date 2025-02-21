@@ -56,6 +56,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ShareOfVoiceReportColumn.class, ShareOfVoiceReportColumnMixIn.class)
 				.addMixIn(ProductDimensionPerformanceReportColumn.class, ProductDimensionPerformanceReportColumnMixIn.class)
 				.addMixIn(ProductPartitionPerformanceReportColumn.class, ProductPartitionPerformanceReportColumnMixIn.class)
+				.addMixIn(CampaignTypeReportFilter.class, CampaignTypeReportFilterMixIn.class)
 				.addMixIn(ProductPartitionUnitPerformanceReportColumn.class, ProductPartitionUnitPerformanceReportColumnMixIn.class)
 				.addMixIn(ProductSearchQueryPerformanceReportColumn.class, ProductSearchQueryPerformanceReportColumnMixIn.class)
 				.addMixIn(ProductMatchCountReportColumn.class, ProductMatchCountReportColumnMixIn.class)

@@ -40,6 +40,11 @@ public interface ProductPartitionPerformanceReportFilterEnumsMixIn{
 
     	
 	@JsonSerialize(using = EnumListSerializer.class)
+	@JsonDeserialize(using = CampaignTypeReportFilterDeserializer.class)
+	Collection<CampaignTypeReportFilter> getCampaignType();
+
+    	
+	@JsonSerialize(using = EnumListSerializer.class)
 	@JsonDeserialize(using = DeviceTypeReportFilterDeserializer.class)
 	Collection<DeviceTypeReportFilter> getDeviceType();
 

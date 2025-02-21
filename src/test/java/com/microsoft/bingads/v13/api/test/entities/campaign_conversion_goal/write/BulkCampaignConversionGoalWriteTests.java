@@ -7,7 +7,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	BulkCampaignConversionGoalWriteToRowValuesParentIdTest.class,
-	BulkCampaignConversionGoalWriteToRowValuesGoalIdTest.class
+	BulkCampaignConversionGoalWriteToRowValuesGoalIdTest.class,
+	BulkCampaignConversionGoalWriteToRowValuesSubTypeTest.class,
+	BulkCampaignConversionGoalWriteToRowValuesActionTypeTest.class
 })
 public class BulkCampaignConversionGoalWriteTests {
 

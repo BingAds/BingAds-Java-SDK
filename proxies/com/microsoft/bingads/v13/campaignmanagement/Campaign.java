@@ -1,6 +1,7 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Calendar;
 import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -25,6 +26,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BudgetLimitType" minOccurs="0"/>
  *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         <element name="DealIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="ExperimentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
@@ -33,11 +35,13 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignStatus" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
+ *         <element name="UseCampaignLevelDates" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="CampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignType" minOccurs="0"/>
  *         <element name="Settings" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSetting" minOccurs="0"/>
  *         <element name="BudgetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -59,6 +63,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "budgetType",
     "dailyBudget",
     "dealIds",
+    "endDate",
     "experimentId",
     "finalUrlSuffix",
     "forwardCompatibilityMap",
@@ -67,11 +72,13 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "isDealCampaign",
     "multimediaAdsBidAdjustment",
     "name",
+    "startDate",
     "status",
     "subType",
     "timeZone",
     "trackingUrlTemplate",
     "urlCustomParameters",
+    "useCampaignLevelDates",
     "campaignType",
     "settings",
     "budgetId",
@@ -92,6 +99,10 @@ public class Campaign {
     protected Double dailyBudget;
     @XmlElement(name = "DealIds", nillable = true)
     protected ArrayOflong dealIds;
+    @XmlElement(name = "EndDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar endDate;
     @XmlElement(name = "ExperimentId", nillable = true)
     protected Long experimentId;
     @XmlElement(name = "FinalUrlSuffix", nillable = true)
@@ -108,6 +119,10 @@ public class Campaign {
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "StartDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar startDate;
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected CampaignStatus status;
@@ -119,6 +134,8 @@ public class Campaign {
     protected String trackingUrlTemplate;
     @XmlElement(name = "UrlCustomParameters", nillable = true)
     protected CustomParameters urlCustomParameters;
+    @XmlElement(name = "UseCampaignLevelDates", nillable = true)
+    protected Boolean useCampaignLevelDates;
     @XmlElement(name = "CampaignType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<CampaignType> campaignType;
@@ -251,6 +268,30 @@ public class Campaign {
      */
     public void setDealIds(ArrayOflong value) {
         this.dealIds = value;
+    }
+
+    /**
+     * Gets the value of the endDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * Sets the value of the endDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEndDate(Calendar value) {
+        this.endDate = value;
     }
 
     /**
@@ -446,6 +487,30 @@ public class Campaign {
     }
 
     /**
+     * Gets the value of the startDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * Sets the value of the startDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStartDate(Calendar value) {
+        this.startDate = value;
+    }
+
+    /**
      * Gets the value of the status property.
      * 
      * @return
@@ -563,6 +628,30 @@ public class Campaign {
      */
     public void setUrlCustomParameters(CustomParameters value) {
         this.urlCustomParameters = value;
+    }
+
+    /**
+     * Gets the value of the useCampaignLevelDates property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUseCampaignLevelDates() {
+        return useCampaignLevelDates;
+    }
+
+    /**
+     * Sets the value of the useCampaignLevelDates property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUseCampaignLevelDates(Boolean value) {
+        this.useCampaignLevelDates = value;
     }
 
     /**
