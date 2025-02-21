@@ -1,5 +1,6 @@
 package com.microsoft.bingads.v13.bulk.entities;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,6 +29,7 @@ import com.microsoft.bingads.v13.campaignmanagement.DisclaimerSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicFeedSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSetting;
 import com.microsoft.bingads.v13.campaignmanagement.DynamicSearchAdsSource;
+import com.microsoft.bingads.v13.campaignmanagement.NewCustomerAcquisitionGoalSetting;
 import com.microsoft.bingads.v13.campaignmanagement.PerformanceMaxSetting;
 import com.microsoft.bingads.v13.campaignmanagement.Setting;
 import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
@@ -145,6 +147,10 @@ public class BulkCampaign extends SingleRecordBulkEntity {
         	setting = new ShoppingSetting();
             setting.setType(ShoppingSetting.class.getSimpleName());
             settings.add(setting);
+            
+            setting = new NewCustomerAcquisitionGoalSetting();
+            setting.setType(NewCustomerAcquisitionGoalSetting.class.getSimpleName());
+        	settings.add(setting);
         	break;
         case APP:
         	setting = new AppSetting();
@@ -1392,6 +1398,84 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                                 return Collections.singletonList(StringExtensions.fromValueOptional(v, AppStore.class));
                             }
                         }));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Long>(StringTable.NewCustomerAcquisitionGoalId,
+                new Function<BulkCampaign, Long>() {
+                    @Override
+                    public Long apply(BulkCampaign t) {
+                    	 Setting setting = t.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                         if (setting == null) {
+                             return null;
+                         }
+                         NewCustomerAcquisitionGoalSetting newCustomerAcquisitionGoalSetting = (NewCustomerAcquisitionGoalSetting)setting;
+                         return newCustomerAcquisitionGoalSetting.getNewCustomerAcquisitionGoalId();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                    	Setting setting = c.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                        if (setting == null) {
+                            return;
+                        }
+                        ((NewCustomerAcquisitionGoalSetting)setting).setNewCustomerAcquisitionGoalId(v == null ? null : Long.parseLong(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.NewCustomerAcquisitionBidOnlyMode,
+                new Function<BulkCampaign, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkCampaign t) {
+                    	 Setting setting = t.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                         if (setting == null) {
+                             return null;
+                         }
+                         NewCustomerAcquisitionGoalSetting newCustomerAcquisitionGoalSetting = (NewCustomerAcquisitionGoalSetting)setting;
+                         return newCustomerAcquisitionGoalSetting.getNewCustomerAcquisitionBidOnlyMode();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                    	Setting setting = c.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                        if (setting == null) {
+                            return;
+                        }
+                        ((NewCustomerAcquisitionGoalSetting)setting).setNewCustomerAcquisitionBidOnlyMode(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, BigDecimal>(StringTable.AdditionalConversionValue,
+                new Function<BulkCampaign, BigDecimal>() {
+                    @Override
+                    public BigDecimal apply(BulkCampaign t) {
+                    	 Setting setting = t.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                         if (setting == null) {
+                             return null;
+                         }
+                         NewCustomerAcquisitionGoalSetting newCustomerAcquisitionGoalSetting = (NewCustomerAcquisitionGoalSetting)setting;
+                         return newCustomerAcquisitionGoalSetting.getAdditionalConversionValue();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                    	Setting setting = c.getCampaignSetting(NewCustomerAcquisitionGoalSetting.class, false);
+
+                        if (setting == null) {
+                            return;
+                        }
+                        ((NewCustomerAcquisitionGoalSetting)setting).setAdditionalConversionValue(StringExtensions.nullOrBigDecimal(v));
                     }
                 }
         ));

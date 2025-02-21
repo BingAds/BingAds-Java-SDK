@@ -35,7 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     AgeDimension.class,
     GenderDimension.class,
-    AudienceDimension.class
+    AudienceDimension.class,
+    ProfileDimension.class
 })
 public class AudienceGroupDimension {
 

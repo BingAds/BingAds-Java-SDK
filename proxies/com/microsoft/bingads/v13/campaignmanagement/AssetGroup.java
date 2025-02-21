@@ -37,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Path2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroupStatus" minOccurs="0"/>
+ *         <element name="Videos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -65,7 +66,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "path1",
     "path2",
     "startDate",
-    "status"
+    "status",
+    "videos"
 })
 public class AssetGroup {
 
@@ -110,6 +112,8 @@ public class AssetGroup {
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected AssetGroupStatus status;
+    @XmlElement(name = "Videos", nillable = true)
+    protected ArrayOfAssetLink videos;
 
     /**
      * Gets the value of the assetGroupSearchThemes property.
@@ -565,6 +569,30 @@ public class AssetGroup {
      */
     public void setStatus(AssetGroupStatus value) {
         this.status = value;
+    }
+
+    /**
+     * Gets the value of the videos property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getVideos() {
+        return videos;
+    }
+
+    /**
+     * Sets the value of the videos property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setVideos(ArrayOfAssetLink value) {
+        this.videos = value;
     }
 
 }

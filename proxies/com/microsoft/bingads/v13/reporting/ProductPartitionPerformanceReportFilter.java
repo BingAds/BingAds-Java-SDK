@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AdStatus" type="{https://bingads.microsoft.com/Reporting/v13}AdStatusReportFilter" minOccurs="0"/>
  *         <element name="AssetGroupStatus" type="{https://bingads.microsoft.com/Reporting/v13}AssetGroupStatusReportFilter" minOccurs="0"/>
  *         <element name="CampaignStatus" type="{https://bingads.microsoft.com/Reporting/v13}CampaignStatusReportFilter" minOccurs="0"/>
+ *         <element name="CampaignType" type="{https://bingads.microsoft.com/Reporting/v13}CampaignTypeReportFilter" minOccurs="0"/>
  *         <element name="DeviceType" type="{https://bingads.microsoft.com/Reporting/v13}DeviceTypeReportFilter" minOccurs="0"/>
  *         <element name="Language" type="{https://bingads.microsoft.com/Reporting/v13}LanguageReportFilter" minOccurs="0"/>
  *       </sequence>
@@ -41,6 +42,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "adStatus",
     "assetGroupStatus",
     "campaignStatus",
+    "campaignType",
     "deviceType",
     "language"
 })
@@ -61,6 +63,9 @@ public class ProductPartitionPerformanceReportFilter {
     @XmlElement(name = "CampaignStatus", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter6 .class)
     protected Collection<CampaignStatusReportFilter> campaignStatus;
+    @XmlElement(name = "CampaignType", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter18 .class)
+    protected Collection<CampaignTypeReportFilter> campaignType;
     @XmlElement(name = "DeviceType", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     protected Collection<DeviceTypeReportFilter> deviceType;
@@ -186,6 +191,30 @@ public class ProductPartitionPerformanceReportFilter {
      */
     public void setCampaignStatus(Collection<CampaignStatusReportFilter> value) {
         this.campaignStatus = value;
+    }
+
+    /**
+     * Gets the value of the campaignType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<CampaignTypeReportFilter> getCampaignType() {
+        return campaignType;
+    }
+
+    /**
+     * Sets the value of the campaignType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampaignType(Collection<CampaignTypeReportFilter> value) {
+        this.campaignType = value;
     }
 
     /**

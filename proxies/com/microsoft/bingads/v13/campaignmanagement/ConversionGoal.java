@@ -106,7 +106,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter22 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;

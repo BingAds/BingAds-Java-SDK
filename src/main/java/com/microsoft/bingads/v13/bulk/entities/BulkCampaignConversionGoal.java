@@ -21,6 +21,10 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
 public class BulkCampaignConversionGoal extends SingleRecordBulkEntity {
     
     private CampaignConversionGoal campaignConversionGoal;
+    
+    private String subType;
+    
+    private String actionType;
 
     private static final List<BulkMapping<BulkCampaignConversionGoal>> MAPPINGS;
 
@@ -66,6 +70,36 @@ public class BulkCampaignConversionGoal extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaignConversionGoal, String>(StringTable.SubType,
+                new Function<BulkCampaignConversionGoal, String>() {
+                    @Override
+                    public String apply(BulkCampaignConversionGoal c) {
+                        return c.getSubType();
+                    }
+                },
+                new BiConsumer<String, BulkCampaignConversionGoal>() {
+                    @Override
+                    public void accept(String v, BulkCampaignConversionGoal c) {
+                        c.setSubType(v);
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaignConversionGoal, String>(StringTable.ActionType,
+                new Function<BulkCampaignConversionGoal, String>() {
+                    @Override
+                    public String apply(BulkCampaignConversionGoal c) {
+                        return c.getActionType();
+                    }
+                },
+                new BiConsumer<String, BulkCampaignConversionGoal>() {
+                    @Override
+                    public void accept(String v, BulkCampaignConversionGoal c) {
+                        c.setActionType(v);
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }
@@ -101,6 +135,34 @@ public class BulkCampaignConversionGoal extends SingleRecordBulkEntity {
      */
     public void setCampaignConversionGoal(CampaignConversionGoal goal) {
         this.campaignConversionGoal = goal;
+    }
+    
+    /**
+     * Gets the sub type of campaign conversion goal.
+     */
+    public String getSubType() {
+        return subType;
+    }
+
+    /**
+     * Sets the sub type of campaign conversion goal.
+     */
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
+    
+    /**
+     * Gets the action type.
+     */
+    public String getActionType() {
+        return actionType;
+    }
+
+    /**
+     * Sets the action type.
+     */
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
     }
 
 }

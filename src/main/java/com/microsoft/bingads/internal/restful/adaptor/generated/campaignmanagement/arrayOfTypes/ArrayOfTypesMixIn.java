@@ -256,6 +256,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<ProfileInfo> getProfileInfos();
+
+            
+	@JsonValue
 	List<AssetGroup> getAssetGroups();
 
             
@@ -392,11 +396,7 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<ArrayOfAdRecommendationTextSuggestion> getArrayOfAdRecommendationTextSuggestions();
-
-            
-	@JsonValue
-	List<AdRecommendationTextSuggestion> getAdRecommendationTextSuggestions();
+	List<AdRecommendationTextRefineResult> getAdRecommendationTextRefineResults();
 
             
 	@JsonValue
@@ -412,6 +412,42 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<BrandKit> getBrandKits();
+
+            
+	@JsonValue
+	List<BrandKitFont> getBrandKitFonts();
+
+            
+	@JsonValue
+	List<BrandKitImage> getBrandKitImages();
+
+            
+	@JsonValue
+	List<BrandKitPalette> getBrandKitPalettes();
+
+            
+	@JsonValue
+	List<BrandKitColor> getBrandKitColors();
+
+            
+	@JsonValue
+	List<NewCustomerAcquisitionGoal> getNewCustomerAcquisitionGoals();
+
+            
+	@JsonValue
+	List<AudienceIdName> getAudienceIdNames();
+
+            
+	@JsonValue
+	List<ClipchampTemplateInfo> getClipchampTemplateInfos();
+
+            
+	@JsonValue
+	List<GetSupportedClipchampAudio> getGetSupportedClipchampAudios();
+
+            
+	@JsonValue
 	List<String> getStrings();
 
             
@@ -421,6 +457,10 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<KeyValueOfstringstring> getKeyValueOfstringstrings();
+
+            
+	@JsonValue
+	List<Integer> getInts();
 
             
 	@JsonValue

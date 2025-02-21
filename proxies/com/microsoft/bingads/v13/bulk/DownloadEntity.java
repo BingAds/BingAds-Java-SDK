@@ -197,6 +197,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CampaignImpressionBasedRemarketingListAssociations"/>
  *     <enumeration value="CampaignNegativeImpressionBasedRemarketingListAssociations"/>
  *     <enumeration value="AssetGroupUrlTargets"/>
+ *     <enumeration value="NewCustomerAcquisitionGoal"/>
+ *     <enumeration value="ConversionValueRule"/>
+ *     <enumeration value="AccountPlacementExclusionList"/>
+ *     <enumeration value="AccountPlacementExclusionListItem"/>
+ *     <enumeration value="CampaignAccountPlacementExclusionListAssociation"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -573,7 +578,17 @@ public enum DownloadEntity {
     @XmlEnumValue("CampaignNegativeImpressionBasedRemarketingListAssociations")
     CAMPAIGN_NEGATIVE_IMPRESSION_BASED_REMARKETING_LIST_ASSOCIATIONS("CampaignNegativeImpressionBasedRemarketingListAssociations"),
     @XmlEnumValue("AssetGroupUrlTargets")
-    ASSET_GROUP_URL_TARGETS("AssetGroupUrlTargets");
+    ASSET_GROUP_URL_TARGETS("AssetGroupUrlTargets"),
+    @XmlEnumValue("NewCustomerAcquisitionGoal")
+    NEW_CUSTOMER_ACQUISITION_GOAL("NewCustomerAcquisitionGoal"),
+    @XmlEnumValue("ConversionValueRule")
+    CONVERSION_VALUE_RULE("ConversionValueRule"),
+    @XmlEnumValue("AccountPlacementExclusionList")
+    ACCOUNT_PLACEMENT_EXCLUSION_LIST("AccountPlacementExclusionList"),
+    @XmlEnumValue("AccountPlacementExclusionListItem")
+    ACCOUNT_PLACEMENT_EXCLUSION_LIST_ITEM("AccountPlacementExclusionListItem"),
+    @XmlEnumValue("CampaignAccountPlacementExclusionListAssociation")
+    CAMPAIGN_ACCOUNT_PLACEMENT_EXCLUSION_LIST_ASSOCIATION("CampaignAccountPlacementExclusionListAssociation");
     private final String value;
 
     DownloadEntity(String v) {

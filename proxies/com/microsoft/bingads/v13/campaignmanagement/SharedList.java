@@ -35,7 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
     NegativeKeywordList.class,
     PlacementExclusionList.class,
     AccountNegativeKeywordList.class,
-    BrandList.class
+    BrandList.class,
+    AccountPlacementExclusionList.class,
+    AccountPlacementInclusionList.class
 })
 public class SharedList
     extends SharedEntity

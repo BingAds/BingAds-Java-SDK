@@ -17,6 +17,7 @@ public class CsvHeaders {
             StringTable.Status,
             StringTable.Id,
             StringTable.ParentId,
+            StringTable.CampaignId,
             StringTable.SubType,
             StringTable.Campaign,
             StringTable.AdGroup,
@@ -545,6 +546,11 @@ public class CsvHeaders {
             StringTable.AssetGroupTargetValue1,
             StringTable.AssetGroupTargetValue2,
             StringTable.AssetGroupTargetValue3,
+            
+            // New Customer Acquisition Goal
+            StringTable.AdditionalConversionValue,
+            StringTable.NewCustomerAcquisitionGoalId,
+            StringTable.NewCustomerAcquisitionBidOnlyMode,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

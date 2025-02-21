@@ -47,6 +47,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Bulgarian"/>
  *     <enumeration value="Lithuanian"/>
  *     <enumeration value="Croatian"/>
+ *     <enumeration value="Latvian"/>
+ *     <enumeration value="Slovenian"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -123,7 +125,11 @@ public enum LanguageType {
     @XmlEnumValue("Lithuanian")
     LITHUANIAN("Lithuanian"),
     @XmlEnumValue("Croatian")
-    CROATIAN("Croatian");
+    CROATIAN("Croatian"),
+    @XmlEnumValue("Latvian")
+    LATVIAN("Latvian"),
+    @XmlEnumValue("Slovenian")
+    SLOVENIAN("Slovenian");
     private final String value;
 
     LanguageType(String v) {

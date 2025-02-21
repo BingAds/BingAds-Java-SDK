@@ -8,7 +8,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	BulkCampaignConversionGoalReadFromRowValuesParentIdTest.class,
-	BulkCampaignConversionGoalReadFromRowValuesGoalIdTest.class
+	BulkCampaignConversionGoalReadFromRowValuesGoalIdTest.class,
+	BulkCampaignConversionGoalReadFromRowValuesSubTypeTest.class,
+	BulkCampaignConversionGoalReadFromRowValuesActionTypeTest.class
 })
 public class BulkCampaignConversionGoalReadTests {
 

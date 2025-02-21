@@ -1289,6 +1289,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAssetGroupUrlTarget();
             }
         }));
+        m.put(StringTable.NewCustomerAcquisitionGoal, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkNewCustomerAcquisitionGoal();
+            }
+        }));
         
         INDIVIDUAL_ENTITY_MAP = Collections.unmodifiableMap(m);
 

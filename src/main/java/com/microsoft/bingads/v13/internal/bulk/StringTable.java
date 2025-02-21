@@ -31,6 +31,8 @@ public class StringTable {
     public static final String Id = "Id";
 
     public static final String BusinessId = "Business Id";
+    
+    public static final String CampaignId = "Campaign Id";
 
     public static final String ParentId = "Parent Id";
 
@@ -840,6 +842,11 @@ public class StringTable {
     public static final String AssetGroupTargetValue2 = "Asset Group Target Value 2";
     public static final String AssetGroupTargetValue3 = "Asset Group Target Value 3";
     
+    // New Customer Acquisition Goal
+    public static final String NewCustomerAcquisitionGoal = "New Customer Acquisition Goal";
+    public static final String AdditionalConversionValue = "Additional Conversion Value";
+    public static final String NewCustomerAcquisitionGoalId = "New Customer Acquisition Goal Id";
+    public static final String NewCustomerAcquisitionBidOnlyMode = "New Customer Acquisition Bid Only Mode";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

@@ -51,6 +51,9 @@ import com.microsoft.bingads.v13.api.test.entities.campaign.write.*;
         BulkCampaignWriteToRowValuesCostPerSaleOptOutTest.class,
         BulkCampaignWriteToRowValuesAppIdTest.class,
         BulkCampaignWriteToRowValuesAppStoreTest.class,
+        BulkCampaignWriteToRowValuesNewCustomerAcquisitionBidOnlyModeTest.class,
+        BulkCampaignWriteToRowValuesNewCustomerAcquisitionGoalIdTest.class,
+        BulkCampaignWriteToRowValuesAdditionalConversionValueTest.class,
 })
 public class BulkCampaignWriteTests {
 

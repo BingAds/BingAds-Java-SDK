@@ -34,6 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="VideoViewsAt75Percent"/>
  *     <enumeration value="CompletedVideoViews"/>
  *     <enumeration value="VideoCompletionRate"/>
+ *     <enumeration value="Conversions"/>
+ *     <enumeration value="Revenue"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -84,7 +86,11 @@ public enum AssetPerformanceReportColumn {
     @XmlEnumValue("CompletedVideoViews")
     COMPLETED_VIDEO_VIEWS("CompletedVideoViews"),
     @XmlEnumValue("VideoCompletionRate")
-    VIDEO_COMPLETION_RATE("VideoCompletionRate");
+    VIDEO_COMPLETION_RATE("VideoCompletionRate"),
+    @XmlEnumValue("Conversions")
+    CONVERSIONS("Conversions"),
+    @XmlEnumValue("Revenue")
+    REVENUE("Revenue");
     private final String value;
 
     AssetPerformanceReportColumn(String v) {

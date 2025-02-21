@@ -16,6 +16,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Age"/>
  *     <enumeration value="Gender"/>
  *     <enumeration value="Audience"/>
+ *     <enumeration value="Profile"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -30,7 +31,9 @@ public enum AudienceGroupDimensionType {
     @XmlEnumValue("Gender")
     GENDER("Gender"),
     @XmlEnumValue("Audience")
-    AUDIENCE("Audience");
+    AUDIENCE("Audience"),
+    @XmlEnumValue("Profile")
+    PROFILE("Profile");
     private final String value;
 
     AudienceGroupDimensionType(String v) {

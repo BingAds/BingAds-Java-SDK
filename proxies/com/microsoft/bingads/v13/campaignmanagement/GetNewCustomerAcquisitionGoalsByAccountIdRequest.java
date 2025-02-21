@@ -4,20 +4,21 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AdRecommendationTextSuggestion complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="AdRecommendationTextSuggestion">
+ * <complexType>
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -27,36 +28,37 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdRecommendationTextSuggestion", propOrder = {
-    "text"
+@XmlType(name = "", propOrder = {
+    "accountId"
 })
-public class AdRecommendationTextSuggestion {
+@XmlRootElement(name = "GetNewCustomerAcquisitionGoalsByAccountIdRequest")
+public class GetNewCustomerAcquisitionGoalsByAccountIdRequest {
 
-    @XmlElement(name = "Text", nillable = true)
-    protected String text;
+    @XmlElement(name = "AccountId")
+    protected Long accountId;
 
     /**
-     * Gets the value of the text property.
+     * Gets the value of the accountId property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Long }
      *     
      */
-    public String getText() {
-        return text;
+    public Long getAccountId() {
+        return accountId;
     }
 
     /**
-     * Sets the value of the text property.
+     * Sets the value of the accountId property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Long }
      *     
      */
-    public void setText(String value) {
-        this.text = value;
+    public void setAccountId(Long value) {
+        this.accountId = value;
     }
 
 }
