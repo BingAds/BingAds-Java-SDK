@@ -1423,7 +1423,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                         if (setting == null) {
                             return;
                         }
-                        ((NewCustomerAcquisitionGoalSetting)setting).setNewCustomerAcquisitionGoalId(v == null ? null : Long.parseLong(v));
+                        ((NewCustomerAcquisitionGoalSetting)setting).setNewCustomerAcquisitionGoalId(v == null || v.isEmpty() ? null : Long.parseLong(v));
                     }
                 }
         ));

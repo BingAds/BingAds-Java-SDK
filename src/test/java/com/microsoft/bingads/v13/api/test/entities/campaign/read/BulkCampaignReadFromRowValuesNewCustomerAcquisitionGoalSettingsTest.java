@@ -49,11 +49,18 @@ public class BulkCampaignReadFromRowValuesNewCustomerAcquisitionGoalSettingsTest
         setting2.setNewCustomerAcquisitionBidOnlyMode(true);
         setting2.setNewCustomerAcquisitionGoalId(Long.MAX_VALUE);
         setting2.setType("NewCustomerAcquisitionGoalSetting");
+        
+        NewCustomerAcquisitionGoalSetting setting3 = new NewCustomerAcquisitionGoalSetting();
+        setting3.setAdditionalConversionValue(null);
+        setting3.setNewCustomerAcquisitionBidOnlyMode(false);
+        setting3.setNewCustomerAcquisitionGoalId(null);
+        setting3.setType("NewCustomerAcquisitionGoalSetting");
 
         return Arrays.asList(
                 new Object[][]{
                         {"PerformanceMax", "123.45", "false", "123", Collections.singletonList(setting1)},
                         {"PerformanceMax", "123.45", "true", "9223372036854775807", Collections.singletonList(setting2)},
+                        {"PerformanceMax", "", "", "", Collections.singletonList(setting3)}
                 }
         );
     }
