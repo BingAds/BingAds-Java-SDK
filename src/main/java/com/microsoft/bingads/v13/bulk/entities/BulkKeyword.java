@@ -50,7 +50,7 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  */
 public class BulkKeyword extends SingleRecordBulkEntity {
 
-	private Long campaignId;
+    private Long campaignId;
 	
     private Long adGroupId;
 
