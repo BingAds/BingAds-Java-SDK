@@ -50,6 +50,8 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  */
 public class BulkKeyword extends SingleRecordBulkEntity {
 
+    private Long campaignId;
+	
     private Long adGroupId;
 
     private Keyword keyword;
@@ -78,6 +80,26 @@ public class BulkKeyword extends SingleRecordBulkEntity {
                     @Override
                     public void accept(String v, BulkKeyword c) {
                         c.getKeyword().setId(StringExtensions.nullOrLong(v));
+                    }
+                }
+        ));
+        
+        m.add(new SimpleBulkMapping<BulkKeyword, Long>(StringTable.CampaignId,
+                new Function<BulkKeyword, Long>() {
+                    @Override
+                    public Long apply(BulkKeyword c) {
+                        return c.getCampaignId();
+                    }
+                },
+                new BiConsumer<String, BulkKeyword>() {
+                    @Override
+                    public void accept(String v, BulkKeyword c) {
+                        c.setCampaignId(StringExtensions.<Long>parseOptional(v, new Function<String, Long>() {
+                            @Override
+                            public Long apply(String value) {
+                                return Long.parseLong(value);
+                            }
+                        }));
                     }
                 }
         ));
@@ -486,6 +508,28 @@ public class BulkKeyword extends SingleRecordBulkEntity {
 
             BulkKeywordBidSuggestion.writeIfNotNull(getBidSuggestions().getFirstPage(), writer);
         }
+    }
+    
+    /**
+     * Gets the identifier of the campaign that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign Id' field in the bulk file.
+     * </p>
+     */
+    public Long getCampaignId() {
+        return campaignId;
+    }
+
+    /**
+     * Sets the identifier of the ad group that contains the keyword.
+     *
+     * <p>
+     *     Corresponds to the 'Campaign Id' field in the bulk file.
+     * </p>
+     */
+    public void setCampaignId(Long campaignId) {
+        this.campaignId = campaignId;
     }
 
     /**

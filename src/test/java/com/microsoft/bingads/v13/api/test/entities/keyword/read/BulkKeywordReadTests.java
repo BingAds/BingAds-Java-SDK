@@ -20,7 +20,8 @@ import org.junit.runners.Suite.SuiteClasses;
     BulkKeywordReadFromRowValuesStatusTest.class,
     BulkKeywordReadFromRowValuesTextTest.class,
     BulkKeywordReadFromRowValuesBidStrategyTypeTest.class,
-	BulkKeywordReadFromRowValuesFinalUrlSuffixTest.class})
+	BulkKeywordReadFromRowValuesFinalUrlSuffixTest.class,
+	BulkKeywordReadFromRowValuesCampaignIdTest.class})
 public class BulkKeywordReadTests {
 
 }
