@@ -16,23 +16,25 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.microsoft.bingads.internal.IRestfulServiceFactory;
+import com.microsoft.bingads.internal.RestfulServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class FakeApiTest {   
     @Before
-    public void setUp() {        
-        System.setProperty("com.microsoft.bingads.ICampaignManagementService.DisableRestApi", "true");
-        System.setProperty("com.microsoft.bingads.IBulkService.DisableRestApi", "true");
-        System.setProperty("com.microsoft.bingads.IReportingService.DisableRestApi", "true");
-        System.setProperty("com.microsoft.bingads.ICustomerManagementService.DisableRestApi", "true");
-        System.setProperty("com.microsoft.bingads.ICustomerBillingService.DisableRestApi", "true");
-        System.setProperty("com.microsoft.bingads.IAdInsightService.DisableRestApi", "true");
-
+    public void setUp() {
         ServiceFactoryFactory.setCustomServiceFactorySupplier(new Supplier<ServiceFactory>() {
             @Override
             public ServiceFactory get() {
+                return new FakeServiceFactory();
+            }
+        });
+        
+        RestfulServiceFactoryFactory.setCustomServiceFactorySupplier(new Supplier<IRestfulServiceFactory>() {
+            @Override
+            public IRestfulServiceFactory get() {
                 return new FakeServiceFactory();
             }
         });

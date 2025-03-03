@@ -8,6 +8,7 @@ import com.microsoft.bingads.internal.restful.ReportingService;
 import com.microsoft.bingads.internal.restful.BulkService;
 import com.microsoft.bingads.internal.restful.CustomerManagementService;
 import com.microsoft.bingads.internal.restful.CustomerBillingService;
+import com.microsoft.bingads.internal.IRestfulServiceFactory;
 import com.microsoft.bingads.internal.restful.AdInsightService;
 import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
@@ -16,9 +17,9 @@ import com.microsoft.bingads.v13.customermanagement.ICustomerManagementService;
 import com.microsoft.bingads.v13.customerbilling.ICustomerBillingService;
 import com.microsoft.bingads.v13.adinsight.IAdInsightService;
 
-public class RestfulServiceFactory {
+public class RestfulServiceFactory implements IRestfulServiceFactory {
 
-    public static <T> T createServiceClient(Map<String, String> headers, ApiEnvironment environment, Class<T> serviceInterface, Supplier<T> createSoapPort) {
+    public <T> T createServiceClient(Map<String, String> headers, ApiEnvironment environment, Class<T> serviceInterface, Supplier<T> createSoapPort) {
         if (serviceInterface == ICampaignManagementService.class) {
             return serviceInterface.cast(new CampaignManagementService(headers, environment, () -> (ICampaignManagementService)createSoapPort.get()));
         }
