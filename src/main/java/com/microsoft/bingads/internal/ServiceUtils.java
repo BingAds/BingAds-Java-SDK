@@ -10,6 +10,9 @@ import jakarta.xml.ws.Response;
 
 import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.InternalException;
+import com.microsoft.bingads.v13.bulk.IBulkService;
+import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
+import com.microsoft.bingads.v13.reporting.IReportingService;
 
 /**
  * Reserved for internal use. 
@@ -105,6 +108,13 @@ public class ServiceUtils {
     }
 
     public static boolean getDisableRestApi(Class<?> serviceInterface) {
+    	if (serviceInterface == ICampaignManagementService.class ||
+    		serviceInterface == IBulkService.class ||
+    		serviceInterface == IReportingService.class)
+    	{
+    		return false;
+    	}
+    	
         String propertyValue = getPropertyValue(serviceInterface.getSimpleName() + ".DisableRestApi");
 
         if (propertyValue == null) {

@@ -12,9 +12,11 @@ import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.EndpointReference;
 import jakarta.xml.ws.Response;
 
+import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
+import com.microsoft.bingads.internal.restful.BulkService;
 import com.microsoft.bingads.v13.bulk.AdApiFaultDetail_Exception;
 import com.microsoft.bingads.v13.bulk.ApiFaultDetail_Exception;
 import com.microsoft.bingads.v13.bulk.DownloadCampaignsByAccountIdsRequest;
@@ -31,9 +33,14 @@ import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.bulk.UploadEntityRecordsRequest;
 import com.microsoft.bingads.v13.bulk.UploadEntityRecordsResponse;
 
-public class FakeBulkService implements IBulkService, BindingProvider {
+public class FakeBulkService extends BulkService implements IBulkService, BindingProvider {
 
-    private static Consumer<GetBulkDownloadStatusRequest> onGetBulkDownloadStatus;
+    public FakeBulkService(Map<String, String> headers, ApiEnvironment env,
+			java.util.function.Supplier<IBulkService> fallbackService) {
+		super(headers, env, fallbackService);
+	}
+
+	private static Consumer<GetBulkDownloadStatusRequest> onGetBulkDownloadStatus;
     private static Supplier<GetBulkDownloadStatusResponse> getBulkDownloadStatusResponse;    
     
     private static Supplier<GetBulkUploadStatusResponse> getBulkUploadStatusResponse;

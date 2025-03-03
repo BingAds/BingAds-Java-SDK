@@ -11,10 +11,12 @@ import jakarta.xml.ws.handler.HandlerResolver;
 import jakarta.xml.ws.handler.PortInfo;
 
 import com.microsoft.bingads.internal.HeaderHandler;
+import com.microsoft.bingads.internal.IRestfulServiceFactory;
 import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
 import com.microsoft.bingads.internal.ServiceFactory;
 import com.microsoft.bingads.internal.ServiceFactoryFactory;
+import com.microsoft.bingads.internal.RestfulServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.utilities.Lazy;
 import com.microsoft.bingads.v13.adinsight.IAdInsightService;
@@ -47,6 +49,7 @@ public class ServiceClient<T> {
 
     private final Class<T> serviceInterface;
     private final ServiceFactory serviceFactory;
+    private final IRestfulServiceFactory restfulServiceFactory;
     private ApiEnvironment environment;
     private final Lazy<Service> service;
 
@@ -106,6 +109,8 @@ public class ServiceClient<T> {
         this.environment = environment;
 
         serviceFactory = ServiceFactoryFactory.createServiceFactory();
+        
+        restfulServiceFactory = RestfulServiceFactoryFactory.createServiceFactory();
 
         service = new Lazy<Service>(() -> {
             Service newService = serviceFactory.createService(this.serviceInterface, this.environment);
@@ -172,6 +177,6 @@ public class ServiceClient<T> {
     }
 
     T createRestService(Map<String, String> headers) {        
-        return RestfulServiceFactory.createServiceClient(headers, environment, serviceInterface, () -> createSoapPort(headers));
+        return restfulServiceFactory.createServiceClient(headers, environment, serviceInterface, () -> createSoapPort(headers));
     }
 }
