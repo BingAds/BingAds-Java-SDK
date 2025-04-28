@@ -195,6 +195,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AppsPerformanceReportColumn> getAppsPerformanceReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

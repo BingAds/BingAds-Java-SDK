@@ -27,7 +27,8 @@ public enum ImportAdditionalField {
     NEW_CONVERSION_GOALS("NewConversionGoals"),
     UPDATE_CONVERSION_GOALS("UpdateConversionGoals"),
     NEW_BRAND_SUITABILITY("NewBrandSuitability"),
-    UPDATE_BRAND_SUITABILITY("UpdateBrandSuitability");
+    UPDATE_BRAND_SUITABILITY("UpdateBrandSuitability"),
+    NEW_CAROUSEL_AD("NewCarouselAd");
         
     private final String value;
 

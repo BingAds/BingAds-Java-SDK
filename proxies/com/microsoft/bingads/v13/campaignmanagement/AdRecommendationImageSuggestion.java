@@ -19,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="AssetLink" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetLink" minOccurs="0"/>
  *         <element name="Image" type="{https://bingads.microsoft.com/CampaignManagement/v13}Image" minOccurs="0"/>
+ *         <element name="ImageMetadata" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationImageSuggestionMetadata" minOccurs="0"/>
  *         <element name="ImageUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -32,6 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AdRecommendationImageSuggestion", propOrder = {
     "assetLink",
     "image",
+    "imageMetadata",
     "imageUrl"
 })
 public class AdRecommendationImageSuggestion {
@@ -40,6 +42,8 @@ public class AdRecommendationImageSuggestion {
     protected AssetLink assetLink;
     @XmlElement(name = "Image", nillable = true)
     protected Image image;
+    @XmlElement(name = "ImageMetadata", nillable = true)
+    protected AdRecommendationImageSuggestionMetadata imageMetadata;
     @XmlElement(name = "ImageUrl", nillable = true)
     protected String imageUrl;
 
@@ -89,6 +93,30 @@ public class AdRecommendationImageSuggestion {
      */
     public void setImage(Image value) {
         this.image = value;
+    }
+
+    /**
+     * Gets the value of the imageMetadata property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdRecommendationImageSuggestionMetadata }
+     *     
+     */
+    public AdRecommendationImageSuggestionMetadata getImageMetadata() {
+        return imageMetadata;
+    }
+
+    /**
+     * Sets the value of the imageMetadata property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdRecommendationImageSuggestionMetadata }
+     *     
+     */
+    public void setImageMetadata(AdRecommendationImageSuggestionMetadata value) {
+        this.imageMetadata = value;
     }
 
     /**

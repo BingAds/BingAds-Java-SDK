@@ -46,6 +46,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(HotelGroupPerformanceReportFilter.class, HotelGroupPerformanceReportFilterEnumsMixIn.class)
 				.addMixIn(AssetGroupPerformanceReportFilter.class, AssetGroupPerformanceReportFilterEnumsMixIn.class)
 				.addMixIn(SearchInsightPerformanceReportFilter.class, SearchInsightPerformanceReportFilterEnumsMixIn.class)
+				.addMixIn(AppsPerformanceReportFilter.class, AppsPerformanceReportFilterEnumsMixIn.class)
 				;
 	}
 }

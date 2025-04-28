@@ -25,8 +25,12 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="https://tools.ietf.org/html/rfc6749#section-4.1">https://tools.ietf.org/html/rfc6749#section-4.1</a>
      */
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, boolean useMsaProd) {
+        this(clientId, refreshToken, defaultEnv, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken) {
-        this(clientId, refreshToken, defaultEnv);
+        this(clientId, refreshToken, defaultEnv, true);
     }
     
     
@@ -47,8 +51,12 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, boolean useMsaProd) {
+    	super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, (env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), refreshToken, env, OAuthScope.MSADS_MANAGE, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), refreshToken, env, OAuthScope.MSADS_MANAGE);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), refreshToken, env, OAuthScope.MSADS_MANAGE, true);
     }
 
     /**
@@ -62,8 +70,12 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, boolean useMsaProd) {
+        this(clientId, defaultEnv, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId) {
-        this(clientId, defaultEnv);
+        this(clientId, defaultEnv, true);
     }
 
     /**
@@ -79,8 +91,12 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
 
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, boolean useMsaProd) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, (env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), env, OAuthScope.MSADS_MANAGE, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), env, OAuthScope.MSADS_MANAGE);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), env, OAuthScope.MSADS_MANAGE, true);
     }
     
     /**
@@ -95,8 +111,12 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, boolean useMsaProd) {
+        this(clientId, oauthTokens, defaultEnv, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens) {
-        this(clientId, oauthTokens, defaultEnv);
+        this(clientId, oauthTokens, defaultEnv, true);
     }
     
     /**
@@ -111,24 +131,43 @@ public class OAuthDesktopMobileAuthCodeGrant extends OAuthWithAuthorizationCode 
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean useMsaProd) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, (env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), oauthTokens, env, OAuthScope.MSADS_MANAGE, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), oauthTokens, env, OAuthScope.MSADS_MANAGE);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : OAuthScope.MSADS_MANAGE).getDesktopRedirectUrl(), oauthTokens, env, OAuthScope.MSADS_MANAGE, true);
     }
 
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        super(clientId, null, oAuthService.getRedirectUrl((env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : oAuthScope), oAuthService, env, oAuthScope, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthService oAuthService, ApiEnvironment env, OAuthScope oAuthScope) {
-        super(clientId, null, oAuthService.getRedirectUrl(oAuthScope), oAuthService, env, oAuthScope);
+        super(clientId, null, oAuthService.getRedirectUrl(env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : oAuthScope), oAuthService, env, oAuthScope, true);
+    }
+    
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, (env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : oAuthScope).getDesktopRedirectUrl(), refreshToken, env, oAuthScope, useMsaProd);
     }
     
     public OAuthDesktopMobileAuthCodeGrant(String clientId, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), refreshToken, env, oAuthScope);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : oAuthScope).getDesktopRedirectUrl(), refreshToken, env, oAuthScope, true);
+    }
+    
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope, useMsaProd);
     }
     
     public OAuthDesktopMobileAuthCodeGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope, true);
     }
 
+    public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), env, oAuthScope, useMsaProd);
+    }
+    
     public OAuthDesktopMobileAuthCodeGrant(String clientId, ApiEnvironment env, OAuthScope oAuthScope) {
-        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), env, oAuthScope);
+        super(clientId, null, OAuthEndpointHelper.getOauthEndpoint(env, oAuthScope).getDesktopRedirectUrl(), env, oAuthScope, true);
     }
-
 }

@@ -26,6 +26,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="Prompt" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TextTone" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationTextTone" minOccurs="0"/>
  *         <element name="VideoType" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationVideoType" minOccurs="0"/>
+ *         <element name="BrandKitId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -40,7 +42,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "finalUrls",
     "prompt",
     "textTone",
-    "videoType"
+    "videoType",
+    "brandKitId",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "CreateResponsiveAdRecommendationRequest")
 public class CreateResponsiveAdRecommendationRequest {
@@ -58,6 +62,11 @@ public class CreateResponsiveAdRecommendationRequest {
     @XmlElement(name = "VideoType", nillable = true)
     @XmlSchemaType(name = "string")
     protected AdRecommendationVideoType videoType;
+    @XmlElement(name = "BrandKitId", nillable = true)
+    protected Long brandKitId;
+    @XmlElement(name = "ReturnAdditionalFields", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AdRecommendationAdditionalField returnAdditionalFields;
 
     /**
      * Gets the value of the adSubType property.
@@ -177,6 +186,54 @@ public class CreateResponsiveAdRecommendationRequest {
      */
     public void setVideoType(AdRecommendationVideoType value) {
         this.videoType = value;
+    }
+
+    /**
+     * Gets the value of the brandKitId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getBrandKitId() {
+        return brandKitId;
+    }
+
+    /**
+     * Sets the value of the brandKitId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setBrandKitId(Long value) {
+        this.brandKitId = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdRecommendationAdditionalField }
+     *     
+     */
+    public AdRecommendationAdditionalField getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdRecommendationAdditionalField }
+     *     
+     */
+    public void setReturnAdditionalFields(AdRecommendationAdditionalField value) {
+        this.returnAdditionalFields = value;
     }
 
 }

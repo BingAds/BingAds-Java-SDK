@@ -8,16 +8,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for GetSupportedClipchampAudioData complex type.
+ * <p>Java class for SupportedClipchampAudioData complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="GetSupportedClipchampAudioData">
+ * <complexType name="SupportedClipchampAudioData">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="Audio" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfGetSupportedClipchampAudio" minOccurs="0"/>
+ *         <element name="Audio" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfSupportedClipchampAudio" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -27,23 +27,23 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetSupportedClipchampAudioData", propOrder = {
+@XmlType(name = "SupportedClipchampAudioData", propOrder = {
     "audio"
 })
-public class GetSupportedClipchampAudioData {
+public class SupportedClipchampAudioData {
 
     @XmlElement(name = "Audio", nillable = true)
-    protected ArrayOfGetSupportedClipchampAudio audio;
+    protected ArrayOfSupportedClipchampAudio audio;
 
     /**
      * Gets the value of the audio property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfGetSupportedClipchampAudio }
+     *     {@link ArrayOfSupportedClipchampAudio }
      *     
      */
-    public ArrayOfGetSupportedClipchampAudio getAudio() {
+    public ArrayOfSupportedClipchampAudio getAudio() {
         return audio;
     }
 
@@ -52,10 +52,10 @@ public class GetSupportedClipchampAudioData {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfGetSupportedClipchampAudio }
+     *     {@link ArrayOfSupportedClipchampAudio }
      *     
      */
-    public void setAudio(ArrayOfGetSupportedClipchampAudio value) {
+    public void setAudio(ArrayOfSupportedClipchampAudio value) {
         this.audio = value;
     }
 

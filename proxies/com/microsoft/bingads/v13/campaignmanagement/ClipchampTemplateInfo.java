@@ -20,7 +20,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="AspectRatio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="NumberOfImages" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="NumberOfLogos" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="NumberOfText" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="TemplateDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TemplateId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TemplateName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TemplatePreviewUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -39,7 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
     "aspectRatio",
     "duration",
     "numberOfImages",
+    "numberOfLogos",
     "numberOfText",
+    "templateDescription",
     "templateId",
     "templateName",
     "templatePreviewUrl",
@@ -54,8 +58,12 @@ public class ClipchampTemplateInfo {
     protected Integer duration;
     @XmlElement(name = "NumberOfImages")
     protected Integer numberOfImages;
+    @XmlElement(name = "NumberOfLogos")
+    protected Integer numberOfLogos;
     @XmlElement(name = "NumberOfText")
     protected Integer numberOfText;
+    @XmlElement(name = "TemplateDescription", nillable = true)
+    protected String templateDescription;
     @XmlElement(name = "TemplateId", nillable = true)
     protected String templateId;
     @XmlElement(name = "TemplateName", nillable = true)
@@ -140,6 +148,30 @@ public class ClipchampTemplateInfo {
     }
 
     /**
+     * Gets the value of the numberOfLogos property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getNumberOfLogos() {
+        return numberOfLogos;
+    }
+
+    /**
+     * Sets the value of the numberOfLogos property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setNumberOfLogos(Integer value) {
+        this.numberOfLogos = value;
+    }
+
+    /**
      * Gets the value of the numberOfText property.
      * 
      * @return
@@ -161,6 +193,30 @@ public class ClipchampTemplateInfo {
      */
     public void setNumberOfText(Integer value) {
         this.numberOfText = value;
+    }
+
+    /**
+     * Gets the value of the templateDescription property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTemplateDescription() {
+        return templateDescription;
+    }
+
+    /**
+     * Sets the value of the templateDescription property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTemplateDescription(String value) {
+        this.templateDescription = value;
     }
 
     /**

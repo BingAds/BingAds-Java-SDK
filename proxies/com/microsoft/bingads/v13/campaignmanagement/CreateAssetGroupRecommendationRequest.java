@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         <element name="Prompt" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TextTone" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationTextTone" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -34,7 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "finalUrls",
     "prompt",
-    "textTone"
+    "textTone",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "CreateAssetGroupRecommendationRequest")
 public class CreateAssetGroupRecommendationRequest {
@@ -46,6 +48,9 @@ public class CreateAssetGroupRecommendationRequest {
     @XmlElement(name = "TextTone", nillable = true)
     @XmlSchemaType(name = "string")
     protected AdRecommendationTextTone textTone;
+    @XmlElement(name = "ReturnAdditionalFields", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AdRecommendationAdditionalField returnAdditionalFields;
 
     /**
      * Gets the value of the finalUrls property.
@@ -117,6 +122,30 @@ public class CreateAssetGroupRecommendationRequest {
      */
     public void setTextTone(AdRecommendationTextTone value) {
         this.textTone = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdRecommendationAdditionalField }
+     *     
+     */
+    public AdRecommendationAdditionalField getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdRecommendationAdditionalField }
+     *     
+     */
+    public void setReturnAdditionalFields(AdRecommendationAdditionalField value) {
+        this.returnAdditionalFields = value;
     }
 
 }

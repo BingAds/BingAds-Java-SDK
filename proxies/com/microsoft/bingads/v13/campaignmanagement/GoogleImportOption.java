@@ -38,6 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewBrandSuitability" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewCarouselAd" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewConversionGoals" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewDemographicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewDeviceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -152,6 +153,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newBrandSuitability",
     "newCallAdExtensions",
     "newCalloutAdExtensions",
+    "newCarouselAd",
     "newConversionGoals",
     "newDemographicTargets",
     "newDeviceTargets",
@@ -285,6 +287,8 @@ public class GoogleImportOption
     protected Boolean newCallAdExtensions;
     @XmlElement(name = "NewCalloutAdExtensions", nillable = true)
     protected Boolean newCalloutAdExtensions;
+    @XmlElement(name = "NewCarouselAd", nillable = true)
+    protected Boolean newCarouselAd;
     @XmlElement(name = "NewConversionGoals", nillable = true)
     protected Boolean newConversionGoals;
     @XmlElement(name = "NewDemographicTargets", nillable = true)
@@ -954,6 +958,30 @@ public class GoogleImportOption
      */
     public void setNewCalloutAdExtensions(Boolean value) {
         this.newCalloutAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the newCarouselAd property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewCarouselAd() {
+        return newCarouselAd;
+    }
+
+    /**
+     * Sets the value of the newCarouselAd property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewCarouselAd(Boolean value) {
+        this.newCarouselAd = value;
     }
 
     /**

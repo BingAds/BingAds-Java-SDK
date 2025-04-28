@@ -365,4 +365,24 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		return sendRequestAsync(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class, (r, h) -> fallbackService.get().claimFeatureAdoptionCouponsAsync(r, h), asyncHandler);
 	}
 	
+    	
+	public GetCouponInfoResponse getCouponInfo(GetCouponInfoRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
+		GetCouponInfoResponse response = sendRequest(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getCouponInfo(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetCouponInfoResponse> getCouponInfoAsync(GetCouponInfoRequest request) {
+		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, (r, h) -> fallbackService.get().getCouponInfoAsync(r, h), null);
+	}
+
+	public Future<?> getCouponInfoAsync(GetCouponInfoRequest request, AsyncHandler<GetCouponInfoResponse> asyncHandler) {
+		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, (r, h) -> fallbackService.get().getCouponInfoAsync(r, h), asyncHandler);
+	}
+	
     }

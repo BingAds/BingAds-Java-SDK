@@ -479,4 +479,45 @@ public interface ICustomerBillingService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.GetCouponInfoResponse>
+     */
+    @WebMethod(operationName = "GetCouponInfo", action = "GetCouponInfo")
+    public Response<GetCouponInfoResponse> getCouponInfoAsync(
+        @WebParam(name = "GetCouponInfoRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetCouponInfoRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCouponInfo", action = "GetCouponInfo")
+    public Future<?> getCouponInfoAsync(
+        @WebParam(name = "GetCouponInfoRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetCouponInfoRequest parameters,
+        @WebParam(name = "GetCouponInfoResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCouponInfoResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.GetCouponInfoResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "GetCouponInfo", action = "GetCouponInfo")
+    @WebResult(name = "GetCouponInfoResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public GetCouponInfoResponse getCouponInfo(
+        @WebParam(name = "GetCouponInfoRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetCouponInfoRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

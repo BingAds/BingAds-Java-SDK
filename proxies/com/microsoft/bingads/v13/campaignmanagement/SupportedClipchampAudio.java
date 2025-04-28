@@ -8,12 +8,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for GetSupportedClipchampAudio complex type.
+ * <p>Java class for SupportedClipchampAudio complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="GetSupportedClipchampAudio">
+ * <complexType name="SupportedClipchampAudio">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
@@ -29,12 +29,12 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetSupportedClipchampAudio", propOrder = {
+@XmlType(name = "SupportedClipchampAudio", propOrder = {
     "audioName",
     "category",
     "url"
 })
-public class GetSupportedClipchampAudio {
+public class SupportedClipchampAudio {
 
     @XmlElement(name = "AudioName", nillable = true)
     protected String audioName;

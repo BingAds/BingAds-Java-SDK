@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Dimension" type="{https://bingads.microsoft.com/CampaignManagement/v13}ProductCondition" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="IsExcluded" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ListingGroupPath" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="ParentListingGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -39,6 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "dimension",
     "id",
     "isExcluded",
+    "listingGroupPath",
     "parentListingGroupId"
 })
 public class AssetGroupListingGroup {
@@ -54,6 +56,8 @@ public class AssetGroupListingGroup {
     protected Long id;
     @XmlElement(name = "IsExcluded")
     protected Boolean isExcluded;
+    @XmlElement(name = "ListingGroupPath", nillable = true)
+    protected String listingGroupPath;
     @XmlElement(name = "ParentListingGroupId", nillable = true)
     protected Long parentListingGroupId;
 
@@ -175,6 +179,30 @@ public class AssetGroupListingGroup {
      */
     public void setIsExcluded(Boolean value) {
         this.isExcluded = value;
+    }
+
+    /**
+     * Gets the value of the listingGroupPath property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getListingGroupPath() {
+        return listingGroupPath;
+    }
+
+    /**
+     * Sets the value of the listingGroupPath property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setListingGroupPath(String value) {
+        this.listingGroupPath = value;
     }
 
     /**

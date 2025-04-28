@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -20,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="AssetGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="AssetGroupListingGroupIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroupListingGroupAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,7 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "assetGroupId",
-    "assetGroupListingGroupIds"
+    "assetGroupListingGroupIds",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetAssetGroupListingGroupsByIdsRequest")
 public class GetAssetGroupListingGroupsByIdsRequest {
@@ -40,6 +44,9 @@ public class GetAssetGroupListingGroupsByIdsRequest {
     protected Long assetGroupId;
     @XmlElement(name = "AssetGroupListingGroupIds", nillable = true)
     protected ArrayOflong assetGroupListingGroupIds;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter17 .class)
+    protected Collection<AssetGroupListingGroupAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the assetGroupId property.
@@ -87,6 +94,30 @@ public class GetAssetGroupListingGroupsByIdsRequest {
      */
     public void setAssetGroupListingGroupIds(ArrayOflong value) {
         this.assetGroupListingGroupIds = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<AssetGroupListingGroupAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<AssetGroupListingGroupAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

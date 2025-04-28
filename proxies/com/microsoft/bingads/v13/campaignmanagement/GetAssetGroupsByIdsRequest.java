@@ -45,7 +45,7 @@ public class GetAssetGroupsByIdsRequest {
     @XmlElement(name = "AssetGroupIds", nillable = true)
     protected ArrayOflong assetGroupIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Collection<AssetGroupAdditionalField> returnAdditionalFields;
 
     /**

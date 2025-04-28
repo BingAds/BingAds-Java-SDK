@@ -388,6 +388,18 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AdRecommendationCustomizedProperty> getAdRecommendationCustomizedProperties();
+
+            
+	@JsonValue
+	List<AdRecommendationImageAssetProperty> getAdRecommendationImageAssetProperties();
+
+            
+	@JsonValue
+	List<AdRecommendationTextAssetProperty> getAdRecommendationTextAssetProperties();
+
+            
+	@JsonValue
 	List<AdRecommendationVideoSuggestion> getAdRecommendationVideoSuggestions();
 
             
@@ -396,7 +408,19 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<AdRecommendationImageRefineOperation> getAdRecommendationImageRefineOperations();
+
+            
+	@JsonValue
 	List<AdRecommendationTextRefineResult> getAdRecommendationTextRefineResults();
+
+            
+	@JsonValue
+	List<AdRecommendationMediaRefineResult> getAdRecommendationMediaRefineResults();
+
+            
+	@JsonValue
+	List<AdRecommendationRefinedMedia> getAdRecommendationRefinedMedias();
 
             
 	@JsonValue
@@ -444,7 +468,35 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<GetSupportedClipchampAudio> getGetSupportedClipchampAudios();
+	List<SupportedClipchampAudio> getSupportedClipchampAudios();
+
+            
+	@JsonValue
+	List<SupportedFont> getSupportedFonts();
+
+            
+	@JsonValue
+	List<HealthCheckEntity> getHealthCheckEntities();
+
+            
+	@JsonValue
+	List<HealthCheckMetadata> getHealthCheckMetadatas();
+
+            
+	@JsonValue
+	List<HealthCheckActionLinkMetadata> getHealthCheckActionLinkMetadatas();
+
+            
+	@JsonValue
+	List<HealthCheckColumnMetadata> getHealthCheckColumnMetadatas();
+
+            
+	@JsonValue
+	List<HealthCheckData> getHealthCheckDatas();
+
+            
+	@JsonValue
+	List<HealthCheckError> getHealthCheckErrors();
 
             
 	@JsonValue

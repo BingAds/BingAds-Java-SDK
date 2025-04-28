@@ -3596,6 +3596,26 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	}
 	
     	
+	public GetBrandKitsByIdsResponse getBrandKitsByIds(GetBrandKitsByIdsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetBrandKitsByIdsResponse response = sendRequest(request, "/BrandKits/QueryByIds", HttpPost, GetBrandKitsByIdsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getBrandKitsByIds(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetBrandKitsByIdsResponse> getBrandKitsByIdsAsync(GetBrandKitsByIdsRequest request) {
+		return sendRequestAsync(request, "/BrandKits/QueryByIds", HttpPost, GetBrandKitsByIdsResponse.class, (r, h) -> fallbackService.get().getBrandKitsByIdsAsync(r, h), null);
+	}
+
+	public Future<?> getBrandKitsByIdsAsync(GetBrandKitsByIdsRequest request, AsyncHandler<GetBrandKitsByIdsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BrandKits/QueryByIds", HttpPost, GetBrandKitsByIdsResponse.class, (r, h) -> fallbackService.get().getBrandKitsByIdsAsync(r, h), asyncHandler);
+	}
+	
+    	
 	public GetClipchampTemplatesResponse getClipchampTemplates(GetClipchampTemplatesRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		GetClipchampTemplatesResponse response = sendRequest(request, "/ClipchampTemplates/Query", HttpPost, GetClipchampTemplatesResponse.class);
@@ -3633,6 +3653,46 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 
 	public Future<?> getSupportedClipchampAudioAsync(GetSupportedClipchampAudioRequest request, AsyncHandler<GetSupportedClipchampAudioResponse> asyncHandler) {
 		return sendRequestAsync(request, "/SupportedClipchampAudio/Query", HttpPost, GetSupportedClipchampAudioResponse.class, (r, h) -> fallbackService.get().getSupportedClipchampAudioAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetSupportedFontsResponse getSupportedFonts(GetSupportedFontsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetSupportedFontsResponse response = sendRequest(request, "/SupportedFonts/Query", HttpPost, GetSupportedFontsResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getSupportedFonts(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetSupportedFontsResponse> getSupportedFontsAsync(GetSupportedFontsRequest request) {
+		return sendRequestAsync(request, "/SupportedFonts/Query", HttpPost, GetSupportedFontsResponse.class, (r, h) -> fallbackService.get().getSupportedFontsAsync(r, h), null);
+	}
+
+	public Future<?> getSupportedFontsAsync(GetSupportedFontsRequest request, AsyncHandler<GetSupportedFontsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/SupportedFonts/Query", HttpPost, GetSupportedFontsResponse.class, (r, h) -> fallbackService.get().getSupportedFontsAsync(r, h), asyncHandler);
+	}
+	
+    	
+	public GetHealthCheckResponse getHealthCheck(GetHealthCheckRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetHealthCheckResponse response = sendRequest(request, "/HealthCheck/Query", HttpPost, GetHealthCheckResponse.class);
+		
+		if (response == null) {
+			response = fallbackService.get().getHealthCheck(request);
+		}
+		
+		return response;
+	}
+
+    public Response<GetHealthCheckResponse> getHealthCheckAsync(GetHealthCheckRequest request) {
+		return sendRequestAsync(request, "/HealthCheck/Query", HttpPost, GetHealthCheckResponse.class, (r, h) -> fallbackService.get().getHealthCheckAsync(r, h), null);
+	}
+
+	public Future<?> getHealthCheckAsync(GetHealthCheckRequest request, AsyncHandler<GetHealthCheckResponse> asyncHandler) {
+		return sendRequestAsync(request, "/HealthCheck/Query", HttpPost, GetHealthCheckResponse.class, (r, h) -> fallbackService.get().getHealthCheckAsync(r, h), asyncHandler);
 	}
 	
     }

@@ -56,6 +56,7 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfCategoryInsightsReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfCategoryClickCoverageReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfCombinationPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfAppsPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBatchError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfOperationError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)

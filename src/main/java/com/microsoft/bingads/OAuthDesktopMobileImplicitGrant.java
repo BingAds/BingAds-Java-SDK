@@ -18,8 +18,12 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * 
      * @see <a href="https://tools.ietf.org/html/rfc6749#section-4.1">https://tools.ietf.org/html/rfc6749#section-4.1</a>
      */
+    public OAuthDesktopMobileImplicitGrant(String clientId, boolean useMsaProd) {
+        this(clientId, defaultEnv, useMsaProd);
+    }
+    
     public OAuthDesktopMobileImplicitGrant(String clientId) {
-        this(clientId, defaultEnv);
+        this(clientId, defaultEnv, true);
     }
     
     /**
@@ -33,10 +37,13 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
-    public OAuthDesktopMobileImplicitGrant(String clientId, ApiEnvironment env) {
-        this(clientId, null, env, OAuthScope.MSADS_MANAGE);
+    public OAuthDesktopMobileImplicitGrant(String clientId, ApiEnvironment env, boolean useMsaProd) {
+        this(clientId, null, env, OAuthScope.MSADS_MANAGE, useMsaProd);
     }
-
+    
+    public OAuthDesktopMobileImplicitGrant(String clientId, ApiEnvironment env) {
+        this(clientId, null, env, OAuthScope.MSADS_MANAGE, true);
+    }
 
     /**
      * Creates new instance of the class that can be used in the
@@ -49,10 +56,14 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
-    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens) {
-        this(clientId, oauthTokens, defaultEnv);
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, boolean useMsaProd) {
+        this(clientId, oauthTokens, defaultEnv, useMsaProd);
     }   
     
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens) {
+        this(clientId, oauthTokens, defaultEnv, true);
+    }
+    
     /**
      * Creates new instance of the class that can be used in the
      * {@link AuthorizationData} object. See this page for additional
@@ -65,11 +76,19 @@ public class OAuthDesktopMobileImplicitGrant extends OAuthImplicitGrant {
      * 
      * @see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1">http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-3.1</a>
      */
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, boolean useMsaProd) {
+        this(clientId, oauthTokens, env, OAuthScope.MSADS_MANAGE, useMsaProd);
+    }
+    
     public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env) {
-        this(clientId, oauthTokens, env, OAuthScope.MSADS_MANAGE);
+        this(clientId, oauthTokens, env, OAuthScope.MSADS_MANAGE, true);
     }
 
+    public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env, (env == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD : oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope, useMsaProd);
+    }
+    
     public OAuthDesktopMobileImplicitGrant(String clientId, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
-        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env,  oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope);
+        super(clientId, OAuthEndpointHelper.getOauthEndpoint(env, env == ApiEnvironment.SANDBOX ? OAuthScope.MSA_PROD : oAuthScope).getDesktopRedirectUrl(), oauthTokens, env, oAuthScope, true);
     }
 }

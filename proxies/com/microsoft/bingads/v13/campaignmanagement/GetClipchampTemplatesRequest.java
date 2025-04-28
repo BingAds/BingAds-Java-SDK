@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Mock" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="MaxAdsCount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="TemplateFilter" type="{https://bingads.microsoft.com/CampaignManagement/v13}VideoTemplateFilter" minOccurs="0"/>
+ *         <element name="Locale" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,17 +34,20 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "mock",
     "maxAdsCount",
-    "templateFilter"
+    "templateFilter",
+    "locale"
 })
 @XmlRootElement(name = "GetClipchampTemplatesRequest")
 public class GetClipchampTemplatesRequest {
 
-    @XmlElement(name = "Mock")
+    @XmlElement(name = "Mock", nillable = true)
     protected Boolean mock;
-    @XmlElement(name = "MaxAdsCount")
+    @XmlElement(name = "MaxAdsCount", nillable = true)
     protected Integer maxAdsCount;
     @XmlElement(name = "TemplateFilter", nillable = true)
     protected VideoTemplateFilter templateFilter;
+    @XmlElement(name = "Locale", nillable = true)
+    protected String locale;
 
     /**
      * Gets the value of the mock property.
@@ -115,6 +119,30 @@ public class GetClipchampTemplatesRequest {
      */
     public void setTemplateFilter(VideoTemplateFilter value) {
         this.templateFilter = value;
+    }
+
+    /**
+     * Gets the value of the locale property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLocale() {
+        return locale;
+    }
+
+    /**
+     * Sets the value of the locale property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLocale(String value) {
+        this.locale = value;
     }
 
 }

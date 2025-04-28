@@ -7123,6 +7123,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetBrandKitsByIdsResponse>
+     */
+    @WebMethod(operationName = "GetBrandKitsByIds", action = "GetBrandKitsByIds")
+    public Response<GetBrandKitsByIdsResponse> getBrandKitsByIdsAsync(
+        @WebParam(name = "GetBrandKitsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetBrandKitsByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetBrandKitsByIds", action = "GetBrandKitsByIds")
+    public Future<?> getBrandKitsByIdsAsync(
+        @WebParam(name = "GetBrandKitsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetBrandKitsByIdsRequest parameters,
+        @WebParam(name = "GetBrandKitsByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetBrandKitsByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetBrandKitsByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetBrandKitsByIds", action = "GetBrandKitsByIds")
+    @WebResult(name = "GetBrandKitsByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetBrandKitsByIdsResponse getBrandKitsByIds(
+        @WebParam(name = "GetBrandKitsByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetBrandKitsByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetClipchampTemplatesResponse>
      */
     @WebMethod(operationName = "GetClipchampTemplates", action = "GetClipchampTemplates")
@@ -7198,6 +7239,88 @@ public interface ICampaignManagementService {
     public GetSupportedClipchampAudioResponse getSupportedClipchampAudio(
         @WebParam(name = "GetSupportedClipchampAudioRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         GetSupportedClipchampAudioRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetSupportedFontsResponse>
+     */
+    @WebMethod(operationName = "GetSupportedFonts", action = "GetSupportedFonts")
+    public Response<GetSupportedFontsResponse> getSupportedFontsAsync(
+        @WebParam(name = "GetSupportedFontsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSupportedFontsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetSupportedFonts", action = "GetSupportedFonts")
+    public Future<?> getSupportedFontsAsync(
+        @WebParam(name = "GetSupportedFontsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSupportedFontsRequest parameters,
+        @WebParam(name = "GetSupportedFontsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetSupportedFontsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetSupportedFontsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetSupportedFonts", action = "GetSupportedFonts")
+    @WebResult(name = "GetSupportedFontsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetSupportedFontsResponse getSupportedFonts(
+        @WebParam(name = "GetSupportedFontsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetSupportedFontsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetHealthCheckResponse>
+     */
+    @WebMethod(operationName = "GetHealthCheck", action = "GetHealthCheck")
+    public Response<GetHealthCheckResponse> getHealthCheckAsync(
+        @WebParam(name = "GetHealthCheckRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHealthCheckRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetHealthCheck", action = "GetHealthCheck")
+    public Future<?> getHealthCheckAsync(
+        @WebParam(name = "GetHealthCheckRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHealthCheckRequest parameters,
+        @WebParam(name = "GetHealthCheckResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetHealthCheckResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetHealthCheckResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetHealthCheck", action = "GetHealthCheck")
+    @WebResult(name = "GetHealthCheckResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetHealthCheckResponse getHealthCheck(
+        @WebParam(name = "GetHealthCheckRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHealthCheckRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
