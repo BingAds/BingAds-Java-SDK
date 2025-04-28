@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="ResponsiveAd" type="{https://bingads.microsoft.com/CampaignManagement/v13}ResponsiveAd" minOccurs="0"/>
  *         <element name="ImageSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationImageSuggestion" minOccurs="0"/>
  *         <element name="VideoSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationVideoSuggestion" minOccurs="0"/>
+ *         <element name="PromptBrandWarning" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,7 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "responsiveAd",
     "imageSuggestions",
-    "videoSuggestions"
+    "videoSuggestions",
+    "promptBrandWarning"
 })
 @XmlRootElement(name = "CreateResponsiveAdRecommendationResponse")
 public class CreateResponsiveAdRecommendationResponse {
@@ -44,6 +46,8 @@ public class CreateResponsiveAdRecommendationResponse {
     protected ArrayOfAdRecommendationImageSuggestion imageSuggestions;
     @XmlElement(name = "VideoSuggestions", nillable = true)
     protected ArrayOfAdRecommendationVideoSuggestion videoSuggestions;
+    @XmlElement(name = "PromptBrandWarning", nillable = true)
+    protected String promptBrandWarning;
 
     /**
      * Gets the value of the responsiveAd property.
@@ -115,6 +119,30 @@ public class CreateResponsiveAdRecommendationResponse {
      */
     public void setVideoSuggestions(ArrayOfAdRecommendationVideoSuggestion value) {
         this.videoSuggestions = value;
+    }
+
+    /**
+     * Gets the value of the promptBrandWarning property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPromptBrandWarning() {
+        return promptBrandWarning;
+    }
+
+    /**
+     * Sets the value of the promptBrandWarning property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPromptBrandWarning(String value) {
+        this.promptBrandWarning = value;
     }
 
 }

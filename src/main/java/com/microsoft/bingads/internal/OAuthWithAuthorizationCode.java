@@ -32,7 +32,6 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     private URL redirectionUri;
     
     private OAuthScope oAuthScope;
-    
 
     private NewOAuthTokensReceivedListener newTokensListener;
 
@@ -49,7 +48,11 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     }
     
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope) {
-        this(clientId, clientSecret, redirectionUri, env, oAuthScope);
+    	this(clientId, clientSecret, redirectionUri, refreshToken, env, oAuthScope, true);
+    }
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, String refreshToken, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
+        this(clientId, clientSecret, redirectionUri, env, oAuthScope, useMsaProd);
 
         if (refreshToken == null) {
             throw new NullPointerException("refreshToken must not be null");
@@ -59,8 +62,12 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     }
     
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
+    	this(clientId, clientSecret, redirectionUri, oauthTokens, env, oAuthScope, true);
+    }
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
 
-        this(clientId, clientSecret, redirectionUri, env, oAuthScope);
+        this(clientId, clientSecret, redirectionUri, env, oAuthScope, useMsaProd);
         if(oauthTokens == null || oauthTokens.getRefreshToken() == null) {
         	throw new NullPointerException("OAuth tokens must not be null");     	
         }
@@ -69,21 +76,29 @@ public abstract class OAuthWithAuthorizationCode extends OAuthAuthorization {
     }
     
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, OAuthScope oAuthScope) {
+    	this(clientId, clientSecret, redirectionUri, env, oAuthScope, true);
+    }
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = new UriOAuthService(environment);
-        this.oAuthScope = oAuthScope;
+        this.oAuthScope = (environment == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD: oAuthScope;
     }
     
     protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env, OAuthScope oAuthScope) {
+    	this(clientId, clientSecret, redirectionUri, oauthService, env, oAuthScope, true);
+    }
+    
+    protected OAuthWithAuthorizationCode(String clientId, String clientSecret, URL redirectionUri, OAuthService oauthService, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
         super(env);
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectionUri = redirectionUri;
         this.oauthService = oauthService;
-        this.oAuthScope = oAuthScope;
+        this.oAuthScope = (environment == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD: oAuthScope;
     }
 
     /**

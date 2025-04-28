@@ -4,6 +4,7 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -18,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}GenericEntityStatus" minOccurs="0"/>
  *         <element name="TargetCondition1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TargetCondition2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TargetCondition3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -38,6 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AssetGroupUrlTarget", propOrder = {
     "id",
+    "status",
     "targetCondition1",
     "targetCondition2",
     "targetCondition3",
@@ -52,6 +55,9 @@ public class AssetGroupUrlTarget {
 
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "Status")
+    @XmlSchemaType(name = "string")
+    protected GenericEntityStatus status;
     @XmlElement(name = "TargetCondition1", nillable = true)
     protected String targetCondition1;
     @XmlElement(name = "TargetCondition2", nillable = true)
@@ -93,6 +99,30 @@ public class AssetGroupUrlTarget {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the status property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GenericEntityStatus }
+     *     
+     */
+    public GenericEntityStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the value of the status property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link GenericEntityStatus }
+     *     
+     */
+    public void setStatus(GenericEntityStatus value) {
+        this.status = value;
     }
 
     /**

@@ -55,6 +55,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<CouponInfoData> getCouponInfoDatas();
+
+            
+	@JsonValue
 	List<AdApiError> getAdApiErrors();
 
             

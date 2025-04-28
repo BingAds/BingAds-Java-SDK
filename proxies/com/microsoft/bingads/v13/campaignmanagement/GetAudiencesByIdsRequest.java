@@ -46,7 +46,7 @@ public class GetAudiencesByIdsRequest {
     @XmlJavaTypeAdapter(Adapter15 .class)
     protected Collection<AudienceType> type;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter22 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     protected Collection<AudienceAdditionalField> returnAdditionalFields;
 
     /**

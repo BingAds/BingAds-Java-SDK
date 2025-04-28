@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="Data" type="{https://bingads.microsoft.com/CampaignManagement/v13}GetSupportedClipchampAudioData" minOccurs="0"/>
+ *         <element name="Data" type="{https://bingads.microsoft.com/CampaignManagement/v13}SupportedClipchampAudioData" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,17 +35,17 @@ import jakarta.xml.bind.annotation.XmlType;
 public class GetSupportedClipchampAudioResponse {
 
     @XmlElement(name = "Data", nillable = true)
-    protected GetSupportedClipchampAudioData data;
+    protected SupportedClipchampAudioData data;
 
     /**
      * Gets the value of the data property.
      * 
      * @return
      *     possible object is
-     *     {@link GetSupportedClipchampAudioData }
+     *     {@link SupportedClipchampAudioData }
      *     
      */
-    public GetSupportedClipchampAudioData getData() {
+    public SupportedClipchampAudioData getData() {
         return data;
     }
 
@@ -54,10 +54,10 @@ public class GetSupportedClipchampAudioResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link GetSupportedClipchampAudioData }
+     *     {@link SupportedClipchampAudioData }
      *     
      */
-    public void setData(GetSupportedClipchampAudioData value) {
+    public void setData(SupportedClipchampAudioData value) {
         this.data = value;
     }
 

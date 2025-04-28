@@ -75,6 +75,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(CategoryInsightsReportColumn.class, CategoryInsightsReportColumnMixIn.class)
 				.addMixIn(CategoryClickCoverageReportColumn.class, CategoryClickCoverageReportColumnMixIn.class)
 				.addMixIn(CombinationPerformanceReportColumn.class, CombinationPerformanceReportColumnMixIn.class)
+				.addMixIn(AppsPerformanceReportColumn.class, AppsPerformanceReportColumnMixIn.class)
 				.addMixIn(ReportRequestStatusType.class, ReportRequestStatusTypeMixIn.class)
 				;
 	}

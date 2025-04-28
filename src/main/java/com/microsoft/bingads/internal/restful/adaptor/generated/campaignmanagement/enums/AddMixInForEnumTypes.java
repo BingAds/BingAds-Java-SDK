@@ -78,6 +78,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(AdGroupCriterionEditorialStatus.class, AdGroupCriterionEditorialStatusMixIn.class)
 				.addMixIn(ItemAction.class, ItemActionMixIn.class)
 				.addMixIn(AssetGroupListingType.class, AssetGroupListingTypeMixIn.class)
+				.addMixIn(AssetGroupListingGroupAdditionalField.class, AssetGroupListingGroupAdditionalFieldMixIn.class)
 				.addMixIn(BMCStoreAdditionalField.class, BMCStoreAdditionalFieldMixIn.class)
 				.addMixIn(BMCStoreSubType.class, BMCStoreSubTypeMixIn.class)
 				.addMixIn(EntityScope.class, EntityScopeMixIn.class)
@@ -85,6 +86,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(CampaignCriterionType.class, CampaignCriterionTypeMixIn.class)
 				.addMixIn(AudienceGroupDimensionType.class, AudienceGroupDimensionTypeMixIn.class)
 				.addMixIn(AudienceGroupAdditionalField.class, AudienceGroupAdditionalFieldMixIn.class)
+				.addMixIn(GenericEntityStatus.class, GenericEntityStatusMixIn.class)
 				.addMixIn(AssetGroupEditorialStatus.class, AssetGroupEditorialStatusMixIn.class)
 				.addMixIn(AssetGroupStatus.class, AssetGroupStatusMixIn.class)
 				.addMixIn(AssetGroupAdditionalField.class, AssetGroupAdditionalFieldMixIn.class)
@@ -112,12 +114,16 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ImportEntityType.class, ImportEntityTypeMixIn.class)
 				.addMixIn(DeviceType.class, DeviceTypeMixIn.class)
 				.addMixIn(AdRecommendationTextTone.class, AdRecommendationTextToneMixIn.class)
-				.addMixIn(AdRecommendationVideoType.class, AdRecommendationVideoTypeMixIn.class)
+				.addMixIn(AdRecommendationAdditionalField.class, AdRecommendationAdditionalFieldMixIn.class)
+				.addMixIn(AdRecommendationImageField.class, AdRecommendationImageFieldMixIn.class)
 				.addMixIn(AdRecommendationTextField.class, AdRecommendationTextFieldMixIn.class)
+				.addMixIn(AdRecommendationVideoType.class, AdRecommendationVideoTypeMixIn.class)
+				.addMixIn(AdRecommendationImageRefineType.class, AdRecommendationImageRefineTypeMixIn.class)
 				.addMixIn(LocationType.class, LocationTypeMixIn.class)
 				.addMixIn(ConversionValueRuleOperator.class, ConversionValueRuleOperatorMixIn.class)
 				.addMixIn(ConversionValueRuleStatus.class, ConversionValueRuleStatusMixIn.class)
 				.addMixIn(FontTextAssetType.class, FontTextAssetTypeMixIn.class)
+				.addMixIn(BrandKitAdditionalField.class, BrandKitAdditionalFieldMixIn.class)
 				;
 	}
 }

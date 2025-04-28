@@ -47,7 +47,7 @@ public class GetCampaignCriterionsByIdsRequest {
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     protected Collection<CampaignCriterionType> criterionType;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter14 .class)

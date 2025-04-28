@@ -16,6 +16,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Headline"/>
  *     <enumeration value="LongHeadline"/>
  *     <enumeration value="Description"/>
+ *     <enumeration value="CallToAction"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -30,7 +31,9 @@ public enum AdRecommendationTextField {
     @XmlEnumValue("LongHeadline")
     LONG_HEADLINE("LongHeadline"),
     @XmlEnumValue("Description")
-    DESCRIPTION("Description");
+    DESCRIPTION("Description"),
+    @XmlEnumValue("CallToAction")
+    CALL_TO_ACTION("CallToAction");
     private final String value;
 
     AdRecommendationTextField(String v) {

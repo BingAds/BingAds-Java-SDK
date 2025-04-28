@@ -56,6 +56,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Tagalog"/>
  *     <enumeration value="Vietnamese"/>
  *     <enumeration value="Hindi"/>
+ *     <enumeration value="Korean"/>
  *     <enumeration value="All"/>
  *   </restriction>
  * </simpleType>
@@ -152,6 +153,8 @@ public enum LanguageName {
     VIETNAMESE("Vietnamese"),
     @XmlEnumValue("Hindi")
     HINDI("Hindi"),
+    @XmlEnumValue("Korean")
+    KOREAN("Korean"),
     @XmlEnumValue("All")
     ALL("All");
     private final String value;

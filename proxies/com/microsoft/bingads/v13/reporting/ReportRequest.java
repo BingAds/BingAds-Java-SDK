@@ -86,7 +86,8 @@ import jakarta.xml.bind.annotation.XmlType;
     AssetPerformanceReportRequest.class,
     CategoryInsightsReportRequest.class,
     CategoryClickCoverageReportRequest.class,
-    CombinationPerformanceReportRequest.class
+    CombinationPerformanceReportRequest.class,
+    AppsPerformanceReportRequest.class
 })
 public class ReportRequest {
     protected String type;

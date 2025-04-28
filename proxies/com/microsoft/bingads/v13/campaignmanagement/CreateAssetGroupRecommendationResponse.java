@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="AssetGroup" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroup" minOccurs="0"/>
  *         <element name="ImageSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationImageSuggestion" minOccurs="0"/>
+ *         <element name="PromptBrandWarning" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,7 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "assetGroup",
-    "imageSuggestions"
+    "imageSuggestions",
+    "promptBrandWarning"
 })
 @XmlRootElement(name = "CreateAssetGroupRecommendationResponse")
 public class CreateAssetGroupRecommendationResponse {
@@ -40,6 +42,8 @@ public class CreateAssetGroupRecommendationResponse {
     protected AssetGroup assetGroup;
     @XmlElement(name = "ImageSuggestions", nillable = true)
     protected ArrayOfAdRecommendationImageSuggestion imageSuggestions;
+    @XmlElement(name = "PromptBrandWarning", nillable = true)
+    protected String promptBrandWarning;
 
     /**
      * Gets the value of the assetGroup property.
@@ -87,6 +91,30 @@ public class CreateAssetGroupRecommendationResponse {
      */
     public void setImageSuggestions(ArrayOfAdRecommendationImageSuggestion value) {
         this.imageSuggestions = value;
+    }
+
+    /**
+     * Gets the value of the promptBrandWarning property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPromptBrandWarning() {
+        return promptBrandWarning;
+    }
+
+    /**
+     * Sets the value of the promptBrandWarning property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPromptBrandWarning(String value) {
+        this.promptBrandWarning = value;
     }
 
 }

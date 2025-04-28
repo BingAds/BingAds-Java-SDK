@@ -41,6 +41,10 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
     private final OAuthScope oAuthScope;
     
     protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope) {
+    	this(clientId, redirectionUri, oauthTokens, env, oAuthScope, true);
+    }
+    
+    protected OAuthImplicitGrant(String clientId, URL redirectionUri, OAuthTokens oauthTokens, ApiEnvironment env, OAuthScope oAuthScope, boolean useMsaProd) {
         super(env);
         
         this.clientId = clientId;
@@ -49,7 +53,7 @@ public abstract class OAuthImplicitGrant extends OAuthAuthorization {
         
         this.oAuthTokens = oauthTokens;
         
-        this.oAuthScope = oAuthScope;
+        this.oAuthScope = (environment == ApiEnvironment.SANDBOX && useMsaProd) ? OAuthScope.MSA_PROD: oAuthScope;
     }
     
     /**

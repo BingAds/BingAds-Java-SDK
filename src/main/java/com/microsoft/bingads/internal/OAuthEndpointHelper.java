@@ -51,11 +51,24 @@ public class OAuthEndpointHelper {
                 "https://login.windows-ppe.net/consumers/oauth2/v2.0/authorize?scope=https://api.ads.microsoft.com/msads.manage offline_access&%s",
                 "https://api.ads.microsoft.com/msads.manage offline_access"
                 ));
+        
+        endpointUrls.put(OAuthEndpointType.MsaProd, new OAuthEndpoints(
+                "https://login.microsoftonline.com/common/oauth2/nativeclient",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://si.ads.microsoft.com/msads.manage offline_access&%s",
+                "https://si.ads.microsoft.com/msads.manage offline_access"
+                ));
     }
     
     public static OAuthEndpoints getOauthEndpoint(ApiEnvironment env, OAuthScope oAuthScope) {
-    	if (ApiEnvironment.SANDBOX == env)
-    		return endpointUrls.get(OAuthEndpointType.Sandbox);
+    	if (ApiEnvironment.SANDBOX == env) {
+    		if (oAuthScope == OAuthScope.MSA_PROD) {
+    			return endpointUrls.get(OAuthEndpointType.MsaProd);
+    		} 
+    		else {
+    			return endpointUrls.get(OAuthEndpointType.Sandbox);
+    		}
+    	}
     	
     	switch (oAuthScope) {
     	case ADS_MANAGE : return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2);

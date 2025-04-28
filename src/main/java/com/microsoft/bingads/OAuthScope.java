@@ -8,4 +8,5 @@ public enum OAuthScope {
     MSADS_MANAGE,
     BINGADS_MANAGE,
     ADS_MANAGE,
+    MSA_PROD
 }

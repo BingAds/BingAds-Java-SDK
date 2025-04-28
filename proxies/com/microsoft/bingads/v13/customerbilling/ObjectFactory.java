@@ -66,6 +66,8 @@ public class ObjectFactory {
     private static final QName _KeyValueEntityOflongstring_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOflongstring");
     private static final QName _ArrayOfKeyValueEntityOflongdateTime_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfKeyValueEntityOflongdateTime");
     private static final QName _KeyValueEntityOflongdateTime_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOflongdateTime");
+    private static final QName _ArrayOfCouponInfoData_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfCouponInfoData");
+    private static final QName _CouponInfoData_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponInfoData");
     private static final QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private static final QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private static final QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -627,6 +629,36 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetCouponInfoRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetCouponInfoRequest }
+     */
+    public GetCouponInfoRequest createGetCouponInfoRequest() {
+        return new GetCouponInfoRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCouponInfoResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetCouponInfoResponse }
+     */
+    public GetCouponInfoResponse createGetCouponInfoResponse() {
+        return new GetCouponInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCouponInfoData }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCouponInfoData }
+     */
+    public ArrayOfCouponInfoData createArrayOfCouponInfoData() {
+        return new ArrayOfCouponInfoData();
+    }
+
+    /**
      * Create an instance of {@link BillingDocumentInfo }
      * 
      * @return
@@ -724,6 +756,16 @@ public class ObjectFactory {
      */
     public KeyValueEntityOflongdateTime createKeyValueEntityOflongdateTime() {
         return new KeyValueEntityOflongdateTime();
+    }
+
+    /**
+     * Create an instance of {@link CouponInfoData }
+     * 
+     * @return
+     *     the new instance of {@link CouponInfoData }
+     */
+    public CouponInfoData createCouponInfoData() {
+        return new CouponInfoData();
     }
 
     /**
@@ -1310,6 +1352,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "KeyValueEntityOflongdateTime")
     public JAXBElement<KeyValueEntityOflongdateTime> createKeyValueEntityOflongdateTime(KeyValueEntityOflongdateTime value) {
         return new JAXBElement<>(_KeyValueEntityOflongdateTime_QNAME, KeyValueEntityOflongdateTime.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCouponInfoData }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCouponInfoData }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfCouponInfoData")
+    public JAXBElement<ArrayOfCouponInfoData> createArrayOfCouponInfoData(ArrayOfCouponInfoData value) {
+        return new JAXBElement<>(_ArrayOfCouponInfoData_QNAME, ArrayOfCouponInfoData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CouponInfoData }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CouponInfoData }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "CouponInfoData")
+    public JAXBElement<CouponInfoData> createCouponInfoData(CouponInfoData value) {
+        return new JAXBElement<>(_CouponInfoData_QNAME, CouponInfoData.class, null, value);
     }
 
     /**

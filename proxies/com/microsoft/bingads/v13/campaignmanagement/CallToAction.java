@@ -102,6 +102,14 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="SeeModels"/>
  *     <enumeration value="SeeOffers"/>
  *     <enumeration value="ViewDemo"/>
+ *     <enumeration value="CustomText"/>
+ *     <enumeration value="Discover"/>
+ *     <enumeration value="Dismiss"/>
+ *     <enumeration value="Apply"/>
+ *     <enumeration value="ViewQuote"/>
+ *     <enumeration value="Join"/>
+ *     <enumeration value="Attend"/>
+ *     <enumeration value="RequestDemo"/>
  *     <enumeration value="Automated"/>
  *   </restriction>
  * </simpleType>
@@ -290,6 +298,22 @@ public enum CallToAction {
     SEE_OFFERS("SeeOffers"),
     @XmlEnumValue("ViewDemo")
     VIEW_DEMO("ViewDemo"),
+    @XmlEnumValue("CustomText")
+    CUSTOM_TEXT("CustomText"),
+    @XmlEnumValue("Discover")
+    DISCOVER("Discover"),
+    @XmlEnumValue("Dismiss")
+    DISMISS("Dismiss"),
+    @XmlEnumValue("Apply")
+    APPLY("Apply"),
+    @XmlEnumValue("ViewQuote")
+    VIEW_QUOTE("ViewQuote"),
+    @XmlEnumValue("Join")
+    JOIN("Join"),
+    @XmlEnumValue("Attend")
+    ATTEND("Attend"),
+    @XmlEnumValue("RequestDemo")
+    REQUEST_DEMO("RequestDemo"),
     @XmlEnumValue("Automated")
     AUTOMATED("Automated");
     private final String value;

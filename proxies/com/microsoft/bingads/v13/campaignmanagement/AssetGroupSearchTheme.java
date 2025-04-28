@@ -4,6 +4,7 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -19,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="SearchTheme" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}GenericEntityStatus" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -30,7 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AssetGroupSearchTheme", propOrder = {
     "id",
-    "searchTheme"
+    "searchTheme",
+    "status"
 })
 public class AssetGroupSearchTheme {
 
@@ -38,6 +41,9 @@ public class AssetGroupSearchTheme {
     protected Long id;
     @XmlElement(name = "SearchTheme", nillable = true)
     protected String searchTheme;
+    @XmlElement(name = "Status")
+    @XmlSchemaType(name = "string")
+    protected GenericEntityStatus status;
 
     /**
      * Gets the value of the id property.
@@ -85,6 +91,30 @@ public class AssetGroupSearchTheme {
      */
     public void setSearchTheme(String value) {
         this.searchTheme = value;
+    }
+
+    /**
+     * Gets the value of the status property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GenericEntityStatus }
+     *     
+     */
+    public GenericEntityStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the value of the status property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link GenericEntityStatus }
+     *     
+     */
+    public void setStatus(GenericEntityStatus value) {
+        this.status = value;
     }
 
 }

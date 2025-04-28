@@ -227,6 +227,10 @@ public class ObjectFactory {
     private static final QName _ArrayOfCombinationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfCombinationPerformanceReportColumn");
     private static final QName _CombinationPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CombinationPerformanceReportColumn");
     private static final QName _CombinationPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CombinationPerformanceReportFilter");
+    private static final QName _AppsPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AppsPerformanceReportRequest");
+    private static final QName _ArrayOfAppsPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAppsPerformanceReportColumn");
+    private static final QName _AppsPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AppsPerformanceReportColumn");
+    private static final QName _AppsPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AppsPerformanceReportFilter");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CustomerAccountId");
@@ -1766,6 +1770,36 @@ public class ObjectFactory {
      */
     public CombinationPerformanceReportFilter createCombinationPerformanceReportFilter() {
         return new CombinationPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link AppsPerformanceReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link AppsPerformanceReportRequest }
+     */
+    public AppsPerformanceReportRequest createAppsPerformanceReportRequest() {
+        return new AppsPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAppsPerformanceReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAppsPerformanceReportColumn }
+     */
+    public ArrayOfAppsPerformanceReportColumn createArrayOfAppsPerformanceReportColumn() {
+        return new ArrayOfAppsPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link AppsPerformanceReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link AppsPerformanceReportFilter }
+     */
+    public AppsPerformanceReportFilter createAppsPerformanceReportFilter() {
+        return new AppsPerformanceReportFilter();
     }
 
     /**
@@ -4561,6 +4595,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "CombinationPerformanceReportFilter")
     public JAXBElement<CombinationPerformanceReportFilter> createCombinationPerformanceReportFilter(CombinationPerformanceReportFilter value) {
         return new JAXBElement<>(_CombinationPerformanceReportFilter_QNAME, CombinationPerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AppsPerformanceReportRequest")
+    public JAXBElement<AppsPerformanceReportRequest> createAppsPerformanceReportRequest(AppsPerformanceReportRequest value) {
+        return new JAXBElement<>(_AppsPerformanceReportRequest_QNAME, AppsPerformanceReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAppsPerformanceReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAppsPerformanceReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfAppsPerformanceReportColumn")
+    public JAXBElement<ArrayOfAppsPerformanceReportColumn> createArrayOfAppsPerformanceReportColumn(ArrayOfAppsPerformanceReportColumn value) {
+        return new JAXBElement<>(_ArrayOfAppsPerformanceReportColumn_QNAME, ArrayOfAppsPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AppsPerformanceReportColumn")
+    public JAXBElement<AppsPerformanceReportColumn> createAppsPerformanceReportColumn(AppsPerformanceReportColumn value) {
+        return new JAXBElement<>(_AppsPerformanceReportColumn_QNAME, AppsPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AppsPerformanceReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AppsPerformanceReportFilter")
+    public JAXBElement<AppsPerformanceReportFilter> createAppsPerformanceReportFilter(AppsPerformanceReportFilter value) {
+        return new JAXBElement<>(_AppsPerformanceReportFilter_QNAME, AppsPerformanceReportFilter.class, null, value);
     }
 
     /**
