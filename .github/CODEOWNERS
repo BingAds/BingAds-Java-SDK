@@ -1,0 +1,27 @@
+# This is a CODEOWNERS file to define individuals or teams that are responsible
+# for code in this repository.
+
+# These owners will be the default owners for everything in
+# the repo, unless a later match takes precedence
+* @xinyuwen
+
+# Source code owners
+/src/main/ @xinyuwen
+
+# Test code owners
+/src/test/ @xinyuwen
+
+# Examples owners
+/examples/ @xinyuwen
+
+# Build and configuration files
+pom.xml @xinyuwen
+pom_for_shadow_jar.xml @xinyuwen
+azure-pipelines.yml @xinyuwen
+
+# Documentation
+*.md @xinyuwen
+
+# Tools and utilities
+/tools/ @xinyuwen
+/proxies/ @xinyuwen
