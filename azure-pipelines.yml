@@ -25,33 +25,34 @@ extends:
     sdl:
       tsa:
         enabled: true
-    steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo $(PUB_KEY) |  base64 -d > public.key
-            echo $(SEC_KEY) |  base64 -d > private.key
-            gpg --import public.key
-            gpg --batch --import private.key
-            gpg --list-public-keys
-      - task: Maven@3
-        inputs:
-          mavenPomFile: 'pom.xml'
-          mavenOptions: '-Xmx3072m'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '17'
-          jdkArchitectureOption: 'x64'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          goals: 'package source:jar javadoc:jar gpg:sign checksum:files'
-          options: '-Dgpg.passphrase=$(PASS_PHRASE)'
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '$(Pipeline.Workspace)/s'
-          Contents: '**/.artifactignore'
-          TargetFolder: 'target'
-      - task: PublishPipelineArtifact@1
-        inputs:
-          targetPath: target
-          artifact: 'maven_artifacts'
-          publishLocation: 'pipeline'
+    build:
+      steps:
+        - task: CmdLine@2
+          inputs:
+            script: |
+              echo $(PUB_KEY) |  base64 -d > public.key
+              echo $(SEC_KEY) |  base64 -d > private.key
+              gpg --import public.key
+              gpg --batch --import private.key
+              gpg --list-public-keys
+        - task: Maven@3
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '17'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'package source:jar javadoc:jar gpg:sign checksum:files'
+            options: '-Dgpg.passphrase=$(PASS_PHRASE)'
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Pipeline.Workspace)/s'
+            Contents: '**/.artifactignore'
+            TargetFolder: 'target'
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: target
+            artifact: 'maven_artifacts'
+            publishLocation: 'pipeline'
