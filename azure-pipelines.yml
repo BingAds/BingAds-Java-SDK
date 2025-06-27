@@ -8,7 +8,17 @@ trigger:
 
 pool:
   vmImage: windows-latest
-  
+
+resources:
+  repositories:
+  - repository: "WebXT.Pipeline.Templates"
+    type: git
+    name: Engineering Fundamentals/WebXT.Pipeline.Templates
+    ref: refs/heads/main
+  - repository: AdsAppsYamlTemplate
+    type: git
+    name: Bing_Ads/AdsApps_Yaml_Template
+    ref: refs/heads/master 
 extends:
   template: v1/WebXT.Official.EntryPoint.yml@WebXT.Pipeline.Templates
   parameters:
