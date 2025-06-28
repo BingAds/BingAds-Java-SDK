@@ -54,8 +54,9 @@ extends:
             SourceFolder: '$(Pipeline.Workspace)/s'
             Contents: '**/.artifactignore'
             TargetFolder: 'target'
-        - task: PublishPipelineArtifact@1
-          inputs:
+        templateContext:
+          outputs:
+          - output: pipelineArtifact
+            displayName: 'Publish Maven Artifacts'
             targetPath: target
-            artifact: 'maven_artifacts'
-            publishLocation: 'pipeline'
+            artifactName: maven_artifacts
