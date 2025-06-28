@@ -22,13 +22,15 @@ resources:
 extends:
   template: v1/WebXT.Official.EntryPoint.yml@WebXT.Pipeline.Templates
   parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows
     sdl:
       sourceAnalysisPool:
         name: Azure-Pipelines-1ESPT-ExDShared
         image: windows-latest
         os: windows
-      tsa:
-        enabled: true
     stages:
     - stage: stage
       jobs:
