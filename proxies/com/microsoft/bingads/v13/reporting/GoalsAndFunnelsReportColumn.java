@@ -43,6 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AssetGroupName"/>
  *     <enumeration value="AssetGroupStatus"/>
+ *     <enumeration value="ConversionDelay"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -111,7 +112,9 @@ public enum GoalsAndFunnelsReportColumn {
     @XmlEnumValue("AssetGroupName")
     ASSET_GROUP_NAME("AssetGroupName"),
     @XmlEnumValue("AssetGroupStatus")
-    ASSET_GROUP_STATUS("AssetGroupStatus");
+    ASSET_GROUP_STATUS("AssetGroupStatus"),
+    @XmlEnumValue("ConversionDelay")
+    CONVERSION_DELAY("ConversionDelay");
     private final String value;
 
     GoalsAndFunnelsReportColumn(String v) {

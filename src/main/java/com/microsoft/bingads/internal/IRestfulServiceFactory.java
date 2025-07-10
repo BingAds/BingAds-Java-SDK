@@ -7,5 +7,5 @@ import com.microsoft.bingads.ApiEnvironment;
 
 public interface IRestfulServiceFactory {
     
-	<T> T createServiceClient(Map<String, String> headers, ApiEnvironment environment, Class<T> serviceInterface, Supplier<T> createSoapPort);
+	<T> T createServiceClient(Map<String, String> headers, ApiEnvironment environment, Class<T> serviceInterface);
 }

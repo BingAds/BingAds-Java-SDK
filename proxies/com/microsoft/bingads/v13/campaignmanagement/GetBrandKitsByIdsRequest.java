@@ -1,13 +1,11 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
-import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -22,7 +20,6 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       <sequence>
  *         <element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="BrandKitIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
- *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}BrandKitAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -34,8 +31,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "accountId",
-    "brandKitIds",
-    "returnAdditionalFields"
+    "brandKitIds"
 })
 @XmlRootElement(name = "GetBrandKitsByIdsRequest")
 public class GetBrandKitsByIdsRequest {
@@ -44,9 +40,6 @@ public class GetBrandKitsByIdsRequest {
     protected Long accountId;
     @XmlElement(name = "BrandKitIds", nillable = true)
     protected ArrayOflong brandKitIds;
-    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter28 .class)
-    protected Collection<BrandKitAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the accountId property.
@@ -94,30 +87,6 @@ public class GetBrandKitsByIdsRequest {
      */
     public void setBrandKitIds(ArrayOflong value) {
         this.brandKitIds = value;
-    }
-
-    /**
-     * Gets the value of the returnAdditionalFields property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public Collection<BrandKitAdditionalField> getReturnAdditionalFields() {
-        return returnAdditionalFields;
-    }
-
-    /**
-     * Sets the value of the returnAdditionalFields property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReturnAdditionalFields(Collection<BrandKitAdditionalField> value) {
-        this.returnAdditionalFields = value;
     }
 
 }

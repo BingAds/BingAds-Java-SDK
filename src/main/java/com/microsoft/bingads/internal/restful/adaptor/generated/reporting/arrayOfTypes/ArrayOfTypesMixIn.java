@@ -199,6 +199,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<FeedItemPerformanceReportColumn> getFeedItemPerformanceReportColumns();
+
+            
+	@JsonValue
+	List<TravelQueryInsightReportColumn> getTravelQueryInsightReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

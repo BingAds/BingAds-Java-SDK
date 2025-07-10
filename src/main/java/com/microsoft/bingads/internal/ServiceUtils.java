@@ -82,16 +82,6 @@ public class ServiceUtils {
     public static String getServiceUrlFromConfig(Class<?> serviceInterface) {
         return getPropertyValue(serviceInterface.getCanonicalName() + ".url");
     }
-    
-    public static boolean getFallbackFlag() {
-        String propertyValue = getPropertyValue("EnableFallbackToSoap");
-
-        if (propertyValue == null) {
-            return true;
-        }
-
-        return Boolean.parseBoolean(propertyValue);
-    }
 
     public static String getClientName() {
         return getPropertyValue("ClientName");
@@ -99,23 +89,6 @@ public class ServiceUtils {
 
     public static boolean getEnableRestApi() {
         String propertyValue = getPropertyValue("EnableRestApi");
-
-        if (propertyValue == null) {
-            return false;
-        }
-
-        return Boolean.parseBoolean(propertyValue);
-    }
-
-    public static boolean getDisableRestApi(Class<?> serviceInterface) {
-    	if (serviceInterface == ICampaignManagementService.class ||
-    		serviceInterface == IBulkService.class ||
-    		serviceInterface == IReportingService.class)
-    	{
-    		return false;
-    	}
-    	
-        String propertyValue = getPropertyValue(serviceInterface.getSimpleName() + ".DisableRestApi");
 
         if (propertyValue == null) {
             return false;

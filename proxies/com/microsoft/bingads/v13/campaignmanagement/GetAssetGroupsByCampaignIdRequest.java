@@ -41,7 +41,7 @@ public class GetAssetGroupsByCampaignIdRequest {
     @XmlElement(name = "CampaignId")
     protected Long campaignId;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter21 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     protected Collection<AssetGroupAdditionalField> returnAdditionalFields;
 
     /**

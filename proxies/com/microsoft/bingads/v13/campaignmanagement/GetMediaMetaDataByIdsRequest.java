@@ -41,7 +41,7 @@ public class GetMediaMetaDataByIdsRequest {
     @XmlElement(name = "MediaIds", nillable = true)
     protected ArrayOflong mediaIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Collection<MediaAdditionalField> returnAdditionalFields;
 
     /**

@@ -231,6 +231,14 @@ public class ObjectFactory {
     private static final QName _ArrayOfAppsPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfAppsPerformanceReportColumn");
     private static final QName _AppsPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AppsPerformanceReportColumn");
     private static final QName _AppsPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AppsPerformanceReportFilter");
+    private static final QName _FeedItemPerformanceReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "FeedItemPerformanceReportRequest");
+    private static final QName _ArrayOfFeedItemPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfFeedItemPerformanceReportColumn");
+    private static final QName _FeedItemPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "FeedItemPerformanceReportColumn");
+    private static final QName _FeedItemPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "FeedItemPerformanceReportFilter");
+    private static final QName _TravelQueryInsightReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TravelQueryInsightReportRequest");
+    private static final QName _ArrayOfTravelQueryInsightReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfTravelQueryInsightReportColumn");
+    private static final QName _TravelQueryInsightReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TravelQueryInsightReportColumn");
+    private static final QName _TravelQueryInsightReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TravelQueryInsightReportFilter");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CustomerAccountId");
@@ -1800,6 +1808,66 @@ public class ObjectFactory {
      */
     public AppsPerformanceReportFilter createAppsPerformanceReportFilter() {
         return new AppsPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link FeedItemPerformanceReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link FeedItemPerformanceReportRequest }
+     */
+    public FeedItemPerformanceReportRequest createFeedItemPerformanceReportRequest() {
+        return new FeedItemPerformanceReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfFeedItemPerformanceReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfFeedItemPerformanceReportColumn }
+     */
+    public ArrayOfFeedItemPerformanceReportColumn createArrayOfFeedItemPerformanceReportColumn() {
+        return new ArrayOfFeedItemPerformanceReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link FeedItemPerformanceReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link FeedItemPerformanceReportFilter }
+     */
+    public FeedItemPerformanceReportFilter createFeedItemPerformanceReportFilter() {
+        return new FeedItemPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link TravelQueryInsightReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link TravelQueryInsightReportRequest }
+     */
+    public TravelQueryInsightReportRequest createTravelQueryInsightReportRequest() {
+        return new TravelQueryInsightReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTravelQueryInsightReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfTravelQueryInsightReportColumn }
+     */
+    public ArrayOfTravelQueryInsightReportColumn createArrayOfTravelQueryInsightReportColumn() {
+        return new ArrayOfTravelQueryInsightReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link TravelQueryInsightReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link TravelQueryInsightReportFilter }
+     */
+    public TravelQueryInsightReportFilter createTravelQueryInsightReportFilter() {
+        return new TravelQueryInsightReportFilter();
     }
 
     /**
@@ -4647,6 +4715,110 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "AppsPerformanceReportFilter")
     public JAXBElement<AppsPerformanceReportFilter> createAppsPerformanceReportFilter(AppsPerformanceReportFilter value) {
         return new JAXBElement<>(_AppsPerformanceReportFilter_QNAME, AppsPerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "FeedItemPerformanceReportRequest")
+    public JAXBElement<FeedItemPerformanceReportRequest> createFeedItemPerformanceReportRequest(FeedItemPerformanceReportRequest value) {
+        return new JAXBElement<>(_FeedItemPerformanceReportRequest_QNAME, FeedItemPerformanceReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFeedItemPerformanceReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfFeedItemPerformanceReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfFeedItemPerformanceReportColumn")
+    public JAXBElement<ArrayOfFeedItemPerformanceReportColumn> createArrayOfFeedItemPerformanceReportColumn(ArrayOfFeedItemPerformanceReportColumn value) {
+        return new JAXBElement<>(_ArrayOfFeedItemPerformanceReportColumn_QNAME, ArrayOfFeedItemPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "FeedItemPerformanceReportColumn")
+    public JAXBElement<FeedItemPerformanceReportColumn> createFeedItemPerformanceReportColumn(FeedItemPerformanceReportColumn value) {
+        return new JAXBElement<>(_FeedItemPerformanceReportColumn_QNAME, FeedItemPerformanceReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FeedItemPerformanceReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "FeedItemPerformanceReportFilter")
+    public JAXBElement<FeedItemPerformanceReportFilter> createFeedItemPerformanceReportFilter(FeedItemPerformanceReportFilter value) {
+        return new JAXBElement<>(_FeedItemPerformanceReportFilter_QNAME, FeedItemPerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "TravelQueryInsightReportRequest")
+    public JAXBElement<TravelQueryInsightReportRequest> createTravelQueryInsightReportRequest(TravelQueryInsightReportRequest value) {
+        return new JAXBElement<>(_TravelQueryInsightReportRequest_QNAME, TravelQueryInsightReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTravelQueryInsightReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfTravelQueryInsightReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfTravelQueryInsightReportColumn")
+    public JAXBElement<ArrayOfTravelQueryInsightReportColumn> createArrayOfTravelQueryInsightReportColumn(ArrayOfTravelQueryInsightReportColumn value) {
+        return new JAXBElement<>(_ArrayOfTravelQueryInsightReportColumn_QNAME, ArrayOfTravelQueryInsightReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "TravelQueryInsightReportColumn")
+    public JAXBElement<TravelQueryInsightReportColumn> createTravelQueryInsightReportColumn(TravelQueryInsightReportColumn value) {
+        return new JAXBElement<>(_TravelQueryInsightReportColumn_QNAME, TravelQueryInsightReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TravelQueryInsightReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "TravelQueryInsightReportFilter")
+    public JAXBElement<TravelQueryInsightReportFilter> createTravelQueryInsightReportFilter(TravelQueryInsightReportFilter value) {
+        return new JAXBElement<>(_TravelQueryInsightReportFilter_QNAME, TravelQueryInsightReportFilter.class, null, value);
     }
 
     /**

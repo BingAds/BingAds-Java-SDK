@@ -69,6 +69,12 @@ public class AdaptorUtil {
     
     public static String convertStringToEnumValue(String s)
     {
+    	// an exception
+    	if (s.equals("HTML5"))
+    	{
+    		return "H_T_M_L5";
+    	}
+    	
     	if (s.equals(s.toUpperCase()))
     	{
     		return s;

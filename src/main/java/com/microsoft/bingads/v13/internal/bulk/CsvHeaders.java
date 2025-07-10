@@ -551,6 +551,8 @@ public class CsvHeaders {
             StringTable.AdditionalConversionValue,
             StringTable.NewCustomerAcquisitionGoalId,
             StringTable.NewCustomerAcquisitionBidOnlyMode,
+            
+            StringTable.AccountPlacementListItemUrl,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

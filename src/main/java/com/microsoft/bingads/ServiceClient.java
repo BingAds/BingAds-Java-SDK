@@ -2,23 +2,11 @@ package com.microsoft.bingads;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Arrays;
-import jakarta.xml.ws.BindingProvider;
-import jakarta.xml.ws.Service;
-import jakarta.xml.ws.handler.Handler;
-import jakarta.xml.ws.handler.HandlerResolver;
-import jakarta.xml.ws.handler.PortInfo;
 
-import com.microsoft.bingads.internal.HeaderHandler;
 import com.microsoft.bingads.internal.IRestfulServiceFactory;
-import com.microsoft.bingads.internal.MessageHandler;
 import com.microsoft.bingads.internal.OAuthWithAuthorizationCode;
-import com.microsoft.bingads.internal.ServiceFactory;
-import com.microsoft.bingads.internal.ServiceFactoryFactory;
 import com.microsoft.bingads.internal.RestfulServiceFactoryFactory;
 import com.microsoft.bingads.internal.ServiceUtils;
-import com.microsoft.bingads.internal.utilities.Lazy;
 import com.microsoft.bingads.v13.adinsight.IAdInsightService;
 import com.microsoft.bingads.v13.bulk.IBulkService;
 import com.microsoft.bingads.v13.campaignmanagement.ICampaignManagementService;
@@ -48,10 +36,8 @@ public class ServiceClient<T> {
     private final AuthorizationData authorizationData;
 
     private final Class<T> serviceInterface;
-    private final ServiceFactory serviceFactory;
     private final IRestfulServiceFactory restfulServiceFactory;
     private ApiEnvironment environment;
-    private final Lazy<Service> service;
 
     /**
      * Gets the Bing Ads API environment.
@@ -65,10 +51,6 @@ public class ServiceClient<T> {
      */
     public AuthorizationData getAuthorizationData() {
         return authorizationData;
-    }
-
-    private static boolean getDisableRestApi(Class<?> serviceClass) {
-        return ServiceUtils.getDisableRestApi(serviceClass);
     }
 
     /**
@@ -107,23 +89,8 @@ public class ServiceClient<T> {
         }
 
         this.environment = environment;
-
-        serviceFactory = ServiceFactoryFactory.createServiceFactory();
         
         restfulServiceFactory = RestfulServiceFactoryFactory.createServiceFactory();
-
-        service = new Lazy<Service>(() -> {
-            Service newService = serviceFactory.createService(this.serviceInterface, this.environment);
-
-            newService.setHandlerResolver(new HandlerResolver() {
-                @Override
-                public List<Handler> getHandlerChain(PortInfo portInfo) {
-                    return Arrays.asList(HeaderHandler.getInstance(), MessageHandler.getInstance());
-                }
-            });
-
-            return newService;
-        });
     }
 
     /**
@@ -135,10 +102,6 @@ public class ServiceClient<T> {
         authorizationData.validate();
 
         final Map<String, String> headers = buildHeaders();
-
-        if (getDisableRestApi(serviceInterface)) {
-            return createSoapPort(headers);
-        }
         
         return createRestService(headers);        
     }
@@ -168,15 +131,7 @@ public class ServiceClient<T> {
         return headers;
     }
 
-    T createSoapPort(Map<String, String> headers) {
-        T port = serviceFactory.createProxyFromService(service.getValue(), environment, serviceInterface);
-
-        ((BindingProvider) port).getRequestContext().put(ServiceUtils.REQUEST_HEADERS_KEY, headers);
-
-        return port;
-    }
-
     T createRestService(Map<String, String> headers) {        
-        return restfulServiceFactory.createServiceClient(headers, environment, serviceInterface, () -> createSoapPort(headers));
+        return restfulServiceFactory.createServiceClient(headers, environment, serviceInterface);
     }
 }

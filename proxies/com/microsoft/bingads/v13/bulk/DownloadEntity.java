@@ -205,6 +205,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AccountPlacementInclusionList"/>
  *     <enumeration value="AccountPlacementInclusionListItem"/>
  *     <enumeration value="CampaignAccountPlacementInclusionListAssociation"/>
+ *     <enumeration value="Topic"/>
+ *     <enumeration value="ContentPlacement"/>
+ *     <enumeration value="BrandKit"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -597,7 +600,13 @@ public enum DownloadEntity {
     @XmlEnumValue("AccountPlacementInclusionListItem")
     ACCOUNT_PLACEMENT_INCLUSION_LIST_ITEM("AccountPlacementInclusionListItem"),
     @XmlEnumValue("CampaignAccountPlacementInclusionListAssociation")
-    CAMPAIGN_ACCOUNT_PLACEMENT_INCLUSION_LIST_ASSOCIATION("CampaignAccountPlacementInclusionListAssociation");
+    CAMPAIGN_ACCOUNT_PLACEMENT_INCLUSION_LIST_ASSOCIATION("CampaignAccountPlacementInclusionListAssociation"),
+    @XmlEnumValue("Topic")
+    TOPIC("Topic"),
+    @XmlEnumValue("ContentPlacement")
+    CONTENT_PLACEMENT("ContentPlacement"),
+    @XmlEnumValue("BrandKit")
+    BRAND_KIT("BrandKit");
     private final String value;
 
     DownloadEntity(String v) {

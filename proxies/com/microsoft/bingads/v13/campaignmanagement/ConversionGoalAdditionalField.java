@@ -10,7 +10,8 @@ public enum ConversionGoalAdditionalField {
     GOAL_CATEGORY("GoalCategory"),
     INACTIVE_DUE_TO_TAG_UNAVAILABLE("InactiveDueToTagUnavailable"),
     ATTRIBUTION_MODEL_TYPE("AttributionModelType"),
-    IS_ENHANCED_CONVERSIONS_ENABLED("IsEnhancedConversionsEnabled");
+    IS_ENHANCED_CONVERSIONS_ENABLED("IsEnhancedConversionsEnabled"),
+    IS_AUTO_GOAL("IsAutoGoal");
         
     private final String value;
 

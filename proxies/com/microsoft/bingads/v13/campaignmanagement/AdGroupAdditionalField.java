@@ -15,7 +15,8 @@ public enum AdGroupAdditionalField {
     MCPA_BID("McpaBid"),
     USE_OPTIMIZED_TARGETING("UseOptimizedTargeting"),
     FREQUENCY_CAP_SETTINGS("FrequencyCapSettings"),
-    USE_PREDICTIVE_TARGETING("UsePredictiveTargeting");
+    USE_PREDICTIVE_TARGETING("UsePredictiveTargeting"),
+    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc");
         
     private final String value;
 

@@ -12,7 +12,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import jakarta.ws.rs.client.AsyncInvoker;
@@ -69,12 +68,8 @@ class RestfulServiceClient {
     private static final ConcurrentHashMap<Class<?>, Calendar> retryAfter = new ConcurrentHashMap<Class<?>, Calendar>();
     
     private static final ArrayList<Integer> statusCodesForApplicationFault = new ArrayList<Integer>(Arrays.asList(400, 401, 403, 429, 500));
-    
-    private static final ArrayList<Integer> statusCodesForSwitchToSoap = new ArrayList<Integer>(Arrays.asList(404, 501));
-
+   
     private static final String userAgent = getUserAgent();
-    
-    private boolean enableFallbackToSoap;
 
     static {
         com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanagement.arrayOfTypes.AddMixInForArrayOfTypes.AddMixInForArrayOfTypes();
@@ -112,7 +107,6 @@ class RestfulServiceClient {
         this.headers = headers;
         this.environment = env;
         this.serviceInterface = serviceInterface;
-        this.enableFallbackToSoap = ServiceUtils.getFallbackFlag();
     }
 
     private static String getUserAgent() {
@@ -176,11 +170,6 @@ class RestfulServiceClient {
     }
     
     protected <TRequest, TResponse, TFaultDetail> ResponseInfo<TResponse, TFaultDetail> getResponseInfo(TRequest request, String entityEndpoint, String verb, Class<TResponse> responseClass, Class<TFaultDetail> faultDetailClass) {
-        if (retryAfter.get(serviceInterface) != null && enableFallbackToSoap
-            && Calendar.getInstance().before(retryAfter.get(serviceInterface))) {
-            return null;
-        }
-
         String jsonRequest;
         try {
             jsonRequest = AdaptorUtil.mapper.writeValueAsString(request);
@@ -207,14 +196,6 @@ class RestfulServiceClient {
         }
 
         int statusCode = httpResponse.getStatus();
-
-        if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) {                
-            SetRetryAfterTime(httpResponse.getHeaderString("RetryAfter"));
-
-            httpResponse.close();
-
-            return null;
-        }
         
         ResponseInfo<TResponse, TFaultDetail> responseInfo = new ResponseInfo<>();
 
@@ -255,30 +236,11 @@ class RestfulServiceClient {
         }
     }
 
-    protected <TRequest, TResponse, TFaultDetail> Response<TResponse> processRequestAsync(TRequest request, String entityEndpoint, String verb, Class<TResponse> respClass, Class<TFaultDetail> faultDetailClass, Function<TFaultDetail, Exception> getException, BiFunction<TRequest, AsyncHandler<TResponse>, Future<?>> soapMethod, AsyncHandler<TResponse> handler) {        
+    protected <TRequest, TResponse, TFaultDetail> Response<TResponse> processRequestAsync(TRequest request, String entityEndpoint, String verb, Class<TResponse> respClass, Class<TFaultDetail> faultDetailClass, Function<TFaultDetail, Exception> getException, AsyncHandler<TResponse> handler) {        
         ResponseFuture<TResponse> responseFuture = new ResponseFuture<TResponse>(); 
 
         if (handler != null) {
             responseFuture.setHandler(handler);
-        }
-
-        Calendar retryAfterTime = retryAfter.get(serviceInterface);
-
-        if (retryAfterTime != null && Calendar.getInstance().before(retryAfterTime)) {
-            soapMethod.apply(request, new AsyncHandler<TResponse>() {
-                @Override
-                public void handleResponse(Response<TResponse> soapResponse) {
-                    try {
-                        responseFuture.setContext(soapResponse.getContext());                        
-
-                        responseFuture.setResult(soapResponse.get());
-                    } catch (Throwable e) {
-                        responseFuture.setException(e);
-                    }
-                }
-            });
-
-            return responseFuture;
         }
 
         String jsonRequest;
@@ -293,27 +255,6 @@ class RestfulServiceClient {
             public void completed(jakarta.ws.rs.core.Response httpResponse) {
                 try {
                     int statusCode = httpResponse.getStatus();
-
-                    if (statusCodesForSwitchToSoap.contains(statusCode) && enableFallbackToSoap) { 
-                        httpResponse.close();
-                        
-                        SetRetryAfterTime(httpResponse.getHeaderString("RetryAfter"));
-                        
-                        soapMethod.apply(request, new AsyncHandler<TResponse>() {
-                            @Override
-                            public void handleResponse(Response<TResponse> soapResponse) {
-                                try {
-                                    responseFuture.setContext(soapResponse.getContext());
-
-                                    responseFuture.setResult(soapResponse.get());
-                                } catch (Throwable e) {
-                                    responseFuture.setException(e);
-                                }
-                            }
-                        });
-
-                        return;
-                    }
 
                     String trackingIdHeader = httpResponse.getHeaderString(ServiceUtils.TRACKING_HEADER_NAME);
                     

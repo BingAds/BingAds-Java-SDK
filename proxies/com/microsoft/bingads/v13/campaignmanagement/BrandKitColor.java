@@ -17,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="HexCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="HexCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -34,7 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class BrandKitColor {
 
-    @XmlElement(name = "HexCode", required = true, nillable = true)
+    @XmlElement(name = "HexCode", nillable = true)
     protected String hexCode;
     @XmlElement(name = "Name", nillable = true)
     protected String name;

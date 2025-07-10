@@ -17,13 +17,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="HealthCheckActionLinksMetadata" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckActionLinkMetadata" minOccurs="0"/>
  *         <element name="HealthCheckCategory" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckCategoryDisplayName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckColumnsMetadata" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckColumnMetadata" minOccurs="0"/>
  *         <element name="HealthCheckDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckDisplayName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="HealthCheckHelpTooltip" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckSeverity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckSubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -37,21 +35,17 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HealthCheckMetadata", propOrder = {
-    "healthCheckActionLinksMetadata",
     "healthCheckCategory",
     "healthCheckCategoryDisplayName",
     "healthCheckColumnsMetadata",
     "healthCheckDescription",
     "healthCheckDisplayName",
-    "healthCheckHelpTooltip",
     "healthCheckName",
     "healthCheckSeverity",
     "healthCheckSubType"
 })
 public class HealthCheckMetadata {
 
-    @XmlElement(name = "HealthCheckActionLinksMetadata", nillable = true)
-    protected ArrayOfHealthCheckActionLinkMetadata healthCheckActionLinksMetadata;
     @XmlElement(name = "HealthCheckCategory", nillable = true)
     protected String healthCheckCategory;
     @XmlElement(name = "HealthCheckCategoryDisplayName", nillable = true)
@@ -62,38 +56,12 @@ public class HealthCheckMetadata {
     protected String healthCheckDescription;
     @XmlElement(name = "HealthCheckDisplayName", nillable = true)
     protected String healthCheckDisplayName;
-    @XmlElement(name = "HealthCheckHelpTooltip", nillable = true)
-    protected String healthCheckHelpTooltip;
     @XmlElement(name = "HealthCheckName", nillable = true)
     protected String healthCheckName;
     @XmlElement(name = "HealthCheckSeverity", nillable = true)
     protected String healthCheckSeverity;
     @XmlElement(name = "HealthCheckSubType", nillable = true)
     protected String healthCheckSubType;
-
-    /**
-     * Gets the value of the healthCheckActionLinksMetadata property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfHealthCheckActionLinkMetadata }
-     *     
-     */
-    public ArrayOfHealthCheckActionLinkMetadata getHealthCheckActionLinksMetadata() {
-        return healthCheckActionLinksMetadata;
-    }
-
-    /**
-     * Sets the value of the healthCheckActionLinksMetadata property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfHealthCheckActionLinkMetadata }
-     *     
-     */
-    public void setHealthCheckActionLinksMetadata(ArrayOfHealthCheckActionLinkMetadata value) {
-        this.healthCheckActionLinksMetadata = value;
-    }
 
     /**
      * Gets the value of the healthCheckCategory property.
@@ -213,30 +181,6 @@ public class HealthCheckMetadata {
      */
     public void setHealthCheckDisplayName(String value) {
         this.healthCheckDisplayName = value;
-    }
-
-    /**
-     * Gets the value of the healthCheckHelpTooltip property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHealthCheckHelpTooltip() {
-        return healthCheckHelpTooltip;
-    }
-
-    /**
-     * Sets the value of the healthCheckHelpTooltip property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHealthCheckHelpTooltip(String value) {
-        this.healthCheckHelpTooltip = value;
     }
 
     /**

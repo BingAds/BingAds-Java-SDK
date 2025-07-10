@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum AdSubType {
 
     VIDEO("Video"),
-    DISPLAY("Display");
+    DISPLAY("Display"),
+    H_T_M_L5("HTML5");
         
     private final String value;
 
