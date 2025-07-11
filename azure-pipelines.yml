@@ -55,7 +55,7 @@ extends:
           inputs:
             SourceFolder: 'target'
             Contents: '**/*'
-            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
+            TargetFolder: $(Build.ArtifactStagingDirectory)
         templateContext:
           outputs:
           - output: pipelineArtifact
