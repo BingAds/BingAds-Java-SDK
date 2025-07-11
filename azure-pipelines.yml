@@ -66,14 +66,3 @@ extends:
             displayName: 'Publish Build Artifacts'
             targetPath: $(Build.ArtifactStagingDirectory)/maven_artifacts
             artifactName: build_artifacts
-        steps:
-        - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(Build.ArtifactStagingDirectory)/build_artifacts'
-            Contents: '**/*'
-            TargetFolder: '$(Build.ArtifactStagingDirectory)/final_artifacts/maven_artifacts'
-        - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(Build.ArtifactStagingDirectory)/maven_artifacts/_manifest'
-            Contents: '**/*'
-            TargetFolder: '$(Build.ArtifactStagingDirectory)/final_artifacts/_manifest'
