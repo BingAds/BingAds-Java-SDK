@@ -55,5 +55,5 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish Maven Artifacts'
-            targetPath: target
+            targetPath: $(Build.ArtifactStagingDirectory)
             artifactName: maven_artifacts
