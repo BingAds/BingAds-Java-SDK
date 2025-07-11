@@ -55,10 +55,14 @@ extends:
           inputs:
             SourceFolder: 'target'
             Contents: '**/*'
-            TargetFolder: $(Build.ArtifactStagingDirectory)
+            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         templateContext:
           outputs:
           - output: pipelineArtifact
-            displayName: 'Publish Maven Artifacts'
+            displayName: 'Publish build Artifacts'
             targetPath: $(Build.ArtifactStagingDirectory)
+            artifactName: maven_artifacts
+          - output: pipelineArtifact
+            displayName: 'Publish Maven Artifacts'
+            targetPath: $(Build.ArtifactStagingDirectory)/maven_artifacts
             artifactName: maven_artifacts
