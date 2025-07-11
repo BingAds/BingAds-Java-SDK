@@ -50,7 +50,7 @@ extends:
           inputs:
             SourceFolder: '$(Pipeline.Workspace)/s'
             Contents: '**/.artifactignore'
-            TargetFolder: $(Build.ArtifactStagingDirectory)
+            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         templateContext:
           outputs:
           - output: pipelineArtifact
