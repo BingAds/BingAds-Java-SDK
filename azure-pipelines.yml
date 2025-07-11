@@ -50,10 +50,15 @@ extends:
           inputs:
             SourceFolder: '$(Pipeline.Workspace)/s'
             Contents: '**/.artifactignore'
+            TargetFolder: 'target'
+        - task: CopyFiles@3
+          inputs:
+            SourceFolder: 'target'
+            Contents: '**/*'
             TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         templateContext:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish Maven Artifacts'
-            targetPath: $(Build.ArtifactStagingDirectory)/maven_artifacts
+            targetPath: $(Build.ArtifactStagingDirectory)
             artifactName: maven_artifacts
