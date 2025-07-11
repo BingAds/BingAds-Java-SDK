@@ -50,7 +50,7 @@ extends:
           inputs:
             SourceFolder: '$(Pipeline.Workspace)/s'
             Contents: '**/.artifactignore'
-            TargetFolder: 'target'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
         templateContext:
           outputs:
           - output: pipelineArtifact
