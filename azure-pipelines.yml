@@ -48,11 +48,6 @@ extends:
             options: '-Dgpg.passphrase=$(PASS_PHRASE)'
         - task: CopyFiles@2
           inputs:
-            SourceFolder: '$(Pipeline.Workspace)/s'
-            Contents: '**/.artifactignore'
-            TargetFolder: 'target'
-        - task: CopyFiles@3
-          inputs:
             SourceFolder: 'target'
             Contents: '**/*'
             TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
