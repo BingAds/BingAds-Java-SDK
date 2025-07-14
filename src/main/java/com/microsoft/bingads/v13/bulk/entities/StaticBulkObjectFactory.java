@@ -16,6 +16,8 @@ import com.microsoft.bingads.v13.internal.bulk.entities.BulkAdGroupNegativeSites
 import com.microsoft.bingads.v13.internal.bulk.entities.BulkCampaignNegativeSitesIdentifier;
 import com.microsoft.bingads.v13.internal.bulk.entities.BulkEntityIdentifier;
 import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
+import com.microsoft.bingads.v13.internal.bulk.entities.BulkSharedNegativeSite;
+import com.microsoft.bingads.v13.internal.bulk.entities.BulkSharedSite;
 
 /**
  * Reserved for internal use.
@@ -1293,6 +1295,42 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkNewCustomerAcquisitionGoal();
+            }
+        }));
+        m.put(StringTable.AccountPlacementExclusionList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountPlacementExclusionList();
+            }
+        }));
+        m.put(StringTable.AccountPlacementExclusionListItem, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkSharedListNegativeSite();
+            }
+        }));
+        m.put(StringTable.CampaignAccountPlacementListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountPlacementExclusionListAssociation();
+            }
+        }));
+        m.put(StringTable.AccountPlacementInclusionList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountPlacementInclusionList();
+            }
+        }));
+        m.put(StringTable.AccountPlacementInclusionListItem, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkSharedListSite();
+            }
+        }));
+        m.put(StringTable.CampaignAccountPlacementInclusionListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountPlacementInclusionListAssociation();
             }
         }));
         

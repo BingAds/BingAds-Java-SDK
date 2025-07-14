@@ -40,6 +40,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(KeywordEditorialStatus.class, KeywordEditorialStatusMixIn.class)
 				.addMixIn(MatchType.class, MatchTypeMixIn.class)
 				.addMixIn(KeywordStatus.class, KeywordStatusMixIn.class)
+				.addMixIn(KeywordAdditionalField.class, KeywordAdditionalFieldMixIn.class)
 				.addMixIn(EntityType.class, EntityTypeMixIn.class)
 				.addMixIn(AppealStatus.class, AppealStatusMixIn.class)
 				.addMixIn(MigrationStatus.class, MigrationStatusMixIn.class)
@@ -84,6 +85,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(EntityScope.class, EntityScopeMixIn.class)
 				.addMixIn(CampaignCriterionStatus.class, CampaignCriterionStatusMixIn.class)
 				.addMixIn(CampaignCriterionType.class, CampaignCriterionTypeMixIn.class)
+				.addMixIn(PortfolioBidStrategyAdditionalField.class, PortfolioBidStrategyAdditionalFieldMixIn.class)
 				.addMixIn(AudienceGroupDimensionType.class, AudienceGroupDimensionTypeMixIn.class)
 				.addMixIn(AudienceGroupAdditionalField.class, AudienceGroupAdditionalFieldMixIn.class)
 				.addMixIn(GenericEntityStatus.class, GenericEntityStatusMixIn.class)
@@ -122,8 +124,6 @@ public class AddMixInForEnumTypes {
 				.addMixIn(LocationType.class, LocationTypeMixIn.class)
 				.addMixIn(ConversionValueRuleOperator.class, ConversionValueRuleOperatorMixIn.class)
 				.addMixIn(ConversionValueRuleStatus.class, ConversionValueRuleStatusMixIn.class)
-				.addMixIn(FontTextAssetType.class, FontTextAssetTypeMixIn.class)
-				.addMixIn(BrandKitAdditionalField.class, BrandKitAdditionalFieldMixIn.class)
 				;
 	}
 }

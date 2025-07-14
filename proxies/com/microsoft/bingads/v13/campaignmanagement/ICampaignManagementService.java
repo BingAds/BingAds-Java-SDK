@@ -6631,6 +6631,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetResponsiveAdRecommendationJobResponse>
+     */
+    @WebMethod(operationName = "GetResponsiveAdRecommendationJob", action = "GetResponsiveAdRecommendationJob")
+    public Response<GetResponsiveAdRecommendationJobResponse> getResponsiveAdRecommendationJobAsync(
+        @WebParam(name = "GetResponsiveAdRecommendationJobRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetResponsiveAdRecommendationJobRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetResponsiveAdRecommendationJob", action = "GetResponsiveAdRecommendationJob")
+    public Future<?> getResponsiveAdRecommendationJobAsync(
+        @WebParam(name = "GetResponsiveAdRecommendationJobRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetResponsiveAdRecommendationJobRequest parameters,
+        @WebParam(name = "GetResponsiveAdRecommendationJobResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetResponsiveAdRecommendationJobResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetResponsiveAdRecommendationJobResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetResponsiveAdRecommendationJob", action = "GetResponsiveAdRecommendationJob")
+    @WebResult(name = "GetResponsiveAdRecommendationJobResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetResponsiveAdRecommendationJobResponse getResponsiveAdRecommendationJob(
+        @WebParam(name = "GetResponsiveAdRecommendationJobRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetResponsiveAdRecommendationJobRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateConversionValueRulesResponse>
      */
     @WebMethod(operationName = "UpdateConversionValueRules", action = "UpdateConversionValueRules")
@@ -6952,6 +6993,47 @@ public interface ICampaignManagementService {
     public DeleteBrandKitsResponse deleteBrandKits(
         @WebParam(name = "DeleteBrandKitsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         DeleteBrandKitsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.CreateBrandKitRecommendationResponse>
+     */
+    @WebMethod(operationName = "CreateBrandKitRecommendation", action = "CreateBrandKitRecommendation")
+    public Response<CreateBrandKitRecommendationResponse> createBrandKitRecommendationAsync(
+        @WebParam(name = "CreateBrandKitRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateBrandKitRecommendationRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "CreateBrandKitRecommendation", action = "CreateBrandKitRecommendation")
+    public Future<?> createBrandKitRecommendationAsync(
+        @WebParam(name = "CreateBrandKitRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateBrandKitRecommendationRequest parameters,
+        @WebParam(name = "CreateBrandKitRecommendationResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<CreateBrandKitRecommendationResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.CreateBrandKitRecommendationResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "CreateBrandKitRecommendation", action = "CreateBrandKitRecommendation")
+    @WebResult(name = "CreateBrandKitRecommendationResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public CreateBrandKitRecommendationResponse createBrandKitRecommendation(
+        @WebParam(name = "CreateBrandKitRecommendationRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        CreateBrandKitRecommendationRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
@@ -7321,6 +7403,129 @@ public interface ICampaignManagementService {
     public GetHealthCheckResponse getHealthCheck(
         @WebParam(name = "GetHealthCheckRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         GetHealthCheckRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetDiagnosticsResponse>
+     */
+    @WebMethod(operationName = "GetDiagnostics", action = "GetDiagnostics")
+    public Response<GetDiagnosticsResponse> getDiagnosticsAsync(
+        @WebParam(name = "GetDiagnosticsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDiagnosticsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetDiagnostics", action = "GetDiagnostics")
+    public Future<?> getDiagnosticsAsync(
+        @WebParam(name = "GetDiagnosticsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDiagnosticsRequest parameters,
+        @WebParam(name = "GetDiagnosticsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetDiagnosticsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetDiagnosticsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetDiagnostics", action = "GetDiagnostics")
+    @WebResult(name = "GetDiagnosticsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetDiagnosticsResponse getDiagnostics(
+        @WebParam(name = "GetDiagnosticsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetDiagnosticsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetAnnotationOptOutResponse>
+     */
+    @WebMethod(operationName = "GetAnnotationOptOut", action = "GetAnnotationOptOut")
+    public Response<GetAnnotationOptOutResponse> getAnnotationOptOutAsync(
+        @WebParam(name = "GetAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAnnotationOptOutRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAnnotationOptOut", action = "GetAnnotationOptOut")
+    public Future<?> getAnnotationOptOutAsync(
+        @WebParam(name = "GetAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAnnotationOptOutRequest parameters,
+        @WebParam(name = "GetAnnotationOptOutResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAnnotationOptOutResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetAnnotationOptOutResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetAnnotationOptOut", action = "GetAnnotationOptOut")
+    @WebResult(name = "GetAnnotationOptOutResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetAnnotationOptOutResponse getAnnotationOptOut(
+        @WebParam(name = "GetAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetAnnotationOptOutRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateAnnotationOptOutResponse>
+     */
+    @WebMethod(operationName = "UpdateAnnotationOptOut", action = "UpdateAnnotationOptOut")
+    public Response<UpdateAnnotationOptOutResponse> updateAnnotationOptOutAsync(
+        @WebParam(name = "UpdateAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateAnnotationOptOutRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateAnnotationOptOut", action = "UpdateAnnotationOptOut")
+    public Future<?> updateAnnotationOptOutAsync(
+        @WebParam(name = "UpdateAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateAnnotationOptOutRequest parameters,
+        @WebParam(name = "UpdateAnnotationOptOutResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateAnnotationOptOutResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateAnnotationOptOutResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateAnnotationOptOut", action = "UpdateAnnotationOptOut")
+    @WebResult(name = "UpdateAnnotationOptOutResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateAnnotationOptOutResponse updateAnnotationOptOut(
+        @WebParam(name = "UpdateAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateAnnotationOptOutRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

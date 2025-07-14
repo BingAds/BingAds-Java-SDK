@@ -5,16 +5,16 @@ import java.util.Collection;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter17
-    extends XmlAdapter<String, Collection<AssetGroupListingGroupAdditionalField>>
+    extends XmlAdapter<String, Collection<ProfileType>>
 {
 
 
-    public Collection<AssetGroupListingGroupAdditionalField> unmarshal(String value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.AssetGroupListingGroupAdditionalFieldConverter.convertToList(value));
+    public Collection<ProfileType> unmarshal(String value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.ProfileTypeConverter.convertToList(value));
     }
 
-    public String marshal(Collection<AssetGroupListingGroupAdditionalField> value) {
-        return (com.microsoft.bingads.v13.campaignmanagement.AssetGroupListingGroupAdditionalFieldConverter.convertToString(value));
+    public String marshal(Collection<ProfileType> value) {
+        return (com.microsoft.bingads.v13.campaignmanagement.ProfileTypeConverter.convertToString(value));
     }
 
 }

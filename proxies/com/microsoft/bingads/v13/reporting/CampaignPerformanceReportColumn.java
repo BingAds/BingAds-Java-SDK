@@ -140,6 +140,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="NewCustomerConversionRate"/>
  *     <enumeration value="NewCustomerCPA"/>
  *     <enumeration value="NewCustomerReturnOnAdSpend"/>
+ *     <enumeration value="ConversionDelay"/>
+ *     <enumeration value="UnknownCustomerConversions"/>
+ *     <enumeration value="UnknownCustomerRevenue"/>
+ *     <enumeration value="NewCustomerCount"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -399,7 +403,15 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("NewCustomerCPA")
     NEW_CUSTOMER_CPA("NewCustomerCPA"),
     @XmlEnumValue("NewCustomerReturnOnAdSpend")
-    NEW_CUSTOMER_RETURN_ON_AD_SPEND("NewCustomerReturnOnAdSpend");
+    NEW_CUSTOMER_RETURN_ON_AD_SPEND("NewCustomerReturnOnAdSpend"),
+    @XmlEnumValue("ConversionDelay")
+    CONVERSION_DELAY("ConversionDelay"),
+    @XmlEnumValue("UnknownCustomerConversions")
+    UNKNOWN_CUSTOMER_CONVERSIONS("UnknownCustomerConversions"),
+    @XmlEnumValue("UnknownCustomerRevenue")
+    UNKNOWN_CUSTOMER_REVENUE("UnknownCustomerRevenue"),
+    @XmlEnumValue("NewCustomerCount")
+    NEW_CUSTOMER_COUNT("NewCustomerCount");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

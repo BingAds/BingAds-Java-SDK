@@ -17,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="BrandVoice" type="{https://bingads.microsoft.com/CampaignManagement/v13}BrandVoice" minOccurs="0"/>
  *         <element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Fonts" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitFont" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -35,6 +36,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BrandKit", propOrder = {
+    "brandVoice",
     "businessName",
     "fonts",
     "id",
@@ -46,6 +48,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class BrandKit {
 
+    @XmlElement(name = "BrandVoice", nillable = true)
+    protected BrandVoice brandVoice;
     @XmlElement(name = "BusinessName", nillable = true)
     protected String businessName;
     @XmlElement(name = "Fonts", nillable = true)
@@ -62,6 +66,30 @@ public class BrandKit {
     protected ArrayOfBrandKitPalette palettes;
     @XmlElement(name = "SquareLogos", nillable = true)
     protected ArrayOfBrandKitImage squareLogos;
+
+    /**
+     * Gets the value of the brandVoice property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BrandVoice }
+     *     
+     */
+    public BrandVoice getBrandVoice() {
+        return brandVoice;
+    }
+
+    /**
+     * Sets the value of the brandVoice property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BrandVoice }
+     *     
+     */
+    public void setBrandVoice(BrandVoice value) {
+        this.brandVoice = value;
+    }
 
     /**
      * Gets the value of the businessName property.

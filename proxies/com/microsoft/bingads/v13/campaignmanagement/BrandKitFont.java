@@ -4,7 +4,6 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -18,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="TextAssetType" type="{https://bingads.microsoft.com/CampaignManagement/v13}FontTextAssetType" minOccurs="0"/>
+ *         <element name="TextAssetType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Typeface" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Weight" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
@@ -37,9 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class BrandKitFont {
 
-    @XmlElement(name = "TextAssetType")
-    @XmlSchemaType(name = "string")
-    protected FontTextAssetType textAssetType;
+    @XmlElement(name = "TextAssetType", nillable = true)
+    protected String textAssetType;
     @XmlElement(name = "Typeface", nillable = true)
     protected String typeface;
     @XmlElement(name = "Weight", nillable = true)
@@ -50,10 +48,10 @@ public class BrandKitFont {
      * 
      * @return
      *     possible object is
-     *     {@link FontTextAssetType }
+     *     {@link String }
      *     
      */
-    public FontTextAssetType getTextAssetType() {
+    public String getTextAssetType() {
         return textAssetType;
     }
 
@@ -62,10 +60,10 @@ public class BrandKitFont {
      * 
      * @param value
      *     allowed object is
-     *     {@link FontTextAssetType }
+     *     {@link String }
      *     
      */
-    public void setTextAssetType(FontTextAssetType value) {
+    public void setTextAssetType(String value) {
         this.textAssetType = value;
     }
 

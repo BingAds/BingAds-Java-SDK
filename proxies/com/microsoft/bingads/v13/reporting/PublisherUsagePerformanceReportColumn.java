@@ -69,6 +69,21 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AssetGroupName"/>
  *     <enumeration value="AssetGroupStatus"/>
+ *     <enumeration value="AppName"/>
+ *     <enumeration value="AppBundle"/>
+ *     <enumeration value="AppStoreUrl"/>
+ *     <enumeration value="Downloads"/>
+ *     <enumeration value="PostClickDownloadRate"/>
+ *     <enumeration value="CostPerDownload"/>
+ *     <enumeration value="AppInstalls"/>
+ *     <enumeration value="PostClickInstallRate"/>
+ *     <enumeration value="CPI"/>
+ *     <enumeration value="Purchases"/>
+ *     <enumeration value="PostInstallPurchaseRate"/>
+ *     <enumeration value="CPP"/>
+ *     <enumeration value="Subscriptions"/>
+ *     <enumeration value="PostInstallSubscriptionRate"/>
+ *     <enumeration value="CPS"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -189,7 +204,34 @@ public enum PublisherUsagePerformanceReportColumn {
     @XmlEnumValue("AssetGroupName")
     ASSET_GROUP_NAME("AssetGroupName"),
     @XmlEnumValue("AssetGroupStatus")
-    ASSET_GROUP_STATUS("AssetGroupStatus");
+    ASSET_GROUP_STATUS("AssetGroupStatus"),
+    @XmlEnumValue("AppName")
+    APP_NAME("AppName"),
+    @XmlEnumValue("AppBundle")
+    APP_BUNDLE("AppBundle"),
+    @XmlEnumValue("AppStoreUrl")
+    APP_STORE_URL("AppStoreUrl"),
+    @XmlEnumValue("Downloads")
+    DOWNLOADS("Downloads"),
+    @XmlEnumValue("PostClickDownloadRate")
+    POST_CLICK_DOWNLOAD_RATE("PostClickDownloadRate"),
+    @XmlEnumValue("CostPerDownload")
+    COST_PER_DOWNLOAD("CostPerDownload"),
+    @XmlEnumValue("AppInstalls")
+    APP_INSTALLS("AppInstalls"),
+    @XmlEnumValue("PostClickInstallRate")
+    POST_CLICK_INSTALL_RATE("PostClickInstallRate"),
+    CPI("CPI"),
+    @XmlEnumValue("Purchases")
+    PURCHASES("Purchases"),
+    @XmlEnumValue("PostInstallPurchaseRate")
+    POST_INSTALL_PURCHASE_RATE("PostInstallPurchaseRate"),
+    CPP("CPP"),
+    @XmlEnumValue("Subscriptions")
+    SUBSCRIPTIONS("Subscriptions"),
+    @XmlEnumValue("PostInstallSubscriptionRate")
+    POST_INSTALL_SUBSCRIPTION_RATE("PostInstallSubscriptionRate"),
+    CPS("CPS");
     private final String value;
 
     PublisherUsagePerformanceReportColumn(String v) {

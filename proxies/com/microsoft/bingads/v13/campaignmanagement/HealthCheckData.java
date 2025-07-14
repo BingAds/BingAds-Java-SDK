@@ -17,11 +17,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="HealthCheckActionLinks" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         <element name="HealthCheckDataVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckEntity" type="{https://bingads.microsoft.com/CampaignManagement/v13}HealthCheckEntity" minOccurs="0"/>
  *         <element name="HealthCheckJsonData" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="HealthCheckName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="HealthCheckSubEntityResults" type="{https://bingads.microsoft.com/CampaignManagement/v13}HealthCheckSubEntityData" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -32,16 +32,14 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HealthCheckData", propOrder = {
-    "healthCheckActionLinks",
     "healthCheckDataVersion",
     "healthCheckEntity",
     "healthCheckJsonData",
-    "healthCheckName"
+    "healthCheckName",
+    "healthCheckSubEntityResults"
 })
 public class HealthCheckData {
 
-    @XmlElement(name = "HealthCheckActionLinks", nillable = true)
-    protected ArrayOfstring healthCheckActionLinks;
     @XmlElement(name = "HealthCheckDataVersion", nillable = true)
     protected String healthCheckDataVersion;
     @XmlElement(name = "HealthCheckEntity", nillable = true)
@@ -50,30 +48,8 @@ public class HealthCheckData {
     protected String healthCheckJsonData;
     @XmlElement(name = "HealthCheckName", nillable = true)
     protected String healthCheckName;
-
-    /**
-     * Gets the value of the healthCheckActionLinks property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfstring }
-     *     
-     */
-    public ArrayOfstring getHealthCheckActionLinks() {
-        return healthCheckActionLinks;
-    }
-
-    /**
-     * Sets the value of the healthCheckActionLinks property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfstring }
-     *     
-     */
-    public void setHealthCheckActionLinks(ArrayOfstring value) {
-        this.healthCheckActionLinks = value;
-    }
+    @XmlElement(name = "HealthCheckSubEntityResults", nillable = true)
+    protected HealthCheckSubEntityData healthCheckSubEntityResults;
 
     /**
      * Gets the value of the healthCheckDataVersion property.
@@ -169,6 +145,30 @@ public class HealthCheckData {
      */
     public void setHealthCheckName(String value) {
         this.healthCheckName = value;
+    }
+
+    /**
+     * Gets the value of the healthCheckSubEntityResults property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link HealthCheckSubEntityData }
+     *     
+     */
+    public HealthCheckSubEntityData getHealthCheckSubEntityResults() {
+        return healthCheckSubEntityResults;
+    }
+
+    /**
+     * Sets the value of the healthCheckSubEntityResults property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link HealthCheckSubEntityData }
+     *     
+     */
+    public void setHealthCheckSubEntityResults(HealthCheckSubEntityData value) {
+        this.healthCheckSubEntityResults = value;
     }
 
 }

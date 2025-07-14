@@ -1,0 +1,32 @@
+package com.microsoft.bingads.v13.api.test.entities.account_placement_exclusion_list.write;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+		BulkAccountPlacementExclusionListWriteToRowValuesIdTest.class,
+		BulkAccountPlacementExclusionListWriteToRowValuesNameTest.class,
+		BulkAccountPlacementExclusionListWriteToRowValuesStatusTest.class,
+		BulkAccountPlacementInclusionListWriteToRowValuesIdTest.class,
+		BulkAccountPlacementInclusionListWriteToRowValuesNameTest.class,
+		BulkAccountPlacementInclusionListWriteToRowValuesStatusTest.class,
+		BulkAccountPlacementExclusionListAssociationWriteToRowValuesIdTest.class,
+		BulkAccountPlacementExclusionListAssociationWriteToRowValuesParentIdTest.class,
+		BulkAccountPlacementExclusionListAssociationWriteToRowValuesStatusTest.class,
+		BulkAccountPlacementInclusionListAssociationWriteToRowValuesIdTest.class,
+		BulkAccountPlacementInclusionListAssociationWriteToRowValuesParentIdTest.class,
+		BulkAccountPlacementInclusionListAssociationWriteToRowValuesStatusTest.class,
+		BulkSharedNegativeSiteWriteToRowValuesIdTest.class,
+		BulkSharedNegativeSiteWriteToRowValuesParentIdTest.class,
+		BulkSharedNegativeSiteWriteToRowValuesStatusTest.class,
+		BulkSharedNegativeSiteWriteToRowValuesUrlTest.class,
+		BulkSharedSiteWriteToRowValuesIdTest.class,
+		BulkSharedSiteWriteToRowValuesParentIdTest.class,
+		BulkSharedSiteWriteToRowValuesStatusTest.class,
+		BulkSharedSiteWriteToRowValuesUrlTest.class,
+})
+public class BulkAccountPlacementWriteTests {
+
+}

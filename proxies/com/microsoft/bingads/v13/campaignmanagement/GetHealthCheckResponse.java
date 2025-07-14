@@ -18,8 +18,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="HealthCheckMetadatas" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckMetadata" minOccurs="0"/>
- *         <element name="HealthCheckDatas" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckData" minOccurs="0"/>
+ *         <element name="HealthCheckResultsMetadata" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckMetadata" minOccurs="0"/>
+ *         <element name="HealthCheckResults" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckData" minOccurs="0"/>
  *         <element name="HealthCheckErrors" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckError" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -31,66 +31,66 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "healthCheckMetadatas",
-    "healthCheckDatas",
+    "healthCheckResultsMetadata",
+    "healthCheckResults",
     "healthCheckErrors"
 })
 @XmlRootElement(name = "GetHealthCheckResponse")
 public class GetHealthCheckResponse {
 
-    @XmlElement(name = "HealthCheckMetadatas", nillable = true)
-    protected ArrayOfHealthCheckMetadata healthCheckMetadatas;
-    @XmlElement(name = "HealthCheckDatas", nillable = true)
-    protected ArrayOfHealthCheckData healthCheckDatas;
+    @XmlElement(name = "HealthCheckResultsMetadata", nillable = true)
+    protected ArrayOfHealthCheckMetadata healthCheckResultsMetadata;
+    @XmlElement(name = "HealthCheckResults", nillable = true)
+    protected ArrayOfHealthCheckData healthCheckResults;
     @XmlElement(name = "HealthCheckErrors", nillable = true)
     protected ArrayOfHealthCheckError healthCheckErrors;
 
     /**
-     * Gets the value of the healthCheckMetadatas property.
+     * Gets the value of the healthCheckResultsMetadata property.
      * 
      * @return
      *     possible object is
      *     {@link ArrayOfHealthCheckMetadata }
      *     
      */
-    public ArrayOfHealthCheckMetadata getHealthCheckMetadatas() {
-        return healthCheckMetadatas;
+    public ArrayOfHealthCheckMetadata getHealthCheckResultsMetadata() {
+        return healthCheckResultsMetadata;
     }
 
     /**
-     * Sets the value of the healthCheckMetadatas property.
+     * Sets the value of the healthCheckResultsMetadata property.
      * 
      * @param value
      *     allowed object is
      *     {@link ArrayOfHealthCheckMetadata }
      *     
      */
-    public void setHealthCheckMetadatas(ArrayOfHealthCheckMetadata value) {
-        this.healthCheckMetadatas = value;
+    public void setHealthCheckResultsMetadata(ArrayOfHealthCheckMetadata value) {
+        this.healthCheckResultsMetadata = value;
     }
 
     /**
-     * Gets the value of the healthCheckDatas property.
+     * Gets the value of the healthCheckResults property.
      * 
      * @return
      *     possible object is
      *     {@link ArrayOfHealthCheckData }
      *     
      */
-    public ArrayOfHealthCheckData getHealthCheckDatas() {
-        return healthCheckDatas;
+    public ArrayOfHealthCheckData getHealthCheckResults() {
+        return healthCheckResults;
     }
 
     /**
-     * Sets the value of the healthCheckDatas property.
+     * Sets the value of the healthCheckResults property.
      * 
      * @param value
      *     allowed object is
      *     {@link ArrayOfHealthCheckData }
      *     
      */
-    public void setHealthCheckDatas(ArrayOfHealthCheckData value) {
-        this.healthCheckDatas = value;
+    public void setHealthCheckResults(ArrayOfHealthCheckData value) {
+        this.healthCheckResults = value;
     }
 
     /**

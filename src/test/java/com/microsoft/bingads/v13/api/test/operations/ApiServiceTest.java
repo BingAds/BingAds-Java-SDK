@@ -1,9 +1,7 @@
 package com.microsoft.bingads.v13.api.test.operations;
 
 import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.EasyMock.replay;
 
 import java.net.URL;
 import java.util.concurrent.Future;
@@ -16,16 +14,11 @@ import jakarta.xml.ws.handler.HandlerResolver;
 import org.easymock.EasyMockSupport;
 import org.junit.Test;
 
-import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AuthorizationData;
 import com.microsoft.bingads.OAuthDesktopMobileAuthCodeGrant;
 import com.microsoft.bingads.OAuthDesktopMobileImplicitGrant;
 import com.microsoft.bingads.OAuthWebAuthCodeGrant;
-import com.microsoft.bingads.PasswordAuthentication;
 import com.microsoft.bingads.ServiceClient;
-import com.microsoft.bingads.internal.ServiceFactory;
-import com.microsoft.bingads.internal.ServiceFactoryFactory;
-import com.microsoft.bingads.internal.functionalinterfaces.Supplier;
 
 public class ApiServiceTest extends EasyMockSupport {
 
@@ -95,40 +88,16 @@ public class ApiServiceTest extends EasyMockSupport {
     }
 
     private ServiceClient<ITestService> createApiService(AuthorizationData authorizationData) {
-        ITestService proxy = createMock(ITestService.class);
 
         Service service = createMock(Service.class);
         
-        final ServiceFactory serviceFactory = createMock(ServiceFactory.class);
-        
-        expect(serviceFactory.createService(ITestService.class, ApiEnvironment.PRODUCTION)).andReturn(service);
-
         service.setHandlerResolver(anyObject(HandlerResolver.class));
+        
         expectLastCall().andVoid();
-        
-        expect(serviceFactory.createProxyFromService(service, ApiEnvironment.PRODUCTION, ITestService.class)).andReturn(proxy);
-        
-        ServiceFactoryFactory.setCustomServiceFactorySupplier(new Supplier<ServiceFactory>() {
-            @Override
-            public ServiceFactory get() {
-                return serviceFactory;
-            }
-        });
-        
-        replay(proxy, service, serviceFactory);
         
         ServiceClient serviceClient = new ServiceClient<ITestService>(authorizationData, ITestService.class);
 
         return serviceClient;
     }
 
-    private static AuthorizationData createUserData() {
-        AuthorizationData authorizationData = new AuthorizationData();
-        authorizationData.setAuthentication(new PasswordAuthentication("user", "pass"));
-        authorizationData.setAccountId(123L);
-        authorizationData.setCustomerId(456L);
-        authorizationData.setDeveloperToken("dev");
-
-        return authorizationData;
-    }
 }

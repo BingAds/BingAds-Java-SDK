@@ -484,11 +484,11 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<HealthCheckActionLinkMetadata> getHealthCheckActionLinkMetadatas();
+	List<HealthCheckColumnMetadata> getHealthCheckColumnMetadatas();
 
             
 	@JsonValue
-	List<HealthCheckColumnMetadata> getHealthCheckColumnMetadatas();
+	List<HealthCheckActionLinkMetadata> getHealthCheckActionLinkMetadatas();
 
             
 	@JsonValue
@@ -497,6 +497,18 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<HealthCheckError> getHealthCheckErrors();
+
+            
+	@JsonValue
+	List<DiagnosticCategoryData> getDiagnosticCategoryDatas();
+
+            
+	@JsonValue
+	List<DiagnosticCardData> getDiagnosticCardDatas();
+
+            
+	@JsonValue
+	List<AnnotationOptOut> getAnnotationOptOuts();
 
             
 	@JsonValue

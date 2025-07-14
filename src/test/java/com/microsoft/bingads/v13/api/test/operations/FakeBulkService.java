@@ -37,7 +37,7 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
 
     public FakeBulkService(Map<String, String> headers, ApiEnvironment env,
 			java.util.function.Supplier<IBulkService> fallbackService) {
-		super(headers, env, fallbackService);
+		super(headers, env);
 	}
 
 	private static Consumer<GetBulkDownloadStatusRequest> onGetBulkDownloadStatus;

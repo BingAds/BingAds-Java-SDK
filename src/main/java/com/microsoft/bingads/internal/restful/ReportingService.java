@@ -14,12 +14,9 @@ import com.microsoft.bingads.v13.reporting.*;
 
 public class ReportingService extends RestfulServiceClient implements IReportingService {
 
-	private Supplier<IReportingService> fallbackService;
-
-	public ReportingService(Map<String, String> headers, ApiEnvironment env, Supplier<IReportingService> fallbackService) {
+	public ReportingService(Map<String, String> headers, ApiEnvironment env) {
         super(headers, env, IReportingService.class);
 
-		this.fallbackService = fallbackService;
     }
 
 	Exception processFaultDetail(ApplicationFault faultDetail, boolean shouldThrow) 
@@ -80,47 +77,39 @@ public class ReportingService extends RestfulServiceClient implements IReporting
 		}
 	}
 
-	protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class<Resp> respClass, BiFunction<Req, AsyncHandler<Resp>, Future<?>> soapMethod, AsyncHandler<Resp> handler) {
-		return processRequestAsync(request, entityEndpoint, verb, respClass, ApplicationFault.class, x -> getFaultException(x), soapMethod, handler);
+	protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class<Resp> respClass, AsyncHandler<Resp> handler) {
+		return processRequestAsync(request, entityEndpoint, verb, respClass, ApplicationFault.class, x -> getFaultException(x), handler);
 	}
 		
 	public SubmitGenerateReportResponse submitGenerateReport(SubmitGenerateReportRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		SubmitGenerateReportResponse response = sendRequest(request, "/GenerateReport/Submit", HttpPost, SubmitGenerateReportResponse.class);
-			
-		if (response == null) {
-			response = fallbackService.get().submitGenerateReport(request);
-		}
 		
 		return response;
 	}
 
     public Response<SubmitGenerateReportResponse> submitGenerateReportAsync(SubmitGenerateReportRequest request) {
-		return sendRequestAsync(request, "/GenerateReport/Submit", HttpPost, SubmitGenerateReportResponse.class, (r, h) -> fallbackService.get().submitGenerateReportAsync(r, h), null);
+		return sendRequestAsync(request, "/GenerateReport/Submit", HttpPost, SubmitGenerateReportResponse.class, null);
 	}
 
 	public Future<?> submitGenerateReportAsync(SubmitGenerateReportRequest request, AsyncHandler<SubmitGenerateReportResponse> asyncHandler) {
-		return sendRequestAsync(request, "/GenerateReport/Submit", HttpPost, SubmitGenerateReportResponse.class, (r, h) -> fallbackService.get().submitGenerateReportAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/GenerateReport/Submit", HttpPost, SubmitGenerateReportResponse.class, asyncHandler);
 	}
 	
     	
 	public PollGenerateReportResponse pollGenerateReport(PollGenerateReportRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		PollGenerateReportResponse response = sendRequest(request, "/GenerateReport/Poll", HttpPost, PollGenerateReportResponse.class);
-			
-		if (response == null) {
-			response = fallbackService.get().pollGenerateReport(request);
-		}
 		
 		return response;
 	}
 
     public Response<PollGenerateReportResponse> pollGenerateReportAsync(PollGenerateReportRequest request) {
-		return sendRequestAsync(request, "/GenerateReport/Poll", HttpPost, PollGenerateReportResponse.class, (r, h) -> fallbackService.get().pollGenerateReportAsync(r, h), null);
+		return sendRequestAsync(request, "/GenerateReport/Poll", HttpPost, PollGenerateReportResponse.class, null);
 	}
 
 	public Future<?> pollGenerateReportAsync(PollGenerateReportRequest request, AsyncHandler<PollGenerateReportResponse> asyncHandler) {
-		return sendRequestAsync(request, "/GenerateReport/Poll", HttpPost, PollGenerateReportResponse.class, (r, h) -> fallbackService.get().pollGenerateReportAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/GenerateReport/Poll", HttpPost, PollGenerateReportResponse.class, asyncHandler);
 	}
 	
     }

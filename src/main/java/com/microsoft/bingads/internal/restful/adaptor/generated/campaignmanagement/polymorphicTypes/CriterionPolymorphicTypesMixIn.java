@@ -62,6 +62,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = GenreCriterion.class, name = "GenreCriterion"),
 						
 			@JsonSubTypes.Type(value = PlacementCriterion.class, name = "PlacementCriterion"),
+						
+			@JsonSubTypes.Type(value = TopicCriterion.class, name = "TopicCriterion"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

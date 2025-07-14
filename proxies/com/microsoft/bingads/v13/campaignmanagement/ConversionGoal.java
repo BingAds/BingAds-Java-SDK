@@ -27,6 +27,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="ExcludeFromBidding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="GoalCategory" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalCategory" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="IsAutoGoal" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="IsEnhancedConversionsEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Revenue" type="{https://bingads.microsoft.com/CampaignManagement/v13}ConversionGoalRevenue" minOccurs="0"/>
@@ -52,6 +53,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "excludeFromBidding",
     "goalCategory",
     "id",
+    "isAutoGoal",
     "isEnhancedConversionsEnabled",
     "name",
     "revenue",
@@ -88,6 +90,8 @@ public class ConversionGoal {
     protected ConversionGoalCategory goalCategory;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "IsAutoGoal", nillable = true)
+    protected Boolean isAutoGoal;
     @XmlElement(name = "IsEnhancedConversionsEnabled", nillable = true)
     protected Boolean isEnhancedConversionsEnabled;
     @XmlElement(name = "Name", nillable = true)
@@ -106,7 +110,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter24 .class)
+    @XmlJavaTypeAdapter(Adapter26 .class)
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;
@@ -253,6 +257,30 @@ public class ConversionGoal {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the isAutoGoal property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsAutoGoal() {
+        return isAutoGoal;
+    }
+
+    /**
+     * Sets the value of the isAutoGoal property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsAutoGoal(Boolean value) {
+        this.isAutoGoal = value;
     }
 
     /**

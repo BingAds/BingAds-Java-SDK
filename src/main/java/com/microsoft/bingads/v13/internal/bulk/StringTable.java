@@ -848,6 +848,18 @@ public class StringTable {
     public static final String NewCustomerAcquisitionGoalId = "New Customer Acquisition Goal Id";
     public static final String NewCustomerAcquisitionBidOnlyMode = "New Customer Acquisition Bid Only Mode";
     
+    public static final String AccountPlacementExclusionList = "Account Placement Exclusion List";
+    public static final String AccountPlacementExclusionListItem = "Account Placement Exclusion List Item";
+    public static final String AccountPlacementListItemUrl = "Site List Item Url";
+    public static final String CampaignAccountPlacementListAssociation = "Campaign Account Placement Exclusion List Association";
+    public static final String AccountPlacementExclusionListId = "Account Placement Exclusion List Id";
+    public static final String AccountPlacementExclusionListItemId = "Account Placement Exclusion List Item Id";
+    public static final String AccountPlacementInclusionList = "Account Placement Inclusion List";
+    public static final String AccountPlacementInclusionListItem = "Account Placement Inclusion List Item";
+    public static final String CampaignAccountPlacementInclusionListAssociation = "Campaign Account Placement Inclusion List Association";
+    public static final String AccountPlacementInclusionListId = "Account Placement Inclusion List Id";
+    public static final String AccountPlacementInclusionListItemId = "Account Placement Inclusion List Item Id";
+    
     static {
         Map<String, String> m = new HashMap<String, String>();
 

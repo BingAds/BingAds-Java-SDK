@@ -87,6 +87,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateAdSchedules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateAssetAutomationCampaignSetting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBiddingStrategies" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBids" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -202,6 +203,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateAdSchedules",
     "updateAdUrls",
     "updateAppAdExtensions",
+    "updateAssetAutomationCampaignSetting",
     "updateAudienceTargets",
     "updateBiddingStrategies",
     "updateBids",
@@ -385,6 +387,8 @@ public class GoogleImportOption
     protected Boolean updateAdUrls;
     @XmlElement(name = "UpdateAppAdExtensions", nillable = true)
     protected Boolean updateAppAdExtensions;
+    @XmlElement(name = "UpdateAssetAutomationCampaignSetting", nillable = true)
+    protected Boolean updateAssetAutomationCampaignSetting;
     @XmlElement(name = "UpdateAudienceTargets", nillable = true)
     protected Boolean updateAudienceTargets;
     @XmlElement(name = "UpdateBiddingStrategies", nillable = true)
@@ -2134,6 +2138,30 @@ public class GoogleImportOption
      */
     public void setUpdateAppAdExtensions(Boolean value) {
         this.updateAppAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the updateAssetAutomationCampaignSetting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAssetAutomationCampaignSetting() {
+        return updateAssetAutomationCampaignSetting;
+    }
+
+    /**
+     * Sets the value of the updateAssetAutomationCampaignSetting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAssetAutomationCampaignSetting(Boolean value) {
+        this.updateAssetAutomationCampaignSetting = value;
     }
 
     /**

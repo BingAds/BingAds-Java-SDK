@@ -15,10 +15,6 @@ resources:
     type: git
     name: Engineering Fundamentals/WebXT.Pipeline.Templates
     ref: refs/heads/main
-  - repository: AdsAppsYamlTemplate
-    type: git
-    name: Bing_Ads/AdsApps_Yaml_Template
-    ref: refs/heads/master 
 extends:
   template: v1/WebXT.Official.EntryPoint.yml@WebXT.Pipeline.Templates
   parameters:
@@ -26,11 +22,6 @@ extends:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
       os: windows
-    sdl:
-      sourceAnalysisPool:
-        name: Azure-Pipelines-1ESPT-ExDShared
-        image: windows-latest
-        os: windows
     stages:
     - stage: stage
       jobs:
@@ -59,10 +50,15 @@ extends:
           inputs:
             SourceFolder: '$(Pipeline.Workspace)/s'
             Contents: '**/.artifactignore'
-            TargetFolder: 'target'
+            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: 'target'
+            Contents: '**/*'
+            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         templateContext:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish Maven Artifacts'
-            targetPath: target
+            targetPath: $(Build.ArtifactStagingDirectory)/maven_artifacts
             artifactName: maven_artifacts

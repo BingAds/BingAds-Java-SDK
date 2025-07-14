@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="ImageSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationImageSuggestion" minOccurs="0"/>
  *         <element name="VideoSuggestions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAdRecommendationVideoSuggestion" minOccurs="0"/>
  *         <element name="PromptBrandWarning" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="JobInfo" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdRecommendationJobInfo" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,7 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "responsiveAd",
     "imageSuggestions",
     "videoSuggestions",
-    "promptBrandWarning"
+    "promptBrandWarning",
+    "jobInfo"
 })
 @XmlRootElement(name = "CreateResponsiveAdRecommendationResponse")
 public class CreateResponsiveAdRecommendationResponse {
@@ -48,6 +50,8 @@ public class CreateResponsiveAdRecommendationResponse {
     protected ArrayOfAdRecommendationVideoSuggestion videoSuggestions;
     @XmlElement(name = "PromptBrandWarning", nillable = true)
     protected String promptBrandWarning;
+    @XmlElement(name = "JobInfo", nillable = true)
+    protected AdRecommendationJobInfo jobInfo;
 
     /**
      * Gets the value of the responsiveAd property.
@@ -143,6 +147,30 @@ public class CreateResponsiveAdRecommendationResponse {
      */
     public void setPromptBrandWarning(String value) {
         this.promptBrandWarning = value;
+    }
+
+    /**
+     * Gets the value of the jobInfo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdRecommendationJobInfo }
+     *     
+     */
+    public AdRecommendationJobInfo getJobInfo() {
+        return jobInfo;
+    }
+
+    /**
+     * Sets the value of the jobInfo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdRecommendationJobInfo }
+     *     
+     */
+    public void setJobInfo(AdRecommendationJobInfo value) {
+        this.jobInfo = value;
     }
 
 }

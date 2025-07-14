@@ -1,0 +1,32 @@
+package com.microsoft.bingads.v13.api.test.entities.account_placement_exclusion_list.read;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+		BulkAccountPlacementExclusionListReadFromRowValuesIdTest.class,
+		BulkAccountPlacementExclusionListReadFromRowValuesStatusTest.class,
+		BulkAccountPlacementExclusionListReadFromRowValuesNameTest.class,
+		BulkAccountPlacementInclusionListReadFromRowValuesIdTest.class,
+		BulkAccountPlacementInclusionListReadFromRowValuesStatusTest.class,
+		BulkAccountPlacementInclusionListReadFromRowValuesNameTest.class,
+		BulkAccountPlacementExclusionListAssociationReadFromRowValuesIdTest.class,
+		BulkAccountPlacementExclusionListAssociationReadFromRowValuesParentIdTest.class,
+		BulkAccountPlacementExclusionListAssociationReadFromRowValuesStatusTest.class,
+		BulkAccountPlacementInclusionListAssociationReadFromRowValuesIdTest.class,
+		BulkAccountPlacementInclusionListAssociationReadFromRowValuesParentIdTest.class,
+		BulkAccountPlacementInclusionListAssociationReadFromRowValuesStatusTest.class,
+		BulkSharedNegativeSiteReadFromRowValuesIdTest.class,
+		BulkSharedNegativeSiteReadFromRowValuesParentIdTest.class,
+		BulkSharedNegativeSiteReadFromRowValuesStatusTest.class,
+		BulkSharedNegativeSiteReadFromRowValuesUrlTest.class,
+		BulkSharedSiteReadFromRowValuesIdTest.class,
+		BulkSharedSiteReadFromRowValuesParentIdTest.class,
+		BulkSharedSiteReadFromRowValuesStatusTest.class,
+		BulkSharedSiteReadFromRowValuesUrlTest.class,
+})
+public class BulkAccountPlacementReadTests {
+
+}

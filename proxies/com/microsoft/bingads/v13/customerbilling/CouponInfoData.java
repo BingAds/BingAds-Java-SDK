@@ -30,6 +30,14 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="PercentOff" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         <element name="CouponValue" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         <element name="UpfrontSpending" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="ActiveDuration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="SpendToThreshold" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="Balance" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="CurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="FeatureId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="CouponType" type="{http://www.w3.org/2001/XMLSchema}unsignedByte" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -48,7 +56,15 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "expirationDate",
     "percentOff",
     "couponValue",
-    "upfrontSpending"
+    "upfrontSpending",
+    "activeDuration",
+    "spendToThreshold",
+    "startDate",
+    "endDate",
+    "balance",
+    "currencyCode",
+    "featureId",
+    "couponType"
 })
 public class CouponInfoData {
 
@@ -77,6 +93,27 @@ public class CouponInfoData {
     protected BigDecimal couponValue;
     @XmlElement(name = "UpfrontSpending", nillable = true)
     protected BigDecimal upfrontSpending;
+    @XmlElement(name = "ActiveDuration", nillable = true)
+    protected Integer activeDuration;
+    @XmlElement(name = "SpendToThreshold", nillable = true)
+    protected BigDecimal spendToThreshold;
+    @XmlElement(name = "StartDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar startDate;
+    @XmlElement(name = "EndDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar endDate;
+    @XmlElement(name = "Balance", nillable = true)
+    protected BigDecimal balance;
+    @XmlElement(name = "CurrencyCode", nillable = true)
+    protected String currencyCode;
+    @XmlElement(name = "FeatureId", nillable = true)
+    protected Integer featureId;
+    @XmlElement(name = "CouponType", nillable = true)
+    @XmlSchemaType(name = "unsignedByte")
+    protected Short couponType;
 
     /**
      * Gets the value of the accountId property.
@@ -292,6 +329,198 @@ public class CouponInfoData {
      */
     public void setUpfrontSpending(BigDecimal value) {
         this.upfrontSpending = value;
+    }
+
+    /**
+     * Gets the value of the activeDuration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getActiveDuration() {
+        return activeDuration;
+    }
+
+    /**
+     * Sets the value of the activeDuration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setActiveDuration(Integer value) {
+        this.activeDuration = value;
+    }
+
+    /**
+     * Gets the value of the spendToThreshold property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getSpendToThreshold() {
+        return spendToThreshold;
+    }
+
+    /**
+     * Sets the value of the spendToThreshold property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setSpendToThreshold(BigDecimal value) {
+        this.spendToThreshold = value;
+    }
+
+    /**
+     * Gets the value of the startDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * Sets the value of the startDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStartDate(Calendar value) {
+        this.startDate = value;
+    }
+
+    /**
+     * Gets the value of the endDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * Sets the value of the endDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEndDate(Calendar value) {
+        this.endDate = value;
+    }
+
+    /**
+     * Gets the value of the balance property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    /**
+     * Sets the value of the balance property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setBalance(BigDecimal value) {
+        this.balance = value;
+    }
+
+    /**
+     * Gets the value of the currencyCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    /**
+     * Sets the value of the currencyCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
+    }
+
+    /**
+     * Gets the value of the featureId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getFeatureId() {
+        return featureId;
+    }
+
+    /**
+     * Sets the value of the featureId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setFeatureId(Integer value) {
+        this.featureId = value;
+    }
+
+    /**
+     * Gets the value of the couponType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Short }
+     *     
+     */
+    public Short getCouponType() {
+        return couponType;
+    }
+
+    /**
+     * Sets the value of the couponType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Short }
+     *     
+     */
+    public void setCouponType(Short value) {
+        this.couponType = value;
     }
 
 }

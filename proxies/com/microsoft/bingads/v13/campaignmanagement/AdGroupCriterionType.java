@@ -34,7 +34,8 @@ public enum AdGroupCriterionType {
     GENRE("Genre"),
     CUSTOMER_LIST("CustomerList"),
     IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
-    PLACEMENT("Placement");
+    PLACEMENT("Placement"),
+    TOPIC("Topic");
         
     private final String value;
 

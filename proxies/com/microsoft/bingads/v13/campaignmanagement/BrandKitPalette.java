@@ -19,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="ColorType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Colors" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitColor" minOccurs="0"/>
+ *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -30,7 +31,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BrandKitPalette", propOrder = {
     "colorType",
-    "colors"
+    "colors",
+    "name"
 })
 public class BrandKitPalette {
 
@@ -38,6 +40,8 @@ public class BrandKitPalette {
     protected String colorType;
     @XmlElement(name = "Colors", nillable = true)
     protected ArrayOfBrandKitColor colors;
+    @XmlElement(name = "Name", nillable = true)
+    protected String name;
 
     /**
      * Gets the value of the colorType property.
@@ -85,6 +89,30 @@ public class BrandKitPalette {
      */
     public void setColors(ArrayOfBrandKitColor value) {
         this.colors = value;
+    }
+
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+        this.name = value;
     }
 
 }

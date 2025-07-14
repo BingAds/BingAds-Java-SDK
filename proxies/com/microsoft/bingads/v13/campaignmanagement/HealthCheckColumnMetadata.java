@@ -17,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="HealthCheckActionLinksMetadata" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckActionLinkMetadata" minOccurs="0"/>
  *         <element name="Key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -30,18 +31,45 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HealthCheckColumnMetadata", propOrder = {
+    "healthCheckActionLinksMetadata",
     "key",
     "title",
     "type"
 })
 public class HealthCheckColumnMetadata {
 
+    @XmlElement(name = "HealthCheckActionLinksMetadata", nillable = true)
+    protected ArrayOfHealthCheckActionLinkMetadata healthCheckActionLinksMetadata;
     @XmlElement(name = "Key", nillable = true)
     protected String key;
     @XmlElement(name = "Title", nillable = true)
     protected String title;
     @XmlElement(name = "Type", nillable = true)
     protected String type;
+
+    /**
+     * Gets the value of the healthCheckActionLinksMetadata property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfHealthCheckActionLinkMetadata }
+     *     
+     */
+    public ArrayOfHealthCheckActionLinkMetadata getHealthCheckActionLinksMetadata() {
+        return healthCheckActionLinksMetadata;
+    }
+
+    /**
+     * Sets the value of the healthCheckActionLinksMetadata property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfHealthCheckActionLinkMetadata }
+     *     
+     */
+    public void setHealthCheckActionLinksMetadata(ArrayOfHealthCheckActionLinkMetadata value) {
+        this.healthCheckActionLinksMetadata = value;
+    }
 
     /**
      * Gets the value of the key property.

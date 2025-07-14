@@ -37,7 +37,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class GetBMCStoresByCustomerIdRequest {
 
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     protected Collection<BMCStoreAdditionalField> returnAdditionalFields;
 
     /**

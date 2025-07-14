@@ -35,7 +35,8 @@ public enum CampaignAdditionalField {
     THIRD_PARTY_MEASUREMENT_SETTING("ThirdPartyMeasurementSetting"),
     MANUAL_CPC("ManualCpc"),
     NEW_CUSTOMER_ACQUISITION_GOAL_SETTING("NewCustomerAcquisitionGoalSetting"),
-    LIFETIME_BUDGET_FIELDS("LifetimeBudgetFields");
+    LIFETIME_BUDGET_FIELDS("LifetimeBudgetFields"),
+    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc");
         
     private final String value;
 

@@ -43,7 +43,7 @@ public class AudienceConditionItem {
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Collection<AudienceType> type;
 
     /**

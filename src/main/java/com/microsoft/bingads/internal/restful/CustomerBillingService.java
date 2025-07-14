@@ -14,12 +14,9 @@ import com.microsoft.bingads.v13.customerbilling.*;
 
 public class CustomerBillingService extends RestfulServiceClient implements ICustomerBillingService {
 
-	private Supplier<ICustomerBillingService> fallbackService;
-
-	public CustomerBillingService(Map<String, String> headers, ApiEnvironment env, Supplier<ICustomerBillingService> fallbackService) {
+	public CustomerBillingService(Map<String, String> headers, ApiEnvironment env) {
         super(headers, env, ICustomerBillingService.class);
 
-        this.fallbackService = fallbackService;
     }
 	
 	Exception processFaultDetail(ApplicationFault faultDetail, boolean shouldThrow) 
@@ -142,27 +139,23 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		}
 	}
 
-	protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class<Resp> respClass, BiFunction<Req, AsyncHandler<Resp>, Future<?>> soapMethod, AsyncHandler<Resp> handler) {
-		return processRequestAsync(request, entityEndpoint, verb, respClass, ApplicationFault.class, x -> getFaultException(x), soapMethod, handler);
+	protected <Req, Resp> Response<Resp> sendRequestAsync(Req request, String entityEndpoint, String verb, Class<Resp> respClass, AsyncHandler<Resp> handler) {
+		return processRequestAsync(request, entityEndpoint, verb, respClass, ApplicationFault.class, x -> getFaultException(x), handler);
 	}
 		
 	public GetBillingDocumentsInfoResponse getBillingDocumentsInfo(GetBillingDocumentsInfoRequest request)
 		  throws AdApiFaultDetail_Exception, ApiBatchFault_Exception, ApiFault_Exception {
 		GetBillingDocumentsInfoResponse response = sendRequestApiBatchFault(request, "/BillingDocumentsInfo/Query", HttpPost, GetBillingDocumentsInfoResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().getBillingDocumentsInfo(request);
-		}
-		
 		return response;
 	}
 
     public Response<GetBillingDocumentsInfoResponse> getBillingDocumentsInfoAsync(GetBillingDocumentsInfoRequest request) {
-		return sendRequestAsync(request, "/BillingDocumentsInfo/Query", HttpPost, GetBillingDocumentsInfoResponse.class, (r, h) -> fallbackService.get().getBillingDocumentsInfoAsync(r, h), null);
+		return sendRequestAsync(request, "/BillingDocumentsInfo/Query", HttpPost, GetBillingDocumentsInfoResponse.class, null);
 	}
 
 	public Future<?> getBillingDocumentsInfoAsync(GetBillingDocumentsInfoRequest request, AsyncHandler<GetBillingDocumentsInfoResponse> asyncHandler) {
-		return sendRequestAsync(request, "/BillingDocumentsInfo/Query", HttpPost, GetBillingDocumentsInfoResponse.class, (r, h) -> fallbackService.get().getBillingDocumentsInfoAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/BillingDocumentsInfo/Query", HttpPost, GetBillingDocumentsInfoResponse.class, asyncHandler);
 	}
 	
     	
@@ -170,19 +163,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiBatchFault_Exception, ApiFault_Exception {
 		GetBillingDocumentsResponse response = sendRequestApiBatchFault(request, "/BillingDocuments/Query", HttpPost, GetBillingDocumentsResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().getBillingDocuments(request);
-		}
-		
 		return response;
 	}
 
     public Response<GetBillingDocumentsResponse> getBillingDocumentsAsync(GetBillingDocumentsRequest request) {
-		return sendRequestAsync(request, "/BillingDocuments/Query", HttpPost, GetBillingDocumentsResponse.class, (r, h) -> fallbackService.get().getBillingDocumentsAsync(r, h), null);
+		return sendRequestAsync(request, "/BillingDocuments/Query", HttpPost, GetBillingDocumentsResponse.class, null);
 	}
 
 	public Future<?> getBillingDocumentsAsync(GetBillingDocumentsRequest request, AsyncHandler<GetBillingDocumentsResponse> asyncHandler) {
-		return sendRequestAsync(request, "/BillingDocuments/Query", HttpPost, GetBillingDocumentsResponse.class, (r, h) -> fallbackService.get().getBillingDocumentsAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/BillingDocuments/Query", HttpPost, GetBillingDocumentsResponse.class, asyncHandler);
 	}
 	
     	
@@ -190,19 +179,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		AddInsertionOrderResponse response = sendRequest(request, "/InsertionOrder", HttpPost, AddInsertionOrderResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().addInsertionOrder(request);
-		}
-		
 		return response;
 	}
 
     public Response<AddInsertionOrderResponse> addInsertionOrderAsync(AddInsertionOrderRequest request) {
-		return sendRequestAsync(request, "/InsertionOrder", HttpPost, AddInsertionOrderResponse.class, (r, h) -> fallbackService.get().addInsertionOrderAsync(r, h), null);
+		return sendRequestAsync(request, "/InsertionOrder", HttpPost, AddInsertionOrderResponse.class, null);
 	}
 
 	public Future<?> addInsertionOrderAsync(AddInsertionOrderRequest request, AsyncHandler<AddInsertionOrderResponse> asyncHandler) {
-		return sendRequestAsync(request, "/InsertionOrder", HttpPost, AddInsertionOrderResponse.class, (r, h) -> fallbackService.get().addInsertionOrderAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/InsertionOrder", HttpPost, AddInsertionOrderResponse.class, asyncHandler);
 	}
 	
     	
@@ -210,19 +195,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		UpdateInsertionOrderResponse response = sendRequest(request, "/InsertionOrder", HttpPut, UpdateInsertionOrderResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().updateInsertionOrder(request);
-		}
-		
 		return response;
 	}
 
     public Response<UpdateInsertionOrderResponse> updateInsertionOrderAsync(UpdateInsertionOrderRequest request) {
-		return sendRequestAsync(request, "/InsertionOrder", HttpPut, UpdateInsertionOrderResponse.class, (r, h) -> fallbackService.get().updateInsertionOrderAsync(r, h), null);
+		return sendRequestAsync(request, "/InsertionOrder", HttpPut, UpdateInsertionOrderResponse.class, null);
 	}
 
 	public Future<?> updateInsertionOrderAsync(UpdateInsertionOrderRequest request, AsyncHandler<UpdateInsertionOrderResponse> asyncHandler) {
-		return sendRequestAsync(request, "/InsertionOrder", HttpPut, UpdateInsertionOrderResponse.class, (r, h) -> fallbackService.get().updateInsertionOrderAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/InsertionOrder", HttpPut, UpdateInsertionOrderResponse.class, asyncHandler);
 	}
 	
     	
@@ -230,19 +211,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		SearchInsertionOrdersResponse response = sendRequest(request, "/InsertionOrders/Search", HttpPost, SearchInsertionOrdersResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().searchInsertionOrders(request);
-		}
-		
 		return response;
 	}
 
     public Response<SearchInsertionOrdersResponse> searchInsertionOrdersAsync(SearchInsertionOrdersRequest request) {
-		return sendRequestAsync(request, "/InsertionOrders/Search", HttpPost, SearchInsertionOrdersResponse.class, (r, h) -> fallbackService.get().searchInsertionOrdersAsync(r, h), null);
+		return sendRequestAsync(request, "/InsertionOrders/Search", HttpPost, SearchInsertionOrdersResponse.class, null);
 	}
 
 	public Future<?> searchInsertionOrdersAsync(SearchInsertionOrdersRequest request, AsyncHandler<SearchInsertionOrdersResponse> asyncHandler) {
-		return sendRequestAsync(request, "/InsertionOrders/Search", HttpPost, SearchInsertionOrdersResponse.class, (r, h) -> fallbackService.get().searchInsertionOrdersAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/InsertionOrders/Search", HttpPost, SearchInsertionOrdersResponse.class, asyncHandler);
 	}
 	
     	
@@ -250,19 +227,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		GetAccountMonthlySpendResponse response = sendRequest(request, "/AccountMonthlySpend/Query", HttpPost, GetAccountMonthlySpendResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().getAccountMonthlySpend(request);
-		}
-		
 		return response;
 	}
 
     public Response<GetAccountMonthlySpendResponse> getAccountMonthlySpendAsync(GetAccountMonthlySpendRequest request) {
-		return sendRequestAsync(request, "/AccountMonthlySpend/Query", HttpPost, GetAccountMonthlySpendResponse.class, (r, h) -> fallbackService.get().getAccountMonthlySpendAsync(r, h), null);
+		return sendRequestAsync(request, "/AccountMonthlySpend/Query", HttpPost, GetAccountMonthlySpendResponse.class, null);
 	}
 
 	public Future<?> getAccountMonthlySpendAsync(GetAccountMonthlySpendRequest request, AsyncHandler<GetAccountMonthlySpendResponse> asyncHandler) {
-		return sendRequestAsync(request, "/AccountMonthlySpend/Query", HttpPost, GetAccountMonthlySpendResponse.class, (r, h) -> fallbackService.get().getAccountMonthlySpendAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/AccountMonthlySpend/Query", HttpPost, GetAccountMonthlySpendResponse.class, asyncHandler);
 	}
 	
     	
@@ -270,19 +243,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		DispatchCouponsResponse response = sendRequest(request, "/Coupons/Dispatch", HttpPost, DispatchCouponsResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().dispatchCoupons(request);
-		}
-		
 		return response;
 	}
 
     public Response<DispatchCouponsResponse> dispatchCouponsAsync(DispatchCouponsRequest request) {
-		return sendRequestAsync(request, "/Coupons/Dispatch", HttpPost, DispatchCouponsResponse.class, (r, h) -> fallbackService.get().dispatchCouponsAsync(r, h), null);
+		return sendRequestAsync(request, "/Coupons/Dispatch", HttpPost, DispatchCouponsResponse.class, null);
 	}
 
 	public Future<?> dispatchCouponsAsync(DispatchCouponsRequest request, AsyncHandler<DispatchCouponsResponse> asyncHandler) {
-		return sendRequestAsync(request, "/Coupons/Dispatch", HttpPost, DispatchCouponsResponse.class, (r, h) -> fallbackService.get().dispatchCouponsAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/Coupons/Dispatch", HttpPost, DispatchCouponsResponse.class, asyncHandler);
 	}
 	
     	
@@ -290,19 +259,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		RedeemCouponResponse response = sendRequest(request, "/Coupon/Redeem", HttpPost, RedeemCouponResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().redeemCoupon(request);
-		}
-		
 		return response;
 	}
 
     public Response<RedeemCouponResponse> redeemCouponAsync(RedeemCouponRequest request) {
-		return sendRequestAsync(request, "/Coupon/Redeem", HttpPost, RedeemCouponResponse.class, (r, h) -> fallbackService.get().redeemCouponAsync(r, h), null);
+		return sendRequestAsync(request, "/Coupon/Redeem", HttpPost, RedeemCouponResponse.class, null);
 	}
 
 	public Future<?> redeemCouponAsync(RedeemCouponRequest request, AsyncHandler<RedeemCouponResponse> asyncHandler) {
-		return sendRequestAsync(request, "/Coupon/Redeem", HttpPost, RedeemCouponResponse.class, (r, h) -> fallbackService.get().redeemCouponAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/Coupon/Redeem", HttpPost, RedeemCouponResponse.class, asyncHandler);
 	}
 	
     	
@@ -310,19 +275,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		SearchCouponsResponse response = sendRequest(request, "/Coupons/Search", HttpPost, SearchCouponsResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().searchCoupons(request);
-		}
-		
 		return response;
 	}
 
     public Response<SearchCouponsResponse> searchCouponsAsync(SearchCouponsRequest request) {
-		return sendRequestAsync(request, "/Coupons/Search", HttpPost, SearchCouponsResponse.class, (r, h) -> fallbackService.get().searchCouponsAsync(r, h), null);
+		return sendRequestAsync(request, "/Coupons/Search", HttpPost, SearchCouponsResponse.class, null);
 	}
 
 	public Future<?> searchCouponsAsync(SearchCouponsRequest request, AsyncHandler<SearchCouponsResponse> asyncHandler) {
-		return sendRequestAsync(request, "/Coupons/Search", HttpPost, SearchCouponsResponse.class, (r, h) -> fallbackService.get().searchCouponsAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/Coupons/Search", HttpPost, SearchCouponsResponse.class, asyncHandler);
 	}
 	
     	
@@ -330,19 +291,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		CheckFeatureAdoptionCouponEligibilityResponse response = sendRequest(request, "/FeatureAdoptionCouponEligibility/Check", HttpPost, CheckFeatureAdoptionCouponEligibilityResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().checkFeatureAdoptionCouponEligibility(request);
-		}
-		
 		return response;
 	}
 
     public Response<CheckFeatureAdoptionCouponEligibilityResponse> checkFeatureAdoptionCouponEligibilityAsync(CheckFeatureAdoptionCouponEligibilityRequest request) {
-		return sendRequestAsync(request, "/FeatureAdoptionCouponEligibility/Check", HttpPost, CheckFeatureAdoptionCouponEligibilityResponse.class, (r, h) -> fallbackService.get().checkFeatureAdoptionCouponEligibilityAsync(r, h), null);
+		return sendRequestAsync(request, "/FeatureAdoptionCouponEligibility/Check", HttpPost, CheckFeatureAdoptionCouponEligibilityResponse.class, null);
 	}
 
 	public Future<?> checkFeatureAdoptionCouponEligibilityAsync(CheckFeatureAdoptionCouponEligibilityRequest request, AsyncHandler<CheckFeatureAdoptionCouponEligibilityResponse> asyncHandler) {
-		return sendRequestAsync(request, "/FeatureAdoptionCouponEligibility/Check", HttpPost, CheckFeatureAdoptionCouponEligibilityResponse.class, (r, h) -> fallbackService.get().checkFeatureAdoptionCouponEligibilityAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/FeatureAdoptionCouponEligibility/Check", HttpPost, CheckFeatureAdoptionCouponEligibilityResponse.class, asyncHandler);
 	}
 	
     	
@@ -350,19 +307,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		ClaimFeatureAdoptionCouponsResponse response = sendRequest(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().claimFeatureAdoptionCoupons(request);
-		}
-		
 		return response;
 	}
 
     public Response<ClaimFeatureAdoptionCouponsResponse> claimFeatureAdoptionCouponsAsync(ClaimFeatureAdoptionCouponsRequest request) {
-		return sendRequestAsync(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class, (r, h) -> fallbackService.get().claimFeatureAdoptionCouponsAsync(r, h), null);
+		return sendRequestAsync(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class, null);
 	}
 
 	public Future<?> claimFeatureAdoptionCouponsAsync(ClaimFeatureAdoptionCouponsRequest request, AsyncHandler<ClaimFeatureAdoptionCouponsResponse> asyncHandler) {
-		return sendRequestAsync(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class, (r, h) -> fallbackService.get().claimFeatureAdoptionCouponsAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/FeatureAdoptionCoupons/Claim", HttpPost, ClaimFeatureAdoptionCouponsResponse.class, asyncHandler);
 	}
 	
     	
@@ -370,19 +323,15 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
 		GetCouponInfoResponse response = sendRequest(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class);
 		
-		if (response == null) {
-			response = fallbackService.get().getCouponInfo(request);
-		}
-		
 		return response;
 	}
 
     public Response<GetCouponInfoResponse> getCouponInfoAsync(GetCouponInfoRequest request) {
-		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, (r, h) -> fallbackService.get().getCouponInfoAsync(r, h), null);
+		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, null);
 	}
 
 	public Future<?> getCouponInfoAsync(GetCouponInfoRequest request, AsyncHandler<GetCouponInfoResponse> asyncHandler) {
-		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, (r, h) -> fallbackService.get().getCouponInfoAsync(r, h), asyncHandler);
+		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, asyncHandler);
 	}
 	
     }

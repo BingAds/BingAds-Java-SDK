@@ -20,7 +20,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}Audience">
  *       <sequence>
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="AdGroupIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="CampaignIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="EntityType" type="{https://bingads.microsoft.com/CampaignManagement/v13}ImpressionBasedEntityType" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -33,7 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImpressionBasedRemarketingList", propOrder = {
     "adGroupId",
+    "adGroupIds",
     "campaignId",
+    "campaignIds",
     "entityType"
 })
 public class ImpressionBasedRemarketingList
@@ -45,8 +49,12 @@ public class ImpressionBasedRemarketingList
 
     @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
+    @XmlElement(name = "AdGroupIds", nillable = true)
+    protected ArrayOflong adGroupIds;
     @XmlElement(name = "CampaignId", nillable = true)
     protected Long campaignId;
+    @XmlElement(name = "CampaignIds", nillable = true)
+    protected ArrayOflong campaignIds;
     @XmlElement(name = "EntityType")
     @XmlSchemaType(name = "string")
     protected ImpressionBasedEntityType entityType;
@@ -76,6 +84,30 @@ public class ImpressionBasedRemarketingList
     }
 
     /**
+     * Gets the value of the adGroupIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getAdGroupIds() {
+        return adGroupIds;
+    }
+
+    /**
+     * Sets the value of the adGroupIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setAdGroupIds(ArrayOflong value) {
+        this.adGroupIds = value;
+    }
+
+    /**
      * Gets the value of the campaignId property.
      * 
      * @return
@@ -97,6 +129,30 @@ public class ImpressionBasedRemarketingList
      */
     public void setCampaignId(Long value) {
         this.campaignId = value;
+    }
+
+    /**
+     * Gets the value of the campaignIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public ArrayOflong getCampaignIds() {
+        return campaignIds;
+    }
+
+    /**
+     * Sets the value of the campaignIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOflong }
+     *     
+     */
+    public void setCampaignIds(ArrayOflong value) {
+        this.campaignIds = value;
     }
 
     /**

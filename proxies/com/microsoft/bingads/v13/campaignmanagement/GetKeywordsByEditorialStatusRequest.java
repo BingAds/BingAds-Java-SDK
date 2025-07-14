@@ -1,12 +1,14 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}KeywordEditorialStatus" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}KeywordAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -32,7 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "adGroupId",
-    "editorialStatus"
+    "editorialStatus",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetKeywordsByEditorialStatusRequest")
 public class GetKeywordsByEditorialStatusRequest {
@@ -42,6 +46,9 @@ public class GetKeywordsByEditorialStatusRequest {
     @XmlElement(name = "EditorialStatus")
     @XmlSchemaType(name = "string")
     protected KeywordEditorialStatus editorialStatus;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter9 .class)
+    protected Collection<KeywordAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the adGroupId property.
@@ -89,6 +96,30 @@ public class GetKeywordsByEditorialStatusRequest {
      */
     public void setEditorialStatus(KeywordEditorialStatus value) {
         this.editorialStatus = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<KeywordAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<KeywordAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

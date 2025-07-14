@@ -17,6 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme">
  *       <sequence>
+ *         <element name="MaxCpc" type="{https://bingads.microsoft.com/CampaignManagement/v13}Bid" minOccurs="0"/>
  *         <element name="TargetRoas" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -28,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MaxConversionValueBiddingScheme", propOrder = {
+    "maxCpc",
     "targetRoas"
 })
 public class MaxConversionValueBiddingScheme
@@ -37,8 +39,34 @@ public class MaxConversionValueBiddingScheme
       this.type = "MaxConversionValueBiddingScheme";
     }
 
+    @XmlElement(name = "MaxCpc", nillable = true)
+    protected Bid maxCpc;
     @XmlElement(name = "TargetRoas", nillable = true)
     protected Double targetRoas;
+
+    /**
+     * Gets the value of the maxCpc property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Bid }
+     *     
+     */
+    public Bid getMaxCpc() {
+        return maxCpc;
+    }
+
+    /**
+     * Sets the value of the maxCpc property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Bid }
+     *     
+     */
+    public void setMaxCpc(Bid value) {
+        this.maxCpc = value;
+    }
 
     /**
      * Gets the value of the targetRoas property.

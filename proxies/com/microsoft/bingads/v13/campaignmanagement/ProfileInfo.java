@@ -39,7 +39,7 @@ public class ProfileInfo {
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Type", type = String.class)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Collection<ProfileType> type;
 
     /**
