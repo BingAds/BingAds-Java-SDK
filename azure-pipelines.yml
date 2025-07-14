@@ -46,24 +46,24 @@ extends:
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
             goals: 'package source:jar javadoc:jar gpg:sign checksum:files'
             options: '-Dgpg.passphrase=$(PASS_PHRASE)'
-        - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(Pipeline.Workspace)/s'
-            Contents: '**/.artifactignore'
-            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
+        #- task: CopyFiles@2
+        #  inputs:
+        #    SourceFolder: '$(Pipeline.Workspace)/s'
+        #    Contents: '**/.artifactignore'
+        #    TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         - task: CopyFiles@2
           inputs:
             SourceFolder: 'target'
             Contents: '**/*'
-            TargetFolder: $(Build.ArtifactStagingDirectory)/build_artifacts
+            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
         - task: CopyFiles@2
           inputs:
-            SourceFolder: '$(Build.ArtifactStagingDirectory)/build_artifacts'
-            Contents: '**/*'
-            TargetFolder: $(Build.ArtifactStagingDirectory)/maven_artifacts
+            SourceFolder: 'target'
+            Contents: '**/*.pom, **/*.asc, **/*.sha1, **/*.md5, **/*.jar'
+            TargetFolder: $(Build.ArtifactStagingDirectory)/build_artifacts
         templateContext:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish Maven Artifacts'
-            targetPath: $(Build.ArtifactStagingDirectory)
+            targetPath: $(Build.ArtifactStagingDirectory)/maven_artifacts
             artifactName: maven_artifacts
