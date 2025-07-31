@@ -6,7 +6,8 @@ package com.microsoft.bingads.v13.reporting;
 public enum AdDistributionReportFilter {
 
     SEARCH("Search"),
-    AUDIENCE("Audience");
+    AUDIENCE("Audience"),
+    CROSS_NETWORK("CrossNetwork");
         
     private final String value;
 

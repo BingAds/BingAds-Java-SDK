@@ -2,12 +2,14 @@
 package com.microsoft.bingads.v13.adinsight;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -34,6 +36,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         <element name="Bid" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         <element name="Currency" type="{https://bingads.microsoft.com/AdInsight/v13}Currency" minOccurs="0"/>
+ *         <element name="MultiAdTypes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="TotalBudget" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -57,7 +63,11 @@ import jakarta.xml.bind.annotation.XmlType;
     "feed",
     "dailyBudget",
     "bid",
-    "currency"
+    "currency",
+    "multiAdTypes",
+    "startDate",
+    "endDate",
+    "totalBudget"
 })
 @XmlRootElement(name = "GetAudienceFullEstimationRequest")
 public class GetAudienceFullEstimationRequest {
@@ -91,6 +101,18 @@ public class GetAudienceFullEstimationRequest {
     @XmlElement(name = "Currency", nillable = true)
     @XmlSchemaType(name = "string")
     protected Currency currency;
+    @XmlElement(name = "MultiAdTypes", nillable = true)
+    protected Integer multiAdTypes;
+    @XmlElement(name = "StartDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar startDate;
+    @XmlElement(name = "EndDate", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar endDate;
+    @XmlElement(name = "TotalBudget", nillable = true)
+    protected BigDecimal totalBudget;
 
     /**
      * Gets the value of the age property.
@@ -426,6 +448,102 @@ public class GetAudienceFullEstimationRequest {
      */
     public void setCurrency(Currency value) {
         this.currency = value;
+    }
+
+    /**
+     * Gets the value of the multiAdTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMultiAdTypes() {
+        return multiAdTypes;
+    }
+
+    /**
+     * Sets the value of the multiAdTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMultiAdTypes(Integer value) {
+        this.multiAdTypes = value;
+    }
+
+    /**
+     * Gets the value of the startDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * Sets the value of the startDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStartDate(Calendar value) {
+        this.startDate = value;
+    }
+
+    /**
+     * Gets the value of the endDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * Sets the value of the endDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEndDate(Calendar value) {
+        this.endDate = value;
+    }
+
+    /**
+     * Gets the value of the totalBudget property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getTotalBudget() {
+        return totalBudget;
+    }
+
+    /**
+     * Sets the value of the totalBudget property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setTotalBudget(BigDecimal value) {
+        this.totalBudget = value;
     }
 
 }

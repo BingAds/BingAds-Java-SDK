@@ -42,6 +42,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(GetAssetGroupsByIdsRequest.class, GetAssetGroupsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetAssetGroupsByCampaignIdRequest.class, GetAssetGroupsByCampaignIdRequestEnumsMixIn.class)
 				.addMixIn(GetAudiencesByIdsRequest.class, GetAudiencesByIdsRequestEnumsMixIn.class)
+				.addMixIn(GetUetTagsByIdsRequest.class, GetUetTagsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetConversionGoalsByIdsRequest.class, GetConversionGoalsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetConversionGoalsByTagIdsRequest.class, GetConversionGoalsByTagIdsRequestEnumsMixIn.class)
 				.addMixIn(GetProfileDataFileUrlRequest.class, GetProfileDataFileUrlRequestEnumsMixIn.class)

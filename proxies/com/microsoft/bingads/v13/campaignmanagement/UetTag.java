@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="CustomerShare" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomerShare" minOccurs="0"/>
  *         <element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="Industry" type="{https://bingads.microsoft.com/CampaignManagement/v13}UetTagIndustry" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TrackingNoScript" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TrackingScript" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -38,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "customerShare",
     "description",
     "id",
+    "industry",
     "name",
     "trackingNoScript",
     "trackingScript",
@@ -51,6 +53,9 @@ public class UetTag {
     protected String description;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "Industry", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected UetTagIndustry industry;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "TrackingNoScript", nillable = true)
@@ -131,6 +136,30 @@ public class UetTag {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the industry property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UetTagIndustry }
+     *     
+     */
+    public UetTagIndustry getIndustry() {
+        return industry;
+    }
+
+    /**
+     * Sets the value of the industry property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link UetTagIndustry }
+     *     
+     */
+    public void setIndustry(UetTagIndustry value) {
+        this.industry = value;
     }
 
     /**
