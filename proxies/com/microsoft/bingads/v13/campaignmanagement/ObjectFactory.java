@@ -408,8 +408,10 @@ public class ObjectFactory {
     private static final QName _CustomerListUserData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListUserData");
     private static final QName _CustomerListActionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListActionType");
     private static final QName _CustomerListItemSubType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListItemSubType");
+    private static final QName _UetTagAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTagAdditionalField");
     private static final QName _ArrayOfUetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfUetTag");
     private static final QName _UetTag_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTag");
+    private static final QName _UetTagIndustry_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTagIndustry");
     private static final QName _UetTagTrackingStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UetTagTrackingStatus");
     private static final QName _ConversionGoalType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionGoalType");
     private static final QName _ConversionGoalAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ConversionGoalAdditionalField");
@@ -13648,6 +13650,20 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link UetTagAdditionalField }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link UetTagAdditionalField }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "UetTagAdditionalField")
+    @XmlJavaTypeAdapter(Adapter26 .class)
+    public JAXBElement<Collection<UetTagAdditionalField>> createUetTagAdditionalField(Collection<UetTagAdditionalField> value) {
+        return new JAXBElement<>(_UetTagAdditionalField_QNAME, ((Class) Collection.class), null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfUetTag }{@code >}
      * 
      * @param value
@@ -13674,6 +13690,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UetTagIndustry }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UetTagIndustry }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "UetTagIndustry")
+    public JAXBElement<UetTagIndustry> createUetTagIndustry(UetTagIndustry value) {
+        return new JAXBElement<>(_UetTagIndustry_QNAME, UetTagIndustry.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UetTagTrackingStatus }{@code >}
      * 
      * @param value
@@ -13695,7 +13724,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ConversionGoalType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalType")
-    @XmlJavaTypeAdapter(Adapter26 .class)
+    @XmlJavaTypeAdapter(Adapter27 .class)
     public JAXBElement<Collection<ConversionGoalType>> createConversionGoalType(Collection<ConversionGoalType> value) {
         return new JAXBElement<>(_ConversionGoalType_QNAME, ((Class) Collection.class), null, value);
     }
@@ -13709,7 +13738,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ConversionGoalAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ConversionGoalAdditionalField")
-    @XmlJavaTypeAdapter(Adapter27 .class)
+    @XmlJavaTypeAdapter(Adapter28 .class)
     public JAXBElement<Collection<ConversionGoalAdditionalField>> createConversionGoalAdditionalField(Collection<ConversionGoalAdditionalField> value) {
         return new JAXBElement<>(_ConversionGoalAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -14308,7 +14337,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link ImportAdditionalField }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImportAdditionalField")
-    @XmlJavaTypeAdapter(Adapter28 .class)
+    @XmlJavaTypeAdapter(Adapter29 .class)
     public JAXBElement<Collection<ImportAdditionalField>> createImportAdditionalField(Collection<ImportAdditionalField> value) {
         return new JAXBElement<>(_ImportAdditionalField_QNAME, ((Class) Collection.class), null, value);
     }
@@ -14491,7 +14520,7 @@ public class ObjectFactory {
      *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link DeviceType }{@code >}{@code >}
      */
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DeviceType")
-    @XmlJavaTypeAdapter(Adapter29 .class)
+    @XmlJavaTypeAdapter(Adapter30 .class)
     public JAXBElement<Collection<DeviceType>> createDeviceType(Collection<DeviceType> value) {
         return new JAXBElement<>(_DeviceType_QNAME, ((Class) Collection.class), null, value);
     }

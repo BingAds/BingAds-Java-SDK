@@ -37,7 +37,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class DeviceCondition {
 
     @XmlElement(name = "DeviceTypes", type = String.class)
-    @XmlJavaTypeAdapter(Adapter29 .class)
+    @XmlJavaTypeAdapter(Adapter30 .class)
     protected Collection<DeviceType> deviceTypes;
     @XmlElement(name = "IsPrimary")
     protected Boolean isPrimary;

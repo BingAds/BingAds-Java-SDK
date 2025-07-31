@@ -101,6 +101,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(AudienceAdditionalField.class, AudienceAdditionalFieldMixIn.class)
 				.addMixIn(CustomerListActionType.class, CustomerListActionTypeMixIn.class)
 				.addMixIn(CustomerListItemSubType.class, CustomerListItemSubTypeMixIn.class)
+				.addMixIn(UetTagAdditionalField.class, UetTagAdditionalFieldMixIn.class)
+				.addMixIn(UetTagIndustry.class, UetTagIndustryMixIn.class)
 				.addMixIn(UetTagTrackingStatus.class, UetTagTrackingStatusMixIn.class)
 				.addMixIn(ConversionGoalType.class, ConversionGoalTypeMixIn.class)
 				.addMixIn(ConversionGoalAdditionalField.class, ConversionGoalAdditionalFieldMixIn.class)
