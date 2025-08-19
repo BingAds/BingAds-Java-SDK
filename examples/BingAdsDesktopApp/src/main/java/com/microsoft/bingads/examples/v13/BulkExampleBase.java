@@ -259,6 +259,16 @@ public class BulkExampleBase extends ExampleBase {
             }
         }
     }
+        
+    static void outputBulkKeywordsSimplified(Iterable<BulkKeyword> bulkEntities){
+        for (BulkKeyword entity : bulkEntities){
+            outputStatusMessage(String.format("CampaignId: %s, AdGroupId: %s, Id: %s, Status: %s", entity.getCampaignName(), entity.getAdGroupId(), entity.getKeyword().getId(), entity.getKeyword().getStatus()));
+
+            if(entity.hasErrors()){
+                outputBulkErrors(entity.getErrors());
+            }
+        }
+    }
 
     static void outputBulkKeywords(Iterable<BulkKeyword> bulkEntities){
         for (BulkKeyword entity : bulkEntities){
