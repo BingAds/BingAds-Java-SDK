@@ -2420,6 +2420,54 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	}
 	
     	
+	public AddHTML5SResponse addHTML5S(AddHTML5SRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		AddHTML5SResponse response = sendRequest(request, "/HTML5s", HttpPost, AddHTML5SResponse.class);
+		
+		return response;
+	}
+
+    public Response<AddHTML5SResponse> addHTML5SAsync(AddHTML5SRequest request) {
+		return sendRequestAsync(request, "/HTML5s", HttpPost, AddHTML5SResponse.class, null);
+	}
+
+	public Future<?> addHTML5SAsync(AddHTML5SRequest request, AsyncHandler<AddHTML5SResponse> asyncHandler) {
+		return sendRequestAsync(request, "/HTML5s", HttpPost, AddHTML5SResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetHTML5SByIdsResponse getHTML5SByIds(GetHTML5SByIdsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetHTML5SByIdsResponse response = sendRequest(request, "/HTML5s/QueryByIds", HttpPost, GetHTML5SByIdsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetHTML5SByIdsResponse> getHTML5SByIdsAsync(GetHTML5SByIdsRequest request) {
+		return sendRequestAsync(request, "/HTML5s/QueryByIds", HttpPost, GetHTML5SByIdsResponse.class, null);
+	}
+
+	public Future<?> getHTML5SByIdsAsync(GetHTML5SByIdsRequest request, AsyncHandler<GetHTML5SByIdsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/HTML5s/QueryByIds", HttpPost, GetHTML5SByIdsResponse.class, asyncHandler);
+	}
+	
+    	
+	public DeleteHTML5SResponse deleteHTML5S(DeleteHTML5SRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		DeleteHTML5SResponse response = sendRequest(request, "/HTML5s", HttpDelete, DeleteHTML5SResponse.class);
+		
+		return response;
+	}
+
+    public Response<DeleteHTML5SResponse> deleteHTML5SAsync(DeleteHTML5SRequest request) {
+		return sendRequestAsync(request, "/HTML5s", HttpDelete, DeleteHTML5SResponse.class, null);
+	}
+
+	public Future<?> deleteHTML5SAsync(DeleteHTML5SRequest request, AsyncHandler<DeleteHTML5SResponse> asyncHandler) {
+		return sendRequestAsync(request, "/HTML5s", HttpDelete, DeleteHTML5SResponse.class, asyncHandler);
+	}
+	
+    	
 	public AddCampaignConversionGoalsResponse addCampaignConversionGoals(AddCampaignConversionGoalsRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		AddCampaignConversionGoalsResponse response = sendRequest(request, "/CampaignConversionGoals", HttpPost, AddCampaignConversionGoalsResponse.class);

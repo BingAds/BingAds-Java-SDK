@@ -15,6 +15,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     <enumeration value="Email"/>
  *     <enumeration value="CRM"/>
+ *     <enumeration value="Phone"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -26,7 +27,9 @@ public enum CustomerListItemSubType {
 
     @XmlEnumValue("Email")
     EMAIL("Email"),
-    CRM("CRM");
+    CRM("CRM"),
+    @XmlEnumValue("Phone")
+    PHONE("Phone");
     private final String value;
 
     CustomerListItemSubType(String v) {

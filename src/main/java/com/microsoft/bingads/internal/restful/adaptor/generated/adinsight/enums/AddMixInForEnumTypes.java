@@ -40,6 +40,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(RadiusUnit.class, RadiusUnitMixIn.class)
 				.addMixIn(Currency.class, CurrencyMixIn.class)
 				.addMixIn(ScaleUnit.class, ScaleUnitMixIn.class)
+				.addMixIn(BreakdownCategory.class, BreakdownCategoryMixIn.class)
 				;
 	}
 }

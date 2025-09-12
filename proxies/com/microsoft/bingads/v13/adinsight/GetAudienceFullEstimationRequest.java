@@ -40,6 +40,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="TotalBudget" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         <element name="IncludeImpressionsBreakdown" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -67,7 +68,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "multiAdTypes",
     "startDate",
     "endDate",
-    "totalBudget"
+    "totalBudget",
+    "includeImpressionsBreakdown"
 })
 @XmlRootElement(name = "GetAudienceFullEstimationRequest")
 public class GetAudienceFullEstimationRequest {
@@ -113,6 +115,8 @@ public class GetAudienceFullEstimationRequest {
     protected Calendar endDate;
     @XmlElement(name = "TotalBudget", nillable = true)
     protected BigDecimal totalBudget;
+    @XmlElement(name = "IncludeImpressionsBreakdown", nillable = true)
+    protected Boolean includeImpressionsBreakdown;
 
     /**
      * Gets the value of the age property.
@@ -544,6 +548,30 @@ public class GetAudienceFullEstimationRequest {
      */
     public void setTotalBudget(BigDecimal value) {
         this.totalBudget = value;
+    }
+
+    /**
+     * Gets the value of the includeImpressionsBreakdown property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIncludeImpressionsBreakdown() {
+        return includeImpressionsBreakdown;
+    }
+
+    /**
+     * Sets the value of the includeImpressionsBreakdown property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeImpressionsBreakdown(Boolean value) {
+        this.includeImpressionsBreakdown = value;
     }
 
 }

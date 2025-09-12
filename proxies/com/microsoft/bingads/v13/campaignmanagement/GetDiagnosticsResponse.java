@@ -18,10 +18,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="DiagnosticTileData" type="{https://bingads.microsoft.com/CampaignManagement/v13}DiagnosticTileData" minOccurs="0"/>
- *         <element name="DiagnosticCategoryData" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfDiagnosticCategoryData" minOccurs="0"/>
- *         <element name="DiagnosticCardData" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfDiagnosticCardData" minOccurs="0"/>
- *         <element name="DiagnosticErrors" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfHealthCheckError" minOccurs="0"/>
+ *         <element name="RequestStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}DiagnosticsRequestStatus" minOccurs="0"/>
+ *         <element name="Entities" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfEntityResult" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -32,117 +30,63 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "diagnosticTileData",
-    "diagnosticCategoryData",
-    "diagnosticCardData",
-    "diagnosticErrors"
+    "requestStatus",
+    "entities"
 })
 @XmlRootElement(name = "GetDiagnosticsResponse")
 public class GetDiagnosticsResponse {
 
-    @XmlElement(name = "DiagnosticTileData", nillable = true)
-    protected DiagnosticTileData diagnosticTileData;
-    @XmlElement(name = "DiagnosticCategoryData", nillable = true)
-    protected ArrayOfDiagnosticCategoryData diagnosticCategoryData;
-    @XmlElement(name = "DiagnosticCardData", nillable = true)
-    protected ArrayOfDiagnosticCardData diagnosticCardData;
-    @XmlElement(name = "DiagnosticErrors", nillable = true)
-    protected ArrayOfHealthCheckError diagnosticErrors;
+    @XmlElement(name = "RequestStatus", nillable = true)
+    protected DiagnosticsRequestStatus requestStatus;
+    @XmlElement(name = "Entities", nillable = true)
+    protected ArrayOfEntityResult entities;
 
     /**
-     * Gets the value of the diagnosticTileData property.
+     * Gets the value of the requestStatus property.
      * 
      * @return
      *     possible object is
-     *     {@link DiagnosticTileData }
+     *     {@link DiagnosticsRequestStatus }
      *     
      */
-    public DiagnosticTileData getDiagnosticTileData() {
-        return diagnosticTileData;
+    public DiagnosticsRequestStatus getRequestStatus() {
+        return requestStatus;
     }
 
     /**
-     * Sets the value of the diagnosticTileData property.
+     * Sets the value of the requestStatus property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DiagnosticTileData }
+     *     {@link DiagnosticsRequestStatus }
      *     
      */
-    public void setDiagnosticTileData(DiagnosticTileData value) {
-        this.diagnosticTileData = value;
+    public void setRequestStatus(DiagnosticsRequestStatus value) {
+        this.requestStatus = value;
     }
 
     /**
-     * Gets the value of the diagnosticCategoryData property.
+     * Gets the value of the entities property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfDiagnosticCategoryData }
+     *     {@link ArrayOfEntityResult }
      *     
      */
-    public ArrayOfDiagnosticCategoryData getDiagnosticCategoryData() {
-        return diagnosticCategoryData;
+    public ArrayOfEntityResult getEntities() {
+        return entities;
     }
 
     /**
-     * Sets the value of the diagnosticCategoryData property.
+     * Sets the value of the entities property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfDiagnosticCategoryData }
+     *     {@link ArrayOfEntityResult }
      *     
      */
-    public void setDiagnosticCategoryData(ArrayOfDiagnosticCategoryData value) {
-        this.diagnosticCategoryData = value;
-    }
-
-    /**
-     * Gets the value of the diagnosticCardData property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfDiagnosticCardData }
-     *     
-     */
-    public ArrayOfDiagnosticCardData getDiagnosticCardData() {
-        return diagnosticCardData;
-    }
-
-    /**
-     * Sets the value of the diagnosticCardData property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfDiagnosticCardData }
-     *     
-     */
-    public void setDiagnosticCardData(ArrayOfDiagnosticCardData value) {
-        this.diagnosticCardData = value;
-    }
-
-    /**
-     * Gets the value of the diagnosticErrors property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfHealthCheckError }
-     *     
-     */
-    public ArrayOfHealthCheckError getDiagnosticErrors() {
-        return diagnosticErrors;
-    }
-
-    /**
-     * Sets the value of the diagnosticErrors property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfHealthCheckError }
-     *     
-     */
-    public void setDiagnosticErrors(ArrayOfHealthCheckError value) {
-        this.diagnosticErrors = value;
+    public void setEntities(ArrayOfEntityResult value) {
+        this.entities = value;
     }
 
 }

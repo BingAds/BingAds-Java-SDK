@@ -30,6 +30,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ClicksPeakWeek"/>
  *     <enumeration value="YoYLast4WeeksClicks"/>
  *     <enumeration value="Country"/>
+ *     <enumeration value="MarketplaceClickCoverage"/>
+ *     <enumeration value="ProportionOfSpend"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -72,7 +74,11 @@ public enum CategoryInsightsReportColumn {
     @XmlEnumValue("YoYLast4WeeksClicks")
     YO_Y_LAST_4_WEEKS_CLICKS("YoYLast4WeeksClicks"),
     @XmlEnumValue("Country")
-    COUNTRY("Country");
+    COUNTRY("Country"),
+    @XmlEnumValue("MarketplaceClickCoverage")
+    MARKETPLACE_CLICK_COVERAGE("MarketplaceClickCoverage"),
+    @XmlEnumValue("ProportionOfSpend")
+    PROPORTION_OF_SPEND("ProportionOfSpend");
     private final String value;
 
     CategoryInsightsReportColumn(String v) {

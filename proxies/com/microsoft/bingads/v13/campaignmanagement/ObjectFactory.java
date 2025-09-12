@@ -468,6 +468,8 @@ public class ObjectFactory {
     private static final QName _ImportEntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImportEntityType");
     private static final QName _ArrayOfVideo_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfVideo");
     private static final QName _Video_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Video");
+    private static final QName _ArrayOfHTML5_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfHTML5");
+    private static final QName _HTML5_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HTML5");
     private static final QName _ArrayOfCampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignConversionGoal");
     private static final QName _CampaignConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignConversionGoal");
     private static final QName _ArrayOfDataExclusion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDataExclusion");
@@ -555,11 +557,27 @@ public class ObjectFactory {
     private static final QName _HealthCheckSubEntityData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HealthCheckSubEntityData");
     private static final QName _ArrayOfHealthCheckError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfHealthCheckError");
     private static final QName _HealthCheckError_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "HealthCheckError");
-    private static final QName _DiagnosticTileData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticTileData");
-    private static final QName _ArrayOfDiagnosticCategoryData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDiagnosticCategoryData");
-    private static final QName _DiagnosticCategoryData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticCategoryData");
-    private static final QName _ArrayOfDiagnosticCardData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDiagnosticCardData");
-    private static final QName _DiagnosticCardData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticCardData");
+    private static final QName _ArrayOfDiagnosticsEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDiagnosticsEntity");
+    private static final QName _DiagnosticsEntity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticsEntity");
+    private static final QName _ArrayOfDiagnosticsFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfDiagnosticsFilter");
+    private static final QName _DiagnosticsFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticsFilter");
+    private static final QName _DiagnosticsSettings_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticsSettings");
+    private static final QName _DiagnosticsRequestStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DiagnosticsRequestStatus");
+    private static final QName _ArrayOfEntityResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfEntityResult");
+    private static final QName _EntityResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityResult");
+    private static final QName _ArrayOfCategoryResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCategoryResult");
+    private static final QName _CategoryResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CategoryResult");
+    private static final QName _ArrayOfAuditPointResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointResult");
+    private static final QName _AuditPointResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointResult");
+    private static final QName _AuditPointDetails_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointDetails");
+    private static final QName _ArrayOfAuditPointJsonColumn_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointJsonColumn");
+    private static final QName _AuditPointJsonColumn_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointJsonColumn");
+    private static final QName _AuditPointSubEnities_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointSubEnities");
+    private static final QName _AuditPointTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointTemplate");
+    private static final QName _ArrayOfAuditPointLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointLink");
+    private static final QName _AuditPointLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointLink");
+    private static final QName _CategoryTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CategoryTemplate");
+    private static final QName _EntityTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityTemplate");
     private static final QName _ArrayOfAnnotationOptOut_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAnnotationOptOut");
     private static final QName _AnnotationOptOut_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AnnotationOptOut");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
@@ -6916,6 +6934,86 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddHTML5SRequest }
+     * 
+     * @return
+     *     the new instance of {@link AddHTML5SRequest }
+     */
+    public AddHTML5SRequest createAddHTML5SRequest() {
+        return new AddHTML5SRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfHTML5 }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfHTML5 }
+     */
+    public ArrayOfHTML5 createArrayOfHTML5() {
+        return new ArrayOfHTML5();
+    }
+
+    /**
+     * Create an instance of {@link HTML5 }
+     * 
+     * @return
+     *     the new instance of {@link HTML5 }
+     */
+    public HTML5 createHTML5() {
+        return new HTML5();
+    }
+
+    /**
+     * Create an instance of {@link AddHTML5SResponse }
+     * 
+     * @return
+     *     the new instance of {@link AddHTML5SResponse }
+     */
+    public AddHTML5SResponse createAddHTML5SResponse() {
+        return new AddHTML5SResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetHTML5SByIdsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetHTML5SByIdsRequest }
+     */
+    public GetHTML5SByIdsRequest createGetHTML5SByIdsRequest() {
+        return new GetHTML5SByIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetHTML5SByIdsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetHTML5SByIdsResponse }
+     */
+    public GetHTML5SByIdsResponse createGetHTML5SByIdsResponse() {
+        return new GetHTML5SByIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteHTML5SRequest }
+     * 
+     * @return
+     *     the new instance of {@link DeleteHTML5SRequest }
+     */
+    public DeleteHTML5SRequest createDeleteHTML5SRequest() {
+        return new DeleteHTML5SRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteHTML5SResponse }
+     * 
+     * @return
+     *     the new instance of {@link DeleteHTML5SResponse }
+     */
+    public DeleteHTML5SResponse createDeleteHTML5SResponse() {
+        return new DeleteHTML5SResponse();
+    }
+
+    /**
      * Create an instance of {@link AddCampaignConversionGoalsRequest }
      * 
      * @return
@@ -8436,6 +8534,56 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfDiagnosticsEntity }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDiagnosticsEntity }
+     */
+    public ArrayOfDiagnosticsEntity createArrayOfDiagnosticsEntity() {
+        return new ArrayOfDiagnosticsEntity();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDiagnosticsFilter }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDiagnosticsFilter }
+     */
+    public ArrayOfDiagnosticsFilter createArrayOfDiagnosticsFilter() {
+        return new ArrayOfDiagnosticsFilter();
+    }
+
+    /**
+     * Create an instance of {@link DiagnosticsSettings }
+     * 
+     * @return
+     *     the new instance of {@link DiagnosticsSettings }
+     */
+    public DiagnosticsSettings createDiagnosticsSettings() {
+        return new DiagnosticsSettings();
+    }
+
+    /**
+     * Create an instance of {@link DiagnosticsEntity }
+     * 
+     * @return
+     *     the new instance of {@link DiagnosticsEntity }
+     */
+    public DiagnosticsEntity createDiagnosticsEntity() {
+        return new DiagnosticsEntity();
+    }
+
+    /**
+     * Create an instance of {@link DiagnosticsFilter }
+     * 
+     * @return
+     *     the new instance of {@link DiagnosticsFilter }
+     */
+    public DiagnosticsFilter createDiagnosticsFilter() {
+        return new DiagnosticsFilter();
+    }
+
+    /**
      * Create an instance of {@link GetDiagnosticsResponse }
      * 
      * @return
@@ -8446,53 +8594,163 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DiagnosticTileData }
+     * Create an instance of {@link DiagnosticsRequestStatus }
      * 
      * @return
-     *     the new instance of {@link DiagnosticTileData }
+     *     the new instance of {@link DiagnosticsRequestStatus }
      */
-    public DiagnosticTileData createDiagnosticTileData() {
-        return new DiagnosticTileData();
+    public DiagnosticsRequestStatus createDiagnosticsRequestStatus() {
+        return new DiagnosticsRequestStatus();
     }
 
     /**
-     * Create an instance of {@link ArrayOfDiagnosticCategoryData }
+     * Create an instance of {@link ArrayOfEntityResult }
      * 
      * @return
-     *     the new instance of {@link ArrayOfDiagnosticCategoryData }
+     *     the new instance of {@link ArrayOfEntityResult }
      */
-    public ArrayOfDiagnosticCategoryData createArrayOfDiagnosticCategoryData() {
-        return new ArrayOfDiagnosticCategoryData();
+    public ArrayOfEntityResult createArrayOfEntityResult() {
+        return new ArrayOfEntityResult();
     }
 
     /**
-     * Create an instance of {@link ArrayOfDiagnosticCardData }
+     * Create an instance of {@link EntityResult }
      * 
      * @return
-     *     the new instance of {@link ArrayOfDiagnosticCardData }
+     *     the new instance of {@link EntityResult }
      */
-    public ArrayOfDiagnosticCardData createArrayOfDiagnosticCardData() {
-        return new ArrayOfDiagnosticCardData();
+    public EntityResult createEntityResult() {
+        return new EntityResult();
     }
 
     /**
-     * Create an instance of {@link DiagnosticCategoryData }
+     * Create an instance of {@link ArrayOfCategoryResult }
      * 
      * @return
-     *     the new instance of {@link DiagnosticCategoryData }
+     *     the new instance of {@link ArrayOfCategoryResult }
      */
-    public DiagnosticCategoryData createDiagnosticCategoryData() {
-        return new DiagnosticCategoryData();
+    public ArrayOfCategoryResult createArrayOfCategoryResult() {
+        return new ArrayOfCategoryResult();
     }
 
     /**
-     * Create an instance of {@link DiagnosticCardData }
+     * Create an instance of {@link CategoryResult }
      * 
      * @return
-     *     the new instance of {@link DiagnosticCardData }
+     *     the new instance of {@link CategoryResult }
      */
-    public DiagnosticCardData createDiagnosticCardData() {
-        return new DiagnosticCardData();
+    public CategoryResult createCategoryResult() {
+        return new CategoryResult();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAuditPointResult }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAuditPointResult }
+     */
+    public ArrayOfAuditPointResult createArrayOfAuditPointResult() {
+        return new ArrayOfAuditPointResult();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointResult }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointResult }
+     */
+    public AuditPointResult createAuditPointResult() {
+        return new AuditPointResult();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointDetails }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointDetails }
+     */
+    public AuditPointDetails createAuditPointDetails() {
+        return new AuditPointDetails();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAuditPointJsonColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAuditPointJsonColumn }
+     */
+    public ArrayOfAuditPointJsonColumn createArrayOfAuditPointJsonColumn() {
+        return new ArrayOfAuditPointJsonColumn();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointJsonColumn }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointJsonColumn }
+     */
+    public AuditPointJsonColumn createAuditPointJsonColumn() {
+        return new AuditPointJsonColumn();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointSubEnities }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointSubEnities }
+     */
+    public AuditPointSubEnities createAuditPointSubEnities() {
+        return new AuditPointSubEnities();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointTemplate }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointTemplate }
+     */
+    public AuditPointTemplate createAuditPointTemplate() {
+        return new AuditPointTemplate();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAuditPointLink }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfAuditPointLink }
+     */
+    public ArrayOfAuditPointLink createArrayOfAuditPointLink() {
+        return new ArrayOfAuditPointLink();
+    }
+
+    /**
+     * Create an instance of {@link AuditPointLink }
+     * 
+     * @return
+     *     the new instance of {@link AuditPointLink }
+     */
+    public AuditPointLink createAuditPointLink() {
+        return new AuditPointLink();
+    }
+
+    /**
+     * Create an instance of {@link CategoryTemplate }
+     * 
+     * @return
+     *     the new instance of {@link CategoryTemplate }
+     */
+    public CategoryTemplate createCategoryTemplate() {
+        return new CategoryTemplate();
+    }
+
+    /**
+     * Create an instance of {@link EntityTemplate }
+     * 
+     * @return
+     *     the new instance of {@link EntityTemplate }
+     */
+    public EntityTemplate createEntityTemplate() {
+        return new EntityTemplate();
     }
 
     /**
@@ -14434,6 +14692,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfHTML5 }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfHTML5 }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfHTML5")
+    public JAXBElement<ArrayOfHTML5> createArrayOfHTML5(ArrayOfHTML5 value) {
+        return new JAXBElement<>(_ArrayOfHTML5_QNAME, ArrayOfHTML5 .class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HTML5 }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link HTML5 }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "HTML5")
+    public JAXBElement<HTML5> createHTML5(HTML5 value) {
+        return new JAXBElement<>(_HTML5_QNAME, HTML5 .class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignConversionGoal }{@code >}
      * 
      * @param value
@@ -15566,68 +15850,276 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticTileData }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticsEntity }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticTileData }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticsEntity }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticTileData")
-    public JAXBElement<DiagnosticTileData> createDiagnosticTileData(DiagnosticTileData value) {
-        return new JAXBElement<>(_DiagnosticTileData_QNAME, DiagnosticTileData.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDiagnosticsEntity")
+    public JAXBElement<ArrayOfDiagnosticsEntity> createArrayOfDiagnosticsEntity(ArrayOfDiagnosticsEntity value) {
+        return new JAXBElement<>(_ArrayOfDiagnosticsEntity_QNAME, ArrayOfDiagnosticsEntity.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticCategoryData }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticsEntity }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticCategoryData }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticsEntity }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDiagnosticCategoryData")
-    public JAXBElement<ArrayOfDiagnosticCategoryData> createArrayOfDiagnosticCategoryData(ArrayOfDiagnosticCategoryData value) {
-        return new JAXBElement<>(_ArrayOfDiagnosticCategoryData_QNAME, ArrayOfDiagnosticCategoryData.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticsEntity")
+    public JAXBElement<DiagnosticsEntity> createDiagnosticsEntity(DiagnosticsEntity value) {
+        return new JAXBElement<>(_DiagnosticsEntity_QNAME, DiagnosticsEntity.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticCategoryData }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticsFilter }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticCategoryData }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticsFilter }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticCategoryData")
-    public JAXBElement<DiagnosticCategoryData> createDiagnosticCategoryData(DiagnosticCategoryData value) {
-        return new JAXBElement<>(_DiagnosticCategoryData_QNAME, DiagnosticCategoryData.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDiagnosticsFilter")
+    public JAXBElement<ArrayOfDiagnosticsFilter> createArrayOfDiagnosticsFilter(ArrayOfDiagnosticsFilter value) {
+        return new JAXBElement<>(_ArrayOfDiagnosticsFilter_QNAME, ArrayOfDiagnosticsFilter.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticCardData }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticsFilter }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDiagnosticCardData }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticsFilter }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfDiagnosticCardData")
-    public JAXBElement<ArrayOfDiagnosticCardData> createArrayOfDiagnosticCardData(ArrayOfDiagnosticCardData value) {
-        return new JAXBElement<>(_ArrayOfDiagnosticCardData_QNAME, ArrayOfDiagnosticCardData.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticsFilter")
+    public JAXBElement<DiagnosticsFilter> createDiagnosticsFilter(DiagnosticsFilter value) {
+        return new JAXBElement<>(_DiagnosticsFilter_QNAME, DiagnosticsFilter.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticCardData }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticsSettings }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticCardData }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticsSettings }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticCardData")
-    public JAXBElement<DiagnosticCardData> createDiagnosticCardData(DiagnosticCardData value) {
-        return new JAXBElement<>(_DiagnosticCardData_QNAME, DiagnosticCardData.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticsSettings")
+    public JAXBElement<DiagnosticsSettings> createDiagnosticsSettings(DiagnosticsSettings value) {
+        return new JAXBElement<>(_DiagnosticsSettings_QNAME, DiagnosticsSettings.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiagnosticsRequestStatus }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DiagnosticsRequestStatus }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "DiagnosticsRequestStatus")
+    public JAXBElement<DiagnosticsRequestStatus> createDiagnosticsRequestStatus(DiagnosticsRequestStatus value) {
+        return new JAXBElement<>(_DiagnosticsRequestStatus_QNAME, DiagnosticsRequestStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfEntityResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfEntityResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfEntityResult")
+    public JAXBElement<ArrayOfEntityResult> createArrayOfEntityResult(ArrayOfEntityResult value) {
+        return new JAXBElement<>(_ArrayOfEntityResult_QNAME, ArrayOfEntityResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EntityResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EntityResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityResult")
+    public JAXBElement<EntityResult> createEntityResult(EntityResult value) {
+        return new JAXBElement<>(_EntityResult_QNAME, EntityResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCategoryResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfCategoryResult")
+    public JAXBElement<ArrayOfCategoryResult> createArrayOfCategoryResult(ArrayOfCategoryResult value) {
+        return new JAXBElement<>(_ArrayOfCategoryResult_QNAME, ArrayOfCategoryResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CategoryResult")
+    public JAXBElement<CategoryResult> createCategoryResult(CategoryResult value) {
+        return new JAXBElement<>(_CategoryResult_QNAME, CategoryResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAuditPointResult")
+    public JAXBElement<ArrayOfAuditPointResult> createArrayOfAuditPointResult(ArrayOfAuditPointResult value) {
+        return new JAXBElement<>(_ArrayOfAuditPointResult_QNAME, ArrayOfAuditPointResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointResult }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointResult }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointResult")
+    public JAXBElement<AuditPointResult> createAuditPointResult(AuditPointResult value) {
+        return new JAXBElement<>(_AuditPointResult_QNAME, AuditPointResult.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointDetails }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointDetails }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointDetails")
+    public JAXBElement<AuditPointDetails> createAuditPointDetails(AuditPointDetails value) {
+        return new JAXBElement<>(_AuditPointDetails_QNAME, AuditPointDetails.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointJsonColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointJsonColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAuditPointJsonColumn")
+    public JAXBElement<ArrayOfAuditPointJsonColumn> createArrayOfAuditPointJsonColumn(ArrayOfAuditPointJsonColumn value) {
+        return new JAXBElement<>(_ArrayOfAuditPointJsonColumn_QNAME, ArrayOfAuditPointJsonColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointJsonColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointJsonColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointJsonColumn")
+    public JAXBElement<AuditPointJsonColumn> createAuditPointJsonColumn(AuditPointJsonColumn value) {
+        return new JAXBElement<>(_AuditPointJsonColumn_QNAME, AuditPointJsonColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointSubEnities }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointSubEnities }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointSubEnities")
+    public JAXBElement<AuditPointSubEnities> createAuditPointSubEnities(AuditPointSubEnities value) {
+        return new JAXBElement<>(_AuditPointSubEnities_QNAME, AuditPointSubEnities.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointTemplate }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointTemplate }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointTemplate")
+    public JAXBElement<AuditPointTemplate> createAuditPointTemplate(AuditPointTemplate value) {
+        return new JAXBElement<>(_AuditPointTemplate_QNAME, AuditPointTemplate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointLink }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointLink }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAuditPointLink")
+    public JAXBElement<ArrayOfAuditPointLink> createArrayOfAuditPointLink(ArrayOfAuditPointLink value) {
+        return new JAXBElement<>(_ArrayOfAuditPointLink_QNAME, ArrayOfAuditPointLink.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointLink }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointLink }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointLink")
+    public JAXBElement<AuditPointLink> createAuditPointLink(AuditPointLink value) {
+        return new JAXBElement<>(_AuditPointLink_QNAME, AuditPointLink.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryTemplate }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryTemplate }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CategoryTemplate")
+    public JAXBElement<CategoryTemplate> createCategoryTemplate(CategoryTemplate value) {
+        return new JAXBElement<>(_CategoryTemplate_QNAME, CategoryTemplate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EntityTemplate }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EntityTemplate }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityTemplate")
+    public JAXBElement<EntityTemplate> createEntityTemplate(EntityTemplate value) {
+        return new JAXBElement<>(_EntityTemplate_QNAME, EntityTemplate.class, null, value);
     }
 
     /**

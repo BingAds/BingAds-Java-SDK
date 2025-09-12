@@ -29,7 +29,8 @@ public enum ImportAdditionalField {
     NEW_BRAND_SUITABILITY("NewBrandSuitability"),
     UPDATE_BRAND_SUITABILITY("UpdateBrandSuitability"),
     NEW_CAROUSEL_AD("NewCarouselAd"),
-    UPDATE_ASSET_AUTOMATION_CAMPAIGN_SETTING("UpdateAssetAutomationCampaignSetting");
+    UPDATE_ASSET_AUTOMATION_CAMPAIGN_SETTING("UpdateAssetAutomationCampaignSetting"),
+    ENABLE_COPILOT("EnableCopilot");
         
     private final String value;
 

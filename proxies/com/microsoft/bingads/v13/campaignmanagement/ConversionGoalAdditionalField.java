@@ -11,7 +11,8 @@ public enum ConversionGoalAdditionalField {
     INACTIVE_DUE_TO_TAG_UNAVAILABLE("InactiveDueToTagUnavailable"),
     ATTRIBUTION_MODEL_TYPE("AttributionModelType"),
     IS_ENHANCED_CONVERSIONS_ENABLED("IsEnhancedConversionsEnabled"),
-    IS_AUTO_GOAL("IsAutoGoal");
+    IS_AUTO_GOAL("IsAutoGoal"),
+    DATA_DRIVEN_ATTRIBUTE("DataDrivenAttribute");
         
     private final String value;
 

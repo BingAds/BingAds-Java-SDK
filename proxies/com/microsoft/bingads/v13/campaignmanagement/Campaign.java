@@ -33,6 +33,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="GoalIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="IsPolitical" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -70,6 +71,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "goalIds",
     "id",
     "isDealCampaign",
+    "isPolitical",
     "multimediaAdsBidAdjustment",
     "name",
     "startDate",
@@ -115,6 +117,8 @@ public class Campaign {
     protected Long id;
     @XmlElement(name = "IsDealCampaign", nillable = true)
     protected Boolean isDealCampaign;
+    @XmlElement(name = "IsPolitical")
+    protected Boolean isPolitical;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
@@ -436,6 +440,30 @@ public class Campaign {
      */
     public void setIsDealCampaign(Boolean value) {
         this.isDealCampaign = value;
+    }
+
+    /**
+     * Gets the value of the isPolitical property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsPolitical() {
+        return isPolitical;
+    }
+
+    /**
+     * Sets the value of the isPolitical property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsPolitical(Boolean value) {
+        this.isPolitical = value;
     }
 
     /**

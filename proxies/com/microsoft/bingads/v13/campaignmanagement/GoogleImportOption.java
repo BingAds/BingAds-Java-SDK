@@ -26,6 +26,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="AutoDeviceBidOptimization" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="DeleteRemovedEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableAutoCurrencyConversion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="EnableCopilot" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -142,6 +143,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "autoDeviceBidOptimization",
     "deleteRemovedEntities",
     "enableAutoCurrencyConversion",
+    "enableCopilot",
     "enableParentLocationMapping",
     "newAccountNegativeKeywords",
     "newActiveAdsForExistingAdGroups",
@@ -265,6 +267,8 @@ public class GoogleImportOption
     protected Boolean deleteRemovedEntities;
     @XmlElement(name = "EnableAutoCurrencyConversion", nillable = true)
     protected Boolean enableAutoCurrencyConversion;
+    @XmlElement(name = "EnableCopilot", nillable = true)
+    protected Boolean enableCopilot;
     @XmlElement(name = "EnableParentLocationMapping", nillable = true)
     protected Boolean enableParentLocationMapping;
     @XmlElement(name = "NewAccountNegativeKeywords", nillable = true)
@@ -674,6 +678,30 @@ public class GoogleImportOption
      */
     public void setEnableAutoCurrencyConversion(Boolean value) {
         this.enableAutoCurrencyConversion = value;
+    }
+
+    /**
+     * Gets the value of the enableCopilot property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getEnableCopilot() {
+        return enableCopilot;
+    }
+
+    /**
+     * Sets the value of the enableCopilot property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setEnableCopilot(Boolean value) {
+        this.enableCopilot = value;
     }
 
     /**

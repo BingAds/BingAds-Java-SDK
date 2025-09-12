@@ -38,6 +38,7 @@ public class CsvHeaders {
             StringTable.DynamicDescriptionEnabled,
             StringTable.VerifiedTrackingData,
             StringTable.VerifiedTrackingDatas,
+            StringTable.IsPolitical,
 
             // Ad Group
             StringTable.StartDate,

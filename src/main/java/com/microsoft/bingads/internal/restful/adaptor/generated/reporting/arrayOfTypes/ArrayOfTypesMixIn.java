@@ -207,6 +207,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<BidStrategyReportColumn> getBidStrategyReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             
