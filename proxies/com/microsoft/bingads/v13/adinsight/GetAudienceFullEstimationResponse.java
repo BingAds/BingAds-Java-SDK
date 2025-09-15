@@ -33,6 +33,14 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EstReachAudienceSize" type="{https://bingads.microsoft.com/AdInsight/v13}DecimalRoundedResult" minOccurs="0"/>
  *         <element name="EstReachImpression" type="{https://bingads.microsoft.com/AdInsight/v13}DecimalRoundedResult" minOccurs="0"/>
  *         <element name="Currency" type="{https://bingads.microsoft.com/AdInsight/v13}Currency" minOccurs="0"/>
+ *         <element name="EstImpressionByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstClickByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstSpendByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstCostPerEventByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstCPCByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstViewByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedRangeResultByType" minOccurs="0"/>
+ *         <element name="EstCTRByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfRangeResultByTypeOfdouble" minOccurs="0"/>
+ *         <element name="EstReachImpressionByType" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfDecimalRoundedByType" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -55,7 +63,15 @@ import jakarta.xml.bind.annotation.XmlType;
     "eventsLostToBudget",
     "estReachAudienceSize",
     "estReachImpression",
-    "currency"
+    "currency",
+    "estImpressionByType",
+    "estClickByType",
+    "estSpendByType",
+    "estCostPerEventByType",
+    "estCPCByType",
+    "estViewByType",
+    "estCTRByType",
+    "estReachImpressionByType"
 })
 @XmlRootElement(name = "GetAudienceFullEstimationResponse")
 public class GetAudienceFullEstimationResponse {
@@ -87,6 +103,22 @@ public class GetAudienceFullEstimationResponse {
     @XmlElement(name = "Currency", nillable = true)
     @XmlSchemaType(name = "string")
     protected Currency currency;
+    @XmlElement(name = "EstImpressionByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estImpressionByType;
+    @XmlElement(name = "EstClickByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estClickByType;
+    @XmlElement(name = "EstSpendByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estSpendByType;
+    @XmlElement(name = "EstCostPerEventByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estCostPerEventByType;
+    @XmlElement(name = "EstCPCByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estCPCByType;
+    @XmlElement(name = "EstViewByType", nillable = true)
+    protected ArrayOfDecimalRoundedRangeResultByType estViewByType;
+    @XmlElement(name = "EstCTRByType", nillable = true)
+    protected ArrayOfRangeResultByTypeOfdouble estCTRByType;
+    @XmlElement(name = "EstReachImpressionByType", nillable = true)
+    protected ArrayOfDecimalRoundedByType estReachImpressionByType;
 
     /**
      * Gets the value of the estImpression property.
@@ -398,6 +430,198 @@ public class GetAudienceFullEstimationResponse {
      */
     public void setCurrency(Currency value) {
         this.currency = value;
+    }
+
+    /**
+     * Gets the value of the estImpressionByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstImpressionByType() {
+        return estImpressionByType;
+    }
+
+    /**
+     * Sets the value of the estImpressionByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstImpressionByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estImpressionByType = value;
+    }
+
+    /**
+     * Gets the value of the estClickByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstClickByType() {
+        return estClickByType;
+    }
+
+    /**
+     * Sets the value of the estClickByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstClickByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estClickByType = value;
+    }
+
+    /**
+     * Gets the value of the estSpendByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstSpendByType() {
+        return estSpendByType;
+    }
+
+    /**
+     * Sets the value of the estSpendByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstSpendByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estSpendByType = value;
+    }
+
+    /**
+     * Gets the value of the estCostPerEventByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstCostPerEventByType() {
+        return estCostPerEventByType;
+    }
+
+    /**
+     * Sets the value of the estCostPerEventByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstCostPerEventByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estCostPerEventByType = value;
+    }
+
+    /**
+     * Gets the value of the estCPCByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstCPCByType() {
+        return estCPCByType;
+    }
+
+    /**
+     * Sets the value of the estCPCByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstCPCByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estCPCByType = value;
+    }
+
+    /**
+     * Gets the value of the estViewByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedRangeResultByType getEstViewByType() {
+        return estViewByType;
+    }
+
+    /**
+     * Sets the value of the estViewByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedRangeResultByType }
+     *     
+     */
+    public void setEstViewByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        this.estViewByType = value;
+    }
+
+    /**
+     * Gets the value of the estCTRByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfRangeResultByTypeOfdouble }
+     *     
+     */
+    public ArrayOfRangeResultByTypeOfdouble getEstCTRByType() {
+        return estCTRByType;
+    }
+
+    /**
+     * Sets the value of the estCTRByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfRangeResultByTypeOfdouble }
+     *     
+     */
+    public void setEstCTRByType(ArrayOfRangeResultByTypeOfdouble value) {
+        this.estCTRByType = value;
+    }
+
+    /**
+     * Gets the value of the estReachImpressionByType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfDecimalRoundedByType }
+     *     
+     */
+    public ArrayOfDecimalRoundedByType getEstReachImpressionByType() {
+        return estReachImpressionByType;
+    }
+
+    /**
+     * Sets the value of the estReachImpressionByType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfDecimalRoundedByType }
+     *     
+     */
+    public void setEstReachImpressionByType(ArrayOfDecimalRoundedByType value) {
+        this.estReachImpressionByType = value;
     }
 
 }

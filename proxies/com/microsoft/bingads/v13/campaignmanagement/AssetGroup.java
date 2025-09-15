@@ -26,6 +26,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EditorialStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroupEditorialStatus" minOccurs="0"/>
  *         <element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         <element name="FinalMobileUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
+ *         <element name="FinalUrlSuffix" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="FinalUrls" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         <element name="Headlines" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
@@ -37,6 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Path2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="StartDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}AssetGroupStatus" minOccurs="0"/>
+ *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
  *         <element name="Videos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -56,6 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "editorialStatus",
     "endDate",
     "finalMobileUrls",
+    "finalUrlSuffix",
     "finalUrls",
     "forwardCompatibilityMap",
     "headlines",
@@ -67,6 +71,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "path2",
     "startDate",
     "status",
+    "trackingUrlTemplate",
+    "urlCustomParameters",
     "videos"
 })
 public class AssetGroup {
@@ -89,6 +95,8 @@ public class AssetGroup {
     protected Date endDate;
     @XmlElement(name = "FinalMobileUrls", nillable = true)
     protected ArrayOfstring finalMobileUrls;
+    @XmlElement(name = "FinalUrlSuffix", nillable = true)
+    protected String finalUrlSuffix;
     @XmlElement(name = "FinalUrls", nillable = true)
     protected ArrayOfstring finalUrls;
     @XmlElement(name = "ForwardCompatibilityMap", nillable = true)
@@ -112,6 +120,10 @@ public class AssetGroup {
     @XmlElement(name = "Status", nillable = true)
     @XmlSchemaType(name = "string")
     protected AssetGroupStatus status;
+    @XmlElement(name = "TrackingUrlTemplate", nillable = true)
+    protected String trackingUrlTemplate;
+    @XmlElement(name = "UrlCustomParameters", nillable = true)
+    protected CustomParameters urlCustomParameters;
     @XmlElement(name = "Videos", nillable = true)
     protected ArrayOfAssetLink videos;
 
@@ -305,6 +317,30 @@ public class AssetGroup {
      */
     public void setFinalMobileUrls(ArrayOfstring value) {
         this.finalMobileUrls = value;
+    }
+
+    /**
+     * Gets the value of the finalUrlSuffix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFinalUrlSuffix() {
+        return finalUrlSuffix;
+    }
+
+    /**
+     * Sets the value of the finalUrlSuffix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFinalUrlSuffix(String value) {
+        this.finalUrlSuffix = value;
     }
 
     /**
@@ -569,6 +605,54 @@ public class AssetGroup {
      */
     public void setStatus(AssetGroupStatus value) {
         this.status = value;
+    }
+
+    /**
+     * Gets the value of the trackingUrlTemplate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTrackingUrlTemplate() {
+        return trackingUrlTemplate;
+    }
+
+    /**
+     * Sets the value of the trackingUrlTemplate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTrackingUrlTemplate(String value) {
+        this.trackingUrlTemplate = value;
+    }
+
+    /**
+     * Gets the value of the urlCustomParameters property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CustomParameters }
+     *     
+     */
+    public CustomParameters getUrlCustomParameters() {
+        return urlCustomParameters;
+    }
+
+    /**
+     * Sets the value of the urlCustomParameters property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CustomParameters }
+     *     
+     */
+    public void setUrlCustomParameters(CustomParameters value) {
+        this.urlCustomParameters = value;
     }
 
     /**

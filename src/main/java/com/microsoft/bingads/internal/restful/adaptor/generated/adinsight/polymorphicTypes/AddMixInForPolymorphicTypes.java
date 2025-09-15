@@ -19,6 +19,7 @@ public class AddMixInForPolymorphicTypes {
 				.addMixIn(Recommendation.class, RecommendationPolymorphicTypesMixIn.class)
 				.addMixIn(RecommendationInfo.class, RecommendationInfoPolymorphicTypesMixIn.class)
 				.addMixIn(RecommendationBase.class, RecommendationBasePolymorphicTypesMixIn.class)
+				.addMixIn(Breakdown.class, BreakdownPolymorphicTypesMixIn.class)
 				;
 	}
 }

@@ -8,18 +8,18 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DiagnosticTileData complex type.
+ * <p>Java class for AuditPointTemplate complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
- * <complexType name="DiagnosticTileData">
+ * <complexType name="AuditPointTemplate">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Headline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="ProgressPercent" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="Links" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAuditPointLink" minOccurs="0"/>
  *         <element name="Title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -30,20 +30,20 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DiagnosticTileData", propOrder = {
+@XmlType(name = "AuditPointTemplate", propOrder = {
     "description",
     "headline",
-    "progressPercent",
+    "links",
     "title"
 })
-public class DiagnosticTileData {
+public class AuditPointTemplate {
 
     @XmlElement(name = "Description", nillable = true)
     protected String description;
     @XmlElement(name = "Headline", nillable = true)
     protected String headline;
-    @XmlElement(name = "ProgressPercent")
-    protected Integer progressPercent;
+    @XmlElement(name = "Links", nillable = true)
+    protected ArrayOfAuditPointLink links;
     @XmlElement(name = "Title", nillable = true)
     protected String title;
 
@@ -96,27 +96,27 @@ public class DiagnosticTileData {
     }
 
     /**
-     * Gets the value of the progressPercent property.
+     * Gets the value of the links property.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link ArrayOfAuditPointLink }
      *     
      */
-    public Integer getProgressPercent() {
-        return progressPercent;
+    public ArrayOfAuditPointLink getLinks() {
+        return links;
     }
 
     /**
-     * Sets the value of the progressPercent property.
+     * Sets the value of the links property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link ArrayOfAuditPointLink }
      *     
      */
-    public void setProgressPercent(Integer value) {
-        this.progressPercent = value;
+    public void setLinks(ArrayOfAuditPointLink value) {
+        this.links = value;
     }
 
     /**

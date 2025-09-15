@@ -368,6 +368,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<HTML5> getHTML5S();
+
+            
+	@JsonValue
 	List<CampaignConversionGoal> getCampaignConversionGoals();
 
             
@@ -500,11 +504,31 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<DiagnosticCategoryData> getDiagnosticCategoryDatas();
+	List<DiagnosticsEntity> getDiagnosticsEntities();
 
             
 	@JsonValue
-	List<DiagnosticCardData> getDiagnosticCardDatas();
+	List<DiagnosticsFilter> getDiagnosticsFilters();
+
+            
+	@JsonValue
+	List<EntityResult> getEntityResults();
+
+            
+	@JsonValue
+	List<CategoryResult> getCategoryResults();
+
+            
+	@JsonValue
+	List<AuditPointResult> getAuditPointResults();
+
+            
+	@JsonValue
+	List<AuditPointJsonColumn> getAuditPointJsonColumns();
+
+            
+	@JsonValue
+	List<AuditPointLink> getAuditPointLinks();
 
             
 	@JsonValue

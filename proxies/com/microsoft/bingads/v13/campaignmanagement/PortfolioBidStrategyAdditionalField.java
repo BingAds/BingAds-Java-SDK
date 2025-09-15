@@ -5,7 +5,10 @@ package com.microsoft.bingads.v13.campaignmanagement;
  */
 public enum PortfolioBidStrategyAdditionalField {
 
-    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc");
+    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc"),
+    SCOPE("Scope"),
+    CURRENCY_CODE("CurrencyCode"),
+    REPORTING_TIME_ZONE("ReportingTimeZone");
         
     private final String value;
 

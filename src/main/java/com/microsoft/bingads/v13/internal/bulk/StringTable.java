@@ -145,6 +145,7 @@ public class StringTable {
     public static final String CpmBid = "Cpm Bid";
     public static final String FrequencyCapSettings = "Frequency Cap Settings";
     public static final String FinalUrlExpansionOptOut = "Url Expansion Opt Out";
+    public static final String IsPolitical = "Is Political";
 
     // entity types
     public static final String SemanticVersion = "Format Version";

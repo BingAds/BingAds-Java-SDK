@@ -78,9 +78,14 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfAgeEnum.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfGenderEnum.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfRadiusTarget.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfDecimalRoundedRangeResultByType.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfRangeResultByTypeOfdouble.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfDecimalRoundedByType.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfLocationInfo.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAdApiError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfstring.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfint.class, ArrayOfTypesMixIn.class)
 				;
 	}
 }

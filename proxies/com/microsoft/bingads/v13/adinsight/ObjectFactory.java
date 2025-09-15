@@ -235,6 +235,18 @@ public class ObjectFactory {
     private static final QName _DecimalRoundedResult_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DecimalRoundedResult");
     private static final QName _ScaleUnit_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ScaleUnit");
     private static final QName _RangeResultOfdouble_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RangeResultOfdouble");
+    private static final QName _ArrayOfDecimalRoundedRangeResultByType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfDecimalRoundedRangeResultByType");
+    private static final QName _DecimalRoundedRangeResultByType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DecimalRoundedRangeResultByType");
+    private static final QName _ArrayOfRangeResultByTypeOfdouble_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRangeResultByTypeOfdouble");
+    private static final QName _RangeResultByTypeOfdouble_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RangeResultByTypeOfdouble");
+    private static final QName _ArrayOfDecimalRoundedByType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfDecimalRoundedByType");
+    private static final QName _DecimalRoundedByType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DecimalRoundedByType");
+    private static final QName _BreakdownCategory_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "BreakdownCategory");
+    private static final QName _Breakdowns_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Breakdowns");
+    private static final QName _Breakdown_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "Breakdown");
+    private static final QName _LocationBreakdown_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "LocationBreakdown");
+    private static final QName _ArrayOfLocationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfLocationInfo");
+    private static final QName _LocationInfo_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "LocationInfo");
     private static final QName _AdApiFaultDetail_QNAME = new QName("https://adapi.microsoft.com", "AdApiFaultDetail");
     private static final QName _ApplicationFault_QNAME = new QName("https://adapi.microsoft.com", "ApplicationFault");
     private static final QName _ArrayOfAdApiError_QNAME = new QName("https://adapi.microsoft.com", "ArrayOfAdApiError");
@@ -262,6 +274,7 @@ public class ObjectFactory {
     private static final QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
+    private static final QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.microsoft.bingads.v13.adinsight
@@ -2761,6 +2774,136 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfDecimalRoundedRangeResultByType }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDecimalRoundedRangeResultByType }
+     */
+    public ArrayOfDecimalRoundedRangeResultByType createArrayOfDecimalRoundedRangeResultByType() {
+        return new ArrayOfDecimalRoundedRangeResultByType();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfRangeResultByTypeOfdouble }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfRangeResultByTypeOfdouble }
+     */
+    public ArrayOfRangeResultByTypeOfdouble createArrayOfRangeResultByTypeOfdouble() {
+        return new ArrayOfRangeResultByTypeOfdouble();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDecimalRoundedByType }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDecimalRoundedByType }
+     */
+    public ArrayOfDecimalRoundedByType createArrayOfDecimalRoundedByType() {
+        return new ArrayOfDecimalRoundedByType();
+    }
+
+    /**
+     * Create an instance of {@link DecimalRoundedRangeResultByType }
+     * 
+     * @return
+     *     the new instance of {@link DecimalRoundedRangeResultByType }
+     */
+    public DecimalRoundedRangeResultByType createDecimalRoundedRangeResultByType() {
+        return new DecimalRoundedRangeResultByType();
+    }
+
+    /**
+     * Create an instance of {@link RangeResultByTypeOfdouble }
+     * 
+     * @return
+     *     the new instance of {@link RangeResultByTypeOfdouble }
+     */
+    public RangeResultByTypeOfdouble createRangeResultByTypeOfdouble() {
+        return new RangeResultByTypeOfdouble();
+    }
+
+    /**
+     * Create an instance of {@link DecimalRoundedByType }
+     * 
+     * @return
+     *     the new instance of {@link DecimalRoundedByType }
+     */
+    public DecimalRoundedByType createDecimalRoundedByType() {
+        return new DecimalRoundedByType();
+    }
+
+    /**
+     * Create an instance of {@link GetAudienceBreakdownRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetAudienceBreakdownRequest }
+     */
+    public GetAudienceBreakdownRequest createGetAudienceBreakdownRequest() {
+        return new GetAudienceBreakdownRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAudienceBreakdownResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetAudienceBreakdownResponse }
+     */
+    public GetAudienceBreakdownResponse createGetAudienceBreakdownResponse() {
+        return new GetAudienceBreakdownResponse();
+    }
+
+    /**
+     * Create an instance of {@link Breakdowns }
+     * 
+     * @return
+     *     the new instance of {@link Breakdowns }
+     */
+    public Breakdowns createBreakdowns() {
+        return new Breakdowns();
+    }
+
+    /**
+     * Create an instance of {@link Breakdown }
+     * 
+     * @return
+     *     the new instance of {@link Breakdown }
+     */
+    public Breakdown createBreakdown() {
+        return new Breakdown();
+    }
+
+    /**
+     * Create an instance of {@link LocationBreakdown }
+     * 
+     * @return
+     *     the new instance of {@link LocationBreakdown }
+     */
+    public LocationBreakdown createLocationBreakdown() {
+        return new LocationBreakdown();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLocationInfo }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfLocationInfo }
+     */
+    public ArrayOfLocationInfo createArrayOfLocationInfo() {
+        return new ArrayOfLocationInfo();
+    }
+
+    /**
+     * Create an instance of {@link LocationInfo }
+     * 
+     * @return
+     *     the new instance of {@link LocationInfo }
+     */
+    public LocationInfo createLocationInfo() {
+        return new LocationInfo();
+    }
+
+    /**
      * Create an instance of {@link AdApiFaultDetail }
      * 
      * @return
@@ -2828,6 +2971,16 @@ public class ObjectFactory {
      */
     public Guid createGuid() {
         return new Guid();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfint }
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
     }
 
     /**
@@ -5525,6 +5678,162 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDecimalRoundedRangeResultByType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDecimalRoundedRangeResultByType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfDecimalRoundedRangeResultByType")
+    public JAXBElement<ArrayOfDecimalRoundedRangeResultByType> createArrayOfDecimalRoundedRangeResultByType(ArrayOfDecimalRoundedRangeResultByType value) {
+        return new JAXBElement<>(_ArrayOfDecimalRoundedRangeResultByType_QNAME, ArrayOfDecimalRoundedRangeResultByType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DecimalRoundedRangeResultByType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DecimalRoundedRangeResultByType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "DecimalRoundedRangeResultByType")
+    public JAXBElement<DecimalRoundedRangeResultByType> createDecimalRoundedRangeResultByType(DecimalRoundedRangeResultByType value) {
+        return new JAXBElement<>(_DecimalRoundedRangeResultByType_QNAME, DecimalRoundedRangeResultByType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfRangeResultByTypeOfdouble }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfRangeResultByTypeOfdouble }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfRangeResultByTypeOfdouble")
+    public JAXBElement<ArrayOfRangeResultByTypeOfdouble> createArrayOfRangeResultByTypeOfdouble(ArrayOfRangeResultByTypeOfdouble value) {
+        return new JAXBElement<>(_ArrayOfRangeResultByTypeOfdouble_QNAME, ArrayOfRangeResultByTypeOfdouble.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RangeResultByTypeOfdouble }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RangeResultByTypeOfdouble }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "RangeResultByTypeOfdouble")
+    public JAXBElement<RangeResultByTypeOfdouble> createRangeResultByTypeOfdouble(RangeResultByTypeOfdouble value) {
+        return new JAXBElement<>(_RangeResultByTypeOfdouble_QNAME, RangeResultByTypeOfdouble.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDecimalRoundedByType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDecimalRoundedByType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfDecimalRoundedByType")
+    public JAXBElement<ArrayOfDecimalRoundedByType> createArrayOfDecimalRoundedByType(ArrayOfDecimalRoundedByType value) {
+        return new JAXBElement<>(_ArrayOfDecimalRoundedByType_QNAME, ArrayOfDecimalRoundedByType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DecimalRoundedByType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DecimalRoundedByType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "DecimalRoundedByType")
+    public JAXBElement<DecimalRoundedByType> createDecimalRoundedByType(DecimalRoundedByType value) {
+        return new JAXBElement<>(_DecimalRoundedByType_QNAME, DecimalRoundedByType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BreakdownCategory }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BreakdownCategory }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "BreakdownCategory")
+    public JAXBElement<BreakdownCategory> createBreakdownCategory(BreakdownCategory value) {
+        return new JAXBElement<>(_BreakdownCategory_QNAME, BreakdownCategory.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Breakdowns }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Breakdowns }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Breakdowns")
+    public JAXBElement<Breakdowns> createBreakdowns(Breakdowns value) {
+        return new JAXBElement<>(_Breakdowns_QNAME, Breakdowns.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Breakdown }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Breakdown }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "Breakdown")
+    public JAXBElement<Breakdown> createBreakdown(Breakdown value) {
+        return new JAXBElement<>(_Breakdown_QNAME, Breakdown.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LocationBreakdown }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LocationBreakdown }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "LocationBreakdown")
+    public JAXBElement<LocationBreakdown> createLocationBreakdown(LocationBreakdown value) {
+        return new JAXBElement<>(_LocationBreakdown_QNAME, LocationBreakdown.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLocationInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfLocationInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfLocationInfo")
+    public JAXBElement<ArrayOfLocationInfo> createArrayOfLocationInfo(ArrayOfLocationInfo value) {
+        return new JAXBElement<>(_ArrayOfLocationInfo_QNAME, ArrayOfLocationInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LocationInfo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LocationInfo }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "LocationInfo")
+    public JAXBElement<LocationInfo> createLocationInfo(LocationInfo value) {
+        return new JAXBElement<>(_LocationInfo_QNAME, LocationInfo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdApiFaultDetail }{@code >}
      * 
      * @param value
@@ -5874,6 +6183,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfstring")
     public JAXBElement<ArrayOfstring> createArrayOfstring(ArrayOfstring value) {
         return new JAXBElement<>(_ArrayOfstring_QNAME, ArrayOfstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfint")
+    public JAXBElement<ArrayOfint> createArrayOfint(ArrayOfint value) {
+        return new JAXBElement<>(_ArrayOfint_QNAME, ArrayOfint.class, null, value);
     }
 
 }

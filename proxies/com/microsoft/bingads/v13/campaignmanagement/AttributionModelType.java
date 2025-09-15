@@ -15,6 +15,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     <enumeration value="LastClick"/>
  *     <enumeration value="LastTouch"/>
+ *     <enumeration value="DataDriven"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -27,7 +28,9 @@ public enum AttributionModelType {
     @XmlEnumValue("LastClick")
     LAST_CLICK("LastClick"),
     @XmlEnumValue("LastTouch")
-    LAST_TOUCH("LastTouch");
+    LAST_TOUCH("LastTouch"),
+    @XmlEnumValue("DataDriven")
+    DATA_DRIVEN("DataDriven");
     private final String value;
 
     AttributionModelType(String v) {

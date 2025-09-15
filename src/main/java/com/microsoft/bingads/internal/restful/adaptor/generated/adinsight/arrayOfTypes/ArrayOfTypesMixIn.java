@@ -283,6 +283,22 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<DecimalRoundedRangeResultByType> getDecimalRoundedRangeResultByTypes();
+
+            
+	@JsonValue
+	List<RangeResultByTypeOfdouble> getRangeResultByTypeOfdoubles();
+
+            
+	@JsonValue
+	List<DecimalRoundedByType> getDecimalRoundedByTypes();
+
+            
+	@JsonValue
+	List<LocationInfo> getLocationInfos();
+
+            
+	@JsonValue
 	List<AdApiError> getAdApiErrors();
 
             
@@ -292,5 +308,9 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<String> getStrings();
+
+            
+	@JsonValue
+	List<Integer> getInts();
 
         }

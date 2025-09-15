@@ -5893,6 +5893,129 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddHTML5SResponse>
+     */
+    @WebMethod(operationName = "AddHTML5s", action = "AddHTML5s")
+    public Response<AddHTML5SResponse> addHTML5SAsync(
+        @WebParam(name = "AddHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddHTML5SRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddHTML5s", action = "AddHTML5s")
+    public Future<?> addHTML5SAsync(
+        @WebParam(name = "AddHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddHTML5SRequest parameters,
+        @WebParam(name = "AddHTML5sResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddHTML5SResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddHTML5SResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddHTML5s", action = "AddHTML5s")
+    @WebResult(name = "AddHTML5sResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddHTML5SResponse addHTML5S(
+        @WebParam(name = "AddHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddHTML5SRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetHTML5SByIdsResponse>
+     */
+    @WebMethod(operationName = "GetHTML5sByIds", action = "GetHTML5sByIds")
+    public Response<GetHTML5SByIdsResponse> getHTML5SByIdsAsync(
+        @WebParam(name = "GetHTML5sByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHTML5SByIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetHTML5sByIds", action = "GetHTML5sByIds")
+    public Future<?> getHTML5SByIdsAsync(
+        @WebParam(name = "GetHTML5sByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHTML5SByIdsRequest parameters,
+        @WebParam(name = "GetHTML5sByIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetHTML5SByIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetHTML5SByIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetHTML5sByIds", action = "GetHTML5sByIds")
+    @WebResult(name = "GetHTML5sByIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetHTML5SByIdsResponse getHTML5SByIds(
+        @WebParam(name = "GetHTML5sByIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetHTML5SByIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteHTML5SResponse>
+     */
+    @WebMethod(operationName = "DeleteHTML5s", action = "DeleteHTML5s")
+    public Response<DeleteHTML5SResponse> deleteHTML5SAsync(
+        @WebParam(name = "DeleteHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteHTML5SRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteHTML5s", action = "DeleteHTML5s")
+    public Future<?> deleteHTML5SAsync(
+        @WebParam(name = "DeleteHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteHTML5SRequest parameters,
+        @WebParam(name = "DeleteHTML5sResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteHTML5SResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteHTML5SResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteHTML5s", action = "DeleteHTML5s")
+    @WebResult(name = "DeleteHTML5sResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteHTML5SResponse deleteHTML5S(
+        @WebParam(name = "DeleteHTML5sRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteHTML5SRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddCampaignConversionGoalsResponse>
      */
     @WebMethod(operationName = "AddCampaignConversionGoals", action = "AddCampaignConversionGoals")

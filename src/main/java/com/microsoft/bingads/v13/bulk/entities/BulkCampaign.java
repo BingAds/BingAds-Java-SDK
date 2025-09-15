@@ -1479,6 +1479,21 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                     }
                 }
         ));
+        
+        m.add(new SimpleBulkMapping<BulkCampaign, Boolean>(StringTable.IsPolitical,
+                new Function<BulkCampaign, Boolean>() {
+                    @Override
+                    public Boolean apply(BulkCampaign t) {
+                        return t.getCampaign().getIsPolitical();
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.getCampaign().setIsPolitical(v == null ? null : Boolean.parseBoolean(v));
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
     }

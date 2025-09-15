@@ -592,4 +592,20 @@ public class AdInsightService extends RestfulServiceClient implements IAdInsight
 		return sendRequestAsync(request, "/AudienceFullEstimation/Query", HttpPost, GetAudienceFullEstimationResponse.class, asyncHandler);
 	}
 	
+    	
+	public GetAudienceBreakdownResponse getAudienceBreakdown(GetAudienceBreakdownRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetAudienceBreakdownResponse response = sendRequest(request, "/AudienceBreakdown/Query", HttpPost, GetAudienceBreakdownResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetAudienceBreakdownResponse> getAudienceBreakdownAsync(GetAudienceBreakdownRequest request) {
+		return sendRequestAsync(request, "/AudienceBreakdown/Query", HttpPost, GetAudienceBreakdownResponse.class, null);
+	}
+
+	public Future<?> getAudienceBreakdownAsync(GetAudienceBreakdownRequest request, AsyncHandler<GetAudienceBreakdownResponse> asyncHandler) {
+		return sendRequestAsync(request, "/AudienceBreakdown/Query", HttpPost, GetAudienceBreakdownResponse.class, asyncHandler);
+	}
+	
     }

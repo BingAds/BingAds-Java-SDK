@@ -1338,4 +1338,45 @@ public interface IAdInsightService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetAudienceBreakdownResponse>
+     */
+    @WebMethod(operationName = "GetAudienceBreakdown", action = "GetAudienceBreakdown")
+    public Response<GetAudienceBreakdownResponse> getAudienceBreakdownAsync(
+        @WebParam(name = "GetAudienceBreakdownRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceBreakdownRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetAudienceBreakdown", action = "GetAudienceBreakdown")
+    public Future<?> getAudienceBreakdownAsync(
+        @WebParam(name = "GetAudienceBreakdownRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceBreakdownRequest parameters,
+        @WebParam(name = "GetAudienceBreakdownResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetAudienceBreakdownResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.GetAudienceBreakdownResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetAudienceBreakdown", action = "GetAudienceBreakdown")
+    @WebResult(name = "GetAudienceBreakdownResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public GetAudienceBreakdownResponse getAudienceBreakdown(
+        @WebParam(name = "GetAudienceBreakdownRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetAudienceBreakdownRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

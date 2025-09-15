@@ -239,6 +239,10 @@ public class ObjectFactory {
     private static final QName _ArrayOfTravelQueryInsightReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfTravelQueryInsightReportColumn");
     private static final QName _TravelQueryInsightReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TravelQueryInsightReportColumn");
     private static final QName _TravelQueryInsightReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "TravelQueryInsightReportFilter");
+    private static final QName _BidStrategyReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "BidStrategyReportRequest");
+    private static final QName _ArrayOfBidStrategyReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfBidStrategyReportColumn");
+    private static final QName _BidStrategyReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "BidStrategyReportColumn");
+    private static final QName _BidStrategyReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "BidStrategyReportFilter");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CustomerAccountId");
@@ -1868,6 +1872,36 @@ public class ObjectFactory {
      */
     public TravelQueryInsightReportFilter createTravelQueryInsightReportFilter() {
         return new TravelQueryInsightReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link BidStrategyReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link BidStrategyReportRequest }
+     */
+    public BidStrategyReportRequest createBidStrategyReportRequest() {
+        return new BidStrategyReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBidStrategyReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBidStrategyReportColumn }
+     */
+    public ArrayOfBidStrategyReportColumn createArrayOfBidStrategyReportColumn() {
+        return new ArrayOfBidStrategyReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link BidStrategyReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link BidStrategyReportFilter }
+     */
+    public BidStrategyReportFilter createBidStrategyReportFilter() {
+        return new BidStrategyReportFilter();
     }
 
     /**
@@ -4819,6 +4853,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "TravelQueryInsightReportFilter")
     public JAXBElement<TravelQueryInsightReportFilter> createTravelQueryInsightReportFilter(TravelQueryInsightReportFilter value) {
         return new JAXBElement<>(_TravelQueryInsightReportFilter_QNAME, TravelQueryInsightReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BidStrategyReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BidStrategyReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "BidStrategyReportRequest")
+    public JAXBElement<BidStrategyReportRequest> createBidStrategyReportRequest(BidStrategyReportRequest value) {
+        return new JAXBElement<>(_BidStrategyReportRequest_QNAME, BidStrategyReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBidStrategyReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBidStrategyReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfBidStrategyReportColumn")
+    public JAXBElement<ArrayOfBidStrategyReportColumn> createArrayOfBidStrategyReportColumn(ArrayOfBidStrategyReportColumn value) {
+        return new JAXBElement<>(_ArrayOfBidStrategyReportColumn_QNAME, ArrayOfBidStrategyReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BidStrategyReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BidStrategyReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "BidStrategyReportColumn")
+    public JAXBElement<BidStrategyReportColumn> createBidStrategyReportColumn(BidStrategyReportColumn value) {
+        return new JAXBElement<>(_BidStrategyReportColumn_QNAME, BidStrategyReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BidStrategyReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BidStrategyReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "BidStrategyReportFilter")
+    public JAXBElement<BidStrategyReportFilter> createBidStrategyReportFilter(BidStrategyReportFilter value) {
+        return new JAXBElement<>(_BidStrategyReportFilter_QNAME, BidStrategyReportFilter.class, null, value);
     }
 
     /**
