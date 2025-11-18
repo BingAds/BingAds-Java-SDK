@@ -58,13 +58,23 @@ public class OAuthEndpointHelper {
                 "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://si.ads.microsoft.com/msads.manage offline_access&%s",
                 "https://si.ads.microsoft.com/msads.manage offline_access"
                 ));
+        
+        endpointUrls.put(OAuthEndpointType.GoogleProduction, new OAuthEndpoints(
+                "http://localhost",
+                "https://oauth2.googleapis.com/token",
+                "https://accounts.google.com/o/oauth2/v2/auth?scope=openid email profile&access_type=offline&prompt=consent&%s",
+                "openid email profile"
+                ));
     }
     
     public static OAuthEndpoints getOauthEndpoint(ApiEnvironment env, OAuthScope oAuthScope) {
     	if (ApiEnvironment.SANDBOX == env) {
     		if (oAuthScope == OAuthScope.MSA_PROD) {
     			return endpointUrls.get(OAuthEndpointType.MsaProd);
-    		} 
+    		}
+    		else if (oAuthScope == OAuthScope.GOOGLE_OPENID) {
+    			return endpointUrls.get(OAuthEndpointType.GoogleProduction);
+    		}
     		else {
     			return endpointUrls.get(OAuthEndpointType.Sandbox);
     		}
@@ -74,6 +84,7 @@ public class OAuthEndpointHelper {
     	case ADS_MANAGE : return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2);
     	case BINGADS_MANAGE : return endpointUrls.get(OAuthEndpointType.ProductionLiveConnect);
     	case MSADS_MANAGE: return endpointUrls.get(OAuthEndpointType.ProductionMSIdentityV2_MSScope);
+    	case GOOGLE_OPENID: return endpointUrls.get(OAuthEndpointType.GoogleProduction);
     	}
     	
     	return null;

@@ -71,7 +71,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     EventGoal.class,
     AppInstallGoal.class,
     OfflineConversionGoal.class,
-    InStoreTransactionGoal.class
+    InStoreTransactionGoal.class,
+    AppDownloadGoal.class
 })
 public class ConversionGoal {
 

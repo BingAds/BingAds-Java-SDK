@@ -12,7 +12,11 @@ import org.junit.runners.Suite.SuiteClasses;
 	BulkBidStrategyWriteToRowValuesIdTest.class,
 	BulkBidStrategyWriteToRowValuesParentIdTest.class,
 	BulkBidStrategyWriteToRowValuesStatusTest.class,
-	BulkBidStrategyWriteToRowValuesBidStrategyTypeTest.class})
+	BulkBidStrategyWriteToRowValuesBidStrategyTypeTest.class,
+	BulkBidStrategyWriteToRowValuesCurrencyCodeTest.class,
+	BulkBidStrategyWriteToRowValuesTimeZoneTest.class,
+	BulkBidStrategyWriteToRowValuesBidStrategyScopeTest.class,
+})
 public class BulkBidStrategyWriteTests {
 
 }

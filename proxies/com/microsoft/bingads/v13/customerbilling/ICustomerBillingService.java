@@ -520,4 +520,45 @@ public interface ICustomerBillingService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.DistributeCouponsResponse>
+     */
+    @WebMethod(operationName = "DistributeCoupons", action = "DistributeCoupons")
+    public Response<DistributeCouponsResponse> distributeCouponsAsync(
+        @WebParam(name = "DistributeCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DistributeCouponsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DistributeCoupons", action = "DistributeCoupons")
+    public Future<?> distributeCouponsAsync(
+        @WebParam(name = "DistributeCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DistributeCouponsRequest parameters,
+        @WebParam(name = "DistributeCouponsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DistributeCouponsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.DistributeCouponsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "DistributeCoupons", action = "DistributeCoupons")
+    @WebResult(name = "DistributeCouponsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public DistributeCouponsResponse distributeCoupons(
+        @WebParam(name = "DistributeCouponsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        DistributeCouponsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

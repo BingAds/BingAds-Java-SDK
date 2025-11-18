@@ -83,6 +83,11 @@ public class ObjectFactory {
     private static final QName _DayMonthAndYear_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DayMonthAndYear");
     private static final QName _ArrayOfBidLandscapePoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfBidLandscapePoint");
     private static final QName _BidLandscapePoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "BidLandscapePoint");
+    private static final QName _ArrayOfCampaignBidLandscape_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfCampaignBidLandscape");
+    private static final QName _CampaignBidLandscape_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignBidLandscape");
+    private static final QName _CampaignBidLandscapeType_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignBidLandscapeType");
+    private static final QName _ArrayOfCampaignBidLandscapePoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfCampaignBidLandscapePoint");
+    private static final QName _CampaignBidLandscapePoint_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "CampaignBidLandscapePoint");
     private static final QName _ArrayOfKeywordBidLandscape_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfKeywordBidLandscape");
     private static final QName _KeywordBidLandscape_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "KeywordBidLandscape");
     private static final QName _TimeInterval_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "TimeInterval");
@@ -226,6 +231,9 @@ public class ObjectFactory {
     private static final QName _ArrayOfGenderEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfGenderEnum");
     private static final QName _GenderEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "GenderEnum");
     private static final QName _SelectionOflong_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOflong");
+    private static final QName _SelectionOfDeviceEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "SelectionOfDeviceEnum");
+    private static final QName _ArrayOfDeviceEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfDeviceEnum");
+    private static final QName _DeviceEnum_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "DeviceEnum");
     private static final QName _ArrayOfRadiusTarget_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "ArrayOfRadiusTarget");
     private static final QName _RadiusTarget_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RadiusTarget");
     private static final QName _RadiusUnit_QNAME = new QName("https://bingads.microsoft.com/AdInsight/v13", "RadiusUnit");
@@ -981,6 +989,66 @@ public class ObjectFactory {
      */
     public BidLandscapePoint createBidLandscapePoint() {
         return new BidLandscapePoint();
+    }
+
+    /**
+     * Create an instance of {@link GetBidLandscapeByCampaignIdsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetBidLandscapeByCampaignIdsRequest }
+     */
+    public GetBidLandscapeByCampaignIdsRequest createGetBidLandscapeByCampaignIdsRequest() {
+        return new GetBidLandscapeByCampaignIdsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBidLandscapeByCampaignIdsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetBidLandscapeByCampaignIdsResponse }
+     */
+    public GetBidLandscapeByCampaignIdsResponse createGetBidLandscapeByCampaignIdsResponse() {
+        return new GetBidLandscapeByCampaignIdsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignBidLandscape }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCampaignBidLandscape }
+     */
+    public ArrayOfCampaignBidLandscape createArrayOfCampaignBidLandscape() {
+        return new ArrayOfCampaignBidLandscape();
+    }
+
+    /**
+     * Create an instance of {@link CampaignBidLandscape }
+     * 
+     * @return
+     *     the new instance of {@link CampaignBidLandscape }
+     */
+    public CampaignBidLandscape createCampaignBidLandscape() {
+        return new CampaignBidLandscape();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCampaignBidLandscapePoint }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfCampaignBidLandscapePoint }
+     */
+    public ArrayOfCampaignBidLandscapePoint createArrayOfCampaignBidLandscapePoint() {
+        return new ArrayOfCampaignBidLandscapePoint();
+    }
+
+    /**
+     * Create an instance of {@link CampaignBidLandscapePoint }
+     * 
+     * @return
+     *     the new instance of {@link CampaignBidLandscapePoint }
+     */
+    public CampaignBidLandscapePoint createCampaignBidLandscapePoint() {
+        return new CampaignBidLandscapePoint();
     }
 
     /**
@@ -2684,6 +2752,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SelectionOfDeviceEnum }
+     * 
+     * @return
+     *     the new instance of {@link SelectionOfDeviceEnum }
+     */
+    public SelectionOfDeviceEnum createSelectionOfDeviceEnum() {
+        return new SelectionOfDeviceEnum();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfRadiusTarget }
      * 
      * @return
@@ -2721,6 +2799,16 @@ public class ObjectFactory {
      */
     public ArrayOfGenderEnum createArrayOfGenderEnum() {
         return new ArrayOfGenderEnum();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfDeviceEnum }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfDeviceEnum }
+     */
+    public ArrayOfDeviceEnum createArrayOfDeviceEnum() {
+        return new ArrayOfDeviceEnum();
     }
 
     /**
@@ -3698,6 +3786,71 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "BidLandscapePoint")
     public JAXBElement<BidLandscapePoint> createBidLandscapePoint(BidLandscapePoint value) {
         return new JAXBElement<>(_BidLandscapePoint_QNAME, BidLandscapePoint.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignBidLandscape }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignBidLandscape }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfCampaignBidLandscape")
+    public JAXBElement<ArrayOfCampaignBidLandscape> createArrayOfCampaignBidLandscape(ArrayOfCampaignBidLandscape value) {
+        return new JAXBElement<>(_ArrayOfCampaignBidLandscape_QNAME, ArrayOfCampaignBidLandscape.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscape }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscape }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "CampaignBidLandscape")
+    public JAXBElement<CampaignBidLandscape> createCampaignBidLandscape(CampaignBidLandscape value) {
+        return new JAXBElement<>(_CampaignBidLandscape_QNAME, CampaignBidLandscape.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscapeType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscapeType }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "CampaignBidLandscapeType")
+    public JAXBElement<CampaignBidLandscapeType> createCampaignBidLandscapeType(CampaignBidLandscapeType value) {
+        return new JAXBElement<>(_CampaignBidLandscapeType_QNAME, CampaignBidLandscapeType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignBidLandscapePoint }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfCampaignBidLandscapePoint }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfCampaignBidLandscapePoint")
+    public JAXBElement<ArrayOfCampaignBidLandscapePoint> createArrayOfCampaignBidLandscapePoint(ArrayOfCampaignBidLandscapePoint value) {
+        return new JAXBElement<>(_ArrayOfCampaignBidLandscapePoint_QNAME, ArrayOfCampaignBidLandscapePoint.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscapePoint }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignBidLandscapePoint }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "CampaignBidLandscapePoint")
+    public JAXBElement<CampaignBidLandscapePoint> createCampaignBidLandscapePoint(CampaignBidLandscapePoint value) {
+        return new JAXBElement<>(_CampaignBidLandscapePoint_QNAME, CampaignBidLandscapePoint.class, null, value);
     }
 
     /**
@@ -5558,6 +5711,45 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SelectionOflong")
     public JAXBElement<SelectionOflong> createSelectionOflong(SelectionOflong value) {
         return new JAXBElement<>(_SelectionOflong_QNAME, SelectionOflong.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectionOfDeviceEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SelectionOfDeviceEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "SelectionOfDeviceEnum")
+    public JAXBElement<SelectionOfDeviceEnum> createSelectionOfDeviceEnum(SelectionOfDeviceEnum value) {
+        return new JAXBElement<>(_SelectionOfDeviceEnum_QNAME, SelectionOfDeviceEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDeviceEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDeviceEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "ArrayOfDeviceEnum")
+    public JAXBElement<ArrayOfDeviceEnum> createArrayOfDeviceEnum(ArrayOfDeviceEnum value) {
+        return new JAXBElement<>(_ArrayOfDeviceEnum_QNAME, ArrayOfDeviceEnum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeviceEnum }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DeviceEnum }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/AdInsight/v13", name = "DeviceEnum")
+    public JAXBElement<DeviceEnum> createDeviceEnum(DeviceEnum value) {
+        return new JAXBElement<>(_DeviceEnum_QNAME, DeviceEnum.class, null, value);
     }
 
     /**

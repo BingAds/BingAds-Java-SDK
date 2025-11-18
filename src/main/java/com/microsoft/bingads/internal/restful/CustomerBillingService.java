@@ -334,4 +334,20 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		return sendRequestAsync(request, "/CouponInfo/Query", HttpPost, GetCouponInfoResponse.class, asyncHandler);
 	}
 	
+    	
+	public DistributeCouponsResponse distributeCoupons(DistributeCouponsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
+		DistributeCouponsResponse response = sendRequest(request, "/Coupons/Distribute", HttpPost, DistributeCouponsResponse.class);
+		
+		return response;
+	}
+
+    public Response<DistributeCouponsResponse> distributeCouponsAsync(DistributeCouponsRequest request) {
+		return sendRequestAsync(request, "/Coupons/Distribute", HttpPost, DistributeCouponsResponse.class, null);
+	}
+
+	public Future<?> distributeCouponsAsync(DistributeCouponsRequest request, AsyncHandler<DistributeCouponsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/Coupons/Distribute", HttpPost, DistributeCouponsResponse.class, asyncHandler);
+	}
+	
     }

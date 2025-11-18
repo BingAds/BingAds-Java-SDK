@@ -36,6 +36,7 @@ import com.microsoft.bingads.v13.campaignmanagement.ShoppingSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSetting;
 import com.microsoft.bingads.v13.campaignmanagement.TargetSettingDetail;
 import com.microsoft.bingads.v13.campaignmanagement.VerifiedTrackingSetting;
+import com.microsoft.bingads.v13.campaignmanagement.EntityScope;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -72,6 +73,7 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     private String DestinationChannel;
     private Boolean IsMultiChannelCampaign;
     private Boolean ShouldServeOnMSAN;
+    private EntityScope Scope;
     private static final List<BulkMapping<BulkCampaign>> MAPPINGS;
     private static BiConsumer<BulkCampaign, RowValues> budgetToCsv;
     private static BiConsumer<RowValues, BulkCampaign> csvToBudget;
@@ -1495,6 +1497,26 @@ public class BulkCampaign extends SingleRecordBulkEntity {
                 }
         ));
 
+        m.add(new SimpleBulkMapping<BulkCampaign, String>(StringTable.BidStrategyScope,
+                new Function<BulkCampaign, String>() {
+                    @Override
+                    public String apply(BulkCampaign c) {
+                        return c.getScope() != null ? c.getScope().value() : null;
+                    }
+                },
+                new BiConsumer<String, BulkCampaign>() {
+                    @Override
+                    public void accept(String v, BulkCampaign c) {
+                        c.setScope(StringExtensions.parseOptional(v, new Function<String, EntityScope>() {
+                            @Override
+                            public EntityScope apply(String value) {
+                                return StringExtensions.fromValueOptional(value, EntityScope.class);
+                            }
+                        }));
+                    }
+                }
+        ));
+
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -1592,6 +1614,14 @@ public class BulkCampaign extends SingleRecordBulkEntity {
     
     public void setShouldServeOnMSAN(Boolean ShouldServeOnMSAN) {
     	ShouldServeOnMSAN = ShouldServeOnMSAN;
+    }
+
+    public EntityScope getScope() {
+        return Scope;
+    }
+
+    public void setScope(EntityScope scope) {
+        Scope = scope;
     }
 
     @Override

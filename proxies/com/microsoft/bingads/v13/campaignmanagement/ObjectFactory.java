@@ -82,6 +82,7 @@ public class ObjectFactory {
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
+    private static final QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityScope");
     private static final QName _BiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddingScheme");
     private static final QName _MaxClicksBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MaxClicksBiddingScheme");
     private static final QName _Bid_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Bid");
@@ -321,7 +322,6 @@ public class ObjectFactory {
     private static final QName _BrandList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandList");
     private static final QName _AccountPlacementExclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountPlacementExclusionList");
     private static final QName _AccountPlacementInclusionList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AccountPlacementInclusionList");
-    private static final QName _EntityScope_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityScope");
     private static final QName _ArrayOfSharedListItem_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedListItem");
     private static final QName _ArrayOfSharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSharedEntityAssociation");
     private static final QName _SharedEntityAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SharedEntityAssociation");
@@ -433,6 +433,7 @@ public class ObjectFactory {
     private static final QName _AppInstallGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppInstallGoal");
     private static final QName _OfflineConversionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OfflineConversionGoal");
     private static final QName _InStoreTransactionGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "InStoreTransactionGoal");
+    private static final QName _AppDownloadGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AppDownloadGoal");
     private static final QName _ArrayOfOfflineConversion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfOfflineConversion");
     private static final QName _OfflineConversion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "OfflineConversion");
     private static final QName _ArrayOfOfflineConversionAdjustment_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfOfflineConversionAdjustment");
@@ -569,15 +570,6 @@ public class ObjectFactory {
     private static final QName _CategoryResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CategoryResult");
     private static final QName _ArrayOfAuditPointResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointResult");
     private static final QName _AuditPointResult_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointResult");
-    private static final QName _AuditPointDetails_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointDetails");
-    private static final QName _ArrayOfAuditPointJsonColumn_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointJsonColumn");
-    private static final QName _AuditPointJsonColumn_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointJsonColumn");
-    private static final QName _AuditPointSubEnities_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointSubEnities");
-    private static final QName _AuditPointTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointTemplate");
-    private static final QName _ArrayOfAuditPointLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAuditPointLink");
-    private static final QName _AuditPointLink_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AuditPointLink");
-    private static final QName _CategoryTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CategoryTemplate");
-    private static final QName _EntityTemplate_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EntityTemplate");
     private static final QName _ArrayOfAnnotationOptOut_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfAnnotationOptOut");
     private static final QName _AnnotationOptOut_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AnnotationOptOut");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
@@ -5954,6 +5946,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AppDownloadGoal }
+     * 
+     * @return
+     *     the new instance of {@link AppDownloadGoal }
+     */
+    public AppDownloadGoal createAppDownloadGoal() {
+        return new AppDownloadGoal();
+    }
+
+    /**
      * Create an instance of {@link GetConversionGoalsByTagIdsRequest }
      * 
      * @return
@@ -8664,96 +8666,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuditPointDetails }
-     * 
-     * @return
-     *     the new instance of {@link AuditPointDetails }
-     */
-    public AuditPointDetails createAuditPointDetails() {
-        return new AuditPointDetails();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAuditPointJsonColumn }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfAuditPointJsonColumn }
-     */
-    public ArrayOfAuditPointJsonColumn createArrayOfAuditPointJsonColumn() {
-        return new ArrayOfAuditPointJsonColumn();
-    }
-
-    /**
-     * Create an instance of {@link AuditPointJsonColumn }
-     * 
-     * @return
-     *     the new instance of {@link AuditPointJsonColumn }
-     */
-    public AuditPointJsonColumn createAuditPointJsonColumn() {
-        return new AuditPointJsonColumn();
-    }
-
-    /**
-     * Create an instance of {@link AuditPointSubEnities }
-     * 
-     * @return
-     *     the new instance of {@link AuditPointSubEnities }
-     */
-    public AuditPointSubEnities createAuditPointSubEnities() {
-        return new AuditPointSubEnities();
-    }
-
-    /**
-     * Create an instance of {@link AuditPointTemplate }
-     * 
-     * @return
-     *     the new instance of {@link AuditPointTemplate }
-     */
-    public AuditPointTemplate createAuditPointTemplate() {
-        return new AuditPointTemplate();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAuditPointLink }
-     * 
-     * @return
-     *     the new instance of {@link ArrayOfAuditPointLink }
-     */
-    public ArrayOfAuditPointLink createArrayOfAuditPointLink() {
-        return new ArrayOfAuditPointLink();
-    }
-
-    /**
-     * Create an instance of {@link AuditPointLink }
-     * 
-     * @return
-     *     the new instance of {@link AuditPointLink }
-     */
-    public AuditPointLink createAuditPointLink() {
-        return new AuditPointLink();
-    }
-
-    /**
-     * Create an instance of {@link CategoryTemplate }
-     * 
-     * @return
-     *     the new instance of {@link CategoryTemplate }
-     */
-    public CategoryTemplate createCategoryTemplate() {
-        return new CategoryTemplate();
-    }
-
-    /**
-     * Create an instance of {@link EntityTemplate }
-     * 
-     * @return
-     *     the new instance of {@link EntityTemplate }
-     */
-    public EntityTemplate createEntityTemplate() {
-        return new EntityTemplate();
-    }
-
-    /**
      * Create an instance of {@link GetAnnotationOptOutRequest }
      * 
      * @return
@@ -9646,6 +9558,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "Campaign")
     public JAXBElement<Campaign> createCampaign(Campaign value) {
         return new JAXBElement<>(_Campaign_QNAME, Campaign.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EntityScope }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EntityScope }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityScope")
+    public JAXBElement<EntityScope> createEntityScope(EntityScope value) {
+        return new JAXBElement<>(_EntityScope_QNAME, EntityScope.class, null, value);
     }
 
     /**
@@ -12771,19 +12696,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EntityScope }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link EntityScope }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityScope")
-    public JAXBElement<EntityScope> createEntityScope(EntityScope value) {
-        return new JAXBElement<>(_EntityScope_QNAME, EntityScope.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSharedListItem }{@code >}
      * 
      * @param value
@@ -14233,6 +14145,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "InStoreTransactionGoal")
     public JAXBElement<InStoreTransactionGoal> createInStoreTransactionGoal(InStoreTransactionGoal value) {
         return new JAXBElement<>(_InStoreTransactionGoal_QNAME, InStoreTransactionGoal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AppDownloadGoal }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AppDownloadGoal }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AppDownloadGoal")
+    public JAXBElement<AppDownloadGoal> createAppDownloadGoal(AppDownloadGoal value) {
+        return new JAXBElement<>(_AppDownloadGoal_QNAME, AppDownloadGoal.class, null, value);
     }
 
     /**
@@ -16003,123 +15928,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointResult")
     public JAXBElement<AuditPointResult> createAuditPointResult(AuditPointResult value) {
         return new JAXBElement<>(_AuditPointResult_QNAME, AuditPointResult.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointDetails }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointDetails }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointDetails")
-    public JAXBElement<AuditPointDetails> createAuditPointDetails(AuditPointDetails value) {
-        return new JAXBElement<>(_AuditPointDetails_QNAME, AuditPointDetails.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointJsonColumn }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointJsonColumn }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAuditPointJsonColumn")
-    public JAXBElement<ArrayOfAuditPointJsonColumn> createArrayOfAuditPointJsonColumn(ArrayOfAuditPointJsonColumn value) {
-        return new JAXBElement<>(_ArrayOfAuditPointJsonColumn_QNAME, ArrayOfAuditPointJsonColumn.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointJsonColumn }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointJsonColumn }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointJsonColumn")
-    public JAXBElement<AuditPointJsonColumn> createAuditPointJsonColumn(AuditPointJsonColumn value) {
-        return new JAXBElement<>(_AuditPointJsonColumn_QNAME, AuditPointJsonColumn.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointSubEnities }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointSubEnities }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointSubEnities")
-    public JAXBElement<AuditPointSubEnities> createAuditPointSubEnities(AuditPointSubEnities value) {
-        return new JAXBElement<>(_AuditPointSubEnities_QNAME, AuditPointSubEnities.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointTemplate }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointTemplate }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointTemplate")
-    public JAXBElement<AuditPointTemplate> createAuditPointTemplate(AuditPointTemplate value) {
-        return new JAXBElement<>(_AuditPointTemplate_QNAME, AuditPointTemplate.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointLink }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfAuditPointLink }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ArrayOfAuditPointLink")
-    public JAXBElement<ArrayOfAuditPointLink> createArrayOfAuditPointLink(ArrayOfAuditPointLink value) {
-        return new JAXBElement<>(_ArrayOfAuditPointLink_QNAME, ArrayOfAuditPointLink.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuditPointLink }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link AuditPointLink }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AuditPointLink")
-    public JAXBElement<AuditPointLink> createAuditPointLink(AuditPointLink value) {
-        return new JAXBElement<>(_AuditPointLink_QNAME, AuditPointLink.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryTemplate }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CategoryTemplate }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CategoryTemplate")
-    public JAXBElement<CategoryTemplate> createCategoryTemplate(CategoryTemplate value) {
-        return new JAXBElement<>(_CategoryTemplate_QNAME, CategoryTemplate.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EntityTemplate }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link EntityTemplate }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "EntityTemplate")
-    public JAXBElement<EntityTemplate> createEntityTemplate(EntityTemplate value) {
-        return new JAXBElement<>(_EntityTemplate_QNAME, EntityTemplate.class, null, value);
     }
 
     /**

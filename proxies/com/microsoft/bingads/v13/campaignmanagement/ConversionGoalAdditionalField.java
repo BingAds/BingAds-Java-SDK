@@ -12,7 +12,8 @@ public enum ConversionGoalAdditionalField {
     ATTRIBUTION_MODEL_TYPE("AttributionModelType"),
     IS_ENHANCED_CONVERSIONS_ENABLED("IsEnhancedConversionsEnabled"),
     IS_AUTO_GOAL("IsAutoGoal"),
-    DATA_DRIVEN_ATTRIBUTE("DataDrivenAttribute");
+    DATA_DRIVEN_ATTRIBUTE("DataDrivenAttribute"),
+    APPLICATION_DOWNLOAD_GOAL("ApplicationDownloadGoal");
         
     private final String value;
 

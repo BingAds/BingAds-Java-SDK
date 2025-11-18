@@ -38,6 +38,7 @@ public class ObjectFactory {
     private static final QName _ApiFaultElement_QNAME = new QName("https://bingads.microsoft.com/Billing/v13", "ApiFault");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
+    private static final QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
     private static final QName _ArrayOfBillingDocumentInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfBillingDocumentInfo");
     private static final QName _BillingDocumentInfo_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "BillingDocumentInfo");
     private static final QName _DataType_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "DataType");
@@ -659,6 +660,36 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DistributeCouponsRequest }
+     * 
+     * @return
+     *     the new instance of {@link DistributeCouponsRequest }
+     */
+    public DistributeCouponsRequest createDistributeCouponsRequest() {
+        return new DistributeCouponsRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfint }
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
+    }
+
+    /**
+     * Create an instance of {@link DistributeCouponsResponse }
+     * 
+     * @return
+     *     the new instance of {@link DistributeCouponsResponse }
+     */
+    public DistributeCouponsResponse createDistributeCouponsResponse() {
+        return new DistributeCouponsResponse();
+    }
+
+    /**
      * Create an instance of {@link BillingDocumentInfo }
      * 
      * @return
@@ -986,6 +1017,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfstring")
     public JAXBElement<ArrayOfstring> createArrayOfstring(ArrayOfstring value) {
         return new JAXBElement<>(_ArrayOfstring_QNAME, ArrayOfstring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfint")
+    public JAXBElement<ArrayOfint> createArrayOfint(ArrayOfint value) {
+        return new JAXBElement<>(_ArrayOfint_QNAME, ArrayOfint.class, null, value);
     }
 
     /**

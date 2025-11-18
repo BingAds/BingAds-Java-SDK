@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="AudienceAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="BidStrategyScope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
  *         <element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
  *         <element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BudgetLimitType" minOccurs="0"/>
  *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
@@ -60,6 +61,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Campaign", propOrder = {
     "audienceAdsBidAdjustment",
+    "bidStrategyScope",
     "biddingScheme",
     "budgetType",
     "dailyBudget",
@@ -92,6 +94,9 @@ public class Campaign {
 
     @XmlElement(name = "AudienceAdsBidAdjustment", nillable = true)
     protected Integer audienceAdsBidAdjustment;
+    @XmlElement(name = "BidStrategyScope", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected EntityScope bidStrategyScope;
     @XmlElement(name = "BiddingScheme", nillable = true)
     protected BiddingScheme biddingScheme;
     @XmlElement(name = "BudgetType", nillable = true)
@@ -176,6 +181,30 @@ public class Campaign {
      */
     public void setAudienceAdsBidAdjustment(Integer value) {
         this.audienceAdsBidAdjustment = value;
+    }
+
+    /**
+     * Gets the value of the bidStrategyScope property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EntityScope }
+     *     
+     */
+    public EntityScope getBidStrategyScope() {
+        return bidStrategyScope;
+    }
+
+    /**
+     * Sets the value of the bidStrategyScope property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EntityScope }
+     *     
+     */
+    public void setBidStrategyScope(EntityScope value) {
+        this.bidStrategyScope = value;
     }
 
     /**

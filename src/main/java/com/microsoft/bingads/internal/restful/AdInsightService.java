@@ -209,6 +209,22 @@ public class AdInsightService extends RestfulServiceClient implements IAdInsight
 	}
 	
     	
+	public GetBidLandscapeByCampaignIdsResponse getBidLandscapeByCampaignIds(GetBidLandscapeByCampaignIdsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetBidLandscapeByCampaignIdsResponse response = sendRequest(request, "/BidLandscape/QueryByCampaignIds", HttpPost, GetBidLandscapeByCampaignIdsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetBidLandscapeByCampaignIdsResponse> getBidLandscapeByCampaignIdsAsync(GetBidLandscapeByCampaignIdsRequest request) {
+		return sendRequestAsync(request, "/BidLandscape/QueryByCampaignIds", HttpPost, GetBidLandscapeByCampaignIdsResponse.class, null);
+	}
+
+	public Future<?> getBidLandscapeByCampaignIdsAsync(GetBidLandscapeByCampaignIdsRequest request, AsyncHandler<GetBidLandscapeByCampaignIdsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BidLandscape/QueryByCampaignIds", HttpPost, GetBidLandscapeByCampaignIdsResponse.class, asyncHandler);
+	}
+	
+    	
 	public GetBidLandscapeByKeywordIdsResponse getBidLandscapeByKeywordIds(GetBidLandscapeByKeywordIdsRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		GetBidLandscapeByKeywordIdsResponse response = sendRequest(request, "/BidLandscape/QueryByKeywordIds", HttpPost, GetBidLandscapeByKeywordIdsResponse.class);

@@ -131,7 +131,7 @@ public class UriOAuthServiceTest extends EasyMockSupport {
 
         replayAll();
 
-        OAuthService oAuthProvider = new UriOAuthService(webServiceCaller, env);
+        OAuthService oAuthProvider = new UriOAuthService(() -> webServiceCaller, env);
 
         OAuthTokens tokens;
 

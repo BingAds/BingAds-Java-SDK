@@ -505,6 +505,7 @@ public class StringTable {
     public static final String BidStrategyPercentMaxCpc = "Bid Strategy PercentMaxCpc";
     public static final String BidStrategyCommissionRate = "Bid Strategy CommissionRate";
     public static final String BidStrategyTargetCostPerSale = "Bid Strategy TargetCostPerSale";
+    public static final String BidStrategyScope = "Bid Strategy Scope";
 
     // Audience
     public static final String RemarketingList = "Remarketing List";
@@ -662,6 +663,7 @@ public class StringTable {
     public static final String AdGroupNegativeIndustryCriterion = "Ad Group Negative Industry Criterion";
     public static final String AdGroupNegativeJobFunctionCriterion = "Ad Group Negative Job Function Criterion";
     public static final String AdGroupGenreCriterion = "Ad Group Genre Criterion";
+    public static final String AdGroupTopicCriterion = "Ad Group Topic Criterion";
 
     // Campaign Criterion
     public static final String CampaignAgeCriterion = "Campaign Age Criterion";
@@ -860,6 +862,10 @@ public class StringTable {
     public static final String CampaignAccountPlacementInclusionListAssociation = "Campaign Account Placement Inclusion List Association";
     public static final String AccountPlacementInclusionListId = "Account Placement Inclusion List Id";
     public static final String AccountPlacementInclusionListItemId = "Account Placement Inclusion List Item Id";
+    
+    public static final String Topic = "Topic";
+    public static final String ContentPlacement = "Content Placement";
+    public static final String TopicParentId = "Topic Parent Id";
     
     static {
         Map<String, String> m = new HashMap<String, String>();

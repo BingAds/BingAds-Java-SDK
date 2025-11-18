@@ -14,6 +14,7 @@ import com.microsoft.bingads.v13.bulk.BulkServiceManager;
 import com.microsoft.bingads.v13.campaignmanagement.BidStrategy;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignType;
+import com.microsoft.bingads.v13.campaignmanagement.EntityScope;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.ComplexBulkMapping;
 import com.microsoft.bingads.v13.internal.bulk.MappingHelpers;
@@ -147,6 +148,56 @@ public class BulkBidStrategy extends SingleRecordBulkEntity {
                                 return Collections.singletonList(StringExtensions.fromValueOptional(v, CampaignType.class));
                             }
                         }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkBidStrategy, String>(StringTable.BidStrategyScope,
+                new Function<BulkBidStrategy, String>() {
+                    @Override
+                    public String apply(BulkBidStrategy c) {
+                        return c.getBidStrategy().getScope() != null ? c.getBidStrategy().getScope().value() : null;
+                    }
+                },
+                new BiConsumer<String, BulkBidStrategy>() {
+                    @Override
+                    public void accept(String v, BulkBidStrategy c) {
+                        c.getBidStrategy().setScope(StringExtensions.parseOptional(v, new Function<String, EntityScope>() {
+                            @Override
+                            public EntityScope apply(String value) {
+                                return StringExtensions.fromValueOptional(value, EntityScope.class);
+                            }
+                        }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkBidStrategy, String>(StringTable.CurrencyCode,
+                new Function<BulkBidStrategy, String>() {
+                    @Override
+                    public String apply(BulkBidStrategy c) {
+                        return c.getBidStrategy().getCurrencyCode();
+                    }
+                },
+                new BiConsumer<String, BulkBidStrategy>() {
+                    @Override
+                    public void accept(String v, BulkBidStrategy c) {
+                        c.getBidStrategy().setCurrencyCode(v);
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkBidStrategy, String>(StringTable.TimeZone,
+                new Function<BulkBidStrategy, String>() {
+                    @Override
+                    public String apply(BulkBidStrategy c) {
+                        return c.getBidStrategy().getReportingTimeZone();
+                    }
+                },
+                new BiConsumer<String, BulkBidStrategy>() {
+                    @Override
+                    public void accept(String v, BulkBidStrategy c) {
+                        c.getBidStrategy().setReportingTimeZone(v);
                     }
                 }
         ));

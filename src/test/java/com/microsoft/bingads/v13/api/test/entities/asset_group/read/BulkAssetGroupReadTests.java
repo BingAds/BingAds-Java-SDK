@@ -24,6 +24,9 @@ import org.junit.runners.Suite.SuiteClasses;
 		BulkAssetGroupReadFromRowValuesPath2Test.class,
 		BulkAssetGroupReadFromRowValuesStartDateTest.class,
 		BulkAssetGroupReadFromRowValuesStatusTest.class,
+		BulkAssetGroupReadFromRowValuesTrackingTemplateTest.class,
+		BulkAssetGroupReadFromRowValuesFinalUrlSuffixTest.class,
+		BulkAssetGroupReadFromRowValuesCustomParameterTest.class
 })
 public class BulkAssetGroupReadTests {
 
