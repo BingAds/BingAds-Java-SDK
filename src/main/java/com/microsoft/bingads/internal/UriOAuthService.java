@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,16 +41,16 @@ public class UriOAuthService implements OAuthService {
         POST
     }
 
-    private final WebServiceCaller webServiceCaller;
+    private Supplier<WebServiceCaller> webServiceCallerSupplier;
     private ObjectMapper mapper;
     private ApiEnvironment environment;
-
+    
     public UriOAuthService(ApiEnvironment env) {
-        this(new HttpClientWebServiceCaller(), env);
+        this(HttpClientWebServiceCaller::new, env);
     }
 
-    public UriOAuthService(WebServiceCaller caller, ApiEnvironment env) {
-        this.webServiceCaller = caller;
+    public UriOAuthService(Supplier<WebServiceCaller> webServiceCallerSupplier, ApiEnvironment env) {
+        this.webServiceCallerSupplier = webServiceCallerSupplier;
         this.mapper = new ObjectMapper();
         this.environment = env;
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -65,6 +66,7 @@ public class UriOAuthService implements OAuthService {
      */
     @Override
     public OAuthTokens getAccessTokens(OAuthRequestParameters oAuthParameters, OAuthScope oAuthScope, String tenant, Map<String, String> additionalParams) {
+        WebServiceCaller webServiceCaller = webServiceCallerSupplier.get();
         try {
             List<NameValuePair> paramsList = generateParamsList(oAuthParameters, oAuthScope, additionalParams);
             
@@ -75,39 +77,52 @@ public class UriOAuthService implements OAuthService {
 
             HttpResponse httpResponse = webServiceCaller.post(new URL(tokenRequestUrl), paramsList);
 
-            InputStream stream = httpResponse.getEntity().getContent();            
-            
-            if (httpResponse.getStatusLine().getStatusCode() == 200){
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                int nRead = -1;
-                byte[] data = new byte[2048];
-                while ((nRead = stream.read(data, 0, data.length)) != -1) {
-                	baos.write(data, 0, nRead);
-            	}
-             
-                baos.flush();
-                byte[] bytes = baos.toByteArray();
-                OAuthTokensContract oauthResponse = mapper.readValue(bytes, OAuthTokensContract.class);
-                JsonNode root = mapper.readTree(bytes);
+            InputStream stream = null;
+            try {
+                stream = httpResponse.getEntity().getContent();
                 
-                return new OAuthTokens(oauthResponse.getAccessToken(), oauthResponse.getAccessTokenExpiresInSeconds(), oauthResponse.getRefreshToken(), root);
-            } else {
-                OAuthErrorDetailsContract errorResponse = mapper.readValue(stream, OAuthErrorDetailsContract.class);
-                
-                OAuthErrorDetails errorDetails = new OAuthErrorDetails(errorResponse.getError(), errorResponse.getDescription());                                
-                
-                throw new OAuthTokenRequestException(ErrorMessages.OAuthError, errorDetails);
-            }           
+                if (httpResponse.getStatusLine().getStatusCode() == 200){
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    int nRead = -1;
+                    byte[] data = new byte[2048];
+                    while ((nRead = stream.read(data, 0, data.length)) != -1) {
+                        baos.write(data, 0, nRead);
+                    }
+                 
+                    baos.flush();
+                    byte[] bytes = baos.toByteArray();
+                    OAuthTokensContract oauthResponse = mapper.readValue(bytes, OAuthTokensContract.class);
+                    JsonNode root = mapper.readTree(bytes);
+                    
+                    return new OAuthTokens(oauthResponse.getAccessToken(), oauthResponse.getAccessTokenExpiresInSeconds(), oauthResponse.getRefreshToken(), root);
+                } else {
+                    OAuthErrorDetailsContract errorResponse = mapper.readValue(stream, OAuthErrorDetailsContract.class);
+                    
+                    OAuthErrorDetails errorDetails = new OAuthErrorDetails(errorResponse.getError(), errorResponse.getDescription());
+                    
+                    throw new OAuthTokenRequestException(ErrorMessages.OAuthError, errorDetails);
+                }
+            } finally {
+                // Ensure stream is closed before shutting down the HTTP client
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        // Log but don't throw - we still need to clean up the client
+                        logger.log(Level.WARNING, "Failed to close response stream", e);
+                    }
+                }
+            }
         } catch (SocketTimeoutException e) {
             logger.log(Level.WARNING, "Socket connection timed out when get access token, please retry later.", e);
             throw new InternalException(e);
-    	} catch (ConnectTimeoutException e) {
-            logger.log(Level.WARNING, "Connect timed outwhen get access token, please retry later.", e);
+        } catch (ConnectTimeoutException e) {
+            logger.log(Level.WARNING, "Connect timed out when get access token, please retry later.", e);
             throw new InternalException(e);
-    	} catch (IOException e) {
+        } catch (IOException e) {
             throw new InternalException(e);
         } finally {
-        	webServiceCaller.shutDown();
+            webServiceCaller.shutDown();
         }
     }
 

@@ -11,7 +11,8 @@ public enum ConversionGoalType {
     EVENT("Event"),
     APP_INSTALL("AppInstall"),
     OFFLINE_CONVERSION("OfflineConversion"),
-    IN_STORE_TRANSACTION("InStoreTransaction");
+    IN_STORE_TRANSACTION("InStoreTransaction"),
+    APP_DOWNLOAD("AppDownload");
         
     private final String value;
 

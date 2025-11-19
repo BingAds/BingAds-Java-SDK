@@ -13,6 +13,7 @@ public class AddMixInForArrayOfTypes {
 		AdaptorUtil.mapper
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfstring.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfint.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBillingDocumentInfo.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBillingDocument.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfPredicate.class, ArrayOfTypesMixIn.class)

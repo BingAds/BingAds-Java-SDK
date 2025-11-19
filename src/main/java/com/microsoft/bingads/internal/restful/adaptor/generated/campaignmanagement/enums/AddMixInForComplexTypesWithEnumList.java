@@ -66,6 +66,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(ProductAudience.class, ProductAudienceEnumsMixIn.class)
 				.addMixIn(ConversionGoal.class, ConversionGoalEnumsMixIn.class)
 				.addMixIn(AppInstallGoal.class, AppInstallGoalEnumsMixIn.class)
+				.addMixIn(AppDownloadGoal.class, AppDownloadGoalEnumsMixIn.class)
 				.addMixIn(DataExclusion.class, DataExclusionEnumsMixIn.class)
 				.addMixIn(SeasonalityAdjustment.class, SeasonalityAdjustmentEnumsMixIn.class)
 				.addMixIn(AudienceConditionItem.class, AudienceConditionItemEnumsMixIn.class)

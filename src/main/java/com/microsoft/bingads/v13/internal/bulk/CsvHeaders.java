@@ -340,6 +340,7 @@ public class CsvHeaders {
             StringTable.BidStrategyCommissionRate,
             StringTable.BidStrategyPercentMaxCpc,
             StringTable.BidStrategyTargetCostPerSale,
+            StringTable.BidStrategyScope,
             
             // Native Preference
             StringTable.AdFormatPreference,
@@ -554,6 +555,7 @@ public class CsvHeaders {
             StringTable.NewCustomerAcquisitionBidOnlyMode,
             
             StringTable.AccountPlacementListItemUrl,
+            StringTable.TopicParentId,
     };
 
     private static final Map<String, Integer> columnIndexMap = initializeMap();

@@ -29,6 +29,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="Industry" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
  *         <element name="JobFunction" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
  *         <element name="Location" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="Placement" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="Device" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOfDeviceEnum" minOccurs="0"/>
+ *         <element name="Topic" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
  *         <element name="RadiusTargets" type="{https://bingads.microsoft.com/AdInsight/v13}ArrayOfRadiusTarget" minOccurs="0"/>
  *         <element name="CampaignBiddingStrategy" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CampaignSubType" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -58,6 +61,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "industry",
     "jobFunction",
     "location",
+    "placement",
+    "device",
+    "topic",
     "radiusTargets",
     "campaignBiddingStrategy",
     "campaignSubType",
@@ -88,6 +94,12 @@ public class GetAudienceFullEstimationRequest {
     protected SelectionOflong jobFunction;
     @XmlElement(name = "Location", nillable = true)
     protected SelectionOflong location;
+    @XmlElement(name = "Placement", nillable = true)
+    protected SelectionOflong placement;
+    @XmlElement(name = "Device", nillable = true)
+    protected SelectionOfDeviceEnum device;
+    @XmlElement(name = "Topic", nillable = true)
+    protected SelectionOflong topic;
     @XmlElement(name = "RadiusTargets", nillable = true)
     protected ArrayOfRadiusTarget radiusTargets;
     @XmlElement(name = "CampaignBiddingStrategy", nillable = true)
@@ -284,6 +296,78 @@ public class GetAudienceFullEstimationRequest {
      */
     public void setLocation(SelectionOflong value) {
         this.location = value;
+    }
+
+    /**
+     * Gets the value of the placement property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getPlacement() {
+        return placement;
+    }
+
+    /**
+     * Sets the value of the placement property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setPlacement(SelectionOflong value) {
+        this.placement = value;
+    }
+
+    /**
+     * Gets the value of the device property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOfDeviceEnum }
+     *     
+     */
+    public SelectionOfDeviceEnum getDevice() {
+        return device;
+    }
+
+    /**
+     * Sets the value of the device property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOfDeviceEnum }
+     *     
+     */
+    public void setDevice(SelectionOfDeviceEnum value) {
+        this.device = value;
+    }
+
+    /**
+     * Gets the value of the topic property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getTopic() {
+        return topic;
+    }
+
+    /**
+     * Sets the value of the topic property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setTopic(SelectionOflong value) {
+        this.topic = value;
     }
 
     /**

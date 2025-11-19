@@ -23,6 +23,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<Integer> getInts();
+
+            
+	@JsonValue
 	List<BillingDocumentInfo> getBillingDocumentInfos();
 
             

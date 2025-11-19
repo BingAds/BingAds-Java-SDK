@@ -872,6 +872,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupGenreCriterion();
             }
         }));
+        m.put(StringTable.AdGroupTopicCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupTopicCriterion();
+            }
+        }));
         m.put(StringTable.AdGroupLocationCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -1331,6 +1337,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAccountPlacementInclusionListAssociation();
+            }
+        }));
+        m.put(StringTable.Topic, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkTopic();
+            }
+        }));
+        m.put(StringTable.ContentPlacement, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkContentPlacement();
             }
         }));
         

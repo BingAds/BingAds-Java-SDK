@@ -524,14 +524,6 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
-	List<AuditPointJsonColumn> getAuditPointJsonColumns();
-
-            
-	@JsonValue
-	List<AuditPointLink> getAuditPointLinks();
-
-            
-	@JsonValue
 	List<AnnotationOptOut> getAnnotationOptOuts();
 
             

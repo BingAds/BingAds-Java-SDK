@@ -33,16 +33,19 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Clicks"/>
  *     <enumeration value="Ctr"/>
  *     <enumeration value="Spend"/>
- *     <enumeration value="Conversions"/>
+ *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="ConversionRate"/>
  *     <enumeration value="AverageCpc"/>
  *     <enumeration value="ConversionDelay"/>
- *     <enumeration value="CPA"/>
+ *     <enumeration value="CostPerConversionQualified"/>
  *     <enumeration value="ROAS"/>
  *     <enumeration value="AvgTargetCPA"/>
  *     <enumeration value="AvgTargetRoas"/>
  *     <enumeration value="AvgTargetImpressionShare"/>
  *     <enumeration value="ImpressionSharePercent"/>
+ *     <enumeration value="Owner"/>
+ *     <enumeration value="TimeZone"/>
+ *     <enumeration value="Currency"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -92,15 +95,16 @@ public enum BidStrategyReportColumn {
     CTR("Ctr"),
     @XmlEnumValue("Spend")
     SPEND("Spend"),
-    @XmlEnumValue("Conversions")
-    CONVERSIONS("Conversions"),
+    @XmlEnumValue("ConversionsQualified")
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
     @XmlEnumValue("ConversionRate")
     CONVERSION_RATE("ConversionRate"),
     @XmlEnumValue("AverageCpc")
     AVERAGE_CPC("AverageCpc"),
     @XmlEnumValue("ConversionDelay")
     CONVERSION_DELAY("ConversionDelay"),
-    CPA("CPA"),
+    @XmlEnumValue("CostPerConversionQualified")
+    COST_PER_CONVERSION_QUALIFIED("CostPerConversionQualified"),
     ROAS("ROAS"),
     @XmlEnumValue("AvgTargetCPA")
     AVG_TARGET_CPA("AvgTargetCPA"),
@@ -109,7 +113,13 @@ public enum BidStrategyReportColumn {
     @XmlEnumValue("AvgTargetImpressionShare")
     AVG_TARGET_IMPRESSION_SHARE("AvgTargetImpressionShare"),
     @XmlEnumValue("ImpressionSharePercent")
-    IMPRESSION_SHARE_PERCENT("ImpressionSharePercent");
+    IMPRESSION_SHARE_PERCENT("ImpressionSharePercent"),
+    @XmlEnumValue("Owner")
+    OWNER("Owner"),
+    @XmlEnumValue("TimeZone")
+    TIME_ZONE("TimeZone"),
+    @XmlEnumValue("Currency")
+    CURRENCY("Currency");
     private final String value;
 
     BidStrategyReportColumn(String v) {

@@ -358,6 +358,47 @@ public interface IAdInsightService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetBidLandscapeByCampaignIdsResponse>
+     */
+    @WebMethod(operationName = "GetBidLandscapeByCampaignIds", action = "GetBidLandscapeByCampaignIds")
+    public Response<GetBidLandscapeByCampaignIdsResponse> getBidLandscapeByCampaignIdsAsync(
+        @WebParam(name = "GetBidLandscapeByCampaignIdsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetBidLandscapeByCampaignIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetBidLandscapeByCampaignIds", action = "GetBidLandscapeByCampaignIds")
+    public Future<?> getBidLandscapeByCampaignIdsAsync(
+        @WebParam(name = "GetBidLandscapeByCampaignIdsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetBidLandscapeByCampaignIdsRequest parameters,
+        @WebParam(name = "GetBidLandscapeByCampaignIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetBidLandscapeByCampaignIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.adinsight.GetBidLandscapeByCampaignIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetBidLandscapeByCampaignIds", action = "GetBidLandscapeByCampaignIds")
+    @WebResult(name = "GetBidLandscapeByCampaignIdsResponse", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+    public GetBidLandscapeByCampaignIdsResponse getBidLandscapeByCampaignIds(
+        @WebParam(name = "GetBidLandscapeByCampaignIdsRequest", targetNamespace = "https://bingads.microsoft.com/AdInsight/v13", partName = "parameters")
+        GetBidLandscapeByCampaignIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.adinsight.GetBidLandscapeByKeywordIdsResponse>
      */
     @WebMethod(operationName = "GetBidLandscapeByKeywordIds", action = "GetBidLandscapeByKeywordIds")

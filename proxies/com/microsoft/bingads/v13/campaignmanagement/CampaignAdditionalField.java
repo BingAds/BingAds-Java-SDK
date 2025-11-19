@@ -36,7 +36,9 @@ public enum CampaignAdditionalField {
     MANUAL_CPC("ManualCpc"),
     NEW_CUSTOMER_ACQUISITION_GOAL_SETTING("NewCustomerAcquisitionGoalSetting"),
     LIFETIME_BUDGET_FIELDS("LifetimeBudgetFields"),
-    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc");
+    MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc"),
+    PMAX_APP_CAMPAIGN("PmaxAppCampaign"),
+    CROSS_ACCOUNT_BID_STRATEGY_FIELDS("CrossAccountBidStrategyFields");
         
     private final String value;
 

@@ -87,6 +87,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<CampaignBidLandscape> getCampaignBidLandscapes();
+
+            
+	@JsonValue
+	List<CampaignBidLandscapePoint> getCampaignBidLandscapePoints();
+
+            
+	@JsonValue
 	List<KeywordBidLandscape> getKeywordBidLandscapes();
 
             
@@ -276,6 +284,10 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<GenderEnum> getGenderEna();
+
+            
+	@JsonValue
+	List<DeviceEnum> getDeviceEna();
 
             
 	@JsonValue

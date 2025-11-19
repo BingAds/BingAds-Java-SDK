@@ -5,6 +5,7 @@ import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -22,8 +23,11 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AssociatedCampaignType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignType" minOccurs="0"/>
  *         <element name="AssociationCount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
+ *         <element name="CurrencyCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ReportingTimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Scope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -37,8 +41,11 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "associatedCampaignType",
     "associationCount",
     "biddingScheme",
+    "currencyCode",
     "id",
-    "name"
+    "name",
+    "reportingTimeZone",
+    "scope"
 })
 public class BidStrategy {
 
@@ -49,10 +56,17 @@ public class BidStrategy {
     protected Integer associationCount;
     @XmlElement(name = "BiddingScheme", nillable = true)
     protected BiddingScheme biddingScheme;
+    @XmlElement(name = "CurrencyCode", nillable = true)
+    protected String currencyCode;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "ReportingTimeZone", nillable = true)
+    protected String reportingTimeZone;
+    @XmlElement(name = "Scope", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected EntityScope scope;
 
     /**
      * Gets the value of the associatedCampaignType property.
@@ -127,6 +141,30 @@ public class BidStrategy {
     }
 
     /**
+     * Gets the value of the currencyCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    /**
+     * Sets the value of the currencyCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
+    }
+
+    /**
      * Gets the value of the id property.
      * 
      * @return
@@ -172,6 +210,54 @@ public class BidStrategy {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the reportingTimeZone property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReportingTimeZone() {
+        return reportingTimeZone;
+    }
+
+    /**
+     * Sets the value of the reportingTimeZone property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReportingTimeZone(String value) {
+        this.reportingTimeZone = value;
+    }
+
+    /**
+     * Gets the value of the scope property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EntityScope }
+     *     
+     */
+    public EntityScope getScope() {
+        return scope;
+    }
+
+    /**
+     * Sets the value of the scope property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EntityScope }
+     *     
+     */
+    public void setScope(EntityScope value) {
+        this.scope = value;
     }
 
 }

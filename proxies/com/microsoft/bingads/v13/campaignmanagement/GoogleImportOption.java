@@ -64,6 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewStructuredSnippetAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewTopicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewUrlOptions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="PauseAIMAdGroupIfAllAudienceCriterionNotImported" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="PauseCampaignsWithoutSupportedLocations" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -123,6 +124,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateStatusForCampaigns" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStatusForKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStructuredSnippetAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateTopicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateUrlOptions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -181,6 +183,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newReviewAdExtensions",
     "newSitelinkAdExtensions",
     "newStructuredSnippetAdExtensions",
+    "newTopicTargets",
     "newUrlOptions",
     "pauseAIMAdGroupIfAllAudienceCriterionNotImported",
     "pauseCampaignsWithoutSupportedLocations",
@@ -240,6 +243,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateStatusForCampaigns",
     "updateStatusForKeywords",
     "updateStructuredSnippetAdExtensions",
+    "updateTopicTargets",
     "updateUrlOptions"
 })
 public class GoogleImportOption
@@ -343,6 +347,8 @@ public class GoogleImportOption
     protected Boolean newSitelinkAdExtensions;
     @XmlElement(name = "NewStructuredSnippetAdExtensions", nillable = true)
     protected Boolean newStructuredSnippetAdExtensions;
+    @XmlElement(name = "NewTopicTargets", nillable = true)
+    protected Boolean newTopicTargets;
     @XmlElement(name = "NewUrlOptions", nillable = true)
     protected Boolean newUrlOptions;
     @XmlElement(name = "PauseAIMAdGroupIfAllAudienceCriterionNotImported", nillable = true)
@@ -461,6 +467,8 @@ public class GoogleImportOption
     protected Boolean updateStatusForKeywords;
     @XmlElement(name = "UpdateStructuredSnippetAdExtensions", nillable = true)
     protected Boolean updateStructuredSnippetAdExtensions;
+    @XmlElement(name = "UpdateTopicTargets", nillable = true)
+    protected Boolean updateTopicTargets;
     @XmlElement(name = "UpdateUrlOptions", nillable = true)
     protected Boolean updateUrlOptions;
 
@@ -1590,6 +1598,30 @@ public class GoogleImportOption
      */
     public void setNewStructuredSnippetAdExtensions(Boolean value) {
         this.newStructuredSnippetAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the newTopicTargets property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewTopicTargets() {
+        return newTopicTargets;
+    }
+
+    /**
+     * Sets the value of the newTopicTargets property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewTopicTargets(Boolean value) {
+        this.newTopicTargets = value;
     }
 
     /**
@@ -3006,6 +3038,30 @@ public class GoogleImportOption
      */
     public void setUpdateStructuredSnippetAdExtensions(Boolean value) {
         this.updateStructuredSnippetAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the updateTopicTargets property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateTopicTargets() {
+        return updateTopicTargets;
+    }
+
+    /**
+     * Sets the value of the updateTopicTargets property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateTopicTargets(Boolean value) {
+        this.updateTopicTargets = value;
     }
 
     /**

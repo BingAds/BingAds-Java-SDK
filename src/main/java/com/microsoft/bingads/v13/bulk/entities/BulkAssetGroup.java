@@ -369,6 +369,57 @@ public class BulkAssetGroup extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkAssetGroup, String>(StringTable.TrackingTemplate,
+                new Function<BulkAssetGroup, String>() {
+                    @Override
+                    public String apply(BulkAssetGroup c) {
+                        return StringExtensions.toOptionalBulkString(c.getAssetGroup().getTrackingUrlTemplate(), c.getAssetGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAssetGroup>() {
+                    @Override
+                    public void accept(String v, BulkAssetGroup c) {
+                        c.getAssetGroup().setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));
+                    }
+                },
+                true
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAssetGroup, String>(StringTable.FinalUrlSuffix,
+                new Function<BulkAssetGroup, String>() {
+                    @Override
+                    public String apply(BulkAssetGroup c) {
+                        return StringExtensions.toOptionalBulkString(c.getAssetGroup().getFinalUrlSuffix(), c.getAssetGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAssetGroup>() {
+                    @Override
+                    public void accept(String v, BulkAssetGroup c) {
+                        c.getAssetGroup().setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
+                    }
+                },
+                true
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAssetGroup, String>(StringTable.CustomParameter,
+                new Function<BulkAssetGroup, String>() {
+                    @Override
+                    public String apply(BulkAssetGroup c) {
+                        return StringExtensions.toCustomParaBulkString(c.getAssetGroup().getUrlCustomParameters(), c.getAssetGroup().getId());
+                    }
+                },
+                new BiConsumer<String, BulkAssetGroup>() {
+                    @Override
+                    public void accept(String v, BulkAssetGroup c) {
+                        try {
+                            c.getAssetGroup().setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        ));
    
         MAPPINGS = Collections.unmodifiableList(m);
     }

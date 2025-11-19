@@ -138,8 +138,6 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfEntityResult.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfCategoryResult.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAuditPointResult.class, ArrayOfTypesMixIn.class)
-				.addMixIn(ArrayOfAuditPointJsonColumn.class, ArrayOfTypesMixIn.class)
-				.addMixIn(ArrayOfAuditPointLink.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAnnotationOptOut.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfstring.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)

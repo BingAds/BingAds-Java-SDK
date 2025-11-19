@@ -19,9 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="Categories" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfCategoryResult" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         <element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="Template" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityTemplate" minOccurs="0"/>
  *         <element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -35,9 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "EntityResult", propOrder = {
     "categories",
     "id",
-    "status",
     "subType",
-    "template",
     "type"
 })
 public class EntityResult {
@@ -46,12 +42,8 @@ public class EntityResult {
     protected ArrayOfCategoryResult categories;
     @XmlElement(name = "Id")
     protected Long id;
-    @XmlElement(name = "Status", nillable = true)
-    protected String status;
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;
-    @XmlElement(name = "Template", nillable = true)
-    protected EntityTemplate template;
     @XmlElement(name = "Type", nillable = true)
     protected String type;
 
@@ -104,30 +96,6 @@ public class EntityResult {
     }
 
     /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
-
-    /**
      * Gets the value of the subType property.
      * 
      * @return
@@ -149,30 +117,6 @@ public class EntityResult {
      */
     public void setSubType(String value) {
         this.subType = value;
-    }
-
-    /**
-     * Gets the value of the template property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EntityTemplate }
-     *     
-     */
-    public EntityTemplate getTemplate() {
-        return template;
-    }
-
-    /**
-     * Sets the value of the template property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EntityTemplate }
-     *     
-     */
-    public void setTemplate(EntityTemplate value) {
-        this.template = value;
     }
 
     /**
