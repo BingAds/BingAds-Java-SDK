@@ -19,8 +19,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="BaseCampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="EndDate" type="{https://bingads.microsoft.com/CampaignManagement/v13}Date" minOccurs="0"/>
+ *         <element name="ExperimentArms" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfExperimentArm" minOccurs="0"/>
  *         <element name="ExperimentCampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="ExperimentStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ExperimentSubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="ExperimentType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -38,8 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "Experiment", propOrder = {
     "baseCampaignId",
     "endDate",
+    "experimentArms",
     "experimentCampaignId",
     "experimentStatus",
+    "experimentSubType",
     "experimentType",
     "id",
     "name",
@@ -52,10 +56,14 @@ public class Experiment {
     protected Long baseCampaignId;
     @XmlElement(name = "EndDate", nillable = true)
     protected Date endDate;
+    @XmlElement(name = "ExperimentArms", nillable = true)
+    protected ArrayOfExperimentArm experimentArms;
     @XmlElement(name = "ExperimentCampaignId", nillable = true)
     protected Long experimentCampaignId;
     @XmlElement(name = "ExperimentStatus", nillable = true)
     protected String experimentStatus;
+    @XmlElement(name = "ExperimentSubType", nillable = true)
+    protected String experimentSubType;
     @XmlElement(name = "ExperimentType", nillable = true)
     protected String experimentType;
     @XmlElement(name = "Id", nillable = true)
@@ -116,6 +124,30 @@ public class Experiment {
     }
 
     /**
+     * Gets the value of the experimentArms property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfExperimentArm }
+     *     
+     */
+    public ArrayOfExperimentArm getExperimentArms() {
+        return experimentArms;
+    }
+
+    /**
+     * Sets the value of the experimentArms property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfExperimentArm }
+     *     
+     */
+    public void setExperimentArms(ArrayOfExperimentArm value) {
+        this.experimentArms = value;
+    }
+
+    /**
      * Gets the value of the experimentCampaignId property.
      * 
      * @return
@@ -161,6 +193,30 @@ public class Experiment {
      */
     public void setExperimentStatus(String value) {
         this.experimentStatus = value;
+    }
+
+    /**
+     * Gets the value of the experimentSubType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExperimentSubType() {
+        return experimentSubType;
+    }
+
+    /**
+     * Sets the value of the experimentSubType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExperimentSubType(String value) {
+        this.experimentSubType = value;
     }
 
     /**

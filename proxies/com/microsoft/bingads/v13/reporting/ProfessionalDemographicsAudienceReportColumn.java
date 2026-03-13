@@ -24,6 +24,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CompanyName"/>
  *     <enumeration value="IndustryName"/>
  *     <enumeration value="JobFunctionName"/>
+ *     <enumeration value="JobSeniorityName"/>
+ *     <enumeration value="CustomLinkedInName"/>
  *     <enumeration value="AdDistribution"/>
  *     <enumeration value="Impressions"/>
  *     <enumeration value="Clicks"/>
@@ -82,6 +84,10 @@ public enum ProfessionalDemographicsAudienceReportColumn {
     INDUSTRY_NAME("IndustryName"),
     @XmlEnumValue("JobFunctionName")
     JOB_FUNCTION_NAME("JobFunctionName"),
+    @XmlEnumValue("JobSeniorityName")
+    JOB_SENIORITY_NAME("JobSeniorityName"),
+    @XmlEnumValue("CustomLinkedInName")
+    CUSTOM_LINKED_IN_NAME("CustomLinkedInName"),
     @XmlEnumValue("AdDistribution")
     AD_DISTRIBUTION("AdDistribution"),
     @XmlEnumValue("Impressions")

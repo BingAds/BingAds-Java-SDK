@@ -25,6 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EstClick" type="{https://bingads.microsoft.com/AdInsight/v13}RangeResultOfDecimalRoundedResult" minOccurs="0"/>
  *         <element name="EstSpend" type="{https://bingads.microsoft.com/AdInsight/v13}RangeResultOfDecimalRoundedResult" minOccurs="0"/>
  *         <element name="EstCostPerEvent" type="{https://bingads.microsoft.com/AdInsight/v13}RangeResultOfDecimalRoundedResult" minOccurs="0"/>
+ *         <element name="EstCPC" type="{https://bingads.microsoft.com/AdInsight/v13}RangeResultOfDecimalRoundedResult" minOccurs="0"/>
  *         <element name="EstCTR" type="{https://bingads.microsoft.com/AdInsight/v13}RangeResultOfdouble" minOccurs="0"/>
  *         <element name="SuggestedBid" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         <element name="SuggestedBudget" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
@@ -56,6 +57,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "estClick",
     "estSpend",
     "estCostPerEvent",
+    "estCPC",
     "estCTR",
     "suggestedBid",
     "suggestedBudget",
@@ -86,6 +88,8 @@ public class GetAudienceFullEstimationResponse {
     protected RangeResultOfDecimalRoundedResult estSpend;
     @XmlElement(name = "EstCostPerEvent", nillable = true)
     protected RangeResultOfDecimalRoundedResult estCostPerEvent;
+    @XmlElement(name = "EstCPC", nillable = true)
+    protected RangeResultOfDecimalRoundedResult estCPC;
     @XmlElement(name = "EstCTR", nillable = true)
     protected RangeResultOfdouble estCTR;
     @XmlElement(name = "SuggestedBid", nillable = true)
@@ -238,6 +242,30 @@ public class GetAudienceFullEstimationResponse {
      */
     public void setEstCostPerEvent(RangeResultOfDecimalRoundedResult value) {
         this.estCostPerEvent = value;
+    }
+
+    /**
+     * Gets the value of the estCPC property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RangeResultOfDecimalRoundedResult }
+     *     
+     */
+    public RangeResultOfDecimalRoundedResult getEstCPC() {
+        return estCPC;
+    }
+
+    /**
+     * Sets the value of the estCPC property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RangeResultOfDecimalRoundedResult }
+     *     
+     */
+    public void setEstCPC(RangeResultOfDecimalRoundedResult value) {
+        this.estCPC = value;
     }
 
     /**

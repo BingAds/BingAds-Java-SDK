@@ -26,6 +26,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 						
 			@JsonSubTypes.Type(value = AccountNegativeKeywordList.class, name = "AccountNegativeKeywordList"),
 						
+			@JsonSubTypes.Type(value = AccountContentNegativeKeywordList.class, name = "AccountContentNegativeKeywordList"),
+						
 			@JsonSubTypes.Type(value = BrandList.class, name = "BrandList"),
 						
 			@JsonSubTypes.Type(value = AccountPlacementExclusionList.class, name = "AccountPlacementExclusionList"),

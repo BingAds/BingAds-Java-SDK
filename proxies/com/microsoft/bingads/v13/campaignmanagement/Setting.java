@@ -46,7 +46,9 @@ import jakarta.xml.bind.annotation.XmlType;
     VanityPharmaSetting.class,
     AppSetting.class,
     ThirdPartyMeasurementSetting.class,
-    NewCustomerAcquisitionGoalSetting.class
+    NewCustomerAcquisitionGoalSetting.class,
+    BaseDomainSetting.class,
+    AISearchSetting.class
 })
 public class Setting {
 

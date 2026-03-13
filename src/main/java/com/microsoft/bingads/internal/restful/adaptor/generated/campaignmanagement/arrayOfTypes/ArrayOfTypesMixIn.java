@@ -308,6 +308,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<CustomSegmentCatalog> getCustomSegmentCatalogs();
+
+            
+	@JsonValue
 	List<UetTag> getUetTags();
 
             
@@ -332,6 +336,18 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<OfflineGoalConversionSummary> getOfflineGoalConversionSummaries();
+
+            
+	@JsonValue
+	List<OfflineConversionAlert> getOfflineConversionAlerts();
+
+            
+	@JsonValue
+	List<OfflineGoalDailySummary> getOfflineGoalDailySummaries();
+
+            
+	@JsonValue
 	List<Label> getLabels();
 
             
@@ -341,6 +357,10 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<Experiment> getExperiments();
+
+            
+	@JsonValue
+	List<ExperimentArm> getExperimentArms();
 
             
 	@JsonValue
@@ -525,6 +545,14 @@ interface ArrayOfTypesMixIn{
             
 	@JsonValue
 	List<AnnotationOptOut> getAnnotationOptOuts();
+
+            
+	@JsonValue
+	List<LinkedInSegment> getLinkedInSegments();
+
+            
+	@JsonValue
+	List<CompanyName> getCompanyNames();
 
             
 	@JsonValue

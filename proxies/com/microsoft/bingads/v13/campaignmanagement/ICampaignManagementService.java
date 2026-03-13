@@ -4868,6 +4868,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetOfflineConversionReportByGoalIdsResponse>
+     */
+    @WebMethod(operationName = "GetOfflineConversionReportByGoalIds", action = "GetOfflineConversionReportByGoalIds")
+    public Response<GetOfflineConversionReportByGoalIdsResponse> getOfflineConversionReportByGoalIdsAsync(
+        @WebParam(name = "GetOfflineConversionReportByGoalIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportByGoalIdsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetOfflineConversionReportByGoalIds", action = "GetOfflineConversionReportByGoalIds")
+    public Future<?> getOfflineConversionReportByGoalIdsAsync(
+        @WebParam(name = "GetOfflineConversionReportByGoalIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportByGoalIdsRequest parameters,
+        @WebParam(name = "GetOfflineConversionReportByGoalIdsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetOfflineConversionReportByGoalIdsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetOfflineConversionReportByGoalIdsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetOfflineConversionReportByGoalIds", action = "GetOfflineConversionReportByGoalIds")
+    @WebResult(name = "GetOfflineConversionReportByGoalIdsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetOfflineConversionReportByGoalIdsResponse getOfflineConversionReportByGoalIds(
+        @WebParam(name = "GetOfflineConversionReportByGoalIdsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetOfflineConversionReportByGoalIdsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddLabelsResponse>
      */
     @WebMethod(operationName = "AddLabels", action = "AddLabels")
@@ -7649,6 +7690,129 @@ public interface ICampaignManagementService {
     public UpdateAnnotationOptOutResponse updateAnnotationOptOut(
         @WebParam(name = "UpdateAnnotationOptOutRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         UpdateAnnotationOptOutRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.AddLinkedInSegmentsResponse>
+     */
+    @WebMethod(operationName = "AddLinkedInSegments", action = "AddLinkedInSegments")
+    public Response<AddLinkedInSegmentsResponse> addLinkedInSegmentsAsync(
+        @WebParam(name = "AddLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddLinkedInSegmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "AddLinkedInSegments", action = "AddLinkedInSegments")
+    public Future<?> addLinkedInSegmentsAsync(
+        @WebParam(name = "AddLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddLinkedInSegmentsRequest parameters,
+        @WebParam(name = "AddLinkedInSegmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<AddLinkedInSegmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.AddLinkedInSegmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "AddLinkedInSegments", action = "AddLinkedInSegments")
+    @WebResult(name = "AddLinkedInSegmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public AddLinkedInSegmentsResponse addLinkedInSegments(
+        @WebParam(name = "AddLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        AddLinkedInSegmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.DeleteLinkedInSegmentsResponse>
+     */
+    @WebMethod(operationName = "DeleteLinkedInSegments", action = "DeleteLinkedInSegments")
+    public Response<DeleteLinkedInSegmentsResponse> deleteLinkedInSegmentsAsync(
+        @WebParam(name = "DeleteLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteLinkedInSegmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "DeleteLinkedInSegments", action = "DeleteLinkedInSegments")
+    public Future<?> deleteLinkedInSegmentsAsync(
+        @WebParam(name = "DeleteLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteLinkedInSegmentsRequest parameters,
+        @WebParam(name = "DeleteLinkedInSegmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<DeleteLinkedInSegmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.DeleteLinkedInSegmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "DeleteLinkedInSegments", action = "DeleteLinkedInSegments")
+    @WebResult(name = "DeleteLinkedInSegmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public DeleteLinkedInSegmentsResponse deleteLinkedInSegments(
+        @WebParam(name = "DeleteLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        DeleteLinkedInSegmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateLinkedInSegmentsResponse>
+     */
+    @WebMethod(operationName = "UpdateLinkedInSegments", action = "UpdateLinkedInSegments")
+    public Response<UpdateLinkedInSegmentsResponse> updateLinkedInSegmentsAsync(
+        @WebParam(name = "UpdateLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateLinkedInSegmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateLinkedInSegments", action = "UpdateLinkedInSegments")
+    public Future<?> updateLinkedInSegmentsAsync(
+        @WebParam(name = "UpdateLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateLinkedInSegmentsRequest parameters,
+        @WebParam(name = "UpdateLinkedInSegmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateLinkedInSegmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateLinkedInSegmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateLinkedInSegments", action = "UpdateLinkedInSegments")
+    @WebResult(name = "UpdateLinkedInSegmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateLinkedInSegmentsResponse updateLinkedInSegments(
+        @WebParam(name = "UpdateLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateLinkedInSegmentsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

@@ -2020,6 +2020,22 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	}
 	
     	
+	public GetOfflineConversionReportByGoalIdsResponse getOfflineConversionReportByGoalIds(GetOfflineConversionReportByGoalIdsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetOfflineConversionReportByGoalIdsResponse response = sendRequest(request, "/OfflineConversionReport/QueryByGoalIds", HttpPost, GetOfflineConversionReportByGoalIdsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetOfflineConversionReportByGoalIdsResponse> getOfflineConversionReportByGoalIdsAsync(GetOfflineConversionReportByGoalIdsRequest request) {
+		return sendRequestAsync(request, "/OfflineConversionReport/QueryByGoalIds", HttpPost, GetOfflineConversionReportByGoalIdsResponse.class, null);
+	}
+
+	public Future<?> getOfflineConversionReportByGoalIdsAsync(GetOfflineConversionReportByGoalIdsRequest request, AsyncHandler<GetOfflineConversionReportByGoalIdsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/OfflineConversionReport/QueryByGoalIds", HttpPost, GetOfflineConversionReportByGoalIdsResponse.class, asyncHandler);
+	}
+	
+    	
 	public AddLabelsResponse addLabels(AddLabelsRequest request)
 		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
 		AddLabelsResponse response = sendRequest(request, "/Labels", HttpPost, AddLabelsResponse.class);
@@ -3105,6 +3121,54 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 
 	public Future<?> updateAnnotationOptOutAsync(UpdateAnnotationOptOutRequest request, AsyncHandler<UpdateAnnotationOptOutResponse> asyncHandler) {
 		return sendRequestAsync(request, "/AnnotationOptOut", HttpPut, UpdateAnnotationOptOutResponse.class, asyncHandler);
+	}
+	
+    	
+	public AddLinkedInSegmentsResponse addLinkedInSegments(AddLinkedInSegmentsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		AddLinkedInSegmentsResponse response = sendRequest(request, "/LinkedInSegments", HttpPost, AddLinkedInSegmentsResponse.class);
+		
+		return response;
+	}
+
+    public Response<AddLinkedInSegmentsResponse> addLinkedInSegmentsAsync(AddLinkedInSegmentsRequest request) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpPost, AddLinkedInSegmentsResponse.class, null);
+	}
+
+	public Future<?> addLinkedInSegmentsAsync(AddLinkedInSegmentsRequest request, AsyncHandler<AddLinkedInSegmentsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpPost, AddLinkedInSegmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public DeleteLinkedInSegmentsResponse deleteLinkedInSegments(DeleteLinkedInSegmentsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		DeleteLinkedInSegmentsResponse response = sendRequest(request, "/LinkedInSegments", HttpDelete, DeleteLinkedInSegmentsResponse.class);
+		
+		return response;
+	}
+
+    public Response<DeleteLinkedInSegmentsResponse> deleteLinkedInSegmentsAsync(DeleteLinkedInSegmentsRequest request) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpDelete, DeleteLinkedInSegmentsResponse.class, null);
+	}
+
+	public Future<?> deleteLinkedInSegmentsAsync(DeleteLinkedInSegmentsRequest request, AsyncHandler<DeleteLinkedInSegmentsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpDelete, DeleteLinkedInSegmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public UpdateLinkedInSegmentsResponse updateLinkedInSegments(UpdateLinkedInSegmentsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateLinkedInSegmentsResponse response = sendRequest(request, "/LinkedInSegments", HttpPut, UpdateLinkedInSegmentsResponse.class);
+		
+		return response;
+	}
+
+    public Response<UpdateLinkedInSegmentsResponse> updateLinkedInSegmentsAsync(UpdateLinkedInSegmentsRequest request) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpPut, UpdateLinkedInSegmentsResponse.class, null);
+	}
+
+	public Future<?> updateLinkedInSegmentsAsync(UpdateLinkedInSegmentsRequest request, AsyncHandler<UpdateLinkedInSegmentsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/LinkedInSegments", HttpPut, UpdateLinkedInSegmentsResponse.class, asyncHandler);
 	}
 	
     }

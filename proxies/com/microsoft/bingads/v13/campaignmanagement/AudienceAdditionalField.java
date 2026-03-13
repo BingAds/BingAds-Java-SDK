@@ -8,7 +8,8 @@ public enum AudienceAdditionalField {
     NORMAL_FORM("NormalForm"),
     NUMBER_RULE_ITEM("NumberRuleItem"),
     IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
-    CAMPAIGN_IDS_AD_GROUP_IDS("CampaignIdsAdGroupIds");
+    CAMPAIGN_IDS_AD_GROUP_IDS("CampaignIdsAdGroupIds"),
+    CUSTOM_SEGMENT("CustomSegment");
         
     private final String value;
 

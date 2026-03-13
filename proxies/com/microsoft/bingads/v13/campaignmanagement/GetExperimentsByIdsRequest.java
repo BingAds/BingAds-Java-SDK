@@ -1,11 +1,13 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -20,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="ExperimentIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="PageInfo" type="{https://bingads.microsoft.com/CampaignManagement/v13}Paging" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}ExperimentAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,7 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "experimentIds",
-    "pageInfo"
+    "pageInfo",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetExperimentsByIdsRequest")
 public class GetExperimentsByIdsRequest {
@@ -40,6 +44,9 @@ public class GetExperimentsByIdsRequest {
     protected ArrayOflong experimentIds;
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter30 .class)
+    protected Collection<ExperimentAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the experimentIds property.
@@ -87,6 +94,30 @@ public class GetExperimentsByIdsRequest {
      */
     public void setPageInfo(Paging value) {
         this.pageInfo = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<ExperimentAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<ExperimentAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

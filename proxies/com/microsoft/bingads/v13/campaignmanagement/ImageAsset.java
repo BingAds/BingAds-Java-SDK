@@ -4,6 +4,7 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -21,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="CropWidth" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CropX" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CropY" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="CroppingType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CropType" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TargetHeight" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="TargetWidth" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -38,6 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "cropWidth",
     "cropX",
     "cropY",
+    "croppingType",
     "subType",
     "targetHeight",
     "targetWidth"
@@ -57,6 +60,9 @@ public class ImageAsset
     protected Integer cropX;
     @XmlElement(name = "CropY", nillable = true)
     protected Integer cropY;
+    @XmlElement(name = "CroppingType", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected CropType croppingType;
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;
     @XmlElement(name = "TargetHeight", nillable = true)
@@ -158,6 +164,30 @@ public class ImageAsset
      */
     public void setCropY(Integer value) {
         this.cropY = value;
+    }
+
+    /**
+     * Gets the value of the croppingType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CropType }
+     *     
+     */
+    public CropType getCroppingType() {
+        return croppingType;
+    }
+
+    /**
+     * Sets the value of the croppingType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CropType }
+     *     
+     */
+    public void setCroppingType(CropType value) {
+        this.croppingType = value;
     }
 
     /**

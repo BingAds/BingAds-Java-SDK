@@ -45,6 +45,8 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(GetUetTagsByIdsRequest.class, GetUetTagsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetConversionGoalsByIdsRequest.class, GetConversionGoalsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetConversionGoalsByTagIdsRequest.class, GetConversionGoalsByTagIdsRequestEnumsMixIn.class)
+				.addMixIn(GetOfflineConversionReportByGoalIdsRequest.class, GetOfflineConversionReportByGoalIdsRequestEnumsMixIn.class)
+				.addMixIn(GetExperimentsByIdsRequest.class, GetExperimentsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetProfileDataFileUrlRequest.class, GetProfileDataFileUrlRequestEnumsMixIn.class)
 				.addMixIn(GetImportResultsRequest.class, GetImportResultsRequestEnumsMixIn.class)
 				.addMixIn(GetImportJobsByIdsRequest.class, GetImportJobsByIdsRequestEnumsMixIn.class)
@@ -71,6 +73,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(SeasonalityAdjustment.class, SeasonalityAdjustmentEnumsMixIn.class)
 				.addMixIn(AudienceConditionItem.class, AudienceConditionItemEnumsMixIn.class)
 				.addMixIn(DeviceCondition.class, DeviceConditionEnumsMixIn.class)
+				.addMixIn(LinkedInSegment.class, LinkedInSegmentEnumsMixIn.class)
 				;
 	}
 }

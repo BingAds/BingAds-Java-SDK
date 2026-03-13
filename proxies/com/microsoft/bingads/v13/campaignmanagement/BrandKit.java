@@ -23,9 +23,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="Images" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitImage" minOccurs="0"/>
  *         <element name="LandscapeLogos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitImage" minOccurs="0"/>
+ *         <element name="MessagingRestrictions" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Palettes" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitPalette" minOccurs="0"/>
  *         <element name="SquareLogos" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfBrandKitImage" minOccurs="0"/>
+ *         <element name="TermExclusions" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -42,9 +44,11 @@ import jakarta.xml.bind.annotation.XmlType;
     "id",
     "images",
     "landscapeLogos",
+    "messagingRestrictions",
     "name",
     "palettes",
-    "squareLogos"
+    "squareLogos",
+    "termExclusions"
 })
 public class BrandKit {
 
@@ -60,12 +64,16 @@ public class BrandKit {
     protected ArrayOfBrandKitImage images;
     @XmlElement(name = "LandscapeLogos", nillable = true)
     protected ArrayOfBrandKitImage landscapeLogos;
+    @XmlElement(name = "MessagingRestrictions", nillable = true)
+    protected ArrayOfstring messagingRestrictions;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Palettes", nillable = true)
     protected ArrayOfBrandKitPalette palettes;
     @XmlElement(name = "SquareLogos", nillable = true)
     protected ArrayOfBrandKitImage squareLogos;
+    @XmlElement(name = "TermExclusions", nillable = true)
+    protected ArrayOfstring termExclusions;
 
     /**
      * Gets the value of the brandVoice property.
@@ -212,6 +220,30 @@ public class BrandKit {
     }
 
     /**
+     * Gets the value of the messagingRestrictions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getMessagingRestrictions() {
+        return messagingRestrictions;
+    }
+
+    /**
+     * Sets the value of the messagingRestrictions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setMessagingRestrictions(ArrayOfstring value) {
+        this.messagingRestrictions = value;
+    }
+
+    /**
      * Gets the value of the name property.
      * 
      * @return
@@ -281,6 +313,30 @@ public class BrandKit {
      */
     public void setSquareLogos(ArrayOfBrandKitImage value) {
         this.squareLogos = value;
+    }
+
+    /**
+     * Gets the value of the termExclusions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getTermExclusions() {
+        return termExclusions;
+    }
+
+    /**
+     * Sets the value of the termExclusions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setTermExclusions(ArrayOfstring value) {
+        this.termExclusions = value;
     }
 
 }

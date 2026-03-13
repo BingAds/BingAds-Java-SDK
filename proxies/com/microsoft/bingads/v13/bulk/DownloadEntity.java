@@ -208,6 +208,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Topic"/>
  *     <enumeration value="ContentPlacement"/>
  *     <enumeration value="BrandKit"/>
+ *     <enumeration value="CustomSegment"/>
+ *     <enumeration value="AdGroupCustomSegmentAssociations"/>
+ *     <enumeration value="AccountContentNegativeKeywordList"/>
+ *     <enumeration value="AccountContentNegativeKeywordListAssociation"/>
+ *     <enumeration value="AccountContentNegativeKeyword"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -606,7 +611,17 @@ public enum DownloadEntity {
     @XmlEnumValue("ContentPlacement")
     CONTENT_PLACEMENT("ContentPlacement"),
     @XmlEnumValue("BrandKit")
-    BRAND_KIT("BrandKit");
+    BRAND_KIT("BrandKit"),
+    @XmlEnumValue("CustomSegment")
+    CUSTOM_SEGMENT("CustomSegment"),
+    @XmlEnumValue("AdGroupCustomSegmentAssociations")
+    AD_GROUP_CUSTOM_SEGMENT_ASSOCIATIONS("AdGroupCustomSegmentAssociations"),
+    @XmlEnumValue("AccountContentNegativeKeywordList")
+    ACCOUNT_CONTENT_NEGATIVE_KEYWORD_LIST("AccountContentNegativeKeywordList"),
+    @XmlEnumValue("AccountContentNegativeKeywordListAssociation")
+    ACCOUNT_CONTENT_NEGATIVE_KEYWORD_LIST_ASSOCIATION("AccountContentNegativeKeywordListAssociation"),
+    @XmlEnumValue("AccountContentNegativeKeyword")
+    ACCOUNT_CONTENT_NEGATIVE_KEYWORD("AccountContentNegativeKeyword");
     private final String value;
 
     DownloadEntity(String v) {

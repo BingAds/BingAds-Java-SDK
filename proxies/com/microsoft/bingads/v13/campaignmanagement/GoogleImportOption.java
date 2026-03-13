@@ -28,6 +28,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EnableAutoCurrencyConversion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableCopilot" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ImageAssetAutomationOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewAIMaxSettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveCampaignsAndChildEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -58,6 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewPageFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewPausedAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewPausedCampaignsAndChildEntities" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewPortfolioBidStrategy" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewPriceAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewProductFilters" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewPromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -82,6 +85,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="SuffixForCampaignNames" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SuffixForTrackingTemplates" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SuffixForUrls" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="UpdateAIMaxSettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdCustomizerAttributes" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAdCustomizerFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -147,6 +151,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "enableAutoCurrencyConversion",
     "enableCopilot",
     "enableParentLocationMapping",
+    "imageAssetAutomationOptOut",
+    "newAIMaxSettings",
     "newAccountNegativeKeywords",
     "newActiveAdsForExistingAdGroups",
     "newActiveCampaignsAndChildEntities",
@@ -177,6 +183,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newPageFeeds",
     "newPausedAdsForExistingAdGroups",
     "newPausedCampaignsAndChildEntities",
+    "newPortfolioBidStrategy",
     "newPriceAdExtensions",
     "newProductFilters",
     "newPromotionAdExtensions",
@@ -201,6 +208,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "suffixForCampaignNames",
     "suffixForTrackingTemplates",
     "suffixForUrls",
+    "updateAIMaxSettings",
     "updateAccountNegativeKeywords",
     "updateAdCustomizerAttributes",
     "updateAdCustomizerFeeds",
@@ -275,6 +283,10 @@ public class GoogleImportOption
     protected Boolean enableCopilot;
     @XmlElement(name = "EnableParentLocationMapping", nillable = true)
     protected Boolean enableParentLocationMapping;
+    @XmlElement(name = "ImageAssetAutomationOptOut", nillable = true)
+    protected Boolean imageAssetAutomationOptOut;
+    @XmlElement(name = "NewAIMaxSettings", nillable = true)
+    protected Boolean newAIMaxSettings;
     @XmlElement(name = "NewAccountNegativeKeywords", nillable = true)
     protected Boolean newAccountNegativeKeywords;
     @XmlElement(name = "NewActiveAdsForExistingAdGroups", nillable = true)
@@ -335,6 +347,8 @@ public class GoogleImportOption
     protected Boolean newPausedAdsForExistingAdGroups;
     @XmlElement(name = "NewPausedCampaignsAndChildEntities", nillable = true)
     protected Boolean newPausedCampaignsAndChildEntities;
+    @XmlElement(name = "NewPortfolioBidStrategy", nillable = true)
+    protected Boolean newPortfolioBidStrategy;
     @XmlElement(name = "NewPriceAdExtensions", nillable = true)
     protected Boolean newPriceAdExtensions;
     @XmlElement(name = "NewProductFilters", nillable = true)
@@ -383,6 +397,8 @@ public class GoogleImportOption
     protected String suffixForTrackingTemplates;
     @XmlElement(name = "SuffixForUrls", nillable = true)
     protected String suffixForUrls;
+    @XmlElement(name = "UpdateAIMaxSettings", nillable = true)
+    protected Boolean updateAIMaxSettings;
     @XmlElement(name = "UpdateAccountNegativeKeywords", nillable = true)
     protected Boolean updateAccountNegativeKeywords;
     @XmlElement(name = "UpdateAdCustomizerAttributes", nillable = true)
@@ -734,6 +750,54 @@ public class GoogleImportOption
      */
     public void setEnableParentLocationMapping(Boolean value) {
         this.enableParentLocationMapping = value;
+    }
+
+    /**
+     * Gets the value of the imageAssetAutomationOptOut property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getImageAssetAutomationOptOut() {
+        return imageAssetAutomationOptOut;
+    }
+
+    /**
+     * Sets the value of the imageAssetAutomationOptOut property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setImageAssetAutomationOptOut(Boolean value) {
+        this.imageAssetAutomationOptOut = value;
+    }
+
+    /**
+     * Gets the value of the newAIMaxSettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewAIMaxSettings() {
+        return newAIMaxSettings;
+    }
+
+    /**
+     * Sets the value of the newAIMaxSettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewAIMaxSettings(Boolean value) {
+        this.newAIMaxSettings = value;
     }
 
     /**
@@ -1457,6 +1521,30 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the newPortfolioBidStrategy property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewPortfolioBidStrategy() {
+        return newPortfolioBidStrategy;
+    }
+
+    /**
+     * Sets the value of the newPortfolioBidStrategy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewPortfolioBidStrategy(Boolean value) {
+        this.newPortfolioBidStrategy = value;
+    }
+
+    /**
      * Gets the value of the newPriceAdExtensions property.
      * 
      * @return
@@ -2030,6 +2118,30 @@ public class GoogleImportOption
      */
     public void setSuffixForUrls(String value) {
         this.suffixForUrls = value;
+    }
+
+    /**
+     * Gets the value of the updateAIMaxSettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAIMaxSettings() {
+        return updateAIMaxSettings;
+    }
+
+    /**
+     * Sets the value of the updateAIMaxSettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAIMaxSettings(Boolean value) {
+        this.updateAIMaxSettings = value;
     }
 
     /**

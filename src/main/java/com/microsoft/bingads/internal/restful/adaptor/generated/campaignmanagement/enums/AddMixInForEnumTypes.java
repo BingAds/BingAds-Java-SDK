@@ -17,6 +17,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(AdSubType.class, AdSubTypeMixIn.class)
 				.addMixIn(CallToAction.class, CallToActionMixIn.class)
 				.addMixIn(LanguageName.class, LanguageNameMixIn.class)
+				.addMixIn(CropType.class, CropTypeMixIn.class)
 				.addMixIn(AssetLinkEditorialStatus.class, AssetLinkEditorialStatusMixIn.class)
 				.addMixIn(DynamicSearchAdsSource.class, DynamicSearchAdsSourceMixIn.class)
 				.addMixIn(CriterionTypeGroup.class, CriterionTypeGroupMixIn.class)
@@ -97,6 +98,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(NumberOperator.class, NumberOperatorMixIn.class)
 				.addMixIn(ProductAudienceType.class, ProductAudienceTypeMixIn.class)
 				.addMixIn(LogicalOperator.class, LogicalOperatorMixIn.class)
+				.addMixIn(EffectiveEditorialStatus.class, EffectiveEditorialStatusMixIn.class)
+				.addMixIn(CustomSegmentEditorialStatus.class, CustomSegmentEditorialStatusMixIn.class)
 				.addMixIn(ImpressionBasedEntityType.class, ImpressionBasedEntityTypeMixIn.class)
 				.addMixIn(AudienceAdditionalField.class, AudienceAdditionalFieldMixIn.class)
 				.addMixIn(CustomerListActionType.class, CustomerListActionTypeMixIn.class)
@@ -114,6 +117,9 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ConversionGoalTrackingStatus.class, ConversionGoalTrackingStatusMixIn.class)
 				.addMixIn(ExpressionOperator.class, ExpressionOperatorMixIn.class)
 				.addMixIn(ValueOperator.class, ValueOperatorMixIn.class)
+				.addMixIn(OfflineConversionUploadChannel.class, OfflineConversionUploadChannelMixIn.class)
+				.addMixIn(OfflineConversionUnattributedReason.class, OfflineConversionUnattributedReasonMixIn.class)
+				.addMixIn(ExperimentAdditionalField.class, ExperimentAdditionalFieldMixIn.class)
 				.addMixIn(ImportAdditionalField.class, ImportAdditionalFieldMixIn.class)
 				.addMixIn(ImportEntityType.class, ImportEntityTypeMixIn.class)
 				.addMixIn(DeviceType.class, DeviceTypeMixIn.class)
@@ -126,6 +132,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(LocationType.class, LocationTypeMixIn.class)
 				.addMixIn(ConversionValueRuleOperator.class, ConversionValueRuleOperatorMixIn.class)
 				.addMixIn(ConversionValueRuleStatus.class, ConversionValueRuleStatusMixIn.class)
+				.addMixIn(LinkedInSegmentStatus.class, LinkedInSegmentStatusMixIn.class)
+				.addMixIn(CompanyNameStatus.class, CompanyNameStatusMixIn.class)
 				;
 	}
 }

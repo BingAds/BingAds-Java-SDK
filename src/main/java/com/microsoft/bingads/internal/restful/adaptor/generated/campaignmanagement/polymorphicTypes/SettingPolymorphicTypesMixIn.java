@@ -49,6 +49,10 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = ThirdPartyMeasurementSetting.class, name = "ThirdPartyMeasurementSetting"),
 						
 			@JsonSubTypes.Type(value = NewCustomerAcquisitionGoalSetting.class, name = "NewCustomerAcquisitionGoalSetting"),
+						
+			@JsonSubTypes.Type(value = BaseDomainSetting.class, name = "BaseDomainSetting"),
+						
+			@JsonSubTypes.Type(value = AISearchSetting.class, name = "AISearchSetting"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
