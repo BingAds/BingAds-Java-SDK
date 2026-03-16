@@ -12,7 +12,8 @@ public enum AudienceType {
     SIMILAR_REMARKETING_LIST("SimilarRemarketingList"),
     COMBINED_LIST("CombinedList"),
     CUSTOMER_LIST("CustomerList"),
-    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList");
+    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
+    CUSTOM_SEGMENT("CustomSegment");
         
     private final String value;
 

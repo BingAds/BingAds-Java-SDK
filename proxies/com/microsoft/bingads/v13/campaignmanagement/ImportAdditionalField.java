@@ -32,7 +32,11 @@ public enum ImportAdditionalField {
     UPDATE_ASSET_AUTOMATION_CAMPAIGN_SETTING("UpdateAssetAutomationCampaignSetting"),
     ENABLE_COPILOT("EnableCopilot"),
     NEW_TOPIC_TARGETS("NewTopicTargets"),
-    UPDATE_TOPIC_TARGETS("UpdateTopicTargets");
+    UPDATE_TOPIC_TARGETS("UpdateTopicTargets"),
+    NEW_PORTFOLIO_BID_STRATEGY("NewPortfolioBidStrategy"),
+    NEW_A_I_MAX_SETTINGS("NewAIMaxSettings"),
+    IMAGE_ASSET_AUTOMATION_OPT_OUT("ImageAssetAutomationOptOut"),
+    UPDATE_A_I_MAX_SETTINGS("UpdateAIMaxSettings");
         
     private final String value;
 

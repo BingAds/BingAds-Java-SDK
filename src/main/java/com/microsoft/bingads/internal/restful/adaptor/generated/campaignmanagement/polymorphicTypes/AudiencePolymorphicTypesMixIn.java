@@ -30,9 +30,11 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 						
 			@JsonSubTypes.Type(value = SimilarRemarketingList.class, name = "SimilarRemarketingList"),
 						
+			@JsonSubTypes.Type(value = CustomerList.class, name = "CustomerList"),
+						
 			@JsonSubTypes.Type(value = CombinedList.class, name = "CombinedList"),
 						
-			@JsonSubTypes.Type(value = CustomerList.class, name = "CustomerList"),
+			@JsonSubTypes.Type(value = CustomSegment.class, name = "CustomSegment"),
 						
 			@JsonSubTypes.Type(value = ImpressionBasedRemarketingList.class, name = "ImpressionBasedRemarketingList"),
 				    })

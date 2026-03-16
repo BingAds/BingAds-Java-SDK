@@ -36,6 +36,7 @@ public class AddMixInForPolymorphicTypes {
 				.addMixIn(ConversionGoal.class, ConversionGoalPolymorphicTypesMixIn.class)
 				.addMixIn(ImportOption.class, ImportOptionPolymorphicTypesMixIn.class)
 				.addMixIn(ImportJob.class, ImportJobPolymorphicTypesMixIn.class)
+				.addMixIn(LinkedInSegment.class, LinkedInSegmentPolymorphicTypesMixIn.class)
 				;
 	}
 }

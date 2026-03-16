@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Details" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfKeyValueOfstringstring" minOccurs="0"/>
  *         <element name="Key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Severity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -34,7 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "description",
     "details",
     "key",
-    "severity"
+    "severity",
+    "timestamp"
 })
 public class AuditPointResult {
 
@@ -46,6 +48,8 @@ public class AuditPointResult {
     protected String key;
     @XmlElement(name = "Severity", nillable = true)
     protected String severity;
+    @XmlElement(name = "Timestamp", nillable = true)
+    protected String timestamp;
 
     /**
      * Gets the value of the description property.
@@ -141,6 +145,30 @@ public class AuditPointResult {
      */
     public void setSeverity(String value) {
         this.severity = value;
+    }
+
+    /**
+     * Gets the value of the timestamp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Sets the value of the timestamp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTimestamp(String value) {
+        this.timestamp = value;
     }
 
 }

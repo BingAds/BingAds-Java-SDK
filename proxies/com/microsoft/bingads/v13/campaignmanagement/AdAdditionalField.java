@@ -9,7 +9,8 @@ public enum AdAdditionalField {
     VIDEOS("Videos"),
     LONG_HEADLINES("LongHeadlines"),
     IMAGE_TARGET_DIMENSION("ImageTargetDimension"),
-    AD_SUB_TYPE("AdSubType");
+    AD_SUB_TYPE("AdSubType"),
+    CROPPING_TYPE("CroppingType");
         
     private final String value;
 

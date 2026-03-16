@@ -44,6 +44,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="TotalBudget" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         <element name="IncludeImpressionsBreakdown" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="AutoTargeting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -75,7 +76,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "startDate",
     "endDate",
     "totalBudget",
-    "includeImpressionsBreakdown"
+    "includeImpressionsBreakdown",
+    "autoTargeting"
 })
 @XmlRootElement(name = "GetAudienceFullEstimationRequest")
 public class GetAudienceFullEstimationRequest {
@@ -129,6 +131,8 @@ public class GetAudienceFullEstimationRequest {
     protected BigDecimal totalBudget;
     @XmlElement(name = "IncludeImpressionsBreakdown", nillable = true)
     protected Boolean includeImpressionsBreakdown;
+    @XmlElement(name = "AutoTargeting", nillable = true)
+    protected Boolean autoTargeting;
 
     /**
      * Gets the value of the age property.
@@ -656,6 +660,30 @@ public class GetAudienceFullEstimationRequest {
      */
     public void setIncludeImpressionsBreakdown(Boolean value) {
         this.includeImpressionsBreakdown = value;
+    }
+
+    /**
+     * Gets the value of the autoTargeting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getAutoTargeting() {
+        return autoTargeting;
+    }
+
+    /**
+     * Sets the value of the autoTargeting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAutoTargeting(Boolean value) {
+        this.autoTargeting = value;
     }
 
 }

@@ -94,7 +94,16 @@ public class UriOAuthService implements OAuthService {
                     OAuthTokensContract oauthResponse = mapper.readValue(bytes, OAuthTokensContract.class);
                     JsonNode root = mapper.readTree(bytes);
                     
-                    return new OAuthTokens(oauthResponse.getAccessToken(), oauthResponse.getAccessTokenExpiresInSeconds(), oauthResponse.getRefreshToken(), root);
+                    // When doing a refresh token request with Google OAuth, the response may not include
+                    // a new refresh token. In this case, preserve the original refresh token.
+                    String refreshToken = oauthResponse.getRefreshToken();
+                    if (refreshToken == null
+                            && "refresh_token".equals(oAuthParameters.getGrantType())
+                            && oAuthScope == OAuthScope.GOOGLE_OPENID) {
+                        refreshToken = oAuthParameters.getGrantValue();
+                    }
+                    
+                    return new OAuthTokens(oauthResponse.getAccessToken(), oauthResponse.getAccessTokenExpiresInSeconds(), refreshToken, root);
                 } else {
                     OAuthErrorDetailsContract errorResponse = mapper.readValue(stream, OAuthErrorDetailsContract.class);
                     

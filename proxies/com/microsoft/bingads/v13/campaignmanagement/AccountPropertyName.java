@@ -31,6 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="NetflixTCAccepted"/>
  *     <enumeration value="BlockedContentSegments"/>
  *     <enumeration value="AssetAIEnhancementOptout"/>
+ *     <enumeration value="AcceptNielsenTermsAndConditions"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -75,7 +76,9 @@ public enum AccountPropertyName {
     @XmlEnumValue("BlockedContentSegments")
     BLOCKED_CONTENT_SEGMENTS("BlockedContentSegments"),
     @XmlEnumValue("AssetAIEnhancementOptout")
-    ASSET_AI_ENHANCEMENT_OPTOUT("AssetAIEnhancementOptout");
+    ASSET_AI_ENHANCEMENT_OPTOUT("AssetAIEnhancementOptout"),
+    @XmlEnumValue("AcceptNielsenTermsAndConditions")
+    ACCEPT_NIELSEN_TERMS_AND_CONDITIONS("AcceptNielsenTermsAndConditions");
     private final String value;
 
     AccountPropertyName(String v) {

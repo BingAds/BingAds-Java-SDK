@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.XmlType;
     NegativeKeywordList.class,
     PlacementExclusionList.class,
     AccountNegativeKeywordList.class,
+    AccountContentNegativeKeywordList.class,
     BrandList.class,
     AccountPlacementExclusionList.class,
     AccountPlacementInclusionList.class
