@@ -9,6 +9,16 @@ import com.microsoft.bingads.v13.campaignmanagement.*;
 class CampaignManagementExampleHelper
 {
     static ServiceClient<ICampaignManagementService> CampaignManagementService;
+    static ApplyCustomerListUserDataResponse applyCustomerListUserData(
+            CustomerListUserData customerListUserData) throws RemoteException, Exception
+    {
+        ApplyCustomerListUserDataRequest request = new ApplyCustomerListUserDataRequest();
+
+        request.setCustomerListUserData(customerListUserData);
+
+        return CampaignManagementService.getService().applyCustomerListUserData(request);
+    }
+
     static AddAdExtensionsResponse addAdExtensions(
         java.lang.Long accountId,
         ArrayOfAdExtension adExtensions) throws RemoteException, Exception
