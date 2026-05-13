@@ -3171,4 +3171,20 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 		return sendRequestAsync(request, "/LinkedInSegments", HttpPut, UpdateLinkedInSegmentsResponse.class, asyncHandler);
 	}
 	
+    	
+	public GetUetTagAuthKeyResponse getUetTagAuthKey(GetUetTagAuthKeyRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetUetTagAuthKeyResponse response = sendRequest(request, "/UetTagAuthKey/Query", HttpPost, GetUetTagAuthKeyResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetUetTagAuthKeyResponse> getUetTagAuthKeyAsync(GetUetTagAuthKeyRequest request) {
+		return sendRequestAsync(request, "/UetTagAuthKey/Query", HttpPost, GetUetTagAuthKeyResponse.class, null);
+	}
+
+	public Future<?> getUetTagAuthKeyAsync(GetUetTagAuthKeyRequest request, AsyncHandler<GetUetTagAuthKeyResponse> asyncHandler) {
+		return sendRequestAsync(request, "/UetTagAuthKey/Query", HttpPost, GetUetTagAuthKeyResponse.class, asyncHandler);
+	}
+	
     }

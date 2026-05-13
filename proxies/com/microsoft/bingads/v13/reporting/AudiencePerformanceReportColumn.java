@@ -61,6 +61,17 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AllConversionsQualified"/>
  *     <enumeration value="ViewThroughConversionsQualified"/>
  *     <enumeration value="ViewThroughRevenue"/>
+ *     <enumeration value="VideoViews"/>
+ *     <enumeration value="ViewThroughRate"/>
+ *     <enumeration value="AverageCPV"/>
+ *     <enumeration value="VideoViewsAt25Percent"/>
+ *     <enumeration value="VideoViewsAt50Percent"/>
+ *     <enumeration value="VideoViewsAt75Percent"/>
+ *     <enumeration value="CompletedVideoViews"/>
+ *     <enumeration value="VideoCompletionRate"/>
+ *     <enumeration value="TotalWatchTimeInMS"/>
+ *     <enumeration value="AverageWatchTimePerVideoView"/>
+ *     <enumeration value="AverageWatchTimePerImpression"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -165,7 +176,29 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("ViewThroughConversionsQualified")
     VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified"),
     @XmlEnumValue("ViewThroughRevenue")
-    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
+    @XmlEnumValue("VideoViews")
+    VIDEO_VIEWS("VideoViews"),
+    @XmlEnumValue("ViewThroughRate")
+    VIEW_THROUGH_RATE("ViewThroughRate"),
+    @XmlEnumValue("AverageCPV")
+    AVERAGE_CPV("AverageCPV"),
+    @XmlEnumValue("VideoViewsAt25Percent")
+    VIDEO_VIEWS_AT_25_PERCENT("VideoViewsAt25Percent"),
+    @XmlEnumValue("VideoViewsAt50Percent")
+    VIDEO_VIEWS_AT_50_PERCENT("VideoViewsAt50Percent"),
+    @XmlEnumValue("VideoViewsAt75Percent")
+    VIDEO_VIEWS_AT_75_PERCENT("VideoViewsAt75Percent"),
+    @XmlEnumValue("CompletedVideoViews")
+    COMPLETED_VIDEO_VIEWS("CompletedVideoViews"),
+    @XmlEnumValue("VideoCompletionRate")
+    VIDEO_COMPLETION_RATE("VideoCompletionRate"),
+    @XmlEnumValue("TotalWatchTimeInMS")
+    TOTAL_WATCH_TIME_IN_MS("TotalWatchTimeInMS"),
+    @XmlEnumValue("AverageWatchTimePerVideoView")
+    AVERAGE_WATCH_TIME_PER_VIDEO_VIEW("AverageWatchTimePerVideoView"),
+    @XmlEnumValue("AverageWatchTimePerImpression")
+    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

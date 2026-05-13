@@ -987,6 +987,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCampaignLocationIntentCriterion();
             }
         }));
+        m.put(StringTable.CampaignNegativeAgeCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeAgeCriterion();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeGenderCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeGenderCriterion();
+            }
+        }));
         m.put(StringTable.CampaignNegativeLocationCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -1235,6 +1247,30 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkAppInstallGoal();
+            }
+        }));
+        m.put(StringTable.AppDownloadGoal, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAppDownloadGoal();
+            }
+        }));
+        m.put(StringTable.AccountContentNegativeKeywordList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountContentNegativeKeywordList();
+            }
+        }));
+        m.put(StringTable.AccountContentNegativeKeywordListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountContentNegativeKeywordListAssociation();
+            }
+        }));
+        m.put(StringTable.AccountContentSharedNegativeKeyword, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAccountContentSharedNegativeKeyword();
             }
         }));
         m.put(StringTable.PagesViewedPerVisitGoal, new EntityInfo(new Creator<SingleRecordBulkEntity>() {

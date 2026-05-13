@@ -27,7 +27,7 @@ import jakarta.xml.ws.spi.Provider;
 
 public class ServiceFactoryImpl {
 
-    public static final String VERSION = "13.0.27";
+    public static final String VERSION = "13.0.28";
     
     private static final int DEFAULT_WS_CREATE_TIMEOUT_IN_SECOND = 60;
     

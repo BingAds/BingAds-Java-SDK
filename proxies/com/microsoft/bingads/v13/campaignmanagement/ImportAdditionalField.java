@@ -36,7 +36,8 @@ public enum ImportAdditionalField {
     NEW_PORTFOLIO_BID_STRATEGY("NewPortfolioBidStrategy"),
     NEW_A_I_MAX_SETTINGS("NewAIMaxSettings"),
     IMAGE_ASSET_AUTOMATION_OPT_OUT("ImageAssetAutomationOptOut"),
-    UPDATE_A_I_MAX_SETTINGS("UpdateAIMaxSettings");
+    UPDATE_A_I_MAX_SETTINGS("UpdateAIMaxSettings"),
+    IMPORT_N_C_A_GOAL_WITH_SYSTEM_GENERATED_AUDIENCE("ImportNCAGoalWithSystemGeneratedAudience");
         
     private final String value;
 

@@ -84,6 +84,12 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Subscriptions"/>
  *     <enumeration value="PostInstallSubscriptionRate"/>
  *     <enumeration value="CPS"/>
+ *     <enumeration value="LowQualityClicks"/>
+ *     <enumeration value="LowQualityClicksPercent"/>
+ *     <enumeration value="LowQualityImpressions"/>
+ *     <enumeration value="LowQualityImpressionsPercent"/>
+ *     <enumeration value="LowQualityGeneralClicks"/>
+ *     <enumeration value="LowQualitySophisticatedClicks"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -231,7 +237,19 @@ public enum PublisherUsagePerformanceReportColumn {
     SUBSCRIPTIONS("Subscriptions"),
     @XmlEnumValue("PostInstallSubscriptionRate")
     POST_INSTALL_SUBSCRIPTION_RATE("PostInstallSubscriptionRate"),
-    CPS("CPS");
+    CPS("CPS"),
+    @XmlEnumValue("LowQualityClicks")
+    LOW_QUALITY_CLICKS("LowQualityClicks"),
+    @XmlEnumValue("LowQualityClicksPercent")
+    LOW_QUALITY_CLICKS_PERCENT("LowQualityClicksPercent"),
+    @XmlEnumValue("LowQualityImpressions")
+    LOW_QUALITY_IMPRESSIONS("LowQualityImpressions"),
+    @XmlEnumValue("LowQualityImpressionsPercent")
+    LOW_QUALITY_IMPRESSIONS_PERCENT("LowQualityImpressionsPercent"),
+    @XmlEnumValue("LowQualityGeneralClicks")
+    LOW_QUALITY_GENERAL_CLICKS("LowQualityGeneralClicks"),
+    @XmlEnumValue("LowQualitySophisticatedClicks")
+    LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks");
     private final String value;
 
     PublisherUsagePerformanceReportColumn(String v) {

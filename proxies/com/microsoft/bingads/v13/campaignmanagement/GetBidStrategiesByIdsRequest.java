@@ -44,7 +44,7 @@ public class GetBidStrategiesByIdsRequest {
     @XmlElement(name = "BidStrategyIds", nillable = true)
     protected ArrayOflong bidStrategyIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter21 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     protected Collection<PortfolioBidStrategyAdditionalField> returnAdditionalFields;
     @XmlElement(name = "Scope", nillable = true)
     @XmlSchemaType(name = "string")

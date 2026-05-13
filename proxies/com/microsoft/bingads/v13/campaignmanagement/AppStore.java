@@ -7,7 +7,8 @@ public enum AppStore {
 
     GOOGLE_APP_STORE("GoogleAppStore"),
     APPLE_APP_STORE("AppleAppStore"),
-    MICROSOFT_APP_STORE("MicrosoftAppStore");
+    MICROSOFT_APP_STORE("MicrosoftAppStore"),
+    XBOX_STORE("XboxStore");
         
     private final String value;
 

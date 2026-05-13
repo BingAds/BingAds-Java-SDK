@@ -17,7 +17,9 @@ public enum AdGroupAdditionalField {
     FREQUENCY_CAP_SETTINGS("FrequencyCapSettings"),
     USE_PREDICTIVE_TARGETING("UsePredictiveTargeting"),
     MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc"),
-    BASE_DOMAIN("BaseDomain");
+    BASE_DOMAIN("BaseDomain"),
+    TARGET_SETTING_FOR_JOB_SENIORITY("TargetSettingForJobSeniority"),
+    TARGET_SETTING_FOR_CUSTOM_LINKED_IN("TargetSettingForCustomLinkedIn");
         
     private final String value;
 

@@ -36,7 +36,8 @@ public enum AdGroupCriterionType {
     IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
     PLACEMENT("Placement"),
     TOPIC("Topic"),
-    CUSTOM_SEGMENT("CustomSegment");
+    CUSTOM_SEGMENT("CustomSegment"),
+    JOB_SENIORITY("JobSeniority");
         
     private final String value;
 

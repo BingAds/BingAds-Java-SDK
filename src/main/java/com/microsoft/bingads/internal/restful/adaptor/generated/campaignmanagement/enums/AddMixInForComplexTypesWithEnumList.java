@@ -33,6 +33,8 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(DeleteAdGroupCriterionsRequest.class, DeleteAdGroupCriterionsRequestEnumsMixIn.class)
 				.addMixIn(GetAssetGroupListingGroupsByIdsRequest.class, GetAssetGroupListingGroupsByIdsRequestEnumsMixIn.class)
 				.addMixIn(GetBMCStoresByCustomerIdRequest.class, GetBMCStoresByCustomerIdRequestEnumsMixIn.class)
+				.addMixIn(GetSharedEntityAssociationsBySharedEntityIdsRequest.class, GetSharedEntityAssociationsBySharedEntityIdsRequestEnumsMixIn.class)
+				.addMixIn(GetSharedEntityAssociationsByEntityIdsRequest.class, GetSharedEntityAssociationsByEntityIdsRequestEnumsMixIn.class)
 				.addMixIn(AddCampaignCriterionsRequest.class, AddCampaignCriterionsRequestEnumsMixIn.class)
 				.addMixIn(UpdateCampaignCriterionsRequest.class, UpdateCampaignCriterionsRequestEnumsMixIn.class)
 				.addMixIn(DeleteCampaignCriterionsRequest.class, DeleteCampaignCriterionsRequestEnumsMixIn.class)

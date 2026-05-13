@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="IsPolitical" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="MarketingObjective" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -74,6 +75,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "id",
     "isDealCampaign",
     "isPolitical",
+    "marketingObjective",
     "multimediaAdsBidAdjustment",
     "name",
     "startDate",
@@ -124,6 +126,8 @@ public class Campaign {
     protected Boolean isDealCampaign;
     @XmlElement(name = "IsPolitical")
     protected Boolean isPolitical;
+    @XmlElement(name = "MarketingObjective", nillable = true)
+    protected String marketingObjective;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
@@ -493,6 +497,30 @@ public class Campaign {
      */
     public void setIsPolitical(Boolean value) {
         this.isPolitical = value;
+    }
+
+    /**
+     * Gets the value of the marketingObjective property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMarketingObjective() {
+        return marketingObjective;
+    }
+
+    /**
+     * Sets the value of the marketingObjective property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMarketingObjective(String value) {
+        this.marketingObjective = value;
     }
 
     /**

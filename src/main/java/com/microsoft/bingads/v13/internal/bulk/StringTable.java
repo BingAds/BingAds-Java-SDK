@@ -676,6 +676,8 @@ public class StringTable {
     public static final String CampaignRadiusCriterion = "Campaign Radius Criterion";
     public static final String CampaignLocationCriterion = "Campaign Location Criterion";
     public static final String CampaignLocationIntentCriterion = "Campaign Location Intent Criterion";
+    public static final String CampaignNegativeAgeCriterion = "Campaign Negative Age Criterion";
+    public static final String CampaignNegativeGenderCriterion = "Campaign Negative Gender Criterion";
     public static final String CampaignNegativeLocationCriterion = "Campaign Negative Location Criterion";
     public static final String CampaignDealCriterion = "Campaign Deal Criterion";
 
@@ -814,6 +816,7 @@ public class StringTable {
     public static final String ConversionGoal = "Conversion Goal";
     public static final String EventGoal = "Event Goal";
     public static final String AppInstallGoal = "AppInstall Goal";
+    public static final String AppDownloadGoal = "AppDownload Goal";
     public static final String MultiStageGoal = "MultiStage Goal";
     public static final String DurationGoal = "Duration Goal";
     public static final String OfflineConversionGoal = "OfflineConversion Goal";
@@ -862,7 +865,17 @@ public class StringTable {
     public static final String CampaignAccountPlacementInclusionListAssociation = "Campaign Account Placement Inclusion List Association";
     public static final String AccountPlacementInclusionListId = "Account Placement Inclusion List Id";
     public static final String AccountPlacementInclusionListItemId = "Account Placement Inclusion List Item Id";
-    
+
+    // AIMax
+    public static final String AIMaxEnabled = "AI Search Enabled";
+    public static final String SearchTermMatchingOptOut = "Search Term Matching Opt Out";
+
+    public static final String BaseDomain = "Base Domain";
+
+    public static final String AccountContentNegativeKeywordList = "Account Content Negative Keyword List";
+    public static final String AccountContentNegativeKeywordListAssociation = "Account Content Negative Keyword List Association";
+    public static final String AccountContentSharedNegativeKeyword = "Account Content Shared Negative Keyword";
+
     public static final String Topic = "Topic";
     public static final String ContentPlacement = "Content Placement";
     public static final String TopicParentId = "Topic Parent Id";

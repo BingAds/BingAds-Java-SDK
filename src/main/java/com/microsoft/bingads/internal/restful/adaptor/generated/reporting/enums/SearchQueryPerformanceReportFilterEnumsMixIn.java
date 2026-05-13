@@ -35,6 +35,11 @@ public interface SearchQueryPerformanceReportFilterEnumsMixIn{
 
     	
 	@JsonSerialize(using = EnumListSerializer.class)
+	@JsonDeserialize(using = AssetGroupStatusReportFilterDeserializer.class)
+	Collection<AssetGroupStatusReportFilter> getAssetGroupStatus();
+
+    	
+	@JsonSerialize(using = EnumListSerializer.class)
 	@JsonDeserialize(using = CampaignStatusReportFilterDeserializer.class)
 	Collection<CampaignStatusReportFilter> getCampaignStatus();
 

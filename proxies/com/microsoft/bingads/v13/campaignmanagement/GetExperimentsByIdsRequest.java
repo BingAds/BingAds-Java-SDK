@@ -45,7 +45,7 @@ public class GetExperimentsByIdsRequest {
     @XmlElement(name = "PageInfo", nillable = true)
     protected Paging pageInfo;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter30 .class)
+    @XmlJavaTypeAdapter(Adapter31 .class)
     protected Collection<ExperimentAdditionalField> returnAdditionalFields;
 
     /**

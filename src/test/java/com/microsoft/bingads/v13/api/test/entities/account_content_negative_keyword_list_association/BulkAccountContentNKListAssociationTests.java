@@ -1,0 +1,25 @@
+package com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.read.BulkAccountContentNKListAssociationReadFromRowValuesEntityIdTest;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.read.BulkAccountContentNKListAssociationReadFromRowValuesSharedEntityIdTest;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.read.BulkAccountContentNKListAssociationReadFromRowValuesStatusTest;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.write.BulkAccountContentNKListAssociationWriteToRowValuesEntityIdTest;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.write.BulkAccountContentNKListAssociationWriteToRowValuesSharedEntityIdTest;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.write.BulkAccountContentNKListAssociationWriteToRowValuesStatusTest;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+    BulkAccountContentNKListAssociationReadFromRowValuesEntityIdTest.class,
+    BulkAccountContentNKListAssociationReadFromRowValuesSharedEntityIdTest.class,
+    BulkAccountContentNKListAssociationReadFromRowValuesStatusTest.class,
+    BulkAccountContentNKListAssociationWriteToRowValuesEntityIdTest.class,
+    BulkAccountContentNKListAssociationWriteToRowValuesSharedEntityIdTest.class,
+    BulkAccountContentNKListAssociationWriteToRowValuesStatusTest.class
+})
+public class BulkAccountContentNKListAssociationTests {
+
+}

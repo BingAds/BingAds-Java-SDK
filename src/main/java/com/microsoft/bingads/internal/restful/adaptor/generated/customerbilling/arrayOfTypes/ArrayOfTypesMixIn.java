@@ -63,6 +63,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<BillingGroup> getBillingGroups();
+
+            
+	@JsonValue
+	List<UngroupedAccount> getUngroupedAccounts();
+
+            
+	@JsonValue
 	List<AdApiError> getAdApiErrors();
 
             

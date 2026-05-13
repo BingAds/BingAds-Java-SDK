@@ -1,0 +1,35 @@
+package com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.read;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import com.microsoft.bingads.internal.functionalinterfaces.Function;
+import com.microsoft.bingads.v13.api.test.entities.account_content_negative_keyword_list_association.BulkAccountContentNKListAssociationTest;
+import com.microsoft.bingads.v13.bulk.entities.BulkAccountContentNegativeKeywordListAssociation;
+
+public class BulkAccountContentNKListAssociationReadFromRowValuesEntityIdTest extends BulkAccountContentNKListAssociationTest {
+
+    @Parameter(value = 1)
+    public Long expectedResult;
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+            {"123", 123L},
+            {"9223372036854775807", 9223372036854775807L},});
+    }
+
+    @Test
+    public void testRead() {
+        this.<Long>testReadProperty("Parent Id", this.datum, this.expectedResult, new Function<BulkAccountContentNegativeKeywordListAssociation, Long>() {
+            @Override
+            public Long apply(BulkAccountContentNegativeKeywordListAssociation c) {
+                return c.getSharedEntityAssociation().getEntityId();
+            }
+        });
+    }
+}

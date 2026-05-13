@@ -561,4 +561,127 @@ public interface ICustomerBillingService {
         throws AdApiFaultDetail_Exception, ApiFault_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.GetBillingGroupsResponse>
+     */
+    @WebMethod(operationName = "GetBillingGroups", action = "GetBillingGroups")
+    public Response<GetBillingGroupsResponse> getBillingGroupsAsync(
+        @WebParam(name = "GetBillingGroupsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetBillingGroupsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetBillingGroups", action = "GetBillingGroups")
+    public Future<?> getBillingGroupsAsync(
+        @WebParam(name = "GetBillingGroupsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetBillingGroupsRequest parameters,
+        @WebParam(name = "GetBillingGroupsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetBillingGroupsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.GetBillingGroupsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "GetBillingGroups", action = "GetBillingGroups")
+    @WebResult(name = "GetBillingGroupsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public GetBillingGroupsResponse getBillingGroups(
+        @WebParam(name = "GetBillingGroupsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetBillingGroupsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.GetUngroupedAccountsResponse>
+     */
+    @WebMethod(operationName = "GetUngroupedAccounts", action = "GetUngroupedAccounts")
+    public Response<GetUngroupedAccountsResponse> getUngroupedAccountsAsync(
+        @WebParam(name = "GetUngroupedAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetUngroupedAccountsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetUngroupedAccounts", action = "GetUngroupedAccounts")
+    public Future<?> getUngroupedAccountsAsync(
+        @WebParam(name = "GetUngroupedAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetUngroupedAccountsRequest parameters,
+        @WebParam(name = "GetUngroupedAccountsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetUngroupedAccountsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.GetUngroupedAccountsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "GetUngroupedAccounts", action = "GetUngroupedAccounts")
+    @WebResult(name = "GetUngroupedAccountsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public GetUngroupedAccountsResponse getUngroupedAccounts(
+        @WebParam(name = "GetUngroupedAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        GetUngroupedAccountsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.customerbilling.UpdateBillingGroupAccountsResponse>
+     */
+    @WebMethod(operationName = "UpdateBillingGroupAccounts", action = "UpdateBillingGroupAccounts")
+    public Response<UpdateBillingGroupAccountsResponse> updateBillingGroupAccountsAsync(
+        @WebParam(name = "UpdateBillingGroupAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        UpdateBillingGroupAccountsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateBillingGroupAccounts", action = "UpdateBillingGroupAccounts")
+    public Future<?> updateBillingGroupAccountsAsync(
+        @WebParam(name = "UpdateBillingGroupAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        UpdateBillingGroupAccountsRequest parameters,
+        @WebParam(name = "UpdateBillingGroupAccountsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateBillingGroupAccountsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.customerbilling.UpdateBillingGroupAccountsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFault_Exception
+     */
+    @WebMethod(operationName = "UpdateBillingGroupAccounts", action = "UpdateBillingGroupAccounts")
+    @WebResult(name = "UpdateBillingGroupAccountsResponse", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+    public UpdateBillingGroupAccountsResponse updateBillingGroupAccounts(
+        @WebParam(name = "UpdateBillingGroupAccountsRequest", targetNamespace = "https://bingads.microsoft.com/Billing/v13", partName = "parameters")
+        UpdateBillingGroupAccountsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFault_Exception
+    ;
+
 }

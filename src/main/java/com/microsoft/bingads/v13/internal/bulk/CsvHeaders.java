@@ -57,6 +57,9 @@ public class CsvHeaders {
             StringTable.CommissionRate,
             StringTable.PercentCpcBid,
             StringTable.FinalUrlExpansionOptOut,
+            StringTable.BaseDomain,
+            StringTable.AIMaxEnabled,
+            StringTable.SearchTermMatchingOptOut,
             
             // OnlineConversionAdjustment
             StringTable.TransactionId,

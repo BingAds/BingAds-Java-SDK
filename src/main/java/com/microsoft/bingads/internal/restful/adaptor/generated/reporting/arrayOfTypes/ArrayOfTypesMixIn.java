@@ -211,6 +211,14 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<MSClickIdPerformanceReportColumn> getMSClickIdPerformanceReportColumns();
+
+            
+	@JsonValue
+	List<MMMPerformanceReportColumn> getMMMPerformanceReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

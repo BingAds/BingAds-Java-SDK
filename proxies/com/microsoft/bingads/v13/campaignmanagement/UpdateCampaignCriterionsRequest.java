@@ -41,7 +41,7 @@ public class UpdateCampaignCriterionsRequest {
     @XmlElement(name = "CampaignCriterions", nillable = true)
     protected ArrayOfCampaignCriterion campaignCriterions;
     @XmlElement(name = "CriterionType", type = String.class)
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Collection<CampaignCriterionType> criterionType;
 
     /**

@@ -24,8 +24,9 @@ import org.junit.runners.Suite.SuiteClasses;
 		BulkAdGroupWriteToRowValuesHotelAdGroupTypeTests.class,
 		BulkAdGroupWriteToRowValuesPercentCpcBidTest.class,
 		BulkAdGroupWriteToRowValuesCommissionRateTest.class,
-		BulkAdGroupWriteToRowValuesUseOptimizedTargetingTest.class
-		
+		BulkAdGroupWriteToRowValuesUseOptimizedTargetingTest.class,
+		BulkAdGroupWriteToRowValuesBaseDomainTest.class
+
 })
 public class BulkAdGroupWriteTests {
 

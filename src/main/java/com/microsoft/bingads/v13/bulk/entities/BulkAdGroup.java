@@ -17,6 +17,7 @@ import com.microsoft.bingads.v13.campaignmanagement.AdGroupPrivacyStatus;
 import com.microsoft.bingads.v13.campaignmanagement.AdGroupStatus;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfTargetSettingDetail;
+import com.microsoft.bingads.v13.campaignmanagement.BaseDomainSetting;
 import com.microsoft.bingads.v13.campaignmanagement.BidOption;
 import com.microsoft.bingads.v13.campaignmanagement.BiddingScheme;
 import com.microsoft.bingads.v13.campaignmanagement.CoOpSetting;
@@ -494,6 +495,27 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                                 return Boolean.parseBoolean(value);
                             }
                         }));
+                    }
+                }
+        ));
+
+        m.add(new SimpleBulkMapping<BulkAdGroup, String>(StringTable.BaseDomain,
+                new Function<BulkAdGroup, String>() {
+                    @Override
+                    public String apply(BulkAdGroup c) {
+                        BaseDomainSetting setting = (BaseDomainSetting)c.getSetting(BaseDomainSetting.class);
+                        return setting != null ? setting.getBaseDomain() : null;
+                    }
+                },
+                new BiConsumer<String, BulkAdGroup>() {
+                    @Override
+                    public void accept(String v, BulkAdGroup c) {
+                        if (v != null && !v.isEmpty()) {
+                            BaseDomainSetting setting = new BaseDomainSetting();
+                            setting.setType(BaseDomainSetting.class.getSimpleName());
+                            setting.setBaseDomain(v);
+                            c.addAdGroupSetting(setting);
+                        }
                     }
                 }
         ));
