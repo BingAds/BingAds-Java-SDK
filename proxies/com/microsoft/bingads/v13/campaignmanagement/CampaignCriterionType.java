@@ -27,7 +27,8 @@ public enum CampaignCriterionType {
     STORE("Store"),
     COMBINED_LIST("CombinedList"),
     CUSTOMER_LIST("CustomerList"),
-    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList");
+    IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
+    JOB_SENIORITY("JobSeniority");
         
     private final String value;
 

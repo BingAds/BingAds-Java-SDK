@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EnableCopilot" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="ImageAssetAutomationOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ImportNCAGoalWithSystemGeneratedAudience" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAIMaxSettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -152,6 +153,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "enableCopilot",
     "enableParentLocationMapping",
     "imageAssetAutomationOptOut",
+    "importNCAGoalWithSystemGeneratedAudience",
     "newAIMaxSettings",
     "newAccountNegativeKeywords",
     "newActiveAdsForExistingAdGroups",
@@ -285,6 +287,8 @@ public class GoogleImportOption
     protected Boolean enableParentLocationMapping;
     @XmlElement(name = "ImageAssetAutomationOptOut", nillable = true)
     protected Boolean imageAssetAutomationOptOut;
+    @XmlElement(name = "ImportNCAGoalWithSystemGeneratedAudience", nillable = true)
+    protected Boolean importNCAGoalWithSystemGeneratedAudience;
     @XmlElement(name = "NewAIMaxSettings", nillable = true)
     protected Boolean newAIMaxSettings;
     @XmlElement(name = "NewAccountNegativeKeywords", nillable = true)
@@ -774,6 +778,30 @@ public class GoogleImportOption
      */
     public void setImageAssetAutomationOptOut(Boolean value) {
         this.imageAssetAutomationOptOut = value;
+    }
+
+    /**
+     * Gets the value of the importNCAGoalWithSystemGeneratedAudience property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getImportNCAGoalWithSystemGeneratedAudience() {
+        return importNCAGoalWithSystemGeneratedAudience;
+    }
+
+    /**
+     * Sets the value of the importNCAGoalWithSystemGeneratedAudience property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setImportNCAGoalWithSystemGeneratedAudience(Boolean value) {
+        this.importNCAGoalWithSystemGeneratedAudience = value;
     }
 
     /**

@@ -38,8 +38,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(DestinationUrlPerformanceReportColumn.class, DestinationUrlPerformanceReportColumnMixIn.class)
 				.addMixIn(BudgetSummaryReportColumn.class, BudgetSummaryReportColumnMixIn.class)
 				.addMixIn(AgeGenderAudienceReportColumn.class, AgeGenderAudienceReportColumnMixIn.class)
-				.addMixIn(ProfessionalDemographicsAudienceReportColumn.class, ProfessionalDemographicsAudienceReportColumnMixIn.class)
 				.addMixIn(AssetGroupStatusReportFilter.class, AssetGroupStatusReportFilterMixIn.class)
+				.addMixIn(ProfessionalDemographicsAudienceReportColumn.class, ProfessionalDemographicsAudienceReportColumnMixIn.class)
 				.addMixIn(UserLocationPerformanceReportColumn.class, UserLocationPerformanceReportColumnMixIn.class)
 				.addMixIn(PublisherUsagePerformanceReportColumn.class, PublisherUsagePerformanceReportColumnMixIn.class)
 				.addMixIn(SearchQueryPerformanceReportColumn.class, SearchQueryPerformanceReportColumnMixIn.class)
@@ -79,6 +79,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(FeedItemPerformanceReportColumn.class, FeedItemPerformanceReportColumnMixIn.class)
 				.addMixIn(TravelQueryInsightReportColumn.class, TravelQueryInsightReportColumnMixIn.class)
 				.addMixIn(BidStrategyReportColumn.class, BidStrategyReportColumnMixIn.class)
+				.addMixIn(MSClickIdPerformanceReportColumn.class, MSClickIdPerformanceReportColumnMixIn.class)
+				.addMixIn(MMMPerformanceReportColumn.class, MMMPerformanceReportColumnMixIn.class)
 				.addMixIn(ReportRequestStatusType.class, ReportRequestStatusTypeMixIn.class)
 				;
 	}

@@ -41,6 +41,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         <element name="ForwardCompatibilityMap" type="{http://schemas.datacontract.org/2004/07/System.Collections.Generic}ArrayOfKeyValuePairOfstringstring" minOccurs="0"/>
  *         <element name="CustomerLinkPermission" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ClientEntityCustomerNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -71,7 +72,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "lastModifiedByUserId",
     "timestamp",
     "forwardCompatibilityMap",
-    "customerLinkPermission"
+    "customerLinkPermission",
+    "clientEntityCustomerNumber"
 })
 public class ClientLink {
 
@@ -122,6 +124,8 @@ public class ClientLink {
     protected ArrayOfKeyValuePairOfstringstring forwardCompatibilityMap;
     @XmlElement(name = "CustomerLinkPermission", nillable = true)
     protected String customerLinkPermission;
+    @XmlElement(name = "ClientEntityCustomerNumber", nillable = true)
+    protected String clientEntityCustomerNumber;
 
     /**
      * Gets the value of the type property.
@@ -623,6 +627,30 @@ public class ClientLink {
      */
     public void setCustomerLinkPermission(String value) {
         this.customerLinkPermission = value;
+    }
+
+    /**
+     * Gets the value of the clientEntityCustomerNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getClientEntityCustomerNumber() {
+        return clientEntityCustomerNumber;
+    }
+
+    /**
+     * Sets the value of the clientEntityCustomerNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setClientEntityCustomerNumber(String value) {
+        this.clientEntityCustomerNumber = value;
     }
 
 }

@@ -17,8 +17,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         <element name="GoalId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         <element name="CampaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="GoalId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,39 +35,55 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CampaignConversionGoal {
 
     @XmlElement(name = "CampaignId")
-    protected long campaignId;
+    protected Long campaignId;
     @XmlElement(name = "GoalId")
-    protected long goalId;
+    protected Long goalId;
 
     /**
      * Gets the value of the campaignId property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getCampaignId() {
+    public Long getCampaignId() {
         return campaignId;
     }
 
     /**
      * Sets the value of the campaignId property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setCampaignId(long value) {
+    public void setCampaignId(Long value) {
         this.campaignId = value;
     }
 
     /**
      * Gets the value of the goalId property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getGoalId() {
+    public Long getGoalId() {
         return goalId;
     }
 
     /**
      * Sets the value of the goalId property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setGoalId(long value) {
+    public void setGoalId(Long value) {
         this.goalId = value;
     }
 

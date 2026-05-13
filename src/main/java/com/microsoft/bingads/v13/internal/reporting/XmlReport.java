@@ -44,6 +44,8 @@ public class XmlReport extends Report {
     public XmlReport(FileInputStream xmlFileInputStream) throws XMLStreamException {
         reportHeader = new ReportHeader();
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+        xmlInputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+        xmlInputFactory.setProperty("javax.xml.stream.isSupportingExternalEntities", false);
         xmlEventReader = xmlInputFactory.createXMLEventReader(xmlFileInputStream);
         parseMeta();
         parseColumnNames();

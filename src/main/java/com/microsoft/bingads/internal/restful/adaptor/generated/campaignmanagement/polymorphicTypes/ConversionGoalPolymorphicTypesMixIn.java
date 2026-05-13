@@ -30,11 +30,11 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 						
 			@JsonSubTypes.Type(value = AppInstallGoal.class, name = "AppInstall"),
 						
+			@JsonSubTypes.Type(value = AppDownloadGoal.class, name = "AppDownload"),
+						
 			@JsonSubTypes.Type(value = OfflineConversionGoal.class, name = "OfflineConversion"),
 						
 			@JsonSubTypes.Type(value = InStoreTransactionGoal.class, name = "InStoreTransaction"),
-						
-			@JsonSubTypes.Type(value = AppDownloadGoal.class, name = "AppDownload"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

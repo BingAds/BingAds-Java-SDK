@@ -71,6 +71,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AverageCpm"/>
  *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="AllConversionsQualified"/>
+ *     <enumeration value="AssetGroupName"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AssetGroupStatus"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -195,7 +198,13 @@ public enum SearchQueryPerformanceReportColumn {
     @XmlEnumValue("ConversionsQualified")
     CONVERSIONS_QUALIFIED("ConversionsQualified"),
     @XmlEnumValue("AllConversionsQualified")
-    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified");
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AssetGroupStatus")
+    ASSET_GROUP_STATUS("AssetGroupStatus");
     private final String value;
 
     SearchQueryPerformanceReportColumn(String v) {

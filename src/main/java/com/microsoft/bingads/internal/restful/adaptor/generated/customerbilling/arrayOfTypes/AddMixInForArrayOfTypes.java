@@ -23,6 +23,8 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfKeyValueEntityOflongstring.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfKeyValueEntityOflongdateTime.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfCouponInfoData.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfBillingGroup.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfUngroupedAccount.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfAdApiError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfOperationError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBatchError.class, ArrayOfTypesMixIn.class)

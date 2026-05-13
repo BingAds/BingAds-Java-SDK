@@ -41,7 +41,7 @@ public class GetUetTagsByIdsRequest {
     @XmlElement(name = "TagIds", nillable = true)
     protected ArrayOflong tagIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter26 .class)
+    @XmlJavaTypeAdapter(Adapter27 .class)
     protected Collection<UetTagAdditionalField> returnAdditionalFields;
 
     /**

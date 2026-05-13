@@ -7816,4 +7816,45 @@ public interface ICampaignManagementService {
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetUetTagAuthKeyResponse>
+     */
+    @WebMethod(operationName = "GetUetTagAuthKey", action = "GetUetTagAuthKey")
+    public Response<GetUetTagAuthKeyResponse> getUetTagAuthKeyAsync(
+        @WebParam(name = "GetUetTagAuthKeyRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetUetTagAuthKeyRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetUetTagAuthKey", action = "GetUetTagAuthKey")
+    public Future<?> getUetTagAuthKeyAsync(
+        @WebParam(name = "GetUetTagAuthKeyRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetUetTagAuthKeyRequest parameters,
+        @WebParam(name = "GetUetTagAuthKeyResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetUetTagAuthKeyResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetUetTagAuthKeyResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetUetTagAuthKey", action = "GetUetTagAuthKey")
+    @WebResult(name = "GetUetTagAuthKeyResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetUetTagAuthKeyResponse getUetTagAuthKey(
+        @WebParam(name = "GetUetTagAuthKeyRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetUetTagAuthKeyRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
 }

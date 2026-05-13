@@ -55,7 +55,7 @@ public class GetOfflineConversionReportByGoalIdsRequest {
     @XmlElement(name = "GoalIds", nillable = true)
     protected ArrayOflong goalIds;
     @XmlElement(name = "UploadChannelFilter", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter29 .class)
+    @XmlJavaTypeAdapter(Adapter30 .class)
     protected Collection<OfflineConversionUploadChannel> uploadChannelFilter;
 
     /**

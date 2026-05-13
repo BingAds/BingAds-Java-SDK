@@ -19,9 +19,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="EntityId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         <element name="EntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="IsExclusion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="SharedEntityCustomerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="SharedEntityId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         <element name="SharedEntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -34,9 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SharedEntityAssociation", propOrder = {
     "entityId",
     "entityType",
+    "isExclusion",
     "sharedEntityCustomerId",
     "sharedEntityId",
-    "sharedEntityType"
+    "sharedEntityType",
+    "status"
 })
 public class SharedEntityAssociation {
 
@@ -44,12 +48,16 @@ public class SharedEntityAssociation {
     protected long entityId;
     @XmlElement(name = "EntityType", nillable = true)
     protected String entityType;
+    @XmlElement(name = "IsExclusion", nillable = true)
+    protected Boolean isExclusion;
     @XmlElement(name = "SharedEntityCustomerId", nillable = true)
     protected Long sharedEntityCustomerId;
     @XmlElement(name = "SharedEntityId")
     protected long sharedEntityId;
     @XmlElement(name = "SharedEntityType", nillable = true)
     protected String sharedEntityType;
+    @XmlElement(name = "Status", nillable = true)
+    protected String status;
 
     /**
      * Gets the value of the entityId property.
@@ -89,6 +97,30 @@ public class SharedEntityAssociation {
      */
     public void setEntityType(String value) {
         this.entityType = value;
+    }
+
+    /**
+     * Gets the value of the isExclusion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getIsExclusion() {
+        return isExclusion;
+    }
+
+    /**
+     * Sets the value of the isExclusion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsExclusion(Boolean value) {
+        this.isExclusion = value;
     }
 
     /**
@@ -153,6 +185,30 @@ public class SharedEntityAssociation {
      */
     public void setSharedEntityType(String value) {
         this.sharedEntityType = value;
+    }
+
+    /**
+     * Gets the value of the status property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the value of the status property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStatus(String value) {
+        this.status = value;
     }
 
 }

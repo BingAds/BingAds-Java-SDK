@@ -1,12 +1,14 @@
 
 package com.microsoft.bingads.v13.campaignmanagement;
 
+import java.util.Collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -23,6 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="SharedEntityIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="SharedEntityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="SharedEntityScope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
+ *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}SharedEntityAssociationAdditionalField" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -36,7 +39,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "entityType",
     "sharedEntityIds",
     "sharedEntityType",
-    "sharedEntityScope"
+    "sharedEntityScope",
+    "returnAdditionalFields"
 })
 @XmlRootElement(name = "GetSharedEntityAssociationsBySharedEntityIdsRequest")
 public class GetSharedEntityAssociationsBySharedEntityIdsRequest {
@@ -50,6 +54,9 @@ public class GetSharedEntityAssociationsBySharedEntityIdsRequest {
     @XmlElement(name = "SharedEntityScope", nillable = true)
     @XmlSchemaType(name = "string")
     protected EntityScope sharedEntityScope;
+    @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter20 .class)
+    protected Collection<SharedEntityAssociationAdditionalField> returnAdditionalFields;
 
     /**
      * Gets the value of the entityType property.
@@ -145,6 +152,30 @@ public class GetSharedEntityAssociationsBySharedEntityIdsRequest {
      */
     public void setSharedEntityScope(EntityScope value) {
         this.sharedEntityScope = value;
+    }
+
+    /**
+     * Gets the value of the returnAdditionalFields property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Collection<SharedEntityAssociationAdditionalField> getReturnAdditionalFields() {
+        return returnAdditionalFields;
+    }
+
+    /**
+     * Sets the value of the returnAdditionalFields property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReturnAdditionalFields(Collection<SharedEntityAssociationAdditionalField> value) {
+        this.returnAdditionalFields = value;
     }
 
 }

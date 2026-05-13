@@ -32,6 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="BlockedContentSegments"/>
  *     <enumeration value="AssetAIEnhancementOptout"/>
  *     <enumeration value="AcceptNielsenTermsAndConditions"/>
+ *     <enumeration value="ImageMissingWarningOptout"/>
+ *     <enumeration value="OptOutFromSystemSourcedImagesInSWF"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -78,7 +80,11 @@ public enum AccountPropertyName {
     @XmlEnumValue("AssetAIEnhancementOptout")
     ASSET_AI_ENHANCEMENT_OPTOUT("AssetAIEnhancementOptout"),
     @XmlEnumValue("AcceptNielsenTermsAndConditions")
-    ACCEPT_NIELSEN_TERMS_AND_CONDITIONS("AcceptNielsenTermsAndConditions");
+    ACCEPT_NIELSEN_TERMS_AND_CONDITIONS("AcceptNielsenTermsAndConditions"),
+    @XmlEnumValue("ImageMissingWarningOptout")
+    IMAGE_MISSING_WARNING_OPTOUT("ImageMissingWarningOptout"),
+    @XmlEnumValue("OptOutFromSystemSourcedImagesInSWF")
+    OPT_OUT_FROM_SYSTEM_SOURCED_IMAGES_IN_SWF("OptOutFromSystemSourcedImagesInSWF");
     private final String value;
 
     AccountPropertyName(String v) {

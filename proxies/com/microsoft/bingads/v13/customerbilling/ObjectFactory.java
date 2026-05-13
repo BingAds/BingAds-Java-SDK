@@ -69,6 +69,10 @@ public class ObjectFactory {
     private static final QName _KeyValueEntityOflongdateTime_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "KeyValueEntityOflongdateTime");
     private static final QName _ArrayOfCouponInfoData_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfCouponInfoData");
     private static final QName _CouponInfoData_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "CouponInfoData");
+    private static final QName _ArrayOfBillingGroup_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfBillingGroup");
+    private static final QName _BillingGroup_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "BillingGroup");
+    private static final QName _ArrayOfUngroupedAccount_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "ArrayOfUngroupedAccount");
+    private static final QName _UngroupedAccount_QNAME = new QName("https://bingads.microsoft.com/Customer/v13/Entities", "UngroupedAccount");
     private static final QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private static final QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private static final QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -690,6 +694,86 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetBillingGroupsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetBillingGroupsRequest }
+     */
+    public GetBillingGroupsRequest createGetBillingGroupsRequest() {
+        return new GetBillingGroupsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBillingGroupsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetBillingGroupsResponse }
+     */
+    public GetBillingGroupsResponse createGetBillingGroupsResponse() {
+        return new GetBillingGroupsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfBillingGroup }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfBillingGroup }
+     */
+    public ArrayOfBillingGroup createArrayOfBillingGroup() {
+        return new ArrayOfBillingGroup();
+    }
+
+    /**
+     * Create an instance of {@link GetUngroupedAccountsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetUngroupedAccountsRequest }
+     */
+    public GetUngroupedAccountsRequest createGetUngroupedAccountsRequest() {
+        return new GetUngroupedAccountsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUngroupedAccountsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetUngroupedAccountsResponse }
+     */
+    public GetUngroupedAccountsResponse createGetUngroupedAccountsResponse() {
+        return new GetUngroupedAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfUngroupedAccount }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfUngroupedAccount }
+     */
+    public ArrayOfUngroupedAccount createArrayOfUngroupedAccount() {
+        return new ArrayOfUngroupedAccount();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBillingGroupAccountsRequest }
+     * 
+     * @return
+     *     the new instance of {@link UpdateBillingGroupAccountsRequest }
+     */
+    public UpdateBillingGroupAccountsRequest createUpdateBillingGroupAccountsRequest() {
+        return new UpdateBillingGroupAccountsRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBillingGroupAccountsResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdateBillingGroupAccountsResponse }
+     */
+    public UpdateBillingGroupAccountsResponse createUpdateBillingGroupAccountsResponse() {
+        return new UpdateBillingGroupAccountsResponse();
+    }
+
+    /**
      * Create an instance of {@link BillingDocumentInfo }
      * 
      * @return
@@ -797,6 +881,26 @@ public class ObjectFactory {
      */
     public CouponInfoData createCouponInfoData() {
         return new CouponInfoData();
+    }
+
+    /**
+     * Create an instance of {@link BillingGroup }
+     * 
+     * @return
+     *     the new instance of {@link BillingGroup }
+     */
+    public BillingGroup createBillingGroup() {
+        return new BillingGroup();
+    }
+
+    /**
+     * Create an instance of {@link UngroupedAccount }
+     * 
+     * @return
+     *     the new instance of {@link UngroupedAccount }
+     */
+    public UngroupedAccount createUngroupedAccount() {
+        return new UngroupedAccount();
     }
 
     /**
@@ -1422,6 +1526,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "CouponInfoData")
     public JAXBElement<CouponInfoData> createCouponInfoData(CouponInfoData value) {
         return new JAXBElement<>(_CouponInfoData_QNAME, CouponInfoData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfBillingGroup }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfBillingGroup }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfBillingGroup")
+    public JAXBElement<ArrayOfBillingGroup> createArrayOfBillingGroup(ArrayOfBillingGroup value) {
+        return new JAXBElement<>(_ArrayOfBillingGroup_QNAME, ArrayOfBillingGroup.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BillingGroup }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BillingGroup }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "BillingGroup")
+    public JAXBElement<BillingGroup> createBillingGroup(BillingGroup value) {
+        return new JAXBElement<>(_BillingGroup_QNAME, BillingGroup.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfUngroupedAccount }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfUngroupedAccount }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "ArrayOfUngroupedAccount")
+    public JAXBElement<ArrayOfUngroupedAccount> createArrayOfUngroupedAccount(ArrayOfUngroupedAccount value) {
+        return new JAXBElement<>(_ArrayOfUngroupedAccount_QNAME, ArrayOfUngroupedAccount.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UngroupedAccount }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UngroupedAccount }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Customer/v13/Entities", name = "UngroupedAccount")
+    public JAXBElement<UngroupedAccount> createUngroupedAccount(UngroupedAccount value) {
+        return new JAXBElement<>(_UngroupedAccount_QNAME, UngroupedAccount.class, null, value);
     }
 
     /**

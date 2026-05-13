@@ -39,7 +39,11 @@ public enum CampaignAdditionalField {
     MAX_CONVERSION_VALUE_WITH_MAX_CPC("MaxConversionValueWithMaxCpc"),
     PMAX_APP_CAMPAIGN("PmaxAppCampaign"),
     CROSS_ACCOUNT_BID_STRATEGY_FIELDS("CrossAccountBidStrategyFields"),
-    A_I_SEARCH_SETTING("AISearchSetting");
+    A_I_SEARCH_SETTING("AISearchSetting"),
+    PMAX_XBOX_CAMPAIGN("PmaxXboxCampaign"),
+    NETWORK_DISTRIBUTION_SETTING("NetworkDistributionSetting"),
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    IMPRESSION_TRACKING_SETTING("ImpressionTrackingSetting");
         
     private final String value;
 

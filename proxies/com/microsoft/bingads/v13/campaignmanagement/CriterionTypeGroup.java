@@ -21,6 +21,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="JobFunction"/>
  *     <enumeration value="Industry"/>
  *     <enumeration value="IncomeRange"/>
+ *     <enumeration value="JobSeniority"/>
+ *     <enumeration value="CustomLinkedIn"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -45,7 +47,11 @@ public enum CriterionTypeGroup {
     @XmlEnumValue("Industry")
     INDUSTRY("Industry"),
     @XmlEnumValue("IncomeRange")
-    INCOME_RANGE("IncomeRange");
+    INCOME_RANGE("IncomeRange"),
+    @XmlEnumValue("JobSeniority")
+    JOB_SENIORITY("JobSeniority"),
+    @XmlEnumValue("CustomLinkedIn")
+    CUSTOM_LINKED_IN("CustomLinkedIn");
     private final String value;
 
     CriterionTypeGroup(String v) {

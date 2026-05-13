@@ -70,9 +70,9 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     PagesViewedPerVisitGoal.class,
     EventGoal.class,
     AppInstallGoal.class,
+    AppDownloadGoal.class,
     OfflineConversionGoal.class,
-    InStoreTransactionGoal.class,
-    AppDownloadGoal.class
+    InStoreTransactionGoal.class
 })
 public class ConversionGoal {
 
@@ -111,7 +111,7 @@ public class ConversionGoal {
     @XmlSchemaType(name = "string")
     protected ConversionGoalTrackingStatus trackingStatus;
     @XmlElement(name = "Type", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter27 .class)
+    @XmlJavaTypeAdapter(Adapter28 .class)
     protected Collection<ConversionGoalType> type;
     @XmlElement(name = "ViewThroughConversionWindowInMinutes", nillable = true)
     protected Integer viewThroughConversionWindowInMinutes;

@@ -350,4 +350,52 @@ public class CustomerBillingService extends RestfulServiceClient implements ICus
 		return sendRequestAsync(request, "/Coupons/Distribute", HttpPost, DistributeCouponsResponse.class, asyncHandler);
 	}
 	
+    	
+	public GetBillingGroupsResponse getBillingGroups(GetBillingGroupsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
+		GetBillingGroupsResponse response = sendRequest(request, "/BillingGroups/Query", HttpPost, GetBillingGroupsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetBillingGroupsResponse> getBillingGroupsAsync(GetBillingGroupsRequest request) {
+		return sendRequestAsync(request, "/BillingGroups/Query", HttpPost, GetBillingGroupsResponse.class, null);
+	}
+
+	public Future<?> getBillingGroupsAsync(GetBillingGroupsRequest request, AsyncHandler<GetBillingGroupsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BillingGroups/Query", HttpPost, GetBillingGroupsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetUngroupedAccountsResponse getUngroupedAccounts(GetUngroupedAccountsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
+		GetUngroupedAccountsResponse response = sendRequest(request, "/UngroupedAccounts/Query", HttpPost, GetUngroupedAccountsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetUngroupedAccountsResponse> getUngroupedAccountsAsync(GetUngroupedAccountsRequest request) {
+		return sendRequestAsync(request, "/UngroupedAccounts/Query", HttpPost, GetUngroupedAccountsResponse.class, null);
+	}
+
+	public Future<?> getUngroupedAccountsAsync(GetUngroupedAccountsRequest request, AsyncHandler<GetUngroupedAccountsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/UngroupedAccounts/Query", HttpPost, GetUngroupedAccountsResponse.class, asyncHandler);
+	}
+	
+    	
+	public UpdateBillingGroupAccountsResponse updateBillingGroupAccounts(UpdateBillingGroupAccountsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFault_Exception {
+		UpdateBillingGroupAccountsResponse response = sendRequest(request, "/BillingGroupAccounts", HttpPut, UpdateBillingGroupAccountsResponse.class);
+		
+		return response;
+	}
+
+    public Response<UpdateBillingGroupAccountsResponse> updateBillingGroupAccountsAsync(UpdateBillingGroupAccountsRequest request) {
+		return sendRequestAsync(request, "/BillingGroupAccounts", HttpPut, UpdateBillingGroupAccountsResponse.class, null);
+	}
+
+	public Future<?> updateBillingGroupAccountsAsync(UpdateBillingGroupAccountsRequest request, AsyncHandler<UpdateBillingGroupAccountsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/BillingGroupAccounts", HttpPut, UpdateBillingGroupAccountsResponse.class, asyncHandler);
+	}
+	
     }
