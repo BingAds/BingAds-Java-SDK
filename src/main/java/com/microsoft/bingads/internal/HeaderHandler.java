@@ -9,6 +9,9 @@ import jakarta.xml.ws.handler.soap.SOAPMessageContext;
 
 import com.microsoft.bingads.InternalException;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,8 +45,29 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
                 String namespaceURI = ((QName)context.get(MessageContext.WSDL_INTERFACE)).getNamespaceURI();
 
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
+                    // Api-Revision is an HTTP transport header, not a SOAP envelope element.
+                    // It is handled below via HTTP_REQUEST_HEADERS; skip it here.
+                    if ("Api-Revision".equals(entry.getKey())) continue;
                     header.addHeaderElement(new QName(namespaceURI, entry.getKey())).addTextNode(entry.getValue());
                 }
+
+                // Inject Api-Revision as an HTTP transport header (not a SOAP envelope element)
+                // so the server can read it from context.Request.Headers. ServiceClient.buildHeaders
+                // unconditionally populates this entry, so a missing value indicates a code-path
+                // that bypassed ServiceClient and must be fixed at the caller.
+                String apiRevision = headers.get("Api-Revision");
+                if (apiRevision == null) {
+                    throw new IllegalStateException(
+                        "Api-Revision header missing from request headers; ServiceClient.buildHeaders should have populated it");
+                }
+                @SuppressWarnings("unchecked")
+                Map<String, List<String>> httpHeaders = (Map<String, List<String>>) context.get(MessageContext.HTTP_REQUEST_HEADERS);
+                if (httpHeaders == null) {
+                    httpHeaders = new HashMap<>();
+                }
+                httpHeaders.put("Api-Revision", Collections.singletonList(apiRevision));
+                context.put(MessageContext.HTTP_REQUEST_HEADERS, httpHeaders);
+                context.setScope(MessageContext.HTTP_REQUEST_HEADERS, MessageContext.Scope.APPLICATION);
             } else {
                 String headerValue = getSpecificHeaderValue(context.getMessage().getSOAPHeader(), ServiceUtils.TRACKING_HEADER_NAME);
                 if (headerValue != null) {

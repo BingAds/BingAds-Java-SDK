@@ -41,6 +41,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupStatus"/>
  *     <enumeration value="SearchCategory"/>
  *     <enumeration value="SearchVolume"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -105,7 +108,13 @@ public enum SearchInsightPerformanceReportColumn {
     @XmlEnumValue("SearchCategory")
     SEARCH_CATEGORY("SearchCategory"),
     @XmlEnumValue("SearchVolume")
-    SEARCH_VOLUME("SearchVolume");
+    SEARCH_VOLUME("SearchVolume"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     SearchInsightPerformanceReportColumn(String v) {

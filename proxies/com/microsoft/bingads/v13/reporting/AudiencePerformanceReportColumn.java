@@ -21,6 +21,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CampaignId"/>
  *     <enumeration value="AdGroupName"/>
  *     <enumeration value="AdGroupId"/>
+ *     <enumeration value="AssetGroupName"/>
+ *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AudienceId"/>
  *     <enumeration value="AudienceName"/>
  *     <enumeration value="AssociationStatus"/>
@@ -72,6 +74,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="TotalWatchTimeInMS"/>
  *     <enumeration value="AverageWatchTimePerVideoView"/>
  *     <enumeration value="AverageWatchTimePerImpression"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -97,6 +102,10 @@ public enum AudiencePerformanceReportColumn {
     AD_GROUP_NAME("AdGroupName"),
     @XmlEnumValue("AdGroupId")
     AD_GROUP_ID("AdGroupId"),
+    @XmlEnumValue("AssetGroupName")
+    ASSET_GROUP_NAME("AssetGroupName"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
     @XmlEnumValue("AudienceId")
     AUDIENCE_ID("AudienceId"),
     @XmlEnumValue("AudienceName")
@@ -198,7 +207,13 @@ public enum AudiencePerformanceReportColumn {
     @XmlEnumValue("AverageWatchTimePerVideoView")
     AVERAGE_WATCH_TIME_PER_VIDEO_VIEW("AverageWatchTimePerVideoView"),
     @XmlEnumValue("AverageWatchTimePerImpression")
-    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression");
+    AVERAGE_WATCH_TIME_PER_IMPRESSION("AverageWatchTimePerImpression"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AudiencePerformanceReportColumn(String v) {

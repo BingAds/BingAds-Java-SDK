@@ -46,6 +46,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Owner"/>
  *     <enumeration value="TimeZone"/>
  *     <enumeration value="Currency"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -119,7 +122,13 @@ public enum BidStrategyReportColumn {
     @XmlEnumValue("TimeZone")
     TIME_ZONE("TimeZone"),
     @XmlEnumValue("Currency")
-    CURRENCY("Currency");
+    CURRENCY("Currency"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     BidStrategyReportColumn(String v) {

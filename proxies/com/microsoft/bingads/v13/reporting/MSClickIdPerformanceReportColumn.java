@@ -32,7 +32,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MetroArea"/>
  *     <enumeration value="City"/>
  *     <enumeration value="Clicks"/>
- *     <enumeration value="AverageCpc"/>
+ *     <enumeration value="Cpc"/>
  *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="Revenue"/>
  *   </restriction>
@@ -82,8 +82,8 @@ public enum MSClickIdPerformanceReportColumn {
     CITY("City"),
     @XmlEnumValue("Clicks")
     CLICKS("Clicks"),
-    @XmlEnumValue("AverageCpc")
-    AVERAGE_CPC("AverageCpc"),
+    @XmlEnumValue("Cpc")
+    CPC("Cpc"),
     @XmlEnumValue("ConversionsQualified")
     CONVERSIONS_QUALIFIED("ConversionsQualified"),
     @XmlEnumValue("Revenue")

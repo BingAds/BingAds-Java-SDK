@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="Keywords" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfKeyword" minOccurs="0"/>
  *         <element name="ReturnInheritedBidStrategyTypes" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="AssetGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,17 +34,20 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "adGroupId",
     "keywords",
-    "returnInheritedBidStrategyTypes"
+    "returnInheritedBidStrategyTypes",
+    "assetGroupId"
 })
 @XmlRootElement(name = "AddKeywordsRequest")
 public class AddKeywordsRequest {
 
-    @XmlElement(name = "AdGroupId")
+    @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
     @XmlElement(name = "Keywords", nillable = true)
     protected ArrayOfKeyword keywords;
     @XmlElement(name = "ReturnInheritedBidStrategyTypes", nillable = true)
     protected Boolean returnInheritedBidStrategyTypes;
+    @XmlElement(name = "AssetGroupId", nillable = true)
+    protected Long assetGroupId;
 
     /**
      * Gets the value of the adGroupId property.
@@ -115,6 +119,30 @@ public class AddKeywordsRequest {
      */
     public void setReturnInheritedBidStrategyTypes(Boolean value) {
         this.returnInheritedBidStrategyTypes = value;
+    }
+
+    /**
+     * Gets the value of the assetGroupId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAssetGroupId() {
+        return assetGroupId;
+    }
+
+    /**
+     * Sets the value of the assetGroupId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAssetGroupId(Long value) {
+        this.assetGroupId = value;
     }
 
 }

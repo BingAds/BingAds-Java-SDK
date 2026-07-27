@@ -51,6 +51,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ViewThroughConversionsQualified"/>
  *     <enumeration value="ViewThroughRevenue"/>
  *     <enumeration value="ViewThroughConversionRate"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -135,7 +138,13 @@ public enum FeedItemPerformanceReportColumn {
     @XmlEnumValue("ViewThroughRevenue")
     VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
     @XmlEnumValue("ViewThroughConversionRate")
-    VIEW_THROUGH_CONVERSION_RATE("ViewThroughConversionRate");
+    VIEW_THROUGH_CONVERSION_RATE("ViewThroughConversionRate"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     FeedItemPerformanceReportColumn(String v) {

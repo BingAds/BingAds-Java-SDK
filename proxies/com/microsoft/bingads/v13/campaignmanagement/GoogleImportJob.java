@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{https://bingads.microsoft.com/CampaignManagement/v13}ImportJob">
  *       <sequence>
  *         <element name="CampaignAdGroupIds" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfCampaignAdGroupIds" minOccurs="0"/>
+ *         <element name="CampaignTypes" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring" minOccurs="0"/>
  *         <element name="CredentialId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         <element name="GoogleAccountId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         <element name="GoogleUserName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -32,6 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GoogleImportJob", propOrder = {
     "campaignAdGroupIds",
+    "campaignTypes",
     "credentialId",
     "googleAccountId",
     "googleUserName"
@@ -45,6 +47,8 @@ public class GoogleImportJob
 
     @XmlElement(name = "CampaignAdGroupIds", nillable = true)
     protected ArrayOfCampaignAdGroupIds campaignAdGroupIds;
+    @XmlElement(name = "CampaignTypes", nillable = true)
+    protected ArrayOfstring campaignTypes;
     @XmlElement(name = "CredentialId", required = true, nillable = true)
     protected String credentialId;
     @XmlElement(name = "GoogleAccountId", required = true, type = Long.class, nillable = true)
@@ -74,6 +78,30 @@ public class GoogleImportJob
      */
     public void setCampaignAdGroupIds(ArrayOfCampaignAdGroupIds value) {
         this.campaignAdGroupIds = value;
+    }
+
+    /**
+     * Gets the value of the campaignTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public ArrayOfstring getCampaignTypes() {
+        return campaignTypes;
+    }
+
+    /**
+     * Sets the value of the campaignTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfstring }
+     *     
+     */
+    public void setCampaignTypes(ArrayOfstring value) {
+        this.campaignTypes = value;
     }
 
     /**

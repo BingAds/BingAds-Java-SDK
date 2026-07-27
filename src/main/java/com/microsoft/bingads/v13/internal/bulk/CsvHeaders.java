@@ -429,6 +429,17 @@ public class CsvHeaders {
             StringTable.DynamicAdTargetConditionOperator3,
             StringTable.PageFeedIds,
 
+            // AIMax URL Inclusions (Ad Group Url Target)
+            StringTable.AdGroupUrlTargetCondition1,
+            StringTable.AdGroupUrlTargetCondition2,
+            StringTable.AdGroupUrlTargetCondition3,
+            StringTable.AdGroupUrlTargetValue1,
+            StringTable.AdGroupUrlTargetValue2,
+            StringTable.AdGroupUrlTargetValue3,
+            StringTable.AdGroupUrlTargetOperator1,
+            StringTable.AdGroupUrlTargetOperator2,
+            StringTable.AdGroupUrlTargetOperator3,
+
             
             // Labels
             StringTable.ColorCode,

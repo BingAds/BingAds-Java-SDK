@@ -90,6 +90,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="LowQualityImpressionsPercent"/>
  *     <enumeration value="LowQualityGeneralClicks"/>
  *     <enumeration value="LowQualitySophisticatedClicks"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -249,7 +252,13 @@ public enum PublisherUsagePerformanceReportColumn {
     @XmlEnumValue("LowQualityGeneralClicks")
     LOW_QUALITY_GENERAL_CLICKS("LowQualityGeneralClicks"),
     @XmlEnumValue("LowQualitySophisticatedClicks")
-    LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks");
+    LOW_QUALITY_SOPHISTICATED_CLICKS("LowQualitySophisticatedClicks"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     PublisherUsagePerformanceReportColumn(String v) {

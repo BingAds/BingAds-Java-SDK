@@ -81,6 +81,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(BidStrategyReportColumn.class, BidStrategyReportColumnMixIn.class)
 				.addMixIn(MSClickIdPerformanceReportColumn.class, MSClickIdPerformanceReportColumnMixIn.class)
 				.addMixIn(MMMPerformanceReportColumn.class, MMMPerformanceReportColumnMixIn.class)
+				.addMixIn(SearchTermLandingPageReportColumn.class, SearchTermLandingPageReportColumnMixIn.class)
 				.addMixIn(ReportRequestStatusType.class, ReportRequestStatusTypeMixIn.class)
 				;
 	}

@@ -33,6 +33,23 @@ import com.microsoft.bingads.v13.reporting.IReportingService;
  *
  */
 public class ServiceClient<T> {
+
+    /**
+     * The revision date this SDK was built against, sent as the Api-Revision HTTP header on every outgoing
+     * request. Update in the same PR that bumps the SDK version in pom.xml.
+     *
+     * <p>Initialised in a static block (not via a compile-time-constant String literal initializer) so that
+     * consuming JARs read the value from this SDK at runtime. A {@code public static final String} initialised
+     * by a compile-time constant expression (JLS §15.28, §4.12.4, §13.4.9) would be inlined into every
+     * consumer's {@code .class} file, leaving downstream JARs pinned to the date that was current when they
+     * were compiled — even after this SDK ships a newer one.</p>
+     */
+    public static final String SDK_API_REVISION;
+
+    static {
+        SDK_API_REVISION = "2026-05-20";
+    }
+
     private final AuthorizationData authorizationData;
 
     private final Class<T> serviceInterface;
@@ -106,7 +123,7 @@ public class ServiceClient<T> {
         return createRestService(headers);        
     }
 
-    private Map<String, String> buildHeaders() {
+    Map<String, String> buildHeaders() {
         final Map<String, String> headers = new HashMap<String, String>();
 
         headers.put("CustomerAccountId", Long.toString(authorizationData.getAccountId()));
@@ -127,6 +144,8 @@ public class ServiceClient<T> {
                 headers.put(name, value);
             }
         });
+
+        headers.put("Api-Revision", SDK_API_REVISION);
 
         return headers;
     }

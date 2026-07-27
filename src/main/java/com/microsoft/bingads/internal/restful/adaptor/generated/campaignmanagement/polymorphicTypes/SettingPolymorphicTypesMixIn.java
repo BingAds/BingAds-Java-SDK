@@ -55,8 +55,6 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = AISearchSetting.class, name = "AISearchSetting"),
 						
 			@JsonSubTypes.Type(value = NetworkDistributionSetting.class, name = "NetworkDistributionSetting"),
-						
-			@JsonSubTypes.Type(value = ImpressionTrackingSetting.class, name = "ImpressionTrackingSetting"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

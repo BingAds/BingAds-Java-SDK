@@ -33,6 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ReturnOnAdSpend"/>
  *     <enumeration value="CampaignType"/>
  *     <enumeration value="CostPerConversion"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -81,7 +84,13 @@ public enum AssetGroupPerformanceReportColumn {
     @XmlEnumValue("CampaignType")
     CAMPAIGN_TYPE("CampaignType"),
     @XmlEnumValue("CostPerConversion")
-    COST_PER_CONVERSION("CostPerConversion");
+    COST_PER_CONVERSION("CostPerConversion"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AssetGroupPerformanceReportColumn(String v) {

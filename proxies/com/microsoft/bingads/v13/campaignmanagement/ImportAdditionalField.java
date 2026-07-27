@@ -37,7 +37,12 @@ public enum ImportAdditionalField {
     NEW_A_I_MAX_SETTINGS("NewAIMaxSettings"),
     IMAGE_ASSET_AUTOMATION_OPT_OUT("ImageAssetAutomationOptOut"),
     UPDATE_A_I_MAX_SETTINGS("UpdateAIMaxSettings"),
-    IMPORT_N_C_A_GOAL_WITH_SYSTEM_GENERATED_AUDIENCE("ImportNCAGoalWithSystemGeneratedAudience");
+    IMPORT_N_C_A_GOAL_WITH_SYSTEM_GENERATED_AUDIENCE("ImportNCAGoalWithSystemGeneratedAudience"),
+    UPDATE_ASSET_GROUPS_ASSET("UpdateAssetGroupsAsset"),
+    NEW_BRAND_LIST_ASSOCIATIONS("NewBrandListAssociations"),
+    UPDATE_BRAND_LIST_ASSOCIATIONS("UpdateBrandListAssociations"),
+    CAMPAIGN_TYPES("CampaignTypes"),
+    NEW_SEARCH_THEMES_FOR_EXISTING_ASSET_GROUPS("NewSearchThemesForExistingAssetGroups");
         
     private final String value;
 

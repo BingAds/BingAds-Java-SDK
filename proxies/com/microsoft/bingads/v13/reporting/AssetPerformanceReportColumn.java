@@ -36,6 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="VideoCompletionRate"/>
  *     <enumeration value="Conversions"/>
  *     <enumeration value="Revenue"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -90,7 +93,13 @@ public enum AssetPerformanceReportColumn {
     @XmlEnumValue("Conversions")
     CONVERSIONS("Conversions"),
     @XmlEnumValue("Revenue")
-    REVENUE("Revenue");
+    REVENUE("Revenue"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AssetPerformanceReportColumn(String v) {

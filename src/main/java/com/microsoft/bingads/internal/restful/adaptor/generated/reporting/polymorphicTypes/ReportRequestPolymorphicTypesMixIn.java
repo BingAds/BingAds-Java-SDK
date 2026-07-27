@@ -112,6 +112,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.reporting.enums.
 			@JsonSubTypes.Type(value = MSClickIdPerformanceReportRequest.class, name = "MSClickIdPerformanceReportRequest"),
 						
 			@JsonSubTypes.Type(value = MMMPerformanceReportRequest.class, name = "MMMPerformanceReportRequest"),
+						
+			@JsonSubTypes.Type(value = SearchTermLandingPageReportRequest.class, name = "SearchTermLandingPageReportRequest"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

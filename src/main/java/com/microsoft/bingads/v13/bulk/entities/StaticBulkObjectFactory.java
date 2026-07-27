@@ -154,6 +154,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkAdGroupDynamicSearchAdTarget();
             }
         }));        
+        m.put(StringTable.AdGroupUrlTarget, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupUrlTarget();
+            }
+        }));        
         m.put(StringTable.Keyword, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

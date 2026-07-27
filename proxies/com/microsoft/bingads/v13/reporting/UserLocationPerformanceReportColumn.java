@@ -94,6 +94,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Subscriptions"/>
  *     <enumeration value="PostInstallSubscriptionRate"/>
  *     <enumeration value="CPS"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -261,7 +264,13 @@ public enum UserLocationPerformanceReportColumn {
     SUBSCRIPTIONS("Subscriptions"),
     @XmlEnumValue("PostInstallSubscriptionRate")
     POST_INSTALL_SUBSCRIPTION_RATE("PostInstallSubscriptionRate"),
-    CPS("CPS");
+    CPS("CPS"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     UserLocationPerformanceReportColumn(String v) {

@@ -644,6 +644,18 @@ public class StringTable {
     public static final String DynamicAdTargetConditionOperator1 = "Dynamic Ad Target Condition Operator 1";
     public static final String DynamicAdTargetConditionOperator2 = "Dynamic Ad Target Condition Operator 2";
     public static final String DynamicAdTargetConditionOperator3 = "Dynamic Ad Target Condition Operator 3";
+
+    // AIMax URL Inclusions (Ad Group Url Target)
+    public static final String AdGroupUrlTarget = "Ad Group Url Target";
+    public static final String AdGroupUrlTargetCondition1 = "Ad Group Url Target Condition 1";
+    public static final String AdGroupUrlTargetCondition2 = "Ad Group Url Target Condition 2";
+    public static final String AdGroupUrlTargetCondition3 = "Ad Group Url Target Condition 3";
+    public static final String AdGroupUrlTargetValue1 = "Ad Group Url Target Value 1";
+    public static final String AdGroupUrlTargetValue2 = "Ad Group Url Target Value 2";
+    public static final String AdGroupUrlTargetValue3 = "Ad Group Url Target Value 3";
+    public static final String AdGroupUrlTargetOperator1 = "Ad Group Url Target Operator 1";
+    public static final String AdGroupUrlTargetOperator2 = "Ad Group Url Target Operator 2";
+    public static final String AdGroupUrlTargetOperator3 = "Ad Group Url Target Operator 3";
     
     // AdGroup Criterion
     public static final String AdGroupAgeCriterion = "Ad Group Age Criterion";

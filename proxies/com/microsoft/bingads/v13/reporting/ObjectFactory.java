@@ -251,6 +251,10 @@ public class ObjectFactory {
     private static final QName _ArrayOfMMMPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfMMMPerformanceReportColumn");
     private static final QName _MMMPerformanceReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "MMMPerformanceReportColumn");
     private static final QName _MMMPerformanceReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "MMMPerformanceReportFilter");
+    private static final QName _SearchTermLandingPageReportRequest_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "SearchTermLandingPageReportRequest");
+    private static final QName _ArrayOfSearchTermLandingPageReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ArrayOfSearchTermLandingPageReportColumn");
+    private static final QName _SearchTermLandingPageReportColumn_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "SearchTermLandingPageReportColumn");
+    private static final QName _SearchTermLandingPageReportFilter_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "SearchTermLandingPageReportFilter");
     private static final QName _ApplicationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "ApplicationToken");
     private static final QName _AuthenticationToken_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "AuthenticationToken");
     private static final QName _CustomerAccountId_QNAME = new QName("https://bingads.microsoft.com/Reporting/v13", "CustomerAccountId");
@@ -1970,6 +1974,36 @@ public class ObjectFactory {
      */
     public MMMPerformanceReportFilter createMMMPerformanceReportFilter() {
         return new MMMPerformanceReportFilter();
+    }
+
+    /**
+     * Create an instance of {@link SearchTermLandingPageReportRequest }
+     * 
+     * @return
+     *     the new instance of {@link SearchTermLandingPageReportRequest }
+     */
+    public SearchTermLandingPageReportRequest createSearchTermLandingPageReportRequest() {
+        return new SearchTermLandingPageReportRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSearchTermLandingPageReportColumn }
+     * 
+     * @return
+     *     the new instance of {@link ArrayOfSearchTermLandingPageReportColumn }
+     */
+    public ArrayOfSearchTermLandingPageReportColumn createArrayOfSearchTermLandingPageReportColumn() {
+        return new ArrayOfSearchTermLandingPageReportColumn();
+    }
+
+    /**
+     * Create an instance of {@link SearchTermLandingPageReportFilter }
+     * 
+     * @return
+     *     the new instance of {@link SearchTermLandingPageReportFilter }
+     */
+    public SearchTermLandingPageReportFilter createSearchTermLandingPageReportFilter() {
+        return new SearchTermLandingPageReportFilter();
     }
 
     /**
@@ -5077,6 +5111,58 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "MMMPerformanceReportFilter")
     public JAXBElement<MMMPerformanceReportFilter> createMMMPerformanceReportFilter(MMMPerformanceReportFilter value) {
         return new JAXBElement<>(_MMMPerformanceReportFilter_QNAME, MMMPerformanceReportFilter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "SearchTermLandingPageReportRequest")
+    public JAXBElement<SearchTermLandingPageReportRequest> createSearchTermLandingPageReportRequest(SearchTermLandingPageReportRequest value) {
+        return new JAXBElement<>(_SearchTermLandingPageReportRequest_QNAME, SearchTermLandingPageReportRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSearchTermLandingPageReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfSearchTermLandingPageReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "ArrayOfSearchTermLandingPageReportColumn")
+    public JAXBElement<ArrayOfSearchTermLandingPageReportColumn> createArrayOfSearchTermLandingPageReportColumn(ArrayOfSearchTermLandingPageReportColumn value) {
+        return new JAXBElement<>(_ArrayOfSearchTermLandingPageReportColumn_QNAME, ArrayOfSearchTermLandingPageReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportColumn }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportColumn }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "SearchTermLandingPageReportColumn")
+    public JAXBElement<SearchTermLandingPageReportColumn> createSearchTermLandingPageReportColumn(SearchTermLandingPageReportColumn value) {
+        return new JAXBElement<>(_SearchTermLandingPageReportColumn_QNAME, SearchTermLandingPageReportColumn.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportFilter }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchTermLandingPageReportFilter }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/Reporting/v13", name = "SearchTermLandingPageReportFilter")
+    public JAXBElement<SearchTermLandingPageReportFilter> createSearchTermLandingPageReportFilter(SearchTermLandingPageReportFilter value) {
+        return new JAXBElement<>(_SearchTermLandingPageReportFilter_QNAME, SearchTermLandingPageReportFilter.class, null, value);
     }
 
     /**

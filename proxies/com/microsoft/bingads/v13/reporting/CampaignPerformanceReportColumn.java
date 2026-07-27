@@ -145,6 +145,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="UnknownCustomerRevenue"/>
  *     <enumeration value="NewCustomerCount"/>
  *     <enumeration value="NewCustomerSpend"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -414,7 +417,13 @@ public enum CampaignPerformanceReportColumn {
     @XmlEnumValue("NewCustomerCount")
     NEW_CUSTOMER_COUNT("NewCustomerCount"),
     @XmlEnumValue("NewCustomerSpend")
-    NEW_CUSTOMER_SPEND("NewCustomerSpend");
+    NEW_CUSTOMER_SPEND("NewCustomerSpend"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     CampaignPerformanceReportColumn(String v) {

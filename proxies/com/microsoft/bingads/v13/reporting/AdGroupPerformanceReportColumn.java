@@ -117,6 +117,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CostPerInstall"/>
  *     <enumeration value="RevenuePerInstall"/>
  *     <enumeration value="GoalId"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -333,7 +336,13 @@ public enum AdGroupPerformanceReportColumn {
     @XmlEnumValue("RevenuePerInstall")
     REVENUE_PER_INSTALL("RevenuePerInstall"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AdGroupPerformanceReportColumn(String v) {

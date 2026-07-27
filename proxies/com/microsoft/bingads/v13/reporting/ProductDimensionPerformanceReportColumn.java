@@ -115,6 +115,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupStatus"/>
  *     <enumeration value="CollectionId"/>
  *     <enumeration value="FeedLabel"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -325,7 +328,13 @@ public enum ProductDimensionPerformanceReportColumn {
     @XmlEnumValue("CollectionId")
     COLLECTION_ID("CollectionId"),
     @XmlEnumValue("FeedLabel")
-    FEED_LABEL("FeedLabel");
+    FEED_LABEL("FeedLabel"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     ProductDimensionPerformanceReportColumn(String v) {

@@ -42,8 +42,7 @@ public enum CampaignAdditionalField {
     A_I_SEARCH_SETTING("AISearchSetting"),
     PMAX_XBOX_CAMPAIGN("PmaxXboxCampaign"),
     NETWORK_DISTRIBUTION_SETTING("NetworkDistributionSetting"),
-    MARKETING_OBJECTIVE("MarketingObjective"),
-    IMPRESSION_TRACKING_SETTING("ImpressionTrackingSetting");
+    PAGE_FEED_IN_A_I_SEARCH_SETTINGS("PageFeedInAISearchSettings");
         
     private final String value;
 

@@ -62,6 +62,7 @@ public class AddMixInForArrayOfTypes {
 				.addMixIn(ArrayOfBidStrategyReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfMSClickIdPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfMMMPerformanceReportColumn.class, ArrayOfTypesMixIn.class)
+				.addMixIn(ArrayOfSearchTermLandingPageReportColumn.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfBatchError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOfOperationError.class, ArrayOfTypesMixIn.class)
 				.addMixIn(ArrayOflong.class, ArrayOfTypesMixIn.class)

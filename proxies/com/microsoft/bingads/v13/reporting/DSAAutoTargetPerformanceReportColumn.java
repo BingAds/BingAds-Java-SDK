@@ -70,6 +70,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AdId"/>
  *     <enumeration value="ViewThroughRevenue"/>
  *     <enumeration value="GoalId"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -192,7 +195,13 @@ public enum DSAAutoTargetPerformanceReportColumn {
     @XmlEnumValue("ViewThroughRevenue")
     VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     DSAAutoTargetPerformanceReportColumn(String v) {
