@@ -38,6 +38,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Spend"/>
  *     <enumeration value="Ctr"/>
  *     <enumeration value="Conversions"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -96,7 +99,13 @@ public enum CombinationPerformanceReportColumn {
     @XmlEnumValue("Ctr")
     CTR("Ctr"),
     @XmlEnumValue("Conversions")
-    CONVERSIONS("Conversions");
+    CONVERSIONS("Conversions"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     CombinationPerformanceReportColumn(String v) {

@@ -92,6 +92,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AssetGroupName"/>
  *     <enumeration value="AssetGroupStatus"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -258,7 +261,13 @@ public enum ProductPartitionPerformanceReportColumn {
     @XmlEnumValue("AssetGroupName")
     ASSET_GROUP_NAME("AssetGroupName"),
     @XmlEnumValue("AssetGroupStatus")
-    ASSET_GROUP_STATUS("AssetGroupStatus");
+    ASSET_GROUP_STATUS("AssetGroupStatus"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     ProductPartitionPerformanceReportColumn(String v) {

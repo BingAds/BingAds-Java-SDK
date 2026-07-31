@@ -26,6 +26,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="JobFunctionName"/>
  *     <enumeration value="JobSeniorityName"/>
  *     <enumeration value="CustomLinkedInName"/>
+ *     <enumeration value="LinkedInSegmentName"/>
+ *     <enumeration value="LinkedInSegmentId"/>
+ *     <enumeration value="LinkedInSegmentType"/>
  *     <enumeration value="AdDistribution"/>
  *     <enumeration value="Impressions"/>
  *     <enumeration value="Clicks"/>
@@ -53,6 +56,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AssetGroupId"/>
  *     <enumeration value="AssetGroupName"/>
  *     <enumeration value="AssetGroupStatus"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -88,6 +94,12 @@ public enum ProfessionalDemographicsAudienceReportColumn {
     JOB_SENIORITY_NAME("JobSeniorityName"),
     @XmlEnumValue("CustomLinkedInName")
     CUSTOM_LINKED_IN_NAME("CustomLinkedInName"),
+    @XmlEnumValue("LinkedInSegmentName")
+    LINKED_IN_SEGMENT_NAME("LinkedInSegmentName"),
+    @XmlEnumValue("LinkedInSegmentId")
+    LINKED_IN_SEGMENT_ID("LinkedInSegmentId"),
+    @XmlEnumValue("LinkedInSegmentType")
+    LINKED_IN_SEGMENT_TYPE("LinkedInSegmentType"),
     @XmlEnumValue("AdDistribution")
     AD_DISTRIBUTION("AdDistribution"),
     @XmlEnumValue("Impressions")
@@ -141,7 +153,13 @@ public enum ProfessionalDemographicsAudienceReportColumn {
     @XmlEnumValue("AssetGroupName")
     ASSET_GROUP_NAME("AssetGroupName"),
     @XmlEnumValue("AssetGroupStatus")
-    ASSET_GROUP_STATUS("AssetGroupStatus");
+    ASSET_GROUP_STATUS("AssetGroupStatus"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     ProfessionalDemographicsAudienceReportColumn(String v) {

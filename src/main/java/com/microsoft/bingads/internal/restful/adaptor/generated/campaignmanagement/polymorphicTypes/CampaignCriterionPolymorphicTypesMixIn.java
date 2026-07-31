@@ -20,9 +20,9 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 		  visible = true)
 	    @JsonSubTypes({
 						
-			@JsonSubTypes.Type(value = NegativeCampaignCriterion.class, name = "NegativeCampaignCriterion"),
-						
 			@JsonSubTypes.Type(value = BiddableCampaignCriterion.class, name = "BiddableCampaignCriterion"),
+						
+			@JsonSubTypes.Type(value = NegativeCampaignCriterion.class, name = "NegativeCampaignCriterion"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

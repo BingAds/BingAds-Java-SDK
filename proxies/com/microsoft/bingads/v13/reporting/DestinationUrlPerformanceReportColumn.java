@@ -75,6 +75,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AllConversionsQualified"/>
  *     <enumeration value="ViewThroughConversionsQualified"/>
  *     <enumeration value="ViewThroughRevenue"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -207,7 +210,13 @@ public enum DestinationUrlPerformanceReportColumn {
     @XmlEnumValue("ViewThroughConversionsQualified")
     VIEW_THROUGH_CONVERSIONS_QUALIFIED("ViewThroughConversionsQualified"),
     @XmlEnumValue("ViewThroughRevenue")
-    VIEW_THROUGH_REVENUE("ViewThroughRevenue");
+    VIEW_THROUGH_REVENUE("ViewThroughRevenue"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     DestinationUrlPerformanceReportColumn(String v) {

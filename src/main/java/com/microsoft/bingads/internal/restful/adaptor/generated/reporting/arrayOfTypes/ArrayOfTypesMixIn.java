@@ -219,6 +219,10 @@ interface ArrayOfTypesMixIn{
 
             
 	@JsonValue
+	List<SearchTermLandingPageReportColumn> getSearchTermLandingPageReportColumns();
+
+            
+	@JsonValue
 	List<BatchError> getBatchErrors();
 
             

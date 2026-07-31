@@ -10,7 +10,7 @@ import com.microsoft.bingads.internal.ErrorMessages;
  *
  */
 public class AuthorizationData {
-    
+
     private Authentication authentication;
 
     /**

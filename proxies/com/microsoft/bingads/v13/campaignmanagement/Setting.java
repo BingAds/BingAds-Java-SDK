@@ -49,8 +49,7 @@ import jakarta.xml.bind.annotation.XmlType;
     NewCustomerAcquisitionGoalSetting.class,
     BaseDomainSetting.class,
     AISearchSetting.class,
-    NetworkDistributionSetting.class,
-    ImpressionTrackingSetting.class
+    NetworkDistributionSetting.class
 })
 public class Setting {
 

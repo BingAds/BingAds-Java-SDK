@@ -36,6 +36,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Lcid" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="BreakdownReturnCategory" type="{https://bingads.microsoft.com/AdInsight/v13}BreakdownCategory" minOccurs="0"/>
  *         <element name="MultiAdTypes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         <element name="JobSeniority" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="Genre" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="Channel" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="ChannelPlacement" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
+ *         <element name="SubChannel" type="{https://bingads.microsoft.com/AdInsight/v13}SelectionOflong" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -62,7 +67,12 @@ import jakarta.xml.bind.annotation.XmlType;
     "feed",
     "lcid",
     "breakdownReturnCategory",
-    "multiAdTypes"
+    "multiAdTypes",
+    "jobSeniority",
+    "genre",
+    "channel",
+    "channelPlacement",
+    "subChannel"
 })
 @XmlRootElement(name = "GetAudienceBreakdownRequest")
 public class GetAudienceBreakdownRequest {
@@ -102,6 +112,16 @@ public class GetAudienceBreakdownRequest {
     protected BreakdownCategory breakdownReturnCategory;
     @XmlElement(name = "MultiAdTypes", nillable = true)
     protected Integer multiAdTypes;
+    @XmlElement(name = "JobSeniority", nillable = true)
+    protected SelectionOflong jobSeniority;
+    @XmlElement(name = "Genre", nillable = true)
+    protected SelectionOflong genre;
+    @XmlElement(name = "Channel", nillable = true)
+    protected SelectionOflong channel;
+    @XmlElement(name = "ChannelPlacement", nillable = true)
+    protected SelectionOflong channelPlacement;
+    @XmlElement(name = "SubChannel", nillable = true)
+    protected SelectionOflong subChannel;
 
     /**
      * Gets the value of the age property.
@@ -509,6 +529,126 @@ public class GetAudienceBreakdownRequest {
      */
     public void setMultiAdTypes(Integer value) {
         this.multiAdTypes = value;
+    }
+
+    /**
+     * Gets the value of the jobSeniority property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getJobSeniority() {
+        return jobSeniority;
+    }
+
+    /**
+     * Sets the value of the jobSeniority property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setJobSeniority(SelectionOflong value) {
+        this.jobSeniority = value;
+    }
+
+    /**
+     * Gets the value of the genre property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getGenre() {
+        return genre;
+    }
+
+    /**
+     * Sets the value of the genre property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setGenre(SelectionOflong value) {
+        this.genre = value;
+    }
+
+    /**
+     * Gets the value of the channel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getChannel() {
+        return channel;
+    }
+
+    /**
+     * Sets the value of the channel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setChannel(SelectionOflong value) {
+        this.channel = value;
+    }
+
+    /**
+     * Gets the value of the channelPlacement property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getChannelPlacement() {
+        return channelPlacement;
+    }
+
+    /**
+     * Sets the value of the channelPlacement property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setChannelPlacement(SelectionOflong value) {
+        this.channelPlacement = value;
+    }
+
+    /**
+     * Gets the value of the subChannel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public SelectionOflong getSubChannel() {
+        return subChannel;
+    }
+
+    /**
+     * Sets the value of the subChannel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SelectionOflong }
+     *     
+     */
+    public void setSubChannel(SelectionOflong value) {
+        this.subChannel = value;
     }
 
 }

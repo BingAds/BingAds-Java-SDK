@@ -92,7 +92,8 @@ import jakarta.xml.bind.annotation.XmlType;
     TravelQueryInsightReportRequest.class,
     BidStrategyReportRequest.class,
     MSClickIdPerformanceReportRequest.class,
-    MMMPerformanceReportRequest.class
+    MMMPerformanceReportRequest.class,
+    SearchTermLandingPageReportRequest.class
 })
 public class ReportRequest {
     protected String type;

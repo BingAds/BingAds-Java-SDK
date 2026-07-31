@@ -84,7 +84,7 @@ public class ObjectFactory {
     private static final QName _AISearchSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AISearchSetting");
     private static final QName _NetworkDistributionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NetworkDistributionSetting");
     private static final QName _Network_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Network");
-    private static final QName _ImpressionTrackingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImpressionTrackingSetting");
+    private static final QName _FrequencyCapTimeGranularity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapTimeGranularity");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
@@ -140,7 +140,6 @@ public class ObjectFactory {
     private static final QName _Date_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Date");
     private static final QName _ArrayOfFrequencyCapSettings_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfFrequencyCapSettings");
     private static final QName _FrequencyCapSettings_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapSettings");
-    private static final QName _FrequencyCapTimeGranularity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapTimeGranularity");
     private static final QName _AdGroupPrivacyStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupPrivacyStatus");
     private static final QName _AdGroupStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupStatus");
     private static final QName _AdGroupAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupAdditionalField");
@@ -284,6 +283,7 @@ public class ObjectFactory {
     private static final QName _AudienceType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceType");
     private static final QName _ProfileCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileCriterion");
     private static final QName _ProfileType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ProfileType");
+    private static final QName _CustomLinkedInCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomLinkedInCriterion");
     private static final QName _StoreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "StoreCriterion");
     private static final QName _DealCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "DealCriterion");
     private static final QName _GenreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GenreCriterion");
@@ -337,8 +337,8 @@ public class ObjectFactory {
     private static final QName _ArrayOfCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaignCriterion");
     private static final QName _CampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterion");
     private static final QName _CampaignCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterionStatus");
-    private static final QName _NegativeCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeCampaignCriterion");
     private static final QName _BiddableCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableCampaignCriterion");
+    private static final QName _NegativeCampaignCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NegativeCampaignCriterion");
     private static final QName _CampaignCriterionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignCriterionType");
     private static final QName _ArrayOfBudget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfBudget");
     private static final QName _Budget_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Budget");
@@ -1183,16 +1183,6 @@ public class ObjectFactory {
      */
     public NetworkDistributionSetting createNetworkDistributionSetting() {
         return new NetworkDistributionSetting();
-    }
-
-    /**
-     * Create an instance of {@link ImpressionTrackingSetting }
-     * 
-     * @return
-     *     the new instance of {@link ImpressionTrackingSetting }
-     */
-    public ImpressionTrackingSetting createImpressionTrackingSetting() {
-        return new ImpressionTrackingSetting();
     }
 
     /**
@@ -3616,6 +3606,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CustomLinkedInCriterion }
+     * 
+     * @return
+     *     the new instance of {@link CustomLinkedInCriterion }
+     */
+    public CustomLinkedInCriterion createCustomLinkedInCriterion() {
+        return new CustomLinkedInCriterion();
+    }
+
+    /**
      * Create an instance of {@link StoreCriterion }
      * 
      * @return
@@ -4546,16 +4546,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NegativeCampaignCriterion }
-     * 
-     * @return
-     *     the new instance of {@link NegativeCampaignCriterion }
-     */
-    public NegativeCampaignCriterion createNegativeCampaignCriterion() {
-        return new NegativeCampaignCriterion();
-    }
-
-    /**
      * Create an instance of {@link BiddableCampaignCriterion }
      * 
      * @return
@@ -4563,6 +4553,16 @@ public class ObjectFactory {
      */
     public BiddableCampaignCriterion createBiddableCampaignCriterion() {
         return new BiddableCampaignCriterion();
+    }
+
+    /**
+     * Create an instance of {@link NegativeCampaignCriterion }
+     * 
+     * @return
+     *     the new instance of {@link NegativeCampaignCriterion }
+     */
+    public NegativeCampaignCriterion createNegativeCampaignCriterion() {
+        return new NegativeCampaignCriterion();
     }
 
     /**
@@ -9927,16 +9927,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ImpressionTrackingSetting }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ImpressionTrackingSetting }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
      */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImpressionTrackingSetting")
-    public JAXBElement<ImpressionTrackingSetting> createImpressionTrackingSetting(ImpressionTrackingSetting value) {
-        return new JAXBElement<>(_ImpressionTrackingSetting_QNAME, ImpressionTrackingSetting.class, null, value);
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapTimeGranularity")
+    public JAXBElement<FrequencyCapTimeGranularity> createFrequencyCapTimeGranularity(FrequencyCapTimeGranularity value) {
+        return new JAXBElement<>(_FrequencyCapTimeGranularity_QNAME, FrequencyCapTimeGranularity.class, null, value);
     }
 
     /**
@@ -10654,19 +10654,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapSettings")
     public JAXBElement<FrequencyCapSettings> createFrequencyCapSettings(FrequencyCapSettings value) {
         return new JAXBElement<>(_FrequencyCapSettings_QNAME, FrequencyCapSettings.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapTimeGranularity")
-    public JAXBElement<FrequencyCapTimeGranularity> createFrequencyCapTimeGranularity(FrequencyCapTimeGranularity value) {
-        return new JAXBElement<>(_FrequencyCapTimeGranularity_QNAME, FrequencyCapTimeGranularity.class, null, value);
     }
 
     /**
@@ -12540,6 +12527,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomLinkedInCriterion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CustomLinkedInCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CustomLinkedInCriterion")
+    public JAXBElement<CustomLinkedInCriterion> createCustomLinkedInCriterion(CustomLinkedInCriterion value) {
+        return new JAXBElement<>(_CustomLinkedInCriterion_QNAME, CustomLinkedInCriterion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StoreCriterion }{@code >}
      * 
      * @param value
@@ -13232,19 +13232,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NegativeCampaignCriterion }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NegativeCampaignCriterion }{@code >}
-     */
-    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NegativeCampaignCriterion")
-    public JAXBElement<NegativeCampaignCriterion> createNegativeCampaignCriterion(NegativeCampaignCriterion value) {
-        return new JAXBElement<>(_NegativeCampaignCriterion_QNAME, NegativeCampaignCriterion.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BiddableCampaignCriterion }{@code >}
      * 
      * @param value
@@ -13255,6 +13242,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BiddableCampaignCriterion")
     public JAXBElement<BiddableCampaignCriterion> createBiddableCampaignCriterion(BiddableCampaignCriterion value) {
         return new JAXBElement<>(_BiddableCampaignCriterion_QNAME, BiddableCampaignCriterion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NegativeCampaignCriterion }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link NegativeCampaignCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "NegativeCampaignCriterion")
+    public JAXBElement<NegativeCampaignCriterion> createNegativeCampaignCriterion(NegativeCampaignCriterion value) {
+        return new JAXBElement<>(_NegativeCampaignCriterion_QNAME, NegativeCampaignCriterion.class, null, value);
     }
 
     /**

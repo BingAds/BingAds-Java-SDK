@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="EnableCache" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="EnablePilot" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="LastCheckTimeUTC" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -30,12 +31,15 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DiagnosticsSettings", propOrder = {
     "enableCache",
+    "enablePilot",
     "lastCheckTimeUTC"
 })
 public class DiagnosticsSettings {
 
     @XmlElement(name = "EnableCache")
     protected Boolean enableCache;
+    @XmlElement(name = "EnablePilot")
+    protected Boolean enablePilot;
     @XmlElement(name = "LastCheckTimeUTC", nillable = true)
     protected String lastCheckTimeUTC;
 
@@ -61,6 +65,30 @@ public class DiagnosticsSettings {
      */
     public void setEnableCache(Boolean value) {
         this.enableCache = value;
+    }
+
+    /**
+     * Gets the value of the enablePilot property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getEnablePilot() {
+        return enablePilot;
+    }
+
+    /**
+     * Sets the value of the enablePilot property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setEnablePilot(Boolean value) {
+        this.enablePilot = value;
     }
 
     /**

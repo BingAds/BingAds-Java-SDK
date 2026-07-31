@@ -213,6 +213,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AccountContentNegativeKeywordList"/>
  *     <enumeration value="AccountContentNegativeKeywordListAssociation"/>
  *     <enumeration value="AccountContentNegativeKeyword"/>
+ *     <enumeration value="AssetGroupNegativeKeywords"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -621,7 +622,9 @@ public enum DownloadEntity {
     @XmlEnumValue("AccountContentNegativeKeywordListAssociation")
     ACCOUNT_CONTENT_NEGATIVE_KEYWORD_LIST_ASSOCIATION("AccountContentNegativeKeywordListAssociation"),
     @XmlEnumValue("AccountContentNegativeKeyword")
-    ACCOUNT_CONTENT_NEGATIVE_KEYWORD("AccountContentNegativeKeyword");
+    ACCOUNT_CONTENT_NEGATIVE_KEYWORD("AccountContentNegativeKeyword"),
+    @XmlEnumValue("AssetGroupNegativeKeywords")
+    ASSET_GROUP_NEGATIVE_KEYWORDS("AssetGroupNegativeKeywords");
     private final String value;
 
     DownloadEntity(String v) {

@@ -105,6 +105,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AdStrength"/>
  *     <enumeration value="AdStrengthActionItems"/>
  *     <enumeration value="GoalId"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -297,7 +300,13 @@ public enum AdPerformanceReportColumn {
     @XmlEnumValue("AdStrengthActionItems")
     AD_STRENGTH_ACTION_ITEMS("AdStrengthActionItems"),
     @XmlEnumValue("GoalId")
-    GOAL_ID("GoalId");
+    GOAL_ID("GoalId"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AdPerformanceReportColumn(String v) {

@@ -48,6 +48,7 @@ public class AddMixInForComplexTypesWithEnumList {
 				.addMixIn(SearchInsightPerformanceReportFilter.class, SearchInsightPerformanceReportFilterEnumsMixIn.class)
 				.addMixIn(AppsPerformanceReportFilter.class, AppsPerformanceReportFilterEnumsMixIn.class)
 				.addMixIn(MMMPerformanceReportFilter.class, MMMPerformanceReportFilterEnumsMixIn.class)
+				.addMixIn(SearchTermLandingPageReportFilter.class, SearchTermLandingPageReportFilterEnumsMixIn.class)
 				;
 	}
 }

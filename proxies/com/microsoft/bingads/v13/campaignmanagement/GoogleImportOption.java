@@ -39,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewAdSchedules" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewBrandListAssociations" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewBrandSuitability" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -66,6 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="NewProductFilters" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewPromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="NewSearchThemesForExistingAssetGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewStructuredSnippetAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewTopicTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -95,9 +97,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateAdUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAssetAutomationCampaignSetting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateAssetGroupsAsset" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBiddingStrategies" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBids" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateBrandListAssociations" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBrandSuitability" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCallAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateCalloutAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -163,6 +167,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newAdSchedules",
     "newAppAdExtensions",
     "newAudienceTargets",
+    "newBrandListAssociations",
     "newBrandSuitability",
     "newCallAdExtensions",
     "newCalloutAdExtensions",
@@ -190,6 +195,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "newProductFilters",
     "newPromotionAdExtensions",
     "newReviewAdExtensions",
+    "newSearchThemesForExistingAssetGroups",
     "newSitelinkAdExtensions",
     "newStructuredSnippetAdExtensions",
     "newTopicTargets",
@@ -219,9 +225,11 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateAdUrls",
     "updateAppAdExtensions",
     "updateAssetAutomationCampaignSetting",
+    "updateAssetGroupsAsset",
     "updateAudienceTargets",
     "updateBiddingStrategies",
     "updateBids",
+    "updateBrandListAssociations",
     "updateBrandSuitability",
     "updateCallAdExtensions",
     "updateCalloutAdExtensions",
@@ -307,6 +315,8 @@ public class GoogleImportOption
     protected Boolean newAppAdExtensions;
     @XmlElement(name = "NewAudienceTargets", nillable = true)
     protected Boolean newAudienceTargets;
+    @XmlElement(name = "NewBrandListAssociations", nillable = true)
+    protected Boolean newBrandListAssociations;
     @XmlElement(name = "NewBrandSuitability", nillable = true)
     protected Boolean newBrandSuitability;
     @XmlElement(name = "NewCallAdExtensions", nillable = true)
@@ -361,6 +371,8 @@ public class GoogleImportOption
     protected Boolean newPromotionAdExtensions;
     @XmlElement(name = "NewReviewAdExtensions", nillable = true)
     protected Boolean newReviewAdExtensions;
+    @XmlElement(name = "NewSearchThemesForExistingAssetGroups", nillable = true)
+    protected Boolean newSearchThemesForExistingAssetGroups;
     @XmlElement(name = "NewSitelinkAdExtensions", nillable = true)
     protected Boolean newSitelinkAdExtensions;
     @XmlElement(name = "NewStructuredSnippetAdExtensions", nillable = true)
@@ -419,12 +431,16 @@ public class GoogleImportOption
     protected Boolean updateAppAdExtensions;
     @XmlElement(name = "UpdateAssetAutomationCampaignSetting", nillable = true)
     protected Boolean updateAssetAutomationCampaignSetting;
+    @XmlElement(name = "UpdateAssetGroupsAsset", nillable = true)
+    protected Boolean updateAssetGroupsAsset;
     @XmlElement(name = "UpdateAudienceTargets", nillable = true)
     protected Boolean updateAudienceTargets;
     @XmlElement(name = "UpdateBiddingStrategies", nillable = true)
     protected Boolean updateBiddingStrategies;
     @XmlElement(name = "UpdateBids", nillable = true)
     protected Boolean updateBids;
+    @XmlElement(name = "UpdateBrandListAssociations", nillable = true)
+    protected Boolean updateBrandListAssociations;
     @XmlElement(name = "UpdateBrandSuitability", nillable = true)
     protected Boolean updateBrandSuitability;
     @XmlElement(name = "UpdateCallAdExtensions", nillable = true)
@@ -1018,6 +1034,30 @@ public class GoogleImportOption
      */
     public void setNewAudienceTargets(Boolean value) {
         this.newAudienceTargets = value;
+    }
+
+    /**
+     * Gets the value of the newBrandListAssociations property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewBrandListAssociations() {
+        return newBrandListAssociations;
+    }
+
+    /**
+     * Sets the value of the newBrandListAssociations property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewBrandListAssociations(Boolean value) {
+        this.newBrandListAssociations = value;
     }
 
     /**
@@ -1666,6 +1706,30 @@ public class GoogleImportOption
      */
     public void setNewReviewAdExtensions(Boolean value) {
         this.newReviewAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the newSearchThemesForExistingAssetGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getNewSearchThemesForExistingAssetGroups() {
+        return newSearchThemesForExistingAssetGroups;
+    }
+
+    /**
+     * Sets the value of the newSearchThemesForExistingAssetGroups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNewSearchThemesForExistingAssetGroups(Boolean value) {
+        this.newSearchThemesForExistingAssetGroups = value;
     }
 
     /**
@@ -2365,6 +2429,30 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the updateAssetGroupsAsset property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAssetGroupsAsset() {
+        return updateAssetGroupsAsset;
+    }
+
+    /**
+     * Sets the value of the updateAssetGroupsAsset property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAssetGroupsAsset(Boolean value) {
+        this.updateAssetGroupsAsset = value;
+    }
+
+    /**
      * Gets the value of the updateAudienceTargets property.
      * 
      * @return
@@ -2434,6 +2522,30 @@ public class GoogleImportOption
      */
     public void setUpdateBids(Boolean value) {
         this.updateBids = value;
+    }
+
+    /**
+     * Gets the value of the updateBrandListAssociations property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateBrandListAssociations() {
+        return updateBrandListAssociations;
+    }
+
+    /**
+     * Sets the value of the updateBrandListAssociations property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateBrandListAssociations(Boolean value) {
+        this.updateBrandListAssociations = value;
     }
 
     /**

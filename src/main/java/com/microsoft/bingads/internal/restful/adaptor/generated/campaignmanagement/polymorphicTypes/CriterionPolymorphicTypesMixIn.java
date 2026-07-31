@@ -55,6 +55,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 						
 			@JsonSubTypes.Type(value = ProfileCriterion.class, name = "ProfileCriterion"),
 						
+			@JsonSubTypes.Type(value = CustomLinkedInCriterion.class, name = "CustomLinkedInCriterion"),
+						
 			@JsonSubTypes.Type(value = StoreCriterion.class, name = "StoreCriterion"),
 						
 			@JsonSubTypes.Type(value = DealCriterion.class, name = "DealCriterion"),

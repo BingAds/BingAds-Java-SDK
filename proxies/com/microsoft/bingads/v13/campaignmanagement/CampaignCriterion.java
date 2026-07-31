@@ -43,8 +43,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "type"
 })
 @XmlSeeAlso({
-    NegativeCampaignCriterion.class,
-    BiddableCampaignCriterion.class
+    BiddableCampaignCriterion.class,
+    NegativeCampaignCriterion.class
 })
 public class CampaignCriterion {
 

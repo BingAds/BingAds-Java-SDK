@@ -62,6 +62,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AverageCpm"/>
  *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="AllConversionsQualified"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -168,7 +171,13 @@ public enum AdExtensionDetailReportColumn {
     @XmlEnumValue("ConversionsQualified")
     CONVERSIONS_QUALIFIED("ConversionsQualified"),
     @XmlEnumValue("AllConversionsQualified")
-    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified");
+    ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     AdExtensionDetailReportColumn(String v) {

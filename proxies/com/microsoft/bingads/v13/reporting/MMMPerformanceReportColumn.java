@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="Clicks"/>
  *     <enumeration value="Spend"/>
  *     <enumeration value="ConversionsQualified"/>
+ *     <enumeration value="MetroArea"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -69,7 +70,9 @@ public enum MMMPerformanceReportColumn {
     @XmlEnumValue("Spend")
     SPEND("Spend"),
     @XmlEnumValue("ConversionsQualified")
-    CONVERSIONS_QUALIFIED("ConversionsQualified");
+    CONVERSIONS_QUALIFIED("ConversionsQualified"),
+    @XmlEnumValue("MetroArea")
+    METRO_AREA("MetroArea");
     private final String value;
 
     MMMPerformanceReportColumn(String v) {

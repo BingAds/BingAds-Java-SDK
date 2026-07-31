@@ -15,22 +15,51 @@ class WebpageConditionHelper {
     public static final int MaxNumberOfConditions = 3;
 
     public static void addRowValuesFromConditions(ArrayOfWebpageCondition arrayOfWebpageCondition, RowValues rowValues) {
+        addRowValuesFromConditions(
+                arrayOfWebpageCondition,
+                rowValues,
+                StringTable.DynamicAdTargetCondition1,
+                StringTable.DynamicAdTargetValue1,
+                StringTable.DynamicAdTargetConditionOperator1);
+    }
+
+    public static void addRowValuesFromConditions(ArrayOfWebpageCondition arrayOfWebpageCondition, RowValues rowValues,
+            String conditionHeader1, String valueHeader1, String conditionOperatorHeader1) {
+        String conditionHeaderPrefix = conditionHeader1.substring(0, conditionHeader1.length() - 1);
+        String valueHeaderPrefix = valueHeader1.substring(0, valueHeader1.length() - 1);
+        String conditionOperatorHeaderPrefix = conditionOperatorHeader1.substring(0, conditionOperatorHeader1.length() - 1);
+
         List<WebpageCondition> conditions = arrayOfWebpageCondition.getWebpageConditions();
         for (int i = 1; i <= conditions.size(); i++) {
-            rowValues.put(StringTable.DynamicAdTargetValueColumnPrefix + i, conditions.get(i - 1).getArgument());
+            rowValues.put(valueHeaderPrefix + i, conditions.get(i - 1).getArgument());
             if (conditions.get(i - 1).getOperand() != null)
             {
-			    rowValues.put(StringTable.DynamicAdTargetConditionColumnPrefix + i, conditions.get(i - 1).getOperand().value());
+			    rowValues.put(conditionHeaderPrefix + i, conditions.get(i - 1).getOperand().value());
 			}
             if (conditions.get(i - 1).getOperator() != null)
             {
-                rowValues.put(StringTable.DynamicAdTargetConditionOperatorPrefix + i, conditions.get(i - 1).getOperator().value());
+                rowValues.put(conditionOperatorHeaderPrefix + i, conditions.get(i - 1).getOperator().value());
             }
         }
     }
 
     public static void addConditionsFromRowValues(RowValues values,
     		ArrayOfWebpageCondition arrayOfWebpageCondition) {
+        addConditionsFromRowValues(
+                values,
+                arrayOfWebpageCondition,
+                StringTable.DynamicAdTargetCondition1,
+                StringTable.DynamicAdTargetValue1,
+                StringTable.DynamicAdTargetConditionOperator1);
+    }
+
+    public static void addConditionsFromRowValues(RowValues values,
+    		ArrayOfWebpageCondition arrayOfWebpageCondition,
+            String conditionHeader1, String valueHeader1, String conditionOperatorHeader1) {
+        String conditionHeaderPrefix = conditionHeader1.substring(0, conditionHeader1.length() - 1);
+        String valueHeaderPrefix = valueHeader1.substring(0, valueHeader1.length() - 1);
+        String conditionOperatorHeaderPrefix = conditionOperatorHeader1.substring(0, conditionOperatorHeader1.length() - 1);
+
         List<WebpageCondition> conditions = arrayOfWebpageCondition.getWebpageConditions();;
 
         for (int i = 1; i <= MaxNumberOfConditions; i++) {
@@ -38,9 +67,9 @@ class WebpageConditionHelper {
             String webpageValue;
             String webpageOperator;
 
-            webpageCondition = values.tryGet(StringTable.DynamicAdTargetConditionColumnPrefix + i);
-            webpageValue = values.tryGet(StringTable.DynamicAdTargetValueColumnPrefix + i);
-            webpageOperator = values.tryGet(StringTable.DynamicAdTargetConditionOperatorPrefix + i);
+            webpageCondition = values.tryGet(conditionHeaderPrefix + i);
+            webpageValue = values.tryGet(valueHeaderPrefix + i);
+            webpageOperator = values.tryGet(conditionOperatorHeaderPrefix + i);
 
             if (webpageCondition != null && !webpageCondition.isEmpty() && webpageValue != null && !webpageValue.isEmpty()) {
             	WebpageCondition condition = new WebpageCondition();
@@ -49,7 +78,7 @@ class WebpageConditionHelper {
                 
                 if (webpageOperator != null && !webpageOperator.isEmpty())
                 {
-                    condition.setOperator(StringExtensions.fromValueOptional(webpageCondition, WebpageConditionOperator.class));
+                    condition.setOperator(StringExtensions.fromValueOptional(webpageOperator, WebpageConditionOperator.class));
                 }
                 
                 conditions.add(condition);

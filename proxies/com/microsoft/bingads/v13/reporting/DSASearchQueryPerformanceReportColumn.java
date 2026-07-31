@@ -71,6 +71,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ConversionsQualified"/>
  *     <enumeration value="AllConversionsQualified"/>
  *     <enumeration value="Description"/>
+ *     <enumeration value="MarketingObjective"/>
+ *     <enumeration value="Channel"/>
+ *     <enumeration value="SubChannel"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -195,7 +198,13 @@ public enum DSASearchQueryPerformanceReportColumn {
     @XmlEnumValue("AllConversionsQualified")
     ALL_CONVERSIONS_QUALIFIED("AllConversionsQualified"),
     @XmlEnumValue("Description")
-    DESCRIPTION("Description");
+    DESCRIPTION("Description"),
+    @XmlEnumValue("MarketingObjective")
+    MARKETING_OBJECTIVE("MarketingObjective"),
+    @XmlEnumValue("Channel")
+    CHANNEL("Channel"),
+    @XmlEnumValue("SubChannel")
+    SUB_CHANNEL("SubChannel");
     private final String value;
 
     DSASearchQueryPerformanceReportColumn(String v) {

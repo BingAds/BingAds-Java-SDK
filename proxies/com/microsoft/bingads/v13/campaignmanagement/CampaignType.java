@@ -11,8 +11,7 @@ public enum CampaignType {
     AUDIENCE("Audience"),
     HOTEL("Hotel"),
     PERFORMANCE_MAX("PerformanceMax"),
-    APP("App"),
-    UNIFIED_CAMPAIGN("UnifiedCampaign");
+    APP("App");
         
     private final String value;
 
