@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CI-ONLY Maven settings.
+
+  This file is consumed exclusively by azure-pipelines.yml, which copies it to
+  ~/.m2/settings.xml on the build agent before invoking Maven. It is NOT used by,
+  and has no effect on, developers building this SDK locally or consumers pulling
+  com.microsoft.bingads:microsoft.bingads from Maven Central.
+
+  Purpose: Microsoft's internal build compliance policy (SFI-ES4.2.4) forbids build
+  pipelines from reaching public package endpoints such as repo.maven.apache.org.
+  The mirror below redirects all artifact and plugin resolution through an Azure
+  Artifacts feed, which proxies Maven Central upstream.
+
+  The mirror <id> must match the feed name passed to the MavenAuthenticate@0 task
+  in the pipeline, so that task injects credentials for this mirror.
+
+  The equivalent override is deliberately NOT placed in pom.xml: this is a public
+  repository, and <repositories> entries in a released POM are inherited by
+  downstream consumers and are rejected by Maven Central's publishing requirements.
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <mirror>
+      <id>bing_ads_PublicPackages</id>
+      <name>Azure Artifacts mirror of Maven Central</name>
+      <url>https://pkgs.dev.azure.com/msasg/bing_ads/_packaging/bing_ads_PublicPackages/maven/v1</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
