@@ -18,6 +18,13 @@ resources:
 extends:
   template: v1/WebXT.Official.EntryPoint.yml@WebXT.Pipeline.Templates
   parameters:
+    settings:
+      # SFI-ES4.2.4 / MountainPass network isolation. Permissive is the enforced
+      # policy; the CFSClean* policies run alongside it in audit mode and report
+      # any connection to a public package endpoint in the "Stop Network Isolation"
+      # step. The list replaces the defaults rather than appending to them, so all
+      # required policies must be named here.
+      networkIsolationPolicy: Permissive,CFSClean,CFSClean2,CFSClean3
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
@@ -35,6 +42,24 @@ extends:
               gpg --import public.key
               gpg --batch --import private.key
               gpg --list-public-keys
+        # SFI-ES4.2.4: route all Maven artifact and plugin resolution through Azure
+        # Artifacts instead of public endpoints (repo.maven.apache.org et al).
+        # This must run BEFORE MavenAuthenticate@0, which edits ~/.m2/settings.xml
+        # in place to add credentials for the mirror declared here.
+        - task: PowerShell@2
+          displayName: 'Install CI Maven settings.xml'
+          inputs:
+            targetType: inline
+            script: |
+              $m2 = Join-Path $env:USERPROFILE '.m2'
+              New-Item -ItemType Directory -Force -Path $m2 | Out-Null
+              Copy-Item -LiteralPath '$(Build.SourcesDirectory)\.pipelines\settings.xml' `
+                        -Destination (Join-Path $m2 'settings.xml') -Force
+              Write-Host "Installed settings.xml to $m2"
+        - task: MavenAuthenticate@0
+          displayName: 'Authenticate Maven to Azure Artifacts'
+          inputs:
+            artifactsFeeds: bing_ads_PublicPackages
         - task: Maven@3
           inputs:
             mavenPomFile: 'pom.xml'
