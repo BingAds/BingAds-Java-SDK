@@ -37,7 +37,8 @@ public enum AdGroupCriterionType {
     PLACEMENT("Placement"),
     TOPIC("Topic"),
     CUSTOM_SEGMENT("CustomSegment"),
-    JOB_SENIORITY("JobSeniority");
+    JOB_SENIORITY("JobSeniority"),
+    CUSTOM_LINKED_IN("CustomLinkedIn");
         
     private final String value;
 

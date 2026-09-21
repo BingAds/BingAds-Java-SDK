@@ -105,6 +105,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="ZAR"/>
  *     <enumeration value="ZWD"/>
  *     <enumeration value="NGN"/>
+ *     <enumeration value="RON"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -206,7 +207,8 @@ public enum CurrencyCode {
     YUN,
     ZAR,
     ZWD,
-    NGN;
+    NGN,
+    RON;
 
     public String value() {
         return name();

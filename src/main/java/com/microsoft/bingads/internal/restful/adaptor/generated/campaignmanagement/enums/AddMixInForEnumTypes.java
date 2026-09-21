@@ -30,6 +30,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(FrequencyCapTimeGranularity.class, FrequencyCapTimeGranularityMixIn.class)
 				.addMixIn(EntityScope.class, EntityScopeMixIn.class)
 				.addMixIn(BudgetLimitType.class, BudgetLimitTypeMixIn.class)
+				.addMixIn(CampaignPrivacyStatus.class, CampaignPrivacyStatusMixIn.class)
 				.addMixIn(CampaignStatus.class, CampaignStatusMixIn.class)
 				.addMixIn(CampaignType.class, CampaignTypeMixIn.class)
 				.addMixIn(CampaignAdditionalField.class, CampaignAdditionalFieldMixIn.class)
@@ -134,7 +135,9 @@ public class AddMixInForEnumTypes {
 				.addMixIn(ConversionValueRuleOperator.class, ConversionValueRuleOperatorMixIn.class)
 				.addMixIn(ConversionValueRuleStatus.class, ConversionValueRuleStatusMixIn.class)
 				.addMixIn(LinkedInSegmentStatus.class, LinkedInSegmentStatusMixIn.class)
+				.addMixIn(CompanySizeCategory.class, CompanySizeCategoryMixIn.class)
 				.addMixIn(CompanyNameStatus.class, CompanyNameStatusMixIn.class)
+				.addMixIn(LinkedInSegmentType.class, LinkedInSegmentTypeMixIn.class)
 				;
 	}
 }

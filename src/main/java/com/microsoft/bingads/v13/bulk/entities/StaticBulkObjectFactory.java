@@ -346,6 +346,18 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkCustomerListItem();
             }
         }));
+        m.put(StringTable.CompanyList, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCompanyList();
+            }
+        }));
+        m.put(StringTable.CompanyItem, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCompanyItem();
+            }
+        }));
         m.put(StringTable.AdGroupCombinedListAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

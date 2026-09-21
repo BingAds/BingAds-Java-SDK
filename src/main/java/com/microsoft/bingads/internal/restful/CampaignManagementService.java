@@ -580,6 +580,22 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	}
 	
     	
+	public GetKeywordsByAssetGroupIdResponse getKeywordsByAssetGroupId(GetKeywordsByAssetGroupIdRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetKeywordsByAssetGroupIdResponse response = sendRequest(request, "/Keywords/QueryByAssetGroupId", HttpPost, GetKeywordsByAssetGroupIdResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetKeywordsByAssetGroupIdResponse> getKeywordsByAssetGroupIdAsync(GetKeywordsByAssetGroupIdRequest request) {
+		return sendRequestAsync(request, "/Keywords/QueryByAssetGroupId", HttpPost, GetKeywordsByAssetGroupIdResponse.class, null);
+	}
+
+	public Future<?> getKeywordsByAssetGroupIdAsync(GetKeywordsByAssetGroupIdRequest request, AsyncHandler<GetKeywordsByAssetGroupIdResponse> asyncHandler) {
+		return sendRequestAsync(request, "/Keywords/QueryByAssetGroupId", HttpPost, GetKeywordsByAssetGroupIdResponse.class, asyncHandler);
+	}
+	
+    	
 	public UpdateKeywordsResponse updateKeywords(UpdateKeywordsRequest request)
 		  throws AdApiFaultDetail_Exception, EditorialApiFaultDetail_Exception {
 		UpdateKeywordsResponse response = sendRequestEditorialFault(request, "/Keywords", HttpPut, UpdateKeywordsResponse.class);
@@ -3169,6 +3185,38 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 
 	public Future<?> updateLinkedInSegmentsAsync(UpdateLinkedInSegmentsRequest request, AsyncHandler<UpdateLinkedInSegmentsResponse> asyncHandler) {
 		return sendRequestAsync(request, "/LinkedInSegments", HttpPut, UpdateLinkedInSegmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetLinkedInSegmentsResponse getLinkedInSegments(GetLinkedInSegmentsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetLinkedInSegmentsResponse response = sendRequest(request, "/LinkedInSegments/Query", HttpPost, GetLinkedInSegmentsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetLinkedInSegmentsResponse> getLinkedInSegmentsAsync(GetLinkedInSegmentsRequest request) {
+		return sendRequestAsync(request, "/LinkedInSegments/Query", HttpPost, GetLinkedInSegmentsResponse.class, null);
+	}
+
+	public Future<?> getLinkedInSegmentsAsync(GetLinkedInSegmentsRequest request, AsyncHandler<GetLinkedInSegmentsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/LinkedInSegments/Query", HttpPost, GetLinkedInSegmentsResponse.class, asyncHandler);
+	}
+	
+    	
+	public GetCompanyListDetailsResponse getCompanyListDetails(GetCompanyListDetailsRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		GetCompanyListDetailsResponse response = sendRequest(request, "/CompanyListDetails/Query", HttpPost, GetCompanyListDetailsResponse.class);
+		
+		return response;
+	}
+
+    public Response<GetCompanyListDetailsResponse> getCompanyListDetailsAsync(GetCompanyListDetailsRequest request) {
+		return sendRequestAsync(request, "/CompanyListDetails/Query", HttpPost, GetCompanyListDetailsResponse.class, null);
+	}
+
+	public Future<?> getCompanyListDetailsAsync(GetCompanyListDetailsRequest request, AsyncHandler<GetCompanyListDetailsResponse> asyncHandler) {
+		return sendRequestAsync(request, "/CompanyListDetails/Query", HttpPost, GetCompanyListDetailsResponse.class, asyncHandler);
 	}
 	
     	

@@ -30,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="EnableParentLocationMapping" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="ImageAssetAutomationOptOut" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="ImportNCAGoalWithSystemGeneratedAudience" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="ImportNCASettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAIMaxSettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewAccountNegativeKeywords" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="NewActiveAdsForExistingAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -97,6 +98,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateAdUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAppAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAssetAutomationCampaignSetting" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateAssetGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAssetGroupsAsset" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateAudienceTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateBiddingStrategies" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -119,6 +121,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateLocationAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLocationTargets" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateLogoAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateNCASettings" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateNegativeKeywordLists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateNegativeSites" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdatePageFeeds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -126,6 +129,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="UpdateProductFilters" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdatePromotionAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateReviewAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="UpdateSearchThemesForExistingAssetGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateSitelinkAdExtensions" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateSitelinkUrls" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="UpdateStatusForAdGroups" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -158,6 +162,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "enableParentLocationMapping",
     "imageAssetAutomationOptOut",
     "importNCAGoalWithSystemGeneratedAudience",
+    "importNCASettings",
     "newAIMaxSettings",
     "newAccountNegativeKeywords",
     "newActiveAdsForExistingAdGroups",
@@ -225,6 +230,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateAdUrls",
     "updateAppAdExtensions",
     "updateAssetAutomationCampaignSetting",
+    "updateAssetGroups",
     "updateAssetGroupsAsset",
     "updateAudienceTargets",
     "updateBiddingStrategies",
@@ -247,6 +253,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateLocationAdExtensions",
     "updateLocationTargets",
     "updateLogoAdExtensions",
+    "updateNCASettings",
     "updateNegativeKeywordLists",
     "updateNegativeSites",
     "updatePageFeeds",
@@ -254,6 +261,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "updateProductFilters",
     "updatePromotionAdExtensions",
     "updateReviewAdExtensions",
+    "updateSearchThemesForExistingAssetGroups",
     "updateSitelinkAdExtensions",
     "updateSitelinkUrls",
     "updateStatusForAdGroups",
@@ -297,6 +305,8 @@ public class GoogleImportOption
     protected Boolean imageAssetAutomationOptOut;
     @XmlElement(name = "ImportNCAGoalWithSystemGeneratedAudience", nillable = true)
     protected Boolean importNCAGoalWithSystemGeneratedAudience;
+    @XmlElement(name = "ImportNCASettings", nillable = true)
+    protected Boolean importNCASettings;
     @XmlElement(name = "NewAIMaxSettings", nillable = true)
     protected Boolean newAIMaxSettings;
     @XmlElement(name = "NewAccountNegativeKeywords", nillable = true)
@@ -431,6 +441,8 @@ public class GoogleImportOption
     protected Boolean updateAppAdExtensions;
     @XmlElement(name = "UpdateAssetAutomationCampaignSetting", nillable = true)
     protected Boolean updateAssetAutomationCampaignSetting;
+    @XmlElement(name = "UpdateAssetGroups", nillable = true)
+    protected Boolean updateAssetGroups;
     @XmlElement(name = "UpdateAssetGroupsAsset", nillable = true)
     protected Boolean updateAssetGroupsAsset;
     @XmlElement(name = "UpdateAudienceTargets", nillable = true)
@@ -475,6 +487,8 @@ public class GoogleImportOption
     protected Boolean updateLocationTargets;
     @XmlElement(name = "UpdateLogoAdExtensions", nillable = true)
     protected Boolean updateLogoAdExtensions;
+    @XmlElement(name = "UpdateNCASettings", nillable = true)
+    protected Boolean updateNCASettings;
     @XmlElement(name = "UpdateNegativeKeywordLists", nillable = true)
     protected Boolean updateNegativeKeywordLists;
     @XmlElement(name = "UpdateNegativeSites", nillable = true)
@@ -489,6 +503,8 @@ public class GoogleImportOption
     protected Boolean updatePromotionAdExtensions;
     @XmlElement(name = "UpdateReviewAdExtensions", nillable = true)
     protected Boolean updateReviewAdExtensions;
+    @XmlElement(name = "UpdateSearchThemesForExistingAssetGroups", nillable = true)
+    protected Boolean updateSearchThemesForExistingAssetGroups;
     @XmlElement(name = "UpdateSitelinkAdExtensions", nillable = true)
     protected Boolean updateSitelinkAdExtensions;
     @XmlElement(name = "UpdateSitelinkUrls", nillable = true)
@@ -818,6 +834,30 @@ public class GoogleImportOption
      */
     public void setImportNCAGoalWithSystemGeneratedAudience(Boolean value) {
         this.importNCAGoalWithSystemGeneratedAudience = value;
+    }
+
+    /**
+     * Gets the value of the importNCASettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getImportNCASettings() {
+        return importNCASettings;
+    }
+
+    /**
+     * Sets the value of the importNCASettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setImportNCASettings(Boolean value) {
+        this.importNCASettings = value;
     }
 
     /**
@@ -2429,6 +2469,30 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the updateAssetGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateAssetGroups() {
+        return updateAssetGroups;
+    }
+
+    /**
+     * Sets the value of the updateAssetGroups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateAssetGroups(Boolean value) {
+        this.updateAssetGroups = value;
+    }
+
+    /**
      * Gets the value of the updateAssetGroupsAsset property.
      * 
      * @return
@@ -2957,6 +3021,30 @@ public class GoogleImportOption
     }
 
     /**
+     * Gets the value of the updateNCASettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateNCASettings() {
+        return updateNCASettings;
+    }
+
+    /**
+     * Sets the value of the updateNCASettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateNCASettings(Boolean value) {
+        this.updateNCASettings = value;
+    }
+
+    /**
      * Gets the value of the updateNegativeKeywordLists property.
      * 
      * @return
@@ -3122,6 +3210,30 @@ public class GoogleImportOption
      */
     public void setUpdateReviewAdExtensions(Boolean value) {
         this.updateReviewAdExtensions = value;
+    }
+
+    /**
+     * Gets the value of the updateSearchThemesForExistingAssetGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getUpdateSearchThemesForExistingAssetGroups() {
+        return updateSearchThemesForExistingAssetGroups;
+    }
+
+    /**
+     * Sets the value of the updateSearchThemesForExistingAssetGroups property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setUpdateSearchThemesForExistingAssetGroups(Boolean value) {
+        this.updateSearchThemesForExistingAssetGroups = value;
     }
 
     /**

@@ -95,6 +95,8 @@ public class CsvHeaders {
             StringTable.CashbackAdjustment,
             StringTable.RadiusTargetId,
             StringTable.Name,
+            StringTable.CompanyName,
+            StringTable.AudienceSize,
             StringTable.OsNames,
             StringTable.Radius,
             StringTable.Unit,

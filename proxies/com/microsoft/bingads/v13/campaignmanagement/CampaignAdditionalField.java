@@ -42,7 +42,9 @@ public enum CampaignAdditionalField {
     A_I_SEARCH_SETTING("AISearchSetting"),
     PMAX_XBOX_CAMPAIGN("PmaxXboxCampaign"),
     NETWORK_DISTRIBUTION_SETTING("NetworkDistributionSetting"),
-    PAGE_FEED_IN_A_I_SEARCH_SETTINGS("PageFeedInAISearchSettings");
+    UNIFIED_CAMPAIGN_FIELDS("UnifiedCampaignFields"),
+    PAGE_FEED_IN_A_I_SEARCH_SETTINGS("PageFeedInAISearchSettings"),
+    BRAND_EXCLUSION_SETTING("BrandExclusionSetting");
         
     private final String value;
 

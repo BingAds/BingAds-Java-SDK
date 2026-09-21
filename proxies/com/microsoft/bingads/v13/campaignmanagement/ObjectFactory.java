@@ -84,7 +84,9 @@ public class ObjectFactory {
     private static final QName _AISearchSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AISearchSetting");
     private static final QName _NetworkDistributionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NetworkDistributionSetting");
     private static final QName _Network_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Network");
+    private static final QName _BrandExclusionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandExclusionSetting");
     private static final QName _FrequencyCapTimeGranularity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapTimeGranularity");
+    private static final QName _CampaignPageFeedSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignPageFeedSetting");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
     private static final QName _Campaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Campaign");
@@ -108,6 +110,7 @@ public class ObjectFactory {
     private static final QName _ManualCpaBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ManualCpaBiddingScheme");
     private static final QName _CostPerSaleBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CostPerSaleBiddingScheme");
     private static final QName _BudgetLimitType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BudgetLimitType");
+    private static final QName _CampaignPrivacyStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignPrivacyStatus");
     private static final QName _CampaignStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignStatus");
     private static final QName _CampaignType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignType");
     private static final QName _ArrayOfSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfSetting");
@@ -601,7 +604,10 @@ public class ObjectFactory {
     private static final QName _CompanyList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CompanyList");
     private static final QName _ArrayOfCompanyName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCompanyName");
     private static final QName _CompanyName_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CompanyName");
+    private static final QName _LinkedInCompanyData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LinkedInCompanyData");
+    private static final QName _CompanySizeCategory_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CompanySizeCategory");
     private static final QName _CompanyNameStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CompanyNameStatus");
+    private static final QName _LinkedInSegmentType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "LinkedInSegmentType");
     private static final QName _ArrayOfstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfstring");
     private static final QName _ArrayOflong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOflong");
     private static final QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
@@ -1183,6 +1189,26 @@ public class ObjectFactory {
      */
     public NetworkDistributionSetting createNetworkDistributionSetting() {
         return new NetworkDistributionSetting();
+    }
+
+    /**
+     * Create an instance of {@link BrandExclusionSetting }
+     * 
+     * @return
+     *     the new instance of {@link BrandExclusionSetting }
+     */
+    public BrandExclusionSetting createBrandExclusionSetting() {
+        return new BrandExclusionSetting();
+    }
+
+    /**
+     * Create an instance of {@link CampaignPageFeedSetting }
+     * 
+     * @return
+     *     the new instance of {@link CampaignPageFeedSetting }
+     */
+    public CampaignPageFeedSetting createCampaignPageFeedSetting() {
+        return new CampaignPageFeedSetting();
     }
 
     /**
@@ -2263,6 +2289,26 @@ public class ObjectFactory {
      */
     public GetKeywordsByAdGroupIdResponse createGetKeywordsByAdGroupIdResponse() {
         return new GetKeywordsByAdGroupIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByAssetGroupIdRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetKeywordsByAssetGroupIdRequest }
+     */
+    public GetKeywordsByAssetGroupIdRequest createGetKeywordsByAssetGroupIdRequest() {
+        return new GetKeywordsByAssetGroupIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetKeywordsByAssetGroupIdResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetKeywordsByAssetGroupIdResponse }
+     */
+    public GetKeywordsByAssetGroupIdResponse createGetKeywordsByAssetGroupIdResponse() {
+        return new GetKeywordsByAssetGroupIdResponse();
     }
 
     /**
@@ -8996,6 +9042,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LinkedInCompanyData }
+     * 
+     * @return
+     *     the new instance of {@link LinkedInCompanyData }
+     */
+    public LinkedInCompanyData createLinkedInCompanyData() {
+        return new LinkedInCompanyData();
+    }
+
+    /**
      * Create an instance of {@link AddLinkedInSegmentsResponse }
      * 
      * @return
@@ -9043,6 +9099,46 @@ public class ObjectFactory {
      */
     public UpdateLinkedInSegmentsResponse createUpdateLinkedInSegmentsResponse() {
         return new UpdateLinkedInSegmentsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLinkedInSegmentsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetLinkedInSegmentsRequest }
+     */
+    public GetLinkedInSegmentsRequest createGetLinkedInSegmentsRequest() {
+        return new GetLinkedInSegmentsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetLinkedInSegmentsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetLinkedInSegmentsResponse }
+     */
+    public GetLinkedInSegmentsResponse createGetLinkedInSegmentsResponse() {
+        return new GetLinkedInSegmentsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCompanyListDetailsRequest }
+     * 
+     * @return
+     *     the new instance of {@link GetCompanyListDetailsRequest }
+     */
+    public GetCompanyListDetailsRequest createGetCompanyListDetailsRequest() {
+        return new GetCompanyListDetailsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCompanyListDetailsResponse }
+     * 
+     * @return
+     *     the new instance of {@link GetCompanyListDetailsResponse }
+     */
+    public GetCompanyListDetailsResponse createGetCompanyListDetailsResponse() {
+        return new GetCompanyListDetailsResponse();
     }
 
     /**
@@ -9927,6 +10023,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BrandExclusionSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BrandExclusionSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BrandExclusionSetting")
+    public JAXBElement<BrandExclusionSetting> createBrandExclusionSetting(BrandExclusionSetting value) {
+        return new JAXBElement<>(_BrandExclusionSetting_QNAME, BrandExclusionSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
      * 
      * @param value
@@ -9937,6 +10046,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapTimeGranularity")
     public JAXBElement<FrequencyCapTimeGranularity> createFrequencyCapTimeGranularity(FrequencyCapTimeGranularity value) {
         return new JAXBElement<>(_FrequencyCapTimeGranularity_QNAME, FrequencyCapTimeGranularity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignPageFeedSetting }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignPageFeedSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignPageFeedSetting")
+    public JAXBElement<CampaignPageFeedSetting> createCampaignPageFeedSetting(CampaignPageFeedSetting value) {
+        return new JAXBElement<>(_CampaignPageFeedSetting_QNAME, CampaignPageFeedSetting.class, null, value);
     }
 
     /**
@@ -10236,6 +10358,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "BudgetLimitType")
     public JAXBElement<BudgetLimitType> createBudgetLimitType(BudgetLimitType value) {
         return new JAXBElement<>(_BudgetLimitType_QNAME, BudgetLimitType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignPrivacyStatus }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignPrivacyStatus }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignPrivacyStatus")
+    public JAXBElement<CampaignPrivacyStatus> createCampaignPrivacyStatus(CampaignPrivacyStatus value) {
+        return new JAXBElement<>(_CampaignPrivacyStatus_QNAME, CampaignPrivacyStatus.class, null, value);
     }
 
     /**
@@ -16677,6 +16812,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LinkedInCompanyData }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LinkedInCompanyData }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "LinkedInCompanyData")
+    public JAXBElement<LinkedInCompanyData> createLinkedInCompanyData(LinkedInCompanyData value) {
+        return new JAXBElement<>(_LinkedInCompanyData_QNAME, LinkedInCompanyData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CompanySizeCategory }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CompanySizeCategory }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CompanySizeCategory")
+    public JAXBElement<CompanySizeCategory> createCompanySizeCategory(CompanySizeCategory value) {
+        return new JAXBElement<>(_CompanySizeCategory_QNAME, CompanySizeCategory.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CompanyNameStatus }{@code >}
      * 
      * @param value
@@ -16687,6 +16848,20 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CompanyNameStatus")
     public JAXBElement<CompanyNameStatus> createCompanyNameStatus(CompanyNameStatus value) {
         return new JAXBElement<>(_CompanyNameStatus_QNAME, CompanyNameStatus.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link LinkedInSegmentType }{@code >}{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Collection }{@code <}{@link LinkedInSegmentType }{@code >}{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "LinkedInSegmentType")
+    @XmlJavaTypeAdapter(Adapter34 .class)
+    public JAXBElement<Collection<LinkedInSegmentType>> createLinkedInSegmentType(Collection<LinkedInSegmentType> value) {
+        return new JAXBElement<>(_LinkedInSegmentType_QNAME, ((Class) Collection.class), null, value);
     }
 
     /**

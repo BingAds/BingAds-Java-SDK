@@ -47,7 +47,7 @@ public class ServiceClient<T> {
     public static final String SDK_API_REVISION;
 
     static {
-        SDK_API_REVISION = "2026-05-20";
+        SDK_API_REVISION = "2026-09-14";
     }
 
     private final AuthorizationData authorizationData;

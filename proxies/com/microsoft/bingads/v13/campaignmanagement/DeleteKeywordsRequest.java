@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="KeywordIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
+ *         <element name="AssetGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,15 +32,18 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "adGroupId",
-    "keywordIds"
+    "keywordIds",
+    "assetGroupId"
 })
 @XmlRootElement(name = "DeleteKeywordsRequest")
 public class DeleteKeywordsRequest {
 
-    @XmlElement(name = "AdGroupId")
+    @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
     @XmlElement(name = "KeywordIds", nillable = true)
     protected ArrayOflong keywordIds;
+    @XmlElement(name = "AssetGroupId", nillable = true)
+    protected Long assetGroupId;
 
     /**
      * Gets the value of the adGroupId property.
@@ -87,6 +91,30 @@ public class DeleteKeywordsRequest {
      */
     public void setKeywordIds(ArrayOflong value) {
         this.keywordIds = value;
+    }
+
+    /**
+     * Gets the value of the assetGroupId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAssetGroupId() {
+        return assetGroupId;
+    }
+
+    /**
+     * Sets the value of the assetGroupId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAssetGroupId(Long value) {
+        this.assetGroupId = value;
     }
 
 }
