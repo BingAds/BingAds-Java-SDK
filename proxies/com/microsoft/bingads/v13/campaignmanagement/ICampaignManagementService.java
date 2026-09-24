@@ -1178,6 +1178,47 @@ public interface ICampaignManagementService {
      * 
      * @param parameters
      * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetKeywordsByAssetGroupIdResponse>
+     */
+    @WebMethod(operationName = "GetKeywordsByAssetGroupId", action = "GetKeywordsByAssetGroupId")
+    public Response<GetKeywordsByAssetGroupIdResponse> getKeywordsByAssetGroupIdAsync(
+        @WebParam(name = "GetKeywordsByAssetGroupIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetKeywordsByAssetGroupIdRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetKeywordsByAssetGroupId", action = "GetKeywordsByAssetGroupId")
+    public Future<?> getKeywordsByAssetGroupIdAsync(
+        @WebParam(name = "GetKeywordsByAssetGroupIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetKeywordsByAssetGroupIdRequest parameters,
+        @WebParam(name = "GetKeywordsByAssetGroupIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetKeywordsByAssetGroupIdResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetKeywordsByAssetGroupIdResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetKeywordsByAssetGroupId", action = "GetKeywordsByAssetGroupId")
+    @WebResult(name = "GetKeywordsByAssetGroupIdResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetKeywordsByAssetGroupIdResponse getKeywordsByAssetGroupId(
+        @WebParam(name = "GetKeywordsByAssetGroupIdRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetKeywordsByAssetGroupIdRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
      *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateKeywordsResponse>
      */
     @WebMethod(operationName = "UpdateKeywords", action = "UpdateKeywords")
@@ -7813,6 +7854,88 @@ public interface ICampaignManagementService {
     public UpdateLinkedInSegmentsResponse updateLinkedInSegments(
         @WebParam(name = "UpdateLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
         UpdateLinkedInSegmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetLinkedInSegmentsResponse>
+     */
+    @WebMethod(operationName = "GetLinkedInSegments", action = "GetLinkedInSegments")
+    public Response<GetLinkedInSegmentsResponse> getLinkedInSegmentsAsync(
+        @WebParam(name = "GetLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetLinkedInSegmentsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetLinkedInSegments", action = "GetLinkedInSegments")
+    public Future<?> getLinkedInSegmentsAsync(
+        @WebParam(name = "GetLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetLinkedInSegmentsRequest parameters,
+        @WebParam(name = "GetLinkedInSegmentsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetLinkedInSegmentsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetLinkedInSegmentsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetLinkedInSegments", action = "GetLinkedInSegments")
+    @WebResult(name = "GetLinkedInSegmentsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetLinkedInSegmentsResponse getLinkedInSegments(
+        @WebParam(name = "GetLinkedInSegmentsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetLinkedInSegmentsRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.GetCompanyListDetailsResponse>
+     */
+    @WebMethod(operationName = "GetCompanyListDetails", action = "GetCompanyListDetails")
+    public Response<GetCompanyListDetailsResponse> getCompanyListDetailsAsync(
+        @WebParam(name = "GetCompanyListDetailsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetCompanyListDetailsRequest parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "GetCompanyListDetails", action = "GetCompanyListDetails")
+    public Future<?> getCompanyListDetailsAsync(
+        @WebParam(name = "GetCompanyListDetailsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetCompanyListDetailsRequest parameters,
+        @WebParam(name = "GetCompanyListDetailsResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<GetCompanyListDetailsResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.GetCompanyListDetailsResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "GetCompanyListDetails", action = "GetCompanyListDetails")
+    @WebResult(name = "GetCompanyListDetailsResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public GetCompanyListDetailsResponse getCompanyListDetails(
+        @WebParam(name = "GetCompanyListDetailsRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        GetCompanyListDetailsRequest parameters)
         throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
     ;
 

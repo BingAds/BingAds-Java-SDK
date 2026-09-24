@@ -214,6 +214,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AccountContentNegativeKeywordListAssociation"/>
  *     <enumeration value="AccountContentNegativeKeyword"/>
  *     <enumeration value="AssetGroupNegativeKeywords"/>
+ *     <enumeration value="CompanyList"/>
+ *     <enumeration value="CompanyItem"/>
+ *     <enumeration value="AdGroupUrlTargets"/>
+ *     <enumeration value="AdGroupAIPromptAssociations"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -624,7 +628,15 @@ public enum DownloadEntity {
     @XmlEnumValue("AccountContentNegativeKeyword")
     ACCOUNT_CONTENT_NEGATIVE_KEYWORD("AccountContentNegativeKeyword"),
     @XmlEnumValue("AssetGroupNegativeKeywords")
-    ASSET_GROUP_NEGATIVE_KEYWORDS("AssetGroupNegativeKeywords");
+    ASSET_GROUP_NEGATIVE_KEYWORDS("AssetGroupNegativeKeywords"),
+    @XmlEnumValue("CompanyList")
+    COMPANY_LIST("CompanyList"),
+    @XmlEnumValue("CompanyItem")
+    COMPANY_ITEM("CompanyItem"),
+    @XmlEnumValue("AdGroupUrlTargets")
+    AD_GROUP_URL_TARGETS("AdGroupUrlTargets"),
+    @XmlEnumValue("AdGroupAIPromptAssociations")
+    AD_GROUP_AI_PROMPT_ASSOCIATIONS("AdGroupAIPromptAssociations");
     private final String value;
 
     DownloadEntity(String v) {

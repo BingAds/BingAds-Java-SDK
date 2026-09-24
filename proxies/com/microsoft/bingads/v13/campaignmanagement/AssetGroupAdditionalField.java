@@ -10,7 +10,8 @@ public enum AssetGroupAdditionalField {
     TRACKING_URL_TEMPLATE("TrackingUrlTemplate"),
     FINAL_URL_SUFFIX("FinalUrlSuffix"),
     URL_CUSTOM_PARAMETERS("UrlCustomParameters"),
-    CROPPING_TYPE("CroppingType");
+    CROPPING_TYPE("CroppingType"),
+    UNIFIED_CAMPAIGN_FIELDS("UnifiedCampaignFields");
         
     private final String value;
 

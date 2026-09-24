@@ -49,7 +49,9 @@ import jakarta.xml.bind.annotation.XmlType;
     NewCustomerAcquisitionGoalSetting.class,
     BaseDomainSetting.class,
     AISearchSetting.class,
-    NetworkDistributionSetting.class
+    NetworkDistributionSetting.class,
+    BrandExclusionSetting.class,
+    CampaignPageFeedSetting.class
 })
 public class Setting {
 

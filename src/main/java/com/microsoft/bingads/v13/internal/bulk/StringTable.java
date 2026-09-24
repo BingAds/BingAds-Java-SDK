@@ -554,6 +554,10 @@ public class StringTable {
     public static final String CombinationRule = "Combination Rule";        
     public static final String CustomerList = "Customer List";
     public static final String CustomerListItem = "Customer List Item";
+    public static final String CompanyList = "Company List";
+    public static final String CompanyItem = "Company Item";
+    public static final String CompanyName = "Company Name";
+    public static final String AudienceSize = "Audience Size";
     public static final String AdGroupCustomerListAssociation = "Ad Group Customer List Association";
     public static final String AdGroupNegativeCustomerListAssociation = "Ad Group Negative Customer List Association";
     public static final String CampaignCustomerListAssociation = "Campaign Customer List Association";

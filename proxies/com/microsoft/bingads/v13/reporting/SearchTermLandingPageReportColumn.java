@@ -47,6 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MarketingObjective"/>
  *     <enumeration value="Channel"/>
  *     <enumeration value="SubChannel"/>
+ *     <enumeration value="HeadlineSource"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -123,7 +124,9 @@ public enum SearchTermLandingPageReportColumn {
     @XmlEnumValue("Channel")
     CHANNEL("Channel"),
     @XmlEnumValue("SubChannel")
-    SUB_CHANNEL("SubChannel");
+    SUB_CHANNEL("SubChannel"),
+    @XmlEnumValue("HeadlineSource")
+    HEADLINE_SOURCE("HeadlineSource");
     private final String value;
 
     SearchTermLandingPageReportColumn(String v) {

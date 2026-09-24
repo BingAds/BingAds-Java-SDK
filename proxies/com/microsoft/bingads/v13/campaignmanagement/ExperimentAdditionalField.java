@@ -6,7 +6,9 @@ package com.microsoft.bingads.v13.campaignmanagement;
 public enum ExperimentAdditionalField {
 
     EXPERIMENT_SUB_TYPE("ExperimentSubType"),
-    EXPERIMENT_ARMS("ExperimentArms");
+    EXPERIMENT_ARMS("ExperimentArms"),
+    EXPERIMENT_CAMPAIGN_TYPE("ExperimentCampaignType"),
+    MARKETING_OBJECTIVE("MarketingObjective");
         
     private final String value;
 

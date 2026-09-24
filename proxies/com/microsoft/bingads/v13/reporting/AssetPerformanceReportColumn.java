@@ -39,6 +39,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MarketingObjective"/>
  *     <enumeration value="Channel"/>
  *     <enumeration value="SubChannel"/>
+ *     <enumeration value="AssetGroupId"/>
+ *     <enumeration value="AdId"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -99,7 +101,11 @@ public enum AssetPerformanceReportColumn {
     @XmlEnumValue("Channel")
     CHANNEL("Channel"),
     @XmlEnumValue("SubChannel")
-    SUB_CHANNEL("SubChannel");
+    SUB_CHANNEL("SubChannel"),
+    @XmlEnumValue("AssetGroupId")
+    ASSET_GROUP_ID("AssetGroupId"),
+    @XmlEnumValue("AdId")
+    AD_ID("AdId");
     private final String value;
 
     AssetPerformanceReportColumn(String v) {

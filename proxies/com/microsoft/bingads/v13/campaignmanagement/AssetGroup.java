@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="AssetContext" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="AssetGroupSearchThemes" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetGroupSearchTheme" minOccurs="0"/>
  *         <element name="AssetGroupUrlTargets" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetGroupUrlTarget" minOccurs="0"/>
  *         <element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -51,6 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AssetGroup", propOrder = {
+    "assetContext",
     "assetGroupSearchThemes",
     "assetGroupUrlTargets",
     "businessName",
@@ -77,6 +79,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class AssetGroup {
 
+    @XmlElement(name = "AssetContext", nillable = true)
+    protected String assetContext;
     @XmlElement(name = "AssetGroupSearchThemes", nillable = true)
     protected ArrayOfAssetGroupSearchTheme assetGroupSearchThemes;
     @XmlElement(name = "AssetGroupUrlTargets", nillable = true)
@@ -126,6 +130,30 @@ public class AssetGroup {
     protected CustomParameters urlCustomParameters;
     @XmlElement(name = "Videos", nillable = true)
     protected ArrayOfAssetLink videos;
+
+    /**
+     * Gets the value of the assetContext property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAssetContext() {
+        return assetContext;
+    }
+
+    /**
+     * Sets the value of the assetContext property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAssetContext(String value) {
+        this.assetContext = value;
+    }
 
     /**
      * Gets the value of the assetGroupSearchThemes property.

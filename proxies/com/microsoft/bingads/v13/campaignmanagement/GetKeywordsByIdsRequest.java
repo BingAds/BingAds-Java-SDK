@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AdGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="KeywordIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="ReturnAdditionalFields" type="{https://bingads.microsoft.com/CampaignManagement/v13}KeywordAdditionalField" minOccurs="0"/>
+ *         <element name="AssetGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,18 +36,21 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "adGroupId",
     "keywordIds",
-    "returnAdditionalFields"
+    "returnAdditionalFields",
+    "assetGroupId"
 })
 @XmlRootElement(name = "GetKeywordsByIdsRequest")
 public class GetKeywordsByIdsRequest {
 
-    @XmlElement(name = "AdGroupId")
+    @XmlElement(name = "AdGroupId", nillable = true)
     protected Long adGroupId;
     @XmlElement(name = "KeywordIds", nillable = true)
     protected ArrayOflong keywordIds;
     @XmlElement(name = "ReturnAdditionalFields", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter9 .class)
     protected Collection<KeywordAdditionalField> returnAdditionalFields;
+    @XmlElement(name = "AssetGroupId", nillable = true)
+    protected Long assetGroupId;
 
     /**
      * Gets the value of the adGroupId property.
@@ -118,6 +122,30 @@ public class GetKeywordsByIdsRequest {
      */
     public void setReturnAdditionalFields(Collection<KeywordAdditionalField> value) {
         this.returnAdditionalFields = value;
+    }
+
+    /**
+     * Gets the value of the assetGroupId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAssetGroupId() {
+        return assetGroupId;
+    }
+
+    /**
+     * Sets the value of the assetGroupId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAssetGroupId(Long value) {
+        this.assetGroupId = value;
     }
 
 }

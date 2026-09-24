@@ -19,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         <element name="LinkedInCompany" type="{https://bingads.microsoft.com/CampaignManagement/v13}LinkedInCompanyData" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CompanyNameStatus" minOccurs="0"/>
  *       </sequence>
@@ -32,6 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CompanyName", propOrder = {
     "id",
+    "linkedInCompany",
     "name",
     "status"
 })
@@ -39,6 +41,8 @@ public class CompanyName {
 
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
+    @XmlElement(name = "LinkedInCompany", nillable = true)
+    protected LinkedInCompanyData linkedInCompany;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
     @XmlElement(name = "Status", nillable = true)
@@ -67,6 +71,30 @@ public class CompanyName {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the linkedInCompany property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link LinkedInCompanyData }
+     *     
+     */
+    public LinkedInCompanyData getLinkedInCompany() {
+        return linkedInCompany;
+    }
+
+    /**
+     * Sets the value of the linkedInCompany property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LinkedInCompanyData }
+     *     
+     */
+    public void setLinkedInCompany(LinkedInCompanyData value) {
+        this.linkedInCompany = value;
     }
 
     /**

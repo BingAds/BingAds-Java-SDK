@@ -24,7 +24,10 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="AudienceAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="BidStrategyScope" type="{https://bingads.microsoft.com/CampaignManagement/v13}EntityScope" minOccurs="0"/>
  *         <element name="BiddingScheme" type="{https://bingads.microsoft.com/CampaignManagement/v13}BiddingScheme" minOccurs="0"/>
+ *         <element name="BrandColor" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
+ *         <element name="BrandLogo" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         <element name="BudgetType" type="{https://bingads.microsoft.com/CampaignManagement/v13}BudgetLimitType" minOccurs="0"/>
+ *         <element name="BusinessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="DailyBudget" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         <element name="DealIds" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOflong" minOccurs="0"/>
  *         <element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -35,8 +38,10 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="IsPolitical" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         <element name="MarketingObjective" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignPrivacyStatus" minOccurs="0"/>
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignStatus" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -63,7 +68,10 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "audienceAdsBidAdjustment",
     "bidStrategyScope",
     "biddingScheme",
+    "brandColor",
+    "brandLogo",
     "budgetType",
+    "businessName",
     "dailyBudget",
     "dealIds",
     "endDate",
@@ -74,8 +82,10 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "id",
     "isDealCampaign",
     "isPolitical",
+    "marketingObjective",
     "multimediaAdsBidAdjustment",
     "name",
+    "privacyStatus",
     "startDate",
     "status",
     "subType",
@@ -99,9 +109,15 @@ public class Campaign {
     protected EntityScope bidStrategyScope;
     @XmlElement(name = "BiddingScheme", nillable = true)
     protected BiddingScheme biddingScheme;
+    @XmlElement(name = "BrandColor", nillable = true)
+    protected ArrayOfAssetLink brandColor;
+    @XmlElement(name = "BrandLogo", nillable = true)
+    protected ArrayOfAssetLink brandLogo;
     @XmlElement(name = "BudgetType", nillable = true)
     @XmlSchemaType(name = "string")
     protected BudgetLimitType budgetType;
+    @XmlElement(name = "BusinessName", nillable = true)
+    protected String businessName;
     @XmlElement(name = "DailyBudget", nillable = true)
     protected Double dailyBudget;
     @XmlElement(name = "DealIds", nillable = true)
@@ -124,10 +140,15 @@ public class Campaign {
     protected Boolean isDealCampaign;
     @XmlElement(name = "IsPolitical")
     protected Boolean isPolitical;
+    @XmlElement(name = "MarketingObjective", nillable = true)
+    protected String marketingObjective;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
     protected String name;
+    @XmlElement(name = "PrivacyStatus", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected CampaignPrivacyStatus privacyStatus;
     @XmlElement(name = "StartDate", type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
@@ -232,6 +253,54 @@ public class Campaign {
     }
 
     /**
+     * Gets the value of the brandColor property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getBrandColor() {
+        return brandColor;
+    }
+
+    /**
+     * Sets the value of the brandColor property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setBrandColor(ArrayOfAssetLink value) {
+        this.brandColor = value;
+    }
+
+    /**
+     * Gets the value of the brandLogo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getBrandLogo() {
+        return brandLogo;
+    }
+
+    /**
+     * Sets the value of the brandLogo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setBrandLogo(ArrayOfAssetLink value) {
+        this.brandLogo = value;
+    }
+
+    /**
      * Gets the value of the budgetType property.
      * 
      * @return
@@ -253,6 +322,30 @@ public class Campaign {
      */
     public void setBudgetType(BudgetLimitType value) {
         this.budgetType = value;
+    }
+
+    /**
+     * Gets the value of the businessName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    /**
+     * Sets the value of the businessName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBusinessName(String value) {
+        this.businessName = value;
     }
 
     /**
@@ -496,6 +589,30 @@ public class Campaign {
     }
 
     /**
+     * Gets the value of the marketingObjective property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMarketingObjective() {
+        return marketingObjective;
+    }
+
+    /**
+     * Sets the value of the marketingObjective property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMarketingObjective(String value) {
+        this.marketingObjective = value;
+    }
+
+    /**
      * Gets the value of the multimediaAdsBidAdjustment property.
      * 
      * @return
@@ -541,6 +658,30 @@ public class Campaign {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the privacyStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CampaignPrivacyStatus }
+     *     
+     */
+    public CampaignPrivacyStatus getPrivacyStatus() {
+        return privacyStatus;
+    }
+
+    /**
+     * Sets the value of the privacyStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CampaignPrivacyStatus }
+     *     
+     */
+    public void setPrivacyStatus(CampaignPrivacyStatus value) {
+        this.privacyStatus = value;
     }
 
     /**

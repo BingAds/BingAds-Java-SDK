@@ -42,7 +42,11 @@ public enum ImportAdditionalField {
     NEW_BRAND_LIST_ASSOCIATIONS("NewBrandListAssociations"),
     UPDATE_BRAND_LIST_ASSOCIATIONS("UpdateBrandListAssociations"),
     CAMPAIGN_TYPES("CampaignTypes"),
-    NEW_SEARCH_THEMES_FOR_EXISTING_ASSET_GROUPS("NewSearchThemesForExistingAssetGroups");
+    NEW_SEARCH_THEMES_FOR_EXISTING_ASSET_GROUPS("NewSearchThemesForExistingAssetGroups"),
+    UPDATE_ASSET_GROUPS("UpdateAssetGroups"),
+    UPDATE_SEARCH_THEMES_FOR_EXISTING_ASSET_GROUPS("UpdateSearchThemesForExistingAssetGroups"),
+    IMPORT_N_C_A_SETTINGS("ImportNCASettings"),
+    UPDATE_N_C_A_SETTINGS("UpdateNCASettings");
         
     private final String value;
 

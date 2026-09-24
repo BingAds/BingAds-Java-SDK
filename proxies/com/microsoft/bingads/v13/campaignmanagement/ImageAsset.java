@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="CropX" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CropY" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="CroppingType" type="{https://bingads.microsoft.com/CampaignManagement/v13}CropType" minOccurs="0"/>
+ *         <element name="Excluded" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TargetHeight" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="TargetWidth" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -41,6 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "cropX",
     "cropY",
     "croppingType",
+    "excluded",
     "subType",
     "targetHeight",
     "targetWidth"
@@ -63,6 +65,8 @@ public class ImageAsset
     @XmlElement(name = "CroppingType", nillable = true)
     @XmlSchemaType(name = "string")
     protected CropType croppingType;
+    @XmlElement(name = "Excluded", nillable = true)
+    protected Boolean excluded;
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;
     @XmlElement(name = "TargetHeight", nillable = true)
@@ -188,6 +192,30 @@ public class ImageAsset
      */
     public void setCroppingType(CropType value) {
         this.croppingType = value;
+    }
+
+    /**
+     * Gets the value of the excluded property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getExcluded() {
+        return excluded;
+    }
+
+    /**
+     * Sets the value of the excluded property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setExcluded(Boolean value) {
+        this.excluded = value;
     }
 
     /**
