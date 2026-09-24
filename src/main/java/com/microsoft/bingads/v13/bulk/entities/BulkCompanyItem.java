@@ -23,6 +23,7 @@ public class BulkCompanyItem extends SingleRecordBulkEntity {
 
     private Long companyListId;
     private CompanyName companyItem;
+    private Status status;
 
     private static final List<BulkMapping<BulkCompanyItem>> MAPPINGS;
 
@@ -33,13 +34,16 @@ public class BulkCompanyItem extends SingleRecordBulkEntity {
                 new Function<BulkCompanyItem, String>() {
                     @Override
                     public String apply(BulkCompanyItem c) {
-                        return c.getCompanyItem().getStatus() != null
-                                ? c.getCompanyItem().getStatus().value() : null;
+                        return c.getStatus() != null ? c.getStatus().value() : null;
                     }
                 },
                 new BiConsumer<String, BulkCompanyItem>() {
                     @Override
                     public void accept(String v, BulkCompanyItem c) {
+                        if (Status.ACTIVE.value().equals(v) || Status.DELETED.value().equals(v)) {
+                            c.setStatus(Status.fromValue(v));
+                            return;
+                        }
                         c.getCompanyItem().setStatus(StringExtensions.parseOptional(v,
                                 new Function<String, CompanyNameStatus>() {
                                     @Override
@@ -98,6 +102,7 @@ public class BulkCompanyItem extends SingleRecordBulkEntity {
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         setCompanyItem(new CompanyName());
+        setStatus(null);
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
@@ -121,5 +126,17 @@ public class BulkCompanyItem extends SingleRecordBulkEntity {
 
     public void setCompanyItem(CompanyName companyItem) {
         this.companyItem = companyItem;
+    }
+
+    /**
+     * Gets the bulk upload status (Active or Deleted). Only this property is written to Status.
+     * Downloaded matching status is available on {@link #getCompanyItem()}.
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

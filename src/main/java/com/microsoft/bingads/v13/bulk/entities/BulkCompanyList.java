@@ -24,6 +24,7 @@ public class BulkCompanyList extends SingleRecordBulkEntity {
     private Long accountId;
     private Long audienceSize;
     private CompanyList companyList;
+    private Status status;
 
     private static final List<BulkMapping<BulkCompanyList>> MAPPINGS;
 
@@ -34,13 +35,16 @@ public class BulkCompanyList extends SingleRecordBulkEntity {
                 new Function<BulkCompanyList, String>() {
                     @Override
                     public String apply(BulkCompanyList c) {
-                        return c.getCompanyList().getStatus() != null
-                                ? c.getCompanyList().getStatus().value() : null;
+                        return c.getStatus() != null ? c.getStatus().value() : null;
                     }
                 },
                 new BiConsumer<String, BulkCompanyList>() {
                     @Override
                     public void accept(String v, BulkCompanyList c) {
+                        if (Status.ACTIVE.value().equals(v) || Status.DELETED.value().equals(v)) {
+                            c.setStatus(Status.fromValue(v));
+                            return;
+                        }
                         c.getCompanyList().setStatus(StringExtensions.parseOptional(v,
                                 new Function<String, LinkedInSegmentStatus>() {
                                     @Override
@@ -113,6 +117,7 @@ public class BulkCompanyList extends SingleRecordBulkEntity {
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         setCompanyList(new CompanyList());
+        setStatus(null);
         MappingHelpers.convertToEntity(values, MAPPINGS, this);
     }
 
@@ -144,5 +149,17 @@ public class BulkCompanyList extends SingleRecordBulkEntity {
 
     public void setCompanyList(CompanyList companyList) {
         this.companyList = companyList;
+    }
+
+    /**
+     * Gets the bulk upload status (Active or Deleted). Only this property is written to Status.
+     * Downloaded processing status is available on {@link #getCompanyList()}.
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
