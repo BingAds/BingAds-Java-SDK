@@ -51,6 +51,10 @@ import jakarta.xml.bind.annotation.XmlType;
     AISearchSetting.class,
     NetworkDistributionSetting.class,
     BrandExclusionSetting.class,
+    ImpressionTrackingSetting.class,
+    ReachOptimizationGoalSetting.class,
+    CampaignFrequencyCapSetting.class,
+    UnifiedAutomationSetting.class,
     CampaignPageFeedSetting.class
 })
 public class Setting {

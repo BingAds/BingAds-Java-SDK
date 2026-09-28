@@ -519,6 +519,7 @@ public class StringTable {
     public static final String CampaignCustomAudienceAssociation = "Campaign Custom Audience Association";
     public static final String CampaignNegativeCustomAudienceAssociation = "Campaign Negative Custom Audience Association";
     public static final String InMarketAudience = "In Market Audience";
+    public static final String AdGroupAIPromptAssociation = "Ad Group AI Prompt Association";
     public static final String AdGroupInMarketAudienceAssociation = "Ad Group In Market Audience Association";
     public static final String AdGroupNegativeInMarketAudienceAssociation = "Ad Group Negative In Market Audience Association";
     public static final String CampaignInMarketAudienceAssociation = "Campaign In Market Audience Association";
@@ -693,6 +694,7 @@ public class StringTable {
     public static final String CampaignLocationCriterion = "Campaign Location Criterion";
     public static final String CampaignLocationIntentCriterion = "Campaign Location Intent Criterion";
     public static final String CampaignNegativeAgeCriterion = "Campaign Negative Age Criterion";
+    public static final String CampaignNegativeDeviceCriterion = "Campaign Negative Device Criterion";
     public static final String CampaignNegativeGenderCriterion = "Campaign Negative Gender Criterion";
     public static final String CampaignNegativeLocationCriterion = "Campaign Negative Location Criterion";
     public static final String CampaignDealCriterion = "Campaign Deal Criterion";

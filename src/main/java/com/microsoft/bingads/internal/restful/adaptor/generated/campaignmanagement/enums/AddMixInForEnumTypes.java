@@ -138,6 +138,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(CompanySizeCategory.class, CompanySizeCategoryMixIn.class)
 				.addMixIn(CompanyNameStatus.class, CompanyNameStatusMixIn.class)
 				.addMixIn(LinkedInSegmentType.class, LinkedInSegmentTypeMixIn.class)
+				.addMixIn(ReachOptimizationGoal.class, ReachOptimizationGoalMixIn.class)
 				;
 	}
 }

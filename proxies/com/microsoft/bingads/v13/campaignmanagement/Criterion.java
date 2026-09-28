@@ -55,7 +55,8 @@ import jakarta.xml.bind.annotation.XmlType;
     DealCriterion.class,
     GenreCriterion.class,
     PlacementCriterion.class,
-    TopicCriterion.class
+    TopicCriterion.class,
+    ChannelPlacementCriterion.class
 })
 public class Criterion {
 

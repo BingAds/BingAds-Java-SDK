@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import com.microsoft.bingads.internal.UncheckedParseException;
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
@@ -513,7 +514,7 @@ public class BulkAdGroup extends SingleRecordBulkEntity {
                         if (v != null && !v.isEmpty()) {
                             BaseDomainSetting setting = new BaseDomainSetting();
                             setting.setType(BaseDomainSetting.class.getSimpleName());
-                            setting.setBaseDomain(v);
+                            setting.setBaseDomain(v.trim().toLowerCase(Locale.ROOT));
                             c.addAdGroupSetting(setting);
                         }
                     }

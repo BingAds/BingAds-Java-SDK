@@ -85,7 +85,12 @@ public class ObjectFactory {
     private static final QName _NetworkDistributionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "NetworkDistributionSetting");
     private static final QName _Network_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Network");
     private static final QName _BrandExclusionSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BrandExclusionSetting");
+    private static final QName _ImpressionTrackingSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImpressionTrackingSetting");
+    private static final QName _ReachOptimizationGoalSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ReachOptimizationGoalSetting");
+    private static final QName _ReachOptimizationGoal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ReachOptimizationGoal");
+    private static final QName _CampaignFrequencyCapSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignFrequencyCapSetting");
     private static final QName _FrequencyCapTimeGranularity_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "FrequencyCapTimeGranularity");
+    private static final QName _UnifiedAutomationSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "UnifiedAutomationSetting");
     private static final QName _CampaignPageFeedSetting_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CampaignPageFeedSetting");
     private static final QName _ResponsiveSearchAd_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ResponsiveSearchAd");
     private static final QName _ArrayOfCampaign_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfCampaign");
@@ -292,6 +297,7 @@ public class ObjectFactory {
     private static final QName _GenreCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "GenreCriterion");
     private static final QName _PlacementCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "PlacementCriterion");
     private static final QName _TopicCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TopicCriterion");
+    private static final QName _ChannelPlacementCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ChannelPlacementCriterion");
     private static final QName _AdGroupCriterionStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionStatus");
     private static final QName _BiddableAdGroupCriterion_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "BiddableAdGroupCriterion");
     private static final QName _AdGroupCriterionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdGroupCriterionEditorialStatus");
@@ -1199,6 +1205,46 @@ public class ObjectFactory {
      */
     public BrandExclusionSetting createBrandExclusionSetting() {
         return new BrandExclusionSetting();
+    }
+
+    /**
+     * Create an instance of {@link ImpressionTrackingSetting }
+     *
+     * @return
+     *     the new instance of {@link ImpressionTrackingSetting }
+     */
+    public ImpressionTrackingSetting createImpressionTrackingSetting() {
+        return new ImpressionTrackingSetting();
+    }
+
+    /**
+     * Create an instance of {@link ReachOptimizationGoalSetting }
+     *
+     * @return
+     *     the new instance of {@link ReachOptimizationGoalSetting }
+     */
+    public ReachOptimizationGoalSetting createReachOptimizationGoalSetting() {
+        return new ReachOptimizationGoalSetting();
+    }
+
+    /**
+     * Create an instance of {@link CampaignFrequencyCapSetting }
+     *
+     * @return
+     *     the new instance of {@link CampaignFrequencyCapSetting }
+     */
+    public CampaignFrequencyCapSetting createCampaignFrequencyCapSetting() {
+        return new CampaignFrequencyCapSetting();
+    }
+
+    /**
+     * Create an instance of {@link UnifiedAutomationSetting }
+     *
+     * @return
+     *     the new instance of {@link UnifiedAutomationSetting }
+     */
+    public UnifiedAutomationSetting createUnifiedAutomationSetting() {
+        return new UnifiedAutomationSetting();
     }
 
     /**
@@ -3709,6 +3755,16 @@ public class ObjectFactory {
      */
     public TopicCriterion createTopicCriterion() {
         return new TopicCriterion();
+    }
+
+    /**
+     * Create an instance of {@link ChannelPlacementCriterion }
+     *
+     * @return
+     *     the new instance of {@link ChannelPlacementCriterion }
+     */
+    public ChannelPlacementCriterion createChannelPlacementCriterion() {
+        return new ChannelPlacementCriterion();
     }
 
     /**
@@ -10036,6 +10092,58 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImpressionTrackingSetting }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ImpressionTrackingSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImpressionTrackingSetting")
+    public JAXBElement<ImpressionTrackingSetting> createImpressionTrackingSetting(ImpressionTrackingSetting value) {
+        return new JAXBElement<>(_ImpressionTrackingSetting_QNAME, ImpressionTrackingSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoalSetting }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoalSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ReachOptimizationGoalSetting")
+    public JAXBElement<ReachOptimizationGoalSetting> createReachOptimizationGoalSetting(ReachOptimizationGoalSetting value) {
+        return new JAXBElement<>(_ReachOptimizationGoalSetting_QNAME, ReachOptimizationGoalSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoal }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoal }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ReachOptimizationGoal")
+    public JAXBElement<ReachOptimizationGoal> createReachOptimizationGoal(ReachOptimizationGoal value) {
+        return new JAXBElement<>(_ReachOptimizationGoal_QNAME, ReachOptimizationGoal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CampaignFrequencyCapSetting }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CampaignFrequencyCapSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "CampaignFrequencyCapSetting")
+    public JAXBElement<CampaignFrequencyCapSetting> createCampaignFrequencyCapSetting(CampaignFrequencyCapSetting value) {
+        return new JAXBElement<>(_CampaignFrequencyCapSetting_QNAME, CampaignFrequencyCapSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FrequencyCapTimeGranularity }{@code >}
      * 
      * @param value
@@ -10046,6 +10154,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "FrequencyCapTimeGranularity")
     public JAXBElement<FrequencyCapTimeGranularity> createFrequencyCapTimeGranularity(FrequencyCapTimeGranularity value) {
         return new JAXBElement<>(_FrequencyCapTimeGranularity_QNAME, FrequencyCapTimeGranularity.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UnifiedAutomationSetting }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UnifiedAutomationSetting }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "UnifiedAutomationSetting")
+    public JAXBElement<UnifiedAutomationSetting> createUnifiedAutomationSetting(UnifiedAutomationSetting value) {
+        return new JAXBElement<>(_UnifiedAutomationSetting_QNAME, UnifiedAutomationSetting.class, null, value);
     }
 
     /**
@@ -12737,6 +12858,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TopicCriterion")
     public JAXBElement<TopicCriterion> createTopicCriterion(TopicCriterion value) {
         return new JAXBElement<>(_TopicCriterion_QNAME, TopicCriterion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ChannelPlacementCriterion }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ChannelPlacementCriterion }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ChannelPlacementCriterion")
+    public JAXBElement<ChannelPlacementCriterion> createChannelPlacementCriterion(ChannelPlacementCriterion value) {
+        return new JAXBElement<>(_ChannelPlacementCriterion_QNAME, ChannelPlacementCriterion.class, null, value);
     }
 
     /**

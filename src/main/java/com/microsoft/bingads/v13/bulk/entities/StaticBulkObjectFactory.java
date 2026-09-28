@@ -736,6 +736,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkInMarketAudience();
             }
         }));
+        m.put(StringTable.AdGroupAIPromptAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAdGroupAIPromptAssociation();
+            }
+        }));
         m.put(StringTable.AdGroupInMarketAudienceAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {
@@ -1009,6 +1015,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
             @Override
             public SingleRecordBulkEntity create() {
                 return new BulkCampaignNegativeAgeCriterion();
+            }
+        }));
+        m.put(StringTable.CampaignNegativeDeviceCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkCampaignNegativeDeviceCriterion();
             }
         }));
         m.put(StringTable.CampaignNegativeGenderCriterion, new EntityInfo(new Creator<SingleRecordBulkEntity>() {

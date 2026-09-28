@@ -57,7 +57,15 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = NetworkDistributionSetting.class, name = "NetworkDistributionSetting"),
 						
 			@JsonSubTypes.Type(value = BrandExclusionSetting.class, name = "BrandExclusionSetting"),
-						
+
+			@JsonSubTypes.Type(value = ImpressionTrackingSetting.class, name = "ImpressionTrackingSetting"),
+
+			@JsonSubTypes.Type(value = ReachOptimizationGoalSetting.class, name = "ReachOptimizationGoalSetting"),
+
+			@JsonSubTypes.Type(value = CampaignFrequencyCapSetting.class, name = "CampaignFrequencyCapSetting"),
+
+			@JsonSubTypes.Type(value = UnifiedAutomationSetting.class, name = "UnifiedAutomationSetting"),
+
 			@JsonSubTypes.Type(value = CampaignPageFeedSetting.class, name = "CampaignPageFeedSetting"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)

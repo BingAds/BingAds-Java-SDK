@@ -21,6 +21,7 @@ public class BulkAdGroupReadFromRowValuesBaseDomainTest extends BulkAdGroupTest 
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
             {"example.com", "example.com"},
+            {" ExAmPlE.COM ", "example.com"},
             {null, null}
         });
     }
