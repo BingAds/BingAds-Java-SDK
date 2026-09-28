@@ -3,8 +3,6 @@ package com.microsoft.bingads.v13.bulk.entities;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.microsoft.bingads.internal.functionalinterfaces.BiConsumer;
 import com.microsoft.bingads.internal.functionalinterfaces.Function;
@@ -16,8 +14,6 @@ import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.AdGroupCriterionStatus;
 import com.microsoft.bingads.v13.campaignmanagement.ArrayOfWebpageCondition;
 import com.microsoft.bingads.v13.campaignmanagement.BiddableAdGroupCriterion;
-import com.microsoft.bingads.v13.campaignmanagement.CriterionBid;
-import com.microsoft.bingads.v13.campaignmanagement.FixedBid;
 import com.microsoft.bingads.v13.campaignmanagement.Webpage;
 import com.microsoft.bingads.v13.campaignmanagement.WebpageParameter;
 import com.microsoft.bingads.v13.internal.bulk.BulkMapping;
@@ -33,8 +29,9 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * Represents an Ad Group Url Target (AIMax URL Inclusions) that is assigned to an ad group. Each ad group url target can be read or written in a bulk file.
  *
  * <p>
- *     It is the AI Max counterpart of the Ad Group Dynamic Search Ad Target record and shares the same BiddableAdGroupCriterion shape,
- *     differing only in the record-type label and the webpage-condition column headers (Ad Group Url Target Condition/Value/Operator N).
+ *     It is the AI Max counterpart of the Ad Group Dynamic Search Ad Target record and shares the same BiddableAdGroupCriterion shape.
+ *     It uses a different record type and webpage-condition column headers (Ad Group Url Target Condition/Value/Operator N),
+ *     and does not map bid or URL tracking fields.
  *     For more information, see Ad Group Dynamic Search Ad Target at
  *     <a href="https://go.microsoft.com/fwlink/?linkid=846127">https://go.microsoft.com/fwlink/?linkid=846127</a>.
  * </p>
@@ -45,8 +42,6 @@ import com.microsoft.bingads.v13.internal.bulk.entities.SingleRecordBulkEntity;
  * @see BulkFileWriter
  */
 public class BulkAdGroupUrlTarget extends SingleRecordBulkEntity {
-
-	private static final Logger logger = Logger.getLogger(BulkAdGroupUrlTarget.class.getName());
 
 	private BiddableAdGroupCriterion biddableAdGroupCriterion;
 	
@@ -151,80 +146,6 @@ public class BulkAdGroupUrlTarget extends SingleRecordBulkEntity {
                 }
         ));
         
-        m.add(new SimpleBulkMapping<BulkAdGroupUrlTarget, String>(StringTable.Bid,
-                new Function<BulkAdGroupUrlTarget, String>() {
-                    @Override
-                    public String apply(BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            CriterionBid bid = ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid();
-                            if (bid == null) {
-                                return null;
-                            } else {
-                                return StringExtensions.toAdGroupCriterionFixedBidBulkString((FixedBid) bid);
-                            }
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupUrlTarget>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((FixedBid) ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getCriterionBid()).setAmount((
-                                    StringExtensions.nullOrDouble(v))
-                            );
-                        }
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupUrlTarget, String>(StringTable.TrackingTemplate,
-                new Function<BulkAdGroupUrlTarget, String>() {
-                    @Override
-                    public String apply(BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getTrackingUrlTemplate(), c.getBiddableAdGroupCriterion().getId());
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupUrlTarget>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).setTrackingUrlTemplate(StringExtensions.getValueOrEmptyString(v));;
-                        }
-                    }
-                }
-        ));
-        
-        m.add(new SimpleBulkMapping<BulkAdGroupUrlTarget, String>(StringTable.CustomParameter,
-                new Function<BulkAdGroupUrlTarget, String>() {
-                    @Override
-                    public String apply(BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toCustomParaBulkString(((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getUrlCustomParameters(), c.getBiddableAdGroupCriterion().getId());
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupUrlTarget>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            try {
-								((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).setUrlCustomParameters(StringExtensions.parseCustomParameters(v));
-							} catch (Exception e) {
-								logger.log(Level.WARNING, "Failed to parse custom parameters.", e);
-							}
-                        }
-                    }
-                }
-        ));
-
         m.add(new ComplexBulkMapping<BulkAdGroupUrlTarget>(
                 new BiConsumer<BulkAdGroupUrlTarget, RowValues>() {
                     @Override
@@ -287,29 +208,6 @@ public class BulkAdGroupUrlTarget extends SingleRecordBulkEntity {
         ));
         
 
-        m.add(new SimpleBulkMapping<BulkAdGroupUrlTarget, String>(StringTable.FinalUrlSuffix,
-                new Function<BulkAdGroupUrlTarget, String>() {
-                    @Override
-                    public String apply(BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            return StringExtensions.toOptionalBulkString(
-                                    ((BiddableAdGroupCriterion) c.getBiddableAdGroupCriterion()).getFinalUrlSuffix(),
-                                    c.getBiddableAdGroupCriterion().getId());
-                        } else {
-                            return null;
-                        }
-                    }
-                },
-                new BiConsumer<String, BulkAdGroupUrlTarget>() {
-                    @Override
-                    public void accept(String v, BulkAdGroupUrlTarget c) {
-                        if (c.getBiddableAdGroupCriterion() instanceof BiddableAdGroupCriterion) {
-                            ((BiddableAdGroupCriterion)c.getBiddableAdGroupCriterion()).setFinalUrlSuffix(StringExtensions.getValueOrEmptyString(v));
-                        }
-                    }
-                }
-        ));
-
         MAPPINGS = Collections.unmodifiableList(m);
     }
 
@@ -317,15 +215,11 @@ public class BulkAdGroupUrlTarget extends SingleRecordBulkEntity {
     public void processMappingsFromRowValues(RowValues values) {
         BiddableAdGroupCriterion adGroupCriterion = new BiddableAdGroupCriterion();  
         
-        FixedBid fixedBid = new FixedBid();       
-        fixedBid.setType(FixedBid.class.getSimpleName());
-        
         Webpage webpage = new Webpage();
         webpage.setParameter(new WebpageParameter());
         
     	adGroupCriterion.setCriterion(webpage);
     	adGroupCriterion.getCriterion().setType(Webpage.class.getSimpleName());
-    	adGroupCriterion.setCriterionBid(fixedBid);
     	adGroupCriterion.setType("BiddableAdGroupCriterion");
     	
     	setBiddableAdGroupCriterion(adGroupCriterion);  
