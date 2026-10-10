@@ -1,6 +1,5 @@
 package com.microsoft.bingads.v13.internal.bulk;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import com.microsoft.bingads.AsyncCallback;
@@ -52,9 +51,8 @@ public class DownloadStatusProvider implements BulkOperationStatusProvider<Downl
                     );
                     
                     resultFuture.setResult(status);
-                } catch (InterruptedException e) {                    
-                    resultFuture.setException(e);
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the tracking never completes.
                     resultFuture.setException(e);
                 }
             }

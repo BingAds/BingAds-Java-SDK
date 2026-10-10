@@ -5,12 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
@@ -23,7 +21,6 @@ import com.microsoft.bingads.ApiEnvironment;
 import com.microsoft.bingads.AsyncCallback;
 import com.microsoft.bingads.Authentication;
 import com.microsoft.bingads.AuthorizationData;
-import com.microsoft.bingads.CouldNotUploadFileException;
 import com.microsoft.bingads.HeadersImpl;
 import com.microsoft.bingads.InternalException;
 import com.microsoft.bingads.ServiceClient;
@@ -32,6 +29,7 @@ import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
 import com.microsoft.bingads.internal.functionalinterfaces.Consumer;
+import com.microsoft.bingads.internal.utilities.FileTransferExecutor;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
@@ -204,20 +202,16 @@ public class BulkServiceManager {
                             operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
                             operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                                 @Override
-                                public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
+                                public void onSuccess(BulkOperationStatus<UploadStatus> status) {
                                     downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
                                             operation, new ParentCallback<File>(resultFuture) {
                                                 @Override
-                                                public void onSuccess(File localFile) {
-                                                    try {
-                                                        resultFuture.setResult(bulkEntityReaderFactory
-                                                                .createBulkFileReader(localFile, 
-                                                                        ResultFileType.UPLOAD, 
-                                                                        DownloadFileType.CSV, 
-                                                                        parameters.getAutoDeleteTempFile()).getEntities());
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
-                                                    }
+                                                public void onSuccess(File localFile) throws IOException {
+                                                    resultFuture.setResult(bulkEntityReaderFactory
+                                                            .createBulkFileReader(localFile, 
+                                                                    ResultFileType.UPLOAD, 
+                                                                    DownloadFileType.CSV, 
+                                                                    parameters.getAutoDeleteTempFile()).getEntities());
                                                 }
                                             });
                                 }
@@ -405,7 +399,7 @@ public class BulkServiceManager {
             public void onSuccess(final BulkUploadOperation operation) {
                 operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<UploadStatus>>(resultFuture) {
                     @Override
-                    public void onSuccess(BulkOperationStatus<UploadStatus> status) throws IOException, URISyntaxException {
+                    public void onSuccess(BulkOperationStatus<UploadStatus> status) {
                         downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
                                 operation, new ParentCallback<File>(resultFuture) {
                                     @Override
@@ -485,7 +479,7 @@ public class BulkServiceManager {
             public void onSuccess(final BulkDownloadOperation operation) {
                 operation.trackAsync(progress, new ParentCallback<BulkOperationStatus<DownloadStatus>>(resultFuture) {
                     @Override
-                    public void onSuccess(BulkOperationStatus<DownloadStatus> status) throws IOException, URISyntaxException {
+                    public void onSuccess(BulkOperationStatus<DownloadStatus> status) {
                         downloadBulkFileAsync(parameters.getResultFileDirectory(), parameters.getResultFileName(), parameters.getOverwriteResultFile(),
                                 operation, new ParentCallback<File>(resultFuture) {
                                     @Override
@@ -501,24 +495,36 @@ public class BulkServiceManager {
         return resultFuture;
     }
 
-    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, String resultFileName, boolean overwriteResultFile, BulkOperation<T> operation,
-            AsyncCallback<File> callback) throws IOException, URISyntaxException {
+    private <T> Future<File> downloadBulkFileAsync(File resultFileDirectory, final String resultFileName, final boolean overwriteResultFile,
+            final BulkOperation<T> operation, AsyncCallback<File> callback) {
         operation.setHttpFileService(this.httpFileService);
         operation.setZipExtractor(this.zipExtractor);
 
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
-        File effectiveResultFileDirectory = resultFileDirectory;
+        final File effectiveResultFileDirectory;
 
-        if (effectiveResultFileDirectory == null) {
+        if (resultFileDirectory == null) {
             workingDirectory.mkdirs();
             effectiveResultFileDirectory = workingDirectory;
+        } else {
+            effectiveResultFileDirectory = resultFileDirectory;
         }
 
-        operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
+        // Do not download on the current thread, because it is a thread of the HTTP client which delivered the status.
+        FileTransferExecutor.execute(new Runnable() {
             @Override
-            public void onSuccess(File file) {
-                resultFuture.setResult(file);
+            public void run() {
+                try {
+                    operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
+                        @Override
+                        public void onSuccess(File file) {
+                            resultFuture.setResult(file);
+                        }
+                    });
+                } catch (Throwable e) {
+                    resultFuture.setException(e);
+                }
             }
         });
 
@@ -575,9 +581,8 @@ public class BulkServiceManager {
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
-                    } catch (InterruptedException e) {
-                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
-                    } catch (ExecutionException e) {
+                    } catch (Exception e) {
+                        // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                         resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
                 }
@@ -603,9 +608,8 @@ public class BulkServiceManager {
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
-                    } catch (InterruptedException e) {
-                        resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
-                    } catch (ExecutionException e) {
+                    } catch (Exception e) {
+                        // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                         resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
                 }
@@ -641,11 +645,30 @@ public class BulkServiceManager {
         service.getBulkUploadUrlAsync(request, new AsyncHandler<GetBulkUploadUrlResponse>() {
             @Override
             public void handleResponse(Response<GetBulkUploadUrlResponse> res) {
+                final GetBulkUploadUrlResponse response;
+                final String trackingId;
                 try {
-                    GetBulkUploadUrlResponse response = res.get();
+                    response = res.get();
 
-                    String trackingId = ServiceUtils.GetTrackingId(res);
+                    trackingId = ServiceUtils.GetTrackingId(res);
+                } catch (Exception e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the future never completes.
+                    resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
 
+                    return;
+                }
+
+                // Do not upload on the current thread, because it is a thread of the HTTP client which delivered the response.
+                FileTransferExecutor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        uploadFile(response, trackingId);
+                    }
+                });
+            }
+
+            private void uploadFile(GetBulkUploadUrlResponse response, String trackingId) {
+                try {
                     String uploadUrl = response.getUploadUrl();
 
                     File effectiveUploadPath = parameters.getUploadFilePath();
@@ -697,13 +720,8 @@ public class BulkServiceManager {
                     operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                     resultFuture.setResult(operation);
-                } catch (InterruptedException e) {
-                    resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
-                } catch (ExecutionException e) {
-                    resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
-                } catch (URISyntaxException e) {
-                    resultFuture.setException(e);
-                } catch (CouldNotUploadFileException e) {
+                } catch (Throwable e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                     resultFuture.setException(e);
                 }
             }

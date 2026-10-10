@@ -6,7 +6,6 @@ import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Response;
@@ -42,9 +41,8 @@ public class ReportingStatusProvider{
                             trackingId                            
                     );                    
                     resultFuture.setResult(status);
-                } catch (InterruptedException e) {                    
-                    resultFuture.setException(e);
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the tracking never completes.
                     resultFuture.setException(e);
                 }
             }

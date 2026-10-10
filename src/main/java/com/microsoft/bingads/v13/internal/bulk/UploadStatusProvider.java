@@ -1,6 +1,5 @@
 package com.microsoft.bingads.v13.internal.bulk;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import jakarta.xml.ws.AsyncHandler;
@@ -50,9 +49,8 @@ public class UploadStatusProvider implements BulkOperationStatusProvider<UploadS
                     );                   
 
                     resultFuture.setResult(status);
-                } catch (InterruptedException e) {
-                    resultFuture.setException(e);
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the tracking never completes.
                     resultFuture.setException(e);
                 }
             }

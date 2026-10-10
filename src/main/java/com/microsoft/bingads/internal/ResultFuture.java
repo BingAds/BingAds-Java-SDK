@@ -89,7 +89,7 @@ public class ResultFuture<T> implements Future<T> {
     @Override
     public T get() throws InterruptedException, ExecutionException {
         synchronized (this) {
-            if (!done) {
+            while (!done && !cancelled) {
                 wait();
             }
         }
@@ -107,12 +107,16 @@ public class ResultFuture<T> implements Future<T> {
 
     @Override
     public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-    	synchronized (this) {
-  	      	if (!done) {
-	      	    unit.timedWait(this, timeout);
-	        }
-    	}
-    		
+        long deadline = System.nanoTime() + unit.toNanos(timeout);
+
+        synchronized (this) {
+            long remaining;
+            // Loop to handle spurious wakeups.
+            while (!done && !cancelled && (remaining = deadline - System.nanoTime()) > 0) {
+                TimeUnit.NANOSECONDS.timedWait(this, remaining);
+            }
+        }
+
     	if (!done) {
     		throw new TimeoutException("Operation timed out");
     	}
