@@ -8,6 +8,10 @@ public class CouldNotSubmitReportingDownloadException extends Exception {
 	public CouldNotSubmitReportingDownloadException(Exception exception) {
         super(exception);
     }
+
+    public CouldNotSubmitReportingDownloadException(Throwable throwable) {
+        super(throwable);
+    }
 	
 	public CouldNotSubmitReportingDownloadException(String message) {
         super(message);

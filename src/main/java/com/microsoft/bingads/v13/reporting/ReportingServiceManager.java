@@ -3,7 +3,6 @@ package com.microsoft.bingads.v13.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import jakarta.xml.ws.AsyncHandler;
@@ -17,6 +16,7 @@ import com.microsoft.bingads.ServiceClient;
 import com.microsoft.bingads.internal.ParentCallback;
 import com.microsoft.bingads.internal.ResultFuture;
 import com.microsoft.bingads.internal.ServiceUtils;
+import com.microsoft.bingads.internal.utilities.FileTransferExecutor;
 import com.microsoft.bingads.internal.utilities.HttpClientHttpFileService;
 import com.microsoft.bingads.internal.utilities.HttpFileService;
 import com.microsoft.bingads.internal.utilities.SimpleZipExtractor;
@@ -176,16 +176,22 @@ public class ReportingServiceManager {
 
         final ResultFuture<File> resultFuture = new ResultFuture<File>(callback);
 
-        File effectiveResultFileDirectory = resultFileDirectory;
+        final File effectiveResultFileDirectory = resultFileDirectory != null ? resultFileDirectory : workingDirectory;
 
-        if (effectiveResultFileDirectory == null) {
-            effectiveResultFileDirectory = workingDirectory;
-        }
-
-        operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
+        // Do not download on the current thread, because it is a thread of the HTTP client which delivered the status.
+        FileTransferExecutor.execute(new Runnable() {
             @Override
-            public void onSuccess(File file) {
-                resultFuture.setResult(file);
+            public void run() {
+                try {
+                    operation.downloadResultFileAsync(effectiveResultFileDirectory, resultFileName, true, overwriteResultFile, new ParentCallback<File>(resultFuture) {
+                        @Override
+                        public void onSuccess(File file) {
+                            resultFuture.setResult(file);
+                        }
+                    });
+                } catch (Throwable e) {
+                    resultFuture.setException(e);
+                }
             }
         });
 
@@ -241,9 +247,8 @@ public class ReportingServiceManager {
                     operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                     resultFuture.setResult(operation);
-                } catch (InterruptedException e) {
-                    resultFuture.setException(new CouldNotSubmitReportingDownloadException(e));
-                } catch (ExecutionException e) {
+                } catch (Throwable e) {
+                    // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                     resultFuture.setException(new CouldNotSubmitReportingDownloadException(e));
                 }
             }

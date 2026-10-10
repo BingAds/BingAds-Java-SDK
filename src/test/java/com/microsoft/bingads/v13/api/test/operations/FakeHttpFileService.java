@@ -19,6 +19,18 @@ public class FakeHttpFileService implements HttpFileService {
     
     private Boolean downloadWasCalled;
     
+    private BiConsumer<URI, File> onUploadFile;
+    
+    private Boolean uploadWasCalled;
+    
+    public void setOnUploadFile(BiConsumer<URI, File> value) {
+        onUploadFile = value;
+    }
+    
+    public Boolean getUploadWasCalled() {
+        return uploadWasCalled;
+    }
+    
     public BiConsumer<String, File> getOnDownloadFile() {
         return onDownloadFile;
     }
@@ -40,7 +52,13 @@ public class FakeHttpFileService implements HttpFileService {
 
     @Override
     public void uploadFile(URI uri, File uploadFilePath, Consumer<HttpRequest> addHeaders, int timeoutInMilliseconds) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (onUploadFile == null) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+        onUploadFile.accept(uri, uploadFilePath);
+        
+        uploadWasCalled = true;
     }
 
     @Override
