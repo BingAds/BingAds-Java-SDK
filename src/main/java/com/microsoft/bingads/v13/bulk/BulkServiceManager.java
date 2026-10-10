@@ -220,7 +220,8 @@ public class BulkServiceManager {
                         } else {
                             resultFuture.setResult(parseBulkUpsertResult(result.getEntityRecords()));
                         }
-                    } catch (Exception ex) {
+                    } catch (Throwable ex) {
+                        // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                         Throwable cause = ex.getCause();
                         String errorCode = "";
                         try {
@@ -581,7 +582,7 @@ public class BulkServiceManager {
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
-                    } catch (Exception e) {
+                    } catch (Throwable e) {
                         // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                         resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
@@ -608,7 +609,7 @@ public class BulkServiceManager {
                         operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                         resultFuture.setResult(operation);
-                    } catch (Exception e) {
+                    } catch (Throwable e) {
                         // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                         resultFuture.setException(new CouldNotSubmitBulkDownloadException(e));
                     }
@@ -651,7 +652,7 @@ public class BulkServiceManager {
                     response = res.get();
 
                     trackingId = ServiceUtils.GetTrackingId(res);
-                } catch (Exception e) {
+                } catch (Throwable e) {
                     // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                     resultFuture.setException(new CouldNotSubmitBulkUploadException(e));
 

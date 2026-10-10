@@ -247,7 +247,7 @@ public class ReportingServiceManager {
                     operation.setDownloadHttpTimeoutInMilliseconds(downloadHttpTimeoutInMilliseconds);
 
                     resultFuture.setResult(operation);
-                } catch (Exception e) {
+                } catch (Throwable e) {
                     // Catch all exceptions, otherwise the exception gets lost and the future never completes.
                     resultFuture.setException(new CouldNotSubmitReportingDownloadException(e));
                 }

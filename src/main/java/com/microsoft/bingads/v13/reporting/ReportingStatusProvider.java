@@ -41,7 +41,7 @@ public class ReportingStatusProvider{
                             trackingId                            
                     );                    
                     resultFuture.setResult(status);
-                } catch (Exception e) {
+                } catch (Throwable e) {
                     // Catch all exceptions, otherwise the exception gets lost and the tracking never completes.
                     resultFuture.setException(e);
                 }

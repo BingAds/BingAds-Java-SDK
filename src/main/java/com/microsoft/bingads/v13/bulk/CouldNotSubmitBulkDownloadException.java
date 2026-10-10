@@ -8,6 +8,10 @@ public class CouldNotSubmitBulkDownloadException extends RuntimeException {
 	public CouldNotSubmitBulkDownloadException(Exception exception) {
         super(exception);
     }
+
+    public CouldNotSubmitBulkDownloadException(Throwable throwable) {
+        super(throwable);
+    }
 	
 	public CouldNotSubmitBulkDownloadException(String message) {
         super(message);
