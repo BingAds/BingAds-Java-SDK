@@ -49,6 +49,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="SoldToPaymentInstrumentId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="TaxCertificate" type="{https://bingads.microsoft.com/Customer/v13/Entities}AccountTaxCertificate" minOccurs="0"/>
  *         <element name="AccountMode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="ParentCustomerNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -86,7 +87,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "autoTagType",
     "soldToPaymentInstrumentId",
     "taxCertificate",
-    "accountMode"
+    "accountMode",
+    "parentCustomerNumber"
 })
 public class AdvertiserAccount {
 
@@ -156,6 +158,8 @@ public class AdvertiserAccount {
     protected AccountTaxCertificate taxCertificate;
     @XmlElement(name = "AccountMode", nillable = true)
     protected String accountMode;
+    @XmlElement(name = "ParentCustomerNumber", nillable = true)
+    protected String parentCustomerNumber;
 
     /**
      * Gets the value of the billToCustomerId property.
@@ -825,6 +829,30 @@ public class AdvertiserAccount {
      */
     public void setAccountMode(String value) {
         this.accountMode = value;
+    }
+
+    /**
+     * Gets the value of the parentCustomerNumber property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getParentCustomerNumber() {
+        return parentCustomerNumber;
+    }
+
+    /**
+     * Sets the value of the parentCustomerNumber property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setParentCustomerNumber(String value) {
+        this.parentCustomerNumber = value;
     }
 
 }

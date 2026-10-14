@@ -218,6 +218,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="CompanyItem"/>
  *     <enumeration value="AdGroupUrlTargets"/>
  *     <enumeration value="AdGroupAIPromptAssociations"/>
+ *     <enumeration value="AIPromptAudiences"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -636,7 +637,9 @@ public enum DownloadEntity {
     @XmlEnumValue("AdGroupUrlTargets")
     AD_GROUP_URL_TARGETS("AdGroupUrlTargets"),
     @XmlEnumValue("AdGroupAIPromptAssociations")
-    AD_GROUP_AI_PROMPT_ASSOCIATIONS("AdGroupAIPromptAssociations");
+    AD_GROUP_AI_PROMPT_ASSOCIATIONS("AdGroupAIPromptAssociations"),
+    @XmlEnumValue("AIPromptAudiences")
+    AI_PROMPT_AUDIENCES("AIPromptAudiences");
     private final String value;
 
     DownloadEntity(String v) {

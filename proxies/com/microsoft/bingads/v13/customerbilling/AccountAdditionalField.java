@@ -7,7 +7,8 @@ public enum AccountAdditionalField {
 
     TAX_CERTIFICATE("TaxCertificate"),
     ACCOUNT_MODE("AccountMode"),
-    COUPON_CLAIM_INFO("CouponClaimInfo");
+    COUPON_CLAIM_INFO("CouponClaimInfo"),
+    PARENT_CUSTOMER_NUMBER("ParentCustomerNumber");
         
     private final String value;
 

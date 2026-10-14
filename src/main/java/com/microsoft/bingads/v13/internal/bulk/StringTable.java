@@ -531,6 +531,7 @@ public class StringTable {
     public static final String CampaignNegativeSimilarRemarketingListAssociation = "Campaign Negative Similar Remarketing List Association";
     public static final String Audience = "Audience";
     public static final String ProductAudience = "Product Audience";
+    public static final String AIPromptAudience = "AI Prompt Audience";
     public static final String AdGroupProductAudienceAssociation = "Ad Group Product Audience Association";
     public static final String AdGroupNegativeProductAudienceAssociation = "Ad Group Negative Product Audience Association";
     public static final String CampaignProductAudienceAssociation = "Campaign Product Audience Association";
@@ -622,12 +623,15 @@ public class StringTable {
     public static final String Image = "Image";
     public static final String Height = "Height";
     public static final String Width = "Width";
+    public static final String AdvertiserAILabel = "Advertiser AI Label";
+    public static final String SystemAIDetectionSignal = "System AI Detection Signal";
     
     // Video
     public static final String Video = "Video";
     public static final String SourceUrl = "Source Url";
     public static final String AspectRatio = "Aspect Ratio";
     public static final String DurationInMillionSeconds = "Duration In Milliseconds";
+    public static final String AIDetectedContentWatermarkPolicy = "AI Detected Content Watermark Policy";
     
     // Dynamic Search Ad   
     public static final String DynamicSearchAd = "Dynamic Search Ad";

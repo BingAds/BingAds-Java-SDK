@@ -4,6 +4,7 @@ package com.microsoft.bingads.v13.campaignmanagement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -18,6 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="AdvertiserAILabel" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdvertiserAILabel" minOccurs="0"/>
  *         <element name="Id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="MediaType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Text" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -32,6 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Media", propOrder = {
+    "advertiserAILabel",
     "id",
     "mediaType",
     "text",
@@ -42,6 +45,9 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class Media {
 
+    @XmlElement(name = "AdvertiserAILabel", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AdvertiserAILabel advertiserAILabel;
     @XmlElement(name = "Id", nillable = true)
     protected Long id;
     @XmlElement(name = "MediaType", nillable = true)
@@ -53,6 +59,30 @@ public class Media {
 
     public Media() {
         this.type = "Media";
+    }
+
+    /**
+     * Gets the value of the advertiserAILabel property.
+     *
+     * @return
+     *     possible object is
+     *     {@link AdvertiserAILabel }
+     *
+     */
+    public AdvertiserAILabel getAdvertiserAILabel() {
+        return advertiserAILabel;
+    }
+
+    /**
+     * Sets the value of the advertiserAILabel property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link AdvertiserAILabel }
+     *
+     */
+    public void setAdvertiserAILabel(AdvertiserAILabel value) {
+        this.advertiserAILabel = value;
     }
 
     /**

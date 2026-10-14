@@ -38,7 +38,8 @@ public enum AdGroupCriterionType {
     TOPIC("Topic"),
     CUSTOM_SEGMENT("CustomSegment"),
     JOB_SENIORITY("JobSeniority"),
-    CUSTOM_LINKED_IN("CustomLinkedIn");
+    CUSTOM_LINKED_IN("CustomLinkedIn"),
+    A_I_PROMPT("AIPrompt");
         
     private final String value;
 

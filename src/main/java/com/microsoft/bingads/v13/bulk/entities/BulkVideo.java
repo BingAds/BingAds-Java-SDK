@@ -38,6 +38,10 @@ public class BulkVideo extends SingleRecordBulkEntity {
 	private Long accountId;
 	
 	private Video video;
+
+	private String advertiserAILabel;
+
+	private String systemAIDetectionSignal;
 	
     private static final List<BulkMapping<BulkVideo>> MAPPINGS;
     
@@ -189,8 +193,44 @@ public class BulkVideo extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkVideo, String>(StringTable.AdvertiserAILabel,
+                new Function<BulkVideo, String>() {
+                    @Override
+                    public String apply(BulkVideo entity) {
+                        return entity.getAdvertiserAILabel();
+                    }
+                },
+                new BiConsumer<String, BulkVideo>() {
+                    @Override
+                    public void accept(String value, BulkVideo entity) {
+                        entity.setAdvertiserAILabel(value);
+                    }
+                }
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
+    }
+
+    private static final List<BulkMapping<BulkVideo>> READ_ONLY_MAPPINGS;
+
+    static {
+        List<BulkMapping<BulkVideo>> mappings = new ArrayList<BulkMapping<BulkVideo>>();
+        mappings.add(new SimpleBulkMapping<BulkVideo, String>(StringTable.SystemAIDetectionSignal,
+                new Function<BulkVideo, String>() {
+                    @Override
+                    public String apply(BulkVideo entity) {
+                        return entity.getSystemAIDetectionSignal();
+                    }
+                },
+                new BiConsumer<String, BulkVideo>() {
+                    @Override
+                    public void accept(String value, BulkVideo entity) {
+                        entity.setSystemAIDetectionSignal(value);
+                    }
+                }
+        ));
+        READ_ONLY_MAPPINGS = Collections.unmodifiableList(mappings);
     }
 
     /**
@@ -221,15 +261,47 @@ public class BulkVideo extends SingleRecordBulkEntity {
         this.video = video;
     }
 
+    /**
+     * Gets the Advertiser AI Label field.
+     */
+    public String getAdvertiserAILabel() {
+        return advertiserAILabel;
+    }
+
+    /**
+     * Sets the Advertiser AI Label field.
+     */
+    public void setAdvertiserAILabel(String advertiserAILabel) {
+        this.advertiserAILabel = advertiserAILabel;
+    }
+
+    /**
+     * Gets the read-only System AI Detection Signal field.
+     */
+    public String getSystemAIDetectionSignal() {
+        return systemAIDetectionSignal;
+    }
+
+    /**
+     * Sets the read-only System AI Detection Signal field.
+     */
+    public void setSystemAIDetectionSignal(String systemAIDetectionSignal) {
+        this.systemAIDetectionSignal = systemAIDetectionSignal;
+    }
+
     @Override
     public void processMappingsFromRowValues(RowValues values) {
     	this.setVideo(new Video());
         MappingHelpers.<BulkVideo>convertToEntity(values, MAPPINGS, this);
+        MappingHelpers.<BulkVideo>convertToEntity(values, READ_ONLY_MAPPINGS, this);
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         validatePropertyNotNull(getVideo(), "Video");
         MappingHelpers.convertToValues(this, values, MAPPINGS);
+        if (!excludeReadonlyData) {
+            MappingHelpers.convertToValues(this, values, READ_ONLY_MAPPINGS);
+        }
     }
 }

@@ -13,7 +13,8 @@ public enum AudienceType {
     COMBINED_LIST("CombinedList"),
     CUSTOMER_LIST("CustomerList"),
     IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
-    CUSTOM_SEGMENT("CustomSegment");
+    CUSTOM_SEGMENT("CustomSegment"),
+    A_I_PROMPT("AIPrompt");
         
     private final String value;
 

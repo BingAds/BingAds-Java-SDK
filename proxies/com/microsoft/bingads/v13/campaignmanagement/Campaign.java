@@ -45,6 +45,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="Status" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignStatus" minOccurs="0"/>
  *         <element name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="TermExclusions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         <element name="TimeZone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="TrackingUrlTemplate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="UrlCustomParameters" type="{https://bingads.microsoft.com/CampaignManagement/v13}CustomParameters" minOccurs="0"/>
@@ -89,6 +90,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "startDate",
     "status",
     "subType",
+    "termExclusions",
     "timeZone",
     "trackingUrlTemplate",
     "urlCustomParameters",
@@ -158,6 +160,8 @@ public class Campaign {
     protected CampaignStatus status;
     @XmlElement(name = "SubType", nillable = true)
     protected String subType;
+    @XmlElement(name = "TermExclusions", nillable = true)
+    protected ArrayOfAssetLink termExclusions;
     @XmlElement(name = "TimeZone", nillable = true)
     protected String timeZone;
     @XmlElement(name = "TrackingUrlTemplate", nillable = true)
@@ -754,6 +758,30 @@ public class Campaign {
      */
     public void setSubType(String value) {
         this.subType = value;
+    }
+
+    /**
+     * Gets the value of the termExclusions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *
+     */
+    public ArrayOfAssetLink getTermExclusions() {
+        return termExclusions;
+    }
+
+    /**
+     * Sets the value of the termExclusions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *
+     */
+    public void setTermExclusions(ArrayOfAssetLink value) {
+        this.termExclusions = value;
     }
 
     /**
