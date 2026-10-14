@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="AdvertiserAILabel" type="{https://bingads.microsoft.com/CampaignManagement/v13}AdvertiserAILabel" minOccurs="0"/>
  *         <element name="AspectRatio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CreatedDateTimeInUTC" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -29,6 +30,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="ModifiedDateTimeInUTC" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="SourceUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="SystemAIDetectionSignal" type="{https://bingads.microsoft.com/CampaignManagement/v13}SystemAIDetectionSignal" minOccurs="0"/>
  *         <element name="ThumbnailUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
@@ -41,6 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Video", propOrder = {
+    "advertiserAILabel",
     "aspectRatio",
     "createdDateTimeInUTC",
     "description",
@@ -50,11 +53,15 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "modifiedDateTimeInUTC",
     "sourceUrl",
     "status",
+    "systemAIDetectionSignal",
     "thumbnailUrl",
     "url"
 })
 public class Video {
 
+    @XmlElement(name = "AdvertiserAILabel", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected AdvertiserAILabel advertiserAILabel;
     @XmlElement(name = "AspectRatio", nillable = true)
     protected String aspectRatio;
     @XmlElement(name = "CreatedDateTimeInUTC", type = String.class, nillable = true)
@@ -77,10 +84,37 @@ public class Video {
     protected String sourceUrl;
     @XmlElement(name = "Status", nillable = true)
     protected String status;
+    @XmlElement(name = "SystemAIDetectionSignal", nillable = true)
+    @XmlSchemaType(name = "string")
+    protected SystemAIDetectionSignal systemAIDetectionSignal;
     @XmlElement(name = "ThumbnailUrl", nillable = true)
     protected String thumbnailUrl;
     @XmlElement(name = "Url", nillable = true)
     protected String url;
+
+    /**
+     * Gets the value of the advertiserAILabel property.
+     *
+     * @return
+     *     possible object is
+     *     {@link AdvertiserAILabel }
+     *
+     */
+    public AdvertiserAILabel getAdvertiserAILabel() {
+        return advertiserAILabel;
+    }
+
+    /**
+     * Sets the value of the advertiserAILabel property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link AdvertiserAILabel }
+     *
+     */
+    public void setAdvertiserAILabel(AdvertiserAILabel value) {
+        this.advertiserAILabel = value;
+    }
 
     /**
      * Gets the value of the aspectRatio property.
@@ -296,6 +330,30 @@ public class Video {
      */
     public void setStatus(String value) {
         this.status = value;
+    }
+
+    /**
+     * Gets the value of the systemAIDetectionSignal property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SystemAIDetectionSignal }
+     *
+     */
+    public SystemAIDetectionSignal getSystemAIDetectionSignal() {
+        return systemAIDetectionSignal;
+    }
+
+    /**
+     * Sets the value of the systemAIDetectionSignal property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SystemAIDetectionSignal }
+     *
+     */
+    public void setSystemAIDetectionSignal(SystemAIDetectionSignal value) {
+        this.systemAIDetectionSignal = value;
     }
 
     /**

@@ -65,6 +65,8 @@ public class AddMixInForEnumTypes {
 				.addMixIn(AdExtensionEditorialStatus.class, AdExtensionEditorialStatusMixIn.class)
 				.addMixIn(MediaEnabledEntityFilter.class, MediaEnabledEntityFilterMixIn.class)
 				.addMixIn(MediaAdditionalField.class, MediaAdditionalFieldMixIn.class)
+				.addMixIn(AdvertiserAILabel.class, AdvertiserAILabelMixIn.class)
+				.addMixIn(SystemAIDetectionSignal.class, SystemAIDetectionSignalMixIn.class)
 				.addMixIn(AdGroupCriterionType.class, AdGroupCriterionTypeMixIn.class)
 				.addMixIn(CriterionAdditionalField.class, CriterionAdditionalFieldMixIn.class)
 				.addMixIn(ProductPartitionType.class, ProductPartitionTypeMixIn.class)

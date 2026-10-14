@@ -49,6 +49,10 @@ public class BulkImage extends SingleRecordBulkEntity {
 	private Integer width;
 	
 	private Integer height;
+
+	private String advertiserAILabel;
+
+	private String systemAIDetectionSignal;
 	
 
     private static final List<BulkMapping<BulkImage>> MAPPINGS;
@@ -196,9 +200,44 @@ public class BulkImage extends SingleRecordBulkEntity {
                     }
                 }
         ));
-        
+
+        m.add(new SimpleBulkMapping<BulkImage, String>(StringTable.AdvertiserAILabel,
+                new Function<BulkImage, String>() {
+                    @Override
+                    public String apply(BulkImage entity) {
+                        return entity.getAdvertiserAILabel();
+                    }
+                },
+                new BiConsumer<String, BulkImage>() {
+                    @Override
+                    public void accept(String value, BulkImage entity) {
+                        entity.setAdvertiserAILabel(value);
+                    }
+                }
+        ));
 
         MAPPINGS = Collections.unmodifiableList(m);
+    }
+
+    private static final List<BulkMapping<BulkImage>> READ_ONLY_MAPPINGS;
+
+    static {
+        List<BulkMapping<BulkImage>> mappings = new ArrayList<BulkMapping<BulkImage>>();
+        mappings.add(new SimpleBulkMapping<BulkImage, String>(StringTable.SystemAIDetectionSignal,
+                new Function<BulkImage, String>() {
+                    @Override
+                    public String apply(BulkImage entity) {
+                        return entity.getSystemAIDetectionSignal();
+                    }
+                },
+                new BiConsumer<String, BulkImage>() {
+                    @Override
+                    public void accept(String value, BulkImage entity) {
+                        entity.setSystemAIDetectionSignal(value);
+                    }
+                }
+        ));
+        READ_ONLY_MAPPINGS = Collections.unmodifiableList(mappings);
     }
 
     /**
@@ -278,13 +317,45 @@ public class BulkImage extends SingleRecordBulkEntity {
         this.height = height;
     }
 
+    /**
+     * Gets the Advertiser AI Label field.
+     */
+    public String getAdvertiserAILabel() {
+        return advertiserAILabel;
+    }
+
+    /**
+     * Sets the Advertiser AI Label field.
+     */
+    public void setAdvertiserAILabel(String advertiserAILabel) {
+        this.advertiserAILabel = advertiserAILabel;
+    }
+
+    /**
+     * Gets the read-only System AI Detection Signal field.
+     */
+    public String getSystemAIDetectionSignal() {
+        return systemAIDetectionSignal;
+    }
+
+    /**
+     * Sets the read-only System AI Detection Signal field.
+     */
+    public void setSystemAIDetectionSignal(String systemAIDetectionSignal) {
+        this.systemAIDetectionSignal = systemAIDetectionSignal;
+    }
+
     @Override
     public void processMappingsFromRowValues(RowValues values) {
         MappingHelpers.<BulkImage>convertToEntity(values, MAPPINGS, this);
+        MappingHelpers.<BulkImage>convertToEntity(values, READ_ONLY_MAPPINGS, this);
     }
 
     @Override
     public void processMappingsToRowValues(RowValues values, boolean excludeReadonlyData) {
         MappingHelpers.convertToValues(this, values, MAPPINGS);
+        if (!excludeReadonlyData) {
+            MappingHelpers.convertToValues(this, values, READ_ONLY_MAPPINGS);
+        }
     }
 }

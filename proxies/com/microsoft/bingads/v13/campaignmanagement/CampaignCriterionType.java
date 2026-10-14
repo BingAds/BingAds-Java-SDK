@@ -30,7 +30,8 @@ public enum CampaignCriterionType {
     IMPRESSION_BASED_REMARKETING_LIST("ImpressionBasedRemarketingList"),
     JOB_SENIORITY("JobSeniority"),
     CUSTOM_LINKED_IN("CustomLinkedIn"),
-    JOB_TITLE("JobTitle");
+    JOB_TITLE("JobTitle"),
+    A_I_PROMPT("AIPrompt");
         
     private final String value;
 

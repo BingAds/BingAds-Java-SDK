@@ -65,6 +65,8 @@ public class BulkAccount extends SingleRecordBulkEntity {
     
     private List<String> businessAttributes;
 
+    private String aiDetectedContentWatermarkPolicy;
+
     private static final List<BulkMapping<BulkAccount>> MAPPINGS;
 
     static {
@@ -277,6 +279,21 @@ public class BulkAccount extends SingleRecordBulkEntity {
                     }
                 }
         ));
+
+        m.add(new SimpleBulkMapping<BulkAccount, String>(StringTable.AIDetectedContentWatermarkPolicy,
+                new Function<BulkAccount, String>() {
+                    @Override
+                    public String apply(BulkAccount account) {
+                        return account.getAIDetectedContentWatermarkPolicy();
+                    }
+                },
+                new BiConsumer<String, BulkAccount>() {
+                    @Override
+                    public void accept(String value, BulkAccount account) {
+                        account.setAIDetectedContentWatermarkPolicy(value);
+                    }
+                }
+        ));
         
         MAPPINGS = Collections.unmodifiableList(m);
     }
@@ -421,6 +438,20 @@ public class BulkAccount extends SingleRecordBulkEntity {
 
     public void setAllowImageAutoRetrieve(Boolean allowImageAutoRetrieve) {
         this.allowImageAutoRetrieve = allowImageAutoRetrieve;
+    }
+
+    /**
+     * Gets the AI Detected Content Watermark Policy field.
+     */
+    public String getAIDetectedContentWatermarkPolicy() {
+        return aiDetectedContentWatermarkPolicy;
+    }
+
+    /**
+     * Sets the AI Detected Content Watermark Policy field.
+     */
+    public void setAIDetectedContentWatermarkPolicy(String aiDetectedContentWatermarkPolicy) {
+        this.aiDetectedContentWatermarkPolicy = aiDetectedContentWatermarkPolicy;
     }
     
     @Override

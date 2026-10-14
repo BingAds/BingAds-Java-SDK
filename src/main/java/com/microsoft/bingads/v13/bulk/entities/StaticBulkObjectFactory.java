@@ -736,6 +736,12 @@ public class StaticBulkObjectFactory implements BulkObjectFactory {
                 return new BulkInMarketAudience();
             }
         }));
+        m.put(StringTable.AIPromptAudience, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
+            @Override
+            public SingleRecordBulkEntity create() {
+                return new BulkAIPromptAudience();
+            }
+        }));
         m.put(StringTable.AdGroupAIPromptAssociation, new EntityInfo(new Creator<SingleRecordBulkEntity>() {
             @Override
             public SingleRecordBulkEntity create() {

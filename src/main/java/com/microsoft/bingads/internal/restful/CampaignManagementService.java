@@ -850,6 +850,22 @@ public class CampaignManagementService extends RestfulServiceClient implements I
 	public Future<?> addMediaAsync(AddMediaRequest request, AsyncHandler<AddMediaResponse> asyncHandler) {
 		return sendRequestAsync(request, "/Media", HttpPost, AddMediaResponse.class, asyncHandler);
 	}
+
+
+	public UpdateMediaResponse updateMedia(UpdateMediaRequest request)
+		  throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception {
+		UpdateMediaResponse response = sendRequest(request, "/Media", HttpPut, UpdateMediaResponse.class);
+
+		return response;
+	}
+
+    public Response<UpdateMediaResponse> updateMediaAsync(UpdateMediaRequest request) {
+		return sendRequestAsync(request, "/Media", HttpPut, UpdateMediaResponse.class, null);
+	}
+
+	public Future<?> updateMediaAsync(UpdateMediaRequest request, AsyncHandler<UpdateMediaResponse> asyncHandler) {
+		return sendRequestAsync(request, "/Media", HttpPut, UpdateMediaResponse.class, asyncHandler);
+	}
 	
     	
 	public DeleteMediaResponse deleteMedia(DeleteMediaRequest request)

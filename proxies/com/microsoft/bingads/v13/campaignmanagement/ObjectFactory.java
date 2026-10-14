@@ -239,6 +239,7 @@ public class ObjectFactory {
     private static final QName _AdExtensionEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdExtensionEditorialStatus");
     private static final QName _ArrayOfMedia_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfMedia");
     private static final QName _Media_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Media");
+    private static final QName _AdvertiserAILabel_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AdvertiserAILabel");
     private static final QName _Image_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Image");
     private static final QName _MediaEnabledEntityFilter_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaEnabledEntityFilter");
     private static final QName _Paging_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "Paging");
@@ -248,6 +249,7 @@ public class ObjectFactory {
     private static final QName _ArrayOfMediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfMediaRepresentation");
     private static final QName _MediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaRepresentation");
     private static final QName _ImageMediaRepresentation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImageMediaRepresentation");
+    private static final QName _SystemAIDetectionSignal_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "SystemAIDetectionSignal");
     private static final QName _ArrayOfArrayOfMediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfArrayOfMediaAssociation");
     private static final QName _ArrayOfMediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ArrayOfMediaAssociation");
     private static final QName _MediaAssociation_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MediaAssociation");
@@ -3235,6 +3237,26 @@ public class ObjectFactory {
      */
     public AddMediaResponse createAddMediaResponse() {
         return new AddMediaResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMediaRequest }
+     *
+     * @return
+     *     the new instance of {@link UpdateMediaRequest }
+     */
+    public UpdateMediaRequest createUpdateMediaRequest() {
+        return new UpdateMediaRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMediaResponse }
+     *
+     * @return
+     *     the new instance of {@link UpdateMediaResponse }
+     */
+    public UpdateMediaResponse createUpdateMediaResponse() {
+        return new UpdateMediaResponse();
     }
 
     /**
@@ -12101,6 +12123,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdvertiserAILabel }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AdvertiserAILabel }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AdvertiserAILabel")
+    public JAXBElement<AdvertiserAILabel> createAdvertiserAILabel(AdvertiserAILabel value) {
+        return new JAXBElement<>(_AdvertiserAILabel_QNAME, AdvertiserAILabel.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Image }{@code >}
      * 
      * @param value
@@ -12217,6 +12252,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImageMediaRepresentation")
     public JAXBElement<ImageMediaRepresentation> createImageMediaRepresentation(ImageMediaRepresentation value) {
         return new JAXBElement<>(_ImageMediaRepresentation_QNAME, ImageMediaRepresentation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SystemAIDetectionSignal }{@code >}
+     *
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SystemAIDetectionSignal }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "SystemAIDetectionSignal")
+    public JAXBElement<SystemAIDetectionSignal> createSystemAIDetectionSignal(SystemAIDetectionSignal value) {
+        return new JAXBElement<>(_SystemAIDetectionSignal_QNAME, SystemAIDetectionSignal.class, null, value);
     }
 
     /**

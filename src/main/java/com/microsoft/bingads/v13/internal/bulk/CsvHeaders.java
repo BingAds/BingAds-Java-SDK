@@ -323,6 +323,8 @@ public class CsvHeaders {
             // Image
             StringTable.Height,
             StringTable.Width,
+            StringTable.AdvertiserAILabel,
+            StringTable.SystemAIDetectionSignal,
             
             // Video
             StringTable.SourceUrl,
@@ -469,6 +471,7 @@ public class CsvHeaders {
             StringTable.AdClickParallelTracking,
             StringTable.AutoApplyRecommendations,
             StringTable.AllowImageAutoRetrieve,
+            StringTable.AIDetectedContentWatermarkPolicy,
             StringTable.BusinessAttributes,
 
             StringTable.FinalUrlSuffix,

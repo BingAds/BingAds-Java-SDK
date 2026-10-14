@@ -1,6 +1,7 @@
 package com.microsoft.bingads.v13.api.test.entities;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -11,14 +12,22 @@ import jakarta.xml.bind.JAXBException;
 
 import org.junit.Test;
 
+import com.microsoft.bingads.v13.campaignmanagement.AdvertiserAILabel;
+import com.microsoft.bingads.v13.campaignmanagement.ArrayOfMedia;
 import com.microsoft.bingads.v13.campaignmanagement.CampaignFrequencyCapSetting;
 import com.microsoft.bingads.v13.campaignmanagement.ChannelPlacementCriterion;
 import com.microsoft.bingads.v13.campaignmanagement.FrequencyCapTimeGranularity;
 import com.microsoft.bingads.v13.campaignmanagement.ImpressionTrackingSetting;
+import com.microsoft.bingads.v13.campaignmanagement.Media;
+import com.microsoft.bingads.v13.campaignmanagement.MediaMetaData;
 import com.microsoft.bingads.v13.campaignmanagement.ObjectFactory;
 import com.microsoft.bingads.v13.campaignmanagement.ReachOptimizationGoal;
 import com.microsoft.bingads.v13.campaignmanagement.ReachOptimizationGoalSetting;
+import com.microsoft.bingads.v13.campaignmanagement.SystemAIDetectionSignal;
 import com.microsoft.bingads.v13.campaignmanagement.UnifiedAutomationSetting;
+import com.microsoft.bingads.v13.campaignmanagement.UpdateMediaRequest;
+import com.microsoft.bingads.v13.campaignmanagement.UpdateMediaResponse;
+import com.microsoft.bingads.v13.campaignmanagement.Video;
 
 public class CampaignManagementProxyParityTest {
     private final ObjectFactory factory = new ObjectFactory();
@@ -89,6 +98,88 @@ public class CampaignManagementProxyParityTest {
                 UnifiedAutomationSetting.class);
         assertElement(factory.createChannelPlacementCriterion(factory.createChannelPlacementCriterion()),
                 ChannelPlacementCriterion.class);
+    }
+
+    @Test
+    public void mediaAndVideoHaveAiFieldsAndRoundTrip() throws JAXBException {
+        Media media = factory.createMedia();
+        media.setId(100L);
+        media.setAdvertiserAILabel(AdvertiserAILabel.AI_WITH_VISIBLE_WATERMARK);
+        assertEquals(AdvertiserAILabel.AI_WITH_VISIBLE_WATERMARK, media.getAdvertiserAILabel());
+
+        MediaMetaData meta = factory.createMediaMetaData();
+        meta.setId(12345L);
+        meta.setAdvertiserAILabel(AdvertiserAILabel.AI_CONTENT);
+        meta.setSystemAIDetectionSignal(SystemAIDetectionSignal.MICROSOFT_AI_GENERATED);
+        assertEquals(AdvertiserAILabel.AI_CONTENT, meta.getAdvertiserAILabel());
+        assertEquals(SystemAIDetectionSignal.MICROSOFT_AI_GENERATED, meta.getSystemAIDetectionSignal());
+
+        Video video = factory.createVideo();
+        video.setId(67890L);
+        video.setAdvertiserAILabel(AdvertiserAILabel.NO_AI_CONTENT);
+        video.setSystemAIDetectionSignal(SystemAIDetectionSignal.AI_SIGNATURE_DETECTED);
+        assertEquals(AdvertiserAILabel.NO_AI_CONTENT, video.getAdvertiserAILabel());
+        assertEquals(SystemAIDetectionSignal.AI_SIGNATURE_DETECTED, video.getSystemAIDetectionSignal());
+
+        UpdateMediaRequest request = factory.createUpdateMediaRequest();
+        request.setAccountId(999L);
+        ArrayOfMedia mediaArray = factory.createArrayOfMedia();
+        mediaArray.getMedias().add(media);
+        request.setMedia(mediaArray);
+        assertNotNull(request);
+
+        UpdateMediaResponse response = factory.createUpdateMediaResponse();
+        assertNotNull(response);
+
+        // Verify JAXB roundtrip for UpdateMediaRequest
+        JAXBContext context = JAXBContext.newInstance(UpdateMediaRequest.class, ObjectFactory.class);
+        StringWriter xml = new StringWriter();
+        context.createMarshaller().marshal(request, xml);
+        UpdateMediaRequest restored = (UpdateMediaRequest) context.createUnmarshaller()
+                .unmarshal(new StringReader(xml.toString()));
+        assertEquals(request.getAccountId(), restored.getAccountId());
+        assertEquals(1, restored.getMedia().getMedias().size());
+        assertEquals(AdvertiserAILabel.AI_WITH_VISIBLE_WATERMARK, restored.getMedia().getMedias().get(0).getAdvertiserAILabel());
+    }
+
+    @Test
+    public void aiContentEnumSerializesAndRoundTrips() throws JAXBException {
+        assertEquals("AIContent", AdvertiserAILabel.AI_CONTENT.value());
+        assertEquals(AdvertiserAILabel.AI_CONTENT, AdvertiserAILabel.fromValue("AIContent"));
+        JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+        StringWriter xml = new StringWriter();
+        context.createMarshaller().marshal(factory.createAdvertiserAILabel(AdvertiserAILabel.AI_CONTENT), xml);
+        org.junit.Assert.assertTrue(xml.toString().contains(">AIContent<"));
+        JAXBElement<?> restored = (JAXBElement<?>) context.createUnmarshaller()
+                .unmarshal(new StringReader(xml.toString()));
+        assertEquals(AdvertiserAILabel.AI_CONTENT, restored.getValue());
+    }
+
+    @Test
+    public void parentCustomerNumberAndDownloadEntityEnumsArePresent() {
+        com.microsoft.bingads.v13.customermanagement.AdvertiserAccount account =
+                new com.microsoft.bingads.v13.customermanagement.AdvertiserAccount();
+        account.setParentCustomerNumber("PARENT-12345");
+        assertEquals("PARENT-12345", account.getParentCustomerNumber());
+
+        assertEquals("ParentCustomerNumber",
+                com.microsoft.bingads.v13.customermanagement.AccountAdditionalField.PARENT_CUSTOMER_NUMBER.value());
+        assertEquals("ParentCustomerNumber",
+                com.microsoft.bingads.v13.customerbilling.AccountAdditionalField.PARENT_CUSTOMER_NUMBER.value());
+
+        assertEquals("AIPromptAudiences",
+                com.microsoft.bingads.v13.bulk.DownloadEntity.AI_PROMPT_AUDIENCES.value());
+    }
+
+    @Test
+    public void restUpdateMediaMethodIsPresent() throws Exception {
+        java.lang.reflect.Method method = com.microsoft.bingads.internal.restful.CampaignManagementService.class.getMethod(
+                "updateMedia",
+                UpdateMediaRequest.class);
+        assertNotNull(method);
+
+        assertEquals("AIWithVisibleWatermark", AdvertiserAILabel.AI_WITH_VISIBLE_WATERMARK.value());
+        assertEquals("MicrosoftAIGenerated", SystemAIDetectionSignal.MICROSOFT_AI_GENERATED.value());
     }
 
     private void assertElement(JAXBElement<?> element, Class<?> expectedType) throws JAXBException {

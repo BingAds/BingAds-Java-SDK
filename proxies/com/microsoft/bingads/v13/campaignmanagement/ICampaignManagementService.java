@@ -1872,6 +1872,47 @@ public interface ICampaignManagementService {
     ;
 
     /**
+     *
+     * @param parameters
+     * @return
+     *     returns jakarta.xml.ws.Response<com.microsoft.bingads.v13.campaignmanagement.UpdateMediaResponse>
+     */
+    @WebMethod(operationName = "UpdateMedia", action = "UpdateMedia")
+    public Response<UpdateMediaResponse> updateMediaAsync(
+        @WebParam(name = "UpdateMediaRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateMediaRequest parameters);
+
+    /**
+     *
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "UpdateMedia", action = "UpdateMedia")
+    public Future<?> updateMediaAsync(
+        @WebParam(name = "UpdateMediaRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateMediaRequest parameters,
+        @WebParam(name = "UpdateMediaResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<UpdateMediaResponse> asyncHandler);
+
+    /**
+     *
+     * @param parameters
+     * @return
+     *     returns com.microsoft.bingads.v13.campaignmanagement.UpdateMediaResponse
+     * @throws AdApiFaultDetail_Exception
+     * @throws ApiFaultDetail_Exception
+     */
+    @WebMethod(operationName = "UpdateMedia", action = "UpdateMedia")
+    @WebResult(name = "UpdateMediaResponse", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+    public UpdateMediaResponse updateMedia(
+        @WebParam(name = "UpdateMediaRequest", targetNamespace = "https://bingads.microsoft.com/CampaignManagement/v13", partName = "parameters")
+        UpdateMediaRequest parameters)
+        throws AdApiFaultDetail_Exception, ApiFaultDetail_Exception
+    ;
+
+    /**
      * 
      * @param parameters
      * @return
