@@ -4,7 +4,10 @@ package com.microsoft.bingads.v13.api.test.operations;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadFactory;
 
 import jakarta.xml.ws.AsyncHandler;
 import jakarta.xml.ws.Binding;
@@ -40,10 +43,23 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
 		super(headers, env);
 	}
 
+    /**
+     * Name of the thread which delivers the responses to the async handlers,
+     * if {@link #setDeliverResponsesOnSeparateThread(boolean)} is enabled.
+     */
+    public static final String RESPONSE_THREAD_NAME = "fake-bulk-response-thread";
+
+    /**
+     * Thread which delivers the responses, or null to deliver them on the calling thread.
+     */
+    private static ExecutorService responseThread;
+
 	private static Consumer<GetBulkDownloadStatusRequest> onGetBulkDownloadStatus;
     private static Supplier<GetBulkDownloadStatusResponse> getBulkDownloadStatusResponse;    
     
     private static Supplier<GetBulkUploadStatusResponse> getBulkUploadStatusResponse;
+    
+    private static Supplier<GetBulkUploadUrlResponse> getBulkUploadUrlResponse;
     
     private static Consumer<DownloadCampaignsByAccountIdsRequest> onDownloadCampaignsByAccountIds;
     private static Supplier<DownloadCampaignsByAccountIdsResponse> getDownloadCampaignsByAccountIdsResponse;    
@@ -54,6 +70,15 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
     private static Supplier<List<StringHeader>> inboundHeadersSupplier;
         
     public static void reset() {
+        setDeliverResponsesOnSeparateThread(false);
+
+        getBulkUploadUrlResponse = new Supplier<GetBulkUploadUrlResponse>() {
+            @Override
+            public GetBulkUploadUrlResponse get() {
+                throw new IllegalStateException("This operation hasn't been mocked. Please use corresponding setXXX method to set it up.");
+            }
+        };
+
         onGetBulkDownloadStatus = new Consumer<GetBulkDownloadStatusRequest>() {
             @Override
             public void accept(GetBulkDownloadStatusRequest t) {
@@ -111,6 +136,32 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
         };
     }
     
+    /**
+     * Deliver the responses on a separate thread (like the HTTP client does) instead of on the calling thread.
+     * Exceptions thrown by the handlers get swallowed then, like the HTTP client does.
+     */
+    public static void setDeliverResponsesOnSeparateThread(boolean separateThread) {
+        if (responseThread != null) {
+            responseThread.shutdownNow();
+            responseThread = null;
+        }
+
+        if (separateThread) {
+            responseThread = Executors.newSingleThreadExecutor(new ThreadFactory() {
+                @Override
+                public Thread newThread(Runnable runnable) {
+                    Thread thread = new Thread(runnable, RESPONSE_THREAD_NAME);
+                    thread.setDaemon(true);
+                    return thread;
+                }
+            });
+        }
+    }
+
+    public static void setGetBulkUploadUrlResponse(Supplier<GetBulkUploadUrlResponse> value) {
+        getBulkUploadUrlResponse = value;
+    }
+
     public static Supplier<GetBulkDownloadStatusResponse> getGetBulkDownloadStatusResponse() {
         return getBulkDownloadStatusResponse;
     }
@@ -184,13 +235,7 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
     public Future<?> downloadCampaignsByAccountIdsAsync(DownloadCampaignsByAccountIdsRequest parameters, AsyncHandler<DownloadCampaignsByAccountIdsResponse> asyncHandler) {
         onDownloadCampaignsByAccountIds.accept(parameters);
         
-        Response response = new CompleteResponse(getDownloadCampaignsByAccountIdsResponse.get(), getInboundHeadersSupplier().get());
-        
-        if (asyncHandler != null) {
-            asyncHandler.handleResponse(response);
-        }
-        
-        return response;
+        return respond(getDownloadCampaignsByAccountIdsResponse, asyncHandler);
     }
 
     @Override
@@ -207,13 +252,7 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
     public Future<?> downloadCampaignsByCampaignIdsAsync(DownloadCampaignsByCampaignIdsRequest parameters, AsyncHandler<DownloadCampaignsByCampaignIdsResponse> asyncHandler) {
         onDownloadCampaignsByCampaignIds.accept(parameters);
         
-        Response response = new CompleteResponse(getDownloadCampaignsByCampaignIdsResponse.get(), getInboundHeadersSupplier().get());
-        
-        if (asyncHandler != null) {
-            asyncHandler.handleResponse(response);
-        }
-        
-        return response;
+        return respond(getDownloadCampaignsByCampaignIdsResponse, asyncHandler);
     }
 
     @Override
@@ -230,13 +269,7 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
     public Future<?> getBulkDownloadStatusAsync(GetBulkDownloadStatusRequest parameters, AsyncHandler<GetBulkDownloadStatusResponse> asyncHandler) {
         onGetBulkDownloadStatus.accept(parameters);
         
-        Response response = new CompleteResponse(getBulkDownloadStatusResponse.get(), getInboundHeadersSupplier().get());
-        
-        if (asyncHandler != null) {
-            asyncHandler.handleResponse(response);
-        }
-        
-        return response;
+        return respond(getBulkDownloadStatusResponse, asyncHandler);
     }
 
     @Override
@@ -251,7 +284,28 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
 
     @Override
     public Future<?> getBulkUploadUrlAsync(GetBulkUploadUrlRequest parameters, AsyncHandler<GetBulkUploadUrlResponse> asyncHandler) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return respond(getBulkUploadUrlResponse, asyncHandler);
+    }
+
+    private static <T> Future<?> respond(Supplier<T> responseSupplier, final AsyncHandler<T> asyncHandler) {
+        final CompleteResponse<T> response = new CompleteResponse<T>(responseSupplier.get(), getInboundHeadersSupplier().get());
+
+        if (asyncHandler == null) {
+            return response;
+        }
+
+        if (responseThread == null) {
+            asyncHandler.handleResponse(response);
+
+            return response;
+        }
+
+        return responseThread.submit(new Runnable() {
+            @Override
+            public void run() {
+                asyncHandler.handleResponse(response);
+            }
+        });
     }
 
     @Override
@@ -265,13 +319,7 @@ public class FakeBulkService extends BulkService implements IBulkService, Bindin
     }
     @Override
     public Future<?> getBulkUploadStatusAsync(GetBulkUploadStatusRequest parameters, AsyncHandler<GetBulkUploadStatusResponse> asyncHandler) {
-        Response response = new CompleteResponse(getBulkUploadStatusResponse.get(), getInboundHeadersSupplier().get());
-        
-        if (asyncHandler != null) {
-            asyncHandler.handleResponse(response);
-        }
-        
-        return response;
+        return respond(getBulkUploadStatusResponse, asyncHandler);
     }
 
 

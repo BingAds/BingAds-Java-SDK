@@ -66,7 +66,8 @@ public class ServiceUtils {
 
     public static String GetTrackingId(Response<?> response) {        
         Map<String, Object> context = response.getContext();
-        return context != null ? context.get(TRACKING_KEY).toString() : "";
+        Object trackingId = context != null ? context.get(TRACKING_KEY) : null;
+        return trackingId != null ? trackingId.toString() : "";
     }
     
     public static ApiEnvironment getEnvironmentFromConfig() {
