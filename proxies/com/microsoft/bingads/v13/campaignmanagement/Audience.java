@@ -65,7 +65,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     CustomerList.class,
     CombinedList.class,
     CustomSegment.class,
-    ImpressionBasedRemarketingList.class
+    ImpressionBasedRemarketingList.class,
+    AIPromptAudience.class
 })
 public class Audience {
 

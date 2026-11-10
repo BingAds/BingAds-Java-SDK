@@ -37,6 +37,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 			@JsonSubTypes.Type(value = CustomSegment.class, name = "CustomSegment"),
 						
 			@JsonSubTypes.Type(value = ImpressionBasedRemarketingList.class, name = "ImpressionBasedRemarketingList"),
+						
+			@JsonSubTypes.Type(value = AIPromptAudience.class, name = "AIPrompt"),
 				    })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

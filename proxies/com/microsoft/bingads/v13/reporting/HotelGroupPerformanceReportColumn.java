@@ -62,6 +62,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="MissedImpressionsOther"/>
  *     <enumeration value="ClickShare"/>
  *     <enumeration value="MissedImpressionsInsufficientBid"/>
+ *     <enumeration value="AbsoluteTopImpressionSharePercent"/>
+ *     <enumeration value="TopImpressionSharePercent"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -168,7 +170,11 @@ public enum HotelGroupPerformanceReportColumn {
     @XmlEnumValue("ClickShare")
     CLICK_SHARE("ClickShare"),
     @XmlEnumValue("MissedImpressionsInsufficientBid")
-    MISSED_IMPRESSIONS_INSUFFICIENT_BID("MissedImpressionsInsufficientBid");
+    MISSED_IMPRESSIONS_INSUFFICIENT_BID("MissedImpressionsInsufficientBid"),
+    @XmlEnumValue("AbsoluteTopImpressionSharePercent")
+    ABSOLUTE_TOP_IMPRESSION_SHARE_PERCENT("AbsoluteTopImpressionSharePercent"),
+    @XmlEnumValue("TopImpressionSharePercent")
+    TOP_IMPRESSION_SHARE_PERCENT("TopImpressionSharePercent");
     private final String value;
 
     HotelGroupPerformanceReportColumn(String v) {

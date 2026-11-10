@@ -27,6 +27,7 @@ public class AddMixInForEnumTypes {
 				.addMixIn(VanityPharmaWebsiteDescription.class, VanityPharmaWebsiteDescriptionMixIn.class)
 				.addMixIn(AppStore.class, AppStoreMixIn.class)
 				.addMixIn(Network.class, NetworkMixIn.class)
+				.addMixIn(ReachOptimizationGoal.class, ReachOptimizationGoalMixIn.class)
 				.addMixIn(FrequencyCapTimeGranularity.class, FrequencyCapTimeGranularityMixIn.class)
 				.addMixIn(EntityScope.class, EntityScopeMixIn.class)
 				.addMixIn(BudgetLimitType.class, BudgetLimitTypeMixIn.class)
@@ -63,9 +64,9 @@ public class AddMixInForEnumTypes {
 				.addMixIn(AdExtensionAdditionalField.class, AdExtensionAdditionalFieldMixIn.class)
 				.addMixIn(AssociationType.class, AssociationTypeMixIn.class)
 				.addMixIn(AdExtensionEditorialStatus.class, AdExtensionEditorialStatusMixIn.class)
+				.addMixIn(AdvertiserAILabel.class, AdvertiserAILabelMixIn.class)
 				.addMixIn(MediaEnabledEntityFilter.class, MediaEnabledEntityFilterMixIn.class)
 				.addMixIn(MediaAdditionalField.class, MediaAdditionalFieldMixIn.class)
-				.addMixIn(AdvertiserAILabel.class, AdvertiserAILabelMixIn.class)
 				.addMixIn(SystemAIDetectionSignal.class, SystemAIDetectionSignalMixIn.class)
 				.addMixIn(AdGroupCriterionType.class, AdGroupCriterionTypeMixIn.class)
 				.addMixIn(CriterionAdditionalField.class, CriterionAdditionalFieldMixIn.class)
@@ -140,7 +141,6 @@ public class AddMixInForEnumTypes {
 				.addMixIn(CompanySizeCategory.class, CompanySizeCategoryMixIn.class)
 				.addMixIn(CompanyNameStatus.class, CompanyNameStatusMixIn.class)
 				.addMixIn(LinkedInSegmentType.class, LinkedInSegmentTypeMixIn.class)
-				.addMixIn(ReachOptimizationGoal.class, ReachOptimizationGoalMixIn.class)
 				;
 	}
 }
