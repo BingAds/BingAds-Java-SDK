@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "helpUri": "https://eng.ms/docs/microsoft-security/security/azure-security/cloudai-security-fundamentals-engineering/security-integration/guardian-wiki/microsoft-guardian/general/baselines"
+  },
+  "version": "1.0.0",
+  "baselines": {
+    "default": {
+      "name": "default",
+      "createdDate": "2025-06-30 03:05:44Z",
+      "lastUpdatedDate": "2025-06-30 03:05:44Z"
+    }
+  },
+  "results": {
+    "b3736a918ff8d688843a2c76bfce1661c484e260144140c9df23f1147da102c0": {
+      "signature": "b3736a918ff8d688843a2c76bfce1661c484e260144140c9df23f1147da102c0",
+      "alternativeSignatures": [],
+      "target": "spotbugs.xml",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "spotbugs",
+      "ruleId": "gdn.unknownFormatResult",
+      "createdDate": "2026-05-13 07:02:02Z",
+      "expirationDate": "2026-10-30 07:04:46Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-05-13 07:04:46Z"
+    }
+  }
+}
