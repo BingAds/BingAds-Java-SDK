@@ -34,6 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <enumeration value="AcceptNielsenTermsAndConditions"/>
  *     <enumeration value="ImageMissingWarningOptout"/>
  *     <enumeration value="OptOutFromSystemSourcedImagesInSWF"/>
+ *     <enumeration value="AIDetectedContentWatermarkPolicy"/>
  *   </restriction>
  * </simpleType>
  * }</pre>
@@ -84,7 +85,9 @@ public enum AccountPropertyName {
     @XmlEnumValue("ImageMissingWarningOptout")
     IMAGE_MISSING_WARNING_OPTOUT("ImageMissingWarningOptout"),
     @XmlEnumValue("OptOutFromSystemSourcedImagesInSWF")
-    OPT_OUT_FROM_SYSTEM_SOURCED_IMAGES_IN_SWF("OptOutFromSystemSourcedImagesInSWF");
+    OPT_OUT_FROM_SYSTEM_SOURCED_IMAGES_IN_SWF("OptOutFromSystemSourcedImagesInSWF"),
+    @XmlEnumValue("AIDetectedContentWatermarkPolicy")
+    AI_DETECTED_CONTENT_WATERMARK_POLICY("AIDetectedContentWatermarkPolicy");
     private final String value;
 
     AccountPropertyName(String v) {

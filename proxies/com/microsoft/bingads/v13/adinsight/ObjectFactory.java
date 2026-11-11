@@ -3062,6 +3062,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateOnly }
+     * 
+     * @return
+     *     the new instance of {@link DateOnly }
+     */
+    public DateOnly createDateOnly() {
+        return new DateOnly();
+    }
+
+    /**
+     * Create an instance of {@link TimeOnly }
+     * 
+     * @return
+     *     the new instance of {@link TimeOnly }
+     */
+    public TimeOnly createTimeOnly() {
+        return new TimeOnly();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfint }
      * 
      * @return

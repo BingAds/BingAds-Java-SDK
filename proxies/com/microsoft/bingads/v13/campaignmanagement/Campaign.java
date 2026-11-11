@@ -39,6 +39,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element name="IsDealCampaign" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="IsPolitical" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         <element name="MarketingObjective" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="MessagingRestrictions" type="{https://bingads.microsoft.com/CampaignManagement/v13}ArrayOfAssetLink" minOccurs="0"/>
  *         <element name="MultimediaAdsBidAdjustment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         <element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="PrivacyStatus" type="{https://bingads.microsoft.com/CampaignManagement/v13}CampaignPrivacyStatus" minOccurs="0"/>
@@ -84,6 +85,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "isDealCampaign",
     "isPolitical",
     "marketingObjective",
+    "messagingRestrictions",
     "multimediaAdsBidAdjustment",
     "name",
     "privacyStatus",
@@ -144,6 +146,8 @@ public class Campaign {
     protected Boolean isPolitical;
     @XmlElement(name = "MarketingObjective", nillable = true)
     protected String marketingObjective;
+    @XmlElement(name = "MessagingRestrictions", nillable = true)
+    protected ArrayOfAssetLink messagingRestrictions;
     @XmlElement(name = "MultimediaAdsBidAdjustment", nillable = true)
     protected Integer multimediaAdsBidAdjustment;
     @XmlElement(name = "Name", nillable = true)
@@ -617,6 +621,30 @@ public class Campaign {
     }
 
     /**
+     * Gets the value of the messagingRestrictions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public ArrayOfAssetLink getMessagingRestrictions() {
+        return messagingRestrictions;
+    }
+
+    /**
+     * Sets the value of the messagingRestrictions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfAssetLink }
+     *     
+     */
+    public void setMessagingRestrictions(ArrayOfAssetLink value) {
+        this.messagingRestrictions = value;
+    }
+
+    /**
      * Gets the value of the multimediaAdsBidAdjustment property.
      * 
      * @return
@@ -762,11 +790,11 @@ public class Campaign {
 
     /**
      * Gets the value of the termExclusions property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link ArrayOfAssetLink }
-     *
+     *     
      */
     public ArrayOfAssetLink getTermExclusions() {
         return termExclusions;
@@ -774,11 +802,11 @@ public class Campaign {
 
     /**
      * Sets the value of the termExclusions property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link ArrayOfAssetLink }
-     *
+     *     
      */
     public void setTermExclusions(ArrayOfAssetLink value) {
         this.termExclusions = value;

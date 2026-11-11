@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({UriOAuthServiceTest.class,
+    OAuthEndpointHelperTest.class,
     OAuthAuthCodeForDesktopMobileAppTest.class,
     OAuthAuthCodeForWebAppTest.class,
     OAuthImplicitGrantForDesktopMobileAppTest.class

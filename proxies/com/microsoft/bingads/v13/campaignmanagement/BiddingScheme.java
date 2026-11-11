@@ -39,6 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
     EnhancedCpcBiddingScheme.class,
     ManualCpvBiddingScheme.class,
     ManualCpmBiddingScheme.class,
+    TargetCpmBiddingScheme.class,
     InheritFromParentBiddingScheme.class,
     TargetRoasBiddingScheme.class,
     MaxRoasBiddingScheme.class,

@@ -34,6 +34,8 @@ import com.microsoft.bingads.internal.restful.adaptor.generated.campaignmanageme
 						
 			@JsonSubTypes.Type(value = ManualCpmBiddingScheme.class, name = "ManualCpm"),
 						
+			@JsonSubTypes.Type(value = TargetCpmBiddingScheme.class, name = "TargetCpm"),
+						
 			@JsonSubTypes.Type(value = InheritFromParentBiddingScheme.class, name = "InheritFromParent"),
 						
 			@JsonSubTypes.Type(value = TargetRoasBiddingScheme.class, name = "TargetRoasBiddingScheme"),

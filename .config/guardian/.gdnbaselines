@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "helpUri": "https://eng.ms/docs/microsoft-security/security/azure-security/cloudai-security-fundamentals-engineering/security-integration/guardian-wiki/microsoft-guardian/general/baselines"
+  },
+  "version": "1.0.0",
+  "baselines": {
+    "default": {
+      "name": "default",
+      "createdDate": "2026-11-11 14:40:46Z",
+      "lastUpdatedDate": "2026-11-11 14:40:46Z"
+    }
+  },
+  "results": {
+    "b3736a918ff8d688843a2c76bfce1661c484e260144140c9df23f1147da102c0": {
+      "signature": "b3736a918ff8d688843a2c76bfce1661c484e260144140c9df23f1147da102c0",
+      "alternativeSignatures": [],
+      "target": "spotbugs.xml",
+      "memberOf": ["default"],
+      "tool": "spotbugs",
+      "ruleId": "gdn.unknownFormatResult",
+      "createdDate": "2026-11-11 14:40:46Z",
+      "expirationDate": "2026-11-25 23:59:59Z",
+      "justification": "Temporarily baseline the recurring Guardian SpotBugs aggregate while the managed task's argument ordering is investigated."
+    }
+  }
+}

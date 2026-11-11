@@ -105,6 +105,7 @@ public class ObjectFactory {
     private static final QName _EnhancedCpcBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "EnhancedCpcBiddingScheme");
     private static final QName _ManualCpvBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ManualCpvBiddingScheme");
     private static final QName _ManualCpmBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ManualCpmBiddingScheme");
+    private static final QName _TargetCpmBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetCpmBiddingScheme");
     private static final QName _InheritFromParentBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "InheritFromParentBiddingScheme");
     private static final QName _TargetRoasBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "TargetRoasBiddingScheme");
     private static final QName _MaxRoasBiddingScheme_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "MaxRoasBiddingScheme");
@@ -427,6 +428,7 @@ public class ObjectFactory {
     private static final QName _CustomSegmentEditorialStatus_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomSegmentEditorialStatus");
     private static final QName _ImpressionBasedRemarketingList_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImpressionBasedRemarketingList");
     private static final QName _ImpressionBasedEntityType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "ImpressionBasedEntityType");
+    private static final QName _AIPromptAudience_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AIPromptAudience");
     private static final QName _AudienceAdditionalField_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "AudienceAdditionalField");
     private static final QName _CustomerListUserData_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListUserData");
     private static final QName _CustomerListActionType_QNAME = new QName("https://bingads.microsoft.com/CampaignManagement/v13", "CustomerListActionType");
@@ -1211,7 +1213,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ImpressionTrackingSetting }
-     *
+     * 
      * @return
      *     the new instance of {@link ImpressionTrackingSetting }
      */
@@ -1221,7 +1223,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReachOptimizationGoalSetting }
-     *
+     * 
      * @return
      *     the new instance of {@link ReachOptimizationGoalSetting }
      */
@@ -1231,7 +1233,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CampaignFrequencyCapSetting }
-     *
+     * 
      * @return
      *     the new instance of {@link CampaignFrequencyCapSetting }
      */
@@ -1241,7 +1243,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UnifiedAutomationSetting }
-     *
+     * 
      * @return
      *     the new instance of {@link UnifiedAutomationSetting }
      */
@@ -1387,6 +1389,16 @@ public class ObjectFactory {
      */
     public ManualCpmBiddingScheme createManualCpmBiddingScheme() {
         return new ManualCpmBiddingScheme();
+    }
+
+    /**
+     * Create an instance of {@link TargetCpmBiddingScheme }
+     * 
+     * @return
+     *     the new instance of {@link TargetCpmBiddingScheme }
+     */
+    public TargetCpmBiddingScheme createTargetCpmBiddingScheme() {
+        return new TargetCpmBiddingScheme();
     }
 
     /**
@@ -3241,7 +3253,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateMediaRequest }
-     *
+     * 
      * @return
      *     the new instance of {@link UpdateMediaRequest }
      */
@@ -3251,7 +3263,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateMediaResponse }
-     *
+     * 
      * @return
      *     the new instance of {@link UpdateMediaResponse }
      */
@@ -3781,7 +3793,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ChannelPlacementCriterion }
-     *
+     * 
      * @return
      *     the new instance of {@link ChannelPlacementCriterion }
      */
@@ -5857,6 +5869,16 @@ public class ObjectFactory {
      */
     public ImpressionBasedRemarketingList createImpressionBasedRemarketingList() {
         return new ImpressionBasedRemarketingList();
+    }
+
+    /**
+     * Create an instance of {@link AIPromptAudience }
+     * 
+     * @return
+     *     the new instance of {@link AIPromptAudience }
+     */
+    public AIPromptAudience createAIPromptAudience() {
+        return new AIPromptAudience();
     }
 
     /**
@@ -9320,6 +9342,26 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateOnly }
+     * 
+     * @return
+     *     the new instance of {@link DateOnly }
+     */
+    public DateOnly createDateOnly() {
+        return new DateOnly();
+    }
+
+    /**
+     * Create an instance of {@link TimeOnly }
+     * 
+     * @return
+     *     the new instance of {@link TimeOnly }
+     */
+    public TimeOnly createTimeOnly() {
+        return new TimeOnly();
+    }
+
+    /**
      * Create an instance of {@link AdApiFaultDetail }
      * 
      * @return
@@ -10115,7 +10157,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ImpressionTrackingSetting }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -10128,7 +10170,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoalSetting }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -10141,7 +10183,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReachOptimizationGoal }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -10154,7 +10196,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CampaignFrequencyCapSetting }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -10180,7 +10222,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UnifiedAutomationSetting }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -10371,6 +10413,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ManualCpmBiddingScheme")
     public JAXBElement<ManualCpmBiddingScheme> createManualCpmBiddingScheme(ManualCpmBiddingScheme value) {
         return new JAXBElement<>(_ManualCpmBiddingScheme_QNAME, ManualCpmBiddingScheme.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetCpmBiddingScheme }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TargetCpmBiddingScheme }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "TargetCpmBiddingScheme")
+    public JAXBElement<TargetCpmBiddingScheme> createTargetCpmBiddingScheme(TargetCpmBiddingScheme value) {
+        return new JAXBElement<>(_TargetCpmBiddingScheme_QNAME, TargetCpmBiddingScheme.class, null, value);
     }
 
     /**
@@ -12124,7 +12179,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AdvertiserAILabel }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -12256,7 +12311,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SystemAIDetectionSignal }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -12910,7 +12965,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ChannelPlacementCriterion }{@code >}
-     *
+     * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
@@ -14578,6 +14633,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "ImpressionBasedEntityType")
     public JAXBElement<ImpressionBasedEntityType> createImpressionBasedEntityType(ImpressionBasedEntityType value) {
         return new JAXBElement<>(_ImpressionBasedEntityType_QNAME, ImpressionBasedEntityType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AIPromptAudience }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AIPromptAudience }{@code >}
+     */
+    @XmlElementDecl(namespace = "https://bingads.microsoft.com/CampaignManagement/v13", name = "AIPromptAudience")
+    public JAXBElement<AIPromptAudience> createAIPromptAudience(AIPromptAudience value) {
+        return new JAXBElement<>(_AIPromptAudience_QNAME, AIPromptAudience.class, null, value);
     }
 
     /**

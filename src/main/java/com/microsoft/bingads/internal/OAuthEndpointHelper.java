@@ -27,14 +27,14 @@ public class OAuthEndpointHelper {
         endpointUrls.put(OAuthEndpointType.ProductionMSIdentityV2_MSScope, new OAuthEndpoints(
                 "https://login.microsoftonline.com/common/oauth2/nativeclient",
                 "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://ads.microsoft.com/msads.manage offline_access&%s",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://ads.microsoft.com/msads.manage%20offline_access&%s",
                 "https://ads.microsoft.com/msads.manage offline_access"
                 ));
 
         endpointUrls.put(OAuthEndpointType.ProductionMSIdentityV2, new OAuthEndpoints(
                 "https://login.microsoftonline.com/common/oauth2/nativeclient",
                 "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://ads.microsoft.com/ads.manage offline_access&%s",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://ads.microsoft.com/ads.manage%20offline_access&%s",
                 "https://ads.microsoft.com/ads.manage offline_access"
                 ));
         
@@ -48,21 +48,21 @@ public class OAuthEndpointHelper {
         endpointUrls.put(OAuthEndpointType.Sandbox, new OAuthEndpoints(
                 "https://login.windows-ppe.net/common/oauth2/nativeclient",
                 "https://login.windows-ppe.net/consumers/oauth2/v2.0/token",
-                "https://login.windows-ppe.net/consumers/oauth2/v2.0/authorize?scope=https://api.ads.microsoft.com/msads.manage offline_access&%s",
+                "https://login.windows-ppe.net/consumers/oauth2/v2.0/authorize?scope=https://api.ads.microsoft.com/msads.manage%20offline_access&%s",
                 "https://api.ads.microsoft.com/msads.manage offline_access"
                 ));
         
         endpointUrls.put(OAuthEndpointType.MsaProd, new OAuthEndpoints(
                 "https://login.microsoftonline.com/common/oauth2/nativeclient",
                 "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://si.ads.microsoft.com/msads.manage offline_access&%s",
+                "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=https://si.ads.microsoft.com/msads.manage%20offline_access&%s",
                 "https://si.ads.microsoft.com/msads.manage offline_access"
                 ));
         
         endpointUrls.put(OAuthEndpointType.GoogleProduction, new OAuthEndpoints(
                 "http://localhost",
                 "https://oauth2.googleapis.com/token",
-                "https://accounts.google.com/o/oauth2/v2/auth?scope=openid email profile&access_type=offline&prompt=consent&%s",
+                "https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20email%20profile&access_type=offline&prompt=consent&%s",
                 "openid email profile"
                 ));
     }
@@ -116,10 +116,7 @@ public class OAuthEndpointHelper {
             if (authorizationEndpointUrl.startsWith("https://login.microsoftonline.com/common/oauth2") && tenant != null) {
                 authorizationEndpointUrl = authorizationEndpointUrl.replace("common", tenant);
             }
-            return new URL(String.format(
-                    authorizationEndpointUrl,
-                    mapToQueryString(paramsMap)
-            ));
+            return new URL(authorizationEndpointUrl.replace("%s", mapToQueryString(paramsMap)));
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e);
         } catch (UnsupportedEncodingException e) {
